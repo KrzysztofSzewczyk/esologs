@@ -1,1 +1,120 @@
 2019-09-30 18:04:24 <kspalaiologos> Honestly, I can't find a good use for my "amazing" idea
+2019-09-30 18:04:36 User Name: imode = imode!~linear@unaffiliated/imode
+2019-09-30 18:04:36 <imode> which is?
+2019-09-30 18:05:12 <kspalaiologos> I'm talking about  the idea I presented someone earlier
+2019-09-30 18:05:21 <kspalaiologos> of the substitution based language
+2019-09-30 18:07:56 <imode> interesting, mind recapping.
+2019-09-30 18:14:06 Joined: LKoen
+2019-09-30 18:14:07 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 18:14:38 Joined: b_jonas
+2019-09-30 18:14:38 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 18:14:56 User Name: b_jonas = b_jonas!~x@catv-176-63-24-142.catv.broadband.hu
+2019-09-30 18:14:56 <b_jonas> hello all
+2019-09-30 18:15:22 <b_jonas> `welcome PaniniTheDev
+2019-09-30 18:15:23 User Name: HackEso = HackEso!~h@techne.zem.fi
+2019-09-30 18:15:23 <HackEso> PaniniTheDev: Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: <https://esolangs.org/>. (For the other kind of esoterica, try #esoteric on EFnet or DALnet.)
+2019-09-30 18:15:34 <b_jonas> Yeah, you know that already, you came from the Wiki.
+2019-09-30 18:16:02 <imode> o/
+2019-09-30 18:17:49 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2019-09-30 18:17:49 <fizzie> shachaf: The spec disallows comments, but the implementation doesn't actually check for comments in code that's not executed, so essentially you just have to brute-force out some string that hashes to "+>[...junk...]<" and use that block to represent a +. Plus a few extra details (like making > into >>, and making sure there are no []s in that junk).
+2019-09-30 18:18:22 <fizzie> "Comments" being any byte that's not +-<>.,[]
+2019-09-30 18:20:13 <b_jonas> kspalaiologos, kmc: IMO creating a few good esolang-related things is a much better way to contribute than creating a hundred worthless pages on the wiki about supposed languages like our village in Norway does
+2019-09-30 18:20:57 <b_jonas> there are probably only two people who have created more than one really interesting esolangs that are different from each other
+2019-09-30 18:21:43 <b_jonas> and unless you can come up with something really revolutionary, creating new esolangs isn't the best thing to do. I value it much higher if you use existing esolangs, or just use non-eso programming languages in interesting ways
+2019-09-30 18:21:49 <b_jonas> as in obfuscated programming
+2019-09-30 18:22:07 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2019-09-30 18:22:07 <shachaf> fizzie: Oh, that sounds like a bug in the implementation.
+2019-09-30 18:22:14 <shachaf> Which I guess is why you called in a vulnerability.
+2019-09-30 18:24:39 User Name: kmc = kmc!~beehive@li521-214.members.linode.com
+2019-09-30 18:24:39 <kmc> i mean, it's fine either way
+2019-09-30 18:24:53 <kmc> I like to hang out here because it's a set of cool people discussing interesting things
+2019-09-30 18:25:02 <kmc> I don't feel a great urge to contribute to the esolangs per se
+2019-09-30 18:25:14 <kmc> I do have a few ideas tho
+2019-09-30 18:25:23 Quit: pikhq (Ping timeout: 276 seconds)
+2019-09-30 18:25:23 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 18:26:13 <imode> honestly esolangs to me are just new ideas in programming language theory that haven't been taken to their potential yet.
+2019-09-30 18:26:19 <kmc> some are
+2019-09-30 18:26:39 <b_jonas> kspalaiologos: "slashes (///) without regexps" um, but slashes already doesn't have regexps. it only searches for fixed strings, as in grep -F
+2019-09-30 18:30:07 User Name: esowiki = esowiki!~esowiki@techne.zem.fi
+2019-09-30 18:30:07 <esowiki> 14[[07Tom Murphy VII14]]4 10 02https://esolangs.org/w/index.php?diff=66407&oldid=56755 5* 03B jonas 5* (+78) 10link UM-32
+2019-09-30 18:30:33 <kmc> one is a concatencative language for signal processing
+2019-09-30 18:30:39 <kmc> i mean it's probably been done
+2019-09-30 18:31:06 <b_jonas> kmc: the great thing is that esolangs mean different things to different people, which is why there are so many different ones with different interesting properties
+2019-09-30 18:32:50 <b_jonas> kmc: re x86 without using registers => interesting, I don't remember having seen that one. the one with MOV only, and the one with no instructions, those I do remember, as well as tom7's ABC
+2019-09-30 18:33:47 <imode> brachylog is interesting if a little obtuse.
+2019-09-30 18:34:29 <imode> I wonder what the most "minimal" logic language is. prolog is hard to write on a single line and its implementation is complex.
+2019-09-30 18:36:54 <b_jonas> imode: I think for a golf language, it may make sense to have prolog-like backtracking, but not general prolog-like unification. I'm not saying this would be easy to implement, just that it may help golfing.
+2019-09-30 18:37:28 <b_jonas> but as for your specific question, I don't know what counts as enough to qualify something a "logic language"
+2019-09-30 18:37:34 <imode> golfing is an interesting orthogonal goal. my further goal is writing prolog as I write sentences.
+2019-09-30 18:37:43 Quit: LKoen (Remote host closed the connection)
+2019-09-30 18:37:43 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 18:38:00 <imode> "this thing relates to that thing, that thing relates to this other thing, what is this other thing."
+2019-09-30 18:39:00 <b_jonas> kmc: interesting, why did you not make that implement brainfuck with mod 256 wraparound like it's the most common?
+2019-09-30 18:41:02 <b_jonas> hmm, Shakespeare predates Chef?
+2019-09-30 18:41:49 <imode> prolog without variables.. hm.
+2019-09-30 18:43:54 <b_jonas> imode: no no, I imagine it would have mutable variables, and you'd have both non-backtracking and backtracking versions. what I mean is that it wouldn't have the recursive structural unification, nor even just unassigned variables and function arguments that can be either input and output using them and A=B statements that can assign in either direction
+2019-09-30 18:44:09 <imode> didn't tie that statement to your's, was just musing.
+2019-09-30 18:44:22 <kmc> b_jonas: i think that would have been harder?
+2019-09-30 18:44:25 <b_jonas> and I don't think it would be like prolog at all
+2019-09-30 18:44:58 <b_jonas> kmc: it's hard to implement, but a golfing language doesn't have to be easy to implement, it has to give you all the tricky tools instead
+2019-09-30 18:45:07 <imode> I want to be able to pose questions to my machine and have it answer them. I want to be able to describe and query relations between the things I declare.
+2019-09-30 18:45:14 <kmc> b_jonas: I was doing a minimum proof of concept about x86 being turing complete with no registers
+2019-09-30 18:45:20 <imode> sans variables.. which is difficult.
+2019-09-30 18:45:33 <kmc> I don't really care if it's convenient for writing code
+2019-09-30 18:46:12 <b_jonas> kmc: sure, but you apparently have extra code in the implementation so that when a cell becomes decreased to -1 then it changes it to 0, and when it becomes 256 it changes it to 255
+2019-09-30 18:46:22 <imode> https://en.wikipedia.org/wiki/Constraint_Handling_Rules
+2019-09-30 18:46:27 <b_jonas> it seems like you'd just have to change the constants there so it changes -1 to 255 and 256 to 0 insteaed
+2019-09-30 18:46:28 <imode> interesting.
+2019-09-30 18:46:43 <b_jonas> so it'd be like a trivial change, it wouldn't make the implementation any more difficult
+2019-09-30 18:46:47 <kmc> b_jonas: hm i think you're right
+2019-09-30 18:46:50 <kmc> it's been a long time
+2019-09-30 18:46:56 <kmc> so i'm not sure why i did it that way
+2019-09-30 18:47:04 <b_jonas> oh wait
+2019-09-30 18:47:07 <b_jonas> no, you're right
+2019-09-30 18:47:31 <kmc> also I'm not sure how this post got hundreds of comments about curing herpes with herbs
+2019-09-30 18:47:32 <b_jonas> the problem is that at every < and > statement, you have to do a self-modifying code that modifies both the head address in both increase and decrease statement
+2019-09-30 18:47:51 <kmc> b_jonas: oh also i can't have conditionals
+2019-09-30 18:47:56 <b_jonas> if you made it wrap around, you'd need five such modifications instead of three, so it's complicated
+2019-09-30 18:47:59 <kmc> but there's still probably a way
+2019-09-30 18:48:08 <kmc> i could make a subroutine that does it in some bitwise way for example
+2019-09-30 18:48:08 <kmc> but yeha
+2019-09-30 18:48:14 <kmc> I think I just did it this way to be parsimonious
+2019-09-30 18:48:17 <b_jonas> you even say "We could implement the more typical wrap-around behavior with somewhat more code."
+2019-09-30 18:48:23 <kmc> right
+2019-09-30 18:48:25 <shachaf> my friend has been trying to talk me into learning to do fancy gpu programming
+2019-09-30 18:48:29 <b_jonas> sorry, I didn't realize that that's how the head pointer was implemented
+2019-09-30 18:48:33 <kmc> shachaf: it's fun
+2019-09-30 18:48:36 <shachaf> it's a bit like esoteric programming
+2019-09-30 18:48:42 <kmc> massively parallel, quasi-functional
+2019-09-30 18:49:29 <kmc> b_jonas: glad you found it interesting
+2019-09-30 18:49:50 <b_jonas> shachaf: the friend isn't your partner who wants you to earn more money, right?
+2019-09-30 18:50:25 <kmc> a lot of people were amused by my calling brainfuck "pretty familiar as an imperative, structured-control language"
+2019-09-30 18:50:33 <shachaf> ais523: Does Richardson's theorem actually let you produce a specific real expression (like sqrt(sin(5)) or whatever) where it's undecidable whether it's equal to 0?
+2019-09-30 18:50:48 <kmc> and "[not] super weird"
+2019-09-30 18:51:01 <shachaf> ais523: Or is it only a function, like "\x -> sqrt(sin(x))", where it' undecidable whether it's 0 everywhere?
+2019-09-30 18:51:28 <shachaf> kmc: Well, it has a simple text substitution compiler to C.
+2019-09-30 18:51:42 <kmc> b_jonas: i wrote most of the code on a flight from SFO to ICN
+2019-09-30 18:51:47 <kmc> shachaf: yeah
+2019-09-30 18:51:49 <shachaf> The weird part isn't the language primitives but what you have to do get anything done with them.
+2019-09-30 18:52:50 <b_jonas> `perl -eprint sqrt(sin(5)) # of course that doesn't prove anything, because the sin function rounds to floating-point
+2019-09-30 18:52:50 <HackEso> Can't take sqrt of -0.958924 at -e line 1.
+2019-09-30 18:53:10 <shachaf> Oh no.
+2019-09-30 18:53:24 <shachaf> In the other window I wrote sqrt(sin(3)) but I changed it to 5 because it seemed more appealing.
+2019-09-30 18:53:25 <b_jonas> `perl -euse Math::Complex; print sqrt(sin(5))
+2019-09-30 18:53:26 <HackEso> 0.979246789457662i
+2019-09-30 18:53:27 <shachaf> Joke's on me.
+2019-09-30 18:53:45 <b_jonas> shachaf: nah, taking a complex square root is completely fine in this context
+2019-09-30 18:54:10 <kmc> I was pretty pleased to figure out how to do this
+2019-09-30 18:54:17 <b_jonas> it would be worse if you tried to divide by zero, but just taking square root or log of a negative number is ok
+2019-09-30 18:54:20 <shachaf> It's not completely fine for at least the following reason: It makes me say "Oh no."
+2019-09-30 18:55:20 <kmc> "Code that self-modifies by calling read() is clearly the future of computing."
+2019-09-30 18:55:55 <b_jonas> also, I have a question
+2019-09-30 18:56:09 <b_jonas> about self-modifying code
+2019-09-30 18:56:16 <shachaf> higan mchelloface
+2019-09-30 18:56:34 <kmc> hi
+2019-09-30 18:56:57 <kmc> b_jonas: if you look at the actual code it has a lot more self modifying code
+2019-09-30 18:57:00 <kmc> to handle ,
+2019-09-30 18:57:03 <kmc> , was a pain
+2019-09-30 18:57:33 <b_jonas> normally on x86 with SMP, if you modify code on one cpu then execute it on another cpu, and want to make sure that the modified code is used, then you have to do a really elaborate synchronization dance to make sure that all the caches are flushed properly
+2019-09-30 18:58:18 <b_jonas> this doesn't happen when modifying code and then executing it on the same cpu because x86 wants to be backwards compatible with 386, which allowed such self-modifying code as long as you just do any jump/branch between them
+2019-09-30 18:59:55 <b_jonas> my question is, if you write ordinary self-modifying code in a linux-x86_64 program, and the kernel just happens to migrate the user-space thread to another cpu between your modifying code and your running it, does the kernel guarantee to do all the required synchronization dance so that your self-modifying code executes correctly?
