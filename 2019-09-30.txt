@@ -118,3 +118,43 @@
 2019-09-30 18:57:33 <b_jonas> normally on x86 with SMP, if you modify code on one cpu then execute it on another cpu, and want to make sure that the modified code is used, then you have to do a really elaborate synchronization dance to make sure that all the caches are flushed properly
 2019-09-30 18:58:18 <b_jonas> this doesn't happen when modifying code and then executing it on the same cpu because x86 wants to be backwards compatible with 386, which allowed such self-modifying code as long as you just do any jump/branch between them
 2019-09-30 18:59:55 <b_jonas> my question is, if you write ordinary self-modifying code in a linux-x86_64 program, and the kernel just happens to migrate the user-space thread to another cpu between your modifying code and your running it, does the kernel guarantee to do all the required synchronization dance so that your self-modifying code executes correctly?
+2019-09-30 19:00:12 <b_jonas> because if not, then I really don't see how you could ever write self-modifying code on linux-x86_64
+2019-09-30 19:00:19 <b_jonas> fizzie: ^ perhaps you can answer
+2019-09-30 19:05:59 <b_jonas> wait what? is it really undecidable in the computational sense whether a context-free grammar describes the empty language?
+2019-09-30 19:07:24 <b_jonas> no, apparently it isn't
+2019-09-30 19:11:17 Quit: kspalaiologos (Quit: Leaving)
+2019-09-30 19:11:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 19:13:51 User Name: arseniiv = arseniiv!~arseniiv@94.41.14.65.dynamic.ufanet.ru
+2019-09-30 19:13:51 <arseniiv> <kspalaiologos> it really depends on how we define minimalistic => agree; I meant from the syntactic side
+2019-09-30 19:14:51 <imode> https://hatebin.com/qsqfryjtfv
+2019-09-30 19:14:55 <imode> someone might have a use for this.
+2019-09-30 19:15:10 <imode> it's a language based on tuple rewriting. here's a demo of a text adventure in it.
+2019-09-30 19:25:46 <b_jonas> wow, are there really only six M:tG cards that represent a leonin skyknight directly? that seems odd
+2019-09-30 19:26:18 <b_jonas> admittedly they do appear in the flavor of some noncreature cards too
+2019-09-30 19:27:16 <b_jonas> Leonin Scimitar is a weapon used by skyhunters
+2019-09-30 19:31:32 <imode> because the tuple store is a multiset, it's possible to construct a counter machine (and I believe it's equivalent to FRACTRAN at that point). there's no other way to build a tape as far as I see, though, because you can't add tuples with generated identifiers.
+2019-09-30 19:32:13 <imode> though it's easy to add the ability to: any variables on the RHS not present on the LHS get bound to a unique identifier.
+2019-09-30 19:40:08 <arseniiv> imode: how does it operate, does it delete matched tuples or leaves them in the store?
+2019-09-30 19:41:05 Quit: atslash (Quit: This computer has gone to sleep)
+2019-09-30 19:41:05 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 19:41:21 <arseniiv> I hadn’t read thoroughly
+2019-09-30 19:43:16 <fizzie> b_jonas: I don't have an answer for that. Presumably serious users of self-modifying code must have considered this though.
+2019-09-30 19:45:06 <imode> arseniiv: it deletes them.
+2019-09-30 19:45:41 Joined: LKoen
+2019-09-30 19:45:42 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 19:48:19 Joined: Sgeo
+2019-09-30 19:49:52 <b_jonas> fizzie: ... serious users of self-modifying code? those exist?
+2019-09-30 19:50:01 Joined: Sgeo
+2019-09-30 19:50:02 <arseniiv> oh! I came up with a controversial question
+2019-09-30 19:50:20 <b_jonas> do you mean like just-in-time compilers?
+2019-09-30 19:50:24 <b_jonas> oh, I get it
+2019-09-30 19:50:26 Quit: Sgeo (Ping timeout: 240 seconds)
+2019-09-30 19:50:28 <b_jonas> you must meen qemu
+2019-09-30 19:50:35 <b_jonas> qemu's just in time compiler mode
+2019-09-30 19:50:38 <b_jonas> that's what I should look at
+2019-09-30 19:50:42 <arseniiv> if I’m to pick one of Idris or Agda, is there a clear winner or should I abandon the choice instead
+2019-09-30 19:50:53 <b_jonas> hmm wait
+2019-09-30 19:50:58 <b_jonas> does that exist on x86_64 as the host?
+2019-09-30 19:53:47 Quit: Sgeo (Ping timeout: 276 seconds)
+2019-09-30 19:58:41 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2019-09-30 19:58:41 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
