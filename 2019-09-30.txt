@@ -179,3 +179,91 @@
 2019-09-30 20:56:31 <b_jonas> I'd like to contrast this to Roborosewater, which usually does a good job of keeping the whole card coherent
 2019-09-30 20:56:35 <b_jonas> `? roborosewater
 2019-09-30 20:56:36 <HackEso> RoboRosewater is generating random Magic: the Gathering cards, see https://mobile.twitter.com/roborosewater
+2019-09-30 21:13:51 Joined: ais523
+2019-09-30 21:13:51 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 21:14:53 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-09-30 21:14:53 <ais523> <shachaf> ais523: Does Richardson's theorem actually let you produce a specific real expression (like sqrt(sin(5)) or whatever) where it's undecidable whether it's equal to 0? ← if you could prove the result was undecidably equal to 0, then you could prove the result equalled 0 (if it didn't equal 0 then you'd be able to decide it by comparing to a number in between), which is a contradiction; so there are no computable real equations /known/ to be
+2019-09-30 21:14:54 <ais523> undecidable
+2019-09-30 21:15:30 <ais523> it wouldn't surprise me if the theorem allowed you to compile a particular undecidable problem into an equivalent undecidable computational real, though, but I don't know
+2019-09-30 21:16:11 <shachaf> I thought that was how you were proposing to use the theorem the other day, though I don't remember exactly.
+2019-09-30 21:16:36 <ais523> <arseniiv> if I’m to pick one of Idris or Agda, is there a clear winner or should I abandon the choice instead ← Agda is something of an outlier among machine-checkable-proof languages, it's a lot more explicit than the competition; I personally see this as an advantage but this is a matter of taste (and probably means that Agda is the slowest among all commonly used proof languages to write)
+2019-09-30 21:17:21 <ais523> I think Agda might be good for people who like theoretically pure / mathematically interesting languages, whereas Idris is better if you want to build something practically
+2019-09-30 21:18:24 <b_jonas> ais523: hi! see the logs
+2019-09-30 21:18:45 <shachaf> ais523 is already seeing the logs.
+2019-09-30 21:19:05 <b_jonas> yeah
+2019-09-30 21:19:13 <b_jonas> he generally does
+2019-09-30 21:20:18 <b_jonas> he's probably seen https://esolangs.org/logs/2019-09-29.html#lk already
+2019-09-30 21:20:45 <b_jonas> this is one of those rare cases where I can answer a technical question on #esoteric
+2019-09-30 21:20:58 <ais523> <b_jonas> there are probably only two people who have created more than one really interesting esolangs that are different from each other ← I can think of at least three, probably several more
+2019-09-30 21:21:17 <ais523> b_jonas: I saw that a while ago, just wasn't online to reply
+2019-09-30 21:21:28 <ais523> I'd found a solution to the problem by then anyway (and even posted it in-channel)
+2019-09-30 21:21:53 <b_jonas> ais523: which three? you are one of them, that's easy
+2019-09-30 21:22:09 <ais523> although, how does "no utf8" have the same semantics as BEGIN? :-D
+2019-09-30 21:22:15 <ais523> b_jonas: cpressey, obviously
+2019-09-30 21:22:27 <ais523> the first name that came to mind for the third was Keymaker
+2019-09-30 21:22:49 <ais523> I think oklopol might also have done so
+2019-09-30 21:23:08 <b_jonas> I'll look these up
+2019-09-30 21:23:18 <ais523> also Martin Ender
+2019-09-30 21:23:28 <b_jonas> ais523: it doesn't technically have exactly the same semantics, but the differences don't matter here
+2019-09-30 21:23:50 <b_jonas> it also loads a module that always exists on modern perl in the core and doesn't do much and most of it are actually perl builtins
+2019-09-30 21:24:00 <b_jonas> ones that are loaded when the interpreter is started
+2019-09-30 21:24:17 <ais523> I know what the utf8 "module" does
+2019-09-30 21:24:22 <b_jonas> you could use lots of other modules, especially if you put a do-block in the argument to ignore the result of the $^H thingy
+2019-09-30 21:24:26 <ais523> but I'm confused as to why it makes the assignment to $^H happen at compile time
+2019-09-30 21:24:34 <ais523> the `no` statement, that is
+2019-09-30 21:24:41 <ais523> ooh, I figured it out
+2019-09-30 21:24:57 <ais523> it needs to evaluate the argument to utf8 in order to work out what values to load the module with, that's clever
+2019-09-30 21:24:59 <b_jonas> ais523: the specific module is not relevant, but the use/no statement calls import/unimport at compile time, so it has to evaluate its argument, which is passed to that call, at compile time
+2019-09-30 21:25:49 <b_jonas> oh right, the utf8 module's import has another function that I totally didn't think of
+2019-09-30 21:25:53 <b_jonas> that could be confusing
+2019-09-30 21:26:00 <b_jonas> it's totally obsolete so I forgot about it
+2019-09-30 21:26:13 <b_jonas> I only thought of the public functions in it
+2019-09-30 21:26:57 <ais523> utf8::import doesn't inspect its arguments, does it?
+2019-09-30 21:27:29 <ais523> it doesn't, I just checked its source code
+2019-09-30 21:27:55 <ais523> (it feels a bit wrong to me that you can check the source code of a pragma, you expect those to be hardcoded into the compiler rather than separate files)
+2019-09-30 21:28:27 <shachaf> I wrote a UTF8 decoder but it's pretty naive.
+2019-09-30 21:28:35 <shachaf> I should write a fast one that uses a state machine.
+2019-09-30 21:28:51 <b_jonas> ais523: you can check the source of things that are hardcoded into the compiler too, and for most pragmas, the bulk of the implementation is in there, the pragma only gives an interface to them
+2019-09-30 21:29:07 <b_jonas> (bigint is an example for a pragma that isn't like that)
+2019-09-30 21:29:44 <b_jonas> but perl is ... sort of weird in how a lot of what you expect to be builtin functionality in a sane language is off-loaded to modules
+2019-09-30 21:31:23 <ais523> bigint is written in terms of overload::constant, which seems to do the real magic
+2019-09-30 21:31:40 <b_jonas> ais523: yeah
+2019-09-30 21:32:41 <ais523> it appears to in turn be implemented via assigning to %^H, which has a strong implication of compiler magic
+2019-09-30 21:33:12 <b_jonas> really? that seems unlikely because I think %^H is newer than overload::constant
+2019-09-30 21:33:35 <ais523> the implementation could have been changed to make use of the new feature
+2019-09-30 21:33:47 <b_jonas> could, but that seems unlikely
+2019-09-30 21:33:55 <b_jonas> maybe I just remember incorrectly about $^H
+2019-09-30 21:33:57 <b_jonas> um
+2019-09-30 21:33:59 <b_jonas> about %^H
+2019-09-30 21:34:03 <b_jonas> %^H is old
+2019-09-30 21:34:05 <b_jonas> no
+2019-09-30 21:34:06 <b_jonas> I mean
+2019-09-30 21:34:10 <b_jonas> $^H is old, I know that
+2019-09-30 21:34:15 Joined: atslash
+2019-09-30 21:34:15 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 21:34:21 <b_jonas> maybe %^H is old too, I just think it's newer for some reason
+2019-09-30 21:35:28 <b_jonas> let me check
+2019-09-30 21:35:58 <arseniiv> ais523: thanks
+2019-09-30 21:36:21 <arseniiv> bye all, I try to fix my sleepdule
+2019-09-30 21:36:37 <ais523> fwiw, I know Agda much better than Idris (although don't know either particularly well)
+2019-09-30 21:37:47 <b_jonas> ais523: wait, are you sure that %^H is used as the magic interface how overload::constant asks the compiler how to interpret constants? isn't it just used to store some internal data for the pragma?
+2019-09-30 21:39:10 <ais523> b_jonas: when you delete all the sanity checks, the entire implementation of overload::constant becomes �$^H{$_[0]} = $_[1]; $^H |= $constants{$_[0]}; shift, shift�
+2019-09-30 21:39:23 <ais523> so it's changinig both %^H and $^H, with nothing else happening
+2019-09-30 21:39:52 <b_jonas> ok
+2019-09-30 21:40:07 <b_jonas> anyway, I was probably wrong about %^H, it's likely old
+2019-09-30 21:40:30 <b_jonas> it exists in 5.10, but I'm too lazy to check perl 5.6 now
+2019-09-30 21:41:41 Quit: arseniiv (Ping timeout: 276 seconds)
+2019-09-30 21:41:41 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-09-30 21:41:41 <ais523> that "shift, shift" seems really ominous for some reason, but I guess it's just an obfuscated way to return $_[1]
+2019-09-30 21:46:17 <b_jonas> wow, the demon Bozmodiklax returns! I think that's his third appearance in smbc
+2019-09-30 21:46:55 <b_jonas> it's nice when a gag-a-day comic has continuity
+2019-09-30 21:47:45 <b_jonas> well, sort of continuity
+2019-09-30 21:48:06 <b_jonas> he was much more dangerous the last time, wanting to blot out the sun and shroud Earth in a night eternal
+2019-09-30 21:55:25 <imode> move left, cursor at $x? $x previous $y?: cursor at $y. move left, cursor at $x?: $y next $x, cursor at $y. move right, cursor at $x? $x next $y?: cursor at $y. move left, cursor at $x?: $x next $y, cursor at $y.
+2019-09-30 21:55:42 <imode> autogenerating an infinite tape.
+2019-09-30 21:56:19 <imode> the sentential form is a little awkward.
+2019-09-30 21:56:44 <ais523> is that text written in English or an esolang or a literal translation from one to the other?
+2019-09-30 21:57:14 <imode> it's an esolang.
+2019-09-30 21:57:43 <imode> small syntactic variant on a language I posted about earlier, I'll re-post.
+2019-09-30 21:57:49 <imode> https://hatebin.com/qsqfryjtfv
+2019-09-30 21:59:33 <imode> this is a language based around tuple rewriting. the system state is stored as a multiset of tuples. patterns match against collections of tuples.
