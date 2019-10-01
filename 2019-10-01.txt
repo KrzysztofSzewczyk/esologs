@@ -310,3 +310,10 @@
 2019-10-01 11:53:14 <wib_jonas> I think the limit was 32 kilobyte when I posted https://scifi.meta.stackexchange.com/q/10266 , which was in 2016-10
 2019-10-01 11:57:21 <wib_jonas> wait, I had a data.stackexchange.com query for this
 2019-10-01 11:58:39 <wib_jonas> https://data.stackexchange.com/scifi/query/951529/longest-answers
+2019-10-01 12:05:40 <int-e> kspalaiologos: is there any information on what this data *is*?
+2019-10-01 12:07:58 <wib_jonas> yeah, if you know what the data is supposed to be, you might be able to write a better specific compressor
+2019-10-01 12:30:17 <wib_jonas> I am informed that that query is wrong, it looks at the length of the rendered HTML, not of the source code of the post.
+2019-10-01 12:39:08 <kspalaiologos> int-e: it's base-64 encoded sequence of six distinct characters with their ascii value equal to the original value plus their position, so AAAA is actually ABCD (i can't tweak this encoding)
+2019-10-01 12:39:25 <kspalaiologos> Imagine ooooi/**
+2019-10-01 12:40:11 <kspalaiologos> It will get (in theory) encoded to ABCDOZ01
+2019-10-01 12:41:33 <kspalaiologos> The most frequent is encoding of character o, which base equivalent is actually B (for illustrative purposes, I've started with A before, hence the inconsistency)
