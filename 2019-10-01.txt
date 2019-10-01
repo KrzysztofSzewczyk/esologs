@@ -338,3 +338,27 @@
 2019-10-01 13:40:44 <esowiki> 14[[07Stable14]]4 N10 02https://esolangs.org/w/index.php?oldid=66413 5* 03Akangka 5* (+1499) 10Created page with "[[Stable]] is an [[esoteric programming language]] that can push only zeroes. The only way to get nonzero number is to preserve the initial stack. This language is inspired by..."
 2019-10-01 13:51:32 <esowiki> 14[[07Stable14]]4 10 02https://esolangs.org/w/index.php?diff=66414&oldid=66413 5* 03Akangka 5* (+786) 10
 2019-10-01 13:53:36 <esowiki> 14[[07Stable14]]4 10 02https://esolangs.org/w/index.php?diff=66415&oldid=66414 5* 03Akangka 5* (-896) 10
+2019-10-01 14:07:18 <kspalaiologos> Why would I Golf my toolchain
+2019-10-01 14:07:28 <kspalaiologos> To make it unmaintainable?
+2019-10-01 14:10:38 * cpressey now wonders if there's an interactive OS shell based on K
+2019-10-01 14:16:07 <int-e> kspalaiologos: so that you get a small-ish program that generates the huge malbolge program you wanted to compress.
+2019-10-01 14:17:06 <int-e> Note that this is a form of compression, really.
+2019-10-01 14:17:52 <int-e> (well I'm making some assumptions about the complexity of the toolchain)
+2019-10-01 14:21:35 <wib_jonas> or just post the thing on an external site, like github, and link to it
+2019-10-01 14:28:50 Joined: sprocklem
+2019-10-01 14:28:50 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill
+2019-10-01 14:37:35 Quit: sebbu (Read error: Connection reset by peer)
+2019-10-01 14:37:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill
+2019-10-01 14:37:55 Joined: sebbu
+2019-10-01 14:37:55 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill
+2019-10-01 14:47:39 * cpressey wants to glob files with some kind of twisted list comprehension thing instead of boring *.?yz syntax
+2019-10-01 14:48:23 <myname> why not both
+2019-10-01 14:48:56 <myname> [file | file <- files, file `matches` "*.?yz"]
+2019-10-01 14:49:46 * cpressey selects all files whose names contain Pythagorean triples
+2019-10-01 14:50:30 <myname> because you name your porn like this?
+2019-10-01 14:54:23 Joined: Sgeo
+2019-10-01 14:56:24 <wib_jonas> `python3 -cimport os,re;print(sorted([e.name for e in os.scandir("wisdom") if re.fullmatch(r"c.*io.",e.name)])) # cpressey: does this help?
+2019-10-01 14:56:24 <HackEso> ​['cat elimination', 'cat introduction', 'ciol', 'cipation', 'citation', 'civilization', 'communication', 'composition', 'cut elimination']
+2019-10-01 14:56:36 <wib_jonas> or is that not twisted enoguh?
+2019-10-01 14:57:31 Quit: Sgeo (Ping timeout: 265 seconds)
+2019-10-01 14:59:52 <cpressey> It's a bit verbose, but it'll do for now
