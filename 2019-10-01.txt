@@ -238,3 +238,52 @@
 2019-10-01 09:56:10 <HackEso> Relearned 'password': The password of the month is not what it seems
 2019-10-01 09:57:08 * arseniiv is overjoyed
 2019-10-01 09:58:35 <int-e> arseniiv: https://esolangs.org/logs/2019-10-01.html#lcb ;-)
+2019-10-01 10:00:54 <wib_jonas> ``` hg cat -r 11684 wisdom/password | perl -e'print substr(<STDIN>,0,34)'
+2019-10-01 10:00:55 <HackEso> The password of the month is "over
+2019-10-01 10:00:56 <wib_jonas> joyed?
+2019-10-01 10:01:16 <arseniiv> int-e: I couldn’t logread, what if oerjan sneaked on me; also my password was in priority as it would someday be discovered anyway, it’s so simple, so I couldn’t not set it today, no way
+2019-10-01 10:02:03 <int-e> arseniiv: You mean this was all premediated? Can't argue with that.
+2019-10-01 10:02:17 <int-e> (Though I do enjoy the illusion of free will.)
+2019-10-01 10:02:23 <arseniiv> was, was, this is in the logs somewhere even
+2019-10-01 10:02:37 <arseniiv> int-e: I’ll search for it
+2019-10-01 10:03:54 <myname> i am tempted to make some kind of website where the password to enter is actually the password of the month as registered in the bot
+2019-10-01 10:04:14 <wib_jonas> arseniiv: yeah, it's tricky because two people may try to set the password at close to the same moment. it may be best to use HackEso's atomic write capability and use a command that updates the password only if the $(hg log -T {rev} -l 1 wisdom/password) is what you expect
+2019-10-01 10:05:01 <arseniiv> int-e: https://esolangs.org/logs/2019-09-01.html#ljd
+2019-10-01 10:05:41 <arseniiv> wib_jonas: I’ll hope we all are too slow for a coincidence to happen for the next 23 passwords at least
+2019-10-01 10:06:47 <int-e> we could make a co-ordinated effort.
+2019-10-01 10:07:24 <arseniiv> hm it occurred to me while I wrote but I hoped still
+2019-10-01 10:08:05 <arseniiv> at least hopefully there will be no ordinated co-efforts, whatever this could be
+2019-10-01 10:08:51 <int-e> arseniiv: is this leading up to a co-worker joke
+2019-10-01 10:14:53 <arseniiv> int-e: hm depends on what it is, I hadn’t heard it
+2019-10-01 10:16:29 <arseniiv> when I eat rice I remember a Bashō haiku https://matsuobashohaiku.home.blog/2019/04/12/gazing-at-morning-glories-eating-breakfast-basho/ though I have yet to do it at dawn, and eating it with butter as I do certainly shouldn’t count
+2019-10-01 10:17:28 <arseniiv> also prior to this, I didn’t know the history behind that one
+2019-10-01 10:17:47 <arseniiv> even the history behind any of them at all
+2019-10-01 10:25:23 <int-e> arseniiv: a worker is somebody who labours diligently and gets things done. a co-worker is ...
+2019-10-01 10:26:03 <int-e> arseniiv: and that connects to "co-efforts" :)
+2019-10-01 10:36:57 <arseniiv> int-e: mhm
+2019-10-01 10:39:43 <kspalaiologos> What is the best way to compress base64 data with repetitive, incrementing characters?
+2019-10-01 10:40:34 <kspalaiologos> e.g. ABCD01234
+2019-10-01 10:41:05 <kspalaiologos> It's not like there will be such patterns all over the file and they might not appear at all
+2019-10-01 10:41:20 <kspalaiologos> But they are quite common as I can tell.
+2019-10-01 10:43:17 <cpressey> kspalaiologos: I don't know about "best" but if there are incrementing sequences, you could replace each character with the difference between it and the previous character, getting long strings of 1's, which should compress well
+2019-10-01 10:43:38 <kspalaiologos> That's a neat idea
+2019-10-01 10:43:59 <kspalaiologos> But I think it can be improved
+2019-10-01 10:44:35 <kspalaiologos> As characters get incremented, in case of ABCD I can compress it to A and ascii(3)
+2019-10-01 10:44:55 <kspalaiologos> Then I could apply burrows-wheeler transform to it and pack it using PPMd
+2019-10-01 10:45:13 <kspalaiologos> I just wonder if there is something smarter
+2019-10-01 10:45:20 <kspalaiologos> In case the compression fails
+2019-10-01 10:45:35 <kspalaiologos> And the downside is, no sequences longer than 32 characters.
+2019-10-01 10:54:36 <wib_jonas> kspalaiologos: turn it to a pixel graphics where you store one character per pixel, in indexed mode, PNG compress it. PNG handles repetitive differences well because one of the approx five pixels automatically does that difference thing, and some png writers can choose the right filter automatically. just be careful, PNG has a tradeoff between
+2019-10-01 10:54:37 <wib_jonas> large file and slow compression versus small file and slower compression
+2019-10-01 10:54:48 <wib_jonas> you can change the compression speed with magic options to the PNG encoder
+2019-10-01 10:55:00 <kspalaiologos> Won't it artifact the file?
+2019-10-01 10:55:13 <kspalaiologos> Just asking out of curiosity
+2019-10-01 10:55:26 <wib_jonas> PNG compression is usually lossless
+2019-10-01 10:56:01 <wib_jonas> also, use grayscale 8-bit rather than indexed
+2019-10-01 10:56:36 <wib_jonas> that said, even any ordinary compressor would work fine on such data
+2019-10-01 10:56:42 <wib_jonas> PNG is probably an overcomplication
+2019-10-01 10:57:27 <wib_jonas> I wonder how you even get increasing sequences in base64 though
+2019-10-01 10:57:30 <myname> that#s a funny idea, though
+2019-10-01 10:57:53 <myname> ugh, switching between keyboard layouts always shows somehow
+2019-10-01 10:59:15 <wib_jonas> does it really_
+2019-10-01 10:59:45 <wib_jonas> I can�t imagine what that�s like.
