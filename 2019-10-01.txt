@@ -317,3 +317,24 @@
 2019-10-01 12:39:25 <kspalaiologos> Imagine ooooi/**
 2019-10-01 12:40:11 <kspalaiologos> It will get (in theory) encoded to ABCDOZ01
 2019-10-01 12:41:33 <kspalaiologos> The most frequent is encoding of character o, which base equivalent is actually B (for illustrative purposes, I've started with A before, hence the inconsistency)
+2019-10-01 13:08:15 <wib_jonas> kspalaiologos: I don't really understand what you're saying
+2019-10-01 13:09:08 <wib_jonas> is the offset always added to the character? if so, just subtract it, compare it that way, then add it back when you decompress
+2019-10-01 13:09:21 <int-e> also the surface encoding isn't so interesting... does the ooooi/** stuff have any meaning?
+2019-10-01 13:09:43 <wib_jonas> int-e: perhaps they're malbolge instructions
+2019-10-01 13:10:24 <int-e> oh
+2019-10-01 13:11:18 <int-e> That makes sense. Is it the Malbolge Malbolge interpreter?
+2019-10-01 13:11:42 <int-e> (Unshackled)
+2019-10-01 13:12:37 <esowiki> 14[[07Talk:Volatile14]]4 10 02https://esolangs.org/w/index.php?diff=66411&oldid=62750 5* 03Akangka 5* (+792) 10/* Pushing 1 deterministically is impossible. */ new section
+2019-10-01 13:13:32 <int-e> kspalaiologos: If so, your best bet for compression should be to golf the toolchain that produces the malbolge program.
+2019-10-01 13:14:18 <esowiki> 14[[07Talk:Volatile14]]4 10 02https://esolangs.org/w/index.php?diff=66412&oldid=66411 5* 03Akangka 5* (+81) 10/* Pushing 1 deterministically is impossible. */
+2019-10-01 13:14:26 Quit: sprocklem (Ping timeout: 240 seconds)
+2019-10-01 13:14:26 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill
+2019-10-01 13:23:13 <kspalaiologos> Its ungolfable
+2019-10-01 13:23:29 <kspalaiologos> My toolchain is currently adding only 50% of size
+2019-10-01 13:24:29 <kspalaiologos> Highly optimized and handwritten programs I made are only 66 percent smaller than my toolchain
+2019-10-01 13:35:40 <int-e> I didn't mean to golf the output.
+2019-10-01 13:35:45 <int-e> I meant the toolchain itself.
+2019-10-01 13:36:57 <int-e> (I'm assuming that your intent is to post a program whose output is a malbolge malbolge interpreter, because the latter is just too big.)
+2019-10-01 13:40:44 <esowiki> 14[[07Stable14]]4 N10 02https://esolangs.org/w/index.php?oldid=66413 5* 03Akangka 5* (+1499) 10Created page with "[[Stable]] is an [[esoteric programming language]] that can push only zeroes. The only way to get nonzero number is to preserve the initial stack. This language is inspired by..."
+2019-10-01 13:51:32 <esowiki> 14[[07Stable14]]4 10 02https://esolangs.org/w/index.php?diff=66414&oldid=66413 5* 03Akangka 5* (+786) 10
+2019-10-01 13:53:36 <esowiki> 14[[07Stable14]]4 10 02https://esolangs.org/w/index.php?diff=66415&oldid=66414 5* 03Akangka 5* (-896) 10
