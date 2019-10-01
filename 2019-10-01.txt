@@ -548,3 +548,23 @@
 2019-10-01 20:29:29 User Name: olsner = olsner!~salparot@c80-217-180-83.bredband.comhem.se
 2019-10-01 20:29:29 <olsner> not sure how "good" it'll run, but something like a nested (SELECT stuff FROM human WHERE h.cid=cat.cid ORDER BY date DESC LIMIT 1) (where cat.cid is selected by the outside query) is at least an easily understandable way to get the last owner per cat
 2019-10-01 20:29:55 <b_jonas> I mean, doesn't the SNES with its four buttons easily predate any microsoft game console?
+2019-10-01 20:30:22 <b_jonas> olsner: oh yeah, I didn't tell the catch
+2019-10-01 20:30:26 <b_jonas> make it work on MS SQL
+2019-10-01 20:30:39 <b_jonas> but even without that, it's a bit tricky with the subquery
+2019-10-01 20:31:19 <b_jonas> you need like doubly nested subqueries or something
+2019-10-01 20:33:18 Joined: kspalaiologos
+2019-10-01 20:33:18 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-01 20:33:26 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-10-01 20:33:26 <kspalaiologos> Hello
+2019-10-01 20:33:34 <b_jonas> hello kspa
+2019-10-01 20:34:05 <olsner> apparently that max-in-group problem is so common it has its own tag on stack overflow https://stackoverflow.com/questions/tagged/greatest-n-per-group
+2019-10-01 20:34:24 <b_jonas> thanks, I'll look at that
+2019-10-01 20:36:25 <b_jonas> let me intersect that with whatever is the tag for MS SQL
+2019-10-01 20:37:10 <b_jonas> https://stackoverflow.com/questions/tagged/sql-server apparently
+2019-10-01 20:38:43 <b_jonas> hmm, apparently all the ways to do it in MS SQL are ugly
+2019-10-01 20:39:15 <b_jonas> good to know
+2019-10-01 20:41:08 <b_jonas> they link me to https://kristiannielsen.livejournal.com/6745.html
+2019-10-01 20:42:07 <b_jonas> note though that some of the solutions there won't work if multiple owners can have the same date. I want to choose just one owner in that case.
+2019-10-01 20:46:39 Quit: kspalaiologos (Read error: Connection reset by peer)
+2019-10-01 20:46:40 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-01 20:49:04 <b_jonas> olsner: thank you
