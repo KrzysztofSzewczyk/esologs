@@ -439,3 +439,68 @@
 2019-10-01 16:54:44 Joined: Sgeo
 2019-10-01 16:54:53 Nick Change: Lord_of_Life -> Lord_of_Life
 2019-10-01 16:57:29 Quit: Sgeo (Ping timeout: 268 seconds)
+2019-10-01 17:02:26 Joined: b_jonas
+2019-10-01 17:02:26 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-01 17:06:54 User Name: rain2 = rain2!~My_user_n@unaffiliated/rain1
+2019-10-01 17:06:54 <rain2> good idea to try burrows wheeler
+2019-10-01 17:07:43 User Name: b_jonas = b_jonas!~x@catv-176-63-25-59.catv.broadband.hu
+2019-10-01 17:07:43 <b_jonas> kspalaiologos: try with a modern compressor like xz or 7z
+2019-10-01 17:07:58 <kspalaiologos> they fact I've got winrar on my PC
+2019-10-01 17:08:06 <kspalaiologos> doesn't mean that I'm using it on daily basis
+2019-10-01 17:08:12 <kspalaiologos> and doesn't mean, I've used it to perform the test
+2019-10-01 17:08:28 <kspalaiologos> WinRAR can't pack 7zip archives, and in the attached screenshot you see clearly, that I'm using 7zip
+2019-10-01 17:08:59 <b_jonas> kspalaiologos: I didn't look at the screenshot. did you try 7zip compression with the -mx=7 setting for slower but better compression?
+2019-10-01 17:10:09 <kspalaiologos> I used highest settings in the GUI
+2019-10-01 17:10:29 <kspalaiologos> how can you tell I'm using ancient compressor without looking at the screenshot?
+2019-10-01 17:11:01 <b_jonas> kspalaiologos: because you said "PPMd beaten by BWT/BZIP2 hybrid" and BZIP2 is the somewhat old compressor
+2019-10-01 17:11:06 <b_jonas> I wouldn't call it ancient, I'm not that young
+2019-10-01 17:11:17 <kspalaiologos> BWT/BZIP2 hybrid is the thing I made
+2019-10-01 17:11:35 <kspalaiologos> BZIP used Burrows Wheeler Transform, therefore I recalled BZIP
+2019-10-01 17:12:01 <kspalaiologos> surprisingly, the BZIP actually works the best
+2019-10-01 17:12:14 <kspalaiologos> I tried with PPMd, tried with LZMA2, but with a tiny bit worse results.
+2019-10-01 17:13:03 <b_jonas> I guess what remains is to compress it in some reasonable way and host it somewhere outside of code golf
+2019-10-01 17:13:21 <b_jonas> though how something such large is a reasonable answer to a code golf problem I don't understand
+2019-10-01 17:13:28 <kspalaiologos> It's the thing I'm doing currently
+2019-10-01 17:13:36 <kspalaiologos> I guess I shouldnt worry that much about my program size
+2019-10-01 17:13:43 <kspalaiologos> because there are more important matters right now
+2019-10-01 17:14:02 <kspalaiologos> like the fact that the program just eats entire memory available to the system
+2019-10-01 17:14:19 <kspalaiologos> (but I'm certain that it has to work, if it had unlimited memory)
+2019-10-01 17:14:38 <b_jonas> ouch
+2019-10-01 17:15:15 <kspalaiologos> the conditions on ##c are unlivable
+2019-10-01 17:15:22 <kspalaiologos> a lot of people jump in and jump back
+2019-10-01 17:15:32 <kspalaiologos> so the entire IRC log is spammed like nowhere
+2019-10-01 17:17:17 <b_jonas> you can have your client ignore them
+2019-10-01 17:17:28 <kspalaiologos> well, I don't want to ignore them completely
+2019-10-01 17:17:38 <kspalaiologos> because I want to know certain people that log in/log out
+2019-10-01 17:17:46 <b_jonas> hide them
+2019-10-01 17:17:51 <kspalaiologos> but on the other hand, I don't want to see all that spam lol
+2019-10-01 17:18:06 <b_jonas> hide but have the computer remember it
+2019-10-01 17:18:32 <kspalaiologos> I'm using XCHAT
+2019-10-01 17:18:44 <kspalaiologos> and I don't really want to switch, because I've got a couple of plugins written in Tcl and Perl here
+2019-10-01 17:19:01 <kspalaiologos> and I don't really think my client allows doing so, because I've just checked the settings
+2019-10-01 17:19:02 <b_jonas> can't that show a list of nicks who are joined into the channel in a sidebar?
+2019-10-01 17:19:12 <kspalaiologos> sure, I have it enabled
+2019-10-01 17:19:23 <kspalaiologos> but it's neat to know the certain point they join or leave
+2019-10-01 17:19:26 <b_jonas> or add a transparent irc proxy in between that tracks the users separately if you're feeling more adventurous
+2019-10-01 17:19:53 <kspalaiologos> I like dissipating my time on not-so-practical things
+2019-10-01 17:19:55 <kspalaiologos> but c'mon
+2019-10-01 17:20:12 <kspalaiologos> I've got more interesting not-so-practical things to do xd
+2019-10-01 17:20:20 <kspalaiologos> I'm fighting with shitcode I wrote two years ago
+2019-10-01 17:20:23 <b_jonas> yeah
+2019-10-01 17:20:42 <kspalaiologos> and the extent of this word is so unbeliveable
+2019-10-01 17:20:47 <kspalaiologos> I can't really understand 50% of the code
+2019-10-01 17:20:56 <kspalaiologos> I just don't know how it works and I change randomly the magic numbers
+2019-10-01 17:21:00 <kspalaiologos> trying to find any corelation between thenm
+2019-10-01 17:21:05 <kspalaiologos> oh, I've been an idiot
+2019-10-01 17:25:02 <shachaf> `asm lea (%eip), %rdi
+2019-10-01 17:25:03 <HackEso> 0:  67 48 8d 3d 00 00 00 00   lea 0x0(%eip),%rdi # 0x8
+2019-10-01 17:25:13 <shachaf> Will this move the lower 32 bits of rip into rdi?
+2019-10-01 17:27:02 <b_jonas> dunno. TIAS.
+2019-10-01 17:27:55 <b_jonas> I don't understand how that's even a valid encoding
+2019-10-01 17:28:03 <b_jonas> I don't know how those crazy prefixes work
+2019-10-01 17:28:51 <shachaf> `? tias
+2019-10-01 17:28:52 <HackEso> tias? ¯\(°​_o)/¯
+2019-10-01 17:29:10 <shachaf> `asm addr32
+2019-10-01 17:29:11 <HackEso> 0:  67   addr32
+2019-10-01 17:29:17 <shachaf> `asm addr32; lea (%rip), %rdi
+2019-10-01 17:29:18 <HackEso> 0:  67 48 8d 3d 00 00 00 00   lea 0x0(%eip),%rdi # 0x8
