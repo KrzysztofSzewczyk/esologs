@@ -121,3 +121,107 @@
 2019-10-01 07:56:28 User Name: cpressey = cpressey!~cpressey@5.133.242.4
 2019-10-01 07:56:28 <cpressey> Good morning and happy October. Say I have a semi-Thue grammar with the following property: for every word w, it is not possible to derive w in zero or more steps starting from w. Can such a grammar be Turing-complete?
 2019-10-01 07:57:22 <cpressey> (This is an attempt to put "Is there a language without NOP and in which it is not possible to build a NOP?" on a more rigorous basis.)
+2019-10-01 08:08:48 Joined: wib_jonas
+2019-10-01 08:08:49 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill, zzo38
+2019-10-01 08:12:04 Topic (set by int-e): IOCCC winners are denounced; early July 2019 still pending definition | Welcome to the international center for esoteric programming language design, development, and deployment! | https://esolangs.org | logs: https://esolangs.org/logs/ http://codu.org/logs/_esoteric/ http://tunes.org/~nef/logs/esoteric/?C=M;O=D https://github.com/kspalaiologos/esologs/
+2019-10-01 08:14:42 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-10-01 08:14:42 <wib_jonas> kspalaiologos: more bots than users => it's hard to tell, we have a lot of irc connections of whom we know nothing
+2019-10-01 08:15:00 <wib_jonas> probably not though, because most of the bots are users
+2019-10-01 08:26:28 <wib_jonas> also, since I keep announcing these, even though there's no formal *list , https://magic.wizards.com/en/articles/archive/news/throne-eldraine-update-bulletin-2019-09-27 Throne of Eldraine Update Bulletin (M:tG)
+2019-10-01 08:29:19 <wib_jonas> `fetch share/mtg/MagicCompRules_20191004.txt https://media.wizards.com/2019/downloads/MagicCompRules%2020191004.txt
+2019-10-01 08:29:21 <HackEso> 2019-10-01 08:29:20 URL:https://media.wizards.com/2019/downloads/MagicCompRules%2020191004.txt [741298/741298] -> "share/mtg/MagicCompRules_20191004.txt" [1]
+2019-10-01 08:31:51 <wib_jonas> `` set -e; cd share/mtg; tr -d \\\\r <MagicCompRules_20191004.txt > rules.txt
+2019-10-01 08:31:53 <HackEso> No output.
+2019-10-01 08:33:12 <wib_jonas> `` set -e; cd share/mtg; grep Arbor rules.txt
+2019-10-01 08:33:12 <HackEso> No output.
+2019-10-01 08:34:15 <wib_jonas> `` set -e; cd share/mtg; tr -d \\r <MagicCompRules_20191004.txt > rules.txt
+2019-10-01 08:34:16 <HackEso> No output.
+2019-10-01 08:34:16 Quit: zzo38 (Ping timeout: 240 seconds)
+2019-10-01 08:34:17 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill
+2019-10-01 08:34:46 <wib_jonas> ``` set -e; cd share/mtg; cat rules.txt
+2019-10-01 08:34:47 <HackEso> ​﻿Magic: The Gathering Comprehensive Rules \  \ These rules are effective as of October 4, 2019. \  \ Introduction \  \ This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” du
+2019-10-01 08:35:13 <kspalaiologos> What's this bot
+2019-10-01 08:35:42 <wib_jonas> note: I accidentally stripped "r" and "\\" characters rather than "\r" characters, so the "\r" characters remain, and those make HackEso truncate the output. I wonder if any wisdom has one.
+2019-10-01 08:35:47 <wib_jonas> `? HackEso
+2019-10-01 08:35:47 <HackEso> HackEso is almost but not quite unlike HackEgo.
+2019-10-01 08:35:51 <wib_jonas> `? HackEgo
+2019-10-01 08:35:52 <HackEso> HackEgo, also known as HackBot, is a bot that runs arbitrary commands on Unix. See `help for info on using it. You should totally try to hax0r it! Make sure you imagine it's running as root with no sandboxing. HackEgo is the slowest bot in all Mexico!
+2019-10-01 08:35:53 <wib_jonas> `help
+2019-10-01 08:35:53 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $PWD are persistent, and $PWD/bin is in $PATH. $PWD is a mercurial repository, "`revert <rev>" can be used to revert to a revision. See http://codu.org/projects/hackbot/fshg/
+2019-10-01 08:37:24 <kspalaiologos> `run cat /etc/passwd
+2019-10-01 08:37:24 <HackEso> cat: /etc/passwd: No such file or directory
+2019-10-01 08:37:33 <kspalaiologos> Where was passwd stored
+2019-10-01 08:37:42 <kspalaiologos> C'mon, too much windows
+2019-10-01 08:37:57 <kspalaiologos> `run hostname
+2019-10-01 08:37:57 <HackEso> ​(none)
+2019-10-01 08:38:20 <kspalaiologos> `run ls /bin
+2019-10-01 08:38:20 <HackEso> bash \ bunzip2 \ bzcat \ bzcmp \ bzdiff \ bzegrep \ bzexe \ bzfgrep \ bzgrep \ bzip2 \ bzip2recover \ bzless \ bzmore \ cat \ chgrp \ chmod \ chown \ cp \ dash \ date \ dd \ df \ dir \ dmesg \ dnsdomainname \ domainname \ echo \ egrep \ false \ fgrep \ findmnt \ fuser \ grep \ gunzip \ gzexe \ gzip \ hostname \ ip \ journalctl \ kill \ less \ lessecho \ lessfile \ lesskey \ lesspipe \ ln \ login \ loginctl \ ls \ lsblk \ mkdir \ mknod \ mktemp \ more \ mou
+2019-10-01 08:38:40 <wib_jonas> HackEso has a bunch of commands idiosyncratic to this community, some of them we use a lot
+2019-10-01 08:38:46 <wib_jonas> for example the `` command
+2019-10-01 08:38:58 <wib_jonas> you can find them in /hackenv/bin
+2019-10-01 08:39:03 <kspalaiologos> What's its meaning
+2019-10-01 08:39:16 <kspalaiologos> `ls /hackenv/
+2019-10-01 08:39:17 <HackEso> a.out \ bin \ canary \ emoticons \ esobible \ etc \ evil \ f \ factor \ good \ hw \ ibin \ interps \ izash.c \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quinor \ quotes \ share \ src \ test2 \ testfile \ tmflry \ tmp \ wisdom
+2019-10-01 08:39:21 <wib_jonas> some of them have long descriptions in the wisdom database, which you can access with the ? command , or short descriptions in the whatis database
+2019-10-01 08:39:24 <wib_jonas> `? ``
+2019-10-01 08:39:25 <HackEso> ​` is the prefix to greatness.
+2019-10-01 08:39:27 <wib_jonas> `? ```
+2019-10-01 08:39:28 <HackEso> ​```? ¯\(°​_o)/¯
+2019-10-01 08:39:30 <wib_jonas> `? `
+2019-10-01 08:39:31 <HackEso> ​` is the prefix to greatness.
+2019-10-01 08:39:37 <wib_jonas> hmm, that doesn't quite explain it
+2019-10-01 08:39:49 <kspalaiologos> Is the source code public?
+2019-10-01 08:39:54 <wib_jonas> `? source
+2019-10-01 08:39:55 <HackEso> Sources for HackEgo can be found at https://bitbucket.org/GregorR/hackbot + https://bitbucket.org/GregorR/multibot + https://bitbucket.org/GregorR/umlbox . Sources for HackEso can be found at https://bitbucket.org/fizzie/hackbot + https://bitbucket.org/fizzie/multibot + https://bitbucket.org/fizzie/umlbox .
+2019-10-01 08:39:59 <kspalaiologos> My bot here uses Perl
+2019-10-01 08:40:13 <wib_jonas> but most of the magic is in the commands itself, which you can usually read directly from the commands in bin
+2019-10-01 08:40:32 <wib_jonas> 'bin/``' runs a shell command, so typing '```' invokes that
+2019-10-01 08:40:35 <wib_jonas> ``` echo foo; echo bar
+2019-10-01 08:40:36 <HackEso> foo \ bar
+2019-10-01 08:40:44 <wib_jonas> it's similar to the run builtin
+2019-10-01 08:40:46 <kspalaiologos> I'll take a look on this
+2019-10-01 08:40:54 <kspalaiologos> When I'm home
+2019-10-01 08:40:57 <wib_jonas> `whatis ``
+2019-10-01 08:40:58 <HackEso> ​``(1hackeso) - run shell command
+2019-10-01 08:41:05 <wib_jonas> there's also a single-backtick
+2019-10-01 08:41:07 <wib_jonas> `whatis `
+2019-10-01 08:41:08 <HackEso> ​`(1hackeso) - run shell command using New Zealand locale
+2019-10-01 08:41:16 <kspalaiologos> I don't want anyone bashing me for slacking in work :d
+2019-10-01 08:41:36 <wib_jonas> the New Zealand locale is actually the default for everything, and the double backtick command unsets it
+2019-10-01 08:41:52 <wib_jonas> kspalaiologos: what bot uses perl?
+2019-10-01 08:42:07 <kspalaiologos> gitlogger
+2019-10-01 08:42:16 <kspalaiologos> I use it to mirror chat logs
+2019-10-01 08:42:22 <kspalaiologos> Of various irc channels
+2019-10-01 08:42:38 <wib_jonas> `perl -efor(1..7) print $_**2," " # HackEso has a perl interpreter installed
+2019-10-01 08:42:39 <HackEso> syntax error at -e line 1, near ") print" \ Execution of -e aborted due to compilation errors.
+2019-10-01 08:42:47 <wib_jonas> `perl -efor(1..7) { print $_**2," " }
+2019-10-01 08:42:47 <HackEso> 1 4 9 16 25 36 49
+2019-10-01 08:43:14 <kspalaiologos> Nearly every UNIX-like box has perl installed
+2019-10-01 08:43:29 <wib_jonas> also a python3 interpreter, a ruby interpreter, a javascript node.js interpreter, a prolog interpreter, a C compiler, an sqlite3 interpreter, and more
+2019-10-01 08:43:38 <kspalaiologos> I quite like perl and enjoy it over other scripting languages
+2019-10-01 08:43:38 <wib_jonas> kspalaiologos: yes, that's probably why this has a perl too
+2019-10-01 08:43:54 <kspalaiologos> Why would anyone need node.js cmon
+2019-10-01 08:44:01 <wib_jonas> there's also perlbot, which is a fork of buubot, and can run perl commands
+2019-10-01 08:44:18 <wib_jonas> kspalaiologos: this is #esoteric , we experiment with languages even when they're weird
+2019-10-01 08:44:23 <wib_jonas> not with php though... eww
+2019-10-01 08:44:24 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2019-10-01 08:44:24 <myname> kspalaiologos: as the evil twin of perl, i have to dislike it
+2019-10-01 08:44:34 <kspalaiologos> Thats actually neat
+2019-10-01 08:44:38 <wib_jonas> what? you're the evil twin of perl?
+2019-10-01 08:44:39 <kspalaiologos> Is perl bot runnint?
+2019-10-01 08:44:44 <kspalaiologos> *running
+2019-10-01 08:44:51 <wib_jonas> I think so, but it's not in this channel. let me test
+2019-10-01 08:44:56 <myname> wib_jonas: i fail to remember how to trigger factoids
+2019-10-01 08:45:05 <kspalaiologos> My crappy irc client won't let me view the list.
+2019-10-01 08:45:08 <wib_jonas> yes, it's running
+2019-10-01 08:45:09 <wib_jonas> try /msg perlbot echo hello, world
+2019-10-01 08:45:27 <kspalaiologos> It's sandboxed obviously?
+2019-10-01 08:45:31 <kspalaiologos> Virtualization?
+2019-10-01 08:45:44 <myname> everytime i think about how perl is as old as me, something makes me dislike it even more
+2019-10-01 08:45:47 <kspalaiologos> Has it got disk quotas/execution quotas and memory quotas?
+2019-10-01 08:45:59 <wib_jonas> myname: I dislike perl, but for different reasons
+2019-10-01 08:46:05 <kspalaiologos> I used to write a C compiler in Perl
+2019-10-01 08:46:20 <kspalaiologos> Yet I slightly dislike Perl for some reasons.
+2019-10-01 08:46:27 <myname> wib_jonas: there are plenty of reasons, but a bunch of those is related to its age
+2019-10-01 08:47:08 <myname> are
+2019-10-01 08:47:12 <wib_jonas> zzo38: M:tG stuff above, you probably already know
