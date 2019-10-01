@@ -596,3 +596,32 @@
 2019-10-01 21:26:34 <arseniiv> ah, I remember and see from the article’s conclusion that effects, at the moment article’s written, are an experimental extension
 2019-10-01 21:28:20 <arseniiv> authors note effects can’t cover continuations but I found another article claiming there’s a way, apparently if extending what we define an algebraic effect framework to be, I hadn’t read that one yet
 2019-10-01 21:29:25 <arseniiv> so maybe Idris authors would be able to tinker with their effect module and incorporate continuations? Though anyway I hadn’t used them yet in that explicit sense in any language
+2019-10-01 21:32:37 <arseniiv> re. tea: my dictionary says there’s no “alambic” and I think it should be “alembic”?
+2019-10-01 21:34:33 <imode> https://hatebin.com/qqqkghwhsh the quadratic formula.
+2019-10-01 21:35:21 <arseniiv> BTW couldn’t someone explain call-by-push-value? Those guys use it
+2019-10-01 21:36:55 Quit: b_jonas (Quit: leaving)
+2019-10-01 21:36:55 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-01 21:38:42 <arseniiv> imode: wow
+2019-10-01 21:40:56 <arseniiv> like the structure
+2019-10-01 21:41:05 <imode> it's strictly postfix. no parens needed.
+2019-10-01 21:41:06 <arseniiv> oh I should go
+2019-10-01 21:41:19 <imode> err, prefix.
+2019-10-01 21:41:56 <arseniiv> hm would you like to implement infix, with precedences? :D
+2019-10-01 21:42:18 <imode> hah! perhaps. queue elements are either single elements or two elements.
+2019-10-01 21:42:35 <imode> the operators, which are single elements, could be ordered in accordance with precedence. :P
+2019-10-01 21:45:07 <arseniiv> queue elements are either single elements or two elements. => yeah it looks like you could write an interpreter of expressions with arbitrary value constructors, it would just need some abstraction of concrete predicates like `is-multiplication?` and an arity function
+2019-10-01 21:45:50 <imode> yup!
+2019-10-01 21:45:53 <arseniiv> maybe you need a macro system?
+2019-10-01 21:46:15 <imode> pretty much where I was headed to, yeah. I plan on allowing the language to edit its own source.
+2019-10-01 21:46:18 <imode> at runtime.
+2019-10-01 21:47:28 <arseniiv> hm I’d not call that a *macro* system :P or I thought about not the source you meant
+2019-10-01 21:48:04 <arseniiv> happy algebraic effects day everyone bye
+2019-10-01 21:48:10 <imode> you as well!
+2019-10-01 21:50:21 <kmc> wut
+2019-10-01 21:52:26 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-10-01 21:52:26 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-01 21:54:38 <imode> ah crap, when revising more? to not infloop, I forgot to include markers...
+2019-10-01 21:54:48 <imode> a "final result" should look like ( # <number> )
+2019-10-01 21:56:09 <imode> though in the case of misaligned or extra numbers, there should be a scan through the expression to check and see if there's operators present...
+2019-10-01 21:57:07 <imode> a better way to do this would be to check if we've scanned through the expression, done nothing but roll, and then once we reset the cursor, check if we've done any work.
+2019-10-01 21:57:31 <imode> if we haven't, remove the ending markers, strip away the operators and number separators, you're done.
