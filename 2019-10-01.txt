@@ -568,3 +568,31 @@
 2019-10-01 20:46:39 Quit: kspalaiologos (Read error: Connection reset by peer)
 2019-10-01 20:46:40 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
 2019-10-01 20:49:04 <b_jonas> olsner: thank you
+2019-10-01 21:06:32 <arseniiv> am I getting it right that Idris has algebraic effects and uses them instead monads, too?
+2019-10-01 21:07:25 <arseniiv> I got to re-reading an article about that and this time it reads clearer
+2019-10-01 21:17:08 <arseniiv> hm it doesn’t seem to have “handlers for normal return”
+2019-10-01 21:17:17 <shachaf> this oolong tea is tea gea
+2019-10-01 21:18:05 <arseniiv> shachaf: it has an interesting taste, yeah
+2019-10-01 21:18:27 <shachaf> I mean, this specific one that I'm drinking.
+2019-10-01 21:18:34 <shachaf> I think it also has some amount of ginseng extract.
+2019-10-01 21:19:01 <shachaf> It modifies my mouth so that other things taste sweeter.
+2019-10-01 21:20:24 <arseniiv> mhm I ate something with that property I think, maybe berries
+2019-10-01 21:21:05 <shachaf> Yes, there are those berries that make sour things taste sweet, but this is quite different.
+2019-10-01 21:21:18 <b_jonas> huh
+2019-10-01 21:22:12 <b_jonas> I like berry tea
+2019-10-01 21:22:14 User Name: imode = imode!~linear@unaffiliated/imode
+2019-10-01 21:22:14 <imode> https://hatebin.com/dqswcbuhwd work-in-progress expression evaluator.
+2019-10-01 21:22:26 <imode> for those of us who like prefix as opposed to postfix.
+2019-10-01 21:22:30 <b_jonas> `? tea
+2019-10-01 21:22:31 <HackEso> Tea is concentrated fuel made by distilling occult herbs in a silver alambic. Americans attempted to reduce its potency by dumping some in the Ocean.
+2019-10-01 21:22:49 <shachaf> `cwlprits tea
+2019-10-01 21:22:51 <HackEso> oerjän boil̈y
+2019-10-01 21:23:17 <b_jonas> imode: try Integ if you like prefix with lots of extra parenthesis
+2019-10-01 21:23:29 <imode> lol.
+2019-10-01 21:23:57 <imode> really this is just to make my life a little easier in terms of evaluating expressions. I'm intending on implementing parameter extraction after that.
+2019-10-01 21:24:16 <imode> so you can write stuff like ? 5 to specify the 5th parameter after the expression.
+2019-10-01 21:24:24 <imode> benefits of having a queue based language.
+2019-10-01 21:25:25 <imode> downsides are that on some malformed expressions, you can infloop.
+2019-10-01 21:26:34 <arseniiv> ah, I remember and see from the article’s conclusion that effects, at the moment article’s written, are an experimental extension
+2019-10-01 21:28:20 <arseniiv> authors note effects can’t cover continuations but I found another article claiming there’s a way, apparently if extending what we define an algebraic effect framework to be, I hadn’t read that one yet
+2019-10-01 21:29:25 <arseniiv> so maybe Idris authors would be able to tinker with their effect module and incorporate continuations? Though anyway I hadn’t used them yet in that explicit sense in any language
