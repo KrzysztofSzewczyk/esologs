@@ -289,3 +289,21 @@
 2019-10-02 12:58:24 <cpressey> Well, perhaps not. I've been meaning to try programming more in languages actually built around rewriting (Pure and Maude particularly) to refine that idea.
 2019-10-02 12:59:08 <int-e> hmm Pure (I've heard of Maude)
 2019-10-02 12:59:51 <cpressey> Which is actually why I was looking up This=That on the esowiki... I thought it was a fairly simple "equational rewriting" language. But, apparently I misremembed.
+2019-10-02 13:02:46 <int-e> the rewriting based formalism I've actually used intensively is the simplifier in Isabelle/HOL.
+2019-10-02 13:03:23 <int-e> (but that's not meant to be a programming language)
+2019-10-02 13:06:26 <int-e> Pure looks cute at a glance, actually.
+2019-10-02 13:07:18 <int-e> (Maude otoh looked intimidating when I tried to figure out what it is and I still don't really know what it is, except something yadda yadda rewriting blah)
+2019-10-02 13:08:20 <int-e> By which I mean to say that I got scared away, but I don't know whether I'm actually justified in being scared.
+2019-10-02 13:21:54 <cpressey> I first saw Maude about a decade ago, was very interested but never actually wrote anything in it, and only recently realized it is the way it is because it comes from a tradition of algebraic semantics, which is rather obscure.
+2019-10-02 13:23:10 <cpressey> Operational semantics, denotational semantics, and axiomatic semantics walk into a bar...
+2019-10-02 13:23:54 <int-e> Is that an actual joke.
+2019-10-02 13:24:03 <cpressey> Not yet it isn't.
+2019-10-02 13:24:09 <cpressey> Maybe someday.
+2019-10-02 13:24:15 <myname> go make it one
+2019-10-02 13:25:02 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Asdfugil 5*  10New user account
+2019-10-02 13:25:25 <myname> are there semantics that deal with endless loops in a meaningful way?
+2019-10-02 13:26:21 <int-e> myname: Pure semantics: use bottoms. For impure languages you can produce a stream of observations.
+2019-10-02 13:27:16 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=66445&oldid=66408 5* 03Asdfugil 5* (+152) 10/* Introductions */
+2019-10-02 13:27:31 <int-e> (In a way, pure languages are those languages where infinite loops have no meaning.)
+2019-10-02 13:29:02 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=66446&oldid=66445 5* 03Asdfugil 5* (+60) 10
+2019-10-02 13:29:57 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=66447&oldid=66446 5* 03Asdfugil 5* (+15) 10
