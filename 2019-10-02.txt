@@ -421,3 +421,20 @@
 2019-10-02 20:52:53 User Name: zzo38 = zzo38!~zzo38@24-207-15-213.eastlink.ca
 2019-10-02 20:52:53 <zzo38> I have downloaded the most recent Magic: the Gathering rules.
 2019-10-02 20:53:21 <zzo38> (I should perhaps convert all of them to the same canonical ASCII format, so that they can then be compared properly.)
+2019-10-02 21:03:59 User Name: b_jonas = b_jonas!~x@catv-176-63-24-62.catv.broadband.hu
+2019-10-02 21:03:59 <b_jonas> zzo38: I convert them to utf-8.
+2019-10-02 21:04:06 <b_jonas> without carriage returns
+2019-10-02 21:04:39 <b_jonas> `cat share/mtg/rules.txt
+2019-10-02 21:04:39 <HackEso> ​﻿Magic: The Gathering Comprehensive Rules \  \ These rules are effective as of October 4, 2019. \  \ Introduction \  \ This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” du
+2019-10-02 21:04:51 <b_jonas> ``` grep -w Noble share/mtg/rules.txt
+2019-10-02 21:04:51 <HackEso> 205.3m Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cock
+2019-10-02 21:04:59 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2019-10-02 21:04:59 <shachaf> `doag share/mtg/rules.txt
+2019-10-02 21:05:01 <HackEso> 11957:2019-10-01 <wib_jonäs> ` set -e; cd share/mtg; tr -d \\\\r <MagicCompRules_20191004.txt > rules.txt \ 11956:2019-10-01 <wib_jonäs> ` set -e; cd share/mtg; tr -d \\\\\\\\r <MagicCompRules_20191004.txt > rules.txt \ 11833:2019-06-13 <b_jonäs> `` set -e; cd share/mtg; tr -d \\\\r <MagicCompRules_20190612.txt > rules.txt \ 11701:2019-01-26 <b_jonäs> `` set -e; cd share/mtg; iconv -f cp850 -t utf-8 MagicCompRules_20190125.txt | tr -d \\\\r > rules
+2019-10-02 21:05:24 <shachaf> `doag share/mtg/MagicCompRules_20191004.txt
+2019-10-02 21:05:26 <HackEso> 11955:2019-10-01 <wib_jonäs> fetch share/mtg/MagicCompRules_20191004.txt https://media.wizards.com/2019/downloads/MagicCompRules%2020191004.txt
+2019-10-02 21:05:44 <shachaf> Is there a reason not to do that in the channel?
+2019-10-02 21:06:54 <b_jonas> shachaf: I did that in the channel
+2019-10-02 21:07:04 <b_jonas> as far as I recall
+2019-10-02 21:07:33 <shachaf> Oh, you did.
+2019-10-02 21:07:44 <shachaf> Never mind.
