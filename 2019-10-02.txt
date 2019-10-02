@@ -438,3 +438,28 @@
 2019-10-02 21:07:04 <b_jonas> as far as I recall
 2019-10-02 21:07:33 <shachaf> Oh, you did.
 2019-10-02 21:07:44 <shachaf> Never mind.
+2019-10-02 21:42:46 <zzo38> I prefer ASCII without carriage returns; it would help when there was one with PC character set once, it will ensure all of the quotation marks match
+2019-10-02 21:46:21 <shachaf> But how will you return the carriage without carriage returns?
+2019-10-02 21:47:39 User Name: arseniiv = arseniiv_!~arseniiv@136.169.206.178
+2019-10-02 21:47:39 <arseniiv> manually
+2019-10-02 21:47:43 Nick Change: arseniiv -> arseniiv
+2019-10-02 21:47:46 <zzo38> If send to a printer then the carriage return will be added to return the carriage.
+2019-10-02 21:48:07 User Name: arseniiv = arseniiv!~arseniiv@136.169.206.178
+2019-10-02 21:48:07 <arseniiv> (I’ll show myself out, it’s just the right time)
+2019-10-02 21:51:38 Quit: ArthurStrong (Quit: leaving)
+2019-10-02 21:51:38 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-02 21:52:50 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-10-02 21:52:50 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-02 21:54:02 <b_jonas> shachaf: we convert the file before sending it to the printer.
+2019-10-02 21:54:39 <b_jonas> also, we don't print the comp rules. it would be a waste. it changes like five times a year and it's a hundred pages long.
+2019-10-02 21:56:29 <b_jonas> wait wait
+2019-10-02 21:57:50 <zzo38> Print only the pages that are changed.
+2019-10-02 21:57:55 <b_jonas> zzo38: Throne of Eldraine has a sorcery card with rules text including "Then those creatures fight each other." Does that effectively mean that they fight twice, as in the first creature fights the second than the second fights the first, fight being commutative?
+2019-10-02 21:58:42 <zzo38> I think just once.
+2019-10-02 21:59:01 <b_jonas> the wording is odd
+2019-10-02 21:59:11 <zzo38> "701.12a. A spell or ability may instruct a creature to fight another creature or it may instruct two creatures to fight each other. Each of those creatures deals damage equal to its power to the other creature."
+2019-10-02 21:59:32 <b_jonas> hmm
+2019-10-02 21:59:35 <zzo38> Yes, I agree the wording is odd, but rule 701.12a seems so say that it is just once even if it says "each other"
+2019-10-02 21:59:47 <b_jonas> ``` grep -Ei "fight each other" share/mtg/rules.txt
+2019-10-02 21:59:48 <HackEso> 701.12a A spell or ability may instruct a creature to fight another creature or it may instruct two creatures to fight each other. Each of those creatures deals damage equal to its power to the other creature.
+2019-10-02 22:00:00 <b_jonas> I wasn't aware of the alternate template
