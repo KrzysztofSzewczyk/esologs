@@ -333,3 +333,49 @@
 2019-10-02 14:59:22 <HackEso> ​? ¯\(°​_o)/¯
 2019-10-02 14:59:30 <int-e> `wisdom
 2019-10-02 14:59:31 <HackEso> ​photograph//A photograph is a device for creating photograms.
+2019-10-02 15:02:06 <wib_jonas> "<ais523_> int-e: well you can have a string-rewriting system with a deterministic rule for where to replace" => such as sed or 1.1
+2019-10-02 15:13:10 <kspalaiologos> I didn't realise extending logical cells for brainfuck had such impact
+2019-10-02 15:13:27 <myname> ?
+2019-10-02 15:13:33 <kspalaiologos> can you recommend me decently fast Brainfuck interpreters that I can incorporate into my project?
+2019-10-02 15:13:46 <kspalaiologos> I'm looking mostly for MIT and Apache2 stuff because GPLv3 virus seems risky, lol
+2019-10-02 15:14:19 <myname> uh, those aren't usually hard to write fast
+2019-10-02 15:14:19 <kspalaiologos> myname, I've made a tool to extend logical cell size for Brainfuck basically
+2019-10-02 15:14:33 <myname> what do you mean by logical cell size
+2019-10-02 15:14:46 <kspalaiologos> so basically
+2019-10-02 15:14:51 <kspalaiologos> two cells are treated logically as one
+2019-10-02 15:14:59 <kspalaiologos> but physically, they are two separate cells
+2019-10-02 15:15:07 <myname> why though
+2019-10-02 15:15:14 <kspalaiologos> to get bigger range on numbers that can be stored
+2019-10-02 15:15:33 <Taneb> So, given a Brainfuck program that requires 16 bit cells, you can transform it to a program which requires 8 bit cells?
+2019-10-02 15:15:35 <wib_jonas> "<myname> are there semantics that deal with endless loops in a meaningful way?" => see https://esolangs.org/wiki/(0) , which deals with infinite loops, but not really endless ones (except by making them end)
+2019-10-02 15:15:37 <myname> well, depending on your interpreter, numbers can be arbitrarily big
+2019-10-02 15:15:41 <kspalaiologos> Taneb, yes.
+2019-10-02 15:15:50 <kspalaiologos> myname, it depends on the interpreter, so its not portable
+2019-10-02 15:16:12 <wib_jonas> It can deal with infinite loops of any loop count though
+2019-10-02 15:16:16 <kspalaiologos> if host interpreter uses 16-bit cells you can detect it
+2019-10-02 15:16:19 <kspalaiologos> and pass the correct code
+2019-10-02 15:17:06 <wib_jonas> Of course that makes it not implementable on a computer, but real computers can't even deal with sequential loops of length 2**64 or distributed parallel loops of length 2**256, so that's to be expected
+2019-10-02 15:18:15 <myname> i'd say: just write an interpreter in your favourite language of sufficiently low level
+2019-10-02 15:20:33 <cpressey> kspalaiologos: fwiw, a github search for "fastest brainfuck interpreter" yielded this: https://github.com/barracks510/bfc
+2019-10-02 15:20:44 <cpressey> (Apache-2.0 license)
+2019-10-02 15:21:30 <myname> i guess most performance issues come from the data structure used for the tape
+2019-10-02 15:21:54 <wib_jonas> nah, if it's advertised as "fastest" on the web then it likely isn't
+2019-10-02 15:22:18 <myname> an array is nice if you don't have to grow it too often, a linked list might be slower on shorter programs
+2019-10-02 15:23:03 <kspalaiologos> no just in time compilation -> garbage
+2019-10-02 15:23:11 <kspalaiologos> I've tried Tritium interpreter by rdebath(?)
+2019-10-02 15:23:23 <kspalaiologos> and it just turned out to be slower than mine moderately-optimizing one
+2019-10-02 15:24:31 <myname> just in time compilation for brainfuck? really?
+2019-10-02 15:24:49 <myname> i wouldn't be surprised if nobody ever did that
+2019-10-02 15:25:46 <myname> i mean, we used to write a small interpreter for brainfuck at university and even the stupid solutions did anything i throw on them pretty much instantenious
+2019-10-02 15:26:08 <kspalaiologos> https://github.com/rdebath/Brainfuck/tree/master/tritium
+2019-10-02 15:26:12 <kspalaiologos> just in time compilation
+2019-10-02 15:26:16 <kspalaiologos> DYNASM
+2019-10-02 15:26:18 <kspalaiologos> GMP
+2019-10-02 15:26:22 <kspalaiologos> nasm target
+2019-10-02 15:26:26 <kspalaiologos> gnu lightning, openssl
+2019-10-02 15:26:41 <kspalaiologos> libtcc backend
+2019-10-02 15:26:49 <kspalaiologos> debugging, profiling and tracing
+2019-10-02 15:27:04 <kspalaiologos> I've personally discovered this interpreter when I needed something fast for my C compiler targeting brainfuck
+2019-10-02 15:27:14 <kspalaiologos> but it turned out to be too slow to meet my requirements
+2019-10-02 15:27:50 <kspalaiologos> even myself I've made a Brainfuck just-in-time compiler, it's not that uncommon thing
+2019-10-02 15:28:11 <kspalaiologos> the C output is very high grade in my opinion
