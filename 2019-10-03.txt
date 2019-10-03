@@ -461,3 +461,17 @@
 2019-10-03 20:58:17 <imode> because (while) will resolve to a conditional check.
 2019-10-03 20:58:30 <imode> and will roll until it hits a ']'.
 2019-10-03 20:58:43 <imode> but since it doesn't encounter one.. it'll continue on forever.
+2019-10-03 21:13:34 <imode> the macro expander supports recusive macro expansion pretty easily. all it does is check for macro expansions (anything between '(' and ')'), and if it encounters a macro definition, it just jumps to the matching ')', saving all chars in between.
+2019-10-03 21:13:54 <imode> if it doesn't encounter a macro definition, it expands in-place and seeks to the beginning of the expanded macro.
+2019-10-03 21:14:36 <imode> it's why (0:,$)(1:,$1)(begin:(1)[)(while:?)(repeat:(1)])(begin)(0)(while)(1)(repeat) works.
+2019-10-03 21:14:54 <imode> and reduces to ,$1[,$?,$1,$1]
+2019-10-03 21:18:02 Quit: atslash (Quit: This computer has gone to sleep)
+2019-10-03 21:18:02 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-03 21:19:43 <imode> another method (which may seem a little better) is to split the whole source into tokens, and inspect each token to see if it's the start of a definition, an existing definition, or a chunk of code.
+2019-10-03 21:19:49 <imode> but eh.
+2019-10-03 21:20:09 <imode> this thing is already 243 lines.
+2019-10-03 21:20:26 <imode> now to figure out how to do if/else chains...
+2019-10-03 21:28:03 <b_jonas> imode: just use an existing preprocessor that is already known to be able to do any computation and is hard to use in an esoteric way, like SIMPLE
+2019-10-03 21:28:18 <b_jonas> don't reinvent the wheel
+2019-10-03 21:29:02 <imode> how about no.
+2019-10-03 21:29:06 <imode> mine works fine.
