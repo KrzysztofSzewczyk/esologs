@@ -48,3 +48,20 @@
 2019-10-03 04:53:41 <imode> what's also nice is that you can essentially define segmented executables with this. if the interpreter tries to run a commented section, for example, you can just say "at this instruction (start of a comment), jump to the end of a comment."
 2019-10-03 04:59:27 <imode> the base command set (which is [,.:;$+-=<~&?01]) can fit inside of a 4-bit value.
 2019-10-03 04:59:51 <imode> which is great. code can remain ultra-compact while remaining fast.
+2019-10-03 05:04:39 <imode> the 'or' operator can be defined as :$&$~$\$$\$:$&$~$&$~$
+2019-10-03 05:04:57 <imode> ,$1,$ :$&$~$ \$$\$ :$&$~$ &$~$ yields "1".
+2019-10-03 05:05:25 <kmc> what lang is this?
+2019-10-03 05:05:32 <imode> my own. named Mode.
+2019-10-03 05:05:53 <int-e> imode. mode. ode. de. e. .
+2019-10-03 05:06:01 <imode> an ode to mode by imode.
+2019-10-03 05:06:48 <int-e> just have to deal with Apple if this ever becomes a success
+2019-10-03 05:07:11 <imode> apple has a language called Mode?
+2019-10-03 05:07:17 <imode> (also here's an interpreter: https://hatebin.com/qolqoghzzf)
+2019-10-03 05:07:43 <int-e> imode: I meant the 'i'.
+2019-10-03 05:07:57 <imode> haaah.
+2019-10-03 05:08:47 <imode> the iMode, an enterprise-scale language. the implementation only runs on an aluminium cube, which is shipped to you in a puzzle case.
+2019-10-03 05:09:08 <imode> here's what hello world looks like: ,$1001000,$1100101\$$\$,$1101100\$$\$,$1101100\$$\$,$1101111\$$\$,$101100\$$\$,$100000\$$\$,$1110111\$$\$,$1101111\$$\$,$1110010\$$\$,$1101100\$$\$,$1100100\$$\$,$100001\$$\$,,:$[':$]..
+2019-10-03 05:12:36 <imode> provided you add ' as an action.
+2019-10-03 05:14:58 <imode> on to bed. cheers.
+2019-10-03 05:19:38 Quit: imode (Ping timeout: 265 seconds)
+2019-10-03 05:19:38 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
