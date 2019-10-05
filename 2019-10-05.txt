@@ -519,3 +519,102 @@
 2019-10-05 17:47:33 <shachaf> b_jonas: No.
 2019-10-05 17:56:36 Quit: LKoen (Remote host closed the connection)
 2019-10-05 17:56:36 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-05 18:32:05 Joined: kspalaiologos
+2019-10-05 18:32:05 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-05 18:32:25 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-10-05 18:32:25 <kspalaiologos> is there a binary lambda calculus tutorial somewhere around the web
+2019-10-05 18:32:33 <kspalaiologos> for someone who has barely ever programmed pure FP
+2019-10-05 18:33:17 Quit: sebbu (Ping timeout: 240 seconds)
+2019-10-05 18:33:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-05 18:33:17 <shachaf> What is a tutorial?
+2019-10-05 18:33:39 <kspalaiologos> something that will help me understanding the concept
+2019-10-05 18:33:56 <kspalaiologos> I've been looking for assemblers too, but it seems like I'm out of luck
+2019-10-05 18:36:49 <b_jonas> `? tutorial
+2019-10-05 18:36:50 <HackEso> tutorial? ¯\(°​_o)/¯
+2019-10-05 18:37:00 <b_jonas> a tutorial is a writeup about burritos I think
+2019-10-05 18:37:03 <shachaf> My tutorial is as follows: 1. Learn regular lambda calculus. 2. Learn binary lambda calculus.
+2019-10-05 18:37:17 <b_jonas> kspalaiologos: I recommend David Madore's old unlambda writeup
+2019-10-05 18:37:35 <b_jonas> www.madore.org/~david/programs/unlambda/
+2019-10-05 18:37:38 <b_jonas> um
+2019-10-05 18:37:43 <b_jonas> http://www.madore.org/~david/programs/unlambda/
+2019-10-05 18:37:47 <b_jonas> stupid browser
+2019-10-05 18:37:50 <imode> what's the esolang that has the simplest possible implementation (not necessarily language).
+2019-10-05 18:37:59 <kspalaiologos> bytebytejump
+2019-10-05 18:38:05 <imode> I recall one being 6 instructions worth of- yeah something like that.
+2019-10-05 18:38:32 <b_jonas> imode: that's not a well-defined question, but Three-Star Programmer and Waterfall Model are candidates
+2019-10-05 18:38:58 <kspalaiologos> https://github.com/kspalaiologos/MerseneTuringCompletness/blob/master/SeedProof.tex#L581
+2019-10-05 18:39:03 <kspalaiologos> feel free to take the C code if you need it
+2019-10-05 18:39:28 <b_jonas> also probably bytepusher, but I hate it
+2019-10-05 18:39:45 <b_jonas> it's one of my enemy esolangs, like brainfuck
+2019-10-05 18:40:07 <b_jonas> "<oerjan> . o O ( some day i will be the last cis male in this channel. )" => after you get rid of me, obviously
+2019-10-05 18:40:41 <b_jonas> pikhq: wait, so what gender are you now?
+2019-10-05 18:40:55 * pikhq is a girl ^_^
+2019-10-05 18:41:22 <imode> kspalaiologos: I don't know what this is.
+2019-10-05 18:41:27 <b_jonas> I don't think we'll run out of cis males, because we get replaced by more young cis males that grow up
+2019-10-05 18:41:40 <kspalaiologos> imode, it's BBJ interpreter in C
+2019-10-05 18:41:44 <kspalaiologos> in this particular line selected
+2019-10-05 18:41:52 <imode> ah.
+2019-10-05 18:41:55 <b_jonas> I'm more afraid of the scenario when trans people become the majority so the standards flip upside down, and we'll be the weird ones
+2019-10-05 18:41:56 <kspalaiologos> the rest of the document won't probably help you much xd
+2019-10-05 18:42:02 <b_jonas> but I think even that would be a win for us
+2019-10-05 18:43:40 <imode> _what_.
+2019-10-05 18:43:53 <imode> bytepusher is a game console using bytebytejump?
+2019-10-05 18:43:56 <imode> jesus.
+2019-10-05 18:44:01 <imode> that's awesome!
+2019-10-05 18:44:22 <kspalaiologos> the more concerning fact is
+2019-10-05 18:44:26 <kspalaiologos> they made an assembler for that
+2019-10-05 18:44:29 <imode> . o O ( how fast does it run... )
+2019-10-05 18:44:35 <kspalaiologos> and binary lambda calculus is still something I'm too stupid for
+2019-10-05 18:44:56 <b_jonas> kspalaiologos: why is that concerning? I made an assembler for an OISC too, to be able to use symbolic names that work even if I insert or delete words
+2019-10-05 18:45:03 <pikhq> b_jonas: I think, realistically, that is very far off
+2019-10-05 18:45:08 <b_jonas> I even added local labels
+2019-10-05 18:45:23 <kspalaiologos> b_jonas, well, bytebytejump is a hard thing to get right
+2019-10-05 18:45:27 <pikhq> We're only like 0.6% of the overall population
+2019-10-05 18:45:29 <kspalaiologos> because of the lookup tables
+2019-10-05 18:45:45 <imode> is BBJ turing complete due to lookup tables?
+2019-10-05 18:45:53 <kspalaiologos> well, yes
+2019-10-05 18:45:58 <kspalaiologos> you can add only using lookup tables
+2019-10-05 18:46:00 <kspalaiologos> or subtract
+2019-10-05 18:46:08 <imode> wait, BBJ can't be TC..
+2019-10-05 18:46:10 <b_jonas> pikhq: who are "we"? trans people, or trans females? and do you count infants into the population?
+2019-10-05 18:46:14 <pikhq> Trans people
+2019-10-05 18:46:15 <kspalaiologos> so you can make a subleq to bytebytejump compiler
+2019-10-05 18:46:28 <kspalaiologos> I'm actually
+2019-10-05 18:46:31 <kspalaiologos> really interested in doing that
+2019-10-05 18:47:04 <kspalaiologos> oh
+2019-10-05 18:47:08 <kspalaiologos> and the nyan cat for bytepusher
+2019-10-05 18:47:11 <imode> wtf is the "structured" equivalent of BBJ.
+2019-10-05 18:47:13 <kspalaiologos> is 190 kilobytes big
+2019-10-05 18:47:37 <imode> that I'm not surprised at, you need so many lookup tables.
+2019-10-05 18:47:38 <kspalaiologos> imode, you're left on your own on this one
+2019-10-05 18:47:40 <kspalaiologos> good luck
+2019-10-05 18:48:02 <b_jonas> pikhq: is there a census on this? I'd like to know the ratio of trans males vs trans females, because it seems like I hear more of trans females somehow, which is weird
+2019-10-05 18:48:26 <imode> you can't really have a "structured" equivalent of BBJ, because there's.. no conditional machinery.
+2019-10-05 18:49:07 <pikhq> There's relatively few stats on it. I would suspect it's 50/50, and you're biased by the spaces you occupy, _buuut_ there's very limited actual studies.
+2019-10-05 18:49:28 <b_jonas> pikhq: yes, I'm quite likely biased, which is why I'd like to know
+2019-10-05 18:50:16 <pikhq> https://williamsinstitute.law.ucla.edu/wp-content/uploads/How-Many-Adults-Identify-as-Transgender-in-the-United-States.pdf is one of the better demographic studies we've got
+2019-10-05 18:50:37 <kspalaiologos> I've experienced that there are more mtf than ftm honestly
+2019-10-05 18:51:23 <kspalaiologos> I don't know, although I suppose the reason.
+2019-10-05 18:52:48 <b_jonas> pikhq: that gives a split by age, which is useful, but not a split by genders
+2019-10-05 18:52:53 <pikhq> You're in tech. We're overrepresented because cis men are overrepresented.
+2019-10-05 18:52:56 <pikhq> b_jonas: Yeah
+2019-10-05 18:54:51 <zzo38> I don't really know or care too much how many trans people it is, I think if that is what they want to do, OK; but, I think that it can confuse the language in some cases, and I also think that this "gender identity" shouldn't be needed. One suggestion I have seen is for "man" and "woman" to be social but for "male" and "female" to be biological; that helps a bit, I suppose.
+2019-10-05 18:55:17 <imode> y'know, I like that distinction.
+2019-10-05 18:55:25 <b_jonas> obviously I only know when people tell that they are trans, so for most trans people I probably don't know that they are trans because I don't care
+2019-10-05 18:56:05 <b_jonas> so the more trans female is just among people who write on the internet that they are trans female and I read it
+2019-10-05 18:56:25 <pikhq> zzo38: I think that's oversimplifying things intensely, and betrays an unfamiliarity with how this shit works
+2019-10-05 18:56:56 <pikhq> b_jonas: It appears the institute that did that study is now trying to do a better demographic survey now.
+2019-10-05 18:57:08 <pikhq> According to them, it will be the _first_ such demographic survey ever done.
+2019-10-05 18:57:14 <zzo38> pikhq: Yes, it is simplifying it. You can have sex change too, so you can be a kind of hybrid, too. (You can also be born as a hybrid of male and female; it does happen.)
+2019-10-05 18:57:16 <b_jonas> that seems quite likely
+2019-10-05 18:58:08 <pikhq> zzo38: Additionally, much of what we think of "biological sex" is, uh, purely hormonal.
+2019-10-05 18:58:26 <imode> you cannot take enough hormones to turn your penis into a vagina.
+2019-10-05 18:58:31 <imode> and vice versa.
+2019-10-05 18:58:35 <imode> so no, it really isn't.
+2019-10-05 18:58:39 <imode> it's genetic.
+2019-10-05 18:58:55 <pikhq> imode: Developmentally speaking, your penis was once a vagina, and then testosterone happened.
+2019-10-05 18:58:59 <zzo38> But, I think that even if a person is a "man" and not a "woman", if they are biologically female (or had the functions of such) at the time their child was born, then they are that child's mother. And if (hypothetically) someone can manage to change their biological sex enough from female to male later and have another child as the male function, then they can be one person's mother and another person's father.
+2019-10-05 18:59:20 <imode> pikhq: I'm pretty sure I'm a male because of my chromosomes.
+2019-10-05 18:59:23 <pikhq> zzo38: The mere act of "defining biologically female" is itself _much_ more difficult than you think.
+2019-10-05 18:59:38 <pikhq> imode: Orly? Have you actually had a karyotype done?
+2019-10-05 18:59:52 <imode> https://en.wikipedia.org/wiki/X_chromosome basic biology.
