@@ -946,3 +946,66 @@
 2019-10-05 22:29:40 <kmc> arseniiv: good question
 2019-10-05 22:29:44 <kmc> perhaps ##crypto knows
 2019-10-05 22:29:54 <zzo38> If you use secret sharing crypotography, and the number of members needed to decrypt does not change, then it is easy to add additional members, I think.
+2019-10-05 22:30:16 <kmc> zzo38: probably
+2019-10-05 22:30:21 <kmc> you would pick additional points on the same polynomial
+2019-10-05 22:30:45 <b_jonas> I don't think that works
+2019-10-05 22:30:48 <arseniiv> <kmc> I think marriage as a graph should be transitively closed => and symmetrically too? It would get weird if not, or that state wouldn’t be achievable starting with trans. sym. closed marriages?
+2019-10-05 22:31:00 <b_jonas> who would compute the information without revealing the secret?
+2019-10-05 22:31:06 <kmc> afaik a k-of-n shamir share is n points from a (k+1)-dimensional polynomial, over an appropriate field
+2019-10-05 22:31:08 <b_jonas> without learning the secret that is
+2019-10-05 22:31:23 <kmc> b_jonas: any quorum could do it
+2019-10-05 22:31:44 <kmc> if you have a quorum then you can solve for the polynomial
+2019-10-05 22:31:50 <kmc> I don't know how you pick which points to share.
+2019-10-05 22:32:04 <kmc> random, I guess.
+2019-10-05 22:32:13 <arseniiv> (damn, f.lux has gone red and I don’t see text cursor again. A bug in calculating opposite color, I think)
+2019-10-05 22:34:21 <zzo38> One kind of secret sharing could be you have a secret point, and each member has an equation for a line that passes through that point. The secret point can be found by any two members. Also it means any two members can add a third by making up a new equation of a line passing through that point. If you are careful then it should be unlikely to match someone else's line.
+2019-10-05 22:34:21 <kmc> d'oh
+2019-10-05 22:36:05 <arseniiv> zzo38: ah, maybe that’s how Shamir scheme was invented? First, hyperplanes, and then a bit or generalization and bam
+2019-10-05 22:36:34 <arseniiv> s/or/of
+2019-10-05 22:38:12 <arseniiv> hyperplanes grassmannians pl�cker coordinates
+2019-10-05 22:39:10 Quit: sprocklem (Quit: brb)
+2019-10-05 22:39:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 22:41:39 <b_jonas> kmc: don't you mean a degree k-1 polynomial, on a field with at least n elements?
+2019-10-05 22:41:46 <kmc> i dunno
+2019-10-05 22:41:54 Joined: sprocklem
+2019-10-05 22:41:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 22:41:56 <kmc> I think the field should have lots of elements?
+2019-10-05 22:42:03 <b_jonas> David Madore's crowning achievement on the IOCCC is relevant of course
+2019-10-05 22:42:26 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-10-05 22:42:26 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 22:42:47 <kmc> for starters, the secret itself is a field element
+2019-10-05 22:44:04 <b_jonas> kmc: no, you can split the secret to multiple chunks, each a field element
+2019-10-05 22:44:26 Quit: sprocklem (Client Quit)
+2019-10-05 22:44:26 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 22:44:39 <b_jonas> in particular, David Madore's program uses a 256 element field, and the comments claim that that works for up to 255 parties
+2019-10-05 22:44:46 <kmc> b_jonas: ok
+2019-10-05 22:44:47 <kmc> hm
+2019-10-05 22:45:56 <kmc> https://crypto.stackexchange.com/questions/24983/choosing-finite-field-size-in-shamirs-secret-sharing-scheme
+2019-10-05 22:46:26 <kmc> I dunnoooo
+2019-10-05 22:46:49 Joined: sprocklem
+2019-10-05 22:46:50 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 22:48:07 <b_jonas> I'd trust that that scheme works, both because it comes from David Madore with docs, and because it's won an IOCCC
+2019-10-05 22:50:23 <b_jonas> `perl -esub h($){($_=$_[0]=pack b208,0 .unpack b362,$_[0])=~tr/\0-\c?/\0/;tr/\0/\377/c;$_}do{$y=$r;$v=join$r='',a..z;$r^=h$r&"\217"x26^h$v&$y for 0..6;$r^=$_ x26}for"k6sNP2B}({ambrusLB%Ox)Z]n0*zf\0I3"=~/./g;print$r
+2019-10-05 22:50:24 <HackEso> Just another Perl hacker,
+2019-10-05 22:51:22 <b_jonas> this is an old one from https://www.perlmonks.com/?node_id=863110 that evaluates a polynomial over GF(128), before that IOCCC entry has won, but a decade after David wrote that program
+2019-10-05 22:51:30 <b_jonas> https://www.perlmonks.com/?node_id=863110
+2019-10-05 22:52:42 <b_jonas> admittedly GF(128) makes it a bit simpler than GF(256) would be
+2019-10-05 22:52:47 <b_jonas> so it can only encode ASCII characters
+2019-10-05 22:54:47 <imode> whaaaaaaaaaat.
+2019-10-05 22:55:00 <imode> am I crazy, or does "cp/m" as an address resolve to "cp.com/m"
+2019-10-05 22:55:19 Quit: Lord_of_Life (Quit: Laa shay'a waqi'un moutlaq bale kouloun moumkine)
+2019-10-05 22:55:19 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 22:55:59 <zzo38> I think it doesn't
+2019-10-05 22:56:00 <b_jonas> imode: browsers have an option to automatically add ".com" if the domain name doesn't exist otherwise
+2019-10-05 22:56:20 <b_jonas> only when you type into the address bar, not in a link
+2019-10-05 22:56:39 <imode> it's only for two characters. o_O
+2019-10-05 22:56:46 <imode> "foo/bar" doesn't work.
+2019-10-05 22:56:56 <imode> but "fo/bar" does.
+2019-10-05 22:57:19 <b_jonas> they can also automatically prepend www. and prepend http://
+2019-10-05 22:57:21 <zzo38> What I prefer is something typed into the address bar is just treated as a relative URL to the current URL, unless it has a colon at first in which case it is a search command
+2019-10-05 22:57:47 <imode> that I understand. what I don't understand is why it only apparently works with two letters.
+2019-10-05 22:58:04 <zzo38> Some browsers will automatically prepend the scheme based on what the domain name is. (Still, I think it ought not to automatically prepend any scheme.)
+2019-10-05 22:58:27 <imode> nevermind, it somehow works with _multiple_ character strings.
+2019-10-05 22:58:33 <imode> abc/def works, for example.
+2019-10-05 22:58:41 <imode> that is bizzare!
+2019-10-05 22:59:27 <imode> it won't do "google/" though
