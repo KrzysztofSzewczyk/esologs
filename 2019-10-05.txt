@@ -26,3 +26,32 @@
 2019-10-05 01:09:57 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
 2019-10-05 01:19:06 Joined: oerjan
 2019-10-05 01:19:06 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 01:33:45 <shachaf> If you want to define busy-beaver-style numbers in a way people will easily agree on, what computation system should you use?
+2019-10-05 01:34:25 <shachaf> The classic one with Turing machines has questions like whether the tape is double-sided, whether blank is a separate symbol, whether you count number of steps or output size, etc.
+2019-10-05 01:34:53 <shachaf> What's a sequence that grows as quickly as BB but can be defined unambiguously in one sentence?
+2019-10-05 01:35:19 <shachaf> I was thinking maybe somthing about the solution to a Diophantine equation of some size, but then defining the size of an equation is slightly awkward.
+2019-10-05 01:35:33 <pikhq> Hmm, tricky. I think the most important property for such a computation system (beyond being TC, of course) is being simple to state unambiguously.
+2019-10-05 01:45:22 <kmc> can you define something analogous to busy beaver machines with lambda calculus or combinators?
+2019-10-05 01:46:01 <shachaf> Sure.
+2019-10-05 01:46:12 <shachaf> You can count the number of reductions or something.
+2019-10-05 01:46:14 <kmc> yep
+2019-10-05 01:46:29 <shachaf> Or just produce a large number.
+2019-10-05 01:46:42 <pikhq> Yeah, I guess a SKI combinator busy beaver makes sense
+2019-10-05 01:46:43 <kmc> B(n) = the maximum number of reduction steps to normal form for a combinator string of size n
+2019-10-05 01:47:12 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-10-05 01:47:12 <oerjan> even those cases still require you to define the syntax to measure size.
+2019-10-05 01:47:43 <kmc> true
+2019-10-05 01:47:55 <kmc> but it's just a tree where leaves are labeled S or K, right?
+2019-10-05 01:48:06 <kmc> a binary tree
+2019-10-05 01:50:52 <oerjan> still more one way to count that :P
+2019-10-05 01:50:57 <oerjan> *+than
+2019-10-05 01:51:10 <kmc> sure
+2019-10-05 01:51:15 <kmc> but it should fit in one sentence
+2019-10-05 01:51:21 <kmc> which was the original goal
+2019-10-05 01:51:33 <kmc> if you have to define S and K then it'd be a bit of a run-on sentence but whatever
+2019-10-05 01:53:57 Quit: stux|away (Ping timeout: 240 seconds)
+2019-10-05 01:53:57 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, Taneb, trn, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 01:56:54 Joined: stux|away
+2019-10-05 01:56:54 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xkapastel, xylochoron[m], zemhill, zzo38
+2019-10-05 01:57:27 <oerjan> i hear there are entire books written as a single sentence, anyway.
+2019-10-05 01:58:53 <oerjan> it seems schlock isn't going to attempt communication at this time.
