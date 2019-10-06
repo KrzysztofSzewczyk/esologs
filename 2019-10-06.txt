@@ -444,3 +444,74 @@
 2019-10-06 19:55:50 <esowiki> 14[[07Special:Log/delete14]]4 delete10 02 5* 03Ais523 5*  10deleted "[[02MiroslavRD10]]": links to userspace should be clearly marked (see [[Esolang:Policy]]), a redirect from mainspace goes against that
 2019-10-06 19:56:09 <esowiki> 14[[07Special:Log/delete14]]4 delete10 02 5* 03Ais523 5*  10deleted "[[02Talk:MiroslavRD10]]": links to userspace should be clearly marked (see [[Esolang:Policy]]), a redirect from mainspace goes against that [talkpage edition]
 2019-10-06 19:58:56 <esowiki> 14[[07Esolang:Featured languages/Candidates14]]4 10 02https://esolangs.org/w/index.php?diff=66516&oldid=66498 5* 03B jonas 5* (+0) 10Instrns at top of page clearly say you should use the same order as on Language List, so 1+ comes first.
+2019-10-06 20:05:11 <esowiki> 14[[07Talk:Brachylog14]]4 10 02https://esolangs.org/w/index.php?diff=66517&oldid=66482 5* 03Ais523 5* (+1348) 10Prolog isn't imperative; it has imperative constructs, but many of its constructs can't easily be converted to imperative equivalents
+2019-10-06 20:11:18 <b_jonas> I'm considering to change my featured language suggestion from Befunge to Nopfunge
+2019-10-06 20:11:41 <b_jonas> despite that I usually don't like counter machines
+2019-10-06 20:12:52 <ais523> Nopfunge and Tip are interesting because all the information is stored in the instruction pointer via repeating the program
+2019-10-06 20:13:03 <b_jonas> yeah
+2019-10-06 20:13:16 <b_jonas> Conedy might be like that too, but we don't know if it's powerful enough
+2019-10-06 20:14:56 <zzo38> Have you seen my new and currently unnamed esolangs? I would want to know what is other people's comment of it.
+2019-10-06 20:15:20 <b_jonas> You could say that they're cheating by storing extra information that doesn't actually determine the instruction in the higher order parts for Nopfunge or the lower order parts for Conedy or Blindfolded Arithmetic
+2019-10-06 20:15:23 <ais523> actually, this reminds me of an esolang idea I was working on a while back but never made public because I couldn't get it to work
+2019-10-06 20:15:57 <b_jonas> but the language definitions are natural enough that it doesn't feel like cheating
+2019-10-06 20:15:59 <zzo38> Which one is that?
+2019-10-06 20:16:06 <ais523> it consists of a procedurally generated 3D space with lots of objects in it (like spheres, cubes, rendered 3D ASCII letters, that sort of thing)
+2019-10-06 20:16:20 <ais523> a program is simply a point and a direction
+2019-10-06 20:16:35 <ais523> interpreted as a ray that bounces off things
+2019-10-06 20:17:00 User Name: imode = imode!~linear@unaffiliated/imode
+2019-10-06 20:17:00 <imode> raytracing: the esolang.
+2019-10-06 20:17:10 <ais523> and all the numbers have infinite precision (somehow, not sure whether rationals or computable reals work better)
+2019-10-06 20:17:20 <b_jonas> ais523: hmm, do we in first place have a language where the contents of the instruction space is a pre-determined infinite one and the program consists of only a bignum instruction pointer for where to start?
+2019-10-06 20:17:22 <ais523> I couldn't get it to be TC in a natural way, though
+2019-10-06 20:17:33 <imode> ais523: have you seen "geometric" turing machines?
+2019-10-06 20:17:44 <ais523> b_jonas: I don't think so, I might be wrong though
+2019-10-06 20:17:46 <ais523> imode: no
+2019-10-06 20:17:59 <b_jonas> ais523: wait, why 3D rather than 2D?
+2019-10-06 20:18:02 <imode> lemme see if I can dig that up.
+2019-10-06 20:18:14 <b_jonas> can't it be turing-complete even if it's 2D?
+2019-10-06 20:18:27 <ais523> b_jonas: actually I think even 3 dimensions may be too little
+2019-10-06 20:18:38 <b_jonas> I guess to get such a language, you can just fix a nopfunge program that is a universal machine
+2019-10-06 20:18:48 <ais523> the basic problems are related to a) how you store information, b) how you store the program
+2019-10-06 20:19:38 <ais523> if you have curved surfaces to bounce off you can effectively define a program via using very minor shifts in the starting position of the ray, that get amplified when bouncing, so that you can take whatever path you like
+2019-10-06 20:19:56 <ais523> but a 3D object has a 2D surface, that means you're using up an entire dimension just to store the program
+2019-10-06 20:19:59 <b_jonas> right, so you can have a full oracle in a single finely patterned object
+2019-10-06 20:20:17 <b_jonas> that just reflect the ray to the right direction in a bounded number of steps
+2019-10-06 20:20:25 <b_jonas> possibly even in one step if it needn't be smooth
+2019-10-06 20:20:30 <ais523> and the remaining 1 dimension doesn't seem to be usable for anything more data-powerful than a single stack without some really contrived objects
+2019-10-06 20:21:18 <imode> ugh, this dude's stuff is scattered everywhere.
+2019-10-06 20:21:23 <imode> http://lara.inist.fr/bitstream/handle/2332/1001/LIP-RR2004-09.pdf?sequence=1
+2019-10-06 20:21:27 <ais523> anyway, I got stuck (primarily on this problem) and never ended up creating a usable language, but that's about as far as I've gotten
+2019-10-06 20:21:49 <imode> he demonstrates a 2 counter automaton.
+2019-10-06 20:21:53 <imode> it's a "signal machine".
+2019-10-06 20:22:04 <b_jonas> ais523: could you make something discrete, like a reversible nopfunge in ten dimensions?
+2019-10-06 20:22:24 <imode> https://arxiv.org/pdf/0906.3225.pdf
+2019-10-06 20:22:27 <ais523> it's easy enough to do it if you allow for contrived object fields
+2019-10-06 20:22:33 <imode> more stuff.
+2019-10-06 20:23:17 <ais523> like having a universal machine just lying there, or using some sort of space-filling pattern that will contain any particular finite set of objects in any possible arrangement somewhere (assuminig the number of possible object arrangements is countable)
+2019-10-06 20:23:18 <imode> dude essentially forms computations by geometric construction.
+2019-10-06 20:23:33 <imode> all 2D too.
+2019-10-06 20:23:52 <b_jonas> ais523: a universal machine for something much more powerful than turing though
+2019-10-06 20:24:17 <imode> so you could absolutely make it TC, just by having different collision rules for objects.
+2019-10-06 20:25:26 <ais523> imode: right, I wanted something like that but more tarpitty
+2019-10-06 20:25:41 <imode> can't get more tarpitty than actual TMs. :P
+2019-10-06 20:25:49 <ais523> yes you can
+2019-10-06 20:25:50 <imode> well you probably could now that I think about it..
+2019-10-06 20:26:02 Quit: Lord_of_Life (Quit: Laa shay'a waqi'un moutlaq bale kouloun moumkine)
+2019-10-06 20:26:02 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-06 20:26:05 <imode> keep forgetting the lengths people will go to to make their language unusable.
+2019-10-06 20:26:25 <ais523> tag machines are a good example of something generally considered to be simpler than a Turing machine
+2019-10-06 20:26:39 Joined: Lord_of_Life
+2019-10-06 20:26:39 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-06 20:27:01 <b_jonas> imode: it's not just deliberately making them unusable, it's natural constructions that happen to be hard to use, or stuff like M:tG that are designed for goals other than general programming
+2019-10-06 20:27:20 <imode> I dunno, Malbolge seems maliciously designed.
+2019-10-06 20:27:28 <imode> along with a host of other languages.
+2019-10-06 20:27:40 <b_jonas> imode: yeah, think of Nopfunge rather than Malbolge or Intercal
+2019-10-06 20:27:47 <ais523> Malbolge's kind of a special case, it was intentionally designed to be unusable
+2019-10-06 20:27:51 <b_jonas> and note that Malbolge is old, which is its excuse
+2019-10-06 20:28:15 <ais523> b_jonas: well, if you subscribe to the rottytooth school that sees esolang creation as art, the user experience is part of that
+2019-10-06 20:28:20 <imode> doesn't seem rather well thought out considering... ALGOL68. :P
+2019-10-06 20:28:26 <ais523> and the theoretical/computational experience is quite different
+2019-10-06 20:28:30 <ais523> but also part of that
+2019-10-06 20:28:46 <ais523> esolangs designed as esolangs should ideally be interesting in all dimensions
+2019-10-06 20:28:59 <ais523> I put a lot of effort into Incident, for example (which is hard to use but at least has interesting reasons for that)
+2019-10-06 20:29:52 <ais523> much of my esolang research is more at the computational model end of things, though
