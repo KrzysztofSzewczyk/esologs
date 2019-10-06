@@ -175,3 +175,32 @@
 2019-10-06 09:41:24 <esowiki> 14[[07Esolang:Featured languages/Candidates14]]4 10 02https://esolangs.org/w/index.php?diff=66488&oldid=63077 5* 03TwilightSparkle 5* (+1464) 10/* List of candidates */
 2019-10-06 09:55:07 <b_jonas> do we disqualify that featured language candidate because TwilightSparkle didn't read the instructions at the top of that page?
 2019-10-06 09:59:31 <Lykaina> hi b_jonas
+2019-10-06 10:02:34 <b_jonas> nah, let's give her a little more time, in case she realizes her mistake and edits
+2019-10-06 10:02:38 <b_jonas> or reads the channel
+2019-10-06 10:04:51 <b_jonas> I should suggest nopfunge as a featured language
+2019-10-06 10:05:30 <Lykaina> i said i would make twitter-sized cryptoquotes, i just have to figure out how
+2019-10-06 10:05:53 <b_jonas> what do you mean by "cryptoquote"?
+2019-10-06 10:06:06 <b_jonas> a quote where it's hard to tell where the quote comes from?
+2019-10-06 10:06:11 <Lykaina> sometimes called cryptics
+2019-10-06 10:06:19 <Lykaina> in the newspaper
+2019-10-06 10:06:31 <Lykaina> they are quotes
+2019-10-06 10:06:58 <Lykaina> that are encrypted with a simple substitution cipher
+2019-10-06 10:07:18 <Lykaina> turns out, easier to break than make
+2019-10-06 10:08:21 <Lykaina> 26! possible ciphers
+2019-10-06 10:08:59 <Lykaina> 26! = 403291461126605635584000000
+2019-10-06 10:09:20 <Lykaina> and there are so many quotes
+2019-10-06 10:10:48 <b_jonas> ``` \' | perl -e'$/="";$_=<>;for$c(0..rand(25)){y/A-Za-z/B-ZAb-za/};print'
+2019-10-06 10:10:48 <HackEso> 930) <svmmvr> Gur bgure qnl (jryy, gur bgure jrrx) zl jvsr jnf naablrq jvgu zr orpnhfr fur unq n qernz jurer V unq tbggra hf cynar gvpxrgf vagb n #rfbgrevp zrrg fbzrjurer va gur zvqqyr bs Terraynaq va gur jvagre, jvgubhg nfxvat ure svefg. Cyhf fur jnfa'g ernyyl vagrerfgrq va n #rfbgrevp zrrg ng nyy, yrg nybar bar va Terraynaq, yrg nybar bar va Terraynaq va jvagregvzr. (V guvax vg'f xvaq bs pbyq gurer?)
+2019-10-06 10:10:54 <b_jonas> oh, arbitrary substitution one
+2019-10-06 10:10:58 <b_jonas> that's better
+2019-10-06 10:12:12 <b_jonas> ``` \' | perl -e'$/="";$_=<>;use List::Util"shuffle";$c=join("",shuffle("a".."z"));eval"y/a-zA-Z/$c\U$c/";print'
+2019-10-06 10:12:13 <HackEso> 848) <ttz38> Scj B lq vlabnc Cvgdbjf jhclxck, iua ba bj Elvlmblv Cvgdbjf, vza Ikbabjf Cvgdbjf.
+2019-10-06 10:12:15 <b_jonas> ``` \' | perl -e'$/="";$_=<>;use List::Util"shuffle";$c=join("",shuffle("a".."z"));eval"y/a-zA-Z/$c\U$c/";print'
+2019-10-06 10:12:16 <HackEso> 262) <btasmmsd> JDS ejb HS'PP JS MNAS WQ UBBKESIWUPPD FSIWKQI DQNA IKBZ QGWSI
+2019-10-06 10:12:32 <b_jonas> the "38" is sort of a giveaway
+2019-10-06 10:13:30 <Lykaina> famous quotes, not chat room quotes...
+2019-10-06 10:14:00 <b_jonas> or just use the substitution that turns the quote to alphabetically the first, for canonicity
+2019-10-06 10:14:20 <b_jonas> so you take the first letter to "a", the second unique letter to "b" etc
+2019-10-06 10:15:08 <Lykaina> just as easy to break
+2019-10-06 10:27:45 Joined: Lord_of_Life
+2019-10-06 10:27:45 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
