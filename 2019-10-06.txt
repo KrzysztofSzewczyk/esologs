@@ -515,3 +515,42 @@
 2019-10-06 20:28:46 <ais523> esolangs designed as esolangs should ideally be interesting in all dimensions
 2019-10-06 20:28:59 <ais523> I put a lot of effort into Incident, for example (which is hard to use but at least has interesting reasons for that)
 2019-10-06 20:29:52 <ais523> much of my esolang research is more at the computational model end of things, though
+2019-10-06 20:30:08 <ais523> in which case the syntax doesn't even really exist, you're just coming up with something to fit it into a computer
+2019-10-06 20:31:52 <ais523> I guess my line is "if this language mostly exists to compile into something else, its syntax is not the interesting part"
+2019-10-06 20:32:11 <ais523> whereas if the language mostly exists for some other reason, things like the user interface are important
+2019-10-06 20:32:37 <ais523> there's an esolang (I've forgotten what it's called) in which there's a time limit on entering each line of the program and you can't use backspace…
+2019-10-06 20:32:58 <b_jonas> right, waterfall model and stackflow are examples where the syntax isn't important
+2019-10-06 20:33:11 <pikhq> At the very least, esolangs ought to be interesting along some dimension in ways that would otherwise be impractical for a language intended for serious use by _someone_.
+2019-10-06 20:33:12 <b_jonas> ais523: is that one flavored as a magic system in some fantasy universe, the programs being spells?
+2019-10-06 20:33:37 <ais523> b_jonas: no, it's flavoured as a terrible IDE
+2019-10-06 20:33:53 <b_jonas> ah yes, those do exist
+2019-10-06 20:33:56 <esowiki> 14[[07014]]4 N10 02https://esolangs.org/w/index.php?oldid=66518 5* 03MiroslavRD 5* (+13304) 10Created page with "0 is a joke language created by [[User:MiroslavRD|MiroslavRD]]. It is a glitchy [[brainfuck]] derivative. It distorts your code in these ways: * Add unexpected symbols * Re..."
+2019-10-06 20:34:06 <esowiki> 14[[07Joke language list14]]4 10 02https://esolangs.org/w/index.php?diff=66519&oldid=66295 5* 03MiroslavRD 5* (+169) 10
+2019-10-06 20:34:37 <esowiki> 14[[07Aleph 014]]4 N10 02https://esolangs.org/w/index.php?oldid=66520 5* 03MiroslavRD 5* (+18) 10Redirected page to [[0]]
+2019-10-06 20:34:38 <esowiki> 14[[07014]]4 M10 02https://esolangs.org/w/index.php?diff=66521&oldid=66518 5* 03Ais523 5* (-11) 10unpipe link to userspace
+2019-10-06 20:36:04 <b_jonas> like the door opening keypad at my grandmother's house, which has such a short timeout that it erases my input between when I type the flat number and separator and when I figure out what the four-digit password is
+2019-10-06 20:36:40 <b_jonas> I always get it only on second try, when I have the password cached into my short term memory rather than just use the mnemonic from my long term memory
+2019-10-06 20:36:57 <b_jonas> so stupid, no need to have such a short timeout there
+2019-10-06 20:37:35 <ais523> the purpose of a timeout on those things is often to prevent issues where one person leaves information partially entered and then another person uses the keypad, causing all the inputs to be misinterpreted
+2019-10-06 20:37:51 <b_jonas> yes, I agree that there should be a timeout
+2019-10-06 20:37:56 <b_jonas> it's just too short in that case
+2019-10-06 20:38:00 <ais523> I've seen mechanical keypads of that nature which, being mechanical, have no timeout; there are often big signs put above them saying "please remember to press cancel before using this keypad"
+2019-10-06 20:38:05 <zzo38> How short is the timeout?
+2019-10-06 20:38:23 <b_jonas> zzo38: I don't remember, probably like five seconds
+2019-10-06 20:39:33 <b_jonas> ais523: this keypad has a display though, which shows "---" while you're typing the password
+2019-10-06 20:39:56 <b_jonas> this sort of keypad is really common, we have a similar one on this house, and one on my parents' house
+2019-10-06 20:41:12 <b_jonas> the keypad reads digits by shining horizontal and vertical lights a millimeter in front of the keypad, and detecting which row and column of light is interrupted. thus it can only read one key at a time.
+2019-10-06 20:41:41 <b_jonas> it's an interesting way to make a keypad that doesn't break easily from outdoor conditions and deliberate vandalism
+2019-10-06 20:42:28 <ais523> couldn't it read two or more keys at a time if they were in the same row or column?
+2019-10-06 20:42:45 <b_jonas> perhaps it could
+2019-10-06 20:43:05 <b_jonas> but I think it's better to detect those as invalid reads
+2019-10-06 20:44:23 <b_jonas> `? resetti
+2019-10-06 20:44:24 <HackEso> resetti? ¯\(°​_o)/¯
+2019-10-06 20:45:47 <ais523> you could use them as chords to expand the character set of your passwords
+2019-10-06 20:46:18 <b_jonas> ais523: the one at my parent's house already sometimes becomes unusable at winter. or it did before some of the hardware got replaced. so I say no.
+2019-10-06 20:46:43 <b_jonas> if you want to expand password space, just use passwords longer than four digits.
+2019-10-06 20:47:38 <zzo38> I think four digit passwords is too short. Even if four digit passwords are allowed, the maximum should be more than that, perhaps eight or ten digits.
+2019-10-06 20:47:54 <b_jonas> zzo38: for a house gate, it doesn't really matter
+2019-10-06 20:48:08 <b_jonas> but sure, allowing a longer password is fine
+2019-10-06 20:48:23 <b_jonas> and the hardware these days can allow it easily
+2019-10-06 20:48:45 <b_jonas> for electronic house door openers I mean, not for eg. combination locks
