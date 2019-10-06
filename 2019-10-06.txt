@@ -350,3 +350,38 @@
 2019-10-06 18:27:22 <ais523> right, the esolangs.org community is thinking "surely we have enough BF derivatives already?", and CGCC has fit in 277 languages into a polyglot and thus is often on the verge of running out
 2019-10-06 18:27:38 <ais523> BF substitutions tend to be easy to fit in due to having simple semantics and ignoring most of the program
 2019-10-06 18:28:34 <ais523> and that 277 includes a lot of very closely related languages, such as slightly different Haskell command lines
+2019-10-06 18:30:53 <b_jonas> yeah, some people on code golf count python1 as a separate programming language from python2
+2019-10-06 18:35:24 <b_jonas> random observations from my vacation to NRW. in Dortmund, there's an U-Bahn (tube, metro) station where there's a platform on both sides of the train, the train doors open on both sides at the same time, people get on on one side and off on the other side. this is an interesting solution for a high traffic stop that I hadn't seen anywhere else. I like it.
+2019-10-06 18:35:30 <ais523> everyone should according to their rules
+2019-10-06 18:35:56 <ais523> their definition of a "language" is very precise, things like the Windows version of Perl 5.26 and the Linux version of Perl 5.26 are different languages…
+2019-10-06 18:36:15 <ais523> although the rules end up breaking down when you take them to the logical extremes, most people other than me avoid those
+2019-10-06 18:37:11 Quit: LKoen (Remote host closed the connection)
+2019-10-06 18:37:11 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-06 18:37:31 <b_jonas> well sure. I've worked with perl on windows, including trying to port my own script from windows-native perl to msys perl. perl is so incompatible with itself that you can consider any version a different version from itself.
+2019-10-06 18:39:33 <b_jonas> like, there used to be a windows-specific bug in perl when you called glob with multiple arguments
+2019-10-06 18:40:13 <b_jonas> and it's not just about the parts that are different because they access some functionality where the underlying system calls work differently
+2019-10-06 18:40:35 <ais523> didn't old versions of Perl implement glob using the shell?
+2019-10-06 18:41:08 <b_jonas> yes, old ones did
+2019-10-06 18:41:15 <b_jonas> using tcsh I think
+2019-10-06 18:42:20 <ais523> "Netscape Navigator 9 with JavaScript disabled"
+2019-10-06 18:42:30 <ais523> (actual language inside the polyglot)
+2019-10-06 18:47:54 <b_jonas> what makes it strange is how new contributors test the code in all those weird languages
+2019-10-06 18:48:43 <ais523> I pretty much gave up once it got past the scope of what TIO could handle
+2019-10-06 18:52:46 <b_jonas> have they added a pair of languages that are two very similar versions of a 90s game console, and the difference between them is detected from the timing of the sound chip or the diskette drive, so you can only test it on real hardware with an eprom cart, because the emulator doesn't emulate the speed of different diskette drives realistically?
+2019-10-06 18:52:53 <b_jonas> s/emulator/emulators/
+2019-10-06 18:54:45 <ais523> no
+2019-10-06 18:54:55 <ais523> actually there's a surprising lack of machine codes
+2019-10-06 18:55:04 <ais523> (there's at least one, but you'd expect more)
+2019-10-06 18:55:14 <ais523> I think there's a desire not to add any languages with a hard size limit
+2019-10-06 18:55:23 Quit: ais523 (Quit: sorry for my connection)
+2019-10-06 18:55:23 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-06 18:55:44 Joined: ais523
+2019-10-06 18:55:44 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-06 18:55:52 <b_jonas> even when the hard size limit is larger than the 32 kilobyte or 64 kilobyte post size limit of SE?
+2019-10-06 18:57:41 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-10-06 18:57:41 <ais523> we could always start compressing it in the post
+2019-10-06 18:57:52 <b_jonas> yeah
+2019-10-06 18:58:07 <ais523> SE allows "Stack Snippets" which are basically a TC post syntax (based on JavaScript), and they're already being used to collapse the polyglots to save space on the page
+2019-10-06 18:58:35 <ais523> so as long as you can compress it and the post to less than the post size - decompressor size, it should be OK
+2019-10-06 18:58:50 Joined: RainbowRabbit
+2019-10-06 18:58:50 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, RainbowRabbit, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
