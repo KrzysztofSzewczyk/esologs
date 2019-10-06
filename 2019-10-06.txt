@@ -554,3 +554,22 @@
 2019-10-06 20:48:08 <b_jonas> but sure, allowing a longer password is fine
 2019-10-06 20:48:23 <b_jonas> and the hardware these days can allow it easily
 2019-10-06 20:48:45 <b_jonas> for electronic house door openers I mean, not for eg. combination locks
+2019-10-06 21:01:49 <b_jonas> `? electronic monk
+2019-10-06 21:01:49 <HackEso> electronic monk? ¯\(°​_o)/¯
+2019-10-06 21:06:16 <pikhq> Electrocuted monk?
+2019-10-06 21:06:31 <b_jonas> pikhq: no. electronic monk, from Douglas Adams.
+2019-10-06 21:06:54 <pikhq> Bah, humbug.
+2019-10-06 21:07:06 <pikhq> Go stick your head in a pig.
+2019-10-06 21:17:57 User Name: arseniiv = arseniiv!~arseniiv@136.169.206.178
+2019-10-06 21:17:57 <arseniiv> do someone knows what’s that CRT mania about?
+2019-10-06 21:18:07 <arseniiv> how objective is it
+2019-10-06 21:18:18 <imode> CRT?
+2019-10-06 21:18:25 <b_jonas> `? crt
+2019-10-06 21:18:26 <HackEso> crt? ¯\(°​_o)/¯
+2019-10-06 21:18:27 <arseniiv> CRT display, I mean
+2019-10-06 21:19:23 <arseniiv> versus modern LCD technologies which there too many are now that I don’t know their betterness relations anymore
+2019-10-06 21:22:51 <arseniiv> b_jonas: I know one electronic monk, it’s called Delay Lama and is very old by now
+2019-10-06 21:25:56 <b_jonas> does he use mercury delay lines?
+2019-10-06 21:26:43 <imode> it's funny you mention that, I had an idea for a language that functioned similarly to delay lines.
+2019-10-06 21:28:45 <imode> instructions are laid out linearly. data is fed through them, one at a time. the instructions essentially define a pipeline. every element of memory is fed through the pipeline and then sent back through the loop until you hit a stopping point.
+2019-10-06 21:29:28 <imode> with structured data items and stateful pipeline stages, could prove a concise dataflow language if you figure out how to "flatten" dataflow networks into a pipeline.
