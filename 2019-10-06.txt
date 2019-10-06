@@ -573,3 +573,30 @@
 2019-10-06 21:26:43 <imode> it's funny you mention that, I had an idea for a language that functioned similarly to delay lines.
 2019-10-06 21:28:45 <imode> instructions are laid out linearly. data is fed through them, one at a time. the instructions essentially define a pipeline. every element of memory is fed through the pipeline and then sent back through the loop until you hit a stopping point.
 2019-10-06 21:29:28 <imode> with structured data items and stateful pipeline stages, could prove a concise dataflow language if you figure out how to "flatten" dataflow networks into a pipeline.
+2019-10-06 21:37:06 <arseniiv> b_jonas: as if!
+2019-10-06 21:41:30 <arseniiv> uh, I meant to say “if only”
+2019-10-06 21:43:58 <ais523> hmm, could you combine the two phrases into "as if only" to make a simultaneous expression of disbelief and encouragement?
+2019-10-06 21:46:31 <b_jonas> fungot probably could, he combines expressions from a too narrow window all the time
+2019-10-06 21:46:31 <fungot> b_jonas: your patience is commendable. let me check whether it is
+2019-10-06 21:48:55 <b_jonas> fungot: it's time for the new o strip. please post it.
+2019-10-06 21:48:55 <fungot> b_jonas: then i think you have a third-world browser? or disabling it voluntarly? sure
+2019-10-06 21:49:24 <b_jonas> I did do a shift-refresh. I'm not going to disable the browser cache for you.
+2019-10-06 21:55:02 <pikhq> arseniiv: There's a few different claims for why they're "better", but the Big Ones are: CRTs have less intrinsic delay, CRTs are better at handling interlaced signals, and CRTs tend to be more accepting of odd display timings than modern LCDs are.
+2019-10-06 21:55:36 <b_jonas> pikhq: also their colors look the same from a wider viewing angle
+2019-10-06 21:55:53 <pikhq> For example, some games switch between 240p and 480i display modes with slightly different timing, and modern displays basically stop drawing anything during the switch.
+2019-10-06 21:55:59 <arseniiv> b_jonas: is that still an issue with modern types of LCDs?
+2019-10-06 21:55:59 <pikhq> (old CRTs just don't care)
+2019-10-06 21:56:05 <b_jonas> arseniiv: I think so
+2019-10-06 21:56:27 <b_jonas> arseniiv: what did improve in LCDs is that their colors look nicer, and the contrast stronger
+2019-10-06 21:57:00 <arseniiv> hmm I guess first of all I just don’t game too much, moreso in fullscreen
+2019-10-06 21:57:47 <arseniiv> I even watched films in a window usually :D
+2019-10-06 21:57:55 <pikhq> Ultimately all of those add up to "old game consoles were built for old displays, and modern displays aren't 100% compatible with them -- especially without a lot of hacks"
+2019-10-06 21:58:24 <b_jonas> pikhq: the viewing angle thing isn't about that
+2019-10-06 21:58:38 <pikhq> Yeah, that's more a fundamental limitation in the display tech.
+2019-10-06 21:58:41 <arseniiv> pikhq: wait, I thought they talked about modern gaming? oh
+2019-10-06 21:58:57 <b_jonas> I think it's both
+2019-10-06 21:59:00 <pikhq> Though modern LCDs have _much_ better viewing angles than old ones did.
+2019-10-06 21:59:09 <b_jonas> the larger part is that the old games were designed for crts
+2019-10-06 21:59:25 <pikhq> Yeah, CRTs having better latency still holds for modern gaming.
+2019-10-06 21:59:52 <pikhq> Though -- if you purchase the right displays, you can get LCD displays with low enough latency it's not a problem.
+2019-10-06 21:59:55 <b_jonas> but it's also that crts can do 200 hertz refresh and the visible output can change quickly compared to similarly priced lcds
