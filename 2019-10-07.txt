@@ -87,3 +87,61 @@
 2019-10-07 05:51:08 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
 2019-10-07 07:29:24 <b_jonas> ``` datei # what time is it anyway
 2019-10-07 07:29:24 <HackEso> 2019-10-07 07:29:24.622 +0000 UTC October 7 Monday 2019-W41-1
+2019-10-07 07:31:48 <oerjan> `ddate
+2019-10-07 07:31:48 <HackEso> Today is Setting Orange, the 61st day of Bureaucracy in the YOLD 3185
+2019-10-07 07:32:28 <b_jonas> `` TZ=Pacific/Auckland datei
+2019-10-07 07:32:29 <HackEso> 2019-10-07 20:32:28.859 +1300 NZDT October 7 Monday 2019-W41-1
+2019-10-07 07:32:46 <b_jonas> `beat
+2019-10-07 07:32:46 <HackEso> 356
+2019-10-07 07:33:05 <oerjan> `where beat
+2019-10-07 07:33:05 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: where: not found
+2019-10-07 07:33:17 <oerjan> `` where beat
+2019-10-07 07:33:17 <HackEso> ​/hackenv/bin/`: line 5: where: command not found
+2019-10-07 07:33:20 <oerjan> hum
+2019-10-07 07:33:31 <oerjan> `` which beat
+2019-10-07 07:33:31 <HackEso> ​/hackenv/bin/beat
+2019-10-07 07:33:44 <oerjan> `cat bin/beat
+2019-10-07 07:33:44 <HackEso> ​#!/usr/bin/python3 \ # beat - print current time in Swatch Internet Time format. \ # blame fizzie \ import math,sys,getopt,time \ prec = 0 \ atime = None \ opts,args = getopt.getopt(sys.argv[1:], "d:hpP:") \ for opt,oarg in opts: \ 	if "-d" == opt: \ 		if "@" == oarg[0]: \ 			atime = float(oarg[1:]) \ 		else: \ 			raise RuntimeError("unknown date format") \ 	elif "-p" == opt: prec = 2 \ 	elif "-P" == opt: prec = int(oarg) \ 	elif "-h" == opt:  \ 		print
+2019-10-07 07:33:49 <b_jonas> `? beat
+2019-10-07 07:33:50 <HackEso> beat? ¯\(°​_o)/¯
+2019-10-07 07:33:52 <b_jonas> `whatis beat
+2019-10-07 07:33:52 <oerjan> ic
+2019-10-07 07:33:52 <HackEso> beat(1hackeso) - print current time in Swatch Internet Time format
+2019-10-07 07:33:59 <b_jonas> `what beat
+2019-10-07 07:33:59 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: what: not found
+2019-10-07 07:34:03 <b_jonas> `who beat
+2019-10-07 07:34:05 <HackEso> No output.
+2019-10-07 07:34:07 <b_jonas> `when beat
+2019-10-07 07:34:08 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: when: not found
+2019-10-07 07:34:10 <b_jonas> hmm
+2019-10-07 07:34:13 <b_jonas> `why beat
+2019-10-07 07:34:14 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: why: not found
+2019-10-07 07:34:23 <b_jonas> `whois beat
+2019-10-07 07:34:23 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: whois: not found
+2019-10-07 07:34:47 <oerjan> `whence beat
+2019-10-07 07:34:48 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: whence: not found
+2019-10-07 07:35:28 <oerjan> `whomsoever beat
+2019-10-07 07:35:29 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: whomsoever: not found
+2019-10-07 07:37:24 <b_jonas> ``` for x in type what who which how why when whence where whither; do "$x" beat 2>/dev/null && echo "+$x"; "${x}is" beat 2>/dev/null && echo "+${x}is"; done
+2019-10-07 07:37:25 <HackEso> beat is /hackenv/bin/beat \ +type \ beat(1hackeso) - print current time in Swatch Internet Time format \ +whatis \ +who \ /hackenv/bin/beat \ +which \ beat: /hackenv/bin/beat \ +whereis
+2019-10-07 07:37:28 <b_jonas> ``` who beat
+2019-10-07 07:37:29 <HackEso> No output.
+2019-10-07 07:37:32 <b_jonas> ``` who beat you
+2019-10-07 07:37:32 <HackEso> No output.
+2019-10-07 07:37:39 <b_jonas> show it on the dolly
+2019-10-07 07:37:51 <b_jonas> ``` whereis beat
+2019-10-07 07:37:52 <HackEso> beat: /hackenv/bin/beat
+2019-10-07 07:37:59 <b_jonas> ``` type whereis
+2019-10-07 07:38:00 <HackEso> whereis is /usr/bin/whereis
+2019-10-07 07:38:05 <b_jonas> ``` whatis whereis
+2019-10-07 07:38:08 <HackEso> whereis(1) - locate the binary, source, and manual page files for a command
+2019-10-07 07:38:48 <b_jonas> ``` dpkg-query -S /usr/bin/whereis
+2019-10-07 07:38:49 <HackEso> dpkg-query: error: failed to open package info file '/var/lib/dpkg/status' for reading: No such file or directory
+2019-10-07 07:39:53 <b_jonas> if we had the package database, then we could add a "whence" script that does dpkg-query -S
+2019-10-07 07:41:42 <b_jonas> and a when script that queries both the hg repository and the package history for when the file was installed and modified
+2019-10-07 07:42:04 <b_jonas> a who script to tell who modified it...
+2019-10-07 07:42:24 <b_jonas> and a why script that links to channel logs for context
+2019-10-07 07:42:26 Quit: b_jonas (Quit: leaving)
+2019-10-07 07:42:26 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 07:51:14 Joined: tromp
+2019-10-07 07:51:15 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
