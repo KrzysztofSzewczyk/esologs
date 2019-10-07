@@ -255,3 +255,61 @@
 2019-10-07 18:32:55 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
 2019-10-07 18:35:35 Joined: LKoen
 2019-10-07 18:35:35 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 19:08:01 Quit: LKoen (Remote host closed the connection)
+2019-10-07 19:08:01 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 19:10:54 Joined: LKoen
+2019-10-07 19:10:54 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 19:14:22 <Hooloovo0> got this working today: https://cemetech.net/forum/viewtopic.php?p=282466#282466
+2019-10-07 19:15:57 User Name: b_jonas = b_jonas!~x@catv-176-63-24-145.catv.broadband.hu
+2019-10-07 19:15:57 <b_jonas> Hooloovo0: uh, that's a weird goal
+2019-10-07 19:16:39 <b_jonas> so what does it do now?
+2019-10-07 19:16:50 <b_jonas> does the z80 need a lot of extra chips to make sense?
+2019-10-07 19:16:53 <Hooloovo0> nothing yet, since I just got done with the hardware
+2019-10-07 19:17:11 <Hooloovo0> in the 83+ there's an ASIC that does all the glue logic
+2019-10-07 19:17:43 <b_jonas> how does it get a RAM?
+2019-10-07 19:17:49 <b_jonas> or doesn't the z80 need one?
+2019-10-07 19:17:56 <Hooloovo0> there's ram and flash on the TI board
+2019-10-07 19:18:07 <Hooloovo0> http://hooloovoo.blue/files/noz80.png
+2019-10-07 19:18:23 <Hooloovo0> that's the board with the z80 removed
+2019-10-07 19:18:29 <b_jonas> sure there's some RAM, but I thought that was RAM that is hardware incompatible, plus the TI is already using it
+2019-10-07 19:19:48 <Hooloovo0> wait, the extra chip piggybacked on the back is the CPU, replacing the surface-mount one that would normally be on the board
+2019-10-07 19:20:14 <Hooloovo0> I'm confused what ram you think is incompatible?
+2019-10-07 19:20:15 <b_jonas> so the normal cpu isn't there?
+2019-10-07 19:20:59 <kmc> I got a TI-92 at the flea market
+2019-10-07 19:21:02 <kmc> what should i do with it
+2019-10-07 19:21:06 <kmc> i was thinking something ham radio related
+2019-10-07 19:21:18 <kmc> i wonder if there are any morse encoder/decoder for it
+2019-10-07 19:21:28 <kmc> it would be easy to hook up the link port to a cw keyer jack
+2019-10-07 19:21:34 <b_jonas> ah, so this TI model already uses a z80 cpu?
+2019-10-07 19:21:36 <b_jonas> that explains a lot
+2019-10-07 19:21:57 <Hooloovo0> yes, sorry, I guess that's not clear if you don't know anything about the calc
+2019-10-07 19:22:00 <b_jonas> I'm confused by calculator models, I assumed this was a calculator from 2000 or something
+2019-10-07 19:22:53 <Hooloovo0> it actually is, the date code is 0800
+2019-10-07 19:23:10 <Hooloovo0> (aug 2000)
+2019-10-07 19:23:30 <Hooloovo0> :D
+2019-10-07 19:23:39 <b_jonas> sure, but the model
+2019-10-07 19:23:47 <b_jonas> anyway, ok, so it uses a z80 cpu
+2019-10-07 19:23:54 <b_jonas> and you replaced that with another z80 cpu
+2019-10-07 19:23:57 <b_jonas> that makes a lot more sense
+2019-10-07 19:24:49 <b_jonas> how long are those ribbon cables from the board to the cpu? the photos don't show the end
+2019-10-07 19:25:00 <Hooloovo0> right, so eventually I can do something like http://www.cosam.org/projects/z80/panel.html which would be basically impossible with the original, surface-mount CPU
+2019-10-07 19:25:05 <b_jonas> and at what frequency does the RAM run?
+2019-10-07 19:25:28 <Hooloovo0> the system clock is by default 6Mhz
+2019-10-07 19:25:48 <Hooloovo0> I don't have my frequency counter with me right now, but I have added in a variable resistor so I can overclock it
+2019-10-07 19:26:15 <Hooloovo0> you can see the ribbon cables between the two halves in the first picture
+2019-10-07 19:26:52 <Hooloovo0> they're maybe 15cm total
+2019-10-07 19:26:55 <kmc> what's the purpose of replacing the CPU?
+2019-10-07 19:27:13 <b_jonas> ok, that sounds not impossible
+2019-10-07 19:27:26 <Hooloovo0> top of the post lists some reasons :)
+2019-10-07 19:27:56 <Hooloovo0> also I'm not aware of a morse encoder, but that shouldn't be too hard to do in C I think
+2019-10-07 19:28:09 <kmc> yeah
+2019-10-07 19:28:13 <kmc> encoder would be almost trivial
+2019-10-07 19:28:16 <kmc> decoding is much harder
+2019-10-07 19:28:41 <Hooloovo0> yeah, especially since it's not an analog port
+2019-10-07 19:28:53 <kmc> right
+2019-10-07 19:28:59 <kmc> you would want some kind of tone detector circuit
+2019-10-07 19:29:14 <kmc> it could be level based, or frequency based
+2019-10-07 19:29:19 <kmc> not necessarily that complicated
+2019-10-07 19:29:28 <kmc> there are also ICs for that
+2019-10-07 19:29:44 <Hooloovo0> I bet you could do it with a 555 and maybe an op-amp
+2019-10-07 19:29:52 <kmc> yeah
