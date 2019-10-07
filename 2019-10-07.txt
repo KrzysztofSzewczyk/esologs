@@ -460,3 +460,33 @@
 2019-10-07 22:51:59 <kmc> which is.. a great URL
 2019-10-07 22:52:09 <kmc> and solves basically the same problem in a slightly different context
 2019-10-07 22:52:27 <kmc> so there are some papers on this private set intersection problem
+2019-10-07 23:05:25 <kmc> Hooloovo0: would a serial link cable work with this usb adapter? https://www.amazon.com/gp/product/B0007T27H8/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
+2019-10-07 23:05:33 <kmc> black graphlink, or grey only?
+2019-10-07 23:05:41 <kmc> iirc the black one uses CTS/RTS
+2019-10-07 23:05:47 <kmc> it /should/ work but I don't know if it's picky about timing
+2019-10-07 23:06:03 <kmc> (many hams keep an old DOS laptop around for programming radios from the 90s that use timing-exact serial interfaces)
+2019-10-07 23:08:30 <kmc> Hooloovo0: I found a 2.5mm TRS plug by chance today
+2019-10-07 23:08:35 <kmc> so I might try to build https://www.ticalc.org/hardware/cables/serial.html
+2019-10-07 23:08:44 <kmc> if I can't get a silver link cable from one of the local free-shit groups
+2019-10-07 23:08:55 <kmc> that one is supposedly black link compatible and i have all the parts most likely
+2019-10-07 23:09:21 <kmc> it doesn't say what volage of zener diode to use :P
+2019-10-07 23:09:57 <kmc> should I assume 5.6V?
+2019-10-07 23:17:14 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-10-07 23:17:14 Names: \oren\, ^[, ais523, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 23:26:40 <Hooloovo0> grey onl
+2019-10-07 23:26:51 <Hooloovo0> stupid y key
+2019-10-07 23:27:05 <kmc> okay
+2019-10-07 23:27:18 <kmc> so in that case the homemade cable also won't work w/ my serial adapter
+2019-10-07 23:27:23 <kmc> too bad
+2019-10-07 23:27:30 <Hooloovo0> I'm not sure that one will work with a usb/serial adapter
+2019-10-07 23:27:53 <Hooloovo0> the problem is that it used flow control pins as data pins... which if you have a real serial port, that's fine
+2019-10-07 23:28:09 <Hooloovo0> but usb serial ports handle it poorly
+2019-10-07 23:28:14 <kmc> it should be possible to program a micro as a normal-serial-over-USB to TI-wacky-protocol converter
+2019-10-07 23:28:19 <kmc> but that also sounds like effort
+2019-10-07 23:28:28 <Hooloovo0> it might work, but it probably won't
+2019-10-07 23:28:41 <kmc> when I can get a graphlink usb for <$20
+2019-10-07 23:28:48 <kmc> I did confirm that the TI-92 turns on
+2019-10-07 23:28:56 <Hooloovo0> yeah, that probably could be made to work, someone might have even done it
+2019-10-07 23:29:15 <kmc> I could also get a grey link for $16 which would be more versatile in some ways but a lot more bulk
+2019-10-07 23:29:28 <Hooloovo0> it's just a 92? I think you have to do hacks to get assembly working on plain 92
+2019-10-07 23:29:32 <kmc> damn
