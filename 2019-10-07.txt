@@ -313,3 +313,86 @@
 2019-10-07 19:29:28 <kmc> there are also ICs for that
 2019-10-07 19:29:44 <Hooloovo0> I bet you could do it with a 555 and maybe an op-amp
 2019-10-07 19:29:52 <kmc> yeah
+2019-10-07 19:30:19 <b_jonas> ok, so this channel is about esoteric hardware too now
+2019-10-07 19:30:22 <kmc> you could maybe do it with a resonant LRC circuit that has an appropriate decay constant
+2019-10-07 19:30:32 <kmc> not sure if it's feasible to get high enough Q on that
+2019-10-07 19:30:35 <Hooloovo0> do you have a link cable? I've got more than I need
+2019-10-07 19:30:36 <kmc> but you also need to do stats to work out the pulse lengths
+2019-10-07 19:30:52 <Hooloovo0> but you can probably just get away with any old 2.5mm TRS
+2019-10-07 19:31:11 <kmc> and well, humans are not always super consistent with morse timing
+2019-10-07 19:31:18 <kmc> so it can be tricky
+2019-10-07 19:31:25 <kmc> Hooloovo0: I would love a link cable?
+2019-10-07 19:31:28 <kmc> Hooloovo0: I would love a link cable*
+2019-10-07 19:31:39 <kmc> and, do you mean I could make one with a TRS plug and a USB-TTL adapter or something?
+2019-10-07 19:31:48 <kmc> that sounds like something I could do with parts on hand, which is cool
+2019-10-07 19:31:49 <kmc> sigh
+2019-10-07 19:31:51 <kmc> so many projects
+2019-10-07 19:31:58 <kmc> I wonder if my Mouser order's here yet
+2019-10-07 19:32:06 <kmc> for some sex toy hacking
+2019-10-07 19:32:12 <kmc> (is that also esoteric)
+2019-10-07 19:32:20 <Hooloovo0> actually, I actually do have a spare RS232 link cable
+2019-10-07 19:32:26 <Hooloovo0> s/actually/
+2019-10-07 19:32:40 <kmc> I don't want to use an actual RS232 port
+2019-10-07 19:32:43 <kmc> USB would be good
+2019-10-07 19:33:10 <Hooloovo0> if you have a usb-rs232 that'll work with the graylink
+2019-10-07 19:33:15 <b_jonas> Hooloovo0: with male or female and the wide or narrow ends?
+2019-10-07 19:33:18 <Hooloovo0> and I picked one up from the dump last week
+2019-10-07 19:33:46 <kmc> hmm
+2019-10-07 19:33:46 <Hooloovo0> also I have spare calc-calc cables, more than I can use
+2019-10-07 19:33:51 <kmc> ok
+2019-10-07 19:33:59 <kmc> that one is just a traight thru TRS right
+2019-10-07 19:34:04 <kmc> oh but it's 2.5mm not 3.5mm
+2019-10-07 19:34:10 <kmc> or is it a crossover
+2019-10-07 19:34:10 <Hooloovo0> yeah
+2019-10-07 19:34:17 <Hooloovo0> straight-through
+2019-10-07 19:34:20 <kmc> ok
+2019-10-07 19:34:44 <kmc> I could also most likely program one of my microcontrollers to be a link cable
+2019-10-07 19:34:47 <kmc> which would be a little silly
+2019-10-07 19:35:00 <kmc> but the same hardware could act as an IO expander, ADC, etc
+2019-10-07 19:35:02 <Hooloovo0> TI has weird-length t and s connectors but in my experience it works with just a standard one
+2019-10-07 19:35:16 <kmc> anyway do you have a premade working USB link cable for me?
+2019-10-07 19:36:47 <kmc> you know maybe I think life is good and fine
+2019-10-07 19:36:55 <Hooloovo0> no :(
+2019-10-07 19:38:16 <Hooloovo0> also yes
+2019-10-07 19:39:24 <Hooloovo0> wait I might actually have one, but if I do, it's in my storage unit
+2019-10-07 19:39:31 <kmc> ok
+2019-10-07 19:39:34 <kmc> i bet it wouldn't cost much to buy one
+2019-10-07 19:39:53 <Hooloovo0> I think they got significantly cheaper since TI did away with the link port on the CE
+2019-10-07 19:40:39 <kmc> I had a grey cable back in the day because it meant I could plug a modem into my 83+
+2019-10-07 19:40:43 <kmc> including the wireless ricochet modem
+2019-10-07 19:40:45 <kmc> that was really fun
+2019-10-07 19:40:54 <kmc> i did IRC from it a little
+2019-10-07 19:40:59 <b_jonas> wow
+2019-10-07 19:42:22 <Hooloovo0> wait, how? I'm not aware of any tcp clients for z80 at all
+2019-10-07 19:42:56 <Hooloovo0> I guess if you could dial into some computer that can do IRC then that would work
+2019-10-07 19:44:17 <kmc> not TCP
+2019-10-07 19:44:19 <Hooloovo0> but yeah, the graylink is a lot of fun
+2019-10-07 19:44:20 <kmc> just a serial console
+2019-10-07 19:44:23 <kmc> yep
+2019-10-07 19:44:56 <kmc> Ricochet was a pre-wifi, pre-affordable-cell-data metro area networking service
+2019-10-07 19:45:11 <b_jonas> strange
+2019-10-07 19:45:16 <kmc> on 900 MHz
+2019-10-07 19:45:25 <kmc> they had their own 'fast' protocol with the host but you could also put it into a Hayes AT compatible mode and dial direct between modems, which was good because the service went out of business and you could buy them for cheap
+2019-10-07 19:45:43 <kmc> so I had one in the basement connected to my OpenBSD server and I could 'dial' it from my bedroom using the 83+ and a big pile of cable adapters
+2019-10-07 19:46:09 <kmc> one fun-evil thing would be to put a little wireles module (maybe one of the nRF serial ones) in a TI-* case
+2019-10-07 19:46:10 <Hooloovo0> that's awesome
+2019-10-07 19:46:14 <kmc> so you could message people while taking an exam
+2019-10-07 19:46:30 <kmc> I thought about this kind of stuff for fun but of course I didn't need to cheat to get a great SAT score :P
+2019-10-07 19:46:52 <kmc> i'm not sure but I bet I also had the 83+ hooked up to an actual phone line modem at some point
+2019-10-07 19:47:05 <b_jonas> so? there are still others who need to cheat to get a great SAT score and who may have bought your service
+2019-10-07 19:47:32 <kmc> i was lawful good back then
+2019-10-07 19:47:35 <kmc> now i'm chaotic good
+2019-10-07 19:47:37 <Hooloovo0> I wrote a shitty IRC client for the 92+ based on  https://www.ticalc.org/archives/files/fileinfo/160/16061.html
+2019-10-07 19:47:46 <Hooloovo0> used it for a conference badge
+2019-10-07 19:47:48 <kmc> nice
+2019-10-07 19:47:52 <kmc> what hardware did you use for that
+2019-10-07 19:48:10 <Hooloovo0> just a graylink, and a laptop acting as a slip gateway
+2019-10-07 19:48:22 <kmc> ok cool
+2019-10-07 19:48:26 <Hooloovo0> and same re: not needing to cheat
+2019-10-07 19:48:52 <Hooloovo0> I think during the con I had a laptop without real serial ports so there was a usb adapter in there
+2019-10-07 19:49:23 <Hooloovo0> I could actually set it up with a modem, now that I have a phone line set up
+2019-10-07 19:49:38 <Hooloovo0> s/line/system/
+2019-10-07 19:50:44 <Hooloovo0> the graylink is only half duplex, though.... so collisions have to be dealt with in software... and that's problematic
+2019-10-07 19:51:22 <b_jonas> Hooloovo0: collisions? not a protocol for switching direction?
+2019-10-07 19:54:14 <Hooloovo0> no, TI's link protocol just... doesn't really handle that
+2019-10-07 19:56:27 <Hooloovo0> and the ip-over-serial protocol assumes that collisions can't happen
