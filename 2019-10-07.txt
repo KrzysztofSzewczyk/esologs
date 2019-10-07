@@ -19,3 +19,24 @@
 2019-10-07 00:43:27 Joined: oerjan
 2019-10-07 00:43:27 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
 2019-10-07 00:47:36 <zzo38> Now I added a export command into bystand, to export articles to mbox format. (Currently, there is no import, though.)
+2019-10-07 01:07:36 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-10-07 01:07:36 <oerjan> <b_jonas> what makes it strange is how new contributors test the code in all those weird languages <-- i think at this point only stasoid knows how to do it :P
+2019-10-07 01:07:53 <oerjan> and presumably has a fully scripted setup for it
+2019-10-07 01:15:25 <zzo38> pikhq: I think computer monitors have lower delay than LCD TV sets. So, if you have a game console system, connect it to a computer monitor rather than using the TV set.
+2019-10-07 01:15:44 <zzo38> (If they have a compatible connection)
+2019-10-07 01:15:47 <pikhq> It actually depends on both the TV and the monitor.
+2019-10-07 01:16:10 <pikhq> Some TVs are quite low-delay, some monitors are quite high.
+2019-10-07 01:16:31 <pikhq> Though for older consoles the worst case is when you're feeding an interlaced signal in.
+2019-10-07 01:16:44 <pikhq> Then, a TV will usually try to do a smart deinterlacing algorithm.
+2019-10-07 01:16:55 <pikhq> Which is reasonable for generic video content, as that'll look better.
+2019-10-07 01:17:17 <pikhq> But for games, latency is generally so important you'd rather deal with a bad deinterlace, like bob deinterlacing, just to not have the extra delay.
+2019-10-07 01:18:24 <zzo38> Do some TV sets have a option to change the deinterlacing algorithm?
+2019-10-07 01:20:58 <zzo38> Some old systems such as Famicom will output 240p, but apparently some newer TV sets won't understand a 240p signal
+2019-10-07 01:23:35 <esowiki> 14[[07User talk:Moon14]]4 10 02https://esolangs.org/w/index.php?diff=66540&oldid=53830 5* 03Ais523 5* (+345) 10/* Template:Codebox */ new section
+2019-10-07 01:23:53 <pikhq> Some TVs do. There are also third-party devices, like the Retrotink 2x, that will do the ADC and deinterlacing themselves, and send a digital signal over HDMI.
+2019-10-07 01:23:55 <esowiki> 14[[07User talk:Moon14]]4 M10 02https://esolangs.org/w/index.php?diff=66541&oldid=66540 5* 03Ais523 5* (+0) 10unbreak link
+2019-10-07 01:24:37 Quit: imode (Ping timeout: 265 seconds)
+2019-10-07 01:24:37 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 01:28:10 <zzo38> I think that HDMI isn't very good and has a lot of problems with the design. (I think Digi-RGB is better.)
+2019-10-07 01:28:35 <pikhq> You're not wrong.
+2019-10-07 01:29:13 <pikhq> HDMI is _good enough_ for most purposes, but it's got significant problems in its design.
