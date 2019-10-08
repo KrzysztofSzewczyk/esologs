@@ -490,3 +490,50 @@
 2019-10-07 23:29:15 <kmc> I could also get a grey link for $16 which would be more versatile in some ways but a lot more bulk
 2019-10-07 23:29:28 <Hooloovo0> it's just a 92? I think you have to do hacks to get assembly working on plain 92
 2019-10-07 23:29:32 <kmc> damn
+2019-10-07 23:30:02 <kmc> yeah
+2019-10-07 23:30:04 <kmc> it's not a 92+
+2019-10-07 23:30:11 Quit: ais523 (Remote host closed the connection)
+2019-10-07 23:30:11 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-07 23:30:26 <Hooloovo0> https://www.ticalc.org/basics/calculators/ti-92.html looks like it's doable though
+2019-10-07 23:30:33 <kmc> mhm
+2019-10-07 23:30:37 <kmc> i could still have fun with basic too
+2019-10-07 23:30:44 <kmc> TI-89/92 BASIC is pretty powerful
+2019-10-07 23:30:51 <Hooloovo0> yeah, it is
+2019-10-07 23:31:00 <kmc> and pretty fast if you take good advantage of the built-in capabilities
+2019-10-07 23:31:36 <Hooloovo0> I'm a lot less familiar with 68k basic than z80 basic
+2019-10-07 23:31:53 <Hooloovo0> oh, apparently there's a better way, but that page can't be fucked to describe what it is
+2019-10-07 23:33:37 <Hooloovo0> https://www.ticalc.org/pub/92/asm/shells/ that's right, fargo
+2019-10-07 23:34:11 <Hooloovo0> been a while since I've played with the plain 92
+2019-10-07 23:35:11 <kmc> does it work with tigcc?
+2019-10-07 23:35:23 <kmc> I've never actually done m68k assembly, it could be fun
+2019-10-07 23:35:37 <kmc> maybe this will get me excited about coding again
+2019-10-07 23:35:37 <kmc> who knows
+2019-10-07 23:35:40 <kmc> could happen
+2019-10-07 23:36:17 <Hooloovo0> gcc4ti is the 'new' thing
+2019-10-07 23:37:04 <Hooloovo0> but yes, it should be supported
+2019-10-07 23:40:35 <fizzie> Our (high) school was all TI-85/86 when I went through it. I think the 85 you had to trick to write assembly, but the 86 did it natively.
+2019-10-07 23:41:17 <kmc> we had mostly 83+ and 89
+2019-10-07 23:41:24 <kmc> the 89 was a lifesaver for calc and physics
+2019-10-07 23:41:47 <kmc> it has a decent CAS along with unit analysis
+2019-10-07 23:42:26 <fizzie> 86 didn't do algebra, but I think that was an advantage, you were allowed to use it in the exams.
+2019-10-07 23:42:27 <Hooloovo0> yeah, you had to trick the 85
+2019-10-07 23:42:37 <Hooloovo0> we were starting to get nspires when I was in HS
+2019-10-07 23:43:06 * Hooloovo0 took his TI-XXXXXXXXXXX to many an exam
+2019-10-07 23:43:15 <fizzie> I'm thinking TI-86 was about the most advanced thing you could possibly take with you in an exam. And you had to reset it.
+2019-10-07 23:43:37 <kmc> iirc the 89 was allowed on all AP math/science exams
+2019-10-07 23:43:52 <Hooloovo0> yeah
+2019-10-07 23:43:59 <Hooloovo0> I don't recall it being super useful though
+2019-10-07 23:44:04 <kmc> I had a fake reset screen app
+2019-10-07 23:44:16 <kmc> not for cheating... but because I didn't want to lose the games and stuff
+2019-10-07 23:44:25 <fizzie> I think that existed for the 86 as well.
+2019-10-07 23:44:33 <kmc> you can do it easily enough if you can run asm
+2019-10-07 23:44:39 <kmc> it's not like there's any OS that's going to stop you
+2019-10-07 23:44:50 <fizzie> Well, it could have a hardware reset switch.
+2019-10-07 23:45:18 <Hooloovo0> they do :P take out all batteries, then on+clear
+2019-10-07 23:45:27 <kmc> huh
+2019-10-07 23:45:27 <Hooloovo0> while inserting the last one
+2019-10-07 23:45:51 <fizzie> Right. I don't think anyone insisted on resetting it that thoroughly though.
+2019-10-07 23:46:17 <fizzie> I wrote a robotfindskitten port for the 86, https://zem.fi/rfk86/
+2019-10-07 23:46:36 <Hooloovo0> iirc also there's hold left and right arrows on later 84+OSs had 'hold left and right with battery insert' as 'reset for signapore'
+2019-10-07 23:47:56 <Hooloovo0> http://wikiti.brandonw.net/index.php?title=83Plus:OS:Secret_Key_Combinations
+2019-10-07 23:48:52 <Hooloovo0> hmm, that's not quite what it does, but yeah, there's all those
