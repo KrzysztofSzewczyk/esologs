@@ -297,3 +297,72 @@
 2019-10-08 11:27:36 Quit: HackEso (Remote host closed the connection)
 2019-10-08 11:27:36 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill, zzo38
 2019-10-08 11:29:53 <fizzie> Hm, well, I don't think multibot actually does passwords. I'll hack that in.
+2019-10-08 11:30:52 <wib_jonas> fizzie: there are at least three ways to log in: (1) with PASSWD, (2) with NICKSERV ID , (3) with the CTCP extension. I can send details if you want later about how the CTCP thing works.
+2019-10-08 11:31:10 <wib_jonas> each one sends password as cleartext, but that can be inside an ssl/tls connection in either case
+2019-10-08 11:32:25 <fizzie> I think that should maybe do it.
+2019-10-08 11:32:37 Joined: HackEso
+2019-10-08 11:32:37 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill, zzo38
+2019-10-08 11:32:48 <fizzie> Yes, that seems to have worked.
+2019-10-08 11:33:01 <wib_jonas> I have old source code that implemented the CTCP login and worked at one point, though for freenode only and errors out on any other network
+2019-10-08 11:33:35 <wib_jonas> HackEso is logged into nickserv as HackEso, or so the server claims
+2019-10-08 11:34:06 <wib_jonas> we may have to part j-bot though
+2019-10-08 11:34:16 <int-e> wib_jonas: I've heard about SASL... but CTCP?
+2019-10-08 11:34:28 <wib_jonas> int-e: sorry, it's SASL
+2019-10-08 11:34:37 <wib_jonas> I'm talking off the top of my head because I'm a towkr
+2019-10-08 11:34:42 <wib_jonas> CTCP is an unrelated thing
+2019-10-08 11:35:01 <wib_jonas> it's SASL, which has so many S and L in its name that you'd think it uses some cryptographic challenge, but it doesn't
+2019-10-08 11:35:08 <wib_jonas> rather confusing name
+2019-10-08 11:35:15 <int-e> Okay. CTCP is just a special kind of PRIVMSG so it seemed out of place.
+2019-10-08 11:35:22 <wib_jonas> it just encodes the account name and password in base64
+2019-10-08 11:35:23 <fizzie> Well, it can, right? There are SASL methods that involve crypto.
+2019-10-08 11:35:30 * int-e uses CTCP all the time!
+2019-10-08 11:35:31 <wib_jonas> FireFly: ping
+2019-10-08 11:35:47 <fizzie> Anyway, I think I'm fine with a TLS connection + PASS on connect.
+2019-10-08 11:36:15 <fizzie> (The bouncer I use for myself + for fungot does SASL.)
+2019-10-08 11:36:15 <fungot> fizzie: keep in mind, but i'm sure you can
+2019-10-08 11:36:25 <wib_jonas> FireFly: are you running j-bot? fizzie has invited Sigyn to #freenode . it's a bot ran by freenode that k-lines users who spam the channel
+2019-10-08 11:36:26 Quit: esowiki (Remote host closed the connection)
+2019-10-08 11:36:26 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill, zzo38
+2019-10-08 11:37:00 <wib_jonas> FireFly: you might need to be either careful so that j-bot doesn't trigger it, or get the channel ops to ask an exception for it, or just part j-bot from this channel while we have this state
+2019-10-08 11:37:19 <wib_jonas> I apologize, because I was the one who asked to get j-bot here, knowing that it can be spammy
+2019-10-08 11:37:37 <wib_jonas> ah yes, it may be called PASS rather than PASSWD
+2019-10-08 11:37:48 <wib_jonas> funny they abbreviate that command name, but not PRIVMSG
+2019-10-08 11:39:30 <FireFly> oh
+2019-10-08 11:39:32 <FireFly> hmmm
+2019-10-08 11:39:52 <FireFly> I think it should be fine, I'll check later
+2019-10-08 11:40:02 <FireFly> I'm familiar with Sigyn :p
+2019-10-08 11:41:09 Joined: esowiki
+2019-10-08 11:41:09 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, xylochoron[m], zemhill, zzo38
+2019-10-08 11:42:21 <fizzie> Okay, I think esowiki, fungot, HackEso, lambdabot are all registered now.
+2019-10-08 11:42:21 <fungot> fizzie: in fnord it only runs where ghc runs :)
+2019-10-08 11:42:48 <wib_jonas> ^prefixes
+2019-10-08 11:42:48 <fungot> Bot prefixes: fungot ^, HackEso `, EgoBot !, lambdabot @ or ?, thutubot +, metasepia ~, idris-bot ( , jconn ) , j-bot [ .
+2019-10-08 11:43:42 <wib_jonas> fizzie: and you mentioned zemhill_________ too
+2019-10-08 11:44:14 <fizzie> Yes, I just don't want to touch that at this point. It's used very very little.
+2019-10-08 11:44:19 <wib_jonas> yeah
+2019-10-08 11:44:37 <wib_jonas> probably for the best
+2019-10-08 11:45:43 <fizzie> So what's the normal rule for talking to Freenode ops, should I just pick a random one on the list or ask on the channel?
+2019-10-08 11:47:12 <wib_jonas> fizzie: in this case, ask Fuchs on #freenode what to do since he already answered a question
+2019-10-08 11:47:38 <wib_jonas> if it's not a secret thing, then asking on #freenode is the normal way
+2019-10-08 11:47:43 <fizzie> Right.
+2019-10-08 11:47:53 <wib_jonas> but some operatorial things shouldn't be public, in which case you have to privmsg them
+2019-10-08 11:48:05 <wib_jonas> like, if you want to mention specific details about the spammer
+2019-10-08 11:48:18 <int-e> Though the way #freenode is currently set up only staffers will see the messages anyway, I guess.
+2019-10-08 11:48:38 <int-e> (But their answers will be visible to all.)
+2019-10-08 11:48:44 <fizzie> Oh, that's interesting.
+2019-10-08 11:48:49 <wib_jonas> int-e: no, it's not on +mz right now
+2019-10-08 11:48:54 <int-e> Huh, that's false...
+2019-10-08 11:49:05 <wib_jonas> they do often switch it to +mz
+2019-10-08 11:49:06 <int-e> wib_jonas: Funny though I didn't see your question? Let me check again.
+2019-10-08 11:49:12 <int-e> wib_jonas: Or did you ask before I joined?
+2019-10-08 11:49:15 <fizzie> Right, it's that moderation thing.
+2019-10-08 11:49:20 <wib_jonas> int-e: what question?
+2019-10-08 11:49:32 <wib_jonas> question for what?
+2019-10-08 11:49:43 <int-e> wib_jonas: You asked about Sigyn on #freenode.
+2019-10-08 11:50:15 <int-e> wib_jonas: I joined around 12:58, I saw the answer around 13:19... I didn't see your question.
+2019-10-08 11:50:58 <int-e> But it didn't occur to me that it may have taken longer than 20 minutes to get it... hence my question here, now.
+2019-10-08 11:54:20 <wib_jonas> int-e: they have unidentified users quieted
+2019-10-08 11:54:30 <wib_jonas> int-e: in the mode #freenode +q $~a
+2019-10-08 11:55:00 <int-e> wib_jonas: thanks
+2019-10-08 11:55:07 <wib_jonas> there, now I'm identified, you'll see if I say anything on #freenode, but I no longer have a reason to say anything there
+2019-10-08 11:56:14 <int-e> I was mystified. I hate being mystified by technology, that's what magic is for :)
