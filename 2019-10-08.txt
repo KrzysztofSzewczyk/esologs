@@ -504,3 +504,75 @@
 2019-10-08 13:59:17 <HackEso> spore <n> stores its input in tmp/spout and displays the nth line (default first). For a version considering irc line lengths, see sport. See also `spam.
 2019-10-08 13:59:48 <wib_jonas> fizzie: for lambdabot, it probably matters less, because it has a very short message length on channels, and breaks into multiple lines for private messages
 2019-10-08 13:59:58 <wib_jonas> but for HackEso this should be changed I think
+2019-10-08 14:00:17 <wib_jonas> also now it can look at the IRC_* variables to know how long the target is
+2019-10-08 14:01:05 <wib_jonas> also, this is the sort of thing why I don't trust the HackEso scripts and just use coreutils and perl one-liners when using HackEso
+2019-10-08 14:01:49 <int-e> lambdabot's fairly conservative about IRC message lengths... I seem to recall 350 characters for privmsg?
+2019-10-08 14:02:18 <fizzie> HackEso was tuned for throughput, not reliability.
+2019-10-08 14:02:18 <wib_jonas> it gave up after two list entries above, so that should fit
+2019-10-08 14:02:34 <fizzie> I'm kind of reluctant to bother them again, after I mentioned the cloaks after the Sigyn whitelisting and they said it would've been nice to have been told about that first.
+2019-10-08 14:03:06 <wib_jonas> fizzie: sorry, I didn't know that you'd be applying for cloaks
+2019-10-08 14:03:09 <wib_jonas> I would have told otherwise
+2019-10-08 14:03:15 <fizzie> Yeah, I should've mentioned.
+2019-10-08 14:03:37 <wib_jonas> I never asked cloaks for my bots, because the hostname that they used was shorter than any cloak
+2019-10-08 14:03:57 <wib_jonas> that said, you could of course try to register the esolangs community and get shorter cloaks eventually after a year....
+2019-10-08 14:04:00 <wib_jonas> nah
+2019-10-08 14:04:01 <fizzie> I don't think it's an issue for fungot, since it's got a conservative max length too. And probably not for esowiki either, because it doesn't matter if it truncates long titles a little more.
+2019-10-08 14:04:01 User Name: fungot = fungot!~fungot@unaffiliated/fizzie/bot/fungot
+2019-10-08 14:04:01 <fungot> fizzie: let's try to factor 4 using shor's algorithm. :)... nah, just obfuscating often result in getting a scheme to play with them.)
+2019-10-08 14:04:17 <fizzie> For HackEso it's a little unfortunate.
+2019-10-08 14:04:32 <fizzie> I remember we changed the username to ~h to get a few extra characters out.
+2019-10-08 14:04:48 <wib_jonas> yes. we should golf the channel name too.
+2019-10-08 14:05:08 <wib_jonas> sadly iirc freenode doesn't allow non-ascii channel names
+2019-10-08 14:05:35 <int-e> pfffft.
+2019-10-08 14:06:08 <wib_jonas> so we can't use the four-byte channel name #ꙮ
+2019-10-08 14:06:29 <fizzie> Well, I'll look at the length situation when I get home.
+2019-10-08 14:06:35 <wib_jonas> thank you
+2019-10-08 14:07:33 <int-e> `unidecode ꙮ
+2019-10-08 14:07:33 <HackEso> ​[U+A66E CYRILLIC LETTER MULTIOCULAR O]
+2019-10-08 14:07:53 <int-e> Heh, I guessed correctly.
+2019-10-08 14:10:52 <wib_jonas> and HackEso's old hostname is pretty short too
+2019-10-08 14:11:25 <int-e> we'll cope
+2019-10-08 14:11:29 <wib_jonas> shorter than some ipv4 addresses
+2019-10-08 14:11:48 <int-e> `? oerjan
+2019-10-08 14:11:48 <HackEso> Your omnidryad saddle principal ideal golfing toe-obsessed "Darth Ook" oerjan the shifty eldrazi grinch is a punctual expert in minor compaction. Also a Groadep who minces Roald Dahl. He could never remember the word "amortized" so he put it here for convenience. His arkup-nemesis is mediawiki's default diff. He twice punned without noticing it.
+2019-10-08 14:11:50 <wib_jonas> int-e: sure, by breaking messages to more likes, causing more spam
+2019-10-08 14:12:02 <int-e> Even this quote fits. ;-)
+2019-10-08 14:12:16 <int-e> Err wisdom.
+2019-10-08 14:16:56 <wib_jonas> `? ance
+2019-10-08 14:16:57 <HackEso> Spelling of -ance/-ence words: advance, science, conference, experience, finance, insurance, licence, performance, reference, assistance, balance, defence, difference, distance, evidence, acceptance, appliance, audience, compliance, importance, influence, instance, intelligence, maintenance, preference, presence, sentence, sequence, substance, violence, absence, accordance, alliance, appearance, assurance, attendance, circumstance, clearance,
+2019-10-08 14:16:58 <wib_jonas> `? brilliant
+2019-10-08 14:16:59 <HackEso> ​04B҉ͭR̲̞Iͪ͞L̡͠L̝̊I̤ͣA̍҉N̏́T̈͡ 07̐̇ȉ̲s̉̐ 08̸̉ḷ̂i̪̱k͉ͬḛ็ 09͓̪t็ͬh̺̊e͜͢ 02͏͛B̈ͅE̳̘S̰ͤTͬͧ 06̰̕w̺̼o̷̓ŕ͂d̹̠ 13͍͑i͚̾n̺̮ 04̇͑t͗̍hͧ͌ḙ͕ 07̻͜ű̖ňͤi̴͠v̸̧ḛ͔ř̭s͍͠ẻ̗ 08͏̲a̮̺nͣ͟d̝ͨ 09̳͗i̟͘ẗ͎ 02̼̲ẘ̦i̭ͮl̢̋l̨̉ 06̺͌c̑͡h̽̀âͮn̩̈́g̫ͣe͉͒ 13ͦ̓y̙͕o̔͒u̷ͬr͂͐ 04̓͝l͙͐ȉ͕f̹́ẹ̲ 07̤̹F̌ͅÒ
+2019-10-08 14:17:00 <wib_jonas> `? zarutian
+2019-10-08 14:17:01 <HackEso> You can trust Zarutian. He fixes, as an electronics technician, banal mistakes of electronics engineers. Rather cy(ph|b)erpunkish in outlook regarding the 'Net. Knows more about ocaps than you can imagine. Possesses an Icelandic unnerver that ejects freezingly hot lava out of its business end. Bears an 'Authentic fakes provider' seal from the guild of Realers. He is also known for making rather long HackEgo wisdom entries. Take for instance t
+2019-10-08 14:17:08 <wib_jonas> HackEso says that these three are now too long
+2019-10-08 14:17:09 User Name: esowiki = esowiki!~esowiki@unaffiliated/fizzie/bot/esowiki
+2019-10-08 14:17:09 <esowiki> 14[[07Byter14]]4 M10 02https://esolangs.org/w/index.php?diff=66561&oldid=66560 5* 03PaniniTheDeveloper 5* (+0) 10
+2019-10-08 14:17:42 <wib_jonas> but the others are probably fine
+2019-10-08 14:17:57 <int-e> wib_jonas: request permission to delete that wisdom entry
+2019-10-08 14:18:06 <int-e> wib_jonas: (the br* one)
+2019-10-08 14:23:58 <wib_jonas> int-e: I'm not associated with that one
+2019-10-08 14:24:39 <wib_jonas> int-e: I suggest to also delete wisdom/$'\xCC\x9A\xCC\x82'*
+2019-10-08 14:24:51 <wib_jonas> but you may want to check the hg history first
+2019-10-08 14:25:04 <wib_jonas> the longest potentially valuable wisdom is welcome.ru
+2019-10-08 14:25:10 <wib_jonas> `? welcome.ru
+2019-10-08 14:25:11 <HackEso> ​Добро пожаловать в Международный центр по разработке и внедрению языков эзотерического программирования! Для получения дополнительной информации посетите wiki: <https://esolangs.org/>. (Для другого типа эзотеризма попробуйте #esoteric в EFnet или DALnet.)
+2019-10-08 14:25:38 <int-e> `forget brilliant
+2019-10-08 14:25:39 <HackEso> Forget what?
+2019-10-08 14:25:57 <wib_jonas> I think with a 16-byte nickname, welcome.ru might just about fit in the output
+2019-10-08 14:26:25 <wib_jonas> `добро-пожаловать zemhill_________
+2019-10-08 14:26:26 <HackEso> zemhill_________: Добро пожаловать в Международный центр по разработке и внедрению языков эзотерического программирования! Для получения дополнительной информации посетите wiki: <https://esolangs.org/>. (Для другого типа эзотеризма попробуйте #esoteric в EFnet или DALnet.
+2019-10-08 14:26:35 <wib_jonas> `добро-пожаловать 1zemhill_________
+2019-10-08 14:26:36 <HackEso> 1zemhill_________: Добро пожаловать в Международный центр по разработке и внедрению языков эзотерического программирования! Для получения дополнительной информации посетите wiki: <https://esolangs.org/>. (Для другого типа эзотеризма попробуйте #esoteric в EFnet или DALnet
+2019-10-08 14:26:39 <wib_jonas> yep
+2019-10-08 14:26:46 <wib_jonas> exact length
+2019-10-08 14:26:50 <wib_jonas> we don't have to change that one
+2019-10-08 14:26:53 <wib_jonas> or...
+2019-10-08 14:26:54 <wib_jonas> wait,
+2019-10-08 14:27:32 <wib_jonas> does this web client enable that obsolete extension that adds a one character prefix to messages telling whether the user is logged in to nickserv?
+2019-10-08 14:27:49 <wib_jonas> some versions of xchat enables them, and then you get one fewer bytes of space
+2019-10-08 14:28:51 <fizzie> Maybe. Both the zemhill_________ and 1zemhill_________ ones fit in here.
+2019-10-08 14:29:04 <fizzie> Oh, no, it didn't, I'm just blind.
+2019-10-08 14:29:18 <fizzie> The latter cut off the ). So either the web client doesn't, or this client does.
+2019-10-08 14:29:52 <wib_jonas> the web client cust off the one with 1zemhill*, but that's an overlong nickname
+2019-10-08 14:29:55 <wib_jonas> `q 729
+2019-10-08 14:29:56 <HackEso> 729) <fungot> itidus21: hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, h
