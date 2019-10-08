@@ -428,3 +428,79 @@
 2019-10-08 13:29:41 <int-e> Does fungot know any puns?
 2019-10-08 13:29:42 <fungot> int-e: i think that's an ( invalid) octal number.
 2019-10-08 13:29:45 <arseniiv> int-e: maybe
+2019-10-08 13:30:38 <arseniiv> fungot: may I impersonate you for a while, and if so, how could I achieve that?
+2019-10-08 13:30:39 <fungot> arseniiv: and they are slow and cost 25 cent in euros, no matter
+2019-10-08 13:30:55 <wib_jonas> int-e: look through the quotes file, it may have some puns that he committed
+2019-10-08 13:31:09 <int-e> `' fungot
+2019-10-08 13:31:09 <fungot> int-e: to fnord? that's scary stuff!
+2019-10-08 13:31:10 <HackEso> 10) <fungot> GregorR-L: i bet only you can prevent forest fires. basically, you know. \ 13) <fizzie after embedding some of his department research into fungot> Finally I have found some actually useful purpose for it. \ 14) <fungot> oerjan: are you a man, if there weren't evil in this kingdom to you! you shall find bekkler! executing program. please let me go... put me out! he's really a tricycle! pass him! \ 56) <fungot> i am sad ( of course by analogy)
+2019-10-08 13:31:11 <arseniiv> ah! it’s a robbery, I can’t afford those prices
+2019-10-08 13:31:19 <wib_jonas> ^ul (arseniiv: dimension error)
+2019-10-08 13:31:26 <wib_jonas> ^ul (arseniiv: dimension error)S
+2019-10-08 13:31:26 <fungot> arseniiv: dimension error
+2019-10-08 13:32:17 <int-e> fizzie: ^^ there's a business model for you.
+2019-10-08 13:32:53 <arseniiv> wib_jonas: this works but I would be caught when writing that in chat
+2019-10-08 13:33:12 <wib_jonas> wait, do we really have 102 fungot quotes?
+2019-10-08 13:33:12 <fungot> wib_jonas: you did some design decisions seemed silly to do a program, though. that means i can have some data carried along with it
+2019-10-08 13:33:18 <arseniiv> I want to do that secretly. Or, should I say, I definitely don’t want that
+2019-10-08 13:33:55 <int-e> wib_jonas: Well, fungot never sleeps.
+2019-10-08 13:33:59 <arseniiv> fungot has their own secret business too
+2019-10-08 13:34:00 <fungot> arseniiv: ah. so nothing i can do: ' fnord' peers.) ( all it's missing after that will immediately be allocated on the pinned heap?
+2019-10-08 13:34:28 <arseniiv> allocates and deallocates things and doesn’t say anyone where and why
+2019-10-08 13:34:33 <wib_jonas> arseniiv: I think buubot2 had such functionality, but buubot3 doesn't have it, perhaps because it's so easy to abuse
+2019-10-08 13:35:34 <arseniiv> I should write a useful bot and get a trust of #esoteric with it and then…
+2019-10-08 13:37:11 <wib_jonas> arseniiv: you can try running commands in HackEso/j-bot/lambdabot/fungоt that take some time to run, like up to ten seconds or whatever the timeout is, then if there's a lot of other chat, perhaps people will miss your command.
+2019-10-08 13:37:12 <int-e> @metar lowi
+2019-10-08 13:37:13 <lambdabot> LOWI 081320Z 28005KT 250V320 9999 FEW070 SCT100 14/06 Q1014 NOSIG
+2019-10-08 13:37:32 <int-e> . o O ( winter is coming )
+2019-10-08 13:37:33 <wib_jonas> arseniiv: it's the easiest with HackEso, since on a timeout, it just prints the output so far with no error message
+2019-10-08 13:37:53 <wib_jonas> `perl -efor(1..999){sleep 1;print("$_ ")}
+2019-10-08 13:38:11 <arseniiv> wib_jonas: then if there's a lot of other chat, perhaps people will miss your command. => hmmmmn I have doubts
+2019-10-08 13:38:23 <HackEso> No output.
+2019-10-08 13:38:28 <wib_jonas> arseniiv: HackEso is also pretty programmable, so you can make it give surprising results that seem unconnected to your query
+2019-10-08 13:38:31 <wib_jonas> hmm
+2019-10-08 13:38:42 <wib_jonas> `perl -efor(1..999){sleep 1;print("$_ ");flush STDOUT}
+2019-10-08 13:38:49 <arseniiv> hm
+2019-10-08 13:39:13 <HackEso> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+2019-10-08 13:39:18 <arseniiv> fungot: let’s eat something
+2019-10-08 13:39:19 <fungot> arseniiv: is that not many people have understanding the concept. on fnord, and so
+2019-10-08 13:40:06 <wib_jonas> lambdabot and j-bot support assignments too, so you can just make any variable or function have an unexpected value, and in j-bot, you can even change values from private message if you know the right incantations, but the drawback is that j-bot and lambdabot always mentions the nick of whoever they reply to
+2019-10-08 13:40:24 <wib_jonas> no wait
+2019-10-08 13:40:28 <wib_jonas> lambdabot doesn't
+2019-10-08 13:40:34 <wib_jonas> and you can give assignments in private message
+2019-10-08 13:42:06 <wib_jonas> but it's not easy in either j-bot or lambdabot to redefine builtins
+2019-10-08 13:42:14 <wib_jonas> eg. it's not easy to make them say that 2+2 is 5
+2019-10-08 13:42:16 <wib_jonas> > 2+2
+2019-10-08 13:42:18 <lambdabot> 4
+2019-10-08 13:42:20 <wib_jonas> [ 2+2
+2019-10-08 13:42:21 <j-bot> wib_jonas: 4
+2019-10-08 13:42:50 <wib_jonas> if you try to redefine (+), you just get a message about how it's ambiguous with Prelude.(+)
+2019-10-08 13:43:44 <wib_jonas> iirc rust works more sanely, because wildcard imports (like how you import every symbol that Prelude exports) can be shadowed by a symbol that is either local to a package or imported by name
+2019-10-08 13:49:39 <wib_jonas> > maр (10*) [3,1,4,1,5,9,2] -- arseniiv
+2019-10-08 13:49:40 <lambdabot> [30,10, Ok, this is getting boring
+2019-10-08 13:50:00 <wib_jonas> you can try to cheat that way
+2019-10-08 13:50:58 <arseniiv> hee
+2019-10-08 13:51:27 Quit: fungot (Changing host)
+2019-10-08 13:51:27 Joined: fungot
+2019-10-08 13:52:17 Quit: HackEso (Changing host)
+2019-10-08 13:52:17 Joined: HackEso
+2019-10-08 13:52:58 Quit: esowiki (Changing host)
+2019-10-08 13:52:58 Joined: esowiki
+2019-10-08 13:53:18 <wib_jonas> there's one way that buubot3 lets you cheat: while it's running the eval command (which evaluates a perl statement) in a sandbox, it's running all of them in the same sandbox, so if more than one buubot command is simultaneously running an eval, than one can kill, or perhaps even ptrace, the other
+2019-10-08 13:53:32 <wib_jonas> ptrace may be impossible, but I experimented with killing a lot
+2019-10-08 13:54:40 <wib_jonas> fizzie: no! don't add cloaks. they're usually longer than an ordinary hostname, so the max response length that they can give gets shorter
+2019-10-08 13:55:02 <wib_jonas> fizzie: or if you do give them cloaks, then make sure to edit the spore or similar commands in HackEso to know about the new max message length
+2019-10-08 13:58:28 <wib_jonas> ``` perl -e'for$n(0..49){printf"%02d",$n;for$l("A".."Z"){print $l,lc($l)}}' | sport
+2019-10-08 13:58:29 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2019-10-08 13:58:29 <HackEso> 1/6:00AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz01AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz02AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz03AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz04AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz05AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz06AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz07AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz08AaBbCcDd
+2019-10-08 13:58:30 <wib_jonas> `n
+2019-10-08 13:58:31 <HackEso> 2/6:kLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz09AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz10AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz11AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz12AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz13AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz14AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz15AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz16AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoP
+2019-10-08 13:58:55 <wib_jonas> fizzie: ^ see, sport skipped some letters between 08 and 09 there
+2019-10-08 13:58:56 <fizzie> wib_jonas: Kind of too late now, didn't think of that. :/
+2019-10-08 13:59:04 <myname> wtf does sport do
+2019-10-08 13:59:14 <wib_jonas> `? sport
+2019-10-08 13:59:16 <HackEso> sport <n> divides its input into irc-sized pieces and displays the nth (default first). The pipe version of `1. See also spore.
+2019-10-08 13:59:16 <wib_jonas> `? spore
+2019-10-08 13:59:17 <HackEso> spore <n> stores its input in tmp/spout and displays the nth line (default first). For a version considering irc line lengths, see sport. See also `spam.
+2019-10-08 13:59:48 <wib_jonas> fizzie: for lambdabot, it probably matters less, because it has a very short message length on channels, and breaks into multiple lines for private messages
+2019-10-08 13:59:58 <wib_jonas> but for HackEso this should be changed I think
