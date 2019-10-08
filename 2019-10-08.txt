@@ -6,3 +6,60 @@
 2019-10-08 00:21:59 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
 2019-10-08 00:26:59 Quit: tromp (Ping timeout: 276 seconds)
 2019-10-08 00:26:59 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-08 00:36:55 Joined: ais523
+2019-10-08 00:36:55 Names: \oren\, ^[, ais523, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill, zzo38
+2019-10-08 00:38:02 User Name: ais523 = ais523_!93bcc3da@gateway/web/cgi-irc/kiwiirc.com/ip.147.188.195.218
+2019-10-08 00:38:02 <ais523> <Hooloovo0> the problem is that it used flow control pins as data pins... which if you have a real serial port, that's fine ← if you're doing that, it isn't a serial port, it's a parallel port
+2019-10-08 00:40:32 <kmc> ais523_: well, except that the actual TI protocol is serial, isn't it
+2019-10-08 00:40:34 <kmc> clock + data?
+2019-10-08 00:41:04 <ais523> I guess you could use the flow control pins as data pins, but not the actual data pins, but that seems perverse
+2019-10-08 00:41:22 <ais523> if you're using two different pins to send data simultaneously, though, it isn't a serial connection by definition :-)
+2019-10-08 00:41:38 <imode> bits go one at a time down a single wire.
+2019-10-08 00:41:46 <kmc> so it's using a "serial port" (as in 8250 compatible UART on a PC) in the common manner of a parallel port (GPIO bitbang) to implement a serial protocol :P
+2019-10-08 00:42:09 <kmc> ais523_: SPI is clock + bidirectional data, 3 pins (4 including a chip select) and that's universally considered serial
+2019-10-08 00:42:39 <kmc> Hooloovo0: btw the PIClink here seems to be an example of what I was saying re: programming a micro to act like a grey link http://merthsoft.com/linkguide/cable.html
+2019-10-08 00:44:29 <kmc> anyway i'm not clear on what the hardware level link protocol is
+2019-10-08 00:44:44 <fizzie> The TI link protocol is pretty special.
+2019-10-08 00:44:50 <fizzie> It's an async thing.
+2019-10-08 00:46:24 <fizzie> When you want to send a bit, you pull one wire to zero, and the receiving end acknowledges by pulling the other wire to zero.
+2019-10-08 00:46:36 <fizzie> Which wire you pull determines if it was a 0 or a 1 bit.
+2019-10-08 00:46:51 <fizzie> So there's no clock involved, it runs at whatever speed it runs.
+2019-10-08 00:47:11 <fizzie> Disclaimer: all I know about this probably came from http://paperlined.org/EE/microcontrollers/pic/projects/portable_VT_terminal/ti_86_link_port/link86all.htm -- at least that page looks familiar.
+2019-10-08 00:47:35 <ais523> <kmc> ais523_: SPI is clock + bidirectional data, 3 pins (4 including a chip select) and that's universally considered serial ← sorry, should have added "in the same direction" to that
+2019-10-08 00:47:55 <kmc> fizzie: huh, weird.
+2019-10-08 00:48:09 <kmc> cool, this has the info I was looking for
+2019-10-08 00:48:36 <fizzie> kmc: Well, it does let you do it all in software on CPUs that might run at rather uncontrolled speeds, without having to have an UART or whatnot.
+2019-10-08 00:51:03 <kmc> yeah
+2019-10-08 00:51:07 <ais523> hmm, that's an interesting way to fit the normal three wires that an async connection uses (data + strobe + ack) into two, although they both have to be drivable from both ends
+2019-10-08 00:51:07 <kmc> it seems pretty clever
+2019-10-08 00:51:18 <kmc> it also allows you to immediately tell if the other side is present
+2019-10-08 00:51:50 <ais523> I assume that after sending a bit, then the sender undoes their pull, then the recipient undoes their pull, to keep the connection as delay-insensitive
+2019-10-08 00:52:12 <kmc> so i would say this is still serial because it transfers one bit of information at a time, even though it uses two wires to do it
+2019-10-08 00:52:17 * kmc shrugs
+2019-10-08 00:52:35 <kmc> and yeah, it seems this allows the receiving end to slow down the sender when necessary
+2019-10-08 00:52:55 <kmc> effectively negotiating a baud rate which is the slower of what the two sides want
+2019-10-08 00:52:59 <kmc> it's actually very clever
+2019-10-08 00:53:07 <kmc> I might even use this sometime in one of my own projects
+2019-10-08 00:53:25 <kmc> I have used Manchester code for something
+2019-10-08 00:53:54 <ais523> throughout my PhD I was working on a compiler to hardware which uses a delay-insensitive representation internally for most of the compilation process
+2019-10-08 00:54:05 <kmc> which is synchronous, so the bit times have to be roughly the same, but it has clock recovery so no precise absolute frequency reference is required
+2019-10-08 00:54:12 <ais523> (for much the same reason that compilers to software use SSA or similar normal forms; you don't want to care about timing details until the compilation is finished)
+2019-10-08 00:54:17 <kmc> makes sense
+2019-10-08 00:54:32 <ais523> so I ended up doing a lot of background reading on asynchronous circuitry
+2019-10-08 00:55:08 <imode> there's a "bible" for asynchronous circuit design.
+2019-10-08 00:55:09 <ais523> you nearly always need a separate wire for 0 bits and for 1 bits because you assume that the recipient can't tell which of two wires changed first
+2019-10-08 00:55:26 <ais523> but normally, the acknowledgement would be on a third wire
+2019-10-08 00:55:27 <imode> asynchronous pipelines are neat. I built one.
+2019-10-08 00:55:54 <ais523> a big advantage of doing things that way is that you don't need to reset the logic levels after sending a bit, you just toggle the 0 wire or the 1 wire to send the bit
+2019-10-08 00:56:01 <ais523> and the recipient toggles the ack wire to acknowledge
+2019-10-08 00:56:23 <kmc> this also reminds me of CAN a bit
+2019-10-08 00:56:25 <imode> https://hatebin.com/huuywfgrqq save this as "pipeline.circ" and open it in http://www.cburch.com/logisim/
+2019-10-08 00:56:25 <ais523> imode: is this the famous "micropipelines" paper?
+2019-10-08 00:56:32 <kmc> it's open-collector and it has clock stretching sort of
+2019-10-08 00:56:40 <imode> ais523_: sutherland? partially. there was a larger book.
+2019-10-08 00:56:48 <ais523> the funny thing is, one of the references in that paper is dubious, and people keep copying it into their own reference lists without actually chasing the reference
+2019-10-08 00:57:01 <imode> http://www2.imm.dtu.dk/pubdb/views/edoc_download.php/855/pdf/imm855.pdf this thing.
+2019-10-08 00:57:04 <ais523> meaning that you have this book that's highly cited but almost nobody has actually read
+2019-10-08 00:57:17 <imode> not surprised.
+2019-10-08 00:57:51 <ais523> (the book was basically just being used as a surrogate source for a particular statement because the original source would have been very hard to get hold of at the time; however, the original source for the statement has since been digitised so it's much easier to find)
+2019-10-08 00:58:35 <ais523> (and it's basically just a throwaway line in the book, rather than giving any additional context)
