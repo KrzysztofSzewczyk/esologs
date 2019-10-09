@@ -135,3 +135,23 @@
 2019-10-09 03:53:58 <int-e> `grwp laz
 2019-10-09 03:53:59 <HackEso> angband:Angband is Morgoth's second dungeon (the first was Utumno). When the greater and lesser people of Middle-Earth together defeated Morgoth in Angband, they were too lazy to go to for 100% completion, so some evil spirits in Angband survived for a sequel, and Morgoth himself recovered and arrived to Numenor. \ kanada:Your bankers' vain plazas never nurtured no one / And your concrete expanses lay fallow in the sun / And your cities all c
 2019-10-09 03:54:13 <int-e> plaza. of course.
+2019-10-09 04:04:37 <shachaf> Do you like conflict-driven clause learning?
+2019-10-09 04:05:18 <int-e> shachaf: See the logs.
+2019-10-09 04:07:49 <shachaf> Is picking out the next variable to branch on one of the trickiest things in SAT solvers?
+2019-10-09 04:08:03 <shachaf> Or is a rough heuristic about as good as a complicated one?
+2019-10-09 04:13:28 <int-e> It's all heuristics. Selecting variables to branch on, when to restart, when to forget learned clauses, which clauses to learn in the first place, splitting clauses into hot and cold clauses of some sort for better locality...
+2019-10-09 04:13:45 <int-e> Using lookahead for early branches, blah blah.
+2019-10-09 04:16:05 <int-e> Oh, polarity of variables is in there as well (when you branch, do you try false or true first?)
+2019-10-09 04:16:15 <pikhq> It is kinda weird now seeing the nick "elliott" in quotes.
+2019-10-09 04:17:31 <int-e> `quote pikhq
+2019-10-09 04:17:31 <HackEso> 11) <pikhq> First, invent the direct mind-computer interface.  <pikhq> Second, you know the rest. \ 12) IN AN ALTERNATE UNIVERSE: <pikhq> First, invent the direct mind-computer interface.  <pikhq> Second, learn the rest with your NEW MIND-COMPUTER INTERFACE. \ 25) <ehird> pikhq: A lunar nation is totally pointless.  <fungebob> ehird: consider low-gravity porn  <ehird> fungebob: OK. Now I'm convinced. \ 82) <Gregor> Well yeah, but furthermore
+2019-10-09 04:18:10 <pikhq> :)
+2019-10-09 04:18:45 <int-e> is fungebob a precursor of fungot?
+2019-10-09 04:19:15 <pikhq> Nah, I think fungot had a different nick briefly.
+2019-10-09 04:19:15 <fungot> pikhq: i almost got a bf interpreter. i'm not into guis at all."
+2019-10-09 04:20:24 <Hooloovo0> `quote fungebob
+2019-10-09 04:20:25 <HackEso> 25) <ehird> pikhq: A lunar nation is totally pointless.  <fungebob> ehird: consider low-gravity porn  <ehird> fungebob: OK. Now I'm convinced.
+2019-10-09 04:21:11 <Hooloovo0> sure, I guess
+2019-10-09 04:21:20 <Hooloovo0> `quote fungot
+2019-10-09 04:21:20 <fungot> Hooloovo0: no no no no no. well ok, perhaps that ruined my experience :) just saying that
+2019-10-09 04:21:21 <HackEso> 10) <fungot> GregorR-L: i bet only you can prevent forest fires. basically, you know. \ 13) <fizzie after embedding some of his department research into fungot> Finally I have found some actually useful purpose for it. \ 14) <fungot> oerjan: are you a man, if there weren't evil in this kingdom to you! you shall find bekkler! executing program. please let me go... put me out! he's really a tricycle! pass him! \ 56) <fungot> i am sad ( of cours
