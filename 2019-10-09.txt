@@ -78,3 +78,60 @@
 2019-10-09 03:28:56 <oerjan> hm
 2019-10-09 03:29:47 <oerjan> i'm sort of wonder if that discord esolang channel has more users than this channel, i've never used it
 2019-10-09 03:29:50 <oerjan> *wondering
+2019-10-09 03:30:16 <ais523> there are a surprisingly large number of people who refuse to use Discord on principle, I'm one of them
+2019-10-09 03:30:30 <ais523> however I am generally OK with bridging bots that connect IRC and Discord channels together
+2019-10-09 03:31:06 <oerjan> CGCC had an ad to the wiki but it no longer does, so i'm not sure where they're still coming from :P
+2019-10-09 03:31:23 <ais523> perhaps next year we should try to bring that ad back
+2019-10-09 03:31:26 <ais523> it was a good ad
+2019-10-09 03:31:45 User Name: int-e = int-e!~noone@int-e.eu
+2019-10-09 03:31:45 <int-e> oerjan: Sorry, all the tentacles and other appendices exceeded my pain threshold.
+2019-10-09 03:31:46 <ais523> that said, it'd be nice to make the wiki more non-esoprogrammer-friendly before that
+2019-10-09 03:31:59 <ais523> (in particular, some way to find which languages were actually good, more content on the relevant pages, etc.)
+2019-10-09 03:32:11 <ais523> the issue being that nobody seems to have the spare time and motivation to put in the work
+2019-10-09 03:32:18 <oerjan> `zalgo i can't imagine what you mean
+2019-10-09 03:32:19 <HackEso> i̲͊ ̡̣c̖̞aͤ͘n̮̉'̹̥t͕͏ ̺̬i̘͐m̠̈́a̼̫g̼̒i͚̒n͐̂e̡͇ ̠͂w̟̔ẖ͉á̷t̼ͩ ̓̾y̑ͪo̖ͦuͣ̒ ̒͗m͑̀e̩̱a̗̹n̟̘
+2019-10-09 03:32:33 <int-e> argh
+2019-10-09 03:32:57 <oerjan> . o O ( i've found int-e's secret weakness MWAHAHAHA )
+2019-10-09 03:33:16 <int-e> This is worse than fn*rds.
+2019-10-09 03:33:21 User Name: imode = imode!~linear@unaffiliated/imode
+2019-10-09 03:33:21 <imode> fnords
+2019-10-09 03:33:33 <shachaf> oerjan: Remember when some unknown set of Unicode characters would mess up my terminal?
+2019-10-09 03:33:36 <shachaf> Good times.
+2019-10-09 03:33:48 <oerjan> fungot: do you know anything about those?
+2019-10-09 03:33:48 <fungot> oerjan: i was busy because of homeworks and projects and so on
+2019-10-09 03:33:57 <oerjan> apparently not
+2019-10-09 03:35:54 <int-e> `? zalgo
+2019-10-09 03:35:55 <HackEso> zalgo? ¯\(°​_o)/¯
+2019-10-09 03:36:33 <int-e> `le/rn zalgo//The `zalgo` command turns perfectly good text into toxic waste. It violates a multitude of UN conventions.
+2019-10-09 03:36:35 <HackEso> Learned 'zalgo': The `zalgo` command turns perfectly good text into toxic waste. It violates a multitude of UN conventions.
+2019-10-09 03:37:02 Quit: Phantom_Hoover (Read error: Connection reset by peer)
+2019-10-09 03:37:02 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-09 03:38:34 <int-e> `slwd zalgo//s/UN/UN(icode)/
+2019-10-09 03:38:36 <HackEso> zalgo//The `zalgo` command turns perfectly good text into toxic waste. It violates a multitude of UN(icode) conventions.
+2019-10-09 03:39:06 <int-e> what was the sed-last command again btw?
+2019-10-09 03:40:50 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2019-10-09 03:40:50 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-09 03:40:55 Joined: Lord_of_Life
+2019-10-09 03:40:55 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, stux|away, Taneb, trn, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-09 03:42:19 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-10-09 03:42:35 <oerjan> `` echo bin/sedlast
+2019-10-09 03:42:36 <HackEso> bin/sedlast
+2019-10-09 03:42:43 <oerjan> um wait
+2019-10-09 03:42:49 <oerjan> `` echo bin/*last
+2019-10-09 03:42:50 <HackEso> bin/sedlast
+2019-10-09 03:43:04 <oerjan> well it was right, anyway
+2019-10-09 03:43:24 <int-e> wow, a logically named command
+2019-10-09 03:43:31 <int-e> no wonder I didn't find it
+2019-10-09 03:44:28 <int-e> (but tbh I was just too lazy to look... it was less mental effort to use `slwd and retype the entry name)
+2019-10-09 03:44:40 <oerjan> shocking
+2019-10-09 03:45:01 <int-e> "effort" is a bit of a joke here.
+2019-10-09 03:53:00 <int-e> `quote lazy
+2019-10-09 03:53:01 <HackEso> 601) <Vorpal> elliott: well how will you represent "The dog jumped over the lazy dog" then?
+2019-10-09 03:53:27 <int-e> `quote lazi
+2019-10-09 03:53:27 <HackEso> No output.
+2019-10-09 03:53:40 <oerjan> i guess no one bothered to add more
+2019-10-09 03:53:49 <oerjan> `wisdom laz
+2019-10-09 03:53:50 <HackEso> That's not wise.
+2019-10-09 03:53:58 <int-e> `grwp laz
+2019-10-09 03:53:59 <HackEso> angband:Angband is Morgoth's second dungeon (the first was Utumno). When the greater and lesser people of Middle-Earth together defeated Morgoth in Angband, they were too lazy to go to for 100% completion, so some evil spirits in Angband survived for a sequel, and Morgoth himself recovered and arrived to Numenor. \ kanada:Your bankers' vain plazas never nurtured no one / And your concrete expanses lay fallow in the sun / And your cities all c
+2019-10-09 03:54:13 <int-e> plaza. of course.
