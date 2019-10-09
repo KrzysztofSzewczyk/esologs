@@ -179,3 +179,92 @@
 2019-10-09 06:59:19 Joined: kritixilithos
 2019-10-09 06:59:19 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
 2019-10-09 07:00:00 <b_jonas> I prefer to spend my time writing a little documentation about languages that I find out about from outside the wiki
+2019-10-09 07:01:20 <b_jonas> to be snarky, I could say that we have about 1500 languages on the language list, of which over 200 are languages by A, plus we have like 200 joke languages, so we might start to think of a button that goes to a random non-joke non-A language
+2019-10-09 07:02:12 <b_jonas> "<shachaf> oerjan: Remember when some unknown set of Unicode characters would mess up my terminal?" => hmm, were you the one who catted irc straight into a terminal and complained when anyone typed a control-N?
+2019-10-09 07:03:53 Quit: atslash (Ping timeout: 276 seconds)
+2019-10-09 07:03:53 Names: \oren\, ^[, ais523, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, Camto[m], catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, ivzem[m], izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sleepnap, sparr, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xylochoron[m], zemhill
+2019-10-09 07:03:58 <int-e> b_jonas: ouch how close is that 200 to reality? (Re: A)
+2019-10-09 07:04:36 <shachaf> That was not me.
+2019-10-09 07:05:37 <b_jonas> int-e: it's definitely over 200. I started counting to be able to definitely say that he has comfortably more languages than ais523 now and if his motivation was to be the creator with the most esolangs then he can stop now, and yes, I could say that
+2019-10-09 07:05:39 <ais523> b_jonas: add BF derivatives in too
+2019-10-09 07:05:52 <int-e> b_jonas: that is scary.
+2019-10-09 07:06:12 <ais523> there's no real problem with creating 200 languages, the problem is with having 200 language ideas and not really fleshing out any of them
+2019-10-09 07:06:12 <b_jonas> int-e: User:A used to have a list
+2019-10-09 07:06:26 <b_jonas> ais523: yes, they're already listed on the joke page
+2019-10-09 07:06:36 <b_jonas> though there are a few interesting bf derivatives of course
+2019-10-09 07:06:58 <ais523> there are a surprising number of interesting BF derivatives, just /even more/ uninteresting BF derivatives
+2019-10-09 07:07:02 <b_jonas> yep
+2019-10-09 07:07:21 <int-e> b_jonas: I'm trying to ignore the problem. You may recall me talking about suppressing A-related esowiki messages.
+2019-10-09 07:07:25 <ais523> in general, if you have a new idea for a command to add to an imperative language, BF makes a familiar base from which to start, and the resulting language probably won't be terrible
+2019-10-09 07:07:59 <b_jonas> I've even seen at least one brainfuck derivative that makes sense to have been created as a bf derivative, as opposed to just being a cool idea that should have been turned to an esolang unrelated to bf
+2019-10-09 07:08:19 <ais523> int-e: it's important to have all the edits here so that they can be reviewed, I normally rely on the #esoteric logs to work out what admin actions I need to take (although I do check Special:RecentChanges from time to time too)
+2019-10-09 07:08:49 <int-e> ais523_: I wasn't suggesting to suppress them in general.
+2019-10-09 07:08:58 <ais523> b_jonas: SMBF, Permanent Brainfuck, DoFuck probably all fall into that category (oddly, I don't think DoFuck's on the wiki)
+2019-10-09 07:09:10 <b_jonas> DoFuck is on the wiki under another name iirc
+2019-10-09 07:09:36 <b_jonas> I'm not convinced that SMBF is even usable
+2019-10-09 07:10:01 <b_jonas> is permanent brainfuck the one where you can only change cells from 0 to 1? there's no article
+2019-10-09 07:10:03 <int-e> ais523_: What I meant is that I, personally, have a specially crafted /ignore for that purpose.
+2019-10-09 07:10:08 <ais523> in practice, it's mostly used as an efficient way to initialise the tape
+2019-10-09 07:10:24 <ais523> yes, permanent BF is 0→1 only (or sometimes, + only with bignums)
+2019-10-09 07:10:49 <ais523> there is an article but it's on a page whose intent was to centralise all the computationally interesting BF derivatives, then it didn't really get used
+2019-10-09 07:11:10 <ais523> int-e: that's entirely reasonable, in fact I probably would have suggested it if you hadn't done it already
+2019-10-09 07:12:03 <ais523> idea: merge all the BF equivalents into a single article
+2019-10-09 07:12:06 <b_jonas> there's https://esolangs.org/wiki/Treehugger which I think is computationally interesting
+2019-10-09 07:12:31 <b_jonas> ais523: there's already one that merges some of them
+2019-10-09 07:12:59 <b_jonas> or used to be one
+2019-10-09 07:13:12 <oerjan> <b_jonas> "<oerjan> ... i'm not sure where they're still coming from" => one user came to the channel and said he came from bfjoust <-- i'm not asking about the channel but about the wiki, which is presumably where they found bfjoust first
+2019-10-09 07:13:30 <b_jonas> maybe it was on a talk page?
+2019-10-09 07:13:38 <ais523> there was a BF Joust competition on CGCC
+2019-10-09 07:13:57 <ais523> (they got the idea from us but ran mostly independently; however, Lymia won it)
+2019-10-09 07:13:57 <b_jonas> oerjan: I don't know
+2019-10-09 07:15:01 <b_jonas> oerjan: there's a new user Msully4321 who came to do one constructive edit, and he says so on Introduce yourself, which is often a good motivation why people register on wikis, but they don't say how they found the wiki
+2019-10-09 07:15:51 <b_jonas> I think at least one user said that they came from the esolang discord
+2019-10-09 07:16:33 <b_jonas> do we know where kspalaiologos came from?
+2019-10-09 07:16:40 <b_jonas> the real one, not the name-taking spammer
+2019-10-09 07:17:06 <b_jonas> and one user, kmc, came from the ancient past of #esoteric by a time machine or something
+2019-10-09 07:17:59 <ais523> I came from http://99-bottles-of-beer.net/ (linked to me by email) via Malbolge and INTERCAL
+2019-10-09 07:18:42 User Name: Lymia = Lymia!lymia@magical.girl.lyrical.lymia.moe
+2019-10-09 07:18:42 <Lymia> owo
+2019-10-09 07:18:45 <b_jonas> I don't remember where I came from, possibilities are other freenode channels and via Intercal or unlambda or Piet/Chef.
+2019-10-09 07:19:05 <b_jonas> oh, as for other websites
+2019-10-09 07:19:07 <ais523> didn't you follow me from #nethack4?
+2019-10-09 07:19:49 <oerjan> i think i saw b_jonas on the iwc forum before he came here
+2019-10-09 07:20:13 <oerjan> i don't remember exactly how i came here but i was on the old esolang mailing list way back
+2019-10-09 07:20:19 <b_jonas> http://rosettacode.org/wiki/Rosetta_Code occasionally has code in esoteric languages. should we try to advertise there, from like the pages of esolangs?
+2019-10-09 07:20:34 <b_jonas> oerjan: that's possible, but I don't see how the iwc forum would direct here other than by Piet/Chef
+2019-10-09 07:21:04 <b_jonas> and I don't think Piet/Chef is discussed on the forum at all other than in one doc bug report that I posted a few months ago
+2019-10-09 07:21:54 <b_jonas> I also wrote obfuscated code in perl (and usually rather stupid ones, there's quite a few that I'm ashamed of, but there's a learning curve) so maybe someone directed me here from that
+2019-10-09 07:22:25 <Lymia> I don't even remember how I got here.
+2019-10-09 07:22:32 <b_jonas> perlmonks.com is the first website on the web where I was an active contributor
+2019-10-09 07:22:36 <b_jonas> but it was shortly followed by irc
+2019-10-09 07:22:39 <ais523> wow, I just discovered a 49333400 byte Makefile on my computer
+2019-10-09 07:22:41 <b_jonas> freenode specifically
+2019-10-09 07:22:50 <b_jonas> ouch
+2019-10-09 07:22:57 <int-e> Haha. Somebody put "(Not clickbait)" into a youtube video title...
+2019-10-09 07:23:01 <ais523> it looks like some sort of benchmark for make implementations, luckily, rather than being intended to actually generate a useful output
+2019-10-09 07:23:27 <ais523> based on the target names, I assume I wrote the script that generated it
+2019-10-09 07:23:40 <int-e> (A video that doesn't interest me but that according to youtube is "trending" whatever that means)
+2019-10-09 07:24:12 <ais523> "trending" on websites normally means that more people than predicted are visiting it, e.g. the number of views is high and increasing
+2019-10-09 07:24:16 <b_jonas> int-e: yes, that occurs in titles often
+2019-10-09 07:24:25 <ais523> (rather than being constantly popular, or just new)
+2019-10-09 07:24:26 <b_jonas> whew
+2019-10-09 07:24:36 <int-e> b_jonas: I bet I'll see it more often now that I'm on to this... uhm... trend.
+2019-10-09 07:25:34 <ais523> I wonder what proportion of those are actually clickbait
+2019-10-09 07:26:21 <b_jonas> that may depend on your definition
+2019-10-09 07:26:21 <oerjan> 97%
+2019-10-09 07:27:14 <ais523> I guess the definition of clickbait is "something which, based on the description of a link, causes someone to click the mouse more times than they would if they were correctly informed"
+2019-10-09 07:27:26 <int-e> oerjan: that sounds made up, needs more precision
+2019-10-09 07:27:29 <ais523> normally implying that you follow the link out of curiosity then dislike what's on the other end of it
+2019-10-09 07:27:40 <int-e> oerjan: 97.3211421%, now we're talking.
+2019-10-09 07:28:03 <oerjan> OKAY
+2019-10-09 07:28:14 <ais523> those things look a lot more convincing if they look like they were rounded from an actual fraction
+2019-10-09 07:28:27 <ais523> 97.3285714% or the like
+2019-10-09 07:28:44 <int-e> ais523_: I know. It was part of the joke.
+2019-10-09 07:28:47 <oerjan> > 1/7
+2019-10-09 07:28:48 <lambdabot> 0.14285714285714285
+2019-10-09 07:28:58 <b_jonas> ais523: right, and if that definition was correct then you should report every clickbait on youtube as having a misleading title or misleading thumbnail
+2019-10-09 07:29:11 <ais523> I don't have a YouTube account, so it doesn't let me report things
+2019-10-09 07:29:21 <ais523> otherwise, it seems like the sort of thing I would do :-D
+2019-10-09 07:29:41 <oerjan> ais523_: i'm not sure most people know that pattern (i only guessed)
+2019-10-09 07:29:54 <ais523> oerjan: I think more people recognise it than know it
+2019-10-09 07:30:01 <ais523> most people have seen it before even if they don't know what causes it
