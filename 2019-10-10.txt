@@ -50,3 +50,41 @@
 2019-10-10 06:57:36 <b_jonas> yeah sorry, no olist yet
 2019-10-10 06:57:48 <b_jonas> hopefully that will arrive soon too
 2019-10-10 06:58:48 <kmc> how can i get on a list
+2019-10-10 07:06:58 <oerjan> with `` echo kmc >> bin/nameoflist
+2019-10-10 07:07:29 <b_jonas> or these days, you can use `` echo $IRC_NICK >> bin/nameoflist
+2019-10-10 07:07:36 <oerjan> unless someone made a specific command, hm...
+2019-10-10 07:07:49 <oerjan> b_jonas: very convenient
+2019-10-10 07:08:47 <kmc> `` echo $IRC_NICK
+2019-10-10 07:08:47 <HackEso> kmc
+2019-10-10 07:09:01 <kmc> `` echo $IRC_NICK >> bin/pbflist
+2019-10-10 07:09:03 <HackEso> No output.
+2019-10-10 07:15:15 <b_jonas> kmc: you may also review our selection of other lists
+2019-10-10 07:15:27 <b_jonas> ``` set -e; cd bin; echo *list
+2019-10-10 07:15:28 <HackEso> FireFlist aglist bardsworthlist bobadventureslist calesyta2016list danddreclist don'taskdon'ttelllist dontaskdonttelllist ehlist emptylist erflist flist idealist ioccclist keenlist list listlist llist makelist makelistlist minimalist mlist olist pbflist slist smlist stylist testlist xkcdwhatiflist ysaclist
+2019-10-10 07:17:40 <kmc> am i supposed to run listlist when i update a list?
+2019-10-10 07:17:55 <b_jonas> ``` set -e; cd bin; wc -l *list | sort -rn | head -n9 # these are the popular ones
+2019-10-10 07:17:55 <HackEso> ​  86 total \    9 slist \    8 pbflist \    8 olist \    6 smlist \    4 xkcdwhatiflist \    4 listlist \    4 dontaskdonttelllist \    4 don'taskdon'ttelllist
+2019-10-10 07:18:07 <kmc> `` paste < bin/ioccclist
+2019-10-10 07:18:09 <HackEso> https://hack.esolangs.org/tmp/paste/paste.10575
+2019-10-10 07:18:49 <kmc> that is... a bizarre way to do that
+2019-10-10 07:18:49 <b_jonas> `? ioccclist
+2019-10-10 07:18:50 <HackEso> ioccclist is update notification for when a new year of the International Obfuscated C Code Contest is announced, or the winners for a year is announced, or the source codes of winners are released. http://www.ioccc.org/#news
+2019-10-10 07:19:42 <kmc> what the fuck is ${@:+ }$@
+2019-10-10 07:20:38 <rain2> `` echo rain2 >> bin/ioccclist
+2019-10-10 07:20:40 <HackEso> No output.
+2019-10-10 07:20:41 <rain2> `` echo rain1 >> bin/ioccclist
+2019-10-10 07:20:43 <HackEso> No output.
+2019-10-10 07:21:03 <b_jonas> kmc: prints its argument, with a colon before if it's not empty
+2019-10-10 07:21:03 <oerjan> <kmc> `` paste < bin/ioccclist <-- paste takes a filename, which has the advantage of using its url if it's exposed to web
+2019-10-10 07:21:14 <kmc> aha
+2019-10-10 07:21:37 <b_jonas> kmc: so we can invoke lists with an argument that is a url pointing to the news
+2019-10-10 07:22:06 <b_jonas> o is numbered in a regular way, so there we use a strip number instead and the olist script makes a url from that
+2019-10-10 07:22:17 <b_jonas> but for most lists we use a full url
+2019-10-10 07:25:02 <oerjan> i don't think the olist script makes a url
+2019-10-10 07:25:32 <b_jonas> hmm true, it doesn't
+2019-10-10 07:26:18 <b_jonas> s/empty/present/
+2019-10-10 07:26:36 * oerjan usually visits the archive page first, anyhow, to see the title and check if he's missed one
+2019-10-10 07:26:39 <b_jonas> or so I think
+2019-10-10 07:26:47 <b_jonas> I'm not sure how @ works in such a case really
+2019-10-10 07:27:32 <b_jonas> I usually visit the archive page to re-read the previous strip before reading the current one. I don't usually miss an o, except when on a long vacation
+2019-10-10 07:28:48 <b_jonas> these days I'm the one who first lists them half of the time
