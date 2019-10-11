@@ -231,3 +231,11 @@
 2019-10-11 21:12:36 <zzo38> (The + and & types are also immune to taking over channels, but for other reasons.)
 2019-10-11 21:24:15 <shachaf> arseniiv: Oh, now I see what you meant.
 2019-10-11 21:24:46 <arseniiv> shachaf: yeah, yesterday I completely forgot to mention this simple breaking example
+2019-10-11 21:31:52 <arseniiv> what we have instead is just some hyperplane L “inhabited by vectors” and its shift, L + a where a is nonzero, “inhabited by points”; then obviously we can’t add two points and get a point, but we can take their linear combinations with total weight 1 (and get a point) or 0 (and get a vector), and also we can apply linear operators which take L to itself, on L + a such one acts as an affine operator, and on L it does as its li
+2019-10-11 21:31:52 <arseniiv> ear part, automatically. Now we may choose a basis in L and add a to it, so elements of L get coordinates (…, 0) and elements of L + a get (…, 1), voilà!
+2019-10-11 21:34:52 <esowiki> 14[[07Rouedeux14]]4 10 02https://esolangs.org/w/index.php?diff=66625&oldid=66624 5* 03Matthew 5* (-5) 10/* Commands */
+2019-10-11 21:42:47 <arseniiv> also we can make a silly groupoid on two objects from two parallel affine subspaces, taking morphisms between them be various translations from one to the other. When the outer space has no inner product, there are no natural translations so this is naturally a groupoid and not a group
+2019-10-11 21:45:45 <arseniiv> (and these translations themselves constitute two isomorphic affine spaces)
+2019-10-11 21:46:07 <esowiki> 14[[07Rouedeux14]]4 10 02https://esolangs.org/w/index.php?diff=66626&oldid=66625 5* 03Matthew 5* (+757) 10/* Examples */
+2019-10-11 21:47:51 <arseniiv> isomorphic, but not naturally, to two starting subspaces, but naturally isomorphic (via f ↦ f⁻¹) with each other
+2019-10-11 21:52:25 <esowiki> 14[[07Rouedeux14]]4 10 02https://esolangs.org/w/index.php?diff=66627&oldid=66626 5* 03Matthew 5* (-21) 10/* Hello world program */
