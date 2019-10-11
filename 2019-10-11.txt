@@ -204,3 +204,30 @@
 2019-10-11 20:59:26 <fizzie> Turns out that was more or less a literal quote from 2003.
 2019-10-11 20:59:38 <fizzie> [2003-01-20 23:36:53] <@DiamonDie> i think it has been fiz who has scared off most visitors.
 2019-10-11 20:59:46 <imode> from an op no less?
+2019-10-11 21:00:08 <fizzie> IIRC, on that channel all the regulars were ops.
+2019-10-11 21:00:59 <pikhq> Ngl imode's made me ambivalent on staying
+2019-10-11 21:02:12 <imode> everybody-being-an-op is easily ruined by the one bad egg that bans people at the drop of a hat.
+2019-10-11 21:02:58 <imode> used to be in a channel for a local hacker space. the youngest got angry in a discussion about C and banned 18 people.
+2019-10-11 21:03:46 <fizzie> Well, it was a 10-person social channel, not really for any particular topic. Those don't really have moderation issues so much.
+2019-10-11 21:03:56 <imode> makes sense.
+2019-10-11 21:04:24 User Name: arseniiv = arseniiv!~arseniiv@94.41.6.166.dynamic.ufanet.ru
+2019-10-11 21:04:24 <arseniiv> shachaf: those slides mention “homogeneous coordinates” too in introductory examples :( if they were homogeneous, vectors with coordinates (1, 2, 3, 0) and (2, 4, 6, 0) would coincide but they should not. These are usual coordinates in (dimension + 1)
+2019-10-11 21:04:55 <arseniiv> hopefully that misattribution isn’t mentioned in the body
+2019-10-11 21:05:17 User Name: zzo38 = zzo38!~zzo38@24-207-15-213.eastlink.ca
+2019-10-11 21:05:17 <zzo38> Other way than everybody-being-an-op would be nobody-being-an-op is better than everybody-being-an-op, I think.
+2019-10-11 21:06:10 <fizzie> That's a pretty easy state to get to by accident on IRCnet, so I'm sure we spent some time like that too.
+2019-10-11 21:06:16 <fizzie> (No services.)
+2019-10-11 21:06:36 <imode> everybody can yell at eachother and nobody can do anything about it.
+2019-10-11 21:07:06 <imode> almost like twitter!
+2019-10-11 21:07:51 <zzo38> That is not true nobody can do anything about it; you can add filters into the client if you want to avoid receiving some messages.
+2019-10-11 21:08:19 <imode> that is true. I have to wonder what the potential partitioning would be for a really busy and hostile chat room.
+2019-10-11 21:08:52 <imode> i.e take 100 people, throw them in a chat room without moderators, see who ignores who. you'll probably end up looking like two or more "logical" rooms.
+2019-10-11 21:09:20 <zzo38> Maybe. I don't know.
+2019-10-11 21:09:56 <zzo38> (mainly, I don't know, because I haven't tried having 100 people in a chat room without moderators)
+2019-10-11 21:10:28 <fizzie> (Although IRCnet ircd 2.11 got a "reop mode" feature, where you can set +R nick!user@host masks with the usual wildcards, with the semantics that if the channel has been opless for a while, the server grants ops for a pseudorandomly selected user matching any of those masks.)
+2019-10-11 21:10:48 <fizzie> (I think there was also a no-ops-ever channel type? Might be misremembering that.)
+2019-10-11 21:11:31 <zzo38> Yes, some IRC servers if the channel prefix is + then it can have no modes (inclduing no operators).
+2019-10-11 21:12:09 <zzo38> There is also & for a channel local to the server and ! with a feature to avoid taking over channels when net split.
+2019-10-11 21:12:36 <zzo38> (The + and & types are also immune to taking over channels, but for other reasons.)
+2019-10-11 21:24:15 <shachaf> arseniiv: Oh, now I see what you meant.
+2019-10-11 21:24:46 <arseniiv> shachaf: yeah, yesterday I completely forgot to mention this simple breaking example
