@@ -157,3 +157,36 @@
 2019-10-12 18:29:30 <esowiki> 14[[07Falsebrain9Q+Fishload14]]4 M10 02https://esolangs.org/w/index.php?diff=66640&oldid=66639 5* 03AnimaLibera 5* (+1) 10
 2019-10-12 18:29:35 <arseniiv> I’ll add some explanations, how better to name the section with them?
 2019-10-12 18:29:50 <arseniiv> elaborations, I’d say
+2019-10-12 18:31:14 <b_jonas> arseniiv: "data storage" I think, for you need currying to be able to data other than from a limited alphabet of function names on the call stack
+2019-10-12 18:32:02 <arseniiv> `unidecode Ⅎ
+2019-10-12 18:32:05 <HackEso> ​[U+2132 TURNED CAPITAL F]
+2019-10-12 18:32:17 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=66641&oldid=66618 5* 03AnimaLibera 5* (+28) 10Adding Falsebrain9Q+Fishload
+2019-10-12 18:32:55 <arseniiv> b_jonas: I wanted one section to explain about call-by-need meaning the same as lazy
+2019-10-12 18:34:45 <b_jonas> I keep thinking of the strict non-curried version of this language
+2019-10-12 18:36:47 <arseniiv> it would be something akin to the original Backus article?
+2019-10-12 18:36:52 <arseniiv> b_jonas: ^
+2019-10-12 18:37:41 <arseniiv> where he makes the first functional language, albet somewhat a clumsy one, given that it’s the first one
+2019-10-12 18:39:30 <arseniiv> IIRC that’s 1977, “Can Programming Be Liberated from the von Neumann Style? A Functional Style and Its Algebra of Programs”. Hm pretty modern times. I thought from the time Lisp was invented it should have been earlier?..
+2019-10-12 18:40:36 <b_jonas> arseniiv: do you mean Backus's FP? because then no
+2019-10-12 18:40:50 <b_jonas> the one I'm talking about still has named function arguments
+2019-10-12 18:43:18 <b_jonas> https://esolangs.org/wiki/Pointfree_programming has a link to that one, we don't have a separate page apparently
+2019-10-12 18:44:40 <b_jonas> but also, the language I'm thinking of not only doesn't have currying, it doesn't even have functions as first class objects either. you can only use function names if you immediately call them. mind you, you can still program Backus's FP that way.
+2019-10-12 18:44:49 <b_jonas> well, sort of.
+2019-10-12 18:45:03 <b_jonas> not exactly the same as Backus's FP
+2019-10-12 18:45:28 <b_jonas> but the style you program in translates to that well, only you lose named function arguments then
+2019-10-12 18:51:13 <b_jonas> you can also translate it to a subset of Olvashato where you don't use lambdas
+2019-10-12 18:51:57 <b_jonas> in all these cases you have named global functions that can be mutually recursive, which is sort of the distinctive feature
+2019-10-12 18:52:23 <arseniiv> hm maybe I shouldn’t elaborate on call-by-need there, it looks too long or too incomprehensible
+2019-10-12 18:53:08 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-10-12 18:53:08 Names: \oren\, ^[, aji, aloril, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-12 18:54:19 <arseniiv> b_jonas: interesting, and there also is no partial application, yes?
+2019-10-12 18:56:00 <arseniiv> I mean, I don’t think “currying” is a name for a well-defined language feature, it always confused me what it should mean, and I only see it viable as a name for the natural isomorphism from A×B→R to A→B→R
+2019-10-12 18:57:28 <b_jonas> wait, let me check how Backus's FP worked again?
+2019-10-12 18:57:31 <b_jonas> I got confused
+2019-10-12 18:57:37 <b_jonas> I think it doesn't have named global functions
+2019-10-12 18:58:13 <b_jonas> arseniiv: you can call it "partial application then, it doesn't matter too much that it's implemented by currying
+2019-10-12 18:58:14 <arseniiv> though maybe it means that we could write λxyz.A for λx.λy.λz.A and correspondingly f x y z = … for f x = let g y = let h z = … in h in g
+2019-10-12 18:59:13 <b_jonas> ok, Backus's FP is weirder
+2019-10-12 18:59:15 <arseniiv> b_jonas: then I more or less understand what language you are describing
+2019-10-12 18:59:21 <b_jonas> but it doesn't have named global functions
+2019-10-12 18:59:59 <b_jonas> arseniiv: for the language I'm talking about, you still have a sequence of global function definitions, each one has a function name followed by named arguments on the left, and parenthisized function calls on the right
