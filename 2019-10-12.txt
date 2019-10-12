@@ -190,3 +190,31 @@
 2019-10-12 18:59:15 <arseniiv> b_jonas: then I more or less understand what language you are describing
 2019-10-12 18:59:21 <b_jonas> but it doesn't have named global functions
 2019-10-12 18:59:59 <b_jonas> arseniiv: for the language I'm talking about, you still have a sequence of global function definitions, each one has a function name followed by named arguments on the left, and parenthisized function calls on the right
+2019-10-12 19:00:33 <b_jonas> but on the right, each time you refer to a function, it must be called by all arguments, you can't pass around function pointers, whether partially applied or not
+2019-10-12 19:00:34 Quit: LKoen (Remote host closed the connection)
+2019-10-12 19:00:34 Names: \oren\, ^[, aji, aloril, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-12 19:00:40 <arseniiv> then the distinctive feature could be described thus: no partially applied function is an expression, this would formalize what it means that functions aren’t first class
+2019-10-12 19:01:07 <b_jonas> and you get new builtins, namely if-else, which is the only way to not strictly evaluate all arguments,
+2019-10-12 19:01:50 <arseniiv> maybe case-of and pattern matching is better?
+2019-10-12 19:01:50 <b_jonas> and some builtins for creating data, namely at least nil and cons as data constructors, null and car and cdr as deconstructors,
+2019-10-12 19:01:58 <b_jonas> but ideally also some basic numeric stuff
+2019-10-12 19:02:09 <b_jonas> arseniiv: no, that's not enough
+2019-10-12 19:02:21 <b_jonas> arseniiv: you also can't use bare function names (without any argument applied) as an expression
+2019-10-12 19:02:58 <arseniiv> yeah I understand, a bare name is partially applied too
+2019-10-12 19:03:16 <b_jonas> the base of olvashato and common lisp already work like that; they also have explicit way to manipulate first-class functions, but you can't do it as easily as mentioning a function name or partially applying anything
+2019-10-12 19:03:58 Joined: xkapastel
+2019-10-12 19:03:59 Names: \oren\, ^[, aji, aloril, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, zemhill, zzo38
+2019-10-12 19:05:00 <b_jonas> olvashato isn't quite like this even without the first-class functions, because olvashato has let and case which lets you create local bindings other than the parameters of the global function, and I don't want that
+2019-10-12 19:05:11 <b_jonas> (also the syntax is different)
+2019-10-12 19:11:51 <b_jonas> also, as for what I said earlier
+2019-10-12 19:12:09 <b_jonas> "will we have difficulties to explain multiplication to the next generation because they will be buying everything pre-packaged and nothing of which you can freely choose a quantity and has a price per unit weight?" =>
+2019-10-12 19:12:13 <b_jonas> this requires electric cars,
+2019-10-12 19:12:40 <b_jonas> but I think we're officially in the electric car future now, because this year's Nobel Prize is for electric cars
+2019-10-12 19:22:01 <zzo38> I don't think so; some people will buy and sell stuff that you will have to freely choose a quantity, even if it is rare.
+2019-10-12 19:23:41 <b_jonas> zzo38: sure, it will exist, I'm just positing that it won't be such an everyday thing that every eleven year old in school sees it and finds multiplication of real numbers a natural and commonly used operation because of that
+2019-10-12 19:26:53 <zzo38> (Also, multiplication would still be used with stuff other than buying and selling stuff.)
+2019-10-12 19:26:55 <b_jonas> when I go to the market today, I need to know a bit of cultural context to know which price tags are per kilogram and which ones are per unit, because it's hard to guess
+2019-10-12 19:28:32 <zzo38> I should think they ought to label if it is per kilogram or per unit. If it is prepackaged then it can be assumed as per unit if it doesn't say; if they are not pricing it per unit then they should not prepackage it.
+2019-10-12 19:28:44 <b_jonas> most fruits and vegetables are sold by kilogram, but the ones that come with lots of leaves are sold by bunch or single root
+2019-10-12 19:29:29 <b_jonas> zzo38: sure, but consider fruits: kohlrabi is per single root, but canteloupes and lemons and cabbage are per kilogram
+2019-10-12 19:29:53 <b_jonas> lemons and canteloupes and kohlrabi have a strong rind so they don't need pre-packaging
