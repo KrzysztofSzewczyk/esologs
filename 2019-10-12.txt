@@ -253,3 +253,48 @@
 2019-10-12 20:29:42 <kspalaiologos> b) it's quicker to count atoms in universe than to run it
 2019-10-12 20:29:49 <b_jonas> oh
 2019-10-12 20:29:53 <kspalaiologos> but I'm certainly sure it works
+2019-10-12 20:30:08 <arseniiv> (^cont.) and of course I have implemented something like YE…A, even with some optimizations for functions constructed with simple recursion operator, in Ceylon but I didn’t make that human-readable and it wasn’t YE…A strictly speaking, but an interpreter for a DSL
+2019-10-12 20:30:11 <b_jonas> how can you be sure? if it's so slow, how do you debug it?
+2019-10-12 20:30:20 <kspalaiologos> the same generator that made this program
+2019-10-12 20:30:25 <kspalaiologos> has been tested to 100% coverage
+2019-10-12 20:30:33 <kspalaiologos> the chess engine is just higher scale of the same thing
+2019-10-12 20:30:38 <arseniiv> kspalaiologos: lol :D
+2019-10-12 20:30:40 <kspalaiologos> so it has to work, eventually
+2019-10-12 20:30:48 <kspalaiologos> for anyone interested
+2019-10-12 20:30:49 <kspalaiologos> https://github.com/kspalaiologos/malbolge-chess
+2019-10-12 20:30:58 <kspalaiologos> the 7z file unzips to 113 megabytes of malbolge
+2019-10-12 20:31:07 <b_jonas> 32 gigabytes is solvable these days
+2019-10-12 20:31:18 <kspalaiologos> I'm equipped with just eight
+2019-10-12 20:31:35 <kspalaiologos> anyone willing to borrow 24G and a quantum computer?
+2019-10-12 20:31:55 <b_jonas> a quantum computer? what for?
+2019-10-12 20:32:19 <kspalaiologos> it would hopefully speed up the process
+2019-10-12 20:32:37 <b_jonas> what... chess? how?
+2019-10-12 20:32:40 <kspalaiologos> the quantum computer is able to solve "puzzles" that conventional computers aren't able to
+2019-10-12 20:32:56 <b_jonas> puzzles maybe, but I don't think it helps for chess
+2019-10-12 20:32:57 <kspalaiologos> for example, it can break RSA encryption quite eaisly from what I've heard
+2019-10-12 20:33:04 <b_jonas> that sure
+2019-10-12 20:33:17 <kspalaiologos> isn't malbolge just a fancy encryption?
+2019-10-12 20:33:42 <kspalaiologos> I've spent my entire day on writing a proof of concept in C, then translating it to assembly, and then stepping down to something 4004-like to finally produce the output
+2019-10-12 20:33:58 <kspalaiologos> it was a quite fun process
+2019-10-12 20:34:08 <kspalaiologos> nonetheless
+2019-10-12 20:34:20 <arseniiv> kspalaiologos: hm but your code should use its “features”, like a program can’t just start using SSE or what there is these times, without the programmer writing those instructions beforehand
+2019-10-12 20:34:43 <kspalaiologos> sure
+2019-10-12 20:34:48 <kspalaiologos> the interpreter can be tweaked
+2019-10-12 20:34:53 <kspalaiologos> so it runs smoother on quantum computers
+2019-10-12 20:35:01 <kspalaiologos> I have made once a SSE brainfuck interpreter, nothing is scary now
+2019-10-12 20:35:10 <arseniiv> :D
+2019-10-12 20:35:16 <kspalaiologos> imagine a tape, but of type __m64
+2019-10-12 20:36:16 <kspalaiologos> or __m512i
+2019-10-12 20:36:36 <kspalaiologos> optimizing malbolge is quite hard process tho
+2019-10-12 20:36:45 <kspalaiologos> to do it correctly you'd have to know the assembler structure
+2019-10-12 20:36:59 <kspalaiologos> but as you can reverse it, is there any sense in simplifying the assembly down to malbolge?
+2019-10-12 20:44:46 Quit: kspalaiologos (Quit: Leaving)
+2019-10-12 20:44:46 Names: \oren\, ^[, aji, aloril, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, zemhill, zzo38
+2019-10-12 20:47:55 <zzo38> Trick NSA to make the computation for you, by using encryption.
+2019-10-12 20:50:45 <zzo38> b_jonas: Did you see the Magic: the Gathering card I mentioned and that Sgeo__ wrote a comment?
+2019-10-12 20:56:06 <b_jonas> zzo38: no, what card?
+2019-10-12 20:56:10 <b_jonas> does it have "Frore" in its name
+2019-10-12 20:56:28 <zzo38> No
+2019-10-12 20:56:50 <Sgeo> Stone of Lizard Men
+2019-10-12 20:57:03 <zzo38> Sgeo__: Yes.
+2019-10-12 20:57:06 <zzo38> Stone of Lizard Men {2} Artifact ;; {X}, {T}: You may put a Lizard or Viashino card with converted mana cost less than X from your hand into the battlefield. If you do, add one mana of any color.
