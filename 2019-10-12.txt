@@ -134,3 +134,26 @@
 2019-10-12 17:32:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, zemhill, zzo38
 2019-10-12 17:34:39 Joined: arseniiv
 2019-10-12 17:37:45 Quit: arseniiv (Ping timeout: 250 seconds)
+2019-10-12 18:13:12 Joined: anima
+2019-10-12 18:13:12 Names: \oren\, ^[, aji, aloril, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, zemhill, zzo38
+2019-10-12 18:15:57 Joined: imode
+2019-10-12 18:15:58 Names: \oren\, ^[, aji, aloril, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, xkapastel, zemhill, zzo38
+2019-10-12 18:17:11 <b_jonas> arseniiv_: hmm, that article should mention "lazy" somewhere
+2019-10-12 18:17:36 <b_jonas> as in evaluation order
+2019-10-12 18:22:34 Nick Change: arseniiv -> arseniiv
+2019-10-12 18:23:14 <b_jonas> or strict, as it may be, for it makes a difference
+2019-10-12 18:23:47 User Name: arseniiv = arseniiv!~arseniiv@136.169.201.225
+2019-10-12 18:23:47 <arseniiv> b_jonas: hm doesn’t it? I’ll look at it
+2019-10-12 18:25:55 <b_jonas> and "currying" too, because without currying, you need some extra builtins for conditionals and for data storage
+2019-10-12 18:26:14 <b_jonas> as in an if-else, cons, (), null, car, cdr
+2019-10-12 18:26:25 <arseniiv> > Overall evalution strategy is call-by-need, unless a modification (for example, to allow full IO) has something like Haskell’s `seq` or `$!`.
+2019-10-12 18:26:27 <lambdabot> <hint>:1:43: error: parse error on input ‘,’
+2019-10-12 18:26:31 <arseniiv> specified!
+2019-10-12 18:26:45 <arseniiv> oh I never learn
+2019-10-12 18:26:49 <arseniiv> @botsnack
+2019-10-12 18:26:49 <lambdabot> :)
+2019-10-12 18:27:49 <arseniiv> <b_jonas> and "currying" too => hm I did thought it’s obvious these definitions result in functions that can be partially applicated
+2019-10-12 18:29:01 <esowiki> 14[[07Falsebrain9Q+Fishload14]]4 M10 02https://esolangs.org/w/index.php?diff=66639&oldid=58343 5* 03AnimaLibera 5* (+3) 10
+2019-10-12 18:29:30 <esowiki> 14[[07Falsebrain9Q+Fishload14]]4 M10 02https://esolangs.org/w/index.php?diff=66640&oldid=66639 5* 03AnimaLibera 5* (+1) 10
+2019-10-12 18:29:35 <arseniiv> I’ll add some explanations, how better to name the section with them?
+2019-10-12 18:29:50 <arseniiv> elaborations, I’d say
