@@ -579,3 +579,4 @@
 2019-10-13 22:19:39 <int-e> IIRC the original DPLL had a "pure literal" rule... if a literal only occurs positively in the current set of clauses (those that are not already true) then one can assert that literal to be true. Nobody implements this as part of the propagation rules.
 2019-10-13 22:21:51 <int-e> If you're facing a decision like... "would you rather do X or 1k unit propagations"
 2019-10-13 22:22:23 <int-e> it's easy to imagine that X probably won't pay off :)
+2019-10-13 22:49:11 <j4cbo> boo, i need an SDR
