@@ -376,3 +376,58 @@
 2019-10-13 17:59:46 <b_jonas> and if they don't, then the agriculture people pour milk and throw watermelons at them, and the politicians get afraid that their beautifully tailored suits will get spoiled, and so they give in
 2019-10-13 17:59:54 <int-e> I don't have a feasible, stable solution either. (For example, socialism is a great idea, but putting it into practice is really hard... you're likely to end up with corruption everywhere, and quite possibly an unmotivated workforce.)
 2019-10-13 17:59:56 <shachaf> I mean, they *were* unfairly exploited by futures traders.
+2019-10-13 18:01:01 <int-e> In practice, timely regulation is probably the best to hope for.
+2019-10-13 18:01:16 <tswett[m]> The free market is great as long as the market value of every person's labor exceeds the market value of the goods and services necessary for that person's well-being.
+2019-10-13 18:01:23 <shachaf> int-e: OK, sure, it sounds like we agree on that.
+2019-10-13 18:01:43 <shachaf> A big point of the whole market thing is that incentives line up well.
+2019-10-13 18:01:59 <int-e> Regulation is also the key to internalizing external costs, especially from the future.
+2019-10-13 18:02:02 <shachaf> And you certainly want regulation rather than "free markets" which can easily be pathological.
+2019-10-13 18:02:17 <shachaf> Right, and you want to internalize externalities.
+2019-10-13 18:02:50 <int-e> Basically, since we don't know anything better than the free market model that is also stable in the medium and perhaps even long term, we have to resort to tweaking the cost function.
+2019-10-13 18:04:09 <int-e> Of course it's all embedded in a prisoner's dilemma between countries because for most things we have a global market.
+2019-10-13 18:06:03 <int-e> (The background problem I'm considering is limiting climate change. It's one of the truly big challenges where in theory, it should be in everybody's interest to work really hard towards a solution, including accepting lowered standards of living for the few for the benefit of the many and future generations. In practice... I don't see any of that happening fast enough to matter.)
+2019-10-13 18:07:16 <int-e> Cornering markets, as nasty as that is... seems minor in comparison.
+2019-10-13 18:08:28 <shachaf> Limiting climate change is good but a particular government can add regulation for externalities however market-oriented it is.
+2019-10-13 18:08:39 <shachaf> And the inter-government issues are no different.
+2019-10-13 18:14:35 <b_jonas> this channel is weird. SAT solvers in the morning, free market in the evening
+2019-10-13 18:15:26 <int-e> we've also seen ootsology, meditation, and actual spam
+2019-10-13 18:15:57 <shachaf> int-e: Anyway, I don't think we disagree on any of the facts, so I think it's odd that you end up thinking futures should be illegal and I don't.
+2019-10-13 18:17:23 <b_jonas> `8-ball should futures be illegal?
+2019-10-13 18:17:24 <HackEso> Better not tell you now.
+2019-10-13 18:17:44 <b_jonas> fungot, what restrictions do you recommend to put on the free market?
+2019-10-13 18:17:44 <fungot> b_jonas: designing an os -and- playing tabletop.... i'm kinda thinking specifically of http and other stateless protocols... and dynamic ip addresses. but i can't
+2019-10-13 18:17:54 <b_jonas> um
+2019-10-13 18:18:44 <int-e> shachaf: If you put it like that I'm not sure about whether they should be illegal. I don't think they are useful, and I dislike some of the consequences (cornering markets is most attractive in the presence of futures, isn't it...)
+2019-10-13 18:19:39 <shachaf> Hmm, I think futures are useful for reducing uncertainty and transferring risk from people who have it to people who want it.
+2019-10-13 18:20:15 <int-e> that's the trouble, isn't it
+2019-10-13 18:20:32 <int-e> hedging risks is great, speculation is bad, and there's no discernable differencw
+2019-10-13 18:20:35 <int-e> e
+2019-10-13 18:21:03 <shachaf> Why is speculation bad?
+2019-10-13 18:21:21 <shachaf> (Speculation can also be done without futures, of course.)
+2019-10-13 18:21:24 <int-e> it's bad when combined with bankruptcy
+2019-10-13 18:21:47 <int-e> Because then you're in an ugly external cost scenario.
+2019-10-13 18:22:06 * int-e shrugs.
+2019-10-13 18:22:30 User Name: arseniiv = arseniiv!~arseniiv@95.105.7.27.dynamic.ufanet.ru
+2019-10-13 18:22:30 <arseniiv> oh at first I thought about futures like promises
+2019-10-13 18:22:51 <int-e> Yes. I promise to buy ... shares at price ... in the future.
+2019-10-13 18:22:52 <int-e> :P
+2019-10-13 18:22:52 <shachaf> That's arguable, but often it's addressed anyway.
+2019-10-13 18:22:54 <arseniiv> now I see this is economical stuff I don’t know anything about
+2019-10-13 18:23:15 <shachaf> I think speculation clearly has a useful function too.
+2019-10-13 18:23:41 <b_jonas> and that's still greasing the market?
+2019-10-13 18:23:45 <arseniiv> though I don’t really distingwish promises and futures too, I hadn’t read anything comprehensive to date about them all
+2019-10-13 18:23:47 <shachaf> If I buy wheat when it's cheap (low demand) and sell it when it's expensive (high demand), I've transferred wheat from people who don't need it to people who do.
+2019-10-13 18:24:10 <b_jonas> right, greasing the market, even though wheat in particular isn't greasy
+2019-10-13 18:24:20 <shachaf> I get paid for it because the people who need it are willing to pay because it's so useful to them.
+2019-10-13 18:24:27 <shachaf> That seems cleary useful.
+2019-10-13 18:24:58 <int-e> shachaf: presumably you've also paid for storage. except... nowadays... that's not so clear at all
+2019-10-13 18:25:10 <arseniiv> . o O ( my market is all floury on the floor, who did it )
+2019-10-13 18:25:24 <shachaf> Nowadays you might've paid someone else for storage, sure.
+2019-10-13 18:26:31 <b_jonas> presumably if the grain travels time then someone payed for its storage somehow
+2019-10-13 18:26:39 <b_jonas> because no free launch
+2019-10-13 18:26:50 <shachaf> Right.
+2019-10-13 18:27:21 <int-e> or maybe there is no grain
+2019-10-13 18:28:18 <b_jonas> you mean it got to the future the old style way, by having planted seeds a few months before you need it, and then harvesting at the right time, so it doesn't need to be stored??
+2019-10-13 18:28:33 <int-e> it's futures -> short-selling -> cornering markets -> disaster. :P
+2019-10-13 18:29:18 <arseniiv> BTW I watched those slides on GA and I wonder how can it be explained transparently than in PGA, you represent points by (n−1)-vectors, lines by (n−2)-vectors and so on and hyperplanes by 1-vectors, all in reverse to the way they’re represented in usual projective space context
+2019-10-13 18:29:44 <shachaf> I feel like you're focusing on a few extremely bad failure cases -- which are generally illegal anyway -- and not on the constant benefits everyone gets.
