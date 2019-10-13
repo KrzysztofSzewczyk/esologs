@@ -96,3 +96,53 @@
 2019-10-13 10:29:22 <int-e> (well, the trail has a negated l)
 2019-10-13 10:29:27 Joined: LKoen
 2019-10-13 10:29:27 Names: \oren\, ^[, aji, aloril, Ancyleus, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-13 10:30:29 <int-e> Meaning once the clause evaluation becomes unknown again, l will not be assigned, reestablishing the watched literal invariant (any clause with unknown truth value is on two watched literal lists)
+2019-10-13 10:31:05 <shachaf> OK, so the only way a bunch satisfied clauses hurt you is that a watch list might contain them and you might need to sift through them?
+2019-10-13 10:31:16 <int-e> yes
+2019-10-13 10:31:42 <shachaf> And you might e.g. move them to the end of a watch list and possibly be able to stop looking through a watch list early.
+2019-10-13 10:31:46 <int-e> this is a kind of laziness
+2019-10-13 10:31:49 <shachaf> Though I'm not sure a thing like that would actually work.
+2019-10-13 10:32:07 <int-e> (but a good kind because many clauses that become true will never be touched at all)
+2019-10-13 10:32:47 <shachaf> Hmm, but the ones that become true and are watched will just be inspected over and over because the watched literal will never move, unless you do something extra?
+2019-10-13 10:33:37 <int-e> Hmm, maybe it's clever to move them to the literal that is true instead.
+2019-10-13 10:33:52 <shachaf> Oh, that makes sense.
+2019-10-13 10:34:07 <int-e> (provided the clause is not on that watch list already)
+2019-10-13 10:34:17 <shachaf> You can even locate the true literal that's furthest away in the stack, so hopefully you don't see it for a long time.
+2019-10-13 10:34:34 <b_jonas> what... are you writing SAT solvers?
+2019-10-13 10:34:42 <shachaf> Er, the last thing I said doesn't make sense.
+2019-10-13 10:35:17 <int-e> b_jonas: I've been resisting the temptation for a long time. I think I can maintain this state :) Not sure about shachaf.
+2019-10-13 10:36:20 <shachaf> Some of my questions are about the actual typical operations/memory layout/etc. used by reasonable SAT solvers.
+2019-10-13 10:36:45 Joined: arseniiv
+2019-10-13 10:37:04 <shachaf> Others are about clause learning, which seems like one of the most complicated parts of many modern solvers.
+2019-10-13 10:37:04 <int-e> b_jonas: But I know enough about the basics (DPLL, CDCL, a bit about heuristics) to be harmful.
+2019-10-13 10:37:58 <int-e> I know a bit more about the verification side. (RUP, DRUP, RAT, DRAT)
+2019-10-13 10:38:02 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-10-13 10:39:30 <shachaf> Oh, UNSAT verification?
+2019-10-13 10:39:40 <shachaf> I'd like to know about how that works.
+2019-10-13 10:41:30 <shachaf> I suspect understanding UNSAT certificates and understanding CDCL are pretty related?
+2019-10-13 10:41:48 <int-e> Actually, no.
+2019-10-13 10:42:00 Quit: LKoen (Remote host closed the connection)
+2019-10-13 10:42:00 Names: \oren\, ^[, aji, aloril, Ancyleus, anima, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-13 10:42:09 Quit: arseniiv (Ping timeout: 250 seconds)
+2019-10-13 10:42:09 Names: \oren\, ^[, aji, aloril, Ancyleus, anima, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-13 10:42:21 <shachaf> Oh, that's interesting.
+2019-10-13 10:43:21 <int-e> At least on a high level, certification works by maintaining a set of clauses (initially those of the problem) and adding and removing clauses with inferences that maintain satisficability. The last step derives the empty clause.
+2019-10-13 10:44:56 <int-e> The inference relies heavily on unit propagation though, so for efficiency, you end up with watched literals again.
+2019-10-13 10:46:39 <shachaf> Sure, atched literals is a great trick.
+2019-10-13 10:46:57 <shachaf> I should understand regular SAT solving first.
+2019-10-13 10:48:04 <int-e> https://www.researchgate.net/publication/333612067_Efficient_Verified_UNSAT_Certificate_Checking should be a good starting point (including references for DRAT and DRUP).
+2019-10-13 10:49:23 <b_jonas> shachaf: you should just wait for Knuth to write that part of volume 4.
+2019-10-13 10:49:40 <int-e> The idea for RUP is that every backjump clause can be derived by "reverse unit propagation" -- assert the negation of the literals of the derived clause, and do unit propagation; if that results in a conflict, then the clause can be added without affecting satisfiability. So all a SAT solver has to do to produce a certificate is to record the backjump clauses which it's computing anyway.
+2019-10-13 10:49:48 <int-e> (and potentially learning)
+2019-10-13 10:50:21 Joined: LKoen
+2019-10-13 10:50:21 Names: \oren\, ^[, aji, aloril, Ancyleus, anima, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-13 10:50:38 <int-e> DRUP adds deletion of clauses (for efficiency). RAT is a bit more complicated and motivated by simplification of clause sets rather than DPLL itself.
+2019-10-13 10:53:04 <shachaf> b_jonas: Fascicle 6? I have a copy right here.
+2019-10-13 10:53:34 <b_jonas> I have technically written a SAT solver once, but it's a rather trivially stupid one, it only works on very simple expressions
+2019-10-13 10:53:48 <shachaf> It doesn't talk about many of the things I want, though, I think.
+2019-10-13 10:53:53 <shachaf> I've only read part of it so far.
+2019-10-13 10:54:02 <b_jonas> shachaf: so does it not help about "typical operations/memory layout/etc."? I'd expect Knuth to talk about those
+2019-10-13 10:54:30 <shachaf> It certainly talks about those, for the algorithms it describes.
+2019-10-13 10:56:37 <b_jonas> hmm, https://www-cs-faculty.stanford.edu/~knuth/news.html has multiple news that I haven't seen
+2019-10-13 10:57:41 <shachaf> I'll look at it some more after these papers.
+2019-10-13 10:58:46 <b_jonas> pity one of the links is already broken
