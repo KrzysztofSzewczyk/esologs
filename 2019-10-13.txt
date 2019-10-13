@@ -508,3 +508,10 @@
 2019-10-13 20:58:55 <b_jonas> j4cbo: these only have, like, 17 bits of info at most, so try all 2**17 combinations
 2019-10-13 20:59:12 <b_jonas> some of them will probably be ignored
 2019-10-13 20:59:48 <j4cbo> yeah, i need to rig up some code to send those words out from my own hardware next
+2019-10-13 21:00:08 <b_jonas> are these sent by radio or by infrared?
+2019-10-13 21:00:18 <j4cbo> radio, 433mhz OOK
+2019-10-13 21:01:23 <b_jonas> hmm, that might be harder
+2019-10-13 21:02:13 <j4cbo> i have a spare rileylink
+2019-10-13 21:11:43 <shachaf> int-e: I think I'm confusil about something but I don't want to type it on my phone so I'll try to say more later.
+2019-10-13 21:12:09 <shachaf> By unwinding I mean regular backtracking, i.e. only subtracting 1 from the level.
+2019-10-13 21:22:12 <int-e> shachaf: Right. Then I think I've understood correctly... and perhaps answered your question as well.
