@@ -158,3 +158,35 @@
 2019-10-13 11:23:53 Names: \oren\, ^[, aji, aloril, Ancyleus, anima, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
 2019-10-13 11:24:56 Joined: atslash
 2019-10-13 11:24:56 Names: \oren\, ^[, aji, aloril, Ancyleus, anima, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-13 11:30:15 User Name: jix = jix!~jix@209.250.235.106
+2019-10-13 11:30:15 <jix> shachaf: int-e: While I've been just idling here for years, I just noticed discussion about SAT solving... I've written a CDCL SAT solver and UNSAT certificate checker https://github.com/jix/varisat (not using DRAT though, I'm using a different proof format that records unit propagations during solving and thus can be checked much faster)... feel free to ask me any questions about SAT solving :)
+2019-10-13 11:30:41 Quit: Ancyleus (Ping timeout: 250 seconds)
+2019-10-13 11:30:41 Names: \oren\, ^[, aji, aloril, anima, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-13 11:30:57 <b_jonas> idling... does that mean we should `welcome you?
+2019-10-13 11:31:17 <b_jonas> also, nice
+2019-10-13 11:31:31 <jix> that just means I was quite active here... I don't know 10, 15 years ago or so and never parted :)
+2019-10-13 11:31:57 <b_jonas> yeah, this channel has a long history.
+2019-10-13 11:32:22 <b_jonas> ``` q jix # the quote file doesn't know that you were active... not under this name at least
+2019-10-13 11:32:23 <HackEso> No output.
+2019-10-13 11:32:33 <jix> https://esolangs.org/wiki/Jannis_Harder << that's me
+2019-10-13 11:33:18 <int-e> jix: It's funny that you mention recording unit propagations... because the GRAT format does that as well, making for a three stage verification pipeline: simplifier+SAT-solver => DRAT => GRAT (fewer clauses, more information) => verifier.
+2019-10-13 11:33:38 <jix> int-e: yeah I skip the DRAT => GRAT part which is as expensive as solving in the first place
+2019-10-13 11:33:58 <int-e> (This is Lammich's pipeline... Heule et al. have a slightly different intermediate format ... I forgot the name.)
+2019-10-13 11:33:58 <jix> what I do is solving -> custom format -> LRAT (which is inspired by GRAT)
+2019-10-13 11:34:43 <jix> total time is cut roughly in half, but my solver isn't as good as others on many problems, so it's not that practical yet
+2019-10-13 11:35:04 <int-e> jix: It's funny though that the overhead of storing and reading additional information like that pays off. (Ah, LRAT. I think that was it. If so, it's a concurrent development to GRAT.)
+2019-10-13 11:35:43 <jix> I experimented with emitting LRAT directly, but the code to keep track of clause ids became very complicated and introduced memory overhead
+2019-10-13 11:36:12 <jix> so my next attempt just hashes clauses and resolves hash conflicts during conversion
+2019-10-13 11:37:12 <jix> int-e: ah maybe it was inspired by a predecessor of GRAT?
+2019-10-13 11:37:36 <int-e> Hrm, let me check.
+2019-10-13 11:39:34 <jix> there also is a newer DRAT proof checker, https://github.com/krobelus/rate that can emit LRAT and GRAT that is supposedly faster than drat-trim, but I haven't really benchmarked it yet
+2019-10-13 11:40:02 <int-e> So... There's DRUP and DRAT as the foundation. There's a format called GRIT that records unit propagation steps. This is a precursor to both LRAT and GRAT, which do the same thing for RAT steps as well.
+2019-10-13 11:40:35 <jix> ah, yeah, so I was thinking of GRIT when I read GRAT
+2019-10-13 11:41:41 <int-e> (LRAT and GRAT were developed independently for certified DRAT checking, both published at CADE 2017; LRAT is Cruz-Filipe, Heule, Hunt, Kaufmann, Schneider-Kamp; GRAT is Lammich)
+2019-10-13 11:44:02 <int-e> "amost as fast as gratgen" - yeah I thought that gratgen looked very good, performance wise.
+2019-10-13 11:47:55 <jix> in any case I think emitting an LRAT/GRAT like proof directly from the solver is quite a bit faster than conversion from DRAT, the biggest downside is that it is quite a bit larger than a DRAT proof, but if you're not interested in storing the proof you could run the verifying concurrently to avoid that
+2019-10-13 11:49:56 <jix> I might need to implement that for a competitive solver, though, if I want to convince people of that
+2019-10-13 11:52:05 <int-e> jix: Hmm, how well does the unsatisfiable core computation work though?
+2019-10-13 11:52:52 <jix> int-e: haven't checked that yet, it's possible, but it'll probably generate larger cores because there is no core-first propagation or anything like that
+2019-10-13 11:53:35 <jix> if you use iterative solving to minimize the unsat core (like Heule did for the chromatic number of the plane problem), you can iterate faster, so it'd be interesting to compare it in that setting
+2019-10-13 11:54:23 <int-e> jix: Yeah I'm basically asking a research question... the answer can't be determined without trying, I think. I certainly don't have the intuition for it.
