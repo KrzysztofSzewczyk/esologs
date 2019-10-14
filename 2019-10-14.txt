@@ -93,3 +93,26 @@
 2019-10-14 09:28:36 <shachaf> Hmm, it might've just been luck for this instance.
 2019-10-14 09:28:46 <shachaf> If I assume false instead of true, the time goes way down.
 2019-10-14 09:29:48 <wib_jonas> "<jix> int-e: that's an issue that may take until retirement to figure out" => beautiful ambiguous statement, playing on how "retirement" has both a technical meaning in this context and an everyday meaning
+2019-10-14 09:30:48 <wib_jonas> oerjan: you can make bell pepper stew in an oven?
+2019-10-14 09:31:34 <wib_jonas> oerjan: oh right, it's just "foil"
+2019-10-14 09:31:43 <wib_jonas> oerjan: as for "hungry", the relevant wisdom is
+2019-10-14 09:31:45 <wib_jonas> `? ostrich
+2019-10-14 09:31:46 <HackEso> Ostrich used to be a large middle European empire in frequent conflict with Turkey. After a famine it sort of split into Ostrich/Hungry. Alas its policy of keeping its head in the sand did not get it through the Great War, and with its final attempts to take flight failing, it ended up cut into several pieces.
+2019-10-14 09:32:50 <wib_jonas> this was apparently written by you
+2019-10-14 09:33:55 <jix> wib_jonas: as does "issue" :)
+2019-10-14 09:35:17 <wib_jonas> shig: IOCCC winners are released
+2019-10-14 09:36:03 <wib_jonas> let me thing where else on the internet should I ping with this news
+2019-10-14 09:36:12 <shig> Awesome!
+2019-10-14 09:37:59 <int-e> jix: ah, didn't see those... now I feel bad :P
+2019-10-14 09:38:53 Joined: anima
+2019-10-14 09:38:53 Names: \oren\, ^[, aji, aloril, anima, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain2, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-14 09:47:41 <shachaf> OK, I think it was just my variable-picking strategy being very bad.
+2019-10-14 09:49:25 <int-e> plausible... out of curiosity, did you test a satisfiable or an unsatisfiable problem?
+2019-10-14 09:49:40 <shachaf> Both, but mostly a satisfiable one.
+2019-10-14 09:51:39 <int-e> I'd probably use mostly unsatisfiable instances for comparison between solvers... or many satisfiable instances. Luck is too much of a factor for satisfiable instances.
+2019-10-14 09:52:48 <int-e> people also randomize inputs... shuffling literals and clauses.
+2019-10-14 09:53:52 <wib_jonas> int-e: and randomly negating them, like in bfjoust
+2019-10-14 09:55:22 <int-e> bfjoust is not random though, is it
+2019-10-14 09:55:49 <jix> even for unsat instances variance is crazy, which makes good benchmarking take a long time and cost a lot :(
+2019-10-14 09:57:14 <wib_jonas> int-e: the random space is so small that we try all possibilities, so we don't do a real random sample, but the idea is the same
+2019-10-14 09:57:40 <wib_jonas> some instances work better when you negate the direction, so we try both negated and non-negated
