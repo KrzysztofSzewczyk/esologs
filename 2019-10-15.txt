@@ -430,3 +430,35 @@
 2019-10-15 20:58:01 <shachaf> Can it also be tapped for colorless?
 2019-10-15 20:59:16 <Cale> Any lands on the battlefield (including your opponents') might make it unusable
 2019-10-15 20:59:51 <Cale> I don't think it'd be able to tap for colourless, but obviously that could be a variation on the idea
+2019-10-15 21:07:08 <zzo38> If you have more than one land with that ability, then what? Rule 106.7 doesn't seem to mention if they interfere with each other in this way.
+2019-10-15 21:07:18 <zzo38> (Although, rule 106.7 could be fixed so that it does work.)
+2019-10-15 21:08:11 <shachaf> zzo38: Well, it's a legendary land anyway.
+2019-10-15 21:08:19 <zzo38> Yes, but there are still ways to work around that.
+2019-10-15 21:08:45 <zzo38> (e.g. Mirror Gallery)
+2019-10-15 21:10:48 <Cale> Probably it should be considered a land that could produce mana of any colour, so that it shuts off any other copies of itself entirely.
+2019-10-15 21:11:14 <Cale> (but yeah, there's a funny paradox there)
+2019-10-15 21:11:34 <shachaf> I don't think it's much of a paradox.
+2019-10-15 21:11:44 <shachaf> Hmm, maybe.
+2019-10-15 21:11:50 <shachaf> It is a bit different from other mana abilities.
+2019-10-15 21:12:12 <Cale> It's almost exactly Russell's paradox :D
+2019-10-15 21:12:58 <shachaf> Sure, but I meant that answers to this kind of question are established.
+2019-10-15 21:13:34 <zzo38> Note that rule 106.7 does not say only mana abilities or only activated abilities.
+2019-10-15 21:15:33 <Cale> Or how about a land that can produce 2 mana of any colour that you have no devotion to?
+2019-10-15 21:15:56 <zzo38> Yes, that is another possibility, I think.
+2019-10-15 21:16:00 <Cale> That might be too good for activated abilities...
+2019-10-15 21:16:10 <zzo38> O, yes, I suppose so
+2019-10-15 21:16:23 <zzo38> Maybe base it on color identity
+2019-10-15 21:18:45 <zzo38> In RDF format, "add one mana of any color that no other land you control could produce" might be something like:  [:add-mana [:choose [:and :color, [:not [:any-could-produce [:and :land, [:controller :you], [:not :this]]]]]]]]
+2019-10-15 21:18:45 <b_jonas> Cale: how does that behave if you have such a land and a Forest in play and the opponent has a Plains and an Exotic Orchard in play?
+2019-10-15 21:20:32 <Cale> b_jonas: I'm not sure, does Exotic Orchard usually care about predicates that restrict mana abilities?
+2019-10-15 21:21:21 <Cale> b_jonas: "Exotic Orchard doesn’t care about any restrictions or riders your opponents’ lands (such as Ancient Ziggurat or Hall of the Bandit Lord) put on the mana they produce. It just cares about colors of mana."
+2019-10-15 21:21:22 <zzo38> Yes, that is another case. Rule 106.7 mentions Exotic Orchard as an example.
+2019-10-15 21:21:55 <b_jonas> Cale: or more simply, how does it work if you have that land and a Forest and Reflecting Pool in play, and the opponent has four Plains?
+2019-10-15 21:22:02 <zzo38> But that what you quoted is clear enough from the rules I think, but it is not relevant to the case you have here
+2019-10-15 21:22:20 <Cale> ah, okay
+2019-10-15 21:23:38 <Cale> ah, right, it does actually care about the state of the cards in play
+2019-10-15 21:23:56 <Cale> Lands that produce mana based only on what other lands “could produce” won’t help each other unless some other land allows one of them to actually produce some type of mana. For example, if you control an Exotic Orchard and your opponent controls an Exotic Orchard and a Reflecting Pool, none of those lands would produce mana if their mana abilities were activated. On the other hand, if you control a Forest and an Exotic Orc
+2019-10-15 21:23:57 <Cale> hard, and your opponent controls an Exotic Orchard and a Reflecting Pool, then each of those lands can be tapped to produce Green. Your opponent’s Exotic Orchard can produce Green because you control a Forest. Your Exotic Orchard and your opponent’s Reflecting Pool can each produce Green because your opponent’s Exotic Orchard can produce Green.
+2019-10-15 21:25:24 <Cale> But yeah, it's an additional weird twist when it's "can't produce"
+2019-10-15 21:26:30 <zzo38> Yes, all of that you mentioned is what would be done by rule 106.7. But, yes, the "can't produce" can result in no stable result, it seem like.
+2019-10-15 21:29:54 <zzo38> (I would think that the RDF code I mentioned probably wouldn't compile (if a compiler for it were implemented), or if it does compile, result in an infinite loop or stack overflow.)
