@@ -245,3 +245,66 @@
 2019-10-15 09:42:22 <shachaf> So does this pattern fit into the Lawvere theorem form?
 2019-10-15 09:42:23 <HackEso> ​`perl -eprint+("\\","\"",",","`perl -eprint+(",")[3,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,4]")[3,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,4]
 2019-10-15 09:46:37 <wib_jonas> ais523: here's a perl quine by mtve that has only ascii punctuation and spaces. I don't know how it works, but perhaps it also helps with your string eval question: https://www.perlmonks.com/?node_id=836752
+2019-10-15 10:01:55 <int-e> woah, really... 'In late 2011, Intel [35]introduced a performance enhancement to its line of server processors that allowed network cards and other peripherals to connect directly to a CPU's last-level cache'
+2019-10-15 10:02:24 <int-e> [35] is https://www.intel.com/content/www/us/en/io/data-direct-i-o-technology.html
+2019-10-15 10:03:41 <int-e> context is https://www.schneier.com/blog/archives/2019/09/another_side_ch.html (I'm reading the october CRYPTO-GRAM)
+2019-10-15 10:03:55 <wib_jonas> int-e: yeah, that's what spawned all the rumors about NSA backdoors
+2019-10-15 10:04:40 <int-e> I'm a bit surprised I missed this.
+2019-10-15 10:05:18 <int-e> I didn't miss the ME stuff (which is a backdoor by design, if you look at it cynically enough)
+2019-10-15 10:05:27 <wib_jonas> well, it's one of the things that spawned the rumors at least
+2019-10-15 10:05:39 <int-e> (I mean ME = management engine)
+2019-10-15 10:06:18 <int-e> I think IME is the official abbreviation.
+2019-10-15 10:06:23 <wib_jonas> int-e: how about the enclave thing, that lets you create encrypted parts of the memory that can run code but where the rest of the programs that the cpu runs can't read that code and its state?
+2019-10-15 10:07:07 <int-e> I didn't miss that either... I see it as related really.
+2019-10-15 10:07:38 <int-e> (It's also a bit of the extension of the decades old system manangement mode.)
+2019-10-15 10:08:26 <shachaf> OK, when you have f.g = id, what should you call f and g?
+2019-10-15 10:08:37 <shachaf> "left inverse" and "right inverse" is too confusing, I think.
+2019-10-15 10:08:44 <int-e> I mean, SMM is almost as invasive, also based on hiding a region of memory, just not /designed/ to be secure.
+2019-10-15 10:09:03 <wib_jonas> you should consider the other side though. rather than keeping all the technology that they use for the backdoors a secret that nobody will find unless they spend a man-decade of studying electron-microscope scans, they benevolently document all the backdoor capabilities of the cpu so that you can write high performance backdoors too
+2019-10-15 10:09:04 <int-e> shachaf: left inverse of g; right inverse of f.
+2019-10-15 10:09:14 <shachaf> I've been going with "retraction" and "section" but I'm suspecting that's not so great either.
+2019-10-15 10:09:15 <wib_jonas> it's not exclusive to the NSA, you can backdoor the bios too
+2019-10-15 10:09:33 <shachaf> int-e: The problem is that if you say "f is a right inverse", I have to write down the thing to see what's going on.
+2019-10-15 10:10:58 <shachaf> Maybe the intuition I want is "object" and "name": Every object has at least one name, and you can pick out a canonical name (at least if you have choice).
+2019-10-15 10:11:29 <wib_jonas> why would every object have at least one name? no way
+2019-10-15 10:11:36 <int-e> wib_jonas: It's not even necessary to involve the NSA as a driver here... SMM was introduced to simulate legacy hardware capabilities. Secure enclaves can be perfectly explained by the desire to enforce copyright. Data direct I/O addresses a genuine (if very high-end) performance problem.
+2019-10-15 10:11:43 <wib_jonas> especially not when the names come from a countable set and the objects come from a bigger one
+2019-10-15 10:11:49 <shachaf> Well, it does in this case, because you have a surjection.
+2019-10-15 10:12:09 <wib_jonas> wait, what is SMM?
+2019-10-15 10:12:27 <shachaf> What's a better terminology where I can easily remember which set is the bigger one and which function goes in which direction?
+2019-10-15 10:12:32 <int-e> wib_jonas: I mean I would be surprised if the NSA were not involved in this at all... they are too big. But I don't think they have to do anything beyond subtle nudging here.
+2019-10-15 10:12:38 <int-e> wib_jonas: System Management Mode
+2019-10-15 10:12:48 <wib_jonas> int-e: sure
+2019-10-15 10:13:07 <int-e> wib_jonas: Not sure when that was introduced, i386 or i486 maybe? Around that time I think.
+2019-10-15 10:13:08 <wib_jonas> int-e: I don't mean that it has to be the NSA specifically, that's just the name that people use in rumors
+2019-10-15 10:13:52 <wib_jonas> int-e: but in reality it's usually the big secret agencies of all other countries that puts the backdoors there, rather than the secret agency of your country
+2019-10-15 10:14:15 <wib_jonas> int-e: system management mode, how does that differ from ME?
+2019-10-15 10:14:16 <int-e> SMM can be used for things like simulating the AT keyboard interface (port 60h/61h) for USB hardware.
+2019-10-15 10:14:25 <wib_jonas> in i386? no way
+2019-10-15 10:14:36 <int-e> wib_jonas: It runs on the same processor.
+2019-10-15 10:15:04 <int-e> It's just that certain I/O operations can trigger a software emulation layer. Nothing really deep.
+2019-10-15 10:15:23 <wib_jonas> huh, ok
+2019-10-15 10:15:32 <int-e> 'It was first released with the Intel 386SL.'
+2019-10-15 10:17:01 <wib_jonas> int-e: ah, so five years after the 386
+2019-10-15 10:17:05 <wib_jonas> that's more believable
+2019-10-15 10:17:07 <esowiki> 14[[07Wagon14]]4 10 02https://esolangs.org/w/index.php?diff=66656&oldid=66655 5* 03Chris Pressey 5* (+599) 10More describing language overview
+2019-10-15 10:17:14 <int-e> The ME is a full (but less powerful) separate core... that's a fairly recent thing.
+2019-10-15 10:18:39 <int-e> But even there its existence can be explained in a perfectly innocent way.
+2019-10-15 10:20:21 <int-e> Initializing a processor (memory subsystem (training DRAM, probably other I/O lines as well)) has become so complex that it's better to do it in software than in pure hardware. As a bonus, you get the ability to work around some hardware bugs in software. Now if you're Intel, which hardware platform are you likely to use for this?
+2019-10-15 10:21:12 <jix> intel did use a 3rd party architecture (ARC) for the ME for a long time until they switched to a x86 core AFAIK
+2019-10-15 10:21:20 <int-e> So now you have a separate processor on your die... and it's dormant for most of the system's operation. That's stupid maybe you can find a use for it? ... and suddenly you end up with an ME-like device.
+2019-10-15 10:22:21 <jix> (which I found quite funny, given the origin of ARC as the superfx chip used in starfox on the super nintendo)
+2019-10-15 10:22:23 <int-e> (Of course the architecture is secondary. If it's a universal machine... it can be used for arbitrary purposes.)
+2019-10-15 10:22:57 <wib_jonas> "Now if you're Intel, which hardware platform are you likely to use for this?" => I'm not familiar with the licensing situation of cpus really
+2019-10-15 10:23:44 <int-e> Intel tried to make a GPU out of X86.
+2019-10-15 10:24:39 <int-e> Or are trying to make... according to https://en.wikipedia.org/wiki/Larrabee_(microarchitecture) they've revived that project.
+2019-10-15 10:25:29 <shachaf> Intel is back at it with Larrabee?
+2019-10-15 10:25:35 <jix> The only reason I can think of why they didn't went with x86 in the first place is that an ARC core is smaller than what intel had at that time
+2019-10-15 10:25:36 <wib_jonas> int-e: that sounds like a ... ugh
+2019-10-15 10:25:45 <wib_jonas> seriously, a gpu out of x86?
+2019-10-15 10:26:23 <int-e> (The timing makes sense actually... now that we want to do raytracing with (I suspect) hardly predictable memory access patterns, the SIMT model will run into severe problems.)
+2019-10-15 10:26:34 <int-e> wib_jonas: Intel.
+2019-10-15 10:26:51 <shachaf> int-e: That page is very ambiguous about it.
+2019-10-15 10:26:52 <int-e> wib_jonas: The ones with the 0x8086 vendor id.
+2019-10-15 10:27:02 <int-e> (PCI)
+2019-10-15 10:27:06 <shachaf> Or rather it's not ambiguous enough. Is there any definite connection to Larrabee?
