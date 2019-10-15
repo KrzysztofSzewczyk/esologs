@@ -73,3 +73,51 @@
 2019-10-15 07:58:02 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
 2019-10-15 07:59:44 <cpressey> I found it when trying to research why lambda calculus and combinatory logic are not used as deductive systems, even though they were invented as deductive systems. The Kleene-Rosser paradox that shows that ^c is inconsistent, is apparently more or less a version of Richard's paradox.
 2019-10-15 07:59:44 <int-e> cpressey: Oh I didn't know of that paradox. Of course on a formal level it'll be resolved by Tarski's theorem
+2019-10-15 08:00:14 <shachaf> I also don't particularly see narcissists as very interestingly different from quines, though it's possible I'm missing something there.
+2019-10-15 08:01:20 <int-e> (Tarski's theorem = undefinablility of truth. The sentence whose truth is of interest here is "F defines a unique real number")
+2019-10-15 08:01:21 <shachaf> I'd have to imagine that every Turing-complete language admits a quine. How could it not?
+2019-10-15 08:01:46 <shachaf> (Unless you're playing games with encoding, which don't seem that interesting to me.)
+2019-10-15 08:02:27 Joined: nfd9001
+2019-10-15 08:02:27 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, nfd9001, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-15 08:02:33 <int-e> TC-ness doesn't require any output capability (beyond one bit).
+2019-10-15 08:03:12 <shachaf> Yes, that's true. One semibit.
+2019-10-15 08:03:36 <int-e> I mean a mathematical truth value.
+2019-10-15 08:03:49 <shachaf> But I guess I don't care about that too much. I'm looking for interesting ways in which languages can fail to have quines.
+2019-10-15 08:04:09 <int-e> Not a weird three-state bit.
+2019-10-15 08:04:30 <shachaf> Which truth value are you talking about in particular? Halts/doesn't halt?
+2019-10-15 08:05:21 <int-e> accept/doesn't accept
+2019-10-15 08:05:47 <shachaf> OK, sure, I guess.
+2019-10-15 08:05:53 <int-e> We have some wild cases that never halt.
+2019-10-15 08:06:09 <shachaf> Oh, here's a different question.
+2019-10-15 08:06:16 <shachaf> Hmm, I'm actually not sure how to phrase this question.
+2019-10-15 08:06:57 <shachaf> Lawvere's theorem is along the lines of, say you a function : A -> (A -> B) which is surjective. Then every function : B -> B must have a fixed point.
+2019-10-15 08:07:13 <shachaf> (For appropriate values of "function" and "surjective" and "(A -> B)".)
+2019-10-15 08:07:28 <esowiki> 14[[07Wagon14]]4 10 02https://esolangs.org/w/index.php?diff=66655&oldid=65529 5* 03Chris Pressey 5* (+332) 10Expand lead a little bit
+2019-10-15 08:07:29 <shachaf> say you have
+2019-10-15 08:07:50 <int-e> shachaf: any TC formalism will allow the kind of circularity that Kleene's fixed point theorem embodies. I.E. a program can contain a full description of itself, suitable for simulation or other analysis.
+2019-10-15 08:08:03 <shachaf> int-e: Yes, that's what I was getting at.
+2019-10-15 08:08:23 <int-e> And I agree that it's really hard to capture this more rigorously.
+2019-10-15 08:08:36 <shachaf> That seems more interesting than insisting on quines which gets into a bunch of nonsense.
+2019-10-15 08:08:48 <shachaf> I guess that question was about sub-TC systems.
+2019-10-15 08:09:15 <int-e> For the most part, Quines are just cute programming puzzles of no real importance.
+2019-10-15 08:09:20 <shachaf> Clearly some of those can still create quines (and use the same techniques that you'd normally use, not something one-off).
+2019-10-15 08:09:41 <cpressey> Also on the subject of quines: https://github.com/dpiponi/infinite-quine
+2019-10-15 08:09:44 <shachaf> Yes, I'm certainly not concerned with the quine itself.
+2019-10-15 08:10:42 <int-e> We have a notion of I/O-completeness on the wiki. An O-complete TC language has quines.
+2019-10-15 08:10:42 <shachaf> Anyway, on Lawvere's theorem.
+2019-10-15 08:11:15 <shachaf> What should I call A and B? I'm tempted to call A "Name", where A names an element of A -> B
+2019-10-15 08:11:37 <shachaf> (And with that element in turn an A names a B.)
+2019-10-15 08:11:48 <shachaf> Surjectivity means that everything has a name.
+2019-10-15 08:12:11 <shachaf> One concrete example is A as any set, and B as 2, which gives you Cantor's theorem.
+2019-10-15 08:12:51 <shachaf> If you can map elements of A to subsets of A such that every subset can be named by an element, then ¬ : 2 -> 2 has a fixed point.
+2019-10-15 08:14:20 <shachaf> Why is (A -> B) the right codomain here in general?
+2019-10-15 08:15:55 <shachaf> That's clearly not the question I want to be asking.
+2019-10-15 08:18:03 <shachaf> Maybe instead of B=2 I should take an example with an arbitrary B.
+2019-10-15 08:18:24 <shachaf> The Y combinator gives you fixed points for any function : B -> B this way.
+2019-10-15 08:23:56 Quit: nfd9001 (Ping timeout: 240 seconds)
+2019-10-15 08:23:57 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-15 08:24:50 <shachaf> OK, I guess you can say that eval : A -> (A -> B) is a two-argument function doing the same sort of thing Q(x, y) is?
+2019-10-15 08:25:01 <shachaf> Hmm, no, that's nonsense.
+2019-10-15 08:26:14 <shachaf> How would you phrase "eval : A -> (A -> B) is surjective" on an uncurried function eval : A×A -> B?
+2019-10-15 08:27:56 Joined: nfd9001
+2019-10-15 08:27:56 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, nfd9001, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
