@@ -462,3 +462,22 @@
 2019-10-15 21:25:24 <Cale> But yeah, it's an additional weird twist when it's "can't produce"
 2019-10-15 21:26:30 <zzo38> Yes, all of that you mentioned is what would be done by rule 106.7. But, yes, the "can't produce" can result in no stable result, it seem like.
 2019-10-15 21:29:54 <zzo38> (I would think that the RDF code I mentioned probably wouldn't compile (if a compiler for it were implemented), or if it does compile, result in an infinite loop or stack overflow.)
+2019-10-15 21:31:50 <Cale> There are a few sensible ways that one could clarify what happens, like explicitly disallowing cycles in the determination of whether an ability can produce mana of a given type.
+2019-10-15 21:32:25 <zzo38> Yes, that was also my idea about how to amend rule 106.7
+2019-10-15 21:32:59 Joined: sprocklem
+2019-10-15 21:32:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-15 21:34:15 <b_jonas> I was thinking that if you put this effect into the triggered ability of a Growth-like enchantment, maybe it becomes impossible to make a cycle, but I'm not really sure
+2019-10-15 21:37:03 <zzo38> Since that triggered ability is not an ability of a land, then it might work. Still, I think the rule should be amended in case
+2019-10-15 21:38:02 <esowiki> 14[[07Unlambda14]]4 10 02https://esolangs.org/w/index.php?diff=66667&oldid=51370 5* 03B jonas 5* (+312) 10/* External resources */ IOCCC winner interpreter
+2019-10-15 21:39:17 <b_jonas> zzo38: right, but it's hard to know whether there is a way to turn it into a land, or have an ability that cares about what mana some non-land permanents could produce, now or in future cards
+2019-10-15 21:39:46 <zzo38> Yes, I thought of that, which is why the rule should be amended anyways in case
+2019-10-15 21:40:01 <b_jonas> Imprisoned in the Moon can turn an existing permanent into a land
+2019-10-15 21:40:54 <zzo38> Although it deletes that permanent's abilities, too.
+2019-10-15 21:41:52 <b_jonas> yes, that's why I think that doesn't help
+2019-10-15 21:44:13 <zzo38> Yes.
+2019-10-15 21:45:33 <zzo38> (My own opinion is the rules ought to support combinations that do not currently exist.)
+2019-10-15 21:46:10 <zzo38> I also made up this land card (based on the story of the GURPS I have played):   Sun Town {-} Legendary World Land ;; Vehicles cannot enter the battlefield. ;; At the beginning of each end combat step, end the turn. ;; {T}: Add {C}. ;; {1}, {T}: Add {W}.
+2019-10-15 21:47:11 <b_jonas> Song of the Dryads is another such card
+2019-10-15 21:48:28 <zzo38> Yes, but rule 305.7 causes its abilities to be deleted.
+2019-10-15 21:49:50 <zzo38> Still, if something else can grant it an ability, then it can be kept and rule 305.7 only deletes the abilities due to its own text.
+2019-10-15 21:52:44 <Cale> Wow, vehicle hate
