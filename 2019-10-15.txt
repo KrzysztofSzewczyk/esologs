@@ -311,3 +311,33 @@
 2019-10-15 10:31:11 <int-e> I don't find any tangible evidence of that connection either.
 2019-10-15 10:31:18 <int-e> Still, it's Intel ;-)
 2019-10-15 10:33:32 <int-e> And anyway, it definitely *tried*, which was my main point.
+2019-10-15 11:01:28 Joined: anima
+2019-10-15 11:01:28 Names: \oren\, ^[, aji, aloril, anima, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-15 11:01:36 Quit: anima (Client Quit)
+2019-10-15 11:01:36 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-15 11:08:00 <cpressey> <int-e> But I'm definitely not approaching this from a logical perspective. My first encounter of combinatory logic was as a model of computation.  <-- That would seem to be the dominant paradigm for it these days. But I'm interested in the logical perspective of it atm. I guess you can write proofs in SKI by treating it like the Hilbert system it was derived from. But you can't use the deduction theorem
+2019-10-15 11:08:02 <cpressey> for brevity, you have to write it all out in full.
+2019-10-15 11:08:38 <cpressey> It sounds awful, but it also sound like you could "compile" a sentence in first-order logic, into it.
+2019-10-15 11:09:50 <wib_jonas> my first encounter of combinatory logic was unlambda
+2019-10-15 11:09:56 <cpressey> Rather I think I mean, "compile" a proof written in natural deduction style in FOL, into it.
+2019-10-15 11:12:19 <cpressey> "Under the Curryâ€“Howard correspondence, the above conversion process for the deduction meta-theorem is analogous to the conversion process from lambda calculus terms to terms of combinatory logic" oh. Well. Okay then
+2019-10-15 11:12:24 <int-e> cpressey: W makes perfect sense if you have an explicit rule for duplicating premises in a sequent
+2019-10-15 11:12:58 <cpressey> int-e: which W is that?
+2019-10-15 11:13:13 <int-e> the C f x = f x x one
+2019-10-15 11:13:25 <int-e> Ugh
+2019-10-15 11:13:26 <cpressey> W combinator#
+2019-10-15 11:13:32 <int-e> W f x = f x x
+2019-10-15 11:13:51 <wib_jonas> cpressey: see https://esolangs.org/wiki/Combinatory_logic
+2019-10-15 11:13:54 <int-e> (is there another?)
+2019-10-15 11:15:15 Joined: arseniiv
+2019-10-15 11:15:15 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-15 11:15:37 <wib_jonas> what's its bird name?
+2019-10-15 11:15:39 <cpressey> I was just hoping you weren't referring to some System W that I'd never heard of.  Anyway yes.  W is dup and C is swap and this is Forth
+2019-10-15 11:19:52 <cpressey> So if the answer to my (unspoken) question "What's one of the simplest languages in which a proof can be stated and mechanically checked?" is "SK-calculus" then I guess my question becomes "How complex would a compiler from a tolerable proof language, to SK-terms, be?"
+2019-10-15 11:20:21 <myname> that depends on what you'd call tolerable
+2019-10-15 11:20:28 <myname> haskell to SK should be pretty easy
+2019-10-15 11:20:59 <myname> like, we do that manually in first semester here
+2019-10-15 11:21:20 <cpressey> You convert proofs written in Haskell into proofs written in SKI-calculus?
+2019-10-15 11:22:08 <myname> not proofs as such but small programms to lambda calculus and lambda calculus to SKI
+2019-10-15 11:22:19 <myname> removing I should be fairly easy
+2019-10-15 11:29:45 <wib_jonas> I only remember the bird name of two combinators really: S is seregély and K is vércse
