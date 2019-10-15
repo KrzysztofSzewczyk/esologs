@@ -135,3 +135,84 @@
 2019-10-15 08:58:48 <Taneb> Confluence as a rewriting system?
 2019-10-15 08:59:23 <shachaf> Hmm, I guess that makes more sense.
 2019-10-15 08:59:59 <shachaf> Speaking of SK, I still don't understand why BCKW is a good system.
+2019-10-15 09:00:14 <shachaf> I already like it but I'd like to like it for a good reason.
+2019-10-15 09:00:37 <Taneb> shachaf: I found it easier to understand the translation between lambda calculus and BCKW than lambda calculus and SK
+2019-10-15 09:01:12 <shachaf> What I'd like is a connection to reordering, weakening, and contraction.
+2019-10-15 09:01:50 <shachaf> What's the lambda calculus translation?
+2019-10-15 09:02:25 <int-e> cpressey: SK and SKI are confluent
+2019-10-15 09:02:45 <Taneb> I can't remember, this was about 8 years ago I did this
+2019-10-15 09:02:52 <Taneb> Near when I was first in here
+2019-10-15 09:03:22 <shachaf> you're still in the top ten in here hth
+2019-10-15 09:03:38 Quit: nfd9001 (Ping timeout: 240 seconds)
+2019-10-15 09:03:38 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-15 09:03:47 <int-e> cpressey: They are orthogonal first-order term rewriting systems. This is usually shown by introducing a parallel reduction relation and something called a "parallel moves lemma" that shows that that relation has the diamond property (ensuring confluence); the terminology is similar to that used for the lambda calculus but the proofs are actually quite a bit simpler.
+2019-10-15 09:04:13 <int-e> cpressey: I forgot, did you mention having looked at Baader/Nipkow's book on term rewriting?
+2019-10-15 09:04:53 <int-e> (because that stuff is all covered in that book)
+2019-10-15 09:05:13 Joined: nfd9001
+2019-10-15 09:05:13 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, nfd9001, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-15 09:05:20 <int-e> Except maybe the concrete case of combinatory logic
+2019-10-15 09:07:23 <int-e> Btw, orthogonal = left-linear (no duplicate variables in left-hand sides of rules) + absence of critical pairs (which you might know from Knuth/Bendix completion or the corresponding confluence criterion for terminating systems).
+2019-10-15 09:08:29 <int-e> Taneb: do you also approach these systems from a point of view of abstraction elimination?
+2019-10-15 09:08:52 <int-e> (BCKW(I) and SK(I))
+2019-10-15 09:09:15 <int-e> Actually, hrm. I want SBCKI, I don't like W at all.
+2019-10-15 09:09:38 <myname> SBICK
+2019-10-15 09:10:03 <shachaf> W is supposed to replace S presumably, as the only combinator that does duplication.
+2019-10-15 09:10:07 Quit: nfd9001 (Ping timeout: 268 seconds)
+2019-10-15 09:10:07 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wmww, zemhill, zzo38
+2019-10-15 09:10:11 <shachaf> Why don't you like W?
+2019-10-15 09:10:12 <int-e> myname: you missed the oppertunity there: BSICK (be sick)
+2019-10-15 09:10:34 <int-e> shachaf: because it has no immediate use for abstraction elimination
+2019-10-15 09:10:34 <myname> damn
+2019-10-15 09:11:08 <int-e> \x. M[x] N[x] -> S (\x.M[x]) (\x.N[x])
+2019-10-15 09:11:43 <int-e> but with BCKW you artificially (to my mind) deduplicate the x first, ... -> W (\x1 x2. M[x1] N[x2]) x.
+2019-10-15 09:12:37 <shachaf> Well, you might be interested in talking about substructural logic.
+2019-10-15 09:12:54 <int-e> I'm usually not.
+2019-10-15 09:12:59 <shachaf> So I could be interested in what you get with BCK without W, for instance.
+2019-10-15 09:13:14 <int-e> Sure, but I also get that from SBCKI by dropping the S.
+2019-10-15 09:14:09 <int-e> I don't like the flavour of duplication offered by W; I prefer the flavor offered by S.
+2019-10-15 09:14:15 <int-e> That's it in a nutshell.
+2019-10-15 09:14:16 <shachaf> The S is serving multiple purposes, I guess.
+2019-10-15 09:14:39 <shachaf> I like S but I'm curious whether a simpler basis will let you pick out parts you like better.
+2019-10-15 09:15:02 <shachaf> Hmm, is there a standard combinatory basis for some kind of linear lambda calculus?
+2019-10-15 09:15:03 <int-e> But I'm definitely not approaching this from a logical perspective. My first encounter of combinatory logic was as a model of computation.
+2019-10-15 09:15:06 Joined: wib_jonas
+2019-10-15 09:15:06 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], uplime, vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-15 09:15:41 <int-e> shachaf: Sure, BCI is the standard basis for that, add K if you allow deletion.
+2019-10-15 09:15:57 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-10-15 09:15:57 <wib_jonas> "<shachaf> I'd have to imagine that every Turing-complete language admits a quine. How could it not?" => only if they can do universal IO
+2019-10-15 09:16:08 <int-e> I do like B and C precisely because they capture linearity.
+2019-10-15 09:16:19 <int-e> Something that SK hides.
+2019-10-15 09:16:19 <shachaf> wib_jonas: Yes, see the discussion below.
+2019-10-15 09:16:29 <wib_jonas> ah wait, I'll read on
+2019-10-15 09:16:32 <shachaf> How do you turn a lambda term into BCKW?
+2019-10-15 09:16:44 <shachaf> Let's see.
+2019-10-15 09:16:52 <wib_jonas> BCKW => we just had a discussion about that
+2019-10-15 09:17:08 <wib_jonas> http://www.cs.ox.ac.uk/people/samson.abramsky/pcpt.pdf
+2019-10-15 09:17:33 <int-e> you have \x. M[x] N -> X (\x.M[x]) N, \x. M N[x] -> Y M (\x.N[x]), where X,Y \in {B,C}.
+2019-10-15 09:17:39 <int-e> I can never remember which is which.
+2019-10-15 09:17:55 <shachaf> OK, that PDF indeed makes the connection I wanted.
+2019-10-15 09:18:21 <Taneb> int-e: I don't quite know what you mean by abstraction elimination (my brain isn't fully awake yet)
+2019-10-15 09:18:25 <int-e> (So these look like specializations of \x. M[x] N[x] -> S (\x.M[x]) (\x.N[x]) when x does not occur freely in N or M)
+2019-10-15 09:18:32 <shachaf> delambdification?
+2019-10-15 09:18:33 <Taneb> SBCKI would be better, I think
+2019-10-15 09:18:44 <wib_jonas> in particular, there are no non-empty quines in geo because it can only output decimal integers (followed by a newline), but the source has to have "print" in it to output anything
+2019-10-15 09:19:07 <int-e> Taneb: the process of starting from a lambda term (which has lambda-abstractions) and turning it into an equivalent (in some sense) abstraction-free term using your combinator basis
+2019-10-15 09:19:22 <wib_jonas> but this probably isn't an interesting reason
+2019-10-15 09:19:32 <shachaf> wib_jonas: OK, but I already said that that's an encoding detail that I don't find interesting.
+2019-10-15 09:20:21 <Taneb> int-e: yeah, I think that's what I do
+2019-10-15 09:20:50 <wib_jonas> "<int-e> For the most part, Quines are just cute programming puzzles of no real importance." => Smullyan and Hofstadter would disagree
+2019-10-15 09:22:08 <int-e> wib_jonas: "quine" is just a surface phenomenon (a program that prints its own source code)... you need much more to make it computationally interesting
+2019-10-15 09:22:59 <wib_jonas> int-e: right, that's why Golf SE tried to qualify interesting quines with a rule, so that non-cheating quines are ones that are useful for building self-referential programs
+2019-10-15 09:23:05 <cpressey> int-e: Right, yes. I've read Baader and Nipkow, also some other texts on term rewriting. Didn't remember about orthogonality of term rewrite systems. Didn't really occur to me at the time to look at SK-calculus as a rewrite system. And I guess lots of other ppl don't usually look at it that way either.
+2019-10-15 09:23:30 <wib_jonas> and, in particular, empty quines, or quines that are just a numeral in languages that echo a numeral, are considered cheating for them
+2019-10-15 09:25:01 <int-e> ``` dc <<<6581840dnP
+2019-10-15 09:25:02 <HackEso> 6581840dnP
+2019-10-15 09:25:40 <shachaf> Oh, I like this connection to polynomial time.
+2019-10-15 09:25:55 <shachaf> I don't really know good ways of talking about computational complexity for lambda calculus at all.
+2019-10-15 09:26:10 <int-e> That's a quine, but hardly interesting from a logical perspective... there's no real quoting (quining) going on here.
+2019-10-15 09:26:55 <int-e> cpressey: That's fair. Happy to help with connecting dots :)
+2019-10-15 09:27:04 <shachaf> I imagine lambda calculus is just bad at talking about things like time and space constraints.
+2019-10-15 09:27:18 <wib_jonas> int-e, KBCSI => yeah, that could work
+2019-10-15 09:27:29 <shachaf> Since reduction is so unrealistic.
+2019-10-15 09:28:18 <wib_jonas> but my problem is sort of that all of these get weird if you try to abstraction-eliminate multiple variables
+2019-10-15 09:28:50 <wib_jonas> so could I instead advocate Amicus, which deals with functions of multiple variables naturally?
