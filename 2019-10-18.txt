@@ -185,3 +185,38 @@
 2019-10-18 14:15:20 Quit: rain1 (Ping timeout: 265 seconds)
 2019-10-18 14:15:20 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
 2019-10-18 14:22:11 <wib_jonas> fizzie: they added randomness to the placeholder text? nice.
+2019-10-18 14:33:55 <fizzie> Hm, I wonder if you can have OpenSSH require two public keys instead of just one.
+2019-10-18 14:37:03 Joined: DPS2004
+2019-10-18 14:37:03 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, DPS2004, economicsbat, erdic, esowiki, FaeFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-18 14:37:21 User Name: DPS2004 = DPS2004!32e2d97e@50.226.217.126
+2019-10-18 14:37:21 <DPS2004> do you think its possible to write a quine in NeverGonna?
+2019-10-18 14:39:45 Quit: DPS2004 (Remote host closed the connection)
+2019-10-18 14:39:45 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-18 14:44:57 <wib_jonas> fizzie: two public keys? what do you mean?
+2019-10-18 14:45:49 <wib_jonas> fizzie: do you mean require that the user who logs in has the matching private key for _one_ of two public keys, because if so, you can do that, just put multiple keys (one per line) in the file that contains the public keys
+2019-10-18 14:48:01 <fizzie> No, I was thinking the user who logs in would need to have matching private keys for two different public keys.
+2019-10-18 14:48:23 <fizzie> I think that's unlikely to be a thing.
+2019-10-18 14:48:32 <wib_jonas> that might be trickier, yse
+2019-10-18 14:49:17 <wib_jonas> is there even such a thing in the SSL protocol that a client supports? how do I tell the client config to use two keys?
+2019-10-18 14:49:31 <fizzie> I think you can provide multiple identities, yes.
+2019-10-18 14:49:47 <fizzie> Definitely a SSH agent can hold multiple keys in memory, and will offer to use all of them when signing.
+2019-10-18 14:50:05 <fizzie> But it might be that the details of the protocol prevent you from actually performing authentication with more than one.
+2019-10-18 14:50:43 <wib_jonas> I don't know how that works, I've always just put one explicit filename for each host in my client config file
+2019-10-18 14:50:52 <wib_jonas> one explicit private key filename that is
+2019-10-18 14:51:00 <wib_jonas> but possibly different filenames for different hosts
+2019-10-18 14:51:20 <fizzie> I know you can (nowadays) configure OpenSSH to require multiple authentication *methods* (as in, "public key and password" e.g.), but that probably doesn't apply to multiple keys.
+2019-10-18 14:52:59 <wib_jonas> fizzie: multiple methods as in allow connections only from certain hosts but still ask for a key, sure
+2019-10-18 14:53:15 <wib_jonas> public key and password is alternative, you can log in via either one
+2019-10-18 14:53:25 <wib_jonas> it's the client's choice then
+2019-10-18 14:53:30 <fizzie> No, you can require both.
+2019-10-18 14:53:36 <wib_jonas> you can? ok
+2019-10-18 14:53:38 <fizzie> Via the "AuthenticationMethods" option.
+2019-10-18 14:53:54 <fizzie> "For example, "publickey,password publickey,keyboard-interactive" would require the user to complete public key authentication, followed by or more comma-separated lists of authentication method names, or by the single string any to indicate the default behaviour of accepting any single authentication method."
+2019-10-18 14:54:07 <fizzie> I didn't know this earlier either, only learned about it now.
+2019-10-18 14:54:19 <fizzie> ...
+2019-10-18 14:54:24 <fizzie> I messed up that copy-paste.
+2019-10-18 14:54:37 <fizzie> "For example, "publickey,password publickey,keyboard-interactive" would require the user to complete public key authentication, followed by either password or keyboard interactive authentication."
+2019-10-18 14:54:41 <fizzie> Lost track on which line I was on.
+2019-10-18 14:55:52 <fizzie> The context for this train of thought is, Android has a "secure hardware" thingamajick for keeping RSA and EC keys in, and asking the hardware to sign them. There's an SSH agent implementation that hooks that and allows secure hardware keys to be used as SSH keys -- https://github.com/aeolwyr/tergent -- but there's no way to attach a passphrase to that, the keys get unlocked when you unlock the device.
+2019-10-18 14:56:11 <fizzie> I was thinking it might be reasonable to have both a key like that + a separate passphrase-protected private key, if you wanted to require more from SSH authentication than from in general unlocking the phone. Just because fingerprints are so convenient.
+2019-10-18 14:56:17 <fizzie> But in retrospect maybe that's not really much of a security benefit over just having a single passphrase-protected public key stored in a regular file.
