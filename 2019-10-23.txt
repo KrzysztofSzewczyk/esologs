@@ -980,3 +980,16 @@
 2019-10-23 20:55:09 <oerjan> `dowt zzo38
 2019-10-23 20:55:10 <HackEso> 0:2012-02-16 Initïal import.
 2019-10-23 20:55:26 <oerjan> hm maybe 2012 then
+2019-10-23 21:05:06 <b_jonas> ``` hg log -T "{date|shortdate}" -r 1
+2019-10-23 21:05:07 <HackEso> 2012-02-19
+2019-10-23 21:05:13 <b_jonas> yeah
+2019-10-23 21:05:19 <b_jonas> (I don't trust revision 0)
+2019-10-23 21:15:58 <b_jonas> oh, unrelated video game stuff. I think the Game Boy could easily handle a tetris game where the blocks are 7 pixel tall rather than 8. you'd need tiles that combine parts of two blocks in different ways, but it fits in the tiles array with three colors of blocks, and I think the CPU could handle it too (you'd probably need to use sprites for the currently falling block, and update the tiles only during
+2019-10-23 21:16:04 <b_jonas> lockdown)
+2019-10-23 21:16:38 <b_jonas> the problem with the Game Boy tetris game is that there are only 18 rows, because 20 rows of 8 pixels don't fit in the screen, but you really want at least 20 rows for a tetris game
+2019-10-23 21:16:51 <b_jonas> and 7 pixels tall, even if unnatural for a game boy game, could do that
+2019-10-23 21:18:47 <oerjan> <b_jonas> kspalaiologos: cp? don't you use symlinks? <-- you should not put symlinks to tmp/ , everything there is potentially irreversibly deleted at any time
+2019-10-23 21:20:29 <b_jonas> oerjan: yes, I misread the commands. I realized later.
+2019-10-23 21:20:48 <oerjan> ah
+2019-10-23 21:21:05 <b_jonas> oerjan: the cp was to install the program from the build directory; I assumed it was already installed under /hackenv/lib and he's just linking it to /hackenv/bin
+2019-10-23 21:21:21 <b_jonas> but it's a single-file executable, so the cp was all it took to install
