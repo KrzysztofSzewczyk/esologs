@@ -753,3 +753,61 @@
 2019-10-23 18:23:12 User Name: kmc = kmc!~beehive@li521-214.members.linode.com
 2019-10-23 18:23:12 <kmc> hello / good morning
 2019-10-23 18:23:31 <b_jonas> hi kmc
+2019-10-23 18:35:35 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2019-10-23 18:35:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-23 18:36:21 <b_jonas> so the wiki was created in 2005-04, but the channel is older, because we have logs for 2002-12
+2019-10-23 18:36:50 <b_jonas> and we do have a discord, despite that wisdom doesn't know about, because the wiki does know about an unofficial Esolangs Discord  server
+2019-10-23 18:37:28 User Name: int-e = int-e!~noone@int-e.eu
+2019-10-23 18:37:28 <int-e> `' discord
+2019-10-23 18:37:29 <HackEso> No output.
+2019-10-23 18:38:02 <b_jonas> `slashlearn discord//The unofficial Esolangs and code golf Discord server: https://discord.gg/3UXSK5p
+2019-10-23 18:38:06 <b_jonas> `? discord
+2019-10-23 18:38:09 <HackEso> Learned 'discord': The unofficial Esolangs and code golf Discord server: https://discord.gg/3UXSK5p
+2019-10-23 18:38:11 <HackEso> The unofficial Esolangs and code golf Discord server: https://discord.gg/3UXSK5p
+2019-10-23 18:38:13 <b_jonas> `q discord
+2019-10-23 18:38:14 <HackEso> No output.
+2019-10-23 18:38:41 <b_jonas> `? ioccc
+2019-10-23 18:38:42 <HackEso> The IOCCC is the Industrial Ordovician COBOL Conference Circuit. Not to be confused with OIC. See also ioccclist.
+2019-10-23 18:42:36 <lf94> http://leefallat.ca/notes/p-lang/strings-form-a-group.html - thoughts?
+2019-10-23 18:45:48 <fizzie> b_jonas: The mailing list archive has a few threads on starting up this channel.
+2019-10-23 18:45:49 <int-e> wtf is "hello"^-1 supposed to be
+2019-10-23 18:45:54 <fizzie> b_jonas: Search for "Esolang IRC channel" in http://esoteric.sange.fi/archive/2002-q4 for example.
+2019-10-23 18:46:39 <int-e> (never mind that examples are not proofs most of the time)
+2019-10-23 18:47:25 <int-e> lf94: you(?) should really stop at monoid, while you're ahead.
+2019-10-23 18:47:57 <lf94> int-e: it's supposed to be a 'negative' string
+2019-10-23 18:48:04 <b_jonas> int-e: a free one?
+2019-10-23 18:48:31 <lf94> int-e: you're right, I should not use the word proof at all.
+2019-10-23 18:48:50 <int-e> b_jonas: sure, that's a bonus
+2019-10-23 18:48:56 <b_jonas> `? string theory
+2019-10-23 18:48:57 <HackEso> string theory? ¯\(°​_o)/¯
+2019-10-23 18:49:15 <int-e> lf94: whatever it is, it's not a string
+2019-10-23 18:49:39 <b_jonas> `? string diagram
+2019-10-23 18:49:40 <HackEso> String diagrams would be useful in category theory, except they're unreadable due to being curled up in tiny dimensions. Taneb invented them anyhow.
+2019-10-23 18:50:21 <b_jonas> ``` cat wisdom/fu*aneb
+2019-10-23 18:50:22 <HackEso> The Fundamental Theorem of Taneb states that for all strings S, if S describes a thing not involving sex, then it is provable that Taneb invented the thing described by S; and, furthermore, that it is provable that there exists a string T that describes a thing not involving sex that Taneb did not invent.
+2019-10-23 18:50:23 <int-e> the monoid is also left- and right-cancellative
+2019-10-23 18:50:49 <b_jonas> `? computer
+2019-10-23 18:50:50 <HackEso> Computer is a language where numbers are strings of the characters '1' and '0'.
+2019-10-23 18:51:00 <lf94> int-e: It is a string
+2019-10-23 18:51:07 <lf94> All strings belong in some set S
+2019-10-23 18:51:18 <int-e> Yeah I'm out of this discussion.
+2019-10-23 18:51:20 <lf94> this includes "negative strings" that I just made up
+2019-10-23 18:51:37 <lf94> This is like saying -1 is not a number
+2019-10-23 18:51:52 <b_jonas> `quote jits
+2019-10-23 18:51:52 <int-e> It's not a natural number.
+2019-10-23 18:51:53 <HackEso> 564) <elliott> fizzie: It's like a JIT, if JITs were... strings.
+2019-10-23 18:51:54 <lf94> Why cant -"hello" be a string?
+2019-10-23 18:52:05 <lf94> Right
+2019-10-23 18:52:41 <int-e> lf94: Because strings aren't defined that way. Strings are finite sequences over some alphabet.
+2019-10-23 18:53:03 <int-e> But...
+2019-10-23 18:53:43 <lf94> So what, you want me to call "hello" a natural string, and -"hello" a Z-string or something ("integer string" would be extremely confusing)
+2019-10-23 18:54:04 <b_jonas> int-e: no no. they're members of the free monoid (semigroup with zero) over an alphabet. the non-algebraic definitions are for kindergarten.
+2019-10-23 18:54:06 <int-e> If you want to make a fool out of yourself, you're welcome to do that. If you want to re-invent free groups, that's also a viable route, but the objects will no longer be strings.
+2019-10-23 18:54:20 <lf94> ...
+2019-10-23 18:54:23 <lf94> I want to learn :)
+2019-10-23 18:54:48 <lf94> And I'm ok with being wrong - so you're saying check out free groups - ok.
+2019-10-23 18:55:20 <lf94> int-e: I understand what you mean by "these arent strings", as in, strings have a very absolute definition
+2019-10-23 18:55:37 <lf94> So what would you propose to call them?
+2019-10-23 18:55:47 <lf94> I guess anything other than strings...
+2019-10-23 18:59:44 <lf94> int-e: thank you :)
+2019-10-23 18:59:52 <lf94> So definitely a free group
