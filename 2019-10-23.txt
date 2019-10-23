@@ -329,3 +329,287 @@
 2019-10-23 17:29:38 <kspalaiologos> is there?
 2019-10-23 17:29:41 <kspalaiologos> crap
 2019-10-23 17:29:47 <b_jonas> kspalaiologos: three backticks and a space
+2019-10-23 17:30:07 <fizzie> The `fetch is the only thing that's able to fetch anything.
+2019-10-23 17:30:33 <fizzie> But really, that's just four commands, why would you need to run it as a script inside? Just fetch the file (preferrably into tmp/) and run those one by one.
+2019-10-23 17:30:41 <b_jonas> fizzie: I think it's an experiment
+2019-10-23 17:30:44 <b_jonas> testing stuff
+2019-10-23 17:30:46 User Name: lf94 = lf94!~lf94@unaffiliated/lf94
+2019-10-23 17:30:46 <lf94> hppavilion[1]: what do you mean
+2019-10-23 17:30:50 <b_jonas> testing shorter scripts to
+2019-10-23 17:30:53 <b_jonas> know how longer scripts will work
+2019-10-23 17:30:56 <fizzie> Well, okay, "sudo" is not going to work either.
+2019-10-23 17:30:58 <hppavilion[1]> lf94: Clarify
+2019-10-23 17:31:00 <esowiki> 14[[07Brainfuck algorithms14]]4 10 02https://esolangs.org/w/index.php?diff=66763&oldid=60732 5* 03Dotjpg3141 5* (-45) 10/* swap x, y */
+2019-10-23 17:31:01 <arseniiv> <hppavilion[1]> Chemistry is like alchemy, except that it's real and interfaces with the laws of economics (meaning if you find a cost-effective way to turn lead into gold, you'll just drop the price of gold) => agree on both points
+2019-10-23 17:31:13 <b_jonas> fizzie: wisdom/HackEgo more or less invites you to tryu
+2019-10-23 17:31:14 <lf94> "I really wish hexchat had a way for me to scan two channels for overlap"
+2019-10-23 17:31:19 <fizzie> And "make install" probably needs a PREFIX= argument or some-such.
+2019-10-23 17:31:20 <lf94> overlap of what? text?
+2019-10-23 17:31:32 <hppavilion[1]> lf94: Ah. I mean nick-overlap
+2019-10-23 17:31:42 <lf94> What is nick overlap? X)
+2019-10-23 17:31:44 <kspalaiologos> ``` cd tmp && edit hexdump.hex
+2019-10-23 17:31:45 <HackEso> https://hack.esolangs.org/edit/tmp/hexdump.hex
+2019-10-23 17:32:06 <kspalaiologos> `fetch tmp/hexdump.hex https://hack.esolangs.org/get/tmp/hexdump.hex
+2019-10-23 17:32:08 <HackEso> 2019-10-23 17:32:07 URL:https://hack.esolangs.org/get/tmp/hexdump.hex [119404/119404] -> "tmp/hexdump.hex" [1]
+2019-10-23 17:32:09 <hppavilion[1]> lf94: Like, scan if anyone has the same or similar nick, realname, or hostthing (whatever it is after the '@' in one's full id thing)
+2019-10-23 17:32:48 <lf94> write a python plugin, it's easy
+2019-10-23 17:32:49 <hppavilion[1]> 'similar' being defined by some predicate such as case-insensitive levenstein distance
+2019-10-23 17:33:03 <lf94> I wrote one to turn hexchat into a spy software
+2019-10-23 17:33:16 <lf94> while I'm in a channel, it will relay all messages to other servers
+2019-10-23 17:33:54 <lf94> in particular it's useful to have a user relay messages to another channel.
+2019-10-23 17:34:08 <fizzie> kspalaiologos: If that's a hexdump of the earlier v1.1.1.tar.gz file (like it appears), why in the world would you fetch *that* instead of just fetching the binary file?
+2019-10-23 17:34:09 <lf94> these days I use weechat though :)
+2019-10-23 17:34:11 <kspalaiologos> `fetch tmp/test.sh https://hack.esolangs.org/get/tmp/test.sh
+2019-10-23 17:34:13 <HackEso> 2019-10-23 17:34:12 URL:https://hack.esolangs.org/get/tmp/test.sh [93/93] -> "tmp/test.sh" [1]
+2019-10-23 17:34:26 <kspalaiologos> fizzie, I have no idea what i'm doing
+2019-10-23 17:34:29 <kspalaiologos> leave me
+2019-10-23 17:34:51 <kspalaiologos> ``` cat tmp/
+2019-10-23 17:34:51 <HackEso> cat: tmp/: Is a directory
+2019-10-23 17:34:54 <kspalaiologos> ``` ls tmp/
+2019-10-23 17:34:55 <HackEso> ​-BE8SJn_Dnja \ 0KpPun-ahPnp \ 4qubykGwXZAV \ 8bZIQdyoQ_3S \ EGYj6LpQgFKM \ I3ZdY_oWgTHb \ OUT \ X81G5u_N85_r \ a.c \ a.out \ aczO2Vrn8mw1 \ as-encoding \ compiled_brachylog.pl \ hexdump.hex \ iKVic2uB99hI \ input.brachylog \ jeval.whatis \ out \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.sh \ tmp.txt \ uGgIjgPAmv8A
+2019-10-23 17:35:11 <kspalaiologos> ``` cat tmp/test.sh
+2019-10-23 17:35:11 <HackEso> xxd -r hexdump.hex v1.1.1.tar.gz \ tar -xzf v1.1.1.tar.gz \ cd asmbf-1.1.1 \ sudo make all install
+2019-10-23 17:35:29 <kspalaiologos> ``` /bin/bash tmp/test.sh
+2019-10-23 17:35:30 <HackEso> tmp/test.sh: line 1: xxd: command not found \ tar (child): v1.1.1.tar.gz: Cannot open: No such file or directory \ tar (child): Error is not recoverable: exiting now \ tar: Child returned status 2 \ tar: Error is not recoverable: exiting now \ tmp/test.sh: line 3: cd: asmbf-1.1.1: No such file or directory \ sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileg
+2019-10-23 17:35:38 <kspalaiologos> what just happened
+2019-10-23 17:35:48 <b_jonas> fizzie: because edit doesn't like non-ascii files
+2019-10-23 17:35:52 <fizzie> "xxd: command not found" happened, and the rest was just cascading errors.
+2019-10-23 17:35:55 <b_jonas> fizzie: he's fetching from edit as you can see
+2019-10-23 17:36:08 <kspalaiologos> how xxd is not present here
+2019-10-23 17:36:13 <kspalaiologos> it's a standard posix tool
+2019-10-23 17:36:14 <fizzie> b_jonas: Yes, but it's just bizarre.
+2019-10-23 17:36:21 <fizzie> No, it's not.
+2019-10-23 17:36:24 <b_jonas> I did say uunecode, but the young ones don't know how it and ftp ascii mode works
+2019-10-23 17:36:26 <kspalaiologos> isn't it?
+2019-10-23 17:36:38 <b_jonas> and 7-bit serial lines
+2019-10-23 17:36:43 <fizzie> b_jonas: Well, I mean, the point is, the binary file was already available at a web address.
+2019-10-23 17:36:50 <fizzie> There's no need to round-trip through edit.
+2019-10-23 17:36:56 <kspalaiologos> `fetch tmp/v1.1.1.tar.gz https://github.com/kspalaiologos/asmbf/archive/v1.1.1.tar.gz
+2019-10-23 17:36:58 <HackEso> 2019-10-23 17:36:57 URL:https://codeload.github.com/kspalaiologos/asmbf/tar.gz/v1.1.1 [28092] -> "tmp/v1.1.1.tar.gz" [1]
+2019-10-23 17:37:01 <b_jonas> fizzie: ah
+2019-10-23 17:37:03 <b_jonas> ok
+2019-10-23 17:37:11 <kspalaiologos> `fetch tmp/test.sh https://hack.esolangs.org/get/tmp/test.sh
+2019-10-23 17:37:12 <HackEso> 2019-10-23 17:37:11 URL:https://hack.esolangs.org/get/tmp/test.sh [60/60] -> "tmp/test.sh" [1]
+2019-10-23 17:37:17 <kspalaiologos> ``` /bin/bash tmp/test.sh
+2019-10-23 17:37:17 <HackEso> tar (child): v1.1.1.tar.gz: Cannot open: No such file or directory \ tar (child): Error is not recoverable: exiting now \ tar: Child returned status 2 \ tar: Error is not recoverable: exiting now \ tmp/test.sh: line 2: cd: asmbf-1.1.1: No such file or directory \ sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileges?
+2019-10-23 17:37:27 <kspalaiologos> ``` ls tmp/
+2019-10-23 17:37:28 <HackEso> ​-BE8SJn_Dnja \ 0KpPun-ahPnp \ 4qubykGwXZAV \ 8bZIQdyoQ_3S \ EGYj6LpQgFKM \ I3ZdY_oWgTHb \ OUT \ X81G5u_N85_r \ a.c \ a.out \ aczO2Vrn8mw1 \ as-encoding \ compiled_brachylog.pl \ hexdump.hex \ iKVic2uB99hI \ input.brachylog \ jeval.whatis \ out \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.sh \ tmp.txt \ uGgIjgPAmv8A \ v1.1.1.tar.gz
+2019-10-23 17:37:42 <kspalaiologos> ``` cd tmp && /bin/bash test.sh
+2019-10-23 17:37:43 <HackEso> sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileges?
+2019-10-23 17:37:56 <kspalaiologos> `fetch tmp/test.sh https://hack.esolangs.org/get/tmp/test.sh
+2019-10-23 17:37:57 <HackEso> 2019-10-23 17:37:57 URL:https://hack.esolangs.org/get/tmp/test.sh [55/55] -> "tmp/test.sh" [1]
+2019-10-23 17:37:57 <kspalaiologos> ``` cd tmp && /bin/bash test.sh
+2019-10-23 17:38:01 <HackEso> sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileges? \ make: *** [install] Error 1 \ gcc -Ofast -march=native -funroll-loops -fomit-frame-pointer -w     bfasm.c   -o bfasm \ gcc -Ofast -march=native -funroll-loops -fomit-frame-pointer -w     bfi.c   -o bfi \ gcc -Ofast -march=native -funroll-loops -fomit-frame-pointer -w     bfintd.c   -o bfintd \ gcc -Ofas
+2019-10-23 17:38:21 <fizzie> `` rm tmp/{-BE8SJn_Dnja,0KpPun-ahPnp,4qubykGwXZAV,8bZIQdyoQ_3S,EGYj6LpQgFKM,I3ZdY_oWgTHb,X81G5u_N85_r,aczO2Vrn8mw1,iKVic2uB99hI,uGgIjgPAmv8A}  # just some spring cleaning
+2019-10-23 17:38:22 <HackEso> rm: cannot remove 'tmp/-BE8SJn_Dnja': Is a directory \ rm: cannot remove 'tmp/0KpPun-ahPnp': Is a directory \ rm: cannot remove 'tmp/8bZIQdyoQ_3S': Is a directory \ rm: cannot remove 'tmp/EGYj6LpQgFKM': Is a directory \ rm: cannot remove 'tmp/I3ZdY_oWgTHb': Is a directory \ rm: cannot remove 'tmp/X81G5u_N85_r': Is a directory \ rm: cannot remove 'tmp/aczO2Vrn8mw1': Is a directory \ rm: cannot remove 'tmp/iKVic2uB99hI': Is a directory \ rm: ca
+2019-10-23 17:38:32 <fizzie> What, they're directories.
+2019-10-23 17:38:39 <b_jonas> fizzie: some of those might have been me
+2019-10-23 17:38:54 <b_jonas> ``` rmdir tmp/*
+2019-10-23 17:38:55 <HackEso> rmdir: failed to remove 'tmp/EGYj6LpQgFKM': Directory not empty \ rmdir: failed to remove 'tmp/OUT': Not a directory \ rmdir: failed to remove 'tmp/a.c': Not a directory \ rmdir: failed to remove 'tmp/a.out': Not a directory \ rmdir: failed to remove 'tmp/as-encoding': Not a directory \ rmdir: failed to remove 'tmp/asmbf-1.1.1': Directory not empty \ rmdir: failed to remove 'tmp/compiled_brachylog.pl': Not a directory \ rmdir: failed to remov
+2019-10-23 17:39:04 <kspalaiologos> ```ls tmp/
+2019-10-23 17:39:05 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ``ls: not found
+2019-10-23 17:39:07 <kspalaiologos> ``` ls tmp/
+2019-10-23 17:39:08 <HackEso> EGYj6LpQgFKM \ OUT \ a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ out \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.sh \ tmp.txt \ v1.1.1.tar.gz
+2019-10-23 17:39:15 <kspalaiologos> ``` ls tmp/asmbf-1.1.1/
+2019-10-23 17:39:16 <HackEso> AUTHORS \ INSTALL \ LICENSE \ Makefile \ NEWS \ README \ TODO \ VERSIONING \ bconv.c \ bfasm.asm \ bfasm.b \ bfasm.c \ bfasm.rs \ bfi.c \ bfintd.c \ bfmake \ bfpp \ bin \ doc \ examples \ labels.pl \ strip.pl \ test \ test.pl
+2019-10-23 17:39:31 <kspalaiologos> ``` edit tmp/asmbf-1.1.1/Makefile
+2019-10-23 17:39:31 <HackEso> https://hack.esolangs.org/edit/tmp/asmbf-1.1.1/Makefile
+2019-10-23 17:39:49 <kspalaiologos> `fetch tmp/asmbf-1.1.1/Makefile https://hack.esolangs.org/get/tmp/asmbf-1.1.1/Makefile
+2019-10-23 17:39:50 <HackEso> 2019-10-23 17:39:49 URL:https://hack.esolangs.org/get/tmp/asmbf-1.1.1/Makefile [687/687] -> "tmp/asmbf-1.1.1/Makefile" [1]
+2019-10-23 17:40:02 <b_jonas> kspalaiologos: hope you don't have to compile anything big that takes more than like 12 seconds or whatever the command timeout is
+2019-10-23 17:40:08 <kspalaiologos> nope
+2019-10-23 17:40:10 <kspalaiologos> it's just 4 programs
+2019-10-23 17:40:20 <kspalaiologos> every single one is <5 kilobytes big
+2019-10-23 17:40:32 <kspalaiologos> ``` cd tmp/asmbf-1.1.1/ && make all install
+2019-10-23 17:40:36 <HackEso> cp: cannot create regular file '/bin/bconv': Read-only file system \ cp: cannot create regular file '/bin/bfasm': Read-only file system \ cp: cannot create regular file '/bin/bfi': Read-only file system \ cp: cannot create regular file '/bin/bfintd': Read-only file system \ cp: cannot create regular file '/bin/bfmake': Read-only file system \ cp: cannot create regular file '/bin/bfpp': Read-only file system \ cp: cannot create regular file '/
+2019-10-23 17:40:38 <b_jonas> kspalaiologos: yeah, the ones that take too much to compile are often also too big to fetch
+2019-10-23 17:40:47 <kspalaiologos> hm
+2019-10-23 17:40:52 <kspalaiologos> so I'll have to change the prefix
+2019-10-23 17:40:55 <kspalaiologos> where do you put the binaries
+2019-10-23 17:41:01 <fizzie> /hackenv/bin, usually.
+2019-10-23 17:41:03 <kspalaiologos> i'll create a folder for myself
+2019-10-23 17:41:08 <kspalaiologos> so I don't pollute the path
+2019-10-23 17:41:15 <b_jonas> kspalaiologos: create a dir under hackenv/lib
+2019-10-23 17:41:18 <b_jonas> under /hackenv/lib
+2019-10-23 17:41:19 <fizzie> In that case, yes, that.
+2019-10-23 17:41:33 <b_jonas> or under /hackenv/share for the architecture-independent ones
+2019-10-23 17:41:33 Quit: skyplane (Ping timeout: 245 seconds)
+2019-10-23 17:41:33 Nick Change: skyplane -> skyplane
+2019-10-23 17:41:36 <kspalaiologos> ???
+2019-10-23 17:41:44 <fizzie> `` echo $PATH
+2019-10-23 17:41:45 <HackEso> ​/hackenv/bin:/usr/bin:/bin
+2019-10-23 17:41:48 <kspalaiologos> why under /lib
+2019-10-23 17:41:54 <b_jonas> kspalaiologos: not /lib
+2019-10-23 17:42:00 <b_jonas> kspalaiologos: /hackenv/lib
+2019-10-23 17:42:03 <kspalaiologos> i wanted to shorten typing xd
+2019-10-23 17:42:09 <kspalaiologos> but why there
+2019-10-23 17:42:28 <arseniiv> imode: oh, Noita is by the same author as Baba is You!
+2019-10-23 17:42:28 <b_jonas> kspalaiologos: because we use /hackenv/lib and /hackenv/share as sort of like the user's /usr/local/lib and /usr/local/share
+2019-10-23 17:42:37 <kspalaiologos> ``` ls tmp/asmbf-1.1.1/bin/
+2019-10-23 17:42:38 <HackEso> bconv \ bfasm \ bfi \ bfintd \ bfmake \ bfpp \ labels.pl \ strip.pl
+2019-10-23 17:42:41 <b_jonas> kspalaiologos: we're not sysadmins so we can't write to /usr/local
+2019-10-23 17:42:49 <b_jonas> but /hackenv is our homedir, so we can write under there
+2019-10-23 17:42:53 <kspalaiologos> so this stuff should probably go to my folder in path
+2019-10-23 17:42:56 <b_jonas> so we use bin, lib, share under it
+2019-10-23 17:43:06 <kspalaiologos> but I'll have to modify the scripts though as they might not work with the nesting
+2019-10-23 17:43:12 <kspalaiologos> #shitcode
+2019-10-23 17:43:33 <b_jonas> kspalaiologos: why? can't you just configure --prefix=/hackenv/lib or make PREFIX=/hackenv/lib or something?
+2019-10-23 17:43:47 <kspalaiologos> I wrote that makefile
+2019-10-23 17:43:51 <fizzie> b_jonas: I guess technically the binaries should be in /hackenv/libexec for more FHS-y style.
+2019-10-23 17:44:18 <fizzie> "/usr/libexec includes internal binaries that are not intended to be executed directly by users or shell scripts."
+2019-10-23 17:44:19 <b_jonas> fizzie: perhaps. do you know who created /hackenv/share ?
+2019-10-23 17:44:20 <kspalaiologos> ``` cp tmp/asmbf-1.1.1/bin/bconv /hackenv/bin
+2019-10-23 17:44:22 <HackEso> No output.
+2019-10-23 17:44:28 <kspalaiologos> ``` cp tmp/asmbf-1.1.1/bin/bfasm /hackenv/bin
+2019-10-23 17:44:30 <HackEso> No output.
+2019-10-23 17:44:32 <kspalaiologos> and that's all I think
+2019-10-23 17:44:41 <kspalaiologos> ``` bfasm
+2019-10-23 17:44:43 <b_jonas> fizzie: /hackenv is a bit of a mess, with some garbage spread around
+2019-10-23 17:44:52 <b_jonas> we tend to remove at least the top level stuff, but we don't really have a good hierarchy
+2019-10-23 17:44:53 <kspalaiologos> hm
+2019-10-23 17:44:55 <kspalaiologos> ``` cat
+2019-10-23 17:45:01 <kspalaiologos> what happens when I do that?
+2019-10-23 17:45:07 <fizzie> A timeout at some point, normally.
+2019-10-23 17:45:08 <kspalaiologos> the program just gets killed at eof or what
+2019-10-23 17:45:11 <HackEso> No output.
+2019-10-23 17:45:14 <kspalaiologos> ah yes
+2019-10-23 17:45:16 <b_jonas> kspalaiologos: cp? don't you use symlinks?
+2019-10-23 17:45:27 <kspalaiologos> probably I should
+2019-10-23 17:45:33 <b_jonas> ``` oh sorry
+2019-10-23 17:45:34 <HackEso> bash: oh: command not found
+2019-10-23 17:45:35 <kspalaiologos> but nobody is interested in my stuff so I program it like for myself
+2019-10-23 17:45:35 <b_jonas> it was from temps
+2019-10-23 17:45:45 <b_jonas> kspalaiologos: sorry, don't symlink
+2019-10-23 17:45:51 <b_jonas> the source was from tmp, so you can't symlink
+2019-10-23 17:45:57 <b_jonas> wait
+2019-10-23 17:46:00 <kspalaiologos> how can I specify multiline output
+2019-10-23 17:46:02 <b_jonas> kspalaiologos: did you install to tmp?
+2019-10-23 17:46:03 <kspalaiologos> input
+2019-10-23 17:46:08 <kspalaiologos> no, I didnt install to tmp
+2019-10-23 17:46:09 <b_jonas> that's not a good idea if it has any files other than the binary
+2019-10-23 17:46:11 <kspalaiologos> the install didnt success
+2019-10-23 17:46:12 <b_jonas> oh good
+2019-10-23 17:46:13 <fizzie> b_jonas: It was just built in the source tree and then manually copied over.
+2019-10-23 17:46:20 <kspalaiologos> ^
+2019-10-23 17:46:21 <kspalaiologos> yes
+2019-10-23 17:46:23 <kspalaiologos> because install script bailed out
+2019-10-23 17:46:34 <kspalaiologos> ```bfasm
+2019-10-23 17:46:35 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ``bfasm: not found
+2019-10-23 17:46:38 <kspalaiologos> wait a second
+2019-10-23 17:46:46 <kspalaiologos> ```bfasm out .0
+2019-10-23 17:46:46 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ``bfasm: not found
+2019-10-23 17:46:49 <kspalaiologos> ``` bfasm out .0
+2019-10-23 17:46:51 <b_jonas> kspalaiologos: if it works, you may also create a wisdom entry so we know what the program is for
+2019-10-23 17:46:57 <kspalaiologos> it doesn't send eof
+2019-10-23 17:46:59 <b_jonas> though maybe it has a good --help output or something
+2019-10-23 17:47:00 <kspalaiologos> thats very bad
+2019-10-23 17:47:04 <b_jonas> ``` bfasm --help
+2019-10-23 17:47:07 <HackEso> No output.
+2019-10-23 17:47:10 <kspalaiologos> it has no help flag
+2019-10-23 17:47:16 <kspalaiologos> you can read its source code
+2019-10-23 17:47:20 <HackEso> No output.
+2019-10-23 17:47:23 <kspalaiologos> its really helpful in understanding it
+2019-10-23 17:47:35 <HackEso> No output.
+2019-10-23 17:47:37 <kspalaiologos> can I manually instuct the bot to send eof at the end?
+2019-10-23 17:47:45 <fizzie> At the end of *what*?
+2019-10-23 17:47:48 <kspalaiologos> of my input
+2019-10-23 17:47:52 <b_jonas> kspalaiologos: a wisdom entry that tells where its source is and a quick synopsis might be helpful then
+2019-10-23 17:48:00 <kspalaiologos> I will add it in a moment
+2019-10-23 17:48:06 <kspalaiologos> but i'm working out the eof
+2019-10-23 17:48:08 <b_jonas> kspalaiologos: because a month from now, we won't be able to guess where the source is, and we won't want to dive the log to find out
+2019-10-23 17:48:09 <fizzie> You can do < /dev/null to get an empty stdin with an EOF at the end.
+2019-10-23 17:48:21 <b_jonas> kspalaiologos: try <<<""
+2019-10-23 17:48:21 <kspalaiologos> the problem is
+2019-10-23 17:48:25 <b_jonas> oh yeah, </dev/null
+2019-10-23 17:48:25 <kspalaiologos> hm ok
+2019-10-23 17:48:27 <b_jonas> even better
+2019-10-23 17:48:28 <b_jonas> unix magic
+2019-10-23 17:48:40 <kspalaiologos> if i pipe dev null here
+2019-10-23 17:48:46 <kspalaiologos> wont my input "disappear"?
+2019-10-23 17:48:53 <b_jonas> what input?
+2019-10-23 17:48:57 <kspalaiologos> so you see
+2019-10-23 17:48:57 <fizzie> What input? There's no way to type input into the stdin stream.
+2019-10-23 17:49:05 <kspalaiologos> oh, so I'll have to pipe it
+2019-10-23 17:49:08 <kspalaiologos> that's okay
+2019-10-23 17:49:15 <b_jonas> you can just enter input with <<<
+2019-10-23 17:49:24 <kspalaiologos> ``` bfasm <<< "out .0"
+2019-10-23 17:49:25 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-10-23 17:49:26 <b_jonas> ``` perl <<<'print "hello, world! " for 1..9'
+2019-10-23 17:49:27 <HackEso> hello, world! hello, world! hello, world! hello, world! hello, world! hello, world! hello, world! hello, world! hello, world!
+2019-10-23 17:49:28 <kspalaiologos> yayyyy
+2019-10-23 17:49:46 <kspalaiologos> so
+2019-10-23 17:49:51 <kspalaiologos> how do you add wisdom entry?
+2019-10-23 17:49:54 <b_jonas> `? learn
+2019-10-23 17:49:56 <HackEso> ​`learn creates a wisdom entry and tries to guess which word is the key. Syntax (case insensitive): `learn [a|an|the] <keyword>[s][punctuation] [...]
+2019-10-23 17:49:57 <b_jonas> `? le//rn
+2019-10-23 17:49:59 <HackEso> le/rn makes creating wisdom entries manually a thing of the past. Usage: `le/[/]rn <key>//<wisdom>
+2019-10-23 17:50:12 <b_jonas> or create a file manually in the wisdom directory with a lowercase name
+2019-10-23 17:50:22 <b_jonas> that doesn't end in s
+2019-10-23 17:50:32 <kspalaiologos> can I just link the documentation?
+2019-10-23 17:50:37 <b_jonas> yes
+2019-10-23 17:50:48 <b_jonas> but adding a short synopsis should help
+2019-10-23 17:50:53 <b_jonas> so people can know if they should even check the docs
+2019-10-23 17:51:25 <kspalaiologos> `learn the bfasm The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:51:28 <HackEso> Learned 'bfasm': the bfasm The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:51:33 <kspalaiologos> `wisdom bfasm
+2019-10-23 17:51:34 <HackEso> ​bfasm//the bfasm The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:51:39 <kspalaiologos> lgtm
+2019-10-23 17:51:48 <b_jonas> `? bfasm
+2019-10-23 17:51:49 <HackEso> the bfasm The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:52:16 <kspalaiologos> wait
+2019-10-23 17:52:21 <kspalaiologos> it has been appended to the beginning
+2019-10-23 17:52:32 <kspalaiologos> what a derp lol
+2019-10-23 17:52:33 <fizzie> That's how it does.
+2019-10-23 17:52:45 <kspalaiologos> `? wiki
+2019-10-23 17:52:46 <HackEso> The wiki is at <https://esolangs.org/>.
+2019-10-23 17:52:55 <kspalaiologos> `? test
+2019-10-23 17:52:56 <HackEso> test failed. HackEgo-JUnit is not available.
+2019-10-23 17:52:57 <fizzie> The idea is that you can `learn things like "The foomajick is a thingummy.", and then `? foomajick will return that.
+2019-10-23 17:53:01 <b_jonas> kspalaiologos: try le//rn
+2019-10-23 17:53:06 <b_jonas> or slashlearn if you're me
+2019-10-23 17:53:14 <kspalaiologos> `le//rn
+2019-10-23 17:53:15 <HackEso> Usage: `le/[/]rn <key>//<wisdom>
+2019-10-23 17:53:28 <kspalaiologos> `le//rn bfasm //The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:53:31 <HackEso> Learned 'bfasm ': The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:53:39 <kspalaiologos> oops
+2019-10-23 17:53:42 <kspalaiologos> how do I remove the key?
+2019-10-23 17:53:45 <kspalaiologos> `le//rn bfasm//The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:53:47 <HackEso> Relearned 'bfasm': The brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:53:50 <b_jonas> But in this case, it should say something like "bfasm is the brainfuck assembler..."
+2019-10-23 17:53:53 <fizzie> `` forget 'bfasm '
+2019-10-23 17:53:55 <HackEso> Forget what?
+2019-10-23 17:53:55 <b_jonas> `? forget
+2019-10-23 17:53:56 <HackEso> forget? ¯\(°​_o)/¯
+2019-10-23 17:54:11 <kspalaiologos> `le//rn bfasm//bfasm is the brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:54:16 <HackEso> Relearned 'bfasm': bfasm is the brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:54:47 <b_jonas> `? bfasm
+2019-10-23 17:54:47 <fizzie> FWIW, you didn't need le//rn for *that*, the "a/an/the" is optional.
+2019-10-23 17:54:48 <HackEso> bfasm is the brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-23 17:54:50 <b_jonas> `? wisdom
+2019-10-23 17:54:51 <HackEso> wisdom is always factually accurate, except for this entry, and, uh, that other one? It started with, like, an �?
+2019-10-23 17:55:00 <b_jonas> fizzie: didn't have an "is" before
+2019-10-23 17:55:02 <kspalaiologos> can i specify newlines in <<<""?
+2019-10-23 17:55:14 <b_jonas> kspalaiologos: it's just bash syntax. you can use $'\n' if you want
+2019-10-23 17:55:19 <b_jonas> kspalaiologos: see my gcc command
+2019-10-23 17:56:46 <b_jonas> there are other solutions too of course
+2019-10-23 17:57:42 <kspalaiologos> I wonder will it build
+2019-10-23 17:57:51 <kspalaiologos> ``` bfasm <<<"mov r4,.F$'\n'mov r1,.0$'\n'mov r2,r1$'\n'lbl 1$'\n'out r1$'\n'out r2$'\n'out 32$'\n'mov r3,r1$'\n'eq_ r3,.9$'\n'jnz r3,2$'\n'mov r3,r2$'\n'eq_ r3,.9$'\n'jnz r3,3$'\n'mov r3,r1$'\n'eq_ r3,r4$'\n'jnz r3,5$'\n'lbl 6$'\n'mov r3,r2$'\n'eq_ r3,r4$'\n'jnz r3,4$'\n'inc r2$'\n'jmp 1$'\n'lbl 2$'\n'sub r4,5$'\n'mov r1,r4$'\n'add r4,5$'\n'jmp 1$'\n'lbl 3$'\n'sub r4,5$'\n'mov r2,r4$'\n'add r4,5$'\n'jmp 1$'\n'lbl 4$'\n'inc r1$'\n'mov r2,.0$'\n
+2019-10-23 17:57:51 <kspalaiologos> 'jmp 1$'\n'lbl 5$'\n'mov r3,r2$'\n'eq_ r3,r4$'\n'jz_ r3,6$'\n'0,00"
+2019-10-23 17:57:52 <HackEso> bash: -c: line 0: unexpected EOF while looking for matching `"' \ bash: -c: line 1: syntax error: unexpected end of file
+2019-10-23 17:57:58 <kspalaiologos> crap, too big
+2019-10-23 17:58:09 <b_jonas> kspalaiologos: no no, put the whole thing in $'...'
+2019-10-23 17:58:19 <b_jonas> and then C-like backslash escapes will be interpreted in it
+2019-10-23 17:58:28 <b_jonas> works good unless you need literal backslashes in your program
+2019-10-23 17:58:36 <b_jonas> or literal apostrophes
+2019-10-23 17:58:43 <b_jonas> you have to escape those with a backslash
+2019-10-23 17:59:02 <kspalaiologos> <<<"$'mov r4,.F\nmov r1,.0\nmov r2,r1\nlbl 1\nout r1\nout r2\nout 32\nmov r3,r1\neq_ r3,.9\njnz r3,2\nmov r3,r2\neq_ r3,.9\njnz r3,3\nmov r3,r1\neq_ r3,r4\njnz r3,5\nlbl 6\nmov r3,r2\neq_ r3,r4\njnz r3,4\ninc r2\njmp 1\nlbl 2\nsub r4,5\nmov r1,r4\nadd r4,5\njmp 1\nlbl 3\nsub r4,5\nmov r2,r4\nadd r4,5\njmp 1\nlbl 4\ninc r1\nmov r2,.0\njmp 1\nlbl 5\nmov r3,r2\neq_ r3,r4\njz_ r3,6\n'"
+2019-10-23 17:59:09 <b_jonas> kspalaiologos: but if you have this many newlines, then <<<'....' tr / \\n is almost worth
+2019-10-23 17:59:10 <kspalaiologos> forgot to run the program
+2019-10-23 17:59:19 <b_jonas> kspalaiologos: no, drop the double quote
+2019-10-23 17:59:30 <b_jonas> or... hmm
+2019-10-23 17:59:39 <b_jonas> ``` echo "a$'b'c"
+2019-10-23 17:59:39 <HackEso> a$'b'c
+2019-10-23 17:59:48 <b_jonas> ``` echo a$'b'c
+2019-10-23 17:59:48 <HackEso> abc
+2019-10-23 17:59:57 <kspalaiologos> ``` bfasm <<<$'mov r4,.F/mov r1,.0/mov r2,r1/lbl 1/out r1/out r2/out 32/mov r3,r1/eq_ r3,.9/jnz r3,2/mov r3,r2/eq_ r3,.9/jnz r3,3/mov r3,r1/eq_ r3,r4/jnz r3,5/lbl 6/mov r3,r2/eq_ r3,r4/jnz r3,4/inc r2/jmp 1/lbl 2/sub r4,5/mov r1,r4/add r4,5/jmp 1/lbl 3/sub r4,5/mov r2,r4/add r4,5/jmp 1/lbl 4/inc r1/mov r2,.0/jmp 1/lbl 5/mov r3,r2/eq_ r3,r4/jz_ r3,6/' tr / \\n
+2019-10-23 17:59:58 <HackEso> ​+>+[#
