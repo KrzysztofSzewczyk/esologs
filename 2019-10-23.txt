@@ -1054,3 +1054,35 @@
 2019-10-23 22:23:15 <lf94> I guess I can make a text editor now
 2019-10-23 22:25:47 <b_jonas> then we should schedule the checking of the dalnet one to 2022
 2019-10-23 22:26:09 <b_jonas> do we have an #esoteric calendar?
+2019-10-23 22:31:15 <arseniiv> lf94: :)
+2019-10-23 22:33:28 <arseniiv> <b_jonas> do we have an #esoteric calendar? => tomorrow is the day of eicosapentation of common/uncommon radices!
+2019-10-23 22:33:40 <arseniiv> (8 is the common one, 10 is uncommon)
+2019-10-23 22:34:34 <arseniiv> established since, and up to, eleven
+2019-10-23 22:36:54 <b_jonas> arseniiv: you mean like, tomorrow is the 25th day of the month?
+2019-10-23 22:37:06 <b_jonas> I can't make sense of what you mean by all those other numbers
+2019-10-23 22:37:12 <b_jonas> `ddate
+2019-10-23 22:37:13 <HackEso> Today is Sweetmorn, the 4th day of The Aftermath in the YOLD 3185
+2019-10-23 22:37:26 <arseniiv> I meant to write “comment/uncomment radices” but that’s ungrammatical and too radical
+2019-10-23 22:37:46 <arseniiv> <b_jonas> I can't make sense of what you mean by all those other numbers => why, you know that october is the eight month
+2019-10-23 22:38:01 <arseniiv> eighth*
+2019-10-23 22:38:15 <arseniiv> there’s even a helpful hth in there
+2019-10-23 22:38:19 <arseniiv> :o
+2019-10-23 22:38:45 <b_jonas> `? hth
+2019-10-23 22:38:46 <HackEso> hth ([ʰtʰh̩]) is help received from a hairy toe. It is not at all hambiguitous.
+2019-10-23 22:39:06 Quit: FreeFull
+2019-10-23 22:39:07 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-23 22:39:26 <arseniiv> tomorrow is the 25th day of the month => that’s not esoteric, contrary it’s pretty obvious
+2019-10-23 22:40:28 <arseniiv> I don’t know if I’m joking or not
+2019-10-23 22:40:49 <b_jonas> `? title
+2019-10-23 22:40:50 <HackEso> Titles J. K. Rowling had specifically denied on her webpage would be the titles of the sixth or seventh Harry Potter book are: Harry Potter and the{ Green Flame Torch, Mountain of Fantasy, Fortress of Shadows, Forest of Shadows, Graveyard of Memories, Pyramids of Furmat, Pillar of Storg�, Toenail of Icklib�gg}.
+2019-10-23 22:41:57 <arseniiv> `? ddate
+2019-10-23 22:41:58 <HackEso> ddate? ¯\(°​_o)/¯
+2019-10-23 22:43:33 <arseniiv> hm I wasn’t attentive when read how others asked to show help on commands
+2019-10-23 22:52:32 <fizzie> Arguably, ddate isn't really a HackE[sg]o command.
+2019-10-23 22:52:37 <fizzie> It's just the standard ddate.
+2019-10-23 22:52:46 <fizzie> `which ddate
+2019-10-23 22:52:46 <HackEso> ​/usr/bin/ddate
+2019-10-23 22:54:20 Joined: ArthurStrong
+2019-10-23 22:54:20 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-23 22:54:37 <fizzie> If I had /var mounted, we could probably look which package it was coming from, but for some reason the standard umlbox base mount points only include /usr, /bin, /sbin, /lib, /lib32, /lib64, /etc/alternatives and /dev.
+2019-10-23 22:55:20 <fizzie> I guess a lot of /var doesn't really make sense inside the box though, while having a shared /usr is more normal.
