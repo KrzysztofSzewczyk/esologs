@@ -830,3 +830,100 @@
 2019-10-23 19:29:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
 2019-10-23 19:29:30 <ornxka> hot damn
 2019-10-23 19:29:35 <ornxka> thats impressive
+2019-10-23 19:43:36 <arseniiv> <lf94> "o" * "h" * "e" * "ll" * -"o" does equal "hell" => seems trickier than free groups, yeah
+2019-10-23 19:43:56 <lf94> it just removes all instances of "o"
+2019-10-23 19:44:01 <lf94> pretty simple imo
+2019-10-23 19:44:09 <arseniiv> if there are many instances of "o" in that *string, which ones would be removed when * -"o"?
+2019-10-23 19:44:11 <imode> how would you remove just one 'o'.
+2019-10-23 19:44:15 <arseniiv> ah, all
+2019-10-23 19:44:22 <lf94> you dont
+2019-10-23 19:44:24 <lf94> @ imode
+2019-10-23 19:44:35 <imode> brutal. so there are find/replace operations that are not possible.
+2019-10-23 19:44:46 <lf94> find/replace is something all on its own.
+2019-10-23 19:44:51 <lf94> That's why I ask the question...
+2019-10-23 19:44:56 <lf94> At the bottom of my writing
+2019-10-23 19:44:59 <arseniiv> I wanted to say “rigid” too :D
+2019-10-23 19:45:10 <lf94> "Maybe strings should be promoted to a more restrictive structure?"
+2019-10-23 19:45:11 <imode> apart from reordering the operations.
+2019-10-23 19:45:31 <lf94> Or maybe strings alone are not useful
+2019-10-23 19:45:43 <lf94> I wanted to explore it with you guys :)
+2019-10-23 19:46:00 <arseniiv> lf94: what do you mean, more restrictive?
+2019-10-23 19:46:07 <lf94> more laws to satisfy
+2019-10-23 19:46:13 <imode> you can reorder the operations such that any 'o' you want to remove just has to be affixed with a * -'o'.
+2019-10-23 19:46:22 <lf94> So our new structure would "require to implement find/replace"
+2019-10-23 19:46:33 <arseniiv> ah I see
+2019-10-23 19:46:43 <imode> so 'h' * 'e' * 'l' * 'l' * 'o' * -'o' * 'o' wouldn't be "helloo", it'd be "hello".
+2019-10-23 19:46:53 <imode> but this implies an ordering of an operation.
+2019-10-23 19:46:53 <lf94> Yes, then we have a free group
+2019-10-23 19:47:08 <imode> I don't believe you do. any deviation from that order gives you a different result.
+2019-10-23 19:47:22 <lf94> "o" * "h" * -"o" then equals what?
+2019-10-23 19:47:34 <imode> 'h'.
+2019-10-23 19:47:41 <lf94> In a free group...it equals "oh-o"
+2019-10-23 19:47:41 <arseniiv> so we need to have some good operations so that find/replace is neatly expressible?
+2019-10-23 19:47:55 <lf94> in a group, by MY definition, it's "h".
+2019-10-23 19:48:14 <lf94> arseniiv: yes, preferably 1 operation
+2019-10-23 19:48:22 <arseniiv> lf94: I think imode proposes deleting the last one occurence
+2019-10-23 19:48:33 <imode> not really. stepwise application.
+2019-10-23 19:48:34 <lf94> _ah_
+2019-10-23 19:48:41 <arseniiv> then it would be between free group and deleting all occurrences
+2019-10-23 19:48:56 <lf94> "hello" ? ("el","zz")
+2019-10-23 19:49:03 <lf94> But now we are creating a new thing
+2019-10-23 19:49:12 <lf94> intersection of two sets
+2019-10-23 19:49:16 <arseniiv> yes, preferably 1 operation => but now we already got two, * and -
+2019-10-23 19:49:17 <lf94> strings and some pair type
+2019-10-23 19:49:21 <imode> 'h' * 'e' -> "he". "he" * 'l' * 'l' -> "hell". "hell" * 'o' -> "hello". "hello" * -'o' -> "hell". "hell" * 'o' -> "hello".
+2019-10-23 19:49:27 <lf94> arseniiv: I mean 1 additional operation :)
+2019-10-23 19:49:57 <lf94> imode: now what about "ohell" * -"o" ?
+2019-10-23 19:49:57 <imode> strings with concatenation don't form a group.
+2019-10-23 19:49:57 <arseniiv> we can use string zippers
+2019-10-23 19:50:09 <imode> because if they did, then "hello" == "olleh".
+2019-10-23 19:50:17 <lf94> imode with concat alone, just a monoid, yes
+2019-10-23 19:50:25 <arseniiv> I have an uncooked esolang Punctree which deals with tree zippers
+2019-10-23 19:50:26 <lf94> errr?
+2019-10-23 19:50:32 <arseniiv> it has some nice operations
+2019-10-23 19:50:37 <lf94> hello is a different string to olleh
+2019-10-23 19:50:55 <lf94> string zipper?
+2019-10-23 19:50:57 <imode> but if you're defining a string to be a result of several `*`s, it can't be if it's a group.
+2019-10-23 19:50:58 <arseniiv> like substitution, which is inconceivable for strings without holes
+2019-10-23 19:51:14 <lf94> imode: you've lost me :)
+2019-10-23 19:51:19 <arseniiv> string zipper? => like list zipper, but for list of chars
+2019-10-23 19:51:32 <lf94> I just remember zipper is some fp structure or function
+2019-10-23 19:51:45 <arseniiv> yeah
+2019-10-23 19:51:51 <imode> ah, I'm wrong. the ordering is relevant, so I'm wrong.
+2019-10-23 19:52:11 <arseniiv> just a shameless self-something: https://esolangs.org/wiki/Punctree and there are a couple of links added by IIRC int-e
+2019-10-23 19:52:22 <arseniiv> to pages about zippers specifically
+2019-10-23 19:52:27 <lf94> I don't get why people say "Shameless plug"
+2019-10-23 19:52:36 <imode> plugging yourself is seen as shameless.
+2019-10-23 19:52:43 <imode> s/shameless/shameful
+2019-10-23 19:52:45 <lf94> Right? So why say it at all?
+2019-10-23 19:52:45 <arseniiv> so my clumsy description would get more comprehensive
+2019-10-23 19:52:58 <imode> shameless self promotion fits in the same vein.
+2019-10-23 19:53:08 <arseniiv> shameless composition with the channel’s continuation
+2019-10-23 19:53:13 <lf94> It's like saying "excuse my rudeness" *does something extremely rude*
+2019-10-23 19:53:15 <arseniiv> is it delimited one
+2019-10-23 19:53:38 <lf94> IMO linking to your own things is ok. In fact I encourage it, because people dont share their own stuff enough
+2019-10-23 19:53:39 <arseniiv> lf94: or knocking and then opening the door immediately
+2019-10-23 19:53:45 <lf94> haha, yeah
+2019-10-23 19:53:47 <lf94> that's a goodone
+2019-10-23 19:54:07 <arseniiv> lf94: I agree, people should share their stuff with me so I’ll be a good borg
+2019-10-23 19:54:11 <arseniiv> we*
+2019-10-23 19:54:20 <lf94> arseniiv: this lang is too alien for me right now :D
+2019-10-23 19:54:32 <lf94> ζ↙
+2019-10-23 19:54:39 <lf94> brain=exploded
+2019-10-23 19:54:46 <arseniiv> okay but you can believe that there are many neat operations to do on zippers!
+2019-10-23 19:54:54 <lf94> sure! :D
+2019-10-23 19:54:56 <arseniiv> yeah I like APL too
+2019-10-23 19:55:07 <arseniiv> not the real APL, but nonetheless
+2019-10-23 19:55:31 <arseniiv> then some day you’ll make something with string zippers maybe
+2019-10-23 19:56:00 <lf94> What are some math operators that take more than 2 operands
+2019-10-23 19:56:21 <lf94> maybe strings need to be "lifted" to something like a list
+2019-10-23 19:57:04 <arseniiv> strings are already lists, of characters
+2019-10-23 19:57:21 <arseniiv> I probably misunderstood
+2019-10-23 19:57:33 <lf94> ["hello ", name, " how are you?"] * ["", " with a hat", ""] == "hello lf94 with a hat how are you?"
+2019-10-23 19:57:59 <lf94> imo this is a pretty cool
+2019-10-23 19:58:17 <arseniiv> oh format strings!
+2019-10-23 19:58:20 <lf94> getting closer to replace i think
+2019-10-23 19:58:34 <lf94> So now * is operating on each element
+2019-10-23 19:58:39 <lf94> like matrix operations
+2019-10-23 19:59:35 Joined: oerjan
+2019-10-23 19:59:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
