@@ -1005,3 +1005,52 @@
 2019-10-23 21:49:31 <HackEso> quote "$@"
 2019-10-23 21:56:11 <oerjan> `? forth
 2019-10-23 21:56:13 <HackEso> Since Biblical times, Forth has been the go-to language for multiplication.
+2019-10-23 22:01:44 Quit: sftp (Excess Flood)
+2019-10-23 22:01:44 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-23 22:02:10 Joined: sftp
+2019-10-23 22:02:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-23 22:02:38 <b_jonas> ``` set -e; cd wisdom; printf "%s// " *eso*
+2019-10-23 22:02:39 <HackEso> ​#esoteric// #esoteric-blah// esosc// esoteric// esoteric files archive// esoterra// esowiki// hackeso// ingesorgeco// mesolang//
+2019-10-23 22:04:21 <b_jonas> `? esoteric
+2019-10-23 22:04:22 <HackEso> This channel is about programming -- for the other kind of esoterica, try #esoteric on EFnet or DALnet.
+2019-10-23 22:04:49 <b_jonas> ^ these channels, the ones mentioned in welcome, do we know if they still exist? I wonder if we're sending people to channels that have been gone for five years or something
+2019-10-23 22:05:05 <b_jonas> perhaps we should send a volunteer to check once every decade
+2019-10-23 22:05:51 <b_jonas> ``` \? welcome | sed 's/.*((//'
+2019-10-23 22:05:53 <HackEso> Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: <https://esolangs.org/>. (For the other kind of esoterica, try #esoteric on EFnet or DALnet.)
+2019-10-23 22:05:59 <b_jonas> argh
+2019-10-23 22:07:42 <lf94> arseniiv: as I was washing dishes, I remembered what a zipper was.
+2019-10-23 22:07:51 <lf94> find and replace is complete now.
+2019-10-23 22:08:24 <lf94> (("hello my big world" % " ") ? "big") * ["", -"", ""] * ["", "small", ""] == "hello my small world"
+2019-10-23 22:08:47 <lf94> % is split, ? is find (and returns a zipper of [before, found, after]), and the rest we talked about.
+2019-10-23 22:09:03 <arseniiv> yay!
+2019-10-23 22:09:15 <lf94> I think it's also impossible for the line to fail
+2019-10-23 22:09:24 <lf94> if "big" isnt found, it'll use empty string
+2019-10-23 22:09:29 <lf94> meaning nothing is replaced
+2019-10-23 22:10:40 <arseniiv> also maybe add composition of two or several zippers, it would just nest them like a fir
+2019-10-23 22:11:17 <lf94> Oh yeah and ! is join
+2019-10-23 22:11:23 <arseniiv> and walks left/right
+2019-10-23 22:11:57 <arseniiv> hm how could one insert between fragments?
+2019-10-23 22:12:14 <lf94> example?
+2019-10-23 22:12:41 <arseniiv> like, insert something right before "big" in that example
+2019-10-23 22:12:53 <arseniiv> but leave "big" intact
+2019-10-23 22:13:09 <arseniiv> ah, we could replace it with "somethingother big"
+2019-10-23 22:13:51 <arseniiv> (but maybe this profits from a shorter syntax)
+2019-10-23 22:13:59 <arseniiv> will go sleeping soon
+2019-10-23 22:14:54 <oerjan> <b_jonas> perhaps we should send a volunteer to check once every decade <-- sounds good, i'm sure it's been less than that.
+2019-10-23 22:18:56 <b_jonas> oerjan: indeed, less than a decade yet
+2019-10-23 22:20:45 <lf94> arseniiv: yeah exactly
+2019-10-23 22:20:59 <lf94> or, er, no!
+2019-10-23 22:21:10 <lf94> just this
+2019-10-23 22:21:27 <lf94> ["", "somethingother", ""] * (("hello my big world" % " ") ? "big")
+2019-10-23 22:21:35 <lf94> so awesome
+2019-10-23 22:22:39 <b_jonas> ``` hg log -T "{rev}:{date}:{desc}\n" -r 378 # this was the commit that first added dalnet
+2019-10-23 22:22:39 <lf94> so that covers find/replace/insert/delete
+2019-10-23 22:22:40 <HackEso> 378:1336334759.00:<elliott> learn Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: http://esolangs.org/wiki/Main_Page. (For the other kind of esoterica, try #esoteric on irc.dal.net.)
+2019-10-23 22:22:54 <b_jonas> ``` hg log -T "{rev}:{date|shortdate}:{desc}\n" -r 378 # with date
+2019-10-23 22:22:55 <HackEso> 378:2012-05-06:<elliott> learn Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: http://esolangs.org/wiki/Main_Page. (For the other kind of esoterica, try #esoteric on irc.dal.net.)
+2019-10-23 22:23:06 <b_jonas> ``` hg log -T "{rev}:{date|shortdate}:{desc}\n" -r 5372 # and this much more recent one added efnet
+2019-10-23 22:23:07 <HackEso> 5372:2015-05-24:<oerjan> sed -i \'s/on irc.*/on EFnet or DALnet.)/\' wisdom/welcome
+2019-10-23 22:23:13 <b_jonas> so both less than a decade ago
+2019-10-23 22:23:15 <lf94> I guess I can make a text editor now
+2019-10-23 22:25:47 <b_jonas> then we should schedule the checking of the dalnet one to 2022
+2019-10-23 22:26:09 <b_jonas> do we have an #esoteric calendar?
