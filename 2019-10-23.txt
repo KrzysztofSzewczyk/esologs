@@ -50,3 +50,282 @@
 2019-10-23 16:59:25 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
 2019-10-23 16:59:42 <kspalaiologos> arseniiv, ah yes, the ouija board
 2019-10-23 17:00:00 <kspalaiologos> very useful while programming in Malbolge
+2019-10-23 17:01:26 <arseniiv> kspalaiologos: oh! how do you use it?
+2019-10-23 17:02:03 <kspalaiologos> well, first you have to sign the pledge with Satan
+2019-10-23 17:02:04 <arseniiv> BTW I don’t really have an ouija but I can simulate it by means of a cat if I ever would want to
+2019-10-23 17:02:31 <kspalaiologos> and the following steps should be obvious
+2019-10-23 17:02:50 <skyplane> imode: разница в том, что я сабжем не торгую. от слова совсем. и указанная миссия - действительно миссия. З.Ы. с головой всё нормально.
+2019-10-23 17:03:22 <kspalaiologos> δεν μιλάς αγγλικά;
+2019-10-23 17:03:26 <imode> sorry, speak english.
+2019-10-23 17:03:42 <skyplane> arseniiv: не вопрос, бывает и непонимание
+2019-10-23 17:03:56 <kspalaiologos> oh cmon
+2019-10-23 17:03:57 <kspalaiologos> darn it man
+2019-10-23 17:04:02 <kspalaiologos> stop, you've broken my bot
+2019-10-23 17:04:17 <imode> why do you have a bot in here.
+2019-10-23 17:04:34 <kspalaiologos> to log the channel messags
+2019-10-23 17:04:41 <imode> your client does that.
+2019-10-23 17:04:43 <b_jonas> ah
+2019-10-23 17:04:53 <imode> and there are log files in the topic of this channel.
+2019-10-23 17:04:53 <kspalaiologos> russian characters are actually wide characters
+2019-10-23 17:05:04 <kspalaiologos> yes, my bot is supplying one of these sites
+2019-10-23 17:05:12 <b_jonas> `? logs
+2019-10-23 17:05:13 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2019-10-23 17:05:13 <HackEso> ​#esoteric channel logs: https://esolangs.org/logs/ http://tunes.org/~nef/logs/esoteric/?C=M;O=D http://codu.org/logs/_esoteric/ https://github.com/kspalaiologos/esologs/
+2019-10-23 17:05:17 <imode> which one.
+2019-10-23 17:05:24 <kspalaiologos> Wide character in print at harvester.pl line 51.
+2019-10-23 17:05:24 <kspalaiologos> at harvester.pl line 51.
+2019-10-23 17:05:24 <kspalaiologos> LogBot::log(LogBot=HASH(0x55f49e95e340), "<skyplane>", "arseniiv: \x{43d}\x{435} \x{432}\x{43e}\x{43f}\x{440}\x{43e}\x{441}, \x{431}\x{44b}\x{432}\x{430}\x{435}\x{442} \x{438} \x{43d}\x{435}\x{43f}\x{43e}\x{43d}\x{438}\x{43c}\x{430}\x{43d}\x{438}\x{435}") called at harvester.pl line 166
+2019-10-23 17:05:27 <b_jonas> imode: the last one I think
+2019-10-23 17:05:31 <arseniiv> <kspalaiologos> russian characters are actually wide characters => wait why, how
+2019-10-23 17:05:51 <kspalaiologos> ^ apparently perl thinks so
+2019-10-23 17:06:09 <imode> b_jonas: ah, right.
+2019-10-23 17:06:26 <b_jonas> imode: I mean, that's the new one, so that's the most likely to break
+2019-10-23 17:06:31 <imode> lol.
+2019-10-23 17:06:55 <kspalaiologos> ^^ it used to work
+2019-10-23 17:06:56 <kspalaiologos> for a long time
+2019-10-23 17:07:00 <arseniiv> okay, returning to the thing I asked, should I give a log excerpt to that person or may I just rephrase what was brought? (Including CA and noita; interesting thing, I’ll watch a video later)
+2019-10-23 17:07:02 <b_jonas> kspalaiologos: long time? it ran for a month
+2019-10-23 17:07:14 <b_jonas> kspalaiologos: our channel is over twelve years old
+2019-10-23 17:07:27 <kspalaiologos> i realise that
+2019-10-23 17:07:28 <b_jonas> imode: really, it's either that, or an update on irc's side
+2019-10-23 17:07:31 <arseniiv> <kspalaiologos> ^ apparently perl thinks so => ah. Hm. It’s very strange to say the least
+2019-10-23 17:07:43 <kspalaiologos> I have read the old IRC logs because I needed *something*
+2019-10-23 17:07:48 <arseniiv> (shouldn’t it write in UTF-8 or something)
+2019-10-23 17:07:55 <kspalaiologos> back from 2003 or sth
+2019-10-23 17:08:04 <kspalaiologos> so yeah, this channel is quite old
+2019-10-23 17:08:10 <b_jonas> arseniiv: if you write the program correctly
+2019-10-23 17:08:13 <kspalaiologos> but my bot's been running for week and a half
+2019-10-23 17:08:22 <b_jonas> arseniiv: in fact you should never _decode_ what you read from irc
+2019-10-23 17:08:26 <b_jonas> because it's not in any defined encoding
+2019-10-23 17:08:37 <imode> it's just bytes, man.
+2019-10-23 17:08:47 <b_jonas> though we usually view it in utf-8, you can send any byte string that doesn't have \x00 or \x0A or \x0D
+2019-10-23 17:09:00 <b_jonas> imode: exactly, but people sometimes write programs with bugs and later fix it
+2019-10-23 17:09:01 <b_jonas> it's normal
+2019-10-23 17:09:10 <kspalaiologos> ok
+2019-10-23 17:09:19 <kspalaiologos> now it shouldn't bail out now
+2019-10-23 17:09:52 <kspalaiologos> but I can't tell what happened on 10.18 5:00-6:00 PM GMT
+2019-10-23 17:11:24 <b_jonas> kspalaiologos: the esolangs.org log is backfilled after the fact from other bots when it's out. it is in fact pretty new, only like two years old, but fizzie added all the old logs retroactively to its archive
+2019-10-23 17:12:00 <kspalaiologos> I've read a few mails from the mailing list
+2019-10-23 17:12:02 <b_jonas> kspalaiologos: perhaps eventually he'll fill gaps from your logs too
+2019-10-23 17:12:07 <kspalaiologos> is it even alive by now?
+2019-10-23 17:12:09 <b_jonas> mailing list? what mailing list?
+2019-10-23 17:12:11 <b_jonas> `? mailing list
+2019-10-23 17:12:13 <HackEso> mailing list? ¯\(°​_o)/¯
+2019-10-23 17:12:13 <b_jonas> `? email
+2019-10-23 17:12:15 <HackEso> email? ¯\(°​_o)/¯
+2019-10-23 17:12:15 <b_jonas> `? mail
+2019-10-23 17:12:16 <HackEso> mail? ¯\(°​_o)/¯
+2019-10-23 17:12:23 <kspalaiologos> haha
+2019-10-23 17:12:54 <kspalaiologos> esoteric.sange.fi I guess
+2019-10-23 17:12:59 <b_jonas> we don't have a mailing list, even wgrep doesn't know about it
+2019-10-23 17:13:02 <b_jonas> `? discord
+2019-10-23 17:13:03 <HackEso> discord? ¯\(°​_o)/¯
+2019-10-23 17:13:08 <kspalaiologos> we had
+2019-10-23 17:13:11 <kspalaiologos> a mailing list a long time ago
+2019-10-23 17:13:25 <skyplane> Good day
+2019-10-23 17:13:25 <skyplane> can you tell where with this: https://skyplaneru.wixsite.com/excessive?
+2019-10-23 17:13:25 <skyplane> I understand that in the community of programmers, but suddenly
+2019-10-23 17:13:41 <b_jonas> nor do we have a discord
+2019-10-23 17:13:57 <kspalaiologos> `? website
+2019-10-23 17:13:58 <HackEso> website? ¯\(°​_o)/¯
+2019-10-23 17:14:02 <kspalaiologos> you don't have website too
+2019-10-23 17:14:02 <b_jonas> `? wiki
+2019-10-23 17:14:06 <HackEso> The wiki is at <https://esolangs.org/>.
+2019-10-23 17:14:11 <b_jonas> kspalaiologos: ^ you have to search right
+2019-10-23 17:14:11 <kspalaiologos> crap
+2019-10-23 17:14:15 <b_jonas> you can grep wisdom
+2019-10-23 17:14:20 <b_jonas> ``` grep -REi http wisdom
+2019-10-23 17:14:21 <HackEso> wisdom/ayacc:ayacc is ais523's yacc parser generator implementation, get it from darcs clone http://nethack4.org/projects/ayacc \ wisdom/dwfo:DWFO is the Doctor Who Fan Orchestra, <http://thedwfo.org>. \ wisdom/homestuck:Homestuck is a cult religion for disaffected teens. Gamzee drives the bus. Best summarized by http://www.mspaintadventures.com/storyfiles/hs2/05743.gif \ wisdom/hand injuries:Hand injuries are surprisingly common among webcom
+2019-10-23 17:14:29 <b_jonas> oh yeah
+2019-10-23 17:14:29 <kspalaiologos> whoa
+2019-10-23 17:14:30 <kspalaiologos> what
+2019-10-23 17:14:31 <b_jonas> `? hand injuries
+2019-10-23 17:14:32 <HackEso> Hand injuries are surprisingly common among webcomic writers, see eg. http://questionablecontent.net/view.php?comic=2314 or http://www.giantitp.com/comics/oots0864.html
+2019-10-23 17:14:40 <b_jonas> ^ I found a third example, I should add it there
+2019-10-23 17:14:56 <kspalaiologos> I can't strive to understand this bot
+2019-10-23 17:15:00 <kspalaiologos> what, why, how
+2019-10-23 17:15:10 <b_jonas> `whatis ?
+2019-10-23 17:15:11 <HackEso> ​?(1hackeso) - print wisdom by name \ ?(8lambdabot) - compose tree of lambdabot commands
+2019-10-23 17:15:16 <b_jonas> `? wisdome
+2019-10-23 17:15:17 <HackEso> The Wisdome is the place where all of HackBot's wisdom is stored and forced to fight to the death for the freedom of being printed out when you type `wisdom. Strictly speaking, it should be called the "Wissphere".
+2019-10-23 17:15:21 <kspalaiologos> have you already trained muscle memory for the #esoteric bots?
+2019-10-23 17:15:28 <b_jonas> ``` grep -REi http wisdom | tail -n+4
+2019-10-23 17:15:30 <HackEso> wisdom/hand injuries:Hand injuries are surprisingly common among webcomic writers, see eg. http://questionablecontent.net/view.php?comic=2314 or http://www.giantitp.com/comics/oots0864.html \ wisdom/pbflist:pbflist is update notification for the Perry Bible Fellowship webcomic. http://pbfcomics.com/ \ wisdom/log:#esoteric channel logs: https://esolangs.org/logs/ http://tunes.org/~nef/logs/esoteric/?C=M;O=D http://codu.org/logs/_esoteric/ http
+2019-10-23 17:15:52 <kspalaiologos> ``` grep -REi wisdom
+2019-10-23 17:15:53 <b_jonas> kspalaiologos: I use normal unix commands more than the extra-specialized stuff
+2019-10-23 17:16:03 <b_jonas> kspalaiologos: bin/\? foo basically just prints wisdom/foo
+2019-10-23 17:16:04 <kspalaiologos> ^ but, the structure of this bot
+2019-10-23 17:16:07 <b_jonas> it does a few extra things, but not too much
+2019-10-23 17:16:14 <b_jonas> ``` cat wisdom/"hand injury"
+2019-10-23 17:16:15 <HackEso> cat: 'wisdom/hand injury': No such file or directory
+2019-10-23 17:16:15 <kspalaiologos> how do I execute command
+2019-10-23 17:16:17 <b_jonas> ``` cat wisdom/"hand injuries"
+2019-10-23 17:16:17 <HackEso> Hand injuries are surprisingly common among webcomic writers, see eg. http://questionablecontent.net/view.php?comic=2314 or http://www.giantitp.com/comics/oots0864.html
+2019-10-23 17:16:19 <kspalaiologos> ``` ls /
+2019-10-23 17:16:20 <HackEso> bin \ dev \ etc \ hackenv \ lib \ lib64 \ proc \ sbin \ srv \ sys \ tmp \ usr
+2019-10-23 17:16:20 <b_jonas> `? run
+2019-10-23 17:16:21 <HackEso> ​`run <command> is HackEgo's builtin for running a command with full shell syntax. These days most use the user-made `` or ``` shortcuts instead, although all of the three have subtle differences, with `run being the most plain option (also, unlike the rest it cannot be called from other commands.)
+2019-10-23 17:16:22 <HackEso> No output.
+2019-10-23 17:16:23 <kspalaiologos> ``` ls /bin
+2019-10-23 17:16:24 <HackEso> bash \ bunzip2 \ bzcat \ bzcmp \ bzdiff \ bzegrep \ bzexe \ bzfgrep \ bzgrep \ bzip2 \ bzip2recover \ bzless \ bzmore \ cat \ chgrp \ chmod \ chown \ cp \ dash \ date \ dd \ df \ dir \ dmesg \ dnsdomainname \ domainname \ echo \ egrep \ false \ fgrep \ findmnt \ fuser \ grep \ gunzip \ gzexe \ gzip \ hostname \ ip \ journalctl \ kill \ less \ lessecho \ lessfile \ lesskey \ lesspipe \ ln \ login \ loginctl \ ls \ lsblk \ mkdir \ mknod \ mktem
+2019-10-23 17:16:35 <kspalaiologos> so you say
+2019-10-23 17:16:40 <kspalaiologos> that the users actually construct the bot
+2019-10-23 17:16:40 Joined: hppavilion[1]
+2019-10-23 17:16:41 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-23 17:16:44 <b_jonas> kspalaiologos: yes
+2019-10-23 17:16:47 <kspalaiologos> that's
+2019-10-23 17:16:48 <kspalaiologos> incredible
+2019-10-23 17:16:50 <b_jonas> the commands were added by users
+2019-10-23 17:16:52 User Name: hppavilion[1] = hppavilion[1]!~omegasome@172.98.86.92
+2019-10-23 17:16:52 <hppavilion[1]> I am very excited for the Rise of Skywalker
+2019-10-23 17:16:55 <kspalaiologos> that nobody has yet fscked up by this
+2019-10-23 17:16:58 <b_jonas> `? spoilers
+2019-10-23 17:16:59 <HackEso> Don't give movie spoilers on channel. If you do, hppavilion may hire a hitman to hunt you down in real life and torture you in refined ways.
+2019-10-23 17:17:04 <b_jonas> oh hi, hppavilion[1]
+2019-10-23 17:17:05 <hppavilion[1]> I have tickets to, like, the second showing in the state
+2019-10-23 17:17:08 <b_jonas> kspalaiologos: sure we have
+2019-10-23 17:17:13 <b_jonas> we made a lot of mistakes, then undone them
+2019-10-23 17:17:16 <hppavilion[1]> b_jonas: ...what that intentional or just the world's greatest timing?
+2019-10-23 17:17:21 <b_jonas> hppavilion[1]: intentional
+2019-10-23 17:17:26 <kspalaiologos> for example?
+2019-10-23 17:17:33 <kspalaiologos> does the repl have root access?
+2019-10-23 17:17:35 <hppavilion[1]> b_jonas: But yes, that position does still stand
+2019-10-23 17:17:39 <b_jonas> hppavilion[1]: you can see the history that I talked about that wisdom entry earlier because shachaf asked
+2019-10-23 17:17:58 <kspalaiologos> ``` ls
+2019-10-23 17:17:59 <HackEso> a.out \ bin \ canary \ emoticons \ esobible \ etc \ evil \ f \ factor \ good \ hw \ ibin \ interps \ izash.c \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quinor \ quotes \ share \ src \ test2 \ testfile \ tmflry \ tmp \ wisdom
+2019-10-23 17:18:03 <b_jonas> hppavilion[1]: and you have the same nick length as kspalaiologos so at first I thought it was he who said "I am very excited for the Rise of Skywalker"
+2019-10-23 17:18:04 <kspalaiologos> ``` ./a.out
+2019-10-23 17:18:05 <HackEso> 1.250000
+2019-10-23 17:18:09 <b_jonas> hppavilion[1]: so I had to warn him
+2019-10-23 17:18:09 <kspalaiologos> ???????
+2019-10-23 17:18:14 <b_jonas> kspalaiologos: you can experiment in tmp
+2019-10-23 17:18:15 <b_jonas> `? tmp
+2019-10-23 17:18:16 <HackEso> tmp/ is a directory for files that are not worth saving in HackEgo history, but which should still outlive a single command. 04NOTE: It interacts funnily with HackEgo's lock and re-run commit check; files can 04DISAPPEAR if you don't know what you're doing. Basically, don't modify files inside and outside tmp/ in the same HackEgo command.
+2019-10-23 17:18:20 <b_jonas> eg.
+2019-10-23 17:18:25 <hppavilion[1]> b_jonas: Huh, so I do
+2019-10-23 17:18:32 <kspalaiologos> ``` cd tmp
+2019-10-23 17:18:33 <HackEso> No output.
+2019-10-23 17:18:35 <kspalaiologos> ``` ls
+2019-10-23 17:18:36 <HackEso> a.out \ bin \ canary \ emoticons \ esobible \ etc \ evil \ f \ factor \ good \ hw \ ibin \ interps \ izash.c \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quinor \ quotes \ share \ src \ test2 \ testfile \ tmflry \ tmp \ wisdom
+2019-10-23 17:18:42 <kspalaiologos> hm, so I have to
+2019-10-23 17:18:44 <kspalaiologos> give a single command
+2019-10-23 17:18:55 <hppavilion[1]> b_jonas: But it isn't out for months, so if kspalaiologos happens to HAVE spoilers, I'd honestly be fascinated to know how (but not what they are)
+2019-10-23 17:19:13 <b_jonas> ``` set -e; gcc -Wall -O -o tmp/a.out -x c - <<<$'#include<stdio.h>\n''void main() { printf("this is a C program\n"); }'; tmp/a.out
+2019-10-23 17:19:15 <HackEso> â€‹[01m[K<stdin>:2:6:[m[K [01;35m[Kwarning: [m[Kreturn type of '[01m[Kmain[m[K' is not '[01m[Kint[m[K' [[01;35m[K-Wmain[m[K] \ this is a C program
+2019-10-23 17:19:22 <b_jonas> ``` set -e; gcc -Wall -O -o tmp/a.out -x c - <<<$'#include<stdio.h>\n''int main() { printf("this is a C program\n"); }'; tmp/a.out
+2019-10-23 17:19:23 <kspalaiologos> oh c'mon man
+2019-10-23 17:19:24 <HackEso> this is a C program
+2019-10-23 17:19:25 <kspalaiologos> void main
+2019-10-23 17:19:30 <kspalaiologos> it's a crime against humanity
+2019-10-23 17:19:38 <b_jonas> yeah, it also needs a magic option to turn off the colors
+2019-10-23 17:19:47 <kspalaiologos> ansi filter when?
+2019-10-23 17:19:47 <b_jonas> something like -fdiagnostic-colors=never or similar
+2019-10-23 17:19:59 <hppavilion[1]> Note that I do not recognize the validity of so-called "trailer spoilers"
+2019-10-23 17:20:09 <b_jonas> kspalaiologos: ideally I should make a terminfo entry for irc colors, but I haven't bothered
+2019-10-23 17:20:12 <hppavilion[1]> Except in the context of not telling someone what happens in a trailer within maybe a week of its release IF they express that they haven't seen it yet and don't want to be quote-unquote "spoiled"
+2019-10-23 17:20:13 <kspalaiologos> what are you talking about right now?
+2019-10-23 17:20:15 <kspalaiologos> I'm so lost
+2019-10-23 17:20:32 <b_jonas> `? hackego # root access
+2019-10-23 17:20:33 <HackEso> hackego # root access? ¯\(°​_o)/¯
+2019-10-23 17:20:36 <hppavilion[1]> kspalaiologos: b_jonas is talking about convoluted hackbot things, I'm talking about the ontology of movie spoilers
+2019-10-23 17:20:37 <b_jonas> ``` \? hackego # root access
+2019-10-23 17:20:38 <HackEso> HackEgo, also known as HackBot, is a bot that runs arbitrary commands on Unix. See `help for info on using it. You should totally try to hax0r it! Make sure you imagine it's running as root with no sandboxing. HackEgo is the slowest bot in all Mexico!
+2019-10-23 17:21:04 <b_jonas> ``` \? edit # single command
+2019-10-23 17:21:05 <HackEso> ​`edit <file> gives you a url, then in your browser: (1) Press Sync (unless making a new file) (2) Make your changes (3) Press Save (4) Paste the command line at the top into the channel.
+2019-10-23 17:21:06 <hppavilion[1]> Huh, HackEgo's name has changed. Cool.
+2019-10-23 17:21:17 <b_jonas> hppavilion[1]: it's a reincarnation
+2019-10-23 17:21:26 <hppavilion[1]> `? hackego
+2019-10-23 17:21:28 <HackEso> HackEgo, also known as HackBot, is a bot that runs arbitrary commands on Unix. See `help for info on using it. You should totally try to hax0r it! Make sure you imagine it's running as root with no sandboxing. HackEgo is the slowest bot in all Mexico!
+2019-10-23 17:21:31 <b_jonas> hppavilion[1]: it has most of the old one's memory, from one of the backup dumps of the hg repository
+2019-10-23 17:21:47 <b_jonas> hppavilion[1]: except the hg log is truncated, I don't know why, so if you look way back in the revisions, you won't find the oldest stuff
+2019-10-23 17:21:55 <hppavilion[1]> :(
+2019-10-23 17:21:59 <b_jonas> `? hg
+2019-10-23 17:22:00 <HackEso> hg is dark alchemy used by oerjan to fix things. Like most alchemy, it involves drinking mercury.
+2019-10-23 17:22:00 <hppavilion[1]> b_jonas: Should someone change the contents of `? HackEgo to match the reincarnation?
+2019-10-23 17:22:03 <kspalaiologos> ``` cd tmp && edit test.sh
+2019-10-23 17:22:05 User Name: esowiki = esowiki!~esowiki@unaffiliated/fizzie/bot/esowiki
+2019-10-23 17:22:05 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Dotjpg3141 5*  10New user account
+2019-10-23 17:22:06 <HackEso> https://hack.esolangs.org/edit/tmp/test.sh
+2019-10-23 17:22:09 <kspalaiologos> is this how it works
+2019-10-23 17:22:09 <b_jonas> hppavilion[1]: no, we have a separate entry
+2019-10-23 17:22:11 <b_jonas> `? HackEso
+2019-10-23 17:22:13 <hppavilion[1]> Oh
+2019-10-23 17:22:13 <HackEso> HackEso is almost but not quite unlike HackEgo.
+2019-10-23 17:22:24 <hppavilion[1]> b_jonas: Then 'is' -> 'was'?
+2019-10-23 17:22:25 <b_jonas> the HackEgo one is still an accurate description of the old bot
+2019-10-23 17:22:52 <b_jonas> hppavilion[1]: I don't think so, that's not a nice thing to edit about the bot that's sleeping but will return when the country needs him the most
+2019-10-23 17:23:00 <b_jonas> the once and future king will arise
+2019-10-23 17:23:05 <hppavilion[1]> b_jonas: Oh, like Arthur?
+2019-10-23 17:23:10 <arseniiv> Hg is alchemy haha. It reifies lead into tin, tin into iron, iron into copper, copper into silver, and silver into gold, and gold you shall not reify nohow
+2019-10-23 17:23:15 <hppavilion[1]> Is Merlin also destined to return in England's hour of need? I'm not clear on that one
+2019-10-23 17:23:18 <kspalaiologos> hm
+2019-10-23 17:23:33 <kspalaiologos> can I set up my brainfuck assembler on the bot
+2019-10-23 17:23:34 <hppavilion[1]> arseniiv: Applying gallium to aluminum turns the aluminum into basically we tcardboard
+2019-10-23 17:23:50 <b_jonas> hppavilion[1]: merlin time travels to the future. don't you read Irregular Webcomic?
+2019-10-23 17:23:54 <arseniiv> hppavilion[1]: what kind of alchemy is that?
+2019-10-23 17:23:57 <hppavilion[1]> b_jonas: Via a tree?
+2019-10-23 17:24:05 <b_jonas> hppavilion[1]: I don't know
+2019-10-23 17:24:05 <hppavilion[1]> arseniiv: I mean, it's real-life chemistry
+2019-10-23 17:24:16 <b_jonas> kspalaiologos: what's a brainfuck assembler?
+2019-10-23 17:24:27 <hppavilion[1]> Also, what's the exact prophesy on when Arthur will return? Is it specifically *England's* hour of need, or just the UK as a whole?
+2019-10-23 17:24:41 <kspalaiologos> as the name suggests, the program that's able to serve like a brainfuck-like assembler hooked with a pipe to a brainfuck interpreter
+2019-10-23 17:24:47 <arseniiv> hppavilion[1]: aww
+2019-10-23 17:24:47 <hppavilion[1]> er, *prophecy
+2019-10-23 17:24:51 <hppavilion[1]> 'prophesy' is a verb
+2019-10-23 17:24:52 <kspalaiologos> it's like a repl
+2019-10-23 17:25:02 <kspalaiologos> for testing the snippets
+2019-10-23 17:25:16 <arseniiv> (hm what reaction there is and where could I watch it)
+2019-10-23 17:25:41 <hppavilion[1]> arseniiv: Yes you could. Was that a cute 'aww' or a disappointed 'aww'?
+2019-10-23 17:25:48 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=66762&oldid=66759 5* 03Dotjpg3141 5* (+110) 10
+2019-10-23 17:25:57 <hppavilion[1]> Please allow me to introduce myself
+2019-10-23 17:25:58 <b_jonas> kspalaiologos: you can probably try. fizzie seems to have long tolerances, seeing that he hasn't banned me entirely from the bot yet
+2019-10-23 17:25:58 <arseniiv> I don’t know, that’s why I posted it so long
+2019-10-23 17:26:04 <hppavilion[1]> I'm a man of wealth and taste
+2019-10-23 17:26:13 <hppavilion[1]> arseniiv: Example: https://www.youtube.com/watch?v=IgXNwLoS-Hw
+2019-10-23 17:26:23 <kspalaiologos> ```git
+2019-10-23 17:26:23 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ``git: not found
+2019-10-23 17:26:29 <kspalaiologos> ```unzip
+2019-10-23 17:26:29 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ``unzip: not found
+2019-10-23 17:26:30 <b_jonas> ``` \? fetch # kspalaiologos: you should know about that too, besides edit
+2019-10-23 17:26:31 <HackEso> ​`fetch [<output-file>] <URL> downloads files, and is the only web access currently available in HackEgo. It is a special builtin that cannot be called from other commands. See also `edit.
+2019-10-23 17:26:31 <arseniiv> hppavilion[1]: thanks
+2019-10-23 17:26:35 <kspalaiologos> yeah
+2019-10-23 17:26:39 <kspalaiologos> the editor has already instructed me
+2019-10-23 17:26:40 <b_jonas> kspalaiologos: we have tar and gzip and xz
+2019-10-23 17:26:55 <kspalaiologos> I'll have to do it over my vps
+2019-10-23 17:26:56 <kspalaiologos> probably
+2019-10-23 17:27:04 <kspalaiologos> because github doesn't support downlading tarballs
+2019-10-23 17:27:06 <kspalaiologos> doesn't it?
+2019-10-23 17:27:25 <hppavilion[1]> Chemistry is like alchemy, except that it's real and interfaces with the laws of economics (meaning if you find a cost-effective way to turn lead into gold, you'll just drop the price of gold)
+2019-10-23 17:27:25 <b_jonas> kspalaiologos: in the worst case, you can uuencode it and put in edit
+2019-10-23 17:27:31 <kspalaiologos> xD
+2019-10-23 17:27:36 <kspalaiologos> this seems like a terrible idea
+2019-10-23 17:27:42 <kspalaiologos> give me a second
+2019-10-23 17:27:47 <b_jonas> but putting it somewhere on the http web and fetching is usually easier
+2019-10-23 17:27:50 <hppavilion[1]> b_jonas: Did you ever hang out in #xkcd? Or did I confuse you for someone else?
+2019-10-23 17:27:54 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2019-10-23 17:27:54 <fizzie> github does support downloading zip files.
+2019-10-23 17:27:58 <b_jonas> you just need to host it temporarily
+2019-10-23 17:28:15 <b_jonas> hppavilion[1]: for a few days, I think. I never participated
+2019-10-23 17:28:22 <hppavilion[1]> I see
+2019-10-23 17:28:29 <b_jonas> hppavilion[1]: I was also on one of the xkcd wikis but didn't participate much
+2019-10-23 17:28:38 <fizzie> Under the "Clone or download v" button, there's a "Download ZIP" option which will just zip up all the repository contents into a file.
+2019-10-23 17:28:40 <hppavilion[1]> That channel gets a bit toxic occasionally, so I can't blame you if you quit during one of *those* periods
+2019-10-23 17:28:40 <b_jonas> and on explainxkcd but also didn't participate much
+2019-10-23 17:28:47 <kspalaiologos> `fetch tmp/test.sh https://hack.esolangs.org/get/tmp/test.sh
+2019-10-23 17:28:49 <HackEso> 2019-10-23 17:28:48 URL:https://hack.esolangs.org/get/tmp/test.sh [130/130] -> "tmp/test.sh" [1]
+2019-10-23 17:28:59 <kspalaiologos> ```cd tmp && cat test.sh
+2019-10-23 17:29:00 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ``cd: not found
+2019-10-23 17:29:08 <kspalaiologos> ok
+2019-10-23 17:29:12 <hppavilion[1]> b_jonas: I wonder if I'm conflating your nick with someone else's with a similar name; however, the only person I can think of is VictoriaB, whose old nick started with a 'j'
+2019-10-23 17:29:15 <kspalaiologos> `cd tmp && cat test.sh
+2019-10-23 17:29:15 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: cd: not found
+2019-10-23 17:29:20 <b_jonas> hppavilion[1]: I'm only on like one or two channel per network on most networks other than freenode
+2019-10-23 17:29:24 <kspalaiologos> `cat tmp/test.sh
+2019-10-23 17:29:25 <HackEso> wget https://github.com/kspalaiologos/asmbf/archive/v1.1.1.tar.gz \ tar -xzf v1.1.1.tar.gz \ cd asmbf-1.1.1 \ sudo make all install
+2019-10-23 17:29:30 <kspalaiologos> lgtm
+2019-10-23 17:29:33 <fizzie> That's not going to work: there's no networking from inside the machine.
+2019-10-23 17:29:37 <hppavilion[1]> I really wish hexchat had a way for me to scan two channels for overlap (even attempting on different servers)
+2019-10-23 17:29:38 <kspalaiologos> is there?
+2019-10-23 17:29:41 <kspalaiologos> crap
+2019-10-23 17:29:47 <b_jonas> kspalaiologos: three backticks and a space
