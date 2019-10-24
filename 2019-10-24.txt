@@ -59,3 +59,10 @@
 2019-10-24 02:59:32 <lambdabot> not an expression: ‘let add a b = iterate (+1) a !! b; mul a b = iterate...
 2019-10-24 02:59:43 <int-e> @botsnack
 2019-10-24 02:59:44 <lambdabot> :)
+2019-10-24 03:08:06 <int-e> x?y = (x == y ? x + 2 : x + 1) ==> (x?x)?x = x+3.
+2019-10-24 03:11:33 <int-e> You can't hope for ? to be associative because then x+6 = x?x?x?x?x?x = (x?x?x)?(x?x?x) = (x+3)?(x+3) = x+5.
+2019-10-24 03:18:20 Quit: imode (Quit: WeeChat 2.6)
+2019-10-24 03:18:21 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 03:24:51 Joined: imode
+2019-10-24 03:24:51 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 03:26:12 <int-e> Sgeo__: Ah why am I making it so complicated. You'd want x+1 = x (one "iteration" of ?).
