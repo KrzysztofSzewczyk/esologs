@@ -818,3 +818,21 @@
 2019-10-24 22:59:09 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
 2019-10-24 22:59:17 <oerjan> iirc line 9 basically works by calculating the maximal data length that could fit with that mw, and seeing if it's too small.
 2019-10-24 22:59:42 <int-e> line 9 sums a geometric series
+2019-10-24 23:00:25 <int-e> To ensure that mw really is the maximum width, and not accidently too large by 1.
+2019-10-24 23:01:12 <oerjan> surely it's too small by 1. it's adding a boolean, after all.
+2019-10-24 23:02:00 <int-e> right
+2019-10-24 23:03:41 <oerjan> at least i had the foresight to make N a named variable for these occasions :P
+2019-10-24 23:05:53 <int-e> So the computation computes the length of the string that we can accomodate in 10^mw - 1 lines of output, where mw is the tentative value computed on line 8. If the string is longer than that, we increase mw by 1.
+2019-10-24 23:06:41 <int-e> Writing it as  ((N-2)-2*mw)*(10**mw-1) + (10**mw-1)/9 - mw  makes it somewhat easier to digest (for me at least).
+2019-10-24 23:08:59 <int-e> ((N-2)-2*mw)*(10**mw-1) is how many characters we can accomodate if all numbers 1..10^mw-1 are mw characters wide; (10**mw-1)/9 - mw sums (10**i-1)/9 - 1 for i = 1..mw, which is the number of extra characters that we gain because some numbers are shorter than mw digits.
+2019-10-24 23:10:25 <int-e> oerjan: You wrote this, apparently :)
+2019-10-24 23:10:49 <oerjan> yes. doesn't mean i recall exactly how i deduced the formula, but that sounds about right.
+2019-10-24 23:11:56 <oerjan> `hurl bin/distort
+2019-10-24 23:11:57 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/distort
+2019-10-24 23:15:56 <int-e> `? cube
+2019-10-24 23:15:57 <HackEso> Cubes come in all sizes, colors, and materials, but only one shape.
+2019-10-24 23:16:27 <imode> I can't argue with that.
+2019-10-24 23:17:06 <int-e> `grwp companion
+2019-10-24 23:17:08 <HackEso> companion cube:There's cake inside it. Tear it apart, rip open your companion, and extract the delicious, delicious cake... \ mpanion cube:Aperture Science has created a talking cube - we call it the mpanion cube, because it's the opposite of the mute companion cube.
+2019-10-24 23:18:41 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-10-24 23:18:41 <ais523> an mpanion cube would be a time-reversed companion cube, wouldn't it?
