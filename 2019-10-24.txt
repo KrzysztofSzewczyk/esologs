@@ -43,3 +43,19 @@
 2019-10-24 02:27:53 Joined: Lykaina
 2019-10-24 02:27:54 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
 2019-10-24 02:29:35 <Sgeo> What if, instead of getting x?x = x+2 and x?x?x = x+3, I settle for... maybe something like doing the operation 2^a times gets what I want?
+2019-10-24 02:31:41 <int-e> x?x = x+2 and x?x?x = x+3 doesn't make sense? you can only have one of a^2 = 2 or a^3 = 3.
+2019-10-24 02:32:06 <int-e> a being the base (don't ask me why I didn't pick b)
+2019-10-24 02:36:31 Parted: ArthurStrong
+2019-10-24 02:36:31 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 02:47:10 <Sgeo> I think I want to go back to a?b = log_2(2^a + 2^b). Do that operation 2^n times (or is it 2^n - 1 times?) with x you get x+n
+2019-10-24 02:53:43 <int-e> log1p(exp2(b-a))/log(2) is ugly though
+2019-10-24 02:54:39 * Sgeo is less looking for implementation prettiness than an answer to If ^ is repeated * and * is repeated +, then + is repeated ?
+2019-10-24 02:55:11 <int-e> + is repeated "add 1"
+2019-10-24 02:56:46 <Sgeo> That's a unary operator though
+2019-10-24 02:57:13 <int-e> so is "multiply by a" in a^b
+2019-10-24 02:59:30 <int-e> > let add a b = iterate (+1) a !! b; mul a b = iterate (+a) 0 !! b; pow a b = iterate (*a) 1 !! b -- function iteration is the unifying pattern here, what's not to like?
+2019-10-24 02:59:32 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2019-10-24 02:59:32 <lambdabot> <no location info>: error:
+2019-10-24 02:59:32 <lambdabot> not an expression: ‘let add a b = iterate (+1) a !! b; mul a b = iterate...
+2019-10-24 02:59:43 <int-e> @botsnack
+2019-10-24 02:59:44 <lambdabot> :)
