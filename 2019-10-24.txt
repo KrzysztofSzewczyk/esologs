@@ -321,3 +321,109 @@
 2019-10-24 18:59:32 <moonheart08> kspalaiologos, > simple
 2019-10-24 18:59:33 <moonheart08> I wish
 2019-10-24 18:59:52 <kspalaiologos> my proof is basing on first proving that bytebytejump is turing complete by simulation
+2019-10-24 19:00:18 <kspalaiologos> and then I simulate bytebytejump in befunge
+2019-10-24 19:00:34 <kspalaiologos> and then I do the magic with my ouija board somewhere in the drawer
+2019-10-24 19:00:47 <kspalaiologos> the resulting program is at the end of pdf iirc
+2019-10-24 19:01:22 <kspalaiologos> I didn't simulate brainfuck in befunge and then convert it into seed
+2019-10-24 19:01:27 <kspalaiologos> it seems like a straightforward way
+2019-10-24 19:01:29 <kspalaiologos> but it's not
+2019-10-24 19:01:43 <kspalaiologos> the smallest brainfuck interpreter in befunge I could get was way too big to be processed by my generator
+2019-10-24 19:01:58 <kspalaiologos> for the curious, the limit is around 624/4 bytes
+2019-10-24 19:02:10 <kspalaiologos> so it's quite limited
+2019-10-24 19:02:19 <kspalaiologos> but the generator is very, very high quality
+2019-10-24 19:02:36 <kspalaiologos> 4 141745954
+2019-10-24 19:02:40 <kspalaiologos> a very simple adder made by the generator
+2019-10-24 19:02:52 <kspalaiologos> while the seed program is usually around 2-4 kilobytes big
+2019-10-24 19:09:19 <moonheart08> Hm
+2019-10-24 19:09:36 <moonheart08> I wonder why interwiki redirects work on esolangs.org, but not wikipedia
+2019-10-24 19:10:00 <moonheart08> (My esolangs userpage is a redirect, go try it. User:Moon)
+2019-10-24 19:10:22 <kspalaiologos> i've seen it
+2019-10-24 19:10:29 <kspalaiologos> on your edits i clicked on your user page
+2019-10-24 19:10:44 <kspalaiologos> and I got redirected, at first i didn't know what happened
+2019-10-24 19:10:53 <kspalaiologos> after ten or so seconds I realised that I'm on wikipedia now
+2019-10-24 19:11:38 <moonheart08> I put a helpful header in place, as I realised some might get confused looking for, say, my talk page
+2019-10-24 19:12:06 <kspalaiologos> i saw something on your talk page
+2019-10-24 19:12:12 <kspalaiologos> but it was too long for me to remember it now or read
+2019-10-24 19:12:49 <moonheart08> Was ais checking that I had the right to release something into public domain
+2019-10-24 19:19:58 <b_jonas> ``` \? ais523 # hmm, is this new?
+2019-10-24 19:19:59 <HackEso> Agent “Iä” Smith is an alien with a strange allergy to avian body covering, which he is trying to retroactively prevent from ever evolving. On the 3rd of March, he's lawful good.
+2019-10-24 19:20:34 <b_jonas> no it's not
+2019-10-24 19:21:24 <int-e> "I�"? I though it was just "I", hmm.
+2019-10-24 19:21:40 <b_jonas> I just forgot about it
+2019-10-24 19:22:34 <b_jonas> ``` hg cat -r 4530 wisdom/ais523
+2019-10-24 19:22:35 <HackEso> ais523 is ais523. This topic may retroactively become more informative if or when Feather is invented.
+2019-10-24 19:23:37 <kspalaiologos> ``` hg --help
+2019-10-24 19:23:38 <HackEso> Mercurial Distributed SCM \  \ list of commands: \  \  add           add the specified files on the next commit \  addremove     add all new files, delete all missing files \  annotate      show changeset information by line for each file \  archive       create an unversioned archive of a repository revision \  backout       reverse effect of earlier changeset \  bisect        subdivision search of changesets \  bookmarks     create a new bo
+2019-10-24 19:23:48 <kspalaiologos> i freakin knew this was mercurial
+2019-10-24 19:23:52 <kspalaiologos> but the invocation, eh
+2019-10-24 19:24:03 <b_jonas> I was wondering if I should fold quote 1289 into the wisdom about him, but I think it works better as a quote
+2019-10-24 19:24:14 <kspalaiologos> quote 1289?
+2019-10-24 19:24:15 <kspalaiologos> the heck?
+2019-10-24 19:24:26 <b_jonas> kspalaiologos: try the quote command of HackEso
+2019-10-24 19:24:33 <kspalaiologos> `quote
+2019-10-24 19:24:34 <HackEso> 101) <coppro> what's the data of? [...] <Sgeo> Locations in a now deceased game called Mutation  <coppro> I have no problems with you being interested in online games  <coppro> but the necrophilia is disturbing
+2019-10-24 19:24:40 <kspalaiologos> can you add the quote?
+2019-10-24 19:24:43 <b_jonas> yes
+2019-10-24 19:24:46 <b_jonas> `? addquote
+2019-10-24 19:24:46 <kspalaiologos> I want to add a quote
+2019-10-24 19:24:47 <HackEso> addquote? ¯\(°​_o)/¯
+2019-10-24 19:24:50 <b_jonas> `? quote
+2019-10-24 19:24:51 <b_jonas> hmm
+2019-10-24 19:24:52 <HackEso> Quotes are just elements of the quantum dilapidated bogosphere. See qdb.
+2019-10-24 19:24:55 <b_jonas> there was one about quote syntax
+2019-10-24 19:24:58 <kspalaiologos> `addquote <lf94> kspalaiologos: yes, it's much more enjoyable sitting in #esoteric than chiselling 99 bottles of beer into a rock.
+2019-10-24 19:24:58 <b_jonas> `whatis addquote
+2019-10-24 19:25:00 <HackEso> addquote(1hackeso) - no description
+2019-10-24 19:25:01 <b_jonas> `? quote syntax
+2019-10-24 19:25:02 <HackEso> 1337) <lf94> kspalaiologos: yes, it's much more enjoyable sitting in #esoteric than chiselling 99 bottles of beer into a rock.
+2019-10-24 19:25:03 <HackEso> quote syntax? ¯\(°​_o)/¯
+2019-10-24 19:25:10 <b_jonas> `? quotedb
+2019-10-24 19:25:10 <kspalaiologos> ha! 1337
+2019-10-24 19:25:11 <HackEso> quotedb? ¯\(°​_o)/¯
+2019-10-24 19:25:19 <kspalaiologos> `quote 1337
+2019-10-24 19:25:20 <HackEso> 1337) <lf94> kspalaiologos: yes, it's much more enjoyable sitting in #esoteric than chiselling 99 bottles of beer into a rock.
+2019-10-24 19:25:28 <kspalaiologos> so leet number
+2019-10-24 19:25:28 <b_jonas> kspalaiologos: yes, some regular always prunes the quote database to be just shy of 1337
+2019-10-24 19:25:31 <lf94> nice.
+2019-10-24 19:25:37 <lf94> I'm going to be remembered after I die now.
+2019-10-24 19:25:46 <b_jonas> `? qdb
+2019-10-24 19:25:46 <HackEso> qdb is used like: `quote; `quote regexp; `quote id; `addquote ...; `delquote id; `pastequotes regexp; `pastenquotes [n]; see also quoteformat
+2019-10-24 19:25:52 <kspalaiologos> lf94, lo.
+2019-10-24 19:25:55 <b_jonas> `? quoteformat
+2019-10-24 19:25:55 <kspalaiologos> *lol
+2019-10-24 19:25:56 <HackEso> quoteformat is: <nick> message; * nick action; two spaces between messages; all elisions marked with [...] other than irrelevant intervening messages; for messages separated by elision, one space on each side, not two.
+2019-10-24 19:26:19 <kspalaiologos> `quote 1289
+2019-10-24 19:26:20 <HackEso> 1289) <ais523> hmm, I just remembered that I was formally trained to tune harps
+2019-10-24 19:26:28 <kspalaiologos> lol xD?
+2019-10-24 19:26:55 <b_jonas> `q 1336
+2019-10-24 19:26:55 <HackEso> 1336) <kspalaiologos> I have made a chess engine in Malbolge  <kspalaiologos> in theory it's decent  <kspalaiologos> but it has two drawbacks  <kspalaiologos> a) It requires 31 and a half gigabytes of memory  <kspalaiologos> b) it's quicker to count atoms in universe than to run it
+2019-10-24 19:27:03 <b_jonas> ^ you already would have been remembered
+2019-10-24 19:27:26 <kspalaiologos> lmao
+2019-10-24 19:27:40 <kspalaiologos> can you view the entire quote database?
+2019-10-24 19:27:42 <int-e> b_jonas: you're mixing up nicks, I think
+2019-10-24 19:27:55 <b_jonas> int-e: um, which nicks?
+2019-10-24 19:27:55 <int-e> (just observing. happens to me all the time.)
+2019-10-24 19:27:56 <kspalaiologos> or I have to write tcl script to send `q with consecutive numbers?
+2019-10-24 19:28:08 <b_jonas> where?
+2019-10-24 19:28:13 <int-e> b_jonas: lf94 and kspalaiologos
+2019-10-24 19:28:28 <b_jonas> ah
+2019-10-24 19:28:29 <b_jonas> I see
+2019-10-24 19:28:37 <b_jonas> kspalaiologos added a quote of lf94
+2019-10-24 19:28:42 <b_jonas> `q 1337
+2019-10-24 19:28:43 <HackEso> 1337) <lf94> kspalaiologos: yes, it's much more enjoyable sitting in #esoteric than chiselling 99 bottles of beer into a rock.
+2019-10-24 19:28:46 <b_jonas> but then
+2019-10-24 19:28:51 <b_jonas> no wait
+2019-10-24 19:29:00 <b_jonas> both of then will be remembered, because both of them are named in that quote
+2019-10-24 19:29:08 <kspalaiologos> pff
+2019-10-24 19:29:13 <kspalaiologos> `q -1
+2019-10-24 19:29:14 <HackEso> ​/bin/sed: invalid option -- '1' \ Usage: /bin/sed [OPTION]... {script-only-if-no-other-script} [input-file]... \  \   -n, --quiet, --silent \                  suppress automatic printing of pattern space \   -e script, --expression=script \                  add the script to the commands to be executed \   -f script-file, --file=script-file \                  add the contents of script-file to the commands to be executed \   --follow-symli
+2019-10-24 19:29:18 <kspalaiologos> ha!
+2019-10-24 19:29:21 <kspalaiologos> i crashed you!
+2019-10-24 19:29:25 <int-e> `"
+2019-10-24 19:29:26 <HackEso> 781) <zzo38> Because, if it is all wrong, then I should fix it please \ 839) <sgeo> GreyKnight, shachaf is like a high-level Forth
+2019-10-24 19:29:33 <b_jonas> but yeah, lf94 wasn't in the qdb before
+2019-10-24 19:29:37 <kspalaiologos> `"
+2019-10-24 19:29:37 <HackEso> 421) <monqy> cigaretes and drunking "lame highs for lame people"  <oerjan> yeah if it doesn't make you go crazy and shoot at people, it's not worth it.  take it from a norwegian. \ 1010) <elliott> sometimes i wake up and my name has grown more consonants
+2019-10-24 19:29:45 <kspalaiologos> `"
+2019-10-24 19:29:46 <HackEso> 911) <Sgeo> I feel like (A.~[:i.[:!#) is verbose \ 71) <fax> oklopol geez what are you doing here  <oklokok> ...i don't know :<  <oklokok> i actually ate until now, although i guess i also did other things...
+2019-10-24 19:29:56 <kspalaiologos> can I read this stuff without having you to read it with me?
