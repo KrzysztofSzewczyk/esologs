@@ -742,3 +742,79 @@
 2019-10-24 22:29:03 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
 2019-10-24 22:29:49 <int-e> `` sed -i 3s/459/447/ bin/sport
 2019-10-24 22:29:50 <HackEso> bin/sport//cat "${2:-/dev/stdin}" >tmp/spout.raw; distort tmp/spout.raw | spore "${1-1}"
+2019-10-24 22:30:14 <int-e> ah
+2019-10-24 22:30:21 <int-e> `` sed -i 3s/459/447/ bin/distort
+2019-10-24 22:30:24 <HackEso> bin/distort//#!/usr/bin/env python \ import sys \ N = 447 \ name = sys.argv[1] if len(sys.argv) > 1 else "/dev/stdin" \ with open(name, "r") as f: \   data = ' \\ '.join(f.read().splitlines()) \ s = len(data) \ mw = len(str(2*s/N))-1 \ mw += s > ((N-2)*9-18*mw+1)*((10**mw-1)/9)-mw \ p=0 \ i=1 \ while (p<s): \   lw = N-mw-2-len(`i`) \   print data[p:p+lw] \   i+=1 \   p+=lw
+2019-10-24 22:30:42 <int-e> (the first one didn't make any change)
+2019-10-24 22:30:51 <int-e> `5 \'
+2019-10-24 22:30:54 <HackEso> 1/2:890) <ais523> in Smalltalk, as in Feather, in order to do I/O, you must first create the universe  <Sgeo> ais523, it seems quite capable of I/O... GUI is a form of I/O  <ais523> Sgeo: yeah exactly  <ais523> where does the GUI come from?  <ais523> it's written in Smalltalk, clearly  <ais523> and how does the GUI do its I/O?  <ais523> if you think about the issue for too long, you end up inventing Feather \ 873) <fungot> ais523: intercal-72
+2019-10-24 22:31:01 <int-e> `n
+2019-10-24 22:31:02 <HackEso> 2/2:c-intercal clc-intercal j-intercal yes all versions all versions \ 880) <fizzie> What I learned on the Prolog course is that it's a good language if you need a thing that can say "No" a lot. \ 747) <itidus21> you are like the linux torvalds of quiz engines \ 408) <Vorpal> ais523, how are we supposed to guess before you tell us unless you give us more hints?
+2019-10-24 22:31:13 <int-e> `quote 873
+2019-10-24 22:31:14 <HackEso> 873) <fungot> ais523: intercal-72 c-intercal clc-intercal j-intercal yes all versions all versions
+2019-10-24 22:31:24 <int-e> that looks better
+2019-10-24 22:32:04 <int-e> I don't know whether 447 or 448 is right, so I'm going with 447.
+2019-10-24 22:32:09 <fizzie> int-e: Thing is, the N in there isn't the maximum length of the line it uses.
+2019-10-24 22:32:45 <int-e> it surely looks like that is what it's intended to be
+2019-10-24 22:32:56 <int-e> given all the compensation on line 13
+2019-10-24 22:33:08 <fizzie> Sure, but it's not.
+2019-10-24 22:33:11 <fizzie> `` echo {a..z}{a..z} | tr -d ' ' | cut -c 1-886 | bin/distort | sed -e 's/^\(......\).*\(......\)$/\1..\2/'
+2019-10-24 22:33:12 <HackEso> aaabac..kilimi \ nioipi..qyqzra
+2019-10-24 22:33:16 <fizzie> `` echo {a..z}{a..z} | tr -d ' ' | cut -c 1-888 | bin/distort | sed -e 's/^\(......\).*\(......\)$/\1..\2/'
+2019-10-24 22:33:17 <HackEso> aaabac..kilimi \ nioipi..qyqzra \ rb
+2019-10-24 22:33:40 <fizzie> 886 characters (2*443) gets split to two lines; 888 (2*444) gets split to three lines.
+2019-10-24 22:34:05 <fizzie> If it was using (now) a line length of 447, it would accept a line of 894 characters and split it to two.
+2019-10-24 22:34:42 <int-e> I think there's just an off-by-one error in there
+2019-10-24 22:34:52 <oerjan> fizzie: distort sets off space for a line number prefix
+2019-10-24 22:35:05 <int-e> line 13, the -2 should be -3 to account for /, ) and an extra space.
+2019-10-24 22:35:26 <oerjan> `url bin/distort
+2019-10-24 22:35:27 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/distort
+2019-10-24 22:36:01 <int-e> it does account for the width of the current line number, and of the total line numbers.
+2019-10-24 22:36:03 <fizzie> Oh, it does that as well? So complicated.
+2019-10-24 22:36:36 <int-e> I should write "it does seem to account"
+2019-10-24 22:37:02 <int-e> because I'm not really sure what happens on line 9.
+2019-10-24 22:38:04 <fizzie> Well, it's good enough for now.
+2019-10-24 22:38:45 <int-e> is there anything else that needs to know about the maximum message length...
+2019-10-24 22:39:46 <fizzie> The bot itself, arguably. Although I'm not sure how much that truncation matters.
+2019-10-24 22:40:05 <fizzie> https://bitbucket.org/fizzie/hackbot/src/tip/multibot_cmds/PRIVMSG/tr_60.cmd#lines-64
+2019-10-24 22:40:16 <fizzie> Not that you could edit that from the inside.
+2019-10-24 22:41:57 <fizzie> I guess it does matter in the sense that it prevents incomplete utf-8 sequences in utf-8 text that has not been passed through distort.
+2019-10-24 22:42:29 <int-e> 448 is probably the right value there.
+2019-10-24 22:43:12 <esowiki> 14[[07Acyclic Tag14]]4 N10 02https://esolangs.org/w/index.php?oldid=66796 5* 03Ais523 5* (+14796) 10new language!
+2019-10-24 22:43:30 <oerjan> int-e: mw is the width of the literal for the number of lines.
+2019-10-24 22:43:37 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=66797&oldid=66682 5* 03Ais523 5* (+18) 10/* A */ +[[Acyclic Tag]]
+2019-10-24 22:43:41 Joined: tromp
+2019-10-24 22:43:57 <esowiki> 14[[07User:Ais52314]]4 10 02https://esolangs.org/w/index.php?diff=66798&oldid=59712 5* 03Ais523 5* (+17) 10+[[Acyclic Tag]]
+2019-10-24 22:44:25 <fizzie> `perl-e printf "x"x449 . "ä";
+2019-10-24 22:44:26 <HackEso> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2019-10-24 22:44:33 <fizzie> `perl-e printf "x"x448 . "ä";
+2019-10-24 22:44:34 <HackEso> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2019-10-24 22:44:38 <oerjan> line 8 makes an approximation that is sometimes 1 too low, and line 9 checks if it is.
+2019-10-24 22:44:40 <int-e> oerjan: Yeah. And line 9 actually does some geometric series stuff to compute how many digits in total we'll save because we start counting in single digit numbers.
+2019-10-24 22:45:08 <fizzie> `perl-e printf "x"x447 . "ä"; # just one more try
+2019-10-24 22:45:09 <HackEso> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2019-10-24 22:45:12 <int-e> fizzie: Oh, darn, I had already verified that this got cut off and 447, not 448 chracters.
+2019-10-24 22:45:15 <ais523> you know how we normally use cyclic tag to prove queue-based systems TC? sometimes it turns out to be too hard to impl in a particularly esoteric language, so I'm looking even simpler
+2019-10-24 22:45:39 <fizzie> int-e: Should distort then be 446, and truncate 447?
+2019-10-24 22:45:50 <ais523> I've probably spent over a week on Acyclic Tag
+2019-10-24 22:46:27 <fizzie> (Just wondering, because previously we had distort at 459 and truncate at 460.)
+2019-10-24 22:46:32 Quit: tromp (Ping timeout: 276 seconds)
+2019-10-24 22:46:44 <ais523> the big improvement is that you don't have to be able to implement the wrapping from end to start of the table of productions
+2019-10-24 22:47:15 <oerjan> <int-e> line 13, the -2 should be -3 to account for /, ) and an extra space. <-- it's just /, : and no extra space
+2019-10-24 22:48:22 <int-e> oerjan: aha.
+2019-10-24 22:48:44 <int-e> I got confused by stuff like 1/2:205)
+2019-10-24 22:49:43 <int-e> `` perl -e 'printf "x"x886' | sport
+2019-10-24 22:49:44 <HackEso> 1/2:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2019-10-24 22:49:47 <int-e> `n
+2019-10-24 22:49:48 <HackEso> 2/2:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2019-10-24 22:50:07 <int-e> It's all there :)
+2019-10-24 22:51:01 <int-e> `` perl -e 'printf "x"x887' | distory | wc
+2019-10-24 22:51:02 <HackEso> â€‹/hackenv/bin/`: line 5: distory: command not found \       0       0       0
+2019-10-24 22:51:07 <int-e> `` perl -e 'printf "x"x887' | distort | wc
+2019-10-24 22:51:08 <HackEso> â€‹      3       3     890
+2019-10-24 22:57:55 Quit: ais523 (Remote host closed the connection)
+2019-10-24 22:57:55 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 22:59:09 Joined: ais523
+2019-10-24 22:59:09 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 22:59:17 <oerjan> iirc line 9 basically works by calculating the maximal data length that could fit with that mw, and seeing if it's too small.
+2019-10-24 22:59:42 <int-e> line 9 sums a geometric series
