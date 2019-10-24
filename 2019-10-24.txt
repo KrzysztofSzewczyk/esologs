@@ -177,3 +177,36 @@
 2019-10-24 16:52:31 <moonheart08> Made some small changes to main page, if you feel like reviewing em
 2019-10-24 16:53:17 <ais523> that seems like a reasonable enough change
 2019-10-24 16:54:59 <moonheart08> Working on a full redesign of mp for fun, as well. New page patrol on wikipedia can get boring
+2019-10-24 17:02:04 <moonheart08> ais523: how much spam does the wiki recieve nowadays? Doesn't seem like much at all
+2019-10-24 17:02:43 <ais523> basically none at the moment, the "Introduce yourself" thing was very effective because spambot frameworks don't know how to deal with it
+2019-10-24 17:02:58 <moonheart08> Nice.
+2019-10-24 17:04:02 <ais523> that said, they've mostly stopped trying now; I don't know whether or not they'd start again if we relaxed the restrictions
+2019-10-24 17:04:21 <moonheart08> Hm.
+2019-10-24 17:04:52 <moonheart08> Trial run is always possible. I don't mind watching recent changes for a bit if you do that
+2019-10-24 17:06:21 Joined: FreeFull
+2019-10-24 17:06:21 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonheart08, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 17:06:34 <moonheart08> oy
+2019-10-24 17:06:40 <moonheart08> Er
+2019-10-24 17:06:44 <moonheart08> o/
+2019-10-24 17:09:38 <ais523> I'll wait for some of the other admins to chime in with opinions
+2019-10-24 17:09:44 <ais523> but it's a fairly easy setting to change
+2019-10-24 17:10:21 <moonheart08> If I apply for admin, does my opinion count double? /s
+2019-10-24 17:10:54 <esowiki> 14[[07User:Moon/proposed mainpage renovations14]]4 10 02https://esolangs.org/w/index.php?diff=66788&oldid=66785 5* 03Moon 5* (+247) 10Testing further layout...
+2019-10-24 17:12:15 <moonheart08> ais523 that look decent for you? I'm testing on a smallish laptop display, and i'ma bet you have a bigger display.
+2019-10-24 17:12:58 <ais523> I'm also on a fairly small display, but even so there's a lot of wasted space
+2019-10-24 17:13:28 <ais523> I guess that isn't automatically a bad thing when it comes to a main page, but I don't really like the look
+2019-10-24 17:13:30 <moonheart08> Yea.. Trying to figure out what I can put in the top bar. The main section will be similar to the existing layout
+2019-10-24 17:13:58 <ais523> (also the "demonstrate recursion" link won't actually work on the Main Page itself, due to the code designed for navboxes that highlights the self-link and makes it unclickable)
+2019-10-24 17:14:35 <moonheart08> (Aw. Luckily that link's probably not final)
+2019-10-24 17:15:32 <int-e> That joke's been overdone anyway.
+2019-10-24 17:15:44 <moonheart08> I noticed
+2019-10-24 17:15:59 <moonheart08> Hence why it probably wont stay
+2019-10-24 17:17:00 Joined: LKoen
+2019-10-24 17:17:00 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonheart08, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 17:18:42 Joined: b_jonas
+2019-10-24 17:18:43 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonheart08, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 17:23:30 User Name: b_jonas = b_jonas!~x@catv-176-63-13-96.catv.broadband.hu
+2019-10-24 17:23:30 <b_jonas> moonheart08, main page: I think it'd be better not to mention "assuming the name is not already taken". That will give people the idea of giving bad names to esolangs.
+2019-10-24 17:24:01 <esowiki> 14[[07User:Moon/proposed mainpage renovations14]]4 10 02https://esolangs.org/w/index.php?diff=66789&oldid=66788 5* 03Moon 5* (+274) 10add 6 more links
+2019-10-24 17:25:00 <esowiki> 14[[07User:Moon/proposed mainpage renovations14]]4 10 02https://esolangs.org/w/index.php?diff=66790&oldid=66789 5* 03Moon 5* (+28) 10Uh, 3 links. I ment 3. Add a border.
+2019-10-24 17:25:29 <b_jonas> moonheart08: will you also improve [[History]]?
