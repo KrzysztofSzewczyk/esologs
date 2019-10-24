@@ -224,3 +224,100 @@
 2019-10-24 18:11:38 <ais523> I think I prefer the original layout
 2019-10-24 18:19:12 Quit: ais523 (Quit: quit)
 2019-10-24 18:19:12 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonheart08, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 18:32:11 <kspalaiologos> eh
+2019-10-24 18:32:15 <kspalaiologos> any cool ideas on Brainfuck program?
+2019-10-24 18:32:31 <kspalaiologos> I thought about some kind of game
+2019-10-24 18:32:41 <kspalaiologos> but i'm too stupid to think of a nice storyline
+2019-10-24 18:33:20 <kspalaiologos> it would be the best if it involved small amount of calculations
+2019-10-24 18:34:37 <b_jonas> kspalaiologos: 99 beers?
+2019-10-24 18:34:43 <kspalaiologos> ooh c
+2019-10-24 18:34:45 <kspalaiologos> 'mon
+2019-10-24 18:34:48 <b_jonas> I mean 99 bottles of beer
+2019-10-24 18:34:48 <kspalaiologos> that's too simple
+2019-10-24 18:35:06 <kspalaiologos> i'm tired of calculations after projecteuler
+2019-10-24 18:35:16 <kspalaiologos> solved in brainfuck, obviously
+2019-10-24 18:35:52 <kspalaiologos> I'll go with a minesweeper
+2019-10-24 18:36:12 <b_jonas> kspalaiologos: Lissajous curves, either ascii art like https://www.perlmonks.com/?node_id=621188 or PPM?
+2019-10-24 18:36:14 <lf94> Someone should actually create a real stone with all the 99 bottles of beer samples
+2019-10-24 18:36:17 <lf94> I would pay for it
+2019-10-24 18:36:20 <b_jonas> oh, minesweeper may be a good one
+2019-10-24 18:36:32 <b_jonas> lf94: would one in minecraft work?
+2019-10-24 18:36:32 <lf94> maybe not stone but steel
+2019-10-24 18:36:44 <kspalaiologos> lf94, you can just yank the stuff from rosetta
+2019-10-24 18:36:49 <kspalaiologos> put it on a stone tablet
+2019-10-24 18:36:53 <lf94> > you
+2019-10-24 18:36:55 <lambdabot> error: Variable not in scope: you
+2019-10-24 18:36:56 <kspalaiologos> and you're pretty much allset
+2019-10-24 18:36:58 <lf94> sorry, not me :) someone else.
+2019-10-24 18:37:09 <lf94> (I dont have time for that!)
+2019-10-24 18:37:17 <kspalaiologos> why are you sitting on #esoteric then
+2019-10-24 18:37:25 <kspalaiologos> we are here only to waste time
+2019-10-24 18:37:34 <b_jonas> lf94: google image search gives some images of shelves with 99 bottles of beer
+2019-10-24 18:38:20 <kspalaiologos> arkanoid in brainfuck
+2019-10-24 18:38:24 <lf94> kspalaiologos: yes, it's much more enjoyable sitting in #esoteric than chiselling 99 bottles of beer into a rock.
+2019-10-24 18:38:24 <b_jonas> I have a minesweeper program that I've written for the EL-5120 calculator
+2019-10-24 18:38:41 <lf94> kspalaiologos: be my guest, though :D
+2019-10-24 18:38:55 <kspalaiologos> b_jonas, when my TI-83 arrives
+2019-10-24 18:38:59 <b_jonas> there's the slight problem that the player can cheat because they can read the contents of variables during prompts, but that's unavoidable given the limitations of the calculator
+2019-10-24 18:39:08 <kspalaiologos> we both know what I will do
+2019-10-24 18:39:09 <b_jonas> I also wrote a maze program
+2019-10-24 18:39:17 <b_jonas> kspalaiologos: what will you do?
+2019-10-24 18:39:27 <lf94> bad things
+2019-10-24 18:39:42 <kspalaiologos> I'll start off with brainfuck interpreter obviously
+2019-10-24 18:39:54 <b_jonas> ouch
+2019-10-24 18:39:58 <kspalaiologos> then I'll port my asm2bf infrastructure to TI-Basic or z80 assembly
+2019-10-24 18:40:15 <kspalaiologos> I can't wait to waste 10+ hours
+2019-10-24 18:41:11 <b_jonas> that sounds scary
+2019-10-24 18:41:21 <kspalaiologos> exciting
+2019-10-24 18:41:32 <kspalaiologos> brainfuck on a calculator is the thing I haven't yet seen in my life
+2019-10-24 18:43:54 <b_jonas> https://esolangs.org/wiki/Brainfuck_implementations and search for "calculator"
+2019-10-24 18:44:17 <b_jonas> lists several implementations of bf on calculators
+2019-10-24 18:47:04 <lf94> kspalaiologos: there's gameboy brainfuck interpreter
+2019-10-24 18:47:10 <lf94> just as "good"
+2019-10-24 18:48:33 <b_jonas> s/EL-5120/Sharp EL-5120/
+2019-10-24 18:48:49 <b_jonas> kspalaiologos: also talk to kmc, she does esoteric stuff with TI programmable calculators
+2019-10-24 18:51:57 <b_jonas> or wait, maybe I'm mixing her with someone else on the channel
+2019-10-24 18:52:23 <kspalaiologos> btw, do you recognize Seed?
+2019-10-24 18:52:56 <b_jonas> no
+2019-10-24 18:53:01 <kspalaiologos> around a month ago I wrote a generator for it
+2019-10-24 18:53:04 <kspalaiologos> I loved the experience
+2019-10-24 18:53:12 <kspalaiologos> and +40/+116 on codegolf.stackexchange.net too
+2019-10-24 18:53:26 <kspalaiologos> tl:dr; the program consists of two numbers
+2019-10-24 18:53:29 <kspalaiologos> the length and seed
+2019-10-24 18:53:39 <kspalaiologos> seed is fed to mersenne twister, length bytes are taken
+2019-10-24 18:53:46 <kspalaiologos> stuff is dumped to befunge interpreter and then ran
+2019-10-24 18:53:59 <kspalaiologos> I took my time to prove that seed is turing complete
+2019-10-24 18:54:10 <moonheart08> kspalaiologos: a large number of people want your generator :p
+2019-10-24 18:54:13 <kspalaiologos> and it's somewhere at the bottom of the esolangs page
+2019-10-24 18:54:18 <kspalaiologos> moonheart08, I realise :p
+2019-10-24 18:54:39 <kspalaiologos> I can give out a couple of tips
+2019-10-24 18:54:48 <kspalaiologos> but I don't feel like runing the fun and spirit of seed
+2019-10-24 18:55:02 <moonheart08> That's a good reason not to
+2019-10-24 18:55:05 <moonheart08> So i'm good
+2019-10-24 18:55:29 <kspalaiologos> moonheart08, you're active on codegolf?
+2019-10-24 18:55:47 <kspalaiologos> I used to write dozens of Malbolge, Brainfuck and Seed programs for these guys
+2019-10-24 18:55:51 <moonheart08> Sometimes
+2019-10-24 18:55:52 <kspalaiologos> but now I don't feel like it makes any sense
+2019-10-24 18:55:54 <moonheart08> Not lately
+2019-10-24 18:56:20 <moonheart08> I very occasionally do golf in x86-64 assembly
+2019-10-24 18:56:36 <kspalaiologos> ah yes, you're a man of culture aswell
+2019-10-24 18:56:42 User Name: kmc = kmc!~beehive@li521-214.members.linode.com
+2019-10-24 18:56:42 <kmc> b_jonas: not really
+2019-10-24 18:56:45 <kmc> I did a very long time ago
+2019-10-24 18:56:45 <kspalaiologos> I like golfing stuff in assembly too
+2019-10-24 18:56:49 <kmc> Hooloovo0 does TI stuff though
+2019-10-24 18:57:00 <kspalaiologos> I'm already going to get TI shipped to me btw
+2019-10-24 18:57:02 <moonheart08> X86 is a dumpster fire
+2019-10-24 18:57:04 <kspalaiologos> I don't really know how to use it
+2019-10-24 18:57:08 <kspalaiologos> moonheart08, probably
+2019-10-24 18:57:09 <moonheart08> And I know it well
+2019-10-24 18:57:10 <kspalaiologos> but I love it anyway
+2019-10-24 18:57:22 <kspalaiologos> it's very intriguing and lovely
+2019-10-24 18:57:37 <kspalaiologos> simple in it's dumpsterfireness
+2019-10-24 18:58:12 <kspalaiologos> btw, I'm still getting a daily upvote on doublespeak
+2019-10-24 18:59:02 <b_jonas> kspalaiologos: I presume you use some turing-complete header that reads the length of the program and executes it
+2019-10-24 18:59:06 <b_jonas> for seed
+2019-10-24 18:59:27 <kspalaiologos> I can't seem to understand
+2019-10-24 18:59:32 <moonheart08> kspalaiologos, > simple
+2019-10-24 18:59:33 <moonheart08> I wish
+2019-10-24 18:59:52 <kspalaiologos> my proof is basing on first proving that bytebytejump is turing complete by simulation
