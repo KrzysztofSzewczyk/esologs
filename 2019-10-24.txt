@@ -71,3 +71,14 @@
 2019-10-24 04:36:17 <esowiki> 14[[07User:Moon14]]4 10 02https://esolangs.org/w/index.php?diff=66766&oldid=66765 5* 03Moon 5* (+15) 10Move to a landing page that points users toward my esolang talk page, to avoid interwiki chatter.
 2019-10-24 05:50:48 Quit: imode (Ping timeout: 268 seconds)
 2019-10-24 05:50:48 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, Sigyn, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-24 07:13:13 <b_jonas> `echo ``` >>share/whatis echo 'ddate(1) - convert Gregorian dates to Discordian dates'
+2019-10-24 07:13:13 <HackEso> ​``` >>share/whatis echo 'ddate(1) - convert Gregorian dates to Discordian dates'
+2019-10-24 07:13:22 <b_jonas> ``` >>share/whatis echo 'ddate(1) - convert Gregorian dates to Discordian dates'
+2019-10-24 07:13:24 <HackEso> No output.
+2019-10-24 07:13:25 <b_jonas> `whatis ddate
+2019-10-24 07:13:26 <HackEso> ddate(1) - convert Gregorian dates to Discordian dates
+2019-10-24 07:13:46 <b_jonas> arseniiv: ^ fixed
+2019-10-24 07:18:59 <b_jonas> as fizzie points out, it's in /usr/bin , so the description goes to the man 1 section, rather than the 1hackeso where the description of hackeso commands go
+2019-10-24 07:28:03 <b_jonas> Where's the documentation of the ploki language? the wiki doesn't seem to have a link
+2019-10-24 07:29:17 <b_jonas> ``` ploki <<<"(6+7"
+2019-10-24 07:29:18 <HackEso> 13
