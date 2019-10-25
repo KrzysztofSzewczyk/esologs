@@ -399,3 +399,56 @@
 2019-10-25 17:58:19 <b_jonas> int-e: but it doesn't seem to me like people are using those ready-made toolboxes
 2019-10-25 17:58:27 <b_jonas> the ones where I'm confused about using matlab that is
 2019-10-25 17:58:57 <b_jonas> hmm, cpressey isn't here, he'd have an opinion on this stuff
+2019-10-25 18:00:10 <b_jonas> I admit that I'm biased against matlab because of how it manages to have a huge artificial difficulty in the source code format, more serious than python's indentation or java's one class per file
+2019-10-25 18:00:22 <b_jonas> matlab requires that you put every function in a separate file
+2019-10-25 18:00:30 <b_jonas> that and the one-based indexing
+2019-10-25 18:00:54 <ais523> Java doesn't actually have a one class per file restriction, it's just that you can't refer to a class from other files if its name doesn't match the filename
+2019-10-25 18:01:02 <ais523> (because the compiler wouldn't know where to look for it)
+2019-10-25 18:01:10 <ais523> you can put an entire Java program in one file if you want to
+2019-10-25 18:01:40 <int-e> and it will compile to a merry collection of dozens of class file
+2019-10-25 18:01:41 <int-e> s
+2019-10-25 18:02:04 <int-e> and then you put those into a jar, or you can do some class loading magic yourself instead
+2019-10-25 18:06:11 <b_jonas> I hat one-based indexing.
+2019-10-25 18:06:13 <b_jonas> hate
+2019-10-25 18:06:38 <b_jonas> basic, lua, matlab, gap, mathematica: I hate your stupid one-based indexes, and I hope you painfully stub your toe on an off-by-one error
+2019-10-25 18:07:00 <arseniiv> <b_jonas> int-e: but it doesn't seem to me like people are using those ready-made toolboxes => I think we had a course on fuzzy inference or something, with lab tasks (how are they called properly?..) written for IIRC such a toolbox. Though I hadn’t done them and I don’t like fuzzy math in any form anyway
+2019-10-25 18:08:04 <ais523> some golfing languages use 1-based indexing, possibly so that they can use 0 to mean "last element", but it often seems to cause trouble there too
+2019-10-25 18:08:35 <ais523> I blame English for this, if the word for "first" were based on the word for 0, the word for "second" were based on the word for 1, and so on, there wouldn't be any confusion
+2019-10-25 18:08:54 <arseniiv> <b_jonas> that and the one-based indexing => and Mathematica too :(
+2019-10-25 18:10:10 <b_jonas> ais523: but they're not based on "one" and "two" either. people could just go 0:first, 1:second, 2:twoth, 3:threeth, 4:fourth, 5:fifth, 6:sixth, 7:seventh, 8:eightth
+2019-10-25 18:10:23 <imode> huh, 0-means-last... interesting.
+2019-10-25 18:10:33 <b_jonas> unless nobody can pronounce "eightth", in which case it would have to be the traditional "eighth" instead
+2019-10-25 18:10:47 <ais523> b_jonas: yes, but there'd be no real advantage to that
+2019-10-25 18:10:55 <ais523> you should at least fix the off-by-one error in the process
+2019-10-25 18:11:19 <arseniiv> <ais523> I blame English for this, if the word for "first" were based on the word for 0, the word for "second" were based on the word for 1, and so on, there wouldn't be any confusion => how many languages do have that, though?
+2019-10-25 18:11:20 <int-e> b_jonas: maybe the base should depend on the variable name. z[] would be zero-based, o[] would be one-based, m[] would be -1-based, t[] would be two- or three-based depending on the phase of the moon
+2019-10-25 18:11:26 <int-e> f[] would be 42-based.
+2019-10-25 18:11:52 <b_jonas> int-e: ouch
+2019-10-25 18:12:19 <arseniiv> b_jonas: or “eighttp”
+2019-10-25 18:13:24 <ais523> arseniiv: for all I know, /all/ natural languages get this wrong :-D
+2019-10-25 18:13:53 <arseniiv> ais523: same with me, so I think this is a deeper problem
+2019-10-25 18:14:18 <b_jonas> yes, it's apparently a universal default among languages, though that at least means there are no problems when translating indexes
+2019-10-25 18:14:42 <b_jonas> in every language, you have to make it clear whether you're using one-based or zero-based, so translation of that part is mostly trivial
+2019-10-25 18:14:47 <int-e> one. first. hmm.
+2019-10-25 18:14:51 <int-e> no problem at all!
+2019-10-25 18:15:44 <int-e> I don't think there's any wrong or right here, actually.
+2019-10-25 18:16:56 <arseniiv> pretty esoteric question BTW: am I getting it right that ΓL(V) for a complex vector space V is way bigger that GL(V) ⊕ GL(V̄) (V conjugate here) due to shady automorphisms of C stemming from the axiom of choice?
+2019-10-25 18:17:46 <int-e> When assigning the first item a number, do you do that before or after counting it? That's the main distinction between 0- and 1-based counting.
+2019-10-25 18:20:00 <ais523> I think the trick is to see the items as size-1 things rather than size-0 things with size-1 gaps between them
+2019-10-25 18:20:11 <ais523> the first item goes from 0 to 1, the second from 1 to 2, the third from 2 to 3, and so on
+2019-10-25 18:20:29 <ais523> specifying the /end/ of an item when counting it on its own is perverse
+2019-10-25 18:20:40 <ais523> but for a range, you specify the start of the start of the range, and end of the end of the range
+2019-10-25 18:21:33 <int-e> I don't see the perversion.
+2019-10-25 18:25:03 <b_jonas> ais523: oh, about indexing. you're in the UK, so you probably use public transport sometimes. you're on a bus (or train), and a lady asks where you have to get off if she wants to go to X. you know that (a) she has to get off after the bus has opened its doors three times and closed them twice (the bus is now between stops), (b) after the bus has opened its doors three times and closed them three times
+2019-10-25 18:25:09 <b_jonas> (the bus is currently at a stop). how do you tell them when she has to get off?
+2019-10-25 18:26:51 <b_jonas> bus stops are what keep making me uncertain that zero-based indexing is always the right choice.
+2019-10-25 18:27:05 <ais523> on a train I would use the name of the stop, that's easier than counting (and I'd list the names of the stops in between if it were necessary to give an approximate count)
+2019-10-25 18:28:16 <ais523> on a bus I wouldn't be confident of counting the stops correctly, in Birmingham bus stops are very frequent and are ignored by the driver unless someone inside or outside asks the bus to stop, so when there's a little-used stop it's easy to forget it exists
+2019-10-25 18:28:24 <b_jonas> ais523: yeah, it's easy in civilized countries where you can rely on the bus or train always telling the passengers the name of the stop in easy to see ways
+2019-10-25 18:28:53 <b_jonas> I don't buy that it's always like that though, because I've traveled to western europe, and even there people are sometimes uncertain about which stop the train is at
+2019-10-25 18:28:56 <b_jonas> locals too
+2019-10-25 18:29:17 <ais523> actually, when used I take the train home late at night, there was an above 50% probability that someone would miss their stop
+2019-10-25 18:29:27 <int-e> Bus stops have a perfectly natural zero-based counting interpretation.
+2019-10-25 18:29:31 <ais523> but the local train company is investing in new technology to make the name of the stop clearer
+2019-10-25 18:29:32 <int-e> You get on the zero-th stop.
+2019-10-25 18:29:39 <int-e> +at
