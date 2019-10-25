@@ -318,3 +318,84 @@
 2019-10-25 17:13:53 <imode> because you can't lose track of them.
 2019-10-25 17:17:02 Joined: b_jonas
 2019-10-25 17:17:02 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-25 17:36:13 Joined: ais523
+2019-10-25 17:36:13 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-25 17:36:40 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-10-25 17:36:40 <ais523> arseniiv: well, the point is that it doesn't push the string as a whole onto the queue, rather it pushes each command in the string onto the queue
+2019-10-25 17:37:57 <arseniiv> ais523: ah. (But that one was obvious for me personally.) But maybe it would be good to rephrase differently anyway
+2019-10-25 17:38:07 <esowiki> 14[[07Acyclic Tag14]]4 10 02https://esolangs.org/w/index.php?diff=66801&oldid=66796 5* 03Ais523 5* (+13) 10is this description of ^ clearer?
+2019-10-25 17:38:25 <ais523> is that a better description?
+2019-10-25 17:38:46 <arseniiv> ais523: I think yes!
+2019-10-25 17:40:36 <arseniiv> anyway this reminds me my pages usually lack usual examples which would be useful to understand what do commands mean; your trace immediately gave me a clear image what ^ does
+2019-10-25 17:40:50 <arseniiv> s/usual/useful
+2019-10-25 17:45:37 User Name: b_jonas = b_jonas!~x@catv-176-63-14-56.catv.broadband.hu
+2019-10-25 17:45:37 <b_jonas> lf94: (1) sometimes you have to pay for the language standard, or learn from secondary sources. this is the case for Standard ML.
+2019-10-25 17:45:50 <b_jonas> lf94: (2) paying for the compiler is more common:
+2019-10-25 17:46:38 <b_jonas> large business users have to pay for microsoft's compiler
+2019-10-25 17:46:54 <b_jonas> there's a commercial prolog implementation
+2019-10-25 17:47:02 <b_jonas> you have to pay for Mathematica and for maple
+2019-10-25 17:47:11 <int-e> Delphi
+2019-10-25 17:47:27 <b_jonas> there's more but I don't recall all of that
+2019-10-25 17:47:30 <int-e> I suppose icc has a commercial plan as well?
+2019-10-25 17:47:35 <b_jonas> free software didn't use to be the norm in the past
+2019-10-25 17:47:40 <b_jonas> back then, you payed for everything
+2019-10-25 17:47:57 <int-e> p*ed anyway
+2019-10-25 17:48:03 <b_jonas> by the way, there's a certain esoteric commercial model that you could do:
+2019-10-25 17:48:42 <b_jonas> when microsoft offers a version of their compiler for individuals and small businesses, but makes large businesses pay, they use legal threats for that
+2019-10-25 17:48:59 <b_jonas> they claim that it's illegal for you to use the compiler if you're a large business
+2019-10-25 17:49:26 <imode> for what definition of large business.
+2019-10-25 17:49:33 <b_jonas> rather than that, an esolang could use documentation threats: document that if you use the free version and you're a large business, then every program runs into an undefined behaviour
+2019-10-25 17:49:56 <b_jonas> lawful developers will fear to rely on that the compiler happens to work now, because if the docs say that it's undefined behavior, then it could break any time,
+2019-10-25 17:49:59 <b_jonas> so they will pay
+2019-10-25 17:50:22 <b_jonas> imode: dunno, Microsoft has a whole license agreement and whatnot for this
+2019-10-25 17:50:25 <b_jonas> I don't know the details
+2019-10-25 17:50:37 <b_jonas> imode: imagine 30 day trial period instead if you prefer,
+2019-10-25 17:50:43 <b_jonas> same enforcement methods apply
+2019-10-25 17:50:56 <int-e> E774 RANDOM COMPILER BUG.
+2019-10-25 17:51:03 <imode> hahahahahahahaha.
+2019-10-25 17:51:13 <imode> "hey my code does X when it should do Y" "have you paid the troll toll?"
+2019-10-25 17:51:27 <ais523> it's literally a random compiler bug, something like 10% chance IIRC
+2019-10-25 17:51:33 <ais523> however there is a command-line option to turn it off
+2019-10-25 17:51:47 <ais523> (CLC-INTERCAL has /two/ random compiler bugs and the more obvious command-line option only turns one of them off)
+2019-10-25 17:52:02 <ais523> that said, you normally have to turn it off in practice if you're doing anything remotely automated
+2019-10-25 17:52:14 <kspalaiologos> b_jonas, "you have to pay for Mathematica"
+2019-10-25 17:52:15 <kspalaiologos> yes, sure
+2019-10-25 17:52:25 <imode> I refuse to give money to Wolfram.
+2019-10-25 17:52:29 <kspalaiologos> so do I
+2019-10-25 17:52:41 <b_jonas> Mathematica is probably the best example, because they actually sell decent software,
+2019-10-25 17:52:49 <b_jonas> the evil part is only how they sell it:
+2019-10-25 17:52:51 <imode> shame it's not by decent people, though.
+2019-10-25 17:52:58 <kspalaiologos> how do they sell it though?
+2019-10-25 17:53:04 <kspalaiologos> I'm not interested in financial part of Mathematica
+2019-10-25 17:53:06 Joined: FreeFull
+2019-10-25 17:53:06 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-25 17:53:20 <kspalaiologos> what's wrong with this
+2019-10-25 17:53:35 <b_jonas> they give almost free copies to students, who learn the program it, and then, of those, then ones who turn out to be code monkeys and decide that they can only use a programming language if they were taught it at school, they will now have to buy Mathematica because they didn't take a Java course
+2019-10-25 17:53:48 <b_jonas> it's like giving free drugs to children
+2019-10-25 17:54:24 <b_jonas> Wolfram the founder is also a bit crazy, but he doesn't, like, personally develop the whole thing, so it doesn't matter
+2019-10-25 17:54:48 <imode> any paid language ecosystem will eventually fall prey to open source alternatives because the majority of interested individuals are predisposed to like "free and equivalent
+2019-10-25 17:54:49 <ais523> during the (2,3) Turing machine thing, Wolfram asked me to write Mathematica versions of the code I'd written (fair enough given the context), and gave me a /trial/ version of Mathematica to do it on (not even a perpetual license), so I didn't end up using it much beyond translating the code
+2019-10-25 17:55:09 <b_jonas> imode: that didn't happen to matlab
+2019-10-25 17:55:12 <int-e> b_jonas: is this what they call edutainment
+2019-10-25 17:55:13 <b_jonas> oh yeah, I forgot about matlab
+2019-10-25 17:55:19 <b_jonas> matlab is the best fucking example
+2019-10-25 17:55:23 <b_jonas> I see so many people using it for some reason
+2019-10-25 17:55:26 <imode> ais523: were you aware of wolfram's reputation at the time?
+2019-10-25 17:55:27 <ais523> my opinion on Mathematica is that the language itself is pretty terrible (it's basically an esolang, but not a tarpit), but the standard library is excellent
+2019-10-25 17:55:34 <b_jonas> despite that it has an actually better free software alternative, octave
+2019-10-25 17:55:37 <b_jonas> I seriously don't get it
+2019-10-25 17:55:43 <ais523> imode: well, I'd read /A New Kind of Science/
+2019-10-25 17:55:52 <b_jonas> ais523: yes, it's the standard library that is good
+2019-10-25 17:55:58 <b_jonas> but you get the standard library for money
+2019-10-25 17:56:13 <b_jonas> there are actually one or two clones of the core language I think
+2019-10-25 17:56:31 <ais523> the core language isn't really that different from Lisp + pattern-matchinig
+2019-10-25 17:57:02 <b_jonas> ais523: I won a student license of Mathematica once, but I think it was limited for one year or something
+2019-10-25 17:57:10 <b_jonas> I didn't really use it for anything
+2019-10-25 17:57:44 <b_jonas> the university has the free student copies that they use for marketing, plus there are illegal copies
+2019-10-25 17:57:56 <int-e> b_jonas: Matlab has all those ready-made toolboxes for various domains and the option of generating efficient code for simulation from it... and a strong userbase.
+2019-10-25 17:57:58 <kspalaiologos> mathematica is really good one though
+2019-10-25 17:58:11 <kspalaiologos> paywall is quite big though
+2019-10-25 17:58:17 <int-e> ("efficient" is certainly relative)
+2019-10-25 17:58:19 <b_jonas> int-e: but it doesn't seem to me like people are using those ready-made toolboxes
+2019-10-25 17:58:27 <b_jonas> the ones where I'm confused about using matlab that is
+2019-10-25 17:58:57 <b_jonas> hmm, cpressey isn't here, he'd have an opinion on this stuff
