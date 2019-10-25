@@ -648,3 +648,55 @@
 2019-10-25 20:55:55 <ARCUN> Is it possible, to modify a C compiler such as gcc, in order for it to compile a variant or derivative of C?
 2019-10-25 20:57:35 Joined: oerjan
 2019-10-25 20:57:35 Names: \oren\, ^[, aji, aloril, APic, ARCUN, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-10-25 21:01:20 <kmc> ARCUN: yes, of course
+2019-10-25 21:01:26 User Name: zzo38 = zzo38!~zzo38@24-207-15-213.eastlink.ca
+2019-10-25 21:01:26 <zzo38> Yes, but I don't know how difficult it is.
+2019-10-25 21:01:27 <kmc> in fact gcc already compiles many variants or derivatives of C
+2019-10-25 21:01:47 <zzo38> (Probably, how difficult it is, depend on the variant of C)
+2019-10-25 21:01:47 <kmc> it supports several revisions of the C spec and numerous non-standard extensions, not to mention C++ and Objective C
+2019-10-25 21:02:31 <zzo38> Yes, some of the GNU extensions I think is good and I use them, such as writing ?: with nothing in between, and supporting zero-length arrays.
+2019-10-25 21:03:21 <kmc> what does ?: with nothing in between do?
+2019-10-25 21:03:46 <ARCUN> I was thinking of modifying it so that an esolang looking similar to that of an obfuscated C program
+2019-10-25 21:03:49 <shachaf> x?:y means x?x:y
+2019-10-25 21:04:03 <ARCUN> With a few quirks
+2019-10-25 21:05:26 <shachaf> C99 has flexible array members. Why do you need zero-length arrays?
+2019-10-25 21:06:35 Quit: ARCUN (Remote host closed the connection)
+2019-10-25 21:06:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-10-25 21:07:13 <zzo38> I don't really like flexible arrays, and I think zero-length arrays is clearer and fits with everything else, rather than being something separate.
+2019-10-25 21:09:15 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-10-25 21:09:15 <oerjan> <shachaf> x?:y means x?x:y <-- without reevaluation, presumably.
+2019-10-25 21:09:39 <shachaf> Yes.
+2019-10-25 21:10:43 <int-e> shachaf: to allocate a struct with a variable array element that's empty
+2019-10-25 21:11:40 <shachaf> What do you mean?
+2019-10-25 21:11:43 <zzo38> That is one use of zero-length arrays, yes. But, there are also some other possibilities
+2019-10-25 21:11:54 <int-e> and proper sizeof computations, perhaps. still haven't checked what the issue was there.
+2019-10-25 21:13:54 <shachaf> int-e: Do you like this? https://www.researchgate.net/profile/Alexander_Nadel/publication/325968980_Chronological_Backtracking/links/5b3a08e84585150d23ee95c8/Chronological-Backtracking.pdf
+2019-10-25 21:15:07 <int-e> by default, no
+2019-10-25 21:15:23 <shachaf> OK.
+2019-10-25 21:15:32 Joined: hppavilion[1]
+2019-10-25 21:15:32 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-10-25 21:15:38 <shachaf> Unrelatedly, what do you think of this chronological backtracking thing?
+2019-10-25 21:15:48 <shachaf> "In particular, the decision level of the variables in the assignment trail is no longer monotonously increasing."
+2019-10-25 21:16:44 <zzo38> I noticed in the log the discussion of the one-based indexing in Lua, BASIC, Mathematica, etc. In BASIC you can start arrays at whatever integer index you want, but strings start at 1.
+2019-10-25 21:17:38 <oerjan> `cat bin/asmbf
+2019-10-25 21:17:39 <HackEso> tr / \\n | bfasm
+2019-10-25 21:18:22 <oerjan> `sled bin/asmbf//s/^/print_args_or_input "$@" |/
+2019-10-25 21:18:24 <HackEso> bin/asmbf//print_args_or_input "$@" |tr / \\n | bfasm
+2019-10-25 21:20:22 <b_jonas> zzo38: yes, it's partly the strings that bother me, partly the indexed property interfaces I access, which are sometimes 1-based and sometimes 0-based
+2019-10-25 21:20:26 <oerjan> `bfasm mov r4,.F/mov r1,.0/mov r2,r1/lbl 1/out r1/out r2/out 32/mov r3,r1/eq_ r3,.9/jnz r3,2/mov r3,r2/eq_ r3,.9/jnz r3,3/mov r3,r1/eq_ r3,r4/jnz r3,5/lbl 6/mov r3,r2/eq_ r3,r4/jnz r3,4/inc r2/jmp 1/lbl 2/sub r4,5/mov r1,r4/add r4,5/jmp 1/lbl 3/sub r4,5/mov r2,r4/add r4,5/jmp 1/lbl 4/inc r1/mov r2,.0/jmp 1/lbl 5/mov r3,r2/eq_ r3,r4/jz_ r3,6
+2019-10-25 21:20:52 <oerjan> hum
+2019-10-25 21:21:10 <HackEso> No output.
+2019-10-25 21:21:42 <oerjan> curious
+2019-10-25 21:23:01 <b_jonas> oerjan: try starting with `asmbf rather than `bfasm
+2019-10-25 21:23:48 <zzo38> b_jonas: What indexed property interfaces is that?
+2019-10-25 21:24:17 <int-e> shachaf: it's always good to revisit design decisions
+2019-10-25 21:25:07 <oerjan> oh duh
+2019-10-25 21:25:17 <oerjan> `asmbf mov r4,.F/mov r1,.0/mov r2,r1/lbl 1/out r1/out r2/out 32/mov r3,r1/eq_ r3,.9/jnz r3,2/mov r3,r2/eq_ r3,.9/jnz r3,3/mov r3,r1/eq_ r3,r4/jnz r3,5/lbl 6/mov r3,r2/eq_ r3,r4/jnz r3,4/inc r2/jmp 1/lbl 2/sub r4,5/mov r1,r4/add r4,5/jmp 1/lbl 3/sub r4,5/mov r2,r4/add r4,5/jmp 1/lbl 4/inc r1/mov r2,.0/jmp 1/lbl 5/mov r3,r2/eq_ r3,r4/jz_ r3,6
+2019-10-25 21:25:18 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>[-]++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<<<[-]++++++++++++++++++++++++++++++++++++++++++++++++>[-]<[>+<<+>-]<[>+<-]<]>+<<+<<[>>->+<<<-]>>>[<<<+>>>-]<[->+<<[>>>-<<+<-]>[<+>-]>>[<->[-]]<[<<<+>>>-]<]>>[-]<<<<[>>+>+<<<-]>>[<<+>>-]>[[-]>>.>.>>>++++++++++++++++++++++++++++++++.[-]<<[-]<<[>>+<<<+>-]<[>+<-]>>>>>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++<<[<<<<+>>>>
+2019-10-25 21:25:37 <oerjan> `1 asmbf mov r4,.F/mov r1,.0/mov r2,r1/lbl 1/out r1/out r2/out 32/mov r3,r1/eq_ r3,.9/jnz r3,2/mov r3,r2/eq_ r3,.9/jnz r3,3/mov r3,r1/eq_ r3,r4/jnz r3,5/lbl 6/mov r3,r2/eq_ r3,r4/jnz r3,4/inc r2/jmp 1/lbl 2/sub r4,5/mov r1,r4/add r4,5/jmp 1/lbl 3/sub r4,5/mov r2,r4/add r4,5/jmp 1/lbl 4/inc r1/mov r2,.0/jmp 1/lbl 5/mov r3,r2/eq_ r3,r4/jz_ r3,6
+2019-10-25 21:25:38 <HackEso> 1/7:+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>[-]++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<<<[-]++++++++++++++++++++++++++++++++++++++++++++++++>[-]<[>+<<+>-]<[>+<-]<]>+<<+<<[>>->+<<<-]>>>[<<<+>>>-]<[->+<<[>>>-<<+<-]>[<+>-]>>[<->[-]]<[<<<+>>>-]<]>>[-]<<<<[>>+>+<<<-]>>[<<+>>-]>[[-]>>.>.>>>++++++++++++++++++++++++++++++++.[-]<<[-]<<[>>+<<<+>-]<[>+<-]>>>>>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++<<[<<<<+>>>
+2019-10-25 21:26:02 <oerjan> a bit more convenient to use that way
+2019-10-25 21:27:01 <kmc> yarr
+2019-10-25 21:27:06 <kmc> getting pretty fucky in here
+2019-10-25 21:27:56 <oerjan> i'm finished with that hth
+2019-10-25 21:28:10 <oerjan> just adding *_args_or_input on principle
