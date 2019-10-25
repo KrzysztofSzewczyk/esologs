@@ -452,3 +452,143 @@
 2019-10-25 18:29:31 <ais523> but the local train company is investing in new technology to make the name of the stop clearer
 2019-10-25 18:29:32 <int-e> You get on the zero-th stop.
 2019-10-25 18:29:39 <int-e> +at
+2019-10-25 18:30:26 <ais523> anyway, if someone asks you /anything/ on the bus, it is almost certainly between stops; the dwell time at a stop is normally very short, and if it isn't, the environment inside the bus will be too chaotic to do much asking/answering of questions
+2019-10-25 18:30:35 <b_jonas> ais523: *sigh* did they name two adjacent stops exactly identically, with the second one being the one where most people have to get off, like they did here on the M3 bus towards Nagyv�rad t�r at N�pliget?
+2019-10-25 18:31:01 <ais523> b_jonas: that's possible, but very few people use bus stop names here
+2019-10-25 18:31:07 <ais523> normally they'll just describe the place where they get off
+2019-10-25 18:31:25 <ais523> the bus stops /have/ names but they're not widely used, I think they exist only for administrative purposes
+2019-10-25 18:31:50 <b_jonas> hmm
+2019-10-25 18:31:53 <ais523> (the buses used to have an instruction "please tell the driver which stop you plan to get off at when buying your ticket", I managed to cause confusion by being one of the only people to actually follow this instruction)
+2019-10-25 18:32:05 <b_jonas> how do you look up the timetable of buses on the internet if you're not in the bus stop where you want to get on yet?
+2019-10-25 18:32:16 <b_jonas> because we use the name of the bus stop for that
+2019-10-25 18:32:30 <b_jonas> of course, you don't have to remember the exact name, just choose it from the list of stops on the bus line
+2019-10-25 18:32:31 <kspalaiologos> I finished my minesweeper
+2019-10-25 18:32:37 <kspalaiologos> but I made it in malbolge just so it's harder
+2019-10-25 18:32:42 <arseniiv> <ais523> the first item goes from 0 to 1, the second from 1 to 2, the third from 2 to 3, and so on => yeah, one time I tried to make some notation for two interleaved Z’s, specifically to make off-by-1 harder^W easier to reason about
+2019-10-25 18:32:55 <kspalaiologos> I'm using the same assembler for malbolge and brainfuck so possibly I could supply you with a runnable version
+2019-10-25 18:33:13 <b_jonas> ais523: is that because tickets can have different prices depending on the destination?
+2019-10-25 18:33:15 <kspalaiologos> for curious: https://github.com/kspalaiologos/malbolge-chess/raw/master/minesweeper.7z
+2019-10-25 18:33:30 <ais523> b_jonas: this is what our online timetables look like: https://nxbus.co.uk/files/NX-West-Midlands/current_timetables/2019-Timetables/1st-Sept-2019/6163tt01September2019.pdf
+2019-10-25 18:33:31 <b_jonas> kspalaiologos: what? weren't you writing it in bf?
+2019-10-25 18:33:42 <kspalaiologos> I did
+2019-10-25 18:33:50 <kspalaiologos> but I compiled it to malbolge and optimized a bit by hand
+2019-10-25 18:33:51 <ais523> the 63 route probably has over 100 stops but the timetable only lists a few important ones that most people will recognise
+2019-10-25 18:33:54 <kspalaiologos> for a cool twist
+2019-10-25 18:34:02 <b_jonas> ais523: I see
+2019-10-25 18:34:03 <ais523> for stops in between, you interpolate
+2019-10-25 18:34:14 <kspalaiologos> I can supply you a brainfuck version in a second
+2019-10-25 18:34:21 <ais523> (the bus driver will only aim for consistent timings at stops actually listed in the timetable, if they get to one of those stops early they have to wait)
+2019-10-25 18:34:30 <b_jonas> hmm
+2019-10-25 18:34:32 <int-e> b_jonas: it's a sort of assembler
+2019-10-25 18:34:47 <arseniiv> existence of zero is a pain here, as we would want names for “gap integers” to be symmetric wrt sign inversion, and then we almost ruin any sense of inventing them at all
+2019-10-25 18:34:56 <b_jonas> ais523: I see
+2019-10-25 18:35:10 <ais523> also, tickets used to have widely varying prices depending on destination, but the system was simplified many years ago now
+2019-10-25 18:36:38 <ais523> there are basically only five types of adult ticket: one for a single short journey, one for a single journey of any length, a day ticket limited to one operator within a certain area, a day ticket limited to one operator but allowing you to use any of their buses no matter how far they go, and a day ticket that works on all the buses in the conurbation
+2019-10-25 18:37:21 <ais523> this leads to only two things that need memorizing (how far a "short journey" is – in practice the bus drivers often seem to not know this or get it wrong; and where the boundaries of the areas for local day tickets are)
+2019-10-25 18:37:28 <int-e> arseniiv: yeah if there is a mistake then it's using the same numbers for both points (fence posts) and intervals (fence segments)
+2019-10-25 18:38:15 <int-e> arseniiv: once you conflate those you will make an arbitrary choice... and cause upset if you mix those two choices :)
+2019-10-25 18:38:33 <shachaf> I agreent-e
+2019-10-25 18:38:47 <ais523> oh, also the prices on some of these drop after 9:30am, but that doesn't change where the ticket is usable
+2019-10-25 18:38:51 <b_jonas> This year, I traveled on public transport in five different areas abroad, and at each place I knew at least a little how the pricing system works, but now I forgot most of it
+2019-10-25 18:38:54 <shachaf> Though I haven't read any of the context so I assume this is about array indexing.
+2019-10-25 18:38:57 <ais523> it just depends on when you buy it
+2019-10-25 18:39:23 <int-e> I wonder whether the inclusive choice (picking 1 for 0--1) is somehow psychologically more appealing.
+2019-10-25 18:39:33 <b_jonas> the five places were  Amsterdam, Rotterdam, London, Dortmund, and K�ln
+2019-10-25 18:39:44 <int-e> Because that could explain why so many (all?) natural languages agree on that.
+2019-10-25 18:39:49 <arseniiv> int-e: shachaf: I agree with all of us also. We only need to think up appropriate names and decide would they be for things or intervals
+2019-10-25 18:40:04 <b_jonas> in Amsterdam, Rotterdam and London, I used pre-charged proxy cards for paying
+2019-10-25 18:40:18 <shachaf> https://blog.nelhage.com/2015/08/indices-point-between-elements/ describes it pretty well.
+2019-10-25 18:40:19 <arseniiv> maybe because of there was no concept of zero for so long
+2019-10-25 18:40:32 <b_jonas> I'll be using one of those in G�vle too later this year, now that I think of it
+2019-10-25 18:41:27 <int-e> shachaf: and I totally agree with that pointer view on zero-based indices in programming languages.
+2019-10-25 18:41:54 <b_jonas> in Amsterdam, the system is that prices for metro and tram vary depending on source and destination stations, so you have to check in and out with the card, in the stations for metro but the vehicle on trams; but on bus, there's a single fair, so you only check in with the card, not out
+2019-10-25 18:42:01 <b_jonas> London has a system similar to that
+2019-10-25 18:42:26 <b_jonas> but it's a bit confusing because london has three different types of urban rail lines, not just two like in other places
+2019-10-25 18:43:06 Joined: Phantom_Hoover
+2019-10-25 18:43:06 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill
+2019-10-25 18:43:10 <int-e> (C got that one wrong for variable-sized arrays at the end of structs.)
+2019-10-25 18:43:14 <b_jonas> Dortmund and K�ln were more confusing. no proxy card, but paper tickets,
+2019-10-25 18:43:55 <shachaf> int-e: How do you mean?
+2019-10-25 18:44:08 <b_jonas> but the vending machines were a pain: sometimes they don't accept bank card, only cash, and only low denomination cash too; sometimes they pre-validate your ticket and sometimes they don't and I couldn't tell when they'd do which one, I wasted at least one ticket on that
+2019-10-25 18:44:15 <int-e> (Or maybe I'm confusing myself?)
+2019-10-25 18:45:23 <int-e> Oh, this was an older version of C that didn't have variable sized arrays so you would be forced to write  T foo[1];  instead.
+2019-10-25 18:45:50 <b_jonas> in Budapest, day tickets and other time-based tickets are always pre-validated, whereas single tickets and other distance-based tickets aren't... well, that's not quite true, H�V tickets are for specific stations...
+2019-10-25 18:45:54 <b_jonas> it's all confusing
+2019-10-25 18:46:02 <int-e> I'm probably still confused. Will check, but not now.
+2019-10-25 18:46:35 <arseniiv> indices pointing between elements is practical, I agree, but we could accidentally start these from 1 too and not break anything, so there should be a stronger argument for 0-based. Personally I like 0-based naturals too, but these for obvious combinatorial/foundation-theoretic reasons
+2019-10-25 18:46:42 <shachaf> C99 has "flexible array members", struct T { ...; char array[]; };
+2019-10-25 18:47:07 <ais523> Birmingham doesn't require explicit ticket validation; tickets might be checked anywhere on the route (start, during, end, multiple times, not at all), and might or might not be marked when checked to prevent you reusing them
+2019-10-25 18:47:10 <arseniiv> wow vararg struct
+2019-10-25 18:47:11 <b_jonas> <arseniiv> maybe because of there was no concept of zero for so long => how would that influence me? there was a concept of zero when I was born, and when the textbooks I've read were written
+2019-10-25 18:47:21 <int-e> arseniiv: 0 is at distance 0 from the start!
+2019-10-25 18:47:26 <shachaf> Indices pointing between elements should definitely start at 0.
+2019-10-25 18:47:47 <shachaf> For an array with n elements there are n+1 indices, going from 0 to n.
+2019-10-25 18:48:12 <arseniiv> int-e: and something unknown is at distance 0 from the end :(
+2019-10-25 18:48:18 <b_jonas> ais523: that's how train tickets work here, so in exchange you always have to specify the two ends of the journey and the route
+2019-10-25 18:48:20 <shachaf> That reminds me of this diagram I made once: https:/slbkbs.org/ranksel.svg
+2019-10-25 18:48:27 <arseniiv> though it’s an argument equally against 1-based too :D
+2019-10-25 18:49:03 <int-e> arseniiv: C does this a lot... pointers are allowed to point just after the end of an array (that is, *at* the end of the array in the distance view), but you are not allowed to dereference them.
+2019-10-25 18:49:21 <arseniiv> <shachaf> For an array with n elements there are n+1 indices, going from 0 to n. => yes that rings true for me
+2019-10-25 18:49:34 <shachaf> Yes, which is very reasonable.
+2019-10-25 18:49:38 <int-e> arseniiv: So C gets it right, it just describes it in an awful way.
+2019-10-25 18:49:44 <int-e> :P
+2019-10-25 18:49:56 <shachaf> But what happens if your last array element is at UINTPTR_MAX?
+2019-10-25 18:49:57 <kspalaiologos> https://github.com/kspalaiologos/malbolge-chess/raw/master/minesweeper.bf
+2019-10-25 18:49:58 <arseniiv> so how should we denote index numbers
+2019-10-25 18:49:59 <int-e> (:P because I wrote earlier that there is no right or wrong here)
+2019-10-25 18:49:59 <kspalaiologos> brainfuck version
+2019-10-25 18:49:59 <ais523> b_jonas: I guess bus tickets are validated in the sense that they can only be purchased at the start of the journey, and have the time at which they're purchased on them, that's basically a form of validation
+2019-10-25 18:50:07 <kspalaiologos> requires unbuffered input (e.g. the DOS getch())
+2019-10-25 18:50:13 <kspalaiologos> it's quite fast actually
+2019-10-25 18:50:20 <b_jonas> ais523: that's how single tickets worked in Germany, which confused me
+2019-10-25 18:50:22 <ais523> (exception: you can buy day tickets for future days, or even for unspecified future days, in the latter case you have to mark the day on them yourself before you start using them)
+2019-10-25 18:50:23 <shachaf> int-e: There may be no right way, but surely there are wrong ways?
+2019-10-25 18:50:24 <arseniiv> or for that reason, element… names
+2019-10-25 18:50:25 <kspalaiologos> it's 1:1 equivalent of what I've got with Brainfuck
+2019-10-25 18:50:44 <arseniiv> α β γ δ like the old nomenclature for aminoacids?
+2019-10-25 18:50:46 <b_jonas> ais523: and day tickets sometimes worked that way, but sometimes you had to validate them the first time you use them to set the start time
+2019-10-25 18:50:51 <int-e> shachaf: True, but I was only considering the two reasonable options for counting.
+2019-10-25 18:51:10 <arseniiv> 0 α 1 β 2 γ 3 δ 4
+2019-10-25 18:51:11 <int-e> For counting fence segments, that is.
+2019-10-25 18:51:15 <b_jonas> ais523: but my problem is that it wasn't clear for me from the vending machine interface what I'll get before I pay
+2019-10-25 18:51:28 <ais523> on the trains, single tickets can be bought in advance, and there are flexible options that can be used at any time during the day in question
+2019-10-25 18:51:36 <ais523> those often aren't validated at all on short journeys
+2019-10-25 18:51:50 <b_jonas> ais523: yes, that's how trains in Germany work
+2019-10-25 18:51:57 <ais523> on longer journeys it's quite likely that a member of the train company will come round while you're sitting on the train and validate it mid-journey
+2019-10-25 18:52:19 <b_jonas> ais523: right, and I think that job is called controller
+2019-10-25 18:52:21 <ais523> (to prevent you using it on a second journey in the same directoin later that day)
+2019-10-25 18:52:23 <b_jonas> or ticket inspector?
+2019-10-25 18:52:34 <ais523> "conductor" is the most commonly seen word in English, but I think it's a historical relic and not accurate
+2019-10-25 18:52:40 <ais523> "ticket inspector" would be clear
+2019-10-25 18:52:44 <int-e> it's a cultural thing though... other countries have gates at platforms where you show your ticket or invalidate it with some machine.
+2019-10-25 18:53:03 <int-e> when entering and leaving
+2019-10-25 18:53:06 <shachaf> Obviously if you write a loop it should loop over values that computers represent naturally, like integers, rather than Greek letters.
+2019-10-25 18:53:10 <b_jonas> ais523: oddly, on some trams in Rotterdam, there are three separate jobs for the driver, the conductor, and the ticket inspector
+2019-10-25 18:53:16 <ais523> https://en.wiktionary.org/wiki/conductor#Noun definition 3
+2019-10-25 18:53:33 <ais523> int-e: the UK has those too, but only at some stations
+2019-10-25 18:53:37 <b_jonas> and the conductor sits behind a huge circular desk that takes up way too much place of the train
+2019-10-25 18:53:40 <b_jonas> of the tram
+2019-10-25 18:53:45 <ais523> they're expensive to run because you need a contingency plan for if someone turns up without a valid ticket
+2019-10-25 18:53:51 <ais523> and thus can't get through the gate
+2019-10-25 18:53:52 <b_jonas> that would never work here, because the trams are so full
+2019-10-25 18:53:58 <int-e> I thought people were bad conductors.
+2019-10-25 18:54:25 <arseniiv> BTW what does an invariant and reasonably symmetric definition of https://en.wikipedia.org/wiki/Cross-ratio looks like? I’ll reinvent it myself but if anybody knows it’ll be quicker
+2019-10-25 18:55:20 <int-e> Hmm, I knew meanings 2, 3, 4. But not the more generic meaning 1?
+2019-10-25 18:55:32 <b_jonas> yes, London, Amsterdam, Rotterdam all have automatic gates for the metro stations that read the proxy cards
+2019-10-25 18:55:37 <b_jonas> well, not quite
+2019-10-25 18:55:54 <ais523> normally this means that when you have a ticket barrier, you need an employee on the platform side of the barrier with tickekt-selling equipment
+2019-10-25 18:55:55 <b_jonas> int-e: they didn't seem to provide any useful service, so yes
+2019-10-25 18:56:17 <int-e> b_jonas: I used meaning 4 of course.
+2019-10-25 18:56:31 <int-e> More specifically the electrical one.
+2019-10-25 18:56:35 <b_jonas> int-e: basically they sometimes had a microphone, and sometimes yelled at people or told where we are, all of which the automated system with recorded voice also did, but the conductor could preempt it
+2019-10-25 18:56:59 <arseniiv> I mean, suppose we have some vector space V without inner product; then we take four coplanar lines from there and we should be able to get their cross ratio
+2019-10-25 18:57:11 <ais523> in some stations in London, there's someone who operates a public address system and simply tells the passengers where to move to stop them getting in each others' way
+2019-10-25 18:57:34 <ais523> because the crowds can be so large that you can't rely on everyone in them to act sensibly without instructions
+2019-10-25 18:57:52 <ais523> I guess that's comparable to the type of conductor b_jonas is talking about? except for platforms rather than on the tram
+2019-10-25 18:58:24 <b_jonas> mind you, the most annoying speaker system I've met is in the Amsterdam Schiphol airport. they have captions everywhere that it's a "silent airport" so there are no announcements on the speaker about airplanes starting, you should look at the displays instead,
+2019-10-25 18:58:57 <b_jonas> but the airport has long corridors with walking strips, and there are speakers that say "Mind your step" every time someone is near the end of one of those strips
+2019-10-25 18:59:15 <arseniiv> <int-e> I thought people were bad conductors. => why, that’s mainly because of skin resistance. If the skin is wet or wounded, it plummets
+2019-10-25 18:59:17 <b_jonas> so you hear "Mind your step" in the same voice repeated a hundred of times when you're there
+2019-10-25 18:59:26 <b_jonas> I don't understand how that's supposed to help anyone
+2019-10-25 18:59:47 <int-e> arseniiv: what do you mean by "invariant"
+2019-10-25 18:59:52 <b_jonas> ais523: yes, probably
