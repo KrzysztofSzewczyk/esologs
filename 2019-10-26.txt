@@ -163,3 +163,25 @@
 2019-10-26 20:27:46 <kspalaiologos> ^
 2019-10-26 20:27:51 <kspalaiologos> plus the sexy look of new VCL
 2019-10-26 20:28:05 <kspalaiologos> and Starling/Feathers UI for flash looking awesome
+2019-10-26 20:35:35 Joined: oerjan
+2019-10-26 20:35:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xkapastel, zemhill, zzo38
+2019-10-26 20:38:11 <fizzie> I'm not sure which ready-made wrappers you mean. I mean, the standard NDK has a bunch of APIs, sure. Not for the native UI, but for OpenGL/EGL/Vulkan and all kinds of hardware. And of course there's a truckload of different cross-platform development things that just draw their own stuff (Flutter, React Native, Xamarin, that Feathers thing...).
+2019-10-26 20:47:32 <b_jonas> fizzie: I mean for the native android services
+2019-10-26 20:48:15 <zzo38> Can you run a X server on Android?
+2019-10-26 20:53:38 <fizzie> I don't see why you couldn't in theory, but I haven't really heard of anyone doing it.
+2019-10-26 20:54:02 <kmc> i think people do
+2019-10-26 20:54:13 <kmc> because they want to use GUI programs in a GNU/Linux chroot
+2019-10-26 20:54:20 <kmc> you can use Xvnc or something
+2019-10-26 20:55:02 <fizzie> I use Termux on my phone, which is basically an Android terminal emulator app, plus a Linux userland installed inside the app's data directory, and an APT repository for convenient packages.
+2019-10-26 20:55:10 <kmc> oxample: https://www.reddit.com/r/amateurradio/comments/84jbgy/wsjtx_on_android/
+2019-10-26 20:55:13 <kmc> fizzie: that sounds dope
+2019-10-26 20:55:17 <kmc> I should use that
+2019-10-26 20:55:21 <kmc> is it less buggy than juicessh
+2019-10-26 20:55:25 <kmc> can you run the linux mosh client in it
+2019-10-26 20:56:06 <fizzie> So far I like it better than JuiceSSH, which is where I switched from. At least you can run the standard OpenSSH client and ssh-agent.
+2019-10-26 20:56:15 <kmc> good
+2019-10-26 20:56:16 <fizzie> I assume mosh should be fine as well, I've just never set that up.
+2019-10-26 20:56:19 <kmc> you can probably run mosh too
+2019-10-26 20:56:26 <kmc> it doesn't have much in the way of system requirements
+2019-10-26 20:56:47 <fizzie> (The nice bit with Termux is that it requires no root.)
+2019-10-26 20:58:07 <fizzie> Looks like there's also some support for running X11, through the VNC trick: https://wiki.termux.com/wiki/Graphical_Environment
