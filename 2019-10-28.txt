@@ -279,3 +279,53 @@
 2019-10-28 11:29:00 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
 2019-10-28 11:29:24 Joined: ais523
 2019-10-28 11:29:24 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:30:28 Joined: wib_jonas
+2019-10-28 11:30:29 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:31:04 <shachaf> arseniiv: Maybe https://gist.github.com/uucidl/495e7f1c2646fc8b5196 has some useful things to say.
+2019-10-28 11:31:20 <cpressey> arseniiv: fwiw I think API design is related to abstract datatype design... but different enough that I hesitate to say "closely related".
+2019-10-28 11:31:35 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-10-28 11:31:35 <wib_jonas> also, as a bonus, I'd like a printf that outputs utf16 directly, and can take both utf-8 and utf-16 strings as arguments to format
+2019-10-28 11:31:49 User Name: ais523 = ais523_!93bcc3da@gateway/web/cgi-irc/kiwiirc.com/ip.147.188.195.218
+2019-10-28 11:31:49 <ais523> shachaf: that link appears to require logging in?
+2019-10-28 11:32:15 <ais523> wib_jonas: I think Windows has one of those
+2019-10-28 11:32:22 <ais523> (the same function in Linux outputs UTF-32)
+2019-10-28 11:32:30 <ais523> any particular reason you want UTF-16?
+2019-10-28 11:33:40 <wib_jonas> ais523: at work I'm writing tables for a siemens program that can only read utf-16-le
+2019-10-28 11:33:55 <ais523> that's a good enough reason, I guess
+2019-10-28 11:33:57 <wib_jonas> I could of course output utf-8 and iconv it afterwards
+2019-10-28 11:34:04 <wib_jonas> it's not like I need this very efficiently
+2019-10-28 11:34:08 <shachaf> ais523_: Which link?
+2019-10-28 11:34:10 <wib_jonas> but it'd be simpler
+2019-10-28 11:34:24 <ais523> shachaf: the gist link you posted a few lines above
+2019-10-28 11:34:40 <shachaf> I'm reading it in a Private Browsing window logged out.
+2019-10-28 11:35:56 <wib_jonas> I also read utf-16 files
+2019-10-28 11:36:18 <shachaf> I have no particular interest in UTF-16 support.
+2019-10-28 11:36:23 <wib_jonas> currently I do these with perl and python, both of which have ways to input and output utf-8 and utf-16 streams, though perl's is somewhat buggy
+2019-10-28 11:36:24 <shachaf> It's a niche feature.
+2019-10-28 11:37:50 <ais523> other than Microsoft-related code (which seems to use UTF-16 as default), the main use I see for UTF-8 is writing Funciton programs
+2019-10-28 11:38:00 <ais523> *for UTF-16
+2019-10-28 11:38:07 <myname> funciton <3
+2019-10-28 11:38:24 <myname> i need to make a programming game out of that
+2019-10-28 11:38:31 <ais523> because they're made primarily of non-ASCII characters, and yet there's no standard 8-bit character set that contains all the characters it uses + its standard library
+2019-10-28 11:38:42 <ais523> so UTF-16 is normally the most efficient storage
+2019-10-28 11:38:56 <ais523> (UTF-8 can be more efficient when the programs are primarily made of large constants)
+2019-10-28 11:39:08 <myname> to be fair, funciton uses something like utf-21 or the like internally
+2019-10-28 11:39:35 <arseniiv> shachaf: thanks, let’s see…
+2019-10-28 11:39:51 <ais523> UTF-16 is also more efficient than UTF-21 if you rarely use astral plane characters :-P
+2019-10-28 11:40:15 <ais523> also I think the UTF-21 is just for I/O, not used for storing the program internally
+2019-10-28 11:40:39 <arseniiv> cpressey: ah I think there is some kind of relatedness too, though I don’t have anything externalized on that count
+2019-10-28 11:40:43 <wib_jonas> ais523: this dataset is made of mostly ascii, so utf-8 would be more efficient
+2019-10-28 11:41:35 <ais523> what do you think of the shift-code-based Unicode encodings which are efficient when outputting lots of characters from the same Unicode block?
+2019-10-28 11:42:11 <ais523> hmm, thinking about it, you could probably do better with Huffman coding based on a digraph frequency table
+2019-10-28 11:43:40 <ais523> one potential problem with both systems is that you can't split a string between characters any more, and concatentating strings will lead to an overlong encoding due to the shift state (or previous character state) being explicitly reset in between
+2019-10-28 11:49:39 <arseniiv> <ais523_> what do you think of the shift-code-based Unicode encodings which are efficient when outputting lots of characters from the same Unicode block? => my friend considered that but I don’t know if he succeeded in something. It seems he has the idea abandoned for a while
+2019-10-28 11:50:31 Quit: LKoen (Remote host closed the connection)
+2019-10-28 11:50:31 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:50:36 <ais523> there are at least two "standardised" encodings like that, at least one is IIRC patented/commercial (of course, there's doubts about whether a text encoding can be patentable!)
+2019-10-28 11:55:33 <wib_jonas> http://www.unicode.org/notes/tn6/ ?
+2019-10-28 11:55:51 Joined: LKoen
+2019-10-28 11:55:51 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:56:06 <ais523> this is based on a memory from a Wikipedia page, I can't remember which one
+2019-10-28 11:59:03 <ais523> that unicode.org link is probably the same thing, though, given that there's a reference to an IBM patent at the bottom
+2019-10-28 11:59:17 Quit: ais523 (Quit: lunch)
+2019-10-28 11:59:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
