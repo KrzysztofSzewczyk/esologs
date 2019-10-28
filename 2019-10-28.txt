@@ -401,3 +401,16 @@
 2019-10-28 18:25:25 <esowiki> 14[[07PTSL/instrtable14]]4 N10 02https://esolangs.org/w/index.php?oldid=66852 5* 03Moon 5* (+113) 10large table
 2019-10-28 18:27:32 <esowiki> 14[[07PTSL14]]4 10 02https://esolangs.org/w/index.php?diff=66853&oldid=66851 5* 03Moon 5* (+74) 10
 2019-10-28 18:29:57 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66854&oldid=66852 5* 03Moon 5* (+159) 10
+2019-10-28 18:30:41 <esowiki> 14[[07PTSL14]]4 10 02https://esolangs.org/w/index.php?diff=66855&oldid=66853 5* 03Moon 5* (+96) 10
+2019-10-28 18:32:25 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66856&oldid=66854 5* 03Moon 5* (+56) 10add header
+2019-10-28 18:35:24 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66857&oldid=66856 5* 03Moon 5* (+236) 10
+2019-10-28 18:38:56 <arseniiv> is there (I think there is) a special name for algebraic types isomorphic to a sum of products of such types?
+2019-10-28 18:40:11 <arseniiv> like, { data Nat = Z | S Nat; data NatList = Nil | Cons Nat NatList } is a subset of these. Or { data T = TA | TB U; data U = UA | UB T } is too
+2019-10-28 18:41:07 <arseniiv> I think I heard “polynomial functor” regarding sums and products but these aren’t exactly one-to-one with functors
+2019-10-28 18:41:51 <arseniiv> as of “simple inductive type”, I’m not sure the term isn’t too general
+2019-10-28 18:49:02 <arseniiv> or maybe I should allow something like data T = T (U → T). I consider how to define generalized Minsky machines / recursive functions
+2019-10-28 18:50:23 <arseniiv> hm I think it won’t be good. How on earth could I make values of U → T there
+2019-10-28 18:51:07 <arseniiv> okay I think I’ll call these datatypes polynomial, seems not too general, not too specific
+2019-10-28 18:52:34 <arseniiv> hm no, there’s recursion… polynomial-inductive it should be
+2019-10-28 18:53:15 <shachaf> So in order to make the state machine printf API actually correct for sprintf, I think it'll need a bunch more state.
+2019-10-28 18:54:05 <shachaf> I was only outputting formatted arguments all-or-nothing, but the snprintf API actually requires you to output them to the last byte possible.
