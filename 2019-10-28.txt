@@ -70,3 +70,33 @@
 2019-10-28 09:53:40 <esowiki> 14[[07Oxcart14]]4 N10 02https://esolangs.org/w/index.php?oldid=66831 5* 03Chris Pressey 5* (+4013) 10Initial article for Oxcart, a continuation-passing concatenative language.
 2019-10-28 09:54:41 <cpressey> ^^
 2019-10-28 09:55:08 <cpressey> An implementation is available in the GitHub repo linked to therein.
+2019-10-28 10:05:23 <shachaf> I rewrote my printf-style function as a state machine, but I ran into the unfortunate issue that it supports custom formatters, and those also need to be written as state machines for maximal correctness.
+2019-10-28 10:05:51 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=66832&oldid=66797 5* 03Chris Pressey 5* (+13) 10/* O */ Add Oxcart
+2019-10-28 10:06:43 <shachaf> I thought just restarting each formatter from scratch would be sufficient, but it can lead to infinite loops if you're using a fixed size buffer and the formatter tries to write something larger than that.
+2019-10-28 10:06:55 Joined: LKoen
+2019-10-28 10:06:55 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 10:07:05 <shachaf> Oh, hmm, there's actual esolang activity in here.
+2019-10-28 10:08:34 <shachaf> :t let comp f g x k = f x (\s -> g s k) in comp
+2019-10-28 10:08:36 <lambdabot> (t1 -> (t2 -> t3) -> t4) -> (t2 -> t5 -> t3) -> t1 -> t5 -> t4
+2019-10-28 10:09:45 <shachaf> Too general.
+2019-10-28 10:11:51 <shachaf> I guess I should just read it as (b -> (c -> r) -> r) -> (a -> (b -> r) -> r) -> a -> (c -> r) -> r
+2019-10-28 10:12:10 <shachaf> Which is the obvious thing.
+2019-10-28 10:15:51 <shachaf> cpressey: I think you copied some text from the Wagon page.
+2019-10-28 10:18:23 <cpressey> I did copy some text from the Wagon page, to start it off, but did I fail to update it appropriately?
+2019-10-28 10:18:47 * cpressey reads
+2019-10-28 10:19:28 <shachaf> I just mean the Primitives section.
+2019-10-28 10:19:52 <cpressey> Ah, I see some errors. I'll fix them
+2019-10-28 10:20:43 <shachaf> Maybe (a -> (b -> r) -> r) should be ((b -> r) -> a -> r) instead.
+2019-10-28 10:21:48 <esowiki> 14[[07Oxcart14]]4 10 02https://esolangs.org/w/index.php?diff=66833&oldid=66831 5* 03Chris Pressey 5* (+8) 10Fix lead paragraph in Primitives section
+2019-10-28 10:22:58 <esowiki> 14[[07Oxcart14]]4 M10 02https://esolangs.org/w/index.php?diff=66834&oldid=66833 5* 03Chris Pressey 5* (+106) 10Note that Oxcart is not a minimal language
+2019-10-28 10:24:45 <shachaf> What is "continue as normal"?
+2019-10-28 10:25:29 <shachaf> I think I'm confused about how evaluation works.
+2019-10-28 10:25:35 <shachaf> Also I think I should go to sleep.
+2019-10-28 10:25:46 Joined: wib_jonas
+2019-10-28 10:25:46 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 10:27:22 Joined: oerjan
+2019-10-28 10:27:22 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 10:28:16 <esowiki> 14[[07Oxcart14]]4 M10 02https://esolangs.org/w/index.php?diff=66835&oldid=66834 5* 03Chris Pressey 5* (+179) 10Clarify what "continue as normal" means, and what the initial continuation is.
+2019-10-28 10:29:21 * wib_jonas disables layout.css.text-decoration-skip-ink.enabled in firefox after an annoying update made underlined text look ugly
+2019-10-28 10:29:29 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-10-28 10:29:29 <wib_jonas> in the about:config that is
