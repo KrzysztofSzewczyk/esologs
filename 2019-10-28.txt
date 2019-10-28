@@ -197,3 +197,85 @@
 2019-10-28 10:59:25 Joined: arseniiv
 2019-10-28 10:59:25 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
 2019-10-28 10:59:31 <wib_jonas> I think I'll just use the more traditional approach where I call a callback when the output buffer runs out -- that callback can still give an error to abort, but I won't convert it to cps where you can pause the printf and store the state for later
+2019-10-28 11:00:25 <ais523> hmm, if you can inline the callback, that's probably more efficient (it's less efficient if you have to call through a function pointer, especially given the workarounds needed for Spectre)
+2019-10-28 11:00:36 <shachaf> I think state machine APIs are generally much nicer and more flexible.
+2019-10-28 11:00:44 <wib_jonas> the callbacks are simply anyway, they either write, or allocate more memory, or always fail, plus in the first two cases there could be an output length limit that they obey
+2019-10-28 11:01:50 <wib_jonas> ais523: it's not just the callback that helps, I can also enforce that I can call flush early and require that the output buffer is always at least, say, 64 bytes long, which means I don't need to worry about the callback during converting fixed integers or floating point numbers
+2019-10-28 11:01:55 <ais523> (the currently recommended way of calling through a function pointer is to call yourself twice and then overwrite the return address for the second call on the stack with the address of the function you actually want to call; this guarantees that the function call will be mispredicted, thus preventing it being used as a Spectre gadget)
+2019-10-28 11:02:10 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-10-28 11:02:10 <oerjan> <shachaf> cpressey: I think you copied some text from the Wagon page. . o O ( maybe cpressey is secretly A )
+2019-10-28 11:02:16 <wib_jonas> (mind you, formatting floats is still tricky for other reasons)
+2019-10-28 11:02:48 <ais523> you also need something that halts speculation at the address that you don't return to because it's overwritten
+2019-10-28 11:02:49 <wib_jonas> a callback is effectively also what gnu libc and libstdc++ does
+2019-10-28 11:03:04 <wib_jonas> for libc, you can define FILE handles with custom callbacks,
+2019-10-28 11:03:27 <wib_jonas> for the C++ standard library, you can define custom classes for the output buffer
+2019-10-28 11:04:06 <ais523> actually, the important point here isn't specifically that the call is mispredicted, rather it's that you statically know it'll be predicted to a specific value that's under your control (which prevents the predicted value being attacker-controlled)
+2019-10-28 11:04:24 <wib_jonas> ais523: it might not even involve a function pointer, since I will probably only use three different behaviors
+2019-10-28 11:04:31 <wib_jonas> possibly two because the last one isn't hard to unify
+2019-10-28 11:04:35 <wib_jonas> I can just use conditionals
+2019-10-28 11:04:40 <ais523> wib_jonas: right, sorry, I started on an aside
+2019-10-28 11:04:52 <ais523> and then needed to make my aside as technically precise as possible, lest I end up misinforming someone
+2019-10-28 11:05:05 <wib_jonas> sure, that's also important. for some things other than printf, you do want function pointers
+2019-10-28 11:05:21 <ais523> oddly, the Spectre-proof indirect function call sequence is eerily similar to conditionals in INTERCAL-72
+2019-10-28 11:05:35 <ais523> (not the same, but reminiscent)
+2019-10-28 11:05:51 <esowiki> 14[[07Oxcart14]]4 M10 02https://esolangs.org/w/index.php?diff=66839&oldid=66838 5* 03Chris Pressey 5* (-64) 10Move where it is explained what "current continuation" refers to
+2019-10-28 11:06:13 <shachaf> Do you like this style of API? https://gist.github.com/pervognsen/d57cdc165e79a21637fe5a721375afba
+2019-10-28 11:06:23 <shachaf> (The one in that post and also the one it links to.)
+2019-10-28 11:06:49 <wib_jonas> ais523: I really don't follow how sceptre-like prediction attacks can be prevented. at this point I sort of think I just have to buy separate (cheap) computer hardware to run the untrusted code on if I want to prevent all such attacks.
+2019-10-28 11:07:41 <wib_jonas> separating things to separate computer hardware can be useful for other reasons too, as in to prevent various human errors that cause security bugs
+2019-10-28 11:07:47 <ais523> wib_jonas: I believe the commonly accepted technique is to ensure that you have control over all locations to which a branch could possibly be predicted to lead, and then audit them to ensure that they can't leak information when running speculatively
+2019-10-28 11:07:50 <wib_jonas> other than sceptre
+2019-10-28 11:08:45 <wib_jonas> ais523: how can that be possible? you can guarantee that the cpu can't falsely speculatively predict a location?
+2019-10-28 11:08:55 <ais523> it's not as bad as it seems; most branches can only be predicted as taken or not taken, so there are only two places to check, and compilers can verify that, e.g., you don't make any memory accesses via potentially attacker-controlled pointers
+2019-10-28 11:09:11 <wib_jonas> I thought the jump target prediction is such that you can't do that
+2019-10-28 11:09:18 <ais523> the crazy workarounds are needed for indirect branches and indirect function calls, which could lead anywhere
+2019-10-28 11:09:30 <ais523> so you need to control the prediction yourself
+2019-10-28 11:09:38 <wib_jonas> because it would, like, predict targets of unrelated jumps if it doesn't recall the jump instructino that you're trying to predict
+2019-10-28 11:10:05 <ais523> that's why you go via a function call and then rewrite the return value on the stack, because if you make a function call followed by a return, it's always predicted to return to the place the call came from
+2019-10-28 11:10:29 <wib_jonas> hmm
+2019-10-28 11:10:43 <cpressey> oerjan: That's one of more frightening Jekyll-and-Hyde theories I've heard lately. Perhaps I've been sleepwalking (and sleepwikiediting)
+2019-10-28 11:10:44 <wib_jonas> that could work, if you're careful not to confuse the return address cache
+2019-10-28 11:10:55 <wib_jonas> there's a separate return target cache from the usual stack cache, right?
+2019-10-28 11:11:18 <ais523> wib_jonas: actually it's the opposite of "careful not to confuse", you're intentionally confusing the return address stack
+2019-10-28 11:12:07 <wib_jonas> which theory? the one where every esoteric language author is secretly the same person?
+2019-10-28 11:12:18 <wib_jonas> ais523: yes, but after that
+2019-10-28 11:12:25 <wib_jonas> dunno, it could work
+2019-10-28 11:12:29 <ais523> the point is simply to make sure you have a known value on the return address predictor so that it can't be attacker-controlled
+2019-10-28 11:12:37 <wib_jonas> but the whole sceptre prevention seems hopelessly large in scope to me
+2019-10-28 11:13:06 <ais523> well, it's at the point where the known spectre variants can be automatically fixed by compilers
+2019-10-28 11:13:22 <ais523> there are probably unknown speculative-execution-related exploits, but at least the known ones were fixable
+2019-10-28 11:13:40 <wib_jonas> ok
+2019-10-28 11:14:37 <wib_jonas> though I am hoping that most of them will be fixed in new hardware, so in like 15 years all the cpu with most of the vulnerabilities will be phased out
+2019-10-28 11:15:41 <wib_jonas> that's like a close enough timescale that I'll probably still be alive and programming for cpus then
+2019-10-28 11:18:03 <shachaf> If you don't support user-defined formats, it's probably simple enough.
+2019-10-28 11:18:16 Quit: LKoen (Remote host closed the connection)
+2019-10-28 11:18:16 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:18:56 User Name: arseniiv = arseniiv!~arseniiv@94.41.13.149.dynamic.ufanet.ru
+2019-10-28 11:18:56 <arseniiv> <shachaf> Do you like this style of API? => interesting
+2019-10-28 11:19:09 <shachaf> I think %s is the only arbitrary-length format? You can just rerun the other ones if they happen to cross a boundary.
+2019-10-28 11:19:28 <shachaf> Or even just store a fixed-size buffer of what's left in the current argument.
+2019-10-28 11:19:38 Joined: LKoen
+2019-10-28 11:19:38 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:20:23 <wib_jonas> although then we'll still have to worry about how to make efficient but secure quantum-attack resistant public key cryptography primitives. if the crypto theorists don't figure out soon, every fricking ssl handshake will take centiseconds because we can't do a key exchange without number theory.
+2019-10-28 11:21:42 <shachaf> But what's the right thing to do for custom formatters?
+2019-10-28 11:21:59 <shachaf> I could declare that they just can't produce more than 64 bytes of output.
+2019-10-28 11:23:04 <wib_jonas> shachaf: I wouldn't allow them in general. I'll have to figure out something to allow bignum formatters, and those can produce long output, plus I will allow custom complex types, but I'll format them with built-in formatters, it's just a type system magic that disappears at compile time.
+2019-10-28 11:23:56 <shachaf> I have types like struct V2 { F32 x, y; };.
+2019-10-28 11:24:02 <shachaf> It seems pretty useful to be able to format them.
+2019-10-28 11:24:23 <shachaf> I don't expect a huge number of custom formatters but it'll be nice to have the common ones.
+2019-10-28 11:24:37 <wib_jonas> shachaf: printf("(%f,%f)", p.x, p.y);
+2019-10-28 11:24:56 <wib_jonas> replace the "%f" with whatever specific format you want obviously
+2019-10-28 11:25:51 <wib_jonas> for more complicated cases, the users can write a formatter function that doesn't hook into printf
+2019-10-28 11:26:00 <arseniiv> from the link there: “API design is still considered a black art of programming, even today. Only little information can be found and mostly you just find small tips I hope every programmer already knows.” => BTW there are no books on that, really? With yet many books on code style practices?
+2019-10-28 11:26:02 <wib_jonas> but can use the same output buffer solutino as your printf
+2019-10-28 11:26:31 <wib_jonas> so you don't mix them in the same printf format string, but you can mix them into the same output file or output buffer or whatever you can output to
+2019-10-28 11:26:39 <wib_jonas> I think your api still allows that
+2019-10-28 11:27:08 <shachaf> arseniiv: I don't think there are many good books on that sort of thing.
+2019-10-28 11:27:58 <ais523> I think API design is in part a language design problem
+2019-10-28 11:28:15 <ais523> APIs are influenced so much by the language you're calling them from
+2019-10-28 11:28:34 <ais523> I have a theory that perhaps, in a sufficiently tightly defined language, there would only be one obvious way to write any given API
+2019-10-28 11:29:00 Quit: wib_jonas (Remote host closed the connection)
+2019-10-28 11:29:00 Quit: ais523 (Remote host closed the connection)
+2019-10-28 11:29:00 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 11:29:24 Joined: ais523
+2019-10-28 11:29:24 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
