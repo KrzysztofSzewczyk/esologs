@@ -414,3 +414,15 @@
 2019-10-28 18:52:34 <arseniiv> hm no, there’s recursion… polynomial-inductive it should be
 2019-10-28 18:53:15 <shachaf> So in order to make the state machine printf API actually correct for sprintf, I think it'll need a bunch more state.
 2019-10-28 18:54:05 <shachaf> I was only outputting formatted arguments all-or-nothing, but the snprintf API actually requires you to output them to the last byte possible.
+2019-10-28 19:02:25 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66858&oldid=66857 5* 03Moon 5* (+697) 10
+2019-10-28 19:05:49 <shachaf> Apparently subtracting two null pointers is undefined behavior in C?
+2019-10-28 19:08:00 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66859&oldid=66858 5* 03Moon 5* (+91) 10
+2019-10-28 19:11:49 <fizzie> Subtracting even one should be, surely.
+2019-10-28 19:12:35 <fizzie> "When two pointers are subtracted, both shall point to elements of the same array object, or one past the last element of the array object; --"
+2019-10-28 19:12:47 <shachaf> Yep.
+2019-10-28 19:13:00 <shachaf> But that doesn't say anything about what happens when one pointer is subtracted.
+2019-10-28 19:17:53 <esowiki> 14[[07PTSL14]]4 10 02https://esolangs.org/w/index.php?diff=66860&oldid=66855 5* 03Moon 5* (+655) 10Example.
+2019-10-28 19:17:57 <fizzie> I guess it's the same as the one hand clapping.
+2019-10-28 19:18:44 <esowiki> 14[[07PTSL14]]4 10 02https://esolangs.org/w/index.php?diff=66861&oldid=66860 5* 03Moon 5* (+2) 10fix
+2019-10-28 19:19:53 <fizzie> If a tree falls in the forest, does it generate a log?
+2019-10-28 19:29:02 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66862&oldid=66859 5* 03Moon 5* (+227) 10
