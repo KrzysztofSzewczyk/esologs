@@ -100,3 +100,100 @@
 2019-10-28 10:29:21 * wib_jonas disables layout.css.text-decoration-skip-ink.enabled in firefox after an annoying update made underlined text look ugly
 2019-10-28 10:29:29 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
 2019-10-28 10:29:29 <wib_jonas> in the about:config that is
+2019-10-28 10:30:43 <esowiki> 14[[07Oxcart14]]4 M10 02https://esolangs.org/w/index.php?diff=66836&oldid=66835 5* 03Chris Pressey 5* (+25) 10Add extra section in order to make ToC appear higher up in page
+2019-10-28 10:31:48 <wib_jonas> cpressey: there's also the magic word __TOC__ to insert the table of contents right where that magic word is
+2019-10-28 10:31:54 <wib_jonas> https://www.mediawiki.org/wiki/Help:Magic_words
+2019-10-28 10:32:36 <shachaf> What is the current continuation? Is it part of the program state?
+2019-10-28 10:33:07 <wib_jonas> shachaf: I think you'll have to read the source code of the implementation
+2019-10-28 10:34:10 <cpressey> shachaf: The current continuation is the second argument that the function receives.
+2019-10-28 10:34:15 Joined: ais523
+2019-10-28 10:34:16 Names: \oren\, ^[, ais523, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 10:34:38 <wib_jonas> cpressey: but is the tape of stacks part of that continuation?
+2019-10-28 10:34:50 <wib_jonas> or does that live outside with only one copy?
+2019-10-28 10:34:54 <cpressey> wib_jonas: No, that's the first argument.
+2019-10-28 10:35:14 User Name: ais523 = ais523_!93bcc3da@gateway/web/cgi-irc/kiwiirc.com/ip.147.188.195.218
+2019-10-28 10:35:14 <ais523> shachaf: if you have a sufficiently pure programming model, the current continuation is the %Ientire%I state of the interpreter / the running program; impure languages tend to leave bits of it out though
+2019-10-28 10:35:15 <cpressey> f(x, k) = f(state, kontinuation)
+2019-10-28 10:35:20 <wib_jonas> cpressey: so there's only one tape of stacks?
+2019-10-28 10:35:38 <ais523> also apparently my usual shortcut for italics doesn't work with this client
+2019-10-28 10:36:23 <ais523> although, "current" continuation is a bit misleading, the continuation that call/cc generates is the continuation that its first argument returns to
+2019-10-28 10:36:25 <cpressey> wib_jonas: No, it's a purely functional language, so each operation takes a state and passes a new, transformed state to its continuation
+2019-10-28 10:36:48 <shachaf> ais523_: How much of what you said is applicable to this language?
+2019-10-28 10:36:56 <shachaf> I know what continuations are in general.
+2019-10-28 10:37:01 <ais523> I don't know, I don't know the language, haven't logread yet
+2019-10-28 10:37:54 <shachaf> I see. My question was about this language, not continuations in general.
+2019-10-28 10:37:59 <wib_jonas> ah, the github has more explanation, not only an implementation
+2019-10-28 10:38:01 <wib_jonas> let's see
+2019-10-28 10:39:56 <ais523> looking at the definition of Oxcart, the spec seems to treat continuations as opaque data that is acted on by the program
+2019-10-28 10:40:16 <ais523> I think a literal understanding of the esolangs.org page would have the stacks not be part of it
+2019-10-28 10:40:24 <ais523> hmm, this reminds me of an Underload derivative I was working on a while back
+2019-10-28 10:40:33 <ais523> with some introspection primitives
+2019-10-28 10:41:02 <ais523> one captured the state of the entire stack; the other captured the entire list of commands that were yet to run
+2019-10-28 10:41:04 <esowiki> 14[[07Oxcart14]]4 10 02https://esolangs.org/w/index.php?diff=66837&oldid=66836 5* 03Chris Pressey 5* (+236) 10Try to clarify what continuation-passing style means in this instance.
+2019-10-28 10:41:29 <ais523> those could be used to create various continuation-alikes that captured different amounts of state
+2019-10-28 10:41:45 <shachaf> cpressey: I see now. I forgot that each symbol represents a function of one argument.
+2019-10-28 10:42:51 <wib_jonas> cpressey: two arguments
+2019-10-28 10:42:58 <ais523> cpressey: I think there's still an ambiguity, as to whether stack operations look at a stack that's stored within κ, or at a separate global stack
+2019-10-28 10:43:18 <ais523> I think the latter is more likely given the specification on the page but it doesn't rule out either possibility
+2019-10-28 10:43:28 <cpressey> ais523_: κ is a function, there's nothing "stored within" it
+2019-10-28 10:43:56 <ais523> OK, I guess that makes sense, functions-with-metadata aren't the sort of thing you expect to see unannounced
+2019-10-28 10:44:08 <wib_jonas> ais523: the tape of stacks is passed around in a separate argument
+2019-10-28 10:44:17 <wib_jonas> I still think there's only one of it, because there's no way to copy it
+2019-10-28 10:44:22 <ais523> oh yes
+2019-10-28 10:44:30 <wib_jonas> so I think you can imagine it as a separate global stack, and functions with just the continuation argument
+2019-10-28 10:44:31 <ais523> so it definitely isn't part of the continuation as it has an argument of its own
+2019-10-28 10:44:33 <shachaf> Ugh, the biggest problem with writing explicit state machines is that they don't compose well.
+2019-10-28 10:45:02 <ais523> what notion of composition are you thinking of here? or do you not care?
+2019-10-28 10:45:15 <ais523> there's more than one way I can think of to compose state machines
+2019-10-28 10:45:37 <ais523> but those definitions seem to map to the explicit state machine notation fairly well?
+2019-10-28 10:45:43 <shachaf> I mean, it's certainly possible.
+2019-10-28 10:45:54 <shachaf> It's just much more awkward than function calls, in a language with no special support.
+2019-10-28 10:46:38 <wib_jonas> shachaf: about the printf function state machine, what exactly does that mean? can you feed it the format pattern character by character? can it output the formatted output character by character? both?
+2019-10-28 10:46:49 <ais523> oh, I see; state machines compose well in the sense of function composition (Haskell . or Underload *), but not in the sense of function application (Haskell $ or Underload ^)
+2019-10-28 10:47:03 <shachaf> wib_jonas: No, you give it the format string all up-front. It produces output into a fixed size buffer.
+2019-10-28 10:47:29 <wib_jonas> shachaf: I sort of think that allowing general custom formatters in a printf function is a waste, and I think when I write my printf function, I'll make it so that you can't do that. I'll still add some limited hooks, but they have to behave in restricted ways.
+2019-10-28 10:47:31 <shachaf> I'm not quite sure what you mean by that.
+2019-10-28 10:47:36 <ais523> although if you don't have recursion, you can statically allocate a state for every possible call stack
+2019-10-28 10:47:49 <shachaf> Yes, you can build your own call stack effectively.
+2019-10-28 10:47:59 <wib_jonas> shachaf: in what sense is it a state machine then? do you feed the arguments to be formatted one by one?
+2019-10-28 10:48:14 <shachaf> wib_jonas: You provide all the arguments upfront too.
+2019-10-28 10:48:22 <esowiki> 14[[07Oxcart14]]4 10 02https://esolangs.org/w/index.php?diff=66838&oldid=66837 5* 03Chris Pressey 5* (+291) 10Define what a continuation is in this instance
+2019-10-28 10:49:02 <wib_jonas> shachaf: how is it a state machine then?
+2019-10-28 10:49:51 <shachaf> It might be used something like this: sprintf_init(&state, fmt, va); while (!state.done) { char buf[4096]; int written = sprintf_chunk(&state, buf, sizeof buf); fwrite(buf, 1, written, stdout); }
+2019-10-28 10:50:15 <shachaf> The normal sprintf API doesn't let you do that -- it requires you to allocate an arbitrary-sized buffer.
+2019-10-28 10:51:03 <wib_jonas> shachaf: ah, so it's the second one that I said, it can continue output after it's ran out of a buffer
+2019-10-28 10:51:21 <wib_jonas> interesting, and potentially useful
+2019-10-28 10:51:31 <shachaf> Yes. I thought I said that but now I read my message again and it was unclear.
+2019-10-28 10:51:40 <wib_jonas> shachaf: do you have a wrapper that lets it write to a file descriptor easily?
+2019-10-28 10:51:44 <shachaf> I meant that each call puts some of the output into a fixed-size buffer.
+2019-10-28 10:51:57 <shachaf> You can write a wrapper like that, can't you?
+2019-10-28 10:52:12 <shachaf> I'm just worried about figuring out the core API that lets you write all the wrappers you want.
+2019-10-28 10:52:26 <wib_jonas> shachaf: also, is it possible to define a formatter that formats a bignum in hexadecimal, where the output can be longer than a few of the output chunks?
+2019-10-28 10:52:47 <shachaf> Formatters can produce arbitrary strings.
+2019-10-28 10:52:53 <shachaf> That's the problem.
+2019-10-28 10:53:00 <ais523> hmm, I wonder if it might be more efficient to simply restart the sprintf from the start with a larger buffer
+2019-10-28 10:53:09 <ais523> rather than maintain all the state needed for restarting
+2019-10-28 10:53:11 <ais523> not sure though
+2019-10-28 10:53:12 <shachaf> Even the built-in formatters like %s have the same issue.
+2019-10-28 10:53:29 <shachaf> What state needed for restarting?
+2019-10-28 10:54:07 <ais523> the "state" parameter of your sprintf_init
+2019-10-28 10:54:08 <shachaf> Certainly that state is no larger than a stack frame of snprintf's.
+2019-10-28 10:54:23 <ais523> yes, it's not the size I'm concerned about, but the memory accesses used to update it
+2019-10-28 10:54:55 <wib_jonas> as for that M:tG three card deck game, I think the start is successful because we've got 4 new players in round 1, and one of them won the round
+2019-10-28 10:55:19 <shachaf> It's a very small amount of state.
+2019-10-28 10:56:18 <shachaf> Other than the varargs, the state is less than two pointersworth.
+2019-10-28 10:56:26 <wib_jonas> shachaf: it's not that simple. if you want to format big numbers in decimal (and they're stored in hexadecimal) then it's more efficient to do the conversion in one go, and that requires memory proportional to the size of the bignum
+2019-10-28 10:56:56 <wib_jonas> mind you, it's sort of pointless to print bignums in decimal to full precision
+2019-10-28 10:57:06 <shachaf> wib_jonas: Oh, well, you're free to allocate more memory and store it in your custom state, I guess.
+2019-10-28 10:57:21 <shachaf> (Store a pointer to it, I mean.)
+2019-10-28 10:57:24 <wib_jonas> sure
+2019-10-28 10:57:48 <shachaf> I don't think efficiency is a huge concern here anyway.
+2019-10-28 10:57:51 <wib_jonas> though now you need an abort function to deallocate the state if you don't want to continue the printf
+2019-10-28 10:57:59 <shachaf> But of course it would be a big concern in fairly similar APIs.
+2019-10-28 10:58:16 <shachaf> Yes, that's not ideal.
+2019-10-28 10:58:30 <shachaf> Although you can just store your extra state in an arena probably.
+2019-10-28 10:58:36 <ais523> oh, I assumed getting maximum efficiency would be the reason for something like this
+2019-10-28 10:58:51 <ais523> (rather than simply counting the characters needed for the output buffer in advance)
+2019-10-28 10:59:25 Joined: arseniiv
+2019-10-28 10:59:25 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, zemhill, zzo38
+2019-10-28 10:59:31 <wib_jonas> I think I'll just use the more traditional approach where I call a callback when the output buffer runs out -- that callback can still give an error to abort, but I won't convert it to cps where you can pause the printf and store the state for later
