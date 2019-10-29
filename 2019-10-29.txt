@@ -180,3 +180,17 @@
 2019-10-29 14:15:54 Joined: Sgeo
 2019-10-29 14:15:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonheart08, moony, myname, ocharles, olsner, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
 2019-10-29 14:21:15 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66880&oldid=66877 5* 03Moon 5* (+241) 10
+2019-10-29 14:34:17 Quit: sprocklem (Ping timeout: 240 seconds)
+2019-10-29 14:34:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonheart08, moony, myname, ocharles, olsner, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-29 14:36:07 <moonheart08> cpressey: would require that it waste time loading data it won't use from RAM
+2019-10-29 14:43:46 <cpressey> I don't think it does; it's more like having 4 seperate CPUs, one for each direction, that "swap off" their processing to one of the others, when the direction changes.  Massive waste of transistors, just to optimize the "advance to next cell" circuit.
+2019-10-29 14:51:28 <cpressey> Good grief, now I'm actually wondering if you could actually do that with 4 actual 8-bit CPUs
+2019-10-29 14:55:55 <esowiki> 14[[07PTSL/instrtable14]]4 10 02https://esolangs.org/w/index.php?diff=66881&oldid=66880 5* 03Int-e 5* (+37) 10add headline with link to PTSL page
+2019-10-29 14:56:39 User Name: int-e = int-e!~noone@int-e.eu
+2019-10-29 14:56:39 <int-e> (Editing the URL to get to the main page sucks... though maybe there's a prettier option)
+2019-10-29 14:57:05 <myname> huh?
+2019-10-29 14:58:09 <int-e> myname: How do you get back from https://esolangs.org/wiki/PTSL/instrtable to https://esolangs.org/wiki/PTSL if there isn't a link for that in the page?
+2019-10-29 14:58:31 <myname> there always is?
+2019-10-29 14:58:57 <myname> oh
+2019-10-29 14:59:04 <myname> okay not for that
+2019-10-29 14:59:10 <myname> from the diff pages, though
