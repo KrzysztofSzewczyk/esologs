@@ -321,3 +321,19 @@
 2019-10-29 20:53:10 <oerjan> use it to rewrite your brain until you do hth
 2019-10-29 20:59:03 Quit: Phantom__Hoover (Ping timeout: 245 seconds)
 2019-10-29 20:59:03 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-29 21:03:00 <lf94> hth?
+2019-10-29 21:03:12 <lf94> imode: your language is too powerful for the human mind :v
+2019-10-29 21:03:43 <imode> lf94: (`(`(K ?x)?y)) -> (?x) (`(`(`(S ?x)?y)?z) -> (`(`(?x ?z)`(?y ?z)))
+2019-10-29 21:03:52 <imode> I don't know if that works. but those are S and K.
+2019-10-29 21:04:01 <lf94> combinators?
+2019-10-29 21:04:06 <imode> there's probably some issue with parenthesization.
+2019-10-29 21:04:08 <imode> yeah.
+2019-10-29 21:04:24 <imode> I don't know how I'd test that.
+2019-10-29 21:04:47 <lf94> easy
+2019-10-29 21:05:03 <lf94> SK make other known expressions
+2019-10-29 21:05:12 <lf94> just see if they make them
+2019-10-29 21:06:20 <imode> I think there's going to be parentheses issues.
+2019-10-29 21:07:25 <imode> `(`(`(S foo) (`(`(K bar) quux))) baz) yields `(`(`(foo baz) `((bar) baz)))
+2019-10-29 21:07:26 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: (`(`(S: not found
+2019-10-29 21:07:30 <imode> whoops, sorry.
+2019-10-29 21:29:30 <imode> yeah it doesn't work.. meh.
