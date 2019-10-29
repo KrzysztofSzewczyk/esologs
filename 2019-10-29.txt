@@ -148,3 +148,25 @@
 2019-10-29 13:27:51 <moonheart08> I'm thinking it over..
 2019-10-29 13:27:55 <moonheart08> May be doable
 2019-10-29 13:29:29 <moonheart08> Could index a memory device as 2D if it's size is a power of 2
+2019-10-29 13:30:52 <myname> or you could just use modulo?
+2019-10-29 13:30:59 <moonheart08> (The 2d planeb that is)
+2019-10-29 13:31:24 <moonheart08> myname: modulo is expensive in hardware.
+2019-10-29 13:32:11 <myname> i know that, but you didn't mention performance yet
+2019-10-29 13:32:23 <moonheart08> Yea, won't work. Idea too useless compared to normal hardware.
+2019-10-29 13:32:48 <moonheart08> Too poor perf
+2019-10-29 13:33:31 <moonheart08> Unless.. Hmmm
+2019-10-29 13:33:38 <myname> you could also just split the address in half
+2019-10-29 13:34:05 <moonheart08> That was what I was considering, yea
+2019-10-29 13:34:13 <myname> finally, useful usage of al and ah
+2019-10-29 13:34:36 <moonheart08> Also this is an idea for custom hardware, not x86
+2019-10-29 13:34:45 <moonheart08> So it'd be a hardware implemented fungeoid
+2019-10-29 13:37:13 <myname> i am curious if you could use an fpga for a weird way of memory access
+2019-10-29 13:39:47 <moonheart08> cpressey: hia. Wondering if you had any advice for making a hardware based fungeoid run fast.
+2019-10-29 13:39:59 <moonheart08> (Probably not, but worth asking)
+2019-10-29 13:41:23 <cpressey> moonheart08: Don't give it an unbounded playfield?  Other than that, not really, sorry.
+2019-10-29 13:41:42 <moonheart08> Alright. Unbounded wasn't in the plan.
+2019-10-29 13:44:08 <moonheart08> I already have one thing in mind: A directional jump that takes a numeric argument instead of searching ahead
+2019-10-29 13:49:36 <cpressey> moonheart08: Actually I do have one idea, not sure it applies to what you're doing, but: assuming you only have 4 possible deltas for the IP it might be more efficient to have 4 read-execute loops instead of a single read-execute loop that loads the delta and adds it on every cycle.
+2019-10-29 13:50:29 <cpressey> (More expensive too, though, in terms of real estate)
+2019-10-29 13:50:41 <esowiki> 14[[07User talk:Groowy14]]4 10 02https://esolangs.org/w/index.php?diff=66878&oldid=62956 5* 03Groowy 5* (-2184) 10Replaced content with "''Talks cleaned at 29th October 2019 12:50 CET''"
+2019-10-29 13:51:31 <esowiki> 14[[07User talk:Groowy14]]4 10 02https://esolangs.org/w/index.php?diff=66879&oldid=66878 5* 03Groowy 5* (+3) 10
