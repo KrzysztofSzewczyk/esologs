@@ -285,3 +285,27 @@
 2019-10-29 19:55:40 <lf94> [start...stop;step, filter1, filter2, filter3...]
 2019-10-29 19:56:03 Quit: sprocklem (Ping timeout: 240 seconds)
 2019-10-29 19:56:03 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom__Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-29 20:01:10 <kmc> monad comprehensions are even better
+2019-10-29 20:03:18 <imode> you ever get a feeling that you're not using a tool you made the right way.
+2019-10-29 20:08:02 <lf94> kmc wat
+2019-10-29 20:08:58 <shachaf> [f(x) for x in xs if p(x)] # extremely powerful
+2019-10-29 20:09:22 <shachaf> for x in xs: if p(x): list.append(f(x)) # useless old-hat syntax
+2019-10-29 20:12:50 User Name: b_jonas = b_jonas!~x@catv-176-63-13-140.catv.broadband.hu
+2019-10-29 20:12:50 <b_jonas> shachaf: it's not useless, and I like it
+2019-10-29 20:13:20 <shachaf> the joke is that they're p. much the same thing
+2019-10-29 20:13:48 <lf94> I just care about having a good way to express how to define a certain list
+2019-10-29 20:13:53 <lf94> I couldn't find anything other than set theory
+2019-10-29 20:14:03 <shachaf> my fancy language will probably let you implement comprehensions using ` trickery
+2019-10-29 20:14:30 <shachaf> Did y'all see my fancy C fmt thing?
+2019-10-29 20:15:32 <b_jonas> shachaf: I glanced at it. it does look interesting
+2019-10-29 20:15:35 <b_jonas> I should look at it more
+2019-10-29 20:15:48 <b_jonas> what were its urls again?
+2019-10-29 20:16:07 <b_jonas> http://slbkbs.org/tmp/fmt/fmt.h
+2019-10-29 20:16:10 <shachaf> https://slbkbs.org/tmp/fmt/fmt.h (example usage: https://slbkbs.org/tmp/fmt/main.c )
+2019-10-29 20:16:19 <b_jonas> ok
+2019-10-29 20:19:27 <shachaf> I like the init/chunk API. But it's possible that it has more overhead than it's worth for this particular application?
+2019-10-29 20:20:30 <int-e> surprisingly, "slbkbs" is not the result of applying a substitution cipher to "funpun".
+2019-10-29 20:21:56 <kmc> where is it from?
+2019-10-29 20:22:32 <lf94> monad comprehensions seem nice
+2019-10-29 20:27:17 Quit: imode (Ping timeout: 268 seconds)
+2019-10-29 20:27:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom__Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
