@@ -123,3 +123,69 @@
 2019-10-30 01:27:19 <shachaf> is this like explaining someone's joke to them
 2019-10-30 01:27:48 <int-e> it's nice to be understood
 2019-10-30 01:29:55 <int-e> Hmm, how close are random polynomial-sized boolean circuits (n inputs to n outputs) to hash functions?
+2019-10-30 01:31:16 <int-e> (Very unfamiliar territory for me. You probably have to be very careful to ensure that the functions don't become constant with non-negligible probability, for starters...)
+2019-10-30 01:31:23 User Name: probability = probability!iczero@hellomouse/dev/iczero
+2019-10-30 01:31:23 <probability> oh no
+2019-10-30 01:31:35 <int-e> probability: what an unlikely nickname
+2019-10-30 01:31:41 <probability> ¯\_(ツ)_/¯
+2019-10-30 01:31:46 <int-e> probability: how do you cope?
+2019-10-30 01:32:01 <probability> everyone else has a halloween nickname
+2019-10-30 01:32:04 <probability> but i didn't
+2019-10-30 01:32:07 <probability> so i chose probability instead
+2019-10-30 01:32:15 <shachaf> probability: you're non-negligible to me
+2019-10-30 01:32:41 <int-e> ...because what's the likelihood that this might come up as a topic...
+2019-10-30 01:32:50 <probability> indeed
+2019-10-30 01:32:57 <shachaf> probability is p. spooky
+2019-10-30 01:32:58 <probability> i also own "inb4"
+2019-10-30 01:33:06 <shachaf> uh oh
+2019-10-30 01:33:19 <probability> pros: can make epic predictions
+2019-10-30 01:33:32 <probability> cons: people make predictions
+2019-10-30 01:33:42 <shachaf> that sounds too 4channy for me
+2019-10-30 01:33:42 <int-e> probability: do people ask you whether you're high or low a lot?
+2019-10-30 01:33:49 <probability> nah
+2019-10-30 01:33:55 <int-e> they really should :P
+2019-10-30 01:33:59 <probability> indeed
+2019-10-30 01:34:08 <kmc> i do not have a halloweed nickname
+2019-10-30 01:34:10 <kmc> i meant halloween
+2019-10-30 01:34:14 <kmc> but i'm going to own the typo
+2019-10-30 01:34:18 <probability> lol
+2019-10-30 01:34:28 <shachaf> So this one book takes expectation as axiomatic and defines probability as the expectation of indicator variables, rather than the usual way.
+2019-10-30 01:34:39 <int-e> kmc: it's perfectly sound grammar ;)
+2019-10-30 01:34:48 <kmc> the october Hempfest is called Halloweed
+2019-10-30 01:34:56 <shachaf> Do you like this 1,1approach?
+2019-10-30 01:35:05 Joined: moony
+2019-10-30 01:35:13 <probability> moony_:
+2019-10-30 01:35:16 <int-e> I mean the -ed ending :)
+2019-10-30 01:35:20 User Name: moony = moony_!~moony@hellomouse/dev/moony
+2019-10-30 01:35:20 <moony> Hi
+2019-10-30 01:35:31 <int-e> Or suffix as educated people might call it.
+2019-10-30 01:35:41 <moony> probability:
+2019-10-30 01:36:03 <int-e> Hi probability indeed. (How did I miss that!)
+2019-10-30 01:36:41 <moony> Eeeeeeed
+2019-10-30 01:36:55 <shachaf> Oh, I forgot that int-e doesn't use colors.
+2019-10-30 01:38:13 <int-e> shachaf: Well it seems I didn't miss much.
+2019-10-30 01:38:40 <int-e> (the logs have colors if you want them to)
+2019-10-30 01:39:18 <moony> probability: ok ima go do something elsr
+2019-10-30 01:39:57 * probability doesn't remember
+2019-10-30 01:43:27 <int-e> Must be a Markov chain.
+2019-10-30 01:46:20 * pikhq doesn't like Haloween nicks
+2019-10-30 01:48:00 <int-e> I didn't realize it was even a thing until 15 minutes ago.
+2019-10-30 01:51:59 <int-e> `' indifference
+2019-10-30 01:52:00 <HackEso> 1316) <shachaf> int-e does not like this [...] <int-e> shachaf: I experience heightened levels of indifference :P  <shachaf> Higher than your usual?  <int-e> who cares?
+2019-10-30 01:54:10 <b_jonas> wow it will be pretty cold
+2019-10-30 01:54:26 <shachaf> @metar KOAK
+2019-10-30 01:54:27 <lambdabot> KOAK 300053Z 04008KT 10SM CLR 20/M07 A2991 RMK AO2 SLP129 T02001067
+2019-10-30 01:54:36 <shachaf> at least it's not FU
+2019-10-30 01:54:46 <shachaf> @metar KSFO
+2019-10-30 01:54:46 <lambdabot> KSFO 300056Z 30011KT 10SM FEW200 18/04 A2991 RMK AO2 SLP126 T01780039
+2019-10-30 01:54:50 <shachaf> @metar KSJC
+2019-10-30 01:54:50 <lambdabot> KSJC 300053Z 32011KT 10SM FEW036 FEW090 19/M02 A2989 RMK AO2 SLP121 FU FEW036 FU FEW090 T01941017
+2019-10-30 01:54:55 <pikhq> @metar KDEN
+2019-10-30 01:54:55 <lambdabot> KDEN 300053Z 36012KT 1 1/4SM -SN BR OVC020 M13/M14 A3021 RMK AO2 TWR VIS 2 SLP290 P0001 T11281139 $
+2019-10-30 01:54:57 <shachaf> FU FEW FU
+2019-10-30 01:55:16 <pikhq> 1/4SM? Pretty good all things considered.
+2019-10-30 01:55:35 <int-e> @metar lowi
+2019-10-30 01:55:36 <lambdabot> LOWI 300150Z 09003KT 060V130 9999 -RA FEW005 BKN014 06/05 Q1022 TEMPO SCT010 BKN020
+2019-10-30 01:58:03 <int-e> wait, smoke?
+2019-10-30 01:58:15 <int-e> (I had to look up FU.)
+2019-10-30 01:58:39 <int-e> (And now I'm wondering what's burning. Or is it just chimneys?)
