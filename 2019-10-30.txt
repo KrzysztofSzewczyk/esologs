@@ -15,3 +15,78 @@
 2019-10-30 00:26:48 <shachaf> I looked it up and apparently it was von Neumann. Figures.
 2019-10-30 00:27:19 Quit: FreeFull
 2019-10-30 00:27:19 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-30 00:30:06 <int-e> Always the same geniuses...
+2019-10-30 00:31:03 <kmc> is it better than UTF-8
+2019-10-30 00:31:22 <shachaf> yes hth
+2019-10-30 00:31:26 <int-e> kmc: THat's a pretty low standard.
+2019-10-30 00:31:50 <shachaf> i,i is it low for itself
+2019-10-30 00:31:56 <kmc> what? UTF-8 is great!
+2019-10-30 00:31:58 <int-e> The ASCII subset of UTF-8 is okay.
+2019-10-30 00:32:00 <kmc> it's a really good design
+2019-10-30 00:32:13 <kmc> as far as an encoding for the Unicode character set
+2019-10-30 00:32:21 <shachaf> UTF-8 is good engineering, sure.
+2019-10-30 00:32:23 <kmc> as for the Unicode character set itself, well, it's a bit of a mess
+2019-10-30 00:32:28 <int-e> It's so Western-centric.
+2019-10-30 00:32:32 <oerjan> . o O ( but two's complement is just (mod 2^n) arithmetic )
+2019-10-30 00:32:51 <kmc> int-e: a bit, but backwards compatibility with ASCII is important
+2019-10-30 00:33:00 <int-e> (I may be contradicting myself here.)
+2019-10-30 00:33:09 <kmc> I am annoyed at how many short code units are wasted on C0 and C1 control codes that are rarely used, but that's life
+2019-10-30 00:33:18 <int-e> But I like being contrarian.
+2019-10-30 00:33:20 <kmc> Unicode made some mistakes but they also have some pretty severe constraints
+2019-10-30 00:33:26 <kmc> int-e: this is a good place for it
+2019-10-30 00:33:46 <shachaf> contrarianism is fun
+2019-10-30 00:33:52 <oerjan> kmc: no it's not!
+2019-10-30 00:33:58 <shachaf> another fun thing is sincerely having and expressing opinions
+2019-10-30 00:34:03 <shachaf> but it's much scarier
+2019-10-30 00:34:17 <int-e> oerjan: I see what you did there. I think.
+2019-10-30 00:34:19 <kmc> I think gzipped UTF-8 is not too bad even on mostly-Chinese texts
+2019-10-30 00:34:27 <oerjan> int-e: someone had to do it.
+2019-10-30 00:34:28 <kmc> compared to, say, the 2 byte legacy chinese encodings
+2019-10-30 00:34:38 <kmc> also most things now are HTML and all the markup is ASCII
+2019-10-30 00:34:40 <int-e> oerjan: no they didn... err, we've done this already.
+2019-10-30 00:35:12 <int-e> fungot: can you loop?
+2019-10-30 00:35:12 <fungot> int-e: sherry was still nice with strawberries and whipped cream, not strawberries with sherry and whipped cream although the sun went down over the source for feeley's ring.scm?
+2019-10-30 00:35:23 <int-e> ^style oots
+2019-10-30 00:35:23 <fungot> Selected style: oots (Order Of The Stick)
+2019-10-30 00:35:29 <int-e> fungot: what about now?
+2019-10-30 00:35:39 <int-e> aww
+2019-10-30 00:36:00 <shachaf> fungot: what's going to happen with xykon
+2019-10-30 00:36:00 <fungot> shachaf: that is by far the lowest price i have ever laid at least, that you would even suggest that i would do such as that, yes because that is what, twenty! four! the time, and there, that ought to be good.
+2019-10-30 00:36:26 <int-e> `' fungot
+2019-10-30 00:36:27 <fungot> int-e: i need, a random castle self-destruct."
+2019-10-30 00:36:27 <HackEso> 10) <fungot> GregorR-L: i bet only you can prevent forest fires. basically, you know. \ 13) <fizzie after embedding some of his department research into fungot> Finally I have found some actually useful purpose for it. \ 14) <fungot> oerjan: are you a man, if there weren't evil in this kingdom to you! you shall find bekkler! executing program. please let me go... put me out! he's really a tricycle! pass him! \ 56) <fungot> i am sad ( of cours
+2019-10-30 00:36:37 <int-e> `' the sword
+2019-10-30 00:36:38 <HackEso> No output.
+2019-10-30 00:36:49 <int-e> `' sword
+2019-10-30 00:36:50 <HackEso> 1050) <Taneb> I would like to learn how to use a sword  <Taneb> And also how to ride a unicycle  <Taneb> Perhaps not at the same time
+2019-10-30 00:37:47 <oerjan> i suddenly realize that my brain must have always imagined a juggling part in that quote that isn't there
+2019-10-30 00:41:49 <int-e> `quote hey, hey
+2019-10-30 00:41:50 <HackEso> 728) <fungot> itidus21: hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, h
+2019-10-30 00:43:34 <shachaf> Is there a general name for the kind of algorithm DPLL is?
+2019-10-30 00:43:46 <shachaf> I mean the kind where you guess and propagate and backtrack.
+2019-10-30 00:43:50 <int-e> `quote 1296
+2019-10-30 00:43:50 <HackEso> 1296) <int-e> fungot is here  <fungot> int-e: may cause extreme loss of appetite! may cause severe diarrhea and vomiting!
+2019-10-30 00:43:56 <int-e> I forgot about that one
+2019-10-30 00:46:04 <int-e> shachaf: I'm not sure whether there's anything between the super generic "branch and bound" (which can involve branching heuristics including branching on something that has only one viable alternative first) and DPLL.
+2019-10-30 00:46:36 <shachaf> Branch and bound is more sophisticated than DPLL, isn't it?
+2019-10-30 00:46:57 <int-e> well, it does not have to be
+2019-10-30 00:47:10 <shachaf> Say you're solving sudoku. The obvious approach is to propagate all the constrains you can, then guess, repeat, backtrack, etc.
+2019-10-30 00:47:17 <shachaf> constraints
+2019-10-30 00:47:38 <shachaf> What would you call that?
+2019-10-30 00:47:48 <fizzie> I didn't remember there was an oots style.
+2019-10-30 00:47:51 <int-e> the for SAT, "bound" really just means to immediately backtrack when one of the clauses becomes false.
+2019-10-30 00:48:24 <shachaf> ILP-style branch-and-bound seems pretty different from that.
+2019-10-30 00:48:42 <int-e> Yeah, SAT isn't linear
+2019-10-30 00:50:33 <int-e> I'd agree that it's a degenerate case of branch and bound. I believe the pattern still fits.
+2019-10-30 00:51:58 <int-e> (But if you insist on *linear* programming rather than more or less arbitrary optimization in a discrete search space (with some exploitable monotonicity to allow bounding), you'll have to disagree.)
+2019-10-30 00:52:47 <shachaf> Also, do all NP-complete problems have a natural algorithm analogous to that?
+2019-10-30 00:53:04 <int-e> "natural"
+2019-10-30 00:53:25 <shachaf> Say subset sum. I'm not sure offhand what propagation would look like.
+2019-10-30 00:53:46 <shachaf> Whereas it's obvious for SAT or exact cover.
+2019-10-30 00:54:28 <int-e> If the sum becomes too large, do *not* select the number. <-- propagation. Incidentally, a variant of bounding "branch and bound" style.
+2019-10-30 00:54:55 <shachaf> Is that a heuristic or a guarantee?
+2019-10-30 00:55:17 <shachaf> I guess it can be a guarantee, if you know how many negative numbers you have left.
+2019-10-30 00:56:13 <int-e> Ah, I had knapsack in mind... but anyway, a similar heuristic can be made up by taking into account all remaining numbers.
+2019-10-30 00:56:45 <int-e> You can also do something with remainders modulo prime powers.
+2019-10-30 00:57:24 <int-e> (If all but one of the remaining numbers are even, then you immediately know whether you have to pick the odd number, or not.)
+2019-10-30 00:58:14 <int-e> (Hmm, and I guess /occasionally/ one can get leverage out of doing this for moduli that are not prime powers.)
