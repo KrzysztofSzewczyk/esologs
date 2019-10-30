@@ -450,3 +450,12 @@
 2019-10-30 17:54:32 <arseniiv> also a quirk of my old approach was a two different kinds of abstraction types: (t1, …, tn)t (in place of t1 × … × tn → t) for constructors and a plain t1 → t2 for things like x.y.term, and two different syntaxes for applications: c(args…) and V[arg], all for better error reporting, as these kinds of applications are pretty different here: the former for constructing terms, the latter is for subst
 2019-10-30 17:55:23 <arseniiv> normal people use only →, as I see. This simplifies algorithm specification and some types of reasoning
 2019-10-30 17:55:47 <arseniiv> but maybe this idea of refined →-types would be useful for someone!
+2019-10-30 18:03:51 <imode> I think to make any progress in any of my projects, I need to agree upon small accomplishable goals and move forward with them. writing an interpreter for my language in my language is not going to be productive. making a text adventure or something will be.
+2019-10-30 18:04:23 <imode> hm.
+2019-10-30 18:07:16 <imode> I should probably add some kind of random access memory to my language to ease usage.
+2019-10-30 18:07:29 <imode> I can embed it in my queue but it's just not reasonable.
+2019-10-30 18:07:36 <imode> at the moment.
+2019-10-30 18:15:30 Joined: FreeFull
+2019-10-30 18:15:30 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-10-30 18:27:22 <shachaf> `olist 1184
+2019-10-30 18:27:22 <HackEso> olist 1184: shachaf oerjan Sgeo FireFly boily nortti b_jonas
