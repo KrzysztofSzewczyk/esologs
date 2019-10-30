@@ -464,3 +464,25 @@
 2019-10-30 18:43:02 <arseniiv> gods and their ill wishes of course remind me A tower of something, I forget what exactly, but it’s that one with soundtrack by flashygoodness
 2019-10-30 18:44:30 <arseniiv> there the god simply gradually wants more and more, at one point even disallowing the player looking at a list of all their commandments
 2019-10-30 18:46:01 <arseniiv> imode: are you writing a game in the queue language? not that one with `?patterns`?
+2019-10-30 19:09:07 <imode> yeah, not the one with patterns.
+2019-10-30 19:09:19 <imode> also, that sounds like tower of heaven.
+2019-10-30 19:09:30 <imode> https://en.wikipedia.org/wiki/Tower_of_Heaven
+2019-10-30 19:10:20 <imode> noita is nuts. it makes me wonder why nobody's tried physics at that scale, though I haven't tried running it on my machine, so who knows if it's actually performant.
+2019-10-30 19:11:25 <shachaf> If only it wasn't Windows-only.
+2019-10-30 19:11:35 <imode> proton has worked well for me in the past.
+2019-10-30 19:12:25 <imode> I'm looking at ways of making my queue language more robust with respect to how I _want_ to program rather than how I _currently_ program. I don't have functions, just bare loops, but adding functions/subroutines seems like a waste.
+2019-10-30 19:12:46 <imode> I'm considering making concurrency a second-tier extension to the language.
+2019-10-30 19:13:34 <imode> { ... } creates a new interpreter running concurrently to the one that created it and enqueues the ID of that interpreter. you can then (via blocking sends/receives) send data to the newly spawned interpreter.
+2019-10-30 19:14:05 <imode> from there, creating things like RAM, lists, etc. is pretty trivial.
+2019-10-30 19:14:11 Joined: Frater_EST
+2019-10-30 19:14:11 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-10-30 19:16:30 <imode> { V begin V drop dup ^ repeat } 5 ^ $0 ^ V $0 ^ V $0 ^ V for example.
+2019-10-30 19:17:22 <imode> the spawned interpreter just loops repeatedly after receiving a value, duplicating it and sending a copy back to whomever made the request.
+2019-10-30 19:19:19 <imode> V and ^ should consume the handle, though.
+2019-10-30 19:20:34 <imode> there should also probably be some kind of "kill" function to terminate an interpreter given a handle.
+2019-10-30 19:22:43 <imode> wasn't there a brainfuck derivative that added concurrency.
+2019-10-30 19:24:09 <imode> brainfork, that was it. if you added persistence to the whole ensemble, you essentially have an in-memory database with a wild query language.
+2019-10-30 19:27:57 Joined: kspalaiologos
+2019-10-30 19:27:58 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-10-30 19:28:15 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-10-30 19:28:15 <kspalaiologos> Anyone fancy helping with Brainfuck disassembler?
