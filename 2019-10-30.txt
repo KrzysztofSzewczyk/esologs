@@ -381,3 +381,36 @@
 2019-10-30 15:58:22 Quit: cpressey (Quit: quietly)
 2019-10-30 15:58:22 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
 2019-10-30 15:58:40 <arseniiv> people seem to mention “Dale Miller's pattern calculus” as a decidable system with simple unification algorithm, I googled that and I see something familiar, “Abstract syntax for variable binders <…>” and inside the author talks about β₀-conversion which could be what I seek
+2019-10-30 16:01:34 <arseniiv> cpressey: proofs are data structures, and the type system ensures you can't build an invalid proof => oh, HOAS at its best; I hadn’t considered encoding proofs like that, this should demand a type system more complex than just for encoding terms
+2019-10-30 16:02:59 <arseniiv> @tell cpressey look at the logs at approx. 2019-10-30 15:58 UTC
+2019-10-30 16:02:59 <lambdabot> Consider it noted.
+2019-10-30 16:04:01 <wib_jonas> `dateu
+2019-10-30 16:04:04 <HackEso> 2019-10-30 16:04:03.252 +0000 UTC October 30 Wednesday 2019-W44-3
+2019-10-30 16:04:38 <int-e> yay for excess precision
+2019-10-30 16:07:12 <arseniiv> <cpressey> So now that I've learned that, I wonder if it would be a nicer approach for a proof checker, than designing a dedicated language. I don't know yet. => yeah, it’s nice but one constraints themselves with a basic syntax structure of the host language which can be not what’s desired, maybe not flexible enough. Though the idea of implementing the checker using a library of type inference for a complex language would both adm
+2019-10-30 16:07:12 <arseniiv> t using HOAS and making any syntax one wishes. Yes, I should consider that. Hm would Haskell’s GADTs allow me to represent inference rules for several simple systems I intended to encode…
+2019-10-30 16:08:27 <arseniiv> 44th week already, hm
+2019-10-30 16:09:03 <wib_jonas> yeah
+2019-10-30 16:09:06 <wib_jonas> we also have
+2019-10-30 16:09:11 <wib_jonas> ``` ddate; beat
+2019-10-30 16:09:12 <HackEso> Today is Pungenday, the 11th day of The Aftermath in the YOLD 3185 \ 714
+2019-10-30 16:22:23 <kmc> `paste bin/beat
+2019-10-30 16:22:24 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/beat
+2019-10-30 16:22:52 <kmc> fizzie: apparently I am to blame you for this
+2019-10-30 16:22:56 <fizzie> Don't blame me for the code, I had a lot simpler implementation.
+2019-10-30 16:23:14 <fizzie> https://hack.esolangs.org/repo/file/dea37ae411c0/bin/beat
+2019-10-30 16:23:39 <kmc> `beat -p
+2019-10-30 16:23:40 <HackEso> 724.77
+2019-10-30 16:23:42 <wib_jonas> simpler and more broken. does invalid double rounding
+2019-10-30 16:24:00 <wib_jonas> s/invalid/incorrect/
+2019-10-30 16:24:49 Quit: skyplane (Quit: Connection closed for inactivity)
+2019-10-30 16:24:49 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-30 16:25:29 Joined: kspalaiologos
+2019-10-30 16:25:30 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-30 16:26:44 <fizzie> You mean, first to seconds and then to .beats? Meh, it's good enough.
+2019-10-30 16:27:21 <fizzie> Also it had the @ in the output format, because Internet.
+2019-10-30 16:27:48 <kmc> ah, for a simpler time
+2019-10-30 16:28:17 <kmc> https://www.bonequest.com/1437
+2019-10-30 16:28:45 <kmc> https://www.bonequest.com/554
+2019-10-30 16:29:24 <wib_jonas> oh, it should have @ in the output format? I can fix that
+2019-10-30 16:29:45 <fizzie> TBH, I'm not sure. It's not like it's an ISO standard format.
