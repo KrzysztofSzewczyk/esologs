@@ -537,3 +537,19 @@
 2019-10-30 21:53:03 <b_jonas> this is strange. I have a distinct memory that when I saw that the new o strip was released, I invoked olist and thanked fungot, and HackEso even said "Thanks, fungot. Thungot." which means I wasn't typing it to the wrong channel
 2019-10-30 21:53:03 <fungot> b_jonas: i know, i was, uh, " child" parody so soon? we'll get sneak attacked if we go down a level and face me! ye may haf tha upper hand in it. or a pool, pal.
 2019-10-30 21:53:08 <b_jonas> yet that's not in the logs.
+2019-10-30 22:04:19 Joined: tromp
+2019-10-30 22:04:19 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-10-30 22:21:23 <arseniiv> my first try of Haskell HOAS for natural deduction for first-order intuitionistic logic, at least it works for a simple zero-order example and when we don’t try to statically check what is the proof of what: https://repl.it/repls/ImpartialWaterloggedFolder
+2019-10-30 22:22:16 <arseniiv> because `:t f` gives overly general `F (a1 -> Not (Not a2))`. I’m not sure if that’s fixable
+2019-10-30 22:23:08 <arseniiv> (pf is too more general: `I (F (a -> (a -> b) -> b))`, but that’s okay, it *is* such a general proof)
+2019-10-30 22:23:38 <arseniiv> I’m not sure at all about encodings of ∀ and ∃
+2019-10-30 22:24:16 <arseniiv> if someone would interest themselves, please @tell me
+2019-10-30 22:25:09 <arseniiv> <b_jonas> yet that's not in the logs. => why, I do seem to remember thungot here several days earlier
+2019-10-30 22:27:48 <arseniiv> <imode> a variable could be a process that takes a value, then loops infinitely. upon receiving any value, it sends a copy of the value given initially to the requesting process. => only once? Isn’t that kind of too linear? :D
+2019-10-30 22:28:16 Joined: MDude
+2019-10-30 22:28:16 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-10-30 22:28:19 <arseniiv> ah never mind, we could duplicate what we received of course, dumb me
+2019-10-30 22:28:45 <b_jonas> arseniiv: that may have been the previous strip, because this one went up only half a day ago
+2019-10-30 22:29:18 <arseniiv> ah so then you could be remembering that penultimate time?
+2019-10-30 22:29:45 <b_jonas> https://esolangs.org/logs/2019-10-21.html#lyb
+2019-10-30 22:29:49 <b_jonas> yes, it could be
