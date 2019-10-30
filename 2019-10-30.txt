@@ -336,3 +336,29 @@
 2019-10-30 14:57:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
 2019-10-30 14:58:13 <arseniiv> (but I didn’t saw how it would help)
 2019-10-30 14:59:01 <int-e> I suspect rewriting is preferable to matching `a = b → ϕ[a] → ϕ[b]` in practice even though logically it's the same.
+2019-10-30 15:00:17 <arseniiv> int-e: you mean, adding a special rule that a = b ⊦ …a… → …b… for formulas and …a… = …b… for terms?
+2019-10-30 15:00:47 <int-e> It doesn't solve the problem, of course because you still have to unify a particular equation's left-hand side with a subterm of your goal...
+2019-10-30 15:00:56 <int-e> +,
+2019-10-30 15:01:02 <arseniiv> in my case it wouldn’t work as there are no intristic = and →, it would be meant as a metalogic framework
+2019-10-30 15:01:46 <arseniiv> intrinsic*
+2019-10-30 15:01:54 <int-e> One can argue that equality is ubiquitous in most logical contexts, it deserves special treatment.
+2019-10-30 15:03:01 <arseniiv> but how would I decide for which term sorts should I allow = and for which shouldn’t, and how to know which type … = … should then have?
+2019-10-30 15:03:13 <int-e> (I'd point to paramodulation in first-order logic, which extends resolution to deal with equality.)
+2019-10-30 15:04:51 <cpressey> When the metalanguage has to be able to refer to ⊦ on the LHS of a ⊦ you start to wonder why you are even bothering with → anymore
+2019-10-30 15:05:01 <cpressey> I'm exaggerating, of course
+2019-10-30 15:05:13 <arseniiv> int-e: though I could define = or ↔ and then mark it as an “equality-like thing”
+2019-10-30 15:05:22 <arseniiv> I hadn’t considered that approach
+2019-10-30 15:05:34 <arseniiv> and still it would be risky
+2019-10-30 15:10:41 Quit: kspalaiologos (Ping timeout: 276 seconds)
+2019-10-30 15:10:41 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-30 15:12:33 <cpressey> arseniiv: The issues you mention seem eerily familiar to me; I'm sure I ran into similar ones (though not the same ones) while thinking about how to design a logical metalanguage.
+2019-10-30 15:13:16 <cpressey> I really admire Gentzen now ;)
+2019-10-30 15:14:34 <cpressey> I mean, it's hard to beat either natural deduction, or sequent calculus, and hey, they were even invented by the same person.
+2019-10-30 15:17:48 <arseniiv> cpressey: hm! FTR I tried to make Metamath a system with sorted terms, then I saw that λ-calculus naturally embeds into that, when trying to represent substitutions in terms
+2019-10-30 15:18:35 <arseniiv> going from Metamath, I inherited disjointness constraints for metavariables — was it in your case too?
+2019-10-30 15:24:06 <cpressey> I never quite got into Metamath. I came from reverse-engineering The Incredible Proof Machine and eventually realizing it's basically the same as natural deduction. Then trying to square that with term rewriting.
+2019-10-30 15:25:48 <cpressey> I'd really like to know what Metamath's doing, so one day I'll look into it again, I hope.
+2019-10-30 15:26:10 <lf94> this is the best prog channel
+2019-10-30 15:28:12 <arseniiv> and a description of a concrete logic would consist of declarations of some type letters (“completr terms” occurring as steps of inferences would be allowed to have only these types), some constructors of types u1 × … × un → t, again where t is a letter and ui is t1 → … → tn → t0, all ti also letters, this would allow variable binding in the constructor’s arguments; and finally there would be inference rules, each w
+2019-10-30 15:28:12 <arseniiv> th complete terms and disjointness constraints as hypotheses and a complete term conclusion, and that would be all. Though I contemplated also something else what I don’t remember now. Ah, something akin to subtyping or simplistic type classes for type letters, to aid against constructor explosion in complex languages
+2019-10-30 15:29:19 <arseniiv> cpressey: The Incredible Proof Machine => hm I need to look that up
