@@ -90,3 +90,36 @@
 2019-10-30 00:56:45 <int-e> You can also do something with remainders modulo prime powers.
 2019-10-30 00:57:24 <int-e> (If all but one of the remaining numbers are even, then you immediately know whether you have to pick the odd number, or not.)
 2019-10-30 00:58:14 <int-e> (Hmm, and I guess /occasionally/ one can get leverage out of doing this for moduli that are not prime powers.)
+2019-10-30 01:00:37 <int-e> shachaf: But I don't think it's inherent in NP... given an arbitrary verifier, it's pretty unreasonable to assume that you can predict its output (accept or not) early.
+2019-10-30 01:04:35 <int-e> shachaf: And in fact, pre-images of cryptographic hashes are a good example where propagation is hard to impossible.
+2019-10-30 01:05:16 <shachaf> Hmm, is that true?
+2019-10-30 01:06:47 <int-e> Yes?
+2019-10-30 01:07:10 <int-e> Any significant amount of propagation would weaken pre-image resistance.
+2019-10-30 01:07:18 <shachaf> One way I think of nondeterministic Turing machines is as deterministic machines with one extra "coin flip" primitive, where NP means that at least one possible sequence of coins will find an answer in polynomial time.
+2019-10-30 01:07:46 <shachaf> From this perspective the deterministic part is propagation, and the nondeterministic part is the coin flips.
+2019-10-30 01:07:54 <shachaf> s/coin flips/guessing/
+2019-10-30 01:08:24 <int-e> shachaf: Yeah but I'm focussing on the coin flips.
+2019-10-30 01:08:35 <int-e> So propagation only counts if it predicts a coin flip.
+2019-10-30 01:09:14 <shachaf> Of course SAT solvers don't necessarily guess the coin flips specifically, they just start guessing anywhere and see the consequences.
+2019-10-30 01:09:30 <int-e> The other view is tenable as well, of course. And in fact that's what happens when you reduce to SAT.
+2019-10-30 01:09:45 <shachaf> But unit propagation still corresponds to the deterministic part of evaluation, in some sense, I think.
+2019-10-30 01:10:07 <int-e> As I just said...
+2019-10-30 01:11:14 <shachaf> Sure.
+2019-10-30 01:17:20 <int-e> There *is* some funny interchangability phenomenon here... in order to compress certificates (the sequence of coin flips leading to acceptance), you can build propagation rules into the verifier.
+2019-10-30 01:18:10 <shachaf> You mean instead of giving the entire polynomial-size trace of execution or something?
+2019-10-30 01:18:54 <shachaf> Is there a pathological NP problem that's really hard to compress this way?
+2019-10-30 01:19:14 <int-e> But it doesn't really match how I think about a typical NP problem. I usually have a naive verifier in mind, which leads to a corresponding search tree corresponding to the coin flips. And then one can start pruning and re-ordering the search tree by propagation rules.
+2019-10-30 01:19:55 <int-e> shachaf: I'm sticking to cryptographic hashes.
+2019-10-30 01:20:36 <shachaf> Cryptograhic hashes seem very compressible to me in this sense.
+2019-10-30 01:20:52 <shachaf> Or, hmm, maybe not?
+2019-10-30 01:21:12 <shachaf> You need to specify the entire preimage, but none of the computation involved in hashing it.
+2019-10-30 01:21:42 <int-e> The computations are part of the verifier, and I already said that I don't count that as propagation.
+2019-10-30 01:22:59 <shachaf> Oh, I thought "naive verifier" meant the opposite.
+2019-10-30 01:24:26 <int-e> To my mind, the naive verifier for hash function takes/guesses the pre-image, computes the hash, and compares that to the desired output.
+2019-10-30 01:24:51 <shachaf> OK, sure.
+2019-10-30 01:26:07 <int-e> And the question is, can we get the witness size significantly below the size of the preimage. "significantly" is more than O(log(n)) where n is the problem size...
+2019-10-30 01:26:47 <b_jonas> int-e: not in the case of a cryptographic hash, if it's well-designed
+2019-10-30 01:27:00 <int-e> b_jonas: that's the claim, yes.
+2019-10-30 01:27:19 <shachaf> is this like explaining someone's joke to them
+2019-10-30 01:27:48 <int-e> it's nice to be understood
+2019-10-30 01:29:55 <int-e> Hmm, how close are random polynomial-sized boolean circuits (n inputs to n outputs) to hash functions?
