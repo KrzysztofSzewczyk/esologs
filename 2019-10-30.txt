@@ -275,3 +275,30 @@
 2019-10-30 13:58:33 <cpressey> int-e: So is relation algebra: https://en.wikipedia.org/wiki/Relation_algebra#Expressive_power
 2019-10-30 13:59:22 <int-e> Didn't we agree to call that term rewriting?
 2019-10-30 13:59:25 <int-e> :P
+2019-10-30 14:02:09 Joined: jix
+2019-10-30 14:02:09 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-30 14:03:33 <cpressey> Yeah yeah. Well. That was inequational. This is equational, and seems richer, not that it matters.
+2019-10-30 14:03:39 <int-e> cpressey: The thing is, you can just directly simulate Turing machines with string rewriting systems. So this is *far* less surprising than the case Hilbert's ten's problem to me.
+2019-10-30 14:04:14 <int-e> Of course I've also studied rewriting for some time :P
+2019-10-30 14:04:46 <int-e> So maybe it's just that familiarity takes away most of the surprise.
+2019-10-30 14:06:45 <cpressey> What's surprising is that "Turing-complete" has such a heavy connotation of deterministic behaviour, statements like "Second-order logic is Turing-complete" are true, but they sound stupid. How do you "run" a "program" in 2nd-order logic?
+2019-10-30 14:07:23 <cpressey> You don't, you "search" for "proofs" instead.
+2019-10-30 14:08:35 <int-e> Loosen up and embrace nondeterminism.
+2019-10-30 14:08:49 <int-e> Or better yet, alternation.
+2019-10-30 14:09:18 <cpressey> Tell that to the CPU manufacturers!
+2019-10-30 14:09:53 <int-e> (Honestly, alternation is beyond my intuition. I have to translate it back to game trees.)
+2019-10-30 14:10:37 <int-e> cpressey: Actually I suspect CPU manufacturers would *love* more non-determinism... cache coherence is a headache. But nobody knows how to program this stuff.
+2019-10-30 14:11:52 <cpressey> Ha. Yeah. That's sort of my point (or is it? -- I'll think about it.)
+2019-10-30 14:12:46 <int-e> Of course embracing alternation is just a crazy idea... alternation is unphysical.
+2019-10-30 14:13:29 <int-e> (So is the TCS version of non-determinism unless you believe in quantum suicide.)
+2019-10-30 14:23:22 Quit: jix (Ping timeout: 268 seconds)
+2019-10-30 14:23:22 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-30 14:23:29 Joined: jix
+2019-10-30 14:23:30 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-30 14:25:24 <cpressey> <cpressey> How do you "run" a "program" in 2nd-order logic? <-- Perform Knuth-Bendix completion on it and hope for the best?
+2019-10-30 14:26:47 <int-e> uh
+2019-10-30 14:28:07 <int-e> What are your critical pairs? I suppose you can attempt to treat the proof calculus as a higher order rewriting system but then you run into the problem that higher order unification is undecidable.
+2019-10-30 14:28:20 <int-e> But sure, you can still hope for the best.
+2019-10-30 14:28:48 <cpressey> Oh, right.
+2019-10-30 14:29:49 <cpressey> I read a nice explanation of the higher-order unification algorithm a while ago. It made it sound like a bloody hack.
+2019-10-30 14:29:50 <int-e> Maybe stick to FOL? Then you have some complete formalisms... and lots of research to try to make them efficient.
