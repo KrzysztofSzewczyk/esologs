@@ -302,3 +302,37 @@
 2019-10-30 14:28:48 <cpressey> Oh, right.
 2019-10-30 14:29:49 <cpressey> I read a nice explanation of the higher-order unification algorithm a while ago. It made it sound like a bloody hack.
 2019-10-30 14:29:50 <int-e> Maybe stick to FOL? Then you have some complete formalisms... and lots of research to try to make them efficient.
+2019-10-30 14:30:18 <int-e> Hmm, by Nipkow maybe?
+2019-10-30 14:30:36 <int-e> Though many people have written papers on this... and I don't really know the topic.
+2019-10-30 14:31:09 <int-e> Colleagues struggled with this. I kept away... but I picked up bits and pieces from conversations.
+2019-10-30 14:33:56 <cpressey> I think it was https://github.com/jozefg/higher-order-unification/blob/master/explanation.md
+2019-10-30 14:34:59 <cpressey> "1. Generate a solution  2. Test it  3. If it was correct, stop  4. Else, go to 1"
+2019-10-30 14:35:04 <int-e> Hmm, flex and rigid, that sounds familiar.
+2019-10-30 14:35:56 <int-e> e.g. https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.118.9080
+2019-10-30 14:36:12 <int-e> (it's deplorable that neither the text nor the source file seems to refer to academic literature)
+2019-10-30 14:37:00 <int-e> (at least not where I looked... I didn't look closely)
+2019-10-30 14:38:42 <int-e> I don't have the patience to read the text, I think.
+2019-10-30 14:39:09 <int-e> @metar lowi
+2019-10-30 14:39:09 <lambdabot> LOWI 301420Z VRB01KT 9999 -RA FEW007 BKN017 BKN050 07/04 Q1023 NOSIG
+2019-10-30 14:39:20 <int-e> still chilly... and wet :/
+2019-10-30 14:42:00 Joined: wib_jonas
+2019-10-30 14:42:01 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-30 14:42:27 <arseniiv> <cpressey> I think it was https://github.com/jozefg/higher-order-unification/blob/master/explanation.md => oh, unification with metavariables? that could help me with one thing
+2019-10-30 14:47:41 <int-e> arseniiv: as long as you realize it's a best effort
+2019-10-30 14:48:59 <arseniiv> better than nothing! I’m interested in cases he calls “stuck on a metavariable”, my simple system was more or less simple other than that
+2019-10-30 14:50:02 <arseniiv> the only solution I saw before was to make reduction steps explicit in inferences (that system was meant to check inferences)
+2019-10-30 14:50:46 <arseniiv> maybe this is even not that bad, but I didn’t pursue it yet, only theorized
+2019-10-30 14:53:28 <arseniiv> my favorite example with that stuck metavariable case was one of inferences using an axiom `a = b → ϕ[a] → ϕ[b]` for inferring `x = y → x = x → y = x`
+2019-10-30 14:54:17 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-10-30 14:54:17 <wib_jonas> there are so many ways to fall into infinite loops
+2019-10-30 14:54:30 <arseniiv> here one ends up with ϕ[x] ~ x = x and ϕ[y] ~ y = x and must deduce ϕ ~ z.x = z
+2019-10-30 14:55:40 <int-e> yeah, ϕ[x] ~ x = x has four solutions which is more than a bit annoying.
+2019-10-30 14:56:48 <arseniiv> at first I thought it would be feasible to add a constraint disjunction thingy but then (I don’t remember why) I wasn’t in favor of that
+2019-10-30 14:56:49 <int-e> and that's an easy case because it's merely *matching*
+2019-10-30 14:56:59 <arseniiv> yeah
+2019-10-30 14:57:21 <arseniiv> (though I hoped my formalism would allow only simple cases like that)
+2019-10-30 14:57:43 <arseniiv> (I planned to restrict types of variables and constructors to a manageable subset)
+2019-10-30 14:57:59 Joined: imode
+2019-10-30 14:57:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-30 14:58:13 <arseniiv> (but I didn’t saw how it would help)
+2019-10-30 14:59:01 <int-e> I suspect rewriting is preferable to matching `a = b → ϕ[a] → ϕ[b]` in practice even though logically it's the same.
