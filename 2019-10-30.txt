@@ -362,3 +362,22 @@
 2019-10-30 15:28:12 <arseniiv> and a description of a concrete logic would consist of declarations of some type letters (“completr terms” occurring as steps of inferences would be allowed to have only these types), some constructors of types u1 × … × un → t, again where t is a letter and ui is t1 → … → tn → t0, all ti also letters, this would allow variable binding in the constructor’s arguments; and finally there would be inference rules, each w
 2019-10-30 15:28:12 <arseniiv> th complete terms and disjointness constraints as hypotheses and a complete term conclusion, and that would be all. Though I contemplated also something else what I don’t remember now. Ah, something akin to subtyping or simplistic type classes for type letters, to aid against constructor explosion in complex languages
 2019-10-30 15:29:19 <arseniiv> cpressey: The Incredible Proof Machine => hm I need to look that up
+2019-10-30 15:30:13 <arseniiv> anyway natural deduction is tg, I agree. Especially when you finally understand how to write its proof trees linearly (like a simply typed λ-calculus with pairs, sums etc.)
+2019-10-30 15:30:54 <arseniiv> <cpressey> I'd really like to know what Metamath's doing, so one day I'll look into it again, I hope. => AFAIK it’s a string rewriting checker
+2019-10-30 15:31:53 <arseniiv> so you can express a variety of mathematical notation, but you also need define that with a care, to not make parsing ambiguous
+2019-10-30 15:32:12 <arseniiv> so there are ubiquitous brackets as part of notation
+2019-10-30 15:32:20 User Name: imode = imode!~linear@unaffiliated/imode
+2019-10-30 15:32:20 <imode> huh, metamath's being mentioned.
+2019-10-30 15:32:58 <arseniiv> I really like tree representation, moreso a typed one to aid against many many typos
+2019-10-30 15:33:33 <arseniiv> and giving helpful error reporting. I hadn’t used Metamath program but I’m afraid it’s an art
+2019-10-30 15:34:04 <arseniiv> imode: have you used it in some way?
+2019-10-30 15:34:20 <imode> I've been looking at it adjacent to what I'm already doing, with curiosity.
+2019-10-30 15:34:58 <arseniiv> I just read notes on its site and looked at many proofs and definitions from set.mm posted there and read an article about its workings though I don’t remember much from that
+2019-10-30 15:35:59 <arseniiv> I find a goal to write a minimalistic proof checker noble but personally I’d rather use something with typed trees as terms
+2019-10-30 15:37:10 <arseniiv> and maybe as proofs. Though I think that can be simulated with linear proofs using explicit ⊦, contexts etc.. But maybe natural-style proofs are easier to check, IDK at all
+2019-10-30 15:42:59 <cpressey> arseniiv: I actually didn't understand until very recently, that Milner's theorem prover LCF was actually a "DSL" in ML -- proofs are data structures, and the type system ensures you can't build an invalid proof. (Previously I thought ML was simply the implementation language instead of the "host" language like that.)
+2019-10-30 15:44:38 <cpressey> So now that I've learned that, I wonder if it would be a nicer approach for a proof checker, than designing a dedicated language. I don't know yet.
+2019-10-30 15:58:13 <cpressey> And so it goes. I wonder when I'll have enough time to turn my attention to again :)
+2019-10-30 15:58:22 Quit: cpressey (Quit: quietly)
+2019-10-30 15:58:22 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, skyplane, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-10-30 15:58:40 <arseniiv> people seem to mention “Dale Miller's pattern calculus” as a decidable system with simple unification algorithm, I googled that and I see something familiar, “Abstract syntax for variable binders <…>” and inside the author talks about β₀-conversion which could be what I seek
