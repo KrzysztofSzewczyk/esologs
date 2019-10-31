@@ -255,3 +255,34 @@
 2019-10-31 16:13:34 Quit: cpressey (Quit: WeeChat 1.4)
 2019-10-31 16:13:34 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
 2019-10-31 16:28:46 <arseniiv> ironic that I’m not so easy about GADTs still. It seems they are simple, but who knows what I could be missing. What GHC desugars them into wasn’t obvious to me when I read about that a week(?) ago
+2019-10-31 16:49:35 <lf94> arseniiv: GADTs are not magic...
+2019-10-31 16:49:40 <lf94> it's a fancy work
+2019-10-31 16:49:42 <lf94> word
+2019-10-31 16:49:59 <lf94> First you start with ADT - what IS an ADT?
+2019-10-31 16:51:20 <lf94> (If I remember correctly) An ADT is a type with no parameters: type LoL = Int | String
+2019-10-31 16:51:36 <lf94> A GADT is a type that can take parameters (Generalized)
+2019-10-31 16:51:44 <lf94> Type LoL a = Int | a
+2019-10-31 16:51:52 <lf94> boom done
+2019-10-31 16:51:55 <lf94> nothing else to it
+2019-10-31 16:52:11 <kmc> lf94: the implementation is fairly complicated
+2019-10-31 16:52:18 <kmc> because when you pattern match on a GADT, you refine its type
+2019-10-31 16:52:26 <lf94> what matters is how to use it.
+2019-10-31 16:52:27 <kmc> and this can be used on the RHS
+2019-10-31 16:52:40 <kmc> iirc, GHC had to add type equalities as another kind of typeclass-ish constraint
+2019-10-31 16:52:40 <lf94> kmc what is the implementation of quantum mechanics?
+2019-10-31 16:52:45 <kmc> (a ~ b) => ...
+2019-10-31 16:52:48 <kmc> lf94: this is of some debate
+2019-10-31 16:52:57 <kmc> but also it is philosophical in nature
+2019-10-31 16:53:25 <lf94> It's very nice to understand the inner workings of anything
+2019-10-31 16:53:37 <lf94> but in many cases, you need to understand the usage of the thing
+2019-10-31 16:55:00 <kmc> sure
+2019-10-31 16:55:10 <kmc> I thought that arseniiv was asking about implementation
+2019-10-31 16:55:14 <kmc> because they mentioned desugaring
+2019-10-31 16:55:30 <kmc> iirc the features needed to typecheck those equality constraints are also needed for type families
+2019-10-31 16:55:36 <kmc> gadt can accomplish a lot of the same things
+2019-10-31 16:55:40 <kmc> GADTs are neat though
+2019-10-31 16:55:52 <kmc> they get you a lot of the power associated with dependently typed languages
+2019-10-31 16:56:07 <kmc> and allow you to implement much more correctenss properties in the type system
+2019-10-31 16:56:45 <kmc> when using Haskell as a metalangauge, it allows to put the object language's type system into the haskell type system
+2019-10-31 16:59:45 Joined: kspalaiologos
+2019-10-31 16:59:45 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
