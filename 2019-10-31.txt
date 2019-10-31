@@ -335,3 +335,57 @@
 2019-10-31 18:20:31 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
 2019-10-31 18:39:05 Quit: imode (Ping timeout: 276 seconds)
 2019-10-31 18:39:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-31 19:04:19 Joined: Phantom_Hoover
+2019-10-31 19:04:19 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-31 19:06:10 Joined: imode
+2019-10-31 19:06:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-31 19:10:35 User Name: zzo38 = zzo38!~zzo38@24-207-15-213.eastlink.ca
+2019-10-31 19:10:35 <zzo38> shachaf: OK I looked at the fmt.h now. I think that the "c" format should not use UTF-8 and that UTF-8 should be a separate format (perhaps "u").
+2019-10-31 19:13:19 User Name: b_jonas = b_jonas!~x@catv-176-63-13-230.catv.broadband.hu
+2019-10-31 19:13:19 <b_jonas> zzo38: definitely not u, that's already used. I recommend c with some prefix, like lc or Lc or qc
+2019-10-31 19:15:51 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-10-31 19:15:51 <kspalaiologos> I started working on the disassembler for real, in Java
+2019-10-31 19:15:59 <kspalaiologos> and I've got something set up for now
+2019-10-31 19:16:06 <kspalaiologos> +>+[>>>>[-]++++++++++
+2019-10-31 19:16:10 <kspalaiologos> is getting translated back into
+2019-10-31 19:16:11 <kspalaiologos> ; -> frs
+2019-10-31 19:16:11 <kspalaiologos> ; -> imc r1
+2019-10-31 19:16:11 <kspalaiologos> ; -> imm r1 += 10
+2019-10-31 19:16:33 <kspalaiologos> just to note, these are not the formal asm2bf/bfasm instructions, just the building blocks the other part of disassembler will take care of
+2019-10-31 19:16:43 <kspalaiologos> if I went ahead with
+2019-10-31 19:16:53 <b_jonas> kspalaiologos: that has an unbalanced bracket
+2019-10-31 19:16:58 <kspalaiologos> `` asm2bf <<<"mov r2, 0"
+2019-10-31 19:16:58 <HackEso> ​/hackenv/bin/`: line 5: asm2bf: command not found
+2019-10-31 19:17:05 <kspalaiologos> b_jonas, yes, that's right
+2019-10-31 19:17:12 <kspalaiologos> but there are a lot of assumptions now
+2019-10-31 19:17:16 <kspalaiologos> because of early stage of the program
+2019-10-31 19:17:22 <zzo38> b_jonas: Yes, that would do. Yes, you are right, but fmt.h does not use the "u" format for anything, or most other formats supported by printf().
+2019-10-31 19:17:28 <kspalaiologos> `` bfasm <<<"mov r2, 0"
+2019-10-31 19:17:29 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>[-]<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-10-31 19:17:34 <kspalaiologos> perfect
+2019-10-31 19:17:44 <kspalaiologos> so this will get translated to some longer code because most isn't yet implemented
+2019-10-31 19:17:56 <kspalaiologos> so instead of outputting mov r2, 0 it would output something like
+2019-10-31 19:18:26 <kspalaiologos> frs, imc t1, mov
+2019-10-31 19:18:35 <kspalaiologos> so a lot of data isn't preserved by now
+2019-10-31 19:19:25 <kspalaiologos> btw, I remember that I've added a newline preserving wrapper over bfasm, but it seems like somebody has removed it
+2019-10-31 19:19:28 <kspalaiologos> `? bfasm
+2019-10-31 19:19:29 <HackEso> bfasm is the brainfuck assembler. Documentation and samples: https://raw.githubusercontent.com/kspalaiologos/asmbf/master/doc/bfasm.doc
+2019-10-31 19:19:33 <kspalaiologos> `? asmbf
+2019-10-31 19:19:34 <HackEso> Wrapper around bfasm, that automatically converts slashes to newlines and feeds it into original compiler
+2019-10-31 19:19:49 <kspalaiologos> nevermind, I named it the other way round
+2019-10-31 19:21:03 <b_jonas> kspalaiologos: name thme both bfasm, but use the ! framework for the wrapper one?
+2019-10-31 19:21:32 <b_jonas> also, I think I'm not esoteric enough because I don't see the point of a brainfuck disassembler
+2019-10-31 19:21:52 <kspalaiologos> well, I made a brainfuck assembler once
+2019-10-31 19:21:55 <kspalaiologos> and it's listed here as bfasm
+2019-10-31 19:22:03 <kspalaiologos> but now, I've got a few programs with the source code lost
+2019-10-31 19:22:07 <b_jonas> yes, I sort of understand the assembler
+2019-10-31 19:22:15 <kspalaiologos> and I can reverse engineer them by hand to check how are they made
+2019-10-31 19:22:18 <b_jonas> ah
+2019-10-31 19:22:20 <kspalaiologos> but for 40+ programs it takes too much time
+2019-10-31 19:22:29 <kspalaiologos> so I'm trying to write something to help me out
+2019-10-31 19:22:34 <b_jonas> ok, that is an esoteric enough goal
+2019-10-31 19:22:48 <kspalaiologos> that presumes, I dumped all the assembly source code with my trash and it's long gone by now lol
+2019-10-31 19:24:04 Quit: LKoen (Remote host closed the connection)
+2019-10-31 19:24:04 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-10-31 19:28:37 Quit: quintopia (Ping timeout: 240 seconds)
+2019-10-31 19:28:37 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
