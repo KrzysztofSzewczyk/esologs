@@ -60,3 +60,20 @@
 2019-10-31 05:58:34 <shachaf> Nothing will allow you to print properly. Printers don't work.
 2019-10-31 05:58:55 <shachaf> Though a kernel panic sounds like a particularly bad failure.
 2019-10-31 05:59:04 <shachaf> (But I empathize with the kernel.)
+2019-10-31 06:05:01 <zzo38> I wonder if it is a problem with the USB interface of the printer. This printer also has wireless internet, although I have been unable to get it to work.
+2019-10-31 06:05:04 <kmc> zzo38: it's worth a shot. i guess the question is whether the raspberry pi will encounter the same kernel panic
+2019-10-31 06:05:59 <zzo38> kmc: Yes, now I thought maybe it will. But sometimes it works. So, even if it does, at least that way it will not shut down the entire computer and only the printing server will be shut down in that case, I suppose.
+2019-10-31 06:06:25 <kmc> that does seem like an improvement
+2019-10-31 06:09:15 <shachaf> Can you run a virtual machine or userspace process and have that run the printer drivers?
+2019-10-31 06:09:47 <zzo38> If it is a hardware problem then I do not expect that to work.
+2019-10-31 06:22:54 <kmc> shachaf: I was going to suggest that but it seemed too silly even for here
+2019-10-31 06:23:23 <kmc> but it's true, it would isolate the kernel panics the same as the rpi would
+2019-10-31 06:24:01 <shachaf> higan
+2019-10-31 06:24:15 <shachaf> imo you should invent my fancy programming language for me
+2019-10-31 06:24:47 <zzo38> I think it if is a problem with the hardware such as with the power or whatever, I am not so sure that it would isolate the kernel panics then.
+2019-10-31 06:25:38 <shachaf> I would expect that it's a driver problem.
+2019-10-31 06:25:58 <shachaf> What sort of nonsense could be going over the USB cable to cause a kernel panic?
+2019-10-31 06:26:29 <shachaf> What's my best bet for doing ELF linking?
+2019-10-31 06:26:32 <zzo38> I don't know, but I think that someone suggested here before it might be some kind of hardware problem
+2019-10-31 06:26:44 <shachaf> Is doing it myself too much trouble because of things like link-time optimization and C++?
+2019-10-31 06:27:12 <shachaf> Maybe I can use ld to do link-time optimization of libraries by prelinking them into one object file.
