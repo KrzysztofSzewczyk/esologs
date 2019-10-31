@@ -228,3 +228,10 @@
 2019-10-31 11:33:22 User Name: cpressey = cpressey!~cpressey@5.133.242.4
 2019-10-31 11:33:22 <cpressey> arseniiv: lambdabot did not msg me! But I read the logs. HOAS is intriguing (I've been reading about it) but it sounds like you have to apply higher-order unification to use it, which sounds a bit heavyweight "just for syntax". Also I'm not yet clear on what exactly makes it better than de Bruijn indexes.
 2019-10-31 11:35:12 <cpressey> I find de Bruijn indexes hard to read, but you could always pretty-print them into variable names when dumping out a structure.
+2019-10-31 13:37:39 <arseniiv> hm I think I made my HOAS best it could be without dependent types. I bet it allows false-positive “proofs” (of first-order statements, as propositionally the thing should work as expected), though I’m lazy to search for them; https://repl.it/repls/ImpartialWaterloggedFolder
+2019-10-31 13:39:28 <arseniiv> cpressey: on de Bruijn indices: agree
+2019-10-31 13:46:09 <arseniiv> hmmm could I write something like `Ex :: (Term t -> F (a t)) -> F (forall t. (Term t, a t))`
+2019-10-31 13:46:23 <arseniiv> I don’t even know what it is
+2019-10-31 13:46:39 <arseniiv> this should be akin to runST
+2019-10-31 13:49:55 <arseniiv> and then `ExI :: Term t -> I (a t) -> I (forall t. (Term t, a t)` and ``ExE :: I (forall t. (Term t, a t)) -> (Term t -> I (a t) -> I b) -> I b` or something
+2019-10-31 13:51:03 <arseniiv> would the code typecheck if this is a valid syntax at all
