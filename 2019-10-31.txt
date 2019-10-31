@@ -127,3 +127,22 @@
 2019-10-31 06:47:56 <shachaf> I guess I should keep track of people who are around your age who also have their birthgigasecond coming up.
 2019-10-31 06:52:50 <zzo38> I made ZZ Zero, it is a bit similar to ZZT, but ZZ Zero has its own assembly language. Here is an assembly language code in ZZ Zero: http://zzo38computer.org/textfile/miscellaneous/example1 Now I noticed there is a few bugs and a few things which could be written better than it is, did you find it even though it is not explained?
 2019-10-31 06:55:45 <shachaf> kmc: speaking of mushrooms are you mushroom pizzaing
+2019-10-31 07:03:16 <zzo38> Do you like ZZ Zero?
+2019-10-31 07:03:41 <shachaf> ZZZero38?
+2019-10-31 07:07:36 <zzo38> No, it is just the game program similar to ZZT, therefore I called it ZZ Zero instead.
+2019-10-31 07:09:55 <zzo38> How to improve the keyboard speed in BASIC? I did figure out a code to clear the keyboard buffer:  DEF SEG = 0 : POKE &H41A, PEEK(&H41C)  but this does not improve the speed of the keyboard, and only fixes it so that if the keys are held down to indicate movement, the move will stop as soon as the key is released, if the game speed is slower than the keys.
+2019-10-31 07:11:37 <kmc> shachaf: when is mushroom pizza
+2019-10-31 07:12:19 <zzo38> I like to make plain pizza
+2019-10-31 07:12:24 <shachaf> not announced yet
+2019-10-31 07:12:24 <zzo38> (without mushrooms)
+2019-10-31 07:12:33 <kmc> zzo38: which machine is that for
+2019-10-31 07:13:31 <zzo38> kmc: The BASIC code I posted is for PC.
+2019-10-31 07:13:52 <zzo38> (As far as I know, DEF SEG does not apply to any other computer)
+2019-10-31 07:14:26 <kmc> and what does DEF SEG do?
+2019-10-31 07:14:43 <kmc> I wrote plenty of QBASIC code but very rarely used POKE/PEEK
+2019-10-31 07:14:58 <zzo38> Selects which segment to use for POKE/PEEK.
+2019-10-31 07:15:08 <kmc> OK
+2019-10-31 07:16:19 <shachaf> zzo38: What are the ingredients of plain pizza?
+2019-10-31 07:16:23 <shachaf> Is it only dough?
+2019-10-31 07:16:46 <zzo38> (For example, if you write  DEF SEG = &HB800  then you can access the video memory.)
+2019-10-31 07:18:10 <zzo38> shachaf: It is pizza dough, yes, although it is not entirely plain because I add oregano and oil on top too, usually, and sometimes also cheese (but not as much as the commercial pizzas).
