@@ -598,3 +598,32 @@
 2019-11-01 18:57:23 <imode> zig has none of those characteristics. but it is nice.
 2019-11-01 18:57:58 <shachaf> I don't know what the question means. Certainly Zig is (rightly) pretty volatile right now.
 2019-11-01 18:59:54 <kspalaiologos> imode, any ideas?
+2019-11-01 19:00:05 <kspalaiologos> if none, I'll just settle on my bruteforce probably
+2019-11-01 19:00:09 Joined: kritixil1thos
+2019-11-01 19:00:09 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 19:00:33 <imode> kspalaiologos: let me get back to you on that.
+2019-11-01 19:01:01 <kspalaiologos> yeah, sure
+2019-11-01 19:01:56 <imode> I'm sure this problem has a name somewhere.
+2019-11-01 19:02:12 <imode> wait.
+2019-11-01 19:02:17 <imode> isn't it just graph coloring.
+2019-11-01 19:02:40 <kspalaiologos> it could be
+2019-11-01 19:02:42 <imode> https://en.wikipedia.org/wiki/Graph_coloring
+2019-11-01 19:02:50 <kspalaiologos> yeah lol
+2019-11-01 19:02:52 <kspalaiologos> thats it
+2019-11-01 19:02:54 <imode> draw out the pairs as a graph, change the numbers to colors.
+2019-11-01 19:03:07 <imode> thank god for doodle paper.
+2019-11-01 19:03:49 <imode> well there you are. you're looking for the possible colorings of a graph.
+2019-11-01 19:03:55 <kspalaiologos> doodle paper?
+2019-11-01 19:04:00 <kspalaiologos> what's this
+2019-11-01 19:04:06 <imode> yeah I have a notepad that I just sketched your problem out on.
+2019-11-01 19:04:59 Joined: clog
+2019-11-01 19:04:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 19:06:27 <esowiki> 14[[07Template:Tern2InLogicTable14]]4 N10 02https://esolangs.org/w/index.php?oldid=66914 5* 03Moon 5* (+376) 102 Input Logic Table
+2019-11-01 19:10:19 <esowiki> 14[[07THCA14]]4 10 02https://esolangs.org/w/index.php?diff=66915&oldid=66910 5* 03Moon 5* (+177) 10AND table.
+2019-11-01 19:13:42 <kspalaiologos> so I need to calculate chromatic polynomial.
+2019-11-01 19:13:51 <kspalaiologos> I shouldn't have slept at math lessons
+2019-11-01 19:16:48 <esowiki> 14[[07THCA14]]4 10 02https://esolangs.org/w/index.php?diff=66916&oldid=66915 5* 03Moon 5* (+9) 10
+2019-11-01 19:19:28 Joined: oerjan
+2019-11-01 19:19:28 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 19:28:40 Quit: MDude (Quit: Going offline, see ya! (www.adiirc.com))
+2019-11-01 19:28:40 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
