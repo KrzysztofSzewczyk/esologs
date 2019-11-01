@@ -276,3 +276,18 @@
 2019-11-01 16:52:58 <Soni> I tried rust but gave up on it after a while
 2019-11-01 16:53:59 <Soni> rust .so's crash on reload
 2019-11-01 16:56:04 <Soni> it does have good docs tho
+2019-11-01 17:09:42 Quit: clog (Ping timeout: 268 seconds)
+2019-11-01 17:09:42 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 17:22:58 <kspalaiologos> simple yet functional Forth dialect?
+2019-11-01 17:23:05 <kspalaiologos> with emphasis on ease of parsing
+2019-11-01 17:23:31 <kspalaiologos> anything will suffice as long as you can perform basic stuff and it's not so hard to parse/implement
+2019-11-01 17:26:06 <imode> kspalaiologos: forth has "dialects" by way of definitions, not inherent language features. I have a forth-like that compiles to C and also has an interpreter.
+2019-11-01 17:26:22 <kspalaiologos> how long is the interpreter?
+2019-11-01 17:26:46 <imode> 369 lines of python.
+2019-11-01 17:27:13 <imode> the compile-to-C stuff is even shorter, summing at around 100 lines.
+2019-11-01 17:27:21 <imode> iirc, anyway.
+2019-11-01 17:27:25 <kmc> Soni: how much of a compiler from a C-lke language can you implement in sed?
+2019-11-01 17:27:31 <kmc> that'd be fun
+2019-11-01 17:27:34 <kmc> compiling C with regexes
+2019-11-01 17:28:55 <imode> scratch that, the compile-to-C stuff is 230 lines, with the preprocessor being 88 lines of python.
+2019-11-01 17:29:21 <imode> I minimized it earlier.
