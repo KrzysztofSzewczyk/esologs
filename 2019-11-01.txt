@@ -678,3 +678,88 @@
 2019-11-01 20:58:44 <kmc> template <typename T> void use_closure(T closure) { ... closure(); ... }
 2019-11-01 20:59:05 <kmc> when you call use_closure([]() { ... })
 2019-11-01 20:59:46 <kmc> it makes a struct type for the lambda, containing its captures (nothing in this case), implements operator() for that type, and instantiates the templated use_closure() at that type T
+2019-11-01 21:00:21 <kmc> that struct type cannot be named, which is why 'auto' is not only a convenience in C++ but is essential
+2019-11-01 21:00:41 <kmc> there are no function pointers involved in calling a lambda this way, and the lambda body can be inlined into the function it's passed to, and all sorts of optimizations performed
+2019-11-01 21:01:05 <kmc> and that's why you can make a chain of higher order functions like map, filter, etc. and it compiles down to a flat loop (if the compiler is smart enough)
+2019-11-01 21:01:08 <kmc> very cool
+2019-11-01 21:01:20 <kmc> in Rust you'd do  fn use_closure<T: Fn()>(closure: T)
+2019-11-01 21:01:33 <kmc> which is basically the same except that Rust has a trait system so you can say that the type T must be a function taking and returning nothing
+2019-11-01 21:01:39 <kmc> you could also have Fn(int) -> char
+2019-11-01 21:01:51 <kmc> now there is another tricky thing
+2019-11-01 21:02:07 <b_jonas> kmc: right. and the drawback is that, unless you write the both standard library and the compiler in tricky ways to optimize this, you'll end up with twenty copies of the red-black-tree rebalancing function compiled into your binary
+2019-11-01 21:02:16 <b_jonas> and ten copies of a mergesort
+2019-11-01 21:02:27 <kmc> when the closure is created, you can move non-copyable types into the closure
+2019-11-01 21:02:32 <kmc> but when it's called, can you move them *out*?
+2019-11-01 21:02:38 <kmc> this is why Rust has Fn, FnMut, and FnOnce
+2019-11-01 21:02:48 <kmc> when called they take &self, &mut self, and self, respectively
+2019-11-01 21:03:02 <kmc> so FnOnce can move out of its captures (and therefore such a closure can only be called once)
+2019-11-01 21:03:17 <kmc> FnMut can mutate its captures, Fn can only read them
+2019-11-01 21:03:30 <kmc> C++ has a similar thing but it's too arcane for me to remember
+2019-11-01 21:03:43 <kmc> now this is all well and good but sometimes you *want* dynamic dispatch
+2019-11-01 21:04:01 <kmc> fortunately this can be done using each language's respective dynamic dispatch features without anything particularly special to functions
+2019-11-01 21:04:43 <kmc> in C++ every lambda's type is a subclass of std::function so you can upcast &my_unnameable_lambda_type to &std::function<whatever> and pass that pointer around
+2019-11-01 21:04:50 <kmc> in that case operator() is a virtual call
+2019-11-01 21:05:03 <arseniiv> <kmc> C++ has a similar thing but it's too arcane for me to remember => yeah I heard something about lambdas which could only read their arguments in C++
+2019-11-01 21:05:03 <b_jonas> kmc: no, that's not how std::function works I think
+2019-11-01 21:05:04 <kmc> in Rust you use the "trait object" feature which, again, creates a vtable
+2019-11-01 21:05:11 <b_jonas> in C++
+2019-11-01 21:05:11 <kmc> b_jonas: isn't it?
+2019-11-01 21:05:20 <b_jonas> well, I'm not really sure
+2019-11-01 21:05:26 <b_jonas> because I don't use std::function in C++
+2019-11-01 21:05:33 <kmc> okay
+2019-11-01 21:05:37 <kmc> so why did you say that
+2019-11-01 21:05:49 <shachaf> Converting to std::function does a heap allocation, right?
+2019-11-01 21:06:00 <kmc> shachaf: I think so, yes
+2019-11-01 21:06:08 <kmc> but you can also use it by reference without that?
+2019-11-01 21:06:12 <kmc> i'm not totally sure
+2019-11-01 21:06:15 <kmc> I may be wrong with what I said above
+2019-11-01 21:06:20 <shachaf> Man, all this C++ nonsense is nonsense.
+2019-11-01 21:06:31 <kmc> in Rust you can make heap-allocated trait objects as well as by-reference ones
+2019-11-01 21:06:39 <shachaf> also what's the benefit of writing map and filter instead of for and if
+2019-11-01 21:06:44 <b_jonas> shachaf: no, not necessarily, in modern libstdc++ it has like one or two pointer of space reserved in the std::function itself, and if the function object fits there then it won't allocate
+2019-11-01 21:06:48 <kmc> Box<dyn MyTrait> vs &dyn MyTrait
+2019-11-01 21:06:50 <b_jonas> like how std::string is implemented these days
+2019-11-01 21:06:53 <kmc> b_jonas: yeah
+2019-11-01 21:07:08 <b_jonas> but without where std::string is now no longer trivially swappable
+2019-11-01 21:07:17 <kmc> Box is like C++'s std::unique_ptr so it has automatic, deterministic deallocation but can't be copies
+2019-11-01 21:07:29 <b_jonas> without the drawback where std::string is no longer trivially swappable or trivially move-assignable
+2019-11-01 21:07:43 <b_jonas> it has to check if it has to rewrite a pointer that points inside itself
+2019-11-01 21:07:47 <kmc> Rust also has refcounted types, the cool thing there is that there are both thread-local and multithreaded versions, the former is faster, and the compiler will error if you try to share them between threads
+2019-11-01 21:07:51 <kmc> so that's pretty neat
+2019-11-01 21:08:05 <kmc> whee
+2019-11-01 21:08:09 <kmc> infodump
+2019-11-01 21:08:18 Joined: myndzi
+2019-11-01 21:08:18 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 21:08:23 <kmc> shachaf: if you want a real puzzle try making an exception-safe variants library in C++ without heap allocation
+2019-11-01 21:08:31 <b_jonas> kmc: and they both work with heap-allocated arrays, with the help of some cleverly hidden magic
+2019-11-01 21:08:32 <shachaf> exceptions are scow
+2019-11-01 21:08:41 <b_jonas> dynamic length arrays that is
+2019-11-01 21:08:46 <shachaf> -fno-exceptions
+2019-11-01 21:09:25 <b_jonas> oh, I had a weird dream by the way
+2019-11-01 21:10:08 <shachaf> What are variants, and what's a variants library?
+2019-11-01 21:10:20 <b_jonas> I dreamed that I found a case where using exception throwing and catching is actually useful, not because I have to interface with a preexisting library whose interface involves exceptions, but because that's intrinsically what the control flow was like
+2019-11-01 21:10:24 <kmc> shachaf: sum types
+2019-11-01 21:10:25 <b_jonas> shachaf: tagged unions
+2019-11-01 21:10:34 <b_jonas> yeah, sum types
+2019-11-01 21:10:39 <shachaf> Why would that need heap allocation?
+2019-11-01 21:10:55 <shachaf> It's just some data.
+2019-11-01 21:11:32 <b_jonas> kmc: can you take the C++ standard library route where if an exception is thrown then the variant can end up empty even if an empty branch isn't declared, or do you want a variant that does double-buffering?
+2019-11-01 21:11:42 <kmc> b_jonas: that's one issue yes
+2019-11-01 21:11:50 <b_jonas> kmc: and how exception safe do you want? can move assignment or swapping throw too?
+2019-11-01 21:11:59 <kmc> shachaf: for one thing there is trickery when you change the type and the constructor of the new type throws
+2019-11-01 21:12:02 <kmc> i don't know
+2019-11-01 21:12:10 <kmc> chris was explaining why it's so tricky and he convinced me at the time, but i forgot the details
+2019-11-01 21:12:13 <kmc> anyway, bbl
+2019-11-01 21:12:15 <kmc> <3
+2019-11-01 21:12:16 <shachaf> this is why i use c
+2019-11-01 21:12:23 <b_jonas> see you kmc
+2019-11-01 21:12:56 <shachaf> all the c++ trickery is a self-made problem
+2019-11-01 21:13:03 <shachaf> you gotta sfinae the recursive templates
+2019-11-01 21:13:48 <b_jonas> shachaf: can you do that in constexpr land yet?
+2019-11-01 21:17:26 <b_jonas> shachaf: anyway, C++ used to be hard, but it's almost solved now. we just need these few more language extensions into the standard and then it will be a very easy to program and versatile language where you can just write programs naturally
+2019-11-01 21:17:48 User Name: olsner = olsner!~salparot@c80-217-180-83.bredband.comhem.se
+2019-11-01 21:17:48 <olsner> :D
+2019-11-01 21:17:57 <shachaf> Whew!
+2019-11-01 21:18:05 <olsner> the essence of c++ is something like creating worse problems so you can pat yourself on the back for coming up with more complicated solutions
+2019-11-01 21:18:52 <b_jonas> olsner: oh, as in "I know, I'll just use C++! Now he has two problems."
+2019-11-01 21:19:13 <int-e> . o O ( plus 1 for every language revision )
