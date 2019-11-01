@@ -416,3 +416,68 @@
 2019-11-01 17:58:55 <lf94> Maybe that is better...
 2019-11-01 17:58:58 <lf94> X)
 2019-11-01 17:59:25 <imode> like I get it, it'd be interesting if you could work per-bit. but you can easily build this kind of stuff in any given language.
+2019-11-01 18:00:14 <imode> I can build custom control flow structures for it in mode, for example.
+2019-11-01 18:00:40 <imode> $1234 for each-bit to-string display repeat
+2019-11-01 18:01:22 <imode> each-bit extracts a bit. to-string converts that bit to a string. display displays the string.
+2019-11-01 18:01:30 <imode> the `for` is just aliased to `begin`.
+2019-11-01 18:02:20 <lf94> How would each-bit work
+2019-11-01 18:02:33 <lf94> gets an index or somethnig?
+2019-11-01 18:03:11 <lf94> Man maybe I should just start implementing a lisp
+2019-11-01 18:03:14 <imode> well, my language is a forth-like, and as such assumes some state that each word (function, if you like) takes as input, changes, and then returns as output.
+2019-11-01 18:03:37 <lf94> Compiled lisp that targets LLVM IR
+2019-11-01 18:04:08 <lf94> Then add ad hoc type system
+2019-11-01 18:04:08 <imode> so if we expect the source number to be on top of the stack/head of the queue, we can say at every iteration, we duplicate it and bitwise AND it with 1.
+2019-11-01 18:04:22 <imode> until the number is zero.
+2019-11-01 18:04:33 <lf94> to me type system is so important these days, for anything sane
+2019-11-01 18:04:43 <lf94> How would mode add a type system?
+2019-11-01 18:04:55 <imode> how would a forth add a type system?
+2019-11-01 18:05:11 <imode> there's a lot of ways you can do it. look at Factor for an example. it's statically typed iirc.
+2019-11-01 18:05:26 <imode> whoops, nope. it has strong dynamic typing.
+2019-11-01 18:05:34 <imode> https://en.wikipedia.org/wiki/Factor_(programming_language)
+2019-11-01 18:06:36 <kspalaiologos> ah yes
+2019-11-01 18:06:47 <kspalaiologos> clicking on stackexchange link showed me that my rep bumped by +200
+2019-11-01 18:07:23 <kspalaiologos> https://codegolf.stackexchange.com/a/191482/61379
+2019-11-01 18:07:31 <kspalaiologos> a lot of effort and processing power has been put here lol
+2019-11-01 18:09:24 <lf94> imode: I've looked at Factor too.
+2019-11-01 18:09:31 <lf94> Man plang theory is so fucky.
+2019-11-01 18:09:53 <lf94> "forth is good" "NO FORTH IS BAD" "forth is bad..." "wait, no, this person is convincing me otherwise again"
+2019-11-01 18:10:52 <b_jonas> oh also,
+2019-11-01 18:11:21 <b_jonas> UM-32 and GML have a lot of independent implementations, but don't use that as a heuristic for what's going to be useful 50 years from now,
+2019-11-01 18:11:38 <b_jonas> because most of them have already fallen off the web, and even the ones that haven't have probably bitrotten away
+2019-11-01 18:11:58 <b_jonas> oh right, postscript
+2019-11-01 18:12:01 <b_jonas> did we mention postscript?
+2019-11-01 18:12:09 <b_jonas> that's also a candidate, though not a very good one
+2019-11-01 18:12:10 <lf94> imode: can forth be compiled
+2019-11-01 18:12:18 <imode> lf94: sure. mine is.
+2019-11-01 18:12:24 <imode> directly to C.
+2019-11-01 18:15:42 <imode> lf94: wanna see the for each-bit thing in action.
+2019-11-01 18:16:22 <lf94> Not right now :)
+2019-11-01 18:16:23 <lf94> https://gitweb.factorcode.org/gitweb.cgi?p=factor.git;a=blob;f=extra/spheres/spheres.factor;hb=HEAD
+2019-11-01 18:16:35 <lf94> This is like some C mix
+2019-11-01 18:18:17 <imode> https://hatebin.com/agluuirids
+2019-11-01 18:19:10 <imode> https://repl.it/repls/UnfoldedBaggyPiracy here it is, compiled and run.
+2019-11-01 18:19:42 <b_jonas> lemon!
+2019-11-01 18:19:44 <b_jonas> darn it
+2019-11-01 18:19:49 <b_jonas> I knew I was forgetting to buy something
+2019-11-01 18:19:53 <b_jonas> I should have bought lemons
+2019-11-01 18:19:58 <b_jonas> for fresh lemon juice on the fish
+2019-11-01 18:22:38 <kspalaiologos> did I just get the joke?
+2019-11-01 18:24:39 <imode> for any iteration, the queue looks like <bit> <source-number>. you can do anything with the bit, including accumulate it, but at the next iteration, we expect the source-number to be at the head of the queue.
+2019-11-01 18:24:56 <imode> computing the sum of all the bits is pretty easy.
+2019-11-01 18:26:45 <kspalaiologos> I've got an algorithmic question
+2019-11-01 18:27:10 <kspalaiologos> i've got given a std::vector of two integers
+2019-11-01 18:27:22 <kspalaiologos> the integers are aranged in pairs
+2019-11-01 18:27:32 <imode> std::vector<std::pair<int, int>> ?
+2019-11-01 18:27:36 <kspalaiologos> yes.
+2019-11-01 18:27:39 <imode> neat.
+2019-11-01 18:28:06 <kspalaiologos> now, I have to assign number to these integers, so the ones in pair have unique numbers whether it's possible.
+2019-11-01 18:28:33 <kspalaiologos> what is the most efficient way of calculating how many ways are there to do that?
+2019-11-01 18:28:35 <imode> can't seem to parse that, can you rephrase.
+2019-11-01 18:28:49 <imode> calculating permutations of pairs?
+2019-11-01 18:28:58 <kspalaiologos> let's do it the other way
+2019-11-01 18:29:05 <kspalaiologos> let's assume the number is a person
+2019-11-01 18:29:11 <kspalaiologos> we have a vector of couples
+2019-11-01 18:29:32 Nick Change: FaeFly -> FireFly
+2019-11-01 18:29:33 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 18:29:38 <kspalaiologos> now, we have to assign some character trait to each of these
+2019-11-01 18:29:45 <kspalaiologos> so the ones in couples have different character traits
