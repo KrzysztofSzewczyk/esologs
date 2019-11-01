@@ -291,3 +291,128 @@
 2019-11-01 17:27:34 <kmc> compiling C with regexes
 2019-11-01 17:28:55 <imode> scratch that, the compile-to-C stuff is 230 lines, with the preprocessor being 88 lines of python.
 2019-11-01 17:29:21 <imode> I minimized it earlier.
+2019-11-01 17:32:23 <imode> kspalaiologos: the underlying language kind of looks and behaves like brainfuck. the interpreter implements 44 instructions, and that includes a semi-janky preprocessor.
+2019-11-01 17:32:38 <imode> 75% of these instructions aren't really required.
+2019-11-01 17:32:50 <kspalaiologos> the underlying language kind of looks and behaves like brainfuck - I blindly take it
+2019-11-01 17:32:59 <kspalaiologos> open source?
+2019-11-01 17:33:35 <imode> https://repl.it/repls/ImpressiveMagentaDestination
+2019-11-01 17:33:41 <imode> here's the interpreter.
+2019-11-01 17:34:51 <imode> https://hatebin.com/manaefqdti here's a prefix expression evaluator.
+2019-11-01 17:35:07 <imode> complete with variables.
+2019-11-01 17:35:25 <kspalaiologos> why did you bundle the macro preprocessor in
+2019-11-01 17:35:34 <imode> convenience.
+2019-11-01 17:35:42 <kspalaiologos> the language looks way more fun than stinky macros
+2019-11-01 17:36:16 <imode> mainly because I didn't want to type ,$1,$?]:$~$[. over and over.
+2019-11-01 17:36:22 <imode> for `else`.
+2019-11-01 17:36:53 <imode> feel free to remove the macro system.
+2019-11-01 17:37:00 <imode> it's just an instruction.
+2019-11-01 17:37:06 <imode> you don't have to use it.
+2019-11-01 17:39:43 <lf94> ok guys
+2019-11-01 17:39:50 <lf94> where the frig do I start with language design
+2019-11-01 17:39:52 <imode> I'm adding concurrency to the language as well kspalaiologos.
+2019-11-01 17:40:03 <lf94> Should I follow some online course?
+2019-11-01 17:40:07 <imode> lf94: think about the thing you want to write. figure out how to write it.
+2019-11-01 17:40:29 <kspalaiologos> lf94, dragon book
+2019-11-01 17:40:37 <kspalaiologos> look at some simple languages like B
+2019-11-01 17:40:48 <kspalaiologos> and try writing a lexer, parser and a -O0 codegen for it
+2019-11-01 17:41:10 <kspalaiologos> you may start out with lex + yacc
+2019-11-01 17:41:24 <imode> nothing needs to involve those tools.
+2019-11-01 17:41:29 <kspalaiologos> sure
+2019-11-01 17:41:33 <lf94> I want to learn proper language design
+2019-11-01 17:41:33 <kspalaiologos> but it's a good idea to use them
+2019-11-01 17:41:39 <lf94> Not just off-my-seat stuff
+2019-11-01 17:41:40 <kspalaiologos> ^ doesn't matter at all
+2019-11-01 17:41:41 <imode> "proper language design".
+2019-11-01 17:41:46 <imode> hahaha.
+2019-11-01 17:41:48 <kspalaiologos> when you write parser by hand
+2019-11-01 17:41:51 <imode> that's funny.
+2019-11-01 17:41:53 <kspalaiologos> you are going to do it wrong 100%
+2019-11-01 17:42:02 <kspalaiologos> just use the ready tools as you start off
+2019-11-01 17:42:04 <lf94> Why is that kspalaiologos
+2019-11-01 17:42:08 <kspalaiologos> cus you gonna die with painful death soon
+2019-11-01 17:42:17 <lf94> I will use lex + yacc if that's what's typically doen.
+2019-11-01 17:42:18 <kspalaiologos> I speak from my experience
+2019-11-01 17:42:19 <imode> no, please, write a parser. it's entertaining.
+2019-11-01 17:42:29 <kspalaiologos> ^ he probably doesnt know all the theory
+2019-11-01 17:42:33 <lf94> My goal is simple core + type system.
+2019-11-01 17:42:38 <imode> pardon me fuckboy?
+2019-11-01 17:42:48 <kspalaiologos> he has no idea how to describe syntax, what is EBNF, what type of parsers there are
+2019-11-01 17:42:49 <kspalaiologos> I
+2019-11-01 17:42:54 <kspalaiologos> 'm speaking about lf94, not you
+2019-11-01 17:43:03 <imode> lmao I'm just kidding.
+2019-11-01 17:43:19 <lf94> You describe syntax with EBNF dont you?
+2019-11-01 17:43:27 <kspalaiologos> sure
+2019-11-01 17:43:29 <imode> you can describe it, yeah.
+2019-11-01 17:43:36 <lf94> single pass, multi pass, etc parsers
+2019-11-01 17:43:43 <imode> there's a pretty wide gradient with how complex language syntax can actually be.
+2019-11-01 17:43:58 <imode> some just require bare tokenization, like forths.
+2019-11-01 17:44:12 <imode> others are based on involved grammars.
+2019-11-01 17:44:33 <imode> all parts of the gradient are valid, it just depends on what you value.
+2019-11-01 17:45:06 <imode> starting in language design usually has someone ask "what do you value in a programming language?"
+2019-11-01 17:45:36 <imode> so, what do you value, lf94.
+2019-11-01 17:46:11 <lf94> I value a language which can map to assembly nicely
+2019-11-01 17:46:30 <lf94> It must have lambdas / anonymous functions
+2019-11-01 17:46:40 <lf94> It must have first class for list operations
+2019-11-01 17:46:56 <kspalaiologos> lisp x lambda calculus?
+2019-11-01 17:47:01 <kspalaiologos> very easy one to lex and parse IMO
+2019-11-01 17:47:08 <lf94> It must not be garbage collected
+2019-11-01 17:47:17 <imode> that can be anything from a forth to a C dialect to picolisp.
+2019-11-01 17:47:34 <lf94> It will be more like APL
+2019-11-01 17:47:41 <imode> forth-like it is, then.
+2019-11-01 17:47:43 <kspalaiologos> ah yes
+2019-11-01 17:47:49 <kspalaiologos> the C dialect
+2019-11-01 17:48:00 <kspalaiologos> I remember myself writing C89 compiler targeting brainfuck lol
+2019-11-01 17:48:35 <imode> when designing a language it's important to keep the "semantic gap" in mind.
+2019-11-01 17:48:53 <imode> i.e how far away on the abstraction hierarchy are you away from the bottom or the top.
+2019-11-01 17:49:01 <imode> I optimize for a small gap.
+2019-11-01 17:49:34 <lf94> I want a systems level APL-like language.
+2019-11-01 17:49:44 <lf94> Also: https://meta.stackexchange.com/questions/25840/can-we-stop-recommending-the-dragon-book-please lol
+2019-11-01 17:50:06 <imode> so when you're talking about anonymous functions, etc. that's a reasonably high level language feature. but you also want it to map to assembly..
+2019-11-01 17:50:27 <lf94> I mean it all boils down to assembly anyway, no matter the language.
+2019-11-01 17:51:01 <imode> I have anonymous functions. but because I value a small semantic gap as well as making multiple language features pull double duty, they're implemented as something more general: concurrently executing processes.
+2019-11-01 17:51:48 <lf94> list comprehensions I think will be a prime piece of my language
+2019-11-01 17:51:48 <imode> and because of that small semantic gap, translating that to assembly is pretty trivial, involving minimal boilerplate.
+2019-11-01 17:51:59 <imode> why do you value list comprehensions.
+2019-11-01 17:52:13 <lf94> Because they allow you to generate lists in a very precise way.
+2019-11-01 17:52:21 <imode> wait until you see dictionary comprehensions. :P
+2019-11-01 17:52:23 <lf94> And all programming is just manipulating lists on some leel.
+2019-11-01 17:52:33 <lf94> well there are monad comprehensions too.
+2019-11-01 17:52:37 <lf94> It's all the same shit
+2019-11-01 17:52:54 <lf94> But imagine...a byte, 0x39, is also just a list.
+2019-11-01 17:53:07 <imode> any language can have list comprehensions because list comprehensions aren't that 1. complex or 2. valuable in some scenarios.
+2019-11-01 17:53:21 <lf94> [x & 0x1; x <- 0x39]
+2019-11-01 17:53:30 <lf94> AND bitwise op on all bits of 0x39
+2019-11-01 17:55:02 <lf94> It should be a language where everything is a list/string/sequence
+2019-11-01 17:55:05 <imode> wouldn't... that just be 0x39 & (~0)
+2019-11-01 17:55:17 <lf94> yes, but in your case, you are specifically working with 8-bit byte
+2019-11-01 17:55:22 <lf94> now how do you 9 bit? :)
+2019-11-01 17:55:29 <imode> it's an upcast.
+2019-11-01 17:55:32 <imode> you change nothing.
+2019-11-01 17:55:38 <lf94> [x & 0x1; x <- 0b111011101]
+2019-11-01 17:55:43 <imode> ~0 = 111111.....
+2019-11-01 17:55:45 <lf94> I just specify 9 bits
+2019-11-01 17:56:13 <lf94> next
+2019-11-01 17:56:18 <imode> like I said, try it in C with various types.
+2019-11-01 17:56:26 <lf94> imode: how do you split 101 out the middle?
+2019-11-01 17:56:30 <imode> you don't have to change anything. so I don't see your point.
+2019-11-01 17:56:38 <lf94> 1101 let's say (more unique)
+2019-11-01 17:56:40 <imode> what do you mean "split 101 out the middle".
+2019-11-01 17:56:47 <lf94> 111011101
+2019-11-01 17:56:55 <lf94> X1101XXXX
+2019-11-01 17:56:57 <lf94> that
+2019-11-01 17:57:05 <imode> what, you just want that section?
+2019-11-01 17:57:08 <lf94> yea
+2019-11-01 17:57:36 <lf94> > upcast
+2019-11-01 17:57:38 <lambdabot> error:
+2019-11-01 17:57:38 <lambdabot> • Variable not in scope: upcast
+2019-11-01 17:57:38 <lambdabot> • Perhaps you meant one of these:
+2019-11-01 17:57:39 <lf94> > and
+2019-11-01 17:57:40 <lambdabot> <[Bool] -> Bool>
+2019-11-01 17:58:02 <imode> (0bX1101XXXX >> 4) results in 0bXXXXX1101.
+2019-11-01 17:58:12 <lf94> But you cannot do that in C
+2019-11-01 17:58:19 <imode> uh, yeah. you can.
+2019-11-01 17:58:23 <lf94> You can specify 9 bits?
+2019-11-01 17:58:37 <imode> I can't specify 9 bits. but I can use a 16 bit value.
+2019-11-01 17:58:55 <lf94> Maybe that is better...
+2019-11-01 17:58:58 <lf94> X)
+2019-11-01 17:59:25 <imode> like I get it, it'd be interesting if you could work per-bit. but you can easily build this kind of stuff in any given language.
