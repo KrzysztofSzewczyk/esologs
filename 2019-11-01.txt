@@ -481,3 +481,120 @@
 2019-11-01 18:29:33 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixil1thos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
 2019-11-01 18:29:38 <kspalaiologos> now, we have to assign some character trait to each of these
 2019-11-01 18:29:45 <kspalaiologos> so the ones in couples have different character traits
+2019-11-01 18:30:06 <kspalaiologos> let's assume all the people are polygamic so one person can have multiple partners
+2019-11-01 18:30:24 <kspalaiologos> how many ways are there
+2019-11-01 18:30:46 <kspalaiologos> to assign a different character trait for each person, so the people in couples have different character traits, when possible?
+2019-11-01 18:31:09 <imode> I don't know what "character traits" are but this is a permutation problem.
+2019-11-01 18:31:39 <kspalaiologos> it's just a feature of a person
+2019-11-01 18:32:25 <imode> you're handed a set of pairs. form a set of people from those set of pairs. then calculate all possible pairings of two people.
+2019-11-01 18:32:53 <imode> n choose k.
+2019-11-01 18:33:08 <imode> https://stackoverflow.com/questions/18859430/how-do-i-get-the-total-number-of-unique-pairs-of-a-set-in-the-database
+2019-11-01 18:33:23 <b_jonas> kspalaiologos: character traits? like that crazy template argument to std::string in the C++ standard library?
+2019-11-01 18:33:23 <kspalaiologos> huh, I don't think this is the case
+2019-11-01 18:33:33 <kspalaiologos> b_jonas, no lamo
+2019-11-01 18:33:35 <kspalaiologos> *lmao
+2019-11-01 18:33:53 <imode> no ordering, no repeats means n choose k.
+2019-11-01 18:33:56 <kspalaiologos> let's look at this example
+2019-11-01 18:34:03 <kspalaiologos> assume the following couples
+2019-11-01 18:34:16 <kspalaiologos> A B, B C, A C, C D
+2019-11-01 18:34:26 <kspalaiologos> now, if we had three possible character traits for these
+2019-11-01 18:34:33 <kspalaiologos> there are 12 ways to assign them to these people
+2019-11-01 18:34:50 <imode> so it's really a triple.
+2019-11-01 18:35:01 <kspalaiologos> we can also have ten character traits
+2019-11-01 18:35:04 <kspalaiologos> or twelve
+2019-11-01 18:35:11 <b_jonas> also I should have fried the fish on a higher temperature
+2019-11-01 18:35:12 <imode> but it's a triple. where the third element is a list.
+2019-11-01 18:35:51 <kspalaiologos> now I don't really understand
+2019-11-01 18:36:00 <imode> n!/k!(n - k)!
+2019-11-01 18:36:11 <imode> but segmented. kind of.
+2019-11-01 18:36:20 <kspalaiologos> in which way segmented?
+2019-11-01 18:36:32 <kspalaiologos> can you point me to a formula that can calculate the result of example I've given?
+2019-11-01 18:36:38 <imode> you want all possible triples of (X, Y, Z).
+2019-11-01 18:36:40 <kspalaiologos> I'll figure out reest myself
+2019-11-01 18:36:50 <imode> X and Y are a couple, Z is a character trait.
+2019-11-01 18:36:59 <kspalaiologos> each of these has a character trait
+2019-11-01 18:37:00 Quit: kritixil1thos (Ping timeout: 260 seconds)
+2019-11-01 18:37:00 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 18:37:08 <kspalaiologos> and if there is a couple, its best when they have different traits
+2019-11-01 18:37:12 <imode> you are underspecifying your problem.
+2019-11-01 18:37:19 <imode> explain it in clear language.
+2019-11-01 18:37:20 <kspalaiologos> I have specified it before
+2019-11-01 18:37:32 <kspalaiologos> alright, again
+2019-11-01 18:37:43 <kspalaiologos> I've got a set of pairs
+2019-11-01 18:38:00 <kspalaiologos> I have to assign a number to each element of every single pair
+2019-11-01 18:38:20 <kspalaiologos> i have to calculate, how many ways are there, to assign them
+2019-11-01 18:38:26 <kspalaiologos> with a few gotchas
+2019-11-01 18:38:49 <imode> do you want duplicates.
+2019-11-01 18:38:56 <kspalaiologos> a) in a pair, it would be the best, if every element has different number
+2019-11-01 18:39:01 <kspalaiologos> b) pairs don't repeat
+2019-11-01 18:39:31 <kspalaiologos> c) there is actually given upper limit for a number to assign
+2019-11-01 18:39:42 <kspalaiologos> (with a set of pairs, obviously)
+2019-11-01 18:39:55 <kspalaiologos> let's review these pairs
+2019-11-01 18:39:59 <kspalaiologos> A and B is the first pair
+2019-11-01 18:40:04 <kspalaiologos> B and C is the second pair
+2019-11-01 18:40:09 <kspalaiologos> A and C is the third pair
+2019-11-01 18:40:09 <imode> so the possible combinations of n items arranged into k sets is n!/(k! * (n - k)!)
+2019-11-01 18:40:40 <imode> 10 items arranged into pairs is 10!/(2! * (10 - 2)!)
+2019-11-01 18:40:43 <kspalaiologos> ^ are you following the rule that items in a pair should get different numbers assigned?
+2019-11-01 18:40:52 <kspalaiologos> also, you're given the number of pairs
+2019-11-01 18:40:54 <imode> I'm just presenting n choose k.
+2019-11-01 18:41:08 <kspalaiologos> you just need to calculate how many ways are there to assign number to each element of pair
+2019-11-01 18:41:33 <imode> here's a better question: where did this come from.
+2019-11-01 18:41:43 <imode> is this some kind of programming challenge.
+2019-11-01 18:41:59 <imode> it sounds almost like a math puzzle.
+2019-11-01 18:42:05 <kspalaiologos> not a programming challenge per se, I just need to get better algorithm on my hands
+2019-11-01 18:42:06 <imode> for undergrads.
+2019-11-01 18:42:12 <kspalaiologos> because the one I've got isn't quite right
+2019-11-01 18:42:18 <kspalaiologos> and takes way too long to execute
+2019-11-01 18:42:34 <imode> well whatever it is it's not so much an algorithm moreso an expression of the variables that make up your problem..
+2019-11-01 18:43:12 <imode> so each pair has two people in it, and each person gets assigned a number, but the numbers have to be different.
+2019-11-01 18:43:24 <imode> both within the pair and outside the pair.
+2019-11-01 18:43:47 <imode> so A = 1 and B = 2 holds regardless of who A and B pair up with, right.
+2019-11-01 18:44:29 <imode> in which case you still have n-choose-k because A and B can just be labeled with unique numbers. changing the names of the items of each pair doesn't change the problem.
+2019-11-01 18:44:52 <kspalaiologos> so how do I use this in my algorithm, because I'm pretty much lost now
+2019-11-01 18:45:42 <kspalaiologos> four given pairs, AB BC AD CD, and I may assign to every leter a number from 1 to 3
+2019-11-01 18:45:51 <Soni> kmc: as long as you limit yourself to ASCII x86 instructions, sure why not
+2019-11-01 18:46:05 <kspalaiologos> how do I calculate how many ways are there to do that, given that people in pairs need to have different numbers
+2019-11-01 18:46:09 <imode> count the number of unique people in your vector of pairs (add them to a set and compute the count of elements in the set), then feed that into count!/(2! * (count - 2)!)
+2019-11-01 18:46:21 <imode> where ! is factorial.
+2019-11-01 18:46:22 <Soni> ever heard of a certain "executable paper"?
+2019-11-01 18:46:28 <kspalaiologos> alright
+2019-11-01 18:46:30 <esowiki> 14[[07THCA14]]4 N10 02https://esolangs.org/w/index.php?oldid=66910 5* 03Moon 5* (+421) 10Begin page. Need to build a few templates
+2019-11-01 18:47:58 <imode> it may be different but that's at least a starting point.
+2019-11-01 18:48:16 <kspalaiologos> I'll think about it
+2019-11-01 18:48:32 <imode> because I'm still unsure as to the results you want.
+2019-11-01 18:48:40 Joined: FreeFull
+2019-11-01 18:48:40 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 18:49:47 <imode> given AB,BC,AD,CD, assign a number to each letter such that, when each letter is substituted for its number, the pair is unique (i.e no pairs like (1, 1)).
+2019-11-01 18:49:53 <imode> is this closer to the thing you want.
+2019-11-01 18:50:00 <kspalaiologos> yeah
+2019-11-01 18:50:12 <kspalaiologos> and I need to calculate amount of ways a number can be assigned to them
+2019-11-01 18:50:17 <imode> alright, then what I gave you doesn't work.
+2019-11-01 18:50:38 <kspalaiologos> and the maximum number to assign is given
+2019-11-01 18:50:57 <imode> so you have your set of labels, the set 1 to N, where N is your given.
+2019-11-01 18:51:04 <imode> and you have your set of pairs.
+2019-11-01 18:51:18 <kspalaiologos> yes
+2019-11-01 18:51:39 <imode> can two letters have the same number but be in different pairs.
+2019-11-01 18:52:21 <kspalaiologos> e.g. pairs: AB CD, then yes, A=C=1 B=D=2 is a valid solution
+2019-11-01 18:52:40 <imode> that complicates things a bit.
+2019-11-01 18:53:02 <esowiki> 14[[07Template:TernTrue14]]4 N10 02https://esolangs.org/w/index.php?oldid=66911 5* 03Moon 5* (+162) 10Ternary True
+2019-11-01 18:54:34 <esowiki> 14[[07Template:TernUnkwn14]]4 N10 02https://esolangs.org/w/index.php?oldid=66912 5* 03Moon 5* (+165) 10Ternary Unknown
+2019-11-01 18:54:44 <imode> the stupidest thing that could possibly work is brute force search.
+2019-11-01 18:54:53 <imode> have you tried that.
+2019-11-01 18:54:57 <kspalaiologos> yes
+2019-11-01 18:55:04 <kspalaiologos> unsatisfying results
+2019-11-01 18:55:04 <imode> can I see some code.
+2019-11-01 18:55:17 <esowiki> 14[[07Template:TernFalse14]]4 N10 02https://esolangs.org/w/index.php?oldid=66913 5* 03Moon 5* (+162) 10Ternary False
+2019-11-01 18:55:23 <kspalaiologos> I'll send you over when I get to the PC I've been using
+2019-11-01 18:55:32 <imode> sure.
+2019-11-01 18:55:41 <shachaf> lf94: What sort of opinion do you want?
+2019-11-01 18:55:42 <imode> this problem has more than likely been solved somewhere before.
+2019-11-01 18:56:16 <lf94> shachaf: Do you think Zig is a viable long term lang?
+2019-11-01 18:56:28 <kspalaiologos> ^ heard about it
+2019-11-01 18:56:36 <imode> no.
+2019-11-01 18:56:39 <kspalaiologos> yet can't help, I don't know zig
+2019-11-01 18:57:06 <shachaf> I think Zig is going in a promising direction? I like a lot of the things they're doing.
+2019-11-01 18:57:10 <imode> universal long-standing concepts need to be simple enough and popular enough to withstand erosion by time.
+2019-11-01 18:57:23 <imode> zig has none of those characteristics. but it is nice.
+2019-11-01 18:57:58 <shachaf> I don't know what the question means. Certainly Zig is (rightly) pretty volatile right now.
+2019-11-01 18:59:54 <kspalaiologos> imode, any ideas?
