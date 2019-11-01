@@ -774,3 +774,12 @@
 2019-11-01 21:45:47 <oerjan> looks a bit defunct, though
 2019-11-01 21:58:30 <int-e> hmm, which bot went with that
 2019-11-01 21:58:50 <int-e> oh
+2019-11-01 22:03:36 <b_jonas> \o/ _o_
+2019-11-01 22:06:50 Quit: Phantom_Hoover (Ping timeout: 276 seconds)
+2019-11-01 22:06:50 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 22:08:05 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-01 22:08:05 <imode> a thought just occurred to me.
+2019-11-01 22:09:28 <imode> to do iteration through something, all you have to do is 1. spawn a process and send your ID to it. 2. send your collection to the process. 3. drop the handle to the process. 4. `receive` in a loop.
+2019-11-01 22:09:52 <imode> the generating process can send you data, but you can't send data to it.
+2019-11-01 22:10:00 <imode> but you don't need to.
+2019-11-01 22:10:11 <imode> interesting.
