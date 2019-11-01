@@ -197,3 +197,41 @@
 2019-11-01 15:28:17 <lf94> After the 70s everyone's been making garbage collected languages
 2019-11-01 15:28:38 <lf94> (Minus D, Swift and Rust)
 2019-11-01 15:29:39 <b_jonas> just look at how we unix people run unix programs on windows. sure, they don't integrate well into the environment, because they can like only access files if all characters in their names are in the locale-dependent default codepage, and you have to patch system() statements to add two double-quotes before the name of the program and one double-quote after the name of the program that you execute,
+2019-11-01 15:30:22 <b_jonas> and they can't printf floating-point numbers properly, but the end result is that with all that patching, you can usually run those programs, and windows libc supports them because there's a need for it
+2019-11-01 15:30:57 <b_jonas> every future system will support C and unix basics, so you can easily port programs from it, even if the system looks so different that you can't access its native resources to the fullest
+2019-11-01 15:30:58 <lf94> Is it difficult to re-implement C+
+2019-11-01 15:30:59 <lf94> ?
+2019-11-01 15:31:11 <b_jonas> even if it has to run the whole C program in an emulated virtual 32-bit address space etc
+2019-11-01 15:31:25 <b_jonas> it might be inefficient, but that doesn't matter when you're running old programs
+2019-11-01 15:31:53 Joined: kritixilithos
+2019-11-01 15:31:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 15:35:18 <lf94> Thoughts on Ada?
+2019-11-01 15:36:54 <b_jonas> also document the parts of your program that may have to be ported in the future, like Knuth does in TeX/Metafont/SGB. these are the parts that access the system or do IO, the parts that make some assumption that need not be true in all C environments, and the parts that they may want to optimize in a nonportable way
+2019-11-01 15:37:23 <b_jonas> that's what makes TeX/Metafont/SGB portable enough: you don't have to touch most of the code to port, just those specific parts
+2019-11-01 15:39:40 <lf94> b_jonas: interesting
+2019-11-01 15:39:46 <lf94> TeX is written in what?
+2019-11-01 15:39:54 <lf94> I thought it was Knuth's own lang
+2019-11-01 15:43:03 <fizzie> I think it's written in WEB, yes.
+2019-11-01 15:45:43 <b_jonas> it's written in CWEB
+2019-11-01 15:46:07 <fizzie> Is it? I thought it was just WEB, and used Web2C.
+2019-11-01 15:46:08 <b_jonas> which lets you combine the core with local "patch files" that replace the system-dependent parts (or any parts you want really) of the C code
+2019-11-01 15:46:20 <b_jonas> and then you compile the resulting code with a C compiler
+2019-11-01 15:46:26 <b_jonas> fizzie: I dunno
+2019-11-01 15:46:35 <b_jonas> fizzie: SGB is written in CWEB then
+2019-11-01 15:46:40 <int-e> WEB is Pascal based.
+2019-11-01 15:46:48 <b_jonas> I haven't really tried to look at how TeX is implemented
+2019-11-01 15:46:57 <fizzie> int-e: Right, but I think TeX systems use web2c instead.
+2019-11-01 15:47:05 <fizzie> https://ctan.org/pkg/web2c?lang=en
+2019-11-01 15:47:16 <int-e> fizzie: I'm sure it has been ported to CWEB
+2019-11-01 15:47:44 <fizzie> Well, the principle is language agnostic, anyway.
+2019-11-01 15:49:45 <b_jonas> I guess for portability we should count 6502 too. everyone will know how to emulate it with all its undocumented instructions and quirks of the NES and commodore 64 graphics and sound hardware, even 50 years from now.
+2019-11-01 15:50:21 <b_jonas> https://www.linusakesson.net/games/stranded64/index.php argues for using the commodore 64 for future portability
+2019-11-01 15:50:59 Joined: imode
+2019-11-01 15:50:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 15:53:59 <b_jonas> so write the program in the form of an NES cart. just remove its battery if it has battery-backed SRAM, because it's easier to put a new battery in 50 years from now than to clean up the spilled battery acid and repair the PCB
+2019-11-01 15:54:01 <int-e> Hmm, interesting. I was under the misconception that TeX had been ported to CWEB. Apparently not... (or maybe that happened and was abandoned).
+2019-11-01 15:56:17 <b_jonas> target the NTSC version though, people might not be able to get a PAL NES so easily anymore that far into the future
+2019-11-01 15:57:37 <b_jonas> oh yeah, writing the program _in_ TeX or Metafont (as opposed to _like_ TeX or Metafont) is an option too
+2019-11-01 15:57:54 <b_jonas> people will be able to find interpreters for those 50 years from now too, even if they don't use them for their original purpose anymore
+2019-11-01 15:59:04 <b_jonas> the problem is, writing a program in those languages is an exercise in masochism
+2019-11-01 15:59:27 <b_jonas> they're not as useful for general-purpose programming as the NES, commodore 64, C and unix, or MMIX
