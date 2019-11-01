@@ -135,3 +135,65 @@
 2019-11-01 14:58:53 <kspalaiologos> C
 2019-11-01 14:59:01 <kspalaiologos> c'mon, it's never going to die
 2019-11-01 14:59:23 <myname> it should, though
+2019-11-01 15:00:15 <int-e> I was not objecting to C, I merely wanted to offer some alternatives.
+2019-11-01 15:01:06 Joined: aloril
+2019-11-01 15:01:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FaeFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-01 15:05:33 <lf94> I don't want to use C because of bad type system, complex ecosystem, etc
+2019-11-01 15:05:38 <lf94> I was thinking lisp would probably be better
+2019-11-01 15:05:55 <kspalaiologos> you might end up like Reddit
+2019-11-01 15:06:18 <lf94> lol
+2019-11-01 15:06:34 <lf94> I want to use Rust, but Rust heavy as fuck.
+2019-11-01 15:06:44 <lf94> So I keep coming back, staring at Zig from a distance.
+2019-11-01 15:07:00 <lf94> I've actually used Rust for ~2 years now
+2019-11-01 15:07:03 <int-e> Honestly though... take any established language and chances are good that you can still run it 50 years from now. It may involve two layers of emulation.
+2019-11-01 15:08:00 <lf94> I should find a C with RAII and strong type system
+2019-11-01 15:08:04 <int-e> Oh, let's add vendor-neutral to the criteria.
+2019-11-01 15:08:15 <lf94> But in an adhoc fashion
+2019-11-01 15:08:27 <lf94> So that it can all be removed to compile with C compiler
+2019-11-01 15:08:38 <b_jonas> C
+2019-11-01 15:08:48 <int-e> Swift, golang... such things might still disappear very quickly if the corresponding company ever goes under.
+2019-11-01 15:09:42 <b_jonas> `? C
+2019-11-01 15:09:43 <HackEso> C is the language of��V�>WIד�.��Segmentation fault
+2019-11-01 15:11:28 <int-e> (I don't really expect either of those two to disappear.)
+2019-11-01 15:12:00 <lf94> int-e: thoughts on Zig?
+2019-11-01 15:12:09 <lf94> The developed it in a year basically
+2019-11-01 15:12:13 <lf94> The guy*
+2019-11-01 15:12:47 <lf94> int-e: what about JavaScript :^)))
+2019-11-01 15:14:31 <lf94> Lately I've been thinking more and more about interpreted languages
+2019-11-01 15:14:33 <int-e> lf94: I actually thought of that but hoped that nobody else would.
+2019-11-01 15:14:50 <int-e> lf94: Unfortunately I suspect it's here to stay as well.
+2019-11-01 15:15:04 <lf94> Basically an interpreted language trade-offs memory
+2019-11-01 15:15:09 <int-e> I don't know Zig.
+2019-11-01 15:15:22 <lf94> A compiled language typically needs more memory
+2019-11-01 15:15:32 <lf94> But you get way more control of the underlying system
+2019-11-01 15:15:40 <int-e> lf94: That's not really true anymore because of JITs.
+2019-11-01 15:15:53 <lf94> How complex is JIT
+2019-11-01 15:16:25 <int-e> (And Javascript would not be as dominant if people hadn't gone crazy in JIT compilation for JS a decade ago.)
+2019-11-01 15:16:26 <lf94> A compiled language, in the most basic case, is just turning language feature X into assembly Y
+2019-11-01 15:16:54 <lf94> Now with LLVM, I think there is no reason NOT to make it compiled
+2019-11-01 15:17:41 <int-e> Extrinsically JIT compilers use fairly crazy amounts of memory... they compile several versions of the same code, collect runtime profiling information to identify hot spots, require garbage collection... it adds up.
+2019-11-01 15:17:47 <lf94> int-e: check out Zig, for me. Your opinion matters a lot.
+2019-11-01 15:17:59 <b_jonas> I wouldn't trust javascript, because all the people who use javascript make programs that they throw away five or ten years ago, so you can't trust the language and its interpreters to be stable enough
+2019-11-01 15:18:26 <int-e> (Hmm, should've used a full stop rather than an ellipsis... those two sentences were not logically connected.)
+2019-11-01 15:18:34 <int-e> lf94: I really don't do requests.
+2019-11-01 15:18:47 <lf94> I guess with emulation, you can emulate compilers
+2019-11-01 15:18:58 <b_jonas> I recommend https://esolangs.org/wiki/UM-32 since it's based on like a thousand year old cult who made computers out of sand
+2019-11-01 15:19:19 <lf94> It would be cool to have some sort of crazy optimizing lambda calculus compiler
+2019-11-01 15:19:31 <lf94> int-e: Sorry, I didn't mean to offend
+2019-11-01 15:20:02 <int-e> Oh I'm not offended.
+2019-11-01 15:21:59 <b_jonas> that or MMIX, whose tagline is "a RISC computer for the third millennium", and people will be reading TAOCP fifty years from now so they'll also be interested to emulate MMIX
+2019-11-01 15:22:23 <lf94> I was going to target subleq vm
+2019-11-01 15:22:27 <lf94> as an alternative
+2019-11-01 15:22:32 <lf94> but it'd probably be very very slow.
+2019-11-01 15:22:34 <b_jonas> but C is pretty much the best option
+2019-11-01 15:23:04 <lf94> I should bundle tiny C compiler source with the project
+2019-11-01 15:23:09 <lf94> so someone can bootstrap
+2019-11-01 15:25:44 <b_jonas> lf94: the hard part is not the compiler or core language, but then environment and system access
+2019-11-01 15:25:52 <lf94> yeah...
+2019-11-01 15:25:58 <lf94> and C makes that the easiest
+2019-11-01 15:26:39 <b_jonas> C and unix together, yes
+2019-11-01 15:28:02 <lf94> https://en.wikipedia.org/wiki/History_of_programming_languages
+2019-11-01 15:28:06 <lf94> Man, this is pretty sad
+2019-11-01 15:28:17 <lf94> After the 70s everyone's been making garbage collected languages
+2019-11-01 15:28:38 <lf94> (Minus D, Swift and Rust)
+2019-11-01 15:29:39 <b_jonas> just look at how we unix people run unix programs on windows. sure, they don't integrate well into the environment, because they can like only access files if all characters in their names are in the locale-dependent default codepage, and you have to patch system() statements to add two double-quotes before the name of the program and one double-quote after the name of the program that you execute,
