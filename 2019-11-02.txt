@@ -456,3 +456,39 @@
 2019-11-02 21:59:38 <lambdabot> http://www.haskell.org/onlinereport/haskell2010/haskellch8.html
 2019-11-02 21:59:40 <arseniiv> :o
 2019-11-02 21:59:42 <b_jonas> which have the relevant Foreign modules
+2019-11-02 22:00:26 Joined: unlimiter
+2019-11-02 22:00:26 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], unlimiter, vertrex, wmww, zemhill
+2019-11-02 22:00:33 <b_jonas> eg. https://www.haskell.org/onlinereport/haskell2010/haskellch28.html#x36-27400028 defines the Foreign.C.CLong type
+2019-11-02 22:03:18 <b_jonas> so perhaps https://www.haskell.org/onlinereport/haskell2010/haskell.html#QQ2-15-159 would be a better link
+2019-11-02 22:03:24 <b_jonas> int-e: ^
+2019-11-02 22:06:14 Joined: arseniiv
+2019-11-02 22:06:30 <int-e> I don't like the anchor :P
+2019-11-02 22:06:50 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-11-02 22:07:31 <b_jonas> int-e: same without anchor then?
+2019-11-02 22:07:37 Quit: unlimiter (Quit: WeeChat 2.6)
+2019-11-02 22:07:38 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 22:07:51 <int-e> well then it's no longer the FFI specifically
+2019-11-02 22:07:54 <int-e> @where report
+2019-11-02 22:07:54 <lambdabot> http://www.haskell.org/onlinereport/haskell2010/ (more: http://www.haskell.org/haskellwiki/Definition)
+2019-11-02 22:08:03 <b_jonas> int-e: sure, but it's where you look up the ffi
+2019-11-02 22:08:08 <b_jonas> which might not be obvious
+2019-11-02 22:08:27 <b_jonas> I think it even has additions to the original ffi report
+2019-11-02 22:08:27 <int-e> I'm happy with the link to chapter 8
+2019-11-02 22:08:31 <b_jonas> ok
+2019-11-02 22:15:48 User Name: arseniiv = arseniiv_!~arseniiv@95.105.4.44.dynamic.ufanet.ru
+2019-11-02 22:15:48 <arseniiv> how did something like [miau] in English end up spelling “meow”? Prior to hearing the pronunciation I thought it should be something like [mju] and secretly thought how strange it should be to hear that from cats
+2019-11-02 22:16:04 Nick Change: arseniiv -> arseniiv
+2019-11-02 22:17:32 <b_jonas> arseniiv_: no, that's "mew" which is a synonym
+2019-11-02 22:25:33 Quit: heroux (Read error: Connection reset by peer)
+2019-11-02 22:25:33 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 22:25:53 Joined: heroux
+2019-11-02 22:25:53 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 22:26:07 <int-e> They're all terrible approximatiopns of the real sound.
+2019-11-02 22:26:37 <b_jonas> int-e: no surprise, because most animal calls don't follow the phonemics of any human language
+2019-11-02 22:26:47 <oerjan> shocking
+2019-11-02 22:26:50 <b_jonas> so they're transcribed a bit randomly
+2019-11-02 22:26:57 <b_jonas> *ribbit*
+2019-11-02 22:27:04 <int-e> quak!
+2019-11-02 22:27:47 Quit: heroux (Read error: Connection reset by peer)
+2019-11-02 22:27:47 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 22:28:06 <int-e> "ribbit" is pretty good, compared to that.
