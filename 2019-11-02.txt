@@ -91,3 +91,53 @@
 2019-11-02 01:29:53 <shachaf> What other bizarro addressing modes are there in amd64?
 2019-11-02 01:30:21 <shachaf> Also did I link this tcc SSE bug I found? https://lists.nongnu.org/archive/html/tinycc-devel/2019-10/msg00033.html
 2019-11-02 01:30:30 <shachaf> It was somewhat annoying to track down.
+2019-11-02 02:08:38 <kmc> what bizarro mode are you talking about
+2019-11-02 02:08:58 <kmc> the base + mult*index + offset mode is pretty reasonable, aside from the gas syntax for it
+2019-11-02 02:09:44 <kmc> with Intel syntax it'd be like  MOV EDI, DWORD PTR [4*EAX + EDX + 7]
+2019-11-02 02:09:51 <kmc> or what have you
+2019-11-02 02:09:53 <shachaf> Sure, but you have addr32, fs/gs, rip-relative, all sorts of things.
+2019-11-02 02:10:50 <shachaf> Presumably there are some things I don't know about.
+2019-11-02 02:11:10 <shachaf> Also there are all the little details, which I think I got right?
+2019-11-02 02:11:36 <shachaf> `asm lea (%r11), %rax
+2019-11-02 02:11:37 <HackEso> 0:  49 8d 03   lea (%r11),%rax
+2019-11-02 02:11:38 <shachaf> `asm lea (%r12), %rax
+2019-11-02 02:11:39 <HackEso> 0:  49 8d 04 24   lea (%r12),%rax
+2019-11-02 02:11:57 Quit: imode (Ping timeout: 265 seconds)
+2019-11-02 02:11:57 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 02:12:03 <shachaf> gotta include that sib byte for r12
+2019-11-02 02:12:46 <shachaf> Of course I haven't done SSE/AVX/whatever at all, or the VEX prefix, or anything like that.
+2019-11-02 02:14:25 <kmc> so much nonsense
+2019-11-02 02:15:02 <shachaf> what instruction encoding are you into
+2019-11-02 02:15:55 <fizzie> It doesn't even have a bit-reversed addressing mode.
+2019-11-02 02:16:30 <shachaf> What's that?
+2019-11-02 02:16:40 <fizzie> It's a thing DSPs have, for speeding up FFTs.
+2019-11-02 02:16:59 <fizzie> The TI TMS320C54x at least has it.
+2019-11-02 02:17:00 <shachaf> `asm lea (%r13), %rax
+2019-11-02 02:17:01 <HackEso> 0:  49 8d 45 00   lea 0x0(%r13),%rax
+2019-11-02 02:17:10 <shachaf> Right, r13 has a special case too.
+2019-11-02 02:17:21 <kmc> oh?
+2019-11-02 02:17:35 <shachaf> But I think that one is modrm+offset rather than modrm+SIB.
+2019-11-02 02:17:44 <shachaf> fizzie: That sounds pretty fancy. I should learn about fancy DSP things.
+2019-11-02 02:17:59 <fizzie> They also have circular addressing modes.
+2019-11-02 02:18:06 <fizzie> For FIR filters and suchlike.
+2019-11-02 02:18:47 <shachaf> Speaking of circles, what's the nicest way to write a circular buffer?
+2019-11-02 02:18:56 <shachaf> I don't like having a boolean to distinguish empty from full.
+2019-11-02 02:19:30 <fizzie> You can go with head + length instead of head + tail.
+2019-11-02 02:19:43 <fizzie> Then you have 0 and N for empty and full.
+2019-11-02 02:20:14 <shachaf> Hmm, I guess.
+2019-11-02 02:20:23 <fizzie> There's also that one fancy thing that I think Chrome used somewhere, or someone used somewhere.
+2019-11-02 02:20:25 <shachaf> What about the case where you have a separate reader and writer?
+2019-11-02 02:20:33 <shachaf> I know of some other tricks:
+2019-11-02 02:20:48 <shachaf> Map two copies of the same buffer in adjacent address space, so you get a contiguous buffer.
+2019-11-02 02:20:52 <fizzie> The Bip-Buffer, that's what I was thinking of.
+2019-11-02 02:21:01 <fizzie> The Bip-Buffer doesn't need the mapping trick.
+2019-11-02 02:21:29 <fizzie> (On the other hand, it may waste some space.)
+2019-11-02 02:22:30 <shachaf> Another trick I heard about is, instead of keeping the read/written size mod the buffer size, keep the total size, and mask it at use time.
+2019-11-02 02:22:40 <kmc> bip booper
+2019-11-02 02:24:48 <fizzie> I can't find any reference to anyone actually using the bip-buffer, just a few random implementations, so maybe I imagined that.
+2019-11-02 02:25:06 <shachaf> I'm reading about it now.
+2019-11-02 02:25:09 <fizzie> spsc-bip-buffer is "#108 in Concurrency" on lib.rs, which sounds like a TripAdvisor ranking.
+2019-11-02 02:26:44 <shachaf> This explanation doesn't seem very clear.
+2019-11-02 02:28:28 <shachaf> What's the benefit of this?
+2019-11-02 02:28:49 <kmc> what is lib.rs
+2019-11-02 02:28:59 <shachaf> Is it that writes are always contiguous (but reads might not be)?
