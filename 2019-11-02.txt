@@ -232,3 +232,34 @@
 2019-11-02 13:26:13 <b_jonas> "<kspalaiologos> I shouldn't have slept at math lessons" => meh, it's quite possible that many of your lessons were a waste of time. get some good books and learn from them instead.
 2019-11-02 13:27:34 <b_jonas> "<shachaf> Are pointers signed or unsigned?" => I don't think that distinction makes sense there. you don't high-multiply pointers, or compare pointers from two different arrays
 2019-11-02 13:29:13 <b_jonas> but if I have to choose, they're probably signed on x86_64 (because the top bits are usually the same unless you have a future cpu with a 2**64 bit long address space), unsigned on x86_16 (because they are mapped into x86_32's address space by zero filling),
+2019-11-02 13:32:01 <esowiki> 14[[07Kill14]]4 N10 02https://esolangs.org/w/index.php?oldid=66927 5* 03CMinusMinus 5* (+723) 10Created page with "'''Kill''' is a one-word, Python-interpreted, joke programming language created by [[User:CMinusMinus]]. The sole purpose of this language, is to delete the code. The only leg..."
+2019-11-02 13:35:27 <b_jonas> shikhin: for x86_32 though, signed vs unsigned does make a difference, and I don't know which one is used. either look it up in the ELF ABI docs, or allocate a 2.5 GB sized array (for which you need either an x86_64 kernel, or an x86_32 kernel configured to the slower 3GB+1GB address space split rather than the default 2GB+2GB split) and see how it's layed out and how pointers in it compare
+2019-11-02 13:35:33 <b_jonas> argh
+2019-11-02 13:35:39 <b_jonas> s/shikhin/shachaf/
+2019-11-02 13:35:49 <b_jonas> I suck at autocompletion
+2019-11-02 13:36:13 <esowiki> 14[[07Kill14]]4 10 02https://esolangs.org/w/index.php?diff=66928&oldid=66927 5* 03CMinusMinus 5* (+102) 10
+2019-11-02 13:36:33 <b_jonas> oerjan: ^
+2019-11-02 13:37:17 <b_jonas> "<int-e> To this day I find it confusing that the offset of relative jumps is relative to the address following the current instruction." => I find that one natural, and the other convention (which some cpu archs use) unnatural
+2019-11-02 13:37:42 <esowiki> 14[[07Kill14]]4 10 02https://esolangs.org/w/index.php?diff=66929&oldid=66928 5* 03CMinusMinus 5* (+22) 10
+2019-11-02 13:40:32 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=66930&oldid=66864 5* 03CMinusMinus 5* (+11) 10Added "Kill" Language
+2019-11-02 13:40:57 <esowiki> 14[[07Kill14]]4 10 02https://esolangs.org/w/index.php?diff=66931&oldid=66929 5* 03CMinusMinus 5* (+2) 10
+2019-11-02 13:42:58 <esowiki> 14[[07Kill14]]4 10 02https://esolangs.org/w/index.php?diff=66932&oldid=66931 5* 03CMinusMinus 5* (+3) 10
+2019-11-02 13:43:18 <b_jonas> "<shachaf> Maybe it would be better for APIs to support reading and writing in multiple chunks." => they already do, if you mean multiple chunks in memory assembled to a single chunk in the file descriptor or back, with preadv/pwritev, plus the aio api eg. aio_write is parametrized like that by default (I wanted to say "works like that by default" but it's probably not correct to use "works" for the
+2019-11-02 13:43:24 <b_jonas> linux aio api at all)
+2019-11-02 13:43:55 <b_jonas> hmm no, I remembered wrong, aio_write doesn't use preadv-style scatter-gather addressing
+2019-11-02 13:44:10 <shachaf> I'm not talking about OS APIs, which support this already, but other APIs.
+2019-11-02 13:44:10 <esowiki> 14[[07User:CMinusMinus14]]4 10 02https://esolangs.org/w/index.php?diff=66933&oldid=66903 5* 03CMinusMinus 5* (+27) 10
+2019-11-02 13:44:12 <b_jonas> what api was it than otehr tahn preadv/pwritev, I wonder? I'm sure there was another
+2019-11-02 13:44:24 <shachaf> Presumably that's also what fizzie is talking about also.
+2019-11-02 13:44:38 <shachaf> Just some arbitrary function in your code like parse_thing() that takes a buffer and a length.
+2019-11-02 13:44:43 <b_jonas> what other APIs then?
+2019-11-02 13:44:47 <b_jonas> ah
+2019-11-02 13:45:25 <b_jonas> shachaf: I think https://laurikari.net/tre/ allows you match a regex to a string that is not continuous, and even from a string that's read lazily
+2019-11-02 13:45:56 <shachaf> OK, but regex matching is one special-case API which is already naturally written as a state machine anyway.
+2019-11-02 13:46:18 <b_jonas> but of course continuous buffers have a lot of advantage
+2019-11-02 13:46:20 <b_jonas> easier to optimize
+2019-11-02 13:46:42 <b_jonas> I worked with bitmap images at my previous job, and I wouldn't like a non-continuous bitmap image
+2019-11-02 13:49:01 <b_jonas> if I was given one, I'd just copy it into a proper continuous buffer (that is also aligned so that its rows are padded to a size that is 64 bytes long modulo 128 bytes; possibly padded a little at the beginning and end so I can read past the ends; and with the color channels either together and padded as if you had four channels if the input has three, or separately each one in a layer, depending on
+2019-11-02 13:49:07 <b_jonas> what I want to do with the image)
+2019-11-02 13:57:06 <shachaf> Of course APIs can do that, and keep their own buffers.
+2019-11-02 13:57:29 <shachaf> But then you have a bunch of different buffers all the over the system, which doesn't seem that nice.
