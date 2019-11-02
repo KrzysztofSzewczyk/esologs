@@ -188,3 +188,7 @@
 2019-11-02 04:35:46 <imode> a bidirectional one as well. `number` takes a number and a process to send that value to. `bitvector` takes a process, receives a number and sends the bits of that number to the taken process. `sum` takes a process, receives a number and keeps a running tally of that number which is available on request.
 2019-11-02 04:35:55 <imode> you can do lazy evaluation with that.
 2019-11-02 04:37:04 <imode> you can design a process that takes two handles, receives something and broadcasts it to the two processes it has handles to.
+2019-11-02 05:01:36 <imode> https://hatebin.com/shiyqdhisf not bad.
+2019-11-02 05:04:17 <imode> bitvector's logic is wrong, it should send zero on completion.
+2019-11-02 05:07:42 <imode> https://hatebin.com/lriwwfiijo that's better.
+2019-11-02 05:09:16 <imode> I feel like you can get pretty granular with this.
