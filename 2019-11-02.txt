@@ -5,3 +5,75 @@
 2019-11-02 00:26:00 <olsner> I do like to think that x86-64 has signed pointers the way they're usually used (with kernel space in negative addresses)
 2019-11-02 00:29:43 <shachaf> Right, that's the sort of thing I was thinking.
 2019-11-02 00:29:49 <shachaf> Maybe it makes no difference.
+2019-11-02 00:30:27 Quit: imode (Ping timeout: 265 seconds)
+2019-11-02 00:30:27 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 00:32:20 <oerjan> . o O ( the difference is negative )
+2019-11-02 00:33:10 <int-e> shachaf: signs are pointers, so pointers should be signed, is that what you mean?
+2019-11-02 00:33:42 <shachaf> Exactly.
+2019-11-02 00:33:52 <shachaf> But then what are cosigns?
+2019-11-02 00:34:26 <int-e> They are orthogonal to signs.
+2019-11-02 00:34:56 <shachaf> 17:	76 06                	jbe    1f <foo+0x1f>
+2019-11-02 00:34:59 <shachaf> So confusil.
+2019-11-02 00:35:27 <shachaf> I just learned about gas "1f" label syntax a few days ago, and I kept thinking it was a 0x1f offset.
+2019-11-02 00:35:34 <shachaf> This time it actually is a 0x1f offset!
+2019-11-02 00:35:43 <int-e> :)
+2019-11-02 00:36:17 <shachaf> (To be fair, this is objdump output, so it wouldn't use the 1f syntax.)
+2019-11-02 00:37:18 <int-e> To this day I find it confusing that the offset of relative jumps is relative to the address following the current instruction.
+2019-11-02 00:37:37 <int-e> 0x19 + 0x06 = 0x1f
+2019-11-02 00:37:55 <shachaf> Yes.
+2019-11-02 00:38:20 <shachaf> In particular I was trying to figure out a jump target in gdb a few days and I computed it relative to $rip without thinking.
+2019-11-02 00:38:42 <shachaf> No, not a jump target, rip-relative addressing.
+2019-11-02 00:39:01 <int-e> It makes sense, of course (the instruction has been decoded, and correspondingly, the IP advanced, when the jump happens)
+2019-11-02 00:39:28 <int-e> (thinking in terms of *very* old processors like 8086)
+2019-11-02 00:40:29 <shachaf> Sure.
+2019-11-02 00:41:54 <shachaf> Is rip-relative addressing the same way? I guess it must be but I've already forgotten.
+2019-11-02 00:42:33 <int-e> yes it is.
+2019-11-02 00:43:03 <shachaf> Yep, I just checked.
+2019-11-02 00:43:23 <shachaf> I should know this since I implemented most of the addressing modes recently.
+2019-11-02 00:43:54 <shachaf> Though not some of the weird ones like 64-bit (%eax).
+2019-11-02 00:43:57 <shachaf> Does anyone use that?
+2019-11-02 00:44:20 <int-e> Actually I think so.
+2019-11-02 00:44:29 <shachaf> `asm addr32; mov (%rax),%rdi
+2019-11-02 00:44:30 <HackEso> 0:  67 48 8b 38   mov (%eax),%rdi
+2019-11-02 00:44:45 Joined: imode
+2019-11-02 00:44:45 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 00:44:58 <int-e> Having 32bit pointers is still attractive to conserve memory.
+2019-11-02 00:45:24 <shachaf> But you can use them with 64-bit registers, can't you?
+2019-11-02 00:45:43 <int-e> Yes.
+2019-11-02 00:45:44 <olsner> since you get zero-extension for most operations, you can usually just use %rax with a 32-bit address and save a byte
+2019-11-02 00:45:51 <shachaf> At least if you write something like mov foo, %eax; mov (%rax), bar
+2019-11-02 00:46:24 <shachaf> I wonder, is %eax sign-extended when you use (%eax)?
+2019-11-02 00:46:27 <shachaf> I imagine not.
+2019-11-02 00:46:46 <int-e> But I can make up reasons... getting proper overflow behavior for (%eax + 4*%esi + 0xbase)....
+2019-11-02 00:47:17 <olsner> but what would use something like that in 64-bit code?
+2019-11-02 00:47:55 <shachaf> When do you want overflow behavior for addresses?
+2019-11-02 00:48:07 <int-e> olsner: I *would* hope that this is a purely theoretical reason :)
+2019-11-02 00:48:18 <olsner> but an interesting side-effect if the address size affects all of the address calculation or just the size of the input registers
+2019-11-02 00:49:15 <int-e> Clearly I expect that it affects the whole computation.
+2019-11-02 00:49:28 <shachaf> `asm mov (%eax,%edx), %edi
+2019-11-02 00:49:29 <HackEso> 0:  67 8b 3c 10   mov (%eax,%edx,1),%edi
+2019-11-02 00:49:36 <shachaf> `asm mov (%rax,%edx), %edi
+2019-11-02 00:49:37 <HackEso> ​/tmp/asm.s: Assembler messages: \ /tmp/asm.s:1: Error: `(%rax,%edx)' is not a valid base/index expression \ /tmp/asm.s: Assembler messages: \ /tmp/asm.s:1: Error: missing ')' \ /tmp/asm.s:1: Error: junk `)' after expression
+2019-11-02 00:49:51 <shachaf> `asm addr32; mov (%rax,%rdx), %edi
+2019-11-02 00:49:51 <HackEso> 0:  67 8b 3c 10   mov (%eax,%edx,1),%edi
+2019-11-02 00:50:23 <shachaf> `asm addr32; gs; mov (%rax,%rdx), %edi
+2019-11-02 00:50:24 <HackEso> 0:  67 65 8b 3c 10   mov %gs:(%eax,%edx,1),%edi
+2019-11-02 00:50:25 <shachaf> `asm gs; addr32; mov (%rax,%rdx), %edi
+2019-11-02 00:50:26 <HackEso> 0:  65 67 8b 3c 10   mov %gs:(%eax,%edx,1),%edi
+2019-11-02 00:50:35 <shachaf> Just write the prefixes in any order you like. So convenient.
+2019-11-02 00:50:50 <shachaf> `asm data16; mov (%rax,%rdx), %edi
+2019-11-02 00:50:51 <HackEso> 0:  66 8b 3c 10   mov (%rax,%rdx,1),%di
+2019-11-02 00:51:05 <shachaf> Golly.
+2019-11-02 00:51:30 <shachaf> `asm movq (%rax), %xmm0
+2019-11-02 00:51:31 <HackEso> 0:  f3 0f 7e 00   movq (%rax),%xmm0
+2019-11-02 00:51:36 <shachaf> `asm movq (%eax), %xmm0
+2019-11-02 00:51:37 <HackEso> 0:  67 f3 0f 7e 00   movq (%eax),%xmm0
+2019-11-02 00:53:11 <int-e> oh right, that was the gas syntax for these funny addressing modes
+2019-11-02 00:53:38 <int-e> offset(%base,%index,multiplier)
+2019-11-02 00:54:37 <olsner> possible dumb reason: someone planned/built a 32-bit x86 emulator (before compatibility mode was invented?) and convinced AMD to provide support for extra-stupid JIT compilers that just add prefixes to specific instructions
+2019-11-02 00:55:35 <int-e> olsner: sorry, I lost track... reason for what?
+2019-11-02 00:55:42 <olsner> for having the 32-bit override
+2019-11-02 00:55:58 <int-e> ah.
+2019-11-02 00:56:11 <int-e> plausible enough
+2019-11-02 00:57:11 <int-e> I also bet this was rather cheap to support.
+2019-11-02 00:58:16 <int-e> In context... which is a CPU that supports real mode (which has 32 bit addressing mode via the address size prefix) and 32 bit mode support for legacy software.
