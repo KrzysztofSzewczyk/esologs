@@ -331,3 +331,29 @@
 2019-11-02 20:16:43 <int-e> myname: yeah but you know what I meant anyway
 2019-11-02 20:17:34 <int-e> Also obviously the right way to write such a regular expression is to not do it. :P
 2019-11-02 20:17:50 <int-e> (But the second best way is to write a program to do it for you.)
+2019-11-02 20:38:53 <b_jonas> int-e: yeah, there are programs that can automatically convert a nondet finite automaton to a regex, even with the blowup
+2019-11-02 20:39:16 <b_jonas> I know of one
+2019-11-02 20:39:30 <b_jonas> but there are probably more because it's a known algorithm
+2019-11-02 20:40:08 Quit: imode (Ping timeout: 276 seconds)
+2019-11-02 20:40:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill
+2019-11-02 20:40:26 <int-e> sure
+2019-11-02 20:41:08 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-11-02 20:41:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 20:41:31 <int-e> But do they also try to optimize the result size...
+2019-11-02 20:44:40 <b_jonas> int-e: obviously the regex would be shorter in perl regex syntax, where you can use the "recursion" feature, not to build recursive regex, but to reuse longer regex multiple times
+2019-11-02 20:44:59 <int-e> yeah that would definitely help
+2019-11-02 20:52:31 <olsner> hm, surprisingly large blowup from such a reasonably sized state machine
+2019-11-02 20:52:57 Quit: dingwat (Quit: Connection closed for inactivity)
+2019-11-02 20:52:57 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 20:55:19 <int-e> it's easily O(3^n) where n is the number of states
+2019-11-02 20:55:59 Joined: oerjan
+2019-11-02 20:55:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 20:56:48 <int-e> So... let me try... 5 states (remainders 0..4 only): 689; 6 states: 2701; 7 states: 10793
+2019-11-02 20:57:31 <int-e> That really looks a bit worse than O(3^n). But of course the number of states is still small.
+2019-11-02 20:57:44 <int-e> But wait. O(4^n) actually makes more sense.
+2019-11-02 20:57:57 <int-e> And it looks pretty close to that.
+2019-11-02 20:58:04 <int-e> Hi oerjan.
+2019-11-02 20:59:11 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-02 20:59:11 <oerjan> hi int-e
+2019-11-02 20:59:56 Joined: MDude
+2019-11-02 20:59:56 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
