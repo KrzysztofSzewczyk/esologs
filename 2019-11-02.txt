@@ -141,3 +141,30 @@
 2019-11-02 02:28:28 <shachaf> What's the benefit of this?
 2019-11-02 02:28:49 <kmc> what is lib.rs
 2019-11-02 02:28:59 <shachaf> Is it that writes are always contiguous (but reads might not be)?
+2019-11-02 02:32:15 Joined: imode
+2019-11-02 02:32:15 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 02:42:13 <fizzie> AIUI, the reads are contiguous too.
+2019-11-02 02:43:40 <shachaf> Maybe I don't understand the diagram in https://www.codeproject.com/Articles/3479/The-Bip-Buffer-The-Circular-Buffer-with-a-Twist
+2019-11-02 02:44:06 <shachaf> What happens in 5? From their description it looks like both A and B contain data.
+2019-11-02 02:44:35 <fizzie> Right, reads of multiple writes are not necessarily contiguous.
+2019-11-02 02:45:01 <fizzie> Maybe.
+2019-11-02 02:45:13 <shachaf> Hmm.
+2019-11-02 02:45:31 <shachaf> I guess the idea is that a library might want to write a fixed-size thing and you want to make sure to be able to fit it in the buffer?
+2019-11-02 02:45:44 <shachaf> And another library can also interpret that fixed-size thing since it's contiguous.
+2019-11-02 02:46:33 <shachaf> (Or, y'know, non-fixed-size.)
+2019-11-02 02:46:38 <fizzie> Or, no, maybe reads of any size can be contiguous too, it's just that in stage 5 if you wanted to read more than the orange bit some copying would be involved.
+2019-11-02 02:46:51 <fizzie> ...or maybe not.
+2019-11-02 02:47:32 <shachaf> As in copying all the data in the buffer?
+2019-11-02 02:47:37 <fizzie> Yeah, I was looking at the API, for reading you just ask the thing for the largest contiguous block.
+2019-11-02 02:47:38 <shachaf> Regular circular buffers have this property too.
+2019-11-02 02:47:44 <shachaf> Which API?
+2019-11-02 02:48:05 <fizzie> Well, the BipBuffer class described there.
+2019-11-02 02:48:21 <fizzie> But I guess it's still useful, if you (say) put length-delimited protos there.
+2019-11-02 02:48:29 <shachaf> Oh, the one on that page.
+2019-11-02 02:48:51 <shachaf> I guess that's true?
+2019-11-02 02:48:56 <fizzie> As long as you write the thing into one contiguous (reserved) block, the reading side can also read it as one contiguous block.
+2019-11-02 02:49:09 <shachaf> Right.
+2019-11-02 02:49:24 <shachaf> Maybe it would be better for APIs to support reading and writing in multiple chunks.
+2019-11-02 02:49:45 <fizzie> Maybe.
+2019-11-02 02:49:46 <shachaf> I guess there's some concern that the API will want to keep an internal buffer and do some copying in order to support that.
+2019-11-02 02:50:28 <shachaf> I think the mmap solution is better if you want things to be contiguous.
