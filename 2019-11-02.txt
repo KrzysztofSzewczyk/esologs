@@ -263,3 +263,19 @@
 2019-11-02 13:49:07 <b_jonas> what I want to do with the image)
 2019-11-02 13:57:06 <shachaf> Of course APIs can do that, and keep their own buffers.
 2019-11-02 13:57:29 <shachaf> But then you have a bunch of different buffers all the over the system, which doesn't seem that nice.
+2019-11-02 14:10:23 <b_jonas> shachaf: no, in my experience once you have a continuous buffers, I could use them with multiple apis in place for image processing
+2019-11-02 14:10:50 <b_jonas> there are subtleties about pixel formats, but in practice most of the time I didn't have to do unnecessary copies
+2019-11-02 14:11:49 <shachaf> OK, but maybe you have one buffer for parsing an HTTP request, and then another buffer for parsing the image it contains, or whatever.
+2019-11-02 14:12:11 <shachaf> Presumably you want to avoid a bunch of copies if you can.
+2019-11-02 14:12:25 <b_jonas> shachaf: the HTTP buffer has compressed images
+2019-11-02 14:12:40 <shachaf> Sure, another buffer for decompression.
+2019-11-02 14:12:46 <b_jonas> I have to decode those to raw uncompressed anyway if I want to work with
+2019-11-02 14:12:58 <shachaf> I'm describing the kind of thing you might want to avoid.
+2019-11-02 14:13:06 <shachaf> Can your decompression algorithm operate directly on the circular buffer?
+2019-11-02 14:13:07 <b_jonas> but in practice when I get an image from HTTP, I save it for multiple uses rather than process directly
+2019-11-02 14:14:11 <b_jonas> shachaf: hmm, I don't know the details, I usually decompressed images with either ImageMagick or ffmpeg, and read them from a regular file
+2019-11-02 14:16:01 <b_jonas> shachaf: for decoding video, I did store the uncompressed frames sparsely, so each frame can be anywhere in memory and they can be reused as a circular buffer
+2019-11-02 14:20:00 <b_jonas> shachaf: when the video is read from network directly, rather than local file, then ffmpeg does the reading, so I don't know what kind of buffer it uses
+2019-11-02 14:20:50 <b_jonas> admittedly I used ffmpeg as a separate process, so there are two copies of the uncompressed raw data there
+2019-11-02 14:20:58 <b_jonas> so I guess I was wrong above
+2019-11-02 14:21:09 <b_jonas> three copies if I want a planewise format
