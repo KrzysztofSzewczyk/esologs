@@ -376,3 +376,83 @@
 2019-11-02 21:28:03 <b_jonas> oerjan: sorry, that should have highlighted olsner
 2019-11-02 21:28:39 <b_jonas> fizzie: the https://esolangs.org/logs/all.html website seems to be down
 2019-11-02 21:28:57 <int-e> I mean, cosh(x) - 1 suffers from terrible cancellation around 0, but 0.5 * (expm1(x) + expm1(-x)) still suffers from cancellation (expm1(x) = x + x^2/2 + O(x^3), expm1(-x) = -x + x^2/2 + O(x^3), cosm1(x) = x^2/2 + O(x^3)...)
+2019-11-02 21:30:35 <int-e> So exp1m(log1p(sinh(x)**2)/2) may be better.
+2019-11-02 21:31:06 <b_jonas> arseniiv: the fourth edition of Knuth volume 2, only it's not yet written
+2019-11-02 21:31:07 <int-e> Modulo function names.
+2019-11-02 21:31:49 <arseniiv> b_jonas: :(
+2019-11-02 21:32:31 <arseniiv> int-e: ah, I suspected my definition would have a flaw
+2019-11-02 21:32:51 <b_jonas> ah sorry, that will be third edition
+2019-11-02 21:32:54 <b_jonas> no wait
+2019-11-02 21:32:56 <b_jonas> fourth edition
+2019-11-02 21:33:06 <b_jonas> anyway, until that time, you can look at the existing third edition
+2019-11-02 21:33:31 <b_jonas> it doesn't talk about IEEE 754, but it does talk about floating point in general
+2019-11-02 21:34:03 Quit: atslash (Quit: This computer has gone to sleep)
+2019-11-02 21:34:03 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, OugiOshino, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:34:08 <b_jonas> MIX uses a different floating point format that shifts by mix bytes, rather than bits, but the main text considers other bases too, including base 2
+2019-11-02 21:35:44 <b_jonas> what the current edition doesn't consider is features specific to IEEE 754, which are infinities and NaNs
+2019-11-02 21:36:23 <fizzie> b_jonas: I'm not sure what's up with it, my monitoring has been saying every now and then that it's down for a bit.
+2019-11-02 21:36:27 <fizzie> Working for me now.
+2019-11-02 21:36:35 <arseniiv> b_jonas: mix bytes => wait, there are its own bytes? How many bits?
+2019-11-02 21:36:49 <b_jonas> arseniiv: either six bits, or two decimal digits
+2019-11-02 21:37:28 <b_jonas> arseniiv: technically the book says the byte has a range from 0 to a maximum that is between 63 and 99 inclusive, so a binary MIX goes up to 63, a decimal up to 99, a ternary up to 81
+2019-11-02 21:37:42 <b_jonas> arseniiv: see our wiki article
+2019-11-02 21:37:51 <b_jonas> (and the book itself)
+2019-11-02 21:38:30 <arseniiv> I wonder if MIX-related issues don’t make the text obscurer
+2019-11-02 21:39:17 <arseniiv> yeah, I was to look for searching if I have it somewhere
+2019-11-02 21:39:22 <arseniiv> don’t remember
+2019-11-02 21:40:27 <b_jonas> have what?
+2019-11-02 21:40:30 <b_jonas> the books?
+2019-11-02 21:43:23 Nick Change: OugiOshino -> BWBellairs
+2019-11-02 21:43:23 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:44:08 <arseniiv> b_jonas: hm I don’t seem to find there much of the redundant recipes I was to look for
+2019-11-02 21:45:11 <b_jonas> fizzie: yes, it's up now
+2019-11-02 21:45:13 <arseniiv> b_jonas: yeah, it seems I have that volume here, but the contents page doesn’t look too promising
+2019-11-02 21:45:21 Joined: heroux
+2019-11-02 21:45:21 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:46:08 <arseniiv> I mean, for basics I have that “What every computer scientist should know about FP arithmetic” article reprint-as-an-appendix-from-some-Sun-manual
+2019-11-02 21:46:40 <int-e> texlive's documentation packages are ridiculously big
+2019-11-02 21:47:45 <arseniiv> but the careful examination of numeric issues by myself seems unnecessary if… hm I wonder if I should look at Numpy code
+2019-11-02 21:49:01 <b_jonas> arseniiv: TAOCP vol 2 almost certainly isn't enough for what you asked,
+2019-11-02 21:49:08 <b_jonas> but I'm not familiar with other books to recommend
+2019-11-02 21:49:25 <b_jonas> I haven't read many such books really
+2019-11-02 21:49:45 Quit: heroux (Read error: Connection reset by peer)
+2019-11-02 21:49:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:49:47 <int-e> I'm aware that there *are* numerical recipe books...
+2019-11-02 21:50:11 Joined: heroux
+2019-11-02 21:50:12 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:50:41 <arseniiv> b_jonas: ah, OK
+2019-11-02 21:51:06 <arseniiv> int-e: yeah, they just seem elusive
+2019-11-02 21:51:21 <b_jonas> there's Stoyan Gisbert's numerical analysis textbook, which is freely available online, but I think only exists in Hungarian. I don't know if there's any translation
+2019-11-02 21:51:57 <int-e> @where floating-point
+2019-11-02 21:51:57 <lambdabot> "What Every Programmer Should Know About Floating-Point Arithmetic" at <http://floating-point-gui.de/> and "What Every Computer Scientist Should Know About Floating-Point Arithmetic" by David
+2019-11-02 21:51:57 <lambdabot> Goldberg in 1991 at <http://docs.sun.com/source/806-3568/ncg_goldberg.html> and <http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.102.244>
+2019-11-02 21:52:01 <olsner> b_jonas: finally a good excuse to learn hungarian?
+2019-11-02 21:52:02 <b_jonas> it has three volumes, the first one is an introduction one that goes pretty far, and then the second and third are about solving partial differential equations numerically
+2019-11-02 21:52:21 <b_jonas> therea are certainly more good books, I'm just not familiar with them
+2019-11-02 21:52:57 <b_jonas> for the logs, IIRC Stoyan Gisbert's book is available somewhere from http://www.tankonyvtar.hu/hu/bongeszes , but that server is down right now
+2019-11-02 21:53:31 <b_jonas> it says that it's down until 2019-11-03 though, so unless you see the date autoincrement, it'll hopefully come up later
+2019-11-02 21:53:39 <arseniiv> <b_jonas> and then the second and third are about solving partial differential equations numerically => (aaaah!! you know, this is the night here, how would I go to sleep now)
+2019-11-02 21:54:19 <arseniiv> (I’m afraid of numeric PDEs after my naive Shrödinger model blown up)
+2019-11-02 21:54:44 <b_jonas> arseniiv: right, the whole thing is so tricky that it's no wonder you need two volumes on it
+2019-11-02 21:54:51 <int-e> pfft.
+2019-11-02 21:54:51 Quit: heroux (Read error: Connection reset by peer)
+2019-11-02 21:54:52 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:54:56 <int-e> @where ﬃ
+2019-11-02 21:54:56 <lambdabot> http://www.cse.unsw.edu.au/~chak/haskell/ffi/
+2019-11-02 21:55:00 <b_jonas> I think the first volume covers ODEs and numerical integration
+2019-11-02 21:55:10 <b_jonas> int-e: lol
+2019-11-02 21:55:22 Joined: heroux
+2019-11-02 21:55:22 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 21:55:29 <int-e> dead link tjhough
+2019-11-02 21:56:32 <b_jonas> int-e: https://www.haskell.org/onlinereport/haskell2010/haskellch8.html#x15-1490008 is probably the current one
+2019-11-02 21:56:44 <b_jonas> it's integrated to the main standard from the separate tech report
+2019-11-02 21:56:57 <int-e> @where+ ﬃ http://www.haskell.org/onlinereport/haskell2010/haskellch8.html
+2019-11-02 21:56:57 <lambdabot> Nice!
+2019-11-02 21:57:29 <b_jonas> @hwere ffi
+2019-11-02 21:57:30 <lambdabot> http://www.haskell.org/onlinereport/haskell2010/haskellch8.html
+2019-11-02 21:57:47 <int-e> yeah that's what I copied
+2019-11-02 21:59:33 <b_jonas> that's not standalone though, you need most of chapters 24 to 37 inclusive
+2019-11-02 21:59:38 <arseniiv> @ʍere ffi -- just testing
+2019-11-02 21:59:38 <lambdabot> http://www.haskell.org/onlinereport/haskell2010/haskellch8.html
+2019-11-02 21:59:40 <arseniiv> :o
+2019-11-02 21:59:42 <b_jonas> which have the relevant Foreign modules
