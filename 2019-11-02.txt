@@ -1,0 +1,7 @@
+2019-11-02 00:23:07 <shachaf> Are pointers signed or unsigned?
+2019-11-02 00:23:42 <olsner> they could be
+2019-11-02 00:24:42 <shachaf> How should I think of them?
+2019-11-02 00:24:50 <olsner> what does it actually mean though? when do you have sign/zero-extension of pointers where you could tell the difference?
+2019-11-02 00:26:00 <olsner> I do like to think that x86-64 has signed pointers the way they're usually used (with kernel space in negative addresses)
+2019-11-02 00:29:43 <shachaf> Right, that's the sort of thing I was thinking.
+2019-11-02 00:29:49 <shachaf> Maybe it makes no difference.
