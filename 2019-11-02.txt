@@ -181,3 +181,10 @@
 2019-11-02 04:17:47 <lambdabot> KSEA 020353Z 01013KT 10SM SCT200 09/03 A3037 RMK AO2 SLP293 T00890033
 2019-11-02 04:27:11 Joined: hppavilion[1]
 2019-11-02 04:27:12 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, Bowserinator, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, OugiOshino, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-02 04:32:45 <imode> using the thought I had earlier, you can build interesting data pipelines.
+2019-11-02 04:33:14 <imode> sum $1234 bitvector
+2019-11-02 04:33:45 <imode> or sum bitvector $1234 number
+2019-11-02 04:34:30 <imode> because you push a handle to the concurrent process to the queue, any further processes can be constructed, passed that handle, and form a linear dataflow graph.
+2019-11-02 04:35:46 <imode> a bidirectional one as well. `number` takes a number and a process to send that value to. `bitvector` takes a process, receives a number and sends the bits of that number to the taken process. `sum` takes a process, receives a number and keeps a running tally of that number which is available on request.
+2019-11-02 04:35:55 <imode> you can do lazy evaluation with that.
+2019-11-02 04:37:04 <imode> you can design a process that takes two handles, receives something and broadcasts it to the two processes it has handles to.
