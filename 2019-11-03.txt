@@ -127,3 +127,70 @@
 2019-11-03 19:24:39 <esowiki> 14[[07Pac14]]4 10 02https://esolangs.org/w/index.php?diff=66945&oldid=66939 5* 03CMinusMinus 5* (+711) 10
 2019-11-03 19:26:05 <esowiki> 14[[07Pac14]]4 10 02https://esolangs.org/w/index.php?diff=66946&oldid=66945 5* 03CMinusMinus 5* (+7) 10
 2019-11-03 19:27:12 <esowiki> 14[[07Pac14]]4 10 02https://esolangs.org/w/index.php?diff=66947&oldid=66946 5* 03CMinusMinus 5* (+54) 10
+2019-11-03 19:33:21 <kritixilithos> imode: yes
+2019-11-03 19:34:14 <kritixilithos> okay thanks, I'll try to figure out the details myself
+2019-11-03 19:35:12 <lf94> imode what do you think of code vs spec
+2019-11-03 19:35:37 <lf94> some say they are one in the same. Typically, I think this way, but as I think about it, it seems very wrong way to think.
+2019-11-03 19:35:42 <lf94> code is based on a shit ton of assumptions
+2019-11-03 19:35:48 <lf94> because of the underlying impl
+2019-11-03 19:35:56 <lf94> spec is just english
+2019-11-03 19:42:30 <esowiki> 14[[07Pac14]]4 10 02https://esolangs.org/w/index.php?diff=66948&oldid=66947 5* 03CMinusMinus 5* (+59) 10
+2019-11-03 19:43:03 <esowiki> 14[[07Pac14]]4 10 02https://esolangs.org/w/index.php?diff=66949&oldid=66948 5* 03CMinusMinus 5* (+17) 10
+2019-11-03 19:44:14 <esowiki> 14[[07Pac14]]4 10 02https://esolangs.org/w/index.php?diff=66950&oldid=66949 5* 03CMinusMinus 5* (-12) 10
+2019-11-03 19:50:46 <imode> lf94: code vs. spec? in an ideal world, they'd be one and the same.
+2019-11-03 19:51:11 <lf94> how can you say that though, when code depends on an underlying implementation?
+2019-11-03 19:51:20 <lf94> 1 = 1 can mean anything in code.
+2019-11-03 19:51:25 <imode> define underlying implementation. you obviously have a case in mind.
+2019-11-03 19:51:35 <lf94> so like
+2019-11-03 19:51:42 <lf94> if we used C to define a spec
+2019-11-03 19:51:59 <lf94> it wouldn't be good, because C has undefined behavior, thus the spec has undefined behavior...
+2019-11-03 19:52:07 <lf94> plus the semantics can change based on the variant of C
+2019-11-03 19:52:12 Quit: kritixilithos (Quit: leaving)
+2019-11-03 19:52:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 19:52:24 <lf94> at least when you write in english, it is direct
+2019-11-03 19:52:37 <imode> that's not how that works. just because C's standard contains undefined behavior doesn't mean the specification (reference implementation, if you will) has undefined behavior.
+2019-11-03 19:52:56 <imode> just because english has the capability to be ambiguous does not mean a specification written in english is ambiguous.
+2019-11-03 19:53:10 <lf94> right, we can be very specific and unambigious
+2019-11-03 19:53:14 <lf94> but with C it really depends
+2019-11-03 19:53:18 <imode> it really doesn't.
+2019-11-03 19:53:31 <lf94> can you think of a way to prove yourself wrong?
+2019-11-03 19:53:38 <imode> can you provide proof of your statements?
+2019-11-03 19:53:55 <imode> or even what you mean by "spec" vs "code".
+2019-11-03 19:54:19 * lf94 thinks
+2019-11-03 19:54:22 <imode> because you have definitions that are loosely defind between people.
+2019-11-03 19:54:30 <lf94> (I am asking for you to try and break your argument against me, yourself btw XD)
+2019-11-03 19:54:50 <imode> what is my argument, exactly.
+2019-11-03 19:54:58 <lf94> spec and code are the same
+2019-11-03 19:55:00 <lf94> or can be
+2019-11-03 19:55:02 <lf94> er
+2019-11-03 19:55:10 <lf94> spec and code can be equally specific, or non-ambigious
+2019-11-03 19:55:31 <lf94> In the context of C I guess
+2019-11-03 19:55:32 <imode> it's interesting that you built that up from "in an ideal world, they'd be one and the same".
+2019-11-03 19:55:47 <lf94> If we use something like Coq - ok, then yes, I 100% agree
+2019-11-03 19:56:01 <lf94> But Coq is also like writing with your teeth
+2019-11-03 19:56:18 <imode> how about you define "spec" and "code" for me.
+2019-11-03 19:56:45 <lf94> A specification describes what should be done, how it should be done
+2019-11-03 19:56:57 <imode> congratulations, that's suddenly most codebases.
+2019-11-03 19:57:00 <lf94> Code that implements a specification is like building the machine
+2019-11-03 19:57:03 <imode> if not all of them. no, actually, all of them.
+2019-11-03 19:57:16 <lf94> I know what you are saying...
+2019-11-03 19:57:19 <imode> "what should be done" "how it should be done".
+2019-11-03 19:57:30 <imode> unless you give those things definition they mean nothing.
+2019-11-03 19:57:33 <lf94> "place the number 2 into the register a"
+2019-11-03 19:57:39 <lf94> how do you specify this in C?
+2019-11-03 19:58:07 <lf94> A spec is a blueprint
+2019-11-03 19:58:07 <imode> it depends. what is register A, what does "place the number 2" mean, what does "place X into Y" mean, etc.
+2019-11-03 19:58:16 <lf94> Code is the manifestation
+2019-11-03 19:58:40 <lf94> Maybe that's the power of a spec imode
+2019-11-03 19:58:42 <imode> your thoughts lack actual definitions to anything you're stating.
+2019-11-03 19:58:45 <lf94> It can leave some ambigiuity...
+2019-11-03 19:58:45 <esowiki> 14[[07Chess14]]4 10 02https://esolangs.org/w/index.php?diff=66951&oldid=23198 5* 03CMinusMinus 5* (+8) 10
+2019-11-03 19:58:47 <imode> so.
+2019-11-03 19:58:50 <imode> no.
+2019-11-03 19:59:05 <imode> specifications are intended to be as unambiguous as possible. otherwise they're just "rough guidelines".
+2019-11-03 19:59:11 Joined: oerjan
+2019-11-03 19:59:11 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 19:59:24 <imode> if I hand you a specification I do not expect you to take liberties unless as directed.
+2019-11-03 19:59:30 <imode> this is a human process.
+2019-11-03 19:59:42 <lf94> A lot of specs do not paint a full picture though
+2019-11-03 19:59:56 <lf94> vs code, which is the whole picture as you build it
