@@ -554,3 +554,76 @@
 2019-11-03 22:59:31 <arseniiv> hm suddenly I remember a question. Once I thought up an extension to DFAs to make a bunch of those I worked on smaller: an “ε” transition which was run only if all others couldn’t, without consuming an input symbol. Since then I realized it’d be better to call that an else-transition, and the DFA an else-DFA, as it’s not like NFA/ε-NFA at all, and it translates to a DFA quite trivially. Now, does it have maybe a better-known
 2019-11-03 22:59:31 <arseniiv> name?
 2019-11-03 22:59:42 <imode> actually it has to be [00]
+2019-11-03 23:00:04 <lf94> imode: but what about encoding anything past the closing ]
+2019-11-03 23:00:19 <imode> maybe [00][10]?
+2019-11-03 23:00:31 <lf94> yes
+2019-11-03 23:00:35 <imode> mm, no.
+2019-11-03 23:00:35 <lf94> nice
+2019-11-03 23:02:05 <imode> 0 [00]1[10] maybe?
+2019-11-03 23:02:19 <lf94> [0][1] ? but your "[ deques" comment is throwing me off
+2019-11-03 23:02:24 <imode> the first [00] consumes the enqueued value and does nothing. it then enqueues a 1.
+2019-11-03 23:02:25 <lf94> dequeue
+2019-11-03 23:02:33 <arseniiv> imode: are […] still the loopy brackets or something else?
+2019-11-03 23:02:37 <imode> arseniiv: loopy, yeah.
+2019-11-03 23:02:56 <imode> [ dequeues a value and, if it's a 1 symbol, enters the loop.
+2019-11-03 23:02:59 <imode> otherwise it skips it.
+2019-11-03 23:02:59 <arseniiv> though I’m not clever atm anyway
+2019-11-03 23:03:43 <lf94> given we put 1 on stack: [0][1] -> 0[1] -> 0
+2019-11-03 23:03:50 <imode> it's not a stack.
+2019-11-03 23:03:55 <lf94> whoops, queue
+2019-11-03 23:04:14 <lf94> this is too brain bending :D
+2019-11-03 23:04:15 <imode> given a 0, the first [00] consumes the enqueued value and does nothing. it then enqueues a 1, which fires the next loop, which enqueues a 1.
+2019-11-03 23:05:10 <imode> should actually be [00]1[01]
+2019-11-03 23:06:55 <imode> given a 1, it dequeues a 1, enqueues a 0, then enqueues a 1, which fires the loop, enqueues a 1, and then terminates..
+2019-11-03 23:07:04 <imode> yeah I don't think 01[] is a valid command set. hm.
+2019-11-03 23:07:34 <imode> I guess this would kind of fall under BF instruction minimization but for queue automata.
+2019-11-03 23:13:12 <imode> hm... what about concurrency primitives?
+2019-11-03 23:15:29 <imode> the pi calculus is interesting, but I never worked out how it does loops.
+2019-11-03 23:17:13 <kmc> l��ps
+2019-11-03 23:17:30 <imode> brother
+2019-11-03 23:17:42 <kmc> imode: there's a 'replication' combinator written as !P
+2019-11-03 23:17:53 <imode> I'm unsure as to how it works.
+2019-11-03 23:18:32 <kmc> !P == !P | !P
+2019-11-03 23:18:45 <imode> infinite forks, I guess?
+2019-11-03 23:18:46 <kmc> or P | !P rather
+2019-11-03 23:19:04 <kmc> in other words if P is blocking on a read, and gets one, then another P is immediately spawned
+2019-11-03 23:19:13 <kmc> i had fun making this http://mainisusuallyafunction.blogspot.com/2011/09/lambda-to-pi.html
+2019-11-03 23:19:15 <imode> I see.
+2019-11-03 23:19:35 <kmc> and it discusses this
+2019-11-03 23:19:41 <imode> neat! I'm reading it now.
+2019-11-03 23:19:51 <kmc> though I'm not 100% sure I got it right
+2019-11-03 23:20:08 <kmc> i'm proud of thinking up the compilation from lambda calculus myself
+2019-11-03 23:20:20 <kmc> there is a lot of esoprogramming-ish stuff on that blog if you enjoy that
+2019-11-03 23:20:37 <kmc> man, it's been a while
+2019-11-03 23:20:38 <imode> I'll bookmark and add to my reading list, thanks.
+2019-11-03 23:20:41 <kmc> I wrote that article more than 8 years ago
+2019-11-03 23:20:46 <kmc> I was a very different person in many ways
+2019-11-03 23:20:55 <imode> I've been wanting to build a concatenative version of a process calculus.
+2019-11-03 23:22:05 <arseniiv> <kmc> i had fun making this http://mainisusuallyafunction.blogspot.com/2011/09/lambda-to-pi.html => oh, interesting. Will read tomorrow!
+2019-11-03 23:22:23 <arseniiv> technically today but after some sleep
+2019-11-03 23:23:10 <imode> "loop forever"
+2019-11-03 23:23:24 <imode> how is looping expressed in your formulation of it, kmc?
+2019-11-03 23:23:25 <arseniiv> hm is there a typed π-calculus?
+2019-11-03 23:23:58 Quit: b_jonas (Remote host closed the connection)
+2019-11-03 23:23:58 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 23:24:12 <kmc> imode: when a process blocks it forks an the parent returns
+2019-11-03 23:24:20 <kmc> if the parent is a replicate then it will respawn
+2019-11-03 23:24:23 <kmc> i think that's how i did it
+2019-11-03 23:24:25 <kmc> like i said it's been 8 years
+2019-11-03 23:24:38 <imode> ah, hehe.
+2019-11-03 23:26:13 <arseniiv> bye all :P
+2019-11-03 23:26:27 <imode> night arseniiv
+2019-11-03 23:26:35 <kmc> yeah from reading the code, that looks right
+2019-11-03 23:26:39 <kmc> run env (Rep p) = forever (run env p)
+2019-11-03 23:27:01 <kmc> arseniiv: there may be a typed version
+2019-11-03 23:27:06 <kmc> but in the most basic version there is only one type
+2019-11-03 23:27:08 <kmc> (channels)
+2019-11-03 23:27:12 <imode> so !x(y).0|`x<1>.0
+2019-11-03 23:27:29 <imode> the left half of the fork would block.
+2019-11-03 23:27:31 <kmc> the only thing you can send through a channel is another channel
+2019-11-03 23:27:39 <imode> ugh.
+2019-11-03 23:27:41 <imode> right.
+2019-11-03 23:28:05 <imode> so how do you construct channels, then...?
+2019-11-03 23:28:14 <imode> oh, right, that v syntax.
+2019-11-03 23:28:39 <imode> so !x(y).0|`(vy)x<y>.0
+2019-11-03 23:29:16 <imode> what does this mean? I intend it to mean "the first process will replicate itself for every request".
