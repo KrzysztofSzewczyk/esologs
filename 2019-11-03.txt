@@ -194,3 +194,140 @@
 2019-11-03 19:59:30 <imode> this is a human process.
 2019-11-03 19:59:42 <lf94> A lot of specs do not paint a full picture though
 2019-11-03 19:59:56 <lf94> vs code, which is the whole picture as you build it
+2019-11-03 20:00:10 <imode> read the last part of the second to last message I sent.
+2019-11-03 20:00:25 <lf94> > lack of definitions < because I'm exploring the semantics of these lol, sorry...
+2019-11-03 20:00:26 <imode> it's the same case for "implementation defined" behavior within C.
+2019-11-03 20:00:27 <lambdabot> <hint>:1:6: error: parse error on input ‘of’
+2019-11-03 20:00:35 <imode> no, you're just babbling.
+2019-11-03 20:00:35 Quit: kspalaiologos (Quit: Leaving)
+2019-11-03 20:00:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 20:00:41 <lf94> yes
+2019-11-03 20:00:42 <imode> there's a difference.
+2019-11-03 20:00:44 <lf94> what's wrong with that
+2019-11-03 20:01:11 <imode> don't paint "babbling" as "exploration", because nothing of what you say has any substance. what is "code" vs. a "specification". if we don't have definitions we can't have a conversation.
+2019-11-03 20:01:30 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-03 20:01:30 <oerjan> hm now i'm hitting that logs not loading bug
+2019-11-03 20:01:56 <lf94> imode: sorry to upset you. I will stop talking now.
+2019-11-03 20:02:10 <imode> it's not upsetting, I've just asked for some definitions. :P
+2019-11-03 20:02:32 <lf94> I don't know what the definitions are - that's basically what I'm trying to figure out...
+2019-11-03 20:02:45 <imode> start with a working definition and then tear it to bits.
+2019-11-03 20:02:56 <lf94> if spec and code can accomplish the same things, they are essentially the same, except one can do work right away
+2019-11-03 20:03:13 <imode> for instance, a specification is a set of rules governing what a conforming example of an instance of that specification should follow.
+2019-11-03 20:03:28 <imode> or do.
+2019-11-03 20:03:52 <imode> code is commonly defined as encoded instructions intended to be consumed by a computer or a piece of software.
+2019-11-03 20:04:06 <imode> if you ask if these two can be the same, you have to say "what does it mean for them to be the same or different".
+2019-11-03 20:04:15 <imode> they're different definitions. how can you construe them to be the same.
+2019-11-03 20:04:44 <lf94> code is a collection of instructions to be carried out by a computer
+2019-11-03 20:04:48 <oerjan> paradoxically, the difference is that a specification can leave some details unspecified
+2019-11-03 20:04:53 <lf94> spec is a collection of instructions to be carried out by a human
+2019-11-03 20:05:10 <lf94> oerjan: I said this, but imode shot it down fast :)
+2019-11-03 20:05:16 <imode> oerjan: I can leave a lot of details unspecified in code, though. such as how something is actually done.
+2019-11-03 20:05:27 <imode> of course that's pretty shallow considering you can always find out what's done commonly.
+2019-11-03 20:05:43 <lf94> The main semantic difference I see is one is read by computers and the other a human
+2019-11-03 20:05:51 <imode> code is commonly read by humans.
+2019-11-03 20:06:05 <imode> in fact it's the foundation of a couple million careers. :P
+2019-11-03 20:07:11 <oerjan> sad, miserable careers, but careers nevertheless
+2019-11-03 20:07:35 <lf94> If I write a spec in C, I have to understand C and english
+2019-11-03 20:07:45 <imode> you just have to understand C, actually.
+2019-11-03 20:07:47 <lf94> and I write a spec in English, I just have to understand English
+2019-11-03 20:07:55 <lf94> Also English is going to be around for at least 100 years
+2019-11-03 20:08:17 * oerjan thinks of Z, although he doesn't know much about it
+2019-11-03 20:08:21 <imode> I don't get where "I have to understand C and English" comes from. you just have to understand C to read a spec written in C.
+2019-11-03 20:08:21 <lf94> imode: a lot of C code uses English in comments and variables
+2019-11-03 20:08:41 <imode> lf94: tell that to C programmers who don't use english comments and variable names.
+2019-11-03 20:08:53 <lf94> a lot of C...not all
+2019-11-03 20:08:55 <imode> of which there are many in my personal circles.
+2019-11-03 20:09:08 <lf94> I'm sure you've seen C written in an APL-like style
+2019-11-03 20:09:14 <lf94> I'm definitely not talking about that.
+2019-11-03 20:09:19 <imode> nor am I.
+2019-11-03 20:09:31 <lf94> Also, Plan 9 style C sucks too
+2019-11-03 20:10:09 <imode> if I specify a virtual machine in C, and I declare that this implementation of a virtual machine is "the specification of this machine", then you should be able to take it as the specification of that machine.
+2019-11-03 20:10:11 <oerjan> https://en.wikipedia.org/wiki/Z_notation
+2019-11-03 20:10:28 <imode> substitute C for your language of choice.
+2019-11-03 20:11:05 <imode> put it to you this way: if I was handed two text files, how could I tell which one is a specification.
+2019-11-03 20:11:28 User Name: arseniiv = arseniiv!~arseniiv@95.105.4.44.dynamic.ufanet.ru
+2019-11-03 20:11:28 <arseniiv> then you should be able to take it as the specification of that machine => reference implementation, yeah
+2019-11-03 20:11:28 <lf94> Right...by whoever tells you...
+2019-11-03 20:11:29 <imode> Z is good. TLA+ is good.
+2019-11-03 20:12:02 <lf94> The nice thing about an English spec though is that it's tech agnostic
+2019-11-03 20:12:04 <imode> arseniiv: pretty much what I'm getting to.
+2019-11-03 20:12:07 <imode> lf94: oh really?
+2019-11-03 20:12:21 <imode> what does that have to do with technical specifications written in it?
+2019-11-03 20:12:52 <lf94> Because you don't need to depend now on things with their own specs
+2019-11-03 20:13:02 <lf94> spec rabbit hole
+2019-11-03 20:13:13 <imode> you have to introduce new terms, some of which you may have imported from other piece of literature, which may depend on other pieces...
+2019-11-03 20:13:31 <imode> just because you have adopted a vocabulary does not mean there's not a chain of documents that defined that vocabulary.
+2019-11-03 20:13:43 <arseniiv> I like taking math examples when I think about interfaces or specs or something, though I don’t know a way to define loose spec following in general
+2019-11-03 20:13:48 <lf94> There is some research project in this discussion. :p
+2019-11-03 20:14:17 <arseniiv> for example, a field; field axioms are an interface, or a spec, and concrete fields are its implementations
+2019-11-03 20:14:18 <imode> lf94: here's a challenge. I hand you two text files, you build me a decider to determine which one's the specification.
+2019-11-03 20:14:30 <lf94> undecidable obviously
+2019-11-03 20:14:34 <lf94> it's whatever you tell me is
+2019-11-03 20:14:35 <arseniiv> (field axioms + the language)
+2019-11-03 20:14:38 <imode> correct. so why are you trying to approximate it.
+2019-11-03 20:14:54 <lf94> right
+2019-11-03 20:14:56 <imode> you are confusing a technical issue with a human one.
+2019-11-03 20:14:59 <lf94> so I guess now the conversation changes
+2019-11-03 20:15:04 <lf94> are english or code specs better?
+2019-11-03 20:15:18 <imode> define better.
+2019-11-03 20:15:24 <imode> and why do we have to have a "better".
+2019-11-03 20:15:32 <lf94> good point
+2019-11-03 20:15:48 <imode> an underspecified specification can exist regardless of language.
+2019-11-03 20:15:57 <imode> a nonconforming implementation can exist regardless of language.
+2019-11-03 20:16:11 <lf94> are english or code specs better for long term archival of instructions to build something?
+2019-11-03 20:16:47 <arseniiv> but if we have, say, a finite field? this is too not a concrete thing, it could be another spec, but it clearly “implements” a field spec
+2019-11-03 20:16:56 <imode> 1. why archival. 2. can you expect humans to be able to read either language in 10,000 years? 3. is the result even runnable in 10,000 years?
+2019-11-03 20:17:56 <imode> I can have some paper tape containing the baudot encoded specification of a piece of software. it does not mean that 1. someone will be around to read it. 2. a machine is available to decode it. 3. a human will be around to read it. 4. hardware will be present to run the result.
+2019-11-03 20:19:00 <imode> 1 and 3 are different. 1 pertains to anything that has consciousness and the ability to read symbols. 3 pertains to humans and human languages specifically.
+2019-11-03 20:19:01 <lf94> "why archival" is like "why exist"
+2019-11-03 20:19:15 <lf94> archival so it can exist again, if it a useful tool.
+2019-11-03 20:19:28 <lf94> 2. i definitely expect english to be read in 10,000 years.
+2019-11-03 20:19:37 <imode> what is so useful a tool that it cannot last through ages on its own.
+2019-11-03 20:19:55 <lf94> an obscure one :)
+2019-11-03 20:20:08 <imode> we have not stopped using hammers. they are useful tools. I am not aware of an "archival grade hammer".
+2019-11-03 20:20:09 <lf94> what do you mean by 3
+2019-11-03 20:20:30 <lf94> the spec of a hammer fits in your brain though
+2019-11-03 20:20:37 <lf94> literally one look at a hammer -> bam you have the spec
+2019-11-03 20:20:48 <imode> aha, you've come across a clue.
+2019-11-03 20:21:01 <lf94> all code is logically complex though.
+2019-11-03 20:21:07 <imode> that's an odd presumption.
+2019-11-03 20:21:09 <lf94> it's a big "problem"
+2019-11-03 20:21:17 <lf94> it's true
+2019-11-03 20:21:25 <imode> have you ever written a piece of code that you could in good conscience throw away.
+2019-11-03 20:21:45 <lf94> all code I've written is basically "thrown away".
+2019-11-03 20:21:52 <lf94> I think the only code that isn't worth throwing away is like, assembly
+2019-11-03 20:22:01 <kmc> a lot of code is written to be thrown away and then isn't
+2019-11-03 20:22:04 <kmc> and just grows like a katamari
+2019-11-03 20:22:11 <arseniiv> <lf94> are english or code specs better for long term archival of instructions to build something? => as the other time, I’d suggest the examples are the king. If we have a language and many various means to illustrate its structure and semantics even just internally, some one could understand it. But not without many examples. E. g. what’s the sense of this language?: { ε, ac, bc, abcc, aabccc, abbccc, aabbcccc, … } — probably
+2019-11-03 20:22:11 <arseniiv> you’ll recognize what is that “…”, but if I showed you only { ac, bc }, would you be that sure? (hopefully no)
+2019-11-03 20:22:35 <imode> concepts that last centuries are ones simple enough to be rediscovered at a glance by common humans.
+2019-11-03 20:23:05 <imode> either as self-evident consequences of the universe we live in or as incredibly popular ideas that never fell out of following.
+2019-11-03 20:23:40 <lf94> so concepts mean more than specs?
+2019-11-03 20:23:55 <lf94> mean more / are more valuable
+2019-11-03 20:24:07 <lf94> I would say that makes specs even more valuable
+2019-11-03 20:24:31 <imode> the concept of a turing machine has lasted a century in about 10 or more years.
+2019-11-03 20:24:49 <imode> 1936, iirc.
+2019-11-03 20:25:23 <lf94> but a turing machine has a spec
+2019-11-03 20:25:32 <imode> a turing machine is a concept. it has a definition.
+2019-11-03 20:25:45 <lf94> a spec is a just a giant definition isnt it
+2019-11-03 20:25:51 <imode> why giant?
+2019-11-03 20:26:01 <lf94> a definition is usually short, in the common sense
+2019-11-03 20:26:17 <imode> "to be called a square, a rectangle's sides have to be equal in length."
+2019-11-03 20:26:23 <arseniiv> so concepts mean more than specs? => personally I’d say it depends. A concept may be pretty vague and work, which means there are noncanonical choices to be made to make it a complete spec but any of that choices would make a useful thing exchangeable with things resulted from other choices
+2019-11-03 20:26:44 <imode> I'd say that's a specification for a square.
+2019-11-03 20:26:47 <lf94> ok so let me ask this then
+2019-11-03 20:26:59 <arseniiv> for example should the tape of TM be infinite in all directions or just in one?
+2019-11-03 20:27:03 <lf94> would you rather write a spec in code, or in english, knowing it has to last the next 150 years?
+2019-11-03 20:27:10 <imode> arseniiv: just one. as defined by turing.
+2019-11-03 20:27:46 <imode> I'd say code. because I have a runnable example of it. but why not _both_.
+2019-11-03 20:27:58 <lf94> You can do both of course
+2019-11-03 20:28:06 <imode> I have an english description of Mode, I have a Go description of Mode, I have a C description of Mode.
+2019-11-03 20:28:07 <lf94> More work :)
+2019-11-03 20:28:12 <arseniiv> imode: hm I should have picked another thing to illustrate my argument then
+2019-11-03 20:28:16 <lf94> Having many descriptions is probably the best
+2019-11-03 20:28:25 <imode> if you wanna last years the key is redundancy.
+2019-11-03 20:28:30 <imode> if you wanna last centuries the key is virality.
+2019-11-03 20:29:00 <arseniiv> pretty aphoristic
+2019-11-03 20:29:04 <lf94> lol
+2019-11-03 20:29:42 <arseniiv> . o O ( if you wanna last millenia then no luck )
+2019-11-03 20:29:52 <lf94> Thank you imode for the discussion :)
