@@ -391,3 +391,31 @@
 2019-11-03 21:54:07 Joined: Taneb
 2019-11-03 21:54:07 Joined: zemhill
 2019-11-03 21:54:08 Names: \oren\, ^[, aji, aloril, andrewtheircer, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 22:09:32 <lf94> imode the hype has come and gone
+2019-11-03 22:09:37 <lf94> around wasm
+2019-11-03 22:12:59 <imode> I could probably just generate assembly using Mode at this point...
+2019-11-03 22:13:48 <imode> maybe I should toy with that over the week.
+2019-11-03 22:15:09 <imode> having multiple targets is going to be a little challenging. I guess, anyway. the same forms are gonna be generated regardless of the architecture.
+2019-11-03 22:15:20 <andrewtheircer> i like corewar
+2019-11-03 22:16:05 <imode> dup drop swap last new zero one add subtract while repeat equal less
+2019-11-03 22:16:12 Quit: andrewtheircer (Remote host closed the connection)
+2019-11-03 22:16:12 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 22:16:23 <imode> process run halt
+2019-11-03 22:16:26 <imode> 16 commands.
+2019-11-03 22:16:27 <arseniiv> sounds like a good mantra
+2019-11-03 22:17:01 <imode> :.;$,01+-[]=<{}#
+2019-11-03 22:17:04 <arseniiv> once I had an avatar which depicted all reserved words of a language
+2019-11-03 22:17:43 <arseniiv> BTW I really like your idea with {}
+2019-11-03 22:17:52 <arseniiv> what does # do and where is `self`?
+2019-11-03 22:18:06 <imode> # is 'self'.
+2019-11-03 22:18:24 <imode> but it can also be 'halt', if you start each process as having its identifier in the queue.
+2019-11-03 22:18:52 <arseniiv> polymorphism of specifications
+2019-11-03 22:18:55 <imode> so 16 commands either way. 'halt' is unneeded: you can always phrase things so that termination is at the end.
+2019-11-03 22:19:15 <imode> yeah, I'm trying to specify "core" vs. "extended" command sets.
+2019-11-03 22:19:21 <imode> I have a theory that ,1[] is all you need.
+2019-11-03 22:19:49 <arseniiv> seems too minimal
+2019-11-03 22:20:26 <lf94> imode target subleq
+2019-11-03 22:20:37 <lf94> one instruction set computer
+2019-11-03 22:20:55 <lf94> this is actually one of my goals
+2019-11-03 22:20:59 <lf94> when i make a lang
+2019-11-03 22:25:47 <arseniiv> I like that I liberated myself from μ-recursion when generalizing Minsky machine
