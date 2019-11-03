@@ -419,3 +419,138 @@
 2019-11-03 22:20:55 <lf94> this is actually one of my goals
 2019-11-03 22:20:59 <lf94> when i make a lang
 2019-11-03 22:25:47 <arseniiv> I like that I liberated myself from μ-recursion when generalizing Minsky machine
+2019-11-03 22:30:46 <arseniiv> now maybe we need a good name for the operator
+2019-11-03 22:30:46 <arseniiv> x :: (as -> b) -> (as -> b -> b) -> (as -> c) -> (as -> b -> c) -> b
+2019-11-03 22:30:46 <arseniiv> x z s q f args = search (z args) where
+2019-11-03 22:30:46 <arseniiv> search i = if f args i == q args then i else search (s args i)
+2019-11-03 22:31:58 <arseniiv> something like <find-first-or> maybe
+2019-11-03 22:32:27 <lf94> existsOr
+2019-11-03 22:33:39 <lf94> Or do what the js community is doing, using ?
+2019-11-03 22:33:58 <lf94> object.prop?.inner?.innerinner?
+2019-11-03 22:34:04 <arseniiv> I meant -or as a suffix there :D
+2019-11-03 22:35:21 <arseniiv> there’s no or, if the value doesn’t occur in the range of `f args`, we loop forever
+2019-11-03 22:36:06 <lf94> findOrFail
+2019-11-03 22:36:08 <lf94> B)
+2019-11-03 22:36:19 <lf94> no, better: find-or-floop
+2019-11-03 22:36:23 <lf94> (floop -> forever loop
+2019-11-03 22:36:24 <lf94> )
+2019-11-03 22:36:44 <arseniiv> this is one of the ways to add TC to a set of operations on several inductive types
+2019-11-03 22:37:02 <arseniiv> μ operator doesn’t generalize nicely
+2019-11-03 22:37:03 <lf94> add looping: turing complete, right?
+2019-11-03 22:37:15 <arseniiv> yeah, something like that
+2019-11-03 22:37:48 <arseniiv> when I generalized MM, I saw there were many noncanonical choices made
+2019-11-03 22:37:54 <arseniiv> I unmade them
+2019-11-03 22:38:26 <arseniiv> this had an effect so that I want to evangelize generalized MM somewhere :P
+2019-11-03 22:38:36 <lf94> lol
+2019-11-03 22:38:48 <lf94> I'm not familiar with what MM is - is it that counting machine?
+2019-11-03 22:38:56 <arseniiv> yeah
+2019-11-03 22:38:59 <lf94> ah ok
+2019-11-03 22:39:13 <lf94> I've really had subleq machine stuck in my head for the past week.
+2019-11-03 22:39:30 <arseniiv> actually kritixilithos had mentioned it earlier today, I mean not a generalized one
+2019-11-03 22:39:45 <arseniiv> it has only INC and JZDEC
+2019-11-03 22:40:02 <arseniiv> lf94: oh sorry I’m conflating two frameworks now
+2019-11-03 22:40:34 <arseniiv> when talking about that `x` operator, I talked about generalized recursive functions
+2019-11-03 22:40:47 <lf94> > generalize recursive functions
+2019-11-03 22:40:49 <lambdabot> error:
+2019-11-03 22:40:49 <lambdabot> • Variable not in scope: generalize :: t0 -> t1 -> t
+2019-11-03 22:40:49 <lambdabot> • Perhaps you meant ‘generate’ (imported from Lambdabot.Plugin.Haskell.E...
+2019-11-03 22:40:55 <lf94> what is that exactly
+2019-11-03 22:40:55 <kmc> > butts
+2019-11-03 22:40:57 <lambdabot> error: Variable not in scope: butts
+2019-11-03 22:40:59 <lf94> or is this just fancy talk
+2019-11-03 22:41:05 <kmc> @quote
+2019-11-03 22:41:05 <lambdabot> Weyl says: In these days the angel of topology and the devil of abstract algebra fight for the soul of every individual discipline of mathematics.
+2019-11-03 22:41:07 <lf94> for a function that can iterate over any x
+2019-11-03 22:41:26 <lf94> map: [T] -> [Q]
+2019-11-03 22:41:31 <lf94> something like that
+2019-11-03 22:42:11 <b_jonas> arseniiv: isn't that basically a pointer machine though?
+2019-11-03 22:42:18 <arseniiv> lf94: like simple recursive functions, which is a definition of computability for functions on N, but the generalized ones take on any finite set of algebraic types
+2019-11-03 22:42:44 <lf94> sorry all that went over my head
+2019-11-03 22:42:48 <arseniiv> b_jonas: which one, { INC, JZDEC }?
+2019-11-03 22:42:55 <b_jonas> you know, one that has registers that point into algebraic structures allocated on the heap, can construct new algebraic structures with their fields filled from registers, test between variants, have arbitrary control
+2019-11-03 22:43:07 <lf94> > computability for functions on N <
+2019-11-03 22:43:09 <lambdabot> <hint>:1:36: error:
+2019-11-03 22:43:09 <lambdabot> parse error (possibly incorrect indentation or mismatched brackets)
+2019-11-03 22:43:10 <b_jonas> arseniiv: the generalized Minsky Machines
+2019-11-03 22:43:17 <lf94> what does this really mean
+2019-11-03 22:43:23 <arseniiv> lf94: I’m to blame to, I conflated two things I had thoughts about and hadn’t even noticed it quickly
+2019-11-03 22:43:49 <lf94> "N" <- natural numbers?
+2019-11-03 22:43:50 <arseniiv> lf94: I’ll better give a link, wait a sec
+2019-11-03 22:43:52 <arseniiv> yeah
+2019-11-03 22:44:00 <lf94> ok what I said then sounds right
+2019-11-03 22:44:03 <lf94> as an example
+2019-11-03 22:44:09 <lf94> map: [T] -> [Q]
+2019-11-03 22:44:27 <lf94> loop: [T] -> ???
+2019-11-03 22:44:33 <arseniiv> one of the formulations: https://en.wikipedia.org/wiki/%CE%9C-recursive_function
+2019-11-03 22:46:11 <arseniiv> though I like a variant I saw in Manin’s book on computability, it allows several results as well as arguments, adds function concatenation and makes some things more natural. Though I extended on it after all too :o
+2019-11-03 22:47:28 <arseniiv> b_jonas: yeah, if there is any exposition on those I’ll be glad if someone points me to it, I don’t want to claim anything already invented
+2019-11-03 22:47:44 <lf94> arseniiv: i'm still confused :v
+2019-11-03 22:47:56 <lf94> This stuff is written as if someone reading is reading it as a reference...
+2019-11-03 22:48:05 <arseniiv> lf94: sorry…
+2019-11-03 22:48:21 <lf94> right now I'm interpreting this as some peano number stuff
+2019-11-03 22:48:27 <arseniiv> I hope someone will find a better link. Hm
+2019-11-03 22:48:31 <lf94> so the numbers are defined via induction
+2019-11-03 22:48:34 <arseniiv> yeah it’s pretty close
+2019-11-03 22:48:45 <arseniiv> though here we already need them defined
+2019-11-03 22:48:45 <lf94> but I'm very confused about the goal here
+2019-11-03 22:48:54 <lf94> or the generalization
+2019-11-03 22:49:00 <lf94> is the generalization just saying, we can do more than numbers?
+2019-11-03 22:49:13 <arseniiv> the goal is to define all computable functions in that simple inductive manner
+2019-11-03 22:49:16 <lf94> (natural numbers)
+2019-11-03 22:49:21 <lf94> ahhhhh
+2019-11-03 22:49:28 <arseniiv> <lf94> is the generalization just saying, we can do more than numbers? => yeah
+2019-11-03 22:49:52 <lf94> so we are saying generalized u-recursion is turing complete?
+2019-11-03 22:49:54 <lf94> because it can make any program?
+2019-11-03 22:49:56 <arseniiv> for example we can formulate it for binary strings, or natural numbers + lists of them
+2019-11-03 22:50:01 <lf94> er
+2019-11-03 22:50:10 <lf94> you know what i mean
+2019-11-03 22:50:18 <lf94> yeah yeah
+2019-11-03 22:50:31 <lf94> we can define any computable function :D
+2019-11-03 22:50:34 <lf94> with this
+2019-11-03 22:50:38 <lf94> very very cool
+2019-11-03 22:50:40 <arseniiv> yeah, it can, as the regular one is its instance
+2019-11-03 22:50:45 <arseniiv> (almost)
+2019-11-03 22:51:04 <arseniiv> (as I’m breaking with μ for x)
+2019-11-03 22:51:29 <arseniiv> but machines are prettier
+2019-11-03 22:51:50 <arseniiv> they don’t need to have extra stuff, only constructors and destructors
+2019-11-03 22:52:44 <arseniiv> constructors like INC and CLR which should be explicit when we generalize, and destructors like JZDEC, again it would become more complex unfortunately
+2019-11-03 22:52:56 <lf94> "machines are prettier", like lambda calc vs turing machine?
+2019-11-03 22:53:15 <arseniiv> in this case I’m on the side of λ
+2019-11-03 22:53:26 <lf94> but you said 'machines are prettier'
+2019-11-03 22:53:28 <arseniiv> TM is too complex compared with MM, for me
+2019-11-03 22:53:39 <arseniiv> I meant GMM :D
+2019-11-03 22:53:45 <lf94> oh
+2019-11-03 22:53:53 <lf94> I like the simplicity of lambda
+2019-11-03 22:53:58 <imode> something tells me that 01[] is suitable for turing completeness.
+2019-11-03 22:53:58 <lf94> but it's not for free
+2019-11-03 22:54:15 <lf94> imode: there is a actual competition to determine the smallest turing machine
+2019-11-03 22:54:16 <arseniiv> even with de Bruijn indices?
+2019-11-03 22:54:20 <lf94> symbols:states
+2019-11-03 22:54:25 <lf94> I think the smallest is 2:3 or something
+2019-11-03 22:54:34 <lf94> arseniiv: those are the best :)
+2019-11-03 22:54:35 <imode> don't see how that's relevant.
+2019-11-03 22:54:49 <lf94> imode: because you can verify if having 4 symbols is enough.
+2019-11-03 22:54:57 <imode> not really, no.
+2019-11-03 22:55:05 <imode> not without actually, y'know, doing it.
+2019-11-03 22:55:10 <arseniiv> but imode’s machine is the other sort of machine
+2019-11-03 22:55:12 <lf94> I mean I guess 1 symbol is enough
+2019-11-03 22:55:14 <lf94> (See: iota)
+2019-11-03 22:55:44 <imode> 0 enqueues a 0, 1 enqueues a 1, [ dequeues a symbol, and if it's 1, advances 1 instruction, otherwise it skips past the matching ].
+2019-11-03 22:56:25 <lf94> (I'm incorrectly mixing shit - sorry again)
+2019-11-03 22:56:43 <imode> though I'm trying to figure out how to, for example, encode a 'not': something that detects a 1 and enqueues a 0, and detects a 0 and enqueues a 1.
+2019-11-03 22:56:58 <imode> [0] would be the former.
+2019-11-03 22:57:20 <lf94> 0[]1?
+2019-11-03 22:57:37 <lf94> mm
+2019-11-03 22:57:41 <lf94> "detects a 1"
+2019-11-03 22:57:44 <lf94> where does the input come from
+2019-11-03 22:57:47 <lf94> where does it go
+2019-11-03 22:57:54 <lf94> at the beginning?
+2019-11-03 22:58:04 <lf94> (input)(program) ?
+2019-11-03 22:58:05 <imode> it's a queue machine. read above.
+2019-11-03 22:58:23 <imode> if I do 0<not code> I expect a 1 in the queue.
+2019-11-03 22:58:30 <imode> if I do 1<not code> I expect a 0 in the queue.
+2019-11-03 22:59:01 <imode> you can say "if I dequeue a 1, then enqueue a 0." but you can't say "if I dequeue a 0, then enqueue a 1".
+2019-11-03 22:59:28 <imode> [0] would take a 1 and spit out a zero.
+2019-11-03 22:59:31 <arseniiv> hm suddenly I remember a question. Once I thought up an extension to DFAs to make a bunch of those I worked on smaller: an “ε” transition which was run only if all others couldn’t, without consuming an input symbol. Since then I realized it’d be better to call that an else-transition, and the DFA an else-DFA, as it’s not like NFA/ε-NFA at all, and it translates to a DFA quite trivially. Now, does it have maybe a better-known
+2019-11-03 22:59:31 <arseniiv> name?
+2019-11-03 22:59:42 <imode> actually it has to be [00]
