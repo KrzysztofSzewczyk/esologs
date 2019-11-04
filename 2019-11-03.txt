@@ -627,3 +627,28 @@
 2019-11-03 23:28:14 <imode> oh, right, that v syntax.
 2019-11-03 23:28:39 <imode> so !x(y).0|`(vy)x<y>.0
 2019-11-03 23:29:16 <imode> what does this mean? I intend it to mean "the first process will replicate itself for every request".
+2019-11-03 23:30:40 Quit: arseniiv (Ping timeout: 264 seconds)
+2019-11-03 23:30:40 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-03 23:40:01 <imode> so that repeatedly forks.
+2019-11-03 23:40:05 <imode> on the left.
+2019-11-03 23:42:44 <imode> seems grossly unspecified..
+2019-11-03 23:47:10 <imode> the pi calculus seems to be an imperative calculus anyway. each of the statements can be seen as an instruction.
+2019-11-03 23:47:30 <imode> so I doubt it'd be far off to use [] and {}.
+2019-11-03 23:54:59 <imode> how in the world do you form an if statement in the pi calculus. o_O
+2019-11-03 23:55:44 <kmc> imode: first you need to decide on an encoding for bools
+2019-11-03 23:56:20 <imode> what's a common one?
+2019-11-03 23:56:24 <kmc> it could for example be: recv x, recv y, recv z, send z to x if T or to y if F
+2019-11-03 23:56:25 <kmc> i don't know
+2019-11-03 23:56:31 <kmc> i haven't studied pi calculus much
+2019-11-03 23:56:37 <imode> mm.
+2019-11-03 23:56:39 <kmc> I pulled that out of my ass just now based on church numerals
+2019-11-03 23:56:42 <imode> heh.
+2019-11-03 23:56:51 <kmc> slash church booleans
+2019-11-03 23:56:55 <imode> I feel like you could eliminate [].
+2019-11-03 23:57:04 <kmc> and indeed if you take church bools and run them through my lambda-to-pi thing then i think they'll work like that
+2019-11-03 23:57:27 <kmc> since i implement functions as a process that recieves arguments and a continuation channel and sends the result to the continuation channel
+2019-11-03 23:57:40 <imode> mmm.
+2019-11-03 23:59:03 <imode> T could be x(a).y(b).z(c).`z<a>.P
+2019-11-03 23:59:17 <imode> err.
+2019-11-03 23:59:37 <imode> T could be x(a).y(b).z(c).`c<a>.P
+2019-11-03 23:59:54 <imode> and F could be x(a).y(b).z(c).`c<a>.P
