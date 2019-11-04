@@ -1,0 +1,30 @@
+2019-11-04 00:00:41 <imode> https://en.wikipedia.org/wiki/Ambient_calculus this is interesting.
+2019-11-04 00:01:39 <kmc> i don't like this syntax
+2019-11-04 00:01:48 <imode> which one, ambient or pi.
+2019-11-04 00:01:55 <imode> I like neither.
+2019-11-04 00:02:33 <kmc> pi
+2019-11-04 00:02:59 <imode> I feel like the unrestricted use of channels is a problem.
+2019-11-04 00:03:07 <imode> no one man needs all those channels.
+2019-11-04 00:03:32 <kmc> 800 channels and nothing on...
+2019-11-04 00:04:33 <imode> T in Mode would be { receive receive receive roll drop last send }, while F in mode would be { receive receive receive roll roll drop last last send }
+2019-11-04 00:06:22 <kmc> i don't know this language, how does it work
+2019-11-04 00:06:28 <kmc> is it a stack based concurrent calculus?
+2019-11-04 00:06:55 <imode> close. queue based.
+2019-11-04 00:07:07 <kmc> ok
+2019-11-04 00:08:06 <imode> each process (the stuff between { and }s) gets allocated a single channel. `receive` always references that channel.
+2019-11-04 00:08:47 <imode> `send`, though, references any channel at the head of the queue, and sends the value after that channel through it.
+2019-11-04 00:08:48 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: send`,: not found
+2019-11-04 00:08:54 <imode> sorry.
+2019-11-04 00:10:06 <imode> I have stuff like looping constructs, but I wonder if I can render them obsolete by treating { and } as looping processes with a halt operation.
+2019-11-04 00:12:15 <imode> one sec..
+2019-11-04 00:12:16 Quit: imode (Quit: WeeChat 2.6)
+2019-11-04 00:12:16 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-04 00:15:05 Joined: imode
+2019-11-04 00:15:05 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-04 00:15:42 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-04 00:15:42 <imode> forking a process for every loop could be.. useful, I suppose.
+2019-11-04 00:22:19 <imode> an if construct would be @{VVV:..$^}{VVV:..$^}^^^ sans some shuffling ops.
+2019-11-04 00:22:31 <imode> it's just @ true true send send send
+2019-11-04 00:28:02 <pikhq> I feel like that'd be relatively easy to build on top of BEAM.
+2019-11-04 00:29:17 Quit: imode (Ping timeout: 240 seconds)
+2019-11-04 00:29:17 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, probability, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
