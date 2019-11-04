@@ -222,3 +222,28 @@
 2019-11-04 16:25:53 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill
 2019-11-04 16:28:26 Joined: moony
 2019-11-04 16:28:26 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill
+2019-11-04 16:42:00 <arseniiv> wib_jonas: pointer machines seem to be unrelated to GMM
+2019-11-04 16:42:53 <wib_jonas> arseniiv: in that case what are GMM?
+2019-11-04 16:43:39 <arseniiv> before any better name arises, they are GMM ;)
+2019-11-04 16:44:05 <arseniiv> we could call them algebraic machines, for instance
+2019-11-04 16:44:41 <arseniiv> I think GMM is still a perfectly valid instance of register machine
+2019-11-04 16:44:42 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-04 16:44:42 <imode> remind me to ask you about your machines, arseniiv.
+2019-11-04 16:45:28 <arseniiv> it has registers, albeit typed ones which contain references to trees
+2019-11-04 16:45:36 <arseniiv> imode: how soon?
+2019-11-04 16:45:47 <imode> in the next day or so. ;)
+2019-11-04 16:46:23 <arseniiv> imode: do you use lambdabot messaging?
+2019-11-04 16:46:48 <imode> yeah.
+2019-11-04 16:47:38 <arseniiv> in this case ehehe
+2019-11-04 16:47:38 <arseniiv> @tell imode I remind you to ask me about my overgeneralized machines
+2019-11-04 16:47:38 <lambdabot> Consider it noted.
+2019-11-04 16:47:56 <wib_jonas> arseniiv: yes, that's how pointer machines work, if all the structures allocated on the heap are immutable. that's not the most common definition, usually people allow mutable structures, but I prefer the pure version.
+2019-11-04 16:48:13 <arseniiv> though maybe I’ll still remember it for myself tomorrow too
+2019-11-04 16:48:55 <imode> gratzi.
+2019-11-04 16:49:21 <arseniiv> wib_jonas: hm it seems I didn’t understand what a pointer machine is in general, then. I had read https://en.wikipedia.org/wiki/Pointer_machine
+2019-11-04 16:49:40 <arseniiv> there it seems they are different enough
+2019-11-04 16:50:52 <arseniiv> they write there: “Pointer machines cannot do arithmetic. Computation proceeds only by reading input symbols, modifying and doing various tests on its storage structure—the pattern of nodes and pointers, and outputting symbols based on the tests.” This is suspicious
+2019-11-04 16:51:49 <imode> TMs can't do arithmetic either.
+2019-11-04 16:52:08 <arseniiv> hm I probably misinterpret what that meant to mean, yeah
+2019-11-04 16:53:25 Quit: imode (Quit: WeeChat 2.6)
+2019-11-04 16:53:25 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill
