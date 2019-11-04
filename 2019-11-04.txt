@@ -160,3 +160,27 @@
 2019-11-04 11:57:26 <wib_jonas> "The Program Is Mostly Ignored" -- like in the pear tree?
 2019-11-04 11:59:20 User Name: arseniiv = arseniiv!~arseniiv@95.105.4.44.dynamic.ufanet.ru
 2019-11-04 11:59:20 <arseniiv> ehehe blockchain
+2019-11-04 12:03:08 <fizzie> `` hg log -T "{sub(r'-\d\d .*','',date|isodate)} {node}\n" wisdom/password | while read m r; do echo "$m: $(hg cat -r $r wisdom/password)"; done | paste
+2019-11-04 12:03:18 <fizzie> (It'll take a while.)
+2019-11-04 12:03:33 <HackEso> https://hack.esolangs.org/tmp/paste/paste.32417
+2019-11-04 12:05:05 <wib_jonas> fizzie: I tried such hg log -R {rev} -r 0: somefile | (while read m r; do hg cat -r "$r" | grep somestring; done) loops, to find the first revision . they seemed to not work too well for some reason, probably timeout or something
+2019-11-04 12:05:21 <wib_jonas> maybe I should look up in the docs of hg how to properly do that
+2019-11-04 12:06:52 <fizzie> Yes, it's pretty slow. Probably that password list also just barely made it.
+2019-11-04 12:14:49 <wib_jonas> fizzie: yeah, admittedly I tried it on quotes , which has among the longest history
+2019-11-04 12:15:16 <wib_jonas> what's the URL if I just want to clone the repository to do such dumb things locally?
+2019-11-04 12:15:26 <wib_jonas> `url wisdom
+2019-11-04 12:15:27 <HackEso> https://hack.esolangs.org/repo/file/tip/wisdom
+2019-11-04 12:15:29 <wib_jonas> `url quotes
+2019-11-04 12:15:29 <HackEso> https://hack.esolangs.org/repo/file/tip/quotes
+2019-11-04 12:16:47 <wib_jonas> yeah, that seems to work
+2019-11-04 12:16:49 <wib_jonas> `url
+2019-11-04 12:16:51 <HackEso> https://hack.esolangs.org/repo/
+2019-11-04 12:16:54 <wib_jonas> `whatis url
+2019-11-04 12:16:56 <HackEso> url(7) - uniform resource identifier (URI), including a URL or URN \ url(1hackeso) - print URL to view contents of a hackenv file \ url(8lambdabot) - no description
+2019-11-04 12:16:57 <wib_jonas> `? url
+2019-11-04 12:16:59 <HackEso> url? ¯\(°​_o)/¯
+2019-11-04 12:17:09 <wib_jonas> I should edit that
+2019-11-04 12:21:20 <wib_jonas> `whatis url
+2019-11-04 12:21:21 <HackEso> url(7) - uniform resource identifier (URI), including a URL or URN \ url(1hackeso) - print URL for a file in the hackenv hg repository and web access of the repository \ url(8lambdabot) - no description
+2019-11-04 12:25:06 Joined: imode
+2019-11-04 12:25:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill
