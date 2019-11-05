@@ -215,3 +215,7 @@
 2019-11-05 16:28:45 <arseniiv> just don’t confuse “in”-variant with invariant, there were cases :)
 2019-11-05 16:29:17 <arseniiv> anyway there are no invariant functor arguments in Haskell
 2019-11-05 16:29:38 <arseniiv> they are either co- or contra- or that’s not a functor in that argument
+2019-11-05 16:46:04 <lf94> when you talk about morphisms, it helps I think
+2019-11-05 16:52:28 <arseniiv> when we have a category whose objects are categories themselves, morphisms C → D are functors covariant in C and morphisms C^op → D are functors contravariant in C; where C^op is the opposite category to C: it has all its objects but every morphism reversed
+2019-11-05 16:57:45 Joined: sprocklem
+2019-11-05 16:57:45 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
