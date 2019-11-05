@@ -336,3 +336,20 @@
 2019-11-05 22:08:36 <ais523> I'm not sure how useful that capability is, but a) this is #esoteric so it doesn't matter, b) it comes in handy on CGCC on occasion
 2019-11-05 22:17:14 <b_jonas> yeah
 2019-11-05 22:21:07 <b_jonas> and like you said, you can still make most of the code ignored as a comment when your program wants that
+2019-11-05 22:40:46 <b_jonas> `? hfs
+2019-11-05 22:40:47 <HackEso> ​04You have discovered an eerie cavern. The air above the dark stone floor is alive with vortices of purple light and dark, boiling clouds. Seemingly bottomless pits mark the surface.
+2019-11-05 22:41:23 <ais523> hmm, dramatic, it's a pity you can't use commands to continue the text adventure
+2019-11-05 22:41:37 Joined: hppavilion[1]
+2019-11-05 22:41:37 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, impomatic, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-05 22:46:22 <b_jonas> ``` ( hg log -T "{desc}\n" -r 7960; hg cat -r 7960 wisdom/hfs ) | sed s/o/о/ # and the command that created it is funny too
+2019-11-05 22:46:23 <HackEso> ​<zzо38> ` le/rn "hfs/`hfs`" # Maybe this way better? \ 04Yоu have discovered an eerie cavern. The air aboe the dark stone floor is alive ith vortices of purple light and dark, boiling clouds. Seemingly bottemless pits mark the surface.
+2019-11-05 22:46:34 <b_jonas> apparently it was in bin before it was moved to wisdom
+2019-11-05 22:46:57 <ais523> there are quite a few typos in that version
+2019-11-05 22:47:04 <b_jonas> yes, they got fixed in later revisions
+2019-11-05 22:47:14 <ais523> I was wondering if they were intentional
+2019-11-05 22:47:21 <ais523> "aboe" looks like the sort of word that belongs in poetic English
+2019-11-05 22:47:41 <ais523> (there are a few interesting words from poetic English, like "ere" which is just too good not to use; it means "before")
+2019-11-05 22:47:57 <ais523> (strangely, it isn't used anywhere but poetry and literature despite being such a good word)
+2019-11-05 22:48:27 <b_jonas> ``` hg log -T "{desc}\n" -r 7961 | sed s/oa/оа/
+2019-11-05 22:48:28 <HackEso> ​<oerjan> rm bin/hfs
+2019-11-05 22:50:12 <b_jonas> and bin/hfs was apparently created by moon__
