@@ -184,3 +184,34 @@
 2019-11-05 15:57:01 <lf94> There is
 2019-11-05 15:57:04 <lf94> uhhh
 2019-11-05 15:57:14 <lf94> https://typeclasses.com/profunctors
+2019-11-05 16:02:43 <arseniiv> lf94: that may be useful!
+2019-11-05 16:03:00 <arseniiv> though I don’t know profunctors yet too
+2019-11-05 16:03:24 <arseniiv> “Profunctors are bifunctors that are contravariant in their first type argument and covariant in their second one.” → ah okay now I know
+2019-11-05 16:06:56 <arseniiv> lf94: the canonical example would be (->), it’s covariant in the result type and contravatiant in argument type; the function type is very useful to visualize co/contravariant type arguments in general; at least for me: they can be “like function arguments” and “go somewhere”, or they can be “like function results” and “come from somewhere” (and also there can be these that come and go—these are “invariant” in th
+2019-11-05 16:06:56 <arseniiv> terminology of e. g. C#, these are somewhat bad as they don’t play nicely with subtyping in languages with subtyping like mentioned C#)
+2019-11-05 16:12:36 <lf94> The terms "covariant" and "contravariant" cannot be memorized for some reason.
+2019-11-05 16:12:44 <lf94> I can't memorize what these actually mean
+2019-11-05 16:13:04 <lf94> If you could explain what these mean in some plain english, I'd greatly appreciate it
+2019-11-05 16:13:55 <arseniiv> (e. g. if you are designing API for some collections, it could be wise to tear collection interfaces into halves with one half being covariant in element type and containing only get-like operations (perfect to implement by immutable collections) and the other half containing only set-like operations and being contravariant in the element type; a mutable collection would implement both parts. Now these two interfaces could be used separ
+2019-11-05 16:13:55 <arseniiv> tely and benefit from argument subtyping one way or the other)
+2019-11-05 16:14:11 <arseniiv> lf94: I can try, yeah
+2019-11-05 16:16:20 <arseniiv> covariant means it behaves like (co-) a plain value: function result is a normal value; contravariant means it behaves in the opposite way (contra-): function argument is in some way an “antivalue”, a hole waiting to be filled, before we could get the result; that’s not all
+2019-11-05 16:17:35 <arseniiv> I don’t know if there is any special sense in “-variant” here, maybe theory category guys made it up independently, but they could have borrowed it from linear algebra
+2019-11-05 16:18:55 <arseniiv> there, tensor arguments/indices can be covariant and contravariant, which means if the thing changes (“varies”?) like or unlike basis vectors when changing the basis
+2019-11-05 16:19:52 <arseniiv> that’s about “-variant” part, I’m almost sure it’s related that way though “-variant” part is plain latin
+2019-11-05 16:20:03 <arseniiv> or it pretends to be
+2019-11-05 16:20:17 <lf94> co- means plain?...
+2019-11-05 16:20:35 <arseniiv> now that should be accompanied by many examples but I don’t know which would be nice
+2019-11-05 16:20:47 <lf94> 1 and -1?
+2019-11-05 16:20:52 <arseniiv> <lf94> co- means plain?... => AFAIR it’s more like “with”
+2019-11-05 16:21:37 <arseniiv> also I’d say these are more like automorphism/antiautomorphism distinction than 1/−1, but the last pair may be illustrative too
+2019-11-05 16:23:29 <arseniiv> contra- changes arrow directions just like antiautomorphism. Though I don’t know why I picked auto-, any kind of morphisms suffices
+2019-11-05 16:23:52 <arseniiv> (anti(something)morphism changes operands, not arrows)
+2019-11-05 16:24:14 <arseniiv> let’s pretend I didn’t confuse you with morphisms
+2019-11-05 16:25:03 <arseniiv> hopefully someone more experienced in explaining in a clear way will come
+2019-11-05 16:25:09 <arseniiv> :D
+2019-11-05 16:27:48 <arseniiv> also you can try to label them `in` and `out` as C# syntax does
+2019-11-05 16:28:11 <arseniiv> in for contravariant, “argument-like”, and out for covariant, “result-like”
+2019-11-05 16:28:45 <arseniiv> just don’t confuse “in”-variant with invariant, there were cases :)
+2019-11-05 16:29:17 <arseniiv> anyway there are no invariant functor arguments in Haskell
+2019-11-05 16:29:38 <arseniiv> they are either co- or contra- or that’s not a functor in that argument
