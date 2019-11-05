@@ -144,3 +144,6 @@
 2019-11-05 11:25:22 <arseniiv> I think I miss knowledge of a framework
 2019-11-05 11:27:59 <arseniiv> the tricky case: { data A = A N; data N = Z | S N } — now we can’t return to A and the naive approach would result in an infinite definition { data A = AZ | ASZ | ASSZ | … }
 2019-11-05 11:29:38 <arseniiv> so though we can’t always contract a definition naively, maybe we can always find a type with a definition which contracts?.. E. g. that’s N in this example
+2019-11-05 11:31:20 <arseniiv> nope: { data A M; data M = Z | S A M }, now they *both* don’t contract in a naive fashion
+2019-11-05 11:33:51 <arseniiv> you may see that’s indeed a tricky situation. Okay I don’t need to contract definitions, I need `z` and `s` and a glimpse of `fold` (relating to GMMs, I don’t really need the last one, just a partial destructor `t → 1 + (1 + t)`, the first `1 +` is for values of `t` which aren’t injected Nats)
+2019-11-05 11:36:50 <arseniiv> even simpler: `z` and `s` a compositions of constructors, as hypothesized above. I’m sure that’s always possible, and in this case they would have all the remaining needed properties
