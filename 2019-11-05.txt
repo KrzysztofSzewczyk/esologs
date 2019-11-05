@@ -172,3 +172,15 @@
 2019-11-05 15:08:00 <esowiki> 14[[07Basis14]]4 10 02https://esolangs.org/w/index.php?diff=66976&oldid=66975 5* 03A 5* (+68) 10
 2019-11-05 15:25:07 <arseniiv> we can eliminate nonconstructivle types and constructors with arguments of those types and be left with at least one type having a nullary constructor
 2019-11-05 15:28:02 <arseniiv> though there are no guarantees this constructor is used in infinitely many values, and I seem to finally get what I should have done: there are infinitely many values, and only a finite amount of nullary constructors. At least one of them should occur in infinitely many values, pick that one
+2019-11-05 15:44:24 <arseniiv> hm no, we don’t need a single constructor, we need an inhabited type with a constructor “eventually taking” an argument of that type, yes
+2019-11-05 15:46:29 Quit: sprocklem (Ping timeout: 240 seconds)
+2019-11-05 15:46:29 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-11-05 15:47:19 <arseniiv> I don’t like proof by contradiction but suppose none of inhabiter types has one. I think that should imply there are only a finite set of values overall
+2019-11-05 15:50:02 <arseniiv> s/inhabiter/inhabited; every value of type t should not have values of type t inside so each value can only be a |type count| levels deep, yes, and there are only so many constructors so we get a finite set of values
+2019-11-05 15:50:21 <arseniiv> now how do I prove that without using contradiction
+2019-11-05 15:50:51 <arseniiv> I think I flooded the channel, sorry :/
+2019-11-05 15:51:47 <lf94> Has anyone tried typeclasses.com?
+2019-11-05 15:56:33 <arseniiv> lf94: me not; is there something which I could see without paying? (I’m lazy to register to get to know that by myself)
+2019-11-05 15:57:01 <lf94> There is
+2019-11-05 15:57:04 <lf94> uhhh
+2019-11-05 15:57:14 <lf94> https://typeclasses.com/profunctors
