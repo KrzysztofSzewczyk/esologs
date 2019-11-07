@@ -199,3 +199,76 @@
 2019-11-07 13:54:20 Quit: heroux (Ping timeout: 268 seconds)
 2019-11-07 13:54:20 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill
 2019-11-07 13:59:56 <ais523> wow, C# has covariant arrays just like Java does? I thought that was widely considered a design mistake in Java, I wonder why C# copied it?
+2019-11-07 14:00:36 <ais523> (the better approach, IMO, would be to have a specific "unmodifiable array" type that arrays can be cast to, but not cast back from; that type would be covariant even though the underlying array isn't)
+2019-11-07 14:01:10 <wib_jonas> I don't know how that works in Java, luckily
+2019-11-07 14:01:14 <wib_jonas> I didn't follow Java
+2019-11-07 14:02:13 <ais523> in Java, if type X extends (i.e. is a subtype of) type Y, an array X[] can be cast to an array Y[] without error
+2019-11-07 14:02:28 <ais523> you can read Y objects from your Y[] without issue (because all your X objects are Y objects)
+2019-11-07 14:02:38 <wib_jonas> right, but how can that work with mutable arrays?
+2019-11-07 14:02:46 <ais523> but if you try to store a Y that isn't an X into your Y[], you get a runtime error (because the Y[] is actually an X[] so only Xes can be stored in it)
+2019-11-07 14:03:03 <ais523> so the short answer is that it doesn't, which is why it's considered a design mistake
+2019-11-07 14:03:49 <wib_jonas> ok
+2019-11-07 14:05:25 <wib_jonas> of course, C++ has one of these stupid situations too, where you can get a runtime error for something that would usually give you a compile time error:
+2019-11-07 14:05:31 <myname> stackoverflow claims, this came at a time without generics
+2019-11-07 14:05:40 <ais523> indeed
+2019-11-07 14:05:48 <ais523> it took a while for Java to add generics
+2019-11-07 14:06:03 Joined: heroux
+2019-11-07 14:06:04 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill
+2019-11-07 14:06:06 <wib_jonas> if you call an abstract method on a class that is only partly constructed, so it's currently an absract class, you can get a runtime exception
+2019-11-07 14:06:09 <ais523> (and when they did, the Java compiler became Turing-complete)
+2019-11-07 14:06:39 <wib_jonas> wasn't the java compiler Turing-complete even before that, for other reasons?
+2019-11-07 14:06:51 <ais523> possibly? I'm not sure what language feature you'd use, though
+2019-11-07 14:07:10 <ais523> note that in a compiled language, having a Turing-complete language and a Turing-complete compiler are quite different
+2019-11-07 14:07:17 <ais523> most (all?) BF compilers are not TC
+2019-11-07 14:07:27 <ais523> because the compilation always halts
+2019-11-07 14:07:31 <wib_jonas> sure
+2019-11-07 14:07:54 <wib_jonas> and the C compiler without the preprocessor is probably not turing-complete
+2019-11-07 14:08:12 <wib_jonas> with the preprocessor it probably still isn't turing-complete
+2019-11-07 14:08:34 <ais523> right, I think all loops in the preprocessor are either provably infinite or provably finite
+2019-11-07 14:08:35 <wib_jonas> whereas the C++ compiler is probably turing-complete
+2019-11-07 14:08:40 <ais523> which means that it can't be TC
+2019-11-07 14:09:05 <wib_jonas> almost certainly TC for recent enough versions of C++
+2019-11-07 14:09:12 <ais523> C++ is definitely TC at compile time, C++-at-compile-time is sometimes seen as a language choice in programming competitions because of this
+2019-11-07 14:09:36 <ais523> (allegedly, one year someone used this in order to get around runtime restrictions in the IOI, by doing the entire logic of their program at compile time; they added compile time restrictions too the year after)
+2019-11-07 14:10:29 <wib_jonas> ais523: oh yeah,
+2019-11-07 14:10:46 <myname> hahahahaha
+2019-11-07 14:11:10 <wib_jonas> I know at least two competition tasks where the result that your program can generate can fit in a few screenfuls, so the program runtime can be made trivial, even in C,
+2019-11-07 14:11:14 Quit: sprocklem (Ping timeout: 240 seconds)
+2019-11-07 14:11:15 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill
+2019-11-07 14:11:18 <ais523> Perl is trivially TC at compile time because it has a keyword to run code during the compile
+2019-11-07 14:11:21 <wib_jonas> though generating those results in first place can be hard
+2019-11-07 14:11:53 <ais523> wib_jonas: that's a good point: if you have the time to actually run your program, why not just work out what the result is, and write a program that prints it as the constant string?
+2019-11-07 14:12:07 <ais523> although the IOI probably marks you on what the code does in addition to getting the result right, so that trick wouldn't work there
+2019-11-07 14:12:44 <wib_jonas> ais523: yes, that works, but the competitions themselves have a submission deadline, so the limitation is that the human has to somehow compute the result by then
+2019-11-07 14:12:48 <ais523> C-INTERCAL actually has a command-line option, -F, to do this optimisation (i.e. first statically analyse the program to see if it has constant output; if it does, run the program and just generate an executable that hardcodes the output)
+2019-11-07 14:12:52 <myname> IOI?
+2019-11-07 14:13:07 <ais523> international olympiad in informatics, I think? I mostly only know it by the acronym
+2019-11-07 14:13:16 <myname> ah
+2019-11-07 14:13:17 <wib_jonas> ais523: I don't know how it's scored
+2019-11-07 14:13:22 <ais523> https://en.wikipedia.org/wiki/International_Olympiad_in_Informatics
+2019-11-07 14:13:29 <wib_jonas> there's like two of them, and I know of them indirectly
+2019-11-07 14:13:44 <myname> i always thought, "informatics" is not a thing in english
+2019-11-07 14:14:02 <ais523> it is, but it's a technical word that isn't in common use
+2019-11-07 14:14:16 <ais523> IIRC many languages use similar words much more freely / in an everyday sense
+2019-11-07 14:14:59 <myname> in germany, the studying subject "computer science" is just called informatik
+2019-11-07 14:15:44 <myname> i once mentioned somewhere i am studying informatics and people where like "what?"
+2019-11-07 14:15:59 <myname> even though bioinformatics is called bioinformatics
+2019-11-07 14:16:03 Joined: xkapastel
+2019-11-07 14:16:04 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill
+2019-11-07 14:17:00 <wib_jonas> one of the competition tasks was to generate the truncatable primes http://oeis.org/A024770 , those ones whose number of digits equals to the program input. that's a finite sequence, so I solved this by precomputing and embedding each of the replies into the program.
+2019-11-07 14:17:29 <wib_jonas> myname: I think it's a europeanism that isn't used in english, but is used in the continent, so it works for the name of that contest
+2019-11-07 14:20:18 <wib_jonas> the other such task is trickier, it's the farming puzzle in http://ch24.org/static/archive/2008/2008_ec.pdf . that one has less than 15 essentially distinct inputs. however,
+2019-11-07 14:20:57 <wib_jonas> that's a competition round where you aren't judged by your code, and the input set is public as soon as the problem is, you only send the outputs as the solution,
+2019-11-07 14:21:15 <wib_jonas> so it's not a problem that there are so few inputs and that you can hard-code them, generating the outputs still isn't trivial,
+2019-11-07 14:21:51 <wib_jonas> and unlike the previous case, you probably couldn't even look up the results in the OEIS or elsewhere online before the contest
+2019-11-07 14:22:20 <ais523> I think it would be worthwhile to have a language with every OEIS sequence as a builtin
+2019-11-07 14:22:28 <ais523> (you'd probably need flow control, but nothing else, to make a usable language)
+2019-11-07 14:22:34 <ais523> however, it would be a huge amount of effort
+2019-11-07 14:22:53 <wib_jonas> ais523: yes, but it's not trivial to download dumps from OEIS, so it's hard to make this run off-line
+2019-11-07 14:23:24 <wib_jonas> and of course *every* OEIS sequence is impossible if you take it too literally
+2019-11-07 14:23:25 <ais523> you'd probably need to write the code yourself
+2019-11-07 14:23:30 <wib_jonas> but many OEIS sequences could work
+2019-11-07 14:24:37 <fizzie> Back when I was in university, they had a "Laboratory of Theoretical Computer Science" (TCS for short, for proper CS: computational complexity, logic, cryptography, distributed computation) and "Laboratory of Computer and Information Science" (CIS for short, for machine learning and such), which they merged to "Department of Information and Computer Science" (ICS, for all the sciencey computer science
+2019-11-07 14:24:43 <fizzie> stuff); which were all entirely parallel to the Department of (just) Computer Science (CS for short, for all the engineeringy software development stuff).
+2019-11-07 14:27:32 <wib_jonas> and of course it would have to be uncomputable, because there are a few uncomputable sequences in OEIS, like http://oeis.org/A028444
+2019-11-07 14:27:55 <wib_jonas> and a lot of sequences that are at least semi-computable but we don't have an efficient way to compute them
