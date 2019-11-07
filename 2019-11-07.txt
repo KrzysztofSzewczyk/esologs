@@ -108,3 +108,23 @@
 2019-11-07 11:26:17 <wib_jonas> This morning on the tram, I heard a man talk in Swedish but with a very strong Hungarian accent. That's the first time I heard such a thing.
 2019-11-07 11:26:49 <wib_jonas> I've heard sevearl people speak English in a strong Hungarian accent, but the same thing in Swedish was new.
 2019-11-07 11:28:14 <wib_jonas> I know it's Swedish rather than Norwegian or Danish mostly because he said "två" rather than "to"
+2019-11-07 11:31:43 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-11-07 11:31:44 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill
+2019-11-07 11:40:46 <esowiki> 14[[07The Program Is Mostly Ignored14]]4 10 02https://esolangs.org/w/index.php?diff=66991&oldid=66982 5* 03Ais523 non-admin 5* (+4141) 10a modified version that 2-Echo Tag can implement
+2019-11-07 11:42:13 <esowiki> 14[[07Echo Tag14]]4 10 02https://esolangs.org/w/index.php?diff=66992&oldid=66980 5* 03Ais523 non-admin 5* (-2) 10/* Computational class */ link to TPIMI
+2019-11-07 11:42:32 <esowiki> 14[[07Echo Tag14]]4 10 02https://esolangs.org/w/index.php?diff=66993&oldid=66992 5* 03Ais523 non-admin 5* (+36) 10/* See also */ link to TPIMI
+2019-11-07 11:43:26 <ais523> in case anyone isn't following esowiki, it turns out that 2-Echo Tag can also implement (a modified version of) The Program Is Mostly Ignored
+2019-11-07 11:44:22 <ais523> although the resulting implementation is likely to be very slow, because in order to get an increase in the queue length (required for unbounded memory), you have to grow it by a factor of more than 48 by repeatedly multiplying by 1¼
+2019-11-07 11:44:41 <ais523> and the code needed to mediate that probably has length proportional to 2 to the power of the number of steps
+2019-11-07 11:45:50 <ais523> (the reason it's likely TC is that the mediating code has a length depending only on the number of multiplications, not on the size of the portion of the queue it's extending, so by creating a sufficiently long queue portion to extend you can make the mediating code small by comparison)
+2019-11-07 11:46:00 <wib_jonas> ais523: is it only double-exponential, or triple-exponential?
+2019-11-07 11:46:33 <ais523> wib_jonas: in the parameter that people care about, i.e. how fast the resulting program runs relative to the program you're compiling, I think it's actually linear
+2019-11-07 11:46:52 <ais523> the constant factor is exponential in the size of the program, though (I think only singly-exponential though)
+2019-11-07 11:47:44 <ais523> so if you have a program of size s that runs in t steps, after you compile it, you end up with something of size O(s*2**s) that runs in O(t*s*2**s) steps
+2019-11-07 11:48:01 <ais523> I think, I might be a bit off on the complexities, given that I'm trying to calculate them in my head and don't have a concrete TCness construction yet
+2019-11-07 11:48:29 <wib_jonas> oh
+2019-11-07 11:48:31 <ais523> also, the constant factor hidden by the big-O notation is likely over a billion
+2019-11-07 11:48:54 <ais523> but hey, this is still technically polynomial time :-P
+2019-11-07 11:48:56 <ais523> (in fact, linear time)
+2019-11-07 11:49:31 <wib_jonas> fun
+2019-11-07 12:00:01 <esowiki> 14[[07The Program Is Mostly Ignored14]]4 M10 02https://esolangs.org/w/index.php?diff=66994&oldid=66991 5* 03Ais523 non-admin 5* (+14) 10/* Implementation of the modified version in 2-Echo Tag */ don't underscore k/q, they're defined as sets of four bits, rather than as a single bit that gets repeated
