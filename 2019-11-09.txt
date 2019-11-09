@@ -223,3 +223,20 @@
 2019-11-09 21:29:34 <b_jonas> @faq
 2019-11-09 21:29:34 <lambdabot> https://wiki.haskell.org/FAQ
 2019-11-09 21:30:00 <b_jonas> ^faq
+2019-11-09 21:30:11 <b_jonas> j-bot, faq:
+2019-11-09 21:31:17 <fizzie> b_jonas: Yes, there's a lot of context for the observation. The short version is, I've got a nftables setup that does SSH port knocking using knocks that have an odd MSS value set, because it's something you can easily detect with a firewall rule without running a server, yet also one of the few bits in the TCP header you can quite well control from the client side.
+2019-11-09 21:31:47 <fizzie> (I used to have a more conventional port knock thing where the knocks were "packets to port X, Y and Z", but that seemed too mainstream.)
+2019-11-09 21:32:51 <fizzie> Now I've picked up a Chrome OS device, which is a little awkward to run arbitrary code on without losing the "fully verified" status, so I was wondering if I could make Chrome do the knocking.
+2019-11-09 21:34:15 <b_jonas> fizzie: ok, I don't claim to understand that part
+2019-11-09 21:35:02 <b_jonas> the part I understand is just: let the OS do its thing by default, even though it has all sorts of setsockopt and sysctl knobs to do more magic
+2019-11-09 21:35:19 <fizzie> But that's fundamentally incompatible with this idea.
+2019-11-09 21:35:55 <fizzie> I'm using the MSS field as an arbitrary "key" in a connection that won't actually be used for any data, it's just a signal.
+2019-11-09 21:37:10 <fizzie> (To add a temporary exemption that allows the *actual* connection to the SSH port.)
+2019-11-09 21:41:45 <b_jonas> fizzie: but won't that confuse further connections to the same host?
+2019-11-09 21:41:55 <b_jonas> since the OS might try to use the same MSS value later
+2019-11-09 21:42:07 <b_jonas> why MSS in particular? aren't there other places where you can shove the data?
+2019-11-09 21:42:41 <fizzie> From what I recall, there wasn't really anything else easily/portably controllable (in a non-raw-sockets manner) in the IP or TCP headers.
+2019-11-09 21:42:57 <fizzie> And I don't think any TCP stack will pick up MSS values used by applications.
+2019-11-09 21:43:02 <fizzie> It's not like MTU discovery.
+2019-11-09 21:43:32 <b_jonas> ok
+2019-11-09 21:45:51 <fizzie> It's all quite pointless, I've just gotten used to having this thing.
