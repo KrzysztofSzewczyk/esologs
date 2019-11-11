@@ -346,3 +346,42 @@
 2019-11-11 19:25:56 <esowiki> 14[[07Nine14]]4 10 02https://esolangs.org/w/index.php?diff=67019&oldid=67018 5* 03CMinusMinus 5* (+17) 10
 2019-11-11 19:28:37 Quit: zeroFlow (Ping timeout: 240 seconds)
 2019-11-11 19:28:37 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zseri
+2019-11-11 19:30:49 <arseniiv> hey hey suppose we have a finite digraph (possibly with self-loops) and we start with I[0] the set of all sink vertices, then each time we set I[n+1] := I[n] ∪ (all vertices with outcoming edges only to vertices of I[n]). When I[n] settles (the graph is finite), what do we get? I suspect this set has a nice name
+2019-11-11 19:33:04 <arseniiv> (though as I[n] ⊂ I[n+1], we can take even an infinite graph and just take a limit of I afterwards, maybe of an ordinal-valued sequence)
+2019-11-11 19:33:43 <arseniiv> hm it reminds me induction
+2019-11-11 19:34:10 <arseniiv> (I swear I didn’t name I after “induction”)
+2019-11-11 19:38:14 <b_jonas> arseniiv: I don't think you get anything particularly interesting or nice
+2019-11-11 19:39:41 <arseniiv> this occurs when I try to decide if an algebraic type is inhabited; the vertices are types and t → u when a value of u is absolutely needed to construct a value of t
+2019-11-11 19:39:43 <b_jonas> arseniiv: there's a decomposition theorem for digraphs, where the digraph is made of strongly connected components aka strong components, any two node in the same strong component are reachable from each other both ways, and no two strong component is reachable from each other both ways,
+2019-11-11 19:39:55 <b_jonas> so if you contract the strong component, you get a digraph without a loop
+2019-11-11 19:40:37 <b_jonas> in your case, you start from sink vertices, which are exactly the sink strong components that have only one node, and then take all nodes (or all strong components) reachable from those backwards
+2019-11-11 19:40:48 <b_jonas> hmm wait, that's not what you said
+2019-11-11 19:40:59 <b_jonas> sorry, wait a moment
+2019-11-11 19:41:06 <arseniiv> yeah, that’s more peculiar :)
+2019-11-11 19:41:11 <b_jonas> "I[n+1] := I[n] ∪ (all vertices with outcoming edges only to vertices of I[n])"
+2019-11-11 19:41:35 <arseniiv> for a vertex v to be added, we need that for all v → w, w be in I[n]
+2019-11-11 19:41:41 <b_jonas> yes, that's fewer nodes
+2019-11-11 19:42:35 <b_jonas> the set of nodes you get in the end won't even have directed loops among them
+2019-11-11 19:43:20 <arseniiv> (my hypothesis that lim I consists precisely of all inhabited types, for the semantics given above)
+2019-11-11 19:44:13 <b_jonas> arseniiv: no way
+2019-11-11 19:45:15 <arseniiv> at least it should be a necessary condition?
+2019-11-11 19:45:24 <b_jonas> arseniiv: consider data R where { {- uninhabited -} }; data S where { {- uninhabited -} }; data A = P R | Q S;
+2019-11-11 19:45:38 <b_jonas> neither R nor S is absolutely needed to construct A, and yet A is uninhabited
+2019-11-11 19:45:53 <arseniiv> b_jonas: ah, now I remember, thanks!
+2019-11-11 19:46:01 <arseniiv> I considered that but forgot
+2019-11-11 19:46:13 <arseniiv> now I think maybe I need to work constructor-wise
+2019-11-11 19:48:06 <arseniiv> I’ll write if I succeed on this way
+2019-11-11 19:55:22 <b_jonas> arseniiv: how many type system extensions do you have? is this still plain algebraic types, or do you have type parameters or even more?
+2019-11-11 19:55:55 <arseniiv> b_jonas: plain ones, no parameters
+2019-11-11 19:56:09 <b_jonas> I believe if you have just plain algebraic types, then you can find out precisely which types are inhabited
+2019-11-11 19:56:33 <b_jonas> if you add enough type system extensions, eventually your compile time becomes Turing-complete, and then or before, you can only prove some of your uninhabited types uninhabited
+2019-11-11 19:56:49 <b_jonas> that's still useful for optimizations, and it's not usually a problem that you can't prove an uninhabited type uninhabited, mind you
+2019-11-11 19:57:00 <b_jonas> so it's still worth to have basic checks for that in a compiler
+2019-11-11 19:57:16 <arseniiv> you may even remember when I talked to myself here about proving generalized Minsky machines TC for exactly those type definitions which give us infinitely many values
+2019-11-11 19:58:15 <arseniiv> b_jonas: yeah, I agree with what you said too
+2019-11-11 19:58:30 <b_jonas> arseniiv: that sounds plausible, because those types can simulate natural numbers, and counter machines with enough registers are turing-complete,
+2019-11-11 19:58:46 <b_jonas> whereas if you only have types that have finitely many values, then your state space is finite
+2019-11-11 19:59:18 <arseniiv> now I have sat and written a proof that indeed infinitude of values is equivalent to TCness, but now I want an icing on a cake showing how to decide if there are infinite values syntactically
+2019-11-11 19:59:43 <b_jonas> high chance of rain tomorrow, says the weather prediction. ok.
+2019-11-11 19:59:48 <arseniiv> yeah, precisely what I written out
+2019-11-11 19:59:55 <arseniiv> (not about the rain)
