@@ -10,3 +10,70 @@
 2019-11-11 00:35:35 Joined: moony
 2019-11-11 00:39:57 Quit: moony (Ping timeout: 240 seconds)
 2019-11-11 01:08:16 Joined: moony
+2019-11-11 01:31:33 <shachaf> `5
+2019-11-11 01:31:35 <HackEso> 1/2:1168) * Sgeo remembers when he believed VRML could never have gravity. Now VRML is dead.  <Sgeo> (And has gravity) \ 271) <zzo38> I think I managed to make Stack Overflow work on gopher, now. \ 1038) <+kmc> we are amused  <+kmc> the royal +v \ 123) <cpressey> Never ever use a quote which contains both the words "aloofness" and "gel" (verb). \ 208) <Phantom_Hoover> This is good if you are a wheat plant but bad if you like eating wheat seed
+2019-11-11 01:31:36 <shachaf> `n
+2019-11-11 01:31:37 <HackEso> 2/2:.
+2019-11-11 01:31:45 <shachaf> oh no
+2019-11-11 01:31:54 User Name: moony = moony_!~moony@hellomouse/dev/moony
+2019-11-11 01:31:54 <moony> I took a peek at Seclusion.
+2019-11-11 01:32:02 <moony> Now one of my favorite esolangs
+2019-11-11 01:33:56 <moony> Suprisingly compact for a turing tarpit
+2019-11-11 01:37:16 Joined: imode
+2019-11-11 01:37:17 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-11 01:37:27 <int-e> How does aloofness gel with quotes...
+2019-11-11 01:37:41 <moony> hi int-e
+2019-11-11 01:37:52 <int-e> moornyng
+2019-11-11 01:38:15 <shachaf> `? int-e
+2019-11-11 01:38:15 <HackEso> int-e är inte svensk. Hen kommer att spränga solen. Hen står för sig själv. Hen gillar inte färger, men han gillar dissonans. Er hat ein Hipster-Spiel gekauft.
+2019-11-11 01:39:04 <int-e> let's nuke all the nickname wisdom entries and start from scratch.
+2019-11-11 01:39:29 <esowiki> 14[[07Esolang:General disclaimer14]]4 10 02https://esolangs.org/w/index.php?diff=67011&oldid=64350 5* 03Moon 5* (+41) 10Was there ever a time where this contained useful content?
+2019-11-11 01:40:14 <moony> Answer: no
+2019-11-11 01:40:43 <shachaf> How does two watched literals work with backtracking?
+2019-11-11 01:41:38 <shachaf> The thing I imagine doing for 2WL is: You have a queue of literals that are forced to true. When you do unit propagation, you find new literals that are in unit clauses, and push them onto your queue.
+2019-11-11 01:42:05 <shachaf> But when you backtrack, do you just discard part of your queue depending on the backtrack level? I don't think that's what people do.
+2019-11-11 01:42:15 <int-e> queue?!
+2019-11-11 01:42:21 <shachaf> Not a queue?
+2019-11-11 01:42:31 <int-e> I don't see a queue.
+2019-11-11 01:42:56 <shachaf> You think you just set the literals to true directly?
+2019-11-11 01:43:14 <shachaf> I feel like you must have a queue or a stack or something.
+2019-11-11 01:43:26 <moony> Also, i've been considering setting up my own mediawiki wiki for general CS
+2019-11-11 01:43:33 <moony> things
+2019-11-11 01:43:44 <moony> (Damn you enter key I wasn't done)
+2019-11-11 01:44:05 <int-e> shachaf: The trail is a stack to me. But it's not immediately connected to the watched literals.
+2019-11-11 01:44:15 <shachaf> The trail is just the regular stack, that's not what I mean.
+2019-11-11 01:44:32 <int-e> I see no queues in 2WL at all.
+2019-11-11 01:45:13 <shachaf> Say you're in some state where you have the clauses (x | y) & (x | z)
+2019-11-11 01:45:45 <shachaf> You end up with ¬x. Now you have to infer y and z. Right?
+2019-11-11 01:45:57 <int-e> Oh, that's where the queue is.
+2019-11-11 01:46:04 <shachaf> Then you need to find all the clauses that have ¬y and ¬z as their watched literals.
+2019-11-11 01:46:09 <int-e> Yeah, fair enough.
+2019-11-11 01:47:11 <int-e> And yes, I expect you discard the queue when you find a conflict. You don't touch the 2WL lists either; you have to ensure that every (non-unit) clause is on two lists as you process the literals.
+2019-11-11 01:47:28 <Sgeo> I was wrong, VRML is not dead: http://create3000.de/x_ite/getting-started/
+2019-11-11 01:47:40 <shachaf> I know you don't need to undo 2WL when you backtrack, which is a neat trick.
+2019-11-11 01:47:47 <shachaf> But do you just discard the entire queue?
+2019-11-11 01:47:55 <int-e> sure
+2019-11-11 01:48:08 <int-e> you've found a conflict... you don't need more
+2019-11-11 01:49:54 <shachaf> Let me see. Say you have the clause (¬y | x)...
+2019-11-11 01:49:55 <shachaf> Oh, I see.
+2019-11-11 01:50:06 <int-e> (I expect you could keep going in hope of finding a nicer conflict clause? But the moment you find a conflict you violate the 2WL invariant that watched literals are not on the trail...)
+2019-11-11 01:50:24 <shachaf> You can just scrap the whole queue because this was all the propagation step, and the conflict was implied by the initial choice of ¬x.
+2019-11-11 01:50:48 <shachaf> There are no decisions made while the queue is nonempty, of course.
+2019-11-11 01:51:42 <int-e> (Which probably doesn't matter, but you probably need to be careful not to put a literal and its complement on the trail, at which point conflicts become very much meaningless. It seems messy.)
+2019-11-11 01:52:18 <int-e> You'll still want to keep the processed literals for conflict analysis.
+2019-11-11 01:52:36 <shachaf> I started implementing this queue as some kind of circular buffer thing but then I saw what minisat does:
+2019-11-11 01:52:47 <shachaf> They just store the queue on the trail itself, right after all the literals in the trail.
+2019-11-11 01:53:07 <shachaf> Then they just adjust the trail end index forward as they pop things off the queue onto the trail.
+2019-11-11 01:53:12 <shachaf> So much better.
+2019-11-11 01:53:37 <int-e> Sgeo__: I'm afraid that things don't die anymore... they go out of fashion but linger on. People will just build compatibility layers like the one you linked to.
+2019-11-11 01:54:28 <int-e> shachaf: Of course that is where you put the queue... which is why I didn't see it at first.
+2019-11-11 01:54:46 <shachaf> Right, it's really just the unprocessed part of the trail.
+2019-11-11 01:54:53 <Sgeo> Technically it's not implementing the VRML spec faithfully. There's also an X3D spec that's a next version VRML, that's still being worked on.
+2019-11-11 01:55:01 <shachaf> But I didn't think of it that way at first!
+2019-11-11 01:55:08 <Sgeo> https://github.com/create3000/x_ite/issues/50
+2019-11-11 01:56:18 <int-e> Sgeo__: you seem to care a lot about VRML
+2019-11-11 01:56:46 <Sgeo> I spent some of my childhood in Cybertown, which used VRML, and before then I read a book about VRML
+2019-11-11 01:59:36 <shachaf> `? chu space
+2019-11-11 01:59:37 <HackEso> A Chu space is just a matrix. Taneb invented them, then Chu stole his invention.
+2019-11-11 01:59:43 <shachaf> `? matrix
+2019-11-11 01:59:44 <HackEso> A matrix is just a matrix. People use them to communicate. Taneb invented them.
