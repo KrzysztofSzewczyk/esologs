@@ -13,3 +13,138 @@
 2019-11-12 00:28:49 <int-e> 3 months from discovery (http://www.girlgeniusonline.com/comic.php?date=20190809) to... well, maybe defeat.
 2019-11-12 00:29:35 <int-e> We could also have two roaming souls as a result.
 2019-11-12 00:29:44 <int-e> Just to keep things messy.
+2019-11-12 00:38:54 Joined: ashtons
+2019-11-12 00:38:55 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ashtons, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 00:39:03 User Name: ashtons = ashtons!8a2fe8c3@mitchell-south-195.resnet.latech.edu
+2019-11-12 00:39:03 <ashtons> hello
+2019-11-12 00:41:43 <oerjan> hi
+2019-11-12 00:42:07 <oerjan> `relcome ashtons
+2019-11-12 00:42:09 <HackEso> ​13ashtons: 04Welcome 07to 08the 09international 02hub 06for 13esoteric 04programming 07language 08design 09and 02deployment! 06For 13more 04information, 07check 08out 09our 02wiki: 06<https://esolangs.org/>. 13(For 04the 07other 08kind 09of 02esoterica, 06try 13#esoteric 04on 07EFnet 08or 09DALnet.)
+2019-11-12 00:42:42 <ashtons> :)  i just came from the wiki
+2019-11-12 00:43:51 <shachaf> `5 5 w
+2019-11-12 00:44:08 <HackEso> 1/2:indonesia//Indonesia is a large island country in Asia and the world's most populous muslim country. Its major export is rayon textile from the Indonesian fnord. \ hodl//Hodl ym bere, I'ev gto thsi! \ wiki//The wiki is at <https://esolangs.org/>. \ hash 2346ad27d7568ba9896f1b7da6b5991251debdf2//hash 2346ad27d7568ba9896f1b7da6b5991251debdf2 \ canary//A canary is a small bright yellow chicken that dwells in deep caves. Unlike bats
+2019-11-12 00:44:26 <ashtons> I've actually been working on my own esolang, but I don't really know what to call it yet.
+2019-11-12 00:45:21 <int-e> `n
+2019-11-12 00:45:21 <HackEso> 2/2: canaries are oriented right way up, unless they're pining for the fjords. \ .............................................................................................................................................................................................................................................................................................................................................................................
+2019-11-12 00:45:38 <ashtons> anybody got tips for naming esolangs? cause i suck at naming stuff
+2019-11-12 00:45:54 <shachaf> int-e: what did you do..............................................................................................................................................................................................................................................................................................................................................................................
+2019-11-12 00:46:01 <int-e> shachaf: I don't know.
+2019-11-12 00:46:03 <int-e> `n
+2019-11-12 00:46:05 <HackEso> 1/2:indonesia//Indonesia is a large island country in Asia and the world's most populous muslim country. Its major export is rayon textile from the Indonesian fnord. \ hodl//Hodl ym bere, I'ev gto thsi! \ wiki//The wiki is at <https://esolangs.org/>. \ hash 2346ad27d7568ba9896f1b7da6b5991251debdf2//hash 2346ad27d7568ba9896f1b7da6b5991251debdf2 \ canary//A canary is a small bright yellow chicken that dwells in deep caves. Unlike bats
+2019-11-12 00:46:10 <ashtons> i have no idea what is going on
+2019-11-12 00:46:17 <int-e> Why does it cycle.
+2019-11-12 00:46:35 <int-e> ashtons: HackEso is a bot. ` is its command prefix.
+2019-11-12 00:46:44 <ashtons> ah
+2019-11-12 00:46:50 <ashtons> `h
+2019-11-12 00:46:55 <ashtons> `help
+2019-11-12 00:46:55 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $PWD are persistent, and $PWD/bin is in $PATH. $PWD is a mercurial repository, "`revert <rev>" can be used to revert to a revision. See http://codu.org/projects/hackbot/fshg/
+2019-11-12 00:47:10 <ashtons> `echo hello
+2019-11-12 00:47:11 <HackEso> hello
+2019-11-12 00:47:17 <int-e> ashtons: And well... it has a bunch of less and more obscure commands.
+2019-11-12 00:47:32 <ashtons> `man 2 waitpid
+2019-11-12 00:47:33 <HackEso> Nice try.
+2019-11-12 00:47:33 <shachaf> int-e: What should it do instead?
+2019-11-12 00:47:40 <int-e> shachaf: stop
+2019-11-12 00:47:53 <shachaf> `cat bin/n
+2019-11-12 00:47:54 <HackEso> line="${1-$(cat /hackenv/tmp/spline)}"; len="$(awk 'END{print NR}' /hackenv/tmp/spout)"; echo -n "$line/$len:"; sed -n "${line}{p;q}" /hackenv/tmp/spout; echo "$((line<len?line+1:1))" > /hackenv/tmp/spline
+2019-11-12 00:47:58 <ashtons> i was not expecting that response
+2019-11-12 00:48:07 <HackEso> No output.
+2019-11-12 00:48:20 <shachaf> You could make it stop, I guess?
+2019-11-12 00:48:22 <ashtons> `$PATH
+2019-11-12 00:48:23 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: $PATH: not found
+2019-11-12 00:48:28 <shachaf> It has to print something.
+2019-11-12 00:48:29 <int-e> `cat bin/man
+2019-11-12 00:48:30 <HackEso> ​#!/bin/sh \ echo Nice try.
+2019-11-12 00:48:36 <ashtons> `echo $PATH
+2019-11-12 00:48:36 <HackEso> ​$PATH
+2019-11-12 00:48:46 <int-e> `` echo $PATH
+2019-11-12 00:48:47 <ashtons> :\
+2019-11-12 00:48:47 <HackEso> ​/hackenv/bin:/usr/bin:/bin
+2019-11-12 00:48:55 <int-e> `cat bin/`
+2019-11-12 00:48:56 <HackEso> ​#!/bin/bash \ cmd="${1-quote}" \ TIMEFORMAT="real: %lR, user: %lU, sys: %lS" \ shopt -s extglob globstar \ eval -- "$cmd" | rnooodl
+2019-11-12 00:49:10 <int-e> it's all perrrfectly logical.
+2019-11-12 00:49:14 <ashtons> `echo banana
+2019-11-12 00:49:14 <HackEso> banana
+2019-11-12 00:49:36 <shachaf> ``
+2019-11-12 00:49:37 <HackEso> 652) <shachaf> fizzie: What kind of speech recognition do you do?  <shachaf> If you only need to recognize famous speeches, like Churchill or something, it should be pretty easy.
+2019-11-12 00:49:47 <int-e> shachaf: I take it back.
+2019-11-12 00:49:47 <shachaf> Golly.
+2019-11-12 00:50:08 Quit: kspalaiologos (Ping timeout: 268 seconds)
+2019-11-12 00:50:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ashtons, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 00:50:10 <ashtons> `touch banana.txt
+2019-11-12 00:50:17 <int-e> `? prefixes
+2019-11-12 00:50:17 <HackEso> No output.
+2019-11-12 00:50:19 <HackEso> Bot prefixes: fungot ^, HackEso `, EgoBot !, lambdabot @ or ?, thutubot +, metasepia ~, idris-bot ( , jconn ) , j-bot [ .
+2019-11-12 00:50:41 <ashtons> `ls
+2019-11-12 00:50:41 <HackEso> a.out \ banana.txt \ bin \ canary \ emoticons \ esobible \ etc \ evil \ f \ factor \ good \ hw \ ibin \ interps \ izash.c \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quinor \ quotes \ share \ src \ test2 \ testfile \ tmflry \ tmp \ wisdom
+2019-11-12 00:50:46 <int-e> `url /
+2019-11-12 00:50:47 <HackEso> File is outside web-viewable filesystem repository.
+2019-11-12 00:50:49 <int-e> `url .
+2019-11-12 00:50:50 <HackEso> File is outside web-viewable filesystem repository.
+2019-11-12 00:50:50 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-11-12 00:50:51 Names: \oren\, ^[, aji, aloril, APic, ashtons, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 00:50:53 <int-e> aww
+2019-11-12 00:51:06 <ashtons> so how do i put stuff in banana.txt now
+2019-11-12 00:51:34 <int-e> I wanted this output: https://hack.esolangs.org/repo/file/tip/
+2019-11-12 00:51:35 <kmc> what's a banana.txt
+2019-11-12 00:51:35 <ashtons> if i remember correctly you can pipe output from echo into a file
+2019-11-12 00:51:44 <ashtons> i made it make a file called banana.txt
+2019-11-12 00:52:48 <oerjan> `url
+2019-11-12 00:52:49 <HackEso> https://hack.esolangs.org/repo/
+2019-11-12 00:53:29 <ashtons> `echo "bananas are awesome" >> banana.txt
+2019-11-12 00:53:29 <HackEso> ​"bananas are awesome" >> banana.txt
+2019-11-12 00:53:37 <ashtons> `cat banana.txt
+2019-11-12 00:53:37 <HackEso> No output.
+2019-11-12 00:53:43 <ashtons> :(
+2019-11-12 00:53:52 <int-e> `` rm a.out izhash.c test2 testfile
+2019-11-12 00:53:54 <HackEso> rm: cannot remove 'izhash.c': No such file or directory
+2019-11-12 00:54:06 <int-e> `` rm izash.c
+2019-11-12 00:54:11 <HackEso> No output.
+2019-11-12 00:54:14 <kmc> F
+2019-11-12 00:54:22 <ashtons> `echo "bananas are awesome" > banana.txt
+2019-11-12 00:54:22 <HackEso> ​"bananas are awesome" > banana.txt
+2019-11-12 00:54:32 <int-e> kmc: yes?
+2019-11-12 00:54:47 <kmc> `` ls wisdom | paste
+2019-11-12 00:54:49 <HackEso> https://hack.esolangs.org/tmp/paste/paste.6286
+2019-11-12 00:54:59 <kmc> `` /bin/ls wisdom | paste
+2019-11-12 00:55:00 <HackEso> https://hack.esolangs.org/tmp/paste/paste.9161
+2019-11-12 00:55:16 <oerjan> ashtons: ` alone only takes a single command argument and no shell syntax
+2019-11-12 00:55:28 <int-e> ashtons: the trick is to use `` [note the space]. And you can experiment in the tmp/ subdirectory... then it won't end up under version control.
+2019-11-12 00:55:43 <ashtons> okay
+2019-11-12 00:55:57 <shachaf> `? shaventions
+2019-11-12 00:55:58 <HackEso> Shaventions include: before/now/lastfiles, culprits, hog/{h,d}oag, le//rn, tmp/, mk/mkx, {s,p}led/sedlast, spore/spam/speek/sport/1/4/5, edit. Taneb did not invent them yet.
+2019-11-12 00:56:02 <kmc> `` echo 'Big beats are the best, get high all the time.' > wisdom/'big beat manifesto'
+2019-11-12 00:56:06 <kmc> `? big beat manifesto
+2019-11-12 00:56:07 <HackEso> No output.
+2019-11-12 00:56:08 <HackEso> Big beats are the best, get high all the time.
+2019-11-12 00:56:19 <shachaf> `? le/rn
+2019-11-12 00:56:20 <HackEso> le/rn makes creating wisdom entries manually a thing of the past. Usage: `le/[/]rn <key>//<wisdom>
+2019-11-12 00:56:29 <fizzie> As for the naming, that's easy.
+2019-11-12 00:56:31 <fizzie> `langs
+2019-11-12 00:56:32 <HackEso> lambrelang doverlang befactionlang crablang pathlang wadelang wherlang 2dblang adepoullang sumlang fmandlang lxxxlang netwlang bajolang minlang bfreetonlang ttilang qwedlang pointlang frualang
+2019-11-12 00:56:33 <ashtons> ` ` echo "Bananas" > banana.txt
+2019-11-12 00:56:34 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: : not found
+2019-11-12 00:56:38 <kmc> `coins
+2019-11-12 00:56:40 <HackEso> ​07hifhcoin 08trincoin 09vcoin 02catcoin 06concoin 13julicoin 04liberacoin 07vhccoin 08symeshauvecoin 09rectpcoin 02netwofifcoin 06forthcoin 13thisesocoin 04peterbcoin 07liacoin 08aeonstrolcoin 09lopocoin 02duricoin 06paxcoin 13auresecoin
+2019-11-12 00:56:43 <shachaf> `cbt langs
+2019-11-12 00:56:44 <HackEso> words ${1---eng-1M --esolangs 20} | sed -re 's/( |$)/lang\1/g'
+2019-11-12 00:56:49 <kmc> catcoin
+2019-11-12 00:56:54 <ashtons> :/
+2019-11-12 00:57:18 <fizzie> Presumably that exists already.
+2019-11-12 00:57:20 <int-e> `mk tmp/banana.txt//Bananas are tasty but not very juicy.
+2019-11-12 00:57:20 <HackEso> tmp/banana.txt
+2019-11-12 00:57:27 <int-e> `cat tmp/banana.txt
+2019-11-12 00:57:28 <HackEso> Bananas are tasty but not very juicy.
+2019-11-12 00:57:34 Quit: atslash (Quit: This computer has gone to sleep)
+2019-11-12 00:57:34 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 00:57:39 <ashtons> :/
+2019-11-12 00:58:22 <int-e> `` echo -n "Bananas cause far fewer accidents than cartoons may lead you to believe." > tmp/banana.txt
+2019-11-12 00:58:22 <HackEso> No output.
+2019-11-12 00:58:29 <int-e> `cat tmp/banana.txt
+2019-11-12 00:58:30 <HackEso> Bananas cause far fewer accidents than cartoons may lead you to believe.
+2019-11-12 00:58:50 <oerjan> `? banana
+2019-11-12 00:58:51 <HackEso> Bananananananana BATMAN!
+2019-11-12 00:59:36 <ashtons> ` ` echo -n "Bananas taste good and have potassium, but they bruise kinda easily. I still like to eat them though :)" > tmp/banana.txt
+2019-11-12 00:59:37 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: : not found
+2019-11-12 00:59:41 <ashtons> seriously
+2019-11-12 00:59:57 <int-e> ashtons: there's no space *between* the two backticks.
