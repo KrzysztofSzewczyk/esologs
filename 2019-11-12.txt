@@ -804,3 +804,26 @@
 2019-11-12 19:52:50 <fizzie> https://github.com/fis/esolangs/blob/master/esologs/log.proto is the storage proto, as you can see it's pretty close to being 1:1 with the "raw" format.
 2019-11-12 19:56:37 <fizzie> (There are done arguable problems, in that it can't distinguish "FOO x y" from "FOO x :y", or represent lines that are not valid in terms of the IRC protocol. But it is what it is.)
 2019-11-12 19:57:01 <fizzie> s/done/some/
+2019-11-12 20:00:42 <b_jonas> fizzie: I don't need the actual storage format, the IRC raw format is good enough
+2019-11-12 20:01:45 <fizzie> Yeah, I think it doesn't even lose in timestamp accuracy, looks like it's microseconds for both.
+2019-11-12 20:02:36 <b_jonas> fizzie: and the logs are still not accessible on HackEso's file system, right?
+2019-11-12 20:03:23 <fizzie> Right.
+2019-11-12 20:03:32 <b_jonas> I was thinking of making a `why command that looks up the context from the timestamp of a hg commit, for which I either need the logs on HackEso, or download them here and make a compressed database that represents just some of the timestamps to be able to find the right anchor
+2019-11-12 20:03:35 <fizzie> I was planning to make them accessible over HTTP from HackEso.
+2019-11-12 20:03:49 <fizzie> Probably with some sort of a search/query API.
+2019-11-12 20:04:01 <b_jonas> that could work too
+2019-11-12 20:04:25 <b_jonas> this command would need to look up one or sometimes two days per revision
+2019-11-12 20:06:48 <b_jonas> I'd have to download the HTML formatted logs for this though, to make sure that the lines match
+2019-11-12 20:07:17 <b_jonas> and even then hope that the daily logs has the same number of logical lines as the day's section in the monthly HTML
+2019-11-12 20:07:31 <b_jonas> and that the anchors are always numbered sequentially
+2019-11-12 20:08:21 <b_jonas> but those are probably true
+2019-11-12 20:08:45 <fizzie> Yes, all the HTML is generated on the fly so it should always match.
+2019-11-12 20:11:25 <b_jonas> fizzie: you can probably add a link to https://esolangs.org/logs/ refing the new log website https://github.com/kspalaiologos/esologs/ by the way
+2019-11-12 20:11:42 <b_jonas> well, unless you think that one won't last for long
+2019-11-12 20:23:42 <kspalaiologos> it's been up and running for around 3 months now
+2019-11-12 20:24:08 Joined: hppavilion[6]
+2019-11-12 20:24:08 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 20:24:36 Quit: kspalaiologos (Quit: Leaving)
+2019-11-12 20:24:36 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 20:27:37 Quit: hppavilion[2] (Ping timeout: 265 seconds)
+2019-11-12 20:27:37 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
