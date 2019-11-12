@@ -290,3 +290,61 @@
 2019-11-12 01:29:54 <ashtons> side effects may include turning into a banana
 2019-11-12 01:29:56 <kmc> `paste bin/words
 2019-11-12 01:29:57 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/words
+2019-11-12 01:31:06 <int-e> `` echo $(words --eng-us -o 6 256 | tr \  \\n | grep -E '^[a-z]{16}$')
+2019-11-12 01:31:08 <HackEso> wenkephriskolock medebederabbaseq hypotaryleterney enticadoralfhoea ininograntanther
+2019-11-12 01:31:14 <kmc> `paste share/WordData/eng-us
+2019-11-12 01:31:15 <HackEso> https://hack.esolangs.org/repo/file/tip/share/WordData/eng-us
+2019-11-12 01:31:22 <shachaf> `url share/WordData/Eng1M
+2019-11-12 01:31:23 <HackEso> https://hack.esolangs.org/repo/file/tip/share/WordData/Eng1M
+2019-11-12 01:31:29 <kmc> grump
+2019-11-12 01:31:39 Joined: Frater_EST
+2019-11-12 01:31:39 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:31:41 <kmc> how do i create a data file
+2019-11-12 01:31:55 <int-e> `help fetch
+2019-11-12 01:31:56 <HackEso> ​`fetch [<output-file>] <URL> downloads files, and is the only web access currently available in HackEgo. It is a special builtin that cannot be called from other commands. See also `edit.
+2019-11-12 01:32:01 Quit: Frater_EST (Read error: Connection reset by peer)
+2019-11-12 01:32:02 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:32:04 <shachaf> `doag share/WordData/EngUs
+2019-11-12 01:32:09 <HackEso> 0:2012-02-16 Initïal import.
+2019-11-12 01:32:25 <ashtons> `` echo $(words --eng-us -o 6 256 | tr \  \\n | grep -E '^[a-z]{16}$')
+2019-11-12 01:32:25 <kmc> i mean how do i generate the file
+2019-11-12 01:32:26 <HackEso> vededesigtnisult letoriumfreynyne ctorthouaruntero semimalkylamotun
+2019-11-12 01:32:43 <shachaf> Looks like it's just some n-gram thing.
+2019-11-12 01:32:51 <int-e> ashtons: you can do this in private chat with HackEso btw
+2019-11-12 01:33:01 <ashtons> oh ok
+2019-11-12 01:33:14 <shachaf> EngUs: perl Storable (v0.7) data (major 2) (minor 8)
+2019-11-12 01:33:14 <int-e> (but please do not modify the file system in private chat, as a courtesy to the rest of us)
+2019-11-12 01:33:19 Joined: Frater_EST
+2019-11-12 01:33:19 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:33:22 <ashtons> ok
+2019-11-12 01:33:22 <shachaf> so you create it with perl hth
+2019-11-12 01:33:31 Parted: Frater_EST
+2019-11-12 01:33:31 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:33:50 <int-e> fizzie is the ngram master
+2019-11-12 01:34:44 <int-e> (but nitia is ancient, so it's possible that he doesn't remember)
+2019-11-12 01:35:08 <int-e> `? nitia
+2019-11-12 01:35:09 <HackEso> nitia is the inventor of all things. The BBC invented her.
+2019-11-12 01:36:24 <ashtons> i have found my esolang's name. psychairefatback!
+2019-11-12 01:36:35 <oerjan> rolls off the tongue
+2019-11-12 01:36:55 <fizzie> shachaf: kmc: Yes, you create the file with Perl.
+2019-11-12 01:37:08 <fizzie> I did add a dataset to `words semi-recently.
+2019-11-12 01:37:57 <fizzie> I don't have the original tools, but it wasn't too hard to reverse-engineer. I think I did it with a Perl oneliner?
+2019-11-12 01:38:05 <int-e> oerjan: What are nitia's initials?
+2019-11-12 01:38:30 <fizzie> I think I probably saved the command somewhere.
+2019-11-12 01:38:32 <shachaf> Nitia never does anything, and yet through it all things are done.
+2019-11-12 01:38:50 <fizzie> `words --opcode 10
+2019-11-12 01:38:51 <HackEso> HINT_NOP54 PUSHFD INVEPT VCMPNGT_UQPD UD0 VFMSUBP VANDD BLEND FDIVP PMULLD
+2019-11-12 01:39:52 <fizzie> Ah, here we go.
+2019-11-12 01:40:04 <fizzie> cat ../x86.txt | tr a-z A-Z | perl -ne 'use Data::Dumper; use Storable; chomp; $len{length($_)}++; @w = split //, "   $_ "; for ($i = 0; $i+3 < @w; $i++) { $c = $w[$i].$w[$i+1].$w[$i+2]; $freq{$c}->{$w[$i+3]}++; } END { store([\%freq,\%len], "Opcode"); }'
+2019-11-12 01:41:45 <fizzie> That should create a file compatible with `words; then you just include "file" it the script's @options list; it will automatically titlecase-ish it and look it up from "share/WordData/File"
+2019-11-12 01:41:47 <shachaf> fizzie: I spent a few minutes trying to figure out enough Perl to do it and then decided not to.
+2019-11-12 01:42:44 <int-e> How Markovian.
+2019-11-12 01:43:15 Joined: Frater_EST
+2019-11-12 01:43:15 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:43:47 Parted: Frater_EST
+2019-11-12 01:43:47 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:45:20 <esowiki> 14[[07User:Ashtons14]]4 N10 02https://esolangs.org/w/index.php?oldid=67024 5* 03Ashtons 5* (+28) 10Created page with "hi. i'm ashton. how ya doing"
+2019-11-12 01:47:52 Joined: Frater_EST
+2019-11-12 01:47:52 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:48:10 Parted: Frater_EST
+2019-11-12 01:48:11 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
