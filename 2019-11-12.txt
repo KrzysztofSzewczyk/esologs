@@ -685,3 +685,84 @@
 2019-11-12 18:29:21 <HackEso> bfc.c \ bfc.h \ bfi.c \ bfi.h \ c2m \ c2m.c \ c2m.h \ egobfc \ egobfc2m \ egobfc2m-c2m.o \ egobfc2m-egobfi.o \ egobfc-bfc.o \ egobfc-egobfi.o \ egobfc-optimize.o \ egobfi16 \ egobfi16-bfi.o \ egobfi16-egobfi.o \ egobfi16-optimize.o \ egobfi32 \ egobfi32-bfi.o \ egobfi32-egobfi.o \ egobfi32-optimize.o \ egobfi64 \ egobfi64-bfi.o \ egobfi64-egobfi.o \ egobfi64-optimize.o \ egobfi8 \ egobfi8-bfi.o \ egobfi8-egobfi.o \ egobfi8-optimize.o \ egobfi
 2019-11-12 18:29:32 <kspalaiologos> `` cat /hackenv/interps/egobf/src/bfi.h
 2019-11-12 18:29:32 <HackEso> ​/* \  * Copyright (c) 2005  Gregor Richards \  * \  * This file is part of egobfi. \  *  \  * egobfi is free software; you can redistribute it and/or modify \  * it under the terms of the GNU General Public License as published by \  * the Free Software Foundation; either version 2 of the License, or \  * (at your option) any later version. \  *  \  * egobfi is distributed in the hope that it will be useful, \  * but WITHOUT ANY WARRANTY;
+2019-11-12 18:30:25 <b_jonas> ashtons: I recommend using a name made of multiple words
+2019-11-12 18:30:56 <kspalaiologos> egobfi, HRM
+2019-11-12 18:31:24 <kspalaiologos> it seems biased tho
+2019-11-12 18:32:55 <b_jonas> ashtons: it's easier to invent names that way, because you can use a dictionary. eg. I call my future esolang "consumer society", or ais has an esolang called "waterfall model" etc
+2019-11-12 18:33:36 <b_jonas> actually it's "the Waterfall Model"
+2019-11-12 18:34:01 <b_jonas> he also has ones called "But Is It Art?" and "Along and Across" and "High Rise" etc, all made of nice dictionary words
+2019-11-12 18:34:09 <kspalaiologos> do the old esolangers ever join this channel again?
+2019-11-12 18:34:21 <b_jonas> kspalaiologos: at least one did
+2019-11-12 18:34:23 <kspalaiologos> like, pikhq, Gregor?
+2019-11-12 18:35:31 * pikhq never left
+2019-11-12 18:35:56 <pikhq> Ive just been quiet lately
+2019-11-12 18:36:03 <kspalaiologos> ah, fine
+2019-11-12 18:36:38 <b_jonas> well, it might depend on what you mean by "old" of course
+2019-11-12 18:37:20 <kspalaiologos> that used to hang out here 2002=2010
+2019-11-12 18:37:24 <kspalaiologos> *-
+2019-11-12 18:37:45 <b_jonas> and Gregor left not that long ago really, because he used to run HackEgo, didn't he?
+2019-11-12 18:38:53 <b_jonas> there are regulars who never left for long of course
+2019-11-12 18:39:30 <kmc> i rejoined after a long hiatus
+2019-11-12 18:39:41 <kspalaiologos> we had mr. calimari
+2019-11-12 18:39:49 <kspalaiologos> or however he was called
+2019-11-12 18:40:16 <b_jonas> kmc: did you use the same nick before that hiatus?
+2019-11-12 18:41:05 <kmc> yes
+2019-11-12 18:42:01 <b_jonas> ``` du -sc .hg # how large is the hackeso hg repository? I wonder if I should clone it for backup
+2019-11-12 18:42:15 <b_jonas> hmm... that times out
+2019-11-12 18:42:18 <kspalaiologos> `` du -sc .hg
+2019-11-12 18:42:20 <b_jonas> suspicious
+2019-11-12 18:42:25 <kspalaiologos> umm
+2019-11-12 18:42:32 <HackEso> No output.
+2019-11-12 18:42:49 <HackEso> No output.
+2019-11-12 18:42:59 <b_jonas> it actually needs only one of -s or -c , but I keep forgetting which is which
+2019-11-12 18:43:07 <kspalaiologos> let's check it
+2019-11-12 18:43:10 <kspalaiologos> `` du -c .hg
+2019-11-12 18:43:11 <kspalaiologos> `` du -s .hg
+2019-11-12 18:43:12 <HackEso> 116	.hg/cache \ 12	.hg/store/dh/interps/clc-inte/clc-inte/blib/lib/language/intercal/backend \ 16	.hg/store/dh/interps/clc-inte/clc-inte/blib/lib/language/intercal/charset \ 28	.hg/store/dh/interps/clc-inte/clc-inte/blib/lib/language/intercal/interfac \ 108	.hg/store/dh/interps/clc-inte/clc-inte/blib/lib/language/intercal/include \ 44	.hg/store/dh/interps/clc-inte/clc-inte/blib/lib/language/intercal/generici \ 24	.hg/store/dh/interps/clc-inte
+2019-11-12 18:43:18 <b_jonas> it's -s
+2019-11-12 18:43:25 <b_jonas> that's what means it writes only the final result
+2019-11-12 18:43:33 <b_jonas> not the size of every recursive subdirectory
+2019-11-12 18:43:39 <b_jonas> hmm
+2019-11-12 18:43:42 <HackEso> No output.
+2019-11-12 18:43:47 <kspalaiologos> what
+2019-11-12 18:43:55 <kspalaiologos> `` du --help
+2019-11-12 18:43:56 <HackEso> Usage: du [OPTION]... [FILE]... \   or:  du [OPTION]... --files0-from=F \ Summarize disk usage of the set of FILEs, recursively for directories. \  \ Mandatory arguments to long options are mandatory for short options too. \   -0, --null            end each output line with NUL, not newline \   -a, --all             write counts for all files, not just directories \       --apparent-size   print apparent sizes, rather than disk usage; althoug
+2019-11-12 18:43:59 <b_jonas> "No output." means that it's timed out
+2019-11-12 18:44:01 Quit: atslash (Read error: Connection reset by peer)
+2019-11-12 18:44:01 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 18:44:02 <b_jonas> in this case
+2019-11-12 18:44:04 <kspalaiologos> ah yes
+2019-11-12 18:44:06 <kspalaiologos> alright
+2019-11-12 18:44:08 <b_jonas> took too long to execute
+2019-11-12 18:44:08 <kspalaiologos> misleading text
+2019-11-12 18:44:24 <b_jonas> ``` du -s wisdom; echo done
+2019-11-12 18:44:25 <HackEso> 6336	wisdom \ done
+2019-11-12 18:44:37 <b_jonas> ``` du -s .hg; echo done # if you don't see done, then it's timed out (or the output is too long)
+2019-11-12 18:45:07 <HackEso> No output.
+2019-11-12 18:45:13 Joined: atslash
+2019-11-12 18:45:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 18:46:58 <kritixilithos> gnu parallel?
+2019-11-12 18:54:26 <fizzie> I don't think it's a CPU-bound operation.
+2019-11-12 18:54:48 <fizzie> Anyway, the repo is in the order of 779M.
+2019-11-12 18:55:33 <fizzie> Of which 271M is the current working copy, the rest is history.
+2019-11-12 18:55:55 <b_jonas> fizzie: thanks
+2019-11-12 18:56:10 <b_jonas> wow, what's so large in the workong copy?
+2019-11-12 18:56:16 <b_jonas> ``` du -s share/mtg
+2019-11-12 18:56:17 <HackEso> 24876	share/mtg
+2019-11-12 18:56:33 <b_jonas> ``` du -s interps
+2019-11-12 18:56:36 <HackEso> 30684	interps
+2019-11-12 18:56:38 <fizzie> 83M paste/ is the biggest chunk after .hg.
+2019-11-12 18:57:04 <fizzie> After that, share/, src/, interps/, bin/, lib/, factor/ in that order.
+2019-11-12 18:57:10 <b_jonas> thanks
+2019-11-12 18:57:50 <fizzie> There are five 10485760-byte files in paste/, that takes up the most space.
+2019-11-12 18:57:58 <b_jonas> fizzie: is tmp accessible through `paste or `url ?
+2019-11-12 18:58:06 <fizzie> Through `url, yes.
+2019-11-12 18:58:25 Joined: LKoen
+2019-11-12 18:58:25 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 18:58:29 <b_jonas> then we could have a paste command that stores its data there?
+2019-11-12 18:58:52 <fizzie> That's what paste does nowadays, actually.
+2019-11-12 18:59:26 <b_jonas> I see
+2019-11-12 18:59:27 Quit: kritixilithos (Quit: kritixilithos)
+2019-11-12 18:59:27 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 18:59:44 <fizzie> Huh, looks like I changed it myself, 2017-02-16.
+2019-11-12 18:59:48 <fizzie> I have no recollection of that.
