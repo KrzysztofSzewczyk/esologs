@@ -596,3 +596,92 @@
 2019-11-12 17:59:36 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nico_nico, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
 2019-11-12 17:59:50 User Name: b_jonas = b_jonas!~x@catv-176-63-13-233.catv.broadband.hu
 2019-11-12 17:59:50 <b_jonas> shachaf: is that how the instruction encoding works? I didn't know that
+2019-11-12 18:02:15 Quit: nico_nico (Quit: Leaving)
+2019-11-12 18:02:15 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 18:13:41 Joined: FreeFull
+2019-11-12 18:13:41 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 18:16:20 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-11-12 18:16:20 <kspalaiologos> `` asmbf <<<"mov r1,0/div r1,0"
+2019-11-12 18:16:21 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>[-]>>>><<<<[<<<+>>>-]<<<[>>>>>>>[<<<<<<+>+>>>>>-]<<<<<[>>>>>+<<<<<-]<[>+<<-[>>[-]>>>>>>+<<<<<<<<-]>>>>>>>>[<<<<<<<<+>>>>>>>>-]<<<<<<[<-[>>-<<[-]]+>-]<-]>>+<<<]>>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-12 18:16:31 <kspalaiologos> `` asmbf <<<"mov r1,0/div r1,0" > stuff.b
+2019-11-12 18:16:33 <HackEso> No output.
+2019-11-12 18:16:36 <kspalaiologos> `` bfi stuff.b
+2019-11-12 18:16:36 <HackEso> ​/hackenv/bin/`: line 5: bfi: command not found
+2019-11-12 18:18:30 <kspalaiologos> `` brainfuck
+2019-11-12 18:18:31 <HackEso> ​/hackenv/bin/`: line 5: brainfuck: command not found
+2019-11-12 18:18:35 <kspalaiologos> `? brainfuck
+2019-11-12 18:18:36 <HackEso> brainfuck is the integral of the family of terrible esolangs. The name is a euphemism for "beef". bf -c -t "+>+++++>+++" | mklang --array
+2019-11-12 18:18:42 <kspalaiologos> bf
+2019-11-12 18:18:47 <kspalaiologos> `` bf
+2019-11-12 18:18:48 <HackEso> Run what?
+2019-11-12 18:18:57 <kspalaiologos> `` bf -h
+2019-11-12 18:18:58 <HackEso> No output.
+2019-11-12 18:19:21 <kspalaiologos> `` bf -h 2>&1
+2019-11-12 18:19:22 <HackEso> No output.
+2019-11-12 18:19:34 <kspalaiologos> `` bf stuff.b
+2019-11-12 18:19:35 <HackEso> ​.
+2019-11-12 18:22:38 <kspalaiologos> `` asmbf <<<"out .0" > stuff.b
+2019-11-12 18:22:40 <HackEso> No output.
+2019-11-12 18:22:40 <kspalaiologos> `` bf stuff.b
+2019-11-12 18:22:41 <HackEso> ​.
+2019-11-12 18:22:49 <kspalaiologos> `` bf -c `cat stuff.b`
+2019-11-12 18:22:50 <HackEso> No output.
+2019-11-12 18:22:54 <kspalaiologos> `` bf -c "`cat stuff.b`"
+2019-11-12 18:22:55 <HackEso> No output.
+2019-11-12 18:23:12 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2019-11-12 18:23:12 <kritixilithos> `` cat stuff.b
+2019-11-12 18:23:13 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-12 18:23:19 <kspalaiologos> c'mon man
+2019-11-12 18:23:26 <kspalaiologos> what's up with this biased interpreter
+2019-11-12 18:23:31 <kspalaiologos> `` whereis bf
+2019-11-12 18:23:32 <HackEso> bf: /hackenv/bin/bf
+2019-11-12 18:23:41 <kspalaiologos> `` cat /hackenv/bin/bf
+2019-11-12 18:23:42 <HackEso> ​#! /bin/bash \ [[ $# > 0 ]] || { echo "Run what?"; exit 1; } \ ci="$1" \ echo -n "${ci#*!}" | { /hackenv/interps/egobf/src/egobfi8 <(echo -n "${ci%%!*}") ; }
+2019-11-12 18:23:47 <kspalaiologos> a ha
+2019-11-12 18:23:50 <kritixilithos> bf -c -t "`cat stuff.b`"
+2019-11-12 18:24:00 <kritixilithos> `` bf -c -t "`cat stuff.b`"
+2019-11-12 18:24:03 <HackEso> No output.
+2019-11-12 18:24:12 <kspalaiologos> `` /hackenv/interps/egobf/src/egobfi8 -h
+2019-11-12 18:24:13 <HackEso> Use: egobfi{width} [options] [file] \ Options: \  -eof {0|-|n} \    set EOF mode: 0, -1 or no-change (respectively) \    [default: 0] \  -debug \    activate the # command [default off] \  -unicode {on|off} \    set unicode mode on or off [default off] \  -wrap {on|off} \    set wrappong on or off [default on]
+2019-11-12 18:24:30 <kspalaiologos> `` /hackenv/interps/egobf/src/egobfi16 stuff.b
+2019-11-12 18:24:31 <HackEso> 0
+2019-11-12 18:24:33 <kspalaiologos> purrfect
+2019-11-12 18:24:44 <kspalaiologos> `` asmbf <<<"mov r1,0/div r1,0" > stuff.b
+2019-11-12 18:24:46 <HackEso> No output.
+2019-11-12 18:24:47 <kspalaiologos> `` /hackenv/interps/egobf/src/egobfi16 stuff.b
+2019-11-12 18:24:48 <HackEso> No output.
+2019-11-12 18:25:30 <kritixilithos> `` bf -c -t "+>+++++>+++"
+2019-11-12 18:25:31 <HackEso> No output.
+2019-11-12 18:25:49 <kritixilithos> `` bf -c -t "+>+++++>+++" | mklang --array
+2019-11-12 18:25:50 <HackEso> ​/hackenv/bin/`: line 5: mklang: command not found
+2019-11-12 18:26:20 <kspalaiologos> `? egobfi
+2019-11-12 18:26:21 <HackEso> egobfi? ¯\(°​_o)/¯
+2019-11-12 18:26:26 <kspalaiologos> `? egobfi8
+2019-11-12 18:26:27 <HackEso> egobfi8? ¯\(°​_o)/¯
+2019-11-12 18:26:31 <kritixilithos> our names are exactly the same length, kspalaiologos
+2019-11-12 18:26:45 <kspalaiologos> what a coincidence ;)
+2019-11-12 18:27:05 <kspalaiologos> `` egobfi8
+2019-11-12 18:27:06 <HackEso> ​/hackenv/bin/`: line 5: egobfi8: command not found
+2019-11-12 18:27:18 <kspalaiologos> `` cat /hackenv/interps/egobf/src/egobfi8
+2019-11-12 18:27:18 <HackEso> â€‹ELF............>.....<@.....@.......à[..........@.8..@.&.#.......@.......@.@.....@.@.....À.......À............................@......@............................................@.......@.....T!......T!........ ............X!......X!`.....X!`.....¼......@........ ...........p!......p!`.....p!`.....à.......à..........................@.....@.....D.......D..............Påtd...Ð......Ð@.....Ð@.....D.......D..
+2019-11-12 18:27:22 <kspalaiologos> crap, its binary
+2019-11-12 18:27:34 <kspalaiologos> `` ls /hackenv/interps/egobf/
+2019-11-12 18:27:35 <HackEso> aclocal.m4 \ AUTHORS \ ChangeLog \ config.h \ config.h.in \ config.log \ config.status \ configure \ configure.ac \ COPYING \ INSTALL \ Makefile \ Makefile.am \ Makefile.in \ NEWS \ PORTING \ README \ scripts \ src \ stamp-h1
+2019-11-12 18:27:44 <kspalaiologos> `` cat /hackenv/interps/egobf/README
+2019-11-12 18:27:44 <HackEso> ​== egobfi == \  A powerful and fast-ish Brainfuck interpreter. \  \ Use: egobfi{width} [options] [file] \ Options: \  -eof {0|-|n} \    set EOF mode: 0, -1 or no-change (respectively) \    [default: 0] \  -debug \    activate the # command [default off] \  -unicode {on|off} \    set unicode mode on or off [default off] \  -wrap {on|off} \    set wrappong on or off [default on] \  \  \ == egobfc == \  An almost-as-powerful Brainfuck compile
+2019-11-12 18:27:46 <kritixilithos> are you the same person as the malbolger in ppcg?
+2019-11-12 18:27:53 <kspalaiologos> yes
+2019-11-12 18:27:56 <kspalaiologos> that's true
+2019-11-12 18:28:06 <kspalaiologos> I'm a Seed evangelist too
+2019-11-12 18:28:39 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-11-12 18:28:39 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[2], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 18:28:58 <kspalaiologos> `` cat /hackenv/interps/egobf/LICENSE
+2019-11-12 18:28:59 <HackEso> cat: /hackenv/interps/egobf/LICENSE: No such file or directory
+2019-11-12 18:29:07 <kspalaiologos> `` cat /hackenv/interps/egobf/COPYING
+2019-11-12 18:29:08 <HackEso> ​		    GNU GENERAL PUBLIC LICENSE \ 		       Version 2, June 1991 \  \  Copyright (C) 1989, 1991 Free Software Foundation, Inc. \      59 Temple Place, Suite 330, Boston, MA  02111-1307  USA \  Everyone is permitted to copy and distribute verbatim copies \  of this license document, but changing it is not allowed. \  \ 			    Preamble \  \   The licenses for most software are designed to take away your \ freedom to share and change it.  By
+2019-11-12 18:29:12 <kspalaiologos> no author names
+2019-11-12 18:29:13 <kspalaiologos> erghhh
+2019-11-12 18:29:20 <kspalaiologos> `` ls /hackenv/interps/egobf/src/
+2019-11-12 18:29:21 <HackEso> bfc.c \ bfc.h \ bfi.c \ bfi.h \ c2m \ c2m.c \ c2m.h \ egobfc \ egobfc2m \ egobfc2m-c2m.o \ egobfc2m-egobfi.o \ egobfc-bfc.o \ egobfc-egobfi.o \ egobfc-optimize.o \ egobfi16 \ egobfi16-bfi.o \ egobfi16-egobfi.o \ egobfi16-optimize.o \ egobfi32 \ egobfi32-bfi.o \ egobfi32-egobfi.o \ egobfi32-optimize.o \ egobfi64 \ egobfi64-bfi.o \ egobfi64-egobfi.o \ egobfi64-optimize.o \ egobfi8 \ egobfi8-bfi.o \ egobfi8-egobfi.o \ egobfi8-optimize.o \ egobfi
+2019-11-12 18:29:32 <kspalaiologos> `` cat /hackenv/interps/egobf/src/bfi.h
+2019-11-12 18:29:32 <HackEso> ​/* \  * Copyright (c) 2005  Gregor Richards \  * \  * This file is part of egobfi. \  *  \  * egobfi is free software; you can redistribute it and/or modify \  * it under the terms of the GNU General Public License as published by \  * the Free Software Foundation; either version 2 of the License, or \  * (at your option) any later version. \  *  \  * egobfi is distributed in the hope that it will be useful, \  * but WITHOUT ANY WARRANTY;
