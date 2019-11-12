@@ -854,3 +854,52 @@
 2019-11-12 21:51:52 <b_jonas> ais523: no no, Rich draws the comics, fungot only publishes them
 2019-11-12 21:51:52 <fungot> b_jonas: i can only see my own messages.
 2019-11-12 21:52:15 <b_jonas> and I can't thank Rich here, he's not on this channel
+2019-11-12 22:36:27 <shachaf> ais523: I rarely have trouble telling "thanking fungot for olist" apart from "being unable to distinguish fungot from Rich Burlew".
+2019-11-12 22:36:27 <fungot> shachaf: it doesnt matter which direction you hold the ' increase red' key for evilwm
+2019-11-12 22:40:00 <shachaf> I wrote a program to color the output of a program red or green depending on whether it's stdout or stderr.
+2019-11-12 22:40:16 <shachaf> I wish it was possible to do the interleaving correctly.
+2019-11-12 22:43:31 <ais523> NetBeans does that (well, black for stdout, red for stderr)
+2019-11-12 22:43:35 <ais523> it also gets the interleaving wrong
+2019-11-12 22:43:55 <ais523> I think getting it correct would involve somehow hooking the OS scheduler?
+2019-11-12 22:44:07 <esowiki> 14[[07///14]]4 10 02https://esolangs.org/w/index.php?diff=67032&oldid=66076 5* 03Odog8 5* (+156) 10yEEe I made something good for once
+2019-11-12 22:44:13 <ais523> (e.g. by ptracing the program and halting it whenever a write call occurred, until your own program could get scheduled and read the output)
+2019-11-12 22:44:19 <shachaf> Maybe I should settle for getting it right for a single-threaded single-process program.
+2019-11-12 22:44:28 <shachaf> Where you could just ptrace, right.
+2019-11-12 22:46:33 <esowiki> 14[[07///14]]4 10 02https://esolangs.org/w/index.php?diff=67033&oldid=67032 5* 03Odog8 5* (+12) 10
+2019-11-12 22:46:37 <ais523> oh, I'm being stupid: you ptrace the program and when it does a write() call, you don't even bother reading the resulting filehandle, you just read the data right out of the argument it gives to write :-P
+2019-11-12 22:47:03 <esowiki> 14[[07///14]]4 10 02https://esolangs.org/w/index.php?diff=67034&oldid=67033 5* 03Odog8 5* (+11) 10/* Thue-Morse sequence */
+2019-11-12 22:47:03 <ais523> (you still have to read stderr/stdout if it's a pipe to prevent it clogging up, but maybe you could just use /dev/null)
+2019-11-12 22:47:37 <shachaf> Well, no reason not to read it.
+2019-11-12 22:47:47 <ais523> alternatively, less general but less efficient: LD_PRELOAD alternative read()/write() routines
+2019-11-12 22:48:21 <shachaf> LD_PRELOAD isn't so good because the official API in Linux is system calls, not libc calls.
+2019-11-12 22:49:16 <ais523> indeed
+2019-11-12 22:49:56 <ais523> hmm, perhaps the dynamic linker should have an option to replace "syscall" (and "int $0x80") with calls to some particular hook code, that'd avoid the context switch in this case
+2019-11-12 22:50:13 <ais523> (the obvious downside is how do you fit that into two bytes?)
+2019-11-12 22:50:41 <shachaf> How would it do that?
+2019-11-12 22:51:13 <shachaf> I think Linux should probably let people override system calls in userspace in a better way than ptrace.
+2019-11-12 22:51:37 <b_jonas> ais523: that gets tricky though, because you have to interpret like ten other syscalls besides write, just in case the program uses them
+2019-11-12 22:53:47 <b_jonas> plus you may have to handle different syscall types that coexist on x86_64
+2019-11-12 22:54:05 <ais523> b_jonas: yes, at least the number of syscalls is finite and small enough to go through all of them
+2019-11-12 22:54:30 <ais523> also, in the case of stderr/stdout, the program writing to them probably doesn't expect them to be seekable, that cuts down the number of possibilities somewhat
+2019-11-12 22:55:02 <ais523> actually, in retrospect, I think it's a design flaw for streams and seekable files to be given the same API, the set of operations that can be performed on them is so different
+2019-11-12 22:55:23 <shachaf> I think the Windows thing where there's no syscall API, just a dynamically linked OS library, has some benefits.
+2019-11-12 22:55:25 <b_jonas> ais523: for fixing interleaving, couldn't you just use pipes for stdout and stderr, and set their capcity to as low as possible, so that they always block on a second write?
+2019-11-12 22:55:42 <b_jonas> using fcntl F_SETPIPE_SZ on linux (and there's a call on windows too)
+2019-11-12 22:56:05 <b_jonas> that's still not perfect, because you still can't tell the order between one stdout and one stderr write
+2019-11-12 22:56:11 <b_jonas> hmm
+2019-11-12 22:56:53 <b_jonas> shachaf: the x86_64 abi started by saying that libc is the recommended syscall interface
+2019-11-12 22:57:00 <shachaf> libc is scow
+2019-11-12 22:57:05 <b_jonas> but of course everyone wants to call the syscall directly, because it's faster or something
+2019-11-12 22:57:08 <b_jonas> so we can't have that
+2019-11-12 22:57:11 <b_jonas> and I for one agree
+2019-11-12 22:57:19 <b_jonas> libc has like ten layers of wrapper around even simple syscalls
+2019-11-12 22:57:27 <shachaf> b_jonas: Someone pointed out that in Linux, epoll will tell you the order that fds became readable.
+2019-11-12 22:57:58 <ais523> shachaf: if Windows actually were like that, it wouldn't be too bad, but the OS library that's dynamically linked doesn't have a documented/defined API, so you need to use a libc as a wrapper anyway
+2019-11-12 22:58:07 <b_jonas> moving the arguments from where a function expects them to where a syscall expects them, errno check, possible restart on signals (or is it the kernel that's doing that now?),
+2019-11-12 22:58:16 <shachaf> ais523: Hmm? You don't have to use libc for Windows.
+2019-11-12 22:58:35 <ais523> shachaf: what dynamically linked OS library are you thinking of?
+2019-11-12 22:58:37 <shachaf> ReadFile is maybe not a system call, but it's an OS interface that isn't libc.
+2019-11-12 22:58:49 <shachaf> I'm thinking of kernel32.dll, I think.
+2019-11-12 22:59:05 <ais523> msvcrt is a libc (and one you're not officially meant to use, at that!); user32/kernel32 have an incredibly large, and mostly undocumented, API surface
+2019-11-12 22:59:07 <shachaf> Maybe you're thinking of ntdll.dll.
+2019-11-12 22:59:33 <shachaf> Well, don't use the undocumented parts, I guess?
