@@ -438,3 +438,15 @@
 2019-11-12 07:56:57 Quit: Sgeo (Ping timeout: 240 seconds)
 2019-11-12 07:58:30 Quit: kritixilithos (Quit:  )
 2019-11-12 07:58:30 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 08:07:19 Joined: b_jonas
+2019-11-12 08:07:19 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 08:07:24 User Name: b_jonas = b_jonas!~x@catv-176-63-14-170.catv.broadband.hu
+2019-11-12 08:07:24 <b_jonas> `whatis waitpid
+2019-11-12 08:07:25 <HackEso> waitpid(2) - wait for process to change state \ waitpid(3p) - wait for a child process to stop or terminate \ waitpid(3glibc) - Process Completion
+2019-11-12 08:07:27 <b_jonas> ashtons: ^
+2019-11-12 08:08:10 <b_jonas> `url
+2019-11-12 08:08:12 <HackEso> https://hack.esolangs.org/repo/
+2019-11-12 08:08:14 <b_jonas> int-e: ^
+2019-11-12 08:12:24 <b_jonas> int-e: not only that, but it won't generate more than a few dozen words with one command. you need a loop like ( for x in {1..10}; do words 16; done ) to generate 256 word.
+2019-11-12 08:12:33 <b_jonas> um... yeah, that's obviously not 16
+2019-11-12 08:12:35 <b_jonas> but you get the idea
