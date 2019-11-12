@@ -903,3 +903,120 @@
 2019-11-12 22:59:05 <ais523> msvcrt is a libc (and one you're not officially meant to use, at that!); user32/kernel32 have an incredibly large, and mostly undocumented, API surface
 2019-11-12 22:59:07 <shachaf> Maybe you're thinking of ntdll.dll.
 2019-11-12 22:59:33 <shachaf> Well, don't use the undocumented parts, I guess?
+2019-11-12 23:00:39 <b_jonas> anyway, modifying the program that outputs to stdout and stderr is probably the easiest if the order of its outputs matter
+2019-11-12 23:01:29 <shachaf> Windows has something called OutputDebugString. I'm not really sure what it is.
+2019-11-12 23:03:17 <ais523> hmm, so it does seem like the API surface is documented in some cases, but only incidentally, e.g. https://docs.microsoft.com/en-gb/windows/win32/api/winuser/nf-winuser-messageboxexw
+2019-11-12 23:03:48 <ais523> this is documented as being part of winuser.h, a C header file, and it's only mentioned at the bottom of the page that the function exists in user32.dll
+2019-11-12 23:03:55 <shachaf> What's incidental about that?
+2019-11-12 23:03:59 <b_jonas> ais523: but there's a documented library too, so why does it matter if there's an undocumented library behind it?
+2019-11-12 23:04:12 <ais523> b_jonas: which documented library are you thinking of?
+2019-11-12 23:04:24 <ais523> shachaf: well, it means that the use via user32.dll isn't part of the API contract
+2019-11-12 23:04:25 <b_jonas> the one that has the windows api calls
+2019-11-12 23:04:37 <shachaf> ais523: It's certainly part of the ABI.
+2019-11-12 23:04:44 <ais523> in particular, Microsoft could change the calling convention without violating anything written there
+2019-11-12 23:04:53 <b_jonas> I don't know what that library is called, the compiler just links it into windows programs automatically, so I never tried to find out
+2019-11-12 23:04:59 <ais523> I agree that it can't be changed in practice because the .exe files will be linked against a particular calling convention
+2019-11-12 23:05:05 <shachaf> If you write a program and it calles MessageBoxExW, you'll need to link it with the import library user32.lib.
+2019-11-12 23:05:13 <ais523> b_jonas: OK, the reason I asked is that this is more complex than you're expecting
+2019-11-12 23:05:22 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2019-11-12 23:05:22 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 23:05:23 <ais523> the library in question normally has a name of the form msvcrt*
+2019-11-12 23:05:32 <ais523> Microsoft considers this to be part of the compiler, not part of the operating system
+2019-11-12 23:06:06 <ais523> in particular, there are a number of different msvcrt* files, which you are supposed to ship along with your application, and they have non-open-source licensing that limits what you can do with them
+2019-11-12 23:06:53 <shachaf> There are multiple parts of msvcrt, as I understand it.
+2019-11-12 23:07:04 Joined: unlimiter
+2019-11-12 23:07:04 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], unlimiter, vertrex, Vorpal, wmww, zemhill
+2019-11-12 23:07:04 <b_jonas> ais523: right, they ship with the compiler, as well as with operating systems starting from Win10 via patches, and if you install programs compiled by a new compiler onto an older OS, you have to install the runtime library
+2019-11-12 23:07:10 <ais523> there is also an msvcrt.dll with no version number that does ship with Windows, this is officially undocumented (and does some weird things like implementing functions with the same name as C standard library functions, but different behaviour), and you aren't meant to use it, but at least it will exist on a user's computer and thus you can link against it fairly safely if you know what it does (and with no licensing issues)
+2019-11-12 23:07:11 <shachaf> Part of it is things like fopen, which implements the C standard library and you can use if you want to, or not.
+2019-11-12 23:07:53 <shachaf> And another part is things like memcpy (maybe?) that the compiler just generates calls to automatically, that you have to reimplement yourself if you don't link the official msvcrt.
+2019-11-12 23:07:57 <ais523> in practice, if you're compiling on Windows using an open-source compiler, you're probably using msvcrt.dll as it's the least problematic of the various "you can't use these" APIs
+2019-11-12 23:08:08 <shachaf> Neither of these has to do with the OS ABI, which applies to everyone, not just people programming in C.
+2019-11-12 23:08:29 <ais523> shachaf: the second part isn't a huge problem, the compiler normally has a fix for that (e.g. gcc has libgcc)
+2019-11-12 23:08:38 <shachaf> If you write a program in assembly that opens a MessageBox, you still link to user32.lib/user32.dll, because that's just the API the OS presents.
+2019-11-12 23:09:06 <ais523> I agree that the question is "how do you use the OS ABI", and the answer is "either directly or via a glue library, and neither appears to be officially supported unless you use a Microsoft compiler"
+2019-11-12 23:09:15 <shachaf> In what sense is this undocumented?
+2019-11-12 23:09:24 <shachaf> It says user32.dll and user32.lib right on the page you linked to.
+2019-11-12 23:09:48 <b_jonas> ais523: sure, but that's because the non-microsoft compilers for windows are sort of in a sad state
+2019-11-12 23:09:52 <b_jonas> for multiple reasons
+2019-11-12 23:09:59 <ais523> in the literal sense that, AFAIK, there are a large number of APIs in those libraries which are not documented
+2019-11-12 23:10:23 <b_jonas> for one, gcc on windows implements a C ABI that is so incompatible with the MS compiler that even sizeof(long) differs
+2019-11-12 23:10:41 <ais523> what Microsoft does is documents APIs that are used by some other mechanism, e.g. in the case of MessageBoxEx, via the windows.h header file, and incidentally mentions that you can find the implementation in user32.dll
+2019-11-12 23:10:43 <shachaf> But the ones that you're supposed to use *are* documented. What do the undocumented ones have to do with it?
+2019-11-12 23:10:56 <ais523> you have no way to know which ones you're supposed to use or not!
+2019-11-12 23:10:58 <b_jonas> it's not just that each MS complier used to have a different C ABI for a while, because those only differed in libc stuff like how FILE works, and in libstdc++ and other C++ stuff
+2019-11-12 23:11:12 <b_jonas> you can still at least link pure C functions between them
+2019-11-12 23:11:16 <ais523> there is nothing preventing msvcrt implementing a documented function in its C API via an undocumented function in user32.dll
+2019-11-12 23:11:21 <shachaf> You just linked to the documentation for MessageBoxEx. So clearly that's one that you're allowed to use?
+2019-11-12 23:11:22 <b_jonas> but if you use gcc, you can only link pure C functions if they don't mention long
+2019-11-12 23:11:28 <ais523> shachaf: yes
+2019-11-12 23:11:30 <b_jonas> this is documented, but it's sad
+2019-11-12 23:11:34 <ais523> I'm not sure if this is a complete set, it might be
+2019-11-12 23:11:58 <shachaf> I feel like if you're writing a program for Windows you just don't care about msvcrt that much.
+2019-11-12 23:11:59 <ais523> a long time ago, on a different computer, I downloaded Microsoft's full set of low-level API documentation, but never really got into it that much
+2019-11-12 23:12:31 <shachaf> You have the documented OS ABI, which is some subset of kernel32.dll etc., and you just use that.
+2019-11-12 23:12:42 <b_jonas> I used to look at the API documentation at https://docs.microsoft.com/en-us/previous-versions//hh447209(v=vs.85)?redirectedfrom=MSDN , but now it says that "We're no longer updating this content regularly" and doesn't say what supersedes it
+2019-11-12 23:12:49 <b_jonas> so now I'm not sure where the windows API docs are
+2019-11-12 23:15:00 <shachaf> ais523: I'm not sure what distinguishes ExitProcess() being exposed in kernel32.dll -- documented in https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess -- and SYS_exit being exposed in the Linux ABI.
+2019-11-12 23:15:10 <shachaf> Except that one is a function call and one is a syscall, obviously.
+2019-11-12 23:15:13 <ais523> shachaf: I'm saying I don't know where I'd go to find a list of "this is all the functions in kernel32.dll you are allowed to use"
+2019-11-12 23:15:28 <ais523> because that's not how Microsoft organises their API documentation
+2019-11-12 23:15:38 <shachaf> Oh, sure, that's an organization thing.
+2019-11-12 23:15:48 <shachaf> But if you need to exit the process, you can call ExitProcess().
+2019-11-12 23:16:40 <b_jonas> https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list is probably the new documentation
+2019-11-12 23:17:08 <ais523> here's an example: https://docs.microsoft.com/en-gb/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessasuserw
+2019-11-12 23:17:31 <ais523> I found this by clicking the link to process and thread functions from your exit process link
+2019-11-12 23:17:41 <b_jonas> ais523: isn't that because the same dll has functions for multiple different APIs mixed in it, sort of like libc has all sorts of junk in it too?
+2019-11-12 23:17:43 <shachaf> Hmm, does /en-gb use British spellings?
+2019-11-12 23:17:44 <ais523> then clicking on a function I thought might be part of the standard library than the ABI
+2019-11-12 23:17:46 <ais523> then editing the URL
+2019-11-12 23:18:22 <ais523> a) the fact that I had to edit the URL means that the index listing isn't complete (and I just happened to know that most functions with a name ending in A have an equivalent with a name ending in W)
+2019-11-12 23:18:39 <b_jonas> so instead there's a doc that documents all the functions of the Win32 API, which are supposedly enough to write anything in windows, and has functions like CreateFile, plus there's one that documents the libc api that comes with the compiler and has functions like fopen
+2019-11-12 23:18:40 <ais523> b) the DLL is listed as advapi32.dll, and I have no idea whether that is part of the ABI surgace or not
+2019-11-12 23:18:43 <ais523> *surface
+2019-11-12 23:19:30 <shachaf> I'm confused about what you're saying. That there's no comprehensive list of all the functions you're allowed to use?
+2019-11-12 23:19:57 <shachaf> That doesn't seem particularly necessary. Clearly this specific function is documented, because that's a documentation page for it.
+2019-11-12 23:20:42 <ais523> shachaf: is it part of the ABI?
+2019-11-12 23:20:47 <ais523> I can't get a clear yes or no answer from that page
+2019-11-12 23:21:04 <shachaf> I see CreateProcessAsUserW on the ExitProcess documentation page, by the way.
+2019-11-12 23:21:36 <shachaf> ais523: It's part of the advapi32.dll API, and the minimum supported client is Windows XP.
+2019-11-12 23:22:00 <ais523> I don't see it; do you have an URL? maybe we're looking at different pages
+2019-11-12 23:22:09 <b_jonas> https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessasuserw
+2019-11-12 23:22:12 <ais523> shachaf: is advapi32 part of the ABI? I agree that it's part of the API
+2019-11-12 23:22:36 <shachaf> Part of which ABI?
+2019-11-12 23:22:39 <ais523> b_jonas: that's the CreateProcessAsUserW page
+2019-11-12 23:22:43 <ais523> shachaf: the Windows ABI
+2019-11-12 23:22:48 <ais523> the equivalent to Linux system calls
+2019-11-12 23:23:19 <b_jonas> ais523: right, so what function are you looking for instead?
+2019-11-12 23:23:31 <ais523> b_jonas: I'm looking for the list that contains a link to that page
+2019-11-12 23:23:38 <ais523> I didn't find the page via a link, I found it via URL editing
+2019-11-12 23:23:48 <shachaf> ais523: There's a sidebar on the ExitProcess page that links to that page.
+2019-11-12 23:23:52 <ais523> (from a link to the -A version)
+2019-11-12 23:24:03 <ais523> shachaf: oh, it must be because you have JavaScript turned on and I don't
+2019-11-12 23:24:06 <b_jonas> I don't think there's a flat list, but it's probably in the tree of https://docs.microsoft.com/en-us/windows/apps/desktop/
+2019-11-12 23:24:09 <ais523> the sidebar doesn't show for me
+2019-11-12 23:24:16 Quit: arseniiv (Ping timeout: 252 seconds)
+2019-11-12 23:24:16 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], unlimiter, vertrex, Vorpal, wmww, zemhill
+2019-11-12 23:24:19 <b_jonas> no wait
+2019-11-12 23:24:24 <b_jonas> how about https://docs.microsoft.com/en-us/windows/win32/index
+2019-11-12 23:24:29 <b_jonas> you need javascript for the sidebar, yes
+2019-11-12 23:24:53 <shachaf> ais523: I also see it on https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/
+2019-11-12 23:25:00 <shachaf> Anyway, I don't know what advapi32.dll is, so I can't say. It seems to be part of the interface exposed by the OS, so probably?
+2019-11-12 23:25:05 Quit: unlimiter (Quit: WeeChat 2.6)
+2019-11-12 23:25:06 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 23:25:22 <shachaf> As a person targeting Windows, you should probably figure out what each of the DLLs you might be linking against is.
+2019-11-12 23:25:23 <ais523> incidentally, after actually reading the docs on the function, i got alarmed at the actual semantics of cross-user process creation on Windows
+2019-11-12 23:26:08 <ais523> "Typically, the process that calls the CreateProcessAsUser function must have the SE_INCREASE_QUOTA_NAME privilege and may require the SE_ASSIGNPRIMARYTOKEN_NAME privilege if the token is not assignable. If this function fails with ERROR_PRIVILEGE_NOT_HELD (1314), use the CreateProcessWithLogonW function instead. CreateProcessWithLogonW requires no special privileges, but the specified user account must be allowed to log on interactively. Generally,
+2019-11-12 23:26:08 <ais523> it is best to use CreateProcessWithLogonW to create a process with alternate credentials."
+2019-11-12 23:26:31 <ais523> and CreateProcessWithLoginW requires the plaintext password of the user you want to create the process as
+2019-11-12 23:27:00 <ais523> that isn't an API that I would recommend for any situation other than a sudo-equivalent, and yet it's the recommended way to do things on Windows?
+2019-11-12 23:27:32 <b_jonas> so "https://docs.microsoft.com/en-us/windows/apps/desktop/", find link "Win32", goes to "https://docs.microsoft.com/en-us/windows/win32/index", find link "Win32 API reference by feature", goes to "https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list", section "System Services", link "Processes", goes to
+2019-11-12 23:27:37 <b_jonas> "https://docs.microsoft.com/en-us/windows/win32/procthread/process-and-thread-reference?redirectedfrom=MSDN", link "Process and Thread Functions", goes to "https://docs.microsoft.com/en-us/windows/win32/procthread/process-and-thread-functions", section "Process Functions", link "CreateProcessAsUser"
+2019-11-12 23:28:43 <ais523> b_jonas: which shows CreateProcessAsUserA for me, the version that's sensitive to which language version of the OS is installed
+2019-11-12 23:29:17 Joined: oerjan
+2019-11-12 23:29:17 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 23:29:19 <b_jonas> ais523: ok, but then I don't know which function you want instead
+2019-11-12 23:29:24 <ais523> even Microsoft eventually realised that having the ABI differ from one country to another was a problem, that's one of the reasons why the -W variants of the functions were invented
+2019-11-12 23:29:29 <b_jonas> and I'm not familiar with the windows api enough to tell what's best to use here
+2019-11-12 23:29:30 <ais523> so CreateProcessAsUserW is the more sane version
+2019-11-12 23:29:48 <ais523> there's a fairly simple rule: do not use functions whose name ends in a capital A ever
