@@ -148,3 +148,145 @@
 2019-11-12 00:59:37 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: : not found
 2019-11-12 00:59:41 <ashtons> seriously
 2019-11-12 00:59:57 <int-e> ashtons: there's no space *between* the two backticks.
+2019-11-12 01:00:10 <ashtons> `` echo -n "Bananas taste good and have potassium, but they bruise kinda easily. I still like to eat them though :)" > tmp/banana.txt
+2019-11-12 01:00:13 <HackEso> No output.
+2019-11-12 01:00:20 <ashtons> cat tmp/banana.txt
+2019-11-12 01:00:44 <ashtons> wait
+2019-11-12 01:00:50 <int-e> The backtick is followed by a command name to be executed, then a space, and then the command's argument.
+2019-11-12 01:00:54 <ashtons> `` cat tmp/banana.txt
+2019-11-12 01:00:55 <HackEso> Bananas taste good and have potassium, but they bruise kinda easily. I still like to eat them though :)
+2019-11-12 01:01:15 <ashtons> right
+2019-11-12 01:01:16 <int-e> So `` foo executes the ` command with parameter "foo". Which is why this is relevant:
+2019-11-12 01:01:18 <int-e> `cat bin/`
+2019-11-12 01:01:19 <HackEso> ​#!/bin/bash \ cmd="${1-quote}" \ TIMEFORMAT="real: %lR, user: %lU, sys: %lS" \ shopt -s extglob globstar \ eval -- "$cmd" | rnooodl
+2019-11-12 01:02:30 <ashtons> nice
+2019-11-12 01:02:52 <int-e> (Of course that's a simplification. Some commands are built into the bot, like `help)
+2019-11-12 01:03:00 Joined: Frater_EST
+2019-11-12 01:03:00 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:03:12 <ashtons> will it recognize, say...
+2019-11-12 01:03:14 <ashtons> `halp
+2019-11-12 01:03:15 <HackEso> No halp 4 u
+2019-11-12 01:03:35 <ashtons> hahaha i was not expecting that
+2019-11-12 01:04:06 <shachaf> `dobg halp
+2019-11-12 01:04:09 <HackEso> 6613:2016-01-29 <mromän> echo "echo No halp 4 u \\$1" >> bin/halp \ 6612:2016-01-29 <mromän> echo "#!/bin/sh" > bin/halp \ 6611:2016-01-29 <mromän> echo "echo $1" >> bin/halp \ 6610:2016-01-29 <mromän> echo "echo No halp 4 u" >> bin/halp \ 6609:2016-01-29 <mromän> echo "#!/bin/sh" > bin/halp \ 6608:2016-01-29 <mromän> chmod +x bin/halp \ 6607:2016-01-29 <mromän> echo "help" >> bin/halp \ 6606:2016-01-29 <mromän> echo "#!/bin/s
+2019-11-12 01:05:49 <ashtons> i just remembered why I came to this chatroom :\
+2019-11-12 01:06:31 <int-e> naming is hard
+2019-11-12 01:06:47 <ashtons> very hard
+2019-11-12 01:07:03 <int-e> and also really easy :P
+2019-11-12 01:07:32 <int-e> (as fizzie pointed out above... just generate something random)
+2019-11-12 01:08:01 <shachaf> Why random? Just generate increasing names.
+2019-11-12 01:08:11 <ashtons> had to scroll up to find that
+2019-11-12 01:08:39 <shachaf> You only get ~sqrt(n) names before a collision if you do it randomly.
+2019-11-12 01:08:48 <ashtons> okay then
+2019-11-12 01:08:55 <int-e> Right. The first 26 variable names are easy. Then it becomes a bit harder.
+2019-11-12 01:09:27 <shachaf> 1112111 variables should be enough for anyone.
+2019-11-12 01:09:51 <int-e> Those aren't all assigned, are they.
+2019-11-12 01:10:08 <shachaf> Wait, I meant 1114112.
+2019-11-12 01:10:22 <int-e> > length ['\0'..]
+2019-11-12 01:10:24 <lambdabot> 1114112
+2019-11-12 01:10:30 <shachaf> > 2^16*17
+2019-11-12 01:10:32 <lambdabot> 1114112
+2019-11-12 01:10:55 <shachaf> Some of those aren't even assignable (like the surrogate code points for UTF-16).
+2019-11-12 01:12:16 <ashtons> right now i'm wondering if there's a program online somewhere that can randomly generate a plausable-sounding word
+2019-11-12 01:12:18 <ashtons> probably not
+2019-11-12 01:12:35 <int-e> `german
+2019-11-12 01:12:36 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: german: not found
+2019-11-12 01:12:40 <int-e> hrm
+2019-11-12 01:13:19 <fizzie> `words --german 10
+2019-11-12 01:13:20 <HackEso> ausly h�rderensgesch�nhein rungsvorschen paraktion gottag vorschaftsynopen condres bezieren prodendustierben indi
+2019-11-12 01:13:27 <shachaf> `words --english 10
+2019-11-12 01:13:28 <HackEso> Unknown option: english
+2019-11-12 01:13:32 <int-e> fizzie knows, of course.
+2019-11-12 01:13:34 <shachaf> oh no
+2019-11-12 01:13:35 <fizzie> `words --list
+2019-11-12 01:13:36 <HackEso> valid datasets: --brazilian --bulgarian --canadian-english-insane --catalan --eng-1M --eng-all --eng-fiction --eng-gb --eng-us --esolangs --finnish --french --gaelic --german --german-medical --hebrew --irish --italian --manx --norwegian --ogerman --opcode --pokemon --polish --portuguese --russian --spanish --swedish \ default: --eng-1M
+2019-11-12 01:13:38 <shachaf> too obscure, probably?
+2019-11-12 01:13:40 <shachaf> `words --hebrew 10
+2019-11-12 01:13:41 <HackEso> ​האור וסברתי העתקו וטיות דפרק בתפול בנלו חקרו שיש מאים
+2019-11-12 01:13:42 <ashtons> `words --help
+2019-11-12 01:13:42 <HackEso> Usage: words [-dhNo] [DATASETS...] [NUMBER_OF_WORDS] \  \ options: \   -l, --list             list valid datasets \   -d, --debug            debugging output \   -N, --dont-normalize   don't normalize frequencies when combining \                          multiple Markov models; this has the effect \                          of making larger datasets more influential \   -o, --target-offset    change the target length offset used in the \
+2019-11-12 01:13:54 <shachaf> `words --eng-us 10
+2019-11-12 01:13:55 <HackEso> kanaticule chrin yourg xacted skeypl rati usmarkiequa lando preni gliardrivi
+2019-11-12 01:14:12 <shachaf> I gotta say those aren't very plausible.
+2019-11-12 01:14:12 <int-e> Hmm, german... the trailing "ly" is odd.
+2019-11-12 01:14:20 <ashtons> is there a way to specify word length?
+2019-11-12 01:14:27 <shachaf> Some of the Hebrew ones are more plausible (several are actual words).
+2019-11-12 01:14:36 <int-e> and "condres" doesn't look german at all.
+2019-11-12 01:14:40 <fizzie> Not directly, but you can affect the standard distribution with -o.
+2019-11-12 01:14:43 <ashtons> cause at this point i don't care much if it's pausible, more so if it's pronouncible
+2019-11-12 01:14:48 <fizzie> `words --eng-all -o 10
+2019-11-12 01:14:50 <HackEso> fathfieldobferlogly
+2019-11-12 01:14:54 <int-e> (But of course we have loan words, so maybe it learned from those.)
+2019-11-12 01:14:56 <fizzie> `words --eng-all -o 12 10
+2019-11-12 01:14:57 <HackEso> avrailobeddleded gbowingenetitatexicochoodfron whlcandjhancequane expuriaprotyletablemean praethylludient dirconcianeogeora extrisatingbilissej matripublecescraticator towhyneckalnarawn humindltloniantioning
+2019-11-12 01:15:03 <shachaf> All words are pronouncible, some only once.
+2019-11-12 01:15:13 <ashtons> `words --eng-us -o 16
+2019-11-12 01:15:13 <fizzie> The English isn't doing so well.
+2019-11-12 01:15:14 <HackEso> affcloshnavdaupraetterban
+2019-11-12 01:15:27 <ashtons> `words --eng-us -o 16 16
+2019-11-12 01:15:28 <HackEso> grsedaledwardingerencing microsyarnyamaiary govardisawendeisation supjtherianticouncestrkakenrodi splarrowetkeotegenspielin focessolundrendorfempte asgimizedeemajorissed kuedaugauctivinctivossen allowtiendocumenoloxalre nenrinderinitroducenzelet feraytternianotersomatione iithaltlleroundedpoiloselege theritoidendefmeditegoritanci incurallctivingedivitrepat armicrouhlerowitat dubalatriumqueftremene
+2019-11-12 01:15:32 <fizzie> The Finnish words are sometimes pretty plausible, sometimes completely not (it doesn't understand vowel harmony).
+2019-11-12 01:15:40 <fizzie> `words --finnish 10
+2019-11-12 01:15:40 <HackEso> kukim�st�vilta venyvin� loittavaltta latasoint�v� pisemme aamuvanani barrosoluovi himp��si aforittelevikseen kuvill�si
+2019-11-12 01:15:43 <int-e> fizzie: 16 may be too long
+2019-11-12 01:15:58 <int-e> hmm
+2019-11-12 01:16:06 <fizzie> "venyvin�" is a real word, as is arguably "aamuvanani".
+2019-11-12 01:16:27 <int-e> Oh that's the number of words. Why are the words so long though...
+2019-11-12 01:16:38 <ashtons> `words --eng-us -o 16 4
+2019-11-12 01:16:39 <HackEso> pirabildualinendently cretophiquakneyagammisperp nonpsyconvespectathebutstonch mpcarockentdrumminerievraneandu
+2019-11-12 01:17:11 <int-e> `words --eng-us -o 4 16
+2019-11-12 01:17:12 <HackEso> ianaximurrexcluaen unettionaliniallin thanincrgonogeeder nambryadeon uuoitewoodli iyingtonelightef homicrossarthe narethylphotoph ofcentakethemke immunabild earumcumburythnol vaidhainia lenallyflyridge shonicataque threding trisiticantum
+2019-11-12 01:17:24 <int-e> hmm. no clue what -o does.
+2019-11-12 01:17:30 <fizzie> For the record, -o isn't the target length, it's an offset.
+2019-11-12 01:17:35 <fizzie> `words --eng-us -o 0 10
+2019-11-12 01:17:36 <HackEso> fiverlike grphildt sutulari musenseguilimizi crossamg ringersonemee waainesindele duatiored maring deckley
+2019-11-12 01:17:37 <int-e> `` words --help | paste
+2019-11-12 01:17:38 <HackEso> https://hack.esolangs.org/tmp/paste/paste.2803
+2019-11-12 01:17:43 <fizzie> `words --eng-us -o -4 10
+2019-11-12 01:17:44 <HackEso> barrie bouf confraga disibiliary libar mine scipisar kid potedeconoxim univar
+2019-11-12 01:17:54 <int-e> `words --eng-us -o -4 16
+2019-11-12 01:17:55 <fizzie> That looks pretty reasonable.
+2019-11-12 01:17:55 <HackEso> liedisal kard peeck ramia besermo fatio orkmannarsoninewmant need edit nung hujici lusiedrintr gliaccal stru pertrever onemijde
+2019-11-12 01:17:59 <fizzie> Lengthwise.
+2019-11-12 01:18:07 <int-e> oh sorry
+2019-11-12 01:18:28 <int-e> (You just did that while I went to read the paste)
+2019-11-12 01:18:31 <fizzie> FWIW, the length modeling isn't particularly great, it's a restriction of character n-grams.
+2019-11-12 01:19:01 <fizzie> I think `words had some very ad-hoc hack for lengths.
+2019-11-12 01:19:21 <ashtons> is there a way to specify length in letters?
+2019-11-12 01:19:36 <fizzie> No, but you can just generate and filter.
+2019-11-12 01:20:00 <ashtons> gotcha
+2019-11-12 01:20:19 <fizzie> It's not really possible to have an exact target length for the kind of model it uses, unless you just do a hard truncate, and that way the word doesn't end the way words normally end.
+2019-11-12 01:23:45 <ashtons> `` words --eng-us 8 | grep -e /([a-z]{16})/
+2019-11-12 01:23:46 <HackEso> ​/hackenv/bin/`: eval: line 5: syntax error near unexpected token `(' \ /hackenv/bin/`: eval: line 5: `words --eng-us 8 | grep -e /([a-z]{16})/'
+2019-11-12 01:24:26 <int-e> just drop the /( and )/
+2019-11-12 01:24:34 <ashtons> `` words --eng-us 8 | grep -e [a-z]{16}
+2019-11-12 01:24:36 <HackEso> No output.
+2019-11-12 01:24:38 <ashtons> `` words --eng-us 8 | grep -e [a-z]{16}
+2019-11-12 01:24:40 <HackEso> No output.
+2019-11-12 01:24:43 <int-e> actually, hmm
+2019-11-12 01:24:46 <ashtons> `` words --eng-us 256 | grep -e [a-z]{16}
+2019-11-12 01:24:48 <HackEso> No output.
+2019-11-12 01:24:53 <ashtons> >:(
+2019-11-12 01:25:19 <int-e> Ah, of course... it puts everything on one line.
+2019-11-12 01:26:17 <ashtons> Okay, so how do we deal with that?
+2019-11-12 01:27:31 <int-e> `` echo $(words --eng-us 256 | tr \  \\n | grep -e ^[a-z]{16}\$)
+2019-11-12 01:27:32 <HackEso> No output.
+2019-11-12 01:27:49 <ashtons> `` words --eng-us 256 | grep -e [a-z]{16} > wordlist.txt
+2019-11-12 01:27:51 <HackEso> No output.
+2019-11-12 01:27:58 <ashtons> cat wordlist.txt
+2019-11-12 01:28:08 <ashtons> `cat wordlist.txt
+2019-11-12 01:28:09 <HackEso> No output.
+2019-11-12 01:28:15 <ashtons> >:(
+2019-11-12 01:28:18 Quit: Frater_EST (Read error: Connection reset by peer)
+2019-11-12 01:28:19 Names: \oren\, ^[, aji, aloril, APic, ashtons, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-12 01:28:51 <kmc> ask your doctor if potedeconoxim is right for you
+2019-11-12 01:28:56 <shachaf> `rm wordlist.txt
+2019-11-12 01:28:57 <HackEso> No output.
+2019-11-12 01:29:06 <kmc> actually, is there a words dict for drug names? that would be fun
+2019-11-12 01:29:24 <shachaf> I recommend doing experiments like that in tmp/ (and probably also in /msg).
+2019-11-12 01:29:36 <ashtons> ask your doctor if pseudobanadeconoxim is right for you
+2019-11-12 01:29:47 <kmc> ask your doctor if bananadine is right for you
+2019-11-12 01:29:52 <kmc> can one create new dicts easily?
+2019-11-12 01:29:54 <ashtons> side effects may include turning into a banana
+2019-11-12 01:29:56 <kmc> `paste bin/words
+2019-11-12 01:29:57 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/words
