@@ -1,0 +1,69 @@
+2019-11-13 00:01:36 Quit: ArthurStrong (Quit: leaving)
+2019-11-13 00:01:37 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:04:02 <shachaf> I wonder how many system calls Linux would have if you got rid of all the obsolete ones.
+2019-11-13 00:06:56 <ais523> my asm/unistd_64.h lists 332 total, the vast majority of them seem to be neither removed nor superseded, so I'm guessing about 300?
+2019-11-13 00:07:22 <shachaf> Mine has 436.
+2019-11-13 00:07:41 <shachaf> I suspect quite a few are superseded.
+2019-11-13 00:07:41 <ais523> I think there might be debates about what counts as obsolete
+2019-11-13 00:07:54 <ais523> sorting them alphabetically, I came across dup/dup2/dup3
+2019-11-13 00:07:56 <b_jonas> yeah, eg. is read obsolete because we have preadv?
+2019-11-13 00:08:00 <ais523> which of those would you consider obsolete?
+2019-11-13 00:08:11 <b_jonas> ais523: dup, dup2 are definitely obsolete, just use the fcntl functions
+2019-11-13 00:08:19 <shachaf> dup3 clearly supersedes dup2.
+2019-11-13 00:08:26 <shachaf> dup isn't superseded as far as I know.
+2019-11-13 00:08:42 <b_jonas> dup3 too has an fcntl equivalent
+2019-11-13 00:08:45 <ais523> dup is entirely duplicated by fcntl
+2019-11-13 00:08:48 <shachaf> Of course the Linux ABI is much bigger than system calls. It include /proc and /sys, and ioctls, and so on.
+2019-11-13 00:08:53 <ais523> and dup3 can be written in terms of dup2 + fcntl
+2019-11-13 00:09:16 <b_jonas> hmm wait
+2019-11-13 00:09:18 <ais523> /proc and /sys and friends can only be accessed via system calls
+2019-11-13 00:09:26 <ais523> they're more like special cases of system calls, than ABIs in their own right
+2019-11-13 00:09:29 <b_jonas> fcntl doesn't do the dup2/dup3 explicit destination file descriptor number thing?
+2019-11-13 00:09:32 <b_jonas> sorry
+2019-11-13 00:09:42 <ais523> b_jonas: no
+2019-11-13 00:09:59 <ais523> although you can do a dup+cloexec mix using a single fcntl instruction
+2019-11-13 00:10:04 Quit: FreeFull
+2019-11-13 00:10:04 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:10:11 <ais523> which doesn't have a dedicated system call of its own otherwise (dup3 can't do it)
+2019-11-13 00:10:36 <ais523> this ABI is actually something of a mess, but I guess backwards compatibility (and to some extent usabliity from asm without wrappers) is important
+2019-11-13 00:13:29 <shachaf> If foo() is replaced with foo2() which has a flags argument, clearly foo is obsolete.
+2019-11-13 00:13:41 <shachaf> Similarly foo with fooat.
+2019-11-13 00:14:19 <ais523> what if the flags are rarely used, and technically unnecessary?
+2019-11-13 00:15:14 <shachaf> It should've had the flags argument in the first place.
+2019-11-13 00:15:16 <ais523> dup3 is probably not entirely redundant to dup2 + fcntl (there are likely some race conditions relating to exec in one thread against dup in another), but it's only weird situations where you'd need it
+2019-11-13 00:15:39 <ais523> and in practice it's more likely to be used as an optimisation to reduce system call overhead
+2019-11-13 00:16:01 <shachaf> You mean CLOEXEC?
+2019-11-13 00:16:22 <shachaf> All the system calls that make fds are getting flags arguments to support CLOEXEC.
+2019-11-13 00:16:24 <ais523> dup3 only supports one flag ;-)
+2019-11-13 00:16:46 <shachaf> That seems like a good reason to call the nonflag version obsolete.
+2019-11-13 00:17:37 <ais523> I would expect dup2(x,y) to be preferred over dup3(x,y,z) if you didn't want to set cloexec
+2019-11-13 00:18:38 <ais523> fwiw, this is probably a good argument for all system calls to have a flags argument, even if it's initially just always-0?
+2019-11-13 00:18:47 Quit: Frater_EST (Read error: Connection reset by peer)
+2019-11-13 00:18:48 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:19:18 <ais523> hmm, is the Linux system call ABI guaranteed to preserve registers, other than eax? I vaguely remember that it is
+2019-11-13 00:19:32 <ais523> in which case dup2 has less register pressure, in addition to not needing to zero an additional register
+2019-11-13 00:19:48 <shachaf> It clobbers rcx and r11.
+2019-11-13 00:19:59 <ais523> oh right, everything clobbers r11
+2019-11-13 00:20:11 <shachaf> Why?
+2019-11-13 00:20:43 <ais523> in practice, r11 very rarely /actually/ changes as the result of a call, but it's been considered useful to have a register that dynamic linkers and other similar things can use as a temporary if they need to inject glue code for some sort of call or another
+2019-11-13 00:21:01 <ais523> like, at any change of control, you have a register that's safe to clobber no matter what
+2019-11-13 00:21:14 <ais523> and r11 is the generally agreed-on choice for that
+2019-11-13 00:21:22 <ais523> (it helps if everyone uses the same register, for obvious reasons!)
+2019-11-13 00:21:46 <shachaf> I guess this is a SysV thing.
+2019-11-13 00:22:07 Joined: Frater_EST
+2019-11-13 00:22:07 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:22:20 <ais523> it probably started from there, at least
+2019-11-13 00:22:43 <shachaf> I think calling files in /proc a special case of the ABI of open()/read() is a big stretch.
+2019-11-13 00:23:13 <ais523> $ readlink /proc/self/exe
+2019-11-13 00:23:14 <ais523> /bin/readlink
+2019-11-13 00:23:19 <ais523> if that isn't a special case, I don't know what is
+2019-11-13 00:23:28 <ais523> err, wrong one
+2019-11-13 00:23:58 <ais523> I meant /proc/self/fd/0 and friends
+2019-11-13 00:24:18 <shachaf> Oh man, I forgot Linux had name_to_handle_at and open_by_handle_at.
+2019-11-13 00:24:59 <ais523> (the point being that if a process has a deleted file open, readlink on that file returns the name it had before that name was deleted, but you can nonetheless read the file directly by fd)
+2019-11-13 00:25:20 <shachaf> I mean, /proc is obviously part of the ABI, but in a really bad way, and I don't think putting the blame on read is reasonable.
+2019-11-13 00:25:24 <ais523> actually that probably works on /proc/self/exe too if a deleted executable is running
+2019-11-13 00:25:44 <ais523> my point is that this is a special case relating to the combination of readlink and proc, you won't find anything like it elsewhere
+2019-11-13 00:25:58 <ais523> and this is because proc is basically just a set of special case for system calls
+2019-11-13 00:28:17 <shachaf> I'm confused by the name_to_handle_at API.
+2019-11-13 00:28:48 <shachaf> Oh, never mind, I didn't read far enough.
