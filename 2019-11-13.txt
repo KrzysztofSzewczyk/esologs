@@ -67,3 +67,52 @@
 2019-11-13 00:25:58 <ais523> and this is because proc is basically just a set of special case for system calls
 2019-11-13 00:28:17 <shachaf> I'm confused by the name_to_handle_at API.
 2019-11-13 00:28:48 <shachaf> Oh, never mind, I didn't read far enough.
+2019-11-13 00:30:58 <shachaf> whoa, Linux has process_vm_{read,write}v
+2019-11-13 00:32:06 <shachaf> It's also finally getting pidfd, apparently.
+2019-11-13 00:32:58 <ais523> process_vm_{read,write}v look like a huge efficiency gain for debuggers, and probably have other uses as well
+2019-11-13 00:33:23 <ais523> reading a target process' memory in tiny chunks via ptrace would have huge system call overhead
+2019-11-13 00:33:54 <shachaf> Was it previously possible to read /proc/pid/mem?
+2019-11-13 00:34:11 <ais523> hmm, I didn't think of that
+2019-11-13 00:37:10 <fizzie> Ooh, pidfd.
+2019-11-13 00:37:52 <fizzie> There are so many foofd's in Linux; signalfd, eventfd, timerfd.
+2019-11-13 00:38:05 <ais523> what's the intended use case of a pidfd?
+2019-11-13 00:38:19 <ais523> at a guess, some sort of protection against PID reuse?
+2019-11-13 00:38:25 <shachaf> Avoiding race conditions, I imagine.
+2019-11-13 00:38:52 <fizzie> Yes, sending a signal to a known process without worrying about it dying and being replaced by some other process is the one I know of.
+2019-11-13 00:39:03 <fizzie> Also waiting for a process to exit without being its parent, maybe?
+2019-11-13 00:39:21 <ais523> (or its ptracer)
+2019-11-13 00:39:47 <ais523> actually, you can also wait for a process to exit without being its parent /or/ its ptracer by ptracing its parent, but that's probably a bit silly
+2019-11-13 00:42:03 <ais523> hmm, the man page for ptrace has been updated since I last read it
+2019-11-13 00:42:27 Quit: hppavilion[6] (Ping timeout: 240 seconds)
+2019-11-13 00:42:27 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:42:59 <ais523> there's a discussion of permissions, including the mention that ptrace permission checks are based on the ptracer's real UID/GID, not its effective UID/GID (which seems like a minor security risk in the case where the ptracer is trying to suspend its own permissions)
+2019-11-13 00:43:08 <shachaf> Here are some obsolete system calls: accept chown creat create_module dup2 epoll_create epoll_ctl_old epoll_wait_old eventfd fchown fork fstat getdents lchown link lstat mkdir mknod open pipe preadv pwritev readlink signalfd stat symlink vfork
+2019-11-13 00:43:44 <fizzie> This article says there's also a proposal for a clone flag that can make a process that can only be waited on through its pidfd, the intention being that a library can create a helper process without confusing its host application's wait calls.
+2019-11-13 00:44:45 Quit: Sgeo (Read error: Connection reset by peer)
+2019-11-13 00:44:45 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:44:54 Quit: ais523 (Remote host closed the connection)
+2019-11-13 00:44:55 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:45:07 Joined: ais523
+2019-11-13 00:45:07 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:45:19 <fizzie> For a Go application I wrote recently (for personal use), I did a really ugly-looking snippet to use ambient capabilities, before learning that actually the standard Go library's syscall.SysProcAttr struct has an AmbientCaps field for using ambient capabilities.
+2019-11-13 00:46:36 <shachaf> The man page for wait4 says that waitpid and waitid are preferred.
+2019-11-13 00:46:53 <shachaf> But neither one of them gives you rusage, like wait4 does!
+2019-11-13 00:47:24 <shachaf> Except that's not true.
+2019-11-13 00:47:36 <shachaf> The system call gives you rusage, but the glibc wrapper just ignores it.
+2019-11-13 00:47:50 Joined: Sgeo
+2019-11-13 00:47:50 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:51:15 <shachaf> inotify_init is another one.
+2019-11-13 00:53:10 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-11-13 00:53:10 <ais523> I think it would be helpful if there were some sort of model of OS-level capabilities, plus any similar constructs at below the OS level, in terms that users could easily understand
+2019-11-13 00:54:06 <shachaf> When will Linux support mmap into a ptracee?
+2019-11-13 00:54:15 <ais523> in particular, there seems to be some sort of hierarachy of cans that override can'ts that override cans that override can'ts…
+2019-11-13 00:54:27 <shachaf> Windows has supported this forever.
+2019-11-13 00:54:38 <ais523> like, file-permitted is the strongest sort of capability, it says that the file can do this, overriding everything else
+2019-11-13 00:54:47 <shachaf> Without mmap you can't even guarantee finding a syscall instruction to do anything else.
+2019-11-13 00:57:57 Joined: budonyc
+2019-11-13 00:57:58 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, budonyc, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 00:57:59 <ais523> actually, no, there are two levels above that
+2019-11-13 00:58:22 <ais523> being run as root or suid-root and not capability-aware lets you do anything and sort-of bypasses the whole capability thing
+2019-11-13 00:59:06 <ais523> or, ugh
+2019-11-13 00:59:12 <ais523> capability bounding set is really confusing in this model
+2019-11-13 01:00:01 <ais523> removing a capability from the bounding set absolutely prevents that capability from ever again being regained by file-inheritable; however, it does not prevent it being regained from file-permitted
