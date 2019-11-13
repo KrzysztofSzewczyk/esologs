@@ -142,3 +142,62 @@
 2019-11-13 01:20:34 <ais523> I think a bounding set on fP (in that article's notation) is useful, but oddly neither pI nor X actually bound it
 2019-11-13 01:20:38 <ais523> I don't think anything can bound that
 2019-11-13 01:21:04 <ais523> other than NNP, obviously, which has to outrank /everything/ to be usable securely
+2019-11-13 01:34:54 Joined: imode
+2019-11-13 01:34:54 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, budonyc, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-13 01:41:24 <oerjan> ais523: did you see my last edit to TPIMI?
+2019-11-13 01:41:56 <ais523> oerjan: yes, I'm not sure you're right though
+2019-11-13 01:42:24 <ais523> when I have the time and mental energy, I'll write an interpreter and figure it out that way
+2019-11-13 01:44:20 Joined: zzo38
+2019-11-13 01:44:20 Names: \oren\, ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, budonyc, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-13 01:44:42 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-13 01:44:42 <imode> oerjan: tempted to take your advice and add Mode to the wiki.
+2019-11-13 01:44:47 User Name: zzo38 = zzo38!~zzo38@209.52.88.123
+2019-11-13 01:44:47 <zzo38> How to run PHP5 on Raspberry Pi?
+2019-11-13 01:45:01 <imode> zzo38: is there a package in the raspbian repos?
+2019-11-13 01:45:30 <imode> sudo apt-get install apache2 php5 ?
+2019-11-13 01:45:45 <ais523> you shouldn't need apache to run PHP?
+2019-11-13 01:45:58 <ais523> only if you want to use it for CGI scripts
+2019-11-13 01:46:16 <ais523> I guess that's a common use, but my first thought was PHP as a standalone programming language rather than as part of a web server
+2019-11-13 01:46:18 <oerjan> ais523: well it seems obvious to me that the length 1 block representation needs to be the same length as the basic production sequence
+2019-11-13 01:46:32 <zzo38> I only want to run PHIRC, which is the IRC client I have. (My internet doesn't work, so I use this other computer instead, which has wireless internet.)
+2019-11-13 01:46:37 <imode> you shouldn't need apache, you can use anything else, however I'm under the assumption that-
+2019-11-13 01:46:39 <imode> nevermind.
+2019-11-13 01:46:46 <imode> you should just be able to install php5 then.
+2019-11-13 01:47:28 <zzo38> It says "package php5 has no installation candidate"
+2019-11-13 01:47:36 <imode> what distro are you running on the pi.
+2019-11-13 01:48:06 <ais523> zzo38: does it have to be PHP 5 specifically, or is a newer version OK?
+2019-11-13 01:48:36 <zzo38> I think many things will break with PHP 7, which is what it currently has
+2019-11-13 01:49:29 <zzo38> I suppose I can try to see if the program works, but it might not work
+2019-11-13 01:50:20 <ais523> the easiest way is probably to get a package for an old version of PHP from the Debian archives, see http://snapshot.debian.org/ for details
+2019-11-13 01:50:54 <imode> php5 should be a package in raspbian...
+2019-11-13 01:50:54 <ais523> although, it might not work with modern dependencies
+2019-11-13 01:51:06 <ais523> php5 is really old though
+2019-11-13 01:51:23 <ais523> it's probably dropped out of the archives by now
+2019-11-13 01:51:28 <imode> sure, but it's still a required package.
+2019-11-13 01:51:55 <ais523> it's possible that it has a minor version number in the archives
+2019-11-13 01:52:01 <oerjan> ais523: anyway, i cut and pasted into vim and rotated lines, and it seemed to fit that way.
+2019-11-13 01:52:24 <imode> zzo38: sudo apt-cache search php I guess.
+2019-11-13 01:52:29 <imode> you don't need the sudo iirc.
+2019-11-13 01:52:33 <ais523> nor the "-cache"
+2019-11-13 01:52:47 <imode> been a long time since I used debian. arch main.
+2019-11-13 01:53:09 <ais523> I think «apt show "php5*"» will be more useful
+2019-11-13 01:53:53 <zzo38> I tried that; it says virtual
+2019-11-13 01:53:56 <imode> huh, raspbian doesn't have a web-searchable package mirror.
+2019-11-13 01:53:58 <imode> that's lame.
+2019-11-13 01:54:09 <ais523> if they're all virtual it means that the package doesn't exist in the repositories any more
+2019-11-13 01:54:20 <ais523> so you'll need to find an old version of the package, perhaps from an old version of the repositories
+2019-11-13 01:54:26 <ais523> I think the assumption is that nobody would use php5 any more
+2019-11-13 01:54:42 <ais523> python 1 isn't in the repositories either
+2019-11-13 01:54:57 <imode> https://www.raspberryconnect.com/raspbian-packages/54-raspbian-php
+2019-11-13 01:55:07 <imode> how old _is_ php5.
+2019-11-13 01:55:34 <imode> oof, sec support in debian ended on new year's.
+2019-11-13 01:55:35 <zzo38> Is there a program for Raspberry Pi to download Usenet messages to be read later on another computer?
+2019-11-13 01:55:48 <ais523> 7.0 appears to be the oldest version available from there
+2019-11-13 01:55:50 <imode> still in jesse, though..
+2019-11-13 01:57:41 <ais523> 7.0 was released in 2015; 5.6 was the most current version before that (6 was abandoned)
+2019-11-13 01:58:23 <imode> why was 6 abandoned?
+2019-11-13 01:58:30 <ais523> 5.6 became unsupported at the end of 2018
+2019-11-13 01:58:31 <imode> (feels like there's a joke there...)
+2019-11-13 01:59:25 <ais523> apparently they started writing PHP 6 in 2008, and abandoned it in 2014 because it still wasn't finished by then
+2019-11-13 01:59:39 <imode> perl6 and php6.
+2019-11-13 01:59:40 <ais523> the main intended feature that they failed to implement for 6 was Unicode support
