@@ -116,3 +116,29 @@
 2019-11-13 00:59:06 <ais523> or, ugh
 2019-11-13 00:59:12 <ais523> capability bounding set is really confusing in this model
 2019-11-13 01:00:01 <ais523> removing a capability from the bounding set absolutely prevents that capability from ever again being regained by file-inheritable; however, it does not prevent it being regained from file-permitted
+2019-11-13 01:02:04 <fizzie> Yeah, it's not super-obvious.
+2019-11-13 01:02:09 <ais523> AFAICT, capabilities is currently a mix between several different permissions models, with system calls to choose which ones you want, and/or to prevent your descendant processes using their own system calls to change back to a different one
+2019-11-13 01:02:24 <ais523> except that the kernel doesn't force you to pick a specific model but sort of lets you blend your way between them if you like
+2019-11-13 01:02:41 <fizzie> There's that table in capabilities(7) on how the ambient, permitted, effective, inheritable and bounding sets are derived on execve.
+2019-11-13 01:03:31 <fizzie> But even that wasn't the full story.
+2019-11-13 01:04:45 <ais523> I think a sane model would look something like "processes: permitted is always a subset of inheritable; files: only inheritable permissions exist"
+2019-11-13 01:06:23 <ais523> actually, I think you need a new category entirely
+2019-11-13 01:07:05 <ais523> I think files should have two permission sets: one is equivalent to "inheritable" in the current model, the other causes the process executed from that file to gain a permission as permitted if it is both inheritable and effective in the calling process
+2019-11-13 01:07:19 <fizzie> Anyway, all I wanted was to have one capability-aware program execute a capability-dump helper process with CAP_DAC_READ_SEARCH, and I think I got that setup right: for the capability-aware executable file, set that bit in the file's effective and permitted sets; in the capability-aware program, first add the bit to the process's inheritable set, then raise it in the process's ambient set.
+2019-11-13 01:08:16 <ais523> files don't hav effective sets
+2019-11-13 01:08:28 <ais523> just the effective bit, which could be called the "capability-unaware" bit
+2019-11-13 01:09:24 <ais523> hmm, how does the no-new-privs bit interact with all this?
+2019-11-13 01:10:48 <fizzie> Right, that's what I meant.
+2019-11-13 01:11:15 <fizzie> Arguably, it's no surprise capabilities haven't really conquered the world yet.
+2019-11-13 01:12:21 <ais523> if a capability-aware program A is trying to execute a capability-unaware program B with a particular capability set, AFAICT all it needs to do is to put the capability set into its own ambient set, with no changes to B needed
+2019-11-13 01:12:48 <fizzie> Well, it also needs to put the capability into its own inheritable set, but you might consider that a part of putting it into its own ambient set.
+2019-11-13 01:13:09 <fizzie> (If it wasn't there already, that is.)
+2019-11-13 01:13:17 <fizzie> (It won't be there already if it's coming from a file.)
+2019-11-13 01:13:18 <ais523> yes, that's part of ambient
+2019-11-13 01:13:50 <ais523> actually, what confuses me is that inheritable seems to be at all-0s for unprivileged processes
+2019-11-13 01:14:47 <ais523> this gives it a /really/ niche use; its only purpose is for a privileged program to call unprivileged helper programs in such a way that they can call file-inheritable programs in a privileged way
+2019-11-13 01:16:19 <ais523> I can't think of circumstances where that would be useful, and thus suspect that inheritable capabilites aren't currently used much
+2019-11-13 01:17:29 <fizzie> That's what I think too. https://lwn.net/Articles/636533/ calls them "broken". (The proposal for ambient capabilities.)
+2019-11-13 01:20:34 <ais523> I think a bounding set on fP (in that article's notation) is useful, but oddly neither pI nor X actually bound it
+2019-11-13 01:20:38 <ais523> I don't think anything can bound that
+2019-11-13 01:21:04 <ais523> other than NNP, obviously, which has to outrank /everything/ to be usable securely
