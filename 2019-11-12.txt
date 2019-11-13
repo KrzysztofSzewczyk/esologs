@@ -1020,3 +1020,100 @@
 2019-11-12 23:29:29 <b_jonas> and I'm not familiar with the windows api enough to tell what's best to use here
 2019-11-12 23:29:30 <ais523> so CreateProcessAsUserW is the more sane version
 2019-11-12 23:29:48 <ais523> there's a fairly simple rule: do not use functions whose name ends in a capital A ever
+2019-11-12 23:30:03 <ais523> people just do it because it's convenient (and usually works if both you and your customers speak English)
+2019-11-12 23:30:04 <shachaf> Except when you can?
+2019-11-12 23:30:06 <b_jonas> ais523: ok, but aren't they usually documented together?
+2019-11-12 23:30:20 <ais523> the documentation of the two is almost identical
+2019-11-12 23:30:33 <shachaf> OutputDebugStringA("some text"); seems fine to me.
+2019-11-12 23:31:03 <b_jonas> ais523: hmm, you're right, that page doesn't document the W version
+2019-11-12 23:31:08 <b_jonas> let me see if I can find one that ends in a W
+2019-11-12 23:31:13 <ais523> only difference appears to be in the title and "syntax" section
+2019-11-12 23:31:16 <b_jonas> although there might not be one if this is an obsolete api
+2019-11-12 23:31:21 <ais523> shachaf: the encoding of "some text" differs by which version of Windows you have
+2019-11-12 23:31:53 <shachaf> Is it not always compatible with ASCII?
+2019-11-12 23:31:59 <ais523> there's almost certainly an API to discover what it is, then you could do an iconv to convert to the correct format at runtime
+2019-11-12 23:32:18 <shachaf> I guess if your program uses UTF-8 internally, it has to encode to UTF-16 whenever it calls a W function. Which isn't so bad.
+2019-11-12 23:32:18 <ais523> I don't know whether it's always ASCII-compatible, my guess would be no though
+2019-11-12 23:32:35 <ais523> in particular, I have a strong suspicion that the ASCII codepoint of \ is used for � on Japanese versions of Windows
+2019-11-12 23:32:43 <b_jonas> interesting, there is a CreateProcessAsUserW function too
+2019-11-12 23:33:01 <ais523> the thing about the A/W split is that this is mostly hidden from the user via header files
+2019-11-12 23:33:03 <shachaf> I linked to https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ already.
+2019-11-12 23:33:05 <ais523> sometimes it's documented, sometimes it isn't
+2019-11-12 23:33:12 <b_jonas> ais523: you're right, the doc is weird
+2019-11-12 23:33:33 <ais523> there are tools to make it easy to write programs as a polyglot between the A and W APIs; this doesn't seem useful except for examples in manuals and for writing libraries, though
+2019-11-12 23:33:46 <b_jonas> ais523: yeah, I know, and the libc functions have such a split too for some functions, also partly hidden by macros and typedefs
+2019-11-12 23:34:22 <b_jonas> but I don't understand why the documentation doesn't link to the W version of this function from the path that I followed
+2019-11-12 23:35:20 <ais523> I believe Microsoft's API/ABI policy is to intentionally blur the boundaries between userspace and kernelspace, from the user's point of view
+2019-11-12 23:35:21 <b_jonas> there is another path, but it's probably not the main path:
+2019-11-12 23:36:07 <ais523> (incidentally, there actually is a kernel ABI that user32.dll and kernel32.dll use to actually do things, but that's considered to entirely be internals; presumably a reverse engineer could use it directly but that would risk their program breaking on newer versions of Windows)
+2019-11-12 23:36:18 <b_jonas> ais523: yes, that makes sense, because this way they can take an old system call and turn it to a libc wrapper in future versions of windows, so they don't have to have as many obsolete system call entries _in the kernel_ as linux has
+2019-11-12 23:36:35 <shachaf> Yes, I think this is reasonable for that reason.
+2019-11-12 23:36:46 <shachaf> Linux also does a small amount of this with the vdso.
+2019-11-12 23:36:59 <b_jonas> and the actual syscall abi was supposed to have been internals on linux too, with a few specific exceptions
+2019-11-12 23:37:06 <b_jonas> you're supposed to call the libc functions to call system calls
+2019-11-12 23:37:13 <b_jonas> on x86_64 that is, not on x86_32
+2019-11-12 23:37:35 <b_jonas> it's just that that won't work, people want to call the system calls directly, so they'll do, and some old documentation won't stop them
+2019-11-12 23:37:46 <ais523> b_jonas: I agree that it's a defensible policy, although it does have a major downside to the Linux way of doing things: it makes it impossible to statically/dynamically analyse what a program can/is ask/asking the kernel to do, because you don't know where all the kernel entry points are
+2019-11-12 23:37:47 <shachaf> No, the kernel explicitly keeps the system call ABI stable.
+2019-11-12 23:38:09 <b_jonas> shachaf: which kernel?
+2019-11-12 23:38:12 <shachaf> Linux.
+2019-11-12 23:38:16 <b_jonas> exactly
+2019-11-12 23:38:16 <ais523> I believe Linux's policy for system calls is "use the libc wrapper unless you're doing something weird, in which case use the syscall directly"
+2019-11-12 23:38:41 <ais523> also, "the libc wrapper is meant to approximately obey POSIX, the syscalls aren't and may act differently"
+2019-11-12 23:38:57 <shachaf> For the most part the Linux system calls are more reasonable than the libc wrappers.
+2019-11-12 23:39:06 <ais523> although in practice the syscalls normally have more useful semantics than POSIX (I guess being less useful wouldn't work)
+2019-11-12 23:39:23 <b_jonas> shachaf: except for _exit. fucking _exit.
+2019-11-12 23:39:33 <b_jonas> it used to exit the process, but then they changed it.
+2019-11-12 23:39:49 <b_jonas> so now there's a group_exit system call to exit the process, and libc's _exit and _Exit function calls that
+2019-11-12 23:39:55 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-12 23:39:55 <oerjan> <kspalaiologos> `` asmbf <<<"mov r1,0/div r1,0" <-- i've fixed that so you can just do `asmbf yourcodehere
+2019-11-12 23:39:58 <b_jonas> and if you try to call the actual _exit syscall, you're screwed
+2019-11-12 23:40:54 <b_jonas> oerjan: I thought we'd use bin/! to do that part of the wrapping
+2019-11-12 23:42:42 <b_jonas> ais523: anyway, "https://docs.microsoft.com/en-us/windows/win32/index" as above, then link "Win32 API reference by header", goes to "https://docs.microsoft.com/en-us/windows/win32/api/", then in sidebar, link "System Services", goes to "https://docs.microsoft.com/en-us/windows/win32/api/_base/", then link "processthreadsapi.h", goes to
+2019-11-12 23:42:47 <b_jonas> "https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/index", then link "CreateProcessAsUserW", goes to "https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessasuserw"
+2019-11-12 23:43:00 <b_jonas> but I don't know why the other path doesn't lead to this function too
+2019-11-12 23:43:01 <ais523> b_jonas: yes, that was mentioned earlier
+2019-11-12 23:43:08 <ais523> although it seems weird to organize an ABI by C header file?
+2019-11-12 23:43:12 <b_jonas> ais523: yes
+2019-11-12 23:43:18 <b_jonas> it should be linked from both places
+2019-11-12 23:43:26 <b_jonas> I don't know why it isn't
+2019-11-12 23:43:39 <b_jonas> maybe because it's an obsolete function, maybe it's just another doc bug
+2019-11-12 23:43:56 <b_jonas> it's not the first apparently accidental omission from MS docs that I've seen
+2019-11-12 23:43:58 <b_jonas> `? lfloor
+2019-11-12 23:43:59 <oerjan> b_jonas: we're not consistent, also asmbf isn't an interpreter, it's a converter.
+2019-11-12 23:43:59 <HackEso> lfloor? ¯\(°​_o)/¯
+2019-11-12 23:44:16 <b_jonas> oerjan: hmm yes, that's a good point
+2019-11-12 23:44:46 <b_jonas> `? lrint
+2019-11-12 23:44:47 <HackEso> The lrint and lrintf functions (of C99 and C++11) are actually supported by the MS compiler (starting from the 2013), only strangely undocumented.
+2019-11-12 23:44:48 <b_jonas> yes, that one
+2019-11-12 23:45:13 <b_jonas> although I think they fixed that a few compiler versions later
+2019-11-12 23:47:15 <ais523> b_jonas: anyway, I suspect that there are more obsolete kernel APIs in Windows than there are in Linux, even though Windows should theoretically be able to remove them without breaking backwards compatibility:
+2019-11-12 23:47:30 <ais523> s/APIs/ABIs/
+2019-11-12 23:47:39 <ais523> a) Linux only has a few syscalls total, most of which aren't obsolete
+2019-11-12 23:47:42 <b_jonas> ais523: linux can also remove some of them without breaking backwards compatibility
+2019-11-12 23:47:43 <ais523> *few hundred
+2019-11-12 23:48:03 <shachaf> Hmm, quite a few Linux system calls are obsolete.
+2019-11-12 23:48:21 <ais523> b) Microsoft's main value to their customers is backwards compatibility, and Windows devs are infamous for doing really weird things that require kernel-side workarounds to avoid breakage
+2019-11-12 23:48:28 <b_jonas> in particular, they are planning to eventually remove x86_32 userspace compatibility from x86_64, which would save a lot of syscall stuff that actually requires glue code in the kernel to handle
+2019-11-12 23:48:44 <shachaf> ais523: Linux also works very hard on backward compatibility.
+2019-11-12 23:49:00 <shachaf> Linux the kernel, that is. Userspace breaks all the time for no good reason.
+2019-11-12 23:49:06 <ais523> shachaf: I agree, but I don't think that's the main selling point of Linux
+2019-11-12 23:49:13 <ais523> (precisely because userspace breaks all the time)
+2019-11-12 23:49:16 <shachaf> It's one of the main selling points of any platform.
+2019-11-12 23:49:27 <shachaf> Linux-the-userspace is just not a good platform.
+2019-11-12 23:49:54 <shachaf> Fortunately you can statically link executables, unless you're doing graphics or something.
+2019-11-12 23:51:02 <ais523> shachaf: Mac OS X is planning to require executables to be notarised to run, this has the side effect of breaking backwards compatibility for all old un-notarised executables
+2019-11-12 23:51:44 <ais523> (notarising consists of sending your executable to Apple, who do static analysis on it to make sure it isn't malicious or does other things they don't want programs to do, and they then produce a signature saying it's been notarised; I think that's part of the program, it conceptually is at least)
+2019-11-12 23:51:58 <ais523> that's pretty much the opposite of having backwards compatibility as a selling point
+2019-11-12 23:52:38 <ais523> in general I don't think backwards compatibility is a major selling point for Mac OS X, or even a design goal
+2019-11-12 23:53:47 <shachaf> Probably not nowadays?
+2019-11-12 23:54:00 <shachaf> When they switched from Mac OS 9, they did a lot of work on backward compatibility.
+2019-11-12 23:54:30 <shachaf> This notarization thing is obviously very hostile to developers and users.
+2019-11-12 23:54:33 <ais523> I've been trying to discover when notarisation first became possible (as opposed to required)
+2019-11-12 23:54:40 <ais523> but I'm not very good at searcihng
+2019-11-12 23:54:46 <ais523> my leading theory is that it was 2019, though
+2019-11-12 23:57:31 <ais523> anyway, I don't think it's obvious that backwards compatibility, especially of executables, will automatically be a concern to an operating system or comparable platform
+2019-11-12 23:57:46 <ais523> there are clear reasons why it would help, but some companies may decide that the tradeoff isn't worth it
+2019-11-12 23:58:36 Joined: Frater_EST
+2019-11-12 23:58:36 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[6], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-12 23:59:21 <ais523> I guess a lot depends on what your model for deploying software is
