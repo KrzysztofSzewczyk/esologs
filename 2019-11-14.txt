@@ -341,3 +341,9 @@
 2019-11-14 20:53:36 <HackEso> ​/hackenv/bin/?: line 5: cd: wisdom: No such file or directory \ fizzie? ¯\(°​_o)/¯
 2019-11-14 20:55:36 <b_jonas> that is probably a bug, it should look relative to $HOME, which the shell helps you to do with the tilde shortcut
 2019-11-14 20:59:44 <b_jonas> I wonder if learn does that too
+2019-11-14 21:20:37 <fizzie> Well, actually.
+2019-11-14 21:20:39 <fizzie> `` echo $HOME
+2019-11-14 21:20:39 <HackEso> ​/tmp
+2019-11-14 21:21:05 <fizzie> `` echo $HACKENV
+2019-11-14 21:21:05 <HackEso> ​/hackenv
+2019-11-14 21:21:23 <fizzie> Everything *could* be relative to $HACKENV, but...
