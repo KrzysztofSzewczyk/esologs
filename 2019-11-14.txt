@@ -347,3 +347,34 @@
 2019-11-14 21:21:05 <fizzie> `` echo $HACKENV
 2019-11-14 21:21:05 <HackEso> ​/hackenv
 2019-11-14 21:21:23 <fizzie> Everything *could* be relative to $HACKENV, but...
+2019-11-14 21:31:21 <b_jonas> oh
+2019-11-14 21:31:30 <b_jonas> right, I forgot that
+2019-11-14 21:35:09 <b_jonas> fizzie: so would it be ok if I changed bin/\? and some other commands where it makes sense to not use relative path?
+2019-11-14 21:36:25 <b_jonas> oh right, I should change the commands that I created first
+2019-11-14 21:36:26 <b_jonas> ``` cat bin/recipe
+2019-11-14 21:36:27 <HackEso> ​#!/bin/sh \ exec perl -e 'local$/=\999;seek STDIN,rand((-s STDIN)-299),0 or die;print<STDIN>=~y/ \t/ /sr;' < share/recipe/recipes.txt
+2019-11-14 21:36:29 <b_jonas> like that one
+2019-11-14 21:37:02 <b_jonas> the good thing is, we probably don't have to change le//rn
+2019-11-14 21:38:05 <b_jonas> I probably don't dare to change bin/list , even though I know it looks at the logs of a different file, not of the executable itself
+2019-11-14 21:38:32 <b_jonas> but bin/\? and bin/learn can change
+2019-11-14 21:38:41 <b_jonas> anyway, changing the commands that I created first
+2019-11-14 21:40:47 <b_jonas> ``` set -e; cd tmp; recipe
+2019-11-14 21:40:47 <HackEso> he bay the potatoes, and bran in bowl. Cook, then \  stiring well. Add beans in a weight keeps to set aside. Cover fryer \  and serve on beef and serve with an electric tarting delicate such as possible \  and pecans agone all the salads are soft. varinated by the cold \  and refrigerate until the boiling and boils a patty are lightly browned. \   \  TO: TOPPING: 26 minutes or until the cooking with oil. Using a 275\F8F oven about 1 \  hour.)
+2019-11-14 21:40:50 <b_jonas> fixed that one
+2019-11-14 21:43:24 <b_jonas> ``` set -e; cd tmp; random-card
+2019-11-14 21:43:25 <HackEso> No such file or directory at -e line 1.
+2019-11-14 21:43:38 <b_jonas> ``` set -e; cd tmp; random-card
+2019-11-14 21:43:39 <HackEso> Unknown regexp modifier "/h" at -e line 1, within string \ Unknown regexp modifier "/r" at -e line 1, within string \ Unknown regexp modifier "/e" at -e line 1, within string \ Missing right curly or square bracket at -e line 1, within string \ syntax error at -e line 1, at EOF \ Execution of -e aborted due to compilation errors.
+2019-11-14 21:43:42 <b_jonas> uh
+2019-11-14 21:44:22 <b_jonas> oh right
+2019-11-14 21:45:39 <fizzie> I have no objections about robustifying any of the commands.
+2019-11-14 21:45:59 <fizzie> Also, I would hope that nobody's relying on HackEso for mission-critical services. It has no SLO or SLA.
+2019-11-14 21:45:59 <b_jonas> ``` set -e; cd tmp; random-card
+2019-11-14 21:46:00 <HackEso> Huntmaster of the Fells \ 2RG \ Creature -- Human Werewolf \ 2/2 \ Whenever this creature enters the battlefield or transforms into Huntmaster of the Fells, create a 2/2 green Wolf creature token and you gain 2 life. \ At the beginning of each upkeep, if no spells were cast last turn, transform Huntmaster of the Fells. \ [Front face. Transforms into Ravager of the Fells.] \ DKA-M, V17-M
+2019-11-14 21:46:16 <b_jonas> `? warranty
+2019-11-14 21:46:17 <HackEso> HACKE[GS]O COMES WITHOUT WARRANTY, EXPRESS OR IMPLIED, AND IS UNFIT FOR ANY PURPOSE, INCLUDING THE PURPOSE OF BEING UNFIT FOR ANYTHING. Its warranty has expired.
+2019-11-14 21:48:35 <b_jonas> I knew that bin/\? uses relative path because that actually caused me problems when I wrote some command to search for certain wisdoms
+2019-11-14 21:49:22 <b_jonas> ``` set -e; cd tmp; scheme # I have to fix this too
+2019-11-14 21:49:23 <HackEso> Can't open share/mtg/allsets.txt: No such file or directory.
+2019-11-14 21:52:29 <b_jonas> ``` set -e; cd tmp; scheme
+2019-11-14 21:52:30 <HackEso> All in Good Time
