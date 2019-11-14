@@ -140,3 +140,59 @@
 2019-11-14 14:51:35 <wib_jonas> fizzie: the esolangs.org logs don't load again, with 504 Gateway timeout. just in case you want to debug this.
 2019-11-14 14:54:43 Joined: arseniiv
 2019-11-14 14:56:51 Quit: arseniiv (Ping timeout: 246 seconds)
+2019-11-14 15:00:11 <fizzie> Hmm.
+2019-11-14 15:00:59 <fizzie> I wonder what's up with that.
+2019-11-14 15:02:21 <fizzie> The listening socket has 40 connections pending, if I'm parsing netstat -nlp right, and it got incremented by 1 when I did a reload.
+2019-11-14 15:03:00 <fizzie> So I guess it most likely means the process is stuck blocking on something, and not running the main event loop / accepting connections.
+2019-11-14 15:03:43 <wib_jonas> ooh! attach a debugger to it!
+2019-11-14 15:04:10 <fizzie> I will, I just think it might not be a debug-enabled build.
+2019-11-14 15:04:35 <fizzie> I guess it'll show if it's currently in the middle of a system call, at least.
+2019-11-14 15:04:36 <wib_jonas> also, try blowing into the network cable to clean the packets stuck in it
+2019-11-14 15:04:52 <fizzie> I think there was some way of asking the kernel what the process is doing as well?
+2019-11-14 15:04:58 <fizzie> (It's state: sleeping.)
+2019-11-14 15:05:11 <wib_jonas> yes, ps can tell taht
+2019-11-14 15:05:21 <wib_jonas> reads it from /proc
+2019-11-14 15:05:37 <wib_jonas> https://www.xkcd.com/1395/
+2019-11-14 15:06:18 <fizzie> Well, it's in poll.
+2019-11-14 15:06:22 <fizzie> Not super helpful.
+2019-11-14 15:06:29 <fizzie> Let's poke it with a debugger.
+2019-11-14 15:06:58 <fizzie> Well, it's got symbols, which is good.
+2019-11-14 15:07:00 <wib_jonas> maybe it already has too many connections that it's trying to handle, which is why it doesn't accept new ones
+2019-11-14 15:07:06 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03SergeJohanns 5*  10New user account
+2019-11-14 15:07:42 <fizzie> Stack trace is main > event::Loop::Poll() > poll. But maybe some of the variables in the upper frame can help.
+2019-11-14 15:08:11 <wib_jonas> what server is this? does it serve only the logs?
+2019-11-14 15:08:22 <fizzie> Oh, just function names.
+2019-11-14 15:08:27 <wib_jonas> is it a custom server that you wrote?
+2019-11-14 15:08:28 <fizzie> "No symbol table info available."
+2019-11-14 15:08:40 <fizzie> Yes, it's a custom server, and it serves only the logs/ endpoint.
+2019-11-14 15:08:56 <wib_jonas> oh, that's even better. now you have to reproduce the exact build to get debug info separately
+2019-11-14 15:09:28 <fizzie> I think I'll just restart it for now, and later upload a proper debuggable binary and wait for it to get wedged again.
+2019-11-14 15:09:51 <wib_jonas> ok
+2019-11-14 15:10:00 <wib_jonas> that sounds like a less esoteric but better plan
+2019-11-14 15:10:03 <fizzie> Well, it's back up.
+2019-11-14 15:10:18 <wib_jonas> you could also add some logging statements into it
+2019-11-14 15:10:29 <fizzie> ...one thing I could've done, but didn't, was to check what file descriptors it had open.
+2019-11-14 15:10:40 <fizzie> Too late now, though.
+2019-11-14 15:11:22 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=67041&oldid=67016 5* 03SergeJohanns 5* (+263) 10/* Introductions */
+2019-11-14 15:12:08 <wib_jonas> still doesn't load. I think it has some problem with the latest html page https://esolangs.org/logs/2019-11-14.html
+2019-11-14 15:12:23 <fizzie> Ooh, well, that's good.
+2019-11-14 15:12:31 <fizzie> Because it means the breakage will be reproducilbe.
+2019-11-14 15:12:34 <fizzie> Cilbe.
+2019-11-14 15:12:35 <fizzie> Cible.
+2019-11-14 15:12:44 <wib_jonas> hopefully
+2019-11-14 15:12:44 <fizzie> Well, s/will/may/
+2019-11-14 15:12:53 <wib_jonas> but yes
+2019-11-14 15:13:46 <fizzie> Hm, well, it rendered that link for me now (that I restarted it again).
+2019-11-14 15:14:06 <fizzie> Maybe I should look at the nginx request log too.
+2019-11-14 15:14:17 <wib_jonas> yes, it does render it now
+2019-11-14 15:15:05 Quit: imode (Ping timeout: 265 seconds)
+2019-11-14 15:15:05 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill
+2019-11-14 15:16:12 <fizzie> Something called "The Knowledge AI" (by User-Agent) appears to be crawling the logs at the moment.
+2019-11-14 15:16:41 <fizzie> I hope it'll learn many useful things from them.
+2019-11-14 15:17:37 <wib_jonas> fizzie: do the other parts of its request tell anything useful?
+2019-11-14 15:17:59 <wib_jonas> when I crawl a site, I put my email address into part of the user-agent
+2019-11-14 15:18:10 <wib_jonas> well, usually. not always.
+2019-11-14 15:20:58 <fizzie> Not really. The IP was from a Hurricane Electric block, no contact details or links in User-Agent.
+2019-11-14 15:22:42 <fizzie> As for the /logs endpoint, it's been up and down sporadically, but not with an obvious pattern: https://zem.fi/tmp/down.png
+2019-11-14 15:28:46 Quit: wib_jonas (Remote host closed the connection)
+2019-11-14 15:28:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
