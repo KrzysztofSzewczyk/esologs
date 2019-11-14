@@ -200,3 +200,47 @@
 2019-11-14 15:38:34 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
 2019-11-14 15:38:46 Joined: atslash
 2019-11-14 15:38:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-14 16:11:54 Joined: kspalaiologos
+2019-11-14 16:11:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-14 16:12:04 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-11-14 16:12:04 <kspalaiologos> `` labels
+2019-11-14 16:12:06 <HackEso> ​/hackenv/bin/`: line 5: labels: command not found
+2019-11-14 16:12:14 <kspalaiologos> `` labels.pl
+2019-11-14 16:12:16 <HackEso> ​/hackenv/bin/`: line 5: labels.pl: command not found
+2019-11-14 16:12:22 <kspalaiologos> o'rly?
+2019-11-14 16:12:28 <kspalaiologos> `` ls
+2019-11-14 16:12:29 <HackEso> banana.txt \ bin \ canary \ emoticons \ esobible \ etc \ evil \ f \ factor \ good \ hw \ ibin \ interps \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quinor \ quotes \ share \ src \ stuff.b \ tmflry \ tmp \ wisdom
+2019-11-14 16:12:34 <kspalaiologos> `` ls tmp
+2019-11-14 16:12:35 <HackEso> a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ out \ OUT \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.b \ test.sh \ tmp.txt \ v1.1.1.tar.gz
+2019-11-14 16:12:51 <kspalaiologos> `` ls tmp/asmbf-1.1.1
+2019-11-14 16:12:52 <HackEso> AUTHORS \ bconv.c \ bfasm.asm \ bfasm.b \ bfasm.c \ bfasm.rs \ bfi.c \ bfintd.c \ bfmake \ bfpp \ bin \ doc \ examples \ INSTALL \ labels.pl \ LICENSE \ Makefile \ NEWS \ README \ strip.pl \ test \ test.pl \ TODO \ VERSIONING
+2019-11-14 16:13:07 <kspalaiologos> `` cp /hackenv/bin/ tmp/asmbf-1.1.1/labels.pl
+2019-11-14 16:13:07 <HackEso> cp: -r not specified; omitting directory '/hackenv/bin/'
+2019-11-14 16:13:18 <kspalaiologos> `` cp tmp/asmbf-1.1.1/labels.pl /hackenv/bin
+2019-11-14 16:13:20 <HackEso> No output.
+2019-11-14 16:13:25 <kspalaiologos> `` labels.pl
+2019-11-14 16:13:26 <HackEso> ​/hackenv/bin/`: line 5: /hackenv/bin/labels.pl: Permission denied
+2019-11-14 16:13:37 <kspalaiologos> `` chmod a+x /hackenv/bin/labels.pl
+2019-11-14 16:13:39 <HackEso> No output.
+2019-11-14 16:13:41 <kspalaiologos> `` labels.pl
+2019-11-14 16:13:52 <kspalaiologos> `?
+2019-11-14 16:13:53 <HackEso> ​? ¯\(°​_o)/¯
+2019-11-14 16:13:54 <kspalaiologos> `? wisdom
+2019-11-14 16:13:55 <HackEso> wisdom is always factually accurate, except for this entry, and, uh, that other one? It started with, like, an �?
+2019-11-14 16:14:12 <HackEso> No output.
+2019-11-14 16:14:29 <kspalaiologos> wait a second
+2019-11-14 16:14:45 <kspalaiologos> how it goes to add a wisdom entry
+2019-11-14 16:14:47 <kspalaiologos> `` ls wisdom
+2019-11-14 16:14:48 <HackEso> As the wisdom directory contains many files named after nicks, listing it in public annoys people. Try listing it in private instead.
+2019-11-14 16:16:28 <kspalaiologos> nvm did it manually
+2019-11-14 16:18:07 <fizzie> Lo, there are many planets in the archipelago of worlds, as there are of ways to add wisdoms.
+2019-11-14 16:19:02 <fizzie> Also I really should've archived that webcomic while it still existed, I think it's gone now. *sad*
+2019-11-14 16:22:25 <fizzie> The standard tools are learn and le//rn, I believe.
+2019-11-14 16:22:27 <fizzie> `? learn
+2019-11-14 16:22:29 <HackEso> ​`learn creates a wisdom entry and tries to guess which word is the key. Syntax (case insensitive): `learn [a|an|the] <keyword>[s][punctuation] [...]
+2019-11-14 16:22:30 <fizzie> `? le//rn
+2019-11-14 16:22:31 <HackEso> le/rn makes creating wisdom entries manually a thing of the past. Usage: `le/[/]rn <key>//<wisdom>
+2019-11-14 16:24:38 <fizzie> Hm, if we were building HackEso from scratch, I would probably make the current directory a non-version-controlled one. It's far too easy to end up with permanent history of ephemeral stuff.
+2019-11-14 16:24:51 <fizzie> `` rm banana.txt stuff.b
+2019-11-14 16:24:53 <HackEso> No output.
+2019-11-14 16:25:29 <fizzie> (I suspect switching the default working directory from /hackenv to /hackenv/tmp would break too many things.)
