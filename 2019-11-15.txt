@@ -121,3 +121,8 @@
 2019-11-15 01:29:29 <HackEso> Done.
 2019-11-15 01:29:57 <oerjan> `sled bin/ls//s,;,\&\& [[ "$IRC_TARGET" == \\#* ]];,
 2019-11-15 01:29:58 <HackEso> bin/ls//#!/bin/bash \ if /bin/ls -id "$@" 2>/dev/null | grep -q ^"$(/bin/ls -id /hackenv/wisdom | cut -d\  -f 1)" && [[ "$IRC_TARGET" == \#* ]]; then echo 'As the wisdom directory contains many files named after nicks, listing it in public annoys people. Try listing it in private instead.'; else exec -a ls /bin/ls "$@"; fi
+2019-11-15 01:30:09 <oerjan> `ls wisdom
+2019-11-15 01:30:11 <HackEso> As the wisdom directory contains many files named after nicks, listing it in public annoys people. Try listing it in private instead.
+2019-11-15 01:30:14 <oerjan> whee
+2019-11-15 01:31:19 <oerjan> no visible nicks, of course.
+2019-11-15 01:32:01 <oerjan> although much unicode to annoy people. maybe the explanation needs changing.
