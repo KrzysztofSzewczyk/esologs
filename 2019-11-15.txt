@@ -567,3 +567,26 @@
 2019-11-15 11:45:45 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Quadril-Is 5*  10New user account
 2019-11-15 12:01:55 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=67048&oldid=67041 5* 03Quadril-Is 5* (+371) 10/* Introductions */
 2019-11-15 12:11:06 <esowiki> 14[[07Turing machine14]]4 10 02https://esolangs.org/w/index.php?diff=67049&oldid=63905 5* 03A 5* (+66) 10/* External resources */
+2019-11-15 13:38:49 <esowiki> 14[[07Wordfuck14]]4 10 02https://esolangs.org/w/index.php?diff=67050&oldid=43166 5* 03Quadril-Is 5* (+70) 10/* Sample Hello World program */
+2019-11-15 13:54:35 <kspalaiologos> Whoever made the asmbf available using only one grave character
+2019-11-15 13:54:50 <kspalaiologos> Please make it pipe stuff thru labels.pl before
+2019-11-15 13:55:50 User Name: int-e = int-e!~noone@int-e.eu
+2019-11-15 13:55:50 <int-e> `url bin/bfasm
+2019-11-15 13:55:50 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2019-11-15 13:55:50 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/bfasm
+2019-11-15 13:56:24 <kspalaiologos> ?
+2019-11-15 13:56:36 <kspalaiologos> bfasm is a program
+2019-11-15 13:56:45 <kspalaiologos> asmbf is the wrapper and command
+2019-11-15 13:56:48 <int-e> `url bin/asmbf
+2019-11-15 13:56:49 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/asmbf
+2019-11-15 13:57:18 <kspalaiologos> Could you edit it for me? I'm on mobile
+2019-11-15 13:57:32 <kspalaiologos> And it's quite laggy one
+2019-11-15 13:57:58 <kspalaiologos> Just add labels.pl in pipe chain before tr
+2019-11-15 13:58:35 <int-e> `sled bin/asmbf//s/bfasm/lables.pl | bfasm/
+2019-11-15 13:58:37 <HackEso> bin/asmbf//print_args_or_input "$@" |tr / \\n | lables.pl | bfasm
+2019-11-15 13:59:29 <int-e> uhm
+2019-11-15 13:59:35 <wib_jonas> lables?
+2019-11-15 13:59:38 <kspalaiologos> Mistake
+2019-11-15 13:59:43 <kspalaiologos> Labels
+2019-11-15 13:59:46 <kspalaiologos> And before tr
+2019-11-15 13:59:48 <int-e> yeah... on it
