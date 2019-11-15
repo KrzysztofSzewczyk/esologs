@@ -523,3 +523,10 @@
 2019-11-15 08:14:15 User Name: FireFly = FireFly!znc@freenode/staff/firefly
 2019-11-15 08:14:15 <FireFly> hm, I don't think they can start with those?
 2019-11-15 08:15:03 <FireFly> I'm getting CHANTYPES=# from /version at least
+2019-11-15 08:30:06 <b_jonas> FireFly: yes, but you can send a message to *#esoteric or @#esoteric , which is like sending to #esoteric but only users who are voiced or op on that channel get it, and the target shows up as *#esoteric or @#esoteric on the receiver side. of course HackEso isn't voiced or op on any channel, so he won't get those.
+2019-11-15 08:30:25 <b_jonas> (I don't know if *#esoteric also sends the message to nicks who are op but not voiced.)
+2019-11-15 08:32:37 <b_jonas> It's easier to test for nick characters [-0-9A-}] because those are the same on all networks
+2019-11-15 08:32:47 <b_jonas> no messing with channel types and prefixes
+2019-11-15 08:36:27 Joined: clog
+2019-11-15 08:36:27 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, vertrex, Vorpal, zemhill
+2019-11-15 08:41:25 <b_jonas> this prefixed channel thing causes bugs in many clients by the way
