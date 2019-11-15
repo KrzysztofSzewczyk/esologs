@@ -802,3 +802,11 @@
 2019-11-15 14:56:31 <fizzie> I have a local "DevHackEso" instance I use when doing changes to the actual code (not the "userland"), but it's a bit of a pain to set up locally.
 2019-11-15 14:56:58 <wib_jonas> I'll just add a quote and delete the same quote
 2019-11-15 14:57:06 <wib_jonas> twice
+2019-11-15 15:02:18 <fizzie> Another HackEso oddity: /dev is actually the host system's real /dev. It works out pretty well in practice, because it's inside a container with a really sparse /dev. But now that they've brought back the ghost of devfs as devtmpfs, maybe that'd be an option. Before, you'd either have had to manually populate a static /dev or run udev.
+2019-11-15 15:18:19 <wib_jonas> ``` grep -lw wisdom bin/*
+2019-11-15 15:18:19 <HackEso> bin/? \ bin/cwlprits \ bin/disce \ bin/dowg \ bin/footnote \ bin/forget \ bin/grwp \ bin/gwn \ bin/gwni \ bin/howg \ bin/hwrl \ bin/lastwisdoms \ bin/leann \ bin/learn \ bin/ls \ bin/pastewisdom \ bin/plwd \ bin/slashlearn \ bin/slwd \ bin/w \ bin/wdit \ bin/whoops \ bin/widsom \ bin/wisdom \ bin/wisdöm \ bin/wiseguys \ bin/wrl
+2019-11-15 15:18:32 <wib_jonas> ``` grep -lw tmflry bin/*
+2019-11-15 15:18:33 <HackEso> bin/?? \ bin/mislearn \ bin/tomfoolery
+2019-11-15 15:18:41 <wib_jonas> of course some of those are false positives
+2019-11-15 15:22:58 Joined: imode
+2019-11-15 15:22:58 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill
