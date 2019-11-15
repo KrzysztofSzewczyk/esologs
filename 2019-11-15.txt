@@ -1,0 +1,41 @@
+2019-11-15 00:08:51 Joined: tswett
+2019-11-15 00:08:51 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett, vertrex, Vorpal, zemhill
+2019-11-15 00:09:11 User Name: tswett = tswett!aee68188@unaffiliated/tswett
+2019-11-15 00:09:11 <tswett> Yo.
+2019-11-15 00:09:23 <tswett> So riot.im is being weird.
+2019-11-15 00:10:38 Quit: arseniiv (Ping timeout: 252 seconds)
+2019-11-15 00:10:38 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett, vertrex, Vorpal, zemhill
+2019-11-15 00:12:19 <tswett> So, I'm playing with Attempto Controlled English, which is (mostly) a syntax for first-order logic.
+2019-11-15 00:12:58 <tswett> There's an ACE theorem prover here: http://attempto.ifi.uzh.ch/race/
+2019-11-15 00:13:28 <tswett> I've found that it's able to prove a certain rather interesting theorem.
+2019-11-15 00:13:48 <tswett> Axioms: David is a person. If there is a person A then exactly one person is a mother of the person A.
+2019-11-15 00:14:02 <tswett> Theorem (apparently): Every person is a mother of David.
+2019-11-15 00:15:25 <tswett> Corollary: David is a mother of David.
+2019-11-15 00:16:46 <tswett> I'm trying to figure out how it managed to conclude that...
+2019-11-15 00:18:52 <b_jonas> tswett: can it also prove that every person is David?
+2019-11-15 00:19:51 <tswett> b_jonas: Hmmm, yes, it can.
+2019-11-15 00:20:09 Quit: FreeFull
+2019-11-15 00:20:09 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett, vertrex, Vorpal, zemhill
+2019-11-15 00:20:56 <b_jonas> tswett: can it still prove that if you only take the first axiom?
+2019-11-15 00:21:28 <tswett> b_jonas: No.
+2019-11-15 00:21:46 <b_jonas> tswett: how about if you take the first axiom, and the second axiom but replace "A" with "X" case sensitively
+2019-11-15 00:22:14 <b_jonas> (as in, maybe it confuses "a" with "A" which is why it misunderstands something)
+2019-11-15 00:22:31 <tswett> It still proves that every person is David.
+2019-11-15 00:22:55 <tswett> So now I have—
+2019-11-15 00:23:05 <b_jonas> Do you have the source code for the prover?
+2019-11-15 00:23:21 <tswett> Axioms: David is a person. If there is a person X then exactly one person is a mother of the person X. Theorem: Every person is David.
+2019-11-15 00:23:21 <b_jonas> Can it prove a contradiction from those axioms?
+2019-11-15 00:23:50 <tswett> It says the axioms are consistent.
+2019-11-15 00:24:37 <b_jonas> Can you formalize the theorem prover into that lanuage, and if so, can it prove the formal version of "the ACE theorem prover cannot prove this statement"?
+2019-11-15 00:24:50 <tswett> Oof.
+2019-11-15 00:25:00 <b_jonas> Sorry.
+2019-11-15 00:25:05 <b_jonas> That wasn't a serious question.
+2019-11-15 00:25:05 <tswett> :D
+2019-11-15 00:25:19 <b_jonas> Anyway, does this theorem prover output proofs?
+2019-11-15 00:25:40 <tswett> No, only minimal subsets of axioms required to prove the theorem.
+2019-11-15 00:26:44 <b_jonas> tswett: are you sure that that second axiom has a quantifier over X?
+2019-11-15 00:27:38 <shachaf> Am I David?
+2019-11-15 00:29:25 <tswett> b_jonas: It definitely interprets X as a bound variable.
+2019-11-15 00:29:38 <tswett> In both positions.
+2019-11-15 00:29:41 Joined: oerjan
+2019-11-15 00:29:41 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett, vertrex, Vorpal, zemhill
