@@ -590,3 +590,149 @@
 2019-11-15 13:59:43 <kspalaiologos> Labels
 2019-11-15 13:59:46 <kspalaiologos> And before tr
 2019-11-15 13:59:48 <int-e> yeah... on it
+2019-11-15 14:00:08 <int-e> `sled bin/asmbf//s/lables/labels/
+2019-11-15 14:00:16 <HackEso> bin/asmbf//print_args_or_input "$@" |tr / \\n | labels.pl | bfasm
+2019-11-15 14:00:24 <kspalaiologos> Perfect
+2019-11-15 14:00:27 <kspalaiologos> Thanks
+2019-11-15 14:00:49 <kspalaiologos> `asmbf @hello/jmp %hello
+2019-11-15 14:00:50 <HackEso> ​+>+[>>>+<<+<<[>>->+<<<-]>>>[<<<+>>>-]<[->+<<[>>>-<<+<-]>[<+>-]>>[<->[-]]<[<<<+>>>-]<]>>[-]<<<<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>+<<<<<<<<<[-]>[-]>>>>>>>>[<<<<<<<<+>+>>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-15 14:01:08 <kspalaiologos> Fancy infinite loop, seems like it works
+2019-11-15 14:01:12 <wib_jonas> by the way
+2019-11-15 14:01:18 <int-e> at least "lables" was a genuine typo... identifying asmbf and bfasm was a real brain fart
+2019-11-15 14:01:23 <wib_jonas> `hello m
+2019-11-15 14:01:23 <HackEso> Hello, World.
+2019-11-15 14:01:25 <wib_jonas> `hello
+2019-11-15 14:01:25 <HackEso> hello, world
+2019-11-15 14:01:30 <wib_jonas> `@ fungot hello m
+2019-11-15 14:01:30 <fungot> wib_jonas: what is t? i recognize the word :p that means i will have 128 general purpose registers
+2019-11-15 14:01:30 <HackEso> fungot: Hello, World.
+2019-11-15 14:01:33 <wib_jonas> `@ fungot hello
+2019-11-15 14:01:33 <fungot> wib_jonas: instead of hte redirectee each prime but they both seem fast enough that no one has
+2019-11-15 14:01:34 <HackEso> No output.
+2019-11-15 14:01:39 <kspalaiologos> int-e, lol
+2019-11-15 14:01:40 <wib_jonas> bin/@ is weird
+2019-11-15 14:01:56 <kspalaiologos> Is this a bot?
+2019-11-15 14:02:06 <kspalaiologos> I mean, fungot
+2019-11-15 14:02:06 <fungot> kspalaiologos: ( when was the last you saw? henderson's functional fnord, or more then likely, use both hands for it...
+2019-11-15 14:02:18 <int-e> fungot is a bot
+2019-11-15 14:02:20 <wib_jonas> `? fungot
+2019-11-15 14:02:20 <fungot> wib_jonas: oh yes for no caps lock, no arrow keys... instead of binary
+2019-11-15 14:02:21 <HackEso> fungot is our beloved channel mascot and voice of reason.
+2019-11-15 14:02:26 <kspalaiologos> Well
+2019-11-15 14:02:28 <kspalaiologos> Fine
+2019-11-15 14:02:38 <wib_jonas> see also https://esolangs.org/wiki/Fungot
+2019-11-15 14:02:43 <int-e> `? zzo38
+2019-11-15 14:02:44 <HackEso> zzo38 is not actually the next version of fungot, much as it may seem.
+2019-11-15 14:03:02 <kspalaiologos> Wait a second
+2019-11-15 14:03:08 <kspalaiologos> A bot in befunge?
+2019-11-15 14:03:17 <wib_jonas> on a t-shirt
+2019-11-15 14:03:20 <kspalaiologos> Is there source available?
+2019-11-15 14:03:32 <int-e> ^source
+2019-11-15 14:03:32 <fungot> https://github.com/fis/fungot/blob/master/fungot.b98
+2019-11-15 14:03:40 <wib_jonas> kspalaiologos: yes, the source is sold on a t-shirt
+2019-11-15 14:03:44 <kspalaiologos> It's awesome
+2019-11-15 14:03:51 <int-e> oh, wow, my brain remembered something correctly *marks day on calendar*
+2019-11-15 14:04:08 <wib_jonas> `datei
+2019-11-15 14:04:09 <HackEso> 2019-11-15 14:04:09.093 +0000 UTC November 15 Friday 2019-W46-5
+2019-11-15 14:04:14 <int-e> wib_jonas: thanks
+2019-11-15 14:04:18 <kspalaiologos> Pff
+2019-11-15 14:04:30 <wib_jonas> where's the link to the webshop with the t-shirt?
+2019-11-15 14:04:32 <wib_jonas> `? shirt
+2019-11-15 14:04:33 <HackEso> shirt? ¯\(°​_o)/¯
+2019-11-15 14:04:34 <wib_jonas> `? t-shirt
+2019-11-15 14:04:35 <HackEso> t-shirt? ¯\(°​_o)/¯
+2019-11-15 14:04:35 <wib_jonas> `? tee
+2019-11-15 14:04:37 <HackEso> tee? ¯\(°​_o)/¯
+2019-11-15 14:04:39 <wib_jonas> hmm
+2019-11-15 14:04:44 <int-e> I don't remember any t-shirts
+2019-11-15 14:04:59 <int-e> But of course that doesn't mean anything.
+2019-11-15 14:05:23 <wib_jonas> I think at least one exists, but possibly not sold from a webshop, but made as a one-time item
+2019-11-15 14:05:49 <wib_jonas> there's no tattoo version yet, but there are several other tattoos related to golf or esolang or IOCCC
+2019-11-15 14:06:09 <fizzie> Yeah, I printed one for myself through a print-your-own-design shop I had a coupon for.
+2019-11-15 14:06:22 <kspalaiologos> ``asmbf <<<"in_ r1/in_ r2/add r1, r2/out r1" > stuff && bfi stuff <<<"00"
+2019-11-15 14:06:23 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: `asmbf: not found
+2019-11-15 14:06:25 <fizzie> Turned out pretty nice, even if I say so myself.
+2019-11-15 14:06:37 <wib_jonas> fizzie: have you already merged the recent bugfix onto the shirt?
+2019-11-15 14:06:51 <kspalaiologos> `` asmbf <<<"in_ r1/in_ r2/add r1, r2/out r1" > stuff && bfi stuff <<<"00"
+2019-11-15 14:06:54 <HackEso> ​/hackenv/bin/`: line 5: bfi: command not found
+2019-11-15 14:07:07 <kspalaiologos> Really? I installed it
+2019-11-15 14:07:10 <kspalaiologos> Yesterday
+2019-11-15 14:07:17 <kspalaiologos> Where's it gone
+2019-11-15 14:07:26 <wib_jonas> fizzie: and do you wash it inside-out so that the print lasts longer? I never do that with t-shirts
+2019-11-15 14:07:57 <kspalaiologos> `` whereis egobfi
+2019-11-15 14:07:58 <HackEso> egobfi:
+2019-11-15 14:08:17 <kspalaiologos> `` whereis egobfi8
+2019-11-15 14:08:18 <HackEso> egobfi8:
+2019-11-15 14:08:26 <fizzie> wib_jonas: I've not been doing that either. It seems to be pretty durable. Also, I only use it on special occasions.
+2019-11-15 14:08:45 <kspalaiologos> `` ls /asmbf-v1.1.1/
+2019-11-15 14:08:46 <HackEso> ls: cannot access '/asmbf-v1.1.1/': No such file or directory
+2019-11-15 14:08:59 <kspalaiologos> `` ls asmbf-v1.1.1/
+2019-11-15 14:09:00 <HackEso> ls: cannot access 'asmbf-v1.1.1/': No such file or directory
+2019-11-15 14:09:57 <int-e> `` ls tmp
+2019-11-15 14:09:58 <HackEso> a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ out \ OUT \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.b \ test.sh \ tmp.txt \ v1.1.1.tar.gz
+2019-11-15 14:10:05 <fizzie> Also, please put temporary files (like "stuff") in either /tmp/ or tmp/ (aka /hackenv/tmp/).
+2019-11-15 14:10:29 <int-e> maybe `` should change its working directory to tmp?
+2019-11-15 14:10:38 <int-e> though that will cause all sorts of confusion ;)
+2019-11-15 14:11:11 <fizzie> The former is truly ephemeral (only for the execution of the current command), while the latter is persistent but unversioned.
+2019-11-15 14:11:13 <wib_jonas> int-e: that will cause all sorts of bugs
+2019-11-15 14:11:16 <wib_jonas> int-e: see the chat log
+2019-11-15 14:11:45 <int-e> wait, actual bugs?
+2019-11-15 14:11:47 <wib_jonas> int-e: bin/\? and bin/learn still use relative paths. I'll fix those, but I can't fix everything. too many programs assume that the pwd is /hackenv
+2019-11-15 14:12:09 <int-e> yeah
+2019-11-15 14:12:13 <int-e> and users :)
+2019-11-15 14:12:24 <kspalaiologos> Can we make a loop device
+2019-11-15 14:12:37 <wib_jonas> we could perhaps change .hgignore to ignore files directly in /hackenv , or remove write permission from /hackenv so you can't create files there, but those would probably cause other problems
+2019-11-15 14:12:39 <kspalaiologos> So some people don't even have to use temp files
+2019-11-15 14:12:49 <int-e> (And obviously I wouldn't touch the default for a plain `. But then moving from ` to `` would cause friction...)
+2019-11-15 14:13:50 <wib_jonas> int-e: new best practice: if you're making executables for HackE?o that look up files under /hackenv , make it look them up relative to ${HACKENV-/hackenv}/ rather than relative to the working directory
+2019-11-15 14:14:10 <fizzie> Most of the time you can use pipes instead of temporary files. I don't see how loop devices would improve matters.
+2019-11-15 14:14:19 <esowiki> 14[[07BrainCurry14]]4 M10 02https://esolangs.org/w/index.php?diff=67051&oldid=67044 5* 03SergeJohanns 5* (+1) 10Fixed link
+2019-11-15 14:14:35 <int-e> `` echo $PATH
+2019-11-15 14:14:36 <HackEso> ​/hackenv/bin:/usr/bin:/bin
+2019-11-15 14:14:56 <fizzie> In particular, bash <(...) syntax can help.
+2019-11-15 14:15:37 <fizzie> `` echo <(echo foo); cat <(echo bar)
+2019-11-15 14:15:38 <HackEso> ​/dev/fd/63 \ bar
+2019-11-15 14:16:11 <int-e> Which shell pioneered that one? I thought bash got it from zsh...
+2019-11-15 14:16:42 <fizzie> Maybe? I'm not too familiar with other shells.
+2019-11-15 14:17:04 <wib_jonas> I know some people want to avoid temp files, but I think it's a bad habit that remains from old operating systems that couldn't cache files properly
+2019-11-15 14:17:09 <wib_jonas> I think it's a bad practice
+2019-11-15 14:17:13 <fizzie> I did used to use tcsh for some years, and university machines defaulted to zsh.
+2019-11-15 14:17:14 <wib_jonas> just create temp files
+2019-11-15 14:17:39 <wib_jonas> although since /tmp and /dev/shm
+2019-11-15 14:17:49 <int-e> wib_jonas: temp files have the shared namespace issue wrt to other processes and users
+2019-11-15 14:17:59 <wib_jonas> and /var/tmp aren't writable in HackEso, it might make sense to set some environment variables to point to the absolute path of a temp directory
+2019-11-15 14:18:14 * int-e likes pipes.
+2019-11-15 14:18:18 <fizzie> /tmp is writable.
+2019-11-15 14:18:43 <fizzie> It's what you should be using for temporary files within a single command.
+2019-11-15 14:19:02 <wib_jonas> int-e: use mkdir then to create a temp directory that nobody else uses
+2019-11-15 14:20:11 <wib_jonas> int-e: I recommend mkdir specifically because it's always atomic, two processes can't create the same directory twice successfully, as opposed to open with O_EXCL which is supposed to be atomic like that but there are bugs involving nfs
+2019-11-15 14:20:19 <wib_jonas> fizzie: I see
+2019-11-15 14:20:29 <wib_jonas> so /tmp is writable but doesn't persist after a command?
+2019-11-15 14:20:30 <wib_jonas> that's useful
+2019-11-15 14:20:37 <fizzie> /tmp is a tmpfs inside the UML.
+2019-11-15 14:20:47 <esowiki> 14[[07BrainCurry14]]4 M10 02https://esolangs.org/w/index.php?diff=67052&oldid=67051 5* 03SergeJohanns 5* (+25) 10Added Category
+2019-11-15 14:20:57 <wib_jonas> that could work then
+2019-11-15 14:21:02 <int-e> `ls /tmp
+2019-11-15 14:21:03 <HackEso> No output.
+2019-11-15 14:21:08 <int-e> `` ls -a /tmp
+2019-11-15 14:21:09 <HackEso> ​. \ ..
+2019-11-15 14:21:42 <wib_jonas> ``` set -e; hello > /tmp/Z-k3EuobYg4s; echo next:; cat /tmp/Z-k3EuobYg4s
+2019-11-15 14:21:43 <HackEso> next: \ hello, world
+2019-11-15 14:21:52 <wib_jonas> yeah, it's writable. sorry.
+2019-11-15 14:22:06 <wib_jonas> why is /dev/shm not writable by the way?
+2019-11-15 14:22:21 <wib_jonas> ``` set -e; hello > /dev/shm/Z-k3EuobYg4s; echo next:; cat /dev/shm/Z-k3EuobYg4s
+2019-11-15 14:22:22 <HackEso> bash: /dev/shm/Z-k3EuobYg4s: Read-only file system
+2019-11-15 14:23:12 <fizzie> It's just not mounted.
+2019-11-15 14:23:21 <fizzie> So it falls into the ro /.
+2019-11-15 14:24:05 <fizzie> `` echo $HOME $HACKENV  # There are also these.
+2019-11-15 14:24:07 <HackEso> ​/tmp /hackenv
+2019-11-15 14:24:16 <fizzie> But I should probably also set... is it TMPDIR or TEMPDIR? I can never remember.
+2019-11-15 14:24:35 <kingoffrance> theres various "mktemp" commands to attempt to avoid "how to safely create a temp file/dir";  i think openbsd started it, then someone made a "portable" version;  i think it really it just calls mktemp() instead of whatever c89 is
+2019-11-15 14:24:54 <kingoffrance> s/attempt to avoid/& historical problems with/
+2019-11-15 14:25:08 <kingoffrance> but for all i know, some "mkdir" might have such features "built-in"
+2019-11-15 14:25:38 <kingoffrance> (or, that might be backwards, c89 has a not-really-secure mktemp()   , and mktemp command calls some better one)
+2019-11-15 14:26:06 <kingoffrance> s/calls/& and/or has one bundled with it/
+2019-11-15 14:26:08 <wib_jonas> fizzie: yes, I already edited some of my programs to use $HACKENV, and I want to edit the programs related to wisdom and quote and learning in the future
+2019-11-15 14:26:29 <wib_jonas> fizzie: there are a ton of different env-vars about temporary directories. TMP, TEMP, etc
+2019-11-15 14:26:35 <wib_jonas> every program uses them in a different way
+2019-11-15 14:28:45 <kingoffrance> openbsd/netbsd/freebsd i think also optionally (maybe stock now) do per-user "private /tmp" nowadays, dunno about linux;   and thats like the classic dir you set "sticky" bit on
