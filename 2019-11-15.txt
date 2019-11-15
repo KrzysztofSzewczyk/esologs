@@ -736,3 +736,69 @@
 2019-11-15 14:26:29 <wib_jonas> fizzie: there are a ton of different env-vars about temporary directories. TMP, TEMP, etc
 2019-11-15 14:26:35 <wib_jonas> every program uses them in a different way
 2019-11-15 14:28:45 <kingoffrance> openbsd/netbsd/freebsd i think also optionally (maybe stock now) do per-user "private /tmp" nowadays, dunno about linux;   and thats like the classic dir you set "sticky" bit on
+2019-11-15 14:31:18 <wib_jonas> ``` set -e; cd tmp; \' "hey, hey"
+2019-11-15 14:31:19 <HackEso> nl: quotes: No such file or directory
+2019-11-15 14:33:12 <wib_jonas> `python3 -cn="bin/allquotes"; a=open(n,"rb").read(); a=a.replace(b'quotes',b'"${HACKENV-/hackenv}/quotes"'); open(n,"wb").write(a)
+2019-11-15 14:33:14 <HackEso> No output.
+2019-11-15 14:33:16 <wib_jonas> ``` set -e; cd tmp; \' "hey, hey"
+2019-11-15 14:33:17 <HackEso> 728) <fungot> itidus21: hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, hey, h
+2019-11-15 14:33:28 <wib_jonas> ``` set -e; cd tmp; allquotes | tail -n1
+2019-11-15 14:33:29 <HackEso> 1335) <shachaf> The domain is public, but what's the codomain?
+2019-11-15 14:33:34 <wib_jonas> ``` set -e; cd tmp; \"
+2019-11-15 14:33:35 <HackEso> 1003) <kmc> LIST OF ACRONYMS: List Integrating Some Terminology Of Fine Authentic Credibility Relating to Our New Year Media System \ 1226) <Taneb> I need to get out of my habit of eating business cards...
+2019-11-15 14:33:44 <wib_jonas> ``` set -e; cd tmp; quote Taneb
+2019-11-15 14:33:45 <HackEso> 383) <Taneb> Turned out he got recursion, he just didn't get the return statement \ 388) <Taneb> Cut to February  <Taneb> War were declared  <Taneb> A galaxy in turmoil  <Taneb> Anyway, Febuary '10 \ 389) <Taneb> I can't afford one of those!  <Taneb> A grandchild, not a laser printer \ 395) <fizzie> There's that saying that the definition of insanity is doing the same thing over and over again and expecting different results. [...] <Taneb> Yo
+2019-11-15 14:34:06 <fizzie> For the record, the way filesystems work on HackEso is: it uses the umlbox --base-mounts flag (which mounts /usr, /bin, /sbin, /lib, /lib32, /lib64, /etc/alternatives and /dev as read-only 'hostfs' mounts from the host system), then adds three custom mounts (read-write /hackenv, read-only /hackenv/.hg on top of that, and the hackbot lib directory for the 'limits' script), and finally umlbox itself
+2019-11-15 14:34:10 <wib_jonas> ``` set -e; cd tmp; q st
+2019-11-15 14:34:11 <HackEso> 1) <Slereah> EgoBot just opened a chat session with me to say "bork bork bork" \ 3) <AnMaster> that's where I got it  <AnMaster> rocket launch facility gift shop \ 8) <Madelon> Lil`Cube: you had cavity searches?  <Lil`Cube> not yet  <Lil`Cube> trying to thou, just so I can check it off on my list of things to expirence \ 9) <reddit user "othermatt"> So what you're saying is that I shouldn't lick my iPhone but instead I should rub it on my eye
+2019-11-15 14:34:12 <fizzie> unconditionally mounts a tmpfs on /tmp, proc on /proc and sysfs on /sys.
+2019-11-15 14:34:20 <fizzie> (This would all be in the hypothetical HackEso manual, presumably.)
+2019-11-15 14:34:35 <wib_jonas> fizzie: I can guess most of that, because I can list mounts
+2019-11-15 14:35:06 <fizzie> The lib thing explains the otherwise slightly odd /srv/hackeso-code/multibot_cmds/lib which also leaks a path out of the host. :/
+2019-11-15 14:35:20 <fizzie> (Well, all of the hostfs mounts do that.)
+2019-11-15 14:37:15 <wib_jonas> does anyone happen to know what bin/\?h is supposed to do?
+2019-11-15 14:38:42 <wib_jonas> I know that bin/\?\? accesses the parallel universe wisdom database in tmflry
+2019-11-15 14:39:02 <wib_jonas> `?? cat
+2019-11-15 14:39:03 <HackEso> A cat is an animal with four legs. It's nice to pet, especially when it's a baby cat, called a kitten. Or it's the unix "cat" command. It takes a filename (or many) and prints the contents of that (those) file(s).
+2019-11-15 14:39:04 <wib_jonas> `? cat
+2019-11-15 14:39:05 <HackEso> Cats are cool, but should be illegal.
+2019-11-15 14:40:05 <fizzie> It's supposed to invoke \? with a special logic to add extra 'h's in words in a manner I can't quite remember the source of.
+2019-11-15 14:40:29 <wib_jonas> ok...
+2019-11-15 14:40:37 <wib_jonas> it doesn't seem to do that, but maybe it was supposed to
+2019-11-15 14:40:54 <wib_jonas> `wehlcohme
+2019-11-15 14:40:55 <fizzie> It's missing a \, so the '?' in it presumably expands to all one-character commands.
+2019-11-15 14:40:55 <HackEso> Wehlcohme to the ihntehrnahtiohnahl huhb fohr ehsohtehrihc prohgrahmmihng lahnguahge dehsihgn ahnd dehployhmehnt! Fohr mohre ihnfohrmahtiohn, chehck ouht ouhr wihki: <https://ehsohlahngs.ohrg/>. (Fohr the ohthehr kihnd ohf ehsohtehrihca, try #ehsohtehrihc ohn EhFneht ohr DAhLneht.)
+2019-11-15 14:41:17 <fizzie> It's a little bit less h-heavy than that. But yeah, maybe same roots.
+2019-11-15 14:41:48 <fizzie> It might be just barely possible ?h was added when ? was the only single-character command, though that seems unlikely. I don't know if it's ever worked.
+2019-11-15 14:42:37 <fizzie> Oh, there's also bin/?hh and that's actually been fixed.
+2019-11-15 14:42:47 <fizzie> `?hh welcome
+2019-11-15 14:42:48 <HackEso> Wehlcohme to the ihntehrnahtiohnahl huhb fohr ehsohtehrihc prohgrahmmihng lahnguahge dehsihgn ahnd dehployhmehnt! Fohr mohre ihnfohrmahtiohn, chehck ouht ouhr wihki: <https://ehsohlahngs.ohrg/>. (Fohr the ohthehr kihnd ohf ehsohtehrihca, try #ehsohtehrihc ohn EhFneht ohr DAhLneht.)
+2019-11-15 14:43:00 <int-e> Hmm https://esolangs.org/logs/2013-01-25.html#lzn ff.
+2019-11-15 14:43:01 <wib_jonas> fizzie: or when it was the alphabetically first single-character command in New Zealand locale order
+2019-11-15 14:43:26 <int-e> prototyped by fizzie, implemented by shachaf
+2019-11-15 14:46:11 <fizzie> `sled bin/?h//s|^|\\|
+2019-11-15 14:46:14 <HackEso> bin/?h//\? "$@" | perl -pe 's/([aeiouy])([bcdfghjklmnpqrstvxz])\b/$1h$2/ig'
+2019-11-15 14:46:22 <fizzie> `?h welcome
+2019-11-15 14:46:23 <HackEso> Welcome to the internationahl huhb fohr esoterihc programming language design and deployment! Fohr more informatiohn, check ouht ouhr wiki: <https://esolangs.org/>. (Fohr the othehr kind ohf esoterica, try #esoterihc ohn EFneht ohr DALneht.)
+2019-11-15 14:46:27 <fizzie> Anyway.
+2019-11-15 14:46:36 <wib_jonas> nice
+2019-11-15 14:46:41 <wib_jonas> `??h Tanebventions
+2019-11-15 14:46:42 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ??h: not found
+2019-11-15 14:46:46 <wib_jonas> `?h tanebventions
+2019-11-15 14:46:47 <HackEso> Tanebventions include necessity, Go, submarine jousting, Fueue, the universe, metahr, sand, dragons, persistence, the BBC, _46biht, progress, sanity, the huhg, Italiahn, the grace periohd, the limerick, ruihn, and thihs sentence. See also tanebventions: maths ohr tanebventions: foods. He nevehr invents anything involving sehx.
+2019-11-15 14:47:31 <fizzie> With the \b it's a little picky, you have to have a vowel-consonant pair at the end of the word.
+2019-11-15 14:50:53 <wib_jonas> ``` grep -lw quotes bin/* # I'll have to check these
+2019-11-15 14:50:54 <HackEso> bin/addquote \ bin/allquotes \ bin/delquote \ bin/pastequotes \ bin/qc \ bin/quotenums \ bin/tclkit \ bin/units \ bin/whoq
+2019-11-15 14:51:00 <wib_jonas> and then the ones that refer to wisdom
+2019-11-15 14:52:55 <wib_jonas> hmm, fixing addquote and delquote are trickier because to test them, I have to add a quote and delete one
+2019-11-15 14:53:21 <fizzie> "Just run the test suite."
+2019-11-15 14:55:27 <wib_jonas> is there a test quote for the test suite?
+2019-11-15 14:55:49 Joined: tswett[m]
+2019-11-15 14:55:50 Joined: wmww
+2019-11-15 14:55:50 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill
+2019-11-15 14:55:55 Joined: ddmm
+2019-11-15 14:55:56 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill
+2019-11-15 14:56:06 <fizzie> I don't think there is.
+2019-11-15 14:56:31 <fizzie> I have a local "DevHackEso" instance I use when doing changes to the actual code (not the "userland"), but it's a bit of a pain to set up locally.
+2019-11-15 14:56:58 <wib_jonas> I'll just add a quote and delete the same quote
+2019-11-15 14:57:06 <wib_jonas> twice
