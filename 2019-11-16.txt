@@ -23,3 +23,22 @@
 2019-11-16 03:10:06 <oerjan> <b_jonas> It's easier to test for nick characters [-0-9A-}] because those are the same on all networks <-- except then we need to worry about the LC_COLLATE setting or whatever it was.
 2019-11-16 03:12:39 <oerjan> hm there's a globasciiranges shell option.
 2019-11-16 03:12:51 <oerjan> *bash
+2019-11-16 03:51:21 <oerjan> `cat bin/@
+2019-11-16 03:51:22 <HackEso> ​#!/usr/bin/perl -w \ $_ = join " ", @ARGV; if (s/^([^ ]*) +([^ ]*) +//) { print "$1: "; exec $2, $_; }
+2019-11-16 03:53:33 <oerjan> `cat bin/nur
+2019-11-16 03:53:34 <HackEso> if grep -q \  <<<"$1"; then "${1%% *}" "${1#* }"; else "$1"; fi
+2019-11-16 03:54:15 <oerjan> `echo   test
+2019-11-16 03:54:15 <HackEso> ​  test
+2019-11-16 03:54:35 Quit: ArthurStrong (Quit: leaving)
+2019-11-16 03:54:35 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-16 03:55:25 <oerjan> it looks like @ implements its own nur
+2019-11-16 03:56:03 <oerjan> which is slightly incompatible
+2019-11-16 03:56:21 <oerjan> `@ oerjan test
+2019-11-16 03:56:22 <HackEso> No output.
+2019-11-16 03:56:26 <oerjan> `test
+2019-11-16 03:56:26 <HackEso> Killed
+2019-11-16 03:56:46 <oerjan> `@ oerjan quote
+2019-11-16 03:56:47 <HackEso> No output.
+2019-11-16 03:56:51 <oerjan> `quote
+2019-11-16 03:56:51 <HackEso> 818) <olsner> we have PR?  <oerjan> the good news is we have PR.  the bad news is we borrowed haskell's motto for it. [...] <oerjan> [...] "avoid success at all costs"
+2019-11-16 03:58:31 <oerjan> so `@ doesn't work with a command with no argument
