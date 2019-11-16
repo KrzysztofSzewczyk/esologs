@@ -556,3 +556,44 @@
 2019-11-16 22:58:09 <b_jonas> fizzie: shouldn't matter. if $HACKENV is set then it should be an absolute path, that's the point, so it can't be empty
 2019-11-16 22:58:27 <b_jonas> the colon makes a difference only if the var is set but empty
 2019-11-16 23:00:01 <fizzie> `` A=""; echo "[${A-foo}] [${A:-foo}] [${B-foo}] [${B:-foo}]"
+2019-11-16 23:00:08 <HackEso> ​[] [foo] [foo] [foo]
+2019-11-16 23:00:32 <b_jonas> oh darn it, now I keep typing commands in private message that don't owrk
+2019-11-16 23:00:46 <b_jonas> because I reference wisdom or quotes or bin with relative path
+2019-11-16 23:01:00 <b_jonas> `cat /hackenv/bin/card-by-name
+2019-11-16 23:01:01 <HackEso> ​#!/bin/sh \ exec perl -e 'open$I,"<",($ENV{HACKENV}//"/hackenv")."/share/mtg/allsets.txt"or die;$/=""; while(<$I>){/\A(?i)\Q$ARGV[0]/ and print}' "$1"
+2019-11-16 23:01:05 <b_jonas> `cat /hackenv/bin/whatis
+2019-11-16 23:01:06 <HackEso> ​#!/usr/bin/python3 \ import sys, os, re \ if len(sys.argv) <= 1: \     print("whatis what?") \     sys.exit(1) \ else: \     argorg = [] \     argfoldv = [] \     foundv = [] \     for arg in sys.argv[1:]: \         argorg.append(arg) \         argfoldv.append(arg.casefold()) \         foundv.append(False) \     with open(os.environ.get("HACKENV","/hackenv") + "/share/whatis", errors="surrogateescape") as whatisdb: \         for line in wh
+2019-11-16 23:01:09 <fizzie> Yes, it's kind of annoying.
+2019-11-16 23:01:24 <b_jonas> ^ template for when the directory is referenced in perl scripts or python scripts
+2019-11-16 23:01:34 <fizzie> I mean, one kind of fix would be to symlink /hackenv/tmp/bin -> /hackenv/bin and so on.
+2019-11-16 23:01:59 <b_jonas> fizzie: eww no
+2019-11-16 23:02:01 <b_jonas> too easy to break
+2019-11-16 23:02:15 <b_jonas> fizzie: have you consider what it would break if you made /hackenv not writable?
+2019-11-16 23:02:44 <b_jonas> I mean, make it not writable with chmod only, at the start of every command, but allow commands to chmod it writable explicitly
+2019-11-16 23:04:16 <b_jonas> any change would probably break _something_
+2019-11-16 23:05:31 <fizzie> Yes. Well, at least making the scripts $HACKENV-relative is not going to hurt even if we go back to cwd /hackenv. I don't know about the explicit writability. It might be a little weird.
+2019-11-16 23:05:38 <fizzie> `sled /hackenv/bin/addquote//s|quotes|${HACKENV-/hackenv}/quotes|
+2019-11-16 23:05:39 <HackEso> ​/hackenv/bin/addquote//#!/bin/sh \ [ "$1" ] || exit 1 \ printf "%s\n" "$1" >>${HACKENV-/hackenv}/quotes \ printf "%d) %s" $(qc | cut -d' ' -f1) "$1"
+2019-11-16 23:05:49 <b_jonas> sure, fixing the scripts is good
+2019-11-16 23:08:23 <fizzie> `fetch /hackenv/bin/delquote https://hack.esolangs.org/get/bin/delquote
+2019-11-16 23:08:24 <HackEso> 2019-11-16 23:08:24 URL:https://hack.esolangs.org/get/bin/delquote [271/271] -> "bin/delquote" [1]
+2019-11-16 23:09:41 <fizzie> `sled /hackenv/bin/pastequotes//s|url quotes|url ${HACKENV-/hackenv}/quotes|
+2019-11-16 23:09:43 <HackEso> ​/hackenv/bin/pastequotes//#!/bin/sh \ if [ "$1" ]; then quote "$1" | paste; else url ${HACKENV-/hackenv}/quotes; fi
+2019-11-16 23:10:22 <fizzie> `sled /hackenv/bin/qc//s|quotes|${HACKENV-/hackenv}/quotes|
+2019-11-16 23:10:23 <HackEso> ​/hackenv/bin/qc//#!/bin/sh \ wc -l ${HACKENV-/hackenv}/quotes
+2019-11-16 23:11:58 <fizzie> `sled /hackenv/bin/quotenums//s|quotes|${HACKENV-/hackenv}/quotes|
+2019-11-16 23:13:07 <HackEso> ​/hackenv/bin/quotenums//#!/bin/sh \ grep -P -i -n "$1" ${HACKENV-/hackenv}/quotes | cut -d : -f 1 | xargs
+2019-11-16 23:13:48 <fizzie> `sled /hackenv/bin/whoq//s|quotes|${HACKENV-/hackenv}/quotes|
+2019-11-16 23:13:49 <HackEso> ​/hackenv/bin/whoq//if [[ "$1" =~ ^[0-9]+$ ]]; then \   rev="$(hg blame ${HACKENV-/hackenv}/quotes | sed "$1{s/^ *//;s/:.*//;q};d")" \   if [[ -n "$rev" ]]; then \     hg log -r "$rev" -T "{desc}" \   else \     echo "$1: no such quote" \   fi \ else \   echo "usage: \`whoq N" \ fi
+2019-11-16 23:14:16 <fizzie> Incidentally, whoq should probably be using the scowrevs system.
+2019-11-16 23:15:18 <fizzie> `help
+2019-11-16 23:15:18 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $HACKENV are persistent, and $HACKENV/bin is in $PATH. $HACKENV is a mercurial repository, "`revert <rev>" can be used to revert, https://hack.esolangs.org/repo/ to browse. $PWD ($HACKENV/tmp) is persistent but unversioned, /tmp is ephemeral.
+2019-11-16 23:15:46 <fizzie> Heh, I never really remember `run is actually a thing, because everyone always uses ``.
+2019-11-16 23:26:08 <b_jonas> fizzie: sure, but `run can be useful if you're somehow locked out because people delete the entire bin directory or something
+2019-11-16 23:26:15 <b_jonas> mind you, you can still `/bin/bash -csome command here
+2019-11-16 23:27:14 <fizzie> As far as I can tell, you can't, because it wants the command in a different argument. If an argument starts with -, it must be all options.
+2019-11-16 23:27:20 <fizzie> `/bin/bash -c"echo foo"
+2019-11-16 23:27:21 <HackEso> ​/bin/bash: -": invalid option \ Usage:	/bin/bash [GNU long option] [option] ... \ 	/bin/bash [GNU long option] [option] script-file ... \ GNU long options: \ 	--debug \ 	--debugger \ 	--dump-po-strings \ 	--dump-strings \ 	--help \ 	--init-file \ 	--login \ 	--noediting \ 	--noprofile \ 	--norc \ 	--posix \ 	--rcfile \ 	--restricted \ 	--verbose \ 	--version \ Shell options: \ 	-ilrsD or -c command or -O shopt_option		(invocation only) \
+2019-11-16 23:27:28 <fizzie> `/bin/bash -cecho foo
+2019-11-16 23:27:29 <HackEso> ​/bin/bash: - : invalid option \ allexport      	off \ braceexpand    	on \ emacs          	on \ errexit        	on \ errtrace       	off \ functrace      	off \ hashall        	on \ histexpand     	on \ history        	off \ ignoreeof      	off \ interactive-comments	on \ keyword        	off \ monitor        	off \ noclobber      	off \ noexec         	off \ noglob         	off \ nolog          	off \ notify         	off \ nounset
+2019-11-16 23:28:11 <fizzie> (I'm sure it's *possible* to unbork with sufficient effort, though.)
