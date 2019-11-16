@@ -178,3 +178,37 @@
 2019-11-16 04:54:36 Quit: xkapastel (Quit: Connection closed for inactivity)
 2019-11-16 04:54:36 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
 2019-11-16 04:54:39 <int-e> (I'm sure Minisat doesn't. But others may...)
+2019-11-16 05:00:19 <int-e> shachaf: Btw, actually the ... was me being confused. Mainly I was wondering whether you just walk all clauses instead, which I imagine would be quite inefficient.
+2019-11-16 05:01:37 <shachaf> Oh, I meant 2-watch being a small optimization over 3-watch.
+2019-11-16 05:01:57 <shachaf> It's certainly a big optimization over entire-instance-watch.
+2019-11-16 05:02:11 <shachaf> I assume no solver does that.
+2019-11-16 05:02:27 <int-e> yeah
+2019-11-16 05:03:00 <int-e> Though I'd add "practical" or "competetive" to the mix :)
+2019-11-16 05:03:27 <shachaf> Oh, sure.
+2019-11-16 05:03:36 <shachaf> In fact I wrote a solver that did that before upgrading it to 2WL.
+2019-11-16 05:03:51 <shachaf> What should I implement next?
+2019-11-16 05:03:55 <int-e> . o O ( generate all assignments and check... could be a viable approach for golfing )
+2019-11-16 05:04:06 <shachaf> * CDCL * Restarts * Variable-choosing heuristics like VSIDS
+2019-11-16 05:04:19 <shachaf> * backjumping? Probably that makes more sense after CDCL
+2019-11-16 05:04:30 <int-e> restarts make no sense without heuristics
+2019-11-16 05:04:36 <shachaf> Yes they do.
+2019-11-16 05:04:41 <int-e> or clause learning
+2019-11-16 05:04:57 <int-e> oh you mean because you actually learn polarities
+2019-11-16 05:04:58 <int-e> hmm
+2019-11-16 05:05:01 <shachaf> No, not even that.
+2019-11-16 05:05:12 <int-e> hmm?
+2019-11-16 05:05:16 <shachaf> Even if you restart fresh each time.
+2019-11-16 05:05:28 <int-e> do you select variables at random?
+2019-11-16 05:05:41 <shachaf> That's what I had in mind.
+2019-11-16 05:05:45 <int-e> oh.
+2019-11-16 05:05:48 <shachaf> Of course if it's deterministic you don't get too much.
+2019-11-16 05:06:00 <int-e> right
+2019-11-16 05:06:02 <shachaf> But your choices (variable order, initial assignment) have a huge impact. I was surprised at how much.
+2019-11-16 05:06:26 <int-e> but I think there's still a grain of truth
+2019-11-16 05:06:27 <shachaf> The original Luby paper was about Las Vegas algorithms, of course, which don't share any state.
+2019-11-16 05:06:46 <int-e> restarts need a heuristic whether your current run is a lucky or an unlucky one?
+2019-11-16 05:07:03 <shachaf> Or you just do Luby.
+2019-11-16 05:07:16 <shachaf> I bet Luby would speed up an extremely naive solver that made random choices quite a bit on a lot of problems.
+2019-11-16 05:10:46 <int-e> Hmm. Sounds reasonable.
+2019-11-16 05:15:42 <shachaf> http://www.cs.toronto.edu/~fbacchus/csc2512/Lectures/2013Readings/Skallah_Empirical_Study_SAT_Solvers.pdf answers this question, I guess.
+2019-11-16 05:15:53 <shachaf> CDCL has the biggest impact.
