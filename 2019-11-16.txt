@@ -506,3 +506,53 @@
 2019-11-16 22:27:24 <HackEso> No output.
 2019-11-16 22:29:38 <fizzie> `` rm /hackenv/bin/show /hackenv/lib/dcc  # this one just won't work
 2019-11-16 22:29:40 <HackEso> No output.
+2019-11-16 22:31:26 <fizzie> `sled /hackenv/bin/words//s|share/WordData|$ENV{'HACKENV'}/&|
+2019-11-16 22:31:27 <HackEso> ​/hackenv/bin/words//#!/usr/bin/perl \ use strict; use warnings; \ use v5.10; \ use open qw( :encoding(UTF-8) :std); \ use File::Basename 'dirname'; \ use Storable 'retrieve'; \ use List::Util qw(sum min); \ use Getopt::Long qw(:config gnu_getopt); \ BEGIN { \     eval { \         require Math::Random::MT::Perl; Math::Random::MT::Perl->import('rand'); \     }; \ #warn "Optional module Math::Random::MT::Perl not found.\n" if $@; \ } \  \ #co
+2019-11-16 22:32:03 <fizzie> `sled /hackenv/bin/8ball//s|share/|$HACKENV/share/|
+2019-11-16 22:32:09 <HackEso> ​/hackenv/bin/8ball//#!/bin/sh \ shuf -n 1 $HACKENV/share/8ballreplies
+2019-11-16 22:32:28 <fizzie> `sled /hackenv/bin/acronym//s|share/|$HACKENV/share/|
+2019-11-16 22:32:30 <HackEso> ​/hackenv/bin/acronym//w="${1:-tla}"; (for (( i=0;i<${#w};i++ )); do grep -i "^${w:$i:1}[a-z]*\$" $HACKENV/share/dict-words | shuf -n 1; done) | xargs
+2019-11-16 22:32:53 <shachaf> fizzie: whoa, what's all this?
+2019-11-16 22:33:10 <fizzie> `sled /hackenv/bin/addscowrevs//s|share/|$HACKENV/share/|g
+2019-11-16 22:33:12 <HackEso> ​/hackenv/bin/addscowrevs//echo $@ | xargs -n 1 | sort -n - $HACKENV/share/scowrevs -o $HACKENV/share/scowrevs
+2019-11-16 22:33:16 <shachaf> Is it for when people experiment with making files in the cwd?
+2019-11-16 22:33:24 <fizzie> shachaf: Yes, I'm trying out /hackenv/tmp as the work directory.
+2019-11-16 22:34:54 <fizzie> For the most part making things relative to $HACKENV, though for Python I can't've been bothered; anyway, there's definitely a lot of stuff already hardcoding /hackenv, so good enough.
+2019-11-16 22:34:58 <fizzie> `sled /hackenv/bin/airport-lookup//s|share/airports.dat|/hackenv/share/airports.dat|
+2019-11-16 22:35:00 <HackEso> ​/hackenv/bin/airport-lookup//#! /usr/bin/env python \  \ import csv \ import sys \  \ if len(sys.argv) < 3: sys.stderr.write('usage: airport-lookup any|name|iata|icao key\n'); sys.exit(1) \ kind, q = sys.argv[1], ' '.join(sys.argv[2:]) \  \ fieldnames = dict(name=1, iata=4, icao=5) \ if kind == 'any': fields = [1, 4, 5] \ elif kind in fieldnames: fields = [fieldnames[kind]] \ else: sys.stderr.write('unknown search type: %s\n' % kind); sys.
+2019-11-16 22:36:42 <fizzie> `sled /hackenv/bin/autowelcome//s|share/|$HACKENV/share/|g
+2019-11-16 22:36:44 <HackEso> ​/hackenv/bin/autowelcome//[ "$1" == "on" ] && echo enabled > $HACKENV/share/autowelcome_status; [ "$1" == "off" ] && echo disabled > $HACKENV/share/autowelcome_status; echo "Autowelcome $(cat $HACKENV/share/autowelcome_status)."
+2019-11-16 22:37:14 <fizzie> `sled /hackenv/bin/complain//s|share/|$HACKENV/share/|
+2019-11-16 22:37:16 <HackEso> ​/hackenv/bin/complain//print_args_or_input "$@" >> $HACKENV/share/Complaints.mp3; echo Complaint filed. Thank you.
+2019-11-16 22:37:35 <fizzie> `sled /hackenv/bin/complaints//s|share/|$HACKENV/share/|
+2019-11-16 22:37:37 <HackEso> ​/hackenv/bin/complaints//wc -l $HACKENV/share/Complaints.mp3
+2019-11-16 22:38:04 <fizzie> `sled /hackenv/bin/list//s|share/|$HACKENV/share/|g
+2019-11-16 22:38:09 <HackEso> ​/hackenv/bin/list//date > $HACKENV/share/conscripts; culprits $HACKENV/share/conscripts | xargs -n 1 | awk '!x[$0]++' | xargs
+2019-11-16 22:38:49 <fizzie> `sled /hackenv/bin/maim//s|share/|$HACKENV/share/|
+2019-11-16 22:38:51 <HackEso> ​/hackenv/bin/maim//shuf -n 1 $HACKENV/share/maimery | sed "s/\$target/$1/"
+2019-11-16 22:42:51 <fizzie> `` rm -r /hackenv/good /hackenv/evil /hackenv/bin/good /hackenv/bin/evil  # sorry
+2019-11-16 22:42:53 <HackEso> No output.
+2019-11-16 22:45:56 <fizzie> `sled /hackenv/bin/bookofeso//s|esobible|$HACKENV/esobible|g
+2019-11-16 22:45:58 <HackEso> ​/hackenv/bin/bookofeso//F="$(find $HACKENV/esobible -name "*$(echo "$1" | lowercase)*" -type f | shuf -n1)"; echo -n "${F#$HACKENV/esobible/}/" | rnooodl; cat "$F" | rnooodl
+2019-11-16 22:46:15 <fizzie> (Almost removed that, don't think it really gets used.)
+2019-11-16 22:48:33 <fizzie> `sled /hackenv/bin/mislearn//s|tmflry/|$HACKENV/tmflry/|
+2019-11-16 22:48:35 <HackEso> ​/hackenv/bin/mislearn//#!/bin/bash \ topic=$(echo "$1" | lowercase | sed 's/^\(an\?\|the\) //;s/s\?[:;,.!?]\? .*//') \ echo "$1" >"$HACKENV/tmflry/$topic" \ echo "Was lied to about '$topic': $1"
+2019-11-16 22:53:51 <fizzie> `fetch /hackenv/bin/tomfoolery https://hack.esolangs.org/get/bin/tomfoolery
+2019-11-16 22:53:52 <HackEso> 2019-11-16 22:53:52 URL:https://hack.esolangs.org/get/bin/tomfoolery [327/327] -> "bin/tomfoolery" [1]
+2019-11-16 22:54:07 User Name: b_jonas = b_jonas!~x@catv-176-63-13-253.catv.broadband.hu
+2019-11-16 22:54:07 <b_jonas> hi fizzie.
+2019-11-16 22:54:23 <fizzie> If we want to keep this, I will also need to fix edit at some point, otherwise it generates broken `fetch examples.
+2019-11-16 22:54:32 <b_jonas> fizzie: addquote and delquote would definitely break
+2019-11-16 22:54:48 <b_jonas> oh nice
+2019-11-16 22:54:55 <b_jonas> I see you're fixing some of the scripts
+2019-11-16 22:55:08 <b_jonas> fizzie: I meant to fix more scripts, but haven't got there yet
+2019-11-16 22:55:10 <b_jonas> was too slow
+2019-11-16 22:55:12 <b_jonas> thanks for helping
+2019-11-16 22:55:38 <fizzie> Yes, I've used some heuristics to pick up things that would likely break for bin, share, wisdom, ibin references.
+2019-11-16 22:56:01 <fizzie> (Didn't do quotes yet.)
+2019-11-16 22:56:07 <b_jonas> fizzie: I generally use "${HACKENV-/hackenv}/" to make them more robust in case future HackE?o incarnations don't set the variable or have whitespace in the value
+2019-11-16 22:57:04 <fizzie> Yeah, I saw that suggestion, just remembered it a little late. I might make a single out-of-band mega-patch for that.
+2019-11-16 22:57:18 <fizzie> (You mean "${HACKENV:-/hackenv}", right?)
+2019-11-16 22:58:09 <b_jonas> fizzie: shouldn't matter. if $HACKENV is set then it should be an absolute path, that's the point, so it can't be empty
+2019-11-16 22:58:27 <b_jonas> the colon makes a difference only if the var is set but empty
+2019-11-16 23:00:01 <fizzie> `` A=""; echo "[${A-foo}] [${A:-foo}] [${B-foo}] [${B:-foo}]"
