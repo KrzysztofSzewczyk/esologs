@@ -42,3 +42,63 @@
 2019-11-16 03:56:51 <oerjan> `quote
 2019-11-16 03:56:51 <HackEso> 818) <olsner> we have PR?  <oerjan> the good news is we have PR.  the bad news is we borrowed haskell's motto for it. [...] <oerjan> [...] "avoid success at all costs"
 2019-11-16 03:58:31 <oerjan> so `@ doesn't work with a command with no argument
+2019-11-16 04:03:01 <oerjan> it's also a bit complicated by wanting to work both in shell commands and with `
+2019-11-16 04:05:50 <oerjan> `sled bin/@//2s!+.*!+//) { print "$1: "; exec "nur", $_; }!
+2019-11-16 04:05:51 <HackEso> bin/@//#!/usr/bin/perl -w \ $_ = join " ", @ARGV; if (s/^([^ ]*) +//) { print "$1: "; exec "nur", $_; }
+2019-11-16 04:06:11 <oerjan> `@ oerjan quote
+2019-11-16 04:06:12 <HackEso> oerjan: /hackenv/bin/nur: 1: /hackenv/bin/nur: Syntax error: redirection unexpected
+2019-11-16 04:06:16 <oerjan> darn
+2019-11-16 04:06:38 <oerjan> `nur quote
+2019-11-16 04:06:39 <HackEso> 636) <zzo38> Astrological ages don't work. Instead, say what you mean.
+2019-11-16 04:08:40 <oerjan> `/bin/echo hi
+2019-11-16 04:08:41 <HackEso> hi
+2019-11-16 04:08:55 <oerjan> `sled bin/@//s,nur,echo,
+2019-11-16 04:08:56 <HackEso> bin/@//#!/usr/bin/perl -w \ $_ = join " ", @ARGV; if (s/^([^ ]*) +//) { print "$1: "; exec "echo", $_; }
+2019-11-16 04:09:03 <oerjan> `@ oerjan quote
+2019-11-16 04:09:04 <HackEso> oerjan: quote
+2019-11-16 04:09:20 <oerjan> `@ oerjan quote hi
+2019-11-16 04:09:20 <HackEso> oerjan: quote hi
+2019-11-16 04:09:31 <oerjan> hm echo has no problem.
+2019-11-16 04:10:19 <oerjan> `revert
+2019-11-16 04:10:20 <HackEso> Done.
+2019-11-16 04:10:26 <oerjan> `@ oerjan quote hi
+2019-11-16 04:10:27 <HackEso> oerjan: /hackenv/bin/nur: 1: /hackenv/bin/nur: Syntax error: redirection unexpected
+2019-11-16 04:10:39 <oerjan> oh duh
+2019-11-16 04:10:55 <oerjan> `sled bin/nur//1i#!/bin/bash
+2019-11-16 04:10:57 <HackEso> bin/nur//#!/bin/bash \ if grep -q \  <<<"$1"; then "${1%% *}" "${1#* }"; else "$1"; fi
+2019-11-16 04:11:03 <oerjan> `@ oerjan quote hi
+2019-11-16 04:11:04 <HackEso> oerjan: 5) <Quas_NaArt> His body should be given to science.  <GKennethR> He's alive :P  <GreenReaper> Even so. \ 8) <Madelon> Lil`Cube: you had cavity searches?  <Lil`Cube> not yet  <Lil`Cube> trying to thou, just so I can check it off on my list of things to expirence \ 13) <fizzie after embedding some of his department research into fungot> Finally I have found some actually useful purpose for it. \ 14) <fungot> oerjan: are you a man, if t
+2019-11-16 04:11:11 <oerjan> `@ oerjan quote
+2019-11-16 04:11:12 <HackEso> oerjan: 4) <Warrigal> GKennethR: he should be told that you should always ask someone before killing them.
+2019-11-16 04:11:18 <oerjan> there you go.
+2019-11-16 04:11:53 <oerjan> `? nur
+2019-11-16 04:11:54 <HackEso> nur? ¯\(°​_o)/¯
+2019-11-16 04:19:45 <oerjan> `learn nur "command argument" is a convenience wrapper for invoking user-given commands with the same argument splitting as HackEso's top level. (Mnemonic: opposite of `run)
+2019-11-16 04:19:47 <HackEso> Learned 'nur': nur "command argument" is a convenience wrapper for invoking user-given commands with the same argument splitting as HackEso's top level. (Mnemonic: opposite of `run)
+2019-11-16 04:20:11 <oerjan> `whatis nur
+2019-11-16 04:20:14 <HackEso> nur(1hackeso) - no description
+2019-11-16 04:20:46 <oerjan> `? `@
+2019-11-16 04:20:47 <HackEso> ​@ is an OS made out of only the finest vapour.
+2019-11-16 04:21:36 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-16 04:21:36 <imode> seems like there's a story behind that.
+2019-11-16 04:23:55 <oerjan> `? scapegoat
+2019-11-16 04:23:56 <HackEso> scapegoat? ¯\(°​_o)/¯
+2019-11-16 04:24:11 <oerjan> `grWp scapegoat
+2019-11-16 04:24:13 <HackEso> No output.
+2019-11-16 04:25:08 <oerjan> i suppose we don't have that in wisdom.  @ was the perfect imaginary OS and scapegoat was the perfect imaginary revision control system, iirc
+2019-11-16 04:25:24 <oerjan> `grWp goat
+2019-11-16 04:25:25 <HackEso> ​🐐:🐐 <(Unicode goat laments your inability to render Unicode goat.) \ goat:Goats will eat and drink anything, except tea. Solain is unavailable for details. \ stume:A stume cowears and goatears you. That is the main reason why the often look so ackward.
+2019-11-16 04:26:07 <oerjan> hm i thought that unicode had something relevant but apparently not.
+2019-11-16 04:26:34 <oerjan> i think possibly ais523 has still something ongoing inspired by scapegoat.
+2019-11-16 04:27:38 <oerjan> `learn `@ <nick> <command> [<argument>] is a wrapper for running a HackEso command with a "nick:" prepended.
+2019-11-16 04:27:40 <HackEso> Learned '`@': `@ <nick> <command> [<argument>] is a wrapper for running a HackEso command with a "nick:" prepended.
+2019-11-16 04:28:17 <shachaf> How do you combine `1 and `@ ?
+2019-11-16 04:28:32 <oerjan> `slwd `@//s,:,: ,
+2019-11-16 04:28:34 <HackEso> ​`@//`@ <nick> <command> [<argument>] is a wrapper for running a HackEso command with a "nick: " prepended.
+2019-11-16 04:29:28 <oerjan> `@ `1 quote shachaf
+2019-11-16 04:29:29 <HackEso> ​`1: 838) <sgeo> GreyKnight, shachaf is like a high-level Forth \ 1057) <@elliott> well, I think if you don't think figuring out who the opposite of shachaf is requires thought, then you don't know shachaf very well
+2019-11-16 04:29:35 <oerjan> oops
+2019-11-16 04:29:46 <oerjan> `@ shachaf `1 quote shachaf
+2019-11-16 04:29:47 <HackEso> shachaf: /hackenv/bin/nur: line 2: `1: command not found
+2019-11-16 04:29:53 <oerjan> oh
+2019-11-16 04:30:00 <oerjan> `@ shachaf 1 quote shachaf
