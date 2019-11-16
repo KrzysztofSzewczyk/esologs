@@ -102,3 +102,79 @@
 2019-11-16 04:29:47 <HackEso> shachaf: /hackenv/bin/nur: line 2: `1: command not found
 2019-11-16 04:29:53 <oerjan> oh
 2019-11-16 04:30:00 <oerjan> `@ shachaf 1 quote shachaf
+2019-11-16 04:30:03 <HackEso> shachaf: 1/15:594) <shachaf> VMS Mosaic?  <shachaf> I hope that's not Mosaic ported to VMS.  <shachaf> Hmm. It's Mosaic ported to VMS. \ 604) * Sgeo|web wants to see elliott be wrong about something  <elliott> Sgeo|web: That literally never happens.  <shachaf> Sgeo|web: There you go. A great example. \ 608) <shachaf> You should get kmc in this channel. kmc has good quotes.  <shachaf> `quote kmc  <HackEgo> 686) <kmc> COCKS [...] <kmc> truly co
+2019-11-16 04:30:28 <oerjan> of course it only prepends the first line shown
+2019-11-16 04:30:37 <oerjan> oh and won't split correctly
+2019-11-16 04:31:51 <kmc> what does `@ do
+2019-11-16 04:32:06 <oerjan> `? `@
+2019-11-16 04:32:09 <HackEso> ​`@ <nick> <command> [<argument>] is a wrapper for running a HackEso command with a "nick: " prepended.
+2019-11-16 04:32:12 <oerjan> hth
+2019-11-16 04:32:43 * oerjan failed to apply the obvious demonstration
+2019-11-16 04:33:03 <int-e> `@ int-e `welcome oerjan
+2019-11-16 04:33:04 <HackEso> int-e: /hackenv/bin/nur: line 2: `welcome: command not found
+2019-11-16 04:33:11 <int-e> `@ int-e welcome oerjan
+2019-11-16 04:33:12 <HackEso> int-e: oerjan: Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: <https://esolangs.org/>. (For the other kind of esoterica, try #esoteric on EFnet or DALnet.)
+2019-11-16 04:33:32 <int-e> yay for abuse
+2019-11-16 04:34:02 <int-e> `url bin/@
+2019-11-16 04:34:05 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/%40
+2019-11-16 04:34:28 <oerjan> i think `welcome uses it internally, anyway
+2019-11-16 04:34:37 <oerjan> (and i may have written that.)
+2019-11-16 04:34:46 <oerjan> (or rewritten.)
+2019-11-16 04:35:01 <int-e> oh it's a nitia thing
+2019-11-16 04:35:37 <int-e> exec "bin/@", $_ . " ? welcome"
+2019-11-16 04:35:46 <int-e> yeah it uses it all right
+2019-11-16 04:35:59 <int-e> not in the most obvious way... because perl
+2019-11-16 04:37:05 <int-e> `welcome int-e oerjan
+2019-11-16 04:37:06 <HackEso> int-e: oerjan: Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: <https://esolangs.org/>. (For the other kind of esoterica, try #esoteric on EFnet or DALnet.)
+2019-11-16 04:37:16 * int-e shrugs
+2019-11-16 04:37:28 <int-e> I didn't know it did that though.
+2019-11-16 04:39:10 <oerjan> hm maybe it wasn't me.
+2019-11-16 04:39:44 <int-e> `culprits bin/welcome
+2019-11-16 04:39:46 <HackEso> oerjän oerjän ellioẗt nitïa
+2019-11-16 04:40:11 <int-e> huh
+2019-11-16 04:40:22 <oerjan> i wonder why the `hurl link doesn't show more than the initial
+2019-11-16 04:40:39 <int-e> exactly
+2019-11-16 04:41:00 <oerjan> although the rest were cleanups i think
+2019-11-16 04:41:27 <int-e> `hoag bin/welcome
+2019-11-16 04:41:28 <HackEso> ​<oerjän> chmod +x bin/*elcom* \ <oerjän> mv *elcom* bin \ <ellioẗt> rm bin/*elcom* \ Initïal import.
+2019-11-16 04:42:31 <int-e> Maybe hoag should replace that last one by <nitia> import.
+2019-11-16 04:44:54 <kmc> 22222222222222222222222
+2019-11-16 04:45:07 <int-e> boring cat
+2019-11-16 04:45:17 <shachaf> oerjan: I meant the correct splitting, yep.
+2019-11-16 04:45:52 <shachaf> int-e: hoag?
+2019-11-16 04:46:08 <oerjan> `1 @ shachaf quote shachaf
+2019-11-16 04:46:10 <HackEso> 1/15:shachaf: 594) <shachaf> VMS Mosaic?  <shachaf> I hope that's not Mosaic ported to VMS.  <shachaf> Hmm. It's Mosaic ported to VMS. \ 604) * Sgeo|web wants to see elliott be wrong about something  <elliott> Sgeo|web: That literally never happens.  <shachaf> Sgeo|web: There you go. A great example. \ 608) <shachaf> You should get kmc in this channel. kmc has good quotes.  <shachaf> `quote kmc  <HackEgo> 686) <kmc> COCKS [...] <kmc> truly co
+2019-11-16 04:46:11 <shachaf> I assume hoag, hog, hoat, etc. should just be deleted.
+2019-11-16 04:46:15 <oerjan> that should work
+2019-11-16 04:46:25 <shachaf> oerjan: But some IRC clients only hilight a line if your nick is at the beginning.
+2019-11-16 04:46:32 <oerjan> ah
+2019-11-16 04:46:45 <oerjan> EWONTFIX
+2019-11-16 04:47:02 <int-e> shachaf: that would just sow confusion
+2019-11-16 04:47:11 <shachaf> Don't you hate it when a function sets errno to EWONTFIX?
+2019-11-16 04:48:03 <int-e> `rot13 sow hoag
+2019-11-16 04:48:06 <HackEso> fbj ubnt
+2019-11-16 04:48:32 <shachaf> So my SAT solver does 2-watched literals.
+2019-11-16 04:48:41 <shachaf> Shockingly, it doesn't help that much for 3SAT.
+2019-11-16 04:48:42 <int-e> not very pronouncible, sadly
+2019-11-16 04:48:53 <shachaf> (Without CDCL, anyway.)
+2019-11-16 04:48:55 <int-e> ...
+2019-11-16 04:49:36 <shachaf> It's almost like int-e isn't that shocked.
+2019-11-16 04:49:44 <int-e> it may be cheaper to just statically by literal for 3SAT
+2019-11-16 04:49:54 <int-e> +index
+2019-11-16 04:50:06 <shachaf> What do you mean?
+2019-11-16 04:50:11 <shachaf> Just watch all three, or something else?
+2019-11-16 04:50:20 <int-e> because the difference between walking 2 lists or 3 lists is small and you save the maintenance overhead
+2019-11-16 04:50:37 <int-e> But I'd expect indexing to still be important.
+2019-11-16 04:50:44 <shachaf> Sure.
+2019-11-16 04:50:54 <shachaf> But if you learn clauses by resolution they can get much longer presumably.
+2019-11-16 04:51:06 <int-e> Of course they can
+2019-11-16 04:51:14 <int-e> look at the reduction from SAT to 3SAT
+2019-11-16 04:51:29 <shachaf> Yep.
+2019-11-16 04:51:39 <int-e> Sorry
+2019-11-16 04:51:52 <int-e> I read a negation into that and there wasn't any.
+2019-11-16 04:51:56 <shachaf> I mean, in practice, I imagine that 2WL could plausibly help quite a bit for 3SAT once I learn clauses.
+2019-11-16 04:52:05 <shachaf> Ah.
+2019-11-16 04:54:04 <int-e> Do RL SAT solvers bother with maintaining extra data structures for clauses of size 2?
+2019-11-16 04:54:36 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-11-16 04:54:36 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu2, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-16 04:54:39 <int-e> (I'm sure Minisat doesn't. But others may...)
