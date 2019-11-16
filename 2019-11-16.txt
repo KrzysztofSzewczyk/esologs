@@ -473,3 +473,36 @@
 2019-11-16 21:58:35 <HackEso> ​/hackenv/bin/footnote//cat "$HACKENV/wisdom/footnote $1"
 2019-11-16 21:59:36 <fizzie> `sled /hackenv/bin/forget//s|wisdom/|$HACKENV/wisdom/|g
 2019-11-16 21:59:37 <HackEso> ​/hackenv/bin/forget//#!/bin/sh \ for n; do if [ lethe = "$n" ]; then rm -f "$HACKENV/wisdom/$n"; else rm-p "$HACKENV/wisdom/$n"; fi && echo "Forget what?"; done
+2019-11-16 22:00:06 <fizzie> `sled /hackenv/bin/howg//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 22:00:14 <HackEso> ​/hackenv/bin/howg//hoag "$HACKENV/wisdom/$1"
+2019-11-16 22:00:34 <fizzie> `sled /hackenv/bin/hwrl//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 22:00:36 <HackEso> ​/hackenv/bin/hwrl//hurl "$HACKENV/wisdom/$1"
+2019-11-16 22:07:33 <fizzie> `sled /hackenv/bin/lastwisdoms//s|find .hg|find $HACKENV/.hg|;s|s=\^\.hg|s=^.*?.hg|
+2019-11-16 22:07:35 <HackEso> ​/hackenv/bin/lastwisdoms//find $HACKENV/.hg/store/data/wisdom -type f -print0 | xargs -0 /bin/ls -t | perl -pe 'use POSIX;chop;$d=strftime("%F",localtime((stat($_))[9]));s=^.*?.hg/store/data/wisdom/(.*).i$=\1 // =;s=^=/$d/ = if$d ne$p;$p=$d;s=_(.)=uc($1)=eg;s=~([0-9a-f][0-9a-f])=chr hex$1=eg'
+2019-11-16 22:08:33 <fizzie> `sled /hackenv/bin/leann//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 22:08:35 <HackEso> ​/hackenv/bin/leann//(($#==1)) && set -- "${1% *}" "${1#* }"; key=${1,,}; shift; cat <<< "${*,,}" > "$HACKENV/wisdom/$key" && echo "Learned «$key»"
+2019-11-16 22:09:32 <fizzie> `sled /hackenv/bin/learn//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 22:09:33 <HackEso> ​/hackenv/bin/learn//#!/bin/bash \ topic=$(echo "$1" | lowercase | sed 's/^\(an\?\|the\) //;s/s\?[:;,.!?]\? .*//') \ [ -e "$HACKENV/wisdom/$topic" ] && verb="Relearned" || verb="Learned" \ echo "$1" >"$(echo-p "$HACKENV/wisdom/$topic")" \ echo "$verb '$topic': $1"
+2019-11-16 22:13:31 <fizzie> `` for w in benvenuto bienvenido bienvenue bonvenon tervetuloa välkommen velkomin velkommen welcome welkom wercome willkommen добро-пожаловать; do sed -i -e 's|bin/[@?]|$HACKENV/&|g' /hackenv/bin/$w; done
+2019-11-16 22:13:34 <HackEso> No output.
+2019-11-16 22:14:12 Quit: arseniiv (Ping timeout: 252 seconds)
+2019-11-16 22:14:12 Names: \oren\, ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-16 22:19:52 <fizzie> (That one wasn't actually correct; fixed it in post.)
+2019-11-16 22:20:54 <fizzie> `sled /hackenv/bin/!//s|exec ibin|exec $HACKENV/ibin|
+2019-11-16 22:20:56 <HackEso> ​/hackenv/bin/!//#!/bin/bash \ CMD=`echo -n "$1" | cut -d' ' -f1` \ ARG="$(echo -n "$1" | cut -d' ' -f2-)" \ exec $HACKENV/ibin/$CMD "$ARG$2"
+2019-11-16 22:21:57 <fizzie> `` rm '/hackenv/bin/*'  # this one is just too dangerous
+2019-11-16 22:21:58 <HackEso> No output.
+2019-11-16 22:22:46 <fizzie> `sled /hackenv/bin/cmds//s|url bin|url $HACKENV/bin|
+2019-11-16 22:22:48 <HackEso> ​/hackenv/bin/cmds//url $HACKENV/bin
+2019-11-16 22:23:11 <fizzie> `sled /hackenv/bin/dobg//s|bin/|$HACKENV/bin/|
+2019-11-16 22:23:13 <HackEso> ​/hackenv/bin/dobg//doag "$HACKENV/bin/$1"
+2019-11-16 22:25:05 <fizzie> `sled /hackenv/bin/gs2c.py//s|bin/gs2.py|/hackenv/bin/gs2.py|
+2019-11-16 22:25:07 <HackEso> ​/hackenv/bin/gs2c.py//# gs2 compiler (version 0.2) \ # (c) nooodl 2014 \  \ import re \ import struct \ import sys \  \ if sys.platform == "win32": \     import os, msvcrt \     msvcrt.setmode(sys.stdout.fileno(), os.O_BINARY) \  \ mnemonics = {} \ with open('/hackenv/bin/gs2.py') as f: \     for line in f: \         if '#=' in line: \             a, b = line.split('#=') \             a = re.findall(r'\\x(..)', a.strip()) \             b =
+2019-11-16 22:25:47 <fizzie> `sled /hackenv/bin/interp//s|exec ibin/|exec $HACKENV/ibin/|
+2019-11-16 22:25:48 <HackEso> ​/hackenv/bin/interp//#!/bin/bash \ CMD=`echo -n "$1" | cut -d' ' -f1` \ ARG="$(echo -n "$1" | cut -d' ' -f2-)" \ exec $HACKENV/ibin/$CMD "$ARG$2"
+2019-11-16 22:26:42 <fizzie> `sled /hackenv/bin/newcmd//s|bin/|$HACKENV/bin/|g
+2019-11-16 22:26:43 <HackEso> ​/hackenv/bin/newcmd//if [ -a "$HACKENV/bin/${1%% = *}" ];then exec echo "${1%% = *}: Already exists.";fi;echo "${1#* = }" > "$HACKENV/bin/${1%% = *}";chmod +x "$HACKENV/bin/${1%% = *}"
+2019-11-16 22:27:23 <fizzie> `` rm /hackenv/bin/randbin  # for consistency with *
+2019-11-16 22:27:24 <HackEso> No output.
+2019-11-16 22:29:38 <fizzie> `` rm /hackenv/bin/show /hackenv/lib/dcc  # this one just won't work
+2019-11-16 22:29:40 <HackEso> No output.
