@@ -405,3 +405,71 @@
 2019-11-16 21:27:46 <arseniiv> that’s a mystery
 2019-11-16 21:29:14 <fizzie> `` pwd  # <- I've changed this at least temporarily, let's see what all breaks.
 2019-11-16 21:29:15 <HackEso> ​/hackenv/tmp
+2019-11-16 21:31:59 <fizzie> Well, found one thing that broke already.
+2019-11-16 21:32:08 <fizzie> `sled /hackenv/bin/paste//s|url tmp|url $HACKENV/tmp|
+2019-11-16 21:32:12 <HackEso> ​/hackenv/bin/paste//#!/bin/bash \ if [ "$1" ] && url "$1" 2>/dev/null # Save making a file when it already exists. \ then \     true \ else \     PASTENUM="$RANDOM" \  \     mkdir -p $HACKENV/tmp/paste \  \     url $HACKENV/tmp/paste/paste."$PASTENUM" \     cat -- "${1--}" > $HACKENV/tmp/paste/paste."$PASTENUM" \ fi
+2019-11-16 21:35:15 <fizzie> `sled /hackenv/bin/sport//s|tmp/|$HACKENV/tmp/|g
+2019-11-16 21:35:17 <HackEso> ​/hackenv/bin/sport//cat "${2:-/dev/stdin}" >$HACKENV/tmp/spout.raw; distort $HACKENV/tmp/spout.raw | spore "${1-1}"
+2019-11-16 21:35:55 <fizzie> `sled /hackenv/bin/spore//s|/hackenv/tmp/|$HACKENV/tmp/|g
+2019-11-16 21:35:57 <HackEso> ​/hackenv/bin/spore//cat "${2:-/dev/stdin}" > $HACKENV/tmp/spout; spam "${1-1}"
+2019-11-16 21:36:41 <fizzie> (That one was correct already, just made it a little more abstract. Maybe I'll do a LSC to do the ${HACKENV:-/hackenv} as suggested at some point.)
+2019-11-16 21:37:12 <fizzie> `sled /hackenv/bin/spam//s|/hackenv/tmp/|$HACKENV/tmp/|g
+2019-11-16 21:37:14 <HackEso> ​/hackenv/bin/spam//line="${1-$(cat $HACKENV/tmp/spline)}"; len="$(awk 'END{print NR}' $HACKENV/tmp/spout)"; echo -n "$line/$len:"; sed -n "${line}{p;q}" $HACKENV/tmp/spout; echo "$((line<len?line+1:1))" > $HACKENV/tmp/spline
+2019-11-16 21:38:29 <fizzie> `sled /hackenv/bin/just//s| tmp/| $HACKENV/tmp/|g
+2019-11-16 21:38:31 <HackEso> ​/hackenv/bin/just//grwp '\(is\|are\) just' | sed -e 's/:/ ::= /;s/$/\n/' > $HACKENV/tmp/just && url $HACKENV/tmp/just
+2019-11-16 21:42:40 <fizzie> `` rm /hackenv/bin/8$'\x0f'ball  # I've no idea what this one was about
+2019-11-16 21:42:42 <HackEso> No output.
+2019-11-16 21:43:32 <fizzie> `sled /hackenv/bin/cbt//s|cat bin|cat $HACKENV/bin|
+2019-11-16 21:43:34 <HackEso> ​/hackenv/bin/cbt//cat $HACKENV/bin/"$1"
+2019-11-16 21:44:23 <fizzie> `sled /hackenv/bin/gs2c//s|python bin|python $HACKENV/bin|
+2019-11-16 21:44:24 <HackEso> ​/hackenv/bin/gs2c//echo "$@" | python $HACKENV/bin/gs2c.py
+2019-11-16 21:44:37 <fizzie> `sled /hackenv/bin/gs2x//s|python bin|python $HACKENV/bin|
+2019-11-16 21:44:39 <HackEso> ​/hackenv/bin/gs2x//python $HACKENV/bin/gs2.py "$@"
+2019-11-16 21:45:27 <fizzie> `sled /hackenv/bin/makelist//s|bin/|$HACKENV/bin/|
+2019-11-16 21:45:28 <HackEso> ​/hackenv/bin/makelist//if [[ "$1" == *" "* ]]; then exec makelist $@; fi; name="$1"; file="$HACKENV/bin/$name"; makelistlist "$name"; shift; cp bin/emptylist "$file"; for n in "$@"; do echo "$n" >> "$file"; done
+2019-11-16 21:45:33 <fizzie> `sled /hackenv/bin/makelist//s|bin/|$HACKENV/bin/|g
+2019-11-16 21:45:35 <HackEso> ​/hackenv/bin/makelist//if [[ "$1" == *" "* ]]; then exec makelist $@; fi; name="$1"; file="$HACKENV/$HACKENV/bin/$name"; makelistlist "$name"; shift; cp $HACKENV/bin/emptylist "$file"; for n in "$@"; do echo "$n" >> "$file"; done
+2019-11-16 21:45:40 <fizzie> ...whoops.
+2019-11-16 21:46:02 <fizzie> `sled /hackenv/bin/makelist//s|$HACKENV/$HACKENV/|$HACKENV/|
+2019-11-16 21:46:09 <HackEso> ​/hackenv/bin/makelist//if [[ "$1" == *" "* ]]; then exec makelist $@; fi; name="$1"; file="$HACKENV/bin/$name"; makelistlist "$name"; shift; cp $HACKENV/bin/emptylist "$file"; for n in "$@"; do echo "$n" >> "$file"; done
+2019-11-16 21:46:15 <fizzie> Computers are hard.
+2019-11-16 21:46:43 <fizzie> `` rm /hackenv/bin/script /hackenv/bin/scriptadd  # executive override
+2019-11-16 21:46:45 <HackEso> No output.
+2019-11-16 21:47:53 <fizzie> `sled /hackenv/bin/?//s|cd wisdom|cd $HACKENV/wisdom|
+2019-11-16 21:47:55 <HackEso> ​/hackenv/bin/?//#!/bin/bash \ topic=$(echo "$@" | lowercase | sed "s/noo\+dl/nooodl/;s/ *$//") \ topic1=$(echo '`'"$topic" | sed 's/^`\(`\|$\)//') \ topic2=$(echo "$topic" | sed "s/s$//") \ cd $HACKENV/wisdom \ if [ \( "_$topic2"_ = "_ngevd"_ \) -a \( -e ngevd \) ]; \     then cat /dev/urandom; \     elif [ -e "$topic" ]; \     then cat "$topic"; \     elif [ -e "$topic1" ]; \     then cat "$topic1"; \     elif [ -e "$topic2" ]; \     then
+2019-11-16 21:48:29 <fizzie> `sled /hackenv/bin/grwp//s|cd wisdom|cd $HACKENV/wisdom|
+2019-11-16 21:48:30 <HackEso> ​/hackenv/bin/grwp//#! /bin/bash \ cd $HACKENV/wisdom; shopt -s dotglob; grep -R "$@" -- *
+2019-11-16 21:48:50 <fizzie> `sled /hackenv/bin/gwn//s|cd wisdom|cd $HACKENV/wisdom|
+2019-11-16 21:48:52 <HackEso> ​/hackenv/bin/gwn//cd $HACKENV/wisdom; shopt -s dotglob; grep -ERls "$@" -- *
+2019-11-16 21:48:59 <fizzie> `sled /hackenv/bin/gwni//s|cd wisdom|cd $HACKENV/wisdom|
+2019-11-16 21:49:01 <HackEso> ​/hackenv/bin/gwni//cd $HACKENV/wisdom; shopt -s dotglob; grep -ERlis "$@" -- *
+2019-11-16 21:49:25 <fizzie> `sled /hackenv/bin/pastewisdom//s|url wisdom|url $HACKENV/wisdom|
+2019-11-16 21:49:26 <HackEso> ​/hackenv/bin/pastewisdom//#!/bin/sh \ url $HACKENV/wisdom
+2019-11-16 21:49:48 <fizzie> `sled /hackenv/bin/plwd//s|cd wisdom|cd $HACKENV/wisdom|
+2019-11-16 21:49:49 <HackEso> ​/hackenv/bin/plwd//cd $HACKENV/wisdom; pled "$1" | sed '1s/^Rosebud!$/Roswbud!/'
+2019-11-16 21:50:07 <fizzie> `sled /hackenv/bin/slwd//s|cd wisdom|cd $HACKENV/wisdom|
+2019-11-16 21:50:14 <HackEso> ​/hackenv/bin/slwd//cd $HACKENV/wisdom; sled "$1" | sed '1s/^Rosebud!$/Roswbud!/'
+2019-11-16 21:51:27 <fizzie> `sled /hackenv/bin/wisdom//s|wisdom|$HACKENV/wisdom|g
+2019-11-16 21:51:29 <HackEso> ​/hackenv/bin/wisdom//#!/bin/sh \ f=$(find $HACKENV/wisdom -ipath "$HACKENV/wisdom/*$1*" -type f -print0 | shuf --random-source=/dev/urandom -z -n1); if [ -n "$f" ]; then echo -n "${f#$HACKENV/wisdom/}//"; cat "$f"; else echo "That's not wise."; fi | rnooodl
+2019-11-16 21:52:43 <fizzie> `sled /hackenv/bin/wiseguys//s|wisdom|$HACKENV/wisdom|
+2019-11-16 21:52:45 <HackEso> ​/hackenv/bin/wiseguys//hlnp -T '{desc}\n' $HACKENV/wisdom | cut -d' ' -f1 | sort | uniq -c | sed -e 's/^ *//' | sort -nr | head -n ${1:-10}
+2019-11-16 21:52:53 <fizzie> `wiseguys
+2019-11-16 21:52:55 <HackEso> 1713 <oerjän> \ 689 <shachäf> \ 309 <b_jonäs> \ 300 <boil̈y> \ 241 <int-̈e> \ 158 <rdocöc> \ 142 <hppavilion[1̈]> \ 139 <wob_jonäs> \ 98 <tsweẗt> \ 72 <mromän>
+2019-11-16 21:53:00 <fizzie> Still maintaining a healthy lead, I see.
+2019-11-16 21:54:14 <fizzie> `sled /hackenv/bin/slashlearn//s|wisdom/|$HACKENV/wisdom/|g
+2019-11-16 21:54:16 <HackEso> ​/hackenv/bin/slashlearn//sep="//" \ [[ "$1" == ?*"$sep"* ]] || { echo 'Usage: `le/[/]rn <key>//<wisdom>' >&2 ; exit 1; } \ key="$(echo "${1%%$sep*}" | lowercase)" \ value="${1#*$sep}" \ [ -e "$HACKENV/wisdom/$key" ] && verb="Relearned" || verb="Learned" \ echo "$value" > "$(echo-p "$HACKENV/wisdom/$key")" && echo -n "$verb '$key': $(echo "$value" | sed 's.^[ ].0,04&.')"
+2019-11-16 21:54:48 <fizzie> `sled /hackenv/bin/wrl//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 21:54:50 <HackEso> ​/hackenv/bin/wrl//url "$HACKENV/wisdom/$1"
+2019-11-16 21:55:08 <fizzie> `sled /hackenv/bin/wdit//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 21:55:10 <HackEso> ​/hackenv/bin/wdit//edit "$HACKENV/wisdom/$1"
+2019-11-16 21:56:15 <fizzie> `sled /hackenv/bin/whoops//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 21:56:16 <HackEso> ​/hackenv/bin/whoops//OLD="$HACKENV/wisdom/$1"; [ -z "$1" ] && OLD="$(lastfiles)"; NEW="${OLD}s"; if [ -f "$NEW" ]; then echo "«${NEW}» already exists"; exit 1; fi; mv "$OLD" "$NEW" && echo "«${OLD}» -> «${NEW}»"
+2019-11-16 21:57:15 <fizzie> In retrospect, it might have been smart to add one layer of indirection, to make the wisdom location independent of $HACKENV. Oh well.
+2019-11-16 21:57:30 <fizzie> `sled /hackenv/bin/cwlprits//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 21:57:32 <HackEso> ​/hackenv/bin/cwlprits//culprits "$HACKENV/wisdom/$1"
+2019-11-16 21:58:13 <fizzie> `sled /hackenv/bin/dowg//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 21:58:15 <HackEso> ​/hackenv/bin/dowg//doag "$HACKENV/wisdom/$1"
+2019-11-16 21:58:33 <fizzie> `sled /hackenv/bin/footnote//s|wisdom/|$HACKENV/wisdom/|
+2019-11-16 21:58:35 <HackEso> ​/hackenv/bin/footnote//cat "$HACKENV/wisdom/footnote $1"
+2019-11-16 21:59:36 <fizzie> `sled /hackenv/bin/forget//s|wisdom/|$HACKENV/wisdom/|g
+2019-11-16 21:59:37 <HackEso> ​/hackenv/bin/forget//#!/bin/sh \ for n; do if [ lethe = "$n" ]; then rm -f "$HACKENV/wisdom/$n"; else rm-p "$HACKENV/wisdom/$n"; fi && echo "Forget what?"; done
