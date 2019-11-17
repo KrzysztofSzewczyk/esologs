@@ -4,3 +4,56 @@
 2019-11-17 00:17:30 <zzo38> Now I internet is fixed (although the DNS is not yet updated).
 2019-11-17 00:29:28 Joined: oerjan
 2019-11-17 00:29:28 Names: \oren\, ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-11-17 00:34:27 <b_jonas> `@ fizzie cat /hackenv/bin/slbd
+2019-11-17 00:34:28 <HackEso> fizzie: cd bin; sled "$1" | sed '1s/^Rosebud!$/Rosbbud!/'
+2019-11-17 00:35:12 <b_jonas> fizzie: ^ you've been sediting scripts in bin all day and you haven't ran into that, it's sort of funny
+2019-11-17 00:35:19 <b_jonas> looks like maybe we just don't need that command
+2019-11-17 00:37:19 <b_jonas> `cat /hackenv/ibin/1l
+2019-11-17 00:37:20 <HackEso> ​#!/bin/sh \ . lib/interp \ interp_file ./interps/1l/1l_a.bin
+2019-11-17 00:37:21 <b_jonas> `cat /hackenv/ibin/2l
+2019-11-17 00:37:21 <HackEso> ​#!/bin/sh \ . lib/interp \ interp_file ./interps/2l/2li.bin
+2019-11-17 00:37:28 <b_jonas> ^ thesse may need editing
+2019-11-17 00:38:50 <b_jonas> ``` set -e; cd "$HACKENV/ibin"; grep -Fl ". lib/interp" * # or maybe all of these
+2019-11-17 00:38:50 <HackEso> 1l \ 2l \ adjust \ asm \ axo \ bch \ befunge \ befunge98 \ bf \ bf16 \ bf32 \ bf8 \ bf_txtgen \ boolfuck \ c \ cintercal \ clcintercal \ cxx \ dimensifuck \ forth \ glass \ glypho \ haskell \ java \ kipple \ lambda \ lazyk \ linguine \ lua \ malbolge \ pbrain \ perl \ qbf \ rail \ rhotor \ sadol \ sceql \ sh \ slashes \ trigger \ udage01 \ underload \ unlambda \ whirl
+2019-11-17 00:38:54 <b_jonas> hmm
+2019-11-17 00:39:40 <b_jonas> `cat /hackenv/bin/karma
+2019-11-17 00:39:40 <HackEso> ​#!/bin/sh \ echo "$1 has $(lib/karma "$1") karma."
+2019-11-17 00:39:41 <b_jonas> `cat /hackenv/bin/karma+
+2019-11-17 00:39:42 <HackEso> ​#!/bin/sh \ echo "$1 now has $(($(lib/karma "$1")+1)) karma." | tee karma
+2019-11-17 00:39:42 <b_jonas> `cat /hackenv/bin/karma-
+2019-11-17 00:39:43 <HackEso> ​#!/bin/sh \ touch karma \ echo "$1 now has $(($(lib/karma "$1")-1)) karma."
+2019-11-17 00:40:10 <b_jonas> ^ these too probably
+2019-11-17 00:40:19 <b_jonas> yes, I know, I can edit those
+2019-11-17 00:40:50 <fizzie> `sled /hackenv/bin/slbd//s|cd bin|cd ${HACKENV-/hackenv}/bin|
+2019-11-17 00:40:51 <HackEso> ​/hackenv/bin/slbd//cd ${HACKENV-/hackenv}/bin; sled "$1" | sed '1s/^Rosebud!$/Rosbbud!/'
+2019-11-17 00:41:12 <fizzie> It is sort of funny. I even fixed a number of similar "cd bin; ..." things.
+2019-11-17 00:42:34 <fizzie> The karma thing is pretty clever, though I don't think scalling the full repository log really scales forever.
+2019-11-17 00:44:02 <fizzie> `slbd karma//s|lib/|${HACKENV-/hackenv}/lib/|
+2019-11-17 00:44:08 <HackEso> karma//#!/bin/sh \ echo "$1 has $(${HACKENV-/hackenv}/lib/karma "$1") karma."
+2019-11-17 00:45:55 <fizzie> `slbd karma+//s|lib/|${HACKENV-/hackenv}/lib/|
+2019-11-17 00:45:57 <HackEso> karma+//#!/bin/sh \ echo "$1 now has $(($(${HACKENV-/hackenv}/lib/karma "$1")+1)) karma." | tee karma
+2019-11-17 00:46:04 <fizzie> `slbd karma-//s|lib/|${HACKENV-/hackenv}/lib/|
+2019-11-17 00:46:05 <b_jonas> `karma+ fizzie
+2019-11-17 00:46:16 <HackEso> fizzie now has 1 karma.
+2019-11-17 00:46:18 <HackEso> karma-//#!/bin/sh \ touch karma \ echo "$1 now has $(($(${HACKENV-/hackenv}/lib/karma "$1")-1)) karma."
+2019-11-17 00:46:30 <b_jonas> `karma fungot
+2019-11-17 00:46:30 <fungot> b_jonas: and leave any other messages before that one arrives... fnord??
+2019-11-17 00:46:33 <HackEso> fungot has 0 karma.
+2019-11-17 00:47:16 <fizzie> Looks like the karma system saw most use around 2011.
+2019-11-17 00:47:48 <fizzie> Hmm, there's a number of increments for fungot. That's odd.
+2019-11-17 00:47:48 <fungot> fizzie: ( fnord of some sort, but it has the proper makefiles and such, arcus??!
+2019-11-17 00:51:37 <fizzie> Oh, right, because the repository history starst from 2012.
+2019-11-17 00:51:55 <kmc> that's some p. fancy bash-work
+2019-11-17 00:53:03 <b_jonas> yeah, the $[$(${ is nice
+2019-11-17 00:54:11 <b_jonas> HackEso: doesn't the tee target have to be changed as well?
+2019-11-17 00:54:13 <b_jonas> um
+2019-11-17 00:54:24 <b_jonas> fizzie: doesn't the tee output file have to be changed as well?
+2019-11-17 00:54:29 <b_jonas> it's a relative path
+2019-11-17 00:55:17 <fizzie> Oh, right. That's there so that the command writes something. Yes.
+2019-11-17 00:56:09 <fizzie> `` for d in + -; do sed -i -e 's|tee karma|tee ${HACKENV-/hackenv}/karma|' /hackenv/bin/karma$d; done
+2019-11-17 00:56:12 <HackEso> No output.
+2019-11-17 00:56:46 <fizzie> `` cd /hackenv/bin; rm '!'; ln -s interp '!'  # just merging these two identical files
+2019-11-17 00:56:48 <HackEso> No output.
+2019-11-17 00:58:03 <b_jonas> `karma+ fizzie
+2019-11-17 00:58:16 <HackEso> fizzie now has 1 karma.
+2019-11-17 00:58:35 <b_jonas> yep, still 1, previous one didn't count
