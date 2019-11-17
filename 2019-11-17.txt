@@ -429,3 +429,112 @@
 2019-11-17 15:59:03 <kspalaiologos> my government's websites run ten years old apache
 2019-11-17 15:59:18 <kspalaiologos> c'mon even esoteric language wiki's better
 2019-11-17 15:59:50 <kspalaiologos> the problem could be, people maintaining government-related websites earn ~500$ a month
+2019-11-17 16:00:53 <b_jonas> fizzie: upgrading from stretch to buster is even better
+2019-11-17 16:01:01 <b_jonas> fizzie: does that upgrade HackEso too?
+2019-11-17 16:01:12 <b_jonas> the inside of HackEso that is, the virtual environment in which commands run
+2019-11-17 16:01:25 <fizzie> Not automatically, but I'll upgrade the container too.
+2019-11-17 16:01:35 <fizzie> It's probably a lot more straight-forward, because there isn't really much running in it.
+2019-11-17 16:01:46 <b_jonas> sure
+2019-11-17 16:04:15 <b_jonas> fizzie: also, can you install the package libdate-manip-perl inside fungot so I can do date subtractions conveniently?
+2019-11-17 16:04:15 <fungot> b_jonas: probably what i'm thinking today about token based languages rather than english from time to time.
+2019-11-17 16:04:19 <b_jonas> um
+2019-11-17 16:04:23 <b_jonas> inside HackEso I mean
+2019-11-17 16:04:27 <b_jonas> sorry, fungot
+2019-11-17 16:04:28 <fungot> b_jonas: so everything's a bit hazy on the details of the underlying language for now, if i wanted
+2019-11-17 16:04:36 <fizzie> Yes, for HackEso. For fungot, I think that'd be a little challenging.
+2019-11-17 16:04:36 <fungot> fizzie: i thought it sounded familiar. together they don't ring a bell?! i just wrote
+2019-11-17 16:04:48 <b_jonas> thanks
+2019-11-17 16:05:14 <kspalaiologos> this bot in befunge
+2019-11-17 16:05:17 <kspalaiologos> it's amazing
+2019-11-17 16:06:31 <kspalaiologos> ^show
+2019-11-17 16:06:31 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-17 16:06:48 <kspalaiologos> how can one invoke the command
+2019-11-17 16:06:49 <kspalaiologos> fungot, fib
+2019-11-17 16:06:49 <fungot> kspalaiologos: rosemary's baby is by far the most badass character in the field, the " current", and then
+2019-11-17 16:06:55 <kspalaiologos> ^fib
+2019-11-17 16:06:55 <fungot> 0.1.1.2.3.5.8.13.21.34.55.89.144.233.377.610.987.1597.2584.4181.6765.10946.17711.28657.46368.75025.121393.196418.317811.514229.832040.1346269.2178309.3524578.5702887.9227465.14930352.24157817.39088169.632459 ...
+2019-11-17 16:07:00 <kspalaiologos> a ha!
+2019-11-17 16:07:06 <fizzie> ^show fib
+2019-11-17 16:07:07 <fungot> >+10>+>+[[+5[>+8<-]>.<+6[>-8<-]+<3]>.>>[[-]<[>+<-]>>[<2+>+>-]<[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>[-]>+>+<3-[>+<-]]]]]]]]]]]+>>>]<3][]
+2019-11-17 16:07:19 <kspalaiologos> postfix RLE brainfuck?
+2019-11-17 16:07:31 <fizzie> Yes, with a bug that runs of >s were not RLE'd.
+2019-11-17 16:07:54 <kspalaiologos> why not prefix tho
+2019-11-17 16:07:58 <kspalaiologos> postfix notation is confusing
+2019-11-17 16:08:11 <fizzie> I guess. FWIW, it doesn't actually support that format as input.
+2019-11-17 16:08:18 <fizzie> It's just that ^show prints the internal representation.
+2019-11-17 16:08:19 <b_jonas> fungot, I'm quite sure Rosemary didn't have a baby
+2019-11-17 16:08:19 <fungot> b_jonas: ( dump " fred" " plugh" " xyzzy" " fnord" " 42") " b"
+2019-11-17 16:08:44 <b_jonas> kspalaiologos: because bfjoust has standardized postfix, so using postfix now would be confusing
+2019-11-17 16:08:54 <b_jonas> in fact I think people were using postfix even before bfjoust
+2019-11-17 16:08:55 <kspalaiologos> bfjoust?
+2019-11-17 16:08:58 <kspalaiologos> what is this
+2019-11-17 16:09:00 <b_jonas> see the wiki
+2019-11-17 16:09:30 <fizzie> Well, bfjoust also uses operators for the encoding.
+2019-11-17 16:09:33 <b_jonas> https://esolangs.org/wiki/BF_Joust
+2019-11-17 16:10:14 <kspalaiologos> this is
+2019-11-17 16:10:19 <kspalaiologos> actually dank
+2019-11-17 16:10:22 <kspalaiologos> I like it
+2019-11-17 16:12:01 <kspalaiologos> `show
+2019-11-17 16:12:05 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: show: not found
+2019-11-17 16:12:06 <kspalaiologos> ^show
+2019-11-17 16:12:06 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-17 16:12:15 <kspalaiologos> ^ wc blah blah blah
+2019-11-17 16:12:21 <kspalaiologos> ^wc blah blah blah
+2019-11-17 16:12:29 <kspalaiologos> ^show wc
+2019-11-17 16:12:29 <fungot> []
+2019-11-17 16:12:33 <kspalaiologos> umm
+2019-11-17 16:12:40 <fizzie> Uh.
+2019-11-17 16:12:44 <kspalaiologos> Time to fix it!
+2019-11-17 16:12:47 <b_jonas> oh right, fungot's user-defined commands
+2019-11-17 16:12:48 <fungot> b_jonas: you _are_ using scheme, not to program!
+2019-11-17 16:12:56 <b_jonas> I should add those to the whatisdb as well
+2019-11-17 16:13:33 <kspalaiologos> gimme a second
+2019-11-17 16:13:35 <kspalaiologos> I'll fix this command
+2019-11-17 16:13:50 Quit: HackEso (Remote host closed the connection)
+2019-11-17 16:13:50 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 16:14:03 <fizzie> Hmm, I don't think that was entirely intentional.
+2019-11-17 16:14:23 <b_jonas> oops
+2019-11-17 16:14:54 <fizzie> It should be fine. I just wasn't thinking of it.
+2019-11-17 16:22:00 <kspalaiologos> ^show
+2019-11-17 16:22:00 <kspalaiologos> fungot, are you alive?
+2019-11-17 16:22:00 <kspalaiologos> fizzie, he died
+2019-11-17 16:22:00 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-17 16:22:00 <fungot> kspalaiologos: second variable has 1 in its value, pack those to the registered event handlers. the clients only ever see names, never references, to objects.
+2019-11-17 16:22:03 <kspalaiologos> oh well
+2019-11-17 16:22:07 <kspalaiologos> it just took 20 seconds
+2019-11-17 16:22:27 <kspalaiologos> `show welcome
+2019-11-17 16:25:40 Joined: HackEso
+2019-11-17 16:25:41 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 16:25:49 User Name: arseniiv = arseniiv!~arseniiv@136.169.208.242
+2019-11-17 16:25:49 <arseniiv> ^unscramble 10
+2019-11-17 16:25:49 <fungot> 10
+2019-11-17 16:26:10 <arseniiv> ^unscramble noemy
+2019-11-17 16:26:10 <fungot> nyome
+2019-11-17 16:26:15 <arseniiv> hm?
+2019-11-17 16:26:25 <fizzie> ^scramble something
+2019-11-17 16:26:25 <fungot> smtignheo
+2019-11-17 16:26:30 <fizzie> ^unscramble smtignheo
+2019-11-17 16:26:30 <fungot> something
+2019-11-17 16:26:36 <arseniiv> ^unscramble opittnei
+2019-11-17 16:26:36 <fungot> oipeintt
+2019-11-17 16:26:45 <fizzie> It's a letter rearrangement scheme.
+2019-11-17 16:26:51 <fizzie> ^scramble 12345678
+2019-11-17 16:26:51 <fungot> 13578642
+2019-11-17 16:26:57 <arseniiv> ah, it’s a fixed one!
+2019-11-17 16:27:16 <fizzie> ^unscramble 12345678
+2019-11-17 16:27:16 <fungot> 18273645
+2019-11-17 16:27:18 <arseniiv> I thought it tries to find a word in a dictionary
+2019-11-17 16:27:26 <kspalaiologos> does fungot have RLE compressor builtin?
+2019-11-17 16:27:26 <fungot> kspalaiologos: this little excursion is going to work
+2019-11-17 16:27:45 <fizzie> In a sense.
+2019-11-17 16:27:50 <fizzie> ^def tmp bf +++++
+2019-11-17 16:27:50 <fungot> Defined.
+2019-11-17 16:27:52 <fizzie> ^show tmp
+2019-11-17 16:27:52 <fungot> +5
+2019-11-17 16:27:56 <kspalaiologos> fine
+2019-11-17 16:28:08 <fizzie> (But it doesn't accept the RLE form as input.)
+2019-11-17 16:28:40 <arseniiv> RLE is a great thing, at least in comparison with mass media
+2019-11-17 16:28:41 <kspalaiologos> so how do I program it
+2019-11-17 16:28:43 <kspalaiologos> when program is large
+2019-11-17 16:29:46 <kspalaiologos> we use str right?
+2019-11-17 16:29:59 <arseniiv> I’m currently steaming because of walking too near a working TV :(
