@@ -210,3 +210,21 @@
 2019-11-17 05:25:58 <zzo38> But on a real DOS computer my program worked; I had to change it to work on the emulator.
 2019-11-17 05:28:10 <zzo38> Do you know why it does that? I don't know why, but at least I know how to fix it
 2019-11-17 05:29:27 <zzo38> I don't know if that is also what causes some other programs to fail?
+2019-11-17 05:30:05 <kmc> so it's a floating point thing?
+2019-11-17 05:30:38 <kmc> i think there is a way to attach gdb to dosbox
+2019-11-17 05:30:43 <kmc> so you could step through the relevant code
+2019-11-17 05:30:54 <kmc> i have also used a freeware version of IDA to reverse engineer DOS programs
+2019-11-17 05:31:03 <zzo38> Yes, it seems like something to do with floating point
+2019-11-17 05:32:28 <kmc> maybe DOSBox does not properly emulate the weird 80-bit x87 floats
+2019-11-17 05:32:44 <kmc> i'd be surprised though. dosbox is pretty mature software
+2019-11-17 05:32:56 <kmc> and is used to run all kinds of dos programs
+2019-11-17 05:43:17 <zzo38> I also found that in DOSBOX the functions to adjust the date/time do not work; it is just ignored, and then retrieving the date/time returns the actual date/time instead.
+2019-11-17 05:43:52 <zzo38> I once tried some program I found to try to capture printer output, but it just caused DOSBOX to crash.
+2019-11-17 05:44:35 Quit: atslash (Ping timeout: 276 seconds)
+2019-11-17 05:44:35 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 05:45:51 <zzo38> But I think there would probably be some way to make it work, if the programs use the DOS function calls to make printer output rather than direct I/O.
+2019-11-17 05:48:19 <kmc> yaeh
+2019-11-17 05:48:20 <kmc> yeah
+2019-11-17 05:48:26 <kmc> a TSR should work in that case
+2019-11-17 05:53:34 Quit: Frater_EST (Read error: Connection reset by peer)
+2019-11-17 05:53:34 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
