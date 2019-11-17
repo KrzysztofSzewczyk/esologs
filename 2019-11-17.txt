@@ -57,3 +57,54 @@
 2019-11-17 00:58:03 <b_jonas> `karma+ fizzie
 2019-11-17 00:58:16 <HackEso> fizzie now has 1 karma.
 2019-11-17 00:58:35 <b_jonas> yep, still 1, previous one didn't count
+2019-11-17 01:03:30 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-17 01:03:30 <oerjan> `dowg bin/!
+2019-11-17 01:03:32 <HackEso> No output.
+2019-11-17 01:03:42 <oerjan> `doag bin/!
+2019-11-17 01:03:44 <HackEso> No output.
+2019-11-17 01:03:49 <oerjan> argh
+2019-11-17 01:03:59 <fizzie> `dobg !
+2019-11-17 01:04:01 <HackEso> 12127:2019-11-17 <fizzïe> ` cd /hackenv/bin; rm \'!\'; ln -s interp \'!\'  # just merging these two identical files \ 12093:2019-11-16 <fizzïe> sled /hackenv/bin/!//s|exec ibin|exec $HACKENV/ibin| \ 11880:2019-07-19 <oerjän> ` ln -s interp bin/\\! \ 11879:2019-07-19 <oerjän> ` mv bin/{\\!,interp} \ 11876:2019-07-17 <ais52̈3> ` sed -i -e \'s/echo/echo -n/\' \'bin/!\' \ 11875:2019-07-17 <ais52̈3> ` sed -i -e \'s/ARG"$/ARG$2"/\' \'bin/
+2019-11-17 01:04:04 <fizzie> Yeah, it's pretty terribul.
+2019-11-17 01:04:36 <oerjan> i'm not entirely convinced this is an improvement.
+2019-11-17 01:04:53 <oerjan> `pwd
+2019-11-17 01:04:54 <HackEso> ​/hackenv/tmp
+2019-11-17 01:05:36 <oerjan> `ls
+2019-11-17 01:05:37 <HackEso> a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ karma \ le \ out \ OUT \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.b \ test.sh \ tmp.txt \ v1.1.1.tar.gz
+2019-11-17 01:06:38 <oerjan> `ls ..
+2019-11-17 01:06:39 <HackEso> bin \ canary \ emoticons \ esobible \ etc \ f \ factor \ hw \ ibin \ interps \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quinor \ quotes \ share \ src \ stuff \ tmflry \ tmp \ wisdom
+2019-11-17 01:07:18 <oerjan> `` echo $PATH
+2019-11-17 01:07:19 <HackEso> ​/hackenv/bin:/usr/bin:/bin
+2019-11-17 01:07:44 <oerjan> oh you made le a symbolic link
+2019-11-17 01:07:56 <oerjan> i guess that works, although what if it's removed...
+2019-11-17 01:08:02 <oerjan> `` ls -dl le
+2019-11-17 01:08:06 <HackEso> lrwxrwxrwx 1 1000 1000 11 Nov 16 21:29 le -> /hackenv/le
+2019-11-17 01:08:15 <fizzie> I wasn't sure whether to make it a link or a directory.
+2019-11-17 01:08:45 <fizzie> Anyway, with the pwd-in-/hackenv/tmp/ setup there really isn't a way to make `foo/bar commands fully revert-able.
+2019-11-17 01:08:46 <oerjan> `` chmod a-w le
+2019-11-17 01:08:47 <HackEso> No output.
+2019-11-17 01:09:03 <oerjan> this should prevent some accidents
+2019-11-17 01:09:36 <oerjan> what do you mean, fulle revert-able?
+2019-11-17 01:09:44 <oerjan> *y
+2019-11-17 01:09:56 <oerjan> `` ls -dl le
+2019-11-17 01:09:57 <HackEso> lrwxrwxrwx 1 1000 1000 11 Nov 16 21:29 le -> /hackenv/le
+2019-11-17 01:09:58 <fizzie> Well, in the sense that if someone breaks it, you can't fix it with `revert.
+2019-11-17 01:10:01 <oerjan> argh
+2019-11-17 01:10:09 <oerjan> `` ls -dl ../le
+2019-11-17 01:10:13 <HackEso> dr-xr-xr-x 2 1000 1000 4096 Apr  7  2018 ../le
+2019-11-17 01:10:18 <oerjan> darn
+2019-11-17 01:10:32 <oerjan> `` chmod a+w le
+2019-11-17 01:10:33 <HackEso> No output.
+2019-11-17 01:11:48 <oerjan> argh, apparently symbolic links cannot be write-protected
+2019-11-17 01:15:52 <zzo38> Yes, you cannot change the permission of a symbolic link, I don't know why it is like that
+2019-11-17 01:16:56 <esowiki> 14[[07Joke language list14]]4 10 02https://esolangs.org/w/index.php?diff=67109&oldid=67094 5* 03Quadril-Is 5* (+42) 10/* General languages */
+2019-11-17 01:17:30 <esowiki> 14[[07IBC14]]4 10 02https://esolangs.org/w/index.php?diff=67110&oldid=67103 5* 03Quadril-Is 5* (+5) 10
+2019-11-17 01:17:43 <fizzie> Yeah, I'm not certain the benefit of having a bit less cruft in the repo is worth the hassle / breaking change. But I'm not sure it's not, either.
+2019-11-17 01:19:09 <esowiki> 14[[07User talk:Quadril-Is14]]4 N10 02https://esolangs.org/w/index.php?oldid=67111 5* 03Quadril-Is 5* (+189) 10Created page with "--~~~~ --~~~~"
+2019-11-17 01:19:51 <esowiki> 14[[07IBC14]]4 10 02https://esolangs.org/w/index.php?diff=67112&oldid=67110 5* 03Quadril-Is 5* (+40) 10
+2019-11-17 01:19:59 <fizzie> For ibin, I'll address those as an offline commit if we keep this configuration.
+2019-11-17 01:21:00 <fizzie> (I was thinking of making `interp to just cd /hackenv first, but it seems inconsistent to have those have a separate default cwd. Though you'd only notice when accessing files, which is maybe not that common.)
+2019-11-17 01:23:41 <esowiki> 14[[07User:Quadril-Is14]]4 10 02https://esolangs.org/w/index.php?diff=67113&oldid=67073 5* 03Quadril-Is 5* (+437) 10
+2019-11-17 01:26:50 <fizzie> Even if we do revert back to /hackenv as the default directory, I'd probably make `fetch (with no output file specified) write to tmp/ by default.
+2019-11-17 01:26:57 <fizzie> `slbd hello-world-in-any-language//s|hw/|${HACKENV-/hackenv}/hw/|g
+2019-11-17 01:26:58 <HackEso> hello-world-in-any-language//if [ -z $(tr [A-Z] [a-z] <<< "$1") ]; then echo "Hello, world!"; else if [ -f ${HACKENV-/hackenv}/hw/$(tr [A-Z] [a-z] <<< "$1") ]; then cat ${HACKENV-/hackenv}/hw/$(tr [A-Z] [a-z] <<< "$1"); else echo "Your language does not exist"; fi; fi
