@@ -1329,3 +1329,83 @@
 2019-11-17 20:56:46 <esowiki> 14[[07Flow of Holes14]]4 M10 02https://esolangs.org/w/index.php?diff=67195&oldid=57552 5* 03Ais523 5* (+0) 10/* Data storage */ grammar
 2019-11-17 20:57:07 Joined: ais523
 2019-11-17 20:57:07 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:00:07 <b_jonas> hello ais523. fizzie went on a rampange with HackEso, changed the default working directory to /hackenv/tmp , edited many programs to not assume that the wd is /hackenv
+2019-11-17 21:00:37 <b_jonas> although now there are also some symlinks in tmp that may make some programs appear to work at first but then silently fail
+2019-11-17 21:01:01 <b_jonas> I'm still confused many times when I type a command
+2019-11-17 21:02:13 <shachaf> fizzie: I'd be tempted to set $HACKENV to a path with a space in it, just to break all the new scripts.
+2019-11-17 21:02:27 <b_jonas> shachaf: I put double quotes in many of them
+2019-11-17 21:02:48 <b_jonas> shachaf: mind you, if you manage to make a version of HackEso that runs on native windows, that might confuse everyone
+2019-11-17 21:02:50 Joined: kspalaiologos
+2019-11-17 21:02:50 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:03:03 <b_jonas> I'd probably be able to mostly deal with it, because I use windows at work
+2019-11-17 21:03:05 <b_jonas> but still
+2019-11-17 21:03:10 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-11-17 21:03:10 <ais523> HackEso isn't really the focus of my #esoteric experience, I'm more interested in the esolangs (with HackEso mostly being interesting for the implementation of them)
+2019-11-17 21:03:18 <ais523> `! brachylog 2+₂w
+2019-11-17 21:03:19 <HackEso> ​/hackenv/ibin/brachylog: 2: /hackenv/ibin/brachylog: cannot create tmp/input.brachylog: Directory nonexistent \ /hackenv/ibin/brachylog: 3: cd: can't cd to interps/brachylog/brachylog/Brachylog-master/src \ ERROR: Prolog initialisation failed: \ ERROR: source_sink `'brachylog.pl'' does not exist
+2019-11-17 21:03:28 <b_jonas> yeah, ibin is not fixed yet
+2019-11-17 21:03:37 <ais523> ibin is the only important part :-(
+2019-11-17 21:03:42 <b_jonas> fizzie: ^
+2019-11-17 21:03:59 <b_jonas> we'll fix it, this is just a temporary hickup
+2019-11-17 21:06:00 <ais523> anyway, I recently discovered a set of languages that contains multiple different languages that have unclear Turing-completeness for different reasons, so I added it to the wiki
+2019-11-17 21:06:02 <b_jonas> fizzie changed hackeso recently, we didn't have time to fix everything yet
+2019-11-17 21:06:57 <b_jonas> ais523: I had discovered one of those as well. Amycus (my buggy version) with some of the builtins removed
+2019-11-17 21:07:10 <ais523> oh, interesting
+2019-11-17 21:07:30 <b_jonas> but I didn't write everything that I found about it down
+2019-11-17 21:07:47 <b_jonas> I also haven't written down a proper proof for Blindfolded Arithmetic with 3 variables
+2019-11-17 21:07:55 <b_jonas> which is clearly turing-complete
+2019-11-17 21:08:11 <b_jonas> yes, I know you have a proof for 2 variables
+2019-11-17 21:08:18 Quit: ais523 (Quit: sorry for my connection)
+2019-11-17 21:08:19 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:08:31 Joined: ais523
+2019-11-17 21:08:32 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:08:33 <b_jonas> fizzie: have you figured what we should do with the ibin interpreters?
+2019-11-17 21:08:42 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-11-17 21:08:42 <ais523> anyway, now I have an additional 120 esolangs with procedurally generated names; "a c fd td" is probably the most interesting, being closer to the TC line than most of them (none are proven TC yet but there are many better candidates for TC than that one)
+2019-11-17 21:11:29 Quit: imode (Ping timeout: 276 seconds)
+2019-11-17 21:11:29 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:11:31 <arseniiv> ais523: how do you call a language only powerful enough to represent functions from finite sets to finite sets? Seems like a weakest class I met, but that’s the case when a generalized Minsky Machine is not TC
+2019-11-17 21:11:58 <arseniiv> machine*
+2019-11-17 21:12:05 <b_jonas> arseniiv: a finite function?
+2019-11-17 21:12:18 <ais523> that's basically just a lookup table, right?
+2019-11-17 21:12:30 <int-e> arseniiv: well it's isomorphic to total functions from natural numbers to natural numbers?
+2019-11-17 21:12:32 <arseniiv> b_jonas: it doesn’t look like a good name for a class
+2019-11-17 21:12:35 <arseniiv> ais523: yeah
+2019-11-17 21:12:35 <ais523> for batch processes, lookup table vs. finite-state machine vs. bounded-storage machine is all a matter of opinion, really
+2019-11-17 21:12:41 Quit: LKoen (Remote host closed the connection)
+2019-11-17 21:12:41 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:13:02 <ais523> the differences only arise when you add I/O
+2019-11-17 21:13:21 <arseniiv> int-e: hm I don’t see
+2019-11-17 21:13:34 <ais523> (even then, a bounded-storage machine is just "a finite-state machine with an obvious generalisation to larger finite numbers of states, which is TC in the limit")
+2019-11-17 21:13:39 <int-e> arseniiv: oh, finite sets of what...
+2019-11-17 21:14:49 Joined: LKoen
+2019-11-17 21:14:50 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 21:14:52 <arseniiv> int-e: I meant a function has elements of a finite set as arguments and (from another one) as values, not sets themselves, that would be too good!
+2019-11-17 21:15:32 <int-e> arseniiv: Oh. Not a type of finite sets, but finite sets as types.
+2019-11-17 21:15:57 Quit: xunil (Ping timeout: 240 seconds)
+2019-11-17 21:15:57 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 21:17:09 <int-e> arseniiv: So basically the same as boolean circuits.
+2019-11-17 21:17:54 <arseniiv> int-e: yes
+2019-11-17 21:18:38 <int-e> So I guess that's the name I'd use, with a footnote that we also consider circuits which disallow certain inputs and outputs.
+2019-11-17 21:19:27 <b_jonas> int-e: what's wrong with finite functions, or functions with a finite domain if you prefer
+2019-11-17 21:19:54 <int-e> b_jonas: boolean circuits come with established theory
+2019-11-17 21:20:02 <int-e> b_jonas: other than that, no reason
+2019-11-17 21:20:07 <b_jonas> finite sets come with establish theory too
+2019-11-17 21:20:13 <arseniiv> maybe I was too strit
+2019-11-17 21:20:18 <arseniiv> strict*
+2019-11-17 21:20:34 <int-e> b_jonas: and by theory I mean complexity theory.
+2019-11-17 21:23:59 <b_jonas> ``` cat /hackenv/ibin/brachylog # this one doesn't use that lib/interp framework, so we can fix it in a custom way without worrying about how we fix the old stuff
+2019-11-17 21:24:00 <HackEso> ​#!/bin/sh \ echo "$1" > tmp/input.brachylog \ (cd interps/brachylog/brachylog/Brachylog-master/src; swipl -g 'run_from_file("../../../../../tmp/input.brachylog", _, _), write(" \ true."), !, halt; write(" \ false."), !, halt' brachylog.pl)
+2019-11-17 21:24:24 <fizzie> b_jonas: You don't need to; I've included it in my out-of-band fix commit, which I'm building.
+2019-11-17 21:24:32 <b_jonas> ok
+2019-11-17 21:25:06 <b_jonas> ais523: ! brachylog will be fixed
+2019-11-17 21:25:24 <ais523> `! brachylog 2+₂w
+2019-11-17 21:25:25 <HackEso> ​/hackenv/ibin/brachylog: 2: /hackenv/ibin/brachylog: cannot create tmp/input.brachylog: Directory nonexistent \ /hackenv/ibin/brachylog: 3: cd: can't cd to interps/brachylog/brachylog/Brachylog-master/src \ ERROR: Prolog initialisation failed: \ ERROR: source_sink `'brachylog.pl'' does not exist
+2019-11-17 21:25:35 <fizzie> "Will be", not "is".
+2019-11-17 21:25:39 <ais523> ah right, not fixed yet
+2019-11-17 21:25:47 <b_jonas> and there'll be little lemon-soaked napkins too
+2019-11-17 21:26:01 <ais523> please don't delay the fix until the napkins are available ;-)
+2019-11-17 21:27:25 <b_jonas> `? cake
+2019-11-17 21:27:26 <HackEso> The Enrichment Center is required to remind you that you will be baked, and then there will be cake.
+2019-11-17 21:28:12 <int-e> I replayed Portal recently. Still good :)
+2019-11-17 21:28:59 <b_jonas> int-e: how about Portal 2 single-player?
