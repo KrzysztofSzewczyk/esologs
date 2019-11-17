@@ -314,3 +314,27 @@
 2019-11-17 11:44:11 <myname> i don't get how you secure anything by using bf. i mean, even if you couldn't reverse engineer what it does, you could just use it?
 2019-11-17 11:49:13 Quit: xkapastel (Quit: Connection closed for inactivity)
 2019-11-17 11:49:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 12:00:34 <b_jonas> what?
+2019-11-17 12:00:52 <b_jonas> do you have a link about that?
+2019-11-17 12:01:10 <b_jonas> or is this a top secret thing that you saw when you broke into their system to get a jackpot so you can't tell us about it
+2019-11-17 12:11:49 <b_jonas> DMM reports that the Irregular Webcomic forums are down and he can't easily bring them up. We'll have to make some replacement somehow, because those forums are too useful. Luckily I downloaded much of the forum content recently, but hosting and moderating a forum is the hard part.
+2019-11-17 12:12:16 Quit: kritixilithos (Ping timeout: 260 seconds)
+2019-11-17 12:12:16 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 12:13:45 <kspalaiologos> just google it
+2019-11-17 12:13:54 <kspalaiologos> i remember the thread popping up on mazonkas' brainfuck computer
+2019-11-17 12:14:08 <kspalaiologos> on HackerNews obviously
+2019-11-17 12:17:57 Joined: FreeFull
+2019-11-17 12:17:58 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 12:20:30 <b_jonas> kspalaiologos: so they're the ones paying you to write the brainfuck disassembler, because they don't have the source code?
+2019-11-17 12:20:40 <kspalaiologos> haha
+2019-11-17 12:21:13 <kspalaiologos> I wish someone paid me for that
+2019-11-17 12:21:36 <kspalaiologos> writing unit tests in brainfuck
+2019-11-17 12:21:40 <kspalaiologos> going to love that
+2019-11-17 12:21:54 <kspalaiologos> I need a memory manager tho
+2019-11-17 12:22:03 <kspalaiologos> I've been scratching my head for good three days
+2019-11-17 12:22:15 <kspalaiologos> thought about singly linked list, doubly linked list
+2019-11-17 12:22:32 <kspalaiologos> but the general problem is, I expect big amount of allocations and small block size
+2019-11-17 12:22:54 <kspalaiologos> so linked list is going to kill the performance a tiny bit
+2019-11-17 12:23:25 <kspalaiologos> and the global storage won't work
+2019-11-17 12:23:26 <kspalaiologos> obviously
+2019-11-17 12:23:46 <kspalaiologos> because small chunk size = a lot of allocation = many entries = need to reserve a lot of space = shitty performance
