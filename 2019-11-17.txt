@@ -1107,3 +1107,80 @@
 2019-11-17 18:56:25 <kspalaiologos> fizzie, it's not that much tho :p
 2019-11-17 18:57:00 <kspalaiologos> in 1M of cycles, you can clear a cell just 1300 times
 2019-11-17 18:57:24 <kspalaiologos> and add two cells only 1000 times
+2019-11-17 19:02:34 <int-e> I'd say brainfuck-in-befunge is more of a toy than a "serious" brainfuck implementation.
+2019-11-17 19:03:47 <kspalaiologos> it's not in befunge tho
+2019-11-17 19:03:50 <kspalaiologos> it's externalk
+2019-11-17 19:06:12 <fizzie> What?
+2019-11-17 19:06:35 <fizzie> fungot's brainfuck interpreter is certainly in Befunge.
+2019-11-17 19:06:35 <fungot> fizzie: think about the data
+2019-11-17 19:06:40 <kspalaiologos> is it?
+2019-11-17 19:06:44 <kspalaiologos> well
+2019-11-17 19:06:46 <fizzie> zzo38: CologneBlue should be back, if you want to check.
+2019-11-17 19:07:04 <kspalaiologos> but extending the limit to 20M isn't that much isn't it
+2019-11-17 19:07:39 <fizzie> It's approximately lines 298-310 and 355-376 of https://github.com/fis/fungot/blob/master/fungot.b98
+2019-11-17 19:07:39 <fungot> fizzie: oh it's posix 2001 and the channel) to beat him to welcoming me. we've battled over it since forever
+2019-11-17 19:08:37 <fizzie> And it'd be a 20x increase. I'd need to check how slow that is.
+2019-11-17 19:08:44 <fizzie> Right now fiddling with MediaWiki instead.
+2019-11-17 19:09:07 <kspalaiologos> well it's instant for me
+2019-11-17 19:09:22 <kspalaiologos> I'll compare that to dbfi\
+2019-11-17 19:14:08 <fizzie> Aaand Modern is back as well. Hopefully.
+2019-11-17 19:15:50 Joined: ArthurStrong
+2019-11-17 19:15:50 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 19:16:09 <b_jonas> `fetch bin/uptime https://hack.esolangs.org/get/bin/uptime
+2019-11-17 19:16:11 <HackEso> ​/hackenv/tmp/bin/uptime: No such file or directory
+2019-11-17 19:16:17 <zzo38> fizzie: Yes, thank you it is fixed
+2019-11-17 19:16:19 <b_jonas> `fetch /hackenv/bin/uptime https://hack.esolangs.org/get/bin/uptime
+2019-11-17 19:16:20 <HackEso> 2019-11-17 19:16:20 URL:https://hack.esolangs.org/get/bin/uptime [1551/1551] -> "/hackenv/bin/uptime" [1]
+2019-11-17 19:16:31 <b_jonas> fizzie: I think the `edit webpage prints the wrong fetch command now
+2019-11-17 19:16:34 <b_jonas> `uptime
+2019-11-17 19:16:35 <HackEso> ​ 19:16:34 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00
+2019-11-17 19:16:36 <b_jonas> `uptime -s
+2019-11-17 19:16:36 <fizzie> Yes, I noticed.
+2019-11-17 19:16:36 <HackEso> uptime: uptime
+2019-11-17 19:16:37 <b_jonas> `uptime -p
+2019-11-17 19:16:37 <HackEso> up 0 minutes
+2019-11-17 19:16:41 <b_jonas> hmm
+2019-11-17 19:16:47 <b_jonas> ``` chmod a+x /hackenv/bin/uptime
+2019-11-17 19:16:48 <HackEso> No output.
+2019-11-17 19:16:49 <b_jonas> `uptime
+2019-11-17 19:16:50 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: /hackenv/bin/uptime: python3: bad interpreter: No such file or directory \ /srv/hackeso-code/multibot_cmds/lib/limits: line 5: /hackenv/bin/uptime: Success
+2019-11-17 19:17:11 <zzo38> I found now they have some "mystery" cards with some similar ideas than what I had, including that non-card objects on the stack that enter the battlefield become tokens.
+2019-11-17 19:17:14 <b_jonas> `fetch /hackenv/bin/uptime https://hack.esolangs.org/get/bin/uptime
+2019-11-17 19:17:14 <HackEso> 2019-11-17 19:17:14 URL:https://hack.esolangs.org/get/bin/uptime [1560/1560] -> "/hackenv/bin/uptime" [1]
+2019-11-17 19:17:15 <b_jonas> ``` chmod a+x /hackenv/bin/uptime
+2019-11-17 19:17:16 <HackEso> No output.
+2019-11-17 19:17:18 <b_jonas> `uptime
+2019-11-17 19:17:19 <HackEso> ​ 19:17:18 up 3802 day,  3:46,  0 users,  load average: 0.00, 0.00, 0.00
+2019-11-17 19:17:21 <b_jonas> `uptime -s
+2019-11-17 19:17:22 <HackEso> 2009-06-20 15:30:22
+2019-11-17 19:17:23 <b_jonas> `uptime -p
+2019-11-17 19:17:23 <HackEso> up 3802 day, 3 hours, 47 minutes
+2019-11-17 19:17:25 <b_jonas> there
+2019-11-17 19:17:35 <b_jonas> but top b gives it away
+2019-11-17 19:18:12 <fizzie> `` date --date=@1245511822
+2019-11-17 19:18:13 <HackEso> Sat Jun 20 15:30:22 UTC 2009
+2019-11-17 19:18:25 <b_jonas> `datei @1245511822
+2019-11-17 19:18:25 <HackEso> 2009-06-20 15:30:22.000 +0000 UTC June 20 Saturday 2009-W25-6
+2019-11-17 19:18:26 <fizzie> Oh, I guess you already printed -s.
+2019-11-17 19:18:38 Joined: xunil
+2019-11-17 19:18:39 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xunil, zemhill, zzo38
+2019-11-17 19:18:46 <b_jonas> fizzie: there could be a bug in the code, so it's reasonable to check
+2019-11-17 19:19:05 User Name: xunil = xunil!~alex@192.30.89.59
+2019-11-17 19:19:05 <xunil> do you use gut feeling when coding?
+2019-11-17 19:19:10 <b_jonas> fizzie: that's the earliest I figured HackEgo existed
+2019-11-17 19:19:17 <b_jonas> it's probably not its birthday, but a reasonable bound
+2019-11-17 19:19:18 <xunil> like intuitive code
+2019-11-17 19:20:31 <esowiki> 14[[07Bitwise Cyclic Tag14]]4 10 02https://esolangs.org/w/index.php?diff=67190&oldid=55514 5* 03Ais523 5* (-7) 10add see also to [[cyclic tag]]; change the Wikipedia link to our usual (non-potholed) notation for Wikipedia interwikis
+2019-11-17 19:21:00 <fizzie> The initial import to the hackbot repo is 19 Jun 2009, though of course the code might have existed before that.
+2019-11-17 19:21:26 <fizzie> Oh, I guess that's where it's from.
+2019-11-17 19:21:48 <fizzie> Yeah, I think that's a reasonable value.
+2019-11-17 19:21:56 <b_jonas> ok
+2019-11-17 19:24:00 <xunil> the code is a collection of mental rays
+2019-11-17 19:24:12 <xunil> sent to compiler :)
+2019-11-17 19:24:54 <xunil> mental rays that force computer mind to produce code
+2019-11-17 19:25:37 <kingoffrance> whenever i have a problem i just rub magic 8 ball and wait for genius
+2019-11-17 19:25:50 <kspalaiologos> you can't rub magic 8 ball
+2019-11-17 19:25:58 <kspalaiologos> because fungot is constraining me
+2019-11-17 19:25:58 <fungot> kspalaiologos: isn't that somehow the idea of starting with fnord, but that has its lifeblood still in it
+2019-11-17 19:27:22 <fizzie> `8ball Or can you?
+2019-11-17 19:27:23 <HackEso> Signs point to yes.
