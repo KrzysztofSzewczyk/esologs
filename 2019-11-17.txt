@@ -1409,3 +1409,74 @@
 2019-11-17 21:27:26 <HackEso> The Enrichment Center is required to remind you that you will be baked, and then there will be cake.
 2019-11-17 21:28:12 <int-e> I replayed Portal recently. Still good :)
 2019-11-17 21:28:59 <b_jonas> int-e: how about Portal 2 single-player?
+2019-11-17 21:31:44 <arseniiv> oh, is there a big story behind lemons on the wiki logo?
+2019-11-17 21:31:49 <int-e> b_jonas: Good story, missed the puzzles.
+2019-11-17 21:32:03 <b_jonas> int-e: what story or puzzles?
+2019-11-17 21:32:27 <b_jonas> arseniiv: there was some story I think, probably not very relevant, but I don't remember what it was
+2019-11-17 21:32:31 <int-e> Portal 2 tells a story of the history of Aperture Science.
+2019-11-17 21:32:39 <b_jonas> oh right, Portal 2
+2019-11-17 21:33:04 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 N10 02https://esolangs.org/w/index.php?oldid=67196 5* 03PythonshellDebugwindow 5* (+99) 10Created page with "I am currently working on BrainStack, a stack-based esolang with some influence from [[Brainfuck]]."
+2019-11-17 21:33:05 <b_jonas> sorry, I forgot the context even though it was just a few lines before
+2019-11-17 21:33:10 <int-e> Portal 1 has less of a story, but more satisfying puzzles.
+2019-11-17 21:33:31 <arseniiv> b_jonas: lemon-soaked napkins unhibernated me
+2019-11-17 21:33:38 <int-e> (Portal 2 has multiplayer puzzles but since I don't do multiplayer I'm missing out on those.)
+2019-11-17 21:35:54 <ais523> arseniiv: they're limes, not lemons; IIRC it was originally just a stock image but we kept it for the mystery, there probably isn't a deeper meaning behind it but who knows?
+2019-11-17 21:35:57 <b_jonas> `? napkin
+2019-11-17 21:35:58 <HackEso> A complement of small lemon-soaked paper napkins is essential for the comfort, refreshment, and hygiene of the passengers during the journey.
+2019-11-17 21:36:30 <ais523> int-e: IIRC there are some people who play Portal 2 multiplayer by controlling both players themselves
+2019-11-17 21:36:43 <ais523> but you're not missing out on much story content by missing out the multiplayer, only puzzles really
+2019-11-17 21:36:45 <b_jonas> ais523: yes, but those are crazy speedrunners
+2019-11-17 21:36:56 <b_jonas> and int-e complained about puzzles
+2019-11-17 21:36:58 <int-e> ais523: Yeah but I like puzzles.
+2019-11-17 21:37:08 <ais523> right
+2019-11-17 21:37:12 <b_jonas> if you wanted the story, you could just watch someone else's multiplayer playthrough
+2019-11-17 21:37:23 <ais523> but that would spoil the puzzles
+2019-11-17 21:39:47 <b_jonas> sure, but if you won't play it anyway, then does the spoiler matter?
+2019-11-17 21:40:29 <shachaf> Why don't you do multiplayer?
+2019-11-17 21:40:35 <fizzie> `! brachylog 2+₂w
+2019-11-17 21:40:36 <HackEso> 4 \ true.
+2019-11-17 21:40:48 <arseniiv> ais523: ah! Thanks
+2019-11-17 21:41:03 <int-e> b_jonas: It's funny though... even though the first Portal game has less of a story, it seems to be richer on memorable quotes.
+2019-11-17 21:41:09 <shachaf> It's so odd that you can't `doag f where f is directly in hackenv anymore.
+2019-11-17 21:41:20 <shachaf> I guess dowg and dobg and so on are finally useful?
+2019-11-17 21:41:25 <arseniiv> and I did know they are limes but for some reason I wrote about lemons, maybe because of those napkins mentioned…
+2019-11-17 21:41:28 <b_jonas> int-e: I don't think so. I think Portal 2 has memorable quotes too
+2019-11-17 21:41:48 <b_jonas> or maybe not, I dunno
+2019-11-17 21:41:48 <fizzie> shachaf: Yes, and maybe "dorg" could be relative to /hackenv (r for root).
+2019-11-17 21:42:23 <shachaf> And crlprits? And crt?
+2019-11-17 21:42:41 <b_jonas> why "root"? root is /
+2019-11-17 21:43:03 <arseniiv> hopefully HackEso gets well soon! :D
+2019-11-17 21:43:07 <fizzie> Well, logical root. Alternatively, "h", but that's probably just as confusing.
+2019-11-17 21:43:37 <shachaf> e for env
+2019-11-17 21:43:53 <b_jonas> well, I don't really care, because I don't use cbt or slbd or [dh]oag
+2019-11-17 21:44:21 <b_jonas> I just use cat, /bin/sed or perl, hg directly
+2019-11-17 21:45:20 <fizzie> `! befunge 0"gnitset tsuj">:#,_@
+2019-11-17 21:45:20 <HackEso> just testing
+2019-11-17 21:45:34 <fizzie> (It's likely some things are still broken.)
+2019-11-17 21:46:36 <b_jonas> `! c int main(void) { printf("oFQOtCD75OCP"); return 0; }
+2019-11-17 21:46:38 <HackEso> oFQOtCD75OCP
+2019-11-17 21:47:06 <fizzie> OTOH, I think it's highly likely some of the ibin commands were already broken, due to missing bits and pieces.
+2019-11-17 21:47:09 <fizzie> `! bf_txtgen testing
+2019-11-17 21:47:12 <HackEso> 72 +++++++++++++[>+++++++++>++++++++>><<<<-]>-.>---.<-.+.>++++.<------.>--. [356]
+2019-11-17 21:47:14 <b_jonas> `! perl for ("a".."dz") { print "$_ "; }
+2019-11-17 21:47:15 <HackEso> a b c d e f g h i j k l m n o p q r s t u v w x y z aa ab ac ad ae af ag ah ai aj ak al am an ao ap aq ar as at au av aw ax ay az ba bb bc bd be bf bg bh bi bj bk bl bm bn bo bp bq br bs bt bu bv bw bx by bz ca cb cc cd ce cf cg ch ci cj ck cl cm cn co cp cq cr cs ct cu cv cw cx cy cz da db dc dd de df dg dh di dj dk dl dm dn do dp dq dr ds dt du dv dw dx dy dz
+2019-11-17 21:50:37 <b_jonas> ``` swipl -g 'T is 7**8 + 1, display(T), halt.'
+2019-11-17 21:50:38 <HackEso> 5764802
+2019-11-17 21:50:39 <b_jonas> this still works
+2019-11-17 21:51:59 <b_jonas> `! cxx #include<iostream> \ int main() { std::cout << "cwnRPfoBPzhY"; return 0; }
+2019-11-17 21:52:09 <HackEso> No output.
+2019-11-17 21:52:16 <b_jonas> `! cxx int main() { std::cout << "cwnRPfoBPzhY"; return 0; }
+2019-11-17 21:52:18 <HackEso> Does not compile.
+2019-11-17 21:52:26 <b_jonas> `! cxx #include<iostream> \n int main() { std::cout << "cwnRPfoBPzhY"; return 0; }
+2019-11-17 21:52:29 <HackEso> No output.
+2019-11-17 21:52:40 <b_jonas> how do I use `! cxx ?
+2019-11-17 21:54:26 <fizzie> Hmm, the middle one should have worked, there's one of those implicit wrappers with a try-both-ways logic.
+2019-11-17 21:54:59 <fizzie> Well, actually -- the wrapper includes the main as well.
+2019-11-17 21:55:01 <b_jonas> fizzie: how do I explicitly add an include?
+2019-11-17 21:55:10 <fizzie> `! cxx std::cout << "cwnRPfoBPzhY"; return 0;
+2019-11-17 21:55:12 <HackEso> cwnRPfoBPzhY
+2019-11-17 21:55:53 <fizzie> Not sure. Can't quite figure out how to express a newline.
+2019-11-17 21:56:31 <b_jonas> hmm
+2019-11-17 21:56:40 <b_jonas> would be useful for defines and includes
+2019-11-17 21:57:13 <fizzie> Yes, it would. It auto-includes <iostream> <cstdio> <cstring> and 'using namespace std;'.
+2019-11-17 21:58:11 <arseniiv> I heard a suspicious claim every endo bijection is a composition of two endo involutions. I think I almost got why this should be wrong
