@@ -784,3 +784,97 @@
 2019-11-17 17:26:31 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
 2019-11-17 17:29:51 <fizzie> I should probably also restart the whole server one of these days.
 2019-11-17 17:29:53 <fizzie> 17:29:14 up 679 days, 18:51,  5 users,  load average: 0.99, 0.41, 0.21
+2019-11-17 17:30:23 <b_jonas> fizzie: yes, you should have upgraded debian while it was in single user mode
+2019-11-17 17:31:33 <fizzie> That seems a little much. They don't recommend that in the upgrade instructions.
+2019-11-17 17:31:49 <b_jonas> they don't? ok
+2019-11-17 17:32:07 <fizzie> Well, they don't not recommend it either.
+2019-11-17 17:33:01 <kspalaiologos> nooo don't ruin the uptime
+2019-11-17 17:33:11 <b_jonas> ``` uptime
+2019-11-17 17:33:12 <HackEso> ​ 17:33:11 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00
+2019-11-17 17:34:13 <fizzie> Looks like there's no "uptime namespace", the container has the same uptime as the system itself. (The UML is obviously a different matter.)
+2019-11-17 17:35:46 Joined: LKoen
+2019-11-17 17:35:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 17:36:20 <b_jonas> I could make a fake uptime command though that claims that HackEso is up since lots of years ago
+2019-11-17 17:37:04 <b_jonas> though it's tricky because I'd have to modify
+2019-11-17 17:37:06 <b_jonas> `top b
+2019-11-17 17:37:07 <b_jonas> too
+2019-11-17 17:37:13 <HackEso> top - 17:37:06 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00 \ Tasks:  25 total,   1 running,  24 sleeping,   0 stopped,   0 zombie \ %Cpu(s):  0.0 us, 21.1 sy,  0.0 ni, 78.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st \ MiB Mem :    246.7 total,    240.7 free,      3.3 used,      2.7 buff/cache \ MiB Swap:      0.0 total,      0.0 free,      0.0 used.    239.1 avail Mem  \  \   PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM
+2019-11-17 17:37:24 <b_jonas> and top has lot more command options than uptime
+2019-11-17 17:38:11 <b_jonas> if we fake uptime, we should fake it to show that HackEgo is a reincarnation of HackEso and inherited its uptime
+2019-11-17 17:38:23 <b_jonas> ``` datei; uptime -s
+2019-11-17 17:38:24 <HackEso> uptime: uptime \ 2019-11-17 17:38:23.519 +0000 UTC November 17 Sunday 2019-W46-7
+2019-11-17 17:38:30 <b_jonas> what?
+2019-11-17 17:38:50 <b_jonas> ``` datei
+2019-11-17 17:38:51 <HackEso> 2019-11-17 17:38:50.590 +0000 UTC November 17 Sunday 2019-W46-7
+2019-11-17 17:38:52 <b_jonas> ``` uptime -s
+2019-11-17 17:38:53 <HackEso> uptime: uptime
+2019-11-17 17:38:55 <b_jonas> that
+2019-11-17 17:38:56 <b_jonas> makes no sense
+2019-11-17 17:39:12 <b_jonas> ``` type uptime
+2019-11-17 17:39:13 <HackEso> uptime is /usr/bin/uptime
+2019-11-17 17:39:20 <b_jonas> ``` /usr/bin/uptime -s
+2019-11-17 17:39:21 <HackEso> uptime: uptime
+2019-11-17 17:39:26 <fizzie> That's pretty weird.
+2019-11-17 17:39:50 <fizzie> Incidentally:
+2019-11-17 17:39:51 <fizzie> `lsb_release -d
+2019-11-17 17:39:52 <HackEso> Description:	Debian GNU/Linux 10 (buster)
+2019-11-17 17:40:09 <b_jonas> ``` cat /etc/debian_version
+2019-11-17 17:40:14 <HackEso> cat: /etc/debian_version: No such file or directory
+2019-11-17 17:40:48 <fizzie> Actually, I wonder where lsb_release pulls that from. Clearly not from /etc, which isn't mounted.
+2019-11-17 17:40:51 <b_jonas> yeah, we don't have a proper et
+2019-11-17 17:42:47 <fizzie> Apparently it reads /usr/lib/os-release
+2019-11-17 17:43:10 Quit: LKoen (Remote host closed the connection)
+2019-11-17 17:43:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 17:43:11 <b_jonas> ``` cat /etc/issue
+2019-11-17 17:43:11 <HackEso> cat: /etc/issue: No such file or directory
+2019-11-17 17:43:27 <kspalaiologos> `` cat /proc/uptime
+2019-11-17 17:43:28 <HackEso> 0.26 0.04
+2019-11-17 17:43:31 <kspalaiologos> `` uptime
+2019-11-17 17:43:32 <HackEso> ​ 17:43:31 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00
+2019-11-17 17:43:59 <kspalaiologos> `` cat > /proc/uptime <<<"350735.47 234388.90"
+2019-11-17 17:44:00 <HackEso> ​/hackenv/bin/`: line 5: /proc/uptime: Permission denied
+2019-11-17 17:44:04 <kspalaiologos> pf :p
+2019-11-17 17:44:19 <kspalaiologos> fizzie, if you want to change uptime this is probably the way to go
+2019-11-17 17:44:22 <kspalaiologos> but you need root privs :p
+2019-11-17 17:44:34 <b_jonas> kspalaiologos: I don't think it works even as root
+2019-11-17 17:44:41 <kspalaiologos> let's check it
+2019-11-17 17:44:42 <kspalaiologos> together
+2019-11-17 17:44:47 <b_jonas> nope
+2019-11-17 17:44:51 <kspalaiologos> :p
+2019-11-17 17:44:58 <kspalaiologos> I have a VM to spare
+2019-11-17 17:45:01 <kspalaiologos> let's find out
+2019-11-17 17:45:21 <fizzie> Doesn't look very promising: https://github.com/torvalds/linux/blob/master/fs/proc/uptime.c
+2019-11-17 17:46:06 <b_jonas> the time when the computer booted up is in the sysconf header of every ELF process on linux
+2019-11-17 17:46:15 <b_jonas> if you changed uptime, it would be really hard to change that everywhere
+2019-11-17 17:46:21 <b_jonas> as processes may have read it already
+2019-11-17 17:46:34 <b_jonas> if you want to really fake uptime, you'd have to fake it from boot
+2019-11-17 17:46:40 <b_jonas> but I don't recommend really faking uptime
+2019-11-17 17:46:52 <b_jonas> just changing the output of uptime and top and a few such high-level commands cosmetically
+2019-11-17 17:47:27 <b_jonas> `uptime -p
+2019-11-17 17:47:27 <HackEso> up 0 minutes
+2019-11-17 17:47:47 <b_jonas> could even fix uptime -s as a side effect
+2019-11-17 17:48:10 <fizzie> I do wonder what's up with that. It works outside the UML.
+2019-11-17 17:48:34 <b_jonas> fizzie: but the outside is running a different version of debian
+2019-11-17 17:48:42 <b_jonas> any program could be working there and broken inside
+2019-11-17 17:48:43 <b_jonas> or back
+2019-11-17 17:49:01 <fizzie> Well, not really, because the userland of the UML is the userland of the container.
+2019-11-17 17:49:04 <kspalaiologos> UPTIME="18738072.28 74817307.16"; mkfifo uptime_fifo; while true; do cat <<<$UPTIME > uptime_fifo; done & mount -obind uptime_fifo /proc/uptim
+2019-11-17 17:49:09 <kspalaiologos> this may do the terick
+2019-11-17 17:49:16 <kspalaiologos> but needs root privs too
+2019-11-17 17:49:24 <fizzie> (It's a different *kernel* version, of course.)
+2019-11-17 17:49:27 <kspalaiologos> and e was cut at the end
+2019-11-17 17:49:42 <b_jonas> kspalaiologos: but that may confuse programs. that's not the only place where linux tells about the uptime
+2019-11-17 17:49:58 <kspalaiologos> obviously not
+2019-11-17 17:50:06 <kspalaiologos> but this one probably is only one available from userland
+2019-11-17 17:50:33 <kspalaiologos> ok, there is sysinfo()
+2019-11-17 17:51:29 <fizzie> b_jonas: FWIW, strace shows "uptime -s" reads /etc/localtime (probably to decide how to format the "since" date), that bit at least would fail.
+2019-11-17 17:51:48 <b_jonas> hmm
+2019-11-17 17:51:58 <kspalaiologos> it works
+2019-11-17 17:52:01 <fizzie> (Other than that, it looks into /proc/sys/kernel/osrelease, /sys/devices/system/cpu/online, /proc/self/auxv and /proc/uptime.
+2019-11-17 17:52:02 <kspalaiologos> the bash snippet works
+2019-11-17 17:52:07 <kspalaiologos> it fakes output of uptime
+2019-11-17 17:52:09 Joined: LKoen
+2019-11-17 17:52:09 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 17:52:16 <kspalaiologos> and of top too
+2019-11-17 17:52:22 <kspalaiologos> I've just tested it
+2019-11-17 17:52:26 <kspalaiologos> it sets uptime to around 210 dayas
