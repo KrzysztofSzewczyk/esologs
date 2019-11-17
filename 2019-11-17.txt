@@ -1488,3 +1488,36 @@
 2019-11-17 22:03:24 <b_jonas> of course they only represent a newline when it's outside of a string/character literal
 2019-11-17 22:15:50 Quit: arseniiv (Ping timeout: 276 seconds)
 2019-11-17 22:15:50 Names: \oren\, ^[, ais523, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 22:33:56 <ais523> backslash-space makes a good way to represent newlines without worrying about parsing
+2019-11-17 22:34:02 <ais523> as it won't appear in a string or character literal
+2019-11-17 22:34:11 <ais523> (or even space-backslash-space, which is what I normally use to represent them on IRC)
+2019-11-17 22:34:29 <ais523> kingoffrance: Java supports the hexagraph \u000A for a newline
+2019-11-17 22:34:34 <ais523> but C doesn't have one
+2019-11-17 22:35:10 <ais523> it should, really, it'd be more useful than most of the trigraphs (and not all character encodings have a newline)
+2019-11-17 22:37:55 <b_jonas> ais523: yes, but you have to be able to tokenize for that
+2019-11-17 22:38:29 <b_jonas> ais523: and mind that you have to know about C++ numeric literals with new style digit separators to do enough of the tokenization to recognize character literals correctly
+2019-11-17 22:38:53 <b_jonas> oh wait
+2019-11-17 22:38:57 <b_jonas> you said backslash-space
+2019-11-17 22:38:58 <b_jonas> hmm
+2019-11-17 22:39:14 <kingoffrance> well, the easiest solution IMO is #include <stdio.h>;   /* <----- magical semicolon */   int main(void) { ... }
+2019-11-17 22:39:32 <b_jonas> kingoffrance: how does that work if you want to allow macros?
+2019-11-17 22:39:38 <ais523> null declarations aren't legal anyway
+2019-11-17 22:39:40 <b_jonas> macro defines too I mean
+2019-11-17 22:39:49 <b_jonas> ais523: they are legal in C++ now
+2019-11-17 22:40:10 <zzo38> I think null declaration should be legal, since sometimes a macro might expand to make such thing
+2019-11-17 22:40:42 <kingoffrance> well, i wasnt concerned about macros or anything practical, except chatting to HackEso  via one-lined IRC
+2019-11-17 22:41:46 <kingoffrance> i guess my someday esoteric lang the 8 pictograph will, in reverence, return a random integer
+2019-11-17 22:44:24 <b_jonas> let me see that thing then
+2019-11-17 22:44:37 <b_jonas> `? !
+2019-11-17 22:44:38 <HackEso> ​! is a syntax used in Haskell and Prolog for solving evaluation order problems.
+2019-11-17 22:44:38 <b_jonas> `? ibin
+2019-11-17 22:44:39 <HackEso> ibin? ¯\(°​_o)/¯
+2019-11-17 22:44:42 <b_jonas> `? `!
+2019-11-17 22:44:43 <HackEso> ​`! emulates the ! command of our former bot EgoBot. You write `! then the name of the language then a program, and it runs the program you give and returns the result. We used to use it to test out esoprograms in-channel all the time, but the set of included esolangs is fairly old now and so it's rarely used.
+2019-11-17 22:44:46 <b_jonas> `? interps
+2019-11-17 22:44:47 <HackEso> interps? ¯\(°​_o)/¯
+2019-11-17 22:45:05 <b_jonas> is the interface for ibin documented anywhere? that is, what does a new script in ibin have to do to work with ! ?
+2019-11-17 22:46:22 <b_jonas> I mean I could make a script that calls gcc or g++ with the appropriate options to compile a program and then run, interpreting backslash escapes and even command line options starting with hyphe at the start
+2019-11-17 22:46:28 <b_jonas> but I don't know how to put it in ibin
+2019-11-17 22:58:38 <fizzie> You might look into improving the existing system.
+2019-11-17 22:58:56 <fizzie> https://hack.esolangs.org/repo/file/tip/interps/gcccomp/gcccomp is what `! c and `! cxx feed into.
