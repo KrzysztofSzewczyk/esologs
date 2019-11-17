@@ -1239,3 +1239,67 @@
 2019-11-17 19:59:38 <b_jonas> as opposed to just have a function that prints a particular string, for each string
 2019-11-17 19:59:52 <kspalaiologos> branches are very expensive
 2019-11-17 20:00:00 <b_jonas> inside a bracket conditional
+2019-11-17 20:00:16 <b_jonas> what? brainfuck isn't bad at branching
+2019-11-17 20:00:23 <kspalaiologos> I'm talking about asmbf
+2019-11-17 20:00:29 <kspalaiologos> not brainfuck
+2019-11-17 20:00:32 <kspalaiologos> look:
+2019-11-17 20:00:40 <kspalaiologos> `asmbf lbl 1/jmp 1
+2019-11-17 20:00:41 <HackEso> ​+>+[>>>+<<+<<[>>->+<<<-]>>>[<<<+>>>-]<[->+<<[>>>-<<+<-]>[<+>-]>>[<->[-]]<[<<<+>>>-]<]>>[-]<<<<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>+<<<<<<<<<[-]>[-]>>>>>>>>[<<<<<<<<+>+>>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-17 20:01:29 <kspalaiologos> so yeah I think the 8ball will stay as is until fizzie makes up his mind
+2019-11-17 20:01:35 <kspalaiologos> or i could use underload
+2019-11-17 20:02:01 <b_jonas> underload is deterministic too, no random source
+2019-11-17 20:03:09 <kspalaiologos> doesn't matter
+2019-11-17 20:03:12 <kspalaiologos> think out of the box
+2019-11-17 20:03:52 <kspalaiologos> `show 8ball
+2019-11-17 20:03:52 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: show: not found
+2019-11-17 20:03:56 <kspalaiologos> ^show 8ball
+2019-11-17 20:03:56 <fungot> >+<+[>[>[-]+<-]>[<+>9[-]>2[-]<2[>2+<2-]<8-]>14[<15+>15-]<15[>[-]+<-]>[<+>9,>3[-]<3[>3+<3-][-]>2[<2+<7+>9-]<9[>9+<9-]>8[-]>2[<2+<8+>10-]<10[>10+<10-]>8[<+<7+>8-]<8[>8+<8-]>9[-]<2[>2+<2-][-]>3[<3+<7+>10-]<10[>10+<10-]>8[-]+10<[<6+>6-]->[<7-<+>8-]<8[>8+<8-]>[>6+<6[-]]<->7[<7->7-]<7[>7+<7-]>7[>6+<15->9[-]]<8-]<[>[-]+<-]>[<+>9[-]>2[<2+<7+>9-]<9[>9+<9-]>8[-]-8<[<6+>6-]->[<7-<+>8-]<8[>8+<8-]>[>6+<6[-]]<->7[<7->7-]<7[>7+<7-]>7[>7+<16->
+2019-11-17 20:04:01 <kspalaiologos> yeaaah
+2019-11-17 20:04:05 <kspalaiologos> It's quite large
+2019-11-17 20:04:19 Joined: LKoen
+2019-11-17 20:05:23 <kspalaiologos> I can get it down to 10M though
+2019-11-17 20:05:28 <kspalaiologos> and that's it
+2019-11-17 20:06:22 <b_jonas> fizzie: tell me when you upgraded debian inside HackEso. I'll have to update the version number of procps that uptime lies itself to be
+2019-11-17 20:06:27 Quit: LKoen (Ping timeout: 240 seconds)
+2019-11-17 20:06:30 <xunil> i have downloaded tens of thousands of pdfs :D
+2019-11-17 20:06:33 <b_jonas> I guess I could make it run uptime for that
+2019-11-17 20:07:16 <b_jonas> the super uptime that is
+2019-11-17 20:08:24 <kspalaiologos> so
+2019-11-17 20:08:37 <kspalaiologos> any doable ideas of programs to implement into fungot?
+2019-11-17 20:08:37 <fungot> kspalaiologos: quoted lists are a crappy data structure if you intend to join the altparty cruise thing. i think
+2019-11-17 20:08:47 Joined: LKoen
+2019-11-17 20:11:17 Quit: LKoen (Ping timeout: 240 seconds)
+2019-11-17 20:11:31 <xunil> ;';'p[';;'';;'''';;;;;;;;;;;';';';;';'';''''''''''''''''''''';'''';''';'';';';';''';';'';';';';';';'''''''''''''''';'''''''''''';;'''''''''';'';''''';''''';''''';';';';';;;';';'''';';';'';'''
+2019-11-17 20:11:40 <b_jonas> `fetch /hackenv/bin/uptime https://hack.esolangs.org/get/bin/uptime
+2019-11-17 20:11:40 <HackEso> 2019-11-17 20:11:40 URL:https://hack.esolangs.org/get/bin/uptime [1560/1560] -> "/hackenv/bin/uptime" [1]
+2019-11-17 20:17:51 <b_jonas> `fetch /hackenv/bin/uptime https://hack.esolangs.org/get/bin/uptime
+2019-11-17 20:17:51 <HackEso> 2019-11-17 20:17:51 URL:https://hack.esolangs.org/get/bin/uptime [1624/1624] -> "/hackenv/bin/uptime" [1]
+2019-11-17 20:17:53 <b_jonas> never mind, I fixed it
+2019-11-17 20:18:15 <b_jonas> ``` chmod -c a+x /hackenv/bin/uptime
+2019-11-17 20:18:15 <HackEso> No output.
+2019-11-17 20:18:18 <b_jonas> ``` uptime
+2019-11-17 20:18:19 <HackEso> bash: /hackenv/bin/uptime: python3: bad interpreter: No such file or directory
+2019-11-17 20:18:21 <b_jonas> hmm
+2019-11-17 20:18:23 <b_jonas> oh
+2019-11-17 20:18:32 <b_jonas> `fetch /hackenv/bin/uptime https://hack.esolangs.org/get/bin/uptime
+2019-11-17 20:18:32 <kspalaiologos> `` 8ball
+2019-11-17 20:18:33 <HackEso> 2019-11-17 20:18:32 URL:https://hack.esolangs.org/get/bin/uptime [1633/1633] -> "/hackenv/bin/uptime" [1]
+2019-11-17 20:18:34 <HackEso> It is certain.
+2019-11-17 20:18:35 <b_jonas> sorry
+2019-11-17 20:18:36 <b_jonas> `uptime
+2019-11-17 20:18:37 <HackEso> ​ 20:18:36 up 3802 day,  4:48,  0 users,  load average: 0.00, 0.00, 0.00
+2019-11-17 20:18:38 <b_jonas> `uptime -V
+2019-11-17 20:18:39 <HackEso> uptime from procps-ng 3.3.15
+2019-11-17 20:18:47 <b_jonas> should work even after upgrade
+2019-11-17 20:19:15 <kingoffrance> https://archive.org/details/encyclopaediaofo1920spen  i didnt see any immediate explanation of magic 8 ball, but close enough for me    Salagrama, The
+2019-11-17 20:19:15 <kingoffrance> : An Indian stone, credited with possessing
+2019-11-17 20:19:15 <kingoffrance> magical properties, and worn as an amulet.
+2019-11-17 20:19:15 <kingoffrance> This stone is
+2019-11-17 20:19:15 <kingoffrance> black in colour, about the size of a billiard ball, and pierced
+2019-11-17 20:19:17 <kingoffrance> with holes.
+2019-11-17 20:23:35 <b_jonas> fungot, are potatoes your favourite vegetable?
+2019-11-17 20:23:36 <fungot> b_jonas: the point is that you trust yourself to play by the old program probably doesn't need any changes. it does
+2019-11-17 20:29:13 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-17 20:29:13 <imode> `` 8ball should I continue with mode.
+2019-11-17 20:29:14 <HackEso> My sources say no.
+2019-11-17 20:29:30 <imode> probably a wise idea.
