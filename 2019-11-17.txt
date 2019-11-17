@@ -538,3 +538,127 @@
 2019-11-17 16:28:43 <kspalaiologos> when program is large
 2019-11-17 16:29:46 <kspalaiologos> we use str right?
 2019-11-17 16:29:59 <arseniiv> I’m currently steaming because of walking too near a working TV :(
+2019-11-17 16:30:27 <kspalaiologos> ^str 0 set >+<+[>[>[-]+<-]>[<+>>>>>>>>>>>[-]<[-]<<<<<<<<<-]>>>>>>>>>>>>>[<<<<<<<<<<<<<<+>>>>>>>>>>>>>>-]<<<<<<<<<<<<<<[>[-]+<-]>[<+>>>>>>>>>>>>>,<<<<[-]>>>>[<<<<+<<<<<<<+>>>>>>>>>>>-]<<<<<<<<<<<[>>>>>>>>>>>+<<<<<<<<<<<-]>>>>>>>>>>[-]++++++++++++++++++++++++++++++++<<<[<<<<<<+>>>>>>-]->>>[<<<<<<<<<-<+>>>>>>>>>>-]<<<<<<<<<<[>>>>>>>>>>+<<<<<<<<<<-]>[>>>>>>+<<<<<<[-]]<->>>>>>>[<<<<<<<->>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>>>>>>>[>>>>>>+<<<<<<<<<<<<<<<
+2019-11-17 16:30:27 <fungot> Set: >+<+[>[>[-]+<-]>[<+>>>>>>>>>>>[-]<[-]<<<<<<<<<-]>>>>>>>>>>>>>[<<<<<<<<<<<<<<+>>>>>>>>>>>>>>-]<<<<<<<<<<<<<<[>[-]+<-]>[<+>>>>>>>>>>>>>,<<<<[-]>>>>[<<<<+<<<<<<<+>>>>>>>>>>>-]<<<<<<<<<<<[>>>>>>>>>>>+<<<<<<<<<<<-]>>>>>>>>>>[-]++++++++++++++++++++++++++++++++<<<[<<<<<<+>>>>>>-]->>>[<<<<<<<<<-<+>>>>>>>>>>-]<<<<<<<<<<[>>>>>>>>>>+<<<<<<<<<<-]>[>>>>>>+<<<<<<[-]]<->>>>>>>[<<<<<<<->>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>>>>>>>[>>>>>>+<<<<
+2019-11-17 16:30:27 <kspalaiologos> ->>>>>>>>>[-]]<<<<<<<<-]<[>[-]+<-]>[<+>>>>>>>>>[-]>>[<<+<<<<<<
+2019-11-17 16:30:33 <kspalaiologos> oops its a bit too long
+2019-11-17 16:30:49 <arseniiv> hehehe
+2019-11-17 16:31:00 <fizzie> Yeah. There's a way to put in long programs, it's just very convoluted.
+2019-11-17 16:31:05 <fizzie> ^help
+2019-11-17 16:31:05 <fungot> ^<lang> <code>; ^def <command> <lang> <code>; ^show [command]; lang=bf/ul, code=text/str:N; ^str 0-9 get/set/add [text]; ^style [style]; ^bool
+2019-11-17 16:31:33 <kspalaiologos> ^ str 0 set >+<+[>[>[-]+<-]>[<+>>>>>>>>>>>[-]<[-]<<<<<<<<<-]>>>>>>>>>>>>>[<<<<<<<<<<<<<<+>>>>>>>>>>>>>>-]<<<<<<<<<<<<<<[>[-]+<-]>[<+>>>>>>>>>>>>>,<<<<[-]>>>>[<<<<+<<<<<<<+>>>>>>>>>>>-]<<<<<<<<<<<[>>>>>>>>>>>+<<<<<<<<<<<-]>>>>>>>>>>[-]++++++++++++++++++++++++++++++++<<<[<<<<<<+>>>>>>-]->>>[<<<<<<<<<-<+>>>>>>>>>>-]<<<<<<<<<<[>>>>>>>>>>+<<<<<<<<<<-]>[>>>>>>+<<<<<<[-]]<
+2019-11-17 16:31:40 <kspalaiologos> I'll move to esoteric blag
+2019-11-17 16:31:47 <kspalaiologos> because it's going to cause tons of spam
+2019-11-17 16:31:54 <fizzie> Basically, you'll want to:   ^str 9 set abc   ^str 9 add def    ^str 9 add ghi   ^def cmd bf str:9
+2019-11-17 16:32:13 <fizzie> And you'll have to move to /query fungot, it's not on other channels.
+2019-11-17 16:32:13 <fungot> fizzie: stupid " hello, little girly man." :)
+2019-11-17 16:32:21 <fizzie> fungot: Don't be rude.
+2019-11-17 16:32:22 <fungot> fizzie: none of them have published their codes. maybe a more graphical way to program is broken by design, in case anyone cares, gambit 4 threading is implemented on top of x-p
+2019-11-17 16:32:34 <kspalaiologos> pff
+2019-11-17 16:34:01 <kspalaiologos> works
+2019-11-17 16:34:05 <kspalaiologos> ^wc Hello, world.
+2019-11-17 16:34:05 <fungot> 13 1.
+2019-11-17 16:34:06 <arseniiv> I like fungot more than mass media idiots and jerks
+2019-11-17 16:34:06 <fungot> arseniiv: i just started the thing and hey presto, thanks heaps with " malloc"
+2019-11-17 16:34:22 <kspalaiologos> ^show wc
+2019-11-17 16:34:22 <fungot> >+<+[>[>[-]+<-]>[<+>11[-]<[-]<9-]>13[<14+>14-]<14[>[-]+<-]>[<+>13,<4[-]>4[<4+<7+>11-]<11[>11+<11-]>10[-]+32<3[<6+>6-]->3[<9-<+>10-]<10[>10+<10-]>[>6+<6[-]]<->7[<7->7-]<7[>7+<7-]>7[>6+<15->9[-]]<8-]<[>[-]+<-]>[<+>9[-]>2[<2+<7+>9-]<9[>9+<9-]>7+>2[-]<2[>2+<2-]>7+<16->-]>14[<15+>15-]<15[>[-]+<-]>[<+>9[-]>[<+<7+>8-]<8[>8+<8-]>7+>[-]<[>+<-]<8-]>15[<16+>16-]<16[>[-]+<-]>[<+>9[-]>4[<4+<7+>11-]<11[>11+<11-]>10[-]<3[<6+>6-]>3[<9-<+>10-]<
+2019-11-17 16:34:29 <kspalaiologos> it's fine
+2019-11-17 16:34:36 <kspalaiologos> looks like chinese to me
+2019-11-17 16:36:10 <b_jonas> oh, so that's what ^str is for?
+2019-11-17 16:36:17 <b_jonas> good to know
+2019-11-17 16:36:51 <b_jonas> kspalaiologos: you could also run bf on HackEso when it comes back of course
+2019-11-17 16:37:07 <kspalaiologos> sure
+2019-11-17 16:37:09 <kspalaiologos> I can run my asmbf here too
+2019-11-17 16:39:09 <b_jonas> `? kspalaiologos
+2019-11-17 16:39:10 User Name: HackEso = HackEso!~HackEso@unaffiliated/fizzie/bot/hackeso
+2019-11-17 16:39:10 <HackEso> kspalaiologos? ¯\(°​_o)/¯
+2019-11-17 16:39:30 <kspalaiologos> ha! he doesn't know me
+2019-11-17 16:42:40 <int-e> `learn kspalaiologos is addicted to brainfuck, but otherwise completely unknown.
+2019-11-17 16:42:43 <HackEso> Learned 'kspalaiologo': kspalaiologos is addicted to brainfuck, but otherwise completely unknown.
+2019-11-17 16:43:01 <kspalaiologos> my nick is too long
+2019-11-17 16:43:02 <kspalaiologos> lol
+2019-11-17 16:43:08 <fizzie> No, it's just the plural.
+2019-11-17 16:43:09 <fizzie> `whoops
+2019-11-17 16:43:10 <int-e> `` mv wisdom/kspalaiologo{,s}
+2019-11-17 16:43:10 <b_jonas> I think it should say something about secretly reverse engineering legacy brainfuck and malbolge code for a casino
+2019-11-17 16:43:11 <HackEso> mv: cannot stat 'wisdom/kspalaiologo': No such file or directory
+2019-11-17 16:43:12 <HackEso> mv: cannot stat 'wisdom/kspalaiologo': No such file or directory
+2019-11-17 16:43:26 <b_jonas> ha! it got you too
+2019-11-17 16:43:36 <b_jonas> it's $HACKESO/wisdom/ now
+2019-11-17 16:43:41 <fizzie> I'm pretty sure I fixed 'whoops' for that.
+2019-11-17 16:43:44 <int-e> `` mv ../wisdom/kspalaiologo{,s}
+2019-11-17 16:43:46 <HackEso> No output.
+2019-11-17 16:43:55 Joined: imode
+2019-11-17 16:43:56 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 16:44:01 <int-e> kspalaiologos: it thinks it's a plural
+2019-11-17 16:44:06 <kspalaiologos> ah, fine
+2019-11-17 16:45:19 <int-e> Hmm, maybe we could have shortcuts $WISDOM and $BIN
+2019-11-17 16:45:37 <int-e> (those are the two most common directories we manipulate, I think)
+2019-11-17 16:45:58 <b_jonas> fizzie: whoops gets the filename from lastfiles, and lastfiles prints gets it from hg, so it's relative to repository root
+2019-11-17 16:46:01 <b_jonas> `lastfiles
+2019-11-17 16:46:04 <int-e> or... we could make symbolic links
+2019-11-17 16:46:06 <HackEso> wisdom/kspalaiologo \ wisdom/kspalaiologos
+2019-11-17 16:46:20 <fizzie> Ah, of course.
+2019-11-17 16:46:27 <int-e> `` ln -s ../wisdom ../bin ../quotes .
+2019-11-17 16:46:28 <HackEso> No output.
+2019-11-17 16:46:47 <b_jonas> NO!
+2019-11-17 16:46:58 <b_jonas> don't do that, that will result in some silent problems
+2019-11-17 16:47:07 <b_jonas> silent bugs
+2019-11-17 16:47:17 <fizzie> (The repository browser seems to have broken, for the file view portion.)
+2019-11-17 16:47:19 <b_jonas> things that appear to work but don't
+2019-11-17 16:47:26 <b_jonas> especially not for quotes
+2019-11-17 16:47:35 <b_jonas> `url
+2019-11-17 16:47:36 <HackEso> https://hack.esolangs.org/repo/
+2019-11-17 16:47:43 <b_jonas> `paste
+2019-11-17 16:47:50 <b_jonas> hmm
+2019-11-17 16:47:52 <b_jonas> `paste quotes
+2019-11-17 16:47:53 <HackEso> https://hack.esolangs.org/tmp/quotes
+2019-11-17 16:48:14 <HackEso> https://hack.esolangs.org/tmp/paste/paste.17325
+2019-11-17 16:48:40 <int-e> mm
+2019-11-17 16:48:46 <fizzie> File listing works, but the contents view doesn't.
+2019-11-17 16:49:14 <int-e> `` rm wisdom bin quotes # fine. maybe later.
+2019-11-17 16:49:14 <HackEso> No output.
+2019-11-17 16:49:36 <esowiki> 14[[07User:Fizzie14]]4 M10 02https://esolangs.org/w/index.php?diff=67187&oldid=53471 5* 03Fizzie 5* (+0) 10Post-upgrade edit test for 1.33.1.
+2019-11-17 16:49:58 <fizzie> Well, that side seems to be working.
+2019-11-17 16:50:12 <fizzie> There were a lot of new bundled extensions, which I didn't enable but could think of.
+2019-11-17 16:50:36 <fizzie> Right now the list is: CategoryTree CiteThisPage CodeEditor Gadgets ImageMap InputBox Interwiki LocalisationUpdate MultimediaViewer OATHAuth PdfHandler Poem ReplaceText SpamBlacklist SyntaxHighlight_GeSHi TitleBlacklist
+2019-11-17 16:50:39 <int-e> `pwd
+2019-11-17 16:50:40 <HackEso> ​/hackenv/tmp
+2019-11-17 16:50:47 <fizzie> All extensions bundled in the MediaWiki distribution that we don't enable.
+2019-11-17 16:52:01 <kspalaiologos> I've got it sorted out kinda
+2019-11-17 16:52:01 <kspalaiologos> ,[-------------------------------->[-]+>[-]<<[>>>>+<<<-]>[>>+<<->]<<,]>>>>[[>>+>+<<<-]>>>[<<<+>>>-]<<+>[<->[>++++++++++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>[-]++++++++[<++++++>-]>[<<+>>-]>[<<+>>-]<<]>]<[->>++++++++[<++++++>-]]<[.[-]<]<[-]++++[>++++++++<-]>.[-]<<]
+2019-11-17 16:52:04 <kspalaiologos> this should work
+2019-11-17 16:52:07 <kspalaiologos> as a smaller version of wc
+2019-11-17 16:52:23 <kspalaiologos> ^def wc bf ,[-------------------------------->[-]+>[-]<<[>>>>+<<<-]>[>>+<<->]<<,]>>>>[[>>+>+<<<-]>>>[<<<+>>>-]<<+>[<->[>++++++++++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>[-]++++++++[<++++++>-]>[<<+>>-]>[<<+>>-]<<]>]<[->>++++++++[<++++++>-]]<[.[-]<]<[-]++++[>++++++++<-]>.[-]<<]
+2019-11-17 16:52:23 <fungot> Defined.
+2019-11-17 16:52:35 <kspalaiologos> ^wc being addicted to brainfuck is cool
+2019-11-17 16:52:35 <fungot> 30 5
+2019-11-17 16:53:04 <kspalaiologos> wait a second
+2019-11-17 16:53:59 <kspalaiologos> ^def wc bf ,[-------------------------------->[-]+>[-]<<[>>>>+<<<-]>[>>+>+<<<->]<<,]>>>>[[>>+>+<<<-]>>>[<<<+>>>-]<<+>[<->[>++++++++++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>[-]++++++++[<++++++>-]>[<<+>>-]>[<<+>>-]<<]>]<[->>++++++++[<++++++>-]]<[.[-]<]<[-]++++[>++++++++<-]>.[-]<<]
+2019-11-17 16:53:59 <fungot> Defined.
+2019-11-17 16:54:10 <kspalaiologos> ^wc it should count spaces as characters now
+2019-11-17 16:54:10 <fungot> 40 6
+2019-11-17 16:54:48 <fizzie> I wonder where the repo browser's error output ends up in.
+2019-11-17 16:54:53 <b_jonas> kspalaiologos: or you could use the http://www.ioccc.org/years.html#2019_burton entry for word counting. it's shorter.
+2019-11-17 16:55:20 <kspalaiologos> I have to write it in brainfuck
+2019-11-17 16:55:30 <kspalaiologos> obviously I could compile it to brainfuck
+2019-11-17 16:55:38 <kspalaiologos> using my glorious ANSI C89->brainfuck
+2019-11-17 16:55:44 <kspalaiologos> but it would take ages to enter into fungot
+2019-11-17 16:55:44 <fungot> kspalaiologos: they're getting disgusting". quite distinctive. please take it to orkut? sounds kinky.
+2019-11-17 16:57:06 <fizzie> Oh, there. "AttributeError: 'module' object has no attribute 'importmod'"
+2019-11-17 16:57:20 <kspalaiologos> ^wc it should count spaces as characters now
+2019-11-17 16:57:20 <fungot> 40 6
+2019-11-17 16:57:50 <kspalaiologos> ^wc it should count spaces as characters now
+2019-11-17 16:57:50 <fungot> 41 6
+2019-11-17 16:57:54 <kspalaiologos> oh c;mon
+2019-11-17 16:58:06 <kspalaiologos> ^wc it should count spaces as characters now
+2019-11-17 16:58:06 <fungot> 40 7
+2019-11-17 16:58:09 <kspalaiologos> perfect
+2019-11-17 16:59:27 <kspalaiologos> ^show
+2019-11-17 16:59:27 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-17 16:59:35 <kspalaiologos> ^wiki
+2019-11-17 16:59:35 <fungot> http://esolangs.org/wiki/
+2019-11-17 16:59:39 <kspalaiologos> ^show wiki
+2019-11-17 16:59:39 <fungot> +15[>+4>+7>+7>+8<4-]>3-.>-4..<2+7.<-2.-11..>2-3.<+3.>2-5.-3.<-4.>+2.<+6.<.<-.>3+.+3.<.<2+.>+4.>+2.+2.-2.<2.,[.,]
+2019-11-17 16:59:50 <fizzie> ^wiki Something
+2019-11-17 16:59:50 <fungot> http://esolangs.org/wiki/Something
