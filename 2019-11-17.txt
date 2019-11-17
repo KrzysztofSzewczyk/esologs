@@ -1004,3 +1004,106 @@
 2019-11-17 18:29:40 <fizzie> Well, spiritual predecessor in that case.
 2019-11-17 18:29:56 <fizzie> "HackBot" is the name of the code, however.
 2019-11-17 18:30:00 <b_jonas> oh
+2019-11-17 18:30:02 <int-e> Isn't EgoBot is the IRC bot framework that HackEgo used.
+2019-11-17 18:30:05 <fizzie> So both HackEgo and HackEso were instances of HackBot.
+2019-11-17 18:30:14 <int-e> Hrm
+2019-11-17 18:30:15 <b_jonas> so that's like how jevalbot is the name of the code for j-bot ?
+2019-11-17 18:30:17 <b_jonas> `source j-bot
+2019-11-17 18:30:20 <HackEso> Sources for HackEso can be found at https://github.com/fis/hackbot + https://github.com/fis/multibot + https://github.com/fis/umlbox .
+2019-11-17 18:30:24 <b_jonas> j-bot, source:
+2019-11-17 18:30:25 User Name: j-bot = j-bot!eldis4@firefly.nu
+2019-11-17 18:30:25 <j-bot> b_jonas, jevalbot source is https://github.com/FireyFly/jevalbot (originally http://www.math.bme.hu/~ambrus/pu/jevalbot.tgz)
+2019-11-17 18:30:29 <int-e> Okay, I'm obviously confused about this.
+2019-11-17 18:30:55 <b_jonas> int-e: I am too
+2019-11-17 18:31:09 <fizzie> int-e: HackEso and HackEgo are both instances of HackBot, which is the glue tying together multibot and UMLBox.
+2019-11-17 18:31:09 <int-e> Ah "multibot" is another ingredient of the confusion.
+2019-11-17 18:31:39 <fizzie> EgoBot, on the other hand, was a different bot, I think also running on top of multibot but not involving umlbox or custom Linux commands at all.
+2019-11-17 18:31:43 <int-e> Is multibot the generic IRC thing, and hackbot the specific variant that wraps umlbox?
+2019-11-17 18:31:51 <fizzie> Yes, multibot is a generic IRC thing.
+2019-11-17 18:32:06 <fizzie> I can't be 100% sure if EgoBot also used it as a base, but I think it did.
+2019-11-17 18:32:28 Quit: kritixilithos (Quit: 1)
+2019-11-17 18:32:28 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 18:32:51 <int-e> Ugh, I really know how to ask questions that have just been answered.
+2019-11-17 18:33:27 <fizzie> EgoBot and HackEgo were both GregorR's, HackEso is my replacement when the HackEgo machine finally went away.
+2019-11-17 18:33:43 <b_jonas> fizzie: is GregorR the same as Gregor ?
+2019-11-17 18:34:07 <b_jonas> hmm
+2019-11-17 18:34:10 <b_jonas> maybe there's no Gregor
+2019-11-17 18:34:15 <int-e> Hah, I have not checked whether CaC is still around in quite some time.
+2019-11-17 18:34:18 <b_jonas> `? Gregor
+2019-11-17 18:34:19 <HackEso> Gregor took forty cakes. He took 40 cakes. That's as many as four tens. And that's terrible.
+2019-11-17 18:34:20 <b_jonas> `? GregorR
+2019-11-17 18:34:21 <HackEso> GregorR? ¯\(°​_o)/¯
+2019-11-17 18:34:26 <b_jonas> there is
+2019-11-17 18:34:31 <fizzie> Yes, they're the same.
+2019-11-17 18:35:21 <fizzie> "GregorR" is the bitbucket/github username, I don't remember which of the IRC nicks was first.
+2019-11-17 18:35:47 <int-e> And they still run the scam where they advertise a one-time payment without mentioning the annual service fee.
+2019-11-17 18:35:56 <fizzie> Yeah.
+2019-11-17 18:36:01 <fizzie> "Pay One Time! Never again."
+2019-11-17 18:36:57 <int-e> Of course the real scam is that they just reduce the QoS over time until everybody leaves.
+2019-11-17 18:37:15 <b_jonas> did you get your money back?
+2019-11-17 18:37:26 <int-e> I didn't ask for any money back.
+2019-11-17 18:38:17 <zzo38> Why did you remove the skins again?
+2019-11-17 18:38:31 <int-e> (But maybe the question was for fizzie? Personally, I got a CaC server to see how bad it would be. I wasn't disappointed.)
+2019-11-17 18:38:37 <b_jonas> zzo38: MediaWiki stopped supporting them in the newer version
+2019-11-17 18:38:59 <int-e> (So I felt, in the end, that I got my money's worth of entertainment out of the whole (or)deal.)
+2019-11-17 18:40:05 <zzo38> b_jonas: But Wikipedia still has the Cologne Blue skin
+2019-11-17 18:41:23 <int-e> fizzie: Actually I'm disappointed... where's the permanent 80% off deal?
+2019-11-17 18:43:01 <int-e> Without that they are not even cheap anymore.
+2019-11-17 18:44:47 <kspalaiologos> I'm in the process of literally raping fungot
+2019-11-17 18:44:47 <fungot> kspalaiologos: is there a complement function :) that parses an expresion like this ' otstatd' of mine than anything visual.
+2019-11-17 18:44:49 <kspalaiologos> sent over around 15 kilobytes of brainfuck
+2019-11-17 18:44:53 <kspalaiologos> for the 8ball
+2019-11-17 18:44:55 <kspalaiologos> it works quite nicely tho
+2019-11-17 18:44:57 <kspalaiologos> 50% transferred
+2019-11-17 18:44:59 <kspalaiologos> just a couple lines more
+2019-11-17 18:45:01 <kspalaiologos> it's taking 4 minutes to transfer it
+2019-11-17 18:45:19 <b_jonas> wait... how do you get random numbers in brainfuck?
+2019-11-17 18:45:27 <kspalaiologos> magic
+2019-11-17 18:45:32 <kspalaiologos> my very sophisticated algorithm
+2019-11-17 18:45:34 <b_jonas> ok
+2019-11-17 18:45:38 <kspalaiologos> ^8ball crap
+2019-11-17 18:45:39 <fungot> ...out of time!
+2019-11-17 18:45:43 <kspalaiologos> pffffffffffffffffffff
+2019-11-17 18:45:55 <kspalaiologos> you must be kidding me fungot
+2019-11-17 18:45:55 <fungot> kspalaiologos: number42, jivera? iterative macros?' token is also used before the corresponding structures are defined in sets from within a function,
+2019-11-17 18:46:14 <kspalaiologos> fizzie, what is the execution time limit?
+2019-11-17 18:46:42 <kspalaiologos> feel free to check the source tho: https://pastebin.com/raw/1jf09niH
+2019-11-17 18:46:48 <kspalaiologos> it has an easter egg too :p
+2019-11-17 18:47:16 <b_jonas> kspalaiologos: I hope you didn't add extra answers besides the 20 standard ones. someone did that to HackEso at one point. I reverted it at least once.
+2019-11-17 18:47:23 <kspalaiologos> nope
+2019-11-17 18:47:28 <kspalaiologos> only 20 standard ones
+2019-11-17 18:47:33 <kspalaiologos> from wikipedia
+2019-11-17 18:47:33 <b_jonas> there's also an 8-ball macro in perlbot
+2019-11-17 18:47:41 <kspalaiologos> but I added my own easter egg
+2019-11-17 18:47:43 <fizzie> zzo38: They stopped bundling them in the distribution, so I need to install it separately if you still want it back.
+2019-11-17 18:47:51 <kspalaiologos> that fires only when a certain condition is met
+2019-11-17 18:47:58 <kspalaiologos> fizzie, what is the execution time limit for fungot?
+2019-11-17 18:47:59 <fungot> kspalaiologos: cannot remove ' /proc/ irq/ 9': operation not permitted, although the arguments may be arbitrary.
+2019-11-17 18:48:16 <b_jonas> rather trivial, since it can evaluate perl, which has a built-in pseudo-random source
+2019-11-17 18:48:32 <kspalaiologos> well my algorithm is amazing
+2019-11-17 18:48:42 <zzo38> fizzie: Well, I do want back any skins that anyone has configured. (I don't know if anyone other than myself does, but you should check.)
+2019-11-17 18:48:42 <kspalaiologos> :p
+2019-11-17 18:49:15 <fizzie> kspalaiologos: It's not really in terms of time, it's something like 1M cycles, where one cycle is one operation.
+2019-11-17 18:49:22 <kspalaiologos> t
+2019-11-17 18:49:27 <kspalaiologos> that's too small amount :p
+2019-11-17 18:49:30 <b_jonas> zzo38: fizzie gave numbers about how many users set up each removed theme earlier in the channel
+2019-11-17 18:49:33 <kspalaiologos> can you increase it a tiny bit?
+2019-11-17 18:49:47 <esowiki> 14[[07EsoPost14]]4 10 02https://esolangs.org/w/index.php?diff=67189&oldid=67138 5* 03Zzo38 5* (+2) 10
+2019-11-17 18:50:45 <fizzie> Only if a tiny bit would be helpful.
+2019-11-17 18:50:55 <kspalaiologos> well it runs instantly on my pc
+2019-11-17 18:51:00 <zzo38> b_jonas: OK, I found that. I think you should reinstall Cologne Blue and Modern
+2019-11-17 18:51:02 <kspalaiologos> I'll measure the cycle count in a second
+2019-11-17 18:52:50 <kspalaiologos> fizzie, well
+2019-11-17 18:52:57 <kspalaiologos> it takes 40M cycles
+2019-11-17 18:53:03 <kspalaiologos> i'll need to work on it :p
+2019-11-17 18:53:46 <b_jonas> kspalaiologos: is that with multiple adjacent + or - commands counting as one cycle? because I think that's how the interpreter counts
+2019-11-17 18:53:53 <kspalaiologos> ^ good point
+2019-11-17 18:54:03 <kspalaiologos> give me a second
+2019-11-17 18:54:08 <int-e> 1
+2019-11-17 18:55:37 <arseniiv> 1 ⟵the second one
+2019-11-17 18:55:51 <kspalaiologos> 12M cycles
+2019-11-17 18:55:56 <b_jonas> [ ^0
+2019-11-17 18:55:57 <j-bot> b_jonas: 1
+2019-11-17 18:56:25 <kspalaiologos> fizzie, it's not that much tho :p
+2019-11-17 18:57:00 <kspalaiologos> in 1M of cycles, you can clear a cell just 1300 times
+2019-11-17 18:57:24 <kspalaiologos> and add two cells only 1000 times
