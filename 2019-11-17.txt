@@ -338,3 +338,14 @@
 2019-11-17 12:23:25 <kspalaiologos> and the global storage won't work
 2019-11-17 12:23:26 <kspalaiologos> obviously
 2019-11-17 12:23:46 <kspalaiologos> because small chunk size = a lot of allocation = many entries = need to reserve a lot of space = shitty performance
+2019-11-17 12:34:30 <kingoffrance> i believe xored lists you save some space, and easily relocatable, at expense of more complexity. i only say that because might be something space-saving is apropos
+2019-11-17 12:34:48 <kingoffrance> (apologies if you are well aware, i dont see them really "taught" but they are simple)
+2019-11-17 12:35:24 <kspalaiologos> xored lists?
+2019-11-17 12:35:47 <kingoffrance> see google/wikipedia/whatever  xored linked list.   there is probably surely better, im just saying might be a good fit
+2019-11-17 12:35:47 <kspalaiologos> if this involves xor operation, it's quite hard to implement
+2019-11-17 12:36:02 <kingoffrance> well, ive been looking for long time somewhere they would be apropos
+2019-11-17 12:36:05 <kspalaiologos> because my assembler doesn't quite support XOR
+2019-11-17 12:36:07 <kingoffrance> so i am biased towards "want to use"
+2019-11-17 12:36:47 <kspalaiologos> it's a cool idea,
+2019-11-17 12:37:03 <kspalaiologos> but #1: it involves bitwise xor - hard to implement in arithmetic-only assembly
+2019-11-17 12:37:27 <kspalaiologos> but #2: it doesn't solve entirity of problems with doubly linked list
