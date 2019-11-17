@@ -1521,3 +1521,22 @@
 2019-11-17 22:46:28 <b_jonas> but I don't know how to put it in ibin
 2019-11-17 22:58:38 <fizzie> You might look into improving the existing system.
 2019-11-17 22:58:56 <fizzie> https://hack.esolangs.org/repo/file/tip/interps/gcccomp/gcccomp is what `! c and `! cxx feed into.
+2019-11-17 23:00:16 <fizzie> The whole thing isn't documented, though. But the tl;dr is you put a wrapper in ibin like https://hack.esolangs.org/repo/file/tip/ibin/c which typically uses one of interp_stdin / interp_file from https://hack.esolangs.org/repo/file/tip/lib/interp depending on what the called program expects.
+2019-11-17 23:01:37 <fizzie> (interp_stdin passes the contents of the `! x ... command line to the program as stdin, interp_file as a path to temporary file.)
+2019-11-17 23:02:03 <shachaf> Do you like vpternlog?
+2019-11-17 23:02:14 <fizzie> All in all, it may be overly complicated. It did have a nice benefit that it made all `! programs capable of reading source from the web, but that part's now commented out because there's no networking.
+2019-11-17 23:03:00 <fizzie> Ooh, funky.
+2019-11-17 23:04:19 <esowiki> 14[[07Daft14]]4 10 02https://esolangs.org/w/index.php?diff=67197&oldid=39053 5* 03B jonas 5* (+118) 10link "da f t"
+2019-11-17 23:05:13 <b_jonas> fizzie: ok
+2019-11-17 23:06:59 <esowiki> 14[[07Da f t14]]4 N10 02https://esolangs.org/w/index.php?oldid=67198 5* 03B jonas 5* (+30) 10Redirected page to [[BIX Queue Subset]]
+2019-11-17 23:08:24 Quit: ais523 (Quit: quit)
+2019-11-17 23:08:24 Names: \oren\, ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 23:08:29 <fizzie> I don't think ibin scripts necessarily need to use the lib/interp functions; as we saw, branchylog doesn't, and 7 doesn't either. Or k, but that doesn't actually do anything.
+2019-11-17 23:09:58 <fizzie> OTOH, if you're not using lib/interp, maybe it should be just a regular `command instead of a `!-wrapped command. On the third hand, it makes some sense for all (especially eso)language things be in the same thing. On the fourth hand, there's a number of non-! language tools, like `forth, `js.
+2019-11-17 23:10:23 <fizzie> And `perl-e. These tend to be smaller-scale wrappers.
+2019-11-17 23:12:32 <b_jonas> ok, so I just make a script in interps that reads code from stdin, and put a wrapper in ibin that uses interp_stdin
+2019-11-17 23:14:18 <b_jonas> https://esolangs.org/logs/2012-03-19.html talks about the lime slices a bit
+2019-11-17 23:14:35 <b_jonas> https://esolangs.org/logs/2012-03-19.html#lId
+2019-11-17 23:16:01 <fizzie> It's called the trilime.
+2019-11-17 23:20:52 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2019-11-17 23:20:52 Names: \oren\, ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
