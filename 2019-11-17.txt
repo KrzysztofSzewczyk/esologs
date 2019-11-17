@@ -194,3 +194,19 @@
 2019-11-17 04:18:22 <zzo38> I wonder if there is some way of using TSR to do that
 2019-11-17 04:28:47 <esowiki> 14[[07Quine14]]4 10 02https://esolangs.org/w/index.php?diff=67124&oldid=66690 5* 03Quadril-Is 5* (+118) 10/* How to write quines */ corrected what quinify actually does
 2019-11-17 04:42:01 <esowiki> 14[[07Whitespace14]]4 10 02https://esolangs.org/w/index.php?diff=67125&oldid=67120 5* 03Quadril-Is 5* (+4) 10/* Truth-machine */
+2019-11-17 05:07:42 <zzo38> Do you know why VAL does that in DOSBOX?
+2019-11-17 05:13:38 <zzo38> I found out that for key codes, what I could do is in the program that reads them, use INP(96) instead of INKEY$ to read the keyboard during the main game loop (but use still using INKEY$ in menus, and when requesting text entry). It seems that INP(96) sometimes returns 224 instead of the scancode, but that isn't a problem since we can just save the previous scan code and use it if 224 is returned.
+2019-11-17 05:14:23 <esowiki> 14[[07Quine14]]4 10 02https://esolangs.org/w/index.php?diff=67126&oldid=67124 5* 03Quadril-Is 5* (-43) 10/* How to write quines */
+2019-11-17 05:17:03 <kmc> zzo38: I don't know
+2019-11-17 05:17:06 <kmc> is that in QBASIC?
+2019-11-17 05:17:41 <esowiki> 14[[07User:Quadril-Is/secretpagebyquadrilspipp14]]4 N10 02https://esolangs.org/w/index.php?oldid=67127 5* 03Quadril-Is 5* (+2) 10Created page with "hi"
+2019-11-17 05:19:40 <zzo38> kmc: Yes
+2019-11-17 05:20:19 <kmc> zzo38: how did you discover that?
+2019-11-17 05:21:00 <zzo38> I found that port 96 is the keyboard input, and then I tried and saw what happens
+2019-11-17 05:22:23 <zzo38> I now found that there are a few other programs using "POKE &H41A, PEEK(&H41C)" to clear the keyboard buffer, although I figured it out just by examining memory dumps
+2019-11-17 05:23:33 <zzo38> (To clear the keyboard buffer in this way, you will need "DEF SEG = 0" at first, unless segment 0 is already selected, which it might be if you want to read the shift states with PEEK(&H417).)
+2019-11-17 05:25:00 <kmc> how did you discover the thing about VAL, i mean
+2019-11-17 05:25:37 <zzo38> By trying it in DOSBOX. Entering a subtraction command shows that there is a difference of approx. 2e-16, which is why it does not compare as equal.
+2019-11-17 05:25:58 <zzo38> But on a real DOS computer my program worked; I had to change it to work on the emulator.
+2019-11-17 05:28:10 <zzo38> Do you know why it does that? I don't know why, but at least I know how to fix it
+2019-11-17 05:29:27 <zzo38> I don't know if that is also what causes some other programs to fail?
