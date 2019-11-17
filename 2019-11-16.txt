@@ -597,3 +597,10 @@
 2019-11-16 23:27:28 <fizzie> `/bin/bash -cecho foo
 2019-11-16 23:27:29 <HackEso> ​/bin/bash: - : invalid option \ allexport      	off \ braceexpand    	on \ emacs          	on \ errexit        	on \ errtrace       	off \ functrace      	off \ hashall        	on \ histexpand     	on \ history        	off \ ignoreeof      	off \ interactive-comments	on \ keyword        	off \ monitor        	off \ noclobber      	off \ noexec         	off \ noglob         	off \ nolog          	off \ notify         	off \ nounset
 2019-11-16 23:28:11 <fizzie> (I'm sure it's *possible* to unbork with sufficient effort, though.)
+2019-11-16 23:31:59 <b_jonas> ah ok
+2019-11-16 23:32:30 <b_jonas> in that case, perl -esystem'some command'
+2019-11-16 23:35:49 <b_jonas> or like `/usr/bin/perl -esystemq(some command)
+2019-11-16 23:35:51 <b_jonas> no
+2019-11-16 23:35:55 <b_jonas> like `/usr/bin/perl -esystem q(some command)
+2019-11-16 23:40:22 Joined: sleepnap
+2019-11-16 23:40:23 Names: \oren\, ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
