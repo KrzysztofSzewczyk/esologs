@@ -878,3 +878,129 @@
 2019-11-17 17:52:16 <kspalaiologos> and of top too
 2019-11-17 17:52:22 <kspalaiologos> I've just tested it
 2019-11-17 17:52:26 <kspalaiologos> it sets uptime to around 210 dayas
+2019-11-17 18:06:00 <fizzie> b_jonas: Heh, it's very amusing. This is why uptime -s fails: https://github.com/mmalecki/procps/blob/master/proc/sysinfo.c#L90
+2019-11-17 18:07:04 <fizzie> (I couldn't find a line-linkable better source quickly.)
+2019-11-17 18:07:52 <fizzie> Oh, here's a better link.
+2019-11-17 18:07:55 <fizzie> https://gitlab.com/procps-ng/procps/blob/master/proc/sysinfo.c#L123
+2019-11-17 18:08:14 <fizzie> So it's that combined with this:
+2019-11-17 18:08:16 <fizzie> https://gitlab.com/procps-ng/procps/blob/master/uptime.c#L47
+2019-11-17 18:08:52 <int-e> pff
+2019-11-17 18:09:32 <kspalaiologos> ha!
+2019-11-17 18:09:38 <kspalaiologos> told you my bash snippet will work
+2019-11-17 18:09:39 <fizzie> Or tl;dr the sysinfo uptime() function returns the uptime cast to int /* assume never be zero seconds in practice */ and the uptime -s command fails if uptime(...) == 0.
+2019-11-17 18:09:46 <kspalaiologos> kernel is actually reading a device
+2019-11-17 18:09:54 <kspalaiologos> to supplement the data to sysinfo()
+2019-11-17 18:10:24 <int-e> who makes 0 the error return value for functions like this
+2019-11-17 18:10:47 <kspalaiologos> I think it should set errno or return -1
+2019-11-17 18:10:55 <int-e> *and*
+2019-11-17 18:11:00 <b_jonas> oh that's fun
+2019-11-17 18:11:23 <kspalaiologos> ergo
+2019-11-17 18:11:24 <int-e> Hmm, or maybe I don't care about errno being set all that much.
+2019-11-17 18:11:26 <b_jonas> ``` sleep 2; uptime -s
+2019-11-17 18:11:27 <kspalaiologos> my bash snippet is perfect for this
+2019-11-17 18:11:29 <HackEso> 2019-11-17 18:11:27
+2019-11-17 18:11:31 <kspalaiologos> it will fake the uptime
+2019-11-17 18:11:34 <b_jonas> ``` sleep 2; uptime -s; sleep 2; uptime -s
+2019-11-17 18:11:39 <HackEso> 2019-11-17 18:11:34 \ 2019-11-17 18:11:34
+2019-11-17 18:11:47 <int-e> But returning -1 for errors seems to be far more appropriate than 0 here.
+2019-11-17 18:11:52 <fizzie> Yes.
+2019-11-17 18:12:07 <kspalaiologos> yeah
+2019-11-17 18:12:11 <kspalaiologos> it even returns int
+2019-11-17 18:12:16 <kspalaiologos> not unsigned int when not using signed ones
+2019-11-17 18:12:24 <kspalaiologos> quint of foolishness
+2019-11-17 18:12:31 <b_jonas> int-e: even -1 should be a normal output. it should return an error code separately from the time.
+2019-11-17 18:12:48 <fizzie> I don't know if any calls actually use the return value for time.
+2019-11-17 18:12:55 <int-e> But of course it's nearly impossible to change.
+2019-11-17 18:13:06 <fizzie> It returns the time with better resolution through the uptime_secs, idle_secs parameters.
+2019-11-17 18:13:23 <b_jonas> kspalaiologos: does that mean that it will fail if the machine has been up for more than 69 years too? that will
+2019-11-17 18:13:31 <b_jonas> fizzie: time does
+2019-11-17 18:13:34 <int-e> b_jonas: Maybe, but at least uptime >= 0 is a far more reasonable assumption than uptime > 0.
+2019-11-17 18:13:44 <int-e> b_jonas: we don't time travel much
+2019-11-17 18:14:04 <b_jonas> int-e: of course not. we just use incorrect or jumpy time sources
+2019-11-17 18:14:12 <b_jonas> heck, -1 could be just a rounding error
+2019-11-17 18:15:54 <fizzie> Looks like there's one use of the return value as a time in the procps sources (`seconds_since_boot = uptime(0,0);`).
+2019-11-17 18:19:56 <int-e> oh 0 is "good" for code that doesn't care about errors
+2019-11-17 18:22:26 <b_jonas> `? HackBot
+2019-11-17 18:22:27 <HackEso> HackBot? ¯\(°​_o)/¯
+2019-11-17 18:23:41 <kspalaiologos> `? HackEso
+2019-11-17 18:23:42 <HackEso> HackEso is almost but not quite unlike HackEgo.
+2019-11-17 18:24:08 <kspalaiologos> ^show
+2019-11-17 18:24:09 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-17 18:24:15 <kspalaiologos> I feel like adding a few commands to fungot
+2019-11-17 18:24:15 <fungot> kspalaiologos: hard rock fnord :d
+2019-11-17 18:24:17 <esowiki> 14[[07Esolang:Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=67188&oldid=66579 5* 03PaniniTheDeveloper 5* (-145) 10
+2019-11-17 18:24:23 <kspalaiologos> anything needed?
+2019-11-17 18:24:45 <b_jonas> kspalaiologos: I wanted to install a 7z decompressor at one point. I failed.
+2019-11-17 18:24:58 <kspalaiologos> 7z decompressor?
+2019-11-17 18:24:59 <b_jonas> but we can decompress zip, tar.gz, tar.xz
+2019-11-17 18:25:00 <kspalaiologos> into fungot?
+2019-11-17 18:25:00 <fungot> kspalaiologos: it is usually better to ask such questions are the way to define the recursions better, too,
+2019-11-17 18:25:08 <b_jonas> so it's not a big problem
+2019-11-17 18:25:16 <kspalaiologos> wait a second
+2019-11-17 18:25:17 <b_jonas> no
+2019-11-17 18:25:20 <kspalaiologos> how do you want to use it
+2019-11-17 18:25:20 <b_jonas> into HackEso
+2019-11-17 18:25:22 <kspalaiologos> ah, well
+2019-11-17 18:25:25 <kspalaiologos> it's easy then
+2019-11-17 18:25:27 <b_jonas> I don't add commands to fungot
+2019-11-17 18:25:27 <fungot> b_jonas: it could mean that without an intermediate sql translation phase, since that's what all fnord/ 1 f(a) b if b then greet else undefined
+2019-11-17 18:25:32 <kspalaiologos> but I'm aiming at fungot
+2019-11-17 18:25:33 <fungot> kspalaiologos: just write a chef implementation in bf? if so, then yes. ( define ( p x))? :p ( heh, guess not.
+2019-11-17 18:25:45 <kspalaiologos> that
+2019-11-17 18:25:47 <kspalaiologos> 's a nice idea
+2019-11-17 18:25:54 <kspalaiologos> a chef implementation in bf
+2019-11-17 18:26:02 <kspalaiologos> thanks, fungot!
+2019-11-17 18:26:02 <fungot> kspalaiologos: maybe a combination of 2 and 5
+2019-11-17 18:26:12 <b_jonas> ^8-ball
+2019-11-17 18:26:13 <b_jonas> ^8ball
+2019-11-17 18:26:13 <fungot> No.
+2019-11-17 18:26:27 <b_jonas> a magic 8-ball command might be useful
+2019-11-17 18:26:34 <kspalaiologos> 8-ball command?
+2019-11-17 18:26:36 <kspalaiologos> what would it do
+2019-11-17 18:26:37 <fizzie> `slwd HackEso//s/almost/&,/;s/quite/&,/;s/unlike/entirely &/
+2019-11-17 18:26:38 <HackEso> Roswbud!
+2019-11-17 18:26:40 <b_jonas> `8-ball
+2019-11-17 18:26:41 <HackEso> As I see it, yes.
+2019-11-17 18:26:54 <b_jonas> print one of the 20 standard replies of the magic 8-ball at random
+2019-11-17 18:27:03 <b_jonas> and accept a question as an argument
+2019-11-17 18:27:04 <b_jonas> like
+2019-11-17 18:27:12 <b_jonas> `8-ball should fungot have an 8-ball command?
+2019-11-17 18:27:12 <fungot> b_jonas: a module system in mit scheme, but not esoteric. malbolge is included too. :p
+2019-11-17 18:27:13 <HackEso> You may rely on it.
+2019-11-17 18:27:26 <b_jonas> see Wikipedia for the 20 responses
+2019-11-17 18:27:31 <kspalaiologos> I dont get what is magic 8-ball
+2019-11-17 18:27:37 <b_jonas> it's a toy
+2019-11-17 18:27:37 <kspalaiologos> it just shows the billard game
+2019-11-17 18:27:43 <fizzie> Oh, right, lowercase.
+2019-11-17 18:27:47 <b_jonas> it helps you make decisions
+2019-11-17 18:27:50 <fizzie> `slwd hackeso//s/almost/&,/;s/quite/&,/;s/unlike/entirely &/
+2019-11-17 18:27:51 <kspalaiologos> ah yeah
+2019-11-17 18:27:51 <HackEso> hackeso//HackEso is almost, but not quite, entirely unlike HackEgo.
+2019-11-17 18:27:58 <kspalaiologos> ok I get it
+2019-11-17 18:27:59 <b_jonas> you shake it, it has a dice that tells you yes or no or maybe
+2019-11-17 18:28:03 <b_jonas> but more often yes than no
+2019-11-17 18:28:22 <fizzie> There's a coin-flip command already, by the way.
+2019-11-17 18:28:26 <fizzie> ^bool Is it any good?
+2019-11-17 18:28:32 <b_jonas> fizzie: what was HackBot?
+2019-11-17 18:28:36 <kspalaiologos> ^show bool
+2019-11-17 18:28:39 <int-e> @dice 1d2
+2019-11-17 18:28:39 <lambdabot> int-e: 2
+2019-11-17 18:28:41 <kspalaiologos> ???
+2019-11-17 18:28:48 <kspalaiologos> ^show bool
+2019-11-17 18:28:50 <kspalaiologos> what happened
+2019-11-17 18:28:55 <kspalaiologos> ^fib
+2019-11-17 18:28:55 <fungot> 0.1.1.2.3.5.8.13.21.34.55.89.144.233.377.610.987.1597.2584.4181.6765.10946.17711.28657.46368.75025.121393.196418.317811.514229.832040.1346269.2178309.3524578.5702887.9227465.14930352.24157817.39088169.632459 ...
+2019-11-17 18:28:57 <kspalaiologos> fungot is working
+2019-11-17 18:28:58 <fungot> kspalaiologos: do you work? :)
+2019-11-17 18:29:00 <kspalaiologos> but bool isempty
+2019-11-17 18:29:03 <kspalaiologos> yes I do
+2019-11-17 18:29:06 <int-e> b_jonas: HackBot was HackEso
+2019-11-17 18:29:10 <int-e> 's predecessor
+2019-11-17 18:29:17 <b_jonas> no, that's HackEgo
+2019-11-17 18:29:19 <b_jonas> `? `!
+2019-11-17 18:29:20 <HackEso> ​`! emulates the ! command of our former bot EgoBot. You write `! then the name of the language then a program, and it runs the program you give and returns the result. We used to use it to test out esoprograms in-channel all the time, but the set of included esolangs is fairly old now and so it's rarely used.
+2019-11-17 18:29:32 <b_jonas> and HackEgo's predecessor is EgoBot according to that
+2019-11-17 18:29:38 <int-e> Hrm.
+2019-11-17 18:29:40 <fizzie> Well, spiritual predecessor in that case.
+2019-11-17 18:29:56 <fizzie> "HackBot" is the name of the code, however.
+2019-11-17 18:30:00 <b_jonas> oh
