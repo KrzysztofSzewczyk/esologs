@@ -662,3 +662,125 @@
 2019-11-17 16:59:39 <fungot> +15[>+4>+7>+7>+8<4-]>3-.>-4..<2+7.<-2.-11..>2-3.<+3.>2-5.-3.<-4.>+2.<+6.<.<-.>3+.+3.<.<2+.>+4.>+2.+2.-2.<2.,[.,]
 2019-11-17 16:59:50 <fizzie> ^wiki Something
 2019-11-17 16:59:50 <fungot> http://esolangs.org/wiki/Something
+2019-11-17 17:00:09 <fizzie> Hmm, it should probably use https://, that's the canonical scheme now.
+2019-11-17 17:01:05 <b_jonas> oh
+2019-11-17 17:01:16 <kspalaiologos> I'll get that sorted out
+2019-11-17 17:01:17 <kspalaiologos> wait a second
+2019-11-17 17:01:45 <fizzie> FWIW, I strongly suspect that string output is from bf_txtgen.
+2019-11-17 17:02:08 <kspalaiologos> ^show wiki
+2019-11-17 17:02:09 <fungot> +15[>+4>+7>+7>+8<4-]>3-.>-4..<2+7.<-2.-11..>2-3.<+3.>2-5.-3.<-4.>+2.<+6.<.<-.>3+.+3.<.<2+.>+4.>+2.+2.-2.<2.,[.,]
+2019-11-17 17:02:12 <kspalaiologos> wait a second though
+2019-11-17 17:02:17 <b_jonas> `?? brainfuck
+2019-11-17 17:02:17 <kspalaiologos> why would we use these fancy loop
+2019-11-17 17:02:18 <HackEso> brainfuck is an esoteric programming language created to make the smallest possible compiler for a Turing-complete language. It is what introduces many people to esolangs, spawning a vast number of derivatives that we pretty much all despise. http://esolangs.org/wiki/Brainfuck
+2019-11-17 17:02:21 <b_jonas> apparently I didn't fix that one
+2019-11-17 17:03:20 <kspalaiologos> ^def wiki bf +[----->+++<]>+.++++++++++++..----.[-->+<]>++.-----------..[--->+<]>.[--->+<]>----.----.---.-----------.+++++++++++++.-------.++++++++++++.+[++>---<]>.---[----->+<]>.+++.-----------.--[->+++<]>.++[--->++<]>+.+[->+++<]>+.++.--.----[->+++<]>.,[.,]
+2019-11-17 17:03:20 <fungot> Defined.
+2019-11-17 17:03:31 <kspalaiologos> I could use my brainfuck cruncher
+2019-11-17 17:03:39 <kspalaiologos> but it's way more straightforward :p
+2019-11-17 17:03:55 <kspalaiologos> btw fizzie, would you like to help me a bit
+2019-11-17 17:04:08 <kspalaiologos> what I need is basically a brainfuck intepreter in befunge
+2019-11-17 17:04:14 <b_jonas> kspalaiologos: you could define it in unlambda. it's good for printing constant strings in which parenthesis are balanced.
+2019-11-17 17:04:15 <kspalaiologos> and fungot possibly has it
+2019-11-17 17:04:15 <fungot> kspalaiologos: why does that make the program do?" " fubar is an acronym.
+2019-11-17 17:04:36 <kspalaiologos> fungot doesnt support unlambda I guess
+2019-11-17 17:04:36 <fungot> kspalaiologos: scary. a girl with a mac and on bsd
+2019-11-17 17:04:58 <b_jonas> `?? brainfuck
+2019-11-17 17:04:58 <HackEso> brainfuck is an esoteric programming language created to make the smallest possible compiler for a Turing-complete language. It is what introduces many people to esolangs, spawning a vast number of derivatives that we pretty much all despise. https://esolangs.org/wiki/Brainfuck
+2019-11-17 17:05:02 <b_jonas> better
+2019-11-17 17:05:22 <b_jonas> ^ul (fungot doesnt support unlambda?)S
+2019-11-17 17:05:22 <fungot> fungot doesnt support unlambda?
+2019-11-17 17:05:27 <fizzie> Well, that's Underload.
+2019-11-17 17:05:32 <b_jonas> ^ul (it sure does. ):SS
+2019-11-17 17:05:32 <fungot> it sure does. it sure does.
+2019-11-17 17:05:34 <b_jonas> oh yeah
+2019-11-17 17:05:37 <b_jonas> I mean underload
+2019-11-17 17:05:38 <b_jonas> that one
+2019-11-17 17:05:50 <b_jonas> that's the one that's good at printing constant strings
+2019-11-17 17:06:00 <b_jonas> sorry
+2019-11-17 17:06:26 <fizzie> kspalaiologos: I think I made a standalone copy of the brainfuck interp in fungot for testing, but I can't find it.
+2019-11-17 17:06:27 <fungot> fizzie: come now, i settled with the knowledge that foo corresponds to the c library
+2019-11-17 17:07:39 <kspalaiologos> ^show
+2019-11-17 17:07:39 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-17 17:07:44 <kspalaiologos> ^rerere
+2019-11-17 17:07:46 <kspalaiologos> what is this
+2019-11-17 17:07:49 <kspalaiologos> ^show rerere
+2019-11-17 17:07:49 <fungot> ,.>,.<.>2,[.<.<.>3,]<.<.>.
+2019-11-17 17:08:01 <kspalaiologos> ^rerere abcdefgh
+2019-11-17 17:08:01 <fungot> abacbadcbedcfedgfehgfhgh
+2019-11-17 17:08:10 <kspalaiologos> ^rerere 123
+2019-11-17 17:08:10 <fungot> 121321323
+2019-11-17 17:08:27 <kspalaiologos> what is this
+2019-11-17 17:08:39 <kspalaiologos> ^pow2
+2019-11-17 17:08:39 <fungot> 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576 2097152 4194304 8388608 16777216 33554432 67108864 134217728 268435456 536870912 1073741824 2147483648 42949672 ...
+2019-11-17 17:08:49 <kspalaiologos> `show pow2
+2019-11-17 17:08:50 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: show: not found
+2019-11-17 17:08:53 <kspalaiologos> ^show pow2
+2019-11-17 17:08:53 <fungot> +2[[<+7[-<+7>]>[-<+<+>>]<[->+<]<-2.[-]<]+4[->+8<]>.[-]>>[-[>+2<-[>+2<-[>+2<-[>+2<-[>-8>+>[->+>+<2]+>>[<2->>[-]]<2[>+<-]>[-<+>]<4-[>+2<-[>+2<-[>+2<-[>+2<[-]]]]]]]]]]<[->+<]>+>[-<+>]>>]<3]
+2019-11-17 17:09:10 <kspalaiologos> ^ me
+2019-11-17 17:09:12 <kspalaiologos> ^me
+2019-11-17 17:09:12 * fungot 
+2019-11-17 17:09:20 <kspalaiologos> ^me test
+2019-11-17 17:09:20 * fungot test
+2019-11-17 17:09:26 <fizzie> Oh, that's still unfixed. :/
+2019-11-17 17:09:33 <kspalaiologos> pff
+2019-11-17 17:09:36 <fizzie> It's not supposed to allow CTCP.
+2019-11-17 17:09:48 <fizzie> Just never gotten around to fixing it.
+2019-11-17 17:10:00 <kspalaiologos> ^eval
+2019-11-17 17:10:04 <kspalaiologos> ^eval 2 + 2
+2019-11-17 17:10:06 <kspalaiologos> ^eval + 2 2
+2019-11-17 17:10:11 <kspalaiologos> ^eval 2 + 2
+2019-11-17 17:10:15 <kspalaiologos> ^eval 2 2 +
+2019-11-17 17:10:20 <kspalaiologos> how do you use eval?
+2019-11-17 17:10:24 <kspalaiologos> it's brainfuck right?
+2019-11-17 17:10:29 <kspalaiologos> ^show eval
+2019-11-17 17:10:29 <fungot> ()!
+2019-11-17 17:10:47 <kspalaiologos> ^rainbow
+2019-11-17 17:10:51 <kspalaiologos> ^rainbow test
+2019-11-17 17:10:51 <fungot> 02t03e04s05t
+2019-11-17 17:11:23 <fizzie> I'm guessing ^eval is nonsense. It's defined in Underload, but it doesn't look useful.
+2019-11-17 17:11:36 <fizzie> Also I don't understand how the repo browser is configured, the setup is referring to a path that doesn't exist.
+2019-11-17 17:14:18 * arseniiv thinks the second law of thermodynamics is foreboding and is maybe the root of all evil
+2019-11-17 17:14:36 <b_jonas> kspalaiologos: no, the brainfuck eval command is ^bf
+2019-11-17 17:15:04 <fizzie> And the code's just from the standard "mercurial-common" package, so it should be compatible with the version of Python installed.
+2019-11-17 17:15:09 <fizzie> Maybe it needs something to be restarted.
+2019-11-17 17:16:21 <b_jonas> fizzie: have you started upgrading debian yet?
+2019-11-17 17:16:32 <fizzie> I've upgraded the outer shell, and MediaWiki, but not the container.
+2019-11-17 17:16:54 <b_jonas> fizzie: where does the repo browser run?
+2019-11-17 17:17:03 <b_jonas> it may need some restarts or something after an upgrade
+2019-11-17 17:17:10 <fizzie> Yes, that's what I said.
+2019-11-17 17:17:32 Quit: kspalaiologos (Read error: Connection reset by peer)
+2019-11-17 17:17:32 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 17:17:54 <fizzie> But the weird thing is, it's configured to start /etc/uwsgi/apps-available/hackeso-hgweb.yml and there's no /etc/uwsgi directory at all.
+2019-11-17 17:18:06 Joined: kspalaiologos
+2019-11-17 17:18:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 17:18:30 <b_jonas> isn't that an optional config file?
+2019-11-17 17:18:53 <fizzie> Not as far as I know.
+2019-11-17 17:19:07 <fizzie> I mean, it's the only thing that tells uwsgi what to actually run.
+2019-11-17 17:19:19 <fizzie> ExecStart=/usr/bin/uwsgi --yml /etc/uwsgi/apps-available/hackeso-hgweb.yml --socket /var/run/uwsgi/hackeso-hgweb.socket
+2019-11-17 17:19:33 <b_jonas> huh
+2019-11-17 17:20:06 <fizzie> I did upgrade the uwsgi package, but I don't think it would have removed user-written config files.
+2019-11-17 17:20:11 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-11-17 17:20:11 <kspalaiologos> what just happened
+2019-11-17 17:20:16 <kspalaiologos> why did I get disconnected
+2019-11-17 17:20:29 <fizzie> "Read error: Connection reset by peer" is what it looked to us.
+2019-11-17 17:20:50 <b_jonas> kspalaiologos: sometimes the freenode irc servers just throw away connections when they feel like
+2019-11-17 17:20:50 <kspalaiologos> alright
+2019-11-17 17:21:12 <fizzie> Oh, the file is there.
+2019-11-17 17:21:19 <fizzie> I must've been looking for it on a wrong machine or something.
+2019-11-17 17:21:34 <kspalaiologos> a server might have died
+2019-11-17 17:21:48 <kspalaiologos> " Cycling to next server in freenode..."
+2019-11-17 17:21:48 <b_jonas> no, they don't often die
+2019-11-17 17:21:50 <b_jonas> oh
+2019-11-17 17:21:52 <b_jonas> then maybe it did
+2019-11-17 17:21:57 <b_jonas> no wait
+2019-11-17 17:22:00 <b_jonas> that's just a client message
+2019-11-17 17:22:06 <kspalaiologos> yes
+2019-11-17 17:22:11 <b_jonas> that it uses the heuristic to connect to a different server after a disconnect
+2019-11-17 17:22:20 <kspalaiologos> ah, it's fine then
+2019-11-17 17:22:21 <fizzie> b_jonas: Yeah, killing the running uwsgi instance made it start working again.
+2019-11-17 17:22:24 <kspalaiologos> no idea what happened
+2019-11-17 17:26:31 Quit: LKoen (Remote host closed the connection)
+2019-11-17 17:26:31 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-17 17:29:51 <fizzie> I should probably also restart the whole server one of these days.
+2019-11-17 17:29:53 <fizzie> 17:29:14 up 679 days, 18:51,  5 users,  load average: 0.99, 0.41, 0.21
