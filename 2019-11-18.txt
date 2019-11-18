@@ -237,3 +237,58 @@
 2019-11-18 03:56:49 <imode> is it possible to add new interpreters to fungot?
 2019-11-18 03:56:49 <fungot> imode: so. what causes an ioexception in a bufferedreader?
 2019-11-18 03:56:54 <user24> imode: indeed!
+2019-11-18 04:01:26 <oerjan> imode: not on the same level as ^ul or ^bf, unless fizzie writes one in befunge
+2019-11-18 04:01:49 <imode> heh.
+2019-11-18 04:02:31 <oerjan> but you could make a ^bf-based command that was an interpreter for something. i recall ^ul started that way, although it was terribly slow/timing out
+2019-11-18 04:03:16 <oerjan> ^show ul
+2019-11-18 04:03:16 <fungot> (^ul -- evaluates Underload)S
+2019-11-18 04:03:27 <imode> hm. I have an interpreter for Mode in C... wonder if I could transpile that to bf and define it.
+2019-11-18 04:03:31 <oerjan> oh, it was updated like that.
+2019-11-18 04:03:52 <imode> that'd be an absurdly large file, though.
+2019-11-18 04:03:55 <oerjan> imode: ^bf has a number-of-cycles limit. it's unlikely you'd get anything that complicated to run.
+2019-11-18 04:04:10 <imode> yeah..
+2019-11-18 04:04:22 <oerjan> (which was why the original ^ul tended to time out on anythng non-trivial.)
+2019-11-18 04:05:06 <oerjan> HackEso is the bot intended for that kind of stuff, anyway.
+2019-11-18 04:05:29 <imode> ah.
+2019-11-18 04:05:31 <oerjan> even though it's rarely used for that purpose, it was the original one.
+2019-11-18 04:13:00 <oerjan> ^8ball so they broke this?
+2019-11-18 04:13:01 <fungot> ...out of time!
+2019-11-18 04:13:05 <oerjan> it seems.
+2019-11-18 04:13:23 <oerjan> fizzie: at this rate fungot commands need revision control too
+2019-11-18 04:13:23 <fungot> oerjan: and there's the fact that it's in the ides now even.
+2019-11-18 04:13:45 <oerjan> i suppose you may not have ^saved yet.
+2019-11-18 04:21:01 <zzo38> Make the questions what your character might do in the situation (according to the player). I think the answer will likely to be "it depends on details which have not been given", because there is often the circumstances which can affect things variously.
+2019-11-18 04:21:37 <zzo38> Therefore, further elaboration may be needed, or the conditions
+2019-11-18 04:22:07 <imode> webassembly is just fancy brainfuck.
+2019-11-18 04:22:15 <imode> I wish I was kidding.
+2019-11-18 04:22:34 <oerjan> `uptime -p
+2019-11-18 04:22:36 <HackEso> up 3802 day, 12 hours, 52 minutes
+2019-11-18 04:22:40 <oerjan> sheesh
+2019-11-18 04:22:53 <oerjan> `url ../bin/uptime
+2019-11-18 04:22:53 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/uptime
+2019-11-18 04:22:57 <imode> 10 years?!
+2019-11-18 04:23:27 <imode> jesus!
+2019-11-18 04:23:56 <imode> oh.
+2019-11-18 04:23:59 <oerjan> imode: uptime is fake, b_jonas made it today
+2019-11-18 04:24:01 <imode> boottime is hardcoded.
+2019-11-18 04:24:03 <imode> ah.
+2019-11-18 04:24:08 <imode> why 10 years?
+2019-11-18 04:24:17 <zzo38> Is there a macro assembler for WebAssembly?
+2019-11-18 04:24:24 <oerjan> and as usual for hungarians, he messed up the plurals after numbers :P
+2019-11-18 04:24:50 <zzo38> Also, is there a C library to execute WebAssembly programs without requiring a JavaScript interpreter or web browser?
+2019-11-18 04:25:01 <imode> zzo38: iirc yes there is a standalone WASM interpreter.
+2019-11-18 04:25:02 <oerjan> and the real uptime splits into weeks as well, looking at another long-time server
+2019-11-18 04:25:07 <oerjan> (don't know about years)
+2019-11-18 04:25:13 <imode> zzo38: and I believe there is a macro assembler for it...
+2019-11-18 04:25:17 <shachaf> Is WebAssembly actually good for non-web things?
+2019-11-18 04:26:03 <zzo38> shachaf: It seems that it should be, as good as other VMs would be
+2019-11-18 04:26:11 <imode> who knows. honestly I'm intending on building Mode as a competitor or companion to it.
+2019-11-18 04:26:27 <shachaf> zzo38: Well, a lot of web things are scow.
+2019-11-18 04:26:31 <shachaf> And a lot of VMs are scow.
+2019-11-18 04:26:47 <shachaf> I don't think WebAssembly gets great performance compared to a native compiler.
+2019-11-18 04:27:30 <zzo38> I think that for text adventure games, Z-machine and Glulx and TAVERN are good.
+2019-11-18 04:27:31 <imode> that right there is why I have a mode-to-C transpiler.
+2019-11-18 04:28:17 <zzo38> (I have partially made a text adventure game in Glulx. But, it is difficult to think of what rooms to put and such stuff like that. Programming it is the easier part.)
+2019-11-18 04:28:26 <shachaf> zzo38: I want something for real software, though.
+2019-11-18 04:28:58 <shachaf> I think text-based adventure games use so little computation resources that it doesn't matter.
+2019-11-18 04:29:02 <imode> WASM's concurrency primitives aren't strong enough IMO. isolation of subprocesses is something you should get for free.
