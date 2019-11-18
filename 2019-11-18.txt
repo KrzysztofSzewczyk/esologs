@@ -34,3 +34,53 @@
 2019-11-18 01:53:54 <esowiki> 14[[07BIX Queue Subset14]]4 10 02https://esolangs.org/w/index.php?diff=67213&oldid=67191 5* 03Ais523 5* (-290) 10simplify the Core rules; due to symmetry, half the languages were trivially equivalent to the other half, these changes remove one of these halves without losing any actual content
 2019-11-18 01:54:37 Joined: ais523
 2019-11-18 01:54:37 Names: \oren\, ^[, ais523, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-18 02:03:10 Joined: oerjan
+2019-11-18 02:03:10 Names: \oren\, ^[, ais523, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-18 02:08:00 <esowiki> 14[[07BIX Queue Subset14]]4 10 02https://esolangs.org/w/index.php?diff=67214&oldid=67213 5* 03Ais523 5* (+836) 10/* a vd vt */ this is TC
+2019-11-18 02:09:06 <esowiki> 14[[07BIX Queue Subset14]]4 10 02https://esolangs.org/w/index.php?diff=67215&oldid=67214 5* 03Ais523 5* (-31) 10/* Computational class */ core is also TC
+2019-11-18 02:10:41 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-11-18 02:10:41 <ais523> b_jonas: https://esolangs.org/wiki/Lambdabot appears to be a mix of a description of Lambdabot and of HackEso
+2019-11-18 02:11:06 <ais523> I'm assuming something went wrong while writing it (maybe a copy-paste mistake)?
+2019-11-18 02:11:25 <esowiki> 14[[07HackEso14]]4 M10 02https://esolangs.org/w/index.php?diff=67216&oldid=67211 5* 03Fizzie 5* (+848) 10Minor copyedits.
+2019-11-18 02:16:40 <b_jonas> ais523: which part is a description of HackEso? it mentions `dontaskdonttelllist , but that's because it's the list of users who don't want to get messages through lambdabot's message service
+2019-11-18 02:16:49 <ais523> b_jonas: intro paragraph
+2019-11-18 02:17:01 <b_jonas> oh, the title
+2019-11-18 02:17:03 <ais523> in at least two places, unless fizzie actually maintains lambdabot
+2019-11-18 02:17:12 <esowiki> 14[[07Lambdabot14]]4 10 02https://esolangs.org/w/index.php?diff=67217&oldid=67205 5* 03B jonas 5* (+2) 10
+2019-11-18 02:17:28 <b_jonas> I think fizzie hosts lambdabot
+2019-11-18 02:17:38 <b_jonas> he might not be maintaining its code, I don't know
+2019-11-18 02:17:41 <b_jonas> but he's hosting the instance
+2019-11-18 02:17:44 <b_jonas> isn't he?
+2019-11-18 02:18:08 <ais523> I thought int-e ran lambdabot, I'm not sure though
+2019-11-18 02:18:38 <b_jonas> `? kspalaiologos
+2019-11-18 02:18:39 <HackEso> kspalaiologos is addicted to brainfuck, but otherwise completely unknown.
+2019-11-18 02:19:24 <b_jonas> `learn kspalaiologos is addicted to brainfuck. His current work is disassembling brainfuck code for a casino that lost the source code.
+2019-11-18 02:19:27 <HackEso> Learned 'kspalaiologo': kspalaiologos is addicted to brainfuck. His current work is disassembling brainfuck code for a casino that lost the source code.
+2019-11-18 02:19:57 <b_jonas> `? Hooloovo0
+2019-11-18 02:19:58 <HackEso> Hooloovo0? ¯\(°​_o)/¯
+2019-11-18 02:20:01 <b_jonas> `? kmc
+2019-11-18 02:20:04 <b_jonas> `? Lykaina
+2019-11-18 02:20:09 <HackEso> kmc did not run the International Devious Code Contest of 2013. She is her own grandpa.
+2019-11-18 02:20:11 <HackEso> Lykaina? ¯\(°​_o)/¯
+2019-11-18 02:20:50 <b_jonas> `learn Hooloovo0 is a calculator brain surgeon.
+2019-11-18 02:20:52 <HackEso> Learned 'hooloovo0': Hooloovo0 is a calculator brain surgeon.
+2019-11-18 02:20:58 <b_jonas> `? kspalaiologos
+2019-11-18 02:20:59 <HackEso> kspalaiologos is addicted to brainfuck, but otherwise completely unknown.
+2019-11-18 02:21:03 <b_jonas> `? Hooloovo0
+2019-11-18 02:21:04 <HackEso> Hooloovo0 is a calculator brain surgeon.
+2019-11-18 02:21:08 <b_jonas> hmm
+2019-11-18 02:21:15 <b_jonas> argh
+2019-11-18 02:21:28 <b_jonas> ``` mv -v /hackeso/kspalaiologo{,s}
+2019-11-18 02:21:28 <HackEso> mv: cannot stat '/hackeso/kspalaiologo': No such file or directory
+2019-11-18 02:21:34 <b_jonas> ``` mv -v /hackeso/wisdom/kspalaiologo{,s}
+2019-11-18 02:21:35 <HackEso> mv: cannot stat '/hackeso/wisdom/kspalaiologo': No such file or directory
+2019-11-18 02:22:23 <b_jonas> ``` mv -v /hackenv/wisdom/kspalaiologo{,s}
+2019-11-18 02:22:25 <HackEso> renamed '/hackenv/wisdom/kspalaiologo' -> '/hackenv/wisdom/kspalaiologos'
+2019-11-18 02:22:29 <b_jonas> `? kspalaiologos
+2019-11-18 02:22:30 <HackEso> kspalaiologos is addicted to brainfuck. His current work is disassembling brainfuck code for a casino that lost the source code.
+2019-11-18 02:23:07 <b_jonas> it would be nice to have some better wisdoms for users, but I'm not good at making them
+2019-11-18 02:25:40 <esowiki> 14[[07Lambdabot14]]4 10 02https://esolangs.org/w/index.php?diff=67218&oldid=67217 5* 03B jonas 5* (-9) 10
+2019-11-18 02:25:51 <b_jonas> ok, let's make it not misleading then
+2019-11-18 02:26:37 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-18 02:26:37 <oerjan> i see the pwd move is working well /s
+2019-11-18 02:29:09 <esowiki> 14[[07HackEso14]]4 10 02https://esolangs.org/w/index.php?diff=67219&oldid=67216 5* 03B jonas 5* (+269) 10/* Core IRC usage */ environment
