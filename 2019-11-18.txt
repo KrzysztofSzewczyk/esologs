@@ -84,3 +84,93 @@
 2019-11-18 02:26:37 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
 2019-11-18 02:26:37 <oerjan> i see the pwd move is working well /s
 2019-11-18 02:29:09 <esowiki> 14[[07HackEso14]]4 10 02https://esolangs.org/w/index.php?diff=67219&oldid=67216 5* 03B jonas 5* (+269) 10/* Core IRC usage */ environment
+2019-11-18 02:31:43 <oerjan> `cat bin/whoops
+2019-11-18 02:31:44 <HackEso> cat: bin/whoops: No such file or directory
+2019-11-18 02:31:56 <oerjan> `cbt whoops
+2019-11-18 02:31:57 <HackEso> OLD="$HACKENV/wisdom/$1"; [ -z "$1" ] && OLD="$(lastfiles)"; NEW="${OLD}s"; if [ -f "$NEW" ]; then echo "«${NEW}» already exists"; exit 1; fi; mv "$OLD" "$NEW" && echo "«${OLD}» -> «${NEW}»"
+2019-11-18 02:32:25 <oerjan> `lastfiles
+2019-11-18 02:32:27 <HackEso> wisdom/kspalaiologo \ wisdom/kspalaiologos
+2019-11-18 02:33:51 <oerjan> `slbd whoops//s,[(],HACKENV$(,
+2019-11-18 02:33:53 <HackEso> whoops//OLD="$HACKENV/wisdom/$1"; [ -z "$1" ] && OLD="$HACKENV$(lastfiles)"; NEW="${OLD}s"; if [ -f "$NEW" ]; then echo "«${NEW}» already exists"; exit 1; fi; mv "$OLD" "$NEW" && echo "«${OLD}» -> «${NEW}»"
+2019-11-18 02:34:03 <oerjan> oops
+2019-11-18 02:34:08 <oerjan> `revert
+2019-11-18 02:34:10 <HackEso> Done.
+2019-11-18 02:34:11 <b_jonas> oerjan: sedlast may also have to be fixed for the same reason
+2019-11-18 02:34:18 <oerjan> `slbd whoops//s,[(],HACKENV/$(,
+2019-11-18 02:34:19 <HackEso> whoops//OLD="$HACKENV/wisdom/$1"; [ -z "$1" ] && OLD="$HACKENV/$(lastfiles)"; NEW="${OLD}s"; if [ -f "$NEW" ]; then echo "«${NEW}» already exists"; exit 1; fi; mv "$OLD" "$NEW" && echo "«${OLD}» -> «${NEW}»"
+2019-11-18 02:34:42 <b_jonas> and possibly before and now
+2019-11-18 02:34:56 <oerjan> hum
+2019-11-18 02:35:02 <oerjan> `revert
+2019-11-18 02:35:04 <HackEso> Done.
+2019-11-18 02:35:09 <b_jonas> ``` head "${HACKENV}/bin/"{sedlast,before,now}
+2019-11-18 02:35:10 <HackEso> â€‹==> /hackenv/bin/sedlast <== \ files="$(lastfiles)"; sed -i "$1" "$files" \  \ ==> /hackenv/bin/before <== \ lastfiles "$@" | while read f; do echo -n "$f//"; hg cat -r "$(hg log --removed --template '{rev}\n' "$f" | tail -n+2 | head -n1)" "$f"; done \  \ ==> /hackenv/bin/now <== \ lastfiles "$@" | while read f; do echo -n "$f//"; cat "$f"; done
+2019-11-18 02:37:17 <oerjan> `cbt lastfiles
+2019-11-18 02:37:17 <HackEso> hg log --removed -l 1 --template "{join(files,'\n')}\n" -- "$@"
+2019-11-18 02:38:06 <oerjan> `` lastfiles | cat -v
+2019-11-18 02:38:09 <HackEso> bin/whoops
+2019-11-18 02:38:47 <oerjan> `` lastfiles | cat -E
+2019-11-18 02:38:48 <HackEso> bin/whoops$
+2019-11-18 02:38:52 <oerjan> ic
+2019-11-18 02:38:59 <oerjan> oh wait
+2019-11-18 02:39:17 <oerjan> i think i hate this move already
+2019-11-18 02:40:11 <oerjan> `before
+2019-11-18 02:40:17 <HackEso> bin/whoops//bin/whoops: no such file in rev 627b52c6b2cb
+2019-11-18 02:40:56 <oerjan> `edit ../bin/lastfiles
+2019-11-18 02:40:56 <HackEso> https://hack.esolangs.org/edit/bin/lastfiles
+2019-11-18 02:42:32 <oerjan> `fetch ../bin/lastfiles https://hack.esolangs.org/get/bin/lastfiles
+2019-11-18 02:42:33 <HackEso> 2019-11-18 02:42:32 URL:https://hack.esolangs.org/get/bin/lastfiles [82/82] -> "/hackenv/bin/lastfiles" [1]
+2019-11-18 02:42:39 <oerjan> `lastfiles
+2019-11-18 02:42:40 <HackEso> â€‹/hackenv/bin/lastfiles
+2019-11-18 02:42:44 <oerjan> `before
+2019-11-18 02:42:46 <HackEso> â€‹/hackenv/bin/lastfiles//hg log --removed -l 1 --template "{join(files,'\n')}\n" -- "$@"
+2019-11-18 02:43:32 <oerjan> `after
+2019-11-18 02:43:32 <HackEso> â€‹/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: after: not found
+2019-11-18 02:43:40 <oerjan> `now
+2019-11-18 02:43:41 <HackEso> â€‹/hackenv/bin/lastfiles//hg log --removed -l 1 --template "$HACKENV/{join(files,'\n$HACKENV/')}\n" -- "$@"
+2019-11-18 02:44:23 <oerjan> `cbt sedlast
+2019-11-18 02:44:24 <HackEso> files="$(lastfiles)"; sed -i "$1" "$files"
+2019-11-18 02:44:41 <oerjan> should work
+2019-11-18 02:45:08 <oerjan> `whoops test
+2019-11-18 02:45:09 <HackEso> â€‹Â«/hackenv/wisdom/testÂ» -> Â«/hackenv/wisdom/testsÂ»
+2019-11-18 02:45:13 <oerjan> `? test
+2019-11-18 02:45:14 <HackEso> test? Â¯\(Â°â€‹_o)/Â¯
+2019-11-18 02:45:21 <oerjan> `? tests
+2019-11-18 02:45:23 <HackEso> test failed. HackEgo-JUnit is not available.
+2019-11-18 02:45:29 <oerjan> curious
+2019-11-18 02:45:32 <oerjan> hum
+2019-11-18 02:45:44 <oerjan> oh
+2019-11-18 02:45:48 <oerjan> `revert
+2019-11-18 02:45:49 <HackEso> Done.
+2019-11-18 02:46:10 <oerjan> `lastfiles
+2019-11-18 02:46:12 <HackEso> â€‹/hackenv/wisdom/test \ /hackenv/wisdom/tests
+2019-11-18 02:46:38 <oerjan> `sedlast s,Ego,Eso,
+2019-11-18 02:46:40 <HackEso> â€‹/bin/sed: can't read /hackenv/wisdom/test \ /hackenv/wisdom/tests: No such file or directory
+2019-11-18 02:46:48 <oerjan> wat
+2019-11-18 02:46:50 <oerjan> oh
+2019-11-18 02:47:06 * oerjan was hoping it would sed both
+2019-11-18 02:47:24 <oerjan> `cat bin/sedlast
+2019-11-18 02:47:24 <HackEso> cat: bin/sedlast: No such file or directory
+2019-11-18 02:47:30 <oerjan> `cat ../bin/sedlast
+2019-11-18 02:47:31 <HackEso> files="$(lastfiles)"; sed -i "$1" "$files"
+2019-11-18 02:47:39 <oerjan> HATE I SAID
+2019-11-18 02:48:02 Joined: user24
+2019-11-18 02:48:02 Names: \oren\, ^[, ais523, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-18 02:49:02 <oerjan> oh well that never worked with multiple files anyway
+2019-11-18 02:50:12 <oerjan> fizzie: what's with all the "draft" notes suddenly showing in the repo browser
+2019-11-18 02:50:24 <oerjan> not that they seem to do anything
+2019-11-18 02:50:47 <shachaf> oerjan: cbt hth
+2019-11-18 02:50:53 <oerjan> shachaf: HATE
+2019-11-18 02:51:45 * oerjan gets a truly ridiculous idea
+2019-11-18 02:51:54 <oerjan> unfortunately it won't work for plain `cat
+2019-11-18 02:52:01 <kingoffrance> my guess is "$file"  remove quotes, but then you have to worry about spaces, difference between $* and $@ i believe
+2019-11-18 02:52:12 <kingoffrance> its basically shell quoting issue i believe
+2019-11-18 02:52:34 <kingoffrance> (i mean, the $* $@ difference is similar issue)
+2019-11-18 02:52:49 <kingoffrance> (one does things as one giant arg, the other separate args)
+2019-11-18 02:53:18 <kingoffrance> "$files" i mean of course
+2019-11-18 02:54:12 <oerjan> kingoffrance: it's not entirely clear what sedlast _should_ do with more than one file anyway. it's a very corner case.
+2019-11-18 02:54:53 User Name: user24 = user24!~user24@p200300C3AF001733FC471B37A1F89ED7.dip0.t-ipconnect.de
+2019-11-18 02:54:53 <user24> Does anyone like recursion? :) http://34.77.241.183/
+2019-11-18 02:58:38 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-18 02:58:38 <imode> user24: what is this?
+2019-11-18 02:58:55 <user24> imode: confusing, apparently :)
+2019-11-18 02:59:00 <user24> hint: wasd is not all that is possible
