@@ -216,3 +216,24 @@
 2019-11-18 03:24:40 <oerjan> fizzie: fixed the http
 2019-11-18 03:25:46 <imode> what language is the `wiki` command written in?
 2019-11-18 03:27:01 <zzo38> Does it have the latest version of SQLite, GCC, LLVM, Ghostscript, Node.js, and C-INTERCAL?
+2019-11-18 03:33:04 <oerjan> imode: brainfuck
+2019-11-18 03:33:54 <imode> ^show wiki
+2019-11-18 03:33:54 <fungot> +15[>+4>+7>+7>+8<4-]>3-.>-4..<2+7.+3.<-2.-11..>2-3.<.>2-5.-3.<-4.>+2.<+6.<.<-.>3+.+3.<.<2+.>+4.>+2.+2.-2.<2.,[.,]
+2019-11-18 03:33:59 <oerjan> most of the program itself, other than the couple places i changed, was produced with the bf_txtgen text converter.
+2019-11-18 03:34:31 <oerjan> ^show happens to show to internal RLE encoding fungot uses for compression.
+2019-11-18 03:34:36 <oerjan> *the
+2019-11-18 03:34:42 <imode> ah!
+2019-11-18 03:34:46 <imode> that explains it.
+2019-11-18 03:34:56 <Lykaina> b_jonas: did you want my attention?
+2019-11-18 03:42:26 <oerjan> ^bf ,+++++++++++++++++++++++++++++++++.,+++++++++++++++++++++++++++++++++.
+2019-11-18 03:42:26 <fungot> !!
+2019-11-18 03:44:09 <user24> imode: https://qewasd.com/ :)
+2019-11-18 03:47:41 <imode> q and e swap to different rooms, huh.
+2019-11-18 03:54:50 <oerjan> <b_jonas> a magic 8-ball command might be useful <-- ... you said that right after fungot confirming it had one.
+2019-11-18 03:54:50 <fungot> oerjan: i don't know much more
+2019-11-18 03:55:49 <imode> 'hello world' in readable mode bytecode: ,$48:.,$65:.,$6c:.,$6f:.,$2c:.,$20:.,$77:.,$6f:.,$72:.,$6c:.,$64:.,$21:.,:$[':$]
+2019-11-18 03:56:31 <oerjan> i suppose it's not quite a full implementation, but fungot cannot do true randomness in ^def'ed commands anyway.
+2019-11-18 03:56:32 <fungot> oerjan: s/ first/ top/ computers/ callcc.html that one too.
+2019-11-18 03:56:49 <imode> is it possible to add new interpreters to fungot?
+2019-11-18 03:56:49 <fungot> imode: so. what causes an ioexception in a bufferedreader?
+2019-11-18 03:56:54 <user24> imode: indeed!
