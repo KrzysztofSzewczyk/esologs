@@ -609,3 +609,7 @@
 2019-11-18 11:28:12 <esowiki> 14[[07Truth-machine14]]4 10 02https://esolangs.org/w/index.php?diff=67235&oldid=67232 5* 03Quadril-Is 5* (+30) 10/* Unsquare */
 2019-11-18 11:29:58 <esowiki> 14[[07Lambdabot14]]4 10 02https://esolangs.org/w/index.php?diff=67236&oldid=67230 5* 03B jonas 5* (+0) 10typo
 2019-11-18 11:30:23 <esowiki> 14[[07Fungot14]]4 10 02https://esolangs.org/w/index.php?diff=67237&oldid=67203 5* 03B jonas 5* (+0) 10typo
+2019-11-18 12:03:47 <esowiki> 14[[07BIX Queue Subset14]]4 10 02https://esolangs.org/w/index.php?diff=67238&oldid=67215 5* 03Ais523 5* (-805) 10rv 2 revisions: the TC proof is wrong, because avd doesn't invert if the queue starts with a 0, thus throwing off the parity argument
+2019-11-18 12:15:18 <fizzie> wib_jonas: No, it's a straight SIGKILL at the timeout time. But I could make it, say, SIGTERM at timeout, SIGKILL five seconds later.
+2019-11-18 12:17:31 <int-e> wib_jonas: I guess lambadbot is lambdabot's evil twin.
+2019-11-18 12:19:33 <wib_jonas> fizzie: if you want a signal, consider SIGALARM, but I was thinking more of an env-var that gives the time when the program will be terminated relative to some linux timer
