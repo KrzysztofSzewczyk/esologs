@@ -555,3 +555,50 @@
 2019-11-18 10:29:41 <kspalaiologos> ?
 2019-11-18 10:29:46 <kspalaiologos> ``` ls
 2019-11-18 10:29:46 <HackEso> OUT \ a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ bfi \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ karma \ le \ out \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ temp.b \ test.b \ test.sh \ tmp-interp \ tmp.txt \ uptime.out \ v1.1.1.tar.gz
+2019-11-18 10:30:02 <kspalaiologos> ``` ls asmbf-1.1.1
+2019-11-18 10:30:07 <HackEso> AUTHORS \ INSTALL \ LICENSE \ Makefile \ NEWS \ README \ TODO \ VERSIONING \ bconv.c \ bfasm.asm \ bfasm.b \ bfasm.c \ bfasm.rs \ bfi.c \ bfintd.c \ bfmake \ bfpp \ bin \ doc \ examples \ labels.pl \ strip.pl \ test \ test.pl
+2019-11-18 10:30:38 <kspalaiologos> ``` ./bfi test.b
+2019-11-18 10:30:39 <HackEso> 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10 11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20 21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30 31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F 40 41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F 50 51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60 61 62 63 64 65 66 67 68 69 6A 6B 6C 6D 6E 6F 70 71 72 73 74 75 76 77 78 79 7A 7B 7C 7D 7E 7F 80 81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F 90 A0 A1
+2019-11-18 10:30:43 <kspalaiologos> Whoa what
+2019-11-18 10:30:59 <kspalaiologos> ``` ./bfi temp.b
+2019-11-18 10:30:59 <HackEso> 0Access Violation, ip=304
+2019-11-18 10:32:11 <kspalaiologos> ``` asmbf <<<"psh r3/
+2019-11-18 10:32:11 <kspalaiologos> mov r2, r1/
+2019-11-18 10:32:11 <kspalaiologos> mod r2, 64/
+2019-11-18 10:32:11 <kspalaiologos> ne_ r2, 0/
+2019-11-18 10:32:11 <kspalaiologos> pop r3" > temp.b
+2019-11-18 10:32:13 <HackEso> bash: -c: line 0: unexpected EOF while looking for matching `"' \ bash: -c: line 1: syntax error: unexpected end of file
+2019-11-18 10:32:24 <kspalaiologos> Noo
+2019-11-18 10:32:26 <kspalaiologos> Sorry
+2019-11-18 10:35:26 <wib_jonas> fizzie: stupid question. together with the wd change, why not break things further by moving the quotes database from /hackenv/quotes to /hackenv/share/quotes ?
+2019-11-18 10:36:50 Quit: kspalaiologos (Ping timeout: 240 seconds)
+2019-11-18 10:36:51 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-18 10:36:58 Joined: kspalaiologos
+2019-11-18 10:36:58 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-18 10:38:01 User Name: kspalaiologos = kspalaiologos!~kspalaiol@user-5-173-145-46.play-internet.pl
+2019-11-18 10:38:01 <kspalaiologos> ``` asmbf <<<"psh 48/mod r1, 64/ne_ r1, 0/pop r2/out r2" > test.b
+2019-11-18 10:38:05 <HackEso> No output.
+2019-11-18 10:38:14 <esowiki> 14[[07HackEso14]]4 10 02https://esolangs.org/w/index.php?diff=67231&oldid=67228 5* 03B jonas 5* (+1804) 10web interface
+2019-11-18 10:38:20 <kspalaiologos> ``` ./bfi test.b
+2019-11-18 10:38:21 <HackEso> 0
+2019-11-18 10:38:24 <kspalaiologos> Dang
+2019-11-18 10:38:26 <kspalaiologos> It works
+2019-11-18 10:38:31 <kspalaiologos> Issue's invalid
+2019-11-18 10:38:40 <fizzie> wib_jonas: I don't have a particularly strong opinion on that.
+2019-11-18 10:39:30 <wib_jonas> I guess wisdom is directly in /hackenv too, and we use it often as well
+2019-11-18 10:40:19 <wib_jonas> I'll add symlinks under share though
+2019-11-18 10:40:46 <wib_jonas> ``` ln -sv ../wisdom ../quotes /hackenv/share/
+2019-11-18 10:40:48 <HackEso> ​'/hackenv/share/wisdom' -> '../wisdom' \ '/hackenv/share/quotes' -> '../quotes'
+2019-11-18 10:41:16 <wib_jonas> ``` grep -RF wob_jonas /hackenv/share/{wisdom,quotes}
+2019-11-18 10:41:17 <HackEso> ​/hackenv/share/wisdom/wob_jonas:wob_jonas is b_jonas in disguise, so that he can do magic tricks. \ /hackenv/share/quotes:<wob_jonas> and at least don't put Hofstadter next to the time cube guy without at least a semicolon, that's insulting Hofstadter \ /hackenv/share/quotes:<wob_jonas> that real-world complexity doesn't fit my simple model of English  <wob_jonas> must be that darned Higgs-boson or some other symmetry-breaking mechan
+2019-11-18 10:41:36 <wib_jonas> that will help forwards compatibility in case we decided to make that move in the future
+2019-11-18 10:41:44 <fizzie> wib_jonas: Looks like oerjan changed lastfiles to output absolute paths, which I think has made before / now / sedlast work.
+2019-11-18 10:41:53 <wib_jonas> ok
+2019-11-18 10:41:53 <fizzie> `lastfiles
+2019-11-18 10:41:54 <HackEso> ​/hackenv/share/quotes \ /hackenv/share/wisdom
+2019-11-18 10:41:55 <kspalaiologos> ^8ball stuff
+2019-11-18 10:41:56 <fungot> ...out of time!
+2019-11-18 10:42:44 <wib_jonas> of course we have to be careful with the quotes link, it's too easy to accidentally overwrite it with a regular file when you edit it
+2019-11-18 10:47:04 <esowiki> 14[[07Truth-machine14]]4 10 02https://esolangs.org/w/index.php?diff=67232&oldid=67105 5* 03Keymaker 5* (+107) 10Acyclic Tag...
+2019-11-18 10:51:01 <zzo38> Do you have some ideas relating to typesetting text for card games such as Magic: the Gathering? I have some ideas about it, but there may be others, including some things which is not applicable to Magic: the Gathering but might be applicable in other card games.
+2019-11-18 10:51:48 <zzo38> And, I don't know what to do about holographic cards. Maybe a later version of my software (other than the first version) might support separations, which might be usable for such thing.
