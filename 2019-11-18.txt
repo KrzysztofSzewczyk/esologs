@@ -667,3 +667,36 @@
 2019-11-18 15:56:06 <kspalaiologos> the brainfuck code is very short
 2019-11-18 15:56:07 <kspalaiologos> https://pastebin.com/jVjBMAdZ
 2019-11-18 15:56:21 <kspalaiologos> RLE doesn't help much because the code isn't about constants
+2019-11-18 16:03:57 <kspalaiologos> I wonder will it run on bfasm in hackeso
+2019-11-18 16:04:09 <kspalaiologos> it's v1.1.1 iirc
+2019-11-18 16:04:27 <kspalaiologos> ``` asmbf <<<"seg 0\org 0\lbl 1\psh r2\clr r2\lbl 2\rcl r1,r2\add r2,16\jnz r1,2\sub r2,16\sto r2,1\mov r1,r2\pop r2\ret\lbl 3\sto r1,0\ret\lbl 4\psh r2\clr r2\lbl 5\rcl r1,r2\add r2,16\jnz r1,5\mov r1,r2\add r1,0\pop r2\asl r1\ret">temp.b
+2019-11-18 16:04:28 <HackEso> No output.
+2019-11-18 16:04:36 <kspalaiologos> ``` cat temp.b
+2019-11-18 16:04:37 <HackEso> ​+>+[#
+2019-11-18 16:04:40 <kspalaiologos> doesn't :/
+2019-11-18 16:04:43 <kspalaiologos> ``` rm -f temp.b
+2019-11-18 16:04:44 <HackEso> No output.
+2019-11-18 16:04:49 <kspalaiologos> ``` ls
+2019-11-18 16:04:50 <HackEso> OUT \ a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ bfi \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ karma \ le \ out \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ test.b \ test.sh \ tmp-interp \ tmp.txt \ uptime.out \ v1.1.1.tar.gz
+2019-11-18 16:04:57 <kspalaiologos> ``` rm bfi
+2019-11-18 16:04:57 <HackEso> No output.
+2019-11-18 16:05:07 <kspalaiologos> ``` rm test.b
+2019-11-18 16:05:08 <HackEso> No output.
+2019-11-18 16:05:16 <kspalaiologos> ``` rm v1.1.1.tar.gz
+2019-11-18 16:05:17 <HackEso> No output.
+2019-11-18 16:05:23 <kspalaiologos> it's my stuff I'm cleaning it up as it's no longer needed
+2019-11-18 16:05:56 <esowiki> 14[[07Esolang:Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=67239&oldid=67234 5* 03PaniniTheDeveloper 5* (+314) 10
+2019-11-18 16:13:03 Quit: atslash (Quit: Leaving)
+2019-11-18 16:13:03 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-18 16:17:59 Joined: imode
+2019-11-18 16:18:00 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-18 16:20:04 <kspalaiologos> `asmbf mov r1,0/sto r1,3/db_ 1/rcl r1,0/out r1
+2019-11-18 16:20:08 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>[-]>>>>+++<<<<[<+>>>>>>>>>>>>>>>+<<<<<<<<<<<<<<-]<[>+<-]>>>>>[<<<<<+>>>>>>>>>>>>>>+<<<<<<<<<-]<<<<<[>>>>>+<<<<<-]>>>>>>>>>>>>>>>[[>>]+[<<]>>-]+[>>]<[-]<[<<]>[>[>>]<+<[<<]>-]>[>>]<<[-<<]><<<<<<<<<[-]>>>>>>>>>>>+<<<<<<<<<<<<<<<[-]>>>>[<<<<<+>>>>>>>>>>+>>>>>+<<<<<<<<<<-]<<<<<[>>>>>+<<<<<-]>>>>>>>>>>>>>>>[[>>]+[<<]>>-]+[>>]<[<[<<]>+<<<<<<<<<<<<<+>>>>>>>>>>>>>>[>>]<-]<[<<]>[>[>>]<+<[<<]>-]>[>>]<<[-<<]><<<<
+2019-11-18 16:20:21 <kspalaiologos> ``` asmbf <<<"mov r1,0/sto r1,3/db_ 1/rcl r1,0/out r1"
+2019-11-18 16:20:22 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>[-]>>>>+++<<<<[<+>>>>>>>>>>>>>>>+<<<<<<<<<<<<<<-]<[>+<-]>>>>>[<<<<<+>>>>>>>>>>>>>>+<<<<<<<<<-]<<<<<[>>>>>+<<<<<-]>>>>>>>>>>>>>>>[[>>]+[<<]>>-]+[>>]<[-]<[<<]>[>[>>]<+<[<<]>-]>[>>]<<[-<<]><<<<<<<<<[-]>>>>>>>>>>>+<<<<<<<<<<<<<<<[-]>>>>[<<<<<+>>>>>>>>>>+>>>>>+<<<<<<<<<<-]<<<<<[>>>>>+<<<<<-]>>>>>>>>>>>>>>>[[>>]+[<<]>>-]+[>>]<[<[<<]>+<<<<<<<<<<<<<+>>>>>>>>>>>>>>[>>]<-]<[<<]>[>[>>]<+<[<<]>-]>[>>]<<[-<<]><<<<
+2019-11-18 16:20:26 <kspalaiologos> ``` asmbf <<<"mov r1,0/sto r1,3/db_ 1/rcl r1,0/out r1" > temp.b
+2019-11-18 16:20:27 <HackEso> No output.
+2019-11-18 16:20:41 <kspalaiologos> ``` gcc asmbf-1.1.1/bfi.c -o bfi
+2019-11-18 16:20:43 <HackEso> No output.
+2019-11-18 16:20:48 <kspalaiologos> ``` ./bfi temp.b
+2019-11-18 16:20:49 <HackEso> ​
