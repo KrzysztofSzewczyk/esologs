@@ -292,3 +292,79 @@
 2019-11-18 04:28:26 <shachaf> zzo38: I want something for real software, though.
 2019-11-18 04:28:58 <shachaf> I think text-based adventure games use so little computation resources that it doesn't matter.
 2019-11-18 04:29:02 <imode> WASM's concurrency primitives aren't strong enough IMO. isolation of subprocesses is something you should get for free.
+2019-11-18 04:32:57 <user24> imode: Have a look at this and click on "Hierarchical Accounts Example"
+2019-11-18 04:32:59 <imode> I wanna be able to manage process trees and treat processes as first-class values that can be persisted.
+2019-11-18 04:33:04 <user24> YASSSS
+2019-11-18 04:33:21 <imode> which is why Mode now has concurrency primitives that do just that.
+2019-11-18 04:33:25 <user24> And if you are interested in this, here some keywords: GNOSIS, KeyKOS, Joule, E, Stackless Python (https://stackless.readthedocs.io/en/latest/library/stackless/pickling.html)
+2019-11-18 04:33:33 <user24> also my projects: https://esolangs.org/wiki/RarVM
+2019-11-18 04:33:38 <user24> https://esolangs.org/wiki/KeyVM
+2019-11-18 04:33:44 <zzo38> Some text adventure games do use more resources than others, I think. (Such as, those written using Inform7)
+2019-11-18 04:34:09 <user24> Here's Joule: http://www.erights.org/history/joule/index.html
+2019-11-18 04:34:24 <zzo38> (I don't really like such read-only programm language as Inform7 so much, so I use assembly language, is better.)
+2019-11-18 04:35:39 <imode> user24: you might be interested in my Mode spec. it's a specification for a language that's brainfuck-like and involves only a few core commands, with a set of derived commands providing additional functionality.
+2019-11-18 04:36:22 <imode> there's also a binary format that's based on typed segments, but it's not ready yet.
+2019-11-18 04:36:51 <imode> concurrency got added recently but hasn't been implemented (mainly because I just started a new position at Amazon).
+2019-11-18 04:37:18 <user24> imode: Definitely! Do you have a wiki page?
+2019-11-18 04:38:09 <imode> not yet. it's all on my harddrive but I plan on posting it to the wiki once I 1. implement a first pass of concurrency features in the Python interpreter or 2. get fed up, submit the spec + existing python interpreter and C transpiler.
+2019-11-18 04:38:55 <imode> let's see if I have any useful examples kicking around..
+2019-11-18 04:39:14 <user24> Aye! I'm still a bit scared by concurrency, and I like determinism, so my VMs are all single-threaded
+2019-11-18 04:40:29 <imode> all of my concurrency operations are actually pretty simple. anything between { and } is treated as a subprocess. when encountering a {, you create a new process, push the handle to that process to the parent process, jump to the matching }, and then you can send data to and get data from the child process by send and receive operators.
+2019-11-18 04:40:56 <imode> sends and receives are blocking, so the VM just checks to see if the target process is in a blocking receive state on send.
+2019-11-18 04:41:01 <imode> otherwise it just goes dormant.
+2019-11-18 04:41:24 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Darthalex314 5*  10New user account
+2019-11-18 04:42:09 <user24> yeah, that sounds cool
+2019-11-18 04:42:50 <imode> https://repl.it/repls/DefinitiveColossalEngineer
+2019-11-18 04:43:15 <imode> program.h is the output of the C transpiler, which is just a glorified preprocessor.
+2019-11-18 04:43:15 <user24> with my VMs, I want replicable computation, so if i run a subprocess for n steps, copy it's image, and then run these two images for the same number of steps, they arrive at the exactly same state
+2019-11-18 04:43:43 <user24> this is also possible with concurrency
+2019-11-18 04:43:49 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=67220&oldid=67107 5* 03Darthalex314 5* (+227) 10
+2019-11-18 04:43:49 <user24> but very difficult to implement
+2019-11-18 04:44:13 <user24> so I'm specifying a VM and build a language on top of it
+2019-11-18 04:44:15 <imode> why difficult? do these subprocesses have I/O access?
+2019-11-18 04:44:25 <user24> this way i can have single-instruction resource accounting and control granularity
+2019-11-18 04:44:36 <user24> not directly, they can only access their own memory
+2019-11-18 04:44:50 <imode> aye.
+2019-11-18 04:45:07 <esowiki> 14[[07User:Darthalex31414]]4 N10 02https://esolangs.org/w/index.php?oldid=67221 5* 03Darthalex314 5* (+29) 10Created page with "Hi. Learning about Brainf***."
+2019-11-18 04:45:20 <esowiki> 14[[07User talk:Darthalex31414]]4 N10 02https://esolangs.org/w/index.php?oldid=67222 5* 03Darthalex314 5* (+5) 10Created page with "What."
+2019-11-18 04:45:23 <user24> with your type of concurrency, deterministic process suspension would only be possible at the {} boundaries
+2019-11-18 04:45:46 <user24> (without a deterministic scheduler at least)
+2019-11-18 04:45:58 <imode> not really, actually. within Mode, the world can be stopped and persisted at any time.
+2019-11-18 04:46:09 <imode> in fact that's the basis of a database engine that I'm working on within it.
+2019-11-18 04:46:29 <imode> your data values are just long-running processes that can be wrapped up and thrown to disk or over a network with a really slim execution state.
+2019-11-18 04:46:31 <esowiki> 14[[07Brainfuck implementations14]]4 10 02https://esolangs.org/w/index.php?diff=67223&oldid=65848 5* 03Darthalex314 5* (+77) 10/* Normal implementations */
+2019-11-18 04:46:52 <imode> literally just an instruction pointer and a queue.
+2019-11-18 04:47:59 <user24> ah, so there is no parallelism, just some form of message passing concurrency like in Javascript?
+2019-11-18 04:48:18 <zzo38> Should you add a category for IRC bots into the wiki?
+2019-11-18 04:48:21 <user24> my VM process formats trying to be slim was inspired by this Smalltalk project: http://netjam.org/spoon/viz/movie/
+2019-11-18 04:48:42 <user24> also by Stackless Python as linked above
+2019-11-18 04:49:18 <user24> with Stackless, I wrote a network node once that executed a process for a few thousand steps and then sent it to another random node it was connected to :)
+2019-11-18 04:49:39 <imode> there is parallelism. just not explicitly defined. I don't care how you accomplish the concurrency.
+2019-11-18 04:49:42 <user24> if stuff like this is built into the language, things like these become very easy to implement
+2019-11-18 04:50:13 <imode> for instance, in the Golang interpreter for this, I'm spawning goroutines-per-process and using channels to communicate with the larger "core".
+2019-11-18 04:51:56 <user24> Are you familiar with capabilities/keys?
+2019-11-18 04:52:04 <imode> if you choose to be single-threaded, you'd just do a round-robin scheduler, where you run through all of the spawned processes and step them one instruction at a time.
+2019-11-18 04:52:07 <imode> yeah.
+2019-11-18 04:52:13 <user24> amazing
+2019-11-18 04:52:51 <user24> a few months ago it felt like nobody knew, or was even interested in all of this
+2019-11-18 04:53:15 <user24> Yeah
+2019-11-18 04:54:04 <user24> Somehow my brain prevents me from considering making my systems (optionally) multi-threaded, because instruction level execution control and process persistence allow all of this to be built "on top"
+2019-11-18 04:54:20 <imode> tbh it's not even needed.
+2019-11-18 04:54:24 <user24> so the scheduler can be implemented in the system itself
+2019-11-18 04:54:55 <imode> if you can present a concurrent environment you shouldn't care how that concurrency is handled, just that "these two processes are doing something and can only know about what the other is doing via synchronous message passing and protocols".
+2019-11-18 04:55:27 <user24> yeah
+2019-11-18 04:56:01 <user24> But do you think it's advantageous to have a concurrent system at the lowest level everything else is built on top on?
+2019-11-18 04:56:16 <user24> this is the argument the E language creators made
+2019-11-18 04:56:19 <imode> well, let me show you mode's working spec.
+2019-11-18 04:56:25 <user24> but I'm still not convinced
+2019-11-18 04:56:32 <user24> ok :)
+2019-11-18 04:56:39 <imode> https://hatebin.com/mlaoebywpa
+2019-11-18 04:56:43 <imode> ignore syntax highlighting.
+2019-11-18 04:57:05 <imode> 'Core' is the minimum theorized that you need to be turing complete.
+2019-11-18 04:57:21 <imode> everything on top of that is convenience.
+2019-11-18 04:58:55 <user24> reminds me of Zot a bit :) http://www.nyu.edu/projects/barker/Iota/zot.html
+2019-11-18 04:59:10 <imode> that was definitely an inspiration. instruction minimization is nice.
+2019-11-18 04:59:13 <imode> but doing useful work is also nice.
+2019-11-18 04:59:28 <imode> all of these single-character codes have forth-like mnemonics as well.
+2019-11-18 04:59:47 <oerjan> myndzi: congratulations, you've now got a wiki page https://esolangs.org/wiki/Myndzi
+2019-11-18 04:59:58 <imode> I'm not unconvinced that basing everything off of something like the pi calculus wouldn't be a good way to go.
