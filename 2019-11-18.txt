@@ -495,3 +495,63 @@
 2019-11-18 09:44:42 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>++[<<<<<+>>>>>>>>>>>>+<<<<<<<-]<<<<<[>>>>>+<<<<<-]>>>>>>>>>>>>>[>>]+<<[<<]>[>[>>]<+<[<<]>-]<<<<<<<[-]<<<[-]<[>+<<+>-]<[>+<-]>>[->>>>>>>+<<<<<<<]<[->>>>>>>>>+<<<<<<<<<]>>>>>>>>[>->+<[>]>[<+>-]<<[<]>-]>>[-<<<<<<<<<+>>>>>>>>>]<[-]>[-]<<<<<<<<<[<<<+>>>-]>>>[<<<<<<->+>>>>>-]<<<<<[>>>>>+<<<<<-]<[>>>+<<<[-]]>>>>>>[-]<<<<[-]>>>>>>>>>>>[-]>[>>]<<->[<<<[<<]>+>[>>]>-]<<<[<<]>[<<<<<<<<<<<+>>>>>>>>>>>-]<<<<<<<
 2019-11-18 09:59:39 Joined: arseniiv
 2019-11-18 09:59:40 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-18 10:02:04 <fizzie> @tell oerjan Updated things, maybe it's a newer version of Mercurial/hgweb. There's a notion of changeset "phases", from secret -> draft -> public. It's maybe showing those, and counting everything as draft (the default for new changesets) as they're technically never been pushed to a remote repo (the browser shows the real thing).
+2019-11-18 10:02:05 <lambdabot> Consider it noted.
+2019-11-18 10:03:29 <fizzie> @tell b_jonas int-e does run lambdabot, as far as I know. It's definitely not me.
+2019-11-18 10:03:29 <lambdabot> Consider it noted.
+2019-11-18 10:07:25 <int-e> @tell b_jonas I do run and host lambdabot.
+2019-11-18 10:07:25 <lambdabot> Consider it noted.
+2019-11-18 10:07:41 Joined: wib_jonas
+2019-11-18 10:07:41 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-18 10:07:59 <int-e> @tell wib_jonas b_jonas has messages ;)
+2019-11-18 10:08:00 <lambdabot> Consider it noted.
+2019-11-18 10:08:57 <esowiki> 14[[07Lambdabot14]]4 10 02https://esolangs.org/w/index.php?diff=67230&oldid=67218 5* 03B jonas 5* (-7) 10int-e hosts
+2019-11-18 10:09:07 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-11-18 10:09:07 <wib_jonas> `? kspalaiologos
+2019-11-18 10:09:08 <HackEso> kspalaiologos is addicted to brainfuck. His current work is disassembling brainfuck code for a casino that lost the source code.
+2019-11-18 10:09:25 <wib_jonas> kspalaiologos: ^ please complain if you don't like that
+2019-11-18 10:09:29 <wib_jonas> or change it
+2019-11-18 10:09:50 <int-e> `complain Nobody likes this.
+2019-11-18 10:09:51 <HackEso> Complaint filed. Thank you.
+2019-11-18 10:10:16 <wib_jonas> `? revert
+2019-11-18 10:10:19 <HackEso> ​`revert <rev>" can be used to revert to a revision. See <https://hack.esolangs.org/repo/>. It is a builtin command so cannot be called from other commands.
+2019-11-18 10:12:58 <wib_jonas> `url
+2019-11-18 10:12:58 <HackEso> https://hack.esolangs.org/repo/
+2019-11-18 10:13:04 <wib_jonas> `paste
+2019-11-18 10:13:34 <HackEso> https://hack.esolangs.org/tmp/paste/paste.12292
+2019-11-18 10:14:31 <fizzie> I wonder if I should make the stdin just /dev/null instead of the "blocking but never reads anything" weirdness it now is.
+2019-11-18 10:15:38 <fizzie> Candide (the former ##c bot) used to write a random 'fortune' to stdin.
+2019-11-18 10:16:03 <wib_jonas> fizzie: in https://hack.esolangs.org/repo/file/tip with a web browser, why is "etc/ luarocks" in one line?
+2019-11-18 10:16:55 <fizzie> It's a hgweb feature, it collapses directories that only have one file.
+2019-11-18 10:16:57 <int-e> wib_jonas: because etc/ is otherwise empty
+2019-11-18 10:17:33 <fizzie> Same with "brachylog/ brachylog" in https://hack.esolangs.org/repo/file/tip/interps
+2019-11-18 10:17:43 <wib_jonas> I see
+2019-11-18 10:17:49 <fizzie> (You can click either the directory or the file.)
+2019-11-18 10:18:30 <fizzie> Arguably, it should be "etc/ luarocks/" because the 'file' is actually a subdirectory.
+2019-11-18 10:18:46 <Lykaina> hi
+2019-11-18 10:18:54 <fizzie> Or even "etc/ luarocks/ config.lua". But anyway.
+2019-11-18 10:19:06 <int-e> fizzie: it doesn't do it for files though
+2019-11-18 10:19:22 <int-e> (as can be observed in https://hack.esolangs.org/repo/file/tip/wisdom)
+2019-11-18 10:19:29 <wib_jonas> fizzie: you may have to edit these commands: before now sedlast
+2019-11-18 10:19:38 <wib_jonas> because of the wd change
+2019-11-18 10:20:08 <wib_jonas> oh, the le directory has three files
+2019-11-18 10:20:09 <int-e> fizzie: but I agree that a trailing / would be desirable
+2019-11-18 10:20:15 <wib_jonas> `? le/rm
+2019-11-18 10:20:17 <wib_jonas> `? le//rm
+2019-11-18 10:20:18 <HackEso> le/rm? ¯\(°​_o)/¯
+2019-11-18 10:20:21 <HackEso> le//rm? ¯\(°​_o)/¯
+2019-11-18 10:21:17 <wib_jonas> ah, le/rm deletes wisdoms
+2019-11-18 10:21:21 <int-e> le/rm seems a bit silly
+2019-11-18 10:21:30 <int-e> so perfectly normal for HackEso.
+2019-11-18 10:21:54 <wib_jonas> ``` ls -dl /hackenv/le/rm # it's actually a symlink
+2019-11-18 10:21:55 <HackEso> lrwxrwxrwx 1 1000 1000 13 Jul  8  2017 /hackenv/le/rm -> ../bin/forget
+2019-11-18 10:22:34 <wib_jonas> by the way, did you know that you can't (easily) clone the repository to windows, the clone command actually dies because of a case-insensitive filename clash
+2019-11-18 10:23:01 <kspalaiologos> wib_jonas, it's perfect lol
+2019-11-18 10:23:09 <wib_jonas> I've seen source tarballs that you can't quite decompress that way, but the decompressors that I've tried only give a warning and don't unpack that one file. hg seems to actually die.
+2019-11-18 10:23:18 <wib_jonas> as in, abort the rest of the checkout.
+2019-11-18 10:23:36 <wib_jonas> there are almost certainly workarounds, but it's strange behavior from hg
+2019-11-18 10:29:38 <kspalaiologos> ``` asmbf-1.1.1/bfi temp.b
+2019-11-18 10:29:39 <HackEso> bash: asmbf-1.1.1/bfi: No such file or directory
+2019-11-18 10:29:41 <kspalaiologos> ?
+2019-11-18 10:29:46 <kspalaiologos> ``` ls
+2019-11-18 10:29:46 <HackEso> OUT \ a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ bfi \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ karma \ le \ out \ out.a \ out.a.hd \ out.a.xxd \ paste \ single-word-character-names \ spline \ spout \ spout.raw \ temp.b \ test.b \ test.sh \ tmp-interp \ tmp.txt \ uptime.out \ v1.1.1.tar.gz
