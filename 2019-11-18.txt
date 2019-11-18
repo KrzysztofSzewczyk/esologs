@@ -613,3 +613,20 @@
 2019-11-18 12:15:18 <fizzie> wib_jonas: No, it's a straight SIGKILL at the timeout time. But I could make it, say, SIGTERM at timeout, SIGKILL five seconds later.
 2019-11-18 12:17:31 <int-e> wib_jonas: I guess lambadbot is lambdabot's evil twin.
 2019-11-18 12:19:33 <wib_jonas> fizzie: if you want a signal, consider SIGALARM, but I was thinking more of an env-var that gives the time when the program will be terminated relative to some linux timer
+2019-11-18 12:35:20 <fizzie> I guess. It's just that TERM + KILL is the standard systemd process termination method. Could have both, of course.
+2019-11-18 12:36:01 <fizzie> ("Processes will first be terminated via SIGTERM. If then, after a delay (configured via the TimeoutStopSec= option), processes still remain, the termination request is repeated with the SIGKILL signal.")
+2019-11-18 12:38:02 <wib_jonas> yeah, TERM may be better
+2019-11-18 12:38:44 <wib_jonas> note that you  can get linux to generate SIGALARM with setitimer, then the processes can read the timer easily with getitimer
+2019-11-18 12:43:07 <fizzie> Termination is the standard action for SIGALRM as well, so that would probably work in practice.
+2019-11-18 12:45:45 <wib_jonas> oh yeah, you're right, it's spelled SIGALRM, perhaps because it's an old unix thing and they were stingy with identifier length
+2019-11-18 12:48:37 <fizzie> Right now the way it works is, after running the command, if a timeout has been set, umlbox init will start a second program that does `sleep(timeout); exit(0);`, and if that process terminates first, the actual command process is sent SIGKILL.
+2019-11-18 12:49:16 <wib_jonas> mind you, I realize that this isn't actually necessary for the rnooodl reimplementation at all
+2019-11-18 12:49:41 <fizzie> (I think that means the timeout might fire early if the sleep(3) call gets interrupted, but I guess in practice it isn't.)
+2019-11-18 12:49:58 <wib_jonas> but other programs could care
+2019-11-18 12:50:50 <fizzie> I could enable the GitHub issue tracker for the 'hackbot' repo to keep track of ideas like this, otherwise I'll never remember them.
+2019-11-18 12:52:13 <wib_jonas> fizzie: or we could collect ideas on https://esolangs.org/wiki/Talk:HackEso or somewhere in /hackenv
+2019-11-18 12:52:49 <fizzie> The HackEso talk page is maybe most logical, yes.
+2019-11-18 12:53:23 <fizzie> Incidentally, I was wondering whether that stuff should be outside the main namespace. But I guess it doesn't matter so much.
+2019-11-18 12:53:46 <fizzie> "Articles should be on the subject of esoteric programming languages, or about subjects relevant to these, for example computation theory." With a wide enough of definition of "relevant", it's fine.
+2019-11-18 12:54:13 <wib_jonas> other random idea to myself: modify the paste command so that when it creates a new paste file, log the filename, the $IRC_NICK and $IRC_TARGET to somewhere under tmp, to make it easier to clean up large pastes that I created and that are no longer needed
+2019-11-18 12:54:45 <wib_jonas> as for namespacing or categories, I don't know, feel free to figure out whatever about them
