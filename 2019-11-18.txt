@@ -368,3 +368,32 @@
 2019-11-18 04:59:28 <imode> all of these single-character codes have forth-like mnemonics as well.
 2019-11-18 04:59:47 <oerjan> myndzi: congratulations, you've now got a wiki page https://esolangs.org/wiki/Myndzi
 2019-11-18 04:59:58 <imode> I'm not unconvinced that basing everything off of something like the pi calculus wouldn't be a good way to go.
+2019-11-18 05:00:11 <imode> but there's so much implicit state that it's hard to wrap your head around. bound names, etc.
+2019-11-18 05:00:27 <imode> I can at least reason about Mode from an imperative standpoint and work up to concurrent processes.
+2019-11-18 05:00:46 <imode> forming a loop in the pi calculus is a painful endeavor unless you just plan on translating lambda calculus to it.
+2019-11-18 05:01:17 <user24> there's also Urbits' Nock if you like trees https://urbit.org/docs/tutorials/nock/definition/
+2019-11-18 05:01:34 <imode> so, w.r.t concurrency as a basis... not unconvinced, but don't buy it unless there's a "concurrent automaton".
+2019-11-18 05:01:45 <imode> that looks nice and feels nice to work with. which is kind of what I'm trying to make..
+2019-11-18 05:02:15 <imode> yeah I looked at Nock... don't like the author or the writings. way too obscure.
+2019-11-18 05:02:41 <user24> aye, agreed
+2019-11-18 05:02:43 <imode> if I can't explain to you what I'm working on in simple enough terms I don't think it's worth working on.
+2019-11-18 05:02:44 <user24> i kind of just want to have an "execute this subprocess/instruction block for n instructions with these memory constraints" instruction
+2019-11-18 05:03:58 <imode> I could do that by saying the `{` command consumes two values, the step limit and queue size.
+2019-11-18 05:04:04 <user24> yeah :)
+2019-11-18 05:04:37 <imode> "run this block for 64 cycles with 8 queue elements" could be ,$40,$8;{...}
+2019-11-18 05:04:40 <user24> :D
+2019-11-18 05:05:15 <oerjan> `celebrate
+2019-11-18 05:05:15 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: celebrate: not found
+2019-11-18 05:05:31 <user24> Have you heard of the Agoric papers: https://e-drexler.com/d/09/00/AgoricsPapers/agoricpapers.html ?
+2019-11-18 05:05:40 <imode> have not, will look now.
+2019-11-18 05:05:54 <user24> also, this: https://esolangs.org/wiki/File:Screenshot_from_2019-04-09_04-20-58.png :)
+2019-11-18 05:06:49 <imode> you'd like my python interpreter. planning on having it estimate max/average memory usage along with runtime.
+2019-11-18 05:07:11 <user24> yass :D
+2019-11-18 05:07:35 <user24> i'll dm you my email and stuff, please notify me, show me everything, i love this stuff
+2019-11-18 05:08:00 <user24> someone created this which is also along the lines we are talking about: https://www.youtube.com/watch?v=7vn6aGgLKfQ
+2019-11-18 05:08:26 <user24> it just emits a geiger counter click when the attached program allocates memory
+2019-11-18 05:08:33 <oerjan> ^celebrate
+2019-11-18 05:08:33 <fungot> \o| c.c \o/ ಠ_ಠ \m/ \m/ \o_ c.c _o/ \m/ \m/ ಠ_ಠ \o/ c.c |o/
+2019-11-18 05:08:46 <imode> hah!
+2019-11-18 05:08:57 <imode> that's actually really interesting. a bit like an HDD light for memory.
+2019-11-18 05:10:37 <esowiki> 14[[07Myndzi14]]4 10 02https://esolangs.org/w/index.php?diff=67224&oldid=67207 5* 03Oerjan 5* (+13) 10Fix some conceptual errors
