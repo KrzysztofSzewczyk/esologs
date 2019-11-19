@@ -6,3 +6,25 @@
 2019-11-19 00:08:33 <esowiki> 14[[07XS14]]4 M10 02https://esolangs.org/w/index.php?diff=67243&oldid=46834 5* 03IFcoltransG 5* (+24) 10Added 'see also' to XSM
 2019-11-19 00:08:46 Quit: FreeFull
 2019-11-19 00:08:46 Names: \oren\, ^[, ais523, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 00:48:27 Joined: oerjan
+2019-11-19 00:48:27 Names: \oren\, ^[, ais523, aji, aloril, APic, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 00:53:15 Joined: ArthurStrong
+2019-11-19 00:53:15 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 00:53:20 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-19 00:53:20 <oerjan> @messages-gold
+2019-11-19 00:53:21 <lambdabot> fizzie said 14h 51m 15s ago: Updated things, maybe it's a newer version of Mercurial/hgweb. There's a notion of changeset "phases", from secret -> draft -> public. It's maybe showing those, and
+2019-11-19 00:53:21 <lambdabot> counting everything as draft (the default for new changesets) as they're technically never been pushed to a remote repo (the browser shows the real thing).
+2019-11-19 00:53:48 <oerjan> mhm
+2019-11-19 00:58:15 <oerjan> `` ls -ld .hg
+2019-11-19 00:58:16 <HackEso> ls: cannot access '.hg': No such file or directory
+2019-11-19 00:58:19 <oerjan> hm
+2019-11-19 00:58:31 <oerjan> `` cat bin/hlnp
+2019-11-19 00:58:32 <HackEso> cat: bin/hlnp: No such file or directory
+2019-11-19 00:58:40 <oerjan> `` cat ../bin/hlnp
+2019-11-19 00:58:40 <HackEso> scowrevs="$(/usr/bin/paste -sd'|' /hackenv/share/scowrevs)"; hg log -r "tip:0 & ! ($scowrevs)" "$@" | sed 's/\(\(^\| \)[<Itb][^ ]*\)\([^ ][^ ]\)/\1̈\3/'
+2019-11-19 00:59:17 <oerjan> curious. does hg recurse into parent directories to find .hg by default?
+2019-11-19 00:59:28 <ais523> I'd assume most VCSes do
+2019-11-19 00:59:33 <oerjan> i suppose
+2019-11-19 00:59:41 <ais523> as it's common to want to VCS from a subdirectory
+2019-11-19 00:59:46 <ais523> git won't recurse across filesystems, though
+2019-11-19 01:00:00 <oerjan> well that explains why that didn't break
