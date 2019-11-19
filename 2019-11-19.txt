@@ -305,3 +305,11 @@
 2019-11-19 05:08:07 <kmc> shachaf^
 2019-11-19 05:08:32 <kmc> I had some EtOH
 2019-11-19 05:08:39 <kmc> I'm sauzzled
+2019-11-19 05:54:32 <esowiki> 14[[07User:Zemeckis14]]4 10 02https://esolangs.org/w/index.php?diff=67245&oldid=50152 5* 03Zemeckis 5* (-98) 10
+2019-11-19 05:59:19 <shachaf> `` ls -l program
+2019-11-19 05:59:20 <HackEso> ​-rwxr-xr-x 1 1000 1000 1576 Nov 19 03:20 program
+2019-11-19 05:59:23 <shachaf> `` ./program
+2019-11-19 05:59:24 <HackEso> ​/hackenv/bin/`: line 5: ./program: No such file or directory
+2019-11-19 05:59:27 <shachaf> `` strace ./program
+2019-11-19 05:59:28 <HackEso> execve("./program", ["./program"], 0x7fbfc5dce0 /* 15 vars */) = -1 ENOENT (No such file or directory) \ strace: exec: No such file or directory \ +++ exited with 1 +++
+2019-11-19 05:59:58 <shachaf> kmc: that hth
