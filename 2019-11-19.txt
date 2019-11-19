@@ -501,3 +501,20 @@
 2019-11-19 11:25:57 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
 2019-11-19 11:39:04 <fizzie> Hm, I guess one problem with a /hackenv/tmp without .hgignore is that 'hg' commands inside the box would still think they're new files, so something like "hg status" would contain misleading entries. Don't think that would necessarily break any scripts, but it's still unfortunate.
 2019-11-19 11:39:48 <fizzie> OTOH moving it out of the tree even inside to something like /hacktmp *would* break `lastfiles and similar, as well as the "../bin" paths people seem to use interactively.
+2019-11-19 12:04:01 <wib_jonas> fizzie: um what? why would you have it without .hgignore if it's inside /hackenv/tmp ?
+2019-11-19 12:04:56 <wib_jonas> 'the "../bin" paths people seem to use interactively' => I use /hackenv interactively, but sure
+2019-11-19 12:10:07 <fizzie> If the real path is outside /hackenv and I just mount it into /hackenv/tmp in umlbox, I don't need a .hgignore for the commits to ignore it, because it won't even be there.
+2019-11-19 12:11:02 <wib_jonas> fizzie: but the .hgignore is used inside the sandbox too, and in there, /hackenv/tmp is there, so I think the .hgignore should mention it
+2019-11-19 12:11:21 <wib_jonas> I don't see why you wouldn't put it there. even outside the sandbox, where the directory is not present, it's not a problem to have it in .hgignore
+2019-11-19 12:12:03 <wib_jonas> it is a feature that the files listed in .hgignore need not exist, because they're often used for things like compiler output files, which you can clean
+2019-11-19 12:12:36 <fizzie> Well, the whole reason I was contemplating moving it to a separate mount was to avoid having to rely on .hgignore.
+2019-11-19 12:13:36 <wib_jonas> fizzie: would hg even notice that it's on a separate mount if it's bind-mounted? it's quite nontrivial to ask from linux which directories are mount points, so programs use the quick heuristics of just checking the st_dev field of stat, which may fail for a bind mount
+2019-11-19 12:14:07 <fizzie> It wouldn't be actually bind-mounted.
+2019-11-19 12:14:28 <fizzie> It would be a separate hostfs mount.
+2019-11-19 12:14:33 <wib_jonas> there are better ways, apparently the best is to try to rename the directory to inside itself and checking what error it fails with or some such crazy shit that I don't recall
+2019-11-19 12:14:54 <wib_jonas> ok
+2019-11-19 12:15:03 <wib_jonas> then maybe the st_dev will differ, let me check
+2019-11-19 12:16:49 <fizzie> Aaanyway, I might not bother doing it, doesn't seem like it's really all that beneficial. I guess it would stop people from removing the directory completely.
+2019-11-19 12:17:40 <wib_jonas> ``` stat -c "%d %n" /lib /usr /hackenv /hackenv/tmp /hackenv/wisdom
+2019-11-19 12:17:41 <HackEso> 15 /lib \ 13 /usr \ 18 /hackenv \ 18 /hackenv/tmp \ 18 /hackenv/wisdom
+2019-11-19 12:17:59 <wib_jonas> you're right, the st_dev seems to differ
