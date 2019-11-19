@@ -224,3 +224,75 @@
 2019-11-19 03:26:29 <HackEso> a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ bfi \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ karma \ le \ out \ OUT \ out.a \ out.a.hd \ out.a.xxd \ paste \ program \ single-word-character-names \ spline \ spout \ spout.raw \ temp.b \ test.sh \ tmp-interp \ tmp.txt \ uptime.out
 2019-11-19 03:28:45 <oerjan> maybe we should warn kspalaiologos before doing it.  i think his asmbf workflow isn't quite compatible at the moment.
 2019-11-19 03:30:02 <shachaf> Also, you can apparently hg add things inside hgignored directories.
+2019-11-19 03:30:05 <shachaf> fizzie: ☝
+2019-11-19 03:30:14 <oerjan> oh that's true
+2019-11-19 03:30:25 <shachaf> Though that requires superpowers which isn't in the spirit of le/rn
+2019-11-19 03:30:58 <oerjan> hm
+2019-11-19 03:31:35 <fizzie> I'm a little worried about the complexity of tmp handling to add version-controlled stuff inside it. I think I'll rather adjust `foo/bar to look for /hackenv/bin/foo/bar (in some shape or form, we'll see), which'll also mean you no longer need even the /hackenv/le, all the binaries can be in bin.
+2019-11-19 03:32:36 <shachaf> Or maybe we can just get rid of le/rn etc. which are silly commands anyway?
+2019-11-19 03:32:46 <shachaf> It could be called slashlearn, for instance.
+2019-11-19 03:32:59 <shachaf> Or lern or lrn or lesrn or le\rn
+2019-11-19 03:34:00 <oerjan> `` sort -t | tac
+2019-11-19 03:34:00 <HackEso> sort: option requires an argument -- 't' \ Try 'sort --help' for more information.
+2019-11-19 03:34:27 <oerjan> `` ls -t | tac
+2019-11-19 03:34:27 <HackEso> jeval.whatis \ tmp.txt \ out \ out.a \ OUT \ out.a.xxd \ out.a.hd \ a.c \ as-encoding \ single-word-character-names \ a.out \ hexdump.hex \ test.sh \ asmbf-1.1.1 \ just \ banana.txt \ le \ karma \ tmp-interp \ uptime.out \ spout.raw \ spout \ spline \ input.brachylog \ compiled_brachylog.pl \ paste \ temp.b \ bfi \ program
+2019-11-19 03:34:42 <fizzie> In related news, I would like a config option that can disable .hgignore. Then I could set up .hg/hgrc to point at a read-only ignore file.
+2019-11-19 03:35:20 <shachaf> Why shouldn't .hgignore belong to the people?
+2019-11-19 03:35:32 <fizzie> Because it's too hard to make things work sanely.
+2019-11-19 03:35:42 <fizzie> It doesn't belong to the people any more anyway.
+2019-11-19 03:35:43 <oerjan> `` ls -t | tac | head -n 12 | xargs rm -v
+2019-11-19 03:35:44 <HackEso> removed 'jeval.whatis' \ removed 'tmp.txt' \ removed 'out' \ removed 'out.a' \ removed 'OUT' \ removed 'out.a.xxd' \ removed 'out.a.hd' \ removed 'a.c' \ removed 'as-encoding' \ removed 'single-word-character-names' \ removed 'a.out' \ removed 'hexdump.hex'
+2019-11-19 03:35:46 <shachaf> Is that a goal?
+2019-11-19 03:35:59 <shachaf> I know it doesn't, but maybe it oughtta.
+2019-11-19 03:36:02 <oerjan> (compromise)
+2019-11-19 03:36:03 <fizzie> It's my goal, since I have to pretend to administer that thing.
+2019-11-19 03:36:17 <shachaf> Hey, you deleted out.a!
+2019-11-19 03:36:26 <oerjan> what was that for?
+2019-11-19 03:36:30 <fizzie> get.out.a.here
+2019-11-19 03:36:43 <shachaf> It was a variant of ./program
+2019-11-19 03:36:46 <shachaf> `` ./program
+2019-11-19 03:36:47 <HackEso> ​/hackenv/bin/`: line 5: ./program: No such file or directory
+2019-11-19 03:36:52 <shachaf> Oh no, ./program is gone too?!
+2019-11-19 03:36:52 <oerjan> shachaf: well it was OLD
+2019-11-19 03:37:31 <fizzie> (Incidentally, one way to "disable" .hgignore would be to only mount a subdirectory of the repository as /hackenv.)
+2019-11-19 03:37:34 <oerjan> (maybe not _that_ old, but i deleted the 12 oldest files)
+2019-11-19 03:37:48 <fizzie> (But moving every file into a subdirectory would be the mother of all scowrevs.)
+2019-11-19 03:37:52 <fizzie> (Anyway, sleep mode.)
+2019-11-19 03:38:20 <fizzie> (Well, I could always rewrite history so that it looked like it always had been like that.)
+2019-11-19 03:40:45 <oerjan> `` ls -t | tac
+2019-11-19 03:40:45 <HackEso> test.sh \ asmbf-1.1.1 \ just \ banana.txt \ le \ karma \ tmp-interp \ uptime.out \ spout.raw \ spout \ spline \ input.brachylog \ compiled_brachylog.pl \ paste \ temp.b \ bfi \ program
+2019-11-19 03:40:58 <oerjan> shachaf: program is still there
+2019-11-19 03:42:46 <oerjan> (wait that's the joke isn't it)
+2019-11-19 03:43:16 <oerjan> `cbt sport
+2019-11-19 03:43:17 <HackEso> cat "${2:-/dev/stdin}" >$HACKENV/tmp/spout.raw; distort $HACKENV/tmp/spout.raw | spore "${1-1}"
+2019-11-19 03:43:20 <oerjan> `cbt spore
+2019-11-19 03:43:21 <HackEso> cat "${2:-/dev/stdin}" > $HACKENV/tmp/spout; spam "${1-1}"
+2019-11-19 03:43:50 <oerjan> hm
+2019-11-19 03:44:00 Quit: hppavilion[1] (Ping timeout: 246 seconds)
+2019-11-19 03:44:00 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 03:44:22 <oerjan> `slbd sport s,$HACKENV,,g
+2019-11-19 03:44:22 <HackEso> usage: sled file//script
+2019-11-19 03:44:30 <oerjan> `slbd sport//s,$HACKENV,,g
+2019-11-19 03:44:32 <HackEso> sport//cat "${2:-/dev/stdin}" >/tmp/spout.raw; distort /tmp/spout.raw | spore "${1-1}"
+2019-11-19 03:44:52 <oerjan> i don't think there's any reason to have that file persistent
+2019-11-19 03:45:13 <oerjan> `rm spout.raw
+2019-11-19 03:45:14 <HackEso> No output.
+2019-11-19 03:45:40 <oerjan> `` rm -v *brachylog*
+2019-11-19 03:45:40 <HackEso> removed 'compiled_brachylog.pl' \ removed 'input.brachylog'
+2019-11-19 03:45:55 <oerjan> and fizzie moved those to /tmp as well afaiu
+2019-11-19 03:46:37 <oerjan> `url ../bin/uptime
+2019-11-19 03:46:38 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/uptime
+2019-11-19 03:47:33 <oerjan> `url uptime.out
+2019-11-19 03:47:34 <HackEso> https://hack.esolangs.org/tmp/uptime.out
+2019-11-19 03:48:17 <oerjan> seems like debugging output
+2019-11-19 03:52:17 Quit: MDude (Ping timeout: 240 seconds)
+2019-11-19 03:52:17 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 03:52:18 <oerjan> ^show
+2019-11-19 03:52:19 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-19 03:52:39 <oerjan> ^show bf
+2019-11-19 03:52:39 <fungot> (^bf -- evaluates brainfuck)S
+2019-11-19 03:53:27 <oerjan> ^show def
+2019-11-19 03:53:27 <fungot> (hai)S
+2019-11-19 03:53:42 <oerjan> ^def
+2019-11-19 03:53:42 <fungot> hai
+2019-11-19 03:54:45 <oerjan> ^str
