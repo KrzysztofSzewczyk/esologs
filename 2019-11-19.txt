@@ -28,3 +28,123 @@
 2019-11-19 00:59:41 <ais523> as it's common to want to VCS from a subdirectory
 2019-11-19 00:59:46 <ais523> git won't recurse across filesystems, though
 2019-11-19 01:00:00 <oerjan> well that explains why that didn't break
+2019-11-19 01:00:26 <oerjan> heh so git might have broken, since tmp is mounted separately
+2019-11-19 01:00:33 <oerjan> (or wait, is it)
+2019-11-19 01:00:44 <oerjan> i suppose it isn't
+2019-11-19 01:00:59 <oerjan> it was introduced with the .hgignore hack, after all
+2019-11-19 01:01:17 <oerjan> `` ls -ld .hg*
+2019-11-19 01:01:17 <HackEso> ls: cannot access '.hg*': No such file or directory
+2019-11-19 01:01:39 <oerjan> `` ls -ld ../.hg*
+2019-11-19 01:01:40 <HackEso> drwxr-xr-x 5 1000 1000 4096 Nov 19 01:01 ../.hg \ -rw-r--r-- 1 1000 1000  150 Jul  8  2017 ../.hg_archival.txt \ -rw-r--r-- 1 1000 1000    6 Jul  8  2017 ../.hgignore
+2019-11-19 01:02:26 <ais523> hah, I didn't even realise that we created /tmp from inside HackEso, I assumed it was hardcoded
+2019-11-19 01:03:27 <oerjan> it wasn't, although now there's a hardcoded restore of .hgignore to ensure it doesn't break
+2019-11-19 01:03:54 <ais523> hmm, is HackEso technically a codenomic?
+2019-11-19 01:04:17 <ais523> I guess not, because of the hardcoded `rever
+2019-11-19 01:04:19 <ais523> * `revert
+2019-11-19 01:04:38 <ais523> meaning that nothing can ever become permanently disallowed
+2019-11-19 01:05:06 Quit: mniip (Ping timeout: 615 seconds)
+2019-11-19 01:05:06 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 01:05:07 <oerjan> that's not really possible anyway since you can run global commands.
+2019-11-19 01:05:31 <oerjan> except for that evil canary bug that someone once found, but that's been fixed
+2019-11-19 01:05:44 <fizzie> I'm sure there are permissions bugs left.
+2019-11-19 01:06:22 <ais523> it was probably me, I liked doing weird things with the canary just to see what would happen
+2019-11-19 01:07:01 <ais523> that said, if we're gradually moving more and more important things to /tmp, the canary probably won't help much
+2019-11-19 01:07:04 <oerjan> i think maybe it was actually chmod 000 . , but that broke everything because of side effects with the canary
+2019-11-19 01:07:06 <ais523> as it won't stop a deletion from there
+2019-11-19 01:07:32 <oerjan> we're not supposed to move important things to tmp/
+2019-11-19 01:07:33 <fizzie> /tmp is a bad name; it's either tmp or /hackenv/tmp.
+2019-11-19 01:07:55 <oerjan> everything there is in principle ephemeral
+2019-11-19 01:08:04 <ais523> `touch /tmp/test
+2019-11-19 01:08:06 <HackEso> No output.
+2019-11-19 01:08:13 <fizzie> That's writable too, it's just not persistent.
+2019-11-19 01:08:13 <ais523> `ls -l /tmp/test
+2019-11-19 01:08:14 <HackEso> ls: invalid option -- ' ' \ Try 'ls --help' for more information.
+2019-11-19 01:08:20 <oerjan> which creates some trouble for le/ which now can be broken
+2019-11-19 01:08:21 <ais523> `` ls -l /tmp/test
+2019-11-19 01:08:22 <HackEso> ls: cannot access '/tmp/test': No such file or directory
+2019-11-19 01:08:32 <ais523> ah, I see, it disappears every command
+2019-11-19 01:08:35 <fizzie> It's a tmpfs inside the per-command kernel, yes.
+2019-11-19 01:08:49 <ais523> that means it's probably the best place for files that are genuinely temporary
+2019-11-19 01:08:55 <ais523> like ibin/brachylog uses
+2019-11-19 01:09:29 <fizzie> I switched it to /tmp when fixing the $HACKENV thing.
+2019-11-19 01:10:16 <fizzie> oerjan: Incidentally, I didn't include misle in tmp yet.
+2019-11-19 01:10:42 <fizzie> (There's misle/rn and misle/rn_append, the counterparts of the same commands in le/ but for tmflry instead of wisdom.)
+2019-11-19 01:10:57 <shachaf> whoa
+2019-11-19 01:11:12 <fizzie> It's really only `foo/bar commands that, in the /hackenv/tmp cwd setup, unfortunately have to have some part inside tmp.
+2019-11-19 01:11:16 <shachaf> `` doag /hackenv/misle
+2019-11-19 01:11:17 <HackEso> 6804:2016-02-10 <oerjän> undo c58a6174e051 \ 6800:2016-02-10 <oerjän> ` sed -i \'s/| lowercase//\' misle/* \ 6786:2016-02-10 <oerjän> ` sed -i \'s/Learned/Was lied to about/\' misle/* \ 6783:2016-02-10 <oerjän> ` mkdir misle; cp le/* misle; sed -i \'s/wisdom/tmflry/g\' misle/*
+2019-11-19 01:11:42 <shachaf> i've been misled
+2019-11-19 01:12:37 <fizzie> I've never really understood the concept of tmflry, TBH.
+2019-11-19 01:12:49 <ais523> why doesn't `foo/bar look in /hackenv/bin/foo/bar?
+2019-11-19 01:13:13 <fizzie> Because it uses a shell to execute the command.
+2019-11-19 01:13:21 <fizzie> And "foo/bar" is not looked up in $PATH.
+2019-11-19 01:13:37 <fizzie> I mean, it doesn't need to do that, but that's the immediate reason.
+2019-11-19 01:13:43 <ais523> fizzie: well, an actual learndb full of useful information is something many channels benefit from, probably this one would as well; however, nobody seemed inclined to make it and the naming was silly
+2019-11-19 01:13:49 <ais523> `? INTERCAL
+2019-11-19 01:13:50 <HackEso> INTERCAL has excellent features for modular program for the enterprise market.
+2019-11-19 01:13:55 <ais523> `? Brachylog
+2019-11-19 01:13:57 <HackEso> Brachylog? ¯\(°​_o)/¯
+2019-11-19 01:13:59 <ais523> `? Jelly
+2019-11-19 01:14:00 <HackEso> Jelly? ¯\(°​_o)/¯
+2019-11-19 01:14:08 <ais523> imagine if that give actual summaries of the esolangs
+2019-11-19 01:14:13 <ais523> it'd be better for conversation
+2019-11-19 01:14:24 <ais523> as it is, though, people just give esowiki links
+2019-11-19 01:14:28 <ais523> https://esolangs.org/wiki/INTERCAL etc.
+2019-11-19 01:14:33 <fizzie> I think the problem is, not all the wisdom entries are foolishness either.
+2019-11-19 01:14:34 <kingoffrance> `? COME FROM
+2019-11-19 01:14:35 <HackEso> COME FROM? ¯\(°​_o)/¯
+2019-11-19 01:15:02 <kingoffrance> `? ¯\(°​_o)/¯
+2019-11-19 01:15:04 <HackEso> ​¯\(°​_o)/¯ is a misspelling of ¯\(°_o)/¯
+2019-11-19 01:15:14 <kingoffrance> well that was interesting
+2019-11-19 01:15:39 <fizzie> I was vaguely considering I might have `!wiki INTERCAL` or some-such make esowiki print out the link plus the first paragraph.
+2019-11-19 01:16:41 <fizzie> (The convention of using `backtick quoting` for code text doesn't really work for talking about HackEso commands.)
+2019-11-19 01:16:54 <ais523> do we at least have a command for linking to the wiki?
+2019-11-19 01:16:56 <ais523> `wiki INTERCAL
+2019-11-19 01:16:57 <HackEso> https://esolangs.org/wiki/tmp/INTERCAL
+2019-11-19 01:17:08 <fizzie> Whoops, that looks like a bug.
+2019-11-19 01:17:10 <ais523> beautiful :-D
+2019-11-19 01:17:19 <ais523> `cat bin/wiki
+2019-11-19 01:17:20 <HackEso> cat: bin/wiki: No such file or directory
+2019-11-19 01:17:24 <ais523> `cat /hackenv/bin/wiki
+2019-11-19 01:17:24 <HackEso> ​#!/usr/bin/env python \ import sys, os.path, urllib \ if len(sys.argv) <= 1: \     print "https://esolangs.org/" \ else: \     f = os.path.abspath(sys.argv[1]) \     if f.startswith('/hackenv/'): f = f[9:] \     print ("https://esolangs.org/wiki/" + \         urllib.quote(f))
+2019-11-19 01:17:47 <fizzie> I'm not sure why exactly it treats the argument as a path.
+2019-11-19 01:18:09 <ais523> nor am I
+2019-11-19 01:18:25 <fizzie> ^wiki INTERCAL
+2019-11-19 01:18:25 <fungot> https://esolangs.org/wiki/INTERCAL
+2019-11-19 01:18:33 <fizzie> We also have the befunge equivalent.
+2019-11-19 01:18:58 <fizzie> Er, brainfuck equivalent. Kind of.
+2019-11-19 01:19:01 <ais523> ^wiki ///
+2019-11-19 01:19:01 <fungot> https://esolangs.org/wiki////
+2019-11-19 01:19:13 <ais523> ^wiki ;#
+2019-11-19 01:19:13 <fungot> https://esolangs.org/wiki/;#
+2019-11-19 01:19:21 <ais523> hmm, I don't think it's doing any sort of escaping
+2019-11-19 01:19:27 <fizzie> No, it's just a ,[.,]
+2019-11-19 01:20:06 <ais523> (;# is an esolang, technically, but a really terrible one; it's basically a sub-TC minimalisation of BF to just the + and . commands)
+2019-11-19 01:20:25 <ais523> (so in a way I'm glad we dont't have an article on it)
+2019-11-19 01:21:11 <oerjan> `dobg wiki
+2019-11-19 01:21:13 <HackEso> 11334:2018-01-20 <fizzïe> fetch bin/wiki https://hackego.esolangs.org/get/bin/wiki \ 10393:2017-03-11 <oerjän> ` chmod +x bin/wiki \ 10392:2017-03-11 <oerjän> fetch bin/wiki https://hackego.esolangs.org/get/bin/wiki \ 7080:2016-03-05 <hppavilion[1̈]> rm bin/wiki \ 7079:2016-03-05 <hppavilion[1̈]> ` echo "echo \\"http://esolangs.org/wiki/Main_Page\\"" > bin/wiki
+2019-11-19 01:21:33 <oerjan> `hurl ../bin/wiki
+2019-11-19 01:21:34 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/wiki
+2019-11-19 01:22:22 <fizzie> `slbd wiki//6,7d;s/quote(f)/quote(sys.argv[1])/
+2019-11-19 01:22:24 <HackEso> wiki//#!/usr/bin/env python \ import sys, os.path, urllib \ if len(sys.argv) <= 1: \     print "https://esolangs.org/" \ else: \     print ("https://esolangs.org/wiki/" + \         urllib.quote(sys.argv[1]))
+2019-11-19 01:22:26 <ais523> there is something very weird about a 1 with an umlaut on it :-D
+2019-11-19 01:22:27 <fizzie> Let's give that a try.
+2019-11-19 01:22:35 <fizzie> `wiki INTERCAL
+2019-11-19 01:22:35 <HackEso> https://esolangs.org/wiki/INTERCAL
+2019-11-19 01:22:36 <ais523> accented digits isn't something I'd even considered
+2019-11-19 01:22:55 <ais523> `wiki ;#
+2019-11-19 01:22:55 <HackEso> https://esolangs.org/wiki/%3B%23
+2019-11-19 01:24:43 <oerjan> `hurl ../bin/url
+2019-11-19 01:24:44 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/url
+2019-11-19 01:25:33 <fizzie> Right, maybe it was adapted from url and/or suchlike.
+2019-11-19 01:26:14 <shachaf> Wasn't clearing tmp/ supposed to be supported?
+2019-11-19 01:26:17 <ais523> `unicode COMBINING CEDILLA
+2019-11-19 01:26:18 <HackEso> ​̧
+2019-11-19 01:26:30 <ais523> 5
+2019-11-19 01:26:51 <oerjan> fizzie: i must have done it by i don't remember
+2019-11-19 01:26:54 <ais523> I meant ​5̧
+2019-11-19 01:27:04 <shachaf> Is the state in tmp/ now required for le/rn operation?
+2019-11-19 01:27:12 <fizzie> Yes. It is a shame.
+2019-11-19 01:27:27 <ais523> hmm my client renders that 5-cedilla pretty well
+2019-11-19 01:27:36 <ais523> s/hmm/hmm,/
+2019-11-19 01:29:25 <oerjan> <shachaf> Wasn't clearing tmp/ supposed to be supported? <-- yes, but now we have a choice between that and keeping le/rn working.
