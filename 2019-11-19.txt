@@ -364,3 +364,17 @@
 2019-11-19 07:52:57 <HackEso> No output.
 2019-11-19 07:54:07 <int-e> `` du -s paste
 2019-11-19 07:54:09 <HackEso> 816	paste
+2019-11-19 08:04:42 <oerjan> kspalaiologos: i cleaned up the tmp directory a bit (mostly older stuff)
+2019-11-19 08:05:19 <int-e> `stat le
+2019-11-19 08:05:20 <HackEso> ​  File: le -> /hackenv/le \   Size: 11        	Blocks: 0          IO Block: 1024   symbolic link \ Device: 12h/18d	Inode: 1206924     Links: 1 \ Access: (0777/lrwxrwxrwx)  Uid: ( 1000/ UNKNOWN)   Gid: ( 1000/ UNKNOWN) \ Access: 2019-11-16 21:29:43.000000000 +0000 \ Modify: 2019-11-16 21:29:43.000000000 +0000 \ Change: 2019-11-16 21:29:43.000000000 +0000 \  Birth: -
+2019-11-19 08:05:42 <int-e> (hmm, perhaps the most spammy way to figure out that's a symlink)
+2019-11-19 08:06:26 <oerjan> tried to stop before your recent additions, though
+2019-11-19 08:06:55 <oerjan> (although everything in tmp _is_ in principle temporary)
+2019-11-19 08:07:50 <oerjan> `1 stat le
+2019-11-19 08:07:51 <HackEso> 1/1:  File: le -> /hackenv/le \   Size: 11        	Blocks: 0          IO Block: 1024   symbolic link \ Device: 12h/18d	Inode: 1206924     Links: 1 \ Access: (0777/lrwxrwxrwx)  Uid: ( 1000/ UNKNOWN)   Gid: ( 1000/ UNKNOWN) \ Access: 2019-11-16 21:29:43.000000000 +0000 \ Modify: 2019-11-16 21:29:43.000000000 +0000 \ Change: 2019-11-16 21:29:43.000000000 +0000 \  Birth: -
+2019-11-19 08:08:11 <oerjan> hm it wasn't cut off, so you _could_ get longer
+2019-11-19 08:08:35 <int-e> yeah, it wasn't really meant as a challenge
+2019-11-19 08:08:42 <oerjan> (come to think of it, i should have used `2)
+2019-11-19 08:09:06 <oerjan> anyway
+2019-11-19 08:09:15 Quit: oerjan (Quit: Nite)
+2019-11-19 08:09:16 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
