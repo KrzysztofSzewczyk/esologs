@@ -445,3 +445,57 @@
 2019-11-19 10:38:27 <wib_jonas> that doesn't work easily in HackEso because you always get the same pid
 2019-11-19 10:39:59 <wib_jonas> apparently the first process of the command always gets the pid 53, but the triple backtick spawns a few more
 2019-11-19 10:44:47 <wib_jonas> the anagol server even has a tool for that
+2019-11-19 11:03:01 <fizzie> Realized I could make /hackenv/tmp more easily un-mess-uppable and stop playing around with .hgignore by just moving it outside the repository completely, and mounting it separately into the umlbox. Not sure if hg would cross a filesystem boundary when looking up the .hg directory. (Git has that special GIT_DISCOVERY_ACROSS_FILESYSTEM option.)
+2019-11-19 11:04:19 <wib_jonas> fizzie: you could make it a symlink to a directory outside /hackenv, then hg surely won't follow it
+2019-11-19 11:07:00 <fizzie> I meant more that it would be desirable for 'hg' commands inside umlbox to ascend from /hackenv/tmp to /hackenv to find /hackenv/.hg, so that the read-only version control commands work without changing the working directory.
+2019-11-19 11:07:36 <fizzie> (When executing the actions outside the sandbox, there would be no tmp, so nothing to follow.)
+2019-11-19 11:09:30 <wib_jonas> ah
+2019-11-19 11:09:35 <wib_jonas> yes, that would make sense
+2019-11-19 11:10:33 <wib_jonas> ``` cat /hackenv/bin/lastfiles
+2019-11-19 11:10:34 <HackEso> hg log --removed -l 1 --template "$HACKENV/{join(files,'\n$HACKENV/')}\n" -- "$@"
+2019-11-19 11:10:39 <wib_jonas> ``` lastfiles
+2019-11-19 11:10:40 <HackEso> ​/hackenv/bin/sport
+2019-11-19 11:10:44 <wib_jonas> ``` set -e; cd /; lastfiles
+2019-11-19 11:10:45 <HackEso> abort: no repository found in '/' (.hg not found)!
+2019-11-19 11:10:57 <wib_jonas> we'd have to change those scripts too for robustness
+2019-11-19 11:11:45 <kspalaiologos> `;`
+2019-11-19 11:11:45 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: ;`: not found
+2019-11-19 11:11:50 <int-e> @metar lowi
+2019-11-19 11:11:50 <kspalaiologos> Oops
+2019-11-19 11:11:51 <lambdabot> LOWI 191050Z 27003KT 230V320 9999 SCT012 BKN080 03/01 Q1015 NOSIG
+2019-11-19 11:11:52 <fizzie> Well, it might work across a mount point. I couldn't (quickly) find anything saying it doesn't.
+2019-11-19 11:11:57 <kspalaiologos> @help
+2019-11-19 11:11:57 <lambdabot> help <command>. Ask for help for <command>. Try 'list' for all commands
+2019-11-19 11:12:04 <kspalaiologos> @list
+2019-11-19 11:12:04 <lambdabot> What module?  Try @listmodules for some ideas.
+2019-11-19 11:12:09 <kspalaiologos> ...?
+2019-11-19 11:12:15 <kspalaiologos> @listmodules
+2019-11-19 11:12:15 <lambdabot> activity base bf check compose dice dict djinn dummy elite eval filter free fresh haddock help hoogle instances irc karma localtime metar more oeis offlineRC pl pointful poll pretty quote search
+2019-11-19 11:12:15 <lambdabot> slap source spell system tell ticker todo topic type undo unlambda unmtl version where
+2019-11-19 11:12:30 <wib_jonas> which commands do something like lastfiles, as in, accessing the whole repository rather than just the working dir?
+2019-11-19 11:12:45 <kspalaiologos> @bf ,[.,]!stuff
+2019-11-19 11:12:45 <lambdabot> Done.
+2019-11-19 11:12:59 <kspalaiologos> @dice
+2019-11-19 11:12:59 <lambdabot> unexpected end of input: expecting number, "d" or "("
+2019-11-19 11:13:03 <kspalaiologos> ?
+2019-11-19 11:13:07 <kspalaiologos> @karma
+2019-11-19 11:13:08 <lambdabot> You have a karma of 0
+2019-11-19 11:13:11 <wib_jonas> @dice d6
+2019-11-19 11:13:11 <lambdabot> wib_jonas: 5
+2019-11-19 11:13:26 <kspalaiologos> @pl print "perl?";
+2019-11-19 11:13:26 <lambdabot> (line 1, column 14):
+2019-11-19 11:13:26 <lambdabot> unexpected ';'
+2019-11-19 11:13:26 <lambdabot> expecting variable, "(", operator or end of input
+2019-11-19 11:13:30 <fizzie> I would imagine everything to do with history would have issues with it, if it's a problem in the first place.
+2019-11-19 11:13:39 <kspalaiologos> ^8ball
+2019-11-19 11:13:40 <fungot> ...out of time!
+2019-11-19 11:14:01 <fizzie> Even if they pass a path to a specific file, I imagine the working directory needs to be inside the repository?
+2019-11-19 11:14:05 <kspalaiologos> Fungot is still broken
+2019-11-19 11:14:11 <wib_jonas> ``` set -e; cd /; hg log -T "{date|shortdate}\n" hackenv/wisdom/b_jonas
+2019-11-19 11:14:14 <HackEso> 2019-06-09 \ 2016-01-18 \ 2016-01-17
+2019-11-19 11:14:18 <kspalaiologos> I'll get my bot sorted out today
+2019-11-19 11:14:32 <wib_jonas> fizzie: no, that's how git works. hg and svn work the sane way, searching for the repo starting from the file that you target
+2019-11-19 11:14:41 <fizzie> Hmm, interesting.
+2019-11-19 11:15:39 <wib_jonas> fizzie: for git you need a stupid workaround like specifying the git repository in an env-var directly. mind you, it's a good thing that that's _permitted_, since sometimes you want the repo to be in a place other than the working copy without creating even the workspace .git file that gives just the name of the repo
+2019-11-19 11:25:57 Quit: kspalaiologos (Read error: Connection reset by peer)
+2019-11-19 11:25:57 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
