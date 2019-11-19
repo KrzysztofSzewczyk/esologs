@@ -176,3 +176,51 @@
 2019-11-19 02:50:43 Joined: imode
 2019-11-19 02:50:43 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
 2019-11-19 02:52:49 <shachaf> I think maybe I'm still missing something about non-chronological backjumping.
+2019-11-19 03:10:27 Quit: ais523 (Quit: quit)
+2019-11-19 03:10:27 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 03:13:56 <oerjan> `url ../bin/addquote
+2019-11-19 03:13:57 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/addquote
+2019-11-19 03:14:29 <oerjan> `url ../bin/delquote
+2019-11-19 03:14:29 <shachaf> ../hello/oerjan
+2019-11-19 03:14:30 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/delquote
+2019-11-19 03:14:53 <oerjan> hi/chaf
+2019-11-19 03:15:09 <oerjan> thought so
+2019-11-19 03:15:24 <oerjan> `` ls -l ../share/quotes
+2019-11-19 03:15:25 <HackEso> lrwxrwxrwx 1 1000 1000 9 Nov 18 10:40 ../share/quotes -> ../quotes
+2019-11-19 03:15:36 <oerjan> `` rm ../share/quotes
+2019-11-19 03:15:37 <HackEso> No output.
+2019-11-19 03:15:59 <oerjan> delquote works in a way that will break if it's a symbolic link
+2019-11-19 03:17:07 <shachaf> oerjan: ENOENT
+2019-11-19 03:17:18 <shachaf> did you mean /hackenv/hi/chaf
+2019-11-19 03:18:38 <oerjan> ENO
+2019-11-19 03:19:02 <shachaf> You know how it's megaconfusing when executing a file yields ENOENT even though it exists?
+2019-11-19 03:20:20 <oerjan> b_jonas: ^
+2019-11-19 03:20:31 <oerjan> EYESENT
+2019-11-19 03:20:46 <oerjan> (not really)
+2019-11-19 03:21:24 <shachaf> `` ls -l program
+2019-11-19 03:21:25 <HackEso> ​-rwxr-xr-x 1 1000 1000 1576 Nov 19 03:20 program
+2019-11-19 03:21:28 <shachaf> `` ./program
+2019-11-19 03:21:28 <HackEso> ​/hackenv/bin/`: line 5: ./program: No such file or directory
+2019-11-19 03:21:50 <shachaf> `` strace ./program
+2019-11-19 03:21:51 <HackEso> execve("./program", ["./program"], 0x7fbf90dce0 /* 15 vars */) = -1 ENOENT (No such file or directory) \ strace: exec: No such file or directory \ +++ exited with 1 +++
+2019-11-19 03:21:53 * oerjan instantly wanted to `doag that
+2019-11-19 03:21:57 <oerjan> then remembered
+2019-11-19 03:22:06 <shachaf> sorry
+2019-11-19 03:22:11 <shachaf> `` ../tmp/program # hth
+2019-11-19 03:22:13 <HackEso> ​/hackenv/bin/`: line 5: ../tmp/program: No such file or directory
+2019-11-19 03:23:40 <shachaf> kmc: puzzle hth
+2019-11-19 03:23:49 <oerjan> this is a conceptual problem: since files in tmp/ have no repo history, it can be hard to know why they were put there, and therefore whether they're worth saving
+2019-11-19 03:24:10 <shachaf> I guess it's not a very good puzzle because we've already talked about it.
+2019-11-19 03:24:22 <shachaf> oerjan: Wasn't the hg repository supposed to solve this problem in the first place?
+2019-11-19 03:24:26 <oerjan> and the change of pwd encourages people to put things there by accident
+2019-11-19 03:24:36 <shachaf> The idea was just that no one would care about hg history and it would describe everything.
+2019-11-19 03:24:36 <oerjan> shachaf: EFULLCIRCLE
+2019-11-19 03:24:48 <shachaf> So the solution is obvious: Add a second hg repository for tmp/.
+2019-11-19 03:25:05 <oerjan> EBRILLIANT
+2019-11-19 03:26:06 <shachaf> As an alternative, I propose something like automatic deletion of tmp/ every day.
+2019-11-19 03:26:09 <shachaf> Or every hour.
+2019-11-19 03:26:13 <shachaf> Or maybe just deleting old files automatically.
+2019-11-19 03:26:28 <shachaf> `` ls
+2019-11-19 03:26:29 <HackEso> a.c \ a.out \ as-encoding \ asmbf-1.1.1 \ banana.txt \ bfi \ compiled_brachylog.pl \ hexdump.hex \ input.brachylog \ jeval.whatis \ just \ karma \ le \ out \ OUT \ out.a \ out.a.hd \ out.a.xxd \ paste \ program \ single-word-character-names \ spline \ spout \ spout.raw \ temp.b \ test.sh \ tmp-interp \ tmp.txt \ uptime.out
+2019-11-19 03:28:45 <oerjan> maybe we should warn kspalaiologos before doing it.  i think his asmbf workflow isn't quite compatible at the moment.
+2019-11-19 03:30:02 <shachaf> Also, you can apparently hg add things inside hgignored directories.
