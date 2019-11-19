@@ -148,3 +148,20 @@
 2019-11-19 01:27:27 <ais523> hmm my client renders that 5-cedilla pretty well
 2019-11-19 01:27:36 <ais523> s/hmm/hmm,/
 2019-11-19 01:29:25 <oerjan> <shachaf> Wasn't clearing tmp/ supposed to be supported? <-- yes, but now we have a choice between that and keeping le/rn working.
+2019-11-19 01:30:57 <oerjan> or fizzie could add a hack to catch /-containing commands
+2019-11-19 01:32:20 <fizzie> I could make ` in general just do a custom lookup, it's already kind of a non-standard parsing.
+2019-11-19 01:32:45 <fizzie> In that it splits on first space to form the command and its full argument.
+2019-11-19 01:38:21 <ais523> hmm, I assume you can't just hardcode it to run /hackenv/bin/command because you need to be able to run commands like ls too
+2019-11-19 01:38:23 Quit: kspalaiologos (Ping timeout: 250 seconds)
+2019-11-19 01:38:24 Names: \oren\, ^[, ais523, aji, aloril, APic, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, hppavilion[1], iczero, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 01:46:01 <oerjan> was HackEgo on CaC from the start? i vaguely think otherwise.
+2019-11-19 01:46:45 <oerjan> hm no it wasn't, there was at least one move that changed stuff
+2019-11-19 01:46:54 <oerjan> when it colocated with the wiki
+2019-11-19 01:47:23 <fizzie> The very first join is from codu.xen.prgmr.com.
+2019-11-19 01:47:55 <esowiki> 14[[07HackEso14]]4 10 02https://esolangs.org/w/index.php?diff=67244&oldid=67233 5* 03Oerjan 5* (+71) 10Fix a few errors and mention hurl
+2019-11-19 01:50:55 <fizzie> The hosts my logs have seen are HackEgo!~HackEgo@162.248.166.242 (CaC, 57k lines), HackEgo!codu@codu.org (who knows where, 12k lines), HackEgo!dlopen@libdl.so (ditto, 5.8k lines) and a few less common ones, including HackEgo!n=HackEgo@codu.xen.prgmr.com, HackEgo!dlopen@64.62.173.65.
+2019-11-19 01:51:13 <fizzie> Also, the way the command and arguments flow through all the levels is pretty awkward.
+2019-11-19 01:53:04 * oerjan remembers libdl.so
+2019-11-19 01:55:04 <oerjan> <b_jonas> do you suppose this change is ok? <-- i don't see a rule that it is violating, which is sort of not in the spirit
+2019-11-19 01:59:05 <fizzie> First, in PRIVMSG/tr_60.cmd (called by multibot for trigger character `) it's split into the command and an optional argument on the first space. Then it calls lib/sandbox with Python subprocess.Popen. That next uses Python subprocess.call to form the umlbox command line: 'nice', '-n10', '/usr/bin/umlbox', ..., '.../limits', 'cmd', 'argument stuff'. Then umlbox shell-escapes all the arguments and
+2019-11-19 01:59:11 <fizzie> concatenates the results into a 'run' command in the umlbox config file. The umlbox init reads that, and invokes the result using system() -- so passing through a shell at that point. Finally, that triggers the lib/limits script, which sets a few ulimit values and uses bash exec to run the actual command.
