@@ -946,3 +946,44 @@
 2019-11-19 22:55:31 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, hkgit03, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
 2019-11-19 22:56:09 Joined: laerling
 2019-11-19 22:56:09 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, hkgit03, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 23:04:50 <fizzie> Weird, I switched umlbox interpreter from Python 2 to 3 (since 2's eventually going to EOL), and even though the part where it does subprocess.call of the UML kernel is reached with exactly the same arguments and config file content, and while the kernel runs exactly the same steps, for some reason the stdout of the executed command is not visible.
+2019-11-19 23:05:31 <fizzie> Maybe some subtle change in subprocess library's fd handling or something.
+2019-11-19 23:05:43 Quit: laerling (Quit: ZNC 1.7.3 - https://znc.in)
+2019-11-19 23:05:44 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, hkgit03, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 23:06:15 <b_jonas> or maybe the Briticolan anthem
+2019-11-19 23:06:34 <b_jonas> sorry, wrong channel
+2019-11-19 23:06:35 <fizzie> The code's pretty low-level for Python, doing os.open / os.dup, because some of the UML kernel arguments are file descriptor numbers like "fd:4".
+2019-11-19 23:07:04 Joined: laerling
+2019-11-19 23:07:04 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, hkgit03, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 23:08:14 <b_jonas> `python3 -copen(2,"w").write("hello") # explicit file descriptor numbers? yes, surely you need low level calls for that
+2019-11-19 23:08:15 <HackEso> hello
+2019-11-19 23:08:23 <b_jonas> open does fdopen if you pass a number to it
+2019-11-19 23:08:48 <b_jonas> there's even a parameter to tell whether to close the underlying file description when you close the file handle
+2019-11-19 23:09:46 <fizzie> Well, that's not really relevant for what this does, since it doesn't write into any of the file descriptors it opens.
+2019-11-19 23:10:04 <b_jonas> fizzie: the same works for reading or other file descriptor operations
+2019-11-19 23:10:15 <b_jonas> open just gives you a file handle
+2019-11-19 23:10:26 <fizzie> I don't doubt there's a way to use open() and get the file descriptor out of it, but it's not what it does.
+2019-11-19 23:10:35 <fizzie> And I don't see how it would be any better to, really.
+2019-11-19 23:10:44 <b_jonas> sure, maybe it does something for which that's useful
+2019-11-19 23:11:02 <fizzie> It's more that it doesn't do anything for which that's not useful.
+2019-11-19 23:12:27 <fizzie> Oh, I see what the issue is.
+2019-11-19 23:12:36 <fizzie> "Since Python 3.4, file descriptors created by Python are non-inheritable by default."
+2019-11-19 23:13:41 <b_jonas> ah
+2019-11-19 23:14:34 <fizzie> (It uses the close_fds=False option to subprocess to pass a file descriptor into UML, but it's apparently a close-on-exec by default, and I need to os.set_inheritable(fd, True) it. Or maybe use the new pass_fds attribute to subprocess, which is probably a better idea.
+2019-11-19 23:17:29 Parted: hkgit03
+2019-11-19 23:17:29 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 23:20:30 <fizzie> Yep, that did the trick.
+2019-11-19 23:21:07 <fizzie> Should probably check that mudem works as well.
+2019-11-19 23:23:57 <fizzie> umlbox has this weird thing where if you want networking, you specify particular Unix domain sockets and TCP ports to forward, and it runs a separate "umlbox-mudem" program that multiplexes it all over a single stream, where that single stream is just pipes that are hooked up to /dev/tty2 inside the UML. It runs one copy of mudem outside, and another inside.
+2019-11-19 23:25:04 <b_jonas> fizzie: can't you use the ethernet tunnel devices instead?
+2019-11-19 23:25:11 <b_jonas> the ones built into linux
+2019-11-19 23:25:24 <fizzie> I could, though the umlbox wrapper script doesn't support those out of the box.
+2019-11-19 23:25:34 <b_jonas> the ones that you use to connect network namespaces on linux
+2019-11-19 23:25:36 <b_jonas> ok
+2019-11-19 23:26:14 <fizzie> UML itself has a pretty similar networking scheme (for when you're running it without any special privileges on the host), except it uses Slirp.
+2019-11-19 23:26:33 <fizzie> I think I actually used to use Slirp for real at one point for internetworking.
+2019-11-19 23:27:51 <b_jonas> what is Slirp?
+2019-11-19 23:27:54 <fizzie> Definitely had a SLIP connection for my first real ISP, and a PPP one for all the dialup ones after that, but there was also Slirp on some system somewhere.
+2019-11-19 23:28:53 <fizzie> It's a thing where, if you don't have a real Internet connection, but you do have a shell account you can dial into, you can turn that into an internet connection by running a (regular user) program on the machine you have a shell account on, which talks the SLIP protocol (with extensions, I think) to your computer so that you can use regular Internet programs on it.
+2019-11-19 23:29:38 <fizzie> You basically just set up the dialer settings for your SLIP connection (which normally provide a username/password login) to log in and execute the slirp command.
+2019-11-19 23:29:58 <b_jonas> a kind of tunnel then. ok.
