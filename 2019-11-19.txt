@@ -378,3 +378,39 @@
 2019-11-19 08:09:06 <oerjan> anyway
 2019-11-19 08:09:15 Quit: oerjan (Quit: Nite)
 2019-11-19 08:09:16 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 08:40:22 <b_jonas> "<ais523> hah, I didn't even realise that we created /tmp from inside HackEso, I assumed it was hardcoded" => it is also hardcoded, since you can access tmp through the web interface directly like https://hack.esolangs.org/tmp/banana.txt
+2019-11-19 08:43:33 <kspalaiologos> ``` asmbf mov r1, 3
+2019-11-19 08:43:34 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>[-]+++<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-19 08:43:37 <kspalaiologos> ?
+2019-11-19 08:43:50 <kspalaiologos> `asmbf mov r1,2
+2019-11-19 08:43:51 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>[-]++<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-19 08:44:13 <kspalaiologos> `asmbfx lbl 1/out 48/jmp 1
+2019-11-19 08:44:14 <HackEso> 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+2019-11-19 08:44:18 <kspalaiologos> Works
+2019-11-19 08:47:32 <kspalaiologos> ``` ./labels.pl <<<"@x1y1/%x1y1"
+2019-11-19 08:47:33 <HackEso> bash: ./labels.pl: No such file or directory
+2019-11-19 08:47:50 <kspalaiologos> ``` labels.pl <<<"@x1y1/%x1y1
+2019-11-19 08:47:51 <HackEso> bash: -c: line 0: unexpected EOF while looking for matching `"' \ bash: -c: line 1: syntax error: unexpected end of file
+2019-11-19 08:48:02 Quit: kspalaiologos (Remote host closed the connection)
+2019-11-19 08:48:02 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 08:48:10 Joined: kspalaiologos
+2019-11-19 08:48:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-19 08:48:16 User Name: kspalaiologos = kspalaiologos!~kspalaiol@user-94-254-232-33.play-internet.pl
+2019-11-19 08:48:16 <kspalaiologos> My client crashed
+2019-11-19 08:48:42 <kspalaiologos> ``` labels.pl <<<"@x1y1/%x1y1"
+2019-11-19 08:48:43 <HackEso> lbl 1
+2019-11-19 08:48:51 <kspalaiologos> It's bricked
+2019-11-19 08:49:01 <kspalaiologos> For some bizzare reason
+2019-11-19 08:49:20 <kspalaiologos> ``` labels.pl <<<"@x1y1/%x1y1" > tmp.s
+2019-11-19 08:49:21 <HackEso> No output.
+2019-11-19 08:49:29 <kspalaiologos> ``` cat tmp.b
+2019-11-19 08:49:30 <HackEso> cat: tmp.b: No such file or directory
+2019-11-19 08:49:41 <kspalaiologos> ``` cat tmp.s
+2019-11-19 08:49:42 <HackEso> lbl 1
+2019-11-19 08:49:53 <kspalaiologos> ``` rm tmp.s
+2019-11-19 08:49:54 <HackEso> No output.
+2019-11-19 08:52:54 <b_jonas> oerjan: re share/quotes , yeah, I even mentioned that a symlink to the writable file is a bit tricky because something could overwrite it with a regular file. I should have realized that that implies the whole symlink thing is a bad idea and shouldn't exist, because you can't safely change commands over without desyncing it.
+2019-11-19 08:53:08 <b_jonas> so we're better with no symlink, and changing over in an incompatible way if we want
+2019-11-19 08:53:41 <b_jonas> (or change over in a more complex way, but still without a symlink)
+2019-11-19 08:56:10 <b_jonas> oerjan: re tmp history, I just suggested that we could solve that for paste only going forward, by making paste log the filename and the IRC_* environment variables somewhere under tmp
+2019-11-19 08:58:31 <b_jonas> that would let people like me search and clean up their own pastes
