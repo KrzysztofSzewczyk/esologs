@@ -32,3 +32,4 @@
 2019-11-20 02:14:44 <shachaf> With properties like no malloc, no callbacks, no blocking system calls, etc.
 2019-11-20 02:14:56 <shachaf> I mean, no system calls at all, really.
 2019-11-20 02:15:45 <shachaf> For example how about a DNS library. I guess there's probably a good one somewhere.
+2019-11-20 02:54:12 <fizzie> c-ares is what I've seen used, and it's async, and C. But I don't know if it's any good, and I'm sure it doesn't fill the "no system calls" requirement.
