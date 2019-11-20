@@ -40,3 +40,76 @@
 2019-11-20 03:15:04 <shachaf> Oh, and of course no GPL and no LGPL.
 2019-11-20 03:59:23 Joined: oerjan
 2019-11-20 03:59:23 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-11-20 04:08:30 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-20 04:08:30 <oerjan> `cbt undo
+2019-11-20 04:08:31 <HackEso> ​#!/bin/sh \ hg diff -c "$@" | patch -p1 -R
+2019-11-20 04:10:58 <oerjan> `undo 12162
+2019-11-20 04:10:59 <HackEso> can't find file to patch at input line 4 \ Perhaps you used the wrong -p or --strip option? \ The text leading up to this was: \ -------------------------- \ |diff -r b776d8e310e6 -r 8bb3e1600f3c bin/sport \ |--- a/bin/sport	Tue Nov 19 03:15:37 2019 +0000 \ |+++ b/bin/sport	Tue Nov 19 03:44:32 2019 +0000 \ -------------------------- \ File to patch:  \ Skip this patch? [y]  \ Skipping patch. \ 1 out of 1 hunk ignored
+2019-11-20 04:11:16 <oerjan> `` cd ..; undo 12162
+2019-11-20 04:11:18 <HackEso> patching file bin/sport
+2019-11-20 04:11:22 <oerjan> `revert
+2019-11-20 04:11:23 <HackEso> Done.
+2019-11-20 04:12:46 <oerjan> `slbd undo//1acd ${HACKENV-/hackenv}
+2019-11-20 04:12:48 <HackEso> undo//#!/bin/sh \ cd ${HACKENV-/hackenv} \ hg diff -c "$@" | patch -p1 -R
+2019-11-20 04:13:10 <oerjan> `undo 12162
+2019-11-20 04:13:12 <HackEso> patching file bin/sport
+2019-11-20 04:13:15 <oerjan> `revert
+2019-11-20 04:13:16 <HackEso> Done.
+2019-11-20 04:14:25 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-11-20 04:14:25 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-20 04:19:13 Joined: Yeah23
+2019-11-20 04:19:14 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, Yeah23, zemhill, zzo38
+2019-11-20 04:20:58 User Name: Yeah23 = Yeah23!74e4b1f5@116.228.177.245
+2019-11-20 04:20:58 <Yeah23> !quote
+2019-11-20 04:21:37 <oerjan> `quote
+2019-11-20 04:21:38 <HackEso> 1033) <Bike> I'm glad I quit programming to take up listening to numbers stations
+2019-11-20 04:22:11 <Yeah23> `quote HackEso
+2019-11-20 04:22:12 <HackEso> 1330) <shachaf> `unidecode ⧸🙼  <HackEso> ​[U+29F8 BIG SOLIDUS] [U+1F67C VERY HEAVY SOLIDUS]  <shachaf> it is with a very heavy solidus that i write to inform you that unicode has too many code points
+2019-11-20 04:23:03 <oerjan> `relcome Yeah23
+2019-11-20 04:23:04 <HackEso> ​07Yeah23: 08Welcome 09to 02the 06international 13hub 04for 07esoteric 08programming 09language 02design 06and 13deployment! 04For 07more 08information, 09check 02out 06our 13wiki: 04<https://esolangs.org/>. 07(For 08the 09other 02kind 06of 13esoterica, 04try 07#esoteric 08on 09EFnet 02or 06DALnet.)
+2019-11-20 04:23:15 <Yeah23> `relcome oerjan
+2019-11-20 04:23:17 <HackEso> ​08oerjan: 09Welcome 02to 06the 13international 04hub 07for 08esoteric 09programming 02language 06design 13and 04deployment! 07For 08more 09information, 02check 06out 13our 04wiki: 07<https://esolangs.org/>. 08(For 09the 02other 06kind 13of 04esoterica, 07try 08#esoteric 09on 02EFnet 06or 13DALnet.)
+2019-11-20 04:24:25 <oerjan> `cat bin/hlnp
+2019-11-20 04:24:25 <Yeah23> `run HackEso
+2019-11-20 04:24:25 <HackEso> cat: bin/hlnp: No such file or directory
+2019-11-20 04:24:26 <HackEso> bash: HackEso: command not found
+2019-11-20 04:24:30 <oerjan> oops
+2019-11-20 04:24:36 <oerjan> `cbt bin/hlnp
+2019-11-20 04:24:36 <HackEso> cat: /hackenv/bin/bin/hlnp: No such file or directory
+2019-11-20 04:24:41 <oerjan> `cbt hlnp
+2019-11-20 04:24:41 <HackEso> scowrevs="$(/usr/bin/paste -sd'|' /hackenv/share/scowrevs)"; hg log -r "tip:0 & ! ($scowrevs)" "$@" | sed 's/\(\(^\| \)[<Itb][^ ]*\)\([^ ][^ ]\)/\1̈\3/'
+2019-11-20 04:25:03 <Yeah23> `run /usr/
+2019-11-20 04:25:04 <HackEso> bash: /usr/: Is a directory
+2019-11-20 04:25:10 <Yeah23> `run /usr vi
+2019-11-20 04:25:11 <HackEso> bash: /usr: Is a directory
+2019-11-20 04:25:15 <Yeah23> `run /usr/vi
+2019-11-20 04:25:16 <HackEso> bash: /usr/vi: No such file or directory
+2019-11-20 04:25:24 <Yeah23> `ls /usr
+2019-11-20 04:25:24 <HackEso> bin \ games \ include \ lib \ local \ sbin \ share \ src
+2019-11-20 04:25:34 <Yeah23> `ls /usr/bin
+2019-11-20 04:25:35 <HackEso> ​[ \ 2to3-2.7 \ aclocal \ aclocal-1.16 \ addpart \ addr2line \ aot-compile \ apropos \ apt \ apt-cache \ apt-cdrom \ apt-config \ apt-get \ apt-key \ apt-mark \ ar \ arch \ as \ autoconf \ autoheader \ autom4te \ automake \ automake-1.16 \ autopoint \ autoreconf \ autoscan \ autoupdate \ awk \ b2sum \ base32 \ base64 \ basename \ bashbug \ bc \ bison \ bison.yacc \ bootctl \ bsd-from \ bsd-write \ busctl \ c++ \ c89 \ c89-gcc \ c99 \
+2019-11-20 04:25:57 <Yeah23> ls /usr/bin/v*
+2019-11-20 04:26:08 <Yeah23> `ls /usr/bin/v*
+2019-11-20 04:26:09 <HackEso> ls: cannot access '/usr/bin/v*': No such file or directory
+2019-11-20 04:26:21 <Yeah23> `ls /usr/bin/vi | more
+2019-11-20 04:26:22 <HackEso> ls: cannot access '/usr/bin/vi | more': No such file or directory
+2019-11-20 04:26:36 <oerjan> you need `` ls
+2019-11-20 04:26:46 <Yeah23> ``ls
+2019-11-20 04:26:47 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: `ls: not found
+2019-11-20 04:26:48 <oerjan> (or `run ls)
+2019-11-20 04:26:55 <Yeah23> `run ed
+2019-11-20 04:26:56 <HackEso> bash: ed: command not found
+2019-11-20 04:27:11 <Yeah23> `run ls /usr/bin/v*
+2019-11-20 04:27:12 <HackEso> ​/usr/bin/vi \ /usr/bin/vidir \ /usr/bin/view \ /usr/bin/vipe \ /usr/bin/vmgen \ /usr/bin/vmgen-0.7.3 \ /usr/bin/vmstat
+2019-11-20 04:27:21 <oerjan> ed and vi are unlikely to work anyway, there's no real terminal
+2019-11-20 04:27:24 <Yeah23> `run /usr/bin/vi
+2019-11-20 04:27:25 <HackEso> â€‹[24;1H[7mError: stderr: Success
+2019-11-20 04:27:38 <Yeah23> `run /usr/bin/ed
+2019-11-20 04:27:39 <HackEso> bash: /usr/bin/ed: No such file or directory
+2019-11-20 04:27:48 <Yeah23> There is no ed?
+2019-11-20 04:27:55 <oerjan> apparently so.
+2019-11-20 04:28:11 <oerjan> there is sed though.
+2019-11-20 04:28:25 Quit: Yeah23 (Remote host closed the connection)
+2019-11-20 04:28:25 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-20 04:29:05 * oerjan wonders if they got here from the wiki/HackEso
+2019-11-20 04:29:20 <oerjan> *-the
