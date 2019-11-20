@@ -246,3 +246,37 @@
 2019-11-20 06:29:53 <imode> `rlexp t11113
 2019-11-20 06:29:54 <HackEso> ttt
 2019-11-20 06:29:56 <imode> wat.
+2019-11-20 06:30:01 <oerjan> `rlexp t33
+2019-11-20 06:30:05 <HackEso> ttt
+2019-11-20 06:30:09 <oerjan> hm i see
+2019-11-20 06:30:23 <imode> does it just run until it hits the last digit in a span of digits or something.
+2019-11-20 06:30:29 <imode> `rlexp t00005
+2019-11-20 06:30:30 <HackEso> ttttt
+2019-11-20 06:30:40 <oerjan> d'oh
+2019-11-20 06:30:47 <oerjan> `fetch ../bin/rlexp https://hack.esolangs.org/get/bin/rlexp
+2019-11-20 06:30:48 <HackEso> 2019-11-20 06:30:47 URL:https://hack.esolangs.org/get/bin/rlexp [74/74] -> "/hackenv/bin/rlexp" [1]
+2019-11-20 06:30:56 <oerjan> `rlexp t33
+2019-11-20 06:30:56 <HackEso> ttttttttttttttttttttttttttttttttt
+2019-11-20 06:31:07 <oerjan> `rlexp +[-5>+3<]>+.+12..-4.[-2>+<]>+2.-11..[-3>+<]>.[-3>+<]>-4.-4.-3.-11.+13.-7.+12.+[+2>-3<]>.-3[-5>+<]>.+3.-11.-2[->+3<]>.+2[-3>+2<]>+.+[->+3<]>+.+2.-2.-4[->+3<]>.,[.,]
+2019-11-20 06:31:08 <HackEso> ​+[----->+++<]>+.++++++++++++..----.[-->+<]>++.-----------..[--->+<]>.[--->+<]>----.----.---.-----------.+++++++++++++.-------.++++++++++++.+[++>---<]>.---[----->+<]>.+++.-----------.--[->+++<]>.++[--->++<]>+.+[->+++<]>+.++.--.----[->+++<]>.,[.,]
+2019-11-20 06:31:27 <oerjan> `rlexp +15[>+4>+7>+7>+8<4-]>3-.>-4..<2+7.+3.<-2.-11..>2-3.<.>2-5.-3.<-4.>+2.<+6.<.<-.>3+.+3.<.<2+.>+4.>+2.+2.-2.<2.,[.,]
+2019-11-20 06:31:28 <HackEso> ​+++++++++++++++[>++++>+++++++>+++++++>++++++++<<<<-]>>>-.>----..<<+++++++.+++.<--.-----------..>>---.<.>>-----.---.<----.>++.<++++++.<.<-.>>>+.+++.<.<<+.>++++.>++.++.--.<<.,[.,]
+2019-11-20 06:31:39 <oerjan> there we go.
+2019-11-20 06:32:33 <oerjan> @tell kspalaiologos sorry if i jumped on you
+2019-11-20 06:32:33 <lambdabot> Consider it noted.
+2019-11-20 06:33:18 <oerjan> imode: i put the + outside the matching group of the regexp so it only got the first character
+2019-11-20 06:33:34 <imode> ahh.
+2019-11-20 06:37:44 <oerjan> `learn `rlexp <compressed code> is a command for expanding the rle format fungot ^show's for brainfuck code but doesn't accept as input.
+2019-11-20 06:37:44 <fungot> oerjan: you should make () a proper list" here means whatever list is n levels up from the negative list
+2019-11-20 06:37:46 <HackEso> Learned '`rlexp': `rlexp <compressed code> is a command for expanding the rle format fungot ^show's for brainfuck code but doesn't accept as input.
+2019-11-20 06:38:31 <oerjan> `` ls bin/*rl*
+2019-11-20 06:38:32 <HackEso> ls: cannot access 'bin/*rl*': No such file or directory
+2019-11-20 06:38:39 <oerjan> `` ls ../bin/*rl*
+2019-11-20 06:38:40 <HackEso> ​../bin/curl \ ../bin/hello-world-in-any-language \ ../bin/hurl \ ../bin/hwrl \ ../bin/jousturl \ ../bin/logurl \ ../bin/perl-e \ ../bin/raw-url \ ../bin/rlexp \ ../bin/url \ ../bin/wrl \ ../bin/zalgoverload
+2019-11-20 06:39:10 <oerjan> `cbt wrl
+2019-11-20 06:39:10 <HackEso> url "$HACKENV/wisdom/$1"
+2019-11-20 06:40:48 <oerjan> i am _this_ close to adding a `` variant that cd's to $HACKENV first.
+2019-11-20 06:42:54 <oerjan> or maybe a `nur variant.
+2019-11-20 06:43:38 <oerjan> `h
+2019-11-20 06:44:09 <HackEso> No output.
+2019-11-20 06:53:00 <oerjan> The Castle might be distantly related to Elan
