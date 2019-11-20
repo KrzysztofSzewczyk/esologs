@@ -377,3 +377,57 @@
 2019-11-20 13:59:46 <HackEso> 64
 2019-11-20 13:59:55 <wib_jonas> ``` bc <<< 'ibase = G; print(64)'
 2019-11-20 13:59:56 <HackEso> 100
+2019-11-20 14:00:24 <esowiki> 14[[07Timed14]]4 10 02https://esolangs.org/w/index.php?diff=67287&oldid=67286 5* 03OsmineYT 5* (+64) 10
+2019-11-20 14:00:47 <fizzie> My favourite bit about dc is the part of the man page which says "the sequence KSK0k1/_1Ss [ls*]Sxd0>x [256~Ssd0<x]dsxxsx[q]Sq[Lsd0>qaPlxx] dsxxsx0sqLqsxLxLK+k could also accomplish this function" with a straight face.
+2019-11-20 14:01:03 <wib_jonas> ``` set -e; ed <<<$'i\none\nthree\nfour\n.\n1a\ntwo\n.\nwtmp/ah-ah-ah\nq'; cat tmp/ah-ah-ah
+2019-11-20 14:01:03 <HackEso> ​?
+2019-11-20 14:01:21 <wib_jonas> ``` set -e; ed <<<$'etmp/ah-ah-ah\ni\none\nthree\nfour\n.\n1a\ntwo\n.\nw\nq'; cat tmp/ah-ah-ah
+2019-11-20 14:01:21 <HackEso> ​?
+2019-11-20 14:01:26 <wib_jonas> ``` set -e; ed <<<$'e tmp/ah-ah-ah\ni\none\nthree\nfour\n.\n1a\ntwo\n.\nw\nq'; cat tmp/ah-ah-ah
+2019-11-20 14:01:26 <HackEso> tmp/ah-ah-ah: No such file or directory \ ?
+2019-11-20 14:01:38 <fizzie> Ah, ed's good old '?'.
+2019-11-20 14:01:46 <wib_jonas> ``` set -e; ed <<<$'i\none\nthree\nfour\n.\n1a\ntwo\n.\nw/hackenv/tmp/ah-ah-ah\nq'; cat tmp/ah-ah-ah
+2019-11-20 14:01:47 <HackEso> ​?
+2019-11-20 14:01:52 <wib_jonas> ``` set -e; ed <<<$'i\none\nthree\nfour\n.\n1a\ntwo\n.\nw /hackenv/tmp/ah-ah-ah\nq'; cat tmp/ah-ah-ah
+2019-11-20 14:01:53 <HackEso> cat: tmp/ah-ah-ah: No such file or directory \ 19
+2019-11-20 14:02:01 <wib_jonas> ``` set -e; ed <<<$'i\none\nthree\nfour\n.\n1a\ntwo\n.\nw /hackenv/tmp/ah-ah-ah\nq'; cat /hackenv/tmp/ah-ah-ah
+2019-11-20 14:02:03 <HackEso> 19 \ one \ two \ three \ four
+2019-11-20 14:02:18 <wib_jonas> ``` set -e; ed <<<$'i\none\nthree\nfour\n.\n1a\ntwo\n.\nw /hackenv/tmp/ah-ah-ah\nq'; echo ---; cat /hackenv/tmp/ah-ah-ah
+2019-11-20 14:02:19 <HackEso> 19 \ --- \ one \ two \ three \ four
+2019-11-20 14:03:33 Joined: kspalaiologos2
+2019-11-20 14:03:33 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, kspalaiologos2, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-20 14:04:33 Quit: kspalaiologos (Quit: Quit)
+2019-11-20 14:04:33 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos2, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-20 14:04:45 User Name: kspalaiologos2 = kspalaiologos2!~kspalaiol@176.221.122.71
+2019-11-20 14:04:45 <kspalaiologos2> fizzie, I genuinely didn't know
+2019-11-20 14:04:50 Nick Change: kspalaiologos2 -> kspalaiologos
+2019-11-20 14:04:50 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-11-20 14:04:52 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-11-20 14:04:52 <kspalaiologos> perfect
+2019-11-20 14:06:03 <kspalaiologos> =show 8bball
+2019-11-20 14:06:03 <bfbot> No such command. Try =help.
+2019-11-20 14:06:07 <kspalaiologos> ^show 8ball
+2019-11-20 14:06:07 <fungot> ,[[->+<],]>2+2<[->-[>+>2]>[+[-<+>]>+>2]<5]>4+<2[>2-+11[>+8>+4<2-]>+.+12.+14.>+2.<4-]>2[+10[>+7>+4<2-]>+.+33.>+2.<2]
+2019-11-20 14:06:16 <kspalaiologos> is this it?
+2019-11-20 14:06:19 <kspalaiologos> ^ball blah
+2019-11-20 14:06:22 <kspalaiologos> ^8ball blah
+2019-11-20 14:06:22 <fungot> Yes.
+2019-11-20 14:06:27 <kspalaiologos> ^8ball ?
+2019-11-20 14:06:27 <fungot> Yes.
+2019-11-20 14:06:35 <kspalaiologos> It's a very crappy 8ball you know it
+2019-11-20 14:06:48 <kspalaiologos> look
+2019-11-20 14:06:52 <kspalaiologos> =8ball hi
+2019-11-20 14:06:52 <bfbot> Very doubtful.
+2019-11-20 14:06:55 <kspalaiologos> =8ball hello
+2019-11-20 14:06:55 <bfbot> Without a doubt.
+2019-11-20 14:07:05 <kspalaiologos> =8ball is this 8ball nicer?
+2019-11-20 14:07:05 <bfbot> As I see it, yes.
+2019-11-20 14:07:16 <kspalaiologos> it even has an easteregg
+2019-11-20 14:07:18 <kspalaiologos> =8ball KPS
+2019-11-20 14:07:19 <bfbot> Congratulations! You found the easter egg! ~~kspalaiologos, 2019
+2019-11-20 14:17:06 <kspalaiologos> =help
+2019-11-20 14:17:06 <bfbot> bfbot is a bot executing brainfuck natively. You may add your very own commands to the bot.
+2019-11-20 14:17:06 <bfbot> Commands: =str =def =undef =list =plist =doc. More help at https://esolangs.org/wiki/bfbot
+2019-11-20 14:24:18 <fizzie> ^8ball Is it really crappy?
+2019-11-20 14:24:18 <fungot> No.
+2019-11-20 14:24:21 <fizzie> See, there you go.
