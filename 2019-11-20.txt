@@ -342,3 +342,38 @@
 2019-11-20 13:21:46 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03OsmineYT 5*  10New user account
 2019-11-20 13:26:43 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=67277&oldid=67220 5* 03OsmineYT 5* (+151) 10
 2019-11-20 13:29:53 <esowiki> 14[[07User:OsmineYT14]]4 N10 02https://esolangs.org/w/index.php?oldid=67278 5* 03OsmineYT 5* (+153) 10Created page with "Hi! I'm 12 and  I want to write esoteric programming language. (Yep, that's my dream.) And that's all (because I don't write in English '''very well''')."
+2019-11-20 13:36:45 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-11-20 13:36:45 <wib_jonas> shachaf: I second the recommendation for c-ares as a DNS resolver library.
+2019-11-20 13:37:13 <wib_jonas> other than that, you should ask about more specific functionality, rather than "C libraries for things"
+2019-11-20 13:39:36 <wib_jonas> "<oerjan> ed and vi are unlikely to work anyway, there's no real terminal" => I have used ed non-interactively without a terminal. I admit the usage was rather esoteric, but people used it seriously too, to apply patches before patch.
+2019-11-20 13:40:03 <wib_jonas> Yeah23: ed is not installed on debian by default, but it's a good candidate to ask fizzie
+2019-11-20 13:40:12 <wib_jonas> fizzie: can you install ed to HackEso?
+2019-11-20 13:40:27 <wib_jonas> it's small and esoteric, so I think it's worth to have
+2019-11-20 13:40:34 <wib_jonas> I mean, it has esoteric uses
+2019-11-20 13:46:20 <esowiki> 14[[07Incident14]]4 M10 02https://esolangs.org/w/index.php?diff=67279&oldid=64994 5* 03Ais523 non-admin 5* (+17) 10/* External resources */ nowiki the URL that doesn't work in a web browser, to stop people trying to click on it and thus open it in a web browser
+2019-11-20 13:48:58 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=67280&oldid=67278 5* 03OsmineYT 5* (+76) 10
+2019-11-20 13:49:30 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=67281&oldid=67280 5* 03OsmineYT 5* (-27) 10/* Ideas to programming languages: */
+2019-11-20 13:49:37 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=67282&oldid=67281 5* 03OsmineYT 5* (-1) 10/* Ideas to programming languages: */
+2019-11-20 13:53:12 <esowiki> 14[[07Timed14]]4 N10 02https://esolangs.org/w/index.php?oldid=67283 5* 03OsmineYT 5* (+206) 10Created page with "Timed is an idea of esolang by [[User:OsmineYT|OsmineYT]]. If there is '''any''' command in source code, the code execution will slow down 2 times.  == Commands == There are n..."
+2019-11-20 13:55:37 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=67284&oldid=67282 5* 03OsmineYT 5* (+1) 10/* Ideas to programming languages: */
+2019-11-20 13:57:52 <fizzie> wib_jonas: Given that it's the standard text editor, maybe we should have it.
+2019-11-20 13:58:37 <wib_jonas> fizzie: yeah, and I should have mentioned it when you installed dc
+2019-11-20 13:58:49 <wib_jonas> or bc, or both, whichever it is that isn't on debian by default
+2019-11-20 13:59:00 <fizzie> `ed -V
+2019-11-20 13:59:00 <wib_jonas> ``` dc -e16o100p
+2019-11-20 13:59:00 <HackEso> GNU ed 1.15 \ Copyright (C) 1994 Andrew L. Moore. \ Copyright (C) 2019 Antonio Diaz Diaz. \ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html> \ This is free software: you are free to change and redistribute it. \ There is NO WARRANTY, to the extent permitted by law.
+2019-11-20 13:59:01 <HackEso> 64
+2019-11-20 13:59:01 <esowiki> 14[[07Timed14]]4 10 02https://esolangs.org/w/index.php?diff=67285&oldid=67283 5* 03OsmineYT 5* (+118) 10/* Commands */
+2019-11-20 13:59:09 <wib_jonas> ``` dc -e16i64p
+2019-11-20 13:59:10 <HackEso> 100
+2019-11-20 13:59:29 <fizzie> I think dc is the one that's not installed by default, I remember installing it.
+2019-11-20 13:59:33 <wib_jonas> ``` bc -e 'obase = G; print(100)'
+2019-11-20 13:59:34 <HackEso> bc: invalid option -- 'e' \ usage: bc [options] [file ...] \   -h  --help         print this usage and exit \   -i  --interactive  force interactive mode \   -l  --mathlib      use the predefined math routines \   -q  --quiet        don't print initial banner \   -s  --standard     non-standard bc constructs are errors \   -w  --warn         warn about non-standard bc constructs \   -v  --version      print version information and exit
+2019-11-20 13:59:35 <fizzie> It's also the more esoteric of the two, I feel.
+2019-11-20 13:59:41 <wib_jonas> ``` bc << 'obase = G; print(100)'
+2019-11-20 13:59:42 <HackEso> bash: warning: here-document at line 0 delimited by end-of-file (wanted `obase = G; print(100)')
+2019-11-20 13:59:46 <wib_jonas> ``` bc <<< 'obase = G; print(100)'
+2019-11-20 13:59:46 <esowiki> 14[[07Timed14]]4 10 02https://esolangs.org/w/index.php?diff=67286&oldid=67285 5* 03OsmineYT 5* (-40) 10
+2019-11-20 13:59:46 <HackEso> 64
+2019-11-20 13:59:55 <wib_jonas> ``` bc <<< 'ibase = G; print(64)'
+2019-11-20 13:59:56 <HackEso> 100
