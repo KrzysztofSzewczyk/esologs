@@ -86,3 +86,44 @@
 2019-11-21 02:58:18 <fizzie> I seem to consistently get all the output from the printfs before the first read, whatever that means.
 2019-11-21 02:59:17 <fizzie> Well, except sometimes I don't get even that.
 2019-11-21 02:59:26 <shachaf> oerjan: Is that like "I've been through the desert on a horse with no name"?
+2019-11-21 03:01:19 <fizzie> I think there might just be some sort of a thing where UML has no way to say "flush everything that has been written to the console/serial channels before terminating" when init calls `sync(); reboot(LINUX_REBOOT_CMD_POWER_OFF);` on it.
+2019-11-21 03:02:54 <oerjan> shachaf: probably{, not}
+2019-11-21 03:03:11 Joined: imode
+2019-11-21 03:03:11 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 03:07:52 <fizzie> FWIW, doing '2>&1 | cat' didn't actually fix it. And anyway it's not strictly related to stderr. Here's the behavior I'm consistently getting when doing something close to what the bot is doing: http://ix.io/22oJ
+2019-11-21 03:07:56 <fizzie> Does that make any sense?
+2019-11-21 03:08:55 <fizzie> (No.)
+2019-11-21 03:10:38 <fizzie> Bah. Maybe I'll try the Debian standard 4.19 UML kernel, instead of my home-built 4.9 one. Although I think there must've been some reason why I built my own.
+2019-11-21 03:12:01 <shachaf> fizzie: I haven't been reading the whole log. What's with only the first line being printed? Is that the nonsensical thing?
+2019-11-21 03:12:27 <fizzie> Well, occasionally it's weirder than that, but yes.
+2019-11-21 03:12:40 <shachaf> When is it weirder?
+2019-11-21 03:13:06 <fizzie> I don't think I can describe this.
+2019-11-21 03:13:10 <shachaf> Is this echo the builtin or /bin/echo? Can you strace it?
+2019-11-21 03:13:20 <shachaf> I'm typing on my phone so everything is scow.
+2019-11-21 03:13:43 <fizzie> I can't strace UML. I could probably strace inside it, but I'm not sure how much that would help.
+2019-11-21 03:13:53 <fizzie> Anyway, I switched to the new UML kernel and now it outputs nothing at all.
+2019-11-21 03:13:58 <fizzie> `echo ping
+2019-11-21 03:14:00 <HackEso> No output.
+2019-11-21 03:14:02 <fizzie> Not great.
+2019-11-21 03:14:31 <shachaf> What if you strace inside it? Is it one write call or three?
+2019-11-21 03:14:52 <fizzie> Well, I can't, now.
+2019-11-21 03:15:29 <fizzie> It just crashes with: Trying to reregister IRQ 2 FD 4 TYPE 0 ID (____ptrval____) \ open(rfile, O_RDONLY): Device or resource busy
+2019-11-21 03:18:00 <fizzie> (This is when it's trying to open the tty1 device.)
+2019-11-21 03:19:20 <fizzie> Bah, I'll revert back to my own 4.9 version and give up for now. At least it works to some degree. It's not even impossible it's been broken a little like that for long now.
+2019-11-21 03:21:06 <fizzie> By the way, it was with the echo builtin; with /bin/echo both the plain and | cat version print all lines.
+2019-11-21 03:22:31 <fizzie> Doing strace inside suggests the plain version is three separate writes, with | cat... well, I don't get the strace output, so it's kind of hard to say.
+2019-11-21 03:23:05 <shachaf> You can't strace into a file?
+2019-11-21 03:23:16 <fizzie> And with /bin/echo I get more of the strace output, but not all of it.
+2019-11-21 03:23:28 <shachaf> Is that bash -c /bin/echo or/bin/echo directly?
+2019-11-21 03:23:29 <fizzie> I guess I could, I would just need to hostfs mount something in writable form.
+2019-11-21 03:24:02 <fizzie> bash -c /bin/echo.
+2019-11-21 03:24:32 <shachaf> Maybe your computer's haunted?
+2019-11-21 03:26:10 <fizzie> Okay: with bash -c 'echo -e ...', no cat, I get the full output and it got written as three separate writes.
+2019-11-21 03:27:12 * oerjan suddenly thinks of the non-inheritable fds mentioned yesterday
+2019-11-21 03:27:26 <fizzie> With bash -c 'echo -e ...' and the cat -- and note that this cat is outside the UML kernel, it's just changing the UML's stdout from a (pseudo)terminal to a pipe -- I only get the first line of output, and it was attempted to be written as three separate writes, but the third failed with EPIPE.
+2019-11-21 03:27:27 <oerjan> could that be involved?
+2019-11-21 03:28:46 <shachaf> What is cat seeing? I guess read 5 and then read 0?
+2019-11-21 03:28:55 <shachaf> EPIPE is odd.
+2019-11-21 03:29:13 <fizzie> With bash -c /bin/echo, I sometimes get no output at all, and a single write of the whole 15 bytes which fails with EIO.
+2019-11-21 03:29:39 <fizzie> And occasionally I get the full output, and three separate writes of 5 bytes each.
+2019-11-21 03:29:49 <shachaf> OK, I'm spooked.
