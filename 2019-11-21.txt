@@ -408,3 +408,23 @@
 2019-11-21 08:55:40 <shachaf> Clause collection seems hard.
 2019-11-21 08:55:52 <shachaf> By which I mean you have to make a lot of decisions.
 2019-11-21 08:58:08 <int-e> Yeah I'm afraid this is where you read another half dozen papers.
+2019-11-21 09:00:02 <int-e> There are some obvious statistics like length of clause, how often clauses are used in unit propagation (possibly per level though that'd be a serious amount of memory, so hard to justify. maybe if you assign weights to the levels?)...
+2019-11-21 09:00:13 <shachaf> OK, some of these learned clauses are pretty bad, now that I look at them.
+2019-11-21 09:00:58 <shachaf> One of the is a unit!
+2019-11-21 09:01:22 <shachaf> Man, when you learn a unit, I bet you can just delete all the relevant clauses etc. out of your database when you restart.
+2019-11-21 09:01:32 <int-e> Okay, if you learn a unit clause you have a clear way of pruning the clauses :)
+2019-11-21 09:01:50 <shachaf> It's kind of an odd property of CDCL that you can't do that in general.
+2019-11-21 09:01:57 <shachaf> (When normally you think of DPLL as solving subproblems.)
+2019-11-21 09:02:30 <int-e> You can check for clause subsumption... just not efficiently ;)
+2019-11-21 09:02:41 <int-e> (Maybe I'm not imaginative enough.)
+2019-11-21 09:03:27 <int-e> Even if you learn a unit clause it's not entirely clear how to deal with that efficiently.
+2019-11-21 09:03:57 <shachaf> Why?
+2019-11-21 09:04:00 <int-e> (If you want to avoid scanning *all* clauses. Maybe just go through that literal's watch lists?)
+2019-11-21 09:04:14 <int-e> (But then you have to do that periodically.)
+2019-11-21 09:04:15 <shachaf> Oh, I was thinking to just go through the watch list.
+2019-11-21 09:04:33 <shachaf> But also scanning all clauses up to num_vars times doesn't seem that bad.
+2019-11-21 09:04:48 <shachaf> Maybe the clause database gets really big, or real-world SAT problems have a large number of variables.
+2019-11-21 09:05:14 <int-e> I'm sure both of these happen.
+2019-11-21 09:06:01 <shachaf> But you can probably do it opportunistically reasonably well.
+2019-11-21 09:06:15 <shachaf> I mean, if you're learning a lot of units, you're doing pretty well, I'd hope.
+2019-11-21 09:07:03 <int-e> Anyway, all these decisions is why I don't really want to write a SAT solver. (I have no expectation of improving the state of the art, and I wouldn't expect to learn all that much either...)
