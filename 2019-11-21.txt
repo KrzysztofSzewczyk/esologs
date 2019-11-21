@@ -127,3 +127,70 @@
 2019-11-21 03:29:13 <fizzie> With bash -c /bin/echo, I sometimes get no output at all, and a single write of the whole 15 bytes which fails with EIO.
 2019-11-21 03:29:39 <fizzie> And occasionally I get the full output, and three separate writes of 5 bytes each.
 2019-11-21 03:29:49 <shachaf> OK, I'm spooked.
+2019-11-21 03:30:06 <fizzie> And the last combination, /bin/echo with cat, seems to consistently produce all three lines of output.
+2019-11-21 03:30:17 <fizzie> Written in a single 15-byte write.
+2019-11-21 03:30:49 <fizzie> I don't think I've even seen EIO before.
+2019-11-21 03:30:54 <shachaf> What's closing the pipe?
+2019-11-21 03:31:16 <oerjan> (gremlins)
+2019-11-21 03:32:34 <fizzie> The umlbox wrapper script does close the file descriptor, but that's supposedly the write end of the pipe, and anyway should only happen after the UML kernel process has terminated and been wait'd for.
+2019-11-21 03:32:41 <fizzie> Let me strace that cat on the outside too.
+2019-11-21 03:32:42 <kmc> EIEIO
+2019-11-21 03:33:27 <oerjan> <kspalaiologos> `quote 1000 <-- enough quotes have been deleted that numbers aren't remotely stable
+2019-11-21 03:34:02 <oerjan> . o O ( kmcdonald had a farm )
+2019-11-21 03:34:54 <kmc> lol
+2019-11-21 03:34:58 <fizzie> Okay, built-in echo with cat. Saw one line of output. Inside, bash did three write calls of 5 bytes each; first two returned 5, the last returned -1 EPIPE. Outside, the cat did one read(0, "foo1\n", 131072) and got 5 bytes, then the next read returned 0/EOF.
+2019-11-21 03:36:04 <fizzie> I've no idea what could be closing the pipe. The only people who should even have access to the read end of the pipe would be cat (which doesn't seem to be closing it) and bash (which I assume wouldn't do it without a good reason).
+2019-11-21 03:36:30 <fizzie> The umlbox wrapper script, and the UML kernel, should only have a file descriptor for the write end.
+2019-11-21 03:36:35 <oerjan> `doag ../quotes | grep 1000
+2019-11-21 03:36:38 <HackEso> No output.
+2019-11-21 03:37:11 <fizzie> Really going to give up for now though. It's late. There's ghosts about.
+2019-11-21 03:37:16 <oerjan> `` doag ../quotes | paste
+2019-11-21 03:37:19 <HackEso> https://hack.esolangs.org/tmp/paste/paste.20469
+2019-11-21 03:38:11 <fizzie> I strongly suspect it's some UML weirdness, after all, init will tell the kernel to power off right after the command finishes. I might need some sort of synchronization mechanism here.
+2019-11-21 03:38:33 <oerjan> `quote steal.code
+2019-11-21 03:38:33 <HackEso> No output.
+2019-11-21 03:38:44 <oerjan> `quote steal..code
+2019-11-21 03:38:45 <HackEso> 687) <olsner> what a world it would be if you could actually *steal* code so that the other project has to rewrite it or infiltrate your project to steal it back
+2019-11-21 03:38:59 <oerjan> hm that's older, so it _should_ be in the paste
+2019-11-21 03:39:08 <fizzie> (Incidentally, sleep is also behaving super-weirdly inside the UML. If I stick a 'sleep 1;' in front, there's never any output. And the sleep durations never seem to actually match the designated amount of seconds.)
+2019-11-21 03:42:02 <oerjan> i vaguely think someone used sleep in HackEso not that long ago
+2019-11-21 03:45:54 <oerjan> kspalaiologos: https://esolangs.org/logs/2013-03-30.html#luq
+2019-11-21 03:46:13 <oerjan> it was actually quote 1000 itself when added
+2019-11-21 03:46:20 <oerjan> and still not cheating
+2019-11-21 03:46:53 <shachaf> Maybe you'll understand this better if you draw a UML diagram.
+2019-11-21 03:47:56 <oerjan> so: we had 1000 quotes back in early 2013, and currently have fewer than 337 more.
+2019-11-21 03:48:08 <oerjan> `` allquotes | tail -n 1
+2019-11-21 03:48:10 <HackEso> No output.
+2019-11-21 03:48:18 <oerjan> what
+2019-11-21 03:48:47 <oerjan> `` allquote | head -n 1
+2019-11-21 03:48:48 <HackEso> ​/hackenv/bin/`: line 5: allquote: command not found
+2019-11-21 03:48:53 <oerjan> `` allquotes | head -n 1
+2019-11-21 03:48:54 <HackEso> 1) <Slereah> EgoBot just opened a chat session with me to say "bork bork bork"
+2019-11-21 03:48:57 <fizzie> Maybe that's just more ghosts?
+2019-11-21 03:49:03 <oerjan> `` allquotes | tail -n 1
+2019-11-21 03:49:04 <HackEso> 1332) <shachaf> The domain is public, but what's the codomain?
+2019-11-21 03:49:09 <oerjan> apparently so.
+2019-11-21 03:49:41 <oerjan> so it's definitely not been that broken for long.
+2019-11-21 03:50:34 <fizzie> I'll try older versions later.
+2019-11-21 03:51:31 <fizzie> An alternative solution also occurs to me: instead of trying to use the UML console channels, I could use the block devices. That way there's a chance the sync will make it robust. It's not like I need the interactivety. Although umlbox itself is designed for potential interactive use.
+2019-11-21 03:52:09 <oerjan> `` allquotes | tail -n 1
+2019-11-21 03:52:11 <HackEso> 1332) <shachaf> The domain is public, but what's the codomain?
+2019-11-21 03:52:29 <shachaf> That quote is terrible.
+2019-11-21 03:52:46 <shachaf> Maybe delete it or pick some other quote to keep quoting?
+2019-11-21 03:53:10 <oerjan> well i was really just checking how many quotes there were, and then a bug turned up.
+2019-11-21 03:54:32 <oerjan> ok i did 3 repeats in pm, and the last one failed.
+2019-11-21 03:54:48 <oerjan> (the second was a little slow.)
+2019-11-21 03:55:15 Quit: imode (Ping timeout: 240 seconds)
+2019-11-21 03:55:15 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 03:55:45 <oerjan> maybe it's timing out and it's related to the sleep thing
+2019-11-21 03:56:16 <oerjan> `cat
+2019-11-21 03:57:03 <fizzie> That always seems to take more time than the stipulated 30 seconds.
+2019-11-21 03:57:40 <HackEso> No output.
+2019-11-21 03:57:47 <oerjan> i was sort of hoping it might time out early and be a clue
+2019-11-21 03:57:49 <oerjan> `` echo hi; cat
+2019-11-21 03:57:51 <HackEso> No output.
+2019-11-21 03:57:54 <oerjan> ooh
+2019-11-21 03:57:58 <oerjan> so it was
+2019-11-21 03:58:11 <oerjan> but i had to print something first
+2019-11-21 03:58:56 <oerjan> fizzie: in case you weren't watching, that last command responded almost instantly
+2019-11-21 03:59:25 <fizzie> And didn't print the thing.
