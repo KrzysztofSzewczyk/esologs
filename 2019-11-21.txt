@@ -349,3 +349,62 @@
 2019-11-21 08:20:43 Quit: zzo38 (Ping timeout: 245 seconds)
 2019-11-21 08:20:43 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
 2019-11-21 08:29:42 <esowiki> 14[[07Treesolang14]]4 10 02https://esolangs.org/w/index.php?diff=67295&oldid=67274 5* 03Baidicoot 5* (+651) 10added IO
+2019-11-21 08:30:17 <b_jonas> so HackEso has grown mysterious bugs?
+2019-11-21 08:33:30 <shachaf> int-e: So the first time my friend I were trying to figure out CDCL, we just started writing code, starting with a really simple DPLL solver and demorganizing the trail to learn clauses.
+2019-11-21 08:34:10 <shachaf> It was only when we saw that it changed literally nothing about the behavior of the solver that we thought about it for a few seconds and realized it was ridiculous.
+2019-11-21 08:36:04 <int-e> heh it probably made it slower ;)
+2019-11-21 08:36:48 <shachaf> I mean, it was written in Python.
+2019-11-21 08:36:50 <int-e> Maybe I should implement a SAT solver. But to what end...
+2019-11-21 08:36:53 <shachaf> So it was already maximally slow.
+2019-11-21 08:37:18 <shachaf> int-e: Anyway, when you do something like FirstUIP, you need a "reason" for each assignment (other than decisions).
+2019-11-21 08:37:57 <shachaf> If you do the typical backtracking thing (invert the last decision and mark it as a forced literal), you don't have a clause to point to as the reason for the new assignment. Do you?
+2019-11-21 08:39:39 <int-e> True, you'd have to derive the corresponding backjump clause (LastUIP)
+2019-11-21 08:40:23 <shachaf> Oh, you can keep resolving on units from this level until your clause includes the decision literal, you mean.
+2019-11-21 08:40:47 <int-e> yeah, since that's how backjumping simulates backtracking
+2019-11-21 08:41:26 <shachaf> Right. I guess I can do that.
+2019-11-21 08:41:54 <shachaf> I implemented CDCL and FirstUIP on the flight (no clause deletion, just allocating enough memory for all the learned clauses).
+2019-11-21 08:42:27 <shachaf> It made the number of decisions and units go way down, but the solver also takes much much longer.
+2019-11-21 08:42:52 <shachaf> Which seems like a great tradeoff, since I hate making decisions.
+2019-11-21 08:44:03 <int-e> Yeah deleting clauses is very important for performance. Which is awful because it's another open-ended playing field for heuristics.
+2019-11-21 08:44:44 Joined: kspalaiologos
+2019-11-21 08:44:45 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 08:45:45 User Name: kspalaiologos = kspalaiologos!~kspalaiol@user-5-173-136-221.play-internet.pl
+2019-11-21 08:45:45 <kspalaiologos> =str 0s +[----->+++<]>+.++++++++++++..----.+++.+[-->+<]>.-----------..[--->+<]>.[--->+<]>----.----.---.-----------.+++++++++++++.-------.++++++++++++.+[++>---<]>.---[----->+<]>.+++.-----------.--[->+++<]>.++[--->++<]>+.+[->+++<]>+.++.--.----[->+++<]>.
+2019-11-21 08:45:45 <bfbot> ok
+2019-11-21 08:46:05 <kspalaiologos> =str 0a [,.]
+2019-11-21 08:46:05 <bfbot> ok
+2019-11-21 08:46:12 <kspalaiologos> =def 0wiki
+2019-11-21 08:46:12 <bfbot> ok, defined 'wiki'
+2019-11-21 08:46:17 <kspalaiologos> =wiki bfbot
+2019-11-21 08:46:18 <bfbot> ..............................................................................bfbot
+2019-11-21 08:46:26 <kspalaiologos> Oh gosh damn it man
+2019-11-21 08:46:30 <kspalaiologos> What happened
+2019-11-21 08:46:36 <shachaf> int-e: Why is it important?
+2019-11-21 08:46:40 <kspalaiologos> 8bit cells?
+2019-11-21 08:46:45 <shachaf> I thought it was just for keeping memory use fixed.
+2019-11-21 08:46:55 <shachaf> But even with 2WL you spend way too much time checking clauses, or something?
+2019-11-21 08:46:55 <kspalaiologos> `bf_textgen x
+2019-11-21 08:46:56 <HackEso> ​/srv/hackeso-code/multibot_cmds/lib/limits: line 5: exec: bf_textgen: not found
+2019-11-21 08:47:04 <kspalaiologos> ``` bf_textgen
+2019-11-21 08:47:05 <HackEso> bash: bf_textgen: command not found
+2019-11-21 08:47:15 <kspalaiologos> Where is it located
+2019-11-21 08:47:36 <kspalaiologos> I need to add bitness to the wiki page because I forgot it
+2019-11-21 08:49:00 <int-e> shachaf: Hmm, many reasons, from growing 2WL lists to worse locality of memory access. And a lot of clauses turn out to be useless (for example, because they are subsumed by other clauses, or because while they do contribute to conflicts, those are exceedingly rare).
+2019-11-21 08:50:25 <shachaf> Right, one thing I ws thinking was that before doing CDCL I almost don't have to wory about cache locality, but once I have an unbnded number of clauses I have to worry a lot.
+2019-11-21 08:50:31 <int-e> The average 2WL list grows linearly with the number of clauses.
+2019-11-21 08:51:56 <int-e> (Very naive estimate: 2 times number of clauses divided by number of literals. It's probably better in practice because clauses can end up on watch lists of literals that are never considered.)
+2019-11-21 08:52:18 Quit: b_jonas (Quit: leaving)
+2019-11-21 08:52:18 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 08:52:21 * int-e shrugs
+2019-11-21 08:52:42 <int-e> That "probably" is a fairly wild guess. I have no data.
+2019-11-21 08:52:51 <shachaf> Ideally watches move to and stay on literals you don't assign as much.
+2019-11-21 08:53:11 <shachaf> Or whose negation you don't assign as much, anyway.
+2019-11-21 08:53:43 <int-e> The way I think of it, I'd put A v B on the watch lists for ~A and ~B.
+2019-11-21 08:54:24 <shachaf> I mean, where you put the negation doesn't matter.
+2019-11-21 08:54:31 <int-e> But I don't know what's standard here...
+2019-11-21 08:54:32 <int-e> Yeah.
+2019-11-21 08:54:50 <int-e> I understood what you said.
+2019-11-21 08:55:02 <int-e> Or wrote. Whatever.
+2019-11-21 08:55:40 <shachaf> Clause collection seems hard.
+2019-11-21 08:55:52 <shachaf> By which I mean you have to make a lot of decisions.
+2019-11-21 08:58:08 <int-e> Yeah I'm afraid this is where you read another half dozen papers.
