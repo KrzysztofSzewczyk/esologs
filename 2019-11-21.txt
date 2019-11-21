@@ -1,0 +1,14 @@
+2019-11-21 00:02:26 <fizzie> Weird. I've been refactoring umlbox code a little (in preparation for some tweaks), and one thing I changed was to start using "con1=fd:N,fd:M", where N is /dev/null (opened RDWR) and M is the inherited stdout (for capturing the command output).
+2019-11-21 00:02:53 <fizzie> Previously it was "con1=null,fd:M", which uses UML's 'null' console type instead, which makes reads block forever.
+2019-11-21 00:03:08 <fizzie> Locally this seemed to make commands like "cat" reliably return quickly, instead of waiting for the timeout. But on the bot machine, it's... flaky. Now it's again returning quickly, but earlier I wasn't, even though I changed nothing.
+2019-11-21 00:03:12 <fizzie> `cat
+2019-11-21 00:03:14 <HackEso> No output.
+2019-11-21 00:03:21 <fizzie> Odd.
+2019-11-21 00:10:35 Joined: Sgeo
+2019-11-21 00:10:35 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 00:16:50 <shachaf> I'm at a bookstore and I picked a book semi-randomly and opened it at a page semi-randomly and it talks about ais523.
+2019-11-21 00:17:04 <kmc> *blink*
+2019-11-21 00:17:06 <kmc> wow
+2019-11-21 00:17:21 <shachaf> I mean, it's a book about computability or something, so not that random.
+2019-11-21 00:18:13 Quit: FreeFull
+2019-11-21 00:18:14 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
