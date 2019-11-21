@@ -68,3 +68,21 @@
 2019-11-21 02:20:11 <fizzie> I think I can just wrap it in a io.BufferedReader to fix it. Although I still don't know how it actually broke.
 2019-11-21 02:23:49 <shachaf> int-e: Wait, maybe I'm just wrong and you can use the conflicting clause.
 2019-11-21 02:28:59 <fizzie> Hmm, well, it wasn't that simple. It's true that the .read() call only returns the first line, but then a subsequent .read() actually says it's at EOF. How does that make sense? It doesn't make sense.
+2019-11-21 02:30:02 <fizzie> Maybe it could be non-blocking somehow... although I don't think so.
+2019-11-21 02:35:02 <fizzie> No, it's not that. If I make umlbox write a line to the file descriptor used before closing it, the bot does read that.
+2019-11-21 02:35:25 <fizzie> So it's just that somehow the uml terminates before it has written all the output.
+2019-11-21 02:40:35 <fizzie> Super weird. It also happens outside the bot, if I direct the output to a pipe. Immediately after the first line has been written, it terminates. With no messages.
+2019-11-21 02:52:44 <oerjan> did this change happen when you upgraded debian, or is there something you actually edited involved?
+2019-11-21 02:53:25 <oerjan> fizzie: ^
+2019-11-21 02:53:45 <oerjan> because the latter should at least be bisectable...
+2019-11-21 02:54:05 <fizzie> Hard to say. People don't usually write to stderr that much. But I can always roll back to an old version and test again.
+2019-11-21 02:54:24 <fizzie> Right now I'm getting really bizarre behavior out.
+2019-11-21 02:55:12 <oerjan> just change that | cat to |& cat  and call it a day :)
+2019-11-21 02:56:03 <shachaf> int-e: Wait, now I'm on the train and it doesn't make sense again.
+2019-11-21 02:56:04 <fizzie> It runs using /bin/sh, it doesn't work there. But I did give that a think.
+2019-11-21 02:56:16 <fizzie> 2>&1 | cat might work.
+2019-11-21 02:57:21 <oerjan> shachaf: that reminds me of something.  oh right, the "i'm on a horse" meme.
+2019-11-21 02:57:37 <fizzie> Anyway, the output behaviour is really bizarre. I'm adding printfs here in umlbox init, and only some of them get out, even when I'm not really doing anything special. As soon as it starts to read from the /ubda device, everything goes weird.
+2019-11-21 02:58:18 <fizzie> I seem to consistently get all the output from the printfs before the first read, whatever that means.
+2019-11-21 02:59:17 <fizzie> Well, except sometimes I don't get even that.
+2019-11-21 02:59:26 <shachaf> oerjan: Is that like "I've been through the desert on a horse with no name"?
