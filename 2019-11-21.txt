@@ -470,3 +470,59 @@
 2019-11-21 09:59:35 <shachaf> I mean arbitrary unit-propagated literal from this level.
 2019-11-21 09:59:52 <shachaf> Now I need to think about how to implement the thing you said and some other things.
 2019-11-21 09:59:59 <shachaf> Probably not today.
+2019-11-21 10:04:04 <int-e> shachaf: out of curiosity, which imperfect programming language are you using for this?
+2019-11-21 10:04:22 <shachaf> C.
+2019-11-21 10:05:45 <int-e> Hmm. Fun. I expected C++ or Rust (well, no, but those are the ones I'd consider if I'd embark on this journey.)
+2019-11-21 10:06:47 Joined: wib_jonas
+2019-11-21 10:06:47 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill
+2019-11-21 10:06:48 <int-e> (C++ mostly for sane namespaces... and probably vectors out of laziness)
+2019-11-21 10:07:13 <shachaf> I did give in and use https://github.com/nothings/stb/blob/master/stb_ds.h at one point.
+2019-11-21 10:07:14 <myname> int-e: out of curiosity, which programming language is not imperfect?
+2019-11-21 10:07:18 <int-e> Not for inheritance, virtual methods, exceptions, or templates.
+2019-11-21 10:07:22 <int-e> myname: Brainfuck.
+2019-11-21 10:07:29 <myname> how so
+2019-11-21 10:07:43 <shachaf> int-e: Vectors are great for SAT solvers because there's a lot of linear algebra involved.
+2019-11-21 10:07:53 <int-e> myname: There's this quote. "There are two kind of programming languages. Those that everybody complains about and those that nobody uses."
+2019-11-21 10:08:06 <int-e> myname: Brainfuck is pretty much perfect for what it does.
+2019-11-21 10:08:18 <myname> int-e: in this case, malbolge would be a lot better
+2019-11-21 10:08:32 <int-e> No, Malbolge is overcomplicated. :P
+2019-11-21 10:08:47 <shachaf> I'm using these dynamic arrays for watch lists. But I suspect I'll replace them with some other data structure anyway eventually.
+2019-11-21 10:08:58 <myname> but a lot of people are "using" brainfuck
+2019-11-21 10:09:21 <int-e> myname: The original purpose of Brainfuck was not to make programming hard. The purpose was to allow writing small compiler.
+2019-11-21 10:09:34 <int-e> +a
+2019-11-21 10:10:33 <int-e> shachaf: I'm not sure to what extend you're kidding about the linear algebra.
+2019-11-21 10:10:51 <int-e> *extent
+2019-11-21 10:11:18 <shachaf> I think std::vector is useful because I often want to apply scalar multiplication to my arrays.
+2019-11-21 10:11:45 <int-e> myname: The "imperfect" was an oblique reference to earlier discussions with shachaf about whether there are any good programming languages out there.
+2019-11-21 10:12:07 <int-e> myname: We have yet to find one.
+2019-11-21 10:12:25 <myname> what about lambda calculus=
+2019-11-21 10:12:27 <myname> ?
+2019-11-21 10:13:09 <int-e> We can't even agree on whether Haskell is a good programming language.
+2019-11-21 10:13:44 <shachaf> Good for what?
+2019-11-21 10:13:50 <int-e> (I think yes. shachaf complains about the huge performance overheads. I can't say that he's wrong, it's just not the primary thing I'm looking for in a programming language most of the time.)
+2019-11-21 10:14:38 <shachaf> I don't think that's the only thing I complain about.
+2019-11-21 10:15:35 <int-e> myname: Lambda calculus is a nice Turing tarpit, and somewhat surprisingly scales up to real programming (according to some people) if you add types, data types, and a few other things.
+2019-11-21 10:15:50 <shachaf> Can you give me a nice definition of PTIME and PSPACE for lambda calculus?
+2019-11-21 10:16:53 <int-e> Sure, just use a graph model and measure term size and count reduction steps.
+2019-11-21 10:16:59 <int-e> Maybe that's not nice enough for you.
+2019-11-21 10:18:02 <shachaf> Turing machines are obviously scow to program on.
+2019-11-21 10:18:02 <int-e> (Hmm, I may have to go the explicit substituition route.)
+2019-11-21 10:18:04 * int-e shrugs.
+2019-11-21 10:18:09 <myname> int-e: well, typed lambda calculus is not that far away from haskell, isn't it?
+2019-11-21 10:18:25 <shachaf> But at least Turing machines are in spirit similar to actual machines.
+2019-11-21 10:18:26 <int-e> myname: what did you think I meant by "real programming"? :P
+2019-11-21 10:19:21 <myname> okay
+2019-11-21 10:19:54 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-11-21 10:19:54 <wib_jonas> int-e: "term size" how? count the nodes with reusable reference-counted nodes, or serialize the expression so you can blow up space usage exponentially in time?
+2019-11-21 10:20:23 <wib_jonas> oh, you said graph model
+2019-11-21 10:20:39 <wib_jonas> so the former
+2019-11-21 10:21:22 <shachaf> Do you like stb_ds.h?
+2019-11-21 10:21:23 <int-e> tbh, graph models are not very nice from a theoretical perspective.
+2019-11-21 10:21:59 <int-e> If you really want to go *that* route maybe drop the lamdba calculus and do interaction nets instead.
+2019-11-21 10:22:00 <myname> petri nets!
+2019-11-21 10:22:22 <int-e> no, not petri nets
+2019-11-21 10:22:44 <myname> :(
+2019-11-21 10:27:04 <int-e> . o O ( I prefer multiset rewriting ;-) )
+2019-11-21 10:28:21 <shachaf> ⟅1,1,2⟆
+2019-11-21 10:28:44 <int-e> unordered string rewrting = multiset rewriting = Petri nets if you interpret the symbols as places and the rules as transitions.
+2019-11-21 10:29:44 <wib_jonas> ⦃1,1,2⦄
