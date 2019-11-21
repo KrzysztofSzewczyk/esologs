@@ -40,3 +40,31 @@
 2019-11-21 01:58:52 <kmc> o_O
 2019-11-21 01:59:05 <fizzie> Oh, that's right, that's one reason why stdout and stderr ordering was pretty wonky even before: the '| cat' thing only deals with stdout, stderr goes directly to /dev/tty1.
 2019-11-21 01:59:33 <fizzie> That said, I'm not sure what I managed to break there.
+2019-11-21 02:02:49 Quit: joast (Quit: Leaving.)
+2019-11-21 02:02:49 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 02:03:35 <oerjan> `` (echo foo; echo bar; echo baz) >&2
+2019-11-21 02:03:36 <HackEso> foo
+2019-11-21 02:03:44 <oerjan> something EOL handling?
+2019-11-21 02:04:00 <oerjan> `` (echo foo; echo bar; echo baz) >&2; echo fizz
+2019-11-21 02:04:02 <HackEso> No output.
+2019-11-21 02:04:10 <fizzie> Mmmaybe. I don't see how though.
+2019-11-21 02:04:14 <oerjan> huh
+2019-11-21 02:04:24 <fizzie> I also got two different outputs for the same command before, so there's a race condition somewhere as well.
+2019-11-21 02:04:27 <oerjan> `` echo buzz; (echo foo; echo bar; echo baz) >&2; echo fizz
+2019-11-21 02:04:27 <HackEso> foo
+2019-11-21 02:05:13 <fizzie> I assume it could be the newline translation, it's just odd how that could be affected.
+2019-11-21 02:07:41 <fizzie> What the hackbot side does is, `p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, close_fds=True); p.stdin.close(); ret = p.stdout.read(1024)`. No matter how the UML process outputs things, they should all still end up in the same pipe.
+2019-11-21 02:09:33 <shachaf> int-e: Hmm, is something like "non-chronological backjumping" actually mandatory when doing clause learning?
+2019-11-21 02:09:54 <shachaf> I thought it would be optional but you want to have a reason for every assignment, and if you do regular backtracking, do you even have a reason?
+2019-11-21 02:09:56 <fizzie> b
+2019-11-21 02:10:24 <shachaf> Also maybe you're tired of random SAT questions, hmm.
+2019-11-21 02:11:57 <oerjan> . o O ( do you like random SAT questions? )
+2019-11-21 02:12:53 Joined: joast
+2019-11-21 02:12:53 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 02:15:07 <fizzie> Yeah, IDGI. Running the umlbox command line for 'echo foo; echo bar; echo baz' and 'echo foo >&2; echo bar >&2; echo baz >&2' manually on the same system, with 1>/tmp/out.1 2>/tmp/out.2, there's no difference: both write exactly the same content into.... ohhh, I get it.
+2019-11-21 02:16:03 <fizzie> The bot does a .read() on the stdout pipe. When you're writing to stderr, it probably gets split to multiple writes, which means it only receives the first line.
+2019-11-21 02:16:32 <fizzie> But when you write to stdout, it's a fully buffered stream (through the | cat), so it gets the full chunk in one .read().
+2019-11-21 02:17:13 <oerjan> fiendish
+2019-11-21 02:20:11 <fizzie> I think I can just wrap it in a io.BufferedReader to fix it. Although I still don't know how it actually broke.
+2019-11-21 02:23:49 <shachaf> int-e: Wait, maybe I'm just wrong and you can use the conflicting clause.
+2019-11-21 02:28:59 <fizzie> Hmm, well, it wasn't that simple. It's true that the .read() call only returns the first line, but then a subsequent .read() actually says it's at EOF. How does that make sense? It doesn't make sense.
