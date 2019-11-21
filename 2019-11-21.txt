@@ -246,3 +246,86 @@
 2019-11-21 04:28:41 <HackEso> 1/1:  File: le -> /hackenv/le \   Size: 11        	Blocks: 0          IO Block: 1024   symbolic link \ Device: 12h/18d	Inode: 1206924     Links: 1 \ Access: (0777/lrwxrwxrwx)  Uid: ( 1000/ UNKNOWN)   Gid: ( 1000/ UNKNOWN) \ Access: 2019-11-16 21:29:43.000000000 +0000 \ Modify: 2019-11-16 21:29:43.000000000 +0000 \ Change: 2019-11-16 21:29:43.000000000 +0000 \  Birth: -
 2019-11-21 04:29:20 <fizzie> Is it possible that it gets an eof whenever any executable closes the output pipe, and that's where it decides to stop reading?
 2019-11-21 04:29:59 <shachaf> fizzie: I was going to ask earlier what happens if cat keeps issuing read calls after the 0.
+2019-11-21 04:30:08 <shachaf> But I thought that'd be too niche a guess and too annoying to test.
+2019-11-21 04:30:09 <oerjan> `` 1 echo a; 1 echo b; 1 echo c; 1 echo d; 1 echo e
+2019-11-21 04:30:21 <HackEso> No output.
+2019-11-21 04:30:31 <oerjan> `cat spout
+2019-11-21 04:30:32 <HackEso> No output.
+2019-11-21 04:30:34 <oerjan> `cat spout
+2019-11-21 04:30:35 <HackEso> No output.
+2019-11-21 04:30:37 <oerjan> `cat spout
+2019-11-21 04:30:37 <HackEso> No output.
+2019-11-21 04:30:42 <oerjan> `` ls -l spout
+2019-11-21 04:30:44 <HackEso> No output.
+2019-11-21 04:30:47 <oerjan> `` ls -l spout
+2019-11-21 04:30:48 <HackEso> No output.
+2019-11-21 04:30:51 <oerjan> OH COME ON
+2019-11-21 04:31:04 <oerjan> `` ls -l spout | cat
+2019-11-21 04:31:05 <HackEso> ​-rw-r--r-- 1 1000 1000 0 Nov 21 04:30 spout
+2019-11-21 04:31:18 <oerjan> `` cat spout | cat
+2019-11-21 04:31:19 <HackEso> No output.
+2019-11-21 04:31:24 <oerjan> `` cat spout | cat
+2019-11-21 04:31:25 <HackEso> No output.
+2019-11-21 04:31:32 <oerjan> `` wc spout
+2019-11-21 04:31:33 <HackEso> 0 0 0 spout
+2019-11-21 04:31:35 <oerjan> oh
+2019-11-21 04:31:54 <oerjan> ok interesting, it failed at writing the spout file
+2019-11-21 04:34:03 <oerjan> `` (1 echo a; 1 echo b; 1 echo c; 1 echo d; 1 echo e) >/dev/null
+2019-11-21 04:34:10 <HackEso> No output.
+2019-11-21 04:34:20 <oerjan> `cat spout
+2019-11-21 04:34:21 <HackEso> No output.
+2019-11-21 04:34:27 <oerjan> `` wc spout
+2019-11-21 04:34:28 <HackEso> 0 0 0 spout
+2019-11-21 04:34:37 <oerjan> hum
+2019-11-21 04:35:01 <oerjan> that means that command failed somewhere, despite never printing to stdout
+2019-11-21 04:35:58 <oerjan> `` { 1 echo a; 1 echo b; 1 echo c; 1 echo d; 1 echo e } >/dev/null
+2019-11-21 04:35:59 <HackEso> ​/hackenv/bin/`: eval: line 6: syntax error: unexpected end of file
+2019-11-21 04:36:19 <oerjan> hum
+2019-11-21 04:36:34 <oerjan> `` (1 echo a) >/dev/null
+2019-11-21 04:36:36 <HackEso> No output.
+2019-11-21 04:36:37 Quit: kspalaiologos (Ping timeout: 240 seconds)
+2019-11-21 04:36:37 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 04:36:40 <oerjan> `cat spout
+2019-11-21 04:36:40 <HackEso> No output.
+2019-11-21 04:36:52 <oerjan> oh wait duh
+2019-11-21 04:37:45 <oerjan> `` 1 'echo a'; 1 'echo b'; 1 'echo c'; 1 'echo d'; 1 'echo e'
+2019-11-21 04:37:48 <HackEso> 1/1:a \ 1/1:b \ 1/1:c \ 1/1:d \ 1/1:e
+2019-11-21 04:38:01 <oerjan> darn
+2019-11-21 04:38:09 <oerjan> `cbt 1
+2019-11-21 04:38:10 <HackEso> ​\` "$@" |& sport
+2019-11-21 04:38:31 <oerjan> hum that should pass on everything
+2019-11-21 04:38:35 <oerjan> `cbt `
+2019-11-21 04:38:35 <HackEso> ​#!/bin/bash \ cmd="${1-quote}" \ TIMEFORMAT="real: %lR, user: %lU, sys: %lS" \ shopt -s extglob globstar \ eval -- "$cmd" | rnooodl
+2019-11-21 04:39:28 <oerjan> `slbd `//s,1,@,
+2019-11-21 04:39:30 <HackEso> ​`//#!/bin/bash \ cmd="${@-quote}" \ TIMEFORMAT="real: %lR, user: %lU, sys: %lS" \ shopt -s extglob globstar \ eval -- "$cmd" | rnooodl
+2019-11-21 04:39:37 <oerjan> `` echo hi
+2019-11-21 04:39:37 <HackEso> hi
+2019-11-21 04:40:07 <oerjan> `` 1 echo a; 1 echo b; 1 echo c; 1 echo d; 1 echo e
+2019-11-21 04:40:15 <HackEso> No output.
+2019-11-21 04:40:23 <fizzie> I'll try to roll back the live version to the post-Debian-upgrade-before-refactoring one.
+2019-11-21 04:40:25 <oerjan> or not.
+2019-11-21 04:40:48 <oerjan> `` 1 echo a; 1 echo b; 1 echo c; 1 echo d; 1 echo e
+2019-11-21 04:40:51 <HackEso> No output.
+2019-11-21 04:41:06 <oerjan> `` \` echo hi
+2019-11-21 04:41:07 <HackEso> hi
+2019-11-21 04:41:14 <oerjan> ok seems to work
+2019-11-21 04:41:41 <oerjan> `` 1 echo hi
+2019-11-21 04:41:42 <HackEso> 1/1:hi
+2019-11-21 04:42:04 <oerjan> `` 1 echo a; 1 echo b; 1 echo c; 1 echo d; 1 echo e
+2019-11-21 04:42:10 <HackEso> 1/1:a \ 1/1:b \ 1/1:c \ 1/1:d \ 1/1:e
+2019-11-21 04:42:27 <oerjan> `cat spout
+2019-11-21 04:42:27 <HackEso> e
+2019-11-21 04:43:18 <fizzie> `` /bin/echo a; /bin/echo b; /bin/echo c >&2; /bin/echo d; /bin/echo e
+2019-11-21 04:43:19 <HackEso> c \ a \ b \ d \ e
+2019-11-21 04:43:25 <oerjan> ok that was just me being stupid but now 1 and ` are a bit more resilient in shell
+2019-11-21 04:43:26 <fizzie> Well, there's clearly some difference there.
+2019-11-21 04:43:45 <fizzie> Oh well, at least I can bisect for it then. But not today.
+2019-11-21 04:43:54 <fizzie> Need to wake up in four hours.
+2019-11-21 04:44:06 <oerjan> sweet dreams
+2019-11-21 04:49:16 <kmc> `` url $(which 1)
+2019-11-21 04:49:17 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/1
+2019-11-21 04:52:52 Joined: TellsTogo
+2019-11-21 04:52:53 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, TellsTogo, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 04:56:34 <kingoffrance> for a second it almost looked like the "tip" command was in operation, in all its glory :/
+2019-11-21 04:56:46 <kingoffrance> alas, just a directory name
+2019-11-21 04:59:20 <esowiki> 14[[07User:Quadril-Is14]]4 10 02https://esolangs.org/w/index.php?diff=67294&oldid=67134 5* 03Quadril-Is 5* (+14) 10
