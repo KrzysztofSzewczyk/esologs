@@ -194,3 +194,55 @@
 2019-11-21 03:58:11 <oerjan> but i had to print something first
 2019-11-21 03:58:56 <oerjan> fizzie: in case you weren't watching, that last command responded almost instantly
 2019-11-21 03:59:25 <fizzie> And didn't print the thing.
+2019-11-21 04:00:03 <fizzie> Shouldn't have anything to do with the timeout though.
+2019-11-21 04:00:46 <oerjan> no, more the reverse: it shows that it's aborted first.
+2019-11-21 04:01:52 <oerjan> `` echo hi; echo ho; cat
+2019-11-21 04:02:10 <oerjan> and now it's going to take the full time i guess
+2019-11-21 04:02:56 <HackEso> No output.
+2019-11-21 04:03:04 <oerjan> ...but still didn't print
+2019-11-21 04:03:16 <oerjan> very random.
+2019-11-21 04:03:57 <oerjan> `1 quote random
+2019-11-21 04:03:58 <HackEso> 1/5:
+2019-11-21 04:04:07 <oerjan> `n 1
+2019-11-21 04:04:09 <HackEso> 1/5:
+2019-11-21 04:04:18 <oerjan> `n 1
+2019-11-21 04:04:18 <HackEso> 1/5:
+2019-11-21 04:04:21 <oerjan> `n
+2019-11-21 04:04:22 <HackEso> 2/5:
+2019-11-21 04:04:24 <oerjan> huh
+2019-11-21 04:04:41 <shachaf> Probably closing after the first write?
+2019-11-21 04:05:04 <oerjan> apparently. but it hasn't been doing that since fizzie upgraded debian, has it?
+2019-11-21 04:05:21 <shachaf> I don't know what's going on at all.
+2019-11-21 04:05:27 <shachaf> I'm at the airport.
+2019-11-21 04:09:24 <oerjan> hm i find only one <HackEso> 1/...: response after i asked fizzie about "draft", which i assume was after the upgrade. although that one worked.
+2019-11-21 04:09:49 <oerjan> `1 stat le
+2019-11-21 04:09:50 <HackEso> No output.
+2019-11-21 04:09:54 <oerjan> `1 stat le
+2019-11-21 04:09:55 <HackEso> 1/1:
+2019-11-21 04:09:59 <oerjan> `1 stat le
+2019-11-21 04:10:00 <HackEso> 1/1:
+2019-11-21 04:10:12 <oerjan> so something changed after that, probably
+2019-11-21 04:13:43 <oerjan> lately people don't seem to be following the old "show 5 quotes, delete at most 1" tradition, but just deleting things outright, so the quotes db might even continue shrinking.
+2019-11-21 04:20:56 <fizzie> I don't understand why it would only work for the one write.
+2019-11-21 04:24:43 <fizzie> `` /bin/echo a; /bin/echo b; /bin/echo c; /bin/echo d; /bin/echo e
+2019-11-21 04:24:44 <HackEso> a \ b \ c \ d \ e
+2019-11-21 04:24:48 <fizzie> `` /bin/echo a; /bin/echo b; /bin/echo c >&2; /bin/echo d; /bin/echo e
+2019-11-21 04:24:49 <HackEso> c
+2019-11-21 04:25:12 <oerjan> <shachaf> I'm at a bookstore and I picked a book semi-randomly and opened it at a page semi-randomly and it talks about ais523. <-- synchronicity hth
+2019-11-21 04:25:17 <fizzie> And there's that, which seems to behave very consistently.
+2019-11-21 04:26:01 <oerjan> `cat spout
+2019-11-21 04:26:04 <HackEso> No output.
+2019-11-21 04:26:06 <oerjan> huh
+2019-11-21 04:26:15 <oerjan> `cat spout
+2019-11-21 04:26:15 <HackEso> ​  File: le -> /hackenv/le \   Size: 11        	Blocks: 0          IO Block: 1024   symbolic link \ Device: 12h/18d	Inode: 1206924     Links: 1 \ Access: (0777/lrwxrwxrwx)  Uid: ( 1000/ UNKNOWN)   Gid: ( 1000/ UNKNOWN) \ Access: 2019-11-16 21:29:43.000000000 +0000 \ Modify: 2019-11-16 21:29:43.000000000 +0000 \ Change: 2019-11-16 21:29:43.000000000 +0000 \  Birth: -
+2019-11-21 04:27:59 <oerjan> `n
+2019-11-21 04:27:59 <HackEso> 1/1:
+2019-11-21 04:28:05 <oerjan> `` n
+2019-11-21 04:28:08 <HackEso> No output.
+2019-11-21 04:28:10 <fizzie> It would make some sense if it was the "bot framework does only one read, then closes the pipe" issue, but it was clearly receiving EOF right after.
+2019-11-21 04:28:29 <oerjan> `` n | cat
+2019-11-21 04:28:30 <HackEso> No output.
+2019-11-21 04:28:40 <oerjan> `` n | cat
+2019-11-21 04:28:41 <HackEso> 1/1:  File: le -> /hackenv/le \   Size: 11        	Blocks: 0          IO Block: 1024   symbolic link \ Device: 12h/18d	Inode: 1206924     Links: 1 \ Access: (0777/lrwxrwxrwx)  Uid: ( 1000/ UNKNOWN)   Gid: ( 1000/ UNKNOWN) \ Access: 2019-11-16 21:29:43.000000000 +0000 \ Modify: 2019-11-16 21:29:43.000000000 +0000 \ Change: 2019-11-16 21:29:43.000000000 +0000 \  Birth: -
+2019-11-21 04:29:20 <fizzie> Is it possible that it gets an eof whenever any executable closes the output pipe, and that's where it decides to stop reading?
+2019-11-21 04:29:59 <shachaf> fizzie: I was going to ask earlier what happens if cat keeps issuing read calls after the 0.
