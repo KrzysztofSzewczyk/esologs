@@ -573,3 +573,99 @@
 2019-11-21 13:59:01 <kritixilithos> =msg1 test
 2019-11-21 13:59:01 <bfbot> @APQ`apq....
 2019-11-21 13:59:01 <lambdabot> Unknown command, try @list
+2019-11-21 14:00:02 <kspalaiologos> =help
+2019-11-21 14:00:02 <bfbot> bfbot is a bot executing brainfuck natively. You may add your very own commands to the bot.
+2019-11-21 14:00:02 <bfbot> Commands: =str =def =undef =list =plist =doc. More help at https://esolangs.org/wiki/bfbot
+2019-11-21 14:00:35 <kspalaiologos> =str 0s >++++++++++>+>+[[+++++[>++++++++<-]>.<++++++[>--------<-]+<<<]>.>>[[-]<[>+<-]>>[<<+>+>-]<[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>[-]>+>+<<<-[>+<-]]]]]]]]]]]+>>>]<<<]
+2019-11-21 14:00:35 <bfbot> ok
+2019-11-21 14:00:49 <kspalaiologos> =def 0fib
+2019-11-21 14:00:49 <bfbot> ok, defined 'fib'
+2019-11-21 14:00:51 <kspalaiologos> =fib
+2019-11-21 14:00:51 <bfbot> 011235813213455891442333776109871597258441816765109461771128657463687502512139319641831781151422983204013462692178309352457857028879227465149303522415781739088169632459861023341551655801412679142964334944377014087331134903170183631190329712150734807526976777874204912586269025203650110743295128009953
+2019-11-21 14:01:05 <kspalaiologos> =list
+2019-11-21 14:01:05 <bfbot> 8ball echo f fib msg1 simple wiki
+2019-11-21 14:01:15 <kspalaiologos> =8ball test 123
+2019-11-21 14:01:16 <bfbot> It is certain.
+2019-11-21 14:01:55 <kspalaiologos> =8ball anything
+2019-11-21 14:01:56 <bfbot> My reply is no.
+2019-11-21 14:02:12 <kspalaiologos> =8ball A0
+2019-11-21 14:02:13 <bfbot> Yes - definitely.
+2019-11-21 14:03:17 <kspalaiologos> =list
+2019-11-21 14:03:17 <bfbot> 8ball echo f fib msg1 simple wiki
+2019-11-21 14:03:22 <kspalaiologos> =echo test
+2019-11-21 14:03:23 <bfbot> test
+2019-11-21 14:03:25 <kritixilithos> what does msg1 do?
+2019-11-21 14:03:32 <kspalaiologos> let's check
+2019-11-21 14:03:33 <kspalaiologos> =msg1
+2019-11-21 14:03:33 <bfbot> @APQ`apq....
+2019-11-21 14:03:33 <lambdabot> Unknown command, try @list
+2019-11-21 14:03:37 <kspalaiologos> oerjan possibly defined it
+2019-11-21 14:04:08 <kritixilithos> =msg1 oerjan
+2019-11-21 14:04:09 <bfbot> @APQ`apq....
+2019-11-21 14:04:09 <lambdabot> Unknown command, try @list
+2019-11-21 14:04:26 Quit: sprocklem (Ping timeout: 240 seconds)
+2019-11-21 14:04:27 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-21 14:04:53 <kspalaiologos> fungot, tell me something
+2019-11-21 14:04:54 <fungot> kspalaiologos: yep :) by the time i get is a single print statement... i've got quite the system in the next version of gambit is out real soon now
+2019-11-21 14:11:02 Joined: kritixil1
+2019-11-21 14:11:02 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixil1, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-21 14:11:27 User Name: kritixil1 = kritixil1!~kritixili@gateway/tor-sasl/kritixilithos
+2019-11-21 14:11:27 <kritixil1> oops why are there two of me
+2019-11-21 14:12:03 Quit: arseniiv (Ping timeout: 240 seconds)
+2019-11-21 14:12:03 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixil1, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-21 14:12:40 <esowiki> 14[[07Asm2bf14]]4 10 02https://esolangs.org/w/index.php?diff=67298&oldid=67292 5* 03Palaiologos 5* (+2181) 10Gisa part
+2019-11-21 14:12:44 Quit: kritixilithos (Ping timeout: 260 seconds)
+2019-11-21 14:12:44 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixil1, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-21 14:12:47 Quit: kritixil1 (Client Quit)
+2019-11-21 14:12:48 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-21 14:13:09 Joined: kritixilithos
+2019-11-21 14:13:09 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill
+2019-11-21 14:13:30 Joined: wib_jonas
+2019-11-21 14:13:30 Names: \oren\, ^[, aji, aloril, APic, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xkapastel, zemhill
+2019-11-21 14:13:54 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-11-21 14:13:54 <wib_jonas> kspalaiologos: no, I defined msg1 to experiment with the bot, since defining a command seems to be the easiest way to do that
+2019-11-21 14:14:12 <wib_jonas> I just defined various different temporary bf snippets to that command, and didn't bother deleting it
+2019-11-21 14:14:27 <wib_jonas> I wanted to check if the bot still isn't willing to print any non-ascii bytes
+2019-11-21 14:14:36 <wib_jonas> and apparently it still isn't
+2019-11-21 14:18:41 <kspalaiologos> I will patch it
+2019-11-21 14:18:54 <kspalaiologos> but I have added a new feature today
+2019-11-21 14:19:00 <kspalaiologos> check the bot wiki page
+2019-11-21 14:19:45 <kspalaiologos> =str 0s 3+[----->+++<]>+.++++++++++++..----.+++.+[-->+<]>.-----------..[--->+<]>.[--->+<]>----.----.---.-----------.+++++++++++++.-------.++++++++++++.+[++>---<]>.---[----->+<]>.+++.-----------.--[->+++<]>.++[--->++<]>+.+[->+++<]>+.++.--.----[->+++<]>.[,.]
+2019-11-21 14:19:45 <bfbot> ok
+2019-11-21 14:19:51 <kspalaiologos> =def 0wiki
+2019-11-21 14:19:51 <bfbot> ok, defined 'wiki'
+2019-11-21 14:19:53 <kspalaiologos> =wiki bfbot
+2019-11-21 14:19:53 <bfbot> ..............................................................................bfbot
+2019-11-21 14:19:59 <kspalaiologos> gosh damn it man
+2019-11-21 14:20:02 <kspalaiologos> why does it happen
+2019-11-21 14:20:13 Joined: arseniiv
+2019-11-21 14:20:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xkapastel, zemhill
+2019-11-21 14:20:59 <kspalaiologos> =str 0s
+2019-11-21 14:20:59 <kspalaiologos> ++++++++[>+>++>+++>++++>+++++>++++++>+++++++>++++++++>+++++++++>++++++++++>+++++++++++>++++++++++++>+++++++++++++>++++++++++++++>+++++++++++++++>++++++++++++++++<<<<<<<<<<<<<<<<-]>>>>>>>>>>>>>.<<<<<<<<<<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>>>>++.--<<<<<<<>>>>>>-.+<<<<<<>>>>>>-.+<<<<<<>>>>
+2019-11-21 14:20:59 <bfbot> ok
+2019-11-21 14:21:06 <kspalaiologos> >>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<>>>>>>>>>>>>+.
+2019-11-21 14:21:09 <kspalaiologos> damn tooo long
+2019-11-21 14:21:42 <kspalaiologos> =str 0s ++++++++[>+>++>+++>++++>+++++>++++++>+++++++>++++++++>+++++++++>++++++++++>+++++++++++>++++++++++++>+++++++++++++>++++++++++++++>+++++++++++++++>++++++++++++++++<<<<<<<<<<<<<<<<-]>>>>>>>>>>>>>.>>----.++++----.++++<.+++.---<<<<<<<++.--<-.+-.+>>>>>>>---.+++>+++.----.+----.++++<<+.->>--.++<-.+>+++.---<<<<<<<<--.++>>>>>>>>-.+++.--<-.+<<<<<<<-.+>>>>>>>>>-.+<<+.-+++.---+.-<<<<<<<-.+<<<<<<.
+2019-11-21 14:21:42 <bfbot> ok
+2019-11-21 14:21:48 <kspalaiologos> =def 0wiki
+2019-11-21 14:21:48 <bfbot> ok, defined 'wiki'
+2019-11-21 14:21:50 <kspalaiologos> =wiki please work
+2019-11-21 14:21:50 <bfbot> https://esolangs.org/wiki/
+2019-11-21 14:21:53 <kspalaiologos> kinda
+2019-11-21 14:21:57 <kspalaiologos> =str 0a [,.]
+2019-11-21 14:21:57 <bfbot> ok
+2019-11-21 14:22:00 <kspalaiologos> =def 0wiki
+2019-11-21 14:22:00 <bfbot> ok, defined 'wiki'
+2019-11-21 14:22:02 <kspalaiologos> =wiki bfbot
+2019-11-21 14:22:02 <bfbot> https://esolangs.org/wiki/
+2019-11-21 14:22:09 <kspalaiologos> that's kinda pants
+2019-11-21 14:22:20 <kspalaiologos> =str 0a ,[.,]
+2019-11-21 14:22:20 <bfbot> ok
+2019-11-21 14:22:23 <kspalaiologos> =def 0wiki
+2019-11-21 14:22:23 <bfbot> ok, defined 'wiki'
+2019-11-21 14:22:26 <kspalaiologos> =wiki bfbot
+2019-11-21 14:22:26 <bfbot> https://esolangs.org/wiki/bfbot
+2019-11-21 14:22:28 <kspalaiologos> yay
+2019-11-21 14:22:40 <kspalaiologos> so you can check this page as it contains new features
+2019-11-21 14:22:42 Quit: kspalaiologos (Quit: Lost terminal)
+2019-11-21 14:22:42 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xkapastel, zemhill
