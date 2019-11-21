@@ -12,3 +12,31 @@
 2019-11-21 00:17:21 <shachaf> I mean, it's a book about computability or something, so not that random.
 2019-11-21 00:18:13 Quit: FreeFull
 2019-11-21 00:18:14 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 01:32:26 Joined: oerjan
+2019-11-21 01:32:26 Names: \oren\, ^[, aji, aloril, APic, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lf94, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-21 01:40:49 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-11-21 01:40:49 <oerjan> ^wiki
+2019-11-21 01:40:49 <fungot> https://esolangs.org/wiki/
+2019-11-21 01:46:16 <oerjan> b_jonas: oh right, ed doesn't strictly need a terminal.
+2019-11-21 01:46:49 <fizzie> oerjan: That one I restored from the logs.
+2019-11-21 01:46:49 <oerjan> in fact probably doesn't care
+2019-11-21 01:46:59 <oerjan> fizzie: ah
+2019-11-21 01:47:22 <oerjan> i saw your message about restoring and wondered how much you'd wiped out
+2019-11-21 01:47:24 <oerjan> ^show
+2019-11-21 01:47:24 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2019-11-21 01:50:23 <oerjan> ^a
+2019-11-21 01:50:23 <fungot> ............................................................................................................................................................................................................... ...
+2019-11-21 01:50:28 <oerjan> ^show a
+2019-11-21 01:50:28 <fungot> +13[.]
+2019-11-21 01:50:31 <fizzie> There's a wonky thing umlbox does which is to append a ' | cat' to the command line if the stdout of the call isn't a terminal. I assume that's because from the UML command's perspective /dev/tty1 is always a TTY, even when UML has connected it to a pipe/file.
+2019-11-21 01:51:09 <oerjan> mhm
+2019-11-21 01:53:44 <fizzie> Hm, I've broken something. :/
+2019-11-21 01:55:21 <oerjan> NOOOOOOOOOOOOO
+2019-11-21 01:55:45 <fizzie> `` echo foo; echo bar; echo baz
+2019-11-21 01:55:46 <HackEso> foo \ bar \ baz
+2019-11-21 01:55:48 <fizzie> `` echo foo >&2; echo bar >&2; echo baz >&2
+2019-11-21 01:55:48 <HackEso> foo
+2019-11-21 01:55:52 <fizzie> That's not right.
+2019-11-21 01:58:52 <kmc> o_O
+2019-11-21 01:59:05 <fizzie> Oh, that's right, that's one reason why stdout and stderr ordering was pretty wonky even before: the '| cat' thing only deals with stdout, stderr goes directly to /dev/tty1.
+2019-11-21 01:59:33 <fizzie> That said, I'm not sure what I managed to break there.
