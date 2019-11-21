@@ -882,3 +882,25 @@
 2019-11-21 22:26:58 Nick Change: \ -> hppavilion[1]
 2019-11-21 22:26:58 Names: \oren\, ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, hppavilion[1], iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, xkapastel, zemhill
 2019-11-21 22:28:10 <b_jonas> hppavilion[1]: it technically is, but I think you won't be able to hold that nick for long, because NickServ will nick you out from it
+2019-11-21 22:30:58 User Name: hppavilion[1] = hppavilion[1]!~omegasome@172.98.86.92
+2019-11-21 22:30:58 <hppavilion[1]> >ː(
+2019-11-21 22:32:24 Quit: sprocklem (Ping timeout: 252 seconds)
+2019-11-21 22:32:24 Names: \oren\, ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, hppavilion[1], iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, xkapastel, zemhill
+2019-11-21 22:36:07 <fizzie> `` echo $HOME  # Hm, I didn't realize this was set.
+2019-11-21 22:36:09 <HackEso> ​/tmp
+2019-11-21 22:36:43 <fizzie> Guess it's usual for HackEso-golfing, since ~ is shorter than /tmp.
+2019-11-21 22:36:46 <fizzie> s/usual/useful/
+2019-11-21 22:42:57 <b_jonas> ok this is wierd: ~ is not actually a valid character in an IRC nickname, and if you try to nick to a nickname containing it, you get an error. but if you whois ~[ the server knows that it's case-insensitively the same as the valid nick ^[ and gives you answer about him.
+2019-11-21 22:43:49 <b_jonas> I wonder if this is because it is a valid nickname character on other servers so freenode tries to be compatible or something
+2019-11-21 22:48:04 <fizzie> I guess arguably if you say "CASEMAPPING=rfc1459" you should use that case-mapping, even if ~ isn't supported.
+2019-11-21 22:48:19 <fizzie> (Wasn't this network ascii at some point?)
+2019-11-21 22:48:39 <b_jonas> fizzie: the casemapping matters for channel names
+2019-11-21 22:48:50 <b_jonas> fizzie: and yes, the casemapping on freenode changed when they changed services
+2019-11-21 22:49:04 <b_jonas> and I still don't know what they did with nickserv registrations that suddenly started to clash
+2019-11-21 22:49:11 <b_jonas> or channel registrations
+2019-11-21 22:49:19 <b_jonas> but all that is old history, they changed very long ago
+2019-11-21 22:53:49 <fizzie> Hm, I wonder why umlbox has code to cfmakeraw() on the input/output terminals, and why it enables that if the output (outside UML) is *not* going to a terminal.
+2019-11-21 22:54:45 <esowiki> 14[[07Turing Machine But Way Worse14]]4 10 02https://esolangs.org/w/index.php?diff=67304&oldid=63107 5* 03Ais523 5* (+824) 10/* Computational class */ TC
+2019-11-21 22:55:11 <kingoffrance> i thought that was the use of "raw" mode: specifically for <things that are not terminals, so dont do any "cooked" "processed" i/o magic>
+2019-11-21 22:55:17 <kingoffrance> that sounds like a good thing to me
+2019-11-21 22:59:18 <fizzie> Maybe that makes sense. I'm just not sure what effect it has here.
