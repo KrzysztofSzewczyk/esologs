@@ -741,3 +741,71 @@
 2019-11-21 19:00:03 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
 2019-11-21 19:23:45 Quit: lambdabot (Remote host closed the connection)
 2019-11-21 19:23:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 19:30:17 Joined: lambdabot
+2019-11-21 19:30:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 19:30:34 User Name: b_jonas = b_jonas!~x@catv-176-63-14-1.catv.broadband.hu
+2019-11-21 19:30:34 <b_jonas> =echo hello bfbot
+2019-11-21 19:30:34 User Name: bfbot = bfbot!~bfbot@206.ip-51-91-102.eu
+2019-11-21 19:30:34 <bfbot> hello bfbot
+2019-11-21 19:31:07 <b_jonas> =echo @botsnack
+2019-11-21 19:31:07 <bfbot> @botsnack
+2019-11-21 19:31:15 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2019-11-21 19:31:15 <lambdabot> :)
+2019-11-21 19:31:38 <b_jonas> =echo @echo =echo hello
+2019-11-21 19:31:38 <bfbot> @echo =echo hello
+2019-11-21 19:31:45 <lambdabot> echo; msg:IrcMessage {ircMsgServer = "freenode", ircMsgLBName = "lambdabot", ircMsgPrefix = "bfbot!~bfbot@206.ip-51-91-102.eu", ircMsgCommand = "PRIVMSG", ircMsgParams = ["#esoteric",":@echo =echo
+2019-11-21 19:31:51 <lambdabot> hello"]} target:#esoteric rest:"=echo hello"
+2019-11-21 19:32:08 <b_jonas> =echo @run var"=echo hello"
+2019-11-21 19:32:08 <bfbot> @run var"=echo hello"
+2019-11-21 19:32:17 <lambdabot> =echo hello
+2019-11-21 19:32:33 <b_jonas> uh oh
+2019-11-21 19:32:45 <b_jonas> these two could be looped
+2019-11-21 19:35:45 <b_jonas> =set 1s.
+2019-11-21 19:35:45 <bfbot> No such command. Try =help.
+2019-11-21 19:35:50 <b_jonas> =str 1s.
+2019-11-21 19:35:51 <bfbot> ok
+2019-11-21 19:35:58 <b_jonas> =def 1msg1
+2019-11-21 19:35:58 <bfbot> ok, defined 'msg1'
+2019-11-21 19:35:59 <b_jonas> =msg1
+2019-11-21 19:36:48 <b_jonas> =set 1s++++[->++++<]>[->++++<]>+....
+2019-11-21 19:36:48 <bfbot> No such command. Try =help.
+2019-11-21 19:36:52 <b_jonas> =str 1s++++[->++++<]>[->++++<]>+....
+2019-11-21 19:36:52 <bfbot> ok
+2019-11-21 19:36:54 <b_jonas> =def 1msg1
+2019-11-21 19:36:54 <bfbot> ok, defined 'msg1'
+2019-11-21 19:36:56 <b_jonas> =msg1
+2019-11-21 19:36:56 <bfbot> AAAA
+2019-11-21 19:36:59 <b_jonas> =def 1msg0
+2019-11-21 19:36:59 <bfbot> ok, defined 'msg0'
+2019-11-21 19:37:01 <b_jonas> =msg0
+2019-11-21 19:37:01 <bfbot> AAAA
+2019-11-21 19:37:19 <b_jonas> =echo @run (\s -> var (s ++ show s))"=echo @run (\\s -> var (s ++ show s))"
+2019-11-21 19:37:19 <bfbot> @run (s -> var (s ++ show s))"=echo @run (\s -> var (s ++ show s))"
+2019-11-21 19:37:21 <lambdabot> <hint>:1:39: error:
+2019-11-21 19:37:22 <lambdabot> lexical error in string/character literal at character 's'
+2019-11-21 19:38:05 <b_jonas> =echo @run (\ s -> var (s ++ show s))"=echo @run (\\s -> var (s ++ show s))"
+2019-11-21 19:38:05 <bfbot> @run ( s -> var (s ++ show s))"=echo @run (\s -> var (s ++ show s))"
+2019-11-21 19:38:07 <lambdabot> <hint>:1:40: error:
+2019-11-21 19:38:07 <lambdabot> lexical error in string/character literal at character 's'
+2019-11-21 19:38:21 <b_jonas> it mangles the backslashes?
+2019-11-21 19:38:32 <b_jonas> whoa
+2019-11-21 19:41:13 <b_jonas> @run (\s -> (var . tail . init . show) (s ++ show s))"=echo @run (\\s -> (var . tail . init . show) (s ++ show s))"
+2019-11-21 19:41:15 <lambdabot> =echo @run (\\s -> (var . tail . init . show) (s ++ show s))\"=echo @run (\\...
+2019-11-21 19:41:20 <b_jonas> ah, too long
+2019-11-21 19:43:14 <b_jonas> @run (var.ap(++)show)"=echo @run (var.ap(++)show)"
+2019-11-21 19:43:17 <lambdabot> =echo @run (var.ap(++)show)"=echo @run (var.ap(++)show)"
+2019-11-21 19:43:25 Joined: sprocklem
+2019-11-21 19:43:25 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atriq, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 19:44:04 <b_jonas> =echo @run (var.ap(++)show)"=echo @run (var.ap(++)show)"
+2019-11-21 19:44:04 <bfbot> @run (var.ap(++)show)"=echo @run (var.ap(++)show)"
+2019-11-21 19:44:06 <lambdabot> =echo @run (var.ap(++)show)"=echo @run (var.ap(++)show)"
+2019-11-21 19:49:33 Nick Change: atriq -> Taneb
+2019-11-21 19:49:33 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 19:50:51 Quit: subleq (Ping timeout: 246 seconds)
+2019-11-21 19:50:51 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 19:52:37 Joined: subleq
+2019-11-21 19:52:37 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 19:59:39 <b_jonas> =str 1s+++++++++++[->+++++++++<]>-----.+++++++++++++++++++.++++.------------.+++++.---------.
+2019-11-21 19:59:39 <bfbot> ok
+2019-11-21 19:59:48 <b_jonas> =str 0s.
+2019-11-21 19:59:48 <bfbot> ok
