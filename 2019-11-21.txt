@@ -809,3 +809,35 @@
 2019-11-21 19:59:39 <bfbot> ok
 2019-11-21 19:59:48 <b_jonas> =str 0s.
 2019-11-21 19:59:48 <bfbot> ok
+2019-11-21 20:00:07 <b_jonas> =str 0s++++[->++++<]>[->++++<]>+....
+2019-11-21 20:00:07 <bfbot> ok
+2019-11-21 20:00:11 <b_jonas> =def 0msg1
+2019-11-21 20:00:11 <bfbot> ok, defined 'msg1'
+2019-11-21 20:00:13 <b_jonas> =msg1
+2019-11-21 20:00:13 <bfbot> AAAA
+2019-11-21 20:00:40 <b_jonas> ^def quine ul (=quine)S
+2019-11-21 20:00:40 <fungot> Defined.
+2019-11-21 20:00:48 <b_jonas> =def 1quine
+2019-11-21 20:00:48 <bfbot> ok, defined 'quine'
+2019-11-21 20:00:49 <b_jonas> =quine
+2019-11-21 20:00:49 <bfbot> ^quine
+2019-11-21 20:00:58 <b_jonas> ^quine
+2019-11-21 20:00:58 <fungot> =quine
+2019-11-21 20:00:58 <bfbot> ^quine
+2019-11-21 20:04:27 <b_jonas> =echo `thanks bfbot
+2019-11-21 20:04:27 <bfbot> `thanks bfbot
+2019-11-21 20:04:28 <HackEso> Thanks, bfbot. Thot.
+2019-11-21 20:05:04 <b_jonas> =echo `echo =echo `thanks bfbot
+2019-11-21 20:05:04 <bfbot> `echo =echo `thanks bfbot
+2019-11-21 20:05:06 <HackEso> ​=echo `thanks bfbot
+2019-11-21 20:06:12 <b_jonas> ^echo =echo hello
+2019-11-21 20:06:13 <fungot> =echo hello =echo hello
+2019-11-21 20:06:13 <bfbot> hello =echo hello
+2019-11-21 20:25:53 Quit: kspalaiologos (Quit: Leaving)
+2019-11-21 20:25:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill
+2019-11-21 20:26:24 Quit: wmww (*.net *.split)
+2019-11-21 20:26:24 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill
+2019-11-21 20:28:16 Joined: kspalaiologos
+2019-11-21 20:28:16 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill
+2019-11-21 20:28:45 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-11-21 20:28:45 <kspalaiologos> b_jonas: check the wiki page, I added a few modes for Brainfuck interpreter
