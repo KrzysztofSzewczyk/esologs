@@ -428,3 +428,45 @@
 2019-11-21 09:06:01 <shachaf> But you can probably do it opportunistically reasonably well.
 2019-11-21 09:06:15 <shachaf> I mean, if you're learning a lot of units, you're doing pretty well, I'd hope.
 2019-11-21 09:07:03 <int-e> Anyway, all these decisions is why I don't really want to write a SAT solver. (I have no expectation of improving the state of the art, and I wouldn't expect to learn all that much either...)
+2019-11-21 09:30:59 <shachaf> Does it make sense to resolve on the same variable twice while doing LastUIP?
+2019-11-21 09:31:11 <shachaf> I should get some paper and figure out what's going on with my life.
+2019-11-21 09:32:11 <int-e> shachaf: not really? I mean the resolved variable is on the trail, which should not have any duplicates?
+2019-11-21 09:33:04 <shachaf> Oh, that's not what's going on.
+2019-11-21 09:33:23 <shachaf> What's going on is that I want to add a variable to the trail from one that was previously resolved on from another clause?
+2019-11-21 09:33:29 <shachaf> Hmm.
+2019-11-21 09:34:06 <int-e> Oh. That may happen.
+2019-11-21 09:34:34 <shachaf> But then I don't want to resolve on it again. So the second time I should add it to the non-resolvable pool?
+2019-11-21 09:34:46 <int-e> Are you sure you don't want to do that?
+2019-11-21 09:34:51 <shachaf> I feel like I'm making this too complicated.
+2019-11-21 09:35:02 <shachaf> You just said it doesn't make sense to resolve on it again.
+2019-11-21 09:35:39 <int-e> I mean, resolution proofs /must/ typically resolve on the same variable several times for completeness.
+2019-11-21 09:36:07 <int-e> shachaf: No, *I* said that it doesn't happen when finding a backjump clause.
+2019-11-21 09:36:18 <int-e> But that's ignoring the history of the clauses involved in that.
+2019-11-21 09:38:57 <int-e> So we talked past each other for a bit, because apprently you care about that history. I'm inclined to say that you shouldn't care.
+2019-11-21 09:41:26 <shachaf> I'm not sure what you mean.
+2019-11-21 09:45:41 <int-e> shachaf: When deriving a backjump clause by going back through the trail and resolving the conflict clause with the reason given for each literal, you will not resolve on the same variable twice because the variable you resolve on corresponds to the literal on the trail, and the trail is supposed to be free of duplicates and conflicting literals.
+2019-11-21 09:46:46 <int-e> shachaf: it's only when you look into the derivation of the referred clauses (if they're learned clauses) that you may be resolving on the same variable more than once.
+2019-11-21 09:47:12 <shachaf> Wait, how do you resolve through the trail?
+2019-11-21 09:48:10 <shachaf> What I do for FirstUIP is: Take the all-false clause; take a unit-propagated literal from it, and find the clause it was propagated from; resolve it with that clause to get a bigger clause.
+2019-11-21 09:48:39 <shachaf> And keep doing that with the new clause until there's only one literal from this level in it.
+2019-11-21 09:49:30 <int-e> Yes. The unit-propagated literal is from the trail. The variable you resolve on corresponds to that literal.
+2019-11-21 09:50:19 <int-e> Maybe I'm begin stupid but I see no reason why you'd involve the same literal twice in the conflict analysis.
+2019-11-21 09:50:37 <shachaf> Sure, it's from the trail, but you don't find it by just looking back through the trail, do you?
+2019-11-21 09:50:44 <shachaf> Hmm.
+2019-11-21 09:51:22 <shachaf> Maybe you just do?
+2019-11-21 09:51:26 <int-e> Note: When a literal is derived by unit propagation using a clause C, *all* variables of C are on the trail at that point. You can't re-introduce variables that come later on the trail by resolving with C.
+2019-11-21 09:51:37 <shachaf> Maybe the code I wrote was way too complicated.
+2019-11-21 09:52:37 <int-e> So as long as you pick the /last/ literal of the conflict clause from the trail (that is, the one that comes last on the trail) and its corresponding clause to resolve with, you will not resolve on the same variable twice.
+2019-11-21 09:53:05 <shachaf> Ah, but I'm just picking an arbitrary one.
+2019-11-21 09:53:27 <shachaf> Now what you said makes more sense.
+2019-11-21 09:53:37 <int-e> Then I'm not sure. But don't you risk missing the last UIP then?
+2019-11-21 09:53:55 <shachaf> Do you still find the first UIP?
+2019-11-21 09:54:27 <int-e> Oh right we're looking from the end of the trail. So I mean first.
+2019-11-21 09:54:49 <int-e> The last UIP can't be missed, it's the backtracking case.
+2019-11-21 09:56:55 <int-e> Take what I'm saying with a grain of salt... I'm missing technical details of how conflict analysis is really done. I have a pen&paper view on how backjump clauses are supposed to work.
+2019-11-21 09:58:01 <int-e> But that view definitely involves going through the trail in a backwards fashion. But maybe that's for convenience and not out of necessity.
+2019-11-21 09:58:48 <shachaf> I think what you say makes more sense than what I was thinking.
+2019-11-21 09:59:22 <shachaf> I was just picking an arbitrary unit each time.
+2019-11-21 09:59:35 <shachaf> I mean arbitrary unit-propagated literal from this level.
+2019-11-21 09:59:52 <shachaf> Now I need to think about how to implement the thing you said and some other things.
+2019-11-21 09:59:59 <shachaf> Probably not today.
