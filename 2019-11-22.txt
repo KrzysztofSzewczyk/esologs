@@ -151,3 +151,20 @@
 2019-11-22 08:19:45 <oerjan> well, possibly it needs to be a spark body.
 2019-11-22 08:21:48 <esowiki> 14[[07Pass14]]4 N10 02https://esolangs.org/w/index.php?oldid=67307 5* 03A 5* (+784) 10Created page with "[[Pass]] is a *practical* language. I am putting this documentation here because I am unsure whether this language is esoteric enough. == Language quick-reference == * <code>(..."
 2019-11-22 08:29:13 <int-e> I'm still waiting for P?dre's lantern to drop.
+2019-11-22 08:31:15 <esowiki> 14[[07Pass14]]4 M10 02https://esolangs.org/w/index.php?diff=67308&oldid=67307 5* 03A 5* (+1251) 10
+2019-11-22 08:34:36 <int-e> Hmm, "a small fabber", are you *sure* this isn't the Force Multiplication chapter?
+2019-11-22 08:42:53 <oerjan> no, it's the Force Exponentiation chapter, obviously
+2019-11-22 08:44:00 <b_jonas> `perl -euse Date::Manip::Date; $d = Date::Manip::Date->new("now"); $s = $d->new("2019-06-03"); $f = $s->calc($d, 0, "semi"); print $f->("%dys days");
+2019-11-22 08:44:02 <HackEso> Not a CODE reference at -e line 1.
+2019-11-22 08:44:09 <b_jonas> `perl -euse Date::Manip::Date; $d = Date::Manip::Date->new("now"); $s = $d->new("2019-06-03"); $f = $s->calc($d, 0, "semi"); print $f->printf("%dys days");
+2019-11-22 08:44:12 <HackEso> 172.364016203704 days
+2019-11-22 08:44:17 <b_jonas> fizzie: thanks
+2019-11-22 08:44:44 <b_jonas> `perl -euse Date::Manip::Date; $d = Date::Manip::Date->new("today"); $s = $d->new("2019-06-03"); $f = $s->calc($d, 0, "semi"); print $f->printf("%.2dys days");
+2019-11-22 08:44:45 <HackEso> 172.00 days
+2019-11-22 08:45:44 <oerjan> *yes
+2019-11-22 08:46:42 <b_jonas> are those new force powers?
+2019-11-22 08:47:14 <oerjan> only if you're in the same force as schlock
+2019-11-22 08:55:25 Joined: xkapastel
+2019-11-22 08:55:25 Names: \oren\, ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, hppavilion[1], iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, xkapastel, zemhill
+2019-11-22 08:57:19 Quit: oerjan (Quit: Nite)
+2019-11-22 08:57:20 Names: \oren\, ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, hppavilion[1], iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, xkapastel, zemhill
