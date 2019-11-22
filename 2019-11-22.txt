@@ -407,3 +407,23 @@
 2019-11-22 19:25:20 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>-[<<<<->>>>-]<<<<[>>>>+<<<<-]>>>>[<<<<+>>>>-]<<<<[[-]>>>[<<<+<+>>>>-]<<<<[>>>>+<<<<-]>[>>>>-<<<<[-]]]>>>>>++<[<<<<<<+>+>>>>>-]<<<<<<[>>>>>>+<<<<<<-]>[<<<[-]>[-]>>>>>>>>[<<<<<<<<+>+>>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>[-]]>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
 2019-11-22 19:25:31 <kspalaiologos> 2nd one is shorter apparently
 2019-11-22 19:25:38 <kspalaiologos> surprising
+2019-11-22 19:30:08 <arseniiv> <kspalaiologos> Is there any interesting esoteric language that isn't hell on earth to implement? => Fractran? ;D
+2019-11-22 19:31:51 <kspalaiologos> in_ r1/in_ r2/mov r3,256/lbl 1/dec r3/mov r4,r2/pow r4,r3/le_ r4,r1/jnz r4,2/jnz r3,1/lbl 2/out r3
+2019-11-22 19:31:54 <kspalaiologos> I wonder why doesn't it work
+2019-11-22 19:32:01 <fizzie> `run /bin/echo hi
+2019-11-22 19:32:04 <HackEso> hi
+2019-11-22 19:32:04 <fizzie> b_jonas: Fixed.
+2019-11-22 19:33:14 <fizzie> As part of general refactoring, I switched the umlbox command line handling around a little, and the new version required a '--' to separate the command from arguments. The previous version implicitly treated everything from the first non-flag argument as positional.
+2019-11-22 19:33:24 <fizzie> Thanks for letting me know, it was a pretty glaring security hole. :)
+2019-11-22 19:34:20 <fizzie> (Well, only up to the second layer of sandboxing. But you could've used the network, and made arbitrary changes to the repository.)
+2019-11-22 19:35:31 <b_jonas> `python3 -cprint(open("/hackenv/bin/??").read()[300:])
+2019-11-22 19:35:31 <HackEso> of what you are speaking."
+2019-11-22 19:35:34 <b_jonas> `perl -V
+2019-11-22 19:35:35 <HackEso> Summary of my perl5 (revision 5 version 28 subversion 1) configuration: \     \   Platform: \     osname=linux \     osvers=4.9.0 \     archname=x86_64-linux-gnu-thread-multi \     uname='linux localhost 4.9.0 #1 smp debian 4.9.0 x86_64 gnulinux ' \     config_args='-Dusethreads -Duselargefiles -Dcc=x86_64-linux-gnu-gcc -Dcpp=x86_64-linux-gnu-cpp -Dld=x86_64-linux-gnu-gcc -Dccflags=-DDEBIAN -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefi
+2019-11-22 19:35:38 <b_jonas> `run /usr/bin/perl -V
+2019-11-22 19:35:39 <HackEso> Summary of my perl5 (revision 5 version 28 subversion 1) configuration: \     \   Platform: \     osname=linux \     osvers=4.9.0 \     archname=x86_64-linux-gnu-thread-multi \     uname='linux localhost 4.9.0 #1 smp debian 4.9.0 x86_64 gnulinux ' \     config_args='-Dusethreads -Duselargefiles -Dcc=x86_64-linux-gnu-gcc -Dcpp=x86_64-linux-gnu-cpp -Dld=x86_64-linux-gnu-gcc -Dccflags=-DDEBIAN -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefi
+2019-11-22 19:35:57 <b_jonas> `python3 -cprint(open("/hackenv/bin/??").read()[200:])
+2019-11-22 19:35:57 <HackEso> ​"$f" ];then exec bash "$f";fi;if [ -r "$f" ];then exec cat "$f";fi;echo "I must confess, I know not of what you are speaking."
+2019-11-22 19:36:01 <b_jonas> looks better, thanks
+2019-11-22 19:59:05 Quit: stux|away (Remote host closed the connection)
+2019-11-22 19:59:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, subleq, tahw, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill
