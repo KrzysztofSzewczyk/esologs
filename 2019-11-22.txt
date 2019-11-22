@@ -45,3 +45,47 @@
 2019-11-22 01:26:39 <fizzie> By hand.
 2019-11-22 01:29:04 <shachaf> `` echo $HOME
 2019-11-22 01:29:04 <HackEso> ​/tmp
+2019-11-22 01:31:12 <oerjan> `? delquote
+2019-11-22 01:31:14 <HackEso> delquote? ¯\(°​_o)/¯
+2019-11-22 01:34:02 <oerjan> `5
+2019-11-22 01:34:08 <HackEso> 1/2:414) <itidus20> It's ok guys.  I am doing what I can to keep my psyche and ego surviving. All the while the threat of ww3 looms, the mortality of family and friends(loved ones?) and sooner or llater my own mortality. \ 915) <oerjan> maybe i was violated by a pole once \ 160) Thanks to nooga for constructive criticism, his ideas and being a constant annoyance. --http://theendisnear.no-ip.info/ \ 864) <kmc> what is the linux equivalen
+2019-11-22 01:34:22 <oerjan> `n
+2019-11-22 01:34:23 <HackEso> 2/2:e magical purple light which makes things glow if they have been involved in a crime  <elliott> kmc: nmap?? \ 135) <Vorpal> alise, it works fine for irc but interactive stuff? no.
+2019-11-22 01:35:11 <oerjan> wat
+2019-11-22 01:35:52 <oerjan> `quote 864
+2019-11-22 01:35:52 <HackEso> 864) <kmc> what is the linux equivalent of the magical purple light which makes things glow if they have been involved in a crime  <elliott> kmc: nmap??
+2019-11-22 01:36:02 <fizzie> Hmm.
+2019-11-22 01:36:13 <oerjan> `delquote 135
+2019-11-22 01:36:15 <HackEso> ​*poof* <Vorpal> alise, it works fine for irc but interactive stuff? no.
+2019-11-22 01:36:35 <oerjan> i don't see the point of that one, without context.
+2019-11-22 01:36:45 <fizzie> Oh, I see, the username changed.
+2019-11-22 01:37:07 <oerjan> OUcH
+2019-11-22 01:37:07 <fizzie> It's HackEso!~HackEso@cloak now, it used to be HackEso!~h@cloak a while ago.
+2019-11-22 01:37:45 <fizzie> I must've wiped out the ~h patch when I moved from Mecurial to git for the code, I think it was just hand-patched in.
+2019-11-22 01:38:01 <fizzie> Well, that should hopefully be easy enough to fix.
+2019-11-22 01:39:01 <fizzie> Yeah, the multibot default is always the same as the nick, I think I had just locally edited it.
+2019-11-22 01:39:30 <oerjan> (incidentally, i was applying the traditional 1/5 quote purging method hth)
+2019-11-22 01:40:07 Quit: HackEso (Remote host closed the connection)
+2019-11-22 01:40:07 Names: \oren\, ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, hakatashi1, heroux, Hooloo42, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill
+2019-11-22 01:40:36 <fizzie> Hm.
+2019-11-22 01:40:40 <fizzie> It doesn't start.
+2019-11-22 01:41:00 <oerjan> . o O ( It was inevitable. )
+2019-11-22 01:41:14 <fizzie> Oh, some sort of library versioning issue.
+2019-11-22 01:41:20 <fizzie> ./multibot: error while loading shared libraries: libevent_core-2.1.so.6: cannot open shared object file: No such file or directory
+2019-11-22 01:42:39 <fizzie> Odd.
+2019-11-22 01:43:25 <oerjan> in all that debugging yesterday, you never restarted the outer bot code?
+2019-11-22 01:43:47 <fizzie> Well, no, multibot's pretty dynamic like that.
+2019-11-22 01:44:04 <fizzie> Hm. Both systems have Debian 10 installed, but the machine where I build things has libevent-core-2.1-6:amd64 version 2.1.8-stable-4 while the container where it runs has libevent-core-2.0-5:amd64 version 2.0.21-stable-3.
+2019-11-22 01:44:21 <fizzie> I guess they're both installable in stable, and I just have the wrong one.
+2019-11-22 01:45:31 Joined: HackEso
+2019-11-22 01:45:31 Names: \oren\, ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill
+2019-11-22 01:45:37 <fizzie> That's-a better.
+2019-11-22 01:46:02 <fizzie> `5
+2019-11-22 01:46:09 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2019-11-22 01:46:09 <HackEso> 1/2:66) <Slereah> I can do everything a Turing machine can do, except love \ 900) <Sgeo> Actually, just as a guess, J might be worse than APL because it's restricted to normal (ascii?) characters, I guess \ 1262) <b_jonas> (make is an esoteric language)  <prooftechnique> b_jonas: Most esolangs I've seen have more comprehensive docs than make \ 251) <catseye> wow, thinkgeek really makes me hate being alive \ 1151) <fungot> kmc: any chance one
+2019-11-22 01:46:15 <fizzie> `n
+2019-11-22 01:46:16 <HackEso> 2/2:an have a box full of tnt to throw around
+2019-11-22 01:46:39 User Name: ProofTechnique = ProofTechnique!sid79547@gateway/web/irccloud.com/x-ccaiqvfqtopaxtez
+2019-11-22 01:46:39 <ProofTechnique> Nice
+2019-11-22 01:47:31 <fizzie> `delquote 251
+2019-11-22 01:47:33 <HackEso> ​*poof* <catseye> wow, thinkgeek really makes me hate being alive
