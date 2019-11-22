@@ -386,3 +386,24 @@
 2019-11-22 18:57:44 <bfbot> ok, defined 'msg1'
 2019-11-22 18:57:44 <b_jonas> =msg1
 2019-11-22 18:57:45 <bfbot> 0123456789
+2019-11-22 19:02:24 <b_jonas> ``` cat /hackenv/bin/lowercase
+2019-11-22 19:02:25 <HackEso> ​#!/bin/bash \ print_args_or_input "$@" | tr A-Z a-z | LANG=en_NZ.UTF-8 sed 'y/ØÅÆŒÞÐÄÖÜÁÉÍÓÚÝŁ/øåæœþðäöüáéíóúýł/'
+2019-11-22 19:02:26 <b_jonas> ``` cat /hackenv/bin/\?
+2019-11-22 19:02:27 <HackEso> ​#!/bin/bash \ topic=$(echo "$@" | lowercase | sed "s/noo\+dl/noooodl/;s/ *$//") \ topic1=$(echo '`'"$topic" | sed 's/^`\(`\|$\)//') \ topic2=$(echo "$topic" | sed "s/s$//") \ cd $HACKENV/wisdom \ if [ \( "_$topic2"_ = "_ngevd"_ \) -a \( -e ngevd \) ]; \     then cat /dev/urandom; \     elif [ -e "$topic" ]; \     then cat "$topic"; \     elif [ -e "$topic1" ]; \     then cat "$topic1"; \     elif [ -e "$topic2" ]; \     then cat "$topic2";
+2019-11-22 19:02:30 <b_jonas> wow, this is overcomplicated
+2019-11-22 19:14:17 <b_jonas> `python3 -cprint(open("/hackenv/bin/??").read()[300:])
+2019-11-22 19:14:17 <HackEso> usage: umlbox [-h] [--verbose] [--base-mounts] [--mount DIR] \               [--mount-write DIR] [--translate GUEST HOST] \               [--translate-write GUEST HOST] [--cwd DIR] [--env VAR=VALUE] \               [--no-stdin] [--root] [--local H:G] [--remote G:A:P] [--x11] \               [--timeout T] [--memory M] [--linux KERNEL] [--mudem MUDEM] \               [--initrd INITRD] \               X [X ...] \ umlbox: error: unrecognized argu
+2019-11-22 19:14:21 <b_jonas> fizzie: ^
+2019-11-22 19:15:11 <b_jonas> fizzie: something is wrong with the bot
+2019-11-22 19:16:46 <b_jonas> `run echo hi
+2019-11-22 19:16:47 <HackEso> usage: umlbox [-h] [--verbose] [--base-mounts] [--mount DIR] \               [--mount-write DIR] [--translate GUEST HOST] \               [--translate-write GUEST HOST] [--cwd DIR] [--env VAR=VALUE] \               [--no-stdin] [--root] [--local H:G] [--remote G:A:P] [--x11] \               [--timeout T] [--memory M] [--linux KERNEL] [--mudem MUDEM] \               [--initrd INITRD] \               X [X ...] \ umlbox: error: unrecognized argu
+2019-11-22 19:16:51 <b_jonas> `run /bin/echo hi
+2019-11-22 19:16:51 <HackEso> usage: umlbox [-h] [--verbose] [--base-mounts] [--mount DIR] \               [--mount-write DIR] [--translate GUEST HOST] \               [--translate-write GUEST HOST] [--cwd DIR] [--env VAR=VALUE] \               [--no-stdin] [--root] [--local H:G] [--remote G:A:P] [--x11] \               [--timeout T] [--memory M] [--linux KERNEL] [--mudem MUDEM] \               [--initrd INITRD] \               X [X ...] \ umlbox: error: unrecognized argu
+2019-11-22 19:23:41 <esowiki> 14[[07HackEso14]]4 10 02https://esolangs.org/w/index.php?diff=67332&oldid=67244 5* 03B jonas 5* (+2288) 10wisdom database
+2019-11-22 19:24:45 <kspalaiologos> I'm genuinely curious
+2019-11-22 19:25:04 <kspalaiologos> `asmbf jnz r4,3/jnz r3,2
+2019-11-22 19:25:05 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>+++<[<<<<<<+>+>>>>>-]<<<<<<[>>>>>>+<<<<<<-]>[<<<[-]>[-]>>>>>>>>[<<<<<<<<+>+>>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>[-]]>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>++<<[<<<<<+>+>>>>-]<<<<<[>>>>>+<<<<<-]>[<<<[-]>[-]>>>>>>>>[<<<<<<<<+>+>>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>[-]]>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-22 19:25:19 <kspalaiologos> `asmbf not r4/and r4, r3/jnz r4, 2
+2019-11-22 19:25:20 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>-[<<<<->>>>-]<<<<[>>>>+<<<<-]>>>>[<<<<+>>>>-]<<<<[[-]>>>[<<<+<+>>>>-]<<<<[>>>>+<<<<-]>[>>>>-<<<<[-]]]>>>>>++<[<<<<<<+>+>>>>>-]<<<<<<[>>>>>>+<<<<<<-]>[<<<[-]>[-]>>>>>>>>[<<<<<<<<+>+>>>>>>>-]<<<<<<<[>>>>>>>+<<<<<<<-]>[-]]>>>>>>[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2019-11-22 19:25:31 <kspalaiologos> 2nd one is shorter apparently
+2019-11-22 19:25:38 <kspalaiologos> surprising
