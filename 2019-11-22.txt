@@ -224,3 +224,86 @@
 2019-11-22 11:55:33 <wib_jonas> int-e: that never stopped the fans of football
 2019-11-22 11:57:41 Joined: aloril
 2019-11-22 11:58:37 Quit: aloril (Ping timeout: 265 seconds)
+2019-11-22 12:08:06 User Name: arseniiv = arseniiv!~arseniiv@77.79.182.89.dynamic.ufanet.ru
+2019-11-22 12:08:06 <arseniiv> fungot: miau
+2019-11-22 12:08:06 <fungot> arseniiv: why do you not like optional arguments or bounds checking, so it is
+2019-11-22 12:08:35 <arseniiv> fungot: why, I do love both of them, though bounds checking is better be a static one
+2019-11-22 12:08:35 <fungot> arseniiv: i think you can translate a bf program
+2019-11-22 12:09:48 <arseniiv> and suddenly thatâ€™s too much belief
+2019-11-22 12:09:52 <kspalaiologos> Fungot is just bfbot with worse interpreter and Markov chains cmon
+2019-11-22 12:10:21 <arseniiv> kspalaiologos: and written in a language of magic!
+2019-11-22 12:10:47 <arseniiv> though donâ€™t you have plans to incorporate a Markov chains into bfbot?
+2019-11-22 12:11:27 <arseniiv> then we could have bot battles!^W^W^W^W^W^W
+2019-11-22 12:11:59 <arseniiv> I mean, where two bots talk to each other until the sequential request limit
+2019-11-22 12:12:13 <myname> int-e: depending on what you consider hightest level of play, I wouldn't say that has to be a bad thing
+2019-11-22 12:12:13 <kspalaiologos> ^lok
+2019-11-22 12:12:17 <kspalaiologos> *lol
+2019-11-22 12:12:21 <kspalaiologos> I could add them
+2019-11-22 12:12:32 <kspalaiologos> Bfbot is written in Seed :)
+2019-11-22 12:12:46 <kspalaiologos> It depends on telnet, tritium and some other garbage
+2019-11-22 12:12:53 <myname> i do prefer a game where perfect play on my part does not lead me to a loss if i wasn't the starting player
+2019-11-22 12:13:03 <wib_jonas> =echo a\b
+2019-11-22 12:13:04 <bfbot> ab
+2019-11-22 12:13:13 <wib_jonas> =echo a\x41b
+2019-11-22 12:13:14 <bfbot> ax41b
+2019-11-22 12:13:17 <wib_jonas> =echo a\\b
+2019-11-22 12:13:17 <bfbot> a\b
+2019-11-22 12:13:25 <wib_jonas> =echo a\081b
+2019-11-22 12:13:25 <bfbot> a081b
+2019-11-22 12:13:32 <wib_jonas> =echo a\101b
+2019-11-22 12:13:33 <bfbot> a101b
+2019-11-22 12:13:39 <wib_jonas> how is this supposed to work?
+2019-11-22 12:15:08 <wib_jonas> =src echo
+2019-11-22 12:15:08 <bfbot> No such command. Try =help.
+2019-11-22 12:15:21 <wib_jonas> =echo a\b\c
+2019-11-22 12:15:21 <bfbot> abc
+2019-11-22 12:15:34 <wib_jonas> kspalaiologos: why does the echo command swallow some backslashes?
+2019-11-22 12:15:50 <kspalaiologos> Hmm
+2019-11-22 12:16:01 Quit: aloril (Ping timeout: 265 seconds)
+2019-11-22 12:16:01 Names: \oren\, ^[, aji, APic, arseniiv, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, xkapastel, zemhill
+2019-11-22 12:16:06 <kspalaiologos> Wait a second
+2019-11-22 12:16:26 <kspalaiologos> =echo xyz\"
+2019-11-22 12:16:26 <bfbot> xyz"
+2019-11-22 12:16:35 <kspalaiologos> Genuinely no idea
+2019-11-22 12:16:38 <arseniiv> fungot: give me some backlashes
+2019-11-22 12:16:38 <fungot> arseniiv: who is lytha ayth? xd a 2d fnord
+2019-11-22 12:16:48 <kspalaiologos> =echo $1
+2019-11-22 12:16:48 <bfbot> $1
+2019-11-22 12:16:54 <wib_jonas> =echo \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+2019-11-22 12:16:54 <bfbot> abcdefghijklmnopqrstuvwxyz
+2019-11-22 12:17:02 <kspalaiologos> Crap
+2019-11-22 12:17:07 <arseniiv> fungot: if I was a bot too, would we be friends?
+2019-11-22 12:17:07 <fungot> arseniiv: fnord, the public has power over!
+2019-11-22 12:17:07 <kspalaiologos> What a weird bug
+2019-11-22 12:17:18 <wib_jonas> =echo \\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+2019-11-22 12:17:18 <bfbot> \ABCDEFGHIJKLMNOPQRSTUVWXYZ
+2019-11-22 12:17:22 <wib_jonas> =echo \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+2019-11-22 12:17:22 <bfbot> ABCDEFGHIJKLMNOPQRSTUVWXYZ
+2019-11-22 12:17:39 <wib_jonas> kspalaiologos: it may be just that =echo is defined in a strange way
+2019-11-22 12:17:39 <arseniiv> fungot: do you like ASCII, at last?
+2019-11-22 12:17:49 <arseniiv> ah, sky is the limit or something
+2019-11-22 12:17:55 <wib_jonas> =str 1s ,[.,]
+2019-11-22 12:17:55 <bfbot> ok
+2019-11-22 12:17:55 <kspalaiologos> Let's check the repo
+2019-11-22 12:17:58 <wib_jonas> =def 1echo1
+2019-11-22 12:17:58 <bfbot> ok, defined 'echo1'
+2019-11-22 12:18:08 <wib_jonas> =echo1 hello, \world. \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+2019-11-22 12:18:08 <bfbot> hello, world. abcdefghijklmnopqrstuvwxyz
+2019-11-22 12:18:12 <wib_jonas> nope
+2019-11-22 12:18:19 <kspalaiologos> Wait
+2019-11-22 12:18:21 <kspalaiologos> Hmm
+2019-11-22 12:18:57 <wib_jonas> =echo1 one \' two ' three \' four
+2019-11-22 12:18:58 <bfbot> one ' two ' three ' four
+2019-11-22 12:19:01 <int-e> myname: this is a complaint that people have about high-level chess ;-)
+2019-11-22 12:19:36 <kspalaiologos> Umm
+2019-11-22 12:19:36 <myname> int-e: people are stupid
+2019-11-22 12:19:44 <kspalaiologos> These are escape sequences
+2019-11-22 12:19:52 <kspalaiologos> Not a bug its a feature
+2019-11-22 12:19:59 <kspalaiologos> Possibly related to bash being retarded
+2019-11-22 12:20:47 <kspalaiologos> I need to rewrite it in some real language
+2019-11-22 12:23:11 <wib_jonas> =echo !"# $%&' ()*+ ,-./ 0123 4567 89:; <=>? @ABC DEFG HIJK LMNO PQRS TUVW XYZ[ \]^_ `abc defg hijk lmno pqrs tuvw xyz{ |}~
+2019-11-22 12:23:11 <bfbot> !"# $%&' ()*+ ,-./ 0123 4567 89:; <=>? @ABC DEFG HIJK LMNO PQRS TUVW XYZ[ ]^_ `abc defg hijk lmno pqrs tuvw xyz{ |}~.
+2019-11-22 12:23:58 <wib_jonas> =echo and  ¡¢£ ¤¥¦§ ¨©ª« ¬­®¯ °±²³ ´µ¶· ¸¹º» ¼½¾¿ ÀÁÂÃ ÄÅÆÇ ÈÉÊË ÌÍÎÏ ÐÑÒÓ ÔÕÖ× ØÙÚÛ ÜÝÞß àáâã äåæç èéêë ìíîï ðñòó ôõö÷ øùúû üýþÿ
+2019-11-22 12:23:58 <bfbot> and ...... ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........ ........
+2019-11-22 12:28:21 Joined: aloril
+2019-11-22 12:28:21 Names: \oren\, ^[, aji, aloril, APic, arseniiv, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, xkapastel, zemhill
