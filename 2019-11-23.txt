@@ -111,3 +111,14 @@
 2019-11-23 02:49:14 <esowiki> 14[[07Deadfish14]]4 10 02https://esolangs.org/w/index.php?diff=67343&oldid=67342 5* 03Oerjan 5* (-8741) 10/* Powder */ I'm removing this on the principle that a Deadfish interpreter must at *least* support up to 17*17 == 289
 2019-11-23 02:59:01 <esowiki> 14[[07Deadfish14]]4 10 02https://esolangs.org/w/index.php?diff=67344&oldid=67343 5* 03Fizzie 5* (+63) 10/* Go */ Support multiple commands per line, avoid panic at EOF
 2019-11-23 02:59:23 <esowiki> 14[[07Deadfish14]]4 10 02https://esolangs.org/w/index.php?diff=67345&oldid=67344 5* 03Oerjan 5* (+307) 10/* Example programs */ I'm editing this in as policy
+2019-11-23 03:06:30 <esowiki> 14[[07Deadfish14]]4 M10 02https://esolangs.org/w/index.php?diff=67346&oldid=67345 5* 03Oerjan 5* (-961) 10/* Seabass */ mv
+2019-11-23 03:08:39 <esowiki> 14[[07Deadfish14]]4 M10 02https://esolangs.org/w/index.php?diff=67347&oldid=67346 5* 03Oerjan 5* (+961) 10/* Seed7 */ -> mv
+2019-11-23 03:10:06 <oerjan> argh
+2019-11-23 03:15:21 <oerjan> the sed one is wrong but how does it work...
+2019-11-23 03:17:47 <fizzie> Looks unary to me. With a decimal conversion based on matching multiples of ten.
+2019-11-23 03:19:31 <fizzie> Didn't see anything like the 256 rule, but that should be quite possible to add, just s/^;\{256\}$// in the right place.
+2019-11-23 03:21:12 <esowiki> 14[[07Deadfish14]]4 10 02https://esolangs.org/w/index.php?diff=67348&oldid=67347 5* 03Oerjan 5* (-214) 10/* (GNU) sed */ correct and mv
+2019-11-23 03:21:42 <esowiki> 14[[07Deadfish14]]4 M10 02https://esolangs.org/w/index.php?diff=67349&oldid=67348 5* 03Oerjan 5* (+239) 10/* Seabass */ -> mv
+2019-11-23 03:23:18 <oerjan> fizzie: yeah i just needed to look up the hold space commands
+2019-11-23 03:24:15 <oerjan> hmph Thue as well
+2019-11-23 03:26:06 <oerjan> argh
