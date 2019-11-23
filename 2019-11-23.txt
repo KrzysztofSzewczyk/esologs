@@ -282,3 +282,21 @@
 2019-11-23 17:48:38 Joined: Lord_of_Life
 2019-11-23 17:48:38 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], unlimiter, vertrex, Vorpal, xkapastel, zemhill, zzo38
 2019-11-23 17:59:20 <esowiki> 14[[07Arch14]]4 M10 02https://esolangs.org/w/index.php?diff=67363&oldid=66073 5* 03SergeJohanns 5* (-1) 10/* Cells & SPLIT */
+2019-11-23 18:00:18 <esowiki> 14[[07Arch14]]4 M10 02https://esolangs.org/w/index.php?diff=67364&oldid=67363 5* 03SergeJohanns 5* (+0) 10/* POINT */
+2019-11-23 18:07:18 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-23 18:07:18 <imode> this is totally not esolang related, but it is a puzzle. I have an image that I know is rendered using a heightmap as reference, but I don't know the rules used to render and construct the heightmap: https://cdn.discordapp.com/attachments/374727754551132162/647843802220068874/XikClZ6.png
+2019-11-23 18:07:51 <kspalaiologos> if someone asked me for an opinion
+2019-11-23 18:08:03 <imode> from what I can see, it's a tile-based heightmap.
+2019-11-23 18:08:03 <kspalaiologos> of a person that remembers it thru the fog
+2019-11-23 18:08:22 <kspalaiologos> red represents points high above sea level
+2019-11-23 18:08:25 <kspalaiologos> and blue represent ones below
+2019-11-23 18:08:32 <kspalaiologos> the lines are used to mark changes of terrain
+2019-11-23 18:08:58 <kspalaiologos> everything enclosed by this fancy circle is located above everything outside
+2019-11-23 18:09:32 <imode> my working theory is: given a tile at (x, y), all of distance 1 away from that tile all have to have a heightmap difference of 1 from the source tile.
+2019-11-23 18:09:48 <imode> meaning from any tile to any other tile, there has to be a height distance of 1.
+2019-11-23 18:10:15 <imode> you can't have one tile 2 tiles higher than another tile.
+2019-11-23 18:10:30 <imode> this is interesting.
+2019-11-23 18:13:47 <imode> http://i.imgur.com/3qGMZtS.png a similar situation. perplexing.
+2019-11-23 18:15:50 <zzo38> b_jonas: One of them cut off everything after the apostrophe, not the apostrophe itself. I didn't see the one that just stripped out the apostrophe.
+2019-11-23 18:27:13 Quit: Lord_of_Life (Quit: Laa shay'a waqi'un moutlaq bale kouloun moumkine)
+2019-11-23 18:27:13 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], unlimiter, vertrex, Vorpal, xkapastel, zemhill, zzo38
