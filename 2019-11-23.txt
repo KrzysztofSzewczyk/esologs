@@ -379,3 +379,26 @@
 2019-11-23 19:27:45 <FireFly> ah, well there you go
 2019-11-23 19:27:46 <FireFly> do that :p
 2019-11-23 19:29:10 <zzo38> Type "xset q" to list the font path, and "xset fp rehash" forces the server to reread the font databases if necessary
+2019-11-23 19:33:26 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Enenbee 5*  10New user account
+2019-11-23 19:35:36 Joined: sftp
+2019-11-23 19:36:15 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=67368&oldid=67357 5* 03Enenbee 5* (+124) 10
+2019-11-23 19:37:38 Quit: sftp (Ping timeout: 265 seconds)
+2019-11-23 19:37:38 Nick Change: sftp -> sftp
+2019-11-23 19:38:29 <esowiki> 14[[07User:Enenbee14]]4 N10 02https://esolangs.org/w/index.php?oldid=67369 5* 03Enenbee 5* (+71) 10Created page with "I have not made any programming languages yet, but I am working on one!"
+2019-11-23 19:39:10 Joined: Frater_EST
+2019-11-23 19:39:10 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], unlimiter, vertrex, Vorpal, xkapastel, zemhill, zzo38
+2019-11-23 19:39:14 <b_jonas> zzo38: fecupboard20 has some fancy graphical stuff at the control character places
+2019-11-23 19:40:32 <zzo38> b_jonas: What fancy stuff? (I have not downloaded the font, so I haven't looked)
+2019-11-23 19:44:35 <b_jonas> zzo38: there are some line drawing characters, at the place where xterm would expect it in a non-unicode font; some cp437 graphical characters like the smiley face; and thin versions of the cp437 letters at the C1 control positions of iso-8859-1
+2019-11-23 19:44:58 <b_jonas> you get copies of the line drawing and low control 437 graphical characters up high in unicode positions
+2019-11-23 19:45:13 <b_jonas> the cp437 letters are mostly for debugging in case they're shown for some reason
+2019-11-23 19:45:24 <b_jonas> but you almost never see these because terminal emulators just won't print control characters
+2019-11-23 19:46:35 <zzo38> OK
+2019-11-23 19:49:07 <kspalaiologos> I've taken on a very ambitious goal of learning modern Latin
+2019-11-23 19:49:31 <kspalaiologos> it's some kind of an esoteric spoken language for todays standards lol
+2019-11-23 19:50:31 <zzo38> The Catholic Church still uses Latin though, and sometimes has to make up new words for stuff that didn't exist before, such as television
+2019-11-23 19:50:50 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-11-23 19:50:50 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloo42, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], unlimiter, vertrex, Vorpal, zemhill, zzo38
+2019-11-23 19:52:25 <b_jonas> making up a latin word for television must be hard
+2019-11-23 19:52:40 <b_jonas> :)
+2019-11-23 19:56:20 <zzo38> I think it is "instrumentum televisificum"
