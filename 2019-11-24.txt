@@ -53,3 +53,26 @@
 2019-11-24 03:52:05 <zzo38> There are actually many different Unusenet hierarchies, but as far as I know the only one actually in use is where the digits after "un" are the number of components in the reverse domain name (all other Unusenet hierarchies start "un0.").
 2019-11-24 03:52:36 <zzo38> I also wrote my own NNTP client software, called bystand, and supports connecting to multiple servers (I have it connect to my own server and to nntp.aioe.org)
 2019-11-24 03:54:37 <zzo38> Or just use netcat or telnet or whatever and write raw messages. I implemented a POSTQUIT command for the convenience of users who do not have specialized NNTP software, even.
+2019-11-24 04:06:54 <zzo38> (Also, you do not need to access the NNTP in order to use ZZ Zero; it is there for purpose of discussion.)
+2019-11-24 04:08:50 <moony> zzo38 i'm honestly not sure how to use ZZ Zero at all :p
+2019-11-24 04:09:16 <zzo38> Did you read the documentation?
+2019-11-24 04:09:26 <moony> READ.ME?
+2019-11-24 04:09:31 <moony> or some other file
+2019-11-24 04:10:00 <moony> I may or may not be distracted by RETROFORTH right now
+2019-11-24 04:10:06 Joined: sprocklem
+2019-11-24 04:10:06 Names: ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill, zzo38
+2019-11-24 04:10:27 <zzo38> That isn't the only documentation, but READ.ME does say that you should read the other *.DOC files too (at least GAME.DOC if you only wish to play the game, but there isn't any complete game really made yet, just the game engine)
+2019-11-24 04:10:34 <moony> hello, sprocklem
+2019-11-24 04:11:38 <zzo38> For example, if you type "GAME EXAMPLE" then the example file will be started (which isn't a complete game, just for testing for now)
+2019-11-24 04:15:53 <zzo38> Did you try that?
+2019-11-24 04:16:15 <moony> one moment
+2019-11-24 04:17:17 <zzo38> (If you just type "GAME" by itself, you may get a blank screen; the only things that work are ESC or F1.)
+2019-11-24 04:18:01 <moony> :O
+2019-11-24 04:18:33 <moony> zzo38: is example's SRC anywhere?
+2019-11-24 04:20:12 <zzo38> Yes; it is actually inside the world file. It is a Hamster archive. A Hamster archive consists of a sequence of "lumps". Each lump consists of the null-terminated filename, and then the 32-bit PDP-endian data size, and then the data.
+2019-11-24 04:20:42 <moony> mm.
+2019-11-24 04:20:44 <zzo38> I have added a hidden feature that you may find useful: Start the game, and then push F1 and then ^C and now PERSIST.DIR contains the unpacked files.
+2019-11-24 04:20:53 <moony> oo thanks
+2019-11-24 04:21:21 <zzo38> Move the files into PROJECT.DIR if you want to edit them.
+2019-11-24 04:22:07 <moony> just looking
+2019-11-24 04:25:46 <zzo38> You will also need to move the files into PROJECT.DIR in order to view them with BEDIT and WEDIT. However, MAIN.ASM is a plain text file, so it doesn't matter what directory it is in, if you want to just view it.
