@@ -32,3 +32,24 @@
 2019-11-24 03:08:28 <moony> i.e. the Gameboy, and I plan to do something for the Sega Saturn
 2019-11-24 03:12:34 <zzo38> Have you written any program for NES/Famicom?
 2019-11-24 03:16:23 <moony> zzo38: Considered it multiple times, and know what goes into it
+2019-11-24 03:31:52 Quit: FreeFull
+2019-11-24 03:31:52 Names: ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill, zzo38
+2019-11-24 03:34:19 <zzo38> Does ZZ Zero working for you?
+2019-11-24 03:35:09 <moony> waiting for FreeDOS to download, zzo38
+2019-11-24 03:35:48 <moony> oh just finished, lemme install it, and then i'll try it
+2019-11-24 03:37:11 <zzo38> It also works in DOSBOX though
+2019-11-24 03:37:24 <moony> don't have DOSBOX installed either :p
+2019-11-24 03:37:59 <zzo38> O, OK
+2019-11-24 03:48:25 <moony> zzo38: what's this unusenet you speak of
+2019-11-24 03:48:57 Quit: sprocklem (Ping timeout: 240 seconds)
+2019-11-24 03:48:57 Names: ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, economicsbat, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, zemhill, zzo38
+2019-11-24 03:48:58 <zzo38> Unusenet is a form of NNTP newsgroup hierarchies which are not part of Usenet.
+2019-11-24 03:49:18 <moony> mm. how do I access it? :P
+2019-11-24 03:49:39 <zzo38> They do not conflict with Usenet (and you can serve both from the same server if you wish), because all Unusenet newsgroup names must start with "un" followed by one or more digits and then a dot.
+2019-11-24 03:49:49 <zzo38> moony: Access it with any NNTP client.
+2019-11-24 03:50:08 <zzo38> (Or just telnet to the NNTP server, although using specialized NNTP software is better.)
+2019-11-24 03:50:51 <moony> I haven't used usenet in a long while and completely forgot how to set up a NNTP client
+2019-11-24 03:50:52 <moony> aaaa
+2019-11-24 03:52:05 <zzo38> There are actually many different Unusenet hierarchies, but as far as I know the only one actually in use is where the digits after "un" are the number of components in the reverse domain name (all other Unusenet hierarchies start "un0.").
+2019-11-24 03:52:36 <zzo38> I also wrote my own NNTP client software, called bystand, and supports connecting to multiple servers (I have it connect to my own server and to nntp.aioe.org)
+2019-11-24 03:54:37 <zzo38> Or just use netcat or telnet or whatever and write raw messages. I implemented a POSTQUIT command for the convenience of users who do not have specialized NNTP software, even.
