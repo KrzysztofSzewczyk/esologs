@@ -17,3 +17,96 @@
 2019-11-28 01:27:59 <oerjan> `wisdom waha
 2019-11-28 01:28:01 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
 2019-11-28 01:28:01 <HackEso> That's not wise.
+2019-11-28 01:32:19 <oerjan> `../canary
+2019-11-28 01:32:19 <HackEso> ​../canary?
+2019-11-28 01:33:30 <oerjan> fizzie: having it give the same cryptic error message on non-executable files as non-existing ones may be confusing given how often we forget to do chmod +x
+2019-11-28 01:33:58 <int-e> I guess it's appropriate that a canary is executable... since its main purpose is to warn others by dying off?
+2019-11-28 01:34:13 <oerjan> `` ls -l ../canary
+2019-11-28 01:34:14 <HackEso> ​-rw-r--r-- 1 1000 1000 101 Jul 19 21:53 ../canary
+2019-11-28 01:34:15 <int-e> ;)
+2019-11-28 01:34:18 <oerjan> it's not
+2019-11-28 01:34:28 <int-e> `` ../canary
+2019-11-28 01:34:28 <HackEso> ​/hackenv/bin/`: line 5: ../canary: Permission denied
+2019-11-28 01:34:28 <oerjan> i was testing the error message
+2019-11-28 01:34:40 <int-e> right.
+2019-11-28 01:35:12 <int-e> `../absent
+2019-11-28 01:35:13 <HackEso> ​../absent?
+2019-11-28 01:35:25 <oerjan> hm...
+2019-11-28 01:35:34 <oerjan> `which cp
+2019-11-28 01:35:35 <HackEso> ​/bin/cp
+2019-11-28 01:36:13 <oerjan> `u mk bin/cp//Testing...
+2019-11-28 01:36:16 <HackEso> bin/cp
+2019-11-28 01:36:22 <oerjan> `` cp a b
+2019-11-28 01:36:23 <HackEso> cp: cannot stat 'a': No such file or directory
+2019-11-28 01:36:28 <oerjan> ic
+2019-11-28 01:36:38 <oerjan> `u rm bin/cp
+2019-11-28 01:36:42 <int-e> `cat ../bin/u
+2019-11-28 01:36:43 <HackEso> No output.
+2019-11-28 01:36:45 <HackEso> cd "${HACKENV-/hackenv}"; nur "$1"
+2019-11-28 01:36:57 <int-e> `cat ../bin/nur
+2019-11-28 01:36:58 <HackEso> ​#!/bin/bash \ if grep -q \  <<<"$1"; then "${1%% *}" "${1#* }"; else "$1"; fi
+2019-11-28 01:37:18 <oerjan> int-e: i got tired of doing ../ all the time. wait, `u  is the same length :(
+2019-11-28 01:37:43 <int-e> short for `up?
+2019-11-28 01:37:47 <oerjan> yeah
+2019-11-28 01:38:33 <oerjan> oh i forgot an important part
+2019-11-28 01:38:35 <oerjan> `revert
+2019-11-28 01:38:36 <HackEso> Done.
+2019-11-28 01:38:40 <oerjan> `cp testing
+2019-11-28 01:38:40 <HackEso> cp: missing destination file operand after 'testing' \ Try 'cp --help' for more information.
+2019-11-28 01:38:44 <oerjan> `revert
+2019-11-28 01:38:45 <HackEso> Done.
+2019-11-28 01:39:11 <oerjan> ok so fizzie's command search also skips non-executable files
+2019-11-28 01:39:32 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2019-11-28 01:39:32 <fizzie> I'm just following the standard.
+2019-11-28 01:39:40 <oerjan> but unlike the normal shell, it ignores them even if it finds no executable match
+2019-11-28 01:39:57 <oerjan> `` fnord
+2019-11-28 01:39:58 <HackEso> ​/hackenv/bin/`: line 5: fnord: command not found
+2019-11-28 01:40:38 <fizzie> `fnord
+2019-11-28 01:40:38 <HackEso> fnord? No such file or directory
+2019-11-28 01:41:14 <fizzie> `../canary
+2019-11-28 01:41:14 <HackEso> ​../canary? Permission denied
+2019-11-28 01:41:27 <oerjan> yay
+2019-11-28 01:41:56 <fizzie> It should follow the standard practice now, assuming I didn't include any bugs.
+2019-11-28 01:42:11 <fizzie> "If permission is denied for a file (the attempted execve(2) failed with the error EACCES), these functions will continue searching the rest of the search path.  If no other file is found, however, they will return with errno set to EACCES."
+2019-11-28 01:43:56 <oerjan> no wait, `u is shorter because i don't need another `
+2019-11-28 01:44:16 <oerjan> it's all good
+2019-11-28 01:45:37 <oerjan> oh hm
+2019-11-28 01:45:42 <oerjan> maybe i should rename it
+2019-11-28 01:45:58 <oerjan> `u is three keypresses but `r is just two, because � exists
+2019-11-28 01:45:59 <HackEso> ​/hackenv/bin/nur: line 2: is: command not found
+2019-11-28 01:46:13 <fizzie> I was thinking `^ because it's the up arrow, but that's just silly.
+2019-11-28 01:46:33 <oerjan> hm that actually works, both use the same shift key for me
+2019-11-28 01:46:51 <oerjan> although i'm not sure for a different keyboard
+2019-11-28 01:47:02 <fizzie> They don't for UK or US, but who's counting?
+2019-11-28 01:47:20 <fizzie> (The ` is unshifted, ^ is on shift-6.)
+2019-11-28 01:50:06 <oerjan> `^
+2019-11-28 01:50:10 <HackEso> ​^? No such file or directory
+2019-11-28 01:51:29 <int-e> `~
+2019-11-28 01:51:30 <HackEso> ​~? No such file or directory
+2019-11-28 01:51:45 <oerjan> int-e: ~ means $HOME which is /tmp
+2019-11-28 01:52:05 <int-e> `ls ~
+2019-11-28 01:52:07 <int-e> ;)
+2019-11-28 01:52:08 <HackEso> ls: cannot access '~': No such file or directory
+2019-11-28 01:52:16 <int-e> `` ls ~
+2019-11-28 01:52:17 <HackEso> No output.
+2019-11-28 01:52:31 <oerjan> also ~ uses a different modifier key than ` for me
+2019-11-28 01:52:33 <int-e> oerjan: It only means that in shells.
+2019-11-28 01:52:46 <int-e> here ~ is shift-`
+2019-11-28 01:52:49 <oerjan> _and_ i need a space after ~.
+2019-11-28 01:52:50 <int-e> and it's not a dead key.
+2019-11-28 01:53:08 <fizzie> `� hth
+2019-11-28 01:53:09 <HackEso> ​¬? No such file or directory
+2019-11-28 01:53:16 <fizzie> That's shift-` here.
+2019-11-28 01:53:21 <oerjan> so 3 presses, 5 keys total
+2019-11-28 01:53:33 * oerjan swats fizzie -----###
+2019-11-28 01:55:51 <fizzie> Another little oddity of the UK layout is that there is exactly one third-level symbol printed on a keycap, and that's the broken bar, which is altgr-`... except that it's anyone's guess whether it'll actually produce a broken bar or just the regular |. On this system it's just a |.
+2019-11-28 01:56:20 <fizzie> So there's the \| key (plain, shifted) next to z, but also the `�| key next to 1.
+2019-11-28 01:57:01 <fizzie> I think someone operating systems will actually produce a � out of it though.
+2019-11-28 01:57:27 <oerjan> oh what about `<
+2019-11-28 01:57:40 <int-e> oerjan: that's even worse than `u
+2019-11-28 01:57:56 <oerjan> not for me ;)
+2019-11-28 01:58:03 <int-e> (further away and needs a shift)
+2019-11-28 01:58:26 <oerjan> < is unshifted left of z here
+2019-11-28 01:59:39 <int-e> Ah I guess I don't actually care. It's easy to complain though.
+2019-11-28 01:59:54 <oerjan> `complain int-e complains too much
+2019-11-28 01:59:56 <HackEso> Complaint filed. Thank you.
