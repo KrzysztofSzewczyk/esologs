@@ -285,3 +285,50 @@
 2019-11-29 20:00:40 <b_jonas> :(
 2019-11-29 20:15:31 <imode> I'm looking for a turing complete two-instruction-set computer that isn't a turning tarpit and doesn't operate on RAM.
 2019-11-29 20:24:10 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03RGSW 5*  10New user account
+2019-11-29 20:31:45 <b_jonas> imode: I think that's impossible. Non-tarpit implies that it offers you a nice variety of useful instructions, so you need at least six different instructions.
+2019-11-29 20:33:20 <imode> turning tarpit, not turing tarpit.
+2019-11-29 20:33:29 <imode> totally okay with a turing tarpit, that's kind of the point.
+2019-11-29 20:33:42 <b_jonas> I don't know what a turning tarpit is then
+2019-11-29 20:34:03 <imode> https://esolangs.org/wiki/Turning_tarpit
+2019-11-29 20:34:36 <imode> you have a wheel of instructions, and your commands are "move to next instruction on the wheel" or "execute the currently selected instruction on the wheel".
+2019-11-29 20:34:42 <imode> or some variant thereof.
+2019-11-29 20:36:28 <b_jonas> imode: in that case, combinator calculus with SK base, aka unlambda with only the s and k builtins
+2019-11-29 20:36:43 <b_jonas> or lambda calculus, where the two instructions are lambda and function call
+2019-11-29 20:39:16 <b_jonas> imode: or a Turing-machine with one tape and two tape symbols, where the two instructions are (0) move left, (1) flip the symbol under the head then move right
+2019-11-29 20:39:51 <imode> how is that TC?
+2019-11-29 20:39:55 <b_jonas> there's a brainfuck variant like that, iirc invented by the bbc norvegian village, but a turing machine works better
+2019-11-29 20:40:10 <imode> I wanna see that BF variant.
+2019-11-29 20:40:27 <b_jonas> imode: if you want to keep the symbol unchanged and move right, you can move right then left then right again
+2019-11-29 20:40:42 <b_jonas> imode: and if you want to flip the symbol and move left, you can move right, then move left twice
+2019-11-29 20:40:58 <b_jonas> so you can translate to this from an ordinary one tape two symbol turing machine
+2019-11-29 20:41:07 <b_jonas> by replacing some of the instructions by a sequence of two or three instructions
+2019-11-29 20:41:30 <imode> yeah, I get that. I was thinking you had a minimal TM that you could chain together to form something that could simulate another TM or something.
+2019-11-29 20:41:39 <imode> what's that BF variant you mentioned, out of curiosity?
+2019-11-29 20:43:30 <b_jonas> dunno, look at https://esolangs.org/wiki/BF_instruction_minimalization or something. or maybe P'' already does this
+2019-11-29 20:43:39 <b_jonas> I think this combination was discovered independently by multiple people
+2019-11-29 20:43:45 <imode> two instructions?
+2019-11-29 20:44:01 <b_jonas> no, for brainfuck it's more instructions because you count the control flow instructions [ and ] too
+2019-11-29 20:44:04 <b_jonas> so that would be four
+2019-11-29 20:44:11 <b_jonas> but for a TM, you could the control flow as not instructions
+2019-11-29 20:44:19 <imode> mm, true.
+2019-11-29 20:44:35 <b_jonas> yeah, P'' already has such a combined move and write
+2019-11-29 20:44:41 <b_jonas> https://esolangs.org/wiki/P%27%27
+2019-11-29 20:44:45 Joined: zzo38
+2019-11-29 20:44:45 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-11-29 20:44:48 <b_jonas> then it was not invented by the bbc
+2019-11-29 20:44:56 <imode> the reason I
+2019-11-29 20:45:09 <imode> I'm asking is because my language is TC with only 4 instructions.
+2019-11-29 20:45:19 <imode> but I'm wondering if I can reduce that into two somehow.. don't see a possible way.
+2019-11-29 20:46:40 <esowiki> 14[[07User talk:Zzo3814]]4 10 02https://esolangs.org/w/index.php?diff=67536&oldid=67510 5* 03Zzo38 5* (+217) 10
+2019-11-29 20:48:39 <kmc> what are the instructions?
+2019-11-29 20:49:21 <imode> []01
+2019-11-29 20:49:40 <imode> [ is "dequeue a symbol. if it's a 0, jump to matching ]. otherwise, go to next instruction."
+2019-11-29 20:49:40 <j-bot> imode: |open quote
+2019-11-29 20:49:40 <j-bot> imode: |   is "dequeue a symbol. if it's a 0, jump to matching ]. otherwise, go to next instruction."
+2019-11-29 20:49:40 <j-bot> imode: |                              ^
+2019-11-29 20:49:45 <imode> oof.
+2019-11-29 20:49:48 <imode> sorry.
+2019-11-29 20:50:14 <imode> ] is "jump to matching [". 0 and 1 enqueue a 0 and a 1 respectively. so there's no movement instructions.
+2019-11-29 20:51:50 <kmc> lol j-bot
+2019-11-29 20:53:16 Quit: kspalaiologos (Quit: Leaving)
+2019-11-29 20:53:16 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xkapastel, zemhill, zzo38
