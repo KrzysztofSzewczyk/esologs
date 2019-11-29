@@ -370,3 +370,18 @@
 2019-11-29 21:29:00 <b_jonas> zzo38: the output it writes is a more readable C program than the one that traditional table-based programs provide; it has a somewhat saner alternate api for how it integrates to a C program;
 2019-11-29 21:29:28 <b_jonas> it allows for multiple backends so it can output programs in a language other than C or with a different api (eg. stackless), you can add your own;
 2019-11-29 21:29:51 <b_jonas> it provides better error messages in case of a shift-reduce or reduce-reduce conflict in the language
+2019-11-29 21:30:02 <b_jonas> (sometimes at least, it depends on the language)
+2019-11-29 21:30:10 <b_jonas> and... there was something more but I forgot
+2019-11-29 21:31:10 Parted: Frater_EST
+2019-11-29 21:31:10 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 21:32:09 <b_jonas> zzo38: see its documentation for details
+2019-11-29 21:32:16 <b_jonas> `? ayacc
+2019-11-29 21:32:17 <HackEso> ayacc is ais523's yacc parser generator implementation, get it from darcs clone http://nethack4.org/projects/ayacc
+2019-11-29 21:37:13 <b_jonas> ais523: so do you want to tell us what new job you're going to get?
+2019-11-29 21:37:21 <zzo38> OK I will look
+2019-11-29 21:38:03 <zzo38> I don't have darcs, is there another way?
+2019-11-29 21:38:53 <b_jonas> I don't know
+2019-11-29 21:39:23 <b_jonas> (other than installing darcs, obviously)
+2019-11-29 21:46:24 <b_jonas> I have the common free software version control clients installed on my machine because people sometimes distribute files through version control repositories. So I have cvs, svn, git, bzr, hg, darcs, fossil.
+2019-11-29 21:57:11 Quit: LKoen (Remote host closed the connection)
+2019-11-29 21:57:11 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
