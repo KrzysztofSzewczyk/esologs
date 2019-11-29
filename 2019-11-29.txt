@@ -666,3 +666,184 @@
 2019-11-29 22:59:29 <b_jonas> and glibc can rely on linux-internal stuff like that
 2019-11-29 22:59:48 <b_jonas> ais523: glibc. this doesn't need to be portable to all systems.
 2019-11-29 22:59:55 <b_jonas> if it works on linux and hurd it's enough
+2019-11-29 23:00:11 <b_jonas> glibc depends on a lot of linux-specific stuff
+2019-11-29 23:00:13 <b_jonas> has to really
+2019-11-29 23:00:18 <ais523> does Linux have an actual rule of "no sharing ioctl numbers between different types of devices"?
+2019-11-29 23:00:22 <b_jonas> no
+2019-11-29 23:00:30 <b_jonas> and I think some of the small numbers are shared
+2019-11-29 23:00:34 <ais523> I guess patches would probably be rejected if you tried to use a widely used ioctl number like that for something else
+2019-11-29 23:00:40 <b_jonas> but it doesn't share numbers in any newly introduced ioctls
+2019-11-29 23:00:46 <b_jonas> all the sharing are for historical reasons
+2019-11-29 23:00:50 <ais523> IIRC ioctl numbers are namespaced to some extent
+2019-11-29 23:00:56 <b_jonas> yes
+2019-11-29 23:01:19 <b_jonas> the namespace tells the size of the struct that its argument points to, and whether it's used for input or output
+2019-11-29 23:01:33 <b_jonas> but this too is true only for new ioctl numbers, old ones remain for historical reasons
+2019-11-29 23:02:12 <fizzie> Documentation/ioctl/ioctl-number.txt has a the range assignments.
+2019-11-29 23:02:14 <b_jonas> http://man7.org/linux/man-pages/man2/ioctl_list.2.html has some docs
+2019-11-29 23:02:16 <fizzie> A lot of "conflict!"s.
+2019-11-29 23:02:55 <ais523> right, TCGETS is 0x5401, and 0x54 == 'T'
+2019-11-29 23:05:02 <fizzie> Anyway, might as well ask y'all -- let's suppose I have a tty device, and I want the things a program writes get written there, but if the program does isatty(1) I want it to return 0. Is there a more elegant way than redirecting the program's output to a fifo, and having another process copy all the data from the fifo to the device?
+2019-11-29 23:06:37 <b_jonas> fizzie: that sounds esoteric. why would you want that? if you just want programs not to write color codes, try TERM=dumb
+2019-11-29 23:06:49 <b_jonas> (some programs will still write carriage returns then)
+2019-11-29 23:06:55 <ais523> there's seccomp_filter but that's likely less elegant rather than more elegant
+2019-11-29 23:06:57 <b_jonas> (and some programs will write color codes anyway)
+2019-11-29 23:07:14 <fizzie> It's not for me, it's for HackEso.
+2019-11-29 23:07:45 <ais523> HackEso having TERM=dumb would make sense though
+2019-11-29 23:07:46 <shachaf> Did you figure out what was going on with the bizarreness a while ago?
+2019-11-29 23:08:01 <ais523> alternatively, HackEso translating ASCII color codes to IRC color codes would also make sense
+2019-11-29 23:08:04 <fizzie> The idea is, what /dev/tty1 is *actually* connected is a pipe outside the UML kernel, and shouldn't be treated as a TTY. Cf. that gcc color output, for example.
+2019-11-29 23:08:08 <b_jonas> ais523: using a custom terminfo that has IRC color and format codes would be even better for esoteric value
+2019-11-29 23:08:14 <ais523> shachaf: the ::=echo weirdness?
+2019-11-29 23:08:15 <bfbot> :shachaf: the weirdness?
+2019-11-29 23:08:34 <shachaf> The HackEso output being truncated thing.
+2019-11-29 23:08:38 <fizzie> ais523: Having TERM=dumb would make sense, though I think most programs do the TTY check.
+2019-11-29 23:08:49 <fizzie> shachaf: Yes, I think I did, but I can't remember. At least it got fixed.
+2019-11-29 23:08:51 <b_jonas> TODO self: make such a terminfo; make a better ! c and ! c++ wrapper; make an addwhatis command
+2019-11-29 23:08:53 <zzo38> Some programs support a NO_COLOR environment variable to disable colours.
+2019-11-29 23:09:04 <ais523> fizzie: right, but many programs also use terminfo and friends to work out how to display colors
+2019-11-29 23:09:17 <ais523> so if they conclude that stdout is a terminal but doesn't support color, they'll do the right thing
+2019-11-29 23:09:23 <b_jonas> fizzie: programs do those two checks for different reasons
+2019-11-29 23:09:34 <fizzie> ais523: Well, for the color part.
+2019-11-29 23:09:46 <fizzie> But I think there's more behavioral changes they can do when it's not a terminal.
+2019-11-29 23:09:55 <ais523> it's unclear whether we want the terminal or non-terminal output, though
+2019-11-29 23:10:03 <ais523> HackEso is effectively a terminal wrt the way it's used
+2019-11-29 23:10:16 <b_jonas> um :=echo hi
+2019-11-29 23:10:17 <bfbot> :um hi
+2019-11-29 23:10:18 <ais523> we want the output programs produce when used interactively, not the batch-process output
+2019-11-29 23:10:21 <b_jonas> what the
+2019-11-29 23:10:27 <fizzie> ais523: Well... not if it's a progress bar or a spinner.
+2019-11-29 23:10:30 <b_jonas> is bfbot parsing IRC messages wrong?
+2019-11-29 23:10:41 <b_jonas> foo :=echo bar :qux
+2019-11-29 23:10:41 <bfbot> :foo :=echo bar bar :qux
+2019-11-29 23:10:45 <b_jonas> weird
+2019-11-29 23:10:53 <b_jonas> I suspect it's parsing IRC messages wrong
+2019-11-29 23:11:07 <b_jonas> like searches for " :=" in it
+2019-11-29 23:11:07 <bfbot> like searches for " :No such command. Try =help.
+2019-11-29 23:11:14 <b_jonas> foo:=echo bar
+2019-11-29 23:11:14 <bfbot> bar
+2019-11-29 23:11:14 <ais523> fizzie: well, the only reason that's bad is that the cursor movement (even \r or \b) doesn't work correctly
+2019-11-29 23:11:16 <b_jonas> hmm
+2019-11-29 23:11:19 <b_jonas> that's even worse
+2019-11-29 23:11:45 <ais523> there's probably half a command in bfbot's output that got eaten by the ircd
+2019-11-29 23:11:54 <ais523> =echo
+2019-11-29 23:11:54 <bfbot> echo
+2019-11-29 23:12:05 <ais523> =echo
+2019-11-29 23:12:06 <bfbot> echo
+2019-11-29 23:12:20 <b_jonas> what?
+2019-11-29 23:12:24 <ais523> hmm, I bet the ircd added the colon anyway
+2019-11-29 23:12:35 <ais523> (the second =echo was sent without the colon)
+2019-11-29 23:12:49 <b_jonas> sure, ircd fixes the messages so that clients are easy to write
+2019-11-29 23:12:52 <b_jonas> there's always a colon
+2019-11-29 23:13:02 <ais523> it's technically only needed to escape multi-character arguments, though
+2019-11-29 23:13:14 <ais523> but always adding it is probably easier for consistency
+2019-11-29 23:13:16 <ais523> *multi-word
+2019-11-29 23:13:26 <b_jonas> technically yes, but the ircd wants to accept more and produce less to make clients easy to write
+2019-11-29 23:13:27 <fizzie> ais523: I just think it's not trivial to make it look enough "like a terminal", esp. when programs start to use more than one line of output, or ask about terminal width/height to draw a dialog in the middle of the screen.
+2019-11-29 23:13:52 <ais523> well, take a program like apt
+2019-11-29 23:13:56 <b_jonas> it also changes MODE and KICK commands so that MODE commands set at most four modes and KICK kick at most one nick when it outputs them, even though it accepts more on input
+2019-11-29 23:14:02 <b_jonas> and more things like that
+2019-11-29 23:14:04 <ais523> it complains whenever its output isn't a terminal
+2019-11-29 23:14:17 <b_jonas> I think it canonicalizes the capitalization of channel anmes
+2019-11-29 23:14:20 <ais523> because it's not intended to have stable output
+2019-11-29 23:14:35 <b_jonas> so that clients don't have to casefold channel names to find which channel they're receiving something in
+2019-11-29 23:14:36 <fizzie> Yes, I don't really like that complaint.
+2019-11-29 23:14:36 <ais523> but the use via HackEso is interactive
+2019-11-29 23:14:56 <fizzie> (I use "apt search ... | grep ..." semi-often.)
+2019-11-29 23:15:14 <b_jonas> fizzie: in that case we'll pass the right command-line argument to programs so that they don't do those things
+2019-11-29 23:15:40 <b_jonas> fizzie: eg. we'll use git status -bs because the output of git status would be unreadable
+2019-11-29 23:16:06 <fizzie> Anyway, sure, there might some benefits to getting the terminal-style output. But I remain unconvinced it would be an overall improvement.
+2019-11-29 23:16:29 <b_jonas> fizzie: I suspect that no terminal is probably better,
+2019-11-29 23:16:37 <b_jonas> but terminal might be more suitable for HackEso's esotericness
+2019-11-29 23:17:22 <b_jonas> programs can output human-readable things even when the output isn't a terminal, eg. you're running them in a cronjob
+2019-11-29 23:17:58 <b_jonas> when it's a terminal, they may expect interactive use of the program, though they usually check isatty(0) for that, not isatty(1) or isatty(2)
+2019-11-29 23:18:24 <b_jonas> but sometimes they expect interactivity even if only isatty(2)
+2019-11-29 23:18:49 <b_jonas> I think no terminal is probably better since you terminate the program after each command
+2019-11-29 23:19:01 <b_jonas> we can't just continue to give it more input like we can in termbot
+2019-11-29 23:19:36 <b_jonas> obviously we can override either way in individual commands, with |cat or with script resp
+2019-11-29 23:19:57 <fizzie> shachaf: As far as I can tell, I didn't quite figure out all the details in the truncation thing, but sufficiently to determine that it was linked with using a 'fd:N' where N is a /dev/null file descriptor instead of the special 'null' channel in the UML console specification.
+2019-11-29 23:20:44 <fizzie> b_jonas: Incidentally, I toyed around using a 512-byte block device as the stdout file descriptor, too.
+2019-11-29 23:20:48 <b_jonas> hmm wait
+2019-11-29 23:21:26 <b_jonas> @run "hello =echo world"
+2019-11-29 23:21:28 <fizzie> It'd have the benefit (of sorts) that writes that the user would never see anyway (because of IRC length limits) would fail with ENOSPC, naturally terminating the program. Well, some programs, anyway.
+2019-11-29 23:21:29 <lambdabot> "hello =echo world"
+2019-11-29 23:21:34 <b_jonas> @run "hello :"++"=echo world"
+2019-11-29 23:21:37 <lambdabot> "hello :=echo world"
+2019-11-29 23:21:37 <bfbot> : "hello world"
+2019-11-29 23:22:57 <fizzie> One reason why I didn't explore that more was because it'd be super hackbot-specific, and umlbox is to some degree a general tool.
+2019-11-29 23:23:01 <b_jonas> ^ul (=echo world)(hello :)SS
+2019-11-29 23:23:01 <fungot> hello :=echo world
+2019-11-29 23:23:01 <bfbot> :hello world
+2019-11-29 23:23:22 <b_jonas> =echo ^help
+2019-11-29 23:23:22 <bfbot> ^help
+2019-11-29 23:23:24 <b_jonas> =echo @help
+2019-11-29 23:23:24 <bfbot> @help
+2019-11-29 23:23:35 <b_jonas> =echo `help
+2019-11-29 23:23:36 <bfbot> `help
+2019-11-29 23:23:36 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $HACKENV are persistent, and $HACKENV/bin is in $PATH. $HACKENV is a mercurial repository, "`revert <rev>" can be used to revert, https://hack.esolangs.org/repo/ to browse. $PWD ($HACKENV/tmp) is persistent but unversioned, /tmp is ephemeral.
+2019-11-29 23:23:45 <fizzie> Ut-oh.
+2019-11-29 23:23:49 <b_jonas> yeah
+2019-11-29 23:24:14 <b_jonas> =echo `echo :=echo hi
+2019-11-29 23:24:15 <bfbot> :=echo `echo hi
+2019-11-29 23:24:18 <ais523> hmm, it just crossed my mind that with umlbox and WSL, Linux is now cross-platform software: it runs on both Linux and Windows
+2019-11-29 23:24:38 <fizzie> That's almost certainly loopable, and I don't have a natural way to make it not.
+2019-11-29 23:24:43 <b_jonas> ais523: Linux runs on several processor types
+2019-11-29 23:24:55 <fizzie> `echo :=echo check
+2019-11-29 23:24:55 <bfbot> :`echo check
+2019-11-29 23:24:55 <HackEso> ​:=echo check
+2019-11-29 23:24:55 <bfbot> check
+2019-11-29 23:25:22 <fizzie> Hm, maybe the : that seems to end up in all the "middle commands" saves it.
+2019-11-29 23:25:32 <ais523> bfbot: yes, but I mean it runs on multiple operating systems
+2019-11-29 23:25:36 <b_jonas> =str 1s++++[->++++<]>[->++>+++>++++>+++++>++++++>+++++++<<<<<<]> >>>>.++.++++.----.+++++++++++++.>++++.<---.+++..>----.
+2019-11-29 23:25:36 <bfbot> ok
+2019-11-29 23:25:43 <b_jonas> =def 1prefixes
+2019-11-29 23:25:43 <bfbot> ok, defined 'prefixes'
+2019-11-29 23:26:00 <b_jonas> no
+2019-11-29 23:26:02 <b_jonas> darn it
+2019-11-29 23:26:14 <b_jonas> I shouldn't have overwritten the prefixes macro
+2019-11-29 23:26:15 <b_jonas> `prefixes
+2019-11-29 23:26:17 <HackEso> Bot prefixes: fungot ^, HackEso `, EgoBot !, lambdabot @ or ?, thutubot +, metasepia ~, idris-bot ( , jconn ) , j-bot [ , bfbot =.
+2019-11-29 23:26:41 <b_jonas> =str 1s++++[->++++<]>[->++>+++>++++>+++++>++++++>+++++++<<<<<<]> >>++.>>+++++++++++++++.>++++.<<<<<.>>>>>----.++.<----------.+.+++.>++++++.<----.>-----.<<<<++++++++++.<.>>>>+.>++.<++++++++.-------.++++++++.>-.<<<<<.>>>++++++++++++++.<<<++++++++++++.------------.>>++++++.>>--------------.++.++++++++.<<---.>>>-.<++++.
+2019-11-29 23:26:41 <bfbot> ok
+2019-11-29 23:26:46 <b_jonas> =str 1a<<<<.>>>>---------------.<<<<++++++++++++.------------.>>.>>+++++++.++++++++.<<---.>>.>+.<<<<<.+.+++++++++++.------------.>>>>---.-----------.++++++++++++.-----------.++.---.+.+++++++++++++.>.<<<<<.>>--.<<.>>>>.>--.<<<<<.>+++++.<++++++++++++.------------.>>>>>++.<-------.>+.-.+.<------.+++++++++++++.>-.<<<<<.
+2019-11-29 23:26:46 <bfbot> ok
+2019-11-29 23:26:51 <b_jonas> =str 1a+++++++++++.+.------------.>>>>--.--------.>.<----.>-.<++++.>---.<++++.--------.<<<<.>>>>>++++++++++++++.<<<<<++++++++++++.------------.>>>>++++++++.-----.>------------.<+++++.>+.<<<<<+++++++++++++.>>>>-------.+++++++++++++.>+.<<<<<-------------.++++++++.--------.++++++++++++.------------.>>>>-----.-------.++
+2019-11-29 23:26:51 <bfbot> ok
+2019-11-29 23:26:56 <b_jonas> =str 1a++++++++++.-..<<<<.+++++++++.---------.++++++++++++.------------.>>>>----.<<<<+++++++++++++.>>>>--------.+++++++++++++.>.<<<<<-------------.>>>---.<<<.++++++++++++.------------.>>>>-------------.++++.----.+++++++++++++.>.<<<<<.>--.<++++++++++++++.
+2019-11-29 23:26:56 <bfbot> ok
+2019-11-29 23:27:00 <b_jonas> =def 1prefixes
+2019-11-29 23:27:00 <bfbot> ok, defined 'prefixes'
+2019-11-29 23:27:00 <b_jonas> =prefixes
+2019-11-29 23:27:00 <bfbot> Bot prefixes: fungot ^, HackEso `, EgoBot !, lambdabot @ or ?, thutubot +, metasepia ~, idris-bot ( , jconn ) , j-bot [ , bfbot =.
+2019-11-29 23:27:53 <b_jonas> =str 1s++++[->++++<]>[->++>+++>++++>+++++>++++++>+++++++<<<<<<]> >>>>.++.++++.----.+++++++++++++.>++++.---.++++.<------.+++++.---------.
+2019-11-29 23:27:53 <bfbot> ok
+2019-11-29 23:27:56 <fizzie> What does :=prefixes do then?
+2019-11-29 23:27:56 <bfbot> Bot prefixes: fungot ^, HackEso `, EgoBot !, lambdabot @ or ?, thutubot +, metasepia ~, idris-bot ( , jconn ) , j-bot [ , bfbot =.
+2019-11-29 23:28:07 <b_jonas> =def 1hackesoquine
+2019-11-29 23:28:07 <bfbot> ok, defined 'hackesoquine'
+2019-11-29 23:28:13 <b_jonas> =hackesoquine
+2019-11-29 23:28:13 <bfbot> `bfbotquine
+2019-11-29 23:28:14 <HackEso> bfbotquine? No such file or directory
+2019-11-29 23:28:18 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, @fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 23:28:25 <fizzie> (Just getting prepared.)
+2019-11-29 23:28:36 <b_jonas> =str 1s +
+2019-11-29 23:28:36 <bfbot> ok
+2019-11-29 23:28:45 <b_jonas> =def 1hackesoquin
+2019-11-29 23:28:45 <bfbot> ok, defined 'hackesoquin'
+2019-11-29 23:28:47 <b_jonas> =hackesoquin
+2019-11-29 23:29:15 <imode> did it work.
+2019-11-29 23:29:17 <b_jonas> =str 1s ++++++++[->++++++++<]+.
+2019-11-29 23:29:17 <bfbot> ok
+2019-11-29 23:29:22 <b_jonas> =def 1hackesoquin
+2019-11-29 23:29:22 <bfbot> ok, defined 'hackesoquin'
+2019-11-29 23:29:24 <b_jonas> =hackesoquin
+2019-11-29 23:29:24 <bfbot> .
+2019-11-29 23:29:35 <b_jonas> =str 1s ++++++++[->++++++++<]>+.
+2019-11-29 23:29:35 <bfbot> ok
+2019-11-29 23:29:37 <b_jonas> =def 1hackesoquin
+2019-11-29 23:29:37 <bfbot> ok, defined 'hackesoquin'
+2019-11-29 23:29:38 <b_jonas> =hackesoquin
+2019-11-29 23:29:38 <bfbot> A
+2019-11-29 23:29:43 <b_jonas> =hackesoquine
+2019-11-29 23:29:43 <bfbot> `bfbotquine
+2019-11-29 23:29:44 <HackEso> bfbotquine? No such file or directory
+2019-11-29 23:29:49 Names: ^[, @ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, @fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
