@@ -481,3 +481,188 @@
 2019-11-29 22:29:32 <ais523> the ideal competition language has a huge number of builtins and a lot of ability to cope with incompletely specified programs
 2019-11-29 22:29:57 <kmc> the ICFP langs are very interesting too
 2019-11-29 22:30:00 <kmc> I think they would count as eso-
+2019-11-29 22:30:05 <ais523> if you're trying to come up with a working program as quickly as possible, for example, you want to be able to just translate the problem you're given into a working version of it
+2019-11-29 22:30:07 <moony> zzo38: i.e. languages ment to be used in fictional universes, like a programming language that was made for use in a sci-fi book
+2019-11-29 22:30:20 <zzo38> moony: O, OK.
+2019-11-29 22:30:24 <APic> Ook!
+2019-11-29 22:30:32 <b_jonas> ais523: how about when someone asks a homework programming question on a forum, and I write an obfuscated program as a solution with the hope that they'll submit it for the homework, and that program involves an interpreter of a new domain-specific language? is that language esoteric then?
+2019-11-29 22:31:10 <moony> b_jonas: is anyone else going to use the DSL? No? Then I think it counts for esolangs.
+2019-11-29 22:31:12 <ais523> b_jonas: I'm not sure whether domain-specific languages are automatically esoteric
+2019-11-29 22:31:27 <b_jonas> ais523: it's not the domain-specific part that's relevant here
+2019-11-29 22:31:38 <b_jonas> it could be a general purpose but small language
+2019-11-29 22:31:39 <zzo38> I think sometimes you will not know for now if anyone else is going to use the DSL
+2019-11-29 22:31:44 <ais523> I think being a DSL is relevant here
+2019-11-29 22:31:53 <b_jonas> possibly a write-only one that requires an assembler to use
+2019-11-29 22:31:53 <ais523> because those are a language category of their own
+2019-11-29 22:31:59 <moony> DSLs are icky territory
+2019-11-29 22:32:02 <ais523> is C-INTERCAL's internal DSL OIL an esolang, for example?
+2019-11-29 22:32:04 <b_jonas> and I don't publish the assembler
+2019-11-29 22:32:06 <moony> because they can easily fall under my rules
+2019-11-29 22:32:29 <ais523> something like https://esolangs.org/wiki/Help,_WarDoq! is definitely both a DSL and an esolang, just because the domain in question is so ridiculous
+2019-11-29 22:32:59 <b_jonas> oh, you can certainly have a domain-specific esolang in general
+2019-11-29 22:33:30 <b_jonas> the ICFP ant brain is one such language,
+2019-11-29 22:33:58 <ais523> the issue is, I can imagine a language that's very similar to Help, WarDoq but invented for a much more practical purpose
+2019-11-29 22:34:04 <kmc> I thought of making a esolang that's a DSP DSL
+2019-11-29 22:34:28 <ais523> for example, there's a very simple programming language used as an on-the-wire format for telling electronic traffic signs what sign they should be showing
+2019-11-29 22:34:30 <kmc> some strange eso way of defining signal processing pipelines
+2019-11-29 22:34:33 <kmc> for audio and RF applications
+2019-11-29 22:34:33 <ais523> which is basically the same thing
+2019-11-29 22:34:45 <kmc> i thought of it being sort of concatenative
+2019-11-29 22:34:47 <ais523> but I'm not sure that's even definable as a language, let alone an esolang
+2019-11-29 22:34:56 <kmc> so you'd have a stack of things which are signals or matrices or filters or whatever
+2019-11-29 22:34:57 <zzo38> kmc: Yes lets see please
+2019-11-29 22:35:00 <kmc> and you can apply them
+2019-11-29 22:35:03 <ais523> idea: something that is definitely esoteric but only questionably a programming language
+2019-11-29 22:35:10 <ais523> (esoteric in the programming sense, that is)
+2019-11-29 22:35:28 <kmc> but instead of a normal step by step execution model it compiles into a streaming, possibly real-time process
+2019-11-29 22:35:39 <zzo38> I think once I did make a stack-based programming language for defining .XI instruments
+2019-11-29 22:35:41 <b_jonas> ais523: there are a lot of esoteric/obfuscated programs that are clearly not languages
+2019-11-29 22:35:45 <ais523> the only DSP I've ever used was entirely imperative
+2019-11-29 22:35:53 <ais523> b_jonas: oh right, one-off programs
+2019-11-29 22:36:09 <ais523> like the 99 bottles of beer program in Malbolge
+2019-11-29 22:36:13 <kmc> primitive types would be complex numbers, matrices, and timeseries data
+2019-11-29 22:36:27 <ais523> how do you make something like that /ambiguously/ a language, though?
+2019-11-29 22:36:28 <zzo38> (The data types are numbers, strings, audio samples (with an optional loop point), and functions (which can be built from other functions, too).)
+2019-11-29 22:36:30 <kmc> an example program would be something like a FM broadcast radio decoder
+2019-11-29 22:36:49 <kmc> it's easy to get I/Q samples from a RTL-SDR
+2019-11-29 22:37:11 <kmc> and dump PCM data to a sound card
+2019-11-29 22:37:17 <kmc> so the hardware aspect would be relatively accessible
+2019-11-29 22:37:18 <ais523> fwiw, it would be nice to document more found languages on the wiki
+2019-11-29 22:37:32 <b_jonas> ais523: how about a one-off program that has an interpreter in it for compression, but the interpreter is very specialized (DSL) that it's unclear if it's even an interpreter or just a nice table or compression format?
+2019-11-29 22:37:33 <zzo38> Yes, I would like to see how to do with that radio decoding and that stuff
+2019-11-29 22:37:45 <ais523> things like the x86 (or was it x86_64) MMU, which is a bounded-storage machine
+2019-11-29 22:38:10 <ais523> b_jonas: hmm, now you're reminding me of quines
+2019-11-29 22:38:20 <zzo38> b_jonas: If it is Turing-complete (even if not intended to be) then it might be notable.
+2019-11-29 22:38:31 <b_jonas> oh yeah
+2019-11-29 22:38:41 <b_jonas> ais523: how about OTTD signals?
+2019-11-29 22:38:42 <ais523> a quine is a description of itself, but because it can't be a literal quote of itself (assuming it isn't a literal-only quine) it needs to define some shorthand for describing itself
+2019-11-29 22:38:49 <ais523> b_jonas: OTTD?
+2019-11-29 22:39:02 <b_jonas> open transport tycoon deluxe, the game with railway tracks
+2019-11-29 22:39:24 <b_jonas> the signals (traffic signals to direct trains on railways) became quite capable and can evaluate boolean expressions
+2019-11-29 22:39:35 User Name: kingoffrance = kingoffrance!~x__@c-67-161-241-22.hsd1.ut.comcast.net
+2019-11-29 22:39:35 <kingoffrance> quine sounds like munchausen number
+2019-11-29 22:39:44 <b_jonas> http://wiki.openttd.org/Main_Page
+2019-11-29 22:39:56 <ais523> oh, that normally gets abbreviated to OpenTTD
+2019-11-29 22:40:02 <b_jonas> yeah
+2019-11-29 22:40:03 <ais523> I just didn't recognise the abbreviation you were using
+2019-11-29 22:40:45 <b_jonas> then there's the unpack template language in perl, which happens to be way more powerful thank it should be https://www.perlmonks.com/?node_id=1008395
+2019-11-29 22:41:00 <b_jonas> not turing-complete alone, but quite powerful
+2019-11-29 22:41:19 <ais523> let me guess, you overwrite the format string while it's being decoded using some sort of pointer unpack?
+2019-11-29 22:42:03 <b_jonas> no
+2019-11-29 22:42:21 <ais523> aww
+2019-11-29 22:42:23 <b_jonas> I don't think unpack can do that easily, it can only read from pointers, not write to it
+2019-11-29 22:42:24 <ais523> although that might /actually/ be TC
+2019-11-29 22:42:33 <ais523> (printf is TC for this reason)
+2019-11-29 22:42:37 <b_jonas> yeah, C printf
+2019-11-29 22:42:48 <ais523> although the arguments you have to give it are insanely undefined behaviour
+2019-11-29 22:43:50 <fizzie> Something I learned the other day: the 'l' and 'll' length modifiers are also applicable to %n, to convert the required argument from `int *` to `long *` or `long long *` respectively.
+2019-11-29 22:44:17 <fizzie> Someone over on ##c was complaining because their implementation's printf was unable to write more than INT_MAX characters of output.
+2019-11-29 22:44:49 <ais523> that could in theory be a problem that comes up in a sane program
+2019-11-29 22:44:56 <kmc> did you know that the XC8 compiler for PIC supports a "short long int" type?
+2019-11-29 22:45:17 <fizzie> glibc stops processing the format string and returns -1 with errno set to EOVERFLOW when the output exceeds INT_MAX.
+2019-11-29 22:45:23 <imode> kmc: wtf is short long?
+2019-11-29 22:45:23 <b_jonas> fun, https://codegolf.stackexchange.com/a/112163 is still the only perl answer to the game of life interpreter question, even though it wouldn't be hard to write a more straightforward golfier implementation
+2019-11-29 22:45:34 <kmc> imode: it's shorter than a long but longer than a short.
+2019-11-29 22:45:36 <ais523> files bigger than 2GB aren't ridiculous, and using a printf("…%s…") to output them wrapped in a header and footer is mildly ridiculous but not indefensible
+2019-11-29 22:45:39 <kmc> 24 bits
+2019-11-29 22:45:39 <imode> kmc: that is awesome.
+2019-11-29 22:45:43 <kmc> yeah
+2019-11-29 22:45:43 <fizzie> I think I remember a "short long" from somewhere.
+2019-11-29 22:45:49 <kmc> and actually useful on embedded
+2019-11-29 22:45:55 <fizzie> ais523: Yeah, the program in question was unreasonable, though.
+2019-11-29 22:46:07 <kmc> I wonder if avr-gcc has anything comparable
+2019-11-29 22:46:14 <ais523> I'd expect long short to be shorter than int, and short long to be longer
+2019-11-29 22:46:21 <b_jonas> ais523: yes, but these days, every C compiller has a long long type that's at least 64 bit long, and intmax_t must be at least that long
+2019-11-29 22:46:35 <ais523> fwiw, Algol 68 lets you write arbitrarily many long or short, but not to mix them
+2019-11-29 22:46:45 <kmc> seems it does have it, as __uint24
+2019-11-29 22:46:51 <ais523> (there's the equivalent of a preprocessor definition you can consult to discover how many repeats will actually do something useful)
+2019-11-29 22:47:20 <ais523> but any algol 68 impl should support long long long long long, even if it's just equivalent to long long
+2019-11-29 22:47:21 <b_jonas> ais523: the old borland C compiler that targets 16-bit x86_32 lets you write any number of long, and interprets it as just long. it's a nice way to get programs silently break if they try to use long long.
+2019-11-29 22:47:41 <kmc> `` echo 'long long long x;' | gcc -c -x c /dev/stdin
+2019-11-29 22:47:42 <HackEso> ​/dev/stdin:1:11: error: ‘long long long’ is too long for GCC
+2019-11-29 22:47:45 <b_jonas> and it implies that choosing "long long" as the name of that type was a bad idea, but it's too late to undo that now
+2019-11-29 22:48:08 <ais523> `` echo 'long short x;' | gcc -c -x c /dev/stdin
+2019-11-29 22:48:10 <HackEso> ​/dev/stdin:1:6: error: both ‘long’ and ‘short’ in declaration specifiers
+2019-11-29 22:48:21 <ais523> `` echo 'short short x;' | gcc -c -x c /dev/stdin
+2019-11-29 22:48:22 <HackEso> ​/dev/stdin:1:7: error: duplicate ‘short’
+2019-11-29 22:48:44 <ais523> hmm, IMO the error messages should have had consistent levels of humour
+2019-11-29 22:48:59 <kmc> `` gcc -c -x c <(echo 'long long long x;')  # seems like a nicer way actually
+2019-11-29 22:49:00 <HackEso> ​/dev/fd/63:1:11: error: ‘long long long’ is too long for GCC
+2019-11-29 22:49:11 <ais523> `! c long long long x;
+2019-11-29 22:49:12 <HackEso> Does not compile.
+2019-11-29 22:49:16 <kmc> I keep forgetting about <(...). it's pretty great
+2019-11-29 22:49:36 <fizzie> `cc long long long x;
+2019-11-29 22:49:37 <HackEso> ​<stdin>:1:11: error: ‘long long long’ is too long for GCC \ compilation terminated due to -Wfatal-errors.
+2019-11-29 22:49:41 <fizzie> `cbt cc
+2019-11-29 22:49:42 <HackEso> ​#!/bin/sh \ echo "$@" | sed 's/\\/\n/g' | gcc -w -Wfatal-errors -std=c11 -O2 -x c - -o /tmp/a.out && /tmp/a.out
+2019-11-29 22:49:43 <b_jonas> ``` gcc -Wall -O -o /hackenv/tmp/a.out -x c <<<$'int main(void) { signed unsigned x = {0}; return 0; }'
+2019-11-29 22:49:44 <HackEso> gcc: warning: '-x c' after last input file has no effect \ gcc: fatal error: no input files \ compilation terminated.
+2019-11-29 22:49:51 <b_jonas> ``` gcc -Wall -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { signed unsigned x = {0}; return 0; }'
+2019-11-29 22:49:52 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:25: error: both 'signed' and 'unsigned' in declaration specifiers \ <stdin>:1:34: warning: unused variable 'x' [-Wunused-variable]
+2019-11-29 22:49:58 <ais523> `` gcc -c -x c <<<'long long long x;'
+2019-11-29 22:49:58 <HackEso> gcc: warning: ‘-x c’ after last input file has no effect \ gcc: fatal error: no input files \ compilation terminated.
+2019-11-29 22:50:02 <kmc> what's <<<$
+2019-11-29 22:50:12 <b_jonas> how did gcc's color output disappear by the way?
+2019-11-29 22:50:13 <ais523> `` gcc -c -x c /dev/stdin <<<'long long long x;'
+2019-11-29 22:50:16 <b_jonas> ``` type -a gcc
+2019-11-29 22:50:17 <HackEso> ​/dev/stdin:1:11: error: ‘long long long’ is too long for GCC \  long long long x; \            ^~~~
+2019-11-29 22:50:19 <HackEso> gcc is /usr/bin/gcc
+2019-11-29 22:50:28 <b_jonas> hmm
+2019-11-29 22:50:32 <ais523> kmc: <<< pipes a literal into standard input
+2019-11-29 22:50:40 <b_jonas> ``` gcc -Wall -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { short char x = {0}; long char y = {0}; return 0; }'
+2019-11-29 22:50:41 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:24: error: both 'short' and 'char' in declaration specifiers \ <stdin>:1:43: error: both 'long' and 'char' in declaration specifiers \ <stdin>:1:48: warning: unused variable 'y' [-Wunused-variable] \ <stdin>:1:29: warning: unused variable 'x' [-Wunused-variable]
+2019-11-29 22:51:01 <b_jonas> ``` gcc -Wall -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { short float [[unused]] x = {0}; return 0; }'
+2019-11-29 22:51:03 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:24: error: both 'short' and 'float' in declaration specifiers \ <stdin>:1:30: error: expected identifier or '(' before '[' token
+2019-11-29 22:51:14 <b_jonas> ``` gcc -Wall -std=c11 -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { short float [[unused]] x = {0}; return 0; }'
+2019-11-29 22:51:16 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:24: error: both 'short' and 'float' in declaration specifiers \ <stdin>:1:30: error: expected identifier or '(' before '[' token
+2019-11-29 22:51:19 <ais523> I think $'' is some sort of escaped string
+2019-11-29 22:51:27 <kmc> `` gcc -c -x c <(echo 'short void x;;')
+2019-11-29 22:51:27 <b_jonas> what? why doesn't it allow an attribute there?
+2019-11-29 22:51:28 <HackEso> ​/dev/fd/63:1:7: error: both ‘short’ and ‘void’ in declaration specifiers
+2019-11-29 22:51:42 <b_jonas> ais523: yes, allows backslash escapes. useful because C needs newlines sometimes.
+2019-11-29 22:51:42 <kmc> b_jonas: does C11 support that attribute syntax?
+2019-11-29 22:51:49 <b_jonas> kmc: I think so
+2019-11-29 22:52:02 <ais523> I think it's a C++ism
+2019-11-29 22:52:05 <b_jonas> let me check
+2019-11-29 22:52:05 <fizzie> No, [[unused]] is C18.
+2019-11-29 22:52:19 <ais523> there's a C18?
+2019-11-29 22:52:29 <fizzie> Yes, there's a C18.
+2019-11-29 22:52:35 <b_jonas> ``` gcc -Wall -std=c18 -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { short float [[unused]] x = {0}; return 0; }'
+2019-11-29 22:52:35 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:24: error: both 'short' and 'float' in declaration specifiers \ <stdin>:1:30: error: expected identifier or '(' before '[' token
+2019-11-29 22:52:47 <fizzie> Was it even C18, or was it just in the latest C2x draft?
+2019-11-29 22:52:49 <ais523> is this a major release like C11 was? or is it more of a C92 (or was it C94?) type of thing?
+2019-11-29 22:52:50 <b_jonas> ``` gcc -Wall -std=c18 -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { [[unused]] short float x = {0}; return 0; }'
+2019-11-29 22:52:51 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:18: error: expected expression before '[' token \ <stdin>:1:20: error: 'unused' undeclared (first use in this function) \ <stdin>:1:20: note: each undeclared identifier is reported only once for each function it appears in
+2019-11-29 22:53:04 <b_jonas> ``` gcc -Wall -std=c18 -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { short float x [[unused]] = {0}; return 0; }'
+2019-11-29 22:53:05 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:24: error: both 'short' and 'float' in declaration specifiers \ <stdin>:1:33: error: expected expression before '[' token \ <stdin>:1:34: error: 'unused' undeclared (first use in this function) \ <stdin>:1:34: note: each undeclared identifier is reported only once for each function it appears in \ <stdin>:1:30: warning: unused variable 'x' [-Wunused-variable]
+2019-11-29 22:53:13 <b_jonas> ``` gcc -Wall -std=c18 -O -o /hackenv/tmp/a.out -x c - <<<$'int main(void) { volatile short float x = {0}; return 0; }'
+2019-11-29 22:53:14 <HackEso> ​<stdin>: In function 'main': \ <stdin>:1:33: error: both 'short' and 'float' in declaration specifiers \ <stdin>:1:39: warning: unused variable 'x' [-Wunused-variable]
+2019-11-29 22:53:36 <b_jonas> fizzie: seriously, how did the colors of gcc output disappear?
+2019-11-29 22:53:39 <fizzie> ais523: It's more of a bugfix-only release with no new features.
+2019-11-29 22:53:45 <fizzie> `` gcc -fdiagnostics-color=always -x c <<<'int eger = x;'
+2019-11-29 22:53:46 <HackEso> â€‹[01m[Kgcc:[m[K [01;35m[Kwarning: [m[Kâ€˜[01m[K-x c[m[Kâ€™ after last input file has no effect \ [01m[Kgcc:[m[K [01;31m[Kfatal error: [m[Kno input files \ compilation terminated.
+2019-11-29 22:53:47 <ais523> <Wikipedia> C18 addressed defects in C11 without introducing new language features.
+2019-11-29 22:53:56 <ais523> OK, that would explain why there's no big fanfare about it
+2019-11-29 22:54:01 <ais523> bugfix releases are good too, though
+2019-11-29 22:54:03 <b_jonas> fizzie: yes, but how come it doesn't do that by default now?
+2019-11-29 22:54:13 <fizzie> b_jonas: It's probably because I made stderr piped into the same cat as stdout.
+2019-11-29 22:54:17 <b_jonas> ah!
+2019-11-29 22:54:19 <b_jonas> that's great
+2019-11-29 22:54:20 <b_jonas> thanks
+2019-11-29 22:54:21 <fizzie> I assume previously it used isatty on 2.
+2019-11-29 22:54:48 <fizzie> Or, well, still does, but with a different result.
+2019-11-29 22:56:44 <fizzie> `` strace -e trace=ioctl gcc -x c <<<'int eger = x;'
+2019-11-29 22:56:45 <HackEso> ioctl(2, TCGETS, 0x7fbff589e0)          = -1 ENOTTY (Inappropriate ioctl for device) \ ioctl(2, TCGETS, 0x7fbff58a00)          = -1 ENOTTY (Inappropriate ioctl for device) \ gcc: warning: ‘-x c’ after last input file has no effect \ gcc: fatal error: no input files \ compilation terminated. \ +++ exited with 1 +++
+2019-11-29 22:57:27 <ais523> I was idly wondering how isatty worked, then noticed fstat in the see also on the man page, so I was guessing it statted the file descriptor and looked at the device numbers
+2019-11-29 22:57:46 <fizzie> It does a tcgetattr() != -1.
+2019-11-29 22:57:55 <ais523> `` strace -e trace=fstat gcc -x c
+2019-11-29 22:57:56 <HackEso> fstat(3, {st_mode=S_IFREG|0644, st_size=1579448, ...}) = 0 \ fstat(3, {st_mode=S_IFREG|0755, st_size=1824496, ...}) = 0 \ fstat(3, {st_mode=S_IFREG|0644, st_size=3040656, ...}) = 0 \ gcc: warning: ‘-x c’ after last input file has no effect \ gcc: fatal error: no input files \ compilation terminated. \ +++ exited with 1 +++
+2019-11-29 22:58:27 <fizzie> (And tcgetattr devolves to ioctl.)
+2019-11-29 22:58:51 <ais523> that seems broken, mightn't some other device use the same ioctl number?
+2019-11-29 22:59:06 <b_jonas> ais523: there are several ioctls that work only on terminals, and yes, the one that implements tcgetattr is among them
+2019-11-29 22:59:20 <b_jonas> ais523: that won't happen on Linux
+2019-11-29 22:59:25 <fizzie> I only know how it works because I was trying to figure out if there was a way to fake it that wouldn't involve running a cat process.
+2019-11-29 22:59:28 <ais523> <man ioctl> The second argument is a device-dependent request code.
+2019-11-29 22:59:29 <b_jonas> and glibc can rely on linux-internal stuff like that
+2019-11-29 22:59:48 <b_jonas> ais523: glibc. this doesn't need to be portable to all systems.
+2019-11-29 22:59:55 <b_jonas> if it works on linux and hurd it's enough
