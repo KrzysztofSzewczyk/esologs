@@ -130,3 +130,32 @@
 2019-11-30 03:10:17 Quit: atslash (Quit: This computer has gone to sleep)
 2019-11-30 03:10:17 Names: ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
 2019-11-30 03:27:12 <zzo38> shachaf: In a .c file, including any file
+2019-11-30 03:42:54 <oerjan> eep something's wrong with yafgc
+2019-11-30 03:44:32 User Name: imode = imode!~linear@unaffiliated/imode
+2019-11-30 03:44:32 <imode> it seems like it's been wiped from the face of the internet...
+2019-11-30 03:45:25 <kingoffrance> zzo38, common enough people write "header guards" to prevent errors that might occur from multiple definitions of something
+2019-11-30 03:46:14 <imode> zzo38: it may be useful to include a header multiple times based on a conditional definition and subsequent inclusion.
+2019-11-30 03:46:51 <kingoffrance> or gcc IIRC has #include_next  i guess, inspired from next/apple gcc objective-c feature IIRC;     yeah, basically it can be done on purpose, or headers are typically guarded to protect against it
+2019-11-30 03:47:18 <imode> i.e "I define flag A, include header A, which includes code snippet A because flag A is defined, then I undefine flag A, then I define flag B, then include header A again, which has snippet B.." etc.
+2019-11-30 03:47:35 <kingoffrance> people doing more-than-basic macro stuff it might be more common
+2019-11-30 03:48:20 <kingoffrance> someone like me, you might split all functions into separate .c,  and then just have a single "all.c" or similar that pulls in the others
+2019-11-30 03:48:37 <kingoffrance> but i dont really see that done,  command lines typically have wildcards:   gcc *.c   -o foo
+2019-11-30 03:48:59 <imode> yeah including .c files I don't see very often.
+2019-11-30 03:49:09 <kingoffrance> sometimes people do one giant "all.h" that pulls in all the other, so that is somewhat common i think if people get fed up of order to include things in
+2019-11-30 03:49:37 <kingoffrance> i think plan9  kind of did that too, don't recall
+2019-11-30 03:49:41 <kingoffrance> (never used it)
+2019-11-30 03:50:15 <imode> I do that with a lot of projects.
+2019-11-30 03:50:19 <kingoffrance> or "windows.h" from what i have heard is somewhat of that nature,  so much so that there is a WIN32_LEAN_AND_MEAN something or other to only include portions
+2019-11-30 03:50:27 <imode> not named "all.h" but usually "<project>.h"
+2019-11-30 03:50:32 <kmc> xmacros!
+2019-11-30 03:51:02 <fizzie> SQLite does that 'amalgamation' build, though not through the preprocessor.
+2019-11-30 03:52:36 <fizzie> I tend to use xmacros without multi-file setups. It's just #define DATA X(a) X(b) ... X(z) #define X(x) ... DATA #undef X #define X(x) ... DATA #undef X.
+2019-11-30 03:52:54 <kingoffrance> well, i strayed a bit, but generally i guess includes are annoying enough on their own sometimes, i dont see much "include multiple times magic"
+2019-11-30 03:53:15 <kingoffrance> esoteric or obfuscated stuff however, might be a whole nother story
+2019-11-30 03:54:21 <kingoffrance> the only time i suppose that has ever came up with me, is circular definitions e.g. structs that refer to eachother;  i believe with header guards that is not a problem, they can "include" eachother;  "forward declaration" i believe is the term
+2019-11-30 03:54:37 <imode> if you want horrific preprocessor abuse, the Mode-to-C translator is just translating Mode instructions to C preprocessor tokens, which get expanded inline.
+2019-11-30 03:55:04 <imode> very much like generating C from brainfuck.
+2019-11-30 03:55:15 <fizzie> The sort of things that a C++ author would use templates for sometimes do get done using a "template" included with different macros in place. But since the original question was "how common", it's probably fair enough to say "not common at all".
+2019-11-30 03:56:45 <kmc> fizzie: wait, how does the single-file solution work?
+2019-11-30 03:57:25 <kingoffrance> there are lots of (especially pre-posix probably) code with #defines   that basically include things in a specific order, for some OS,   so sometimes they have a comment /* ok to include twice, needed for X */    or /* ancient OS does not like this being included twice */   but that again, is more working around vendor headers, than deliberately including something some number of times
+2019-11-30 03:59:18 <kingoffrance> and the opposite case is probably more likely:  os A foo.h includes bar.h   so programmer knows this and only includes foo.h,   then this breaks when they compile somewhere that isnt true;    so they wanted something included once and got zero times instead
