@@ -92,3 +92,21 @@
 2019-11-30 01:58:50 <HackEso> brl \ cmds \ just \ paste \ pastequotes \ pastewisdom \ wl \ wrl
 2019-11-30 01:59:12 <int-e> `cbt wl
 2019-11-30 01:59:13 <HackEso> ​#!/usr/bin/env python \  \ import os \ import sys \ import json \ import urllib2 \  \ proxy_handler = urllib2.ProxyHandler({'http': os.environ['http_proxy']}) \ opener = urllib2.build_opener(proxy_handler) \ urllib2.install_opener(opener) \  \ def lose(): \     print 'You get NOTHING! You LOSE! Good DAY sir!' \     sys.exit() \  \ def eels(): \     print 'My hovercraft is full of eels.' \     sys.exit() \  \ if len(sys.argv) > 2: \     arg
+2019-11-30 02:01:03 <int-e> nitia is responsible for so many weird things
+2019-11-30 02:02:20 <zzo38> Now I added a UNPACK program and PROJECT batch file into ZZ Zero, for more easily project management (and so that you do not have to use the undocumented F1 ^C feature in GAME to do this).
+2019-11-30 02:02:49 <oerjan> fizzie: ah you copied grwp. i'm not sure grbp needs all the features to recursive without noise, but it probably doesn't harm.
+2019-11-30 02:02:56 <oerjan> *recurse
+2019-11-30 02:04:51 <oerjan> actually dotglob might be good. do we have any such?
+2019-11-30 02:05:21 <oerjan> `u ` cd bin; ls -a -d .*
+2019-11-30 02:05:22 <HackEso> u? No such file or directory
+2019-11-30 02:05:27 <oerjan> `t ` cd bin; ls -a -d .*
+2019-11-30 02:05:28 <HackEso> ​. \ ..
+2019-11-30 02:05:31 <oerjan> nope
+2019-11-30 02:06:12 <zzo38> (Also, DEFAULT.ASM is now available without having to unpack EXAMPLE.ZZ0.)
+2019-11-30 02:06:23 <fizzie> Yes. Although in retrospect I guess all these grwp/grbp cwt/cbt hurl/hwrl/hbrl should all be generalized into gr?p c?t h?rl respectively, which would all take as first argument the directory they're relative to, and the rest implemented on top of those.
+2019-11-30 02:07:16 <oerjan> `? mad
+2019-11-30 02:07:17 <HackEso> This wisdom entry was censored for being too accurate.
+2019-11-30 02:12:14 <oerjan> `slwd locale//s,on.*le,one true locale,
+2019-11-30 02:12:16 <HackEso> locale//Locales are just frames, which are just complete Heyting algebras. Taneb accidentally invented them by asking about lattices. The one true locale in #esoteric is en_NZ.UTF-8.
+2019-11-30 02:12:42 <oerjan> maybe it needs capitalization
+2019-11-30 02:27:10 <oerjan> lieutenant lefevre, you might reconsider how you give compliments...
