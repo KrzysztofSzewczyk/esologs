@@ -166,3 +166,13 @@
 2019-11-30 04:16:43 <fizzie> Maybe better for a moderate amount of items. For very many, the separate file is probably more readable.
 2019-11-30 04:27:06 <shachaf> Header guards might be scow.
 2019-11-30 04:28:15 <shachaf> Anyway, putting all your code in one translation unit is where it's at.
+2019-11-30 04:31:40 <zzo38> Often I do use a single file for a program, although sometimes separate files are helpful for various purposes, whether they are all included into one file or compiled separately, both ways are useful for different purposes.
+2019-11-30 04:43:28 <kingoffrance> actually univ. of utah "cmi" cross-module inliner basically did that "put all code in one translation unit"   theory was it could inline and eliminate <things not actually used> so youd get a smaller, more efficient binary;  it was compiler-independent, but written in haskell IIRC ghc old version so might be a pain to get running nowadays (and now gcc and clang and intel c at least, all have some type of "Link-Time Optimization" a
+2019-11-30 04:43:28 <kingoffrance> nd profiler-based optimizations too, etc.)
+2019-11-30 04:44:35 <kingoffrance> it was part of a larger oskit project IIRC, that is basically not maintained to my knowledge,  that added various things to C like "module" system of some sort
+2019-11-30 04:46:40 <kingoffrance> (but not preprocessor independent; iirc youd preprocess your files, then it would "merge" them into one giant thing, with things appearing in the order it thought best, and youd compile that)
+2019-11-30 04:47:29 <kingoffrance> (IIRC it had to deal with whatever junk various preprocessors would insert for some compiler, that were perhaps non-standard)
+2019-11-30 04:47:45 <kingoffrance> (or system headers that are non-standard for some specific compiler, etc.)
+2019-11-30 04:48:44 <kingoffrance> (so itself IIRC was compiler-independent, but headers and preprocessors are not necessarily so)
+2019-11-30 04:49:57 <kingoffrance> (it might still be useful if you use old gcc versions perhaps)
+2019-11-30 04:54:24 <kmc> fizzie: ah, i see
