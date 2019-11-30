@@ -847,3 +847,182 @@
 2019-11-29 23:29:43 <bfbot> `bfbotquine
 2019-11-29 23:29:44 <HackEso> bfbotquine? No such file or directory
 2019-11-29 23:29:49 Names: ^[, @ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, @fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 23:30:17 <b_jonas> ``` set -e; f=/hackenv/bin/bfbotquine; rm -f "$f"
+2019-11-29 23:30:17 <ais523> ^ul ((=echo ^ul )SaS(:^)S):^
+2019-11-29 23:30:17 <fungot> =echo ^ul ((=echo ^ul )SaS(:^)S):^
+2019-11-29 23:30:17 <bfbot> ^ul ((=echo ^ul )SaS(:^)S):^
+2019-11-29 23:30:19 <HackEso> No output.
+2019-11-29 23:30:23 <b_jonas> ``` set -e; f=/hackenv/bin/bfbotquine; rm -vf "$f"
+2019-11-29 23:30:24 <HackEso> No output.
+2019-11-29 23:30:34 <ais523> hmm, fungot is ignoring bfbot
+2019-11-29 23:30:34 <fungot> ais523: i just happens that matthew needs to bump the version when he's changing the core. but i guess it's kind of " industry standard"
+2019-11-29 23:30:40 <b_jonas> =def 1hackesoquin
+2019-11-29 23:30:40 <bfbot> ok, defined 'hackesoquin'
+2019-11-29 23:30:41 <fizzie> ais523: Yeah, manually.
+2019-11-29 23:31:02 <ais523> `! underload (test)S
+2019-11-29 23:31:02 <HackEso> test
+2019-11-29 23:31:18 <ais523> `! underload ((=echo `! underload )SaS(:^)S):^
+2019-11-29 23:31:19 <HackEso> ​=echo `! underload ((=echo `! underload )SaS(:^)S):^
+2019-11-29 23:31:32 <ais523> `! underload ((t:=echo `! underload )SaS(:^)S):^
+2019-11-29 23:31:32 <bfbot> `! underload )SaS(:^)S):^
+2019-11-29 23:31:33 <HackEso> t:=echo `! underload ((t:=echo `! underload )SaS(:^)S):^
+2019-11-29 23:31:33 <bfbot> `! underload )SaS(:^)S):^
+2019-11-29 23:31:34 <HackEso> Error: Unmatched )
+2019-11-29 23:31:34 <HackEso> Error: Unmatched )
+2019-11-29 23:31:42 <fizzie> But I assume a bfbot/HackEso loop just needs HackEso to output "whatever :=foo" on `bar, and bfbot output "`bar" on =foo.
+2019-11-29 23:31:42 <bfbot> But I assume a bfbot/HackEso loop just needs HackEso to output "whatever :No such command. Try =help.
+2019-11-29 23:32:07 <b_jonas> ``` set -e; f=/hackenv/bin/STOP; >$f echo $'#!/bin/sh\nrm -vf /hackenv/bin/bfbotquine'; chmod -c a+x "$f"
+2019-11-29 23:32:11 <HackEso> mode of '/hackenv/bin/STOP' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2019-11-29 23:32:30 <ais523> a:=echo 1 :=echo 2
+2019-11-29 23:32:30 <bfbot> :a:=echo 1 2
+2019-11-29 23:32:37 <b_jonas> ``` set -e; f=/hackenv/bin/bfbotquine; >$f echo $'#!/bin/sh\necho hello, world'; chmod -c a+x "$f"
+2019-11-29 23:32:39 <HackEso> mode of '/hackenv/bin/bfbotquine' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2019-11-29 23:32:40 <b_jonas> `bfbotquine
+2019-11-29 23:32:41 <HackEso> hello, world
+2019-11-29 23:32:43 <b_jonas> `STOP
+2019-11-29 23:32:44 <ais523> huh, if there are multiple :=s in a line, bfbot runs the /last/
+2019-11-29 23:32:45 <HackEso> removed '/hackenv/bin/bfbotquine'
+2019-11-29 23:32:46 <b_jonas> `bfbotquine
+2019-11-29 23:32:47 <HackEso> bfbotquine? No such file or directory
+2019-11-29 23:33:03 <ais523> `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:04 <HackEso> t:=echo `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:04 <bfbot> `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:05 <HackEso> t:=echo `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:05 <bfbot> `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:06 <HackEso> t:=echo `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:06 <bfbot> `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:07 <HackEso> t:=echo `! underload ((t:)S(=echo `! underload )SaS(:^)S):^
+2019-11-29 23:33:13 <b_jonas> guys, if this becomes a loop and I am not disconnected, please run this: =def 1hackesoquine
+2019-11-29 23:33:16 <moony> :o
+2019-11-29 23:33:16 <b_jonas> guys, if this becomes a loop and I am not disconnected, please run this: `STOP
+2019-11-29 23:33:34 <ais523> +q best mode for breaking loops
+2019-11-29 23:33:37 <b_jonas> ``` set -e; f=/hackenv/bin/bfbotquine; >$f echo $'#!/bin/sh\necho ":=hackesoquine"'; chmod -c a+x "$f"
+2019-11-29 23:33:37 <bfbot> No such command. Try =help.
+2019-11-29 23:33:39 <HackEso> mode of '/hackenv/bin/bfbotquine' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2019-11-29 23:33:40 <ais523> (I guess +m would also work)
+2019-11-29 23:33:48 <b_jonas> =hackesoquine
+2019-11-29 23:33:49 <bfbot> `bfbotquine
+2019-11-29 23:33:49 <HackEso> ​:=hackesoquine
+2019-11-29 23:33:49 <bfbot> `bfbotquine
+2019-11-29 23:33:50 <HackEso> ​:=hackesoquine
+2019-11-29 23:33:50 <bfbot> `bfbotquine
+2019-11-29 23:33:51 <fizzie> ais523: I think you beat me by some milliseconds.
+2019-11-29 23:33:51 <HackEso> ​:=hackesoquine
+2019-11-29 23:33:51 <bfbot> `bfbotquine
+2019-11-29 23:33:51 <b_jonas> `STOP
+2019-11-29 23:33:52 <HackEso> ​:=hackesoquine
+2019-11-29 23:33:52 <bfbot> `bfbotquine
+2019-11-29 23:33:54 <HackEso> ​:=hackesoquine
+2019-11-29 23:33:55 <HackEso> removed '/hackenv/bin/bfbotquine'
+2019-11-29 23:34:02 <b_jonas> =def 1hackesoquine
+2019-11-29 23:34:02 <bfbot> ok, defined 'hackesoquine'
+2019-11-29 23:34:10 <b_jonas> =hackesoquine
+2019-11-29 23:34:10 <bfbot> A
+2019-11-29 23:34:13 <b_jonas> `bfbotquine
+2019-11-29 23:34:14 <HackEso> bfbotquine? No such file or directory
+2019-11-29 23:34:16 <ais523> fizzie: out of interest, what was your preferred loop-breaking method?
+2019-11-29 23:34:17 <b_jonas> ok good
+2019-11-29 23:34:31 <fizzie> ais523: I had /mode #esoteric +q bfbot!*@* waiting on the input line as well.
+2019-11-29 23:34:33 <int-e> Oh, HackEso does not ignore bfbot?
+2019-11-29 23:34:54 <fizzie> int-e: HackEso doesn't generally ignore known bots.
+2019-11-29 23:34:56 <b_jonas> kspalaiologos: can you please modify your bot?
+2019-11-29 23:35:11 <b_jonas> kspalaiologos: triggering on := anywhere in the irc line seems like a bad idea
+2019-11-29 23:35:11 <bfbot> kspalaiologos: triggering on :No such command. Try =help.
+2019-11-29 23:35:11 <ais523> right, I could have broken the loop earlier, but wanted to make sure it was a true loop first
+2019-11-29 23:35:19 <ais523> (isn't there some code in lambdabot that tends to stop loops after four iterations?)
+2019-11-29 23:35:23 <int-e> fizzie: Hmm.
+2019-11-29 23:35:33 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, @fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 23:35:43 <int-e> ais523: Not that I know of. But it should be ignoring bfbot.
+2019-11-29 23:35:51 <b_jonas> ais523: fungto has such a code
+2019-11-29 23:36:00 <fizzie> int-e: The "add a zero-width space in front of non-alphanumeric messages" feature stops most loops, it's just that bfbot's "parse a command in the middle of the output" defeats that.
+2019-11-29 23:36:13 <int-e> ah.
+2019-11-29 23:36:38 <ais523> admittedly, the most surprising thing about that loop was that `! underload actually works
+2019-11-29 23:36:59 <fizzie> That said, there is an ignore list, currently ['Lymia', 'Lymee', 'Madoka-Kaname'] which is... just a little out of date.
+2019-11-29 23:37:26 <int-e> I don't even recall any Madoka-Kaname
+2019-11-29 23:37:48 <b_jonas> ais523: I know that a loop that involves some quining technique is cooler, but I deliberately used a user-defined command in both bots to make it easier to break the loop on either end
+2019-11-29 23:37:52 <fizzie> =echo `foo
+2019-11-29 23:37:53 <bfbot> `foo
+2019-11-29 23:37:53 <HackEso> Mmmmm... no.
+2019-11-29 23:38:01 <ais523> it's probably best to put bfbot on HackEgo's ignore list, BF isn't the most robust language to write loop-proof bots in
+2019-11-29 23:38:19 <ais523> bfbot: well, quines are pretty much trivial to write in Underload so it's my usual choice for botloops
+2019-11-29 23:38:19 <b_jonas> ais523: I don't think it's written in bf
+2019-11-29 23:38:27 <ais523> b_jonas: bfbot?
+2019-11-29 23:38:28 <ais523> I do
+2019-11-29 23:38:30 <b_jonas> yes
+2019-11-29 23:38:33 <b_jonas> really?
+2019-11-29 23:38:41 <ais523> just look at who wrote it
+2019-11-29 23:38:43 <b_jonas> I thought it's called bfbot because it interprets bf
+2019-11-29 23:38:54 <fizzie> I think they mentioned it being written in bash? Not sure I paid enough attention.
+2019-11-29 23:39:10 <ais523> oh, boring
+2019-11-29 23:39:22 <ais523> based on what it does, it definitely could be written in bf
+2019-11-29 23:39:44 <ais523> =def 1$(hostname)
+2019-11-29 23:39:44 <bfbot> Error: Name can contain only lowercase letters and digits.
+2019-11-29 23:39:45 <b_jonas> ais523: kspalaiologos wrote it because fungot's bf interpreter timed out too quickly. if he wrote it in bf, then he would have to use a bf interpreter in bf, which is rather slow, so that would mostly defeat the purpose
+2019-11-29 23:39:45 <fungot> b_jonas: the problem with object-orientation is that it's standard, you have
+2019-11-29 23:40:05 <ais523> b_jonas: oh, because BF doesn't self-compose well due to only having one tape
+2019-11-29 23:40:13 <fizzie> <kspalaiologos> Bfbot is written in Seed :)
+2019-11-29 23:40:20 <imode> seed?
+2019-11-29 23:40:37 <fizzie> If that's our Seed, it's probably a joke.
+2019-11-29 23:40:39 <ais523> imode: it's a language which interprets the output of a random number generator as Befunge
+2019-11-29 23:40:53 <ais523> the program is just the random number generator seed
+2019-11-29 23:40:58 <imode> oh.
+2019-11-29 23:41:14 <ais523> but the RNG it's using is the Mersenne Twister which is not cryptosecure, so you basically just need a preimage algorithm
+2019-11-29 23:41:16 <b_jonas> kspalaiologos mentioned something about some program written by someone other than him in bash to blame for for why it swallows backslashes in the output
+2019-11-29 23:41:32 <fizzie> http://esolangs.org/logs/2019-11-22.html#lbe is where I got the bash from.
+2019-11-29 23:41:33 <b_jonas> maybe "Seed" is the name of more than one thing?
+2019-11-29 23:41:37 <ais523> thutubot used a bash wrapper to actually do the connection of the bot to IRC
+2019-11-29 23:41:58 <fizzie> Yes, more than one language might be involved.
+2019-11-29 23:42:01 <ais523> anyway, kspalaiologos almost certainly has a befunge → seed compiler
+2019-11-29 23:42:25 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 23:42:27 <fizzie> Whoops, forgot.
+2019-11-29 23:42:49 <fizzie> shachaf: Incidentally, I switched umlbox to use a protobuf for the configuration, because, you know, protos.
+2019-11-29 23:42:50 <ais523> and befunge-98 is a fairly efficient language to write a bf interpreter in (but befunge-93 would have issues producing an unbounded tape)
+2019-11-29 23:43:10 <b_jonas> ais523: I know of at least two bots that interpret the same language as the bot is written in: NotJack's ijx was a bot written in J that interprets J, and the buubot3 instance called perlbot is written in perl and interprets perl (plus a bit more)
+2019-11-29 23:43:41 <fizzie> Yes, in retrospect I probably should've just bumped up the cycle limit of the fungot ^bf interpreter. It's just I don't tend to edit fungot much.
+2019-11-29 23:43:41 <fungot> fizzie: i normally use define-macro...) value) ( ' red t) ( h h))
+2019-11-29 23:43:45 <ais523> b_jonas: the problem with that is mostly sandboxing, isn't it?
+2019-11-29 23:43:54 <b_jonas> ais523: with which one?
+2019-11-29 23:44:02 <ais523> self-hosting languagebots
+2019-11-29 23:44:09 <b_jonas> yeah
+2019-11-29 23:44:40 <fizzie> There's an entirely unsandboxed Funge-98 interpretation command in fungot. I've tried to use it for hot-patching once or twice.
+2019-11-29 23:44:40 <fungot> fizzie: no it is
+2019-11-29 23:44:52 <b_jonas> buubot3 uses just a couple of old unix tricks, like running under a different user and setrlimit to not allow to open any file and such things to make a sandbox that works decently but is very limiting
+2019-11-29 23:44:55 <fizzie> It's just much easier to hot-break than hot-fix things.
+2019-11-29 23:45:45 <ais523> fizzie: I'm not sure it's a /bot/ interpreter, though; presumably the Funge-98 output commands output to the hosting server's stdout rather than to the IRC channel
+2019-11-29 23:46:05 <b_jonas> I don't know what ijx used, but it probably involved the J interpreter's secure mode, which disables all the builtins that do IO or system access or foreign calls, except for 11!: which calls a custom callback of the program in which the interpreter is embedded to
+2019-11-29 23:46:46 <b_jonas> that's not a perfect sandbox because the J interpreter had a few bugs at that time that let you do memory corruption, but it was good enough
+2019-11-29 23:46:48 <fizzie> ais523: Yes, although of course you can write to the IRC socket as well. But it's true that it's not what you would expect if it was intended as an interpreter.
+2019-11-29 23:48:00 <b_jonas> ais523: anyway, buubot3 originally interpreted like seven different languages, and the part that interprets perl wasn't special at all, it was implemented almost the same as invoking the other interpreters
+2019-11-29 23:48:05 <b_jonas> the interpreter is always a separate process
+2019-11-29 23:48:17 <b_jonas> it's just that perlbot threw out all the other interpreters for some reason
+2019-11-29 23:48:20 <b_jonas> so it only runs perl
+2019-11-29 23:48:39 <fizzie> http://ix.io/239r is the total list of times I've used it on channel.
+2019-11-29 23:48:41 <ais523> hmm, a wasmbot would probably be pretty good at self-hosting
+2019-11-29 23:48:46 <fizzie> No idea if those actually did the right thing.
+2019-11-29 23:48:58 <b_jonas> the original buubot3 could actually interprete J, and the command to interpret J was "jeval", which is why I renamed my jevalbot instance from jeval to evalj
+2019-11-29 23:49:05 <b_jonas> "jeval:" used to trigger two bots
+2019-11-29 23:49:06 <ais523> idea: a self-modifying esolang with version control
+2019-11-29 23:49:15 <b_jonas> ais523: see Wikiplia
+2019-11-29 23:49:26 <b_jonas> it isn't truly self-modifying
+2019-11-29 23:49:44 <b_jonas> but it has a version control, and there's a self-modifying compiler implemented over it
+2019-11-29 23:49:53 <ais523> I meant self-modifying in the sense of programs modifying themselves, not in the Snowflake sense
+2019-11-29 23:49:56 <b_jonas> a compiler that compiles a slightly higher level to Wikiplia
+2019-11-29 23:50:08 <b_jonas> hmm
+2019-11-29 23:51:41 <fizzie> Apparently   0ad00f-gU0": ciretose# GSMVIRP"AAN51p08P0851g21gW$   prints out the current reply counter (thing it uses to stop replying consecutively), and   0ad10f-G0": ciretose# GSMVIRP"AAN51p08P0851g21gW$   the nickname of whoever spoke to it last.
+2019-11-29 23:51:46 <ais523> actually, some of the uncomputable time-travel esolangs are in effect like this, so maybe you could start with one of those as a base and add a causality restriction to bring them down to TCness
+2019-11-29 23:52:03 <ais523> but it's more interesting if the ability to undo, rewind, etc. is somehow needed for TCness
+2019-11-29 23:52:54 Quit: imode (Ping timeout: 265 seconds)
+2019-11-29 23:52:54 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 23:53:07 <b_jonas> there is https://esolangs.org/wiki/Legit whose source format is a git repository
+2019-11-29 23:54:39 <ais523> right, but the content of the repository is irrelevant, the program is stored in the metadata (which isn't itself versioned)
+2019-11-29 23:55:22 Quit: ais523 (Quit: quit)
+2019-11-29 23:55:22 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-29 23:55:45 <b_jonas> ais523: prolog then, since you can undo unifications?
+2019-11-29 23:55:56 <b_jonas> though it's still TC without failing
+2019-11-29 23:56:25 <fizzie> To call back to an earlier fork in the conversation, the attributes proposal (N2335) had been merged into the June 2019 working draft of C2x (N2385), together with a few standard attributes: deprecated (N2334), maybe_unused (N2770) and nodiscard (N2267).
+2019-11-29 23:56:36 <b_jonas> "maybe_unused" ah
+2019-11-29 23:56:39 <b_jonas> thanks
+2019-11-29 23:57:24 <fizzie> I don't think there's any level of -std=c2x support on the GCC version on HackEso though.
+2019-11-29 23:57:38 <fizzie> `gcc --version
+2019-11-29 23:57:39 <HackEso> gcc (Debian 8.3.0-6) 8.3.0 \ Copyright (C) 2018 Free Software Foundation, Inc. \ This is free software; see the source for copying conditions.  There is NO \ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+2019-11-29 23:57:45 <fizzie> Yeah, I think it's 9 only.
