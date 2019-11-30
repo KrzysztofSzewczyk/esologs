@@ -57,3 +57,38 @@
 2019-11-30 01:28:23 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
 2019-11-30 01:28:23 <oerjan> <int-e> oerjan wins again <-- wins what
 2019-11-30 01:29:10 * oerjan swats interruptinuse for tabexpansioninuse -----###
+2019-11-30 01:34:27 <fizzie> Hm. "Writing to /dev/random or /dev/urandom will update the entropy pool with the data written, but this will not result in a higher entropy count. This means that it will impact the contents read from both files, but it will not make reads from /dev/random faster."
+2019-11-30 01:34:54 <fizzie> I was hoping I could've fixed the HackEso lack of entropy by making init write a bunch of random bytes from the host into /dev/random.
+2019-11-30 01:36:24 <int-e> oerjan: you predicted a Sturmhalten reference
+2019-11-30 01:37:01 <fizzie> Hm, apparently you can, it just needs to be done using ioctl RNDADDENTROPY instead of just writing.
+2019-11-30 01:38:03 <oerjan> int-e: oh right
+2019-11-30 01:38:41 <oerjan> i made a new prediction, with some hedging. we'll see...
+2019-11-30 01:38:48 <oerjan> and less evidence
+2019-11-30 01:39:38 Joined: Sgeo
+2019-11-30 01:40:48 <oerjan> a third, even more nefarious option would be if trogulus didn't mean the submarine to get away at all
+2019-11-30 01:41:20 * oerjan deteriorating grammar
+2019-11-30 01:41:34 <oerjan> *intend works, i guess
+2019-11-30 01:41:46 <oerjan> and perhaps mean still does
+2019-11-30 01:42:23 <oerjan> `? baba
+2019-11-30 01:42:25 <HackEso> BABA IS ¯\(°​_o)/¯
+2019-11-30 01:42:36 <oerjan> i knew we had one for that
+2019-11-30 01:42:37 Quit: Sgeo (Ping timeout: 240 seconds)
+2019-11-30 01:46:39 <oerjan> `cbt paste
+2019-11-30 01:46:39 <HackEso> ​#!/bin/bash \ if [ "$1" ] && url "$1" 2>/dev/null # Save making a file when it already exists. \ then \     true \ else \     PASTENUM="$RANDOM" \  \     mkdir -p $HACKENV/tmp/paste \  \     url $HACKENV/tmp/paste/paste."$PASTENUM" \     cat -- "${1--}" > $HACKENV/tmp/paste/paste."$PASTENUM" \ fi
+2019-11-30 01:50:11 <oerjan> `brl paste
+2019-11-30 01:50:15 <HackEso> https://hack.esolangs.org/repo/file/tip/bin/paste
+2019-11-30 01:51:53 <int-e> brl, what's next? blog?
+2019-11-30 01:53:05 <oerjan> `whatis log
+2019-11-30 01:53:07 <HackEso> log(3) - natural logarithmic function \ log(3p) - natural logarithm function \ log(1hackeso) - no description \ log(3glibc) - Exponents and Logarithms
+2019-11-30 01:53:16 <oerjan> `cbt log
+2019-11-30 01:53:17 <HackEso> ​#!/bin/sh \ cd /var/irclogs/_esoteric \ if [ "$1" ]; then \     grep -P -i -- "$1" ????-??-??.txt | shuf -n 1 \ else \     file=$(shuf -en 1 ????-??-??.txt) \     echo "$file:$(shuf -n 1 $file)" \ fi
+2019-11-30 01:53:30 <oerjan> a bit expired
+2019-11-30 01:56:50 <fizzie> `` grbp -l var/irclogs
+2019-11-30 01:56:51 <HackEso> anonlog \ bseen \ gaseen \ log \ pastelog \ pastelogs \ pastlog \ randomanonlog \ seen
+2019-11-30 01:57:02 <oerjan> i realized a bit duplication between `just and `paste but with only those two it's probably a bit much to generalize
+2019-11-30 01:58:15 <oerjan> `` grbp -l url # just what i needed
+2019-11-30 01:58:16 <HackEso> brl \ cmds \ edit \ emmental \ hurl \ hwrl \ just \ multicode \ paste \ pastequotes \ pastewisdom \ raw-url \ sprunge \ tclkit \ translatefromto \ url \ wiki \ wl \ wrl
+2019-11-30 01:58:49 <oerjan> `` grbp -l '\<url\>' # just what i needed
+2019-11-30 01:58:50 <HackEso> brl \ cmds \ just \ paste \ pastequotes \ pastewisdom \ wl \ wrl
+2019-11-30 01:59:12 <int-e> `cbt wl
+2019-11-30 01:59:13 <HackEso> ​#!/usr/bin/env python \  \ import os \ import sys \ import json \ import urllib2 \  \ proxy_handler = urllib2.ProxyHandler({'http': os.environ['http_proxy']}) \ opener = urllib2.build_opener(proxy_handler) \ urllib2.install_opener(opener) \  \ def lose(): \     print 'You get NOTHING! You LOSE! Good DAY sir!' \     sys.exit() \  \ def eels(): \     print 'My hovercraft is full of eels.' \     sys.exit() \  \ if len(sys.argv) > 2: \     arg
