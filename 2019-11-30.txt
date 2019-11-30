@@ -178,3 +178,38 @@
 2019-11-30 04:54:24 <kmc> fizzie: ah, i see
 2019-11-30 05:09:16 Quit: FreeFull
 2019-11-30 05:09:16 Names: ^[, aji, aloril, APic, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-30 06:34:34 <kmc> the most sponsored Unicode characters are UNICORN FACE (11 sponsors), followed by THINKING FACE and SUSHI (7 sponsors each), followed by ROCKET, UPSIDE-DOWN FACE, and EXTRATERRESTRIAL ALIEN (5 each)
+2019-11-30 06:35:09 <kmc> should i sponsor another character, and which one
+2019-11-30 06:36:15 <kmc> looks like you can't sponsor non-printable characters :(
+2019-11-30 06:37:20 <zzo38> Why isn't it allowed to sponsor non-printable characters?
+2019-11-30 06:39:24 <kmc> "REPLACEMENT CHARACTER" was sponsored by "I â™¥ UTF-8"
+2019-11-30 06:39:44 <kmc> zzo38: I don't know, perhaps because it's not clear what they would show on the website or print on the certificate they mail to you
+2019-11-30 06:40:33 <oerjan> `grWp invisible
+2019-11-30 06:40:34 <HackEso> No output.
+2019-11-30 06:41:14 <zzo38> They could display the hex code and name (which they should do for printable characters too, since some have a similar appearance)
+2019-11-30 06:41:14 <oerjan> `grWp times
+2019-11-30 06:41:15 <HackEso> ​☾_:☾_ is moon_'s lawful twin. He's banned in the IRC RFC for being an invalid character. He sometimes eats papers. \ `4:`4 <cmd> is equivalent to `5 <cmd>, except that it only repeats 4 times. Useful when you've already run a command forgetting to use `5. \ `5:`5 <cmd> is equivalent to repeating `` <cmd> 5 times, then splitting the output into irc-sized pieces. <cmd> defaults to "quote". See `1, `4 and `spam. Confusingly _not_ the obvi
+2019-11-30 06:42:04 <oerjan> `2 grWp times
+2019-11-30 06:42:09 <HackEso> 2/6:ous generalization of `2. \ advertisement:Advertisement starts: have you heard about this hip and froopy 'net place called #esoteric? It is on freenode. Brought to you by The Board of Timeskewed Advertiesements. \ arabic:.scihpylgoreiH sa drah sa ton hguoht ,troppus stnof ekam ot drah yrev si taht egaugnal citimes lartnec a si cibarA \ costume:Costumes are used for cosplay. Taneb sometimes invents them. \ daystar:The Daystar is an unscien
+2019-11-30 06:42:36 <oerjan> ETOOMANYHITS
+2019-11-30 06:42:43 Joined: atslash
+2019-11-30 06:42:43 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-30 06:43:00 <zzo38> And then, what about, unassigned codepoints?
+2019-11-30 06:43:17 <kmc> I don't think you can sponsor those
+2019-11-30 06:43:32 <kmc> but it looks like you can sponsor the emoji characters that are composed of more than one codepoint
+2019-11-30 06:44:09 <kmc> like the rainbow flag
+2019-11-30 06:45:19 <zzo38> What about non-emoji characters that are composed of more than one codepoint (e.g. characters using variation selectors)?
+2019-11-30 06:46:17 <kmc> perhaps when Emoji 13.0 comes out I will sponsor [WAVING WHITE FLAG] [ZERO WIDTH JOINER] [MALE WITH STROKE AND MALE AND FEMALE SIGN]
+2019-11-30 06:46:41 <kmc> zzo38: I don't know about those either
+2019-11-30 06:46:47 <b_jonas> fizzie: nice!
+2019-11-30 06:47:05 <b_jonas> `openssl rand -base64 16
+2019-11-30 06:47:06 <HackEso> Invalid command 'rand -base64 16'; type "help" for a list.
+2019-11-30 06:47:10 <b_jonas> ``` openssl rand -base64 16
+2019-11-30 06:47:10 <HackEso> oXBq2MWPBhDZqcMd832hbg==
+2019-11-30 06:48:32 <b_jonas> `python3 -cimport secrets; print(secrets.token_urlsafe(16))
+2019-11-30 06:48:33 <HackEso> WcXz-HY_Pax2-ZcPnzXtYw
+2019-11-30 06:57:23 <imode> capability models in mode can make use of subprocesses and system operations. for example, you can set restrictions on what processes can use the # operator, which is responsible for calling out to a system operation (equivalent to a syscall), which may modify the world.
+2019-11-30 06:58:06 <imode> if you say "only PID0 may use syscalls", then the top-level process becomes your subprocess spawning and routing logic.
+2019-11-30 06:58:25 Joined: iivii
+2019-11-30 06:58:25 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, iivii, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Scrooge, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-11-30 06:59:19 <imode> you could have an authorization system, whereby you send your subprocess handle to PID0, it says "yup, looks good to me" and gives you syscall privs for that one subprocess.
