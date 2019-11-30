@@ -159,3 +159,10 @@
 2019-11-30 03:56:45 <kmc> fizzie: wait, how does the single-file solution work?
 2019-11-30 03:57:25 <kingoffrance> there are lots of (especially pre-posix probably) code with #defines   that basically include things in a specific order, for some OS,   so sometimes they have a comment /* ok to include twice, needed for X */    or /* ancient OS does not like this being included twice */   but that again, is more working around vendor headers, than deliberately including something some number of times
 2019-11-30 03:59:18 <kingoffrance> and the opposite case is probably more likely:  os A foo.h includes bar.h   so programmer knows this and only includes foo.h,   then this breaks when they compile somewhere that isnt true;    so they wanted something included once and got zero times instead
+2019-11-30 04:11:15 <zzo38> Something I have is that a macro is defined in a different way when the file is included, such as the Opt macro used in bystand_options.inc
+2019-11-30 04:12:48 <zzo38> Once it is included in a enum block and is defined as Opt_##x, and once it is included in an array and Opt is defined as #x,
+2019-11-30 04:14:45 <fizzie> kmc: Maybe better with newlines:  #define DATA X(a) X(b) ... X(z) \ #define X(x) ... \ DATA \ #undef X \ #define X(x) ... \ DATA \ #undef X
+2019-11-30 04:14:53 <fizzie> It's just the same as the usual thing, except instead of #include "data.x" you expand the macro DATA.
+2019-11-30 04:16:43 <fizzie> Maybe better for a moderate amount of items. For very many, the separate file is probably more readable.
+2019-11-30 04:27:06 <shachaf> Header guards might be scow.
+2019-11-30 04:28:15 <shachaf> Anyway, putting all your code in one translation unit is where it's at.
