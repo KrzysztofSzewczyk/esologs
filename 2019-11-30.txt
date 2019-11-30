@@ -421,3 +421,26 @@
 2019-11-30 22:28:26 <bfbot> ok, defined 'hackesoquine'
 2019-11-30 22:28:31 <b_jonas> =str 2s++++++++[->++++++++<]>+.
 2019-11-30 22:28:31 <bfbot> ok
+2019-11-30 22:30:21 <b_jonas> ``` set -e; f=/hackenv/bin/bfbotquine; d=/hackenv/bin/STOP; >$d echo $'#!/bin/sh\nrm -fv '"$f"; >$f echo $'#!/bin/sh\nsleep 50; echo ":"="hackesoquine"; sleep 20'; chmod -c a+x $d $f
+2019-11-30 22:30:23 <HackEso> mode of '/hackenv/bin/STOP' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x) \ mode of '/hackenv/bin/bfbotquine' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2019-11-30 22:30:39 <b_jonas> if this loop gets out of hand, type `STOP
+2019-11-30 22:30:49 <b_jonas> if this loop gets out of hand type =def 1hackesoquine
+2019-11-30 22:30:54 <b_jonas> =hackesoquine
+2019-11-30 22:30:54 <bfbot> `bfbotquine
+2019-11-30 22:30:54 <HackEso> Mmmmm... no.
+2019-11-30 22:31:02 <b_jonas> `bfbotquine
+2019-11-30 22:31:38 <HackEso> No output.
+2019-11-30 22:33:15 <b_jonas> ``` rm -fv /hackenv/bin/bfbotquine
+2019-11-30 22:33:17 <HackEso> removed '/hackenv/bin/bfbotquine'
+2019-11-30 22:33:24 <b_jonas> =def 1hackesoquine
+2019-11-30 22:33:25 <bfbot> ok, defined 'hackesoquine'
+2019-11-30 22:33:29 <b_jonas> =hackesoquine
+2019-11-30 22:33:29 <bfbot> A
+2019-11-30 22:33:35 <b_jonas> ``` rm -fv /hackenv/bin/STOP
+2019-11-30 22:33:37 <HackEso> removed '/hackenv/bin/STOP'
+2019-11-30 22:38:22 <zzo38> If you play Scrabble with 2 players then I think that both players should expose all letters in their hand once there are no more letters to pick up from the bag
+2019-11-30 22:47:54 <int-e> I see where this comes from... but maybe you should just remove 4 random letters from the bag initially and hide them away instead.
+2019-11-30 22:48:38 <zzo38> Yes, that is another variant, but then there will not be enough letters, I think
+2019-11-30 22:52:39 <b_jonas> `python3 -cimport secrets; s = secrets.token_urlsafe(64).translate(str.maketrans("23456789"," "*8)); p = 6+secrets.randbelow(64); print(s[:p]+":\x3D"+s[p:])
+2019-11-30 22:52:40 <HackEso> xXVHLix:=JAvUrfeZtG-ERB-OiGATTYgCY CMvm0Sy0DeZw ocw D RxdrZKaMIqaFdkt vvdTbTubzonuGlDTqw
+2019-11-30 22:52:40 <bfbot> No such command. Try =help.
