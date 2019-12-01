@@ -525,3 +525,47 @@
 2019-12-01 20:29:36 <b_jonas> this. no more "need needed"
 2019-12-01 20:29:48 <fizzie> We just had physical Abloy keys for any place there's lockers.
 2019-12-01 20:29:49 <kmc> now they probably have some unnecessarily smart bluetooth lock with a backdoor so the school admin can break in to see if you're hiding ~dangerous items~
+2019-12-01 20:30:33 <kmc> the venue I bought my combo lock for turned out to have RFID locks instead
+2019-12-01 20:30:40 <kmc> so they give you a wristband with a chip in it, which unlocks the locker
+2019-12-01 20:31:05 <kmc> in college we had an interesting style of door locks
+2019-12-01 20:31:07 <kmc> forgot the brand
+2019-12-01 20:31:12 <fizzie> kmc: Does the starting number matter for those locks? That is, is 0-20-10 a different code from 1-21-11?
+2019-12-01 20:31:17 <b_jonas> `python3 -cimport secrets; print("".join([secrets.choice("adehijlnorst") for k in range(3)]))
+2019-12-01 20:31:18 <HackEso> oat
+2019-12-01 20:31:23 <b_jonas> ^ there's your word
+2019-12-01 20:31:46 <kmc> it has 5 buttons, and each code unit is a cluster of one or more buttons (pressed simultaneously), but you can only use each button once in the whole code
+2019-12-01 20:31:55 <kmc> so e.g. 15-2-3 is different from 1-5-23
+2019-12-01 20:32:02 <zzo38> If you do not want them to break in to your stuff then install a safe inside of the locker and put all of the stuff in there.
+2019-12-01 20:32:39 <kmc> people practiced "power punching" which was the technique of trying all combos in some maximum-likelihood order
+2019-12-01 20:34:17 <zzo38> I think I have read about those locks with 5 buttons, from a 2600 article I think. They mention how it isn't so secure as a key, you can easily try them, and there are also "half step" codes.
+2019-12-01 20:36:42 <kmc> if you practiced you could do it in like 15 minutes
+2019-12-01 20:36:46 <kmc> all the combos i mean
+2019-12-01 20:36:54 <kmc> and your expected time would be half that, even without the likelihood ordering
+2019-12-01 20:37:10 <kmc> one of the houses there was known for heavy drinking and they set their door code to "2" so that it could be remembered in a state of inebriation
+2019-12-01 20:37:41 <kmc> I was glad to be in a house (actually, two) that had a more varied culture including more interesting intoxicants as well as other fun stuff
+2019-12-01 20:42:53 <kmc> first year housemates were really into lockpicking, making master keys, tunnel exploration and that kind of fun stuff
+2019-12-01 20:43:11 <kmc> zzo38: the combo locks also have an override key you can use
+2019-12-01 20:43:16 <kmc> and I made one of those
+2019-12-01 20:43:21 <kmc> so technically i could break into anyone's room
+2019-12-01 20:43:27 <kmc> we had a game called Alley Assassins
+2019-12-01 20:45:19 <kmc> people signed up as targets and others would try to get them with a 'bomb', which is any device that makes a noise or flashing light etc. in direct response to the target's actions (no remote-controlled bombs)
+2019-12-01 20:45:40 <kmc> I got someone by planting a cellphone in their room and then setting up a trigger on my computer which would text the phone when they logged onto AIM
+2019-12-01 20:46:08 <kmc> the judges decided this was a bit ambiguous under the rules but decided I deserved the kill anyway on style points
+2019-12-01 20:47:27 <kmc> it was remote-controlled but in a way that didn't require any action by anyone besides the target
+2019-12-01 20:48:00 <kmc> in those days you could text a phone by emailing a numeric address @ the phone company's domain
+2019-12-01 20:48:03 <kmc> i don't know if that's still true
+2019-12-01 20:50:18 User Name: imode = imode!~linear@unaffiliated/imode
+2019-12-01 20:50:18 <imode> still true!
+2019-12-01 20:50:30 <kmc> ah
+2019-12-01 20:50:42 <kmc> I use twilio API for that
+2019-12-01 20:50:56 <imode> everybody seems to use that.
+2019-12-01 20:51:16 <kmc> it's pretty easy
+2019-12-01 20:51:18 <imode> it makes sense because there's no reasonable way to decide which number belongs to which carrier, I think.
+2019-12-01 20:51:22 <kmc> you can do it from a shell script with curl
+2019-12-01 20:51:23 <kmc> yeah
+2019-12-01 20:51:24 <imode> ..I _think_
+2019-12-01 20:51:30 <kmc> I've ported my number between at least 3 carriers
+2019-12-01 20:51:37 <imode> is there a number -> carrier mapping somewhere?
+2019-12-01 20:51:39 <kmc> I bet phone companies can do it, because they need to know who to bill
+2019-12-01 20:51:44 <kmc> but I don't think random people can do it
+2019-12-01 20:54:04 <imode> https://www.carrierlookup.com/
