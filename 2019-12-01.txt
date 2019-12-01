@@ -444,3 +444,84 @@
 2019-12-01 19:43:33 <shachaf> `forget categorical product
 2019-12-01 19:43:35 <HackEso> Forget what?
 2019-12-01 19:43:40 <shachaf> HackEso: categorical product
+2019-12-01 20:04:07 <b_jonas> `5 wisdom fungot
+2019-12-01 20:04:07 <fungot> b_jonas: so the minimal point is ( fnord 5), etc
+2019-12-01 20:04:11 <HackEso> 1/1:fungot//fungot is our beloved channel mascot and voice of reason. \ fungot//fungot is our beloved channel mascot and voice of reason. \ fungot//fungot is our beloved channel mascot and voice of reason. \ fungot//fungot is our beloved channel mascot and voice of reason. \ fungot//fungot is our beloved channel mascot and voice of reason.
+2019-12-01 20:04:13 <b_jonas> `5 quote fungot
+2019-12-01 20:04:13 <fungot> b_jonas: how old are you? :) ( aren't i lazy :p) or fnord k 1
+2019-12-01 20:04:16 <HackEso> 1/166:10) <fungot> GregorR-L: i bet only you can prevent forest fires. basically, you know. \ 13) <fizzie after embedding some of his department research into fungot> Finally I have found some actually useful purpose for it. \ 14) <fungot> oerjan: are you a man, if there weren't evil in this kingdom to you! you shall find bekkler! executing program. please let me go... put me out! he's really a tricycle! pass him! \ 56) <fungot> i am sad ( of
+2019-12-01 20:07:12 <b_jonas> `
+2019-12-01 20:07:12 <HackEso> ​? Permission denied
+2019-12-01 20:07:17 <b_jonas> `/
+2019-12-01 20:07:18 <HackEso> ​/? Permission denied
+2019-12-01 20:07:35 <b_jonas> `/dev/stdin
+2019-12-01 20:07:36 <HackEso> ​/dev/stdin? Permission denied
+2019-12-01 20:07:49 <b_jonas> `/nonexistantfile
+2019-12-01 20:07:50 <HackEso> ​/nonexistantfile? No such file or directory
+2019-12-01 20:09:10 <b_jonas> `5 quote fungot | perl -e'@s=<>;print $s[rand@s]'
+2019-12-01 20:09:10 <fungot> b_jonas: yay for hello bf cookie world where more people wanted to be doing this wall drilling thing for an idiot like me is to say, right?
+2019-12-01 20:09:12 <HackEso> 1/2:538) <fungot> sadhu: it's been said that boole is the crowning jewel perched precariously upon the perfect peak of programmer prowess, casting its limitless limpid light over the loathesome lands of those who scuff and wallow in the dreary dust of digital depravity and unbounded wilful ignorance of the testament of our lord jesus christ into your life. \ 632) <fungot> fizzie: is a 98% reduction in the waterpark intensity, right, so i'd im
+2019-12-01 20:09:49 <b_jonas> `n
+2019-12-01 20:09:50 <HackEso> 2/2:gine! \ 768) <fungot> olsner: over the undertow! under the overpass! around the future and not just fnord for example. it's just the syntax \ 689) <fizzie> fungot: Feeling scrambled after all that?  <fungot> fizzie: but it's much like new zealand, in my stone-age country, we still like you even if you're only using the new fnord \ 930) <esomimic> fungot: begrudging pat
+2019-12-01 20:10:11 <b_jonas> `n
+2019-12-01 20:10:14 <HackEso> 1/2:538) <fungot> sadhu: it's been said that boole is the crowning jewel perched precariously upon the perfect peak of programmer prowess, casting its limitless limpid light over the loathesome lands of those who scuff and wallow in the dreary dust of digital depravity and unbounded wilful ignorance of the testament of our lord jesus christ into your life. \ 632) <fungot> fizzie: is a 98% reduction in the waterpark intensity, right, so i'd im
+2019-12-01 20:10:41 <b_jonas> and it's nonexistent, with an e, darn it!
+2019-12-01 20:10:52 <b_jonas> `? Ance
+2019-12-01 20:10:54 <HackEso> Spelling of -ance/-ence words: advance, science, conference, experience, finance, insurance, licence, performance, reference, assistance, balance, defence, difference, distance, evidence, acceptance, appliance, audience, compliance, importance, influence, instance, intelligence, maintenance, preference, presence, sentence, sequence, substance, violence, absence, accordance, alliance, appearance, assurance, attendance, circumstance, clearance,
+2019-12-01 20:11:20 <b_jonas> it's not there, but still
+2019-12-01 20:14:12 <kmc> `` egrep '^[adehijlnorst]{3}$' /usr/share/dict/words
+2019-12-01 20:14:14 <HackEso> add \ ado \ ads \ aha \ aid \ ail \ air \ ale \ all \ and \ ani \ ant \ are \ art \ ash \ ass \ ate \ dad \ den \ did \ die \ din \ dis \ doe \ don \ dos \ dot \ ear \ eat \ eel \ ell \ end \ eon \ era \ ere \ err \ eta \ had \ hah \ has \ hat \ hen \ her \ hes \ hid \ hie \ his \ hit \ hod \ hoe \ hos \ hot \ ids \ ill \ inn \ ins \ ion \ ire \ its \ jar \ jet \ jot \ lad \ lea \ led \ lee \ lei \ let \ lid \ lie \ lit \ lot \ net \ nil \ ni
+2019-12-01 20:14:22 <kmc> these are the words my new alphanumeric mechanical padlock can make
+2019-12-01 20:14:29 <kmc> (counting 0 as O and 1 as I)
+2019-12-01 20:14:59 <kmc> i wonder how they arrived at that set
+2019-12-01 20:15:14 <kmc> it has the vowels except U and Y and W
+2019-12-01 20:15:19 <kmc> (and do Y and W even count)
+2019-12-01 20:17:45 <kmc> and it has the 5 most common vowels -- shdrl
+2019-12-01 20:18:00 <b_jonas> ``` perl -ne'print "$_ " for /(?<![\-.\x27A-Za-z])([adehijlnorst]{3})(?![\-.\x27A-Za-z])/g' /hackenv/share/dict/12dicts/Le*/2+2+3frq.txt
+2019-12-01 20:18:01 <HackEso> are the and did had has not his she her all her one see its too end let lot old ran set add air art die hit led lie lit sit sat son dad eat ate hid hot oil red ten aah aid ear nod nor sad sea sir tea tie era hah hat ill jet net odd ooh rid til and ash ass dot inn jar lid rat rod shh sin toe ton aha ant den don lad rot tad tan tee tin ail ale hen ion nah oat ore sis sod tar din eel err she her his her hoe jot nil oar tit tot ado eon ere ire lo
+2019-12-01 20:18:07 <kmc> what the hecking heck
+2019-12-01 20:18:20 <b_jonas> kmc: ^ use a more respectible dictionary, not /usr/share/dict
+2019-12-01 20:18:22 <kmc> that is quite a regex
+2019-12-01 20:19:28 <kmc> are perl regexes turing complete
+2019-12-01 20:19:30 <kmc> pretty sure they are
+2019-12-01 20:19:37 <b_jonas> the "j" in that list is weird
+2019-12-01 20:19:55 <b_jonas> ``` perl -ne'print "$_ " for /(?<![\-.\x27A-Za-z])([adehilmnorst]{3})(?![\-.\x27A-Za-z])/g' /hackenv/share/dict/12dicts/Le*/2+2+3frq.txt
+2019-12-01 20:19:55 <HackEso> are the and did had has him not his she her all her one see its man men too end let lot old ran set add air arm art die hit led lie lit met mom mam sit sat son dad eat ate hid hot oil red ten aah aid aim ear hmm mad nod nor sad sea sir tea tie mhm era hah hat ill net odd ooh rid til and ash ass dam dim dot inn lid ram rat rod shh sin toe ton aha ant den don ham lad mat mid rim rot tad tan tee tin ail ale hem hen ion mar nah oat ore sis sod ta
+2019-12-01 20:19:56 <arseniiv> b_jonas: is that that your regex you mentioned a month or two ago?
+2019-12-01 20:20:07 <b_jonas> arseniiv: I don't think so
+2019-12-01 20:20:26 <arseniiv> ah, it’s a query with a regex
+2019-12-01 20:20:35 <arseniiv> didn’t read it through
+2019-12-01 20:20:45 <b_jonas> it's just your regex with some stuff around it to make sure it's a complete lowercase word
+2019-12-01 20:20:56 <b_jonas> although wait
+2019-12-01 20:21:19 <fizzie> > sort "etaoinshrdlu"
+2019-12-01 20:21:21 <lambdabot> "adehilnorstu"
+2019-12-01 20:21:45 <b_jonas> isn't this one of those padlocks where you press a set of buttons, so words with double letters shouldn't count, and different permutations of letters should count only once?
+2019-12-01 20:21:49 <b_jonas> kmc: ^
+2019-12-01 20:22:20 <kmc> no
+2019-12-01 20:22:21 <arseniiv> Ade Hil[l], Norstu
+2019-12-01 20:22:31 <kmc> it has a single spinning dial
+2019-12-01 20:22:38 <kmc> like a standard 'school locker padlock'
+2019-12-01 20:22:42 <kmc> (at least in America)
+2019-12-01 20:22:55 <kmc> the only difference is that it's labeled with digits and some letters rather than consecutive integers up to 40 or whatever
+2019-12-01 20:23:00 <kmc> well and it also has detents for each
+2019-12-01 20:23:04 <kmc> standard padlocks spin smoothly
+2019-12-01 20:23:17 <kmc> I have one of those too but I forgot the combo and my attempt to crack it using some online guide failed
+2019-12-01 20:23:34 <kmc> you can take it to a shop and get the combo from a serial number but that sounded like effort when I could get a new one for $10 in 2 minutes
+2019-12-01 20:23:39 <kmc> but then i didn't need it anyway, oops
+2019-12-01 20:26:24 <b_jonas> ``` perl -ne'for (/(?<![\-.\x27A-Za-z])([adehijlnorst]{3,})(?![\-.\x27A-Za-z])/g) { %k=(); $k{$_}++ for sort split//,$_; @k=keys%k; if (3 == @k && !$k{join"",@k}++) { print "$_ " } }' /hackenv/share/dict/12dicts/Le*/2+2+3frq.txt
+2019-12-01 20:26:25 <HackEso> are the and that had has hath not his she her her one seen here its need needed tell end let lot old ran set added air area art die door else hit led less lie lit sell sense sit sat son soon test data dead eat ate hell hid hot loss oil red roll ten tree aid ear hall hill nine nod none nor onto rare root sad sea sir tall tea tie tool assess ease era error hat jet net onion rear rid seed seeded till til tooth teeth toss and ash deer doll dot he
+2019-12-01 20:26:48 <b_jonas> kmc: ah, so you don't depress 3 out of 12 buttons with the order irrelevant. sorry
+2019-12-01 20:27:47 <b_jonas> oh, you want to find out the code, which need not even be a word?
+2019-12-01 20:28:03 <kmc> that one is a standard numeric lock
+2019-12-01 20:28:21 <kmc> the code is 3 integers between 0 and 39 inclusive, order dependent
+2019-12-01 20:28:31 <kmc> though I'm not sure you can use the same number twice in a row
+2019-12-01 20:28:35 <b_jonas> that command isn't right, it doesn't filter duplicates
+2019-12-01 20:28:37 <b_jonas> let me fix it
+2019-12-01 20:28:56 <kmc> all american kids use this in high school
+2019-12-01 20:28:59 <kmc> or did back in my day
+2019-12-01 20:29:26 <fizzie> kmc: Yeah, I've seen those on TV, but never in real life.
+2019-12-01 20:29:30 <b_jonas> ``` perl -ne'for (/(?<![\-.\x27A-Za-z])([adehijlnorst]{3,})(?![\-.\x27A-Za-z])/g) { %k=(); $k{$_}++ for split//,$_; @k=sort keys%k; if (3 == @k && !$r{join"",@k}++) { print "$_ " } }' /hackenv/share/dict/12dicts/Le*/2+2+3frq.txt
+2019-12-01 20:29:31 <HackEso> are the and that had has not his she her one seen its need tell lot old ran set added air art die door else hit led lie lit sat son data eat hell hid hot loss oil red roll ten tree aid hall hill nine nod nor root sad sea sir tall tie error jet onion rid seed toss dot horror jar lid odds roar sin toe ant hood lad radar reel tattoo tin ail alas ale eerie heed hen nah anal din hoe jot nil sill ado jeer loon ode seer shoo dis nth anon jell jinn h
+2019-12-01 20:29:36 <b_jonas> this. no more "need needed"
+2019-12-01 20:29:48 <fizzie> We just had physical Abloy keys for any place there's lockers.
+2019-12-01 20:29:49 <kmc> now they probably have some unnecessarily smart bluetooth lock with a backdoor so the school admin can break in to see if you're hiding ~dangerous items~
