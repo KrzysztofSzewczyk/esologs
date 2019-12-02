@@ -450,3 +450,48 @@
 2019-12-02 11:21:51 <FireFly> that's a fascinatng bug
 2019-12-02 11:26:57 Quit: oerjan (Quit: Nite)
 2019-12-02 11:26:57 Names: ^[, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 11:42:58 <bfbot> CXPxQgddhB-U
+2019-12-02 11:43:19 <bfbot> CXPxQgddhB-U
+2019-12-02 11:43:23 <bfbot> CXPxQgddhB-U
+2019-12-02 11:46:05 <wib_jonas> =str 0s++++++++[->+++++++++<]>+.+.+.
+2019-12-02 11:46:05 <bfbot> ok
+2019-12-02 11:46:08 <wib_jonas> =def 0quine
+2019-12-02 11:46:08 <bfbot> ok, defined 'quine'
+2019-12-02 11:46:10 <wib_jonas> =quine
+2019-12-02 11:46:10 <bfbot> IJK
+2019-12-02 11:46:33 <wib_jonas> if the following loops, please stop it with: =def 0quine
+2019-12-02 11:46:41 <wib_jonas> =str 1s ++++++++++++++++[->+>++>+++>++++>+++++>++++++>+++++++>++++++++<<<<<<<<] >>>++++++++++.>>.++.<+++++++++.>++++.<++++.>---.<------.<<.+++.>>>>+++++.>+++.<++++++++++.>+.<----------.>--.<++++.------.<<<<+++++++++.>>>>-.++++.----.+++++++++++++.>++.<<<<<------------.>.+++.>>>>---.++++.<------.+++++.---------.
+2019-12-02 11:46:42 <bfbot> ok
+2019-12-02 11:46:44 <wib_jonas> =def 1msg
+2019-12-02 11:46:44 <bfbot> ok, defined 'msg'
+2019-12-02 11:46:58 <wib_jonas> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:46:58 <bfbot> IJK
+2019-12-02 11:47:08 <wib_jonas> =def 1quine
+2019-12-02 11:47:09 <bfbot> ok, defined 'quine'
+2019-12-02 11:47:11 <wib_jonas> =def 0msg
+2019-12-02 11:47:13 <bfbot> ok, defined 'msg'
+2019-12-02 11:47:14 <wib_jonas> =quine
+2019-12-02 11:47:15 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:24 <wib_jonas> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:25 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:27 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:28 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:29 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:31 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:32 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:34 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:35 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:37 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:38 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:40 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:41 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:43 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:44 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:46 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:47 <wib_jonas> =def 0quine
+2019-12-02 11:47:47 <bfbot> :PRIVMSG #esoteric,bfbot :=quine
+2019-12-02 11:47:48 <bfbot> ok, defined 'quine'
+2019-12-02 11:47:49 <bfbot> IJK
+2019-12-02 11:47:55 <wib_jonas> =undef msg
+2019-12-02 11:47:56 <bfbot> ok
+2019-12-02 11:48:15 <wib_jonas> oerjan: I found a loop
