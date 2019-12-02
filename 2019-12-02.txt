@@ -415,3 +415,38 @@
 2019-12-02 10:56:46 <wib_jonas> sure
 2019-12-02 10:58:49 Joined: arseniiv
 2019-12-02 10:58:49 Names: ^[, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 11:12:18 <bfbot> 0Q9n0kZWzxzH
+2019-12-02 11:17:05 <wib_jonas> bfbot sources: https://github.com/kspalaiologos/bfbot-repository
+2019-12-02 11:18:29 <oerjan> ^bf >->>>>>>>>>>>>-->-[<<[-<]+>++[-->++]-->],[.,]!test
+2019-12-02 11:18:29 <fungot> test
+2019-12-02 11:18:57 <oerjan> simplified the binary idle loop a bit. alas the timeout of bfbot seems to be too small to work for this
+2019-12-02 11:18:58 <bfbot> a:oerjan!oerjan@sprocket.nvg.ntnu.no PRIVMSG #esoteric :simplified the binary idle loop a bit. alas the timeout of bfbot seems to be too small to work for this
+2019-12-02 11:19:12 <oerjan> the fuck
+2019-12-02 11:19:27 <oerjan> another bug :P
+2019-12-02 11:19:49 <wib_jonas> nope, apparently that's not the sources, just the user-defined commands
+2019-12-02 11:19:50 <bfbot> :wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209 PRIVMSG #esoteric :nope, apparently that's not the sources, just the user-defined commands
+2019-12-02 11:19:56 <wib_jonas> what
+2019-12-02 11:20:01 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2019-12-02 11:20:01 <kritixilithos> oh the unescaped \ does it
+2019-12-02 11:20:14 <oerjan> kritixilithos: i suspect one of your experiments in #esoteric-blah --- yeah
+2019-12-02 11:20:15 <bfbot> :oerjan!oerjan@sprocket.nvg.ntnu.no PRIVMSG #esoteric :kritixilithos: i suspect one of your experiments in #esoteric-blah --- yeah
+2019-12-02 11:20:18 <wib_jonas> ...
+2019-12-02 11:20:24 <wib_jonas> seriously?
+2019-12-02 11:20:27 <kritixilithos> interesting
+2019-12-02 11:20:29 <oerjan> apparently :P
+2019-12-02 11:20:44 <wib_jonas> but there's
+2019-12-02 11:20:47 <oerjan> =echo \
+2019-12-02 11:20:48 <wib_jonas> a cr and an lf
+2019-12-02 11:20:48 <bfbot> :wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209 PRIVMSG #esoteric :a cr and an lf
+2019-12-02 11:20:54 <wib_jonas> how can the backslash
+2019-12-02 11:20:59 <wib_jonas> this bot is weird
+2019-12-02 11:21:02 <oerjan> (to demonstrate it here)
+2019-12-02 11:21:18 <wib_jonas> heck
+2019-12-02 11:21:26 <oerjan> wib_jonas: we already knew it didn't treat backslashes right
+2019-12-02 11:21:34 <wib_jonas> yes I know
+2019-12-02 11:21:45 <FireFly> heh
+2019-12-02 11:21:49 <oerjan> @tell kspalaiologos Your bot has even more trouble, try =echo \
+2019-12-02 11:21:49 <lambdabot> Consider it noted.
+2019-12-02 11:21:51 <FireFly> that's a fascinatng bug
+2019-12-02 11:26:57 Quit: oerjan (Quit: Nite)
+2019-12-02 11:26:57 Names: ^[, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
