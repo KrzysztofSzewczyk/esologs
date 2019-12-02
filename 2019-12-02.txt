@@ -308,3 +308,110 @@
 2019-12-02 10:28:35 <wib_jonas> or might not, I'm not sure
 2019-12-02 10:28:45 <wib_jonas> how do you write a proper delay loop in brainfuck?
 2019-12-02 10:29:05 <oerjan> i'm thinking
+2019-12-02 10:30:27 Joined: laerlingSAP
+2019-12-02 10:30:27 Names: ^[, aji, aloril, APic, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 10:30:46 <myname> what do you mean by a delay loop
+2019-12-02 10:30:55 <myname> busy beavers?
+2019-12-02 10:31:05 <wib_jonas> no, not that long
+2019-12-02 10:31:22 <wib_jonas> just want to get close to bfbot timing out the program and see how long it takes in real time
+2019-12-02 10:45:07 Joined: tromp
+2019-12-02 10:45:07 Names: ^[, aji, aloril, APic, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 10:47:42 Quit: tromp (Remote host closed the connection)
+2019-12-02 10:47:42 Names: ^[, aji, aloril, APic, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 10:47:58 Joined: tromp
+2019-12-02 10:47:58 Names: ^[, aji, aloril, APic, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 10:48:38 <wib_jonas> =str 1s++[->++[->++.<]<]
+2019-12-02 10:48:38 <bfbot> ok
+2019-12-02 10:48:41 <wib_jonas> =def 1msg1
+2019-12-02 10:48:41 <bfbot> ok, defined 'msg1'
+2019-12-02 10:48:42 <wib_jonas> =msg1
+2019-12-02 10:48:42 <bfbot> ....
+2019-12-02 10:48:55 <wib_jonas> =str 1s++[->++[->++[->++.<]<]<]
+2019-12-02 10:48:55 <bfbot> ok
+2019-12-02 10:48:57 <wib_jonas> =def 1msg1
+2019-12-02 10:48:57 <bfbot> ok, defined 'msg1'
+2019-12-02 10:48:58 <wib_jonas> =msg1
+2019-12-02 10:48:58 <bfbot> .......
+2019-12-02 10:49:05 <wib_jonas> =str 1s++[->++[->++[->++[->++.<]<]<]<]
+2019-12-02 10:49:06 <bfbot> ok
+2019-12-02 10:49:07 <wib_jonas> =def 1msg1
+2019-12-02 10:49:07 <bfbot> ok, defined 'msg1'
+2019-12-02 10:49:09 <wib_jonas> =msg1
+2019-12-02 10:49:09 <bfbot> ..............
+2019-12-02 10:49:21 <wib_jonas> =str 1s++[->++[->++[->++[->++[->++.<]<]<]<]<]
+2019-12-02 10:49:21 <bfbot> ok
+2019-12-02 10:49:24 <wib_jonas> =def 1msg1
+2019-12-02 10:49:24 <bfbot> ok, defined 'msg1'
+2019-12-02 10:49:26 <wib_jonas> =msg1
+2019-12-02 10:49:26 <bfbot> .............. "$&(*,.02468:<>@
+2019-12-02 10:50:05 <wib_jonas> =str 1s++++[->++++[->++++[->++++[->++++[->++++.<]<]<]<]<]
+2019-12-02 10:50:06 <bfbot> ok
+2019-12-02 10:50:07 <wib_jonas> =def 1msg1
+2019-12-02 10:50:07 <bfbot> ok, defined 'msg1'
+2019-12-02 10:50:09 <wib_jonas> =msg1
+2019-12-02 10:50:09 <bfbot> ....... $(,048<@DHLPTX\`dhlptx|.............................................................................................................................................................................................................................................................................
+2019-12-02 10:50:22 <wib_jonas> then this should work, and either I made a typo or it was too short
+2019-12-02 10:51:38 <Lykaina> hi
+2019-12-02 10:51:57 <wib_jonas> =str 1s++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:51:58 <bfbot> ok
+2019-12-02 10:52:03 <wib_jonas> =def 1msg1
+2019-12-02 10:52:03 <bfbot> ok, defined 'msg1'
+2019-12-02 10:52:04 <wib_jonas> =msg1
+2019-12-02 10:52:04 <bfbot> ABC
+2019-12-02 10:52:29 <wib_jonas> =str 1s++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:52:30 <bfbot> ok
+2019-12-02 10:52:32 <wib_jonas> =def 1msg1
+2019-12-02 10:52:32 <bfbot> ok, defined 'msg1'
+2019-12-02 10:52:33 <wib_jonas> =msg1
+2019-12-02 10:52:34 <bfbot> ABC
+2019-12-02 10:52:47 <wib_jonas> =str 1s++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:52:47 <bfbot> ok
+2019-12-02 10:52:50 <wib_jonas> =def 1msg1
+2019-12-02 10:52:50 <bfbot> ok, defined 'msg1'
+2019-12-02 10:52:52 <wib_jonas> =msg1
+2019-12-02 10:53:16 <oerjan> ^bf >->->>>>-->-[--<<[-<]+>++[-->++]-->++],[.,]!test
+2019-12-02 10:53:16 <fungot> test
+2019-12-02 10:53:23 <oerjan> ^bf >->->>>>>>>>-->-[--<<[-<]+>++[-->++]-->++],[.,]!test
+2019-12-02 10:53:23 <fungot> test
+2019-12-02 10:53:30 <oerjan> ^bf >->->>>>>>>>>>>>-->-[--<<[-<]+>++[-->++]-->++],[.,]!test
+2019-12-02 10:53:30 <fungot> test
+2019-12-02 10:53:35 <wib_jonas> =str 1s++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:53:35 <bfbot> ok
+2019-12-02 10:53:36 <oerjan> ^bf >->->>>>>>>>>>>>>>>>-->-[--<<[-<]+>++[-->++]-->++],[.,]!test
+2019-12-02 10:53:37 <fungot> test
+2019-12-02 10:53:39 <wib_jonas> =def 1msg1
+2019-12-02 10:53:39 <bfbot> ok, defined 'msg1'
+2019-12-02 10:53:41 <wib_jonas> =msg1
+2019-12-02 10:53:43 <oerjan> ^bf >->->>>>>>>>>>>>>>>>>>>>-->-[--<<[-<]+>++[-->++]-->++],[.,]!test
+2019-12-02 10:53:44 <fungot> ...out of time!
+2019-12-02 10:53:51 <oerjan> there you go, a binary counter
+2019-12-02 10:54:08 <wib_jonas> =str 1s+++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:54:08 <bfbot> ok
+2019-12-02 10:54:10 <wib_jonas> =def 1msg1
+2019-12-02 10:54:10 <bfbot> ok, defined 'msg1'
+2019-12-02 10:54:14 <oerjan> wib_jonas: ^
+2019-12-02 10:54:14 <wib_jonas> =msg1
+2019-12-02 10:54:53 <wib_jonas> oerjan: nice
+2019-12-02 10:55:05 <wib_jonas> =str 1s++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:55:05 <bfbot> ok
+2019-12-02 10:55:08 <wib_jonas> =def 1msg1
+2019-12-02 10:55:08 <bfbot> ok, defined 'msg1'
+2019-12-02 10:55:12 <wib_jonas> =msg1
+2019-12-02 10:55:27 <wib_jonas> =str 1s++++++++[->++++++++[->++++++++.[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:55:27 <bfbot> ok
+2019-12-02 10:55:29 <wib_jonas> =def 1msg1
+2019-12-02 10:55:29 <bfbot> ok, defined 'msg1'
+2019-12-02 10:55:30 <wib_jonas> =msg1
+2019-12-02 10:55:36 <Lykaina> spamming the channel with brainfuck?
+2019-12-02 10:55:39 <wib_jonas> yes
+2019-12-02 10:56:07 <wib_jonas> hmm
+2019-12-02 10:56:21 <wib_jonas> =str 1s+[->++++++++[->++++++++.[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++[->++++++++<]<]<]<]<]<]<]<]<]<]<] ++++++++[->++++++++<]>+.+.+.
+2019-12-02 10:56:21 <bfbot> ok
+2019-12-02 10:56:24 <wib_jonas> =def 1msg1
+2019-12-02 10:56:24 <bfbot> ok, defined 'msg1'
+2019-12-02 10:56:26 <wib_jonas> =msg1
+2019-12-02 10:56:27 <bfbot> ........ABC
+2019-12-02 10:56:35 <fizzie> Maybe #esoteric-blah for the intermediate stages and #esoteric for the final results?
+2019-12-02 10:56:46 <wib_jonas> sure
+2019-12-02 10:58:49 Joined: arseniiv
+2019-12-02 10:58:49 Names: ^[, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
