@@ -684,3 +684,44 @@
 2019-12-02 15:56:24 <FireFly> yeah
 2019-12-02 15:56:44 <FireFly> not messing too much atm from phone, but it'd be interesting to try
 2019-12-02 15:57:20 <FireFly> also with the doc command as well
+2019-12-02 16:00:49 Joined: tromp
+2019-12-02 16:00:49 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 16:00:56 Quit: imode (Ping timeout: 276 seconds)
+2019-12-02 16:00:56 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 16:02:00 <FireFly> well that's fascinating
+2019-12-02 16:02:06 <FireFly> =doc sandbox
+2019-12-02 16:02:06 <bfbot> sandbox: abc
+2019-12-02 16:02:11 <FireFly> :::=doc sandbox
+2019-12-02 16:02:11 <bfbot> sandbox: abc
+2019-12-02 16:02:16 <FireFly> foo :=doc sandbox
+2019-12-02 16:02:16 <bfbot> Error: Invalid entry name.
+2019-12-02 16:03:19 <wib_jonas> fungot, the Giant promised an OotS strip for today, please post it
+2019-12-02 16:03:19 <fungot> wib_jonas: unless it's some crazy thick ethernet and/ or xscheme.el. kill the `*scheme*' buffer? i mea, the 10 items limit is annoying, though
+2019-12-02 16:03:51 <wib_jonas> FireFly: apparently fungot agrees with you about the 10 slots
+2019-12-02 16:03:51 <fungot> wib_jonas: or someone did use ga for icfp? :) htmlprag?
+2019-12-02 16:04:01 <FireFly> :p
+2019-12-02 16:04:26 <wib_jonas> `olist 1188
+2019-12-02 16:04:27 <HackEso> olist 1188: shachaf oerjan Sgeo FireFly boily nortti b_jonas
+2019-12-02 16:04:35 <wib_jonas> `thanks fungot
+2019-12-02 16:04:35 <fungot> wib_jonas: i've got this lego-based language sorted, i think i've seen it, but i
+2019-12-02 16:04:35 <HackEso> Thanks, fungot. Thungot.
+2019-12-02 16:05:01 <ais523> wib_jonas: that's an old OOTS comic
+2019-12-02 16:05:11 Quit: tromp (Ping timeout: 252 seconds)
+2019-12-02 16:05:12 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 16:05:13 <ais523> as in, I saw it a few days ago
+2019-12-02 16:05:17 <ais523> did we really forget to olist it?
+2019-12-02 16:06:02 <wib_jonas> ah no
+2019-12-02 16:06:03 <wib_jonas> https://esolangs.org/logs/2019-11.html#liEd
+2019-12-02 16:06:07 <wib_jonas> you did olist it
+2019-12-02 16:06:08 <wib_jonas> sorry
+2019-12-02 16:06:19 <wib_jonas> I got confused
+2019-12-02 16:06:27 <ais523> the next one is due today, IIRC (it's a rare situation in which the date is listed in advance)
+2019-12-02 16:06:56 <wib_jonas> yes, that's what I said above to fungоt
+2019-12-02 16:07:17 <wib_jonas> sorry for the fake olist
+2019-12-02 16:07:36 Quit: wib_jonas (Remote host closed the connection)
+2019-12-02 16:07:37 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-02 16:22:40 User Name: Sgeo = Sgeo!~Sgeo@ool-18b982ad.dyn.optonline.net
+2019-12-02 16:22:40 <Sgeo> I bought a Switch. I kind of hate how closed off it is. I think I'll only use it for exclusive and/or non-PC games.
+2019-12-02 16:22:54 <Sgeo> Which Pokemon game would be good for someone who hasn't played the main series before?
+2019-12-02 16:25:34 Joined: tromp
+2019-12-02 16:25:34 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
