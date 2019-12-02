@@ -527,3 +527,59 @@
 2019-12-02 14:42:45 <wib_jonas> or was this the imitation one?
 2019-12-02 14:46:42 Quit: laerlingSAP (Quit: Leaving)
 2019-12-02 14:46:42 Names: ^[, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 15:11:57 Joined: ais523
+2019-12-02 15:11:57 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 15:15:20 Joined: imode
+2019-12-02 15:15:20 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 15:16:42 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-12-02 15:16:42 <ais523> somehow I'd expect bfbot to have fewer bugs if it were actually written in BF
+2019-12-02 15:17:09 <ais523> that unescaped-backslash thing is really worrying, it makes me think that there may be a security exploit in there somewhere
+2019-12-02 15:17:14 <ais523> =echo $(hostname)
+2019-12-02 15:17:14 <bfbot> $(hostname)
+2019-12-02 15:17:21 <ais523> OK, at least it isn't a shell-escaping issue
+2019-12-02 15:17:26 <ais523> =echo $(hostname) \
+2019-12-02 15:17:32 <ais523> hmm
+2019-12-02 15:17:33 <bfbot> $(hostname) :ais523!~ais523@unaffiliated/ais523 PRIVMSG #esoteric :hmm
+2019-12-02 15:17:44 <ais523> what sort of escaping is that?
+2019-12-02 15:17:50 <ais523> =echo test\r\ntest
+2019-12-02 15:17:50 <bfbot> testrntest
+2019-12-02 15:18:01 <ais523> =echo test\ test
+2019-12-02 15:18:01 <bfbot> test test
+2019-12-02 15:18:07 <ais523> =echo test\0test
+2019-12-02 15:18:07 <bfbot> test0test
+2019-12-02 15:18:23 <ais523> =echo test\\test
+2019-12-02 15:18:23 <bfbot> test\test
+2019-12-02 15:18:36 <ais523> it doesn't seem to escape anything but newlines and itself?
+2019-12-02 15:18:39 <ais523> =echo test\'test
+2019-12-02 15:18:39 <bfbot> test'test
+2019-12-02 15:18:42 <ais523> =echo test\"test
+2019-12-02 15:18:42 <bfbot> test"test
+2019-12-02 15:19:05 <ais523> =echo test\\\\test
+2019-12-02 15:19:05 <bfbot> test\\test
+2019-12-02 15:19:12 <ais523> =echo test\\\\\\\test
+2019-12-02 15:19:12 <bfbot> test\\\test
+2019-12-02 15:19:19 <ais523> =echo test \\\
+2019-12-02 15:19:20 <ais523> test
+2019-12-02 15:19:21 <bfbot> test \:ais523!~ais523@unaffiliated/ais523 PRIVMSG #esoteric :test
+2019-12-02 15:19:42 <ais523> I can't offhand think of an escaping mechanism that works like that
+2019-12-02 15:19:53 <ais523> or, hmm, do Makefiles escape like that?
+2019-12-02 15:19:55 <ais523> `make
+2019-12-02 15:19:56 <HackEso> make: *** No targets specified and no makefile found.  Stop.
+2019-12-02 15:20:02 <ais523> `pwd
+2019-12-02 15:20:09 <HackEso> ​/hackenv/tmp
+2019-12-02 15:20:50 <ais523> `` printf 'all:\n\techo a b \\a \\b c d\\\n\te f' > Makefile
+2019-12-02 15:20:51 <HackEso> No output.
+2019-12-02 15:20:53 <ais523> `make
+2019-12-02 15:20:54 <HackEso> echo a b \a \b c d\ \ e f \ a b a b c de f
+2019-12-02 15:21:15 <ais523> `cat Makefile
+2019-12-02 15:21:16 <HackEso> all: \ 	echo a b \a \b c d\ \ 	e f
+2019-12-02 15:21:51 Quit: tromp (Remote host closed the connection)
+2019-12-02 15:21:51 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 15:21:54 <ais523> OK, so Makefiles don't quite escape like that because they don't swallow the backslashes
+2019-12-02 15:21:56 <ais523> `rm Makefile
+2019-12-02 15:21:57 <HackEso> No output.
+2019-12-02 15:22:12 <ais523> (the backslashes mid-line, that is)
+2019-12-02 15:23:24 Joined: tromp
+2019-12-02 15:23:24 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 15:26:16 <wib_jonas> ais523: q strings in perl, sort of
+2019-12-02 15:26:44 <wib_jonas> yeah, it's pretty alien
