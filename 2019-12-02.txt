@@ -496,3 +496,13 @@
 2019-12-02 11:47:56 <bfbot> ok
 2019-12-02 11:48:15 <wib_jonas> oerjan: I found a loop
 2019-12-02 12:18:44 <bfbot> 1
+2019-12-02 12:31:27 <FireFly> a self-quine? nice..
+2019-12-02 12:32:01 <FireFly> ah, hah
+2019-12-02 12:40:47 <int-e> ... wtf.
+2019-12-02 12:42:11 <wib_jonas> int-e: it's a new bug. apparently bfbot matches not only the latest := in the line, but also the latest :PRIVMSG , so you can make it think that the channel is #esoteric,bfbot and then it sends its reply there
+2019-12-02 12:42:53 <wib_jonas> there's also a different bug in bfbot about messages that end with a backslash, but that's not used here
+2019-12-02 12:47:57 <wib_jonas> https://adventofcode.com/2019/about simple programming puzzles in case you want to solve something
+2019-12-02 12:51:50 Joined: Serpent7776
+2019-12-02 12:51:50 Names: ^[, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 12:55:11 <wib_jonas> =str 1s.
+2019-12-02 12:55:11 <bfbot> ok
