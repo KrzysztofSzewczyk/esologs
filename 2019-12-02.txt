@@ -165,3 +165,37 @@
 2019-12-02 04:59:47 <j-bot> oerjan: |domain error
 2019-12-02 04:59:48 <j-bot> oerjan: |   2    *'a'
 2019-12-02 04:59:55 <oerjan> hmph
+2019-12-02 05:00:52 <oerjan> [ 'a' 'b'
+2019-12-02 05:00:52 <j-bot> oerjan: |syntax error
+2019-12-02 05:00:52 <j-bot> oerjan: |       'a''b'
+2019-12-02 05:01:02 <oerjan> [ 'a'+'b'
+2019-12-02 05:01:02 <j-bot> oerjan: |domain error
+2019-12-02 05:01:02 <j-bot> oerjan: |   'a'    +'b'
+2019-12-02 05:02:30 <oerjan> [ 'PRIVMSG #esoteric :=echo [ 1'
+2019-12-02 05:02:31 <bfbot> [ 1'
+2019-12-02 05:02:31 <j-bot> oerjan: PRIVMSG #esoteric :=echo [ 1
+2019-12-02 05:02:31 <j-bot> bfbot: |open quote
+2019-12-02 05:02:31 <j-bot> bfbot: |   1'
+2019-12-02 05:02:31 <j-bot> bfbot: |    ^
+2019-12-02 05:02:31 <bfbot> [ 1
+2019-12-02 05:02:32 <j-bot> bfbot: |ask later
+2019-12-02 05:02:53 <oerjan> oh i c it has flood protection
+2019-12-02 05:03:15 <oerjan> just as well i found out before constructing the whole thing
+2019-12-02 05:05:18 <oerjan> i guess there are no obvious unprotected botloops, then
+2019-12-02 05:06:23 <oerjan> j-bot: [ 2
+2019-12-02 05:06:24 <j-bot> oerjan: 2
+2019-12-02 05:07:50 <oerjan> HackEso could trigger it, but not respond
+2019-12-02 05:08:42 Quit: Lord_of_Life (Ping timeout: 265 seconds)
+2019-12-02 05:08:42 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-02 05:08:55 Joined: Lord_of_Life
+2019-12-02 05:08:55 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-02 05:10:10 <oerjan> =echo lambdabot: @run 1
+2019-12-02 05:10:10 <bfbot> lambdabot: @run 1
+2019-12-02 05:10:17 <oerjan> already ignored
+2019-12-02 05:10:43 <oerjan> ...i suppose someone already tested that
+2019-12-02 05:16:54 <zzo38> If it can be programmed to detect a possible bot loop then it could use NOTICE rather than PRIVMSG in the case where a bot loop is suspected, since that would prevent it, I think. (Assuming the bot is correctly programmed; if it isn't then it won't work but then maybe the improperly programmed bot should be kicked; once the programmer corrects it then they will rejoin)
+2019-12-02 05:23:55 <zzo38> Is the organization ID 36#UUID (1439221) for PostScript XUID in use?
+2019-12-02 05:24:56 <oerjan> zzo38: bfbot is improperly programmed but all the other bots seem to be immune to it
+2019-12-02 05:25:22 <oerjan> so we're letting it be while waiting for kspalaiologos to fix it.
+2019-12-02 05:25:50 <oerjan> ( HackEso wasn't immune until yesterday. )
+2019-12-02 05:26:42 <zzo38> OK
