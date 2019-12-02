@@ -583,3 +583,104 @@
 2019-12-02 15:23:24 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
 2019-12-02 15:26:16 <wib_jonas> ais523: q strings in perl, sort of
 2019-12-02 15:26:44 <wib_jonas> yeah, it's pretty alien
+2019-12-02 15:32:27 <kmc> make love not files
+2019-12-02 15:33:10 <FireFly> it certainly exhibits some fascinatng behaviour, between those two bugs
+2019-12-02 15:34:41 <ais523> was the :=echo bug fixed yet?
+2019-12-02 15:34:41 <bfbot> :was the bug fixed yet?
+2019-12-02 15:34:42 <wib_jonas> FireFly: three bugs, the way I count
+2019-12-02 15:34:59 <ais523> actually I don't get where the leading : comes from when that bug is used
+2019-12-02 15:35:02 <wib_jonas> FireFly: finds := anywhere in the line, finds :PRIVMSG anywhere in the line, and mangles backslashes in the input
+2019-12-02 15:35:03 <bfbot> FireFly: finds := anywhere in the line, finds :No such command. Try =help.
+2019-12-02 15:35:12 <FireFly> oh aha
+2019-12-02 15:35:36 <wib_jonas> ais523: the part before the " :=echo" is taken as a channel name
+2019-12-02 15:35:36 <bfbot> ais523: the part before the " :No such command. Try =help.
+2019-12-02 15:35:39 <wib_jonas> =msg1
+2019-12-02 15:35:57 <wib_jonas> =def +++++++++[->++++++++<]>+.+.+.
+2019-12-02 15:35:58 <bfbot> Error: Expected a number.
+2019-12-02 15:36:01 <wib_jonas> =str 1s+++++++++[->++++++++<]>+.+.+.
+2019-12-02 15:36:01 <bfbot> ok
+2019-12-02 15:36:04 <wib_jonas> =def 1msg1
+2019-12-02 15:36:05 <bfbot> ok, defined 'msg1'
+2019-12-02 15:36:06 <wib_jonas> =msg1
+2019-12-02 15:36:06 <bfbot> IJK
+2019-12-02 15:36:12 <wib_jonas> pre :=msg1 post
+2019-12-02 15:36:12 <bfbot> IJK
+2019-12-02 15:36:29 <wib_jonas> hmm, maybe not then
+2019-12-02 15:36:59 <wib_jonas> but then how does :PRIVMSG #esoteric-blah,#esoteric :=echo foo work?
+2019-12-02 15:36:59 <bfbot> foo work?
+2019-12-02 15:37:23 <wib_jonas> oh
+2019-12-02 15:37:45 <FireFly> I think it's because it expects "PRIVMSG foo :=echo bar", strips the :=echo and prepends a new : for the PRIVMSG reply
+2019-12-02 15:37:56 <FireFly> lol what
+2019-12-02 15:38:01 <wib_jonas> prefix :PRIVMSG #esoteric-blah,#esoteric extra arguments that the irc will ignore :this will be part of the reply message :=msg1 argument
+2019-12-02 15:38:01 <bfbot> IJK
+2019-12-02 15:38:06 <wib_jonas> nope
+2019-12-02 15:38:07 <FireFly> that line PMed me
+2019-12-02 15:38:10 <wib_jonas> I don't get it
+2019-12-02 15:38:10 <FireFly> anyway
+2019-12-02 15:38:49 <wib_jonas> FireFly: yes, that part is correct, that's because if you send a PRIVMSG to bfbot, it has to PRIVMSG you back
+2019-12-02 15:39:43 <FireFly> ye, but it expects that it's replacing the :=echo with :, but really it's removing another :=echo and the prepending with : thus leads to a double :
+2019-12-02 15:39:43 <bfbot> :ye, but it expects that it's replacing the :=echo with :, but really it's removing another :=echo and the prepending with : thus leads to a double and the prepending with : thus leads to a double :
+2019-12-02 15:39:51 <FireFly> which is why it echoes back, I think
+2019-12-02 15:40:12 <wib_jonas> prefix :PRIVMSG #esoteric-blah,#esoteric nonsense :prefix :=eecchhoo argument
+2019-12-02 15:40:12 <bfbot> nnoonnsseennssee  ::pprreeffiixx  aarrgguummeenntt
+2019-12-02 15:40:19 <wib_jonas> weird
+2019-12-02 15:40:30 <FireFly> ....what
+2019-12-02 15:40:38 <FireFly> that's uhh confusing
+2019-12-02 15:40:41 <wib_jonas> it looks like the part between the channel and the command is part of the input
+2019-12-02 15:41:13 <FireFly> oh is eecchhoo an actual command?
+2019-12-02 15:41:22 <wib_jonas> yes
+2019-12-02 15:41:28 <wib_jonas> I defined it to print each character twice
+2019-12-02 15:41:31 <FireFly> I was very confused for a moment
+2019-12-02 15:41:35 <FireFly> righty
+2019-12-02 15:41:40 <wib_jonas> =str 1s,[.-,]
+2019-12-02 15:41:40 <bfbot> ok
+2019-12-02 15:41:50 <wib_jonas> =def 1edcbhgon
+2019-12-02 15:41:50 <bfbot> ok, defined 'edcbhgon'
+2019-12-02 15:41:56 <wib_jonas> =edcbhgon esoteric
+2019-12-02 15:41:56 <bfbot> esoteric
+2019-12-02 15:42:02 <wib_jonas> =str 1s,[.-.,]
+2019-12-02 15:42:02 <bfbot> ok
+2019-12-02 15:42:04 <wib_jonas> =def 1edcbhgon
+2019-12-02 15:42:04 <bfbot> ok, defined 'edcbhgon'
+2019-12-02 15:42:06 <wib_jonas> =edcbhgon esoteric
+2019-12-02 15:42:06 <bfbot> edsrontsedrqihcb.
+2019-12-02 15:42:19 <wib_jonas> prefix :PRIVMSG #esoteric-blah,#esoteric nonsense :prefix :=edcbhon argument
+2019-12-02 15:42:19 <bfbot> nonsense
+2019-12-02 15:42:50 <wib_jonas> =str 1s,[.+.,]
+2019-12-02 15:42:50 <bfbot> ok
+2019-12-02 15:42:59 <wib_jonas> =efcdhiop esoteric
+2019-12-02 15:42:59 <bfbot> No such command. Try =help.
+2019-12-02 15:43:10 <wib_jonas> =def 1edcbhgon
+2019-12-02 15:43:10 <bfbot> ok, defined 'edcbhgon'
+2019-12-02 15:43:25 <wib_jonas> =def 1efcdhiop
+2019-12-02 15:43:26 <bfbot> ok, defined 'efcdhiop'
+2019-12-02 15:43:33 <wib_jonas> prefix :PRIVMSG #esoteric-blah,#esoteric nonsense :prefix :=efcdhiop argument
+2019-12-02 15:43:34 <bfbot> noopnostefnostef !:;pqrseffgijxy !abrsghuvmnefnotu.
+2019-12-02 15:43:43 <wib_jonas> =undef edcbhon
+2019-12-02 15:43:43 <bfbot> ok
+2019-12-02 15:44:00 <wib_jonas> =str 1s,[.-.,]
+2019-12-02 15:44:00 <bfbot> ok
+2019-12-02 15:44:12 <wib_jonas> =def 1edcbhgon
+2019-12-02 15:44:12 <bfbot> ok, defined 'edcbhgon'
+2019-12-02 15:44:26 <wib_jonas> prefix :PRIVMSG #esoteric-blah,#esoteric nonsense :prefix :=edcbhgon argument
+2019-12-02 15:44:27 <bfbot> nmonnmsrednmsred .:9porqedfeihxw .a`rqgfutmlednmts.
+2019-12-02 15:46:50 Quit: tromp (Remote host closed the connection)
+2019-12-02 15:46:50 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Serpent7776, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-02 15:51:19 <FireFly> =def fftest ,[.,]!hello
+2019-12-02 15:51:19 <bfbot> Error: Expected a number.
+2019-12-02 15:51:29 <FireFly> hrm
+2019-12-02 15:51:40 <FireFly> can I do a define in a single line?
+2019-12-02 15:51:44 <wib_jonas> no
+2019-12-02 15:51:53 <FireFly> ah okay
+2019-12-02 15:52:51 <FireFly> do we know of the str slots are namespaced per user? or would I mess with others' expeirments if I play with it?
+2019-12-02 15:53:45 <wib_jonas> I suspect they aren't namespaced, but there are ten of them so you can just choose two numbers that we aren't using
+2019-12-02 15:54:01 <wib_jonas> and the str slots are temporary, they only matter until you define a command from them
+2019-12-02 15:54:19 <FireFly> ah
+2019-12-02 15:54:41 <FireFly> hm
+2019-12-02 15:54:52 <wib_jonas> the str slots are just there so you can define commands whose brainfuck source doesn't fit in a single irc message
+2019-12-02 15:55:37 <FireFly> I wonder if any of these bugs (like the backspace one) interact in any way with the persisting of commands
+2019-12-02 15:55:42 <wib_jonas> apparently the bot is optimized for commands more interesting than echo, in which case the source is likely almost always large
+2019-12-02 15:56:14 <wib_jonas> I don't know, you'll have to check https://github.com/kspalaiologos/bfbot-repository/tree/master/BRAINFUCKBOT_COMMANDS for that
+2019-12-02 15:56:24 <FireFly> yeah
+2019-12-02 15:56:44 <FireFly> not messing too much atm from phone, but it'd be interesting to try
+2019-12-02 15:57:20 <FireFly> also with the doc command as well
