@@ -46,3 +46,62 @@
 2019-12-02 02:28:16 Joined: tromp
 2019-12-02 02:28:16 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
 2019-12-02 02:29:13 <oerjan> the way ufu is acting overconfident, he better hope the schlock mercenary universe isn't big on cosmic irony. (it might not, given petey seems to get away with such stuff most of the time.)
+2019-12-02 02:31:11 <oerjan> then again, there's that other oafan who keeps being wrong
+2019-12-02 02:32:57 <oerjan> testing ho := hum hi
+2019-12-02 02:32:57 <bfbot> testing ho :No such command. Try =help.
+2019-12-02 02:32:59 Quit: tromp (Ping timeout: 276 seconds)
+2019-12-02 02:32:59 Names: ^[, aji, aloril, APic, atslash, b_jonas, bfbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-02 02:33:10 <oerjan> = hum hi
+2019-12-02 02:33:10 <bfbot> No such command. Try =help.
+2019-12-02 02:33:39 <oerjan> testing ho := hum hi := mwa ha
+2019-12-02 02:33:39 <bfbot> testing ho := hum hi :No such command. Try =help.
+2019-12-02 02:34:06 <fizzie> Some sort of greedy match comes to mind.
+2019-12-02 02:34:08 <oerjan> it's unclear to me why it prints the part in between
+2019-12-02 02:34:29 <oerjan> oh wait
+2019-12-02 02:34:59 <oerjan> maybe it's interpreting what's before as part of the channel name and therefore prints it
+2019-12-02 02:35:41 <oerjan> well channel name and following " :"
+2019-12-02 02:36:11 <oerjan> i suppose it might be including the PRIVMSG part too
+2019-12-02 02:38:27 <fizzie> Bots should be open-sourced by default to avoid the guesswork. Although I guess that'd be spoilers.
+2019-12-02 02:40:17 <oerjan> what about := this then
+2019-12-02 02:40:27 <oerjan> hm it doesn't react to notice
+2019-12-02 02:40:36 <oerjan> it's not quite _that_ stupid :P
+2019-12-02 02:41:17 <fizzie> =echo x
+2019-12-02 02:41:18 <bfbot> x
+2019-12-02 02:42:11 * fizzie knows CTCP
+2019-12-02 02:42:11 <bfbot> .ACTION knows CTCP.
+2019-12-02 02:42:19 <fizzie> Aw.
+2019-12-02 02:44:57 <fizzie> I guess we've got that +C mode anyway.
+2019-12-02 02:46:06 * oerjan does := the obvious
+2019-12-02 02:46:31 <oerjan> huh that wasn't censored
+2019-12-02 02:46:56 <oerjan> the extra part printed before : doesn't go through the dotting
+2019-12-02 02:47:48 <fizzie> Out of curiosity, if I say :a!b@c PRIVMSG #esoteric := does it copy the whole thing or just the end thing?
+2019-12-02 02:47:49 <bfbot> No such command. Try =help.
+2019-12-02 02:48:12 <oerjan> yay
+2019-12-02 02:48:14 <fizzie> How about if I say :a!b@c PRIVMSG fizzie := instead.
+2019-12-02 02:48:25 <oerjan> whee
+2019-12-02 02:48:26 <fizzie> (No reaction.)
+2019-12-02 02:48:37 <oerjan> aww
+2019-12-02 02:49:26 <fizzie> How about if I say :a!b@c PRIVMSG #esoteric-blah := then?
+2019-12-02 02:49:32 <fizzie> (That worked.)
+2019-12-02 02:49:44 <oerjan> darn i was just about to try
+2019-12-02 02:49:48 <fizzie> But just because the bot's already on that channel, and most channels are +n.
+2019-12-02 02:49:53 <oerjan> oh
+2019-12-02 02:51:00 <fizzie> What about :a!b@c PRIVMSG #gnjksdfgsdfg := which is a non-+n channel the bot isn't on?
+2019-12-02 02:51:13 <fizzie> (That worked too.)
+2019-12-02 02:51:19 <oerjan> fiendish
+2019-12-02 02:51:29 <fizzie> So it's not specifically the channels it's on, but it's specifically channels.
+2019-12-02 02:52:37 <fizzie> Maybe it's using something like (PRIVMSG #.*):=(.*) to match, and then some equivalent of $1:$(eval $2) to reply.
+2019-12-02 02:52:37 <bfbot> No such command. Try =help.
+2019-12-02 02:52:58 <fizzie> Uh, I'm not sure what happened there though.
+2019-12-02 02:54:14 <oerjan> testing #ho hum:= maybe
+2019-12-02 02:54:15 <bfbot> No such command. Try =help.
+2019-12-02 02:54:40 <oerjan> it gets deeper
+2019-12-02 02:54:55 <oerjan> testing #ho hum:= maybe := so
+2019-12-02 02:55:13 <oerjan> that got no answer. maybe it sent something to #ho
+2019-12-02 02:55:35 <fizzie> You should test with #esoteric-blah hum:= maybe := so or some-such.
+2019-12-02 02:55:42 <fizzie> (Nothing on #esoteric-blah though.)
+2019-12-02 02:56:06 <fizzie> Oh well, sleeptime.
+2019-12-02 02:56:13 <oerjan> what about #esoteric := like this
+2019-12-02 02:56:13 <bfbot> what about #esoteric :No such command. Try =help.
+2019-12-02 02:56:31 <oerjan> ok it needs the PRIVMSG
+2019-12-02 02:56:37 <oerjan> or something
