@@ -303,3 +303,49 @@
 2019-12-03 08:29:06 Joined: Sgeo
 2019-12-03 08:29:06 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
 2019-12-03 08:29:57 <b_jonas> zzo38 re add a ban => doesn't help at all, you can still abuse the bot without it joining anywhere
+2019-12-03 08:30:13 <b_jonas> I abused it in private message and made it send to a -n channel
+2019-12-03 08:30:46 <shachaf> Wasn't RAII invented for exception handling anyway?
+2019-12-03 08:32:16 <b_jonas> kmc /proc/*/fd/* not symlinks => if you open them, you get an actual dup of the same file description, with a shared seek pointer
+2019-12-03 08:32:43 <shachaf> What a ridiculous API.
+2019-12-03 08:33:16 <shachaf> I like how everything on Linux relies on /proc and /dev and /sys being mounted in particular places but that's only a convention.
+2019-12-03 08:33:20 <b_jonas> that it refers to a deleted file is just slightly weird compared to that
+2019-12-03 08:33:29 <kmc> b_jonas: ah
+2019-12-03 08:33:37 <kmc> i was wondering whether it might do something like that, as well
+2019-12-03 08:34:11 <shachaf> It's not even particularly useful in the Plan 9 way where you can run a program with a fake /proc that you proxy calls to, which no one does.
+2019-12-03 08:36:12 <b_jonas> zzo38 special entries => even if the type in lstat/fstat doesn't distinguish them, you can call statfs/fstatfs to tell whether a file is on /proc . There's even a command line interface in coreutils now,
+2019-12-03 08:36:34 <b_jonas> ``` stat -fc "%T %n" /hackenv /proc
+2019-12-03 08:36:35 <HackEso> hostfs /hackenv \ proc /proc
+2019-12-03 08:36:52 <shachaf> At least Linux is getting pidfd soon, I think.
+2019-12-03 08:37:00 <shachaf> That'll be something.
+2019-12-03 08:37:35 <b_jonas> shachaf re parsing text which was mostly meant for debugging => everything ps prints was meant for debugging. normal programs shouldn't invoke ps and find something out automatically to do normal operations.
+2019-12-03 08:38:02 <shachaf> b_jonas: I'm talking about parsing text in /proc.
+2019-12-03 08:39:32 <b_jonas> shachaf: yes, sometimes I want to make a copy of a whole vector. it typically happens with trivial copy constructors, but can happen even with nontrivial ones.
+2019-12-03 08:40:10 <b_jonas> and it's not like copying short vectors is slow.
+2019-12-03 08:40:24 <shachaf> b_jonas: Sometimes you want to make a copy of a whole vector, but you could instead do that by calling a function to copy it.
+2019-12-03 08:40:33 <shachaf> Having it as an implicit thing when you call a function or whatever is ridiculous.
+2019-12-03 08:40:58 <shachaf> It requires a malloc call so it's not like it's fast.
+2019-12-03 08:43:14 <b_jonas> shachaf re zillions of balanced mallocs not a particularly good way to write a program => yes, and C++ lets you have objects with trivial constructors, and it can optimize those constructor calls away to a memcpy or nothing everywhere.
+2019-12-03 08:44:50 <shachaf> The point is that the argument for RAII is that it helps you balance your mallocs and frees etc., and if that was what you wanted to do anyway, it might be pretty good, but if it's not such a good strategy in the first place, then RAII is less helpful.
+2019-12-03 08:46:29 <b_jonas> "At least Linux is getting pidfd soon, I think." => it already has pidfd I believe, but maybe I'm desynced with reality a bit
+2019-12-03 08:51:07 <b_jonas> shachaf: what do you want to do implicitly each time you call a function with your vector? do you want a compile time error? that's fine, that's what unique_ptr is for. do you want a pointer plus length without refcounting or any other mechanism to make sure it points to a valid vector? that's bad, it's a thing that's perfectly possible in the core language, but the C++ standard library messed up and
+2019-12-03 08:51:13 <b_jonas> only has std::string_view and the horribly overengineered std::span for now.
+2019-12-03 08:52:10 <shachaf> An error is OK, sure.
+2019-12-03 08:52:25 <shachaf> A copy of the struct seems OK? I guess C++ people wouldn't like that so they can ban it.
+2019-12-03 08:52:37 <shachaf> A copy of the data is ridiculous.
+2019-12-03 08:52:44 <b_jonas> shachaf: on the other hand, sometimes you don't need top performance, but just want to write a program easily without making stupid mistakes or thinking too much about allocation, in which case the refcounting and automatic frees are useful, and you may still want to write your program in C rather than in a language that can't detect type errors in compile time or in a lazy language like Haskell
+2019-12-03 08:52:56 <shachaf> Reference counting is obviously ridiculous.
+2019-12-03 08:53:11 <b_jonas> shachaf: there can be different types for each of those
+2019-12-03 08:53:37 <b_jonas> no, reference counting is not obviously ridiculous. it's an overkill for MOST things that you do, needed for very few things, that I admit, but it also doesn't hurt too much in many applications
+2019-12-03 08:54:06 <shachaf> Instead of reference counting you can just manage the lifetime in some reasonable way.
+2019-12-03 08:54:14 <b_jonas> I write a lot of throwaway short programs these days, and given that they take five seconds or even more to run, finding type errors early can help
+2019-12-03 08:54:35 <shachaf> For example, allocate at the beginning of the program and never free.
+2019-12-03 08:55:08 <b_jonas> allocate at the beginning and never free => that's the easiest thing, you can do that in C++ or basically any language
+2019-12-03 08:55:35 <shachaf> Yep.
+2019-12-03 08:55:42 <b_jonas> you don't have to use a std::vector for everything
+2019-12-03 08:55:57 <shachaf> In fact I don't want to use it for anything.
+2019-12-03 08:56:10 <b_jonas> you don't have to use it for anything in your code either
+2019-12-03 08:56:12 <shachaf> Every time I look in /usr/include/c++/ I decide that the STL is scow.
+2019-12-03 08:56:36 <shachaf> It's all incomprehensible.
+2019-12-03 08:57:24 <shachaf> Anyway, you can make types for all these things, but the language and library shouldn't be working against you by implicitly doing the wrong thing.
+2019-12-03 08:58:01 <shachaf> If your program runs for five seconds, exit_group is certainly one of the best memory management strategies.
+2019-12-03 08:59:49 <zzo38> I have read about pidfd in Linux. I had a similar idea, although mine was a bit different; you can add the constant PIDFD to a file descriptor of the process's directory in /proc and use the resulting number wherever a process ID is expected.
