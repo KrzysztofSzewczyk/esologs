@@ -539,3 +539,14 @@
 2019-12-03 11:59:28 <HackEso> scowrevs="$(/usr/bin/paste -sd'|' /hackenv/share/scowrevs)"; hg log -r "tip:0 & ! ($scowrevs)" "$@" | sed 's/\(\(^\| \)[<Itb][^ ]*\)\([^ ][^ ]\)/\1̈\3/'
 2019-12-03 11:59:36 <wib_jonas> `cat /hackenv/share/scowrevs
 2019-12-03 11:59:37 <HackEso> 121:122 \ 194:196 \ 770:771 \ 1000:1001 \ 1493:1497 \ 2112:2114 \ 3342:3343 \ 4530:4531 \ 5136:5137 \ 5642:5643 \ 5894:5897 \ 8669:8678 \ 9070:9071 \ 9074:9075
+2019-12-03 12:00:03 <FireFly> wib_jonas: ah
+2019-12-03 12:00:12 <shachaf> Not named by me, I have to say.
+2019-12-03 12:00:42 <FireFly> I'm mildly surprised
+2019-12-03 12:01:58 Quit: ais523 (Ping timeout: 245 seconds)
+2019-12-03 12:01:58 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-03 12:02:53 <wib_jonas> shachaf: sorry, it's not a saner implementation anymore, but it was back then:
+2019-12-03 12:02:54 <wib_jonas> ``` hg cat -r 7010 /hackenv/bin/culprits
+2019-12-03 12:02:55 <HackEso> hg log --removed "$1" | grep summary: | awk '{print substr($2,2,length($2)-2)}' | sed "s/.$/\x0F&/" | xargs
+2019-12-03 12:02:59 <wib_jonas> it was saner than that one ^
+2019-12-03 12:13:14 Joined: ais523
+2019-12-03 12:13:14 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
