@@ -121,3 +121,22 @@
 2019-12-03 04:30:49 <zzo38> If they do not want any channel operators then should not have any; unfortunately Freenode doesn't have the channel with + prefix to indicate this explicitly. They should, in order that it can easily be indicated if you want + or #
 2019-12-03 04:59:11 Joined: tromp
 2019-12-03 04:59:11 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 05:00:25 Joined: tromp
+2019-12-03 05:03:26 Quit: tromp (Ping timeout: 246 seconds)
+2019-12-03 05:04:50 Quit: tromp (Ping timeout: 246 seconds)
+2019-12-03 05:04:51 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 05:09:58 Joined: Lord_of_Life
+2019-12-03 05:11:59 Quit: Lord_of_Life (Ping timeout: 276 seconds)
+2019-12-03 05:11:59 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-03 05:25:27 <zzo38> I think is strange that the /proc/*/fd/* pretend to be symlinks but don't really work like symlinks. It seem like it would be like a "special link" instead?
+2019-12-03 05:27:55 <kmc> in what way don't they act like symlinks?
+2019-12-03 05:28:27 <zzo38> I think they can refer to deleted files and to anonymous stuff, and symlinks can't
+2019-12-03 05:28:32 <kmc> is it because they may refer to anonymous things?
+2019-12-03 05:28:33 <kmc> right
+2019-12-03 05:29:10 <kmc> keegan@localhost:~$ ls -l /proc/self/fd | grep pipe
+2019-12-03 05:29:10 <kmc> l-wx------ 1 keegan keegan 64 Dec  2 21:29 1 -> pipe:[6737388]
+2019-12-03 05:29:15 <kmc> wonder what that number means
+2019-12-03 05:29:17 <shachaf> Can you distinguish between a deleted file and a link to a file ending in ' (deleted)'?
+2019-12-03 05:29:24 <kmc> lolol
+2019-12-03 05:29:32 <kmc> you mean without a race condition?
+2019-12-03 05:29:40 <shachaf> I mean at all, I think?
