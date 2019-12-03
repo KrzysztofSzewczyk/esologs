@@ -349,3 +349,54 @@
 2019-12-03 08:57:24 <shachaf> Anyway, you can make types for all these things, but the language and library shouldn't be working against you by implicitly doing the wrong thing.
 2019-12-03 08:58:01 <shachaf> If your program runs for five seconds, exit_group is certainly one of the best memory management strategies.
 2019-12-03 08:59:49 <zzo38> I have read about pidfd in Linux. I had a similar idea, although mine was a bit different; you can add the constant PIDFD to a file descriptor of the process's directory in /proc and use the resulting number wherever a process ID is expected.
+2019-12-03 09:01:38 <b_jonas> zzo38: the point of pidfd is that there's a flag on fork to give you an open file descriptor to the pidfd handler, so there's no file system muckery at all
+2019-12-03 09:01:57 Joined: ais523
+2019-12-03 09:01:57 Names: ^[, ais523, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 09:01:59 <b_jonas> no messing around in /proc for something that doesn't need it
+2019-12-03 09:02:03 <b_jonas> oh hello ais523
+2019-12-03 09:02:43 <b_jonas> shachaf: file seconds or longer. at file seconds already I want the type errors early.
+2019-12-03 09:03:02 <b_jonas> but yes, there's a point in that
+2019-12-03 09:03:16 <b_jonas> I don't need to release memory during those programs
+2019-12-03 09:03:45 <shachaf> At least if you fork you don't need to worry about race conditions since you're the parent.
+2019-12-03 09:03:47 <b_jonas> though I do want to destroy a few resource-holding objects that hold something other than memory, such as file handles
+2019-12-03 09:03:51 <zzo38> b_jonas: Yes, that is good too (although I think it is for clone() and not fork(); fork() has no flags), but I think what I read is that it is the same as the directory in /proc though, so you can use that to get a file descriptor for another process.
+2019-12-03 09:04:39 <b_jonas> shachaf: while you're the parent, yes. but how do you tell to some other processes which process that is?
+2019-12-03 09:05:04 <b_jonas> those other processes may want to send signals or whatever, even after your process (the parent) exits
+2019-12-03 09:05:36 <shachaf> Sure, but you can open /proc/pid and send them the fd.
+2019-12-03 09:05:45 <zzo38> Other than the process ID, if you have a file descriptor then could you use a SCM_RIGHTS message to transmit it to other processes?
+2019-12-03 09:07:07 <b_jonas> zzo38: yes, or have other children inherit it
+2019-12-03 09:07:32 <zzo38> b_jonas: Yes, if you are spawning them yourself
+2019-12-03 09:08:32 <zzo38> Anyways, what the difference is in what I read they were doing in Linux and what my own idea was, is that my own way doesn't have a separate system call for sending a signal to or otherwise deal with other processes by the file descriptor instead of process ID; you just add together PIDFD and the file descriptor, to make a number usable where a process ID is expected.
+2019-12-03 09:09:10 <b_jonas> definitely SCM_RIGHTS, unless you're golfing for IOCCC, in which case passing file descriptors with sprintf(name, "/proc/%d/self/%d", parentpid, parent_pidfd); pidfd = open(name, 2, 0); is easier.
+2019-12-03 09:10:06 <b_jonas> zzo38: oh yeah, you mentioned that. but I find that a somewhat dangerous idea, putting the flag in the process id argument itself rather than into separate flags
+2019-12-03 09:10:39 <b_jonas> I don't have a definite example for why that's a bad idea, I just have the feeling that it could cause weird bugs, including possibly security bugs, in some programs
+2019-12-03 09:11:37 <zzo38> I thought of that, and that is why the largest valid process ID has to be less than PIDFD-1.
+2019-12-03 09:12:17 <zzo38> (Although there might be other things I have not thought of, but as far as I know, I cannot think of them)
+2019-12-03 09:12:40 <shachaf> Ugh. Can all y'all just scrap half of Unix and make a good system call API?
+2019-12-03 09:14:24 <zzo38> shachaf: I had idea of Plan10 which is sort of like that, although you have to scrap less than half of Unix because some things required for compatibility with Unix; the rest can be implemented in user libraries so need not being system calls (some of them would use new Plan10 system calls which are not Unix system calls, in order to emulate them).
+2019-12-03 09:14:41 <shachaf> zzo38: What if I don't want compatibility with Unix?
+2019-12-03 09:14:53 <shachaf> Or at best I want it only for an emulation layer like WSL.
+2019-12-03 09:15:26 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-12-03 09:15:26 <ais523> shachaf: have you seen WASI? you probably need more system calls than that for a full OS, but it seems to have the general right attitude
+2019-12-03 09:15:55 <shachaf> ais523: Well, I want it to be the actual OS interface, for actual native code, and without a web browser or some ridiculous thing running in between.
+2019-12-03 09:16:05 <zzo38> Some things would only be compatible if things are set up to do such thing anyways; if your program exports a function called "plan10main" then those things are not automatically set up.
+2019-12-03 09:16:11 <shachaf> The goal is simplifying things, not adding layer and layers of wrappers.
+2019-12-03 09:16:16 <shachaf> But maybe the API itself is good?
+2019-12-03 09:16:51 <zzo38> (If your program doesn't include "plan10main", then the one in the library is used, which sets up Unix compatibility and then calls main.)
+2019-12-03 09:17:24 <zzo38> Use a library without Unix compatibility if you do not want it though, I suppose, is also possible.
+2019-12-03 09:17:28 <shachaf> It seems likely that all syscalls should go through something like io_uring, since how often do you want to do a ring transition for each one separately?
+2019-12-03 09:19:51 <shachaf> The actual WASI API might be reasonable? What's better about it than Linux?
+2019-12-03 09:20:49 <zzo38> I don't know what is io_uring
+2019-12-03 09:21:12 <shachaf> zzo38: https://kernel.dk/io_uring.pdf
+2019-12-03 09:21:28 <b_jonas> and I want compatibility with a lot of existing programs that I use and I don't want to rewrite, so I use Linux. (and Windows at work.)
+2019-12-03 09:21:33 <shachaf> That article maybe isn't the best introduction.
+2019-12-03 09:22:43 <b_jonas> but sure, experiment with research OSes if you want, someone has to do it so that 30 years from now, we have an infrastructure that's only 30 years obsolete, not 50 years obsolete
+2019-12-03 09:23:13 <zzo38> b_jonas: It is why my idea of Plan10 has the compatibility mode (much of it is implemented in user libraries, but some stuff would be part of the kernel).
+2019-12-03 09:24:40 <b_jonas> zzo38: will you want a new main OS interface every 15 years, and will you have three different compatibility layers 30 years from now when you add the fourth one?
+2019-12-03 09:24:58 <b_jonas> with existing large programs using all of them mixed and matched through libraries obviously
+2019-12-03 09:25:13 <b_jonas> back in an hour
+2019-12-03 09:25:14 Quit: b_jonas (Quit: leaving)
+2019-12-03 09:25:14 Names: ^[, ais523, aji, aloril, APic, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 09:25:17 <shachaf> b_jonas: Permit programs to use only one of the interfaces.
+2019-12-03 09:25:33 <shachaf> Just like Windows supported either Win32 or POSIX, but not both at once.
+2019-12-03 09:27:55 <zzo38> b_jonas: If the author of a program wishes to use multiple libraries that is up to the author of those programs. I should think the kernel itself would not have three different compatibility layers and new main OS interfaces, if it is designed properly.
