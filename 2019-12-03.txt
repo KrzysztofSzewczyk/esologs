@@ -446,3 +446,28 @@
 2019-12-03 09:59:10 <shachaf> Sequential file descriptors are clearly scow.
 2019-12-03 09:59:37 <shachaf> Windows has HANDLEs, which I guess are pretty similar.
 2019-12-03 09:59:43 <shachaf> (To random descriptors.)
+2019-12-03 10:00:37 <shachaf> I guess they're not the same for various reasons.
+2019-12-03 10:03:31 <olsner> I consider HANDLEs and file descriptors both just handles for kernel objects
+2019-12-03 10:03:50 <olsner> (windows has some unrelated things that are typed HANDLE but aren't actually kernel objects though)
+2019-12-03 10:05:48 <olsner> e.g. GDI handles are in a different namespace, and some are just pointers for things that pretend to be or once were kernel features but are implemented in user space
+2019-12-03 10:06:59 <shachaf> It probably makes sense to be able to have "system calls" implemented in userspace, as Windows does.
+2019-12-03 10:07:14 <shachaf> (Though maybe that's not really compatible with the ring buffer thing I was talking about before?)
+2019-12-03 10:07:29 <olsner> it's a good way to give you freedom on the kernel side to change your system calls
+2019-12-03 10:07:42 <zzo38> If the ABI and ISA fields in the ELF header are incorrect, then the kernel should see if an emulator for the specified ABI/ISA is loaded (the emulator is just a kernel module, and the core system does not include any emulators), and if there isn't one then trying to execute that file is an error.
+2019-12-03 10:08:35 <shachaf> I'm a little skeptical that things like POSIX are particularly good.
+2019-12-03 10:09:13 <shachaf> I'd rather have minimal and stable OS ABIs and then maybe a library on top that things can link to if they want to be portable.
+2019-12-03 10:10:09 <zzo38> I do think there are some problems with POSIX, and also some problems with Windows, and also other systems.
+2019-12-03 10:11:45 <zzo38> Wikipedia says that the ABI field in the ELF header "is often set to 0 regardless of the target platform". Unless the program is for System V, such files will have to be corrected in order to run on Plan10.
+2019-12-03 10:12:15 <shachaf> zzo38: Is Plan10 some sort of banana pun?
+2019-12-03 10:12:32 <zzo38> (This correction can be made without recompiling the program; you only have to change one byte in the executable file.)
+2019-12-03 10:12:50 <zzo38> shachaf: That is not the intention; the name is similar to Plan9 but is different.
+2019-12-03 10:24:49 Joined: wib_jonas
+2019-12-03 10:24:49 Names: ^[, ais523, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-03 10:26:18 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-12-03 10:26:18 <wib_jonas> shachaf: programs only use one interfaces => then all large programs will stick to the older interface because that's what the libraries use. just like everyone still uses gtk+ version 2 rather than the incompatible version 3, but in a larger scale.
+2019-12-03 10:26:36 <wib_jonas> I'd prefer to keep most of the unix api, because most of it is sane, and just improve the few parts that are bad.
+2019-12-03 10:26:47 <wib_jonas> but I admit I was a bit too sarcastic about compatibility
+2019-12-03 10:27:27 <wib_jonas> and you can mix windows API with POSIX all the time on windows, although it's ugly because the POSIX API really doesn't match how windows works, and you need some conversion functions, but I still do it sometimes
+2019-12-03 10:28:20 <shachaf> wib_jonas: You can port programs to new interfaces just like you can port them to new OSes.
+2019-12-03 10:29:13 <shachaf> If programs are just using the OS ABI via libraries, it's even easier to port, because you can just port the libraries (like libc and SDL).
+2019-12-03 10:29:26 <wib_jonas> ais523: main isn't mangled, but the C++ compiler treats in somewhat special way at compile time, and then the linker treats it specially at link time
