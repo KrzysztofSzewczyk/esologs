@@ -400,3 +400,49 @@
 2019-12-03 09:25:17 <shachaf> b_jonas: Permit programs to use only one of the interfaces.
 2019-12-03 09:25:33 <shachaf> Just like Windows supported either Win32 or POSIX, but not both at once.
 2019-12-03 09:27:55 <zzo38> b_jonas: If the author of a program wishes to use multiple libraries that is up to the author of those programs. I should think the kernel itself would not have three different compatibility layers and new main OS interfaces, if it is designed properly.
+2019-12-03 09:31:12 <ais523> shachaf: I don't think WASI has a mandatory dependency on WebAssembly, although obviously it was designed for that use
+2019-12-03 09:31:35 <ais523> also, WebAssembly doesn't require a browser, it's just a bytecode language that can have small non-browser-dependent interpreters written for it (and a few of those exist already)
+2019-12-03 09:33:06 <zzo38> (Of course, Unix programs which export a symbol called "plan10main" will not work when compiled for Plan10, but that is unavoidable. If you install an emulator then you might even be able to run the programs directly though (rather than recompiling them for Plan10), which would work; however, the emulators are not part of the core system, but just a feature of the core system to allow the possibility to install emulators.)
+2019-12-03 09:33:38 <ais523> zzo38: why not use a character in the symbol name that isn't valid in a UNIX program?
+2019-12-03 09:33:40 <zzo38> ais523: I know of that, and I wanted to see if there is a library to execute WebAssembly programs from a native C program.
+2019-12-03 09:34:05 <ais523> zzo38: I'm not sure whether any of the existing interpreters work as a library, even if none do it should be easy to adapt them though
+2019-12-03 09:34:42 <zzo38> ais523: Because the C compiler will not accept it. Anyways, it is the C library which causes the program to call main() when it starts anyways, I think?
+2019-12-03 09:35:01 <zzo38> (So the kernel doesn't need to care what it is called.)
+2019-12-03 09:35:32 <ais523> won't the C compiler need to be modified anyway to produce programs for a new OS?
+2019-12-03 09:36:06 <ais523> but yes, in most implementations, main is called by an object file in the standard library, normally called something like crt0.o
+2019-12-03 09:36:14 <ais523> IIRC it isn't in libc itself, but a separate standard library
+2019-12-03 09:36:52 <zzo38> Probably, but you will not need to modify the files which change how the program is parsed, I should think.
+2019-12-03 09:39:13 <ais523> out of interest, why do you want a different main method? so you can give it different parameters?
+2019-12-03 09:39:26 Quit: kingoffrance (Quit: x)
+2019-12-03 09:39:26 Names: ^[, ais523, aji, aloril, APic, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 09:39:37 <ais523> …now I'm wondering whether C++ object files mangle the name of "main" or not
+2019-12-03 09:40:15 <zzo38> That is one of it, yes (there are a few additional parameters), but also for compatibility with UNIX.
+2019-12-03 09:41:08 <ais523> well, most C implementations let you give a function too many parameters without issue
+2019-12-03 09:41:26 <ais523> that's one of the reasons why caller-cleans is a more common calling convention than callee-cleans
+2019-12-03 09:41:33 <ais523> (IMO callee-cleans is much better for a number of reasons)
+2019-12-03 09:41:57 Quit: Hooloovo0 (Ping timeout: 240 seconds)
+2019-12-03 09:41:57 Names: ^[, ais523, aji, aloril, APic, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 09:42:27 <ais523> so why not use the same entry point for plan10 programs and posix programs?
+2019-12-03 09:42:54 <zzo38> Because the default settings for Plan10 are not compatible with POSIX.
+2019-12-03 09:43:54 <zzo38> (The default implementation of plan10main sets up some stuff required for POSIX compatibility and then calls main.)
+2019-12-03 09:43:59 <ais523> what sort of settings are these? things like locale?
+2019-12-03 09:45:18 <zzo38> No; stuff such as that in POSIX, you will receive a SIGPIPE signal which will terminate the process for writing to any broken pipe, and so on
+2019-12-03 09:45:46 Joined: Hooloovo0
+2019-12-03 09:45:46 Names: ^[, ais523, aji, aloril, APic, atriq, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 09:46:51 <zzo38> (Sometimes that behaviour with SIGPIPE is wanted, but often only for file descriptor 1. So if you are not using the POSIX compatibility then your program can enable SIGPIPE for file descriptor 1 only, in that case.)
+2019-12-03 09:47:35 <ais523> oh, I see, for file descriptors inherited from the parent process there's no easy chance to configure that
+2019-12-03 09:47:49 <ais523> (for file descriptors opened by the program itself, it would make sense for the API that opens it to specify how you wanted signals to be configured)
+2019-12-03 09:47:57 <shachaf> Are file descriptors a good system?
+2019-12-03 09:48:00 <ais523> I can see an argument for file descriptors 1 and 2
+2019-12-03 09:48:30 <shachaf> It's kind of nice how you can have something like a perf_event_open fd, and either read() or mmap() it, just like anything else.
+2019-12-03 09:48:36 <ais523> shachaf: you need /something/ to be able to refer to an open file, and having an "open/closed" status in files rather than being stateless seems to be the right option because it makes it much easier to reason about potential race conditions
+2019-12-03 09:48:38 <shachaf> Rather than a bunch of special-case system calls.
+2019-12-03 09:48:40 <zzo38> ais523: Yes, that makes sense. The POSIX compatibility API (which is a user library function) would call the system call and tell it to enable SIGPIPE.
+2019-12-03 09:48:50 <shachaf> But sometimes people try too hard to fit things into that API.
+2019-12-03 09:48:51 <ais523> WASI came up with an improvement, though, where file descriptors are random numbers rather than being sequential
+2019-12-03 09:54:19 Nick Change: atriq -> Taneb
+2019-12-03 09:54:20 Names: ^[, ais523, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 09:55:18 <zzo38> (possibly some setting in the C library which the default plan10main would set up, or that somehow checks whether or not plan10main has been overridden if that is possible)
+2019-12-03 09:59:10 <shachaf> Sequential file descriptors are clearly scow.
+2019-12-03 09:59:37 <shachaf> Windows has HANDLEs, which I guess are pretty similar.
+2019-12-03 09:59:43 <shachaf> (To random descriptors.)
