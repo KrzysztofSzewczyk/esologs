@@ -492,3 +492,50 @@
 2019-12-03 11:00:56 Names: ^[, ais523, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
 2019-12-03 11:18:20 Joined: arseniiv
 2019-12-03 11:18:21 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-03 11:32:33 <shachaf> `? dc
+2019-12-03 11:32:35 <HackEso> dc is short for "dump core". (try it out yourself: dc -e '[')
+2019-12-03 11:32:40 <shachaf> `` dc -e '['
+2019-12-03 11:32:41 <HackEso> No output.
+2019-12-03 11:33:07 <shachaf> I want a program to SEGV, any options?
+2019-12-03 11:35:38 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-12-03 11:35:38 <wib_jonas> `perl -ekill 11,$$
+2019-12-03 11:35:39 <HackEso> No output.
+2019-12-03 11:35:53 <wib_jonas> ``` perl '-ekill 11,$$'; echo $?
+2019-12-03 11:35:54 <HackEso> bash: line 1:    54 Segmentation fault      perl '-ekill 11,$$' \ 139
+2019-12-03 11:36:07 <wib_jonas> ``` perl '-eunpack"p",0'; echo $?
+2019-12-03 11:36:10 <HackEso> 0
+2019-12-03 11:37:31 <shachaf> That's a fake SEGV.
+2019-12-03 11:39:56 <ais523> `! c return *(int *)0;
+2019-12-03 11:39:59 <HackEso> ​/hackenv/interps/gcccomp/gcccomp: line 53:    68 Segmentation fault      /tmp/compiled.$$
+2019-12-03 11:40:12 <ais523> can't get much more real SEGV than that
+2019-12-03 11:40:49 <ais523> also, that "$$" is interesting, looks like there was an attempt to swap in the PID, but it still works anyway due to the nature of /tmp
+2019-12-03 11:41:31 <shachaf> I wanted to test the program "catchsegv" that I just found out about.
+2019-12-03 11:41:49 <shachaf> But now I know how it works so I'm less curious.
+2019-12-03 11:43:13 <shachaf> (It uses LD_PRELOAD to set up a signal handler.)
+2019-12-03 11:43:55 <wib_jonas> oh, that reminds me
+2019-12-03 11:44:04 <wib_jonas> ``` rm -v /hackenv/bin/culprits-ng
+2019-12-03 11:44:12 <HackEso> removed '/hackenv/bin/culprits-ng'
+2019-12-03 11:44:19 <wib_jonas> I created that long ago, but I don't use it
+2019-12-03 11:44:27 <shachaf> `before
+2019-12-03 11:44:29 <HackEso> ​/hackenv/bin/culprits-ng//#!/bin/sh \ exec hg log -l 512 --template "{desc}\0" -- "$@" | perl -0ne '/^<([^>]*)>/ and print"$1 "'
+2019-12-03 11:46:39 <wib_jonas> I almost never want to look up just the users who modified a file, without other parts of the revision log
+2019-12-03 11:50:50 <fizzie> `culprits ../bin/culprits-ng
+2019-12-03 11:50:52 <HackEso> wib_jonäs oerjän oerjän b_jonäs b_jonäs b_jonäs b_jonäs b_jonäs
+2019-12-03 11:53:16 <fizzie> Not 100% sure how culprits-ng differed from the regular one, other than the limit, no scowrevs, and no no-ping.
+2019-12-03 11:55:46 <FireFly> ...scowrevs?
+2019-12-03 11:56:01 <shachaf> `` hg log -l 512 --template "{desc}\0" -- ../bin/culprits-ng | perl -0ne '/^<([^>]*)>/ and print"$1 "'
+2019-12-03 11:56:07 <HackEso> fizzie b_jonas b_jonas b_jonas b_jonas
+2019-12-03 11:56:23 <shachaf> `` hg log --removed -l 512 --template "{desc}\0" -- ../bin/culprits-ng | perl -0ne '/^<([^>]*)>/ and print"$1 "'
+2019-12-03 11:56:24 <FireFly> `` cat $(which culprits)
+2019-12-03 11:56:25 <HackEso> wib_jonas oerjan oerjan fizzie jeffl35 fizzie evilipse b_jonas b_jonas b_jonas b_jonas b_jonas
+2019-12-03 11:56:25 <HackEso> hoag "$@" | awk '{print substr($1,2,length($1)-2)}' | xargs -d'\n'
+2019-12-03 11:56:50 <wib_jonas> fizzie: no noping, no scowrevs, and different implementation.
+2019-12-03 11:57:12 <wib_jonas> saner implementation, I hope
+2019-12-03 11:58:01 <shachaf> What does it have to do with sanity?
+2019-12-03 11:58:11 <shachaf> It looks like a golfed Perl implementation.
+2019-12-03 11:58:36 <wib_jonas> FireFly: scowrevs is a list of revisions in our repository that most of the fancy commands hide by default, though you still see them with an explicit hg
+2019-12-03 11:58:48 <wib_jonas> and I mean they hide their diffs, so you don't see the same change in the next revision either
+2019-12-03 11:59:27 <wib_jonas> ``` cat /hackenv/bin/hlnp
+2019-12-03 11:59:28 <HackEso> scowrevs="$(/usr/bin/paste -sd'|' /hackenv/share/scowrevs)"; hg log -r "tip:0 & ! ($scowrevs)" "$@" | sed 's/\(\(^\| \)[<Itb][^ ]*\)\([^ ][^ ]\)/\1̈\3/'
+2019-12-03 11:59:36 <wib_jonas> `cat /hackenv/share/scowrevs
+2019-12-03 11:59:37 <HackEso> 121:122 \ 194:196 \ 770:771 \ 1000:1001 \ 1493:1497 \ 2112:2114 \ 3342:3343 \ 4530:4531 \ 5136:5137 \ 5642:5643 \ 5894:5897 \ 8669:8678 \ 9070:9071 \ 9074:9075
