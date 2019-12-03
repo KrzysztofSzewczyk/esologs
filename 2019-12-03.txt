@@ -140,3 +140,55 @@
 2019-12-03 05:29:24 <kmc> lolol
 2019-12-03 05:29:32 <kmc> you mean without a race condition?
 2019-12-03 05:29:40 <shachaf> I mean at all, I think?
+2019-12-03 05:30:03 <kmc> well you could try to readlink then open
+2019-12-03 05:30:04 <shachaf> If you have a program that opens /foo, and you delete foo, /proc/pid/fd/n will be a link to '/foo (deleted)'
+2019-12-03 05:30:10 <kmc> but I guess you may have both files
+2019-12-03 05:30:17 <kmc> both '/foo' and '/foo (deleted)'
+2019-12-03 05:30:23 <shachaf> But how can you tell whether a program just opened a file with that name?
+2019-12-03 05:30:35 <shachaf> Ugh, I hate how much of UNIX is stringly typed.
+2019-12-03 05:30:42 <shachaf> The whole /proc thing is a mess.
+2019-12-03 05:30:57 <kmc> does  stat /proc/$PID/fd/$N  tell you anything useful?
+2019-12-03 05:30:57 <kmc> yes
+2019-12-03 05:31:05 <kmc> /proc isn't even UNIX
+2019-12-03 05:31:19 <kmc> it's a linux thing intended for quick hacks in kernel development that just grew and grew
+2019-12-03 05:31:20 <shachaf> Well, that's fair.
+2019-12-03 05:31:25 <shachaf> How did ps work back in the day?
+2019-12-03 05:31:32 <kmc> BSD also has /proc but there's not like a standard for what's in these things
+2019-12-03 05:31:40 <kmc> i think it even has a linux-emulating procfs as well
+2019-12-03 05:31:48 <shachaf> There isn't a POSIX-style standard, but that's not what I care about.
+2019-12-03 05:31:50 <kmc> i think by parsing /dev/mem
+2019-12-03 05:31:52 <kmc> really.
+2019-12-03 05:32:03 <kmc> and so ps was setuid
+2019-12-03 05:32:26 <shachaf> The annoying thing is that even if I port my program specifically to Linux, I have this terrible ABI.
+2019-12-03 05:32:41 <shachaf> The system call ABI is pretty good. Things like ioctls are OK? And /proc is a mess.
+2019-12-03 05:32:46 <zzo38> There are problems with /proc, although I think it is because they treat the files in it as files and symlinks and so on even though it isn't like that. Add a new type for "special entries" and then you can avoid such problem.
+2019-12-03 05:32:59 <shachaf> And that's not to mention the userspace ABI, which involves parsing things like /etc/passwd and /etc/resolv.conf which are sort of specified.
+2019-12-03 05:33:16 <kmc> ioctls are not okay
+2019-12-03 05:33:34 <kmc> ioctls are like syscalls only with minimal oversight on whether they are at all well-designed
+2019-12-03 05:34:05 <shachaf> Sure, but at least they have an ABI at all, generally.
+2019-12-03 05:34:20 <shachaf> Instead of parsing text which was mostly meant for debugging.
+2019-12-03 05:34:44 <shachaf> kmc: Do you like io_uring?
+2019-12-03 05:36:15 Joined: tromp
+2019-12-03 05:36:15 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 05:36:38 <kmc> what's that
+2019-12-03 05:36:46 <shachaf> I don't see anything different from stat.
+2019-12-03 05:37:05 <shachaf> Maybe you can open the file and fstat it and compare the inodes or something.
+2019-12-03 05:37:20 <shachaf> It's the new Linux asynchronous I/O API.
+2019-12-03 05:37:28 <shachaf> and maybe asynchronous everything API??
+2019-12-03 05:37:32 <kmc> ok
+2019-12-03 05:37:33 <kmc> fun
+2019-12-03 05:37:38 <shachaf> https://lwn.net/Articles/776703/
+2019-12-03 05:37:59 <shachaf> You have a request and response ring buffer, and you send the kernel requests and get responses.
+2019-12-03 05:38:21 <shachaf> If you can send it requests fast enough, you might never have transitions to ring 0 at all.
+2019-12-03 05:38:35 <shachaf> You write to your buffer in your thread and it reads in its thread on another core.
+2019-12-03 05:40:36 Quit: tromp (Ping timeout: 240 seconds)
+2019-12-03 05:40:37 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 05:44:53 <kmc> yeah
+2019-12-03 05:45:02 <kmc> but you can also call into the kernel to block on it?
+2019-12-03 05:45:19 <kmc> this is how high performance network drivers have worked forever
+2019-12-03 05:45:33 <kmc> if you're doing low latency infiniband or something on linux then you don't go through the kernel at all
+2019-12-03 05:45:42 <kmc> you write into a ring buffer in the card's address space
+2019-12-03 05:46:29 <shachaf> You can also call into the kernel, yep.
+2019-12-03 05:46:52 <shachaf> This is the reasonable way for things to work, obviously.
+2019-12-03 05:55:14 Joined: Frater_EST
+2019-12-03 05:55:14 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
