@@ -244,3 +244,62 @@
 2019-12-03 07:59:05 <kmc> but I'm not sure how often anyone writes an operator= which does such things
 2019-12-03 07:59:33 <shachaf> That sounds pretty plausible. Maybe an even more plausible thing would be to do away with destructors entirely.
 2019-12-03 08:00:00 <kmc> then how will I have RAII?
+2019-12-03 08:00:05 <kmc> RAII is tg
+2019-12-03 08:00:18 <shachaf> is it actually
+2019-12-03 08:00:36 <kmc> yes
+2019-12-03 08:00:50 <oerjan> `? raii
+2019-12-03 08:00:53 <HackEso> RAII means you deallocate in the destructor. There is no 'initializer' involved.
+2019-12-03 08:01:08 <kmc> that is a profoundly useless definition
+2019-12-03 08:01:25 <shachaf> RAII means you have destructors, I think?
+2019-12-03 08:01:25 <oerjan> `dowg raii
+2019-12-03 08:01:27 <HackEso> 10903:2017-05-18 <shachäf> slwd raii//s,allocate in the constructor and ,, \ 5854:2015-07-21 <orën> learn RAII means you allocate in the constructor and deallocate in the destructor. There is no \'initializer\' involved. \ 5853:2015-07-21 <orën> le/rn RAII/RAII is Resource Allocation in the constructor... wait wait uh... Is uh, Initialization
+2019-12-03 08:03:30 <kmc> I think the important *concept* is that resources of all sorts can be modeled by objects in the language, in such a way that having a value of that object type guarantees that the resource is available with a certain set of operations on it
+2019-12-03 08:04:27 <kmc> basically the idea that constructors and destructors make sense to manage not just memory but stuff like open files, mutex acquisitions, etc
+2019-12-03 08:04:39 <kmc> and this is a good fit for affine types because of course a lot of non-memory resources cannot be copied arbitrarily
+2019-12-03 08:04:50 <kmc> as well as a lot of memory-related resources such as uniquely-owned objects
+2019-12-03 08:05:20 <shachaf> But constructors aren't the important part, it's destructors. A constructor is just a function that returns a value, but destructors have special language support.
+2019-12-03 08:05:25 <kmc> right
+2019-12-03 08:05:41 <kmc> in C++ there are some other reasons to have constructors as a language feature
+2019-12-03 08:05:45 <kmc> but Rust doesn't need them
+2019-12-03 08:06:05 <shachaf> But also is this actually a good idea?
+2019-12-03 08:06:12 <shachaf> A mutex is pretty different from memory.
+2019-12-03 08:06:27 <shachaf> And RAII isn't even particularly good at managing memory, I think?
+2019-12-03 08:06:28 <kmc> *shrug*, it makes for a very convenient and safe API
+2019-12-03 08:06:49 <shachaf> In particular RAII helps you write a program with zillions of balanced mallocs and frees.
+2019-12-03 08:07:03 <shachaf> But I'm not sure that's a particularly good way to write a program?
+2019-12-03 08:07:49 <shachaf> If you do something like arena allocation, then destructors don't even make that much sense. You don't want to loop over the arena and run all the destructors of all the objects.
+2019-12-03 08:08:47 <kmc> usually not, no
+2019-12-03 08:08:53 <kmc> so don't use arenas with types that have destructors?
+2019-12-03 08:08:58 <kmc> but if you do, the right thing will still happen
+2019-12-03 08:09:21 <shachaf> Only if you loop over the arena, which presumably isn't even part of the arena API.
+2019-12-03 08:09:44 <shachaf> Since arenas are all about freeing a bunch of things all at once.
+2019-12-03 08:10:57 <shachaf> How much does RAII give you over something like Python's "with locking_lock_thingy(mutex): ..."?
+2019-12-03 08:11:04 Joined: tromp
+2019-12-03 08:11:04 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 08:11:34 <shachaf> It gives you the ability to move a lock_holder_object_type_t to a function, which is a way of telling it that you're holding the lock and it's responsible for freeing it.
+2019-12-03 08:11:55 <shachaf> Maybe that's good? But it seems pretty niche at best, and possibly makes for harder to follow control flow.
+2019-12-03 08:12:36 Quit: oerjan (Quit: Nite)
+2019-12-03 08:12:36 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 08:14:03 <kmc> i think passing off responsibility for a resource through moves seems pretty useful
+2019-12-03 08:14:26 <kmc> but i'm kind of tired and not putting a lot of thought into coming up with compelling examples
+2019-12-03 08:14:40 <kmc> i have a lot of different things on my mind today :/
+2019-12-03 08:16:38 <shachaf> I think you give up on something meaningful by having invisible control flow happen in what seems like an assignment or value passing.
+2019-12-03 08:18:54 <shachaf> A "lock_holder_type_t holder{lock};" isn't really much of a value, it's control flow, and it's not clear that treating it as a value makes programs clearer. Maybe?
+2019-12-03 08:19:46 <shachaf> Anyway that makes sense too.
+2019-12-03 08:21:14 User Name: olsner = olsner!~salparot@c80-217-180-83.bredband.comhem.se
+2019-12-03 08:21:14 <olsner> RAII as a concept has always annoyed me, it's weird to reuse something that is otherwise "setting things to their initial value" to mean "acquiring resources"
+2019-12-03 08:22:08 <shachaf> RAII isn't really about constructors, and is a bad name.
+2019-12-03 08:22:25 <shachaf> "RAII" is also a bad name.
+2019-12-03 08:24:14 <olsner> yes, it's more about destructors anyway - a hack where you can use destructors for timing release of "other" resources (except e.g. memory that is more naturally part of an object or its value)
+2019-12-03 08:24:15 <b_jonas> oerjan re sees its own messages: it doesn't see its own messages on a channel, but does see them if it explicitly sends to itself by nick
+2019-12-03 08:25:06 <kmc> shachaf: the fungus fair is on sunday
+2019-12-03 08:26:35 <kmc> fungot: the fungot fair is on sunday
+2019-12-03 08:26:35 <fungot> kmc: do you have the parens the important part for me.
+2019-12-03 08:27:20 <b_jonas> ooh nice, they extended the cold weather for three more days
+2019-12-03 08:27:50 Quit: Sgeo (Read error: Connection reset by peer)
+2019-12-03 08:27:50 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 08:28:11 <b_jonas> oerjan: ok, thanks for the feedback
+2019-12-03 08:28:33 <b_jonas> oerjan re "even legal" => more like, may get me banned from freenode
+2019-12-03 08:29:06 Joined: Sgeo
+2019-12-03 08:29:06 Names: ^[, aji, aloril, APic, atriq, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-03 08:29:57 <b_jonas> zzo38 re add a ban => doesn't help at all, you can still abuse the bot without it joining anywhere
