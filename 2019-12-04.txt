@@ -479,3 +479,84 @@
 2019-12-04 22:58:20 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
 2019-12-04 22:59:41 Quit: atslash (Ping timeout: 250 seconds)
 2019-12-04 22:59:41 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 23:12:22 <fizzie> HackEso
+2019-12-04 23:12:38 <fizzie> ...whoop, keyboards are hard.
+2019-12-04 23:12:50 <shachaf> `5 botsnack
+2019-12-04 23:12:52 <HackEso> 1/1:>:-D \ >:-D \ >:-D \ >:-D \ >:-D
+2019-12-04 23:13:06 <shachaf> `? 1
+2019-12-04 23:13:08 <HackEso> The 1 is just for disambiguation.
+2019-12-04 23:13:11 <shachaf> `? `1
+2019-12-04 23:13:12 <HackEso> ​`1 <cmd> is equivalent to `` <cmd>, except that it splits the output into irc-sized pieces. The next pieces can be viewed with `spam. See also `2. Confusingly the obvious generalization of `4.
+2019-12-04 23:13:19 <shachaf> `? `2
+2019-12-04 23:13:20 <HackEso> ​`2 <cmd> is equivalent to `1 <cmd>, except that it starts displaying the _second_ output piece. Useful when you've already run a command forgetting to use `1.
+2019-12-04 23:13:22 <shachaf> `? `4
+2019-12-04 23:13:24 <HackEso> ​`4 <cmd> is equivalent to `5 <cmd>, except that it only repeats 4 times. Useful when you've already run a command forgetting to use `5.
+2019-12-04 23:13:29 <shachaf> `? `5
+2019-12-04 23:13:30 <HackEso> ​`5 <cmd> is equivalent to repeating `` <cmd> 5 times, then splitting the output into irc-sized pieces. <cmd> defaults to "quote". See `1, `4 and `spam. Confusingly _not_ the obvious generalization of `2.
+2019-12-04 23:13:41 <fizzie> `? `3
+2019-12-04 23:13:43 <HackEso> ​`3 is the obvious generalization of `2 or `4, trying too hard to confuse everyone.
+2019-12-04 23:14:47 <fizzie> Anyway, what I was going to do was comment on that thing from -blah.
+2019-12-04 23:14:48 <fizzie> `
+2019-12-04 23:14:49 <HackEso> ​? Permission denied
+2019-12-04 23:14:59 <fizzie> Which is an odd error.
+2019-12-04 23:15:00 <shachaf> `
+2019-12-04 23:15:02 <HackEso> ​? Permission denied
+2019-12-04 23:15:07 <fizzie> Presumably it's trying to execute the empty string.
+2019-12-04 23:15:08 <shachaf> Is it trying to execute a directory?
+2019-12-04 23:15:18 <shachaf> `/hackenv/bin
+2019-12-04 23:15:19 <HackEso> ​/hackenv/bin? Permission denied
+2019-12-04 23:15:21 <fizzie> Yes, I think that would follow.
+2019-12-04 23:15:54 <shachaf> `! c execve("", (char *[]){}, 0);
+2019-12-04 23:15:56 <HackEso> No output.
+2019-12-04 23:16:06 <fizzie> Please don't make /hackenv/bin a file just to test that.
+2019-12-04 23:16:19 <shachaf> `! c execve("", (char *[]){}, 0); printf("error: %s\n", strerror(errno));
+2019-12-04 23:16:20 <HackEso> Does not compile.
+2019-12-04 23:16:30 <shachaf> `! c execve("", (char *[]){}, 0); printf("error: %d\n", errno);
+2019-12-04 23:16:31 <HackEso> Does not compile.
+2019-12-04 23:16:42 <fizzie> `! c printf("test\n");
+2019-12-04 23:16:44 <HackEso> test
+2019-12-04 23:17:00 <shachaf> `! c (int)errno;
+2019-12-04 23:17:02 <fizzie> I remember at least one of these turned the \n into a newline even when inside a string literal.
+2019-12-04 23:17:04 <HackEso> Does not compile.
+2019-12-04 23:17:06 <shachaf> What an omission.
+2019-12-04 23:17:15 <fizzie> `! c perror("uh");
+2019-12-04 23:17:16 <HackEso> uh: Success
+2019-12-04 23:17:20 <fizzie> There's that.
+2019-12-04 23:17:40 <shachaf> `cat /hackenv/ibin/c
+2019-12-04 23:17:41 <HackEso> ​#!/bin/sh \ . ${HACKENV-/hackenv}/lib/interp \ interp_file "${HACKENV-/hackenv}/interps/gcccomp/gcccomp c"
+2019-12-04 23:17:52 Joined: xkapastel
+2019-12-04 23:17:52 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-12-04 23:17:54 <fizzie> `! c execve("", (char *[]){}, 0); perror("execve");
+2019-12-04 23:17:56 <HackEso> execve: No such file or directory
+2019-12-04 23:18:04 <shachaf> `cat /hackenv/interps/gcccomp/gcccomp
+2019-12-04 23:18:07 <HackEso> ​#!/bin/bash \ LANG="$1" \ echo >>"$2" \  \ case "$LANG" in \     c) \         HEAD='#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/types.h>\n#include <unistd.h>\nint main(int argc, char **argv) {' \         TAIL='; return 0; }' \         EXT='c' \         GCC='gcc' \         FLAGS='-lm -std=gnu99' \     ;; \  \     c++) \         HEAD='#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstrin
+2019-12-04 23:18:20 <fizzie> Anyway, thanks to the path search ` is not a straightforward execve.
+2019-12-04 23:18:52 <shachaf> `! c execlo("", 0); perror("exec");
+2019-12-04 23:18:53 <HackEso> Does not compile.
+2019-12-04 23:18:54 <shachaf> uh
+2019-12-04 23:18:56 <shachaf> `! c execlp("", 0); perror("exec");
+2019-12-04 23:18:57 <HackEso> exec: No such file or directory
+2019-12-04 23:19:01 <fizzie> Since "" does not contain a '/', it would try to execute "/hackenv/bin/", "/bin/" and "/usr/bin/" in order.
+2019-12-04 23:19:08 <fizzie> I guess that's technically a bug.
+2019-12-04 23:19:10 <shachaf> `! c execlp("/hackenv", 0); perror("exec");
+2019-12-04 23:19:12 <HackEso> exec: Permission denied
+2019-12-04 23:19:23 <shachaf> It must be doing a different path search from execlp, if that's what's going's on's.
+2019-12-04 23:19:36 <fizzie> Yes, it does a manual path search.
+2019-12-04 23:20:02 <fizzie> Because exec*p is hardcoded to use /bin/sh for files that are executable but not #!something.
+2019-12-04 23:20:17 <fizzie> And longstanding tradition has those must be executed with /bin/bash.
+2019-12-04 23:20:25 <shachaf> A manual path search? Does that mean it's searching in /usr/share/man/?
+2019-12-04 23:21:17 <fizzie> Heh, heh.
+2019-12-04 23:21:53 <shachaf> `! c execve("/hackenv/bin/run", (char *[]){0}, 0); perror("that does not compute");
+2019-12-04 23:21:54 <HackEso> that does not compute: Exec format error
+2019-12-04 23:22:36 <fizzie> "p - execlp(), execvp(), execvpe() -- In addition, certain errors are treated specially. If the header of a file isn't recognized (the attempted execve(2) failed with the error ENOEXEC), these functions will execute the shell (/bin/sh) with the path of the file as its first argument."
+2019-12-04 23:24:00 <fizzie> It's all in https://github.com/fis/umlbox/blob/master/init.c#L248
+2019-12-04 23:24:51 <shachaf> Golly. So many malloc calls.
+2019-12-04 23:25:23 <shachaf> It's kind of funny to use malloc to allocate arguments to exec.
+2019-12-04 23:25:46 <fizzie> I did in fact consider using a VLA there.
+2019-12-04 23:26:09 <shachaf> Well, that could cause a stack overflow or something.
+2019-12-04 23:26:36 <fizzie> In a general case. For HackEso specifically, there's the limit from the length of an IRC message.
+2019-12-04 23:26:50 <shachaf> Sure.
+2019-12-04 23:26:59 <shachaf> But of course you could use a stack other than the %rsp one.
+2019-12-04 23:27:46 <fizzie> There is in fact a VLA in there, `char target[sizeof "/host/" + strlen(mnt->target)];`
+2019-12-04 23:28:27 <shachaf> I wish the idiom of allocating your own arena was more common.
+2019-12-04 23:28:40 <shachaf> I guess glibc has obstack.
