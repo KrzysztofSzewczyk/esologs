@@ -59,3 +59,56 @@
 2019-12-04 02:53:17 Quit: tromp (Ping timeout: 276 seconds)
 2019-12-04 02:53:17 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
 2019-12-04 02:59:49 <int-e> shachaf: How do you ensure that you got that WRITE?
+2019-12-04 03:02:17 User Name: kingoffrance = kingoffrance!~x__@c-67-161-241-22.hsd1.ut.comcast.net
+2019-12-04 03:02:17 <kingoffrance> . o O ( i dont know what scow means, but i imagine from context it refers to the cowtalk cow writing an API )
+2019-12-04 03:02:48 <kingoffrance> . o O ( via these things of course )
+2019-12-04 03:04:11 <int-e> `` \? scow # really helpful as always
+2019-12-04 03:04:13 <HackEso> Scow (S-cow) is canned meat made from cows with a lisp.
+2019-12-04 03:04:34 <kingoffrance> yes, that totally makes sense
+2019-12-04 03:04:47 <kingoffrance> i didnt know he had a lisp though
+2019-12-04 03:04:54 <kingoffrance> the more you know
+2019-12-04 03:06:08 <oerjan> i think cows are generally female, Cows with Guns notwithstanding.
+2019-12-04 03:06:59 <int-e> I can't wait for the Chickens with Choppers.
+2019-12-04 03:07:52 <oerjan> wind to the end then hth
+2019-12-04 03:08:12 <kingoffrance> s/cowtalk/cowsay/
+2019-12-04 03:08:15 <int-e> Though more on topic, the high steaks pun was terrific.
+2019-12-04 03:08:49 Joined: imode
+2019-12-04 03:08:49 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 03:09:52 <oerjan> `slwd scow//s,.$, and an extra half-spin./
+2019-12-04 03:09:53 <HackEso> ​/bin/sed: -e expression #1, char 30: unterminated `s' command
+2019-12-04 03:10:00 <oerjan> `slwd scow//s,.$, and an extra half-spin.,
+2019-12-04 03:10:11 <shachaf> `slwd scow//s,meat,join,
+2019-12-04 03:10:12 <HackEso> scow//Scow (S-cow) is canned meat made from cows with a lisp and an extra half-spin.
+2019-12-04 03:10:15 <kingoffrance> "terrific" is strange at first glance, but terror bringing joy is perfectly natural, so i see how the modern definition still has it
+2019-12-04 03:10:19 <HackEso> scow//Scow (S-cow) is canned join made from cows with a lisp and an extra half-spin.
+2019-12-04 03:11:01 <oerjan> hm race condition
+2019-12-04 03:11:06 <oerjan> shachaf: ETOOMANYPUNS
+2019-12-04 03:11:41 <oerjan> now with math _and_ physics.
+2019-12-04 03:11:58 <shachaf> It's not a good pun but it doesn't make me sad like the other one.
+2019-12-04 03:12:48 <int-e> Wait, who brought the lettuce to the S-cow?
+2019-12-04 03:13:28 <int-e> Now for the physics angle, hmm.
+2019-12-04 03:13:50 <int-e> Is it connected to quarks and interlingual?
+2019-12-04 03:15:18 <oerjan> quarks yes, interlingual not sure
+2019-12-04 03:15:21 <int-e> If so that's bad enough to make milk curdle.
+2019-12-04 03:16:07 <oerjan> yay!
+2019-12-04 03:16:08 <int-e> I don't think english really has "quark" in that sense. Cf. https://en.wikipedia.org/wiki/Curd
+2019-12-04 03:16:42 <int-e> Hence "interlingual".
+2019-12-04 03:16:52 <oerjan> oh i didn't think of that at all
+2019-12-04 03:17:07 Quit: hppavilion[1] (Ping timeout: 250 seconds)
+2019-12-04 03:17:07 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 03:17:30 <int-e> Though, hmm. https://en.wikipedia.org/wiki/Quark_(dairy_product)
+2019-12-04 03:17:32 <oerjan> it's just about the s-, not the -cow, so to speak
+2019-12-04 03:17:36 <int-e> Maybe I'm just wrong.
+2019-12-04 03:17:40 <kingoffrance> i imagine degrees from kevin of bacin is like layers of interlingual
+2019-12-04 03:17:45 <int-e> Oh.
+2019-12-04 03:18:04 <kingoffrance> s/bacin/bacon/
+2019-12-04 03:18:08 <int-e> oerjan: Oh well, maybe I've taken it to a full spin now.
+2019-12-04 03:18:52 <int-e> Kevin Bacon is an excellent name for a pig.
+2019-12-04 03:23:13 <oerjan> oh s is for "scalar"
+2019-12-04 03:24:02 <oerjan> maybe it should be spinned down instead of up
+2019-12-04 03:24:03 <zzo38> Freeze Artifact {1UU} Snow Instant ;; Target artifact loses all abilities and has base power 0 until end of turn. Counter all triggered abilities of that artifact, and tap that artifact. ;; Flashback {4UU} ;; Affinity for snow lands
+2019-12-04 03:27:01 <oerjan> `? scream
+2019-12-04 03:27:02 <HackEso> scream? ¯\(°​_o)/¯
+2019-12-04 03:28:32 <int-e> `? sport
+2019-12-04 03:28:33 <HackEso> sport <n> divides its input into irc-sized pieces and displays the nth (default first). The pipe version of `1. See also spore.
+2019-12-04 03:28:59 <int-e> (Port is not a dairy product, fortunately.)
