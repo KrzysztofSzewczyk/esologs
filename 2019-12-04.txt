@@ -349,3 +349,26 @@
 2019-12-04 16:56:08 <cpressey> arseniiv: From what I understood from reading about HOAS, the powerful thing about full-blown HOAS is that it treats two terms as equivalent if one can be α-, β-, or η- converted to the other.  Unification modulo αβη-conversion, in other words.
 2019-12-04 16:57:10 <cpressey> And that's what makes it need higher-order unification to work.
 2019-12-04 16:58:24 <cpressey> But I think that's probably far more powerfully expressive than I'd ever need or want!
+2019-12-04 17:01:08 <arseniiv> cpressey: hmm wait, how is equivalence defined there?
+2019-12-04 17:01:17 <arseniiv> anyway interesting
+2019-12-04 17:02:27 <cpressey> I think you could say, if, by the rules of lambda calculus, you could reduce some term X to some other term Y, then HOAS treats them as effectively the same term.
+2019-12-04 17:03:25 <cpressey> I mean, that was my understanding of it, anyway.
+2019-12-04 17:11:03 Joined: Lord_of_Life
+2019-12-04 17:13:25 <arseniiv> cpressey: do you mean, computationally? then it should be a broader equivalence, I think…
+2019-12-04 17:13:53 Quit: Lord_of_Life (Ping timeout: 265 seconds)
+2019-12-04 17:13:53 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-04 17:18:52 <cpressey> arseniiv: It may be that I fail to see all the implications, but I can't see how it could be anything other than computational, in this sense: there's nothing else in the lambda calculus besides α-, β-, and η- conversion, so if you permit all of those to happen when considering if two terms are equivalent, then... well, you allow arbitrary computations.
+2019-12-04 17:21:42 <arseniiv> cpressey: I think I have seen two non-αβη-convertible combinators with the same behavior. Hm maybe two divergent ones, let’s say Ω and maybe YI?
+2019-12-04 17:22:51 <zzo38> timofonic: What is the context of that? What is it about?
+2019-12-04 17:23:31 <zzo38> O, I found your previous message too now
+2019-12-04 17:23:39 <zzo38> OK I understand
+2019-12-04 17:23:42 <cpressey> arseniiv: That seems likely.  (It seems like it should be the implication of some famouse theorem maybe)  But even when they are αβη-convertible, the problem of actually converting one into the other is undecidable in general.
+2019-12-04 17:23:48 <cpressey> *famous
+2019-12-04 17:23:58 <zzo38> The answer is I have lost the source code for Fweep and Aimfiz
+2019-12-04 17:24:55 <zzo38> Does the gopher proxy break when there are NNTP links? If not, then the stuff other than the NNTP link should still work isn't it?
+2019-12-04 17:26:53 Quit: timofonic (Ping timeout: 250 seconds)
+2019-12-04 17:26:53 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 17:27:06 Joined: kspalaiologos
+2019-12-04 17:27:06 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 17:28:26 <zzo38> The NNTP links are listed under the "ZZ Zero" menu; are you interested in ZZ Zero?
+2019-12-04 17:28:55 <zzo38> (I should perhaps add some additional information there too; that menu does not describe much of what ZZ Zero is.)
