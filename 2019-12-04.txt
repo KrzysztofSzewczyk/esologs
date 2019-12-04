@@ -26,3 +26,36 @@
 2019-12-04 02:27:31 <HackEso> ​[U+2160 ROMAN NUMERAL ONE] [U+2160 ROMAN NUMERAL ONE] [U+0020 SPACE] [U+2161 ROMAN NUMERAL TWO] [U+0020 SPACE]
 2019-12-04 02:27:42 <oerjan> int-e: PERFECT
 2019-12-04 02:29:43 <oerjan> unlike the english wikipedia, the norwegian one seems to include things like plurals more often
+2019-12-04 02:30:10 <oerjan> e.g. https://no.wikipedia.org/wiki/Svaler is plural, corresponding to en:swallow
+2019-12-04 02:30:57 <oerjan> https://no.wikipedia.org/wiki/Stortinget corresponding to en:Storting, except with the definite article suffix
+2019-12-04 02:31:39 <int-e> Oh the bird, not the verb.
+2019-12-04 02:32:58 <oerjan> yeah
+2019-12-04 02:33:22 <oerjan> the article also considers the entire family of birds, so it makes some sense
+2019-12-04 02:33:25 <int-e> the de. version tops this and makes the plural version the main page, while the singular is a disambiguation page.
+2019-12-04 02:33:47 <int-e> (cf. https://de.wikipedia.org/wiki/Schwalbe)
+2019-12-04 02:34:50 <oerjan> ah. the norwegian singular (Svale) is just a redirect to the plural.
+2019-12-04 02:35:34 <oerjan> ufu is definitely setting things up for an ironic disaster
+2019-12-04 02:36:17 <oerjan> in some sense, has done so ever since he was introduced
+2019-12-04 02:44:02 <shachaf> let this = perf_event_open in
+2019-12-04 02:44:06 <shachaf> Do you like this?
+2019-12-04 02:45:20 <shachaf> I was previously worried it would be a scow API but it seems pretty reasonable.
+2019-12-04 02:47:12 <shachaf> Also, did you know the syscall() wrapper in libc returns errors via errno rather than actually just wrapping the syscall?
+2019-12-04 02:47:32 <shachaf> I previously knew this but I keep forgetting it because when I write a syscall wrapper it's reasonable.
+2019-12-04 02:47:59 <oerjan> . o O ( just say no to errno )
+2019-12-04 02:48:31 Joined: tromp
+2019-12-04 02:48:31 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 02:49:10 Joined: hppavilion[1]
+2019-12-04 02:49:10 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 02:50:17 <int-e> oerjan: err... no?!
+2019-12-04 02:50:41 <shachaf> `! c syscall(1, 1, "hi\n", 3);
+2019-12-04 02:50:43 <HackEso> hi
+2019-12-04 02:50:44 <int-e> That is a terrible pun. I salute you.
+2019-12-04 02:51:07 <shachaf> Aha. It seems int-e likes that, but not this.
+2019-12-04 02:51:36 <int-e> I'm not sure "like" is the correct term.
+2019-12-04 02:52:16 <int-e> fungot: Nobody's like this.
+2019-12-04 02:52:16 <fungot> int-e: ' a'.
+2019-12-04 02:52:53 <shachaf> `! c syscall(1, 1, "1", 1);
+2019-12-04 02:52:55 <HackEso> 1
+2019-12-04 02:53:17 Quit: tromp (Ping timeout: 276 seconds)
+2019-12-04 02:53:17 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, hppavilion[1], iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-04 02:59:49 <int-e> shachaf: How do you ensure that you got that WRITE?
