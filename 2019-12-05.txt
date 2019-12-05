@@ -543,3 +543,44 @@
 2019-12-05 20:28:51 <b_jonas> or should that be an entirely separate executable?
 2019-12-05 20:31:53 <b_jonas> oh, I could just make it delete a whatis if you only give the name and category with no (space hyphen space body) after
 2019-12-05 20:32:30 <b_jonas> yeah, that's what I'll do
+2019-12-05 21:01:28 <b_jonas> `fetch /hackenv/bin/addwhatis https://hack.esolangs.org/get/bin/addwhatis
+2019-12-05 21:01:30 <HackEso> 2019-12-05 21:01:29 URL:https://hack.esolangs.org/get/bin/addwhatis [1814/1814] -> "/hackenv/bin/addwhatis" [1]
+2019-12-05 21:01:33 <b_jonas> `whatis whatis
+2019-12-05 21:01:34 <HackEso> whatis(1) - display one-line manual page descriptions
+2019-12-05 21:02:07 <b_jonas> `addwhatis whatis(1hackeso) - display one-line manual page descriptions
+2019-12-05 21:02:09 <HackEso> addwhatis? Permission denied
+2019-12-05 21:02:23 <b_jonas> ``` chmod -c a+x /hackenv/bin/addwhatis
+2019-12-05 21:02:25 <HackEso> mode of '/hackenv/bin/addwhatis' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2019-12-05 21:02:29 <b_jonas> `addwhatis whatis(1hackeso) - display one-line manual page descriptions
+2019-12-05 21:02:31 <HackEso> addwhatis: added 'whatis(1hackeso)'
+2019-12-05 21:02:34 <b_jonas> `whatis whatis
+2019-12-05 21:02:35 <HackEso> whatis(1) - display one-line manual page descriptions \ whatis(1hackeso) - display one-line manual page descriptions
+2019-12-05 21:02:40 <b_jonas> `whatis whatis(1hackeso)
+2019-12-05 21:02:41 <HackEso> whatis(1hackeso) - display one-line manual page descriptions
+2019-12-05 21:03:13 <b_jonas> `addwhatis addwhatis(1hackeso) - modify the database of one-line manual page descriptions
+2019-12-05 21:03:16 <HackEso> addwhatis: added 'addwhatis(1hackeso)'
+2019-12-05 21:03:21 <b_jonas> `whatis @
+2019-12-05 21:03:22 <HackEso> ​@(1hackeso) - no description \ @(8lambdabot) - compose tree of lambdabot commands
+2019-12-05 21:03:59 <b_jonas> `addwhatis @(1hackeso) - run a command but address an irc user with the output
+2019-12-05 21:04:03 <HackEso> addwhatis: replaced '@(1hackeso)'
+2019-12-05 21:04:11 <b_jonas> `@wib_jonas whatis @
+2019-12-05 21:04:13 <HackEso> ​@wib_jonas? No such file or directory
+2019-12-05 21:04:15 <b_jonas> `@ wib_jonas whatis @
+2019-12-05 21:04:16 <HackEso> wib_jonas: @(1hackeso) - run a command but address an irc user with the output \ @(8lambdabot) - compose tree of lambdabot commands
+2019-12-05 21:05:56 <b_jonas> `Welcome
+2019-12-05 21:05:58 <HackEso> Welcome To The International Hub For Esoteric Programming Language Design And Deployment! For More Information, Check Out Our Wiki: <Https://Esolangs.Org/>. (For The Other Kind Of Esoterica, Try #Esoteric On EFnet Or DALnet.)
+2019-12-05 21:06:01 <b_jonas> `whatis welcome
+2019-12-05 21:06:04 <HackEso> WELCOME(1hackeso) - welcome new user to irc channel, if they can't read lowercase letters \ WeLcOmE(1hackeso) - WeLcOmE NeW UsEr tO IrC ChAnNeL \ Welcome(1hackeso) - no description \ wElCoMe(1hackeso) - wElCoMe nEw uSeR To iRc cHaNnEl \ welcome(1hackeso) - welcome new user to irc channel
+2019-12-05 21:06:22 <b_jonas> `addwhatis Welcome(1hackeso) - Welcome New User To Irc Channel
+2019-12-05 21:06:24 <HackEso> addwhatis: replaced 'Welcome(1hackeso)'
+2019-12-05 21:06:34 <b_jonas> ^list
+2019-12-05 21:06:34 <fungot> Taneb atriq Ngevd Fiora nortti Sgeo ThatOtherPerson alot
+2019-12-05 21:06:39 <b_jonas> no
+2019-12-05 21:06:55 <b_jonas> ^help
+2019-12-05 21:06:55 <fungot> ^<lang> <code>; ^def <command> <lang> <code>; ^show [command]; lang=bf/ul, code=text/str:N; ^str 0-9 get/set/add [text]; ^style [style]; ^bool
+2019-12-05 21:06:57 Quit: ArthurStrong (Quit: leaving)
+2019-12-05 21:06:57 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-12-05 21:06:59 <b_jonas> ^show
+2019-12-05 21:06:59 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf quine fdip
+2019-12-05 21:11:08 <b_jonas> TODO: add non-builtin fungot commands to whatis
+2019-12-05 21:11:08 <fungot> b_jonas: i rather think ruby succeeds at those and is quite incoherent. with a hard drive a lot. that's why there are so many...?
