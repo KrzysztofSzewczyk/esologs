@@ -350,3 +350,24 @@
 2019-12-05 12:58:22 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, elliemae, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
 2019-12-05 12:58:42 Joined: ais523
 2019-12-05 12:58:42 Names: ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, elliemae, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill, zzo38
+2019-12-05 13:03:11 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-12-05 13:03:11 <ais523> `` cd /tmp; printf "#if u'\\0'-1<0\n#
+2019-12-05 13:03:13 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2019-12-05 13:03:13 <HackEso> ​/hackenv/bin/`: eval: line 5: unexpected EOF while looking for matching `"' \ /hackenv/bin/`: eval: line 6: syntax error: unexpected end of file
+2019-12-05 13:04:37 <ais523> `` cd /tmp; printf "#include <assert.h>\n#if u'\\0'-1<0\n#error assertion failure\n#endif\nint main(void)\n{\nassert(u'\\0'-1<0);\n}" > t.c; gcc -std=c11 -pedantic t.c; ./a.out;
+2019-12-05 13:04:39 <HackEso> t.c:2:5: warning: null character(s) preserved in literal \  #if u' '-1<0 \      ^ \ t.c: In function ‘main’: \ t.c:7:8: warning: null character(s) preserved in literal \  assert(u' '-1<0); \         ^
+2019-12-05 13:04:58 <ais523> `` cd /tmp; printf "#include <assert.h>\n#if u'\\\\0'-1<0\n#error assertion failure\n#endif\nint main(void)\n{\nassert(u'\\\\0'-1<0);\n}" > t.c; gcc -std=c11 -pedantic t.c; ./a.out;
+2019-12-05 13:04:59 <HackEso> No output.
+2019-12-05 13:05:04 <ais523> neat
+2019-12-05 13:07:04 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-12-05 13:07:04 <wib_jonas> yeah, I should make a proper wrapper for testing C snippets
+2019-12-05 13:08:57 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2019-12-05 13:08:57 <shachaf> Is there a thing like `! c that supports #include?
+2019-12-05 13:10:54 <wib_jonas> shachaf: no, that's the wrapper that I should write
+2019-12-05 13:11:00 <wib_jonas> a geordi-like one
+2019-12-05 13:11:18 <wib_jonas> except for the part where Eelis says that geordi will never support compiling C, only C++
+2019-12-05 13:12:18 <wib_jonas> I'll have to review the tokenizer rules of C and C++ for that though, to figure out when exactly an apostrophe is part of a numeric literal versus when it's a separator for a character literal
+2019-12-05 13:16:45 <shachaf> Why do all that?
+2019-12-05 13:18:39 <ais523> wib_jonas: more readable: https://tio.run/##VYy7CgIxEEX7@YqBLXa3iGxqV3/DxmaYJOtATCQPEcRfNwa0sbkcOIfLamNubZDAvhqLK@VsU9ldjjCIwzqelxEValxxgcGmFBN@E4kBHYmvyXYRjDgACQWvJGG6RzEzPAF/8fR3NO/h1dqbnactN3Ui7/vaR0nUlMrFHFjrTjdrKBThDw
+2019-12-05 13:19:20 <ais523> (this example comes from a defect report against C11, the committee decided it was intended behaviour, but it looks really weird)
+2019-12-05 13:19:21 <wib_jonas> ais523: ok, but it's not specifically this C program that I care about
