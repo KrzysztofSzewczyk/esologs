@@ -500,3 +500,44 @@
 2019-12-05 19:49:24 <esowiki> 14[[07Tttt14]]4 10 02https://esolangs.org/w/index.php?diff=67695&oldid=67686 5* 03Hex96 5* (+309) 10
 2019-12-05 19:49:57 <esowiki> 14[[07Tttt14]]4 10 02https://esolangs.org/w/index.php?diff=67696&oldid=67695 5* 03Hex96 5* (+0) 10/* Hello, World! */
 2019-12-05 19:50:19 <esowiki> 14[[07Tttt14]]4 10 02https://esolangs.org/w/index.php?diff=67697&oldid=67696 5* 03Hex96 5* (+31) 10/* Hello, World! */
+2019-12-05 20:01:59 <esowiki> 14[[07A?!14]]4 10 02https://esolangs.org/w/index.php?diff=67698&oldid=66699 5* 03Dart 5* (+1330) 10
+2019-12-05 20:05:27 <b_jonas> `fetch /hackenv/bin/whatis https://hack.esolangs.org/get/bin/whatis
+2019-12-05 20:05:28 <HackEso> 2019-12-05 20:05:28 URL:https://hack.esolangs.org/get/bin/whatis [1160/1160] -> "/hackenv/bin/whatis" [1]
+2019-12-05 20:05:39 <b_jonas> `whatis welcome
+2019-12-05 20:05:40 <HackEso> WELCOME(1hackeso) - welcome new user to irc channel, if they can't read lowercase letters \ WeLcOmE(1hackeso) - WeLcOmE NeW UsEr tO IrC ChAnNeL \ Welcome(1hackeso) - no description \ wElCoMe(1hackeso) - wElCoMe nEw uSeR To iRc cHaNnEl \ welcome(1hackeso) - welcome new user to irc channel
+2019-12-05 20:05:43 <b_jonas> `whatis sed
+2019-12-05 20:05:44 <HackEso> sed(1) - stream editor for filtering and transforming text \ sed(1p) - stream editor \ sed(1hackeso) - no description
+2019-12-05 20:05:49 <b_jonas> `whatis sed(hackeso)
+2019-12-05 20:05:50 <HackEso> sed(1hackeso) - no description
+2019-12-05 20:05:51 <b_jonas> `whatis sed()
+2019-12-05 20:05:52 <HackEso> sed(1) - stream editor for filtering and transforming text
+2019-12-05 20:05:55 <b_jonas> `whatis printf
+2019-12-05 20:05:55 <HackEso> printf(1) - format and print data \ printf(1p) - write formatted output \ printf(3) - formatted output conversion \ printf(3p) - print formatted output \ printf(3glibc) - Formatted Output Functions
+2019-12-05 20:06:01 <b_jonas> `whatis printf()
+2019-12-05 20:06:05 <HackEso> printf(1) - format and print data \ printf(3) - formatted output conversion
+2019-12-05 20:06:07 <b_jonas> `whatis printf(p)
+2019-12-05 20:06:10 <HackEso> printf(1p) - write formatted output \ printf(3p) - print formatted output
+2019-12-05 20:06:10 <b_jonas> `whatis printf(1)
+2019-12-05 20:06:12 <HackEso> printf(1) - format and print data
+2019-12-05 20:06:14 <b_jonas> `whatis printf(1p)
+2019-12-05 20:06:15 <HackEso> printf(1p) - write formatted output
+2019-12-05 20:06:25 <b_jonas> `whatis Welcome(hackeso)
+2019-12-05 20:06:26 <HackEso> welcome(1hackeso) - welcome new user to irc channel
+2019-12-05 20:06:53 <int-e> `whatis PRIVMSG
+2019-12-05 20:06:54 <esowiki> 14[[07A?!14]]4 10 02https://esolangs.org/w/index.php?diff=67699&oldid=67698 5* 03Dart 5* (+59) 10
+2019-12-05 20:06:54 <HackEso> PRIVMSG: nothing appropriate.
+2019-12-05 20:07:01 <b_jonas> whatis now takes a suffix or number category plus suffix in parenthesis after a word, in which case the lookup is restricted to that suffix or category plus suffix, and the search is case sensitive
+2019-12-05 20:07:16 <b_jonas> int-e: the next step is that I'll make an addwhatis command to add whatis entries
+2019-12-05 20:07:28 <b_jonas> because we're missing some and don't have a convenient way to add them or edit them
+2019-12-05 20:07:41 <b_jonas> in particular, we need an entry for whatis(1hackeso)
+2019-12-05 20:07:53 <b_jonas> `whatis ?
+2019-12-05 20:07:55 <HackEso> ​?(1hackeso) - print wisdom by name \ ?(8lambdabot) - compose tree of lambdabot commands
+2019-12-05 20:07:57 <b_jonas> `whatis ?(hackeso)
+2019-12-05 20:07:58 <HackEso> ​?(1hackeso) - print wisdom by name
+2019-12-05 20:09:38 <b_jonas> it will also need a switch to remove a whatis entry
+2019-12-05 20:10:51 <b_jonas> `whatis welcome
+2019-12-05 20:10:52 <HackEso> WELCOME(1hackeso) - welcome new user to irc channel, if they can't read lowercase letters \ WeLcOmE(1hackeso) - WeLcOmE NeW UsEr tO IrC ChAnNeL \ Welcome(1hackeso) - no description \ wElCoMe(1hackeso) - wElCoMe nEw uSeR To iRc cHaNnEl \ welcome(1hackeso) - welcome new user to irc channel
+2019-12-05 20:10:55 <b_jonas> `whatis welcome(hackeso)
+2019-12-05 20:10:56 <HackEso> welcome(1hackeso) - welcome new user to irc channel
+2019-12-05 20:27:13 <b_jonas> what should be the option letter to delete entries rather than add?
+2019-12-05 20:28:51 <b_jonas> or should that be an entirely separate executable?
