@@ -371,3 +371,16 @@
 2019-12-05 13:18:39 <ais523> wib_jonas: more readable: https://tio.run/##VYy7CgIxEEX7@YqBLXa3iGxqV3/DxmaYJOtATCQPEcRfNwa0sbkcOIfLamNubZDAvhqLK@VsU9ldjjCIwzqelxEValxxgcGmFBN@E4kBHYmvyXYRjDgACQWvJGG6RzEzPAF/8fR3NO/h1dqbnactN3Ui7/vaR0nUlMrFHFjrTjdrKBThDw
 2019-12-05 13:19:20 <ais523> (this example comes from a defect report against C11, the committee decided it was intended behaviour, but it looks really weird)
 2019-12-05 13:19:21 <wib_jonas> ais523: ok, but it's not specifically this C program that I care about
+2019-12-05 13:43:17 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2019-12-05 13:43:17 <fizzie> `cc #include <assert.h> \n #if u'\0' - 1 < 0 \n #error assertion failure \n #endif \n int main(void) { assert(u'\0' - 1 < 0); }
+2019-12-05 13:43:18 <HackEso> No output.
+2019-12-05 13:43:43 <fizzie> There's already that one, if you just want gcc -std=c11 with a hard newline support, no automatic nothing.
+2019-12-05 13:44:20 <wib_jonas> that does look useful, though I may still try to make a custom version
+2019-12-05 13:44:39 <fizzie> Granted, it's a bit problematic if there's a \n inside a string literal. But you can always work around that, e.g. by making it \x0a or \012 instead.
+2019-12-05 13:45:02 <fizzie> (I did like ##c's candide, which had a lot of DWIM.)
+2019-12-05 13:47:23 Joined: Lord_of_Life
+2019-12-05 13:49:17 Quit: Lord_of_Life (Ping timeout: 265 seconds)
+2019-12-05 13:50:13 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-05 13:56:51 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2019-12-05 13:56:51 <myname> idea: compiler from a defined tikz-subset to funciton
+2019-12-05 13:59:40 <wib_jonas> hmm, C++ tokenization is nasty. maybe ais was right about recognizing only the backslash-space
