@@ -199,3 +199,12 @@
 2019-12-06 07:54:55 <oerjan> ok fine
 2019-12-06 07:54:57 <oerjan> `revert
 2019-12-06 07:54:58 <HackEso> Done.
+2019-12-06 08:00:16 <oerjan> oh
+2019-12-06 08:04:59 <oerjan> `t sled lib/karma//s/egrep.*>/egrep '^<[^>]*>/
+2019-12-06 08:05:05 <HackEso> lib/karma//#!/bin/sh \ count () { \     hg log --template '{desc}\n' | \     egrep '^<[^>]*> karma\'$1 | \     fgrep -vix "<$2> karma$1 $2" | \     cut -d' ' -f3 | \     fgrep -cix "$2" \ } \ plus=$(count + "$1") \ minus=$(count - "$1") \ echo $(($plus-$minus))
+2019-12-06 08:05:17 <oerjan> `karma fizzie
+2019-12-06 08:05:22 <HackEso> fizzie has 2 karma.
+2019-12-06 08:09:03 Quit: xkapastel (Quit: Connection closed for inactivity)
+2019-12-06 08:09:04 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-06 08:26:20 Joined: xkapastel
+2019-12-06 08:26:20 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
