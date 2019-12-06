@@ -603,3 +603,35 @@
 2019-12-05 23:19:05 <esowiki> 14[[07Aargh14]]4 N10 02https://esolangs.org/w/index.php?oldid=67704 5* 03Technical Limitations 5* (+19) 10Redirected page to [[Argh!]]
 2019-12-05 23:29:39 Quit: tromp (Ping timeout: 252 seconds)
 2019-12-05 23:29:40 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-12-05 23:30:24 Joined: elliemae
+2019-12-05 23:30:24 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, elliemae, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-12-05 23:36:32 <fizzie> b_jonas: That's probably fixable, I'm guessing it's just a wrong content-type thing somewhere. I did also look at whether it could be made properly binary-safe, and that seemed harder. Unless I define some sort of encoding for what gets presented in the form form.
+2019-12-05 23:38:30 <b_jonas> fizzie: for more binary safe, you could an option between utf-8 and iso-8859-1 encoding
+2019-12-05 23:38:52 <b_jonas> I'm not sure if it would be entirely binary safe, a browser will likely still mangle some things
+2019-12-05 23:39:52 <b_jonas> in any case, we no longer need to `edit /share/whatis because I added a command for that
+2019-12-05 23:40:16 <b_jonas> but that's an easy case, because whatises are supposed to be all short lines
+2019-12-05 23:40:28 <b_jonas> `addwhatis wisdom(5hackeso) - no description
+2019-12-05 23:40:31 <HackEso> addwhatis: added 'wisdom(5hackeso)'
+2019-12-05 23:40:33 <b_jonas> `addwhatis tmflry(5hackeso) - no description
+2019-12-05 23:40:35 <HackEso> addwhatis: added 'tmflry(5hackeso)'
+2019-12-05 23:40:37 <b_jonas> `addwhatis quotes(5hackeso) - no description
+2019-12-05 23:40:39 <HackEso> addwhatis: added 'quotes(5hackeso)'
+2019-12-05 23:40:40 <b_jonas> `addwhatis whatis(5hackeso) - no description
+2019-12-05 23:40:42 <HackEso> addwhatis: added 'whatis(5hackeso)'
+2019-12-05 23:43:11 <b_jonas> `whatis c
+2019-12-05 23:43:12 <HackEso> c(1egobot) - no description
+2019-12-05 23:43:15 <b_jonas> `whatis brachylog
+2019-12-05 23:43:16 <HackEso> brachylog: nothing appropriate.
+2019-12-05 23:44:32 <b_jonas> `addwhatis brachylog(1egobot) - Brachylog, a Prolog-like golf language
+2019-12-05 23:44:34 <HackEso> addwhatis: added 'brachylog(1egobot)'
+2019-12-05 23:46:47 <b_jonas> `whatis cc
+2019-12-05 23:46:48 <HackEso> cc(1hackeso) - no description
+2019-12-05 23:47:27 <b_jonas> that is a rather ugly name, shadowing another standard utility
+2019-12-05 23:48:28 <b_jonas> `whatis t
+2019-12-05 23:48:29 <HackEso> t: nothing appropriate.
+2019-12-05 23:48:51 <b_jonas> `addwhatis t(1hackeso) - run a command with the working directory set to /hackenv
+2019-12-05 23:48:53 <HackEso> addwhatis: added 't(1hackeso)'
+2019-12-05 23:56:30 Joined: sprocklem
+2019-12-05 23:56:30 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, elliemae, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
+2019-12-05 23:56:41 Quit: FreeFull
+2019-12-05 23:56:41 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, elliemae, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill, zzo38
