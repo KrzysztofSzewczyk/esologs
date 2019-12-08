@@ -71,3 +71,19 @@
 2019-12-08 00:29:47 <b_jonas> ``` python3 '-cimport sys,os,random,re; open(1,"wb",closefd=0).write(b"".join(random.sample([b"%d) %s"%(1+n,l) for n,l in enumerate(open(os.environ.get("HACKENV","/hackenv")+"/quotes", "rb")) if re.search(os.fsencode(sys.argv[1]), l)], 2)))' fun.ot
 2019-12-08 00:29:48 <HackEso> 768) <fungot> olsner: over the undertow! under the overpass! around the future and not just fnord for example. it's just the syntax \ 668) <fungot> elliott: but, there are imps around, the pad. it's hard to remember though your cross-hairs would never settle on an innocent little girl. chokes up now imagine she's white.
 2019-12-08 00:29:54 <b_jonas> ^ in case you want line numbers
+2019-12-08 00:30:16 <int-e> `` allquotes | shuf -n 1
+2019-12-08 00:30:18 <HackEso> 1194) <olsner> fungot: what do you do to get rid of information you no longer need?  <fungot> olsner: emacs lisp for a while
+2019-12-08 00:30:28 <int-e> (is basically what `quote does)
+2019-12-08 00:30:31 <b_jonas> `whatis randquote
+2019-12-08 00:30:32 <HackEso> randquote(1hackeso) - no description
+2019-12-08 00:30:34 <int-e> (without arguments)
+2019-12-08 00:31:27 <b_jonas> `addwhatis randquote(1hackeso) - print a random quote matching a regular expression
+2019-12-08 00:31:29 <HackEso> addwhatis: replaced 'randquote(1hackeso)'
+2019-12-08 00:31:32 <esowiki> 14[[07BIX Queue Subset14]]4 M10 02https://esolangs.org/w/index.php?diff=67778&oldid=67777 5* 03Ais523 5* (-2) 10cat
+2019-12-08 00:43:06 <b_jonas> What's the simplest infinite loop in /// ? The wiki article doesn't seem to say.
+2019-12-08 00:43:16 <b_jonas> oh right, that's ///
+2019-12-08 00:43:26 <b_jonas> what is the simplest loop that reads infinitely many patterns then?
+2019-12-08 00:44:24 <shachaf> hint-e
+2019-12-08 00:44:31 <shachaf> My learned clauses are so scow.
+2019-12-08 00:49:27 Joined: sprocklem
+2019-12-08 00:49:27 Names: ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
