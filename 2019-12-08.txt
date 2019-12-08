@@ -1,0 +1,73 @@
+2019-12-08 00:00:05 <b_jonas> two hyphens
+2019-12-08 00:00:19 <b_jonas> for a long option
+2019-12-08 00:00:44 <int-e> `sled ../bin/"//s=-r=--r=
+2019-12-08 00:00:47 <HackEso> ​../bin/"//allquotes | grep -P -i -- "$1" | shuf --random-source=/dev/urandom -n 2 | sport
+2019-12-08 00:00:51 <int-e> `"
+2019-12-08 00:00:52 <HackEso> 1/1:325) <oklopol> but touchscreens should feel like poking a boob \ 622) <oklopol> i don't lie, i tell stories  <oklopol> there's no difference  <oklopol> *a
+2019-12-08 00:00:58 <int-e> `" elliott
+2019-12-08 00:01:00 <HackEso> 1/1:1020) <elliott> beautiful summer / massacres in qusayr / sent from my iphone \ 995) <elliott> that is better than any made up story i was about to tell
+2019-12-08 00:01:33 <int-e> `" spongebob
+2019-12-08 00:01:34 <HackEso> 1/0:
+2019-12-08 00:02:41 <int-e> `' spongebob
+2019-12-08 00:02:42 <HackEso> No output.
+2019-12-08 00:03:36 <fizzie> Do you actually need that shuf option?
+2019-12-08 00:03:53 <fizzie> I mean, I don't mind, just wondering if it's insufficiently random by default.
+2019-12-08 00:04:40 <int-e> `` echo $(seq 10 | shuf)
+2019-12-08 00:04:41 <HackEso> 7 8 3 6 1 10 5 4 2 9
+2019-12-08 00:04:43 <int-e> `` echo $(seq 10 | shuf)
+2019-12-08 00:04:44 <HackEso> 4 10 8 1 5 9 6 2 3 7
+2019-12-08 00:05:23 <fizzie> "By default these commands use an internal pseudo-random generator initialized by a small amount of entropy, but can be directed to use an external source with the --random-source=file option. An error is reported if file does not contain enough bytes." https://www.gnu.org/software/coreutils/manual/html_node/Random-sources.html
+2019-12-08 00:06:17 <fizzie> It doesn't specify where that initialization is coming from, though.
+2019-12-08 00:06:46 <int-e> context, https://hack.esolangs.org/repo/rev/3e54f8d1843f ... let's see the logs
+2019-12-08 00:10:24 <int-e> fizzie: I guess it's not needed.
+2019-12-08 00:10:53 <int-e> I copied it from `wisdom without thinking too much about it. Except that I retyped it and messed it up in the process, rather than mechanically copying it.
+2019-12-08 00:11:07 <int-e> And by `wisdom I mean `quote
+2019-12-08 00:13:02 <fizzie> Looks like we used the highly rigorous statistical test of oerjan having a feeling in order to prove that the default was insufficiently random.
+2019-12-08 00:13:11 <b_jonas> `whatis '
+2019-12-08 00:13:12 <HackEso> ​'(1hackeso) - search quote database or print random quote
+2019-12-08 00:13:12 <b_jonas> `whatis "
+2019-12-08 00:13:14 <HackEso> ​"(1hackeso) - show two random quotes
+2019-12-08 00:13:15 <b_jonas> `whatis q
+2019-12-08 00:13:16 <HackEso> q(1hackeso) - search quote database or print random quote
+2019-12-08 00:13:19 <b_jonas> `whatis quote
+2019-12-08 00:13:20 <HackEso> quote(1hackeso) - search quote database or print random quote \ quote(8lambdabot) - no description
+2019-12-08 00:13:25 <b_jonas> `quote tswett
+2019-12-08 00:13:26 <HackEso> 163) <tswett> That is the mark of Gregor right there.  <ais523> tswett: except that Gregor didn't write that  <tswett> It's still the mark of Gregor. \ 167) <tswett> elliott: just to bring you up to speed, you are now my baby nephew.  <olsner> wtf, elliott is a nephew and his uncle is here?  <nooga> what  <tswett> Heck yes I'm elliott's uncle. \ 240) <tswett> There are white Africans out there, but, you know.  A black swan in the hand does no
+2019-12-08 00:13:28 <b_jonas> `q tswett
+2019-12-08 00:13:29 <HackEso> 163) <tswett> That is the mark of Gregor right there.  <ais523> tswett: except that Gregor didn't write that  <tswett> It's still the mark of Gregor. \ 167) <tswett> elliott: just to bring you up to speed, you are now my baby nephew.  <olsner> wtf, elliott is a nephew and his uncle is here?  <nooga> what  <tswett> Heck yes I'm elliott's uncle. \ 240) <tswett> There are white Africans out there, but, you know.  A black swan in the hand does no
+2019-12-08 00:13:30 <b_jonas> `' tswett
+2019-12-08 00:13:31 <HackEso> 163) <tswett> That is the mark of Gregor right there.  <ais523> tswett: except that Gregor didn't write that  <tswett> It's still the mark of Gregor. \ 167) <tswett> elliott: just to bring you up to speed, you are now my baby nephew.  <olsner> wtf, elliott is a nephew and his uncle is here?  <nooga> what  <tswett> Heck yes I'm elliott's uncle. \ 240) <tswett> There are white Africans out there, but, you know.  A black swan in the hand does no
+2019-12-08 00:13:56 <b_jonas> so none of these prints one random matching quote when you search?
+2019-12-08 00:14:36 <int-e> no, they print all quotes for some reason, in file order
+2019-12-08 00:14:51 <int-e> ' is a symlink to quote
+2019-12-08 00:14:57 <int-e> I suspect q is as well?
+2019-12-08 00:15:08 <fizzie> No, but it calls quote.
+2019-12-08 00:15:22 <fizzie> What's the right word for that? Should we call it a bashlink?
+2019-12-08 00:15:38 <int-e> `cat ../bin/q
+2019-12-08 00:15:39 <HackEso> quote "$@"
+2019-12-08 00:17:05 <b_jonas> ``` ls -dlF /hackenv/bin/{q,quote,\'}
+2019-12-08 00:17:07 <HackEso> lrwxrwxrwx 1 1000 1000   5 Jul  8  2017 /hackenv/bin/' -> quote* \ -rwxr-xr-x 1 1000 1000  11 Apr  7  2018 /hackenv/bin/q* \ -rwxr-xr-x 1 1000 1000 194 Apr  7  2018 /hackenv/bin/quote*
+2019-12-08 00:17:47 <esowiki> 14[[07BIX Queue Subset14]]4 10 02https://esolangs.org/w/index.php?diff=67777&oldid=67238 5* 03Ais523 5* (+161) 10external resources
+2019-12-08 00:25:32 <b_jonas> ``` python3 '-cimport sys,os,random,re; open(1,"wb",closefd=0).write(random.choice([l for l in open(os.environ.get("HACKENV","/hackenv")+"/quotes", "rb") if re.search(os.fsencode(sys.argv[1]), l)]))' llio
+2019-12-08 00:25:33 <HackEso> ​<ZOMGMODULES> I can trust elliott_ to have an opinion on anything and everything  <elliott_> Yes.  <elliott_> And the best thing is: it is the correct opinion.
+2019-12-08 00:25:45 <b_jonas> prints one random quote that matches the regex "llio"
+2019-12-08 00:27:05 <b_jonas> ``` python3 '-cimport sys,os,random,re; open(1,"wb",closefd=0).write(b"".join(random.sample([l for l in open(os.environ.get("HACKENV","/hackenv")+"/quotes", "rb") if re.search(os.fsencode(sys.argv[1]), l)], 2)))' fun.ot
+2019-12-08 00:27:06 <HackEso> ​<fungot> boily: i'll probably stop programming the day i will hit the end of the program. \ <fungot> elliott_: it's a machine that looks like you!
+2019-12-08 00:27:09 <b_jonas> # prints two
+2019-12-08 00:27:28 <fizzie> I assume the fact that quote prints all the matching ones is intentional -- the reasoning being that you might be looking for a specific one that you faintly remember.
+2019-12-08 00:27:37 <b_jonas> probably
+2019-12-08 00:27:51 <b_jonas> I generally use grep for those things, but it makes sense that quote can do that too
+2019-12-08 00:27:57 <b_jonas> but sometimes I want to read a random fungot quote
+2019-12-08 00:27:57 <fungot> b_jonas: fnord has a factorial opcode, and you will be teh positively fnord.
+2019-12-08 00:28:10 <b_jonas> because there are so many bad ones that you want to do the list five quotes delete one routine on just them
+2019-12-08 00:28:29 <fizzie> `randquote fungot
+2019-12-08 00:28:29 <fungot> fizzie: he was gushing about the power of the first
+2019-12-08 00:28:30 <HackEso> 807) <olsner> fungot: what's your view on angels and other otherworldly beings?  <fungot> olsner: well i'm mentioning theoretical image to be dumped in rain forests of laukaa.
+2019-12-08 00:28:40 <fizzie> `randquote fun.ot
+2019-12-08 00:28:41 <HackEso> 431) <fungot> elliott: an old colonel lost, but a new brother gained. together they will ascend, each time you must be adventurin'.
+2019-12-08 00:28:43 <fizzie> There you go.
+2019-12-08 00:28:46 <b_jonas> ah, randquote
+2019-12-08 00:28:46 <b_jonas> nice
+2019-12-08 00:29:47 <b_jonas> ``` python3 '-cimport sys,os,random,re; open(1,"wb",closefd=0).write(b"".join(random.sample([b"%d) %s"%(1+n,l) for n,l in enumerate(open(os.environ.get("HACKENV","/hackenv")+"/quotes", "rb")) if re.search(os.fsencode(sys.argv[1]), l)], 2)))' fun.ot
+2019-12-08 00:29:48 <HackEso> 768) <fungot> olsner: over the undertow! under the overpass! around the future and not just fnord for example. it's just the syntax \ 668) <fungot> elliott: but, there are imps around, the pad. it's hard to remember though your cross-hairs would never settle on an innocent little girl. chokes up now imagine she's white.
+2019-12-08 00:29:54 <b_jonas> ^ in case you want line numbers
