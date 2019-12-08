@@ -304,3 +304,29 @@
 2019-12-08 20:12:43 Names: ^[, ajevremovic, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
 2019-12-08 20:13:33 Quit: ajevremovic (Remote host closed the connection)
 2019-12-08 20:13:33 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-08 20:35:20 <kspalaiologos> Los Alamos chess has no bishops
+2019-12-08 20:35:24 <kspalaiologos> also, the engine is pretty much ready
+2019-12-08 20:35:36 <kspalaiologos> it's able to generate moves and validate 'em
+2019-12-08 20:36:35 <kspalaiologos> I wonder does the board fit in the irc message
+2019-12-08 20:36:50 <kspalaiologos> it's 42 characters long if in one line
+2019-12-08 20:36:54 <kspalaiologos> not that much if you ask me
+2019-12-08 20:37:03 <kspalaiologos> should it display board on multiple lines or a single line?
+2019-12-08 20:37:19 <zzo38> On just one line, I think, you can use FEN, I think
+2019-12-08 20:37:52 <kspalaiologos> fen is very, very uncomfortable to play
+2019-12-08 20:37:59 <kspalaiologos> imagine only thing you see is fen and you want to play
+2019-12-08 20:38:27 <kspalaiologos> yet multiple lines (6)
+2019-12-08 20:38:33 <kspalaiologos> + an user line for each
+2019-12-08 20:38:37 <kspalaiologos> 7 lines per move
+2019-12-08 20:38:41 <kspalaiologos> around 30 moves a game
+2019-12-08 20:38:42 <zzo38> Although FEN is only needed for the initial position. After that just use the algebraic notation for each move.
+2019-12-08 20:38:50 <zzo38> You do not need to repeat the board after each move.
+2019-12-08 20:39:00 <kspalaiologos> it's even more uncomfortable
+2019-12-08 20:39:06 <kspalaiologos> playing blindfold with a chess engine
+2019-12-08 20:39:26 Quit: kspalaiologos (Quit: Leaving)
+2019-12-08 20:39:26 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-08 20:41:44 <int-e> I suspect ♔♕♖♗♘♙♚♛♜♝♞♟ are your friends in this case
+2019-12-08 20:44:40 <zzo38> I think you can just write   1. e4 e5 2. Nf3   and so on.
+2019-12-08 20:50:05 <int-e> It's not about having complete information, it's about not having to visualize a full board.
+2019-12-08 20:52:34 <b_jonas> [ 'rnbqkbnr',(8$'p'),(4 8$'.'),(8$'P'),:'RNBQKBNR'
+2019-12-08 20:52:54 <b_jonas> ah yes... no j-bot
+2019-12-08 20:55:29 <zzo38> You can place the pieces on your own board if you want to
