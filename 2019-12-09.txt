@@ -33,3 +33,45 @@
 2019-12-09 07:23:27 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
 2019-12-09 07:39:22 <esowiki> 14[[07User:Salpynx/Phoney Burn 0114]]4 10 02https://esolangs.org/w/index.php?diff=67835&oldid=67831 5* 03Salpynx 5* (+381) 10/* Phoney Burn walkthrough */ modify the final data string to produce a more interesting rule 110 result
 2019-12-09 08:27:19 <zzo38> There is a Magic: the Gathering mystery card called "Corrupted Key". If it is tapped, your creatures have menace and deathtouch. Do you have the card database with the mystery cards in this IRC?
+2019-12-09 08:30:21 Joined: Frater_EST
+2019-12-09 08:30:21 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-09 08:31:00 <shachaf> `card-by-name corrupted key
+2019-12-09 08:31:01 <HackEso> No output.
+2019-12-09 08:31:04 <shachaf> `card-by-name corrupted
+2019-12-09 08:31:05 <HackEso> Corrupted Conscience \ 3UU \ Enchantment -- Aura \ Enchant creature \ You control enchanted creature. \ Enchanted creature has infect. (It deals damage to creatures in the form of -1/-1 counters and to players in the form of poison counters.) \ MBS-U \  \ Corrupted Crossroads \ Land \ {T}: Add {C}. ({C} represents colorless mana.) \ {T}, Pay 1 life: Add one mana of any color. Spend this mana only to cast a spell with devoid. \ OGW-R \  \ Corr
+2019-12-09 08:31:15 <shachaf> It seems not.
+2019-12-09 08:31:30 <shachaf> I don't remember what Menace is. Was there a rules lookup command?
+2019-12-09 08:31:37 Quit: imode (Ping timeout: 265 seconds)
+2019-12-09 08:31:37 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, djhoulihan, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-09 08:31:43 <b_jonas> shachaf: we don't have one
+2019-12-09 08:31:45 <kingoffrance> well, i have reverse corrupted keys zzo38 ,  but that explanation makes total sense zzo38
+2019-12-09 08:31:48 <esowiki> 14[[07Brainflop14]]4 10 02https://esolangs.org/w/index.php?diff=67836&oldid=67834 5* 03Flux3on 5* (+253) 10/* Example Programs */ It can be replaced with something (anything, please) better. I just wanted there to be a Hello World program there in the least ~~~~
+2019-12-09 08:32:05 <kingoffrance> im not tapping noone, relax
+2019-12-09 08:32:42 <b_jonas> ``` grep -i menace /hackenv/share/mtg/rules.txt | tail -n+2
+2019-12-09 08:32:43 <HackEso> 702.110. Menace \ 702.110a Menace is an evasion ability. \ 702.110b A creature with menace can’t be blocked except by two or more creatures. (See rule 509, “Declare Blockers Step.”) \ 702.110c Multiple instances of menace on the same creature are redundant. \ Menace \ An evasion ability that makes creatures unblockable by a single creature. See rule 702.110, “Menace.”
+2019-12-09 08:32:57 <kingoffrance> also, totally makes sense, yes
+2019-12-09 08:33:57 <kingoffrance> douthtouch is lifetouch just depends on which "bible" people go by
+2019-12-09 08:34:10 <kingoffrance> there are lots of regional variants
+2019-12-09 08:35:17 <zzo38> Deathtouch means damage this object deals to a creature will cause state based actions to destroy that creature even if the damage doesn't equal or exceed its toughness. There is no "lifetouch" in Magic: the Gathering, and I don't know what "douthtouch" means (is it like "deathtouch"?)
+2019-12-09 08:36:11 <kingoffrance> we have different bibles zzo38 :)
+2019-12-09 08:36:33 <zzo38> I fail to see what the Bible has to do with it.
+2019-12-09 08:37:38 <kingoffrance> written by magicians
+2019-12-09 08:40:13 <zzo38> I do not understand.
+2019-12-09 08:41:32 <b_jonas> kingoffrance: card with dude holding up "the world" => do you mean https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-21-world.jpg or other https://commons.wikimedia.org/wiki/?curid=11291208 ?
+2019-12-09 08:44:13 <kingoffrance> theres a first coming set of catholic keys, and theres 2nd coming protestant keys basically
+2019-12-09 08:44:24 <kingoffrance> so they are death touches w.r.t. each other
+2019-12-09 08:44:42 <zzo38> I thought a card holding up the world might refer to one of the trumps in the tarot cards, but "on google right now", it is unclear
+2019-12-09 08:44:45 <kingoffrance> modern bibles are my death touch basically
+2019-12-09 08:44:52 <kingoffrance> err, the death touch that kills me
+2019-12-09 08:44:56 <zzo38> (Although I don't use Google much, so I don't know.)
+2019-12-09 08:45:27 <zzo38> kingoffrance: OK, although I was discussing Magic: the Gathering cards, rather than Catholic and Protestant religions
+2019-12-09 08:45:32 <kingoffrance> keys are keys :/
+2019-12-09 08:45:39 <kingoffrance> death touches are death touches
+2019-12-09 08:46:05 <b_jonas> zzo38: "on google right now" means that he's looking at the image of such a card through the internet, potentially the very image that I linked
+2019-12-09 08:48:14 <zzo38> b_jonas: OK, but then he didn't say very clearly, at least to me
+2019-12-09 08:53:35 Joined: tromp
+2019-12-09 08:53:44 <kingoffrance> the google logo things
+2019-12-09 08:53:48 <kingoffrance> its some holiday or something
+2019-12-09 08:54:04 <kingoffrance> how they shapeshift the google logo on www.google.com   might be gone now depending on your timezone
+2019-12-09 08:54:39 <zzo38> O, OK, now I looked. Yes it is still there.
+2019-12-09 08:56:57 Quit: tromp (Ping timeout: 252 seconds)
