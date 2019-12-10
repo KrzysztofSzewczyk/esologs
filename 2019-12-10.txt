@@ -197,3 +197,35 @@
 2019-12-10 21:02:37 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
 2019-12-10 21:09:43 Joined: MDude
 2019-12-10 21:09:43 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
+2019-12-10 22:31:12 <int-e> b_jonas: I've solved the AoC problems so far over the past 6 hours.
+2019-12-10 22:31:53 <shachaf> Today's AoC challenge: Prove that every vector space has a basis.
+2019-12-10 22:32:04 <int-e> KISS is such a powerful principle.
+2019-12-10 22:32:23 <fizzie> I have no idea how long I've spent, because the timing starts from what's 5am here.
+2019-12-10 22:32:59 <fizzie> Guess I could extrapolate from the delta between part 1 and part 2 though.
+2019-12-10 22:33:07 <int-e> You can still keep track of the time *you* spend.
+2019-12-10 22:33:14 <fizzie> Yes, but not retroactively. :)
+2019-12-10 22:33:19 <int-e> Right.
+2019-12-10 22:33:21 <fizzie> Well, maybe from file timestamps.
+2019-12-10 22:33:41 <int-e> I'm extrapolating from part 1 of the 1st day ;)
+2019-12-10 22:34:00 <int-e> I'll lose track if I continue doing this.
+2019-12-10 22:34:10 <int-e> The leaderboard scoring is atrocious, btw.
+2019-12-10 22:34:44 <fizzie> I'm kind of happy it is, because otherwise I'd probably start caring about it.
+2019-12-10 22:35:00 <fizzie> (In fact I did today's right when it opened, because happened to be awake.)
+2019-12-10 22:35:57 <fizzie> Fortunately it's fun enough to just write those things.
+2019-12-10 22:39:43 <int-e> for the later problems I could reconstruct things reasonably well by the file stamps of the inputs
+2019-12-10 22:40:34 <int-e> Hmm, or maybe not. I have not been consistent about downloading the input when I start.
+2019-12-10 22:40:47 <int-e> Oh well, who really cares.
+2019-12-10 22:42:02 <b_jonas> shachaf: https://www.xkcd.com/804/ I told you not to take the axiom of choice
+2019-12-10 22:45:54 <int-e> meh, perhaps somebody cares: wc counts of what I've produced: http://paste.debian.net/1120577/
+2019-12-10 22:50:10 <fizzie> I think my Python's been more verbose.
+2019-12-10 22:50:32 <fizzie> http://ix.io/245v
+2019-12-10 22:51:10 <fizzie> Well, same order of magnitude.
+2019-12-10 22:53:11 <fizzie> (Flatter directory structure though.)
+2019-12-10 22:53:53 <int-e> I expected slightly harder problem (so more exploration)
+2019-12-10 22:54:21 <int-e> It's still nice not having to rename the 'input' files, but it's a minor thing.
+2019-12-10 22:54:37 <int-e> Also I broke the Intcode API once so having copies is actually healthy.
+2019-12-10 22:55:10 <fizzie> I'm sharing, that's why I have test.py (which runs all the day*.py and compares their outputs to a golden copy).
+2019-12-10 22:55:23 <fizzie> Although from the "your Intcode computer is now complete", maybe there won't be any more.
+2019-12-10 22:56:12 <fizzie> I'm pretty sure I was doing these some previous year as well, but no idea where I've stashed the solutions.
+2019-12-10 22:56:37 <int-e> yeah, the 2019 is a bit silly :)
+2019-12-10 22:57:38 <fizzie> To be fair, 'aoc2019' is the only thing in my '~/src/puzzles'. Not because there haven't been any puzzles, I just think I've used ~/tmp, ~/src/misc, or whatever.
