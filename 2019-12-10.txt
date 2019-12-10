@@ -108,3 +108,32 @@
 2019-12-10 15:26:16 <wib_jonas> if you do have enough RAM for that, then use Floyd's algorithm to compute the pairwise distances
 2019-12-10 15:27:28 <wib_jonas> that's not an impossibly large amount of memory these days, you can probably borrow some time on a machine with that much RAM
 2019-12-10 15:28:00 <wib_jonas> izabera: are there edge weights?
+2019-12-10 15:30:21 <myname> is computing a single transitivity step for a graph in matrix form that hard?
+2019-12-10 15:32:11 <wib_jonas> if you suspect that the diameter is small, then you can optimize it well, you don't need a full Floyd
+2019-12-10 15:32:30 <wib_jonas> it still won't be fast, but it will be much faster and easier than trying to figure out some distributed solution
+2019-12-10 15:34:19 <wib_jonas> if you don't have enough RAM, then yes, run an individual BFS from each node, to make sure that you can reach all nodes of the graph in few steps
+2019-12-10 15:34:47 <wib_jonas> in fact, that's probably faster than anything with a full matrix, because your graph is sparse enough
+2019-12-10 15:35:02 <wib_jonas> so ignore my previous idea about a large matrix and floyd's algorithm
+2019-12-10 15:35:26 <wib_jonas> you said your graph is very sparse, so just do a BFS from each individual node to find the distance of the farthest node from there
+2019-12-10 15:37:18 <wib_jonas> I suggest that you implement the DFS using two arrays with one bit each for each node, to know which one you've visited in the previous step and the current step, and passes of reading through the edge list in sequence
+2019-12-10 15:37:55 <wib_jonas> I suggest sorting the edge list for some speedup
+2019-12-10 15:39:10 <wib_jonas> izabera: ^ that would work reasonably fast for a graph of small diameter, because you're reading the edge list sequentially, and you only need to access 284000 bits i.e. 35 kilobytes random access
+2019-12-10 15:40:39 <wib_jonas> if you double the edge list, making it an arc list (storing each edge in both directions) and sort it by destination node, the you only need random access to one of the bit arrays and sequential access to the other bit array, so the array with random access just fits in the L1 cache
+2019-12-10 15:40:50 <wib_jonas> so that's what I'd recommend
+2019-12-10 15:40:54 <wib_jonas> hth
+2019-12-10 15:42:53 <wib_jonas> this is assuming that the graph is confidental or you want to solve it yourself; otherwise just publish the graph and offer money to people for computing the diameter
+2019-12-10 15:45:20 <wib_jonas> require solvers to give not only the diameter, but the indexes of two nodes that are that far apart, so you can verify easily
+2019-12-10 15:47:00 User Name: FireFly = FireFly!znc@freenode/staff/firefly
+2019-12-10 15:47:00 <FireFly> ah yes, the O(incentive) approach
+2019-12-10 15:49:36 <myname> wib_jonas: that would not suffice
+2019-12-10 15:50:06 <myname> i can easily claim the diameter being 1 and give you two nodes with a distance of 1
+2019-12-10 15:53:08 <myname> you would need to have at least one honest participant
+2019-12-10 15:53:24 <wib_jonas> myname: it doesn't suffice, but your solution doesn't work, because izabera can find the submission that claims the highest diameter, and run a single breadth-first search from one of the nodes that it claims to find the distance of the two nodes that it claims, and if that's 7 then that proves your submission incorrect
+2019-12-10 15:53:54 <wib_jonas> the failure case is that everyone claims a diameter that is lower than the actual one
+2019-12-10 15:54:08 <wib_jonas> or that izabera is DOSed by too many incorrect submissions
+2019-12-10 15:55:35 <wib_jonas> myname: also the spec said "i have a graph with 142k nodes and 2.5mil edges", that's not a complete graph so the diameter can't be 1
+2019-12-10 15:56:13 <myname> well yeah, but i should be able to find some nodes with distance 3 pretty easily
+2019-12-10 15:57:09 <myname> oh, couldn't you just contract parts of the graph?
+2019-12-10 15:58:36 <myname> like, if you have a path of length n > 1, you could just make that into a path of length 1 with a weight of n
+2019-12-10 15:59:08 <myname> if you do end on a complete graph, you just need to find the biggest weight
+2019-12-10 16:00:00 <myname> or you could just split the graph in half, substitute the missing half with a new node and try some clever merging of paths, that run through that
