@@ -48,3 +48,20 @@
 2019-12-10 11:57:16 <izabera> got a problem
 2019-12-10 11:58:53 <izabera> i have a graph with 142k nodes and 2.5mil edges
 2019-12-10 11:59:23 <izabera> and i want to compute the diameter
+2019-12-10 12:07:37 <izabera> how do i make this problem tractable?
+2019-12-10 12:08:14 User Name: Taneb = Taneb!~Taneb@runciman.hacksoc.org
+2019-12-10 12:08:14 <Taneb> Solve the problem of making yourself not want that?
+2019-12-10 12:08:22 <izabera> well i really want that
+2019-12-10 12:08:32 <izabera> and cloud computing is cheap
+2019-12-10 12:09:16 <izabera> so i need a way to distrubute the floyd warshall algorithm across different machines
+2019-12-10 12:09:50 <izabera> in a smart way so that machines try to do as much as they can locally and don't always compete for shared resources
+2019-12-10 12:10:41 <Taneb> https://www3.nd.edu/~tweninge/pubs/PW_HPGM.pdf here is a paper
+2019-12-10 12:10:49 <Taneb> It might even be helpful
+2019-12-10 12:16:34 <myname> I don't know if I'd use floyd warshall to compute the diameter in this case at all
+2019-12-10 12:16:58 <myname> like, given the graph is simple, you can already calculate an upper bound of the diameter
+2019-12-10 12:17:32 <izabera> how?
+2019-12-10 12:21:10 <myname> that's a tough one I maybe think about later, but I just assumed that you can make assertions about cycle lengths which in turn will reduce the diameter
+2019-12-10 12:22:33 <myname> like, if you have at leas as much edges as you have nodes, you will have a cycle of at least length 3 reducing the diameter from a maximum of n to a maximum of n-1
+2019-12-10 12:26:12 <izabera> i think i can do dijkstra from each node to every other node
+2019-12-10 12:26:36 <izabera> it's trivially parallelisable by just having a local copy of the adjacency matrix on each machine
+2019-12-10 12:28:22 <izabera> is this stupid?
