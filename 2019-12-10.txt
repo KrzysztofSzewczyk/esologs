@@ -65,3 +65,20 @@
 2019-12-10 12:26:12 <izabera> i think i can do dijkstra from each node to every other node
 2019-12-10 12:26:36 <izabera> it's trivially parallelisable by just having a local copy of the adjacency matrix on each machine
 2019-12-10 12:28:22 <izabera> is this stupid?
+2019-12-10 12:30:20 <myname> is this really an advantage over a normal floyd warshall?
+2019-12-10 12:31:26 <izabera> i don't know how to split it across machines
+2019-12-10 12:31:38 <izabera> well
+2019-12-10 12:31:42 <izabera> ok i'm dumb
+2019-12-10 12:31:44 <izabera> no
+2019-12-10 12:31:59 <myname> you will need to have at least n^3/(n log n) processes for that to be faster
+2019-12-10 12:32:39 <izabera> with floyd warshall you'd need to write to the shared cache all the time
+2019-12-10 12:32:46 <izabera> how do you parallelise that?
+2019-12-10 12:35:04 <myname> not sure, that's why I wouldn't use that :D
+2019-12-10 12:35:26 <izabera> i just want an algorithm that's reasonably fast and that can be split
+2019-12-10 12:40:19 <myname> yeah, but I would assume there exists a reasonably parallelizable algorithm to calculate the diameter of a graph that does not rely on calculating each distance and finding the maximum in those
+2019-12-10 12:41:42 <myname> like, if you can give an upper bound on the diameter (which I believe you can), you may be able to parallelise the search based on clusters of size g(max diameter)
+2019-12-10 12:45:04 <izabera> i have a strong feeling that the diameter is like 7
+2019-12-10 12:45:14 <izabera> but i'm not sure
+2019-12-10 12:46:37 <izabera> altho i'm not sure i understand how your idea works
+2019-12-10 12:48:12 <myname> I am thinking about generating a transitive hull and check for completeness of the resulting graph
+2019-12-10 12:48:41 <myname> that might work
