@@ -192,3 +192,24 @@
 2019-12-11 10:56:22 <shachaf> Surely AVL tree deletion takes logarithmic time, anyway.
 2019-12-11 10:57:41 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=67875&oldid=67846 5* 03Oklomsy 5* (+251) 10/* Introductions */
 2019-12-11 10:59:24 <wib_jonas> shachaf: hmm, I might be misremembering, let me check the Knuth book
+2019-12-11 11:00:28 <shachaf> Man.
+2019-12-11 11:00:28 <wib_jonas> shachaf: you should look at the Okasaki book's description of red-black trees if you want a simple one
+2019-12-11 11:00:33 <shachaf> Maybe I shouldn't be doing B+ trees?
+2019-12-11 11:00:43 <shachaf> I'm not interested in red-black trees.
+2019-12-11 11:00:48 <wib_jonas> red-black trees look very complicated to me at first, but when Okasaki explains them, they're simpler
+2019-12-11 11:01:27 <wib_jonas> shachaf: well, what data structure you want depends on what you want it for. for storing on a disk that you read in sectors/clusters/blocks, some sort of B-tree with high degree is usually better
+2019-12-11 11:01:41 <shachaf> Binary trees are scow.
+2019-12-11 11:01:58 <wib_jonas> shachaf: also you could try to use a library written by someone else, such as that B-tree library from the future that ais523 will write
+2019-12-11 11:02:23 <shachaf> Why?
+2019-12-11 11:05:42 <wib_jonas> ok sorry, I was wrong. AVL tree deletion may require you to modify O(height) nodes
+2019-12-11 11:05:59 <wib_jonas> its insertion of a single node into AVL trees that is faster, because it requires you to adjust only O(1) nodes
+2019-12-11 11:06:12 <wib_jonas> whereas with a B-tree, an insertion may require you to adjust O(log n) nodes
+2019-12-11 11:06:47 <wib_jonas> shachaf: because if someone else already wrote a good and well-tested library, it's less likely to be buggy than if you write one
+2019-12-11 11:07:03 <wib_jonas> and there are a lot of balanced search tree libraries out there
+2019-12-11 11:10:13 <esowiki> 14[[07Furcode14]]4 N10 02https://esolangs.org/w/index.php?oldid=67876 5* 03Oklomsy 5* (+36) 10Created page with "Furcode  [[Category:Joke_languages]]"
+2019-12-11 11:10:51 <esowiki> 14[[07Furcode14]]4 M10 02https://esolangs.org/w/index.php?diff=67877&oldid=67876 5* 03Oklomsy 5* (-36) 10Blanked the page
+2019-12-11 11:12:40 <esowiki> 14[[07Dd14]]4 10 02https://esolangs.org/w/index.php?diff=67878&oldid=67864 5* 03Dart 5* (+275) 10Added a shorter implementation
+2019-12-11 11:20:13 <esowiki> 14[[07Esolang:Sandbox14]]4 10 02https://esolangs.org/w/index.php?diff=67879&oldid=67276 5* 03Oklomsy 5* (+621) 10
+2019-12-11 11:21:04 <esowiki> 14[[07Esolang:Sandbox14]]4 10 02https://esolangs.org/w/index.php?diff=67880&oldid=67879 5* 03Oklomsy 5* (-584) 10
+2019-12-11 11:27:46 Joined: arseniiv
+2019-12-11 11:27:46 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill
