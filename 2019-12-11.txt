@@ -80,3 +80,41 @@
 2019-12-11 03:59:24 <shachaf> h++ and c++ hth
 2019-12-11 03:59:55 <shachaf> hmm
 2019-12-11 03:59:58 <shachaf> h and c hth
+2019-12-11 04:01:20 <int-e> shachaf: But I like a language strictly between C and C++... basically C++ without dynamic methods (and consequently, very limited inheritance).
+2019-12-11 04:01:39 <int-e> dynamic -> virtual
+2019-12-11 04:02:49 <shachaf> What's the benefit of inheritance at all?
+2019-12-11 04:04:28 <int-e> You can still have some limited aggregation going on.
+2019-12-11 04:05:09 <int-e> Only extending interfaces and functionality... no overloading of methods or things will quickly become insane.
+2019-12-11 04:06:06 <int-e> (virtual methods are what keep this sane)
+2019-12-11 04:06:55 <shachaf> Wait, are you for or against virtual methods?
+2019-12-11 04:06:59 <int-e> The main thing I want is that every (struct/class) type has an associated namespace.
+2019-12-11 04:07:42 <int-e> shachaf: It depends? They are essential for OO. I don't want to do OO though.
+2019-12-11 04:07:45 <shachaf> I've been wondering how important that is for a while.
+2019-12-11 04:08:12 <shachaf> Is there a big advantage to x.f() over foo(x)?
+2019-12-11 04:08:49 <shachaf> I meant x.foo(), of course.
+2019-12-11 04:08:52 <int-e> Little, if you can overload foo().
+2019-12-11 04:10:04 <int-e> But C can't overload functions either.
+2019-12-11 04:10:46 <int-e> I think there's an advantage over having x.foo() or foo(x) vs. having to write type_foo(x) where 'type' happens to be the type of x.
+2019-12-11 04:11:44 <int-e> I'm not a very fast typist, so that kind of redundancy really hurts.
+2019-12-11 04:14:11 <int-e> I also find chaining of operations attractive... if you have  struct T { T &set_foo(); T &set_bar(); }; T t; and do t.set_foo().set_bar().
+2019-12-11 04:15:40 <shachaf> I like (T){.foo = x, .bar = y};
+2019-12-11 04:15:53 <shachaf> Which C has had for 20 years and maybe C++ is finally getting?
+2019-12-11 04:17:19 <int-e> Anyway, if you were to add methods to structs in C I might consider using it again ;) )
+2019-12-11 04:17:42 <shachaf> type_foo has the benefit that you can search for it.
+2019-12-11 04:18:30 <int-e> Yes, we all rationalize our own choices.
+2019-12-11 04:18:54 <shachaf> I said a few lines ago that I've been wondering about it for a while.
+2019-12-11 04:19:08 <shachaf> In particular I mean that I'm not sure whether it's a good idea or not.
+2019-12-11 04:21:41 <int-e> It doesn't help C's case that it's largely a subset of C++. (The field initialisers are a good point, of course.)
+2019-12-11 04:22:20 <int-e> So basically the moment a person (like me) finds /anything/ they like in C++, they are tempted to switch.
+2019-12-11 04:23:31 <shachaf> whoa, I just realized how my own program worked.
+2019-12-11 04:23:38 <int-e> Btw I also find the  iostream  and  iomanip  stuff cute.
+2019-12-11 04:23:40 <shachaf> I had a bug which turned out to be a clever trick.
+2019-12-11 04:23:57 <shachaf> It did exactly the right thing. I'm going to document it and pretend it was what I meant to do all along.
+2019-12-11 04:24:28 <shachaf> Wait a minute, no. Hmm.
+2019-12-11 04:24:28 <int-e> Been a while since I've done that, but yeah... those are interesting experiences.
+2019-12-11 04:25:08 <int-e> Well, the last time was actually code that I /knew/ couldn't work, that turned out to work /most/ of the time (much more often than it reasonably should), but not always :)
+2019-12-11 04:25:39 <int-e> I was really glad when I finally discovered that it did, in fact, break.
+2019-12-11 04:26:20 <int-e> (This was with last month's Ponder This, in code updating determinants which worked with insufficient precision... and still produced exact results most of the time.)
+2019-12-11 04:26:37 <shachaf> https://slbkbs.org/tmp/b-trees.txt
+2019-12-11 04:28:20 <int-e> The time before that was an overzealous (by my understanding at the time of writing it) check in a combinatorial search procedure which I could later justify to actually be valid (for quite subtle reasons).
+2019-12-11 04:28:58 <int-e> "overzealous check" -- this was for pruning a search tree, so I pruned more than I thought I could.
