@@ -180,3 +180,15 @@
 2019-12-11 10:16:49 <cpressey> Good morning. Here's a kooky juxtaposition for y'all: The Löwenheim-Skolem theorem says that if a logic has an infinite model, it has a countable one. Meanwhile there's this folk theorem in programming: if a program requires a loop, then it can be written with a single loop.
 2019-12-11 10:17:09 <cpressey> s/logic/theory/
 2019-12-11 10:22:47 <FireFly> heh
+2019-12-11 10:38:15 Joined: wib_jonas
+2019-12-11 10:38:15 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill
+2019-12-11 10:39:24 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2019-12-11 10:39:24 <wib_jonas> cpressey: I think that latter is Dijkstra's "Go To Statement Considered Harmful" theorem, though it was probably known before Dijkstra, because people had cpus with a single loop that fetches instructions then executes them
+2019-12-11 10:43:03 <wib_jonas> cpressey: "https://esolangs.org/wiki/(0)" may be relevant for some infinite versions
+2019-12-11 10:52:33 <shachaf> Why is deletion so complicated?
+2019-12-11 10:53:05 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Oklomsy 5*  10New user account
+2019-12-11 10:54:25 <wib_jonas> shachaf: that's the tradeoff about AVL trees versus B-trees or related. AVL trees have more complicated algorithms in general, but fast and simple deletion; B-trees and red-black trees have simple algorithms, but deletion can take O(log(n)) time.
+2019-12-11 10:55:58 <shachaf> I don't care about about it being slow, right now, just complicated.
+2019-12-11 10:56:22 <shachaf> Surely AVL tree deletion takes logarithmic time, anyway.
+2019-12-11 10:57:41 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=67875&oldid=67846 5* 03Oklomsy 5* (+251) 10/* Introductions */
+2019-12-11 10:59:24 <wib_jonas> shachaf: hmm, I might be misremembering, let me check the Knuth book
