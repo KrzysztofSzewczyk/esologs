@@ -118,3 +118,27 @@
 2019-12-11 04:26:37 <shachaf> https://slbkbs.org/tmp/b-trees.txt
 2019-12-11 04:28:20 <int-e> The time before that was an overzealous (by my understanding at the time of writing it) check in a combinatorial search procedure which I could later justify to actually be valid (for quite subtle reasons).
 2019-12-11 04:28:58 <int-e> "overzealous check" -- this was for pruning a search tree, so I pruned more than I thought I could.
+2019-12-11 04:30:57 <int-e> shachaf: funny, I always think of B+-trees as 2-3-4-trees, only wider.
+2019-12-11 04:31:22 <int-e> And 2-3-4-trees are 2-3-trees with lazier splitting.
+2019-12-11 04:31:39 <shachaf> I always think of red-black trees as 2-3-4 trees.
+2019-12-11 04:32:12 <int-e> (Are B- -trees those that can have between n and 2n-1 children at each node?)
+2019-12-11 04:32:42 <int-e> I usually don't think of red-black trees at all.
+2019-12-11 04:33:08 <shachaf> Did you know they just encode 2-3-4 trees?
+2019-12-11 04:33:55 <shachaf> Anyway, I like this array perspective.
+2019-12-11 04:34:01 <int-e> but yeah, if I have to, I collapse it to a 2-3-4 tree.
+2019-12-11 04:34:22 <shachaf> I think just about all the operations are obvious from this viewpoint.
+2019-12-11 04:34:35 <int-e> AVL trees make so much more sense to me.
+2019-12-11 04:37:08 <int-e> shachaf: I think the array perspective is one of many possible views and it's impossible to say which view clicks for any particular person.
+2019-12-11 04:39:00 <int-e> Obviously /some/ sort of array is inherent in any Bx-tree because a flat array is what you get for very small data sets.
+2019-12-11 04:39:28 <shachaf> I mean, I've written a bunch of B-tree code in the past, I was already familiar with the data structure.
+2019-12-11 04:39:42 <int-e> And observing some sort of chunking at the leafs when you flatten the tree is also inevitable.
+2019-12-11 04:40:33 <int-e> But whether you view the thing top-down, emphasizing the tree structure, or bottom-up, empahsizing the (chunked) flattened array... is up to you.
+2019-12-11 04:42:12 <int-e> If you do it bottom-up, you get intermediate forests as you group consecutive chunks under a common ancestor node.
+2019-12-11 04:42:38 <int-e> So it's arrays all the way up. ;)
+2019-12-11 04:42:46 <int-e> But trees all the way down.
+2019-12-11 04:43:29 <shachaf> It's plausibly reasonable to use different kinds of indexing for blocks and for values.
+2019-12-11 04:43:42 <shachaf> Since they're very different sizes.
+2019-12-11 04:46:10 <int-e> Btw, I don't know if anything of what I just wrote made any sense. But I'm very happy with the last two lines.
+2019-12-11 04:48:14 <int-e> Okay, bedtime.
+2019-12-11 04:50:10 <shachaf> C++'s std::map is usually a red-black tree.
+2019-12-11 04:50:12 <shachaf> I'm not sure why.
