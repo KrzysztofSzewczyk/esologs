@@ -259,3 +259,32 @@
 2019-12-12 18:24:42 <esowiki> 14[[07Oof14]]4 10 02https://esolangs.org/w/index.php?diff=67913&oldid=67912 5* 03Nirex0 5* (+1) 10
 2019-12-12 18:26:20 <bunnyocto> oh well... who needs to return structs :(
 2019-12-12 18:26:48 <bunnyocto> just pass a pointer to the struct as the callee and let the caller fill that one in
+2019-12-12 18:30:48 <esowiki> 14[[07Oof14]]4 M10 02https://esolangs.org/w/index.php?diff=67914&oldid=67913 5* 03Nirex0 5* (+6) 10Better Documentation
+2019-12-12 18:31:05 Joined: Jefe
+2019-12-12 18:31:05 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, Jefe, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
+2019-12-12 18:32:03 User Name: Jefe = Jefe!~jeff@66.51.195.8
+2019-12-12 18:32:03 <Jefe> Hi, my friend told me about a language where only the white space is significant, so all visible characters constitute comments.  Anybody happen to know the name?
+2019-12-12 18:32:29 <kingoffrance> i think it was called whitespace
+2019-12-12 18:32:36 <kingoffrance> and probably made slashdot
+2019-12-12 18:32:41 <kingoffrance> long ago
+2019-12-12 18:33:28 <Jefe> Well that would just make too much sense, wouldn't it?
+2019-12-12 18:33:32 <esowiki> 14[[07Oof14]]4 M10 02https://esolangs.org/w/index.php?diff=67915&oldid=67914 5* 03Nirex0 5* (+30) 10
+2019-12-12 18:33:33 <Jefe> Thanks.
+2019-12-12 18:34:08 * kingoffrance cries himself to sleep that slashdot moderation is actually something missing from a gazillion other sites; at least slashdot's perl forum you could browse the -5 flamebait if you wanted;   the modern web stuff just vanishes
+2019-12-12 18:34:44 <kingoffrance> murphy's law: someone can always do worse implementation of something you don't particularly like
+2019-12-12 18:35:39 <Jefe> That's kind of like "every bad idea will eventually be implemented in JavaScript."
+2019-12-12 18:36:34 <kingoffrance> we called it jabbascript or jabbadabbascript in ##programming about 24 hours ago ; as in node.js is modular like slicing a chunk of lard off jabba the hut and moving it somewhere else
+2019-12-12 18:36:50 <kingoffrance> i dont know if those are common nicknames
+2019-12-12 18:37:29 <kingoffrance> (referring to node having 5000 dependencies i suppose)
+2019-12-12 18:39:00 <Jefe> The Signal desktop client is apparently written in Node.  I ran it for a week, my load average wouldn't drop below 3.0, and frequently shot over 15.
+2019-12-12 18:40:39 Joined: ais523
+2019-12-12 18:40:39 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, Jefe, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
+2019-12-12 18:42:19 <kingoffrance> thats good, i dont feel bad for being cruel now
+2019-12-12 18:49:20 Joined: sprocklem
+2019-12-12 18:49:20 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, Jefe, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
+2019-12-12 18:51:52 <bunnyocto> https://stackoverflow.com/questions/22593259/check-if-string-is-int-golang
+2019-12-12 18:51:53 <bunnyocto> so terrible
+2019-12-12 18:52:48 <bunnyocto> I mean... the unicode.isDigit is bullshit.
+2019-12-12 18:53:00 <bunnyocto> then using regexps? pff...
+2019-12-12 18:58:08 <esowiki> 14[[07Oof14]]4 10 02https://esolangs.org/w/index.php?diff=67916&oldid=67915 5* 03Dart 5* (-94) 10
+2019-12-12 18:58:53 <bunnyocto> is that Ook but s/k/f?
