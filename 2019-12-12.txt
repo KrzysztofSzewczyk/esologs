@@ -138,3 +138,17 @@
 2019-12-12 13:17:45 <int-e> And unfortunately that includes basic things like the order of arguments of function composition.
 2019-12-12 13:19:13 <int-e> That said, I /prefer/ (f.g)(x) = f(g(x)).
 2019-12-12 13:21:42 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Leo9 5*  10New user account
+2019-12-12 13:42:09 <FireFly> I though the Haskell thing was to use (&) for the g(f(x)) case
+2019-12-12 13:42:14 Joined: kspalaiologos
+2019-12-12 13:42:14 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
+2019-12-12 13:42:33 <FireFly> no need to pollute established notation with confusion..
+2019-12-12 13:43:17 <FireFly> I mean I like the forward-direction composition just fine, but under a differet notation
+2019-12-12 13:44:57 <Taneb> (&) is normally flip ($), not flip (.)
+2019-12-12 13:45:22 <FireFly> oh right
+2019-12-12 13:45:30 <FireFly> hmm, point
+2019-12-12 13:45:36 <Taneb> I've seen (f;g)(x) = g(f(x)) but that doesn't work as a Haskell operator
+2019-12-12 13:46:36 <FireFly> Clojure calls it (->>) IIRC, but that's more in a prefix, s-expr setting
+2019-12-12 13:46:55 <FireFly> but thee's he (>>>) from Category as mentioned, etc
+2019-12-12 13:56:32 Joined: Lord_of_Life
+2019-12-12 13:58:50 Quit: Lord_of_Life (Ping timeout: 276 seconds)
+2019-12-12 13:58:50 Nick Change: Lord_of_Life -> Lord_of_Life
