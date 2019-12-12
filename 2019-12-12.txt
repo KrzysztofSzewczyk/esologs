@@ -203,3 +203,12 @@
 2019-12-12 15:28:06 <bunnyocto> the codomain is the empty set.
 2019-12-12 15:28:52 <bunnyocto> but the domain too
 2019-12-12 15:28:53 <bunnyocto> hm.
+2019-12-12 15:36:04 <bunnyocto> wouldn chr(0)+x work to convert to hex
+2019-12-12 15:37:40 <bunnyocto> I mean my current version (https://pastebin.com/C3kHSXMb) is probably awfully complicated and requires mem lookups
+2019-12-12 15:37:55 <bunnyocto> I could just add 0x30 to the nibbles
+2019-12-12 15:43:23 <bunnyocto> oh no
+2019-12-12 15:44:21 <bunnyocto> the guys making ASCII clearly didn't design for this.
+2019-12-12 15:44:26 <bunnyocto> BIG MISTAKE
+2019-12-12 15:44:45 <bunnyocto> on the other hand it would work if I wouldn't use ASCII
+2019-12-12 15:47:53 <bunnyocto> also I hate it when people say a byte is a number from 0-255
+2019-12-12 15:48:01 <bunnyocto> it's not accurate. bytes are typeless.
