@@ -407,3 +407,69 @@
 2019-12-12 19:58:38 <b_jonas> reference types or containers or any high-level abtstractions to track that info
 2019-12-12 19:59:30 <b_jonas> "I put in the check to make sure that the string's starting address was divisible by 32" => yes, that
 2019-12-12 19:59:48 <ais523> oddly enough, C doesn't allow aligned pointers as function arguments
+2019-12-12 20:00:07 <ais523> it supports aligned pointers but there's an explicit rule that prevents you putting an _Alignas on a function argument, or sneaking one in via a typedef
+2019-12-12 20:00:29 <bunnyocto> hu?
+2019-12-12 20:00:30 <bunnyocto> why?
+2019-12-12 20:00:34 <ais523> (16 would actually be enough alignment, but I put 32 just in case the compiler could think of something clever to do with the 256-bit vector units)
+2019-12-12 20:00:40 <b_jonas> ais523: sure, but you can put those things in a struct
+2019-12-12 20:00:48 <bunnyocto> why does it care whether a char* is aligned?
+2019-12-12 20:00:55 <ais523> bunnyocto: it lets you overread safely
+2019-12-12 20:01:14 <ais523> on basically all modern processors, there's a limit to the memory protection's granularity
+2019-12-12 20:01:28 <ais523> so, say, memory can only go from readable to unreadable at a multiple of 512, or a multiple of 2048
+2019-12-12 20:01:46 <ais523> so if you know the address is divisible by 16, either the first byte is unreadable or the whole thing is readable
+2019-12-12 20:01:58 <b_jonas> on a multiple of 4096 bytes on x86 actually
+2019-12-12 20:02:07 <ais523> I forgot the modern number
+2019-12-12 20:02:16 <b_jonas> and I think 8192 in linux userspace, but I'm not sure of that
+2019-12-12 20:02:17 <bunnyocto> yeh yeh page sizes and what not.... but how does this matter for this purpose?
+2019-12-12 20:02:18 <ais523> it keeps changing, wasting 4K of memory isn't really a big deal nowadays
+2019-12-12 20:02:38 <ais523> because if you have a string like "12", it might be right at the end of a page
+2019-12-12 20:02:45 <bunnyocto> if I make like uhm void bar() { char* __align(16) blubb = "blubberlutsch"; foo(blubb); }?
+2019-12-12 20:02:47 <ais523> so you can't read the first 16 bytes in case there's unreadable memory just after it
+2019-12-12 20:03:10 <ais523> bunnyocto: that works but the function isn't allowed to know that it was given a pointer that's 16-byte aligned, it just gets a char*
+2019-12-12 20:03:31 <b_jonas> and, I know I ranted about this a lot, I wish we could eventually transition to larger pages required system-wise, because there's a hard limit that the L1 data cache can be at most 8 pages large, and that's very often the bottleneck
+2019-12-12 20:04:01 <b_jonas> that reminds me
+2019-12-12 20:04:16 <ais523> b_jonas: huh, why the limit?
+2019-12-12 20:04:18 <b_jonas> did izabera return after she asked that question about graph algorithm to which I first gave a stupid answer?
+2019-12-12 20:04:33 <izabera> hi
+2019-12-12 20:04:37 <b_jonas> hello
+2019-12-12 20:04:40 <ais523> like, it doesn't seem significantly harder to make the L1 cache bigger by doubling the page size, and by doubling the number of pages it supports
+2019-12-12 20:04:41 <izabera> i have returned
+2019-12-12 20:05:08 <ais523> in either case the main cost is going to be the silicon that actually stores the values in the cache, rather than the control circuitry
+2019-12-12 20:05:21 <ais523> and if the control circuitry is the issue, you might want to make cache lines longer instead
+2019-12-12 20:05:34 <b_jonas> ais523: the L1 cache has to have a very low latency, so it needs to find which cache line to return when it only knows the linear address, and then verify if that's correct after the physical address is computed.
+2019-12-12 20:05:34 <ais523> is the issue actually the TLB rather than the L1 cache? that would be more believable
+2019-12-12 20:05:57 <b_jonas> ok wait, I'm explaining that wrong
+2019-12-12 20:06:01 <izabera> b_jonas: i ended up running bfs from each node
+2019-12-12 20:06:14 <ais523> b_jonas: oh, the L1 cache works on virtual addresses? I'd have expected it to work on physical addresses (as the TLB that caches virtual addresses)
+2019-12-12 20:06:15 <izabera> easily parallelizable
+2019-12-12 20:06:23 <b_jonas> the L1 cache needs to have a very low latency, so it has to do most of the computation when only the linear address is available, the physical isn't
+2019-12-12 20:06:52 <b_jonas> so how it works is that it finds the bunch of 8 cache lines whose address matches the linear address modulo the page size, then when the physical address arrives, it chooses one of those
+2019-12-12 20:07:00 <b_jonas> it has to be able to do this on two reads in parallel by the way
+2019-12-12 20:07:07 <b_jonas> or one read and one write
+2019-12-12 20:07:26 <b_jonas> in order to keep the latency low, it can't have more than 8 cache lines with the same address modulo page size
+2019-12-12 20:07:48 <ais523> that's not actually a limit of 8 pages, though; it's just a limit of 8 addresses that are on the same place within the page
+2019-12-12 20:07:58 <b_jonas> the size of the individual cache lines, which happens to be 64 bytes on x86, doesn't influence this
+2019-12-12 20:08:00 <ais523> there are a huge number of caching effects that have limitations like that
+2019-12-12 20:08:08 <b_jonas> ais523: yes, 8 page sizes of total data
+2019-12-12 20:08:38 <b_jonas> 32 kilobytes, divided to 64 bytes sized cache lines, such that each address modulo 4 kilobyte has at most 8 cache lines
+2019-12-12 20:09:13 <ais523> you could have more while retaining the virtual address lookup behaviour, though
+2019-12-12 20:09:56 <b_jonas> "it doesn't seem significantly harder to make the L1 cache bigger by doubling the page size" => you can do that only if the OS guarantees that there can't be small pages anywhere, not even in other processes, because processes can share memory, and even then the cpu would need extra circuitry to handle the compatibility node for old OSes that can't guarantee that, so it's a bit messy
+2019-12-12 20:11:29 <ais523> b_jonas: no, if you end up with more than 8 addresses in cache that would clash with each other, you just evict one to avoid hte problem
+2019-12-12 20:11:46 <ais523> but if the addresses happen to not clash, you can go with it
+2019-12-12 20:12:09 <b_jonas> ais523: no, it's definitely the L1 cache, not the TLB cache. the TLB cache is improved by making most pages large pages (2 megabyte in x86_64), while the OS can still allocate some normal 4 kilobyte sized pages, the TLB can handle the mixing reasonably efficiently
+2019-12-12 20:13:14 <b_jonas> ais523: yes, you evict one if you have more than 8 addresses that clash, which means that the total L1 data cache (on a single cpu core) can be no larger than 32 kilobytes total, or 512 cache lines of 64 bytes if you wish.
+2019-12-12 20:13:59 <b_jonas> and 32 kilobytes is rather small, it would be nice to be able to increase that for some applications, because the L1 data cache is often the bottleneck
+2019-12-12 20:14:05 <b_jonas> it isn't always for all computations, obviously
+2019-12-12 20:14:30 <bunnyocto> bottleneck for what...
+2019-12-12 20:14:31 <b_jonas> these cache lines could be from 512 different pages possibly
+2019-12-12 20:14:38 <bunnyocto> back in the old day we had 333mhz something
+2019-12-12 20:14:43 <bunnyocto> and it was running smoothly
+2019-12-12 20:14:48 <bunnyocto> it should run incredibly fast now
+2019-12-12 20:14:48 <b_jonas> or they could contain the entirety of 8 pages
+2019-12-12 20:16:40 <bunnyocto> also excel 2019 probably has still the same set of features as good old lotus
+2019-12-12 20:17:19 Quit: ais523 (Ping timeout: 265 seconds)
+2019-12-12 20:17:19 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, xkapastel, zemhill
+2019-12-12 20:22:57 <b_jonas> izabera: good, that's what I figured too eventually. you may have read my answer in the logs.
+2019-12-12 20:25:55 <bunnyocto> this is really interesting.
+2019-12-12 20:26:12 <bunnyocto> I don't think that current basic software is any more advanced than like 15y ago
+2019-12-12 20:26:27 <bunnyocto> sure... it looks less pixely but other than that
