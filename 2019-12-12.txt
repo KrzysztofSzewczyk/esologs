@@ -288,3 +288,75 @@
 2019-12-12 18:53:00 <bunnyocto> then using regexps? pff...
 2019-12-12 18:58:08 <esowiki> 14[[07Oof14]]4 10 02https://esolangs.org/w/index.php?diff=67916&oldid=67915 5* 03Dart 5* (-94) 10
 2019-12-12 18:58:53 <bunnyocto> is that Ook but s/k/f?
+2019-12-12 19:01:08 <bunnyocto> OLen / 8
+2019-12-12 19:01:09 <bunnyocto> uhm.
+2019-12-12 19:01:25 <bunnyocto> oof has on OLen of 2 so 2 / 8 = 0 so it's executed zero number times
+2019-12-12 19:01:41 <bunnyocto> probably should be (OLen / 8 ) + 1 as well
+2019-12-12 19:01:51 <bunnyocto> also... > is f with zero os
+2019-12-12 19:01:53 <bunnyocto> so...
+2019-12-12 19:01:57 <bunnyocto> OLen always zero
+2019-12-12 19:02:04 <bunnyocto> means you can't express >>>> with this mechanism
+2019-12-12 19:07:59 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2019-12-12 19:07:59 <ais523> <bunnyocto> https://stackoverflow.com/questions/22593259/check-if-string-is-int-golang ← the question is poorly defined; many of the answers produce different results in specific cases
+2019-12-12 19:08:20 <ais523> for example, is "123456789012345678901234567890" a string representing an integer?
+2019-12-12 19:08:46 <ais523> the answer depends on your use case; you can't convert it to an integer but in many cases you'd want to recognise it as one
+2019-12-12 19:08:59 <bunnyocto> yeh I'm aware of that.
+2019-12-12 19:09:05 <kmc> i've so far avoided starting an argument with my girlfriend about golang.
+2019-12-12 19:09:10 <kmc> she seems to be a fan
+2019-12-12 19:09:35 <ais523> in languages with compiled regexes, the regex solution is actually one of the most efficient ways of doing that, because it's basically a domain-specific language for generating string validators, and the compiler will have a lot of rules to optimise it
+2019-12-12 19:09:47 <ais523> but I suspect golang doesn't actually compile regexes at compile time
+2019-12-12 19:09:57 <bunnyocto> I don't know any language that does?
+2019-12-12 19:10:03 <ais523> Rust does
+2019-12-12 19:10:11 <bunnyocto> Interesting.
+2019-12-12 19:10:36 <bunnyocto> kmc: I like golang a lot.
+2019-12-12 19:10:43 <bunnyocto> unless it's for GUI stuff
+2019-12-12 19:10:45 <bunnyocto> then puh
+2019-12-12 19:11:01 <bunnyocto> I don't think there are any reasonably good bindings to do GUI stuff with golang yet.
+2019-12-12 19:11:28 <bunnyocto> but you know
+2019-12-12 19:11:43 <bunnyocto> GUI is done in things..
+2019-12-12 19:11:46 <bunnyocto> html
+2019-12-12 19:12:26 <bunnyocto> webviews?
+2019-12-12 19:14:05 <kmc> I mean I'm not sure I'd say "rust does"
+2019-12-12 19:14:11 <kmc> i'm sure someone has a library that does it with a procedural macro
+2019-12-12 19:14:40 <kmc> i don't think the 'regex' crate does
+2019-12-12 19:14:52 <kmc> it suggests using lazy_static so that each regex is compiled once, but that still happens at runtime
+2019-12-12 19:15:10 <ais523> looking it up, it seems regex! isn't the recommended way of doing things that the moment
+2019-12-12 19:15:13 <kmc> I'm also sure someone has written a Lisp or Scheme regex library that does it at compile time
+2019-12-12 19:15:16 <kmc> ok
+2019-12-12 19:15:25 <ais523> so it's more like it could be done in Rust but isn't the default
+2019-12-12 19:15:30 <kmc> yeah
+2019-12-12 19:15:32 <ais523> (that's disappointing, I thought it would be)
+2019-12-12 19:15:42 <bunnyocto> muahaha. suck it rust.
+2019-12-12 19:15:48 <bunnyocto> no, but rust is cool.
+2019-12-12 19:15:57 <ais523> I think Perl compiles regexes on first use rather than compile time, too
+2019-12-12 19:15:59 <bunnyocto> static memory safety is a neat concept.
+2019-12-12 19:16:05 <ais523> not sure though, its optimiser does weird things sometimes
+2019-12-12 19:16:30 <bunnyocto> it's just that most oldschool programmers are too scared of it yet so few use it
+2019-12-12 19:16:54 <bunnyocto> even newschool programmers
+2019-12-12 19:17:10 <bunnyocto> we had "tech discovery" meetings back at the place I worked
+2019-12-12 19:17:35 <bunnyocto> I introduced Rust at one point.
+2019-12-12 19:18:07 <bunnyocto> I don't know. People just aren't really fond of learning new concepts I guess.
+2019-12-12 19:18:45 <ais523> hmm, I suspect that most compilers will not generate the fastest asm for verifying that a string consists only of digits on any input, short of outright writing the asm
+2019-12-12 19:18:55 <bunnyocto> so we used golang. Which is awesome... better than python, C or Java
+2019-12-12 19:18:57 <bunnyocto> or C#
+2019-12-12 19:20:35 <kmc> Rust has a steep learning curve
+2019-12-12 19:20:42 <kmc> because it tries to provide all of safety, convenience, and performance
+2019-12-12 19:20:48 <kmc> this means it's nearly as complex as C++
+2019-12-12 19:20:55 <kmc> but the complexity is more necessary and less historical/accidental
+2019-12-12 19:21:22 <kmc> Rust is largely an attempt to take modern C++ concepts and build a similar language without the historical baggage
+2019-12-12 19:21:27 <kmc> and in fact those concepts are getting backported into C++
+2019-12-12 19:21:33 <kmc> (which will make it even more complicated, but that's life)
+2019-12-12 19:22:44 <kmc> Rust is a cool language with an annoying community and dickish leadership
+2019-12-12 19:22:50 <kmc> that is also life
+2019-12-12 19:23:03 <kmc> computers suck, people suck too but in a different way
+2019-12-12 19:24:24 <kmc> the Rust community is like the Haskell community, a bunch of really excited beginners who think Rust will solve every problem under the sun, plus they're full of themselves for being 'friendly and welcoming' but they don't want to hear about it if your experience is to the contrary
+2019-12-12 19:25:27 <kmc> 11:18 < ais523> hmm, I suspect that most compilers will not generate the fastest asm for verifying that a string consists only of digits on any input, short of outright writing the asm
+2019-12-12 19:25:32 <kmc> i've seen LLVM do some clever things in that direction
+2019-12-12 19:26:08 <kmc> if you have a switch-case with two branches over a set with less than 64 elements it will make a bitmask and use that as an immediate operand
+2019-12-12 19:27:56 <kmc> https://gcc.godbolt.org/z/Ce-LBo
+2019-12-12 19:28:35 <ais523> hmm: https://godbolt.org/z/n3PKGD
+2019-12-12 19:28:44 <kmc> ok gotta go
+2019-12-12 19:28:46 <kmc> ttyl
+2019-12-12 19:29:00 <bunnyocto> https://pastebin.com/WYsqm4aj is how I'd probably go about it if we're talking about no signs involved :D
+2019-12-12 19:29:09 Quit: APic (Quit: Boot tut gut™.)
+2019-12-12 19:29:09 Names: ^[, ais523, aji, aloril, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, Jefe, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
