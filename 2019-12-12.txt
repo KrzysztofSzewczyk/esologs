@@ -163,3 +163,13 @@
 2019-12-12 14:22:04 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
 2019-12-12 14:22:04 <wib_jonas> the order of arguments for function composition is simple. if you write the evaluation of the function f at input value x as f(x) or fx then the function composition is (f o g)(x) = f(g(x)) or (f o g)x = f (g x); but if you write it as x f or x^f, then the function composition is x (f o g) = (x f) g or x^(f o g) = (x^f)^g
 2019-12-12 14:22:51 <wib_jonas> and int-e, they're functions, so the left inverse and the right inverse are the same, we can just call it the inverse or inverse function
+2019-12-12 14:31:55 <int-e> wib_jonas: ...
+2019-12-12 14:32:03 <int-e> wib_jonas: you might want to think that through
+2019-12-12 14:38:12 <int-e> wib_jonas: what is true is that if a function has both a left inverse and a right inverse then they're equal (and that implies the inverse is unique in that case).
+2019-12-12 14:39:07 <int-e> But existence is a bit of an issue.
+2019-12-12 14:54:33 <bunnyocto> f being left inverse of g and g being right inverse of f doesn't imply that f . g = g . f
+2019-12-12 14:54:51 <bunnyocto> or does it?
+2019-12-12 14:54:52 <wib_jonas> int-e: hmm ok
+2019-12-12 14:54:54 <bunnyocto> I wouldn't think so
+2019-12-12 14:55:32 <bunnyocto> wait so if f . g = id and h . f = id then g = h?
+2019-12-12 14:55:51 <bunnyocto> that doesn't _sound_ right?
