@@ -173,3 +173,33 @@
 2019-12-12 14:54:54 <bunnyocto> I wouldn't think so
 2019-12-12 14:55:32 <bunnyocto> wait so if f . g = id and h . f = id then g = h?
 2019-12-12 14:55:51 <bunnyocto> that doesn't _sound_ right?
+2019-12-12 15:00:49 <myname> i don't think so
+2019-12-12 15:01:08 <myname> especially if the signatures differ
+2019-12-12 15:01:56 <bunnyocto> f .g = id -> h . f . g -> h . id -> h
+2019-12-12 15:02:48 <bunnyocto> since h . f = id -> h . f . g -> id . g -> g
+2019-12-12 15:02:50 <bunnyocto> thus h = g
+2019-12-12 15:02:51 <bunnyocto> hm.
+2019-12-12 15:02:52 <bunnyocto> it true
+2019-12-12 15:03:28 <myname> interesting
+2019-12-12 15:03:49 <bunnyocto> wait
+2019-12-12 15:03:54 <bunnyocto> I need paper for this.
+2019-12-12 15:04:48 <bunnyocto> no it's right.
+2019-12-12 15:05:12 <bunnyocto> h . f .g = id . g but also h . f .g = h . id thus id .g = h . id and id . g = g and h . id = h thus h = g = h
+2019-12-12 15:06:39 Joined: sprocklem
+2019-12-12 15:06:40 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill
+2019-12-12 15:06:46 <bunnyocto> now the question is whether there are functions (a,b) and (c,d) such that a . f = id and f . b = id and c . f = id and f . d = id but a /= c and b /= d
+2019-12-12 15:07:19 <bunnyocto> I mean... evidently a=b and c=d
+2019-12-12 15:07:45 <bunnyocto> so that leaves us with a . f = id and c . f = id where a /= c
+2019-12-12 15:08:13 <bunnyocto> which trivially if a . f = id and c . f = id then a . f = c. f
+2019-12-12 15:09:06 <bunnyocto> so the inverse is unique
+2019-12-12 15:09:07 <bunnyocto> hm.
+2019-12-12 15:17:50 Quit: sprocklem (Ping timeout: 246 seconds)
+2019-12-12 15:17:51 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wib_jonas, wmww, zemhill
+2019-12-12 15:24:00 <bunnyocto> assuming id is unique
+2019-12-12 15:24:05 <bunnyocto> :D
+2019-12-12 15:25:06 <myname> if you define equality of functions as the same mappings from input to output, id is unique
+2019-12-12 15:26:54 <bunnyocto> Whats' f x = x / 0 called
+2019-12-12 15:27:02 <bunnyocto> it's a function that isn't defined forall X
+2019-12-12 15:28:06 <bunnyocto> the codomain is the empty set.
+2019-12-12 15:28:52 <bunnyocto> but the domain too
+2019-12-12 15:28:53 <bunnyocto> hm.
