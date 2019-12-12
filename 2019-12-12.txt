@@ -83,3 +83,58 @@
 2019-12-12 12:56:32 <int-e> shachaf: depends
 2019-12-12 12:59:04 <int-e> Oh there are actually two issues here.
 2019-12-12 13:00:00 <int-e> One of convention, and one of choice.
+2019-12-12 13:00:02 <fizzie> int-e: I got some for the one time I was awake at 5am, and now I have to fight the urge to try again. :/
+2019-12-12 13:00:27 <int-e> fizzie: I was awake. I deliberately didn't look.
+2019-12-12 13:01:36 <shachaf> What's the axiom of convention?
+2019-12-12 13:01:41 <int-e> And now I was worried that today's second part was really hard so I might have earned points for it, but only because I momentarily misread the statistics page.
+2019-12-12 13:02:03 <int-e> shachaf: The conventional issue is which way function composition composes.
+2019-12-12 13:05:06 <int-e> shachaf: Also I had trouble connecting dots... while I typed "AoC" I thought and read the whole "Advent of Code".
+2019-12-12 13:05:38 Joined: bunnyocto
+2019-12-12 13:05:38 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill
+2019-12-12 13:07:20 <shachaf> Oh, sure.
+2019-12-12 13:07:29 <shachaf> What should I call f and g such that f.g = id?
+2019-12-12 13:09:51 <int-e> f is a left inverse of g; g is a right inverse of f
+2019-12-12 13:09:57 User Name: bunnyocto = bunnyocto!b2c5e16e@178.197.225.110
+2019-12-12 13:09:57 <bunnyocto> yup
+2019-12-12 13:10:38 <int-e> It's pretty uncontroversial this far.
+2019-12-12 13:10:50 <shachaf> I think those are pretty confusing terms.
+2019-12-12 13:11:07 <shachaf> But if you say that's uncontroversial, where's the controvery?
+2019-12-12 13:11:28 <int-e> doe (f.g)(x) = f(g(x)) or (f.g)(x) = g(f(x))?
+2019-12-12 13:11:32 <int-e> *does
+2019-12-12 13:11:44 <int-e> that's the confusion.
+2019-12-12 13:12:20 <myname> how so? it's clearly the first
+2019-12-12 13:12:30 <int-e> The latter happens in some category theory texts.
+2019-12-12 13:12:35 <bunnyocto> f(g(x)) is the usual convention?
+2019-12-12 13:12:53 <int-e> Because they want (.) : (a -> b) -> (b -> c) -> (a -> c)
+2019-12-12 13:13:00 <bunnyocto> also it's the haskell way thus muh
+2019-12-12 13:13:07 <int-e> and the inner -> are abstract anyway.
+2019-12-12 13:13:26 <int-e> As much as I like Haskell, it's not defining the world.
+2019-12-12 13:13:36 <myname> also, there are people that are using \subset for implication
+2019-12-12 13:13:40 <bunnyocto> what? it isn't?
+2019-12-12 13:13:41 <myname> I don't like that
+2019-12-12 13:13:43 <bunnyocto> why am I using it then.
+2019-12-12 13:13:58 <int-e> not \subset... \supset
+2019-12-12 13:14:15 <myname> right
+2019-12-12 13:14:18 <myname> still hate it
+2019-12-12 13:14:23 <bunnyocto> no, but (f.g) x = f ( g ( x ) ) is more intuitive imo
+2019-12-12 13:14:36 <bunnyocto> but that may just be because I'm accustomed to it
+2019-12-12 13:15:04 <myname> that's the definition I am used to from math classes
+2019-12-12 13:15:10 <int-e> You'll be surprised how little people value other's opinion in general.
+2019-12-12 13:15:16 <myname> coincidentally, haskell does it that way
+2019-12-12 13:15:21 <bunnyocto> yep. And thus I don't value their opinions.
+2019-12-12 13:15:24 <bunnyocto> Cruel world.
+2019-12-12 13:15:47 <int-e> Also some people really like >>>
+2019-12-12 13:15:57 <myname> for what?
+2019-12-12 13:15:59 <bunnyocto> is that arrow notation?
+2019-12-12 13:16:13 <int-e> And I believe we've had at least one proposal to flip the order of arguments of (.).
+2019-12-12 13:16:16 <int-e> :t (>>>)
+2019-12-12 13:16:16 <bunnyocto> haven't used haskell in a while
+2019-12-12 13:16:20 <lambdabot> forall k (cat :: k -> k -> *) (a :: k) (b :: k) (c :: k). Category cat => cat a b -> cat b c -> cat a c
+2019-12-12 13:16:55 <bunnyocto> >>, >=>, $>, >>>,
+2019-12-12 13:17:00 <bunnyocto> :t (>=>)
+2019-12-12 13:17:02 <lambdabot> Monad m => (a -> m b) -> (b -> m c) -> a -> m c
+2019-12-12 13:17:06 <myname> I am okay with >>>
+2019-12-12 13:17:17 <int-e> bunnyocto: The thing is, if you want to read math texts, you better keep an open mind about notation.
+2019-12-12 13:17:45 <int-e> And unfortunately that includes basic things like the order of arguments of function composition.
+2019-12-12 13:19:13 <int-e> That said, I /prefer/ (f.g)(x) = f(g(x)).
+2019-12-12 13:21:42 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Leo9 5*  10New user account
