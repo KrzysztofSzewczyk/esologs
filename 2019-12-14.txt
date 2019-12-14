@@ -234,3 +234,44 @@
 2019-12-14 20:47:34 <int-e> mmm ' afx', could be a fingerprint?
 2019-12-14 20:59:37 <fizzie> int-e: I did a topological sort because I was worried the straightforward approach wouldn't be fast enough. :)
 2019-12-14 20:59:50 <fizzie> The code's still terrible though.
+2019-12-14 21:00:03 <fizzie> But maybe not algorithmically terrible.
+2019-12-14 21:00:04 <int-e> I decided to worry later.
+2019-12-14 21:00:26 <int-e> And never got to the point where it mattered, not even for part 2, for which I reused part 1.
+2019-12-14 21:00:46 <fizzie> Reasonable.
+2019-12-14 21:01:07 <int-e> (Which, I suspect, is the intended approach, because working things out backward is really messy due to all the rounding.)
+2019-12-14 21:01:38 <fizzie> Could be. I did a binary search using the part 1 solution.
+2019-12-14 21:01:44 <int-e> Yeah same here.
+2019-12-14 21:02:03 <fizzie> I also wrote a small thing to convert the puzzle input (and examples) to dot format, to render them as graphs, just because graphs are pretty.
+2019-12-14 21:03:07 <int-e> fizzie: actually, in case I ran into performance problems, I was going to do something between the naive iteration and topological sorting: keep a working list of products that were affected in the last iteration...
+2019-12-14 21:03:33 <int-e> And I fully expected that to be fast enough.
+2019-12-14 21:03:52 <fizzie> https://zem.fi/tmp/day14-ex1.png to https://zem.fi/tmp/day14-ex5.png are the common examples, though the customized puzzle input was the prettiest (tangle-iest) one.
+2019-12-14 21:03:59 <int-e> Even though it's still quadratic in the worst case.
+2019-12-14 21:04:35 <int-e> looks like they're more wide than deep anyway
+2019-12-14 21:05:47 <fizzie> There's 16 levels in my puzzle input, though I don't think dot's levels are necessary a meaningful theoretical concept.
+2019-12-14 21:06:58 <fizzie> In particular, one of the levels just has one node in it, and that node has no edges from level L-1 or to level L+1. I'm guessing it's just some sort of heuristics.
+2019-12-14 21:06:59 <int-e> Hmm, what matters for me... number of iterations is bounded by the longest path from source (ore) to target (fuel).
+2019-12-14 21:09:01 <int-e> I guess I could count the actual iterations...
+2019-12-14 21:09:17 <int-e> (plus 1, because there's one extra iteration to detect the fixed point)
+2019-12-14 21:09:59 <int-e> 17 for me. So same depth as yours.
+2019-12-14 21:10:45 Joined: sprocklem
+2019-12-14 21:10:45 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-14 21:11:40 <int-e> It's just 63 productions, 137 inputs anyway, not terribly large.
+2019-12-14 21:11:56 <int-e> < input tr -dc ',=' | wc -c
+2019-12-14 21:12:10 <int-e> counts inputs :)
+2019-12-14 21:12:54 <fizzie> That gives 122 here, so at least it's not exactly the same structure.
+2019-12-14 21:13:33 <fizzie> (56 lines.)
+2019-12-14 21:13:47 <int-e> lucky you ;)
+2019-12-14 21:14:07 <int-e> or maybe unlucky because topological sorting is even more of an overkill then
+2019-12-14 21:15:00 <int-e> Annoyingly though it still took me 35 minutes to get it right. Though I was tired...
+2019-12-14 21:15:26 <int-e> ...which may explain that I got zillions of type errors and struggled to pinpoint them.
+2019-12-14 21:16:22 <fizzie> It took annoyingly long for me too. Though the day leaderboard says 00:42:18 for rank 100, so maybe that's reasonable.
+2019-12-14 21:17:58 <int-e> part 2 took 6 minutes on top of that which is more like it
+2019-12-14 21:18:59 <int-e> I should probably stop looking at those times :)
+2019-12-14 21:19:35 Joined: oerjan
+2019-12-14 21:19:35 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-14 21:19:49 <fizzie> Heh, clicking at some of the people on the leaderboard landed me on someone's GitHub repo where they write golfed solutions to the puzzles using their own golf language.
+2019-12-14 21:20:48 <int-e> But FWIW, first star #100 was at 27:35 minutes
+2019-12-14 21:23:32 Quit: Taneb (Quit: I seem to have stopped.)
+2019-12-14 21:23:32 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-14 21:23:42 Joined: Taneb
+2019-12-14 21:23:42 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
