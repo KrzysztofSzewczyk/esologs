@@ -329,3 +329,36 @@
 2019-12-15 21:59:18 <oerjan> shocking
 2019-12-15 21:59:32 <oerjan> we'll have to ban you now.
 2019-12-15 21:59:42 <Kaynato> Alas, such is bureaucracy
+2019-12-15 22:00:40 <Kaynato> In other news, now that DOALC doesn't actually double the allocated memory for a Daoyu program, I feel it's much more possible to try my hand at demonstrably determining Daoyu's computational class
+2019-12-15 22:04:57 <int-e> I'm starting to regret sticking to a purely functional Intcode interpreter, it took me way too long to unravel the knot from output to input this time.
+2019-12-15 22:05:31 <int-e> A monadic interface would probably help ;)
+2019-12-15 22:08:00 <Kaynato> A monadic interface for Daoyu?
+2019-12-15 22:08:18 <Kaynato> Ah, for intcode, I wager
+2019-12-15 22:08:46 <int-e> Yes, for Intcode, or rather the interpreter I have.
+2019-12-15 22:11:23 <oerjan> <b_jonas> fungot, which species of penguin is the cutest? <-- i read that question and a crested one immediately popped up in my mind, but then i learned they're a whole genus
+2019-12-15 22:11:23 <fungot> oerjan: where are you now? someplace warm? has no behaviour defined on numbers; it may behave however it pleases, as long as i'm alive."
+2019-12-15 22:11:56 <oerjan> fungot: in my apartment, which is warm yes
+2019-12-15 22:11:56 <fungot> oerjan: programs aren't even copyrightable" to " not even snot".
+2019-12-15 22:12:17 <oerjan> fungot: i think the courts may disagree?
+2019-12-15 22:12:18 <fungot> oerjan: last time i did it in awk, befunge, whitespace, is replaced with one backslash and the remaining instructions may deal with crouching and standing up
+2019-12-15 22:13:14 <fizzie> int-e: I managed to land on something incredibly slow (a runtime of ~one minute) this time around. The first part asked for the least amount of moves, so I wrote a BFS with a (for simplicity) return-to-origin after each visit, which was kind of pessimal given what the map turned out to look like.
+2019-12-15 22:14:13 <int-e> Oh yes. Heh.
+2019-12-15 22:15:29 <fizzie> Switching to DFS for exploring the map and BFS for computing both the distances yielded about a 100x speedup.
+2019-12-15 22:15:48 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2019-12-15 22:15:48 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-15 22:16:06 <int-e> I explored the map first, and realized that DFS will compute the right distance...
+2019-12-15 22:16:14 <int-e> ...so I took the lazy approach.
+2019-12-15 22:17:05 <int-e> But my enemy this time was <<loop>>
+2019-12-15 22:17:16 <int-e> > fix id
+2019-12-15 22:17:21 <lambdabot> *Exception: <<loop>>
+2019-12-15 22:17:33 <fizzie> Oh, right.
+2019-12-15 22:17:51 <arseniiv> may deal with crouching and standing up ==> I watch too many minecraft videos these times I immediately associate that phrase with it
+2019-12-15 22:18:25 <fizzie> I just added a "run to next output instruction" method on the side of the "run to halt" one.
+2019-12-15 22:18:42 <int-e> (the loops happen because I have a function that maps the output of the program to its input... can't consume the output before the corresponding input is produced)
+2019-12-15 22:18:59 <int-e> and this time, the interleaving is somewhat intricate.
+2019-12-15 22:19:03 Quit: imode (Ping timeout: 245 seconds)
+2019-12-15 22:19:03 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-15 22:20:33 <int-e> So in the end, I took almost 80 minutes for part 1 and 8 more for part 2.
+2019-12-15 22:20:44 <int-e> And it annoys me a lot.
+2019-12-15 22:22:02 Joined: Lord_of_Life
+2019-12-15 22:22:02 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
