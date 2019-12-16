@@ -324,3 +324,23 @@
 2019-12-16 19:21:37 Quit: kritixilithos (Quit: quit)
 2019-12-16 19:21:37 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
 2019-12-16 19:26:36 <bunnyocto> kmc: http://codepad.org/53TtacHM <- there you go
+2019-12-16 19:37:24 <bunnyocto> (.l is a label, .x is an exported label)
+2019-12-16 19:37:33 <bunnyocto> (.adrN is "load address into register N")
+2019-12-16 19:37:45 <bunnyocto> (.xadrN is the same thing but for exported labels)
+2019-12-16 19:38:14 <bunnyocto> (push and pop require an explicit stack pointer register)
+2019-12-16 19:38:31 <bunnyocto> (so do call and ret)
+2019-12-16 19:38:59 <bunnyocto> (comparison jumps implicitly use rc for the target address)
+2019-12-16 19:51:03 Joined: b_jonas
+2019-12-16 19:51:03 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-16 19:53:42 Joined: Frater_EST
+2019-12-16 19:53:42 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-16 19:53:53 <bunnyocto> I guess one downside is that you can only load 32bit constants into ra,rb and rc.
+2019-12-16 19:54:01 <bunnyocto> otherwise you need a load plus a mov
+2019-12-16 19:57:46 User Name: b_jonas = b_jonas!~x@catv-176-63-14-132.catv.broadband.hu
+2019-12-16 19:57:46 <b_jonas> bunnyocto: re memcpy and memcmp, if it's for x86_64 or x86_32, get a well-written one from https://www.agner.org/optimize/#asmlib ; for other archs get them from gnu libc or libgcc, I don't know which one has it these days
+2019-12-16 19:58:10 <b_jonas> oh wait
+2019-12-16 19:58:17 <b_jonas> for an esoteric architecture
+2019-12-16 19:58:27 <b_jonas> yeah, then you might be out of luck, unless it's some well-known one
+2019-12-16 19:58:43 <b_jonas> rain1: Umberto Eco books right now
+2019-12-16 19:59:34 <rain1> oh yeah
+2019-12-16 19:59:42 <rain1> i think i read one about the pendulum
