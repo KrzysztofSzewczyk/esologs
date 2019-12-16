@@ -165,3 +165,24 @@
 2019-12-16 08:18:59 <kingoffrance> im not sure, i vageuly recall nulla might be it is supposoed to look like O with / through it,  aka "empty set" symbol;   i could be way off
 2019-12-16 08:54:40 <b_jonas> `toroman 0
 2019-12-16 08:54:41 <HackEso> No output.
+2019-12-16 09:07:02 <b_jonas> `toroman 6270
+2019-12-16 09:07:04 <HackEso> Number too large
+2019-12-16 09:07:08 <b_jonas> hmm
+2019-12-16 09:07:12 <b_jonas> `toroman -1
+2019-12-16 09:07:13 <HackEso> I
+2019-12-16 09:07:16 <b_jonas> `toroman -20
+2019-12-16 09:07:17 <HackEso> XX
+2019-12-16 09:07:19 <b_jonas> `toroman 3.14
+2019-12-16 09:07:20 <HackEso> III
+2019-12-16 09:07:53 <b_jonas> this isn't a particularly robust script
+2019-12-16 09:08:06 <b_jonas> my excuse is that I basically lifted it off from a golf solution
+2019-12-16 09:11:20 Joined: wastl
+2019-12-16 09:11:20 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, joast, Kaynato, kingoffrance, kmc, laerling, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, ocharles, olsner, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], Vorpal, wastl, wmww, zemhill, zzo38
+2019-12-16 09:20:56 <zzo38> Yes, you can see it is not work with some stuff. (TeX will produce no output if you try to convert any zero or negative number into a roman number, and multiples of one thousand will always use M for each thousand.)
+2019-12-16 09:22:18 <zzo38> The "Game of XYZABCDE" series is numbered by roman numbers, so I try to figure how to name a prequel; I have Part I, and then the sequel is Part II, and after that is Part III and then Part IV. But, then you would have "part zero", although I suppose Part S (meaning half) can still be possible
+2019-12-16 09:25:38 <zzo38> (Same can be true of any other series of something that will be named by roman numbers.)
+2019-12-16 09:25:46 Joined: LBPHacker
+2019-12-16 09:25:46 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, joast, Kaynato, kingoffrance, kmc, laerling, LBPHacker, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, ocharles, olsner, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], Vorpal, wastl, wmww, zemhill, zzo38
+2019-12-16 09:26:28 <b_jonas> zzo38: does TeX do that with or without an error/warning message?
+2019-12-16 09:27:00 <zzo38> There is no error/warning message.
+2019-12-16 09:28:46 <zzo38> You can use \romannumeral-` to absorb the next character without interpreting it, which is sometimes useful in macros if the next character would be { or }
