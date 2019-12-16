@@ -65,3 +65,31 @@
 2019-12-16 02:26:58 <b_jonas> but they usually have an index page for every language
 2019-12-16 02:27:18 <b_jonas> s/every/each/
 2019-12-16 02:28:59 <b_jonas> I'd like to note that such an infinite loop in Fuun DNA is much simpler because, even though it only does one substitution for each pattern-replacement that it reads, the pattern can wildcard match and the replacement can copy matched parts, so it can just duplicate whatever is ahead if it, leading to a simple print<< x2 style quine
+2019-12-16 02:30:29 <b_jonas> hmm, I wonder if anyone ever made a quine in Fuun DNA+RNA, one that outputs its DNA code graphically
+2019-12-16 02:38:00 <fizzie> int-e: For fun, bolted a quick disassembler to the Intcode interpreter and added labels and comments to my day 15 input. Was actually relatively straightforward.
+2019-12-16 02:38:34 <int-e> fizzie: try it on my hello world program (on the wiki) :)
+2019-12-16 02:38:57 <int-e> (it's actually tame)
+2019-12-16 02:39:42 <int-e> (there is self-modification, but only on immediate parameters)
+2019-12-16 02:44:11 <fizzie> It outputs http://ix.io/24zb and then barfs on 29 being an "illegal opcode".
+2019-12-16 02:44:53 <int-e> which is fine because that's all data
+2019-12-16 02:45:02 <int-e> > ord 'e' - ord 'H'
+2019-12-16 02:45:06 <lambdabot> 29
+2019-12-16 02:45:59 <fizzie> Oh, the 0 between 'l' and the other 'l' is also the 0 for the jump target?
+2019-12-16 02:46:02 <int-e> though I guess it could start outputing 'db <nnn>' stuff.
+2019-12-16 02:46:03 <fizzie> How economical.
+2019-12-16 02:46:08 <int-e> fizzie: yes.
+2019-12-16 02:46:20 <fizzie> Yes, that's probably what it would do if it was a real disassembler.
+2019-12-16 02:46:59 <fizzie> FWIW, there was exactly one instance of self-modification in the puzzle input, and it was on "setlt <...> #N VAR" instruction, where it was used to do indirect addressing of memory.
+2019-12-16 02:47:04 <Kaynato> Is it dishonorable to respecify an esolang to make it TC on the grounds that otherwise, proving or disproving TC is a nightmare? :(
+2019-12-16 02:47:08 <fizzie> (To update the <...> part.)
+2019-12-16 02:47:34 <int-e> Kaynato: no
+2019-12-16 02:48:14 <Kaynato> after reimplementing daoyu with lazy data structures, SIFTS from before turned out to be hideous and a total horror
+2019-12-16 02:48:23 <int-e> Kaynato: However, if the TC status is uncertain it will probably attract more attention.
+2019-12-16 02:48:44 <int-e> (here)
+2019-12-16 02:48:46 <Kaynato> daoyu doesn't attract much attention, ahh
+2019-12-16 02:49:03 <Kaynato> !wiki Daoyu
+2019-12-16 02:49:22 <Kaynato> https://esolangs.org/wiki/Daoyu
+2019-12-16 02:50:27 Quit: oerjan (Quit: Nite)
+2019-12-16 02:50:27 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex-, Vorpal, wmww, zemhill, zzo38
+2019-12-16 02:52:01 <Kaynato> I'm probably just wasting my time and energy trying to do things with it :s
+2019-12-16 02:55:15 <esowiki> 14[[07Daoyu14]]4 M10 02https://esolangs.org/w/index.php?diff=67990&oldid=67989 5* 03Kaynato 5* (+427) 10Annotate the running example
