@@ -186,3 +186,9 @@
 2019-12-16 09:26:28 <b_jonas> zzo38: does TeX do that with or without an error/warning message?
 2019-12-16 09:27:00 <zzo38> There is no error/warning message.
 2019-12-16 09:28:46 <zzo38> You can use \romannumeral-` to absorb the next character without interpreting it, which is sometimes useful in macros if the next character would be { or }
+2019-12-16 09:31:11 Quit: b_jonas (Quit: leaving)
+2019-12-16 09:31:11 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, joast, Kaynato, kingoffrance, kmc, laerling, LBPHacker, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, ocharles, olsner, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], Vorpal, wastl, wmww, zemhill, zzo38
+2019-12-16 09:45:36 <zzo38> There are many kind of "tricks" that can be made with TeX.
+2019-12-16 09:49:29 <zzo38> That is one of them (I forget where I read it). Another, that I think I made up by myself, is to use an insertion with alternating marks and penalties and then use \vsplit to extract the marks in the output routine; since \write will only work if a page is shipped out and will not preserve tokens exactly, using this other way can sometimes be helpful.
+2019-12-16 09:51:38 <zzo38> (Insertions are normally used for such things as footnotes, but can also be used for many other purposes, such as this.)
+2019-12-16 09:57:17 <zzo38> Appendix D of the TeXbook lists many kind of tricks possible with TeX, too.
