@@ -256,3 +256,13 @@
 2019-12-16 13:08:16 <myname> > let a = a in a
 2019-12-16 13:08:20 <lambdabot> *Exception: <<loop>>
 2019-12-16 13:13:49 <cpressey> letwreck
+2019-12-16 13:31:09 User Name: Taneb = Taneb!~Taneb@runciman.hacksoc.org
+2019-12-16 13:31:09 <Taneb> > let a = 3 in do a <- pure (a + 3); pure a
+2019-12-16 13:31:13 <lambdabot> error:
+2019-12-16 13:31:13 <lambdabot> • Ambiguous type variable ‘m0’ arising from a use of ‘show_M336512966164...
+2019-12-16 13:31:13 <lambdabot> prevents the constraint ‘(Show (m0 Integer))’ from being solved.
+2019-12-16 13:31:24 <Taneb> > let a = 3 in runIdentity $ do a <- pure (a + 3); pure a
+2019-12-16 13:31:28 <lambdabot> 6
+2019-12-16 13:31:37 <Taneb> The worst possible workaround!
+2019-12-16 13:43:56 Joined: kritixilithos
+2019-12-16 13:43:56 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
