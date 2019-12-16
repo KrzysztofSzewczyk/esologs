@@ -388,3 +388,51 @@
 2019-12-16 21:43:12 <arseniiv> I always suspected emacs!
 2019-12-16 22:22:43 Joined: sprocklem
 2019-12-16 22:22:43 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-16 22:30:55 <b_jonas> fungot: apparently they're called "double-breasted jacket"
+2019-12-16 22:30:55 <fungot> b_jonas: someone once said the jungle is at http://stream1.jungletrain.net:8000 do
+2019-12-16 22:31:12 <int-e> Oh, first hard AoC task.
+2019-12-16 22:32:35 <int-e> Also somewhat nasty...
+2019-12-16 22:34:51 <fizzie> I liked it, but it is kind of a trick.
+2019-12-16 22:35:06 Joined: Lord_of_Life
+2019-12-16 22:35:54 <fizzie> Predicting a lower-than-usual 2-star : 1-star ratio.
+2019-12-16 22:36:05 <int-e> Very plausible.
+2019-12-16 22:36:39 <b_jonas> oh right, stars
+2019-12-16 22:37:04 <b_jonas> I am a zero-star programmer, since I live in a city that's so bright even during the nights that I can't see any stars on the sky
+2019-12-16 22:37:18 <b_jonas> only the Moon, the Venus, and clouds
+2019-12-16 22:37:24 Quit: Lord_of_Life (Ping timeout: 248 seconds)
+2019-12-16 22:37:25 <b_jonas> and lots of reflected city lights
+2019-12-16 22:37:32 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2019-12-16 22:37:32 <shachaf> Not even Orion?
+2019-12-16 22:37:56 <b_jonas> yeah, I'm exaggerating a bit
+2019-12-16 22:38:01 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-16 22:38:12 <b_jonas> I can walk a few hundred meters to get to places where I can see the brighter stars
+2019-12-16 22:38:26 <b_jonas> but zero-star programmer sounds nicer
+2019-12-16 22:42:33 <int-e> fizzie: Now I'm wondering whether the periodicity of the input can be exploited. (I'm only exploiting a property of the offset, and I suspect that's kind of essential.)
+2019-12-16 22:45:45 <fizzie> I thought about that before coming up with the trick, but it seemed like (at least for an arbitrary digit) the least common multiple of the periodicity of the signal and the pattern (which I'm calling W for 'wavelet' in my commentary, incidentally) would be a pretty large number. So it wasn't at least an obvious speedup.
+2019-12-16 22:46:21 <b_jonas> `? aoc
+2019-12-16 22:46:31 <fizzie> (I don't think all the example and the input offsets would have had the property if it wasn't intended to be done that way.)
+2019-12-16 22:46:32 <HackEso> aoc? ¯\(°​_o)/¯
+2019-12-16 22:47:46 <int-e> fizzie: Hmm. Maybe we have different approaches.
+2019-12-16 22:49:06 <b_jonas> `? advent of code
+2019-12-16 22:49:07 <HackEso> advent of code? ¯\(°​_o)/¯
+2019-12-16 22:49:43 <b_jonas> `slashlearn aoc/Advent of Code (AoC) is a series of programming puzzles that some regulars enjoy, found at "https://adventofcode.com/2019/about".
+2019-12-16 22:49:45 <HackEso> Learned 'aoc/advent of code (aoc) is a series of programming puzzles that some regulars enjoy, found at "https:': adventofcode.com/2019/about".
+2019-12-16 22:50:25 <b_jonas> what?
+2019-12-16 22:50:35 <b_jonas> oh darn
+2019-12-16 22:50:45 <int-e> `revert
+2019-12-16 22:50:46 <HackEso> Done.
+2019-12-16 22:50:58 <b_jonas> sorry, I'd have fixed it too
+2019-12-16 22:51:03 <int-e> `? slashlearn
+2019-12-16 22:51:04 <HackEso> slashlearn? ¯\(°​_o)/¯
+2019-12-16 22:51:09 <int-e> `? le/rn
+2019-12-16 22:51:10 <b_jonas> two slashes
+2019-12-16 22:51:11 <HackEso> le/rn makes creating wisdom entries manually a thing of the past. Usage: `le/[/]rn <key>//<wisdom>
+2019-12-16 22:51:36 <int-e> Oh I thought it said something about preventing accidents...
+2019-12-16 22:53:39 <b_jonas> `slashlearn aoc//Advent of Code (AoC) is a series of programming puzzles that some regulars enjoy, found at "https://adventofcode.com/2019/about".
+2019-12-16 22:53:42 <HackEso> Learned 'aoc': Advent of Code (AoC) is a series of programming puzzles that some regulars enjoy, found at "https://adventofcode.com/2019/about".
+2019-12-16 22:53:44 <b_jonas> `? aof
+2019-12-16 22:53:45 <HackEso> aof? ¯\(°​_o)/¯
+2019-12-16 22:53:46 <b_jonas> `? aoc
+2019-12-16 22:53:47 <HackEso> Advent of Code (AoC) is a series of programming puzzles that some regulars enjoy, found at "https://adventofcode.com/2019/about".
+2019-12-16 22:59:14 <b_jonas> `? euclid
+2019-12-16 22:59:15 <HackEso> euclid? ¯\(°​_o)/¯
