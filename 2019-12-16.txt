@@ -344,3 +344,29 @@
 2019-12-16 19:58:43 <b_jonas> rain1: Umberto Eco books right now
 2019-12-16 19:59:34 <rain1> oh yeah
 2019-12-16 19:59:42 <rain1> i think i read one about the pendulum
+2019-12-16 20:01:46 <b_jonas> I also have a Sapkowski book here, lined up for read later
+2019-12-16 20:07:28 <bunnyocto> well you could use ldw (load word) instead of ldb (load byte) and copy 4 bytes at a time
+2019-12-16 20:07:54 <bunnyocto> but as of now speed is not my concern :)
+2019-12-16 20:08:04 <bunnyocto> gotta get functionality running, optimization is for later
+2019-12-16 20:09:22 <bunnyocto> you could even use the push instruction for that I guess.
+2019-12-16 20:09:45 <bunnyocto> push x y is basically memory[x] = y; x += 4;
+2019-12-16 20:09:55 <b_jonas> bunnyocto: maybe make your compiler optimize copies of compile time known short length specifically, because that's the most common case. just make sure it works if you copy with the source and destination pointers being exactly equal.
+2019-12-16 20:17:07 <bunnyocto> don't have a compiler yet.
+2019-12-16 20:17:11 <bunnyocto> still working on the assembler
+2019-12-16 20:17:19 <bunnyocto> needs support for linking.
+2019-12-16 20:17:50 <bunnyocto> I'm working on a project I call bootstrap.
+2019-12-16 20:18:05 Quit: LKoen (Remote host closed the connection)
+2019-12-16 20:18:05 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-16 20:19:08 <bunnyocto> It has the parts: create and implement a CPU. Implement an assembler, linker, disassembler. Implement an OS. Create and implement a "high level" language in assembly. Then create and implement it in said "high level language"
+2019-12-16 20:19:39 Joined: LKoen
+2019-12-16 20:19:39 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest67969, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sleepnap, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, zemhill, zzo38
+2019-12-16 20:22:24 <rain1> i ssthat nand to tetris?
+2019-12-16 20:23:32 <bunnyocto> ?
+2019-12-16 20:24:43 <bunnyocto> ah I see. "NAND to Tetris"
+2019-12-16 20:24:45 <bunnyocto> no. That's not it.
+2019-12-16 20:25:11 <bunnyocto> I've just always wanted to do this.
+2019-12-16 20:25:23 <bunnyocto> Maybe i'll go further and do some VHDL maybe
+2019-12-16 20:25:32 <bunnyocto> so that I can load it onto a nano FPGA or someting.
+2019-12-16 20:27:51 <bunnyocto> I have nothing better to do might I say
+2019-12-16 20:28:05 <bunnyocto> not at the moment at least.
+2019-12-16 20:28:26 <rain1> its a cool project
