@@ -5,3 +5,27 @@
 2019-12-20 15:48:26 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
 2019-12-20 15:48:26 <kspalaiologos> apparently my VPS provider has killed my bot
 2019-12-20 15:48:45 <kspalaiologos> for no reason really, and I suppose unintentionally
+2019-12-20 16:02:33 User Name: int-e = int-e!~noone@int-e.eu
+2019-12-20 16:02:33 <int-e> kspalaiologos: could it just be a reboot?
+2019-12-20 16:02:42 <kspalaiologos> I doubt
+2019-12-20 16:02:52 <kspalaiologos> because other services I ran there are running
+2019-12-20 16:02:57 <kspalaiologos> they would die if this was a reboot
+2019-12-20 16:03:04 <kspalaiologos> no idea really, I'd have to check logs
+2019-12-20 16:03:10 <int-e> Ah. What about OOM, hmm. Ah, not my problem.
+2019-12-20 16:03:36 <kspalaiologos> it can't be oom
+2019-12-20 16:03:38 <kspalaiologos> c'mon
+2019-12-20 16:03:40 <kspalaiologos> 2019-12-17 08:57:39 <b_jonas> zzo38: Empathic Healer looks interesting
+2019-12-20 16:03:44 <kspalaiologos> this is the last message it logged
+2019-12-20 16:05:08 <int-e> Oh. That bot.
+2019-12-20 16:07:34 <int-e> There was a netsplit. Maybe the server closed the connection? Does it reconnect?
+2019-12-20 16:09:57 <kspalaiologos> netsplit
+2019-12-20 16:09:57 <kspalaiologos> well
+2019-12-20 16:10:08 <kspalaiologos> this is explaining the accident
+2019-12-20 16:10:22 <kspalaiologos> it's just a simple 50-line perl bot
+2019-12-20 16:10:33 <kspalaiologos> I wouldn't expect it to be able to recover off a netsplit really
+2019-12-20 16:11:00 User Name: FireFly = FireFly!znc@freenode/staff/firefly
+2019-12-20 16:11:00 <FireFly> is that the bot with fascinating escaping issues?
+2019-12-20 16:11:20 <int-e> FireFly: no, this is the logging bot. https://esolangs.org/logs/2019-12-17.html#leb is where it left
+2019-12-20 16:11:45 <int-e> FireFly: and the github link in the topic is where it logs to
+2019-12-20 16:11:49 <FireFly> ah
+2019-12-20 16:11:50 <int-e> (when it's around)
