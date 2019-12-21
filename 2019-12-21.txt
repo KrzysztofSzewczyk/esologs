@@ -67,3 +67,25 @@
 2019-12-21 11:55:30 <int-e> Sometimes the wiki makes me sad. https://esolangs.org/wiki/ASCII_art-
 2019-12-21 11:58:51 <shachaf> Wow, what a language.
 2019-12-21 11:59:17 <int-e> innov... nah I can't make myself type that.
+2019-12-21 12:00:17 <shachaf> You know what's innovative? My completely standard B+ tree mapping uint64_t keys to uint64_t values.
+2019-12-21 12:00:31 <shachaf> It's faster than every ordered data structure I've found.
+2019-12-21 12:01:39 <shachaf> Where can I find reasonable ones?
+2019-12-21 12:05:34 <int-e> whatever happened to Judy arrays?
+2019-12-21 12:06:22 <shachaf> Hmm, good question.
+2019-12-21 12:07:21 <int-e> I remember a short hype, then nothing. And apparently that's how it played out. But I don't know why.
+2019-12-21 12:07:49 <int-e> http://rusty.ozlabs.org/?p=153 was an interesting (though probably outdated) read at least
+2019-12-21 12:08:44 <shachaf> Oh, Judy isn't ordered, is it?
+2019-12-21 12:08:55 User Name: olsner = olsner!~salparot@c80-217-180-83.bredband.comhem.se
+2019-12-21 12:08:55 <olsner> sounds good to optimize for cache line usage, but B+ trees can do that too and Judy arrays seem to be a lot more complicated
+2019-12-21 12:12:52 <shachaf> I was going to add Judy to my benchmark but the API looks way too complicated.
+2019-12-21 12:12:59 <int-e> shachaf: my understanding was that it is ordered (it's supposed to be a radix tree with various specializations for nodes of different sizes, and radix trees are ordered; they tend to not store full keys in internal nodes though). maybe I understood wrong.
+2019-12-21 12:13:18 <shachaf> Oh, hmm, it is ordered.
+2019-12-21 12:13:32 <shachaf> I saw something about hashing that confused me.
+2019-12-21 12:14:58 Joined: ArthurStrong
+2019-12-21 12:14:58 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xkapastel, zemhill, zzo38
+2019-12-21 12:17:05 <shachaf> OK, I'll try it.
+2019-12-21 12:17:37 <esowiki> 14[[07W (A)14]]4 10 02https://esolangs.org/w/index.php?diff=68088&oldid=68087 5* 03A 5* (-13) 10/* An Incompatible implementation */
+2019-12-21 12:18:18 <esowiki> 14[[07W (A)14]]4 10 02https://esolangs.org/w/index.php?diff=68089&oldid=68088 5* 03A 5* (+54) 10/* Project Euler 1 */
+2019-12-21 12:18:36 <esowiki> 14[[07W (A)14]]4 10 02https://esolangs.org/w/index.php?diff=68090&oldid=68089 5* 03A 5* (+0) 10/* Project Euler 1 */
+2019-12-21 12:19:59 <esowiki> 14[[07W (A)14]]4 10 02https://esolangs.org/w/index.php?diff=68091&oldid=68090 5* 03A 5* (+127) 10/* An example */
+2019-12-21 12:22:55 <esowiki> 14[[07W (A)14]]4 10 02https://esolangs.org/w/index.php?diff=68092&oldid=68091 5* 03A 5* (+9) 10/* Quine */
