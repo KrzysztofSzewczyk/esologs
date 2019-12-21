@@ -110,3 +110,24 @@
 2019-12-21 13:19:16 <int-e> In fact I've only solved one task manually so far, namely the compression from day 17, part two.
 2019-12-21 13:26:50 Quit: ArthurStrong (Quit: leaving)
 2019-12-21 13:26:50 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xkapastel, zemhill, zzo38
+2019-12-21 13:34:40 <fizzie> I wondered about that too. Even counting today, it's still been easier to solve it the presumably-intended way. Actually, today is a little bit similar to day 17 part 2 (though not that much).
+2019-12-21 13:35:48 <int-e> vaguely relatedly, I found https://projecteuler.net/problem=689 quite annoying.
+2019-12-21 13:37:03 <int-e> (I just don't like numerical stuff very much. Though somehow I managed to get it right on the first try.)
+2019-12-21 13:38:11 <int-e> (First *submitted* try that is. Not the first attempt to get a value.)
+2019-12-21 13:43:57 <int-e> Oh, going meta.
+2019-12-21 13:45:26 <fizzie> Hmm, I was doing Project Euler for a bit, in sequential order, but I think I stopped way before 689.
+2019-12-21 13:45:55 <fizzie> Yes, looks like I did just the first 100.
+2019-12-21 13:52:53 <int-e> haha: 1.hs: Prelude.chr: bad argument: <nnnnnn>
+2019-12-21 13:54:29 <int-e> (the program accidently printed the answer in an error message)
+2019-12-21 13:56:50 User Name: b_jonas = b_jonas!~x@catv-176-63-14-179.catv.broadband.hu
+2019-12-21 13:56:50 <b_jonas> int-e: yes, you can do that deliberately:
+2019-12-21 13:56:56 <b_jonas> `perl -e '40*18'
+2019-12-21 13:56:58 <HackEso> No output.
+2019-12-21 13:57:00 <b_jonas> `perl -we '40*18'
+2019-12-21 13:57:01 <HackEso> Useless use of a constant ("40*18") in void context at -e line 1.
+2019-12-21 13:57:06 <b_jonas> yeah, the w switch is essential for that
+2019-12-21 13:57:16 <b_jonas> hmm
+2019-12-21 13:57:22 <b_jonas> it doesn't print the answer? they changed that
+2019-12-21 13:57:40 <b_jonas> perl 5.24 printed the product in the warning message
+2019-12-21 13:58:05 <b_jonas> darn, this is lost functionality
+2019-12-21 13:59:48 <int-e> fizzie: hmm that was surprisingly easy.
