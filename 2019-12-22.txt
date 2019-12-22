@@ -14,3 +14,8 @@
 2019-12-22 00:27:58 <int-e> So https://ffmpeg.org/pipermail/ffmpeg-devel/2006-February/010315.html is to be taken as gospel.
 2019-12-22 00:28:45 <int-e> (And that also kind of make sense... skipping forward in a video stream isn't trivial after all.)
 2019-12-22 00:28:51 <int-e> *makes
+2019-12-22 00:42:55 <zzo38> Anyways the names of the Farbfeld Utilities programs do not match those of FFmpeg, I think
+2019-12-22 00:43:44 <b_jonas> zzo38: yeah. it's not too hard, I think ffmpeg only has three executable names: ffmpeg, ffprobe, ffplay
+2019-12-22 00:44:04 <b_jonas> (plus there's three shadow copies in the old fork that is IIRC called avutils, but those don't start with ff)
+2019-12-22 00:44:22 <b_jonas> int-e: ok, so the "fast forward" was right
+2019-12-22 00:44:33 <b_jonas> I wonder why they changed it to the euphemistic "hyper fast" then
