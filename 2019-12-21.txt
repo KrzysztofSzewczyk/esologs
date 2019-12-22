@@ -191,3 +191,20 @@
 2019-12-21 23:18:10 <imode> I really need to get Mode up to a git repo lmao.
 2019-12-21 23:26:37 <arseniiv> :D
 2019-12-21 23:29:04 <imode> it's an ugly mix of C and Python though.
+2019-12-21 23:35:05 Quit: Cale (Ping timeout: 250 seconds)
+2019-12-21 23:35:06 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, zemhill, zzo38
+2019-12-21 23:40:05 <arseniiv> imode: oh, do you call C from Python or Python from C or both?
+2019-12-21 23:40:43 <arseniiv> I’m not yet familiar how to do either. I only ever used Lua bindings for Delphi very very long ago
+2019-12-21 23:41:32 <arseniiv> (maybe for C# to but probably I just downloaded them and left them lay still)
+2019-12-21 23:41:43 <imode> there's a Python preprocessor that generates an array of function pointers. this array of function pointers gets inserted via an #include into a barebones interpreter.
+2019-12-21 23:42:25 <imode> 388 lines of C.
+2019-12-21 23:42:32 <imode> 95 lines of Python..
+2019-12-21 23:46:16 <arseniiv> ah, simple
+2019-12-21 23:48:29 Joined: Cale
+2019-12-21 23:48:29 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, zemhill, zzo38
+2019-12-21 23:52:33 <b_jonas> some years ago someone said in the channel that the "ff" in the name of the program "ffmpeg" stands for "fast forward"
+2019-12-21 23:53:00 <b_jonas> apparently ffmpeg doesn't think so, because if you run it without arguments, it prints this line among others:
+2019-12-21 23:53:08 <b_jonas> "Hyper fast Audio and Video encoder"
+2019-12-21 23:53:14 <b_jonas> so "ff" stands for "Hyper fast"
+2019-12-21 23:53:32 <int-e> I always thought it derived from FFT.
+2019-12-21 23:53:49 <int-e> But I assumed that, never gave it much thought.
