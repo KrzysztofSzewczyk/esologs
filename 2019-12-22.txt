@@ -31,3 +31,19 @@
 2019-12-22 03:35:28 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, zemhill, zzo38
 2019-12-22 04:48:03 Joined: oerjan
 2019-12-22 04:48:03 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, Kaynato, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, zemhill, zzo38
+2019-12-22 05:38:02 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2019-12-22 05:38:02 <oerjan> @tell imode yes []01 is TC, i explained how to compile a version of BCT that halts if it gets a 0 as data at a particular step in the program. (showing that that is as TC as ordinary BCT is left as an exercise hth)
+2019-12-22 05:38:02 <lambdabot> Consider it noted.
+2019-12-22 05:39:21 * oerjan may not have remembered to explain that that was what he was explaining.
+2019-12-22 05:39:38 <imode> yeah, sorry, I did not understand what you meant. :(
+2019-12-22 05:39:53 <imode> not that familiar with BCT either.
+2019-12-22 05:45:21 <oerjan> 0 is a command that deletes from the queue. 10 is a command that appends a 0 if the head of the queue is 1, and 11 appends a 1 similarly.
+2019-12-22 05:46:18 <oerjan> although for this compilation you really want whole productions i.e. "cyclic tag", without bitwise.
+2019-12-22 05:48:37 <oerjan> so you have a list of bit strings that you cycle through: pop a data bit from the queue, if it was 1 append the current string.
+2019-12-22 05:51:53 <oerjan> if CT data bits are reencoded as 0 -> 0, 1 -> 10, then you reencode each string in the cycle in the same way and enclose it in brackets
+2019-12-22 05:53:06 <oerjan> and then you put brackets around the whole list. this gives a different halting condition from ordinary CT, but one that should be as TC.
+2019-12-22 05:53:48 <imode> jeeesus.
+2019-12-22 05:54:11 <imode> I apologize that my head really isn't in the right spot right now (a little intoxicated)
+2019-12-22 05:55:09 <oerjan> ok i'm tired myself
+2019-12-22 05:55:44 <imode> that's fascinating, though... can I pick your brain about this later?
+2019-12-22 05:56:19 <oerjan> sure
