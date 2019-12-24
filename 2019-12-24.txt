@@ -267,3 +267,73 @@
 2019-12-24 09:29:34 <bunnyocto> !blsq {1 2 3 4}k++?/L[
 2019-12-24 09:29:35 <blsqbot> | 2
 2019-12-24 09:29:54 <myname> wait, blsq has a lisp interpreter built-in?
+2019-12-24 09:30:10 <myname> or is it just the bot?
+2019-12-24 09:30:18 <bunnyocto> blsq has lots of things
+2019-12-24 09:30:23 <bunnyocto> you know. the author of blsq is mad.
+2019-12-24 09:32:16 <bunnyocto> !blsq begin lisp (rz (?* (?+ 5 3) 3) end lisp
+2019-12-24 09:32:16 <blsqbot> | ERROR: (line 1, column 16):
+2019-12-24 09:32:16 <blsqbot> | unexpected "("
+2019-12-24 09:32:16 <blsqbot> | expecting space, white space or ")"
+2019-12-24 09:32:21 <bunnyocto> hm
+2019-12-24 09:32:26 <bunnyocto> !blsq begin lisp (rz (?* (?+ 5 3) 3)) end lisp
+2019-12-24 09:32:27 <blsqbot> | {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24}
+2019-12-24 09:33:21 <myname> that is a weird error message
+2019-12-24 09:33:30 <bunnyocto> !blsq %squ={J?*} begin lisp (squ 3) end lisp
+2019-12-24 09:33:30 <blsqbot> | 9
+2019-12-24 09:33:57 <bunnyocto> myname: burlesques parsing rules are veeery complicated
+2019-12-24 09:34:43 <myname> it looks like it loops or something
+2019-12-24 09:34:53 <myname> or it is parsing from right to left
+2019-12-24 09:34:57 <bunnyocto> !blsq begin lisp (?+ 1 1) (?+ 1 1) end lisp
+2019-12-24 09:34:58 <blsqbot> | 2
+2019-12-24 09:34:58 <blsqbot> | 2
+2019-12-24 09:36:02 <bunnyocto> !blsq begin lisp (sv squ {J?*}) (squ 3) end lisp
+2019-12-24 09:36:03 <blsqbot> | ERROR: (line 1, column 16):
+2019-12-24 09:36:03 <blsqbot> | unexpected "s"
+2019-12-24 09:36:03 <blsqbot> | expecting space, white space or ")"
+2019-12-24 09:36:06 <bunnyocto> hm.
+2019-12-24 09:36:28 <bunnyocto> !blsq begin lisp (sv "squ" {J?*}) (squ 3) end lisp
+2019-12-24 09:36:28 <blsqbot> | ERROR: Unknown command: (squ)!
+2019-12-24 09:36:28 <blsqbot> | 3
+2019-12-24 09:36:36 <bunnyocto> !blsq begin lisp (sv "squ" {J?*}) (squ 3) (DB) end lisp
+2019-12-24 09:36:37 <blsqbot> | ERROR: (line 1, column 16):
+2019-12-24 09:36:38 <blsqbot> | unexpected "\""
+2019-12-24 09:36:38 <blsqbot> | expecting space, white space or ")"
+2019-12-24 09:36:50 <bunnyocto> !blsq begin lisp (sv "squ" {J?*}) end lisp DB
+2019-12-24 09:36:50 <blsqbot> | <"____FILE","/dev/irc"><{J ?*},"squ">
+2019-12-24 09:37:05 <bunnyocto> oh.
+2019-12-24 09:37:10 <bunnyocto> that's a weird argument order
+2019-12-24 09:37:33 <bunnyocto> !blsq begin lisp (sv {J?*} "squ") (squ 3) (DB) end lisp
+2019-12-24 09:37:34 <blsqbot> | ERROR: (line 1, column 16):
+2019-12-24 09:37:34 <blsqbot> | unexpected "{"
+2019-12-24 09:37:34 <blsqbot> | expecting space, white space or ")"
+2019-12-24 09:37:41 <bunnyocto> !blsq begin lisp (sv {J?*} "squ") (squ 3) end lisp
+2019-12-24 09:37:41 <blsqbot> | 9
+2019-12-24 09:37:45 <bunnyocto> oh well.
+2019-12-24 09:39:58 Quit: sprocklem (Ping timeout: 260 seconds)
+2019-12-24 09:39:59 Names: ^[, aji, aloril, APic, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-12-24 09:40:21 <bunnyocto> !blsq begin lisp (sv {(J) (?*)} "squ") (squ 3) end lisp
+2019-12-24 09:40:21 Joined: sprocklem
+2019-12-24 09:40:21 <blsqbot> | ?*
+2019-12-24 09:40:21 <blsqbot> | J
+2019-12-24 09:40:21 <blsqbot> | 3
+2019-12-24 09:40:22 Names: ^[, aji, aloril, APic, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-12-24 09:40:49 <bunnyocto> myname: it supports S-expression but not really lisp
+2019-12-24 09:50:56 Joined: arseniiv
+2019-12-24 09:50:56 Names: ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-12-24 09:51:04 <bunnyocto> !blsq 3S[
+2019-12-24 09:51:05 <blsqbot> | 9
+2019-12-24 09:51:10 <bunnyocto> !blsq 3S[S[
+2019-12-24 09:51:11 <blsqbot> | 81
+2019-12-24 09:51:14 <bunnyocto> !blsq 3oS[
+2019-12-24 09:51:14 <blsqbot> | ERROR: (line 1, column 5):
+2019-12-24 09:51:15 <blsqbot> | unexpected end of input
+2019-12-24 09:51:42 Quit: sprocklem (Ping timeout: 258 seconds)
+2019-12-24 09:51:42 Names: ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
+2019-12-24 09:52:11 <bunnyocto> !blsq 3oS[
+2019-12-24 09:52:12 <blsqbot> | ERROR: (line 1, column 5):
+2019-12-24 09:52:12 <blsqbot> | unexpected end of input
+2019-12-24 09:52:17 <bunnyocto> damnit.
+2019-12-24 09:54:02 <bunnyocto> !blsq 3oS[
+2019-12-24 09:54:02 <blsqbot> | 81
+2019-12-24 09:57:22 Joined: sprocklem
+2019-12-24 09:57:22 Names: ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, zemhill, zzo38
