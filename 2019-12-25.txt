@@ -29,3 +29,48 @@
 2019-12-25 02:29:46 <int-e> "This is easy... I'll just breeze through... why doesn't this work?"
 2019-12-25 02:29:50 <fizzie> Shifting to the wrong direction (in at least three separate occasions), using `i` where `1 << i` was intended, using the wrong variables.
 2019-12-25 02:29:59 <fizzie> Yes, that's almost exactly what I was thinking.
+2019-12-25 02:30:12 <fizzie> "I'll just fix this and then we can have breakfast, won't take long."
+2019-12-25 02:30:19 <int-e> Oh I got the final count correct at least :)
+2019-12-25 02:30:50 <int-e> But it was less frustrating then the day before (did you see my privmsg?)
+2019-12-25 02:31:25 <fizzie> Oh, right, I forgot to have a look at that. But yeah, kind of thought it might be.
+2019-12-25 02:31:59 <int-e> (Which, btw, is all my fault for sticking to an inconvenient interpreter design. Purity is not really the problem, I could have an interpreter that returns continuations for input and output actions.)
+2019-12-25 02:33:03 <fizzie> Only one more. Although over on Go side, I've only done 1-6, 11, 18, 19, 22. Kind of want to do the complete set for some reason.
+2019-12-25 02:33:21 <int-e> Rather than having a [Reply] -> [Request] type, it would be  data M = M Request (Reply -> M)
+2019-12-25 02:33:47 <int-e> And I could collect requests, compute the replies, and feed them to the continuation at my leisure.
+2019-12-25 02:34:19 <int-e> And I should've done that for the labyrinth task.
+2019-12-25 02:36:37 <fizzie> I think several of them have had labyrinths. The one with the keys, and the one with the donuts.
+2019-12-25 02:38:03 <int-e> It's the one you missed, the oxygen one.
+2019-12-25 02:38:29 <int-e> The one where you actually had to do some exploration of the labyrinth.
+2019-12-25 02:38:47 <int-e> Day 15.
+2019-12-25 02:39:38 <int-e> Oh https://conwaylife.com/wiki/Rulestring actually mentioned the variant without letters, but it has survival first: 23/3 for GoL.
+2019-12-25 02:40:58 <int-e> "has fallen into disuse in recent years"
+2019-12-25 02:41:04 <fizzie> Oh, right, the one I did super-slow.
+2019-12-25 02:41:47 <fizzie> AIUI, the Bx/Sy variant is what Golly uses.
+2019-12-25 02:42:15 <int-e> (TBF, the "in recent years" was written in 2017, so maybe it's still okay)
+2019-12-25 02:43:22 <int-e> fizzie: I was briefly tempted to stop after day 21 actually, to keep the 42 stars :)
+2019-12-25 02:45:14 <int-e> Day 22 is shaping up to have the most difficult part 2 (relative to part 1)...
+2019-12-25 02:46:07 <int-e> I guess programmers don't need to know linear algebra.
+2019-12-25 02:46:11 <fizzie> By a wide margin, if the stats table is a good metric of that.
+2019-12-25 02:46:22 Joined: Lord_of_Life
+2019-12-25 02:47:32 <int-e> But day 16 is holding up pretty well too.
+2019-12-25 02:48:01 <fizzie> It might just be because part 1 is so eminently solvable without any cleverness, just by following the instructions. In fact, my part 1 solution actually did the motions on the whole deck, instead of just the card it asks about.
+2019-12-25 02:48:46 <fizzie> For 16 I think it's kind of a what do you call them, a trick question.
+2019-12-25 02:49:10 <int-e> I think so, yes.
+2019-12-25 02:49:33 Quit: Lord_of_Life (Ping timeout: 260 seconds)
+2019-12-25 02:49:36 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-25 02:50:22 <int-e> It's too bad that the absolute numbers are pretty much meaningless.
+2019-12-25 02:50:42 <int-e> (though we can see a nice decay from day 1 to now)
+2019-12-25 02:51:08 <int-e> And, oh, the graph display is flawed.
+2019-12-25 02:51:19 <int-e> It should carry the remainder from the gold stars into the silver stars.
+2019-12-25 02:51:48 <int-e> (The bar on day 22 shouldn't be shorter than the ones above and below.)
+2019-12-25 02:53:24 <fizzie> Some of the top 100 scores are pretty impressive. For 3590, you'd have to average... about 75 points/star.
+2019-12-25 02:54:01 <int-e> > 3590/48
+2019-12-25 02:54:03 <lambdabot> 74.79166666666667
+2019-12-25 02:54:23 <int-e> > 728/48
+2019-12-25 02:54:26 <lambdabot> 15.166666666666666
+2019-12-25 02:54:39 <int-e> > 728/75
+2019-12-25 02:54:41 <lambdabot> 9.706666666666667
+2019-12-25 02:55:42 <int-e> I agree, being consistently fast on these tasks is impressive.
+2019-12-25 02:56:12 <fizzie> I have a few friends working at one of the sponsors (Reaktor -- kind of a given, they're pretty big employer of software engineers in Finland), though haven't seen them on the lists.
+2019-12-25 02:58:08 <int-e> Of course you have to approach this differently if you aim for the lists. Have a template ready (odd days: Intcode interpreter, parser, maybe even an invocation of the interpreter), and a command to fetch the input at the right time. May easily shave of 2-3 minutes from the solving time, which seems to be crucial.
+2019-12-25 02:58:31 <int-e> shave *off
