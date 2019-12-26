@@ -258,3 +258,22 @@
 2019-12-26 13:56:27 <fizzie> Thought it'd be nicer than "foo: add X, *Y, @Z" and manually using foo+1, foo+2, foo+3.
 2019-12-26 13:58:56 <fizzie> In fact, wrote up http://ix.io/25xa as a potential syntax but then got sidetracked reading about parser generators.
 2019-12-26 13:59:31 <fizzie> (Looks like I was thinking of using mov, j, jlt and jeq as pseudo-ops as well.)
+2019-12-26 14:03:44 <int-e> The AoC code is funny in that regard.
+2019-12-26 14:04:28 <fizzie> The only one I disassembled properly seemed to be using "add x, 0, y" and "mul x, 1, y" about equally often.
+2019-12-26 14:04:37 <int-e> j uses one of jz #0 or jnz #1, seemingly at random, and for mov it uses both  add src, #0, dst and  mul src, #1, dst
+2019-12-26 14:04:55 <fizzie> Yes, I was thinking the pseudo-ops would pseudorandomly select one of the possible expansions.
+2019-12-26 14:05:10 <fizzie> "That's why they're called pseudo-ops!"
+2019-12-26 14:06:13 <int-e> I suspect the author actually has a higher level language implemented... maybe a minimal C dialect (in particular I suspect whatever language it is has a ternary conditional operator on the expression level.)
+2019-12-26 14:06:38 <int-e> This is my impression from the adventure game.
+2019-12-26 14:07:02 <fizzie> FWIW, I do like # for immediate, just thought it'd be better to have a sigil for (pos, rel) instead of (imm, rel), after abandoing the B+ / B- approach.
+2019-12-26 14:08:28 <int-e> 42(%rb)
+2019-12-26 14:09:06 <int-e> (I'm still trying to remember the AT&T vaersion)
+2019-12-26 14:09:36 <fizzie> Yes, I think it'd be that.
+2019-12-26 14:11:52 <int-e> I guess @ is fine after a short period of adapting to it.
+2019-12-26 14:13:46 <fizzie> Incidentally, while I still haven't redone all of these in Go, for the set I do have (1 2 3 4 5 6 7 8 9 11 18 19 22), it takes the Python side 14 seconds to run through all of them, but 0.4s for the Go bunch.
+2019-12-26 14:14:25 <int-e> I'm changing my IBR to INCB and STOP to HALT. I like having short mnemonics so I'm sticking with SLT and SEQ.
+2019-12-26 14:14:38 <int-e> We agreed on the rest :)
+2019-12-26 14:16:47 <fizzie> I think that's perfectly reasonable.
+2019-12-26 14:18:25 <fizzie> Probably the only reason I went with SETLT/SETEQ is because of Intel's SETcc, but those would be SETL and SETE instead of SETLT and SETEQ anyway.
+2019-12-26 14:19:02 <fizzie> (Maybe there should be a "Proposed assembly syntax" section on the Intcode page, though.)
+2019-12-26 14:19:45 <int-e> Yeah that was the idea.
