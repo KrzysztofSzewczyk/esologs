@@ -228,3 +228,33 @@
 2019-12-26 13:27:56 <fizzie> (Those were just the recent super-spammy ones. I know there's many many more from earlier, but at least they look a little bit more like content.0
 2019-12-26 13:29:25 Quit: zzo38 (Ping timeout: 258 seconds)
 2019-12-26 13:29:25 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-12-26 13:33:33 <fizzie> In related news, I'm not sure it's great to have that Intcode interpreter right there on the page.
+2019-12-26 13:33:58 <int-e> I don't like it there either.
+2019-12-26 13:35:24 <int-e> But I don't want to simply remove it... I guess we could have an Intcode/Interpreters page?
+2019-12-26 13:36:03 <fizzie> I guess the problem is, there isn't really an obvious place to host code that you just want to share for esolangs.org purposes but don't want to have a, say, GitHub repo for under your own account.
+2019-12-26 13:36:20 <fizzie> That might work. MediaWiki still isn't the best thing for code, but at least it's not in the middle of the article that way.
+2019-12-26 13:36:40 <int-e> Okay, let's see if I can move this content without accident :)
+2019-12-26 13:37:17 <fizzie> Do we have subpages enabled for main namespace in the first place?
+2019-12-26 13:37:41 <fizzie> (Although I guess it doesn't really matter all that much whether it's an official subpage or not.)
+2019-12-26 13:38:38 <int-e> I don't think they act as subpages, no.
+2019-12-26 13:39:24 <fizzie> Well, probably none of the subpage features are that critical anyway.
+2019-12-26 13:39:42 <esowiki> 14[[07Intcode/Interpreters14]]4 N10 02https://esolangs.org/w/index.php?oldid=68356 5* 03Int-e 5* (+5381) 10Moving Python interpreter from main language page.
+2019-12-26 13:43:13 Quit: kritixilithos (Quit: quit)
+2019-12-26 13:43:14 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill
+2019-12-26 13:43:24 <esowiki> 14[[07Intcode14]]4 10 02https://esolangs.org/w/index.php?diff=68357&oldid=68307 5* 03Int-e 5* (-5338) 10[snip]
+2019-12-26 13:45:53 <int-e> fizzie: How do you feel about mnemonics for Intcode? Maybe if we can agree on a set... I was using  ADD, MUL, IN, OUT, JNZ, JZ, SLT, SEQ, IBR, and STOP. Also #nnn for mode 1, and B+nnn and B-nnn for mode 2...
+2019-12-26 13:47:12 <int-e> (Which clearly shows my Intel assembly background. With Motorola I'd be using B instead of J)
+2019-12-26 13:49:18 <fizzie> I was using add, mul, in, out, jnz, jz, setlt, seteq, setb and halt.
+2019-12-26 13:49:56 <int-e> I guess AT&T would use b(nnn) for the base register use?
+2019-12-26 13:50:11 <int-e> I'm actually not sure.
+2019-12-26 13:50:43 <int-e> Hmm, "setb" is not logical.
+2019-12-26 13:50:48 <fizzie> Yes, agreed.
+2019-12-26 13:51:10 <fizzie> For the opcodes, I think I prefer 'halt' over 'stop'; I find 'setb' illogical as well; and I don't have an opinion for slt/setlt, seq/seteq.
+2019-12-26 13:51:48 <int-e> I've thought about "addb", "incb", "advb" before going for the three-letter (but obscure) "IBR".
+2019-12-26 13:52:00 <fizzie> For operands, I was also first using #nnn for immediate and B+nnn and B-nnn for base-relative, but when I started considering labels, thought the "B" in something that looks like an expression but is actually special might be a little confusing. So I switched to nnn for immediate, *nnn for position mode, and @nnn for relative mode.
+2019-12-26 13:53:17 <int-e> Oh and I'm not sure how "relative base" became "base register" (and hence BR rather than RB) in my mind.
+2019-12-26 13:55:19 <fizzie> Also, I imagined having a syntax like: "foo: add [bar:X], *[baz:Y], @[zuul:Z]" for what'd essentially be the instruction "add X, *Y, @Z" but with labels for all the four locations.
+2019-12-26 13:55:52 <int-e> fancy
+2019-12-26 13:56:27 <fizzie> Thought it'd be nicer than "foo: add X, *Y, @Z" and manually using foo+1, foo+2, foo+3.
+2019-12-26 13:58:56 <fizzie> In fact, wrote up http://ix.io/25xa as a potential syntax but then got sidetracked reading about parser generators.
+2019-12-26 13:59:31 <fizzie> (Looks like I was thinking of using mov, j, jlt and jeq as pseudo-ops as well.)
