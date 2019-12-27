@@ -46,3 +46,16 @@
 2019-12-27 03:54:51 <int-e> (but that can be worked around; things like termination can still be undecidable for length-preserving string rewriting systems)
 2019-12-27 03:56:30 <imode> I guess my real question is: given Thue, limit the string length for the LHS and RHS to some constant value, and limit the alphabet to binary. what's the smallest length that still makes the resulting variant turing complete.
 2019-12-27 03:59:52 <int-e> hmm. probably too hard to answer ;)
+2019-12-27 04:00:13 <imode> it's an interesting idea, though.
+2019-12-27 04:00:49 <int-e> 65536 systems for length 2; 2^2^(2n) for length n.
+2019-12-27 04:01:15 <int-e> And then you have to decide on a question for "TC".
+2019-12-27 04:02:07 <int-e> (FWIW, I don't really accept the notion that rule 110 is TC. It embeds too much information in the starting configuration for my taste.)
+2019-12-27 04:02:33 <int-e> At least with the proof we have.
+2019-12-27 04:02:59 <imode> yeah... I'm kind of in the same boat.
+2019-12-27 04:04:09 <int-e> The (related) problem with length-preserving SRSs is that if you fix a starting string then it has only finitely many successors, and that makes pretty much every question you might ask about that (termination, reachability of a particular string, even stuff like confluence, weak normalization, and so forth) decidable.
+2019-12-27 04:04:29 <int-e> So the question you ask somehow has to allow strings of unbounded length.
+2019-12-27 04:04:55 <imode> I don't have any reservations about that.
+2019-12-27 04:05:03 <int-e> like "is there a string that doesn't terminate"
+2019-12-27 04:18:35 Joined: oerjan
+2019-12-27 04:18:35 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-27 04:21:00 <int-e> hello onejar!
