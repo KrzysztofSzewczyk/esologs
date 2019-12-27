@@ -37,3 +37,12 @@
 2019-12-27 03:20:00 <zzo38> imode: I saw NeWS, but I think that PostScript is not a very good document format or protocol, but PostScript is OK as a programming language.
 2019-12-27 03:20:39 <zzo38> And anyways it seem that NeWS is not X.
 2019-12-27 03:24:48 <zzo38> (I don't really like the pie menus either)
+2019-12-27 03:45:47 <imode> I can only see a 3-length binary string rewriting system as being TC if it's used to implement Rule 110. can't see any other way.
+2019-12-27 03:50:40 <int-e> Can you even do that? I mean you can implement the rules just fine, but you lose all the synchronicity.
+2019-12-27 03:51:34 <int-e> In fact, since the transitions overlap... it's not obvious how to make a CA.
+2019-12-27 03:51:36 <imode> if you assume a priority order, sure.
+2019-12-27 03:51:58 <imode> at least I think..
+2019-12-27 03:52:54 <int-e> It's also noteworthy that you operate on an infinite (to both sides) string here, so you're outside the string rewriting formalism anyway.
+2019-12-27 03:54:51 <int-e> (but that can be worked around; things like termination can still be undecidable for length-preserving string rewriting systems)
+2019-12-27 03:56:30 <imode> I guess my real question is: given Thue, limit the string length for the LHS and RHS to some constant value, and limit the alphabet to binary. what's the smallest length that still makes the resulting variant turing complete.
+2019-12-27 03:59:52 <int-e> hmm. probably too hard to answer ;)
