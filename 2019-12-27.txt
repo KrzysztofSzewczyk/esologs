@@ -107,3 +107,54 @@
 2019-12-27 07:24:17 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
 2019-12-27 07:43:15 <esowiki> 14[[07Human Resource Code14]]4 10 02https://esolangs.org/w/index.php?diff=68382&oldid=68381 5* 03EthanPixelate 5* (+1270) 10/* Example Programs */
 2019-12-27 07:49:09 <int-e> Oh we seem to have lost shachaf.
+2019-12-27 08:00:33 <int-e> `? goto
+2019-12-27 08:00:36 <HackEso> goto? ¯\(°​_o)/¯
+2019-12-27 08:01:37 <int-e> `learn GOTO is just one step removed from going to hell.
+2019-12-27 08:01:39 <HackEso> Learned 'goto': GOTO is just one step removed from going to hell.
+2019-12-27 08:06:35 User Name: kingoffrance = kingoffrance!~x__@c-67-161-241-22.hsd1.ut.comcast.net
+2019-12-27 08:06:35 <kingoffrance> zzo38, there was some display postscript extension for x on sourceforge long ago, i dunno if it ever was completed or any real programs really used it;   i think proprietary unices might have shipped a real thing by default (sun? hpux? vms? irix? i dunno) ...  i assume it was meant to be "compatible" to display such clients on a "free" x server (i.e. on a non-proprietary unix) but i could be way off
+2019-12-27 08:06:51 <kingoffrance> AFAIK it died and was never really used, so you might to google and archive.org to find it
+2019-12-27 08:07:25 <kingoffrance> i vaguely recall it was related to the xprint extension, but also could be way off
+2019-12-27 08:07:35 <kingoffrance> which im not sure anyone really uses/used that either
+2019-12-27 08:09:09 <kingoffrance> i dont think it was meant to be compatible with nextstep/openstep non-x stuff, but there was some speculation e.g. gnustep might be curious too use it;     i assume they are/were somewhat use to aim with source-compatible with such apps, but how that manifested/manifests re: display servers i have no idea
+2019-12-27 08:09:30 <int-e> Display Postscript is ancient (oh but I didn't remember that it originated with NeXT)... https://en.wikipedia.org/wiki/Display_PostScript
+2019-12-27 08:09:46 <int-e> Fun.
+2019-12-27 08:09:49 <kingoffrance> (ns/os display postscript i mean);  ns/os you could run x servers too, but i dont believe there was really a "bridge" to/from the DPS stuff, although you could run "rootless" somewhat
+2019-12-27 08:10:46 <kingoffrance> cube x window x server for nextstep/openstep is free license nowadays :)  iso download i believe
+2019-12-27 08:10:55 <kingoffrance> i think it supports 3 or 4 arches
+2019-12-27 08:10:59 <kingoffrance> been awhile
+2019-12-27 08:11:10 <int-e> To my mind it's one of those "next big things" that never materialized.
+2019-12-27 08:11:51 <int-e> Probably killed by 3D graphics.
+2019-12-27 08:12:14 <kingoffrance> tru64 or dgux also might have been the thing that had display postscript x extension :/
+2019-12-27 08:12:23 <kingoffrance> i dunno, maybe for same cad program or something :/
+2019-12-27 08:12:38 <zzo38> I think 3D graphics (and other fancy graphics) are overused
+2019-12-27 08:12:43 <kingoffrance> so this x extension i think was meant to be compatible with that, and not the nextstep/openstep stuff
+2019-12-27 08:13:27 <zzo38> You can still use external PostScript interpreter, such as Ghostscript so you can still use Ghostscript to display PostScript graphics on a X window
+2019-12-27 08:14:35 <zzo38> But as far as I know, Ghostscript does not provide any way to read X events, nor can the X drawing functions be used in PostScript
+2019-12-27 08:16:52 <kingoffrance> ns/os  is one of the things i dont think ive ever seen a vnc server for;  client, but not server;   i believe there are "drivers" for e.g. vmware, but im not sure of any good remote display  (although qemu vnc server might suffice)
+2019-12-27 08:16:52 <int-e> It's only appropriate. Ghosts generally have trouble interacting with their environment.
+2019-12-27 08:18:05 <zzo38> Standard I/O still works, but it doesn't have X events.
+2019-12-27 08:18:24 <kingoffrance> well, some forum at least one person was trying to hack a darwin kernel to "backport", and i think they got this frankenstein booting at least, so maybe there will slowly be some up to date "ports",  lack of proper posix is a killer
+2019-12-27 08:18:45 <zzo38> (Even so, PostScript graphics are best for printing rather than on screen, since PostScript uses printer fonts rather than screen fonts)
+2019-12-27 08:18:48 <kingoffrance> i believe its all legal, not stolen source or anything..... just very.....frankensteinish
+2019-12-27 08:19:23 <kingoffrance> and theres a next emulator or two now too, to emulate the next hardware, so there are sort of some people still doing stuff
+2019-12-27 08:19:33 <kingoffrance> they are just vewwy vewwy quiet
+2019-12-27 08:21:04 <zzo38> It is also possible to write programs that embed Ghostscript; such as, TeXnicard embeds Ghostscript and SQLite, but uses the TeX fonts rather than PostScript fonts. It isn't very clear how to work separations when using the Ghostscript "display" device though; do you know how?
+2019-12-27 08:21:55 <kingoffrance> i hope you arent asking me, i play with oses; programming is another story :/
+2019-12-27 08:22:34 <zzo38> O, OK. Which oses you play with?
+2019-12-27 08:23:10 <kingoffrance> anything i can get my grubby hands on;  i dont have much hardware nowadays, just cheap x86 stuff;   the one thing i cant find an emualtor for is beos ppc, no powerpc emulator that i have found will run it
+2019-12-27 08:23:32 <zzo38> (TeXnicard is written half in C, half in SQL, and half in PostScript. It does not embed TeX but does use its font formats and some of its algorithms.)
+2019-12-27 08:24:35 <kingoffrance> someone in ##electronics said they are writing an sgi indy emulator, qemu is too slow
+2019-12-27 08:24:44 <zzo38> kindoffrance: I have not used many operating systems, but have used emulation of some systems, including 6502
+2019-12-27 08:25:01 <kingoffrance> so that perhaps is i used to have real hw, but never had time to play with
+2019-12-27 08:25:09 <kingoffrance> so he is doing penance for my sins of losing that hw
+2019-12-27 08:25:13 <kingoffrance> in my mind
+2019-12-27 08:25:26 <zzo38> (Well, TeXnicard includes PCRE as well)
+2019-12-27 08:26:15 Quit: arseniiv (Read error: Connection reset by peer)
+2019-12-27 08:26:16 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-27 08:26:23 <kingoffrance> i guess alpha emulators dont like windows nt, but that doesnt particularly interest me
+2019-12-27 08:26:53 <zzo38> Once I worked it enough would you or someone to try to make templates to render Magic: the Gathering cards and other card games with TeXnicard?
+2019-12-27 08:27:06 Joined: arseniiv
+2019-12-27 08:27:07 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, shkhn, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-27 08:27:15 <kingoffrance> im not a tex guy other than lyx :)
+2019-12-27 08:27:34 <kingoffrance> it is rare i have do someting that looks nice
