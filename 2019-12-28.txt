@@ -119,3 +119,11 @@
 2019-12-28 14:52:42 Joined: Lord_of_Life
 2019-12-28 14:53:15 Quit: Lord_of_Life (Ping timeout: 240 seconds)
 2019-12-28 14:54:05 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-28 15:05:01 <fizzie> Bah. This error message is just useless.
+2019-12-28 15:10:18 <fizzie> It does seem to fail for the third revision of https://esolangs.org/wiki/File:Plus1b.PNG which doesn't have a thumbnail either. I think it's missing the file name (for whatever reason), and consequently attempting to lock the directory instead of a file in it.
+2019-12-28 15:11:44 <fizzie> There is a file in the directory, it's just somehow lost track of it I guess.
+2019-12-28 15:22:18 <fizzie> Well, some careful direct database manipulation seems to have resolved it. Couldn't even delete it from the web interface; because the archive name was missing, the delete link was pointing to the "delete all versions" action.
+2019-12-28 15:26:55 <fizzie> What I was *going* to say before all that, in terms of lines of raw wikitext, the Asm2bf article is #19 in the main namespace (but it's not a size competition). It might be the longest in terms of content; most of the longer ones are just long lists of implementations and/or examples.
+2019-12-28 15:28:12 <fizzie> (Top-20 at http://ix.io/25Im .)
+2019-12-28 15:29:00 Quit: LKoen (Remote host closed the connection)
+2019-12-28 15:29:01 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
