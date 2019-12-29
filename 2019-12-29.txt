@@ -219,3 +219,19 @@
 2019-12-29 20:57:45 <kspalaiologos> and then write b2all backend for sed
 2019-12-29 20:57:57 <kspalaiologos> possibly a more optimizing one towards the asm2bf patterns
 2019-12-29 20:58:05 <kspalaiologos> or use newest nav mechanic
+2019-12-29 21:04:21 <imode> been exploring string rewriting as a backend for Mode. don't know why I'm attracted to it.
+2019-12-29 21:07:56 Quit: kspalaiologos (Quit: Leaving)
+2019-12-29 21:07:56 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-29 21:16:14 <imode> something about rule-based programming is attractive. very unlike structured programming.
+2019-12-29 21:17:06 <imode> it's hard to know where to start, though.
+2019-12-29 21:22:29 Joined: kspalaiologos
+2019-12-29 21:22:30 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-29 21:26:12 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-12-29 21:26:12 <kspalaiologos> imode: have you got some time on your hands?
+2019-12-29 21:26:30 <kspalaiologos> I'm planning to write a lisp compiler targeting my certain platform
+2019-12-29 21:26:58 <kspalaiologos> If you'd like to help me just a bit I would be thankful
+2019-12-29 21:27:04 <imode> what can I help with.
+2019-12-29 21:27:34 <kspalaiologos> Well I can get it up to the point of generating AST
+2019-12-29 21:27:46 <kspalaiologos> And some abstract wrappers over assembly
+2019-12-29 21:28:14 <kspalaiologos> So optimalization and IR generation is left
+2019-12-29 21:28:52 <imode> mmm.
