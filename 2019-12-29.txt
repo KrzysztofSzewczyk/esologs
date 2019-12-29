@@ -1,0 +1,4 @@
+2019-12-29 00:15:05 <fizzie> Looks like it's just broken. The response is successful (and looks to have all the content it needs), but has a 'code' of 0 (instead of the expected 200), so is treated as an error.
+2019-12-29 00:21:28 <fizzie> ...because it runs curl and tries to do a regex match on /^(HTTP\/1\.[01]) (\d{3}) (.*)/ to parse the protocol, code, and reason, and the response from this particular server is "HTTP/2 200". No, it can't seriously be that stupid...
+2019-12-29 00:26:17 <fizzie> https://github.com/wikimedia/mediawiki/commit/b05b69d -- yes, it is that stupid.
+2019-12-29 00:26:31 <fizzie> At least they've fixed it... 27 days ago, in a version I haven't installed.
