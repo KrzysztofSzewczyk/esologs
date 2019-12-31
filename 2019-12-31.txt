@@ -916,3 +916,47 @@
 2019-12-31 21:27:31 <bunnyocto19> 0..360
 2019-12-31 21:27:41 <bunnyocto19> such that when you'd do 360+2 you'd get 2
 2019-12-31 21:28:12 <bunnyocto19> i mean... fairly trivial to implement.
+2019-12-31 21:30:55 <b_jonas> no it's not, because you have to implement like a hundred builtins that do arithmetic on them
+2019-12-31 21:31:07 <b_jonas> and many of them have two or three arguments, each of which can be various types
+2019-12-31 21:31:47 <b_jonas> plus you're committing to support it in future operations too
+2019-12-31 21:32:29 <b_jonas> nevertheless, this is burlesque, it has lots of features, so if you think it's useful, do implement it
+2019-12-31 21:34:31 Quit: rodgort (Quit: Leaving)
+2019-12-31 21:34:32 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 21:35:21 <bunnyocto19> !blsq 259 360tm 5?+
+2019-12-31 21:35:22 <blsqbot> | __INTERNAL__:BlsqModInt 264 360
+2019-12-31 21:35:42 <bunnyocto19> hm.
+2019-12-31 21:37:13 Quit: kspalaiologos (Quit: Leaving)
+2019-12-31 21:37:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 21:38:36 <bunnyocto19> !blsq 259 360tm
+2019-12-31 21:38:36 <blsqbot> | 259
+2019-12-31 21:38:40 <bunnyocto19> !blsq 259 360tm 5?+
+2019-12-31 21:38:41 <blsqbot> | 264
+2019-12-31 21:38:48 <bunnyocto19> !blsq 359 360tm 5?+
+2019-12-31 21:38:49 <blsqbot> | 4
+2019-12-31 21:38:52 <bunnyocto19> ah.
+2019-12-31 21:38:55 <bunnyocto19> there we go
+2019-12-31 21:39:32 <bunnyocto19> but yeah... probably only supports +-/ and *
+2019-12-31 21:42:07 <bunnyocto19> !blsq 359 360tm 5?+100?*
+2019-12-31 21:42:08 <blsqbot> | 40
+2019-12-31 21:44:49 <bunnyocto19> of course not all built-ins will take this sort of integer
+2019-12-31 21:45:55 <bunnyocto19> b_jonas: you do know nobody is using this crap anyway right?
+2019-12-31 21:45:57 <bunnyocto19> so :D
+2019-12-31 21:46:19 <bunnyocto19> there's no userbase
+2019-12-31 21:47:34 <bunnyocto19> !blsq mcto
+2019-12-31 21:47:35 <blsqbot> | "Error"
+2019-12-31 21:47:48 <bunnyocto19> what
+2019-12-31 21:47:56 <bunnyocto19> !blsq mc
+2019-12-31 21:47:57 <blsqbot> | ERROR: Unknown command: (mc)!
+2019-12-31 21:47:58 <bunnyocto19> ah
+2019-12-31 21:48:05 <bunnyocto19> !blsq nm
+2019-12-31 21:48:05 <blsqbot> |
+2019-12-31 21:49:30 Joined: rodgort
+2019-12-31 21:49:30 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 21:49:51 <bunnyocto19> !blsq 1 2tmto
+2019-12-31 21:49:52 <blsqbot> | "ModInt[2]"
+2019-12-31 21:51:20 <b_jonas> prepare for the New Year for the +02:00 timezone (Finland, Romania, Greece, Israel) in less than 10 minutes
+2019-12-31 21:51:45 <bunnyocto19> I'm reading this as blsq needs timezone types
+2019-12-31 21:51:47 <bunnyocto19> and you're right.
+2019-12-31 21:52:11 <bunnyocto19> also strongly working on integrating gui
+2019-12-31 21:56:21 <b_jonas> less than 4 minutes
+2019-12-31 21:58:07 <b_jonas> less than 2 minutes until New Year in the +02:00 timezone (Finland, Romania, Greece, Israel)
