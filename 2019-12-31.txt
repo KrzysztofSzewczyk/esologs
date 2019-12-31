@@ -164,3 +164,153 @@
 2019-12-31 14:55:07 Joined: Lord_of_Life
 2019-12-31 14:57:44 Quit: Lord_of_Life (Ping timeout: 258 seconds)
 2019-12-31 14:57:44 Nick Change: Lord_of_Life -> Lord_of_Life
+2019-12-31 15:35:18 <bunnyocto> oh my gawd.
+2019-12-31 15:35:23 <bunnyocto> blsq has a  switchcase now :D
+2019-12-31 15:36:11 <bunnyocto> http://codepad.org/QS4CYmiu
+2019-12-31 15:36:39 <bunnyocto> Imagine the possibilities.
+2019-12-31 15:37:02 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2019-12-31 15:37:02 <kspalaiologos> what's blsq
+2019-12-31 15:37:18 <kspalaiologos> no wiki entry bout it
+2019-12-31 15:37:21 <kspalaiologos> `? blsq
+2019-12-31 15:37:24 <HackEso> See: Burlesque
+2019-12-31 15:37:28 <kspalaiologos> `? burlesque
+2019-12-31 15:37:30 <HackEso> Burlesque is only the sexiest language on Earth. (See: http://mroman.ch/burlesque)
+2019-12-31 15:37:47 <kspalaiologos> not close enough
+2019-12-31 15:37:59 <kspalaiologos> verdict: no idea what is blsq
+2019-12-31 15:38:29 <bunnyocto> blsq ) %foo={{{{1 2 3} {9?*}}{{1 2 4}{8?*}}}/_} 1 2 4 %foo! 1 2 3 %foo!Cl{1 2 32 1 2 27}
+2019-12-31 15:38:36 <bunnyocto> blsq ) %foo={{{{1 2 3} {9?*}}{{1 2 4}{8?*}}}/_} 1 2 4 %foo! 1 2 3 %foo!Cl{1 2 32 1 2 27}
+2019-12-31 15:38:42 <bunnyocto> hm. no newlines here
+2019-12-31 15:38:45 <bunnyocto> well...
+2019-12-31 15:38:52 <bunnyocto> {1 2 32 1 2 27}
+2019-12-31 15:38:55 <bunnyocto> would be the output
+2019-12-31 15:39:05 <kspalaiologos> is there an online compiler
+2019-12-31 15:39:07 <kspalaiologos> or interpreter
+2019-12-31 15:39:10 <bunnyocto> there is
+2019-12-31 15:39:14 <kspalaiologos> or any compiler
+2019-12-31 15:39:14 <bunnyocto> there's also an IRC bot.
+2019-12-31 15:39:27 <kspalaiologos> which one is it
+2019-12-31 15:39:33 Joined: blsqbot
+2019-12-31 15:39:33 Names: \oren\, ^[, aji, aloril, APic, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-12-31 15:39:35 <bunnyocto> ^- this guy
+2019-12-31 15:39:40 <kspalaiologos> fine
+2019-12-31 15:39:42 <bunnyocto> !blsq "Hi there"Q
+2019-12-31 15:39:43 User Name: blsqbot = blsqbot!~blsqbot@178.197.228.160
+2019-12-31 15:39:43 <blsqbot> | Hi there
+2019-12-31 15:39:43 <kspalaiologos> what about the compiler
+2019-12-31 15:39:47 <bunnyocto> no compiler.
+2019-12-31 15:39:49 <kspalaiologos> source code?
+2019-12-31 15:39:54 <kspalaiologos> for the bot or interpreter?
+2019-12-31 15:40:04 <kspalaiologos> or maybe an article online, have you got any of these?
+2019-12-31 15:40:07 <bunnyocto> https://github.com/FMNSSun/Burlesque
+2019-12-31 15:40:13 <bunnyocto> https://mroman.ch/burlesque
+2019-12-31 15:40:18 <kspalaiologos> a ha
+2019-12-31 15:40:22 <kspalaiologos> so it's this one
+2019-12-31 15:40:36 <kspalaiologos> I coiuldn't tell were they the same language
+2019-12-31 15:40:55 <kspalaiologos> starred
+2019-12-31 15:42:48 <esowiki> 14[[07Blsq14]]4 N10 02https://esolangs.org/w/index.php?oldid=68501 5* 03B jonas 5* (+23) 10Redirected page to [[Burlesque]]
+2019-12-31 15:42:53 <wib_jonas> good point
+2019-12-31 15:43:42 <bunnyocto> !blsq 4ror@4.+FL++
+2019-12-31 15:43:42 <blsqbot> | 40
+2019-12-31 15:43:49 <wib_jonas> kspalaiologos: it's a golf language built in Haskell with a large standard library
+2019-12-31 15:44:03 <bunnyocto> it's a piece of shit built in haskell
+2019-12-31 15:44:06 <wib_jonas> and a documentation that is somewhat vague
+2019-12-31 15:44:10 <bunnyocto> mostly for homework stuff
+2019-12-31 15:44:16 <kspalaiologos> umm, cool
+2019-12-31 15:44:25 <bunnyocto> like it can do chisquaretests and shit
+2019-12-31 15:44:32 <wib_jonas> its syntax is made of mostly two-character builtins
+2019-12-31 15:44:41 <bunnyocto> basically the stuff that I needed to do during my studies 8 years ago or something
+2019-12-31 15:44:42 <wib_jonas> but it has a few one-character keywords too
+2019-12-31 15:45:17 <kspalaiologos> nice
+2019-12-31 15:45:18 <kspalaiologos> have a star
+2019-12-31 15:45:29 <kspalaiologos> are there some more examples than the wiki page?
+2019-12-31 15:45:55 <wib_jonas> kspalaiologos: there are examples in the channel logs
+2019-12-31 15:45:58 <wib_jonas> years ago
+2019-12-31 15:46:07 <kspalaiologos> don't feel like scrolling them
+2019-12-31 15:46:15 <kspalaiologos> that's nice anyways
+2019-12-31 15:46:17 <bunnyocto> No but there's a link to the golf site which has more examples.
+2019-12-31 15:46:40 <kspalaiologos> minimalistic website
+2019-12-31 15:46:41 <kspalaiologos> love it
+2019-12-31 15:46:47 <kspalaiologos> nearly like mine
+2019-12-31 15:46:48 <bunnyocto> kspalaiologos: http://golf.shinh.org/l.rb?blsq
+2019-12-31 15:47:03 <kspalaiologos> a, this one
+2019-12-31 15:47:43 <bunnyocto> also you're talking to the madlad inventing it so any questions you have I can answer :D
+2019-12-31 15:47:56 <bunnyocto> there's not a single person on the planet who knows more about blsq than me :D
+2019-12-31 15:47:59 <bunnyocto> maybe clock
+2019-12-31 15:48:13 <kspalaiologos> that's exactly like my languages
+2019-12-31 15:48:16 <kspalaiologos> or tools
+2019-12-31 15:48:17 <bunnyocto> it also has support for concurrency/multithreading
+2019-12-31 15:48:25 <kspalaiologos> no one knows them really xD
+2019-12-31 15:48:26 <bunnyocto> and it has MySQL support as well
+2019-12-31 15:48:36 <kspalaiologos> why would you add mysql support to an esoteric language
+2019-12-31 15:48:51 <bunnyocto> so you can plug it up to your mysql database and do your data analysis in BLSQ like a manic pro
+2019-12-31 15:48:55 <bunnyocto> why
+2019-12-31 15:48:59 <bunnyocto> He asks me why?
+2019-12-31 15:49:00 <kspalaiologos> . O ( bruh, this json formatter in brainfuck is haunting me )
+2019-12-31 15:49:06 <bunnyocto> Because I can.
+2019-12-31 15:49:15 <bunnyocto> And because I'm mad.
+2019-12-31 15:49:33 <bunnyocto> I spent years in mental institutions
+2019-12-31 15:49:33 <bunnyocto> so
+2019-12-31 15:49:38 <bunnyocto> muahahaha
+2019-12-31 15:49:45 <kspalaiologos> umm
+2019-12-31 15:49:46 <kspalaiologos> thank you
+2019-12-31 15:49:48 <kspalaiologos> very cool
+2019-12-31 15:49:52 <bunnyocto> true story :D
+2019-12-31 15:50:15 <bunnyocto> I can also tell you lot of stuff about psychiatry
+2019-12-31 15:50:23 <bunnyocto> and about splenology
+2019-12-31 15:50:33 <bunnyocto> I'm an expert on spleens.
+2019-12-31 15:51:04 <kspalaiologos> that might be the most random thing I heard by the end of this decade
+2019-12-31 15:51:12 <bunnyocto> yeah well
+2019-12-31 15:51:16 <bunnyocto> lots of free time in the asylum so
+2019-12-31 15:51:25 <bunnyocto> either you do silly things
+2019-12-31 15:51:29 <bunnyocto> or you memorize medical books
+2019-12-31 15:51:40 <kspalaiologos> what about job?
+2019-12-31 15:51:43 <bunnyocto> which some might consider silly
+2019-12-31 15:51:49 <bunnyocto> can't have a job in an asylum now can you
+2019-12-31 15:51:56 <kspalaiologos> you're unemployed?
+2019-12-31 15:52:00 <bunnyocto> pretty much
+2019-12-31 15:52:05 <bunnyocto> also used to be homeless for a while
+2019-12-31 15:52:05 <kspalaiologos> fine
+2019-12-31 15:52:15 <bunnyocto> i was living on park benches for a while
+2019-12-31 15:53:04 <wib_jonas> bunnyocto: wait, so you're the same esolanger as the one who created blsq, but under a different nick?
+2019-12-31 15:53:11 <bunnyocto> yep.
+2019-12-31 15:53:23 <wib_jonas> MySQL support?
+2019-12-31 15:53:32 <bunnyocto> blsq has mysql support yes
+2019-12-31 15:53:59 <bunnyocto> but not the ircbot version
+2019-12-31 15:54:05 <bunnyocto> that one has all I/O commands disabled of course.
+2019-12-31 15:56:27 <wib_jonas> `q harp
+2019-12-31 15:56:28 <HackEso> 1280) <ais523> hmm, I just remembered that I was formally trained to tune harps
+2019-12-31 15:56:30 <wib_jonas> `q splenology
+2019-12-31 15:56:31 <HackEso> No output.
+2019-12-31 15:56:43 <bunnyocto> !blsq fancy def double: \2 \?* end end 8 %double!
+2019-12-31 15:56:43 <blsqbot> | 16
+2019-12-31 15:56:58 <kspalaiologos> how can one
+2019-12-31 15:57:05 <kspalaiologos> put a tar.gz on hack eso filesystem
+2019-12-31 15:57:10 <kspalaiologos> I don't seem to remember
+2019-12-31 15:57:20 <kspalaiologos> `help
+2019-12-31 15:57:20 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $HACKENV are persistent, and $HACKENV/bin is in $PATH. $HACKENV is a mercurial repository, "`revert <rev>" can be used to revert, https://hack.esolangs.org/repo/ to browse. $PWD ($HACKENV/tmp) is persistent but unversioned, /tmp is ephemeral.
+2019-12-31 15:57:26 <kspalaiologos> ok
+2019-12-31 15:57:32 <kspalaiologos> I didn't ask anything
+2019-12-31 15:57:33 <kspalaiologos> `ls
+2019-12-31 15:57:34 <HackEso> asmbf-1.1.1 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh
+2019-12-31 15:57:55 <wib_jonas> `? fetch
+2019-12-31 15:57:57 <HackEso> ​`fetch [<output-file>] <URL> downloads files, and is the only web access currently available in HackEgo. It is a special builtin that cannot be called from other commands. See also `edit.
+2019-12-31 15:57:58 <bunnyocto> !blsq fancy def double: 2 \?* end def main: double(8) end end %main!
+2019-12-31 15:57:58 <blsqbot> | 16
+2019-12-31 15:58:06 <kspalaiologos> `fetch asmbf-1.2.6 https://github.com/kspalaiologos/asmbf/archive/master.zip
+2019-12-31 15:58:11 <kspalaiologos> ls
+2019-12-31 15:58:12 <HackEso> Cannot write to ‘/hackenv/tmp/asmbf-1.2.6’ (File too large).
+2019-12-31 15:58:16 <kspalaiologos> whoa what
+2019-12-31 15:58:16 <bunnyocto> that basically defines a function double and main and invokes double(8)
+2019-12-31 15:58:17 <kspalaiologos> how
+2019-12-31 15:58:35 <kspalaiologos> the zip file is 56 kb big
+2019-12-31 15:58:46 <kspalaiologos> `fetch asmbf-1.2.6.zip https://github.com/kspalaiologos/asmbf/archive/master.zip
+2019-12-31 15:58:49 <HackEso> Cannot write to ‘/hackenv/tmp/asmbf-1.2.6.zip’ (File too large).
+2019-12-31 15:59:02 <kspalaiologos> `fetch /hackenv/asmbf-1.2.6.zip https://github.com/kspalaiologos/asmbf/archive/master.zip
+2019-12-31 15:59:04 <HackEso> Cannot write to ‘/hackenv/asmbf-1.2.6.zip’ (File too large).
+2019-12-31 15:59:17 <wib_jonas> funnyocto: (1) that doesn't look like blsq syntax, because blsq keywords are two characters long, those are longer; (2) you can't call a function "double", that's a keyword.
+2019-12-31 15:59:31 <kspalaiologos> `df
+2019-12-31 15:59:32 <HackEso> Filesystem     1K-blocks     Used Available Use% Mounted on \ none            24733776 14622324   8841948  63% /bin \ none             1026028        0   1026028   0% /dev \ none            24733776 14622324   8841948  63% /lib \ tmpfs             126192        0    126192   0% /tmp \ none            24733776 14622324   8841948  63% /usr \ none            24733776 14622324   8841948  63% /sbin \ none            24733776 14622324   8841948  63
+2019-12-31 15:59:33 <bunnyocto> http://codepad.org/2Ui5N9Ve wib_jonas
+2019-12-31 15:59:42 <bunnyocto> that's perfectly valid blsq code
+2019-12-31 15:59:55 <wib_jonas> `python3 -cimport numpy; print(numpy.double([1]))
+2019-12-31 15:59:56 <HackEso> ​[1.]
