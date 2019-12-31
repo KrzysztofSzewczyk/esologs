@@ -821,3 +821,43 @@
 2019-12-31 20:24:59 <b_jonas> bunnyocto: does blsq have mutable cells (things where you can copy the reference to the cell, assign values to it, and retrieve the value)? does it have logic programming style backtracking, and retractable and preserved assignments to cells (whether to the same kind of cell or different kinds doesn't matter)?
 2019-12-31 20:25:10 <b_jonas> I mean, that would make a multiparadigm language
 2019-12-31 20:28:30 <b_jonas> it can also be hard to implement
+2019-12-31 20:33:13 Nick Change: moony -> notmoony
+2019-12-31 20:33:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, notmoony, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:34:24 <zzo38> But they don't use coffee in medieval English, I think.
+2019-12-31 20:40:07 Nick Change: notmoony -> moony
+2019-12-31 20:40:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:47:12 <bunnyocto> b_jonas: do you know MVars?
+2019-12-31 20:47:25 <bunnyocto> or chans
+2019-12-31 20:49:47 <b_jonas> bunnyocto: sure, if you have threading you could use those too, but I was thinking plain not too threadsafe variables at first, without threads
+2019-12-31 20:50:01 <b_jonas> haskell IO actually has those too under some name
+2019-12-31 20:50:15 <int-e> Hmm, MKun and MChan
+2019-12-31 20:50:18 <b_jonas> mostliy because they have the invariant of being always full
+2019-12-31 20:51:31 Joined: bunnyocto19
+2019-12-31 20:51:32 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:51:45 User Name: bunnyocto19 = bunnyocto19!b2c5e4a0@178.197.228.160
+2019-12-31 20:51:45 <bunnyocto19> well there's mcJ{}j+]{rc}fk2wc for example
+2019-12-31 20:51:59 <bunnyocto19> which creates a thread waiting for something to be written to the chan
+2019-12-31 20:52:11 <bunnyocto19> other than that as far as references go
+2019-12-31 20:52:20 <bunnyocto19> sortof
+2019-12-31 20:52:23 <bunnyocto19> i mean
+2019-12-31 20:52:42 Quit: blsqbot (Ping timeout: 258 seconds)
+2019-12-31 20:52:43 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, bunnyocto, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:52:57 Joined: blsqbot
+2019-12-31 20:52:58 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:53:11 Quit: bunnyocto (Ping timeout: 260 seconds)
+2019-12-31 20:53:12 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto19, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:53:33 <bunnyocto19> !blsq %5=3 {1 2 3}{5sv}m[%5?
+2019-12-31 20:53:35 User Name: blsqbot = blsqbot!~blsqbot@178.197.228.160
+2019-12-31 20:53:35 <blsqbot> | 3
+2019-12-31 20:53:35 <blsqbot> | {}
+2019-12-31 20:53:41 <b_jonas> bunnyocto19: are there cells (not just named variables) that you can read multiple times? ones you can assign multiple times as well?
+2019-12-31 20:54:10 <bunnyocto19> define "cell"?
+2019-12-31 20:54:26 <bunnyocto19> a cell like an IORef?
+2019-12-31 20:55:02 <b_jonas> bunnyocto19: I want a function that allocates a new cell each time you call it, and returns a reference to it, and then you can pass around that reference like an ordinary value, and get the value or assign the value through that reference, and if you assign the value it doesn't affect other cells
+2019-12-31 20:55:07 <b_jonas> yes, like an IORef
+2019-12-31 20:55:47 <bunnyocto19> isn't an IORef just a chan with one value in it?
+2019-12-31 20:55:55 <b_jonas> I don't think so
+2019-12-31 20:56:00 <b_jonas> with a chan, you can only retrieve the value once
+2019-12-31 20:56:10 <b_jonas> with an IORef, you can retreive the same value as many times as you want,
+2019-12-31 20:56:34 <b_jonas> or not retrieve it at all, but assign a new value and the next time you retrieve it you get the new value
+2019-12-31 20:56:39 <b_jonas> but I might not understand what chan you mean
