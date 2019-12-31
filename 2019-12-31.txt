@@ -714,3 +714,41 @@
 2019-12-31 18:29:43 <HackEso> ​/hackenv/bin/asmbf: line 3: /tmp/no-toucha-prgm.p: No such file or directory
 2019-12-31 18:29:48 <kspalaiologos> bruh
 2019-12-31 18:30:00 <kspalaiologos> `ls
+2019-12-31 18:30:04 <HackEso> asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ what.tar.gz
+2019-12-31 18:31:09 <kspalaiologos> `fetch /hackenv/bin/asmbf https://hack.esolangs.org/get/bin/asmbf
+2019-12-31 18:31:10 <HackEso> 2019-12-31 18:31:09 URL:https://hack.esolangs.org/get/bin/asmbf [298/298] -> "/hackenv/bin/asmbf" [1]
+2019-12-31 18:31:12 <kspalaiologos> `asmbf STK 2/ORG 0/TXT "Hello World!"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP
+2019-12-31 18:31:13 <HackEso> ​/hackenv/bin/asmbf: line 3: /hackenv/tmp/no-toucha-prgm.p: No such file or directory
+2019-12-31 18:32:38 <kspalaiologos> ``` cat <<<"out .0" > test.asm
+2019-12-31 18:32:39 <HackEso> No output.
+2019-12-31 18:32:42 <kspalaiologos> ``` cat test.asm
+2019-12-31 18:32:44 <HackEso> out .0
+2019-12-31 18:32:59 <kspalaiologos> ``` /hackenv/lib/kps/bfpp /hackenv/tmp/test.asm
+2019-12-31 18:33:00 <HackEso> No output.
+2019-12-31 18:33:02 <kspalaiologos> `ls
+2019-12-31 18:33:04 <HackEso> asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ no-toucha-prgm.asm.p \ output.b \ paste \ program \ spline \ spout \ test \ test.asm \ test.asm.p \ test.sh \ what.tar.gz
+2019-12-31 18:33:16 <kspalaiologos> `rm output.b
+2019-12-31 18:33:17 <HackEso> No output.
+2019-12-31 18:33:20 <kspalaiologos> `rm test.asm
+2019-12-31 18:33:21 <HackEso> No output.
+2019-12-31 18:33:21 <kspalaiologos> `rm test.asm.p
+2019-12-31 18:33:22 <HackEso> No output.
+2019-12-31 18:33:41 <kspalaiologos> `fetch /hackenv/bin/asmbf https://hack.esolangs.org/get/bin/asmbf
+2019-12-31 18:33:42 <HackEso> 2019-12-31 18:33:41 URL:https://hack.esolangs.org/get/bin/asmbf [306/306] -> "/hackenv/bin/asmbf" [1]
+2019-12-31 18:33:45 <kspalaiologos> `asmbf STK 2/ORG 0/TXT "Hello World!"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP
+2019-12-31 18:33:47 <HackEso> No output.
+2019-12-31 18:33:52 <kspalaiologos> ``` cat output.b
+2019-12-31 18:33:54 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>>>>>>>>>>>>>>>>[-]>++++++++[<+++++++++>-]>[-]>++++[<+++++>-]<[>+++++<-]>+[-<+>]>[-]>+++[<++++++>-]<[>++++++<-]>[-<+>]>[-]>+++[<++++++>-]<[>++++++<-]>[-<+>]>[-]>++++[<+++++>-]<++[>+++++<-]>+[-<+>]>[-]>+++++[<++++++>-]<++>>[-]>+++[<+++++>-]<++[>+++++<-]>++[-<+>]>[-]>++++[<+++++>-]<++[>+++++<-]>+[-<+>]>[-]>+++[<++++++>-]<+[>++++++<-]>[-<+>]>[-]>+++[<++++++>-]<[>++++++<-]>[-<+>]>[-]>++++[<+++++>-]<[>+++++<-
+2019-12-31 18:33:57 <kspalaiologos> yay, works!
+2019-12-31 18:34:33 <kspalaiologos> ``` ./bfi output.b
+2019-12-31 18:34:34 <HackEso> Hello World!
+2019-12-31 18:34:39 <kspalaiologos> perfect
+2019-12-31 18:51:38 <b_jonas> ``` wc output.b
+2019-12-31 18:51:39 <HackEso> ​   0    1 1126 output.b
+2019-12-31 18:51:39 <arseniiv> well I think I should start the celebration relay now as at 0:00 I would be occupied :D Happy NY, let our wishes fulfill themselves in as direct and unassisted manner as possible!
+2019-12-31 18:51:56 <b_jonas> yay!
+2019-12-31 18:52:07 <b_jonas> launch the fireworks! cut the ribbons!
+2019-12-31 18:52:37 Parted: ArthurStrong
+2019-12-31 18:52:38 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 18:52:49 <int-e> I'd like to keep the fireworks imaginary... but no... people are not cooperative today.
+2019-12-31 18:54:11 <arseniiv> (let there be less celebratory injuries also as a separate thing, as they unfortunately are pretty common)
