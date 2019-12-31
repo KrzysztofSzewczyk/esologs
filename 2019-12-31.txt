@@ -761,3 +761,63 @@
 2019-12-31 19:21:54 <arseniiv> maybe a real lemon slice would accompany them even better, though that won’t mix well with milk or ice cream
 2019-12-31 19:53:39 <arseniiv> <b_jonas> cut the ribbons! => done! https://i.postimg.cc/3xt7Bg3M/Screenshot-2100.png
 2019-12-31 19:55:50 <b_jonas> hehe "ribbon"
+2019-12-31 20:01:45 <kspalaiologos> russian office?
+2019-12-31 20:01:47 <kspalaiologos> you're russian!
+2019-12-31 20:01:49 <kspalaiologos> Where do you live?
+2019-12-31 20:01:53 <kspalaiologos> (which city)
+2019-12-31 20:02:20 <b_jonas> kspalaiologos: we don't know, but we know which timezon
+2019-12-31 20:03:47 <arseniiv> kspalaiologos: hehehe I won’t say while I’m sober :P
+2019-12-31 20:04:16 <kspalaiologos> it won't last long /s
+2019-12-31 20:04:20 <kspalaiologos> which timezone is it?
+2019-12-31 20:04:27 <arseniiv> UTC+5
+2019-12-31 20:04:59 <kspalaiologos> nearly in the middle of Russia
+2019-12-31 20:05:08 <kspalaiologos> nice
+2019-12-31 20:05:49 <arseniiv> btw timezones here are partly an irregular mess. At the start of twentieth century they were much more regular but then various regions conglomerated with one another for shady reasons
+2019-12-31 20:06:02 <kspalaiologos> yeah I see on the map
+2019-12-31 20:07:48 <arseniiv> yeah at least I’m glad I’m not too far from the “capital area”, due to centralization it’s way better to live nearer than somewhere near e. g. Pacific ocean. There are several large centers but they aren’t enough
+2019-12-31 20:12:28 Joined: bunnyocto
+2019-12-31 20:12:29 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:12:46 User Name: bunnyocto = bunnyocto!b2c5e4a0@178.197.228.160
+2019-12-31 20:12:46 <bunnyocto> also as an addendum to whatever somebody said sometime ago: blsq has variable length commands
+2019-12-31 20:12:51 <bunnyocto> there's no limit on the length of a command
+2019-12-31 20:13:02 <bunnyocto> there's a lower limit of 1 character though.
+2019-12-31 20:13:20 <bunnyocto> or so you'd think
+2019-12-31 20:13:26 <bunnyocto> but there's actually none
+2019-12-31 20:13:34 <bunnyocto> the empty string is a perfectly valid builtin
+2019-12-31 20:14:31 Joined: blsqbot
+2019-12-31 20:14:31 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 20:14:57 <bunnyocto> evidently
+2019-12-31 20:15:01 <bunnyocto> !blsq %=5
+2019-12-31 20:15:02 User Name: blsqbot = blsqbot!~blsqbot@178.197.228.160
+2019-12-31 20:15:02 <blsqbot> | Ain't nobody got output fo' that!
+2019-12-31 20:15:09 <bunnyocto> is a valid assignment.
+2019-12-31 20:15:20 <bunnyocto> !blsq %x=5 %=7 %x?
+2019-12-31 20:15:20 <blsqbot> | 5
+2019-12-31 20:15:26 <bunnyocto> !blsq %x=5 %=7 %?
+2019-12-31 20:15:27 <blsqbot> | ERROR: (line 1, column 12):
+2019-12-31 20:15:27 <blsqbot> | unexpected end of input
+2019-12-31 20:15:46 <bunnyocto> !blsq %=5""gv
+2019-12-31 20:15:47 <blsqbot> | 5
+2019-12-31 20:15:51 <bunnyocto> so there you go
+2019-12-31 20:16:56 <bunnyocto> also
+2019-12-31 20:16:58 <bunnyocto> !blsq %={S[S[}3``
+2019-12-31 20:16:59 <blsqbot> | 81
+2019-12-31 20:17:26 <bunnyocto> this way we bind create a userdefined command and bind it to the empty string
+2019-12-31 20:17:51 <bunnyocto> so trivially commands can have 0 or more characters.
+2019-12-31 20:19:03 <bunnyocto> !blsq (ab)Sh
+2019-12-31 20:19:04 <blsqbot> | "ab"
+2019-12-31 20:19:09 <bunnyocto> !blsq (`` )Sh
+2019-12-31 20:19:09 <blsqbot> | ""
+2019-12-31 20:19:14 <bunnyocto> see.
+2019-12-31 20:19:15 <bunnyocto> empty string.
+2019-12-31 20:19:52 <bunnyocto> !blsq ``abcdefgh
+2019-12-31 20:19:52 <blsqbot> | ERROR: Unknown command: (abcdefgh)!
+2019-12-31 20:20:03 <bunnyocto> see. arbitrary long command.
+2019-12-31 20:20:27 <bunnyocto> !blsq %abcdefgh=5 ``abcdefgh
+2019-12-31 20:20:27 <blsqbot> | 5
+2019-12-31 20:22:08 <b_jonas> welcome back, bunnyocto. in which timezone are you celebrating New Year?
+2019-12-31 20:22:57 <b_jonas> variable length commands. ok.
+2019-12-31 20:23:51 <bunnyocto> switzerland so CET I guess
+2019-12-31 20:24:59 <b_jonas> bunnyocto: does blsq have mutable cells (things where you can copy the reference to the cell, assign values to it, and retrieve the value)? does it have logic programming style backtracking, and retractable and preserved assignments to cells (whether to the same kind of cell or different kinds doesn't matter)?
+2019-12-31 20:25:10 <b_jonas> I mean, that would make a multiparadigm language
+2019-12-31 20:28:30 <b_jonas> it can also be hard to implement
