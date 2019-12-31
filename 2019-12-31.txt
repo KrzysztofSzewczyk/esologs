@@ -314,3 +314,128 @@
 2019-12-31 15:59:42 <bunnyocto> that's perfectly valid blsq code
 2019-12-31 15:59:55 <wib_jonas> `python3 -cimport numpy; print(numpy.double([1]))
 2019-12-31 15:59:56 <HackEso> ​[1.]
+2019-12-31 16:00:05 Joined: arseniiv
+2019-12-31 16:00:05 Names: \oren\, ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zzo38
+2019-12-31 16:00:27 Quit: wib_jonas (Remote host closed the connection)
+2019-12-31 16:00:28 Names: \oren\, ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 16:01:36 <kspalaiologos> whats up with it
+2019-12-31 16:01:55 <kspalaiologos> `du .
+2019-12-31 16:01:56 <HackEso> 52	./asmbf-1.1.1/doc \ 28	./asmbf-1.1.1/examples \ 12	./asmbf-1.1.1/test \ 8	./asmbf-1.1.1/.github/workflows \ 12	./asmbf-1.1.1/.github \ 84	./asmbf-1.1.1/bin \ 548	./asmbf-1.1.1 \ 1012	./paste \ 1648	.
+2019-12-31 16:01:58 <bunnyocto> !blsq fancy def double: \begin lisp (?* 2) end lisp end def main: \begin lisp (double 8) end lisp end end %main!
+2019-12-31 16:01:59 <blsqbot> | 16
+2019-12-31 16:02:04 <kspalaiologos> `du ..
+2019-12-31 16:02:09 <HackEso> 4040	../lib/p7zip-16.02 \ 10732	../lib \ 24	../interps/dimensifuck \ 60	../interps/adjust \ 72	../interps/egobf/src/.deps \ 40	../interps/egobf/src/c2m/tests \ 16	../interps/egobf/src/c2m/i386 \ 60	../interps/egobf/src/c2m \ 824	../interps/egobf/src \ 48	../interps/egobf/scripts \ 1248	../interps/egobf \ 44	../interps/bf_txtgen \ 12	../interps/whirl \ 252	../interps/clc-intercal/CLC-INTERCAL-Docs-1.-94.-2/doc/html \ 96	../interps/clc-intercal
+2019-12-31 16:02:56 <bunnyocto> http://codepad.org/gDpNNn3P <- also perfectly valid blsq code
+2019-12-31 16:03:39 <kspalaiologos> `fetch asmbf-1.2.6.zip http://github.com/kspalaiologos/asmbf/archive/master.zip
+2019-12-31 16:03:41 <HackEso> Cannot write to ‘/hackenv/tmp/asmbf-1.2.6.zip’ (File too large).
+2019-12-31 16:03:46 <kspalaiologos> issues with https maybe
+2019-12-31 16:04:41 <kspalaiologos> `fetch asmbf-1.2.6.tar.gz https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 16:04:44 <HackEso> Cannot write to ‘/hackenv/tmp/asmbf-1.2.6.tar.gz’ (File too large).
+2019-12-31 16:04:49 <kspalaiologos> out of ideas
+2019-12-31 16:05:03 <kspalaiologos> 40KB -> file too large
+2019-12-31 16:05:05 <kspalaiologos> `? fetch
+2019-12-31 16:05:09 <HackEso> ​`fetch [<output-file>] <URL> downloads files, and is the only web access currently available in HackEgo. It is a special builtin that cannot be called from other commands. See also `edit.
+2019-12-31 16:05:21 <esowiki> 14[[07Tplntivhtpaavwtpi14]]4 N10 02https://esolangs.org/w/index.php?oldid=68502 5* 03Hex96 5* (+212) 10Created page with "This is an esolang by [[User:Hex96|Hex]] which you write <code>1</code> and gets the amount of 1s, converts it to decimal and converts to binary which is the code. The code..."
+2019-12-31 16:05:28 <kspalaiologos> `fetch https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 16:05:30 <HackEso> Cannot write to ‘v1.2.7.tar.gz’ (File too large).
+2019-12-31 16:05:47 <esowiki> 14[[07User:Hex9614]]4 10 02https://esolangs.org/w/index.php?diff=68503&oldid=68479 5* 03Hex96 5* (+24) 10/* List of esolangs */
+2019-12-31 16:06:10 <kspalaiologos> bruh it's like
+2019-12-31 16:06:15 <kspalaiologos> unary -> binary
+2019-12-31 16:06:28 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=68504&oldid=68490 5* 03Hex96 5* (+24) 10/* T */
+2019-12-31 16:06:33 <kspalaiologos> `fetch http://example.com/index.html
+2019-12-31 16:06:34 <HackEso> 2019-12-31 16:06:33 URL:http://example.com/index.html [1256/1256] -> "index.html" [1]
+2019-12-31 16:06:38 <kspalaiologos> ???
+2019-12-31 16:06:41 <kspalaiologos> ` rm index.html
+2019-12-31 16:06:42 <HackEso> ​? Permission denied
+2019-12-31 16:06:43 <bunnyocto> !blsq begin lisp (sv {_+} "cnat") (sv {0!!} "fst") (fst (cnat {1 2} {3 4})) end lisp
+2019-12-31 16:06:44 <blsqbot> | 1
+2019-12-31 16:06:46 <kspalaiologos> wh a t
+2019-12-31 16:06:48 <kspalaiologos> `ls
+2019-12-31 16:06:49 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ banana.txt \ bfi \ compiled_brachylog.pl \ index.html \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz
+2019-12-31 16:06:54 <kspalaiologos> `sudo rm index.html
+2019-12-31 16:06:55 <HackEso> sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileges?
+2019-12-31 16:07:03 <kspalaiologos> `rm index.html
+2019-12-31 16:07:05 <HackEso> No output.
+2019-12-31 16:07:10 <kspalaiologos> `ls
+2019-12-31 16:07:12 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz
+2019-12-31 16:07:12 <bunnyocto> you probably don't want to know about begin asm do you?
+2019-12-31 16:07:21 <kspalaiologos> about what
+2019-12-31 16:07:37 <kspalaiologos> tell me
+2019-12-31 16:07:53 <kspalaiologos> ` fetch https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 16:07:53 <HackEso> ​? Permission denied
+2019-12-31 16:07:57 <kspalaiologos> permission deined?
+2019-12-31 16:07:59 <kspalaiologos> what's that
+2019-12-31 16:08:11 <bunnyocto> blsq 2.0 has an asm mode as well
+2019-12-31 16:08:17 <bunnyocto> in addition to the lisp and fancy modes
+2019-12-31 16:08:21 <kspalaiologos> fine
+2019-12-31 16:08:22 <kspalaiologos> ?
+2019-12-31 16:08:36 <kspalaiologos> any ideas
+2019-12-31 16:08:40 <kspalaiologos> on this bot?
+2019-12-31 16:08:50 Joined: FreeFull
+2019-12-31 16:08:51 Names: \oren\, ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 16:08:55 <kspalaiologos> `fetch /tmp/what.tar.gz https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 16:08:56 <HackEso> In another world: /tmp/what.tar.gz
+2019-12-31 16:09:02 <kspalaiologos> ?
+2019-12-31 16:09:08 Quit: heroux (Ping timeout: 265 seconds)
+2019-12-31 16:09:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 16:09:11 <kspalaiologos> `fetch /hackenv/tmp/what.tar.gz https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 16:09:13 <HackEso> Cannot write to ‘/hackenv/tmp/what.tar.gz’ (File too large).
+2019-12-31 16:09:20 <kspalaiologos> `ls /hackenv
+2019-12-31 16:09:21 <HackEso> asmbf-1.2.6.zip \ bin \ canary \ emoticons \ esobible \ etc \ f \ factor \ hw \ ibin \ interps \ karma \ karma.orig \ karma.rej \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quotes \ share \ src \ stuff \ tmflry \ tmp \ wisdom
+2019-12-31 16:09:25 <kspalaiologos> wait
+2019-12-31 16:09:30 <kspalaiologos> it's actually there
+2019-12-31 16:09:32 <kspalaiologos> `ls
+2019-12-31 16:09:33 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz \ what.tar.gz
+2019-12-31 16:09:35 <kspalaiologos> what XD
+2019-12-31 16:09:46 <kspalaiologos> why does it show this message if it's actually there
+2019-12-31 16:09:53 <esowiki> 14[[07User talk:Hex9614]]4 10 02https://esolangs.org/w/index.php?diff=68505&oldid=68496 5* 03Hex96 5* (+129) 10
+2019-12-31 16:10:05 <kspalaiologos> `rm /hackenv/asmbf-1.2.6.zip
+2019-12-31 16:10:07 <kspalaiologos> `ls
+2019-12-31 16:10:12 <esowiki> 14[[07User talk:Hex9614]]4 10 02https://esolangs.org/w/index.php?diff=68506&oldid=68505 5* 03Hex96 5* (+78) 10/* Other Chat and questions */
+2019-12-31 16:10:20 <kspalaiologos> `ls
+2019-12-31 16:10:21 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz \ what.tar.gz
+2019-12-31 16:10:23 <HackEso> No output.
+2019-12-31 16:10:24 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz \ what.tar.gz
+2019-12-31 16:10:37 <kspalaiologos> `tar -xzf what.tar.gz
+2019-12-31 16:10:38 <HackEso> tar (child):  what.tar.gz: Cannot open: No such file or directory \ tar (child): Error is not recoverable: exiting now \ tar: Child returned status 2 \ tar: Error is not recoverable: exiting now
+2019-12-31 16:10:44 <kspalaiologos> ?
+2019-12-31 16:10:48 <kspalaiologos> so it doesn't really exist
+2019-12-31 16:10:52 <kspalaiologos> but ls is showing it?
+2019-12-31 16:11:06 <kspalaiologos> `tar -xzf v1.2.7.tar.gz
+2019-12-31 16:11:07 <HackEso> tar (child):  v1.2.7.tar.gz: Cannot open: No such file or directory \ tar (child): Error is not recoverable: exiting now \ tar: Child returned status 2 \ tar: Error is not recoverable: exiting now
+2019-12-31 16:11:13 <kspalaiologos> I'm done
+2019-12-31 16:11:30 <kspalaiologos> `tar -xzf /hackenv/tmp/v1.2.7.tar.gz
+2019-12-31 16:11:31 <HackEso> tar (child):  /hackenv/tmp/v1.2.7.tar.gz: Cannot open: No such file or directory \ tar (child): Error is not recoverable: exiting now \ tar: Child returned status 2 \ tar: Error is not recoverable: exiting now
+2019-12-31 16:11:37 <kspalaiologos> `ls /hackenv/tmp
+2019-12-31 16:11:38 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz \ what.tar.gz
+2019-12-31 16:11:50 <kspalaiologos> ls /hackenv/
+2019-12-31 16:11:52 <kspalaiologos> `ls /hackenv/
+2019-12-31 16:11:53 <HackEso> bin \ canary \ emoticons \ esobible \ etc \ f \ factor \ hw \ ibin \ interps \ karma \ karma.orig \ karma.rej \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quotes \ share \ src \ stuff \ tmflry \ tmp \ wisdom
+2019-12-31 16:12:02 <kspalaiologos> no idea what happens
+2019-12-31 16:12:13 <kspalaiologos> CC fizzie
+2019-12-31 16:12:15 <esowiki> 14[[07Talk:Your14]]4 10 02https://esolangs.org/w/index.php?diff=68507&oldid=68154 5* 03Hex96 5* (+142) 10
+2019-12-31 16:14:11 <esowiki> 14[[07Your14]]4 10 02https://esolangs.org/w/index.php?diff=68508&oldid=68454 5* 03Hex96 5* (+128) 10
+2019-12-31 16:17:43 <bunnyocto> !blsq begin asm clr r0 end asm %r0?
+2019-12-31 16:17:44 <blsqbot> | 0
+2019-12-31 16:17:58 <bunnyocto> blsqbot please do quit
+2019-12-31 16:17:58 Quit: blsqbot (Quit: Exiting)
+2019-12-31 16:17:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 16:18:00 <kspalaiologos> wait a second
+2019-12-31 16:18:16 <kspalaiologos> this syntax is very close to my assembler
+2019-12-31 16:19:11 <bunnyocto> so we can all enjoy doing our mov r0, r1; inc r0; mul r2, r3;
+2019-12-31 16:19:19 <bunnyocto> forwhatever reason you'd ever need to do that in blsq but
+2019-12-31 16:19:53 <bunnyocto> I want it to be a language where people look at it and say "What the FUCKING FUCK is this FUCKING shit"
+2019-12-31 16:21:28 <bunnyocto> also I used it at work
+2019-12-31 16:21:31 <bunnyocto> to do SQL stuff
+2019-12-31 16:21:35 <bunnyocto> that's the reason it has MySQL support
+2019-12-31 16:21:47 <bunnyocto> my supervisor was shocked :D
+2019-12-31 16:21:51 <bunnyocto> but
+2019-12-31 16:22:00 <bunnyocto> iiwtiw
+2019-12-31 16:22:01 <kspalaiologos> my registers start from r1
+2019-12-31 16:22:34 <bunnyocto> blsq even has generators
+2019-12-31 16:22:40 <bunnyocto> which is super cool
+2019-12-31 16:23:21 <bunnyocto> 1 1{?i}C~ is a generator that produces 1..infinity
+2019-12-31 16:25:09 <bunnyocto> 0 1{3?+}C~[-1+] is a generator for multiples of 3, to infinity
+2019-12-31 16:27:27 <bunnyocto> I'm seriously going to write an IRC bot in burlesque
+2019-12-31 16:29:28 <bunnyocto> it has the concept of chans and async events and shit
+2019-12-31 16:29:57 <bunnyocto> it's grown up, it's a fully fledged language.
