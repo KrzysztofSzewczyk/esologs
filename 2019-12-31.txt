@@ -861,3 +861,58 @@
 2019-12-31 20:56:10 <b_jonas> with an IORef, you can retreive the same value as many times as you want,
 2019-12-31 20:56:34 <b_jonas> or not retrieve it at all, but assign a new value and the next time you retrieve it you get the new value
 2019-12-31 20:56:39 <b_jonas> but I might not understand what chan you mean
+2019-12-31 21:03:18 <bunnyocto19> !blsq mC6wCrC
+2019-12-31 21:03:18 <blsqbot> | Invalid usage
+2019-12-31 21:03:19 <blsqbot> |   --file <path>           Read code from file (incl. STDIN)
+2019-12-31 21:03:19 <blsqbot> |   --file-no-stdin <path>  Read code from file (excl. STDIN)
+2019-12-31 21:03:22 <bunnyocto19> hm
+2019-12-31 21:03:38 <bunnyocto19> screw u
+2019-12-31 21:03:41 <bunnyocto19> !blsq mC6wCrC
+2019-12-31 21:03:42 <blsqbot> | 6
+2019-12-31 21:03:42 <blsqbot> | __INTERNAL__:BlsqCell _CELL_
+2019-12-31 21:03:47 <bunnyocto19> so
+2019-12-31 21:03:53 <bunnyocto19> what do you want to use cells for?
+2019-12-31 21:04:12 <bunnyocto19> not sure if they're even memory safe
+2019-12-31 21:04:18 <bunnyocto19> blsq chans are memory safe
+2019-12-31 21:04:19 <bunnyocto19> I hope
+2019-12-31 21:05:04 <bunnyocto19> !blsq 1R@++
+2019-12-31 21:05:05 <blsqbot> | Ain't nobody got time fo' dat!
+2019-12-31 21:05:23 <bunnyocto19> !blsq 1 2K K+
+2019-12-31 21:05:23 <blsqbot> | (3, 2)
+2019-12-31 21:06:28 <bunnyocto19> but you mean more like an auto cell I guess
+2019-12-31 21:14:02 <esowiki> 14[[07Naz14]]4 M10 02https://esolangs.org/w/index.php?diff=68509&oldid=68489 5* 03Sporeball 5* (+16) 10/* Overview */
+2019-12-31 21:16:08 <bunnyocto19> blsq cells are iorefs
+2019-12-31 21:16:14 <bunnyocto19> blsq chans are just haskell chans
+2019-12-31 21:16:17 <bunnyocto19> that's what it has to offer
+2019-12-31 21:18:54 <b_jonas> bunnyocto19: if they're IORefs, that's fine
+2019-12-31 21:19:15 <zzo38> Now I wrote the second part (27)
+2019-12-31 21:20:44 <bunnyocto19> you could for example do uhm
+2019-12-31 21:22:05 <bunnyocto19> !blsq mcJbx{5s_1wc}fkrc
+2019-12-31 21:22:05 <blsqbot> | Ain't nobody got time fo' dat!
+2019-12-31 21:22:12 <bunnyocto19> !blsq mcJbx{1s_1wc}fkrc
+2019-12-31 21:22:12 <blsqbot> | Ain't nobody got time fo' dat!
+2019-12-31 21:22:57 <bunnyocto19> hm okay so the timeout here is less than 1 second
+2019-12-31 21:23:10 <bunnyocto19> but 5s_ was supposed to simulate a heavy computation
+2019-12-31 21:23:37 <bunnyocto19> so you can have a heavy computation and have it write the result to a chan while you do some other heavy computation in parallel
+2019-12-31 21:23:41 <bunnyocto19> then at the end you readchan
+2019-12-31 21:23:48 <bunnyocto19> basically
+2019-12-31 21:23:57 <bunnyocto19> what ever you can do in golang you can do in blsq I dare say
+2019-12-31 21:24:12 <bunnyocto19> it's got chans and it's got iorefs
+2019-12-31 21:24:19 <bunnyocto19> and fk is fork
+2019-12-31 21:24:20 <b_jonas> ok
+2019-12-31 21:24:41 <bunnyocto19> and it has pairs since today
+2019-12-31 21:24:47 <bunnyocto19> not sure what I'll be needing them for but
+2019-12-31 21:24:58 <bunnyocto19> !blsq 10 5K K+
+2019-12-31 21:24:58 <blsqbot> | (15, 5)
+2019-12-31 21:25:01 <bunnyocto19> !blsq 10 5K K+Kf
+2019-12-31 21:25:02 <blsqbot> | (5, 15)
+2019-12-31 21:25:04 <bunnyocto19> !blsq 10 5K K+KfKd
+2019-12-31 21:25:05 <blsqbot> | ((5, 15), (5, 15))
+2019-12-31 21:25:36 <bunnyocto19> I'm missing a graph datatype though
+2019-12-31 21:25:46 <bunnyocto19> but haven't figured out a clever burlesque-ish way of doing it
+2019-12-31 21:27:07 <bunnyocto19> I was thinking of adding a wraparound datatype
+2019-12-31 21:27:19 <bunnyocto19> such that you can construct integers that wrap around at arbitrary numbers
+2019-12-31 21:27:28 <bunnyocto19> forexample for degrees of angles
+2019-12-31 21:27:31 <bunnyocto19> 0..360
+2019-12-31 21:27:41 <bunnyocto19> such that when you'd do 360+2 you'd get 2
+2019-12-31 21:28:12 <bunnyocto19> i mean... fairly trivial to implement.
