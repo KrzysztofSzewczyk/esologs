@@ -680,3 +680,37 @@
 2019-12-31 17:59:13 <b_jonas> s/url/filename/
 2019-12-31 17:59:15 <fizzie> No, just the `fetch command samples.
 2019-12-31 17:59:24 <fizzie> So I guess the url problem, right.
+2019-12-31 18:00:18 <fizzie> The encoding problem probably involves a little more understanding than the filename problem.
+2019-12-31 18:00:24 <b_jonas> yeah
+2019-12-31 18:03:43 Quit: sprocklem (Ping timeout: 268 seconds)
+2019-12-31 18:03:43 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 18:13:50 <arseniiv> they say Betelgeuse dimmed to a degree
+2019-12-31 18:14:44 <b_jonas> arseniiv: because of the collapsing Hrung disaster?
+2019-12-31 18:16:51 <arseniiv> b_jonas: dunno :D
+2019-12-31 18:21:59 <b_jonas> prepare the noisemakers and the new year sausage and lentils
+2019-12-31 18:25:56 <kspalaiologos> `fetch /hackenv/bin/asmbf https://hack.esolangs.org/get/bin/asmbf
+2019-12-31 18:25:58 <HackEso> 2019-12-31 18:25:57 URL:https://hack.esolangs.org/get/bin/asmbf [250/250] -> "/hackenv/bin/asmbf" [1]
+2019-12-31 18:27:01 <kspalaiologos> `asmbf "STK 2/ORG 0/TXT "Hello World!"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP"
+2019-12-31 18:27:02 <HackEso> ​/hackenv/bin/asmbf: line 2: /hackenv/lib/kps/bfpp: Permission denied \ /hackenv/bin/asmbf: line 3: /tmp/no-toucha-prgm.p: No such file or directory \ /hackenv/bin/asmbf: line 3: /hackenv/lib/kps/strip.pl: Permission denied
+2019-12-31 18:27:06 <kspalaiologos> bruh
+2019-12-31 18:27:13 <kspalaiologos> I'll set the perms in a second
+2019-12-31 18:27:49 <kspalaiologos> ``` chmod -R +x /hackenv/lib/kps/
+2019-12-31 18:27:52 <HackEso> No output.
+2019-12-31 18:27:54 <kspalaiologos> `asmbf "STK 2/ORG 0/TXT "Hello World!"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP"
+2019-12-31 18:27:56 <HackEso> ​<stdin>:4:1: warning: missing terminating " character \ <stdin>:13:10: warning: missing terminating " character \ /hackenv/lib/kps/bfpp: line 6: /bin/labels.pl: No such file or directory \ /hackenv/bin/asmbf: line 3: /tmp/no-toucha-prgm.p: No such file or directory
+2019-12-31 18:28:03 <kspalaiologos> oh fine
+2019-12-31 18:28:03 <kspalaiologos> ok
+2019-12-31 18:28:13 <kspalaiologos> `asmbf "STK 2/ORG 0/TXT \"Hello World!\"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP"
+2019-12-31 18:28:16 <HackEso> ​<stdin>:4:1: warning: missing terminating " character \ <stdin>:6:6: warning: missing terminating " character \ <stdin>:13:10: warning: missing terminating " character \ /hackenv/lib/kps/bfpp: line 6: /bin/labels.pl: No such file or directory \ /hackenv/bin/asmbf: line 3: /tmp/no-toucha-prgm.p: No such file or directory
+2019-12-31 18:28:39 <kspalaiologos> `asmbf STK 2/ORG 0/TXT "Hello World!"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP
+2019-12-31 18:28:40 <HackEso> ​/hackenv/lib/kps/bfpp: line 6: /bin/labels.pl: No such file or directory \ /hackenv/bin/asmbf: line 3: /tmp/no-toucha-prgm.p: No such file or directory
+2019-12-31 18:28:52 <kspalaiologos> ah
+2019-12-31 18:28:54 <kspalaiologos> the references
+2019-12-31 18:29:19 Joined: ArthurStrong
+2019-12-31 18:29:19 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 18:29:38 <kspalaiologos> `fetch /hackenv/lib/kps/bfpp https://hack.esolangs.org/get/lib/kps/bfpp
+2019-12-31 18:29:39 <HackEso> 2019-12-31 18:29:38 URL:https://hack.esolangs.org/get/lib/kps/bfpp [305/305] -> "/hackenv/lib/kps/bfpp" [1]
+2019-12-31 18:29:41 <kspalaiologos> `asmbf STK 2/ORG 0/TXT "Hello World!"/DB_ 0/@LOOP/RCL R2, R1/JZ_ R2, 0/OUT R2/INC R1/JMP %LOOP
+2019-12-31 18:29:43 <HackEso> ​/hackenv/bin/asmbf: line 3: /tmp/no-toucha-prgm.p: No such file or directory
+2019-12-31 18:29:48 <kspalaiologos> bruh
+2019-12-31 18:30:00 <kspalaiologos> `ls
