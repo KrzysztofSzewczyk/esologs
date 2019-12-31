@@ -543,3 +543,140 @@
 2019-12-31 17:22:03 <int-e> "r", hmm.
 2019-12-31 17:24:15 <fizzie> Well, DinneR, maybe.
 2019-12-31 17:25:57 <int-e> I'm afraid the r comes from "brunch". :)
+2019-12-31 17:31:26 <b_jonas> the "Dr" comes from "drink" because you can order drinks in the restaurant
+2019-12-31 17:32:05 <b_jonas> oh heck, the "drun" comes from "drunk" because you can order so many drinks you end up getting drunk, and the "ch" comes from "cheap" because you can order those drinks cheap
+2019-12-31 17:37:44 <arseniiv> sad :D
+2019-12-31 17:37:56 <fizzie> `fetch asmbf-1.2.6.tar.gz https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 17:37:58 <HackEso> 2019-12-31 17:37:57 URL:https://codeload.github.com/kspalaiologos/asmbf/tar.gz/v1.2.7 [41301] -> "/hackenv/tmp/asmbf-1.2.6.tar.gz" [1]
+2019-12-31 17:38:01 <fizzie> `` ls -l asmbf-1.2.6.tar.gz
+2019-12-31 17:38:09 <HackEso> ​-rw-r--r-- 1 1000 1000 41301 Dec 31 17:37 asmbf-1.2.6.tar.gz
+2019-12-31 17:38:11 <fizzie> That's more like it.
+2019-12-31 17:38:45 <b_jonas> `? alice
+2019-12-31 17:38:47 <HackEso> Alice doesn't want to go among mad people.
+2019-12-31 17:39:56 <arseniiv> `? Bob
+2019-12-31 17:39:57 <HackEso> Bob? ¯\(°​_o)/¯
+2019-12-31 17:40:10 <arseniiv> hopefully Bob isn’t mad
+2019-12-31 17:40:27 <fizzie> `fetch too-big-file http://ftp.funet.fi/pub/linux/kernel/v5.x/linux-5.4.tar.xz
+2019-12-31 17:40:29 <HackEso> Cannot write to ‘/hackenv/tmp/too-big-file’ (File too large).
+2019-12-31 17:40:31 <fizzie> `` ls -l too-big-file
+2019-12-31 17:40:33 <HackEso> ​-rw-r--r-- 1 1000 1000 10485760 Dec 31 17:40 too-big-file
+2019-12-31 17:40:39 <fizzie> `rm too-big-file
+2019-12-31 17:40:39 <HackEso> No output.
+2019-12-31 17:41:01 <b_jonas> kspalaiologos: fizzie fixed fetch
+2019-12-31 17:41:12 <kspalaiologos> great
+2019-12-31 17:41:18 <kspalaiologos> `ls
+2019-12-31 17:41:19 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ what.tar.gz
+2019-12-31 17:41:27 <kspalaiologos> `cd asmbf-1.2.7
+2019-12-31 17:41:28 <HackEso> cd? No such file or directory
+2019-12-31 17:41:33 <kspalaiologos> what is it
+2019-12-31 17:41:33 <kspalaiologos> then
+2019-12-31 17:41:42 <kspalaiologos> ``` rm -rf asmbf-1.1.1 # not needed
+2019-12-31 17:41:43 <HackEso> No output.
+2019-12-31 17:42:00 <kspalaiologos> ``` tar -xzf asmbf-1.2.7
+2019-12-31 17:42:01 <HackEso> tar (child): asmbf-1.2.7: Cannot read: Is a directory \ tar (child): At beginning of tape, quitting now \ tar (child): Error is not recoverable: exiting now \  \ gzip: stdin: unexpected end of file \ tar: Child returned status 2 \ tar: Error is not recoverable: exiting now
+2019-12-31 17:42:09 <kspalaiologos> ``` cd asmbf-1.2.7
+2019-12-31 17:42:11 <HackEso> No output.
+2019-12-31 17:42:13 <kspalaiologos> ``` cd asmbf-1.2.7 && ls
+2019-12-31 17:42:14 <HackEso> AUTHORS \ INSTALL \ LICENSE \ Makefile \ NEWS \ README \ VERSIONING \ bconv.c \ bfasm.asm \ bfasm.b
+2019-12-31 17:42:23 <kspalaiologos> that's more like it
+2019-12-31 17:42:30 <kspalaiologos> ``` cd asmbf-1.2.7 && make
+2019-12-31 17:42:31 <HackEso> make: *** No rule to make target 'bfasm', needed by 'all'.  Stop.
+2019-12-31 17:42:36 <fizzie> That might be an incomplete thing.
+2019-12-31 17:42:49 <fizzie> I only fixed `fetch, I didn't re-uncompress the thing.
+2019-12-31 17:42:49 <kspalaiologos> ``` cd asmbf-1.2.7 && ls bfasm.c
+2019-12-31 17:42:50 <HackEso> ls: cannot access 'bfasm.c': No such file or directory
+2019-12-31 17:42:53 <kspalaiologos> fine
+2019-12-31 17:42:53 <kspalaiologos> ok
+2019-12-31 17:42:54 <kspalaiologos> cd ..
+2019-12-31 17:43:03 <kspalaiologos> ``` rm -rf asmbf-1.2.7
+2019-12-31 17:43:04 <HackEso> No output.
+2019-12-31 17:43:14 <kspalaiologos> ``` tar -xzf asmbf-1.2.6.tar.gz
+2019-12-31 17:43:15 <HackEso> No output.
+2019-12-31 17:43:18 <kspalaiologos> ```ls
+2019-12-31 17:43:19 <HackEso> ​``ls? No such file or directory
+2019-12-31 17:43:20 <kspalaiologos> ``` ls
+2019-12-31 17:43:22 <HackEso> asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ what.tar.gz
+2019-12-31 17:43:30 <kspalaiologos> ``` cd asmbf-1.2.7 && make
+2019-12-31 17:43:35 <int-e> huh.
+2019-12-31 17:43:36 <HackEso> bfintd.c: In function 'main': \ bfintd.c:111:51: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long int' [-Wformat=] \                      printf("Access Violation, ip=%d", ip); \                                                   ~^   ~~ \                                                   %ld \ bfintd.c:166:27: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'long int' [-W
+2019-12-31 17:43:42 <kspalaiologos> this garbage is normal
+2019-12-31 17:43:48 <kspalaiologos> but it built theoretically
+2019-12-31 17:43:59 <kspalaiologos> ``` ls asmbf-1.2.7/bin
+2019-12-31 17:44:00 <HackEso> bconv \ bfasm \ bfi \ bfi-rle \ bfintd \ bfmake \ bfpp \ derle.pl \ labels.pl \ strip.pl
+2019-12-31 17:44:02 <kspalaiologos> yep
+2019-12-31 17:44:41 <kspalaiologos> ``` ls /hackenv/bin
+2019-12-31 17:44:42 <HackEso> ​welcome \ 04w08e09l11c12o13m04e \  \  \  \ echo \ ! \ " \ # \ ' \ ( \ ,1 \ ,2 \ 1 \ 13 \ 1492 \ 2 \ 2014 \ 2015 \ 2016 \ 2017 \ 3 \ 4 \ 5 \ 5quote \ 5w \ 8-ball \ 8ball \ <command> \ ? \ ?? \ ?h \ ?hh \ @ \ CaT \ CoInS \ Eternity \ FireFlist \ No \ ReLcOmE \ WELCOME \ WeLcOmE \ Welcome \ ^.^ \ ` \ `^ \ `` \ `̀ \ aaaaaaaaa \ acronym \ addquote \ addscowrevs \ addtodo \ addwhatis \ age \ aglist \ airport \ airport-lookup \ a
+2019-12-31 17:44:48 <kspalaiologos> ``` ls /hackenv/bin/bfasm
+2019-12-31 17:44:49 <HackEso> ​/hackenv/bin/bfasm
+2019-12-31 17:44:51 <kspalaiologos> it's there
+2019-12-31 17:45:03 <kspalaiologos> can I make another directory for all that my garbage?
+2019-12-31 17:45:07 <b_jonas> kspalaiologos: sure
+2019-12-31 17:45:12 <b_jonas> especially in lib or share
+2019-12-31 17:45:17 <kspalaiologos> ``` mkdir /hackenv/bin/bfasm
+2019-12-31 17:45:19 <HackEso> mkdir: cannot create directory '/hackenv/bin/bfasm': File exists
+2019-12-31 17:45:21 <kspalaiologos> ah yes
+2019-12-31 17:45:23 <kspalaiologos> forgot to remove
+2019-12-31 17:45:28 <kspalaiologos> ``` rm /hackenv/bin/bfasm
+2019-12-31 17:45:31 <HackEso> No output.
+2019-12-31 17:45:32 <kspalaiologos> ``` mkdir /hackenv/bin/bfasm
+2019-12-31 17:45:33 <HackEso> No output.
+2019-12-31 17:45:34 <b_jonas> ``` ls -abF /hackenv/lib
+2019-12-31 17:45:35 <HackEso> ​./ \ ../ \ c++decl* \ cdecl@ \ frink* \ frink.jar \ interp \ karma* \ morse-decode* \ p7zip-16.02/
+2019-12-31 17:45:37 <b_jonas> ``` ls -abF /hackenv/share
+2019-12-31 17:45:39 <HackEso> ​./ \ ../ \ 8ballreplies \ Complaints.mp3 \ UnicodeData.txt \ WordData/ \ airports.dat \ autowelcome_status \ awesome \ ballreplies \ candide* \ cat \ conscripts \ construct_grams.pl* \ delvs-master/ \ dict/ \ dict-words \ esolangs.txt \ esolangs.txt.sorted \ headers \ headers.gch \ hello* \ lua/ \ maimer \ maimery \ maze* \ mtg/ \ nothp \ recipe/ \ scapegoats \ scowrevs \ sedtest \ unic.txt \ units.dat \ usercmds \ whatis \ wisdom@
+2019-12-31 17:45:40 <b_jonas> ``` ls -abF /hackenv/libexec
+2019-12-31 17:45:41 <HackEso> ls: cannot access '/hackenv/libexec': No such file or directory
+2019-12-31 17:45:47 <kspalaiologos> not interested
+2019-12-31 17:46:13 <kspalaiologos> ``` cp -rf /hackenv/tmp/asmbf-1.2.7/bin/* /hackenv/bin/bfasm/*
+2019-12-31 17:46:15 <HackEso> cp: target '/hackenv/bin/bfasm/*' is not a directory
+2019-12-31 17:46:20 <fizzie> A directory as /hackenv/bin/bfasm will prevent you from having a command `bfasm though.
+2019-12-31 17:46:30 <kspalaiologos> hm
+2019-12-31 17:46:35 <kspalaiologos> ok
+2019-12-31 17:46:49 <b_jonas> I recommend creating it under /hackenv/lib instead
+2019-12-31 17:46:52 <kspalaiologos> ``` rm -rf /hackenv/bin/bfasm
+2019-12-31 17:46:53 <HackEso> No output.
+2019-12-31 17:47:06 <kspalaiologos> ``` mkdir -f /hackenv/lib/kps/
+2019-12-31 17:47:07 <HackEso> mkdir: invalid option -- 'f' \ Try 'mkdir --help' for more information.
+2019-12-31 17:47:11 <kspalaiologos> ``` mkdir /hackenv/lib/kps/
+2019-12-31 17:47:12 <HackEso> No output.
+2019-12-31 17:47:23 <kspalaiologos> ``` cp -rf /hackenv/tmp/asmbf-1.2.7/bin/* /hackenv/lib/kps/*
+2019-12-31 17:47:24 <HackEso> cp: target '/hackenv/lib/kps/*' is not a directory
+2019-12-31 17:47:27 <kspalaiologos> ``` cp -rf /hackenv/tmp/asmbf-1.2.7/bin/* /hackenv/lib/kps/
+2019-12-31 17:47:30 <HackEso> No output.
+2019-12-31 17:47:38 <kspalaiologos> ls /hackenv/lib/kps
+2019-12-31 17:47:44 <kspalaiologos> ?
+2019-12-31 17:47:48 <fizzie> No `.
+2019-12-31 17:47:53 <fizzie> Or ``, or ```.
+2019-12-31 17:47:56 <kspalaiologos> gosh, what a derp
+2019-12-31 17:48:05 <kspalaiologos> ``` cls /hackenv/lib/kps
+2019-12-31 17:48:10 <kspalaiologos> ``` ls /hackenv/lib/kps
+2019-12-31 17:48:10 <HackEso> bash: cls: command not found
+2019-12-31 17:48:14 <HackEso> bconv \ bfasm \ bfi \ bfi-rle \ bfintd \ bfmake \ bfpp \ derle.pl \ labels.pl \ strip.pl
+2019-12-31 17:48:18 <kspalaiologos> so now theoreticallty
+2019-12-31 17:48:30 <kspalaiologos> ``` kps/bfasm <<<"out .0"
+2019-12-31 17:48:31 <HackEso> bash: kps/bfasm: No such file or directory
+2019-12-31 17:48:39 <kspalaiologos> ``` kps\bfasm <<<"out .0"
+2019-12-31 17:48:39 <HackEso> bash: kpsbfasm: command not found
+2019-12-31 17:49:00 <kspalaiologos> seems like the path doesn't work like I expected it to
+2019-12-31 17:49:09 <kspalaiologos> not a problem though
+2019-12-31 17:49:15 <fizzie> It's not really all that feasible to have foo/bar commands, because of the way path lookups work.
+2019-12-31 17:49:27 <kspalaiologos> ``` cat /hackenv/bin/asmbf
+2019-12-31 17:49:28 <HackEso> print_args_or_input "$@" |tr / \\n | labels.pl | bfasm
+2019-12-31 17:49:30 <kspalaiologos> the script is here
+2019-12-31 17:49:37 <kspalaiologos> just modify it
+2019-12-31 17:49:40 <kspalaiologos> what was the command
+2019-12-31 17:49:41 <kspalaiologos> `help
+2019-12-31 17:49:41 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $HACKENV are persistent, and $HACKENV/bin is in $PATH. $HACKENV is a mercurial repository, "`revert <rev>" can be used to revert, https://hack.esolangs.org/repo/ to browse. $PWD ($HACKENV/tmp) is persistent but unversioned, /tmp is ephemeral.
+2019-12-31 17:49:59 <kspalaiologos> `edit
+2019-12-31 17:50:01 <HackEso> https://hack.esolangs.org/edit/
+2019-12-31 17:50:08 <kspalaiologos> `edit /hackenv/bin/asmbf
+2019-12-31 17:50:15 <HackEso> https://hack.esolangs.org/edit/bin/asmbf
+2019-12-31 17:50:17 <fizzie> Just FYI, I don't think I've fixed the `fetch commands output by `edit.
+2019-12-31 17:50:58 <b_jonas> ok
+2019-12-31 17:54:19 <b_jonas> kspalaiologos: you can put symlinks or wrappers in bin, even if the bulk of the stuff is installed under libexec or elsewhere
+2019-12-31 17:54:26 <b_jonas> (yes, I know we don't yet have a libexec)
+2019-12-31 17:58:47 <fizzie> Okay, fixed `edit, at least provisionally.
+2019-12-31 17:59:06 <b_jonas> fizzie: the encoding problem or the url problem of `edit ?
+2019-12-31 17:59:13 <b_jonas> s/url/filename/
+2019-12-31 17:59:15 <fizzie> No, just the `fetch command samples.
+2019-12-31 17:59:24 <fizzie> So I guess the url problem, right.
