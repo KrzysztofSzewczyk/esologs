@@ -459,3 +459,87 @@
 2019-12-31 16:59:36 User Name: b_jonas = b_jonas!~x@catv-176-63-13-254.catv.broadband.hu
 2019-12-31 16:59:36 <b_jonas> arseniiv_: as our channel somehow doesn't seem to have australian regulars, you're probably in the easternmost known timezone, so I'll have to ask you to open the #esoteric new year celebrations at your new year
 2019-12-31 16:59:54 Nick Change: arseniiv -> arseniiv
+2019-12-31 17:00:28 <imode-ruby> that's presuming he's not on fire.
+2019-12-31 17:00:37 User Name: arseniiv = arseniiv!~arseniiv@94.41.41.57.dynamic.ufanet.ru
+2019-12-31 17:00:37 <arseniiv> b_jonas: thanks :) This will be two houes later
+2019-12-31 17:00:42 <arseniiv> hours*
+2019-12-31 17:01:08 <b_jonas> arseniiv: sure, I just want to warn you early
+2019-12-31 17:01:27 <b_jonas> imode-ruby: who? the nonexistant australian?
+2019-12-31 17:03:46 <arseniiv> imode-ruby: actually I’m quite wet, I can’t do anything with wet hands issue every time after I washed them too much in something like a shampoo e. g. being in a bath
+2019-12-31 17:04:51 <arseniiv> and this is very inconvenient and it lasts hours
+2019-12-31 17:06:17 <b_jonas> bunnyocto: people use Dyalog APL and Arthur Whitney's K APL-like, together with databases, for work in finance. and tswett just said that he wants to start working in finance, maybe you can talk to them and tell them why that's a bad idea.
+2019-12-31 17:09:53 <fizzie> kspalaiologos: Re your question about tar, when you use ` you're passing just one command-line argument, so your filenames have an extra space in them.
+2019-12-31 17:10:16 <kspalaiologos> man
+2019-12-31 17:10:17 <fizzie> You can see that in the error message: "tar (child):  what.tar.gz: Cannot open" -- see the double space there?
+2019-12-31 17:10:30 <kspalaiologos> fine
+2019-12-31 17:10:32 <kspalaiologos> I see
+2019-12-31 17:10:39 <kspalaiologos> ``` tar -xzf /hackenv/tmp/v1.2.7.tar.gz
+2019-12-31 17:10:42 <HackEso> ​ \ gzip: stdin: unexpected end of file \ tar: Unexpected EOF in archive \ tar: Unexpected EOF in archive \ tar: Error is not recoverable: exiting now
+2019-12-31 17:10:45 <kspalaiologos> what about
+2019-12-31 17:10:50 <kspalaiologos> fetch getting crazy?
+2019-12-31 17:10:52 <kspalaiologos> `ls
+2019-12-31 17:10:53 <HackEso> asmbf-1.1.1 \ asmbf-1.2.6 \ asmbf-1.2.6.tar.gz \ asmbf-1.2.6.zip \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ v1.2.7.tar.gz \ what.tar.gz
+2019-12-31 17:10:59 <kspalaiologos> `rm asmbf-1.2.6
+2019-12-31 17:11:00 <HackEso> No output.
+2019-12-31 17:11:01 <kspalaiologos> `rm asmbf-1.2.6.tar.gz
+2019-12-31 17:11:02 <HackEso> No output.
+2019-12-31 17:11:04 <kspalaiologos> `rm asmbf-1.2.6.zip
+2019-12-31 17:11:05 <HackEso> No output.
+2019-12-31 17:11:12 <kspalaiologos> `rm v1.2.7.tar.gz
+2019-12-31 17:11:13 <HackEso> No output.
+2019-12-31 17:11:14 <kspalaiologos> `ls ..
+2019-12-31 17:11:16 <HackEso> bin \ canary \ emoticons \ esobible \ etc \ f \ factor \ hw \ ibin \ interps \ karma \ karma.orig \ karma.rej \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quotes \ share \ src \ stuff \ tmflry \ tmp \ wisdom
+2019-12-31 17:11:34 <fizzie> There's a 10-megabyte size limit as well, just in general for everything running on it. Is this file larger than that?
+2019-12-31 17:11:55 Quit: imode (Ping timeout: 268 seconds)
+2019-12-31 17:11:56 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2019-12-31 17:12:38 <fizzie> (Apparently not. Hmm, weird.)
+2019-12-31 17:13:55 <b_jonas> fizzie: could it be a confusion about tmp and writing the version-controlled parts?
+2019-12-31 17:14:31 <b_jonas> kspalaiologos: you don't need the -z option for tar extraction these days by the way, unless you're reading a non-seekable archive
+2019-12-31 17:14:38 <fizzie> That should be fine.
+2019-12-31 17:15:08 <fizzie> I don't know if wget might be doing something odd for the case where the webserver doesn't specify a Content-Length. Sounds unlikely though.
+2019-12-31 17:15:36 <kspalaiologos> b_jonas, that's how one of my older friends teached me
+2019-12-31 17:15:38 <b_jonas> ``` zcat /hackenv/tmp/v1.2.7.tar.gz | wc -c
+2019-12-31 17:15:39 <fizzie> (GitHub's archive download doesn't specify one, maybe because they might end up making it on the fly.)
+2019-12-31 17:15:40 <HackEso> gzip: /hackenv/tmp/v1.2.7.tar.gz: No such file or directory \ 0
+2019-12-31 17:15:41 <kspalaiologos> by a very simple mnemonic
+2019-12-31 17:15:58 <kspalaiologos> xzf = eXtract Ze Giles
+2019-12-31 17:16:00 <b_jonas> oh, you deleted it
+2019-12-31 17:16:06 <fizzie> Let's try downloading that one more time.
+2019-12-31 17:16:07 <fizzie> `fetch asmbf-1.2.6.tar.gz https://github.com/kspalaiologos/asmbf/archive/v1.2.7.tar.gz
+2019-12-31 17:16:12 <HackEso> Cannot write to ‘/hackenv/tmp/asmbf-1.2.6.tar.gz’ (File too large).
+2019-12-31 17:16:16 <fizzie> `` ls -l asmbf-1.2.6.tar.gz
+2019-12-31 17:16:17 <HackEso> ​-rw-r--r-- 1 1000 1000 10240 Dec 31 17:16 asmbf-1.2.6.tar.gz
+2019-12-31 17:16:25 <fizzie> Hmmmm.
+2019-12-31 17:16:27 <b_jonas> file too large... ok
+2019-12-31 17:16:43 <fizzie> I think I maybe accidentally made the 10240 kilobytes 10240 bytes instead.
+2019-12-31 17:17:24 <fizzie> I did tweak the way those resource limits are set, maybe the units are different for setrlimit(2) vs. bash ulimit command.
+2019-12-31 17:17:30 <fizzie> I'll fix that in a bit, lunchtime now.
+2019-12-31 17:17:45 <fizzie> Well, or is it dinner? Some kind of food anyway.
+2019-12-31 17:17:55 <b_jonas> anyway, after that we may have some regulars in Finland, which is the +2 timezone, then a lot of regulars in Germany and Norway and me in the +1 timezone, then a lot of regulars in England plus HackEso and possibly someone in Iceland in the +0 timezone, and then of course the east coast Americans in the -5 timezone
+2019-12-31 17:18:08 <b_jonas> hmm
+2019-12-31 17:18:10 <int-e> dunch?
+2019-12-31 17:18:37 <int-e> There's "brunch", there should be something for this as well. Though I suppose you just call it a late lunch.
+2019-12-31 17:18:47 <b_jonas> ``` perl -e 'print "a"x10241' > /hackenv/tmp/kVfyUkJd
+2019-12-31 17:18:48 <HackEso> No output.
+2019-12-31 17:18:58 <b_jonas> ``` perl -e 'print "a"x10241 or die "write $!"' > /hackenv/tmp/kVfyUkJd
+2019-12-31 17:18:59 <HackEso> No output.
+2019-12-31 17:19:03 <b_jonas> ``` perl -e 'print "a"x102400 or die "write $!"' > /hackenv/tmp/kVfyUkJd
+2019-12-31 17:19:05 <HackEso> No output.
+2019-12-31 17:19:38 <b_jonas> ``` set -e; s=/hackenv/tmp/kVfyUkJd; perl -e 'print "a"x1026000 or die "write $!"' >$s; ls -l "$s"
+2019-12-31 17:19:39 <HackEso> ​-rw-r--r-- 1 1000 1000 1026000 Dec 31 17:19 /hackenv/tmp/kVfyUkJd
+2019-12-31 17:19:52 <b_jonas> ``` set -e; s=/hackenv/tmp/kVfyUkJd; perl -e 'print "a"x1_200_000 or die "write $!"' >$s; ls -l "$s"
+2019-12-31 17:19:54 <HackEso> ​-rw-r--r-- 1 1000 1000 1200000 Dec 31 17:19 /hackenv/tmp/kVfyUkJd
+2019-12-31 17:20:01 <b_jonas> ``` set -e; s=/hackenv/tmp/kVfyUkJd; perl -e 'print "a"x12_000_000 or die "write $!"' >$s; ls -l "$s"
+2019-12-31 17:20:06 <fizzie> There's a restaurant called "Drunch" (a pizza/kebab kind of place) back in Helsinki.
+2019-12-31 17:20:14 <HackEso> bash: line 1:    54 File size limit exceededperl -e 'print "a"x12_000_000 or die "write $!"' > $s
+2019-12-31 17:20:20 <fizzie> b_jonas: `fetch is different though.
+2019-12-31 17:20:33 <fizzie> So looks like I've got the limits right in the sandbox, but not for fetch.
+2019-12-31 17:20:40 <b_jonas> ``` set -e; s=/hackenv/tmp/kVfyUkJd; ls -l "$s"
+2019-12-31 17:20:41 <HackEso> ​-rw-r--r-- 1 1000 1000 10485760 Dec 31 17:20 /hackenv/tmp/kVfyUkJd
+2019-12-31 17:20:43 <b_jonas> ``` set -e; s=/hackenv/tmp/kVfyUkJd; rm -v "$s"
+2019-12-31 17:20:44 <HackEso> removed '/hackenv/tmp/kVfyUkJd'
+2019-12-31 17:20:50 <b_jonas> fizzie: I see
+2019-12-31 17:20:55 <fizzie> Apparently there's many restaurants called Drunch.
+2019-12-31 17:22:03 <int-e> "r", hmm.
+2019-12-31 17:24:15 <fizzie> Well, DinneR, maybe.
+2019-12-31 17:25:57 <int-e> I'm afraid the r comes from "brunch". :)
