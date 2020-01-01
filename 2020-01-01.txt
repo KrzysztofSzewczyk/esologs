@@ -622,3 +622,108 @@
 2020-01-01 12:24:40 <b_jonas> I mean, now it's actually the encores
 2020-01-01 12:26:28 <b_jonas> now for the waltz
 2020-01-01 12:27:49 <b_jonas> Happy New Year, they say
+2020-01-01 12:30:39 <mroman> oh
+2020-01-01 12:34:25 <mroman> int-e: I guess it's not longer needed anyway. TIO has Burlesque too
+2020-01-01 12:34:44 <mroman> so if you don't want to maintain the shell I can just link to TIO
+2020-01-01 12:37:08 <b_jonas> mroman: in blsq, what is the function that takes a block and an integer index and gets the element from the block at that index?
+2020-01-01 12:37:24 <mroman> !!
+2020-01-01 12:37:24 <b_jonas> I have difficulty reading the docs again
+2020-01-01 12:37:33 <b_jonas> thanks
+2020-01-01 12:37:51 Joined: blsqbot
+2020-01-01 12:37:51 Names: \oren\, ^[, aji, aloril, APic, b_jonas, blsqbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-01 12:38:04 <mroman> !blsq "hi there"4!!
+2020-01-01 12:38:05 User Name: blsqbot = blsqbot!~blsqbot@178.197.225.48
+2020-01-01 12:38:05 <blsqbot> | 'h
+2020-01-01 12:38:23 <b_jonas> !blsq {"2HBT" "wgJ5" "aB0S" "5v1v"}0!!
+2020-01-01 12:38:23 <blsqbot> | "2HBT"
+2020-01-01 12:38:25 <b_jonas> !blsq {"2HBT" "wgJ5" "aB0S" "5v1v"}1!!
+2020-01-01 12:38:26 <blsqbot> | "wgJ5"
+2020-01-01 12:38:30 <b_jonas> !blsq {"2HBT" "wgJ5" "aB0S" "5v1v"}0!!
+2020-01-01 12:38:31 <blsqbot> | "2HBT"
+2020-01-01 12:38:33 <b_jonas> that works
+2020-01-01 12:38:52 <b_jonas> and now for the grand finale, the best part
+2020-01-01 12:39:22 <blsqbot> | "5v1v"
+2020-01-01 12:39:52 <int-e> mroman: I don't really care either way.
+2020-01-01 12:39:53 <blsqbot> | wait, blsqbot answers on the channel even if I send the command in a private message?
+2020-01-01 12:41:35 <b_jonas> mroman: perhaps you want to change that so that it's easier to experiment with the bot without spamming the channel
+2020-01-01 12:41:52 <blsqbot> | That line gave me an error
+2020-01-01 12:42:15 <blsqbot> | That line gave me an error
+2020-01-01 12:42:26 <esowiki> 14[[07Asm2bf14]]4 10 02https://esolangs.org/w/index.php?diff=68592&oldid=68475 5* 03Palaiologos 5* (+1061) 10bitop
+2020-01-01 12:42:42 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-01-01 12:42:42 <kspalaiologos> I've implemented bitops shim in asm2bf
+2020-01-01 12:42:49 <kspalaiologos> it's terrible but I kinda like it anyways
+2020-01-01 12:43:09 <b_jonas> is there also a function that indexes the array backwards?
+2020-01-01 12:43:30 <esowiki> 14[[07Asm2bf14]]4 M10 02https://esolangs.org/w/index.php?diff=68593&oldid=68592 5* 03Palaiologos 5* (+10) 10hotfix, lol
+2020-01-01 12:43:39 <mroman> hm.
+2020-01-01 12:43:44 <mroman> backwards you say
+2020-01-01 12:44:06 <mroman> you mean like negative indices?
+2020-01-01 12:44:12 <mroman> -1 being the last element?
+2020-01-01 12:44:15 <mroman> -2 the second last?
+2020-01-01 12:44:30 <b_jonas> no, more like (\l i -> l !! (length l - 1 - i))
+2020-01-01 12:44:43 <b_jonas> so 0 is the index for the last element, 1 for the last but one
+2020-01-01 12:44:48 <b_jonas> as if you indexed the reverse of the list
+2020-01-01 12:44:49 <mroman> I mean you can always just reverse it
+2020-01-01 12:45:03 <mroman> but I don't think there's a builtin for that no
+2020-01-01 12:45:07 <b_jonas> ok
+2020-01-01 12:45:21 <b_jonas> !blsq "\""Q
+2020-01-01 12:45:21 <blsqbot> | ERROR: (line 1, column 6):
+2020-01-01 12:45:22 <blsqbot> | unexpected end of input
+2020-01-01 12:45:22 <blsqbot> | expecting "\""
+2020-01-01 12:45:25 <b_jonas> !blsq """"Q
+2020-01-01 12:45:26 <blsqbot> |
+2020-01-01 12:45:26 <blsqbot> | ""
+2020-01-01 12:45:39 <b_jonas> !blsq `""`Q
+2020-01-01 12:45:40 <blsqbot> | ERROR: (line 1, column 6):
+2020-01-01 12:45:40 <blsqbot> | unexpected end of input
+2020-01-01 12:45:40 <blsqbot> | expecting "\""
+2020-01-01 12:45:48 <mroman> !blsq "\'"Q
+2020-01-01 12:45:48 <blsqbot> | "
+2020-01-01 12:46:01 <mroman> " is \'
+2020-01-01 12:46:38 <b_jonas> ah
+2020-01-01 12:46:45 <b_jonas> !blsq "\'"Q
+2020-01-01 12:46:45 <blsqbot> | "
+2020-01-01 12:47:24 <b_jonas> !blsq "A\\B\'C'D"
+2020-01-01 12:47:24 <blsqbot> | "A\\B\"C'D"
+2020-01-01 12:47:27 <b_jonas> !blsq "A\\B\'C'D"Q
+2020-01-01 12:47:28 <blsqbot> | A\B"C'D
+2020-01-01 12:47:38 <mroman> no need to escape \
+2020-01-01 12:47:43 <mroman> I think
+2020-01-01 12:47:50 <mroman> !blsq "a\b\c\n"Q
+2020-01-01 12:47:51 <blsqbot> | a\b\c
+2020-01-01 12:47:51 <blsqbot> |
+2020-01-01 12:47:53 <b_jonas> !blsq "A\B\'C'D"Q
+2020-01-01 12:47:54 <blsqbot> | A\B"C'D
+2020-01-01 12:47:55 <b_jonas> ok
+2020-01-01 12:48:00 <b_jonas> !blsq "\"Q
+2020-01-01 12:48:01 <blsqbot> | \
+2020-01-01 12:48:22 <b_jonas> !blsq {"A""B"}0!!
+2020-01-01 12:48:23 <blsqbot> | "A"
+2020-01-01 12:48:24 <b_jonas> !blsq {"A""B"}1!!
+2020-01-01 12:48:25 <blsqbot> | "B"
+2020-01-01 12:48:32 <b_jonas> !blsq {"A""BC"}1!!
+2020-01-01 12:48:32 <blsqbot> | "BC"
+2020-01-01 12:48:37 <b_jonas> ok, so I don't need spaces
+2020-01-01 12:48:41 <mroman> no
+2020-01-01 12:48:57 <b_jonas> !blsq "\\'"Q
+2020-01-01 12:48:58 <blsqbot> | \'
+2020-01-01 12:49:01 <mroman> (You need to escape \ when it's ambigous)
+2020-01-01 12:49:22 <b_jonas> !blsq2
+2020-01-01 12:49:26 <b_jonas> !blsq 3
+2020-01-01 12:49:27 <blsqbot> | 3
+2020-01-01 12:50:50 <mroman> and a char has no closing '
+2020-01-01 12:50:59 <b_jonas> !blsq {"\'""\""'""!blsq {""}{3 0 ... 4}si"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si
+2020-01-01 12:51:00 <blsqbot> | {"!blsq {" "\"" "\\" "'" "\"" "\"" "\\" "\"" "\"" "'" "\"" "\"" "!blsq {" "\"" "\"" "}{3 0 ... 4}si" "\"" "}{3 0 ... 4}si"}
+2020-01-01 12:51:15 <b_jonas> !blsq {"\'""\""'""!blsq {""}{3 0 ... 4}siQ"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}siQ
+2020-01-01 12:51:16 <blsqbot> | ["!blsq {", "\"", "\\", "'", "\"", "\"", "\\", "\"", "\"", "'", "\"", "\"", "!blsq {", "\"", "\"", "}{3 0 ... 4}siQ", "\"", "}{3 0 ... 4}siQ"]
+2020-01-01 12:51:25 <b_jonas> no wait, I need a concat there
+2020-01-01 12:51:55 <b_jonas> !blsq {"\'""\""'""!blsq {""}{3 0 ... 4}si\[Q"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q
+2020-01-01 12:51:56 <blsqbot> | !blsq {"\'""\""'""!blsq {""}{3 0 ... 4}si\[Q"}{3 0 ... 4}si\[Q
+2020-01-01 12:51:59 <b_jonas> better
+2020-01-01 12:52:32 <b_jonas> !blsq {"\'""\""'""!blsq {""}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q
+2020-01-01 12:52:33 <blsqbot> | !blsq {"\'""\""'""!blsq {""}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q
+2020-01-01 12:53:13 <b_jonas> !blsq {"\'""\""'""!blsq {""}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q
+2020-01-01 12:53:14 <blsqbot> | !blsq {"\'""\""'""!blsq {""}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q"}{3 0 1 2 0 0 1 0 0 2 0 0 3 0 0 4 0 4}si\[Q
+2020-01-01 12:54:17 <mroman> looks like a quine
+2020-01-01 12:56:02 <b_jonas> yeah. it's a type of quine that I like to write because it's easy to write in most languages
+2020-01-01 12:57:11 <b_jonas> !blsq "2 2.+"pe
+2020-01-01 12:57:12 <blsqbot> | 4
