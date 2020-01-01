@@ -1139,3 +1139,18 @@
 2020-01-01 15:58:24 <mroman> b_jonas: you can actually use call to call functions
 2020-01-01 15:58:32 <mroman> !blsq %f={?i} 5 call f
 2020-01-01 15:58:32 <blsqbot> | 6
+2020-01-01 16:06:29 <mroman> !blsq (%=5)
+2020-01-01 16:06:29 <blsqbot> | __INTERNAL__:BlsqAssign "" (BlsqInt 5) False False
+2020-01-01 16:07:04 <mroman> using () is a good way to inspect what's going on behind the scenes
+2020-01-01 16:07:09 <mroman> !blsq (%f^)
+2020-01-01 16:07:10 <blsqbot> | __INTERNAL__:BlsqCall "f" True
+2020-01-01 16:07:11 <mroman> vs
+2020-01-01 16:07:16 <mroman> !blsq (%f?)
+2020-01-01 16:07:17 <blsqbot> | __INTERNAL__:BlsqGet "f"
+2020-01-01 16:07:19 <mroman> vs.
+2020-01-01 16:07:24 <mroman> !blsq (%f!)
+2020-01-01 16:07:24 <blsqbot> | __INTERNAL__:BlsqCall "f" False
+2020-01-01 16:10:51 <mroman> the boolean for call determines whether a new scope should be created
+2020-01-01 16:12:20 <mroman> and command of the year since 7 years is ^/ (DupSwap)
+2020-01-01 16:12:54 Quit: mroman (Quit: gotta go.)
+2020-01-01 16:12:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
