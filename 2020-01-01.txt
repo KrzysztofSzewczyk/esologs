@@ -1060,3 +1060,82 @@
 2020-01-01 15:29:52 <b_jonas> !blsq "hello"XX 9 2.+bx1sa
 2020-01-01 15:29:53 <blsqbot> | {'h {11} 'l 'l 'o}
 2020-01-01 15:29:56 <b_jonas> ok, that works
+2020-01-01 15:30:54 <mroman> there's also d! and D! for nested blocks
+2020-01-01 15:31:24 <mroman> !blsq {"abc""def"}{1 0}d!
+2020-01-01 15:31:25 <blsqbot> | 'd
+2020-01-01 15:31:44 <mroman> !blsq {{'a'b'c}{'d'e'f}}{1 0}d!
+2020-01-01 15:31:45 <blsqbot> | 'd
+2020-01-01 15:31:49 <mroman> bla
+2020-01-01 15:32:11 <b_jonas> what other methods are there that you can do on named variables, besides "v"vs %v= %v? %v!
+2020-01-01 15:32:23 <b_jonas> I mean "v"sv %v= %v? %v!
+2020-01-01 15:32:46 <b_jonas> are there other suffixes for %v
+2020-01-01 15:33:22 <b_jonas> !blsq 41 10 'asv 'bsv 'agv 'agv
+2020-01-01 15:33:22 <blsqbot> | 10
+2020-01-01 15:33:23 <blsqbot> | 10
+2020-01-01 15:33:36 <b_jonas> oh, that can work
+2020-01-01 15:33:38 <mroman> uhm... that depends on what mode
+2020-01-01 15:33:46 <mroman> in fancy mode there's also "set X to Y"
+2020-01-01 15:33:52 <mroman> stuff like that
+2020-01-01 15:33:57 <mroman> there's also scoping rules btw
+2020-01-01 15:34:30 <b_jonas> sv and gv don't seem to be in the reference or the moon
+2020-01-01 15:34:57 <mroman> yeah
+2020-01-01 15:35:00 <mroman> the reference is OLD
+2020-01-01 15:35:11 <mroman> and the moonpage i started from scratch but I haven't come too far yet
+2020-01-01 15:35:29 <mroman> there are also many more map shortcuts and stuff
+2020-01-01 15:35:31 <mroman> and things like
+2020-01-01 15:35:39 <b_jonas> is there one that appends to a variable (when that variable contains a block)?
+2020-01-01 15:35:48 <mroman> !blsq {1 2 3}m{3?*}
+2020-01-01 15:35:48 <blsqbot> | {3 6 9}
+2020-01-01 15:36:01 <mroman> no
+2020-01-01 15:36:04 <b_jonas> scoping rules?
+2020-01-01 15:36:06 <mroman> nothing directly works on variables
+2020-01-01 15:36:10 <mroman> you'll have to get and set
+2020-01-01 15:36:15 <mroman> blsq has scopes yes.
+2020-01-01 15:36:26 <mroman> blsq has function scopes to be specific
+2020-01-01 15:37:55 <b_jonas> why am I trying to figure all this out again?
+2020-01-01 15:38:00 <b_jonas> I don't know
+2020-01-01 15:38:06 <mroman> !blsq %____FILE?
+2020-01-01 15:38:06 <blsqbot> | "/dev/irc"
+2020-01-01 15:38:15 <mroman> !blsq nmPp%___FILE?
+2020-01-01 15:38:15 <blsqbot> | _|_
+2020-01-01 15:38:36 <mroman> !blsq nmPp%___FILE?P_%__FILE?
+2020-01-01 15:38:37 <blsqbot> | _|_
+2020-01-01 15:38:37 <blsqbot> | _|_
+2020-01-01 15:38:41 <mroman> !blsq nmPp%___FILE?P_%___FILE?
+2020-01-01 15:38:42 <blsqbot> | _|_
+2020-01-01 15:38:42 <blsqbot> | _|_
+2020-01-01 15:38:45 <mroman> hm.
+2020-01-01 15:40:15 <mroman> !blsq 9s0nmPp8s0g0P_g0
+2020-01-01 15:40:15 <blsqbot> | 9
+2020-01-01 15:40:15 <blsqbot> | 8
+2020-01-01 15:40:45 <mroman> in one scope 0 is bound to 9 and in the other it is bound to 8
+2020-01-01 15:41:07 <mroman> i.e. when you call an actual function you enter a new scope
+2020-01-01 15:45:19 <mroman> !blsq fancy def hi: \set X to {9} bar() \get X end def bar: \set X to {10} \get X end end %hi!
+2020-01-01 15:45:19 <blsqbot> | 9
+2020-01-01 15:45:20 <blsqbot> | 10
+2020-01-01 15:45:22 <mroman> there you go
+2020-01-01 15:45:41 <mroman> in the scope of bar X is 10 in the scope of hi it's 9
+2020-01-01 15:46:03 Joined: FreeFull
+2020-01-01 15:46:04 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-01 15:46:12 <mroman> unless you cheat
+2020-01-01 15:52:50 <mroman> !blsq fancy def hi: \set X to {9} bar() \get X end def bar: \P_ \set X to {10} \nm \Pp end end %hi!
+2020-01-01 15:52:51 <blsqbot> | 10
+2020-01-01 15:53:02 <mroman> like that. Now you've altered X in the scope of bar to 10
+2020-01-01 15:53:30 <mroman> it's not recommended to alter to callee's scope but you can
+2020-01-01 15:53:48 <mroman> huge code smell
+2020-01-01 15:53:51 <mroman> if this were serious programming
+2020-01-01 15:54:04 <mroman> but this is interesting
+2020-01-01 15:54:08 <mroman> !blsq set 0 to 5
+2020-01-01 15:54:09 <blsqbot> | 5
+2020-01-01 15:54:09 <blsqbot> | "Int"
+2020-01-01 15:54:09 <blsqbot> | ERROR: Unknown command: (t )!
+2020-01-01 15:54:17 <mroman> !blsq set 0 to {5}
+2020-01-01 15:54:18 <blsqbot> | Ain't nobody got output fo' that!
+2020-01-01 15:54:24 <mroman> !blsq set 0 to {5} g0
+2020-01-01 15:54:25 <blsqbot> | 5
+2020-01-01 15:54:36 <mroman> hm.
+2020-01-01 15:54:53 <mroman> fuck blsq grammar
+2020-01-01 15:54:55 <mroman> insane
+2020-01-01 15:58:24 <mroman> b_jonas: you can actually use call to call functions
+2020-01-01 15:58:32 <mroman> !blsq %f={?i} 5 call f
+2020-01-01 15:58:32 <blsqbot> | 6
