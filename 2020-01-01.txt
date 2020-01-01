@@ -758,3 +758,34 @@
 2020-01-01 13:43:07 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
 2020-01-01 13:48:19 Joined: kritixilithos
 2020-01-01 13:48:19 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, blsqbot, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-01 14:16:41 <fizzie> b_jonas: Thanks. fungot's manual ignore list doesn't persist automatically and I forgot to set it after restarting it the other day.
+2020-01-01 14:16:42 <fungot> fizzie: actually i have seen in a few other things probably
+2020-01-01 14:19:37 <b_jonas> !blsq "3141592")pe
+2020-01-01 14:19:38 <blsqbot> | {ERROR: Burlesque: (_+) Invalid arguments!}
+2020-01-01 14:20:30 <b_jonas> !blsq "3141592"{pe}m[
+2020-01-01 14:20:31 <blsqbot> | {ERROR: Burlesque: (_+) Invalid arguments!}
+2020-01-01 14:21:03 <mroman> you can't call pe on chars
+2020-01-01 14:21:11 <mroman> I think
+2020-01-01 14:21:19 <b_jonas> ok
+2020-01-01 14:21:40 <mroman> ps is not defined for chars
+2020-01-01 14:21:46 <b_jonas> how do I make a one-element list from a value?
+2020-01-01 14:21:53 <b_jonas> one-element block I mean
+2020-01-01 14:21:59 <mroman> !blsq "3141592"XX
+2020-01-01 14:22:00 <blsqbot> | {'3 '1 '4 '1 '5 '9 '2}
+2020-01-01 14:22:03 <mroman> like that?
+2020-01-01 14:22:14 <mroman> !blsq "3141592"XXri
+2020-01-01 14:22:15 <blsqbot> | {1 1 1 1 1 1 1}
+2020-01-01 14:22:32 <mroman> or
+2020-01-01 14:22:52 <mroman> !blsq "3141592"peXX
+2020-01-01 14:22:53 <blsqbot> | {3 1 4 1 5 9 2}
+2020-01-01 14:23:52 <mroman> depends on your exact use case
+2020-01-01 14:24:10 <mroman> !blsq "3141592"riXX
+2020-01-01 14:24:11 <blsqbot> | {3 1 4 1 5 9 2}
+2020-01-01 14:25:05 <mroman> !blsq "a48cd"XX)Sh
+2020-01-01 14:25:06 <blsqbot> | {"a" "4" "8" "c" "d"}
+2020-01-01 14:29:13 <b_jonas> !blsq "3141592"1co{pe}m[
+2020-01-01 14:29:14 <blsqbot> | {3 1 4 1 5 9 2}
+2020-01-01 14:29:50 <b_jonas> oh, that's even better
+2020-01-01 14:29:54 <b_jonas> 3141592XX
+2020-01-01 14:29:57 <b_jonas> !blsq 3141592XX
+2020-01-01 14:29:58 <blsqbot> | {3 1 4 1 5 9 2}
