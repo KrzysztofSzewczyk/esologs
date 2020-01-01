@@ -431,3 +431,82 @@
 2020-01-01 09:29:00 <fungot> HackEso: he's the dj
 2020-01-01 09:29:50 <b_jonas> ^echo hi
 2020-01-01 09:29:50 <fungot> hi hi
+2020-01-01 09:30:08 <b_jonas> ^echo `hello
+2020-01-01 09:30:09 <fungot> `hello `hello
+2020-01-01 09:30:12 <HackEso> hello, world
+2020-01-01 09:30:15 <b_jonas> um
+2020-01-01 09:30:17 <b_jonas> that's alarming
+2020-01-01 09:30:33 <b_jonas> fizzie: it looks as if fungot and HackEso are listening to each other
+2020-01-01 09:30:33 <fungot> b_jonas: how can u say ppl died plz
+2020-01-01 09:33:24 <b_jonas> are we starting the new year with a hearty bot loop?
+2020-01-01 09:33:43 <b_jonas> ``` f=/hackenv/bin/STOP; >$f echo $'#!/bin/sh\nrm -v /hackenv/bin/botloop'
+2020-01-01 09:33:45 <HackEso> No output.
+2020-01-01 09:34:22 <b_jonas> ^def botloop ul (no)S
+2020-01-01 09:34:22 <fungot> Defined.
+2020-01-01 09:34:24 <b_jonas> ^botloop
+2020-01-01 09:34:24 <fungot> no
+2020-01-01 09:34:31 <b_jonas> ^def botloop ul (`botloop)S
+2020-01-01 09:34:31 <fungot> Defined.
+2020-01-01 09:34:36 <b_jonas> ^botloop
+2020-01-01 09:34:36 <fungot> `botloop
+2020-01-01 09:34:37 <HackEso> botloop? No such file or directory
+2020-01-01 09:34:55 <b_jonas> ``` f=/hackenv/bin/STOP; >$f echo $'#!/bin/sh\nrm -v /hackenv/bin/botloop'; chmod -c a+x "$f"
+2020-01-01 09:34:57 <HackEso> mode of '/hackenv/bin/STOP' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2020-01-01 09:35:02 Joined: kritixilithos
+2020-01-01 09:35:03 Names: \oren\, ^[, aji, aloril, APic, b_jonas, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-01 09:35:27 <b_jonas> ``` f=/hackenv/bin/botloop; >$f echo $'#!/bin/sh\necho no'; chmod -c a+x "$f"
+2020-01-01 09:35:30 <HackEso> mode of '/hackenv/bin/botloop' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2020-01-01 09:35:32 <b_jonas> `botloop
+2020-01-01 09:35:33 <HackEso> no
+2020-01-01 09:35:35 <b_jonas> `STOP
+2020-01-01 09:35:37 <HackEso> removed '/hackenv/bin/botloop'
+2020-01-01 09:35:40 <b_jonas> `botloop
+2020-01-01 09:35:41 <HackEso> botloop? No such file or directory
+2020-01-01 09:35:54 <b_jonas> ^def botloop ul (no)S
+2020-01-01 09:35:55 <fungot> Defined.
+2020-01-01 09:36:02 <b_jonas> ^botloop
+2020-01-01 09:36:02 <fungot> no
+2020-01-01 09:36:19 <b_jonas> ^def botloop ul (`botloop)S
+2020-01-01 09:36:19 <fungot> Defined.
+2020-01-01 09:36:36 <b_jonas> everyone, to stop the loop, say: ^def botloop ul (no)S
+2020-01-01 09:36:40 <b_jonas> everyone, to stop the loop, say: `STOP
+2020-01-01 09:36:52 <b_jonas> ``` f=/hackenv/bin/botloop; >$f echo $'#!/bin/sh\necho "^botloop"'; chmod -c a+x "$f"
+2020-01-01 09:36:54 <HackEso> mode of '/hackenv/bin/botloop' changed from 0644 (rw-r--r--) to 0755 (rwxr-xr-x)
+2020-01-01 09:37:01 <b_jonas> ^botloop
+2020-01-01 09:37:01 <fungot> `botloop
+2020-01-01 09:37:04 <HackEso> ​^botloop
+2020-01-01 09:37:23 <b_jonas> fungot, you can listen to HackEso more than once
+2020-01-01 09:37:23 <fungot> b_jonas: ahahahahahahha im pretty sure there will be released soon ( yeah i am a hillary clinton looks more like a biker doing ballet, except for gay flight attendants...)
+2020-01-01 09:37:29 <b_jonas> ^botloop
+2020-01-01 09:37:29 <fungot> `botloop
+2020-01-01 09:37:30 <HackEso> ​^botloop
+2020-01-01 09:37:44 <b_jonas> hmm
+2020-01-01 09:37:46 <b_jonas> `botloop
+2020-01-01 09:37:47 <HackEso> ​^botloop
+2020-01-01 09:38:01 <b_jonas> ah
+2020-01-01 09:38:13 <int-e> Hah, https://esolangs.org/logs/ looks weird.
+2020-01-01 09:38:14 <b_jonas> right, HackEso puts a prefix to it
+2020-01-01 09:38:17 <b_jonas> `STOP
+2020-01-01 09:38:20 <HackEso> removed '/hackenv/bin/botloop'
+2020-01-01 09:38:30 <b_jonas> ^def botloop ul (no)S
+2020-01-01 09:38:30 <fungot> Defined.
+2020-01-01 09:38:57 <b_jonas> int-e: https://esolangs.org/logs/2019-12-31.html#l6b
+2020-01-01 09:39:03 Quit: imode (Ping timeout: 260 seconds)
+2020-01-01 09:39:04 Names: \oren\, ^[, aji, aloril, APic, b_jonas, blsqbot, Bowserinator, bunnyocto, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-01 09:39:19 <b_jonas> check out https://esolangs.org/logs/2020.html as well
+2020-01-01 09:40:14 <int-e> Did you mean 2021...
+2020-01-01 09:45:32 <b_jonas> | "hello"Q
+2020-01-01 09:45:57 <b_jonas> !blsq "hello"Q
+2020-01-01 09:45:58 <blsqbot> | hello
+2020-01-01 09:46:29 <b_jonas> !blsq "`hello d"Q
+2020-01-01 09:46:29 <blsqbot> | `hello d
+2020-01-01 09:47:49 <b_jonas> `ehco !blsq "hello"Q
+2020-01-01 09:47:50 <HackEso> ehco? No such file or directory
+2020-01-01 09:47:55 <b_jonas> `echo !blsq "hello"Q
+2020-01-01 09:47:55 <HackEso> ​!blsq "hello"Q
+2020-01-01 09:48:15 <b_jonas> ^ul (!blsq "hello"Q)
+2020-01-01 09:52:46 <esowiki> 14[[07!!Fuck14]]4 N10 02https://esolangs.org/w/index.php?oldid=68559 5* 03Lebster 5* (+1055) 10Created page with "'''!!Fuck''' is a clone of [[Brainfuck]] that uses varying amounts of !'s to indicate commands. It is a member of the [[TrivialBrainfuckSubstitution]] family of programming la..."
+2020-01-01 09:55:37 <esowiki> 14[[07!!Fuck14]]4 10 02https://esolangs.org/w/index.php?diff=68560&oldid=68559 5* 03Lebster 5* (+672) 10/* Hello World */
+2020-01-01 09:57:00 <bunnyocto> I think I broke parsec
+2020-01-01 09:57:01 <bunnyocto> argh.
+2020-01-01 09:58:41 <esowiki> 14[[07User:Lebster14]]4 10 02https://esolangs.org/w/index.php?diff=68561&oldid=68552 5* 03Lebster 5* (+63) 10/* Created Languages */
