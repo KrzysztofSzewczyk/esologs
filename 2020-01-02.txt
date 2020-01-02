@@ -161,3 +161,55 @@
 2020-01-02 14:59:14 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill, zzo38
 2020-01-02 14:59:43 Joined: Lord_of_Life
 2020-01-02 14:59:43 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill, zzo38
+2020-01-02 15:18:51 <wib_jonas> fizzie: in HackEso, can you please install the packages {unzip, zip, p7zip} so we can extract compressed archives more easily? this caused us some difficulty at https://esolangs.org/logs/2019-07.html#lVmb , so those utils would help. and they're not big.
+2020-01-02 15:19:42 <wib_jonas> `? interps
+2020-01-02 15:19:43 <wib_jonas> `? ibin
+2020-01-02 15:19:44 <HackEso> interps? ¯\(°​_o)/¯
+2020-01-02 15:19:45 <HackEso> ibin? ¯\(°​_o)/¯
+2020-01-02 15:19:53 Joined: subleq
+2020-01-02 15:19:53 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill, zzo38
+2020-01-02 15:20:49 <wib_jonas> kspalaiologos: /hackenv/interps also has some directories in which interpreter stuff are installed, so you can create a directory there too rather than lib if you prefer
+2020-01-02 15:21:28 <kspalaiologos> mkay
+2020-01-02 15:21:30 <kspalaiologos> wait
+2020-01-02 15:21:36 <kspalaiologos> ``` ls /hackenv/lib/kps
+2020-01-02 15:21:38 <HackEso> bconv \ bfasm \ bfi \ bfi-rle \ bfintd \ bfmake \ bfpp \ derle.pl \ labels.pl \ strip.pl
+2020-01-02 15:21:48 <wib_jonas> I didn't remember this a few days ago when you asked for a directory, because lib and share are the more standard unixy thing, whereas interps was some old style HackEgo EgoBot emulation thing
+2020-01-02 15:22:03 <kspalaiologos> ``` cp /hackenv/lib/kps/bfi /hackenv/interps/
+2020-01-02 15:22:12 <kspalaiologos> now
+2020-01-02 15:22:14 <HackEso> No output.
+2020-01-02 15:22:17 <kspalaiologos> how do you use it
+2020-01-02 15:22:19 <kspalaiologos> `bfi
+2020-01-02 15:22:20 <HackEso> Usage: bfi src.b
+2020-01-02 15:22:28 <kspalaiologos> not surprised
+2020-01-02 15:22:36 <kspalaiologos> `ls
+2020-01-02 15:22:37 <HackEso> asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ output.b \ paste \ program \ spline \ spout \ test \ test.sh \ what.tar.gz
+2020-01-02 15:22:39 <kspalaiologos> `bfi output.b
+2020-01-02 15:22:40 <HackEso> Hello World!
+2020-01-02 15:22:44 <kspalaiologos> c00l
+2020-01-02 15:23:22 <fizzie> `` which zip; which unzip; which p7zip
+2020-01-02 15:23:23 <HackEso> ​/usr/bin/zip \ /usr/bin/unzip \ /usr/bin/p7zip
+2020-01-02 15:23:24 <fizzie> wib_jonas: Done.
+2020-01-02 15:23:33 <wib_jonas> thanks
+2020-01-02 15:25:33 <wib_jonas> fizzie: oops, it seems the 7z utility is in the p7zip-full package. debian is confusing with its nice fine-grained packages.
+2020-01-02 15:26:10 <wib_jonas> I thought p7zip-full was the GUI component -- nope
+2020-01-02 15:26:22 <fizzie> Right. It was on the recommended list. Added that as well.
+2020-01-02 15:26:28 <wib_jonas> thanks
+2020-01-02 15:26:31 <wib_jonas> ``` 7z
+2020-01-02 15:26:32 <HackEso> ​ \ 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21 \ p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,1 CPU QEMU Virtual CPU version 2.1.3 (623),ASM) \  \ Usage: 7z <command> [<switches>...] <archive_name> [<file_names>...] \        [<@listfiles...>] \  \ <Commands> \   a : Add files to archive \   b : Benchmark \   d : Delete files from archive \   e : Extract files from archive (without using directory nam
+2020-01-02 15:26:39 <wib_jonas> unzip is the most important, but this can help
+2020-01-02 15:26:56 <wib_jonas> ``` 7z l asmbf-1.2.6.tar.gz
+2020-01-02 15:26:58 <HackEso> ​ \ 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21 \ p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,1 CPU QEMU Virtual CPU version 2.1.3 (623),ASM) \  \ Scanning the drive for archives: \ 1 file, 41301 bytes (41 KiB) \  \ Listing archive: asmbf-1.2.6.tar.gz \  \ -- \ Path = asmbf-1.2.6.tar.gz \ Type = gzip \ Headers Size = 10 \  \    Date      Time    Attr         Size   Compressed  Name \ ----------------
+2020-01-02 15:27:11 <wib_jonas> ``` 7z l asmbf-1.2.6.tar.gz | paste
+2020-01-02 15:27:12 <HackEso> https://hack.esolangs.org/tmp/paste/paste.4903
+2020-01-02 15:27:34 <wib_jonas> ``` rm -v /hackenv/tmp/paste/paste.4903
+2020-01-02 15:27:35 <HackEso> removed '/hackenv/tmp/paste/paste.4903'
+2020-01-02 15:27:54 <fizzie> As for interps, it's kind of related to the whole `! / ibin thing, though of course in the end it's just a directory like any other. The short version of that story is, /hackenv/bin/! runs commands from /hackenv/ibin/*, which typically (but not always) use binaries stored in directories under /hackenv/interps/*.
+2020-01-02 15:28:17 <wib_jonas> `? !
+2020-01-02 15:28:18 <HackEso> ​! is a syntax used in Haskell and Prolog for solving evaluation order problems.
+2020-01-02 15:28:20 <wib_jonas> `? `!
+2020-01-02 15:28:21 <HackEso> ​`! emulates the ! command of our former bot EgoBot. You write `! then the name of the language then a program, and it runs the program you give and returns the result. We used to use it to test out esoprograms in-channel all the time, but the set of included esolangs is fairly old now and so it's rarely used.
+2020-01-02 15:28:46 <fizzie> Not sure how expected it would be for new language interpreters to integrate with `!.
+2020-01-02 15:29:21 <fizzie> `` ls ../ibin
+2020-01-02 15:29:22 <HackEso> 1l \ 2l \ 7 \ adjust \ asm \ axo \ bch \ befunge \ befunge98 \ bf \ bf16 \ bf32 \ bf8 \ bf_txtgen \ boolfuck \ brachylog \ c \ cintercal \ clcintercal \ cxx \ dimensifuck \ forth \ glass \ glypho \ haskell \ help \ java \ k \ kipple \ lambda \ lazyk \ linguine \ lua \ malbolge \ pbrain \ perl \ qbf \ rail \ rhotor \ sadol \ sceql \ sh \ slashes \ trigger \ udage01 \ underload \ unlambda \ whirl
+2020-01-02 15:29:49 <fizzie> Chances are not all of those even work.
+2020-01-02 15:29:52 <wib_jonas> fizzie: after I suggested that to kspalaiologos, someone explained that it wouldn't be appropriate because bfasm isn't an interpreter, it compiles a language to brainfuck and gives brainfuck source code as output
