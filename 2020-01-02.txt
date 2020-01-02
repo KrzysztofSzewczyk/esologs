@@ -213,3 +213,137 @@
 2020-01-02 15:29:22 <HackEso> 1l \ 2l \ 7 \ adjust \ asm \ axo \ bch \ befunge \ befunge98 \ bf \ bf16 \ bf32 \ bf8 \ bf_txtgen \ boolfuck \ brachylog \ c \ cintercal \ clcintercal \ cxx \ dimensifuck \ forth \ glass \ glypho \ haskell \ help \ java \ k \ kipple \ lambda \ lazyk \ linguine \ lua \ malbolge \ pbrain \ perl \ qbf \ rail \ rhotor \ sadol \ sceql \ sh \ slashes \ trigger \ udage01 \ underload \ unlambda \ whirl
 2020-01-02 15:29:49 <fizzie> Chances are not all of those even work.
 2020-01-02 15:29:52 <wib_jonas> fizzie: after I suggested that to kspalaiologos, someone explained that it wouldn't be appropriate because bfasm isn't an interpreter, it compiles a language to brainfuck and gives brainfuck source code as output
+2020-01-02 15:30:14 <wib_jonas> so only that wrapper that executes the resulting bf code should be integrated there
+2020-01-02 15:30:40 <kspalaiologos> yes.
+2020-01-02 15:30:44 <kspalaiologos> that's right.
+2020-01-02 15:30:55 <kspalaiologos> but one could wire them up so assembly code is directly ran
+2020-01-02 15:31:17 <kspalaiologos> gimme a moment
+2020-01-02 15:31:19 <fizzie> Well, that wrapper would be in ibin, but all the underlying machinery can well be under interps. If you wanted to integrate with `!, anyway. Whether that makes sense is subjective.
+2020-01-02 15:31:39 <kspalaiologos> I don't seem to get what you're sying
+2020-01-02 15:31:42 <kspalaiologos> what's `!?
+2020-01-02 15:31:53 <kspalaiologos> `! bfi
+2020-01-02 15:31:54 <HackEso> ​/hackenv/bin/!: line 4: /hackenv/ibin/bfi: No such file or directory
+2020-01-02 15:31:59 <kspalaiologos> ok I know
+2020-01-02 15:32:59 <wib_jonas> https://esolangs.org/wiki/HackEso#Interpreters explains it... nope, it doesn't
+2020-01-02 15:33:08 <kspalaiologos> ``` cat <<<"asmbf && bfi /hackenv/tmp/output.b && rm -f /hackenv/tmp/output.b" > /hackenv/ibin/asmbf
+2020-01-02 15:33:10 <HackEso> No output.
+2020-01-02 15:33:21 <kspalaiologos> `! asmbf out .0
+2020-01-02 15:33:22 <HackEso> ​/hackenv/bin/!: line 4: /hackenv/ibin/asmbf: Permission denied \ /hackenv/bin/!: line 4: exec: /hackenv/ibin/asmbf: cannot execute: Permission denied
+2020-01-02 15:33:27 <kspalaiologos> bruh
+2020-01-02 15:33:38 <kspalaiologos> ``` chmod +x /hackenv/ibin/asmbf
+2020-01-02 15:33:41 <HackEso> No output.
+2020-01-02 15:33:42 <kspalaiologos> `! asmbf out .0
+2020-01-02 15:33:44 <HackEso> Usage: bfi src.b
+2020-01-02 15:33:49 <kspalaiologos> doesn
+2020-01-02 15:33:51 <kspalaiologos> 't seem to work
+2020-01-02 15:34:03 <wib_jonas> it's all ancient history, `! started as emulating EgoBot's interpreters when HackEgo was introduced, but all that was before I came here
+2020-01-02 15:36:53 <kspalaiologos> why ain't it working
+2020-01-02 15:36:55 <kspalaiologos> `ls
+2020-01-02 15:36:56 <HackEso> asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ output.b \ paste \ program \ spline \ spout \ test \ test.sh \ what.tar.gz
+2020-01-02 15:37:01 <kspalaiologos> there clearly is output.b
+2020-01-02 15:37:04 <kspalaiologos> `cwd
+2020-01-02 15:37:06 <HackEso> cwd? No such file or directory
+2020-01-02 15:37:07 <kspalaiologos> `cd
+2020-01-02 15:37:08 <HackEso> cd? No such file or directory
+2020-01-02 15:37:21 <kspalaiologos> `pwd
+2020-01-02 15:37:22 <HackEso> ​/hackenv/tmp
+2020-01-02 15:37:26 <kspalaiologos> yep
+2020-01-02 15:37:42 <kspalaiologos> ``` cat <<<"asmbf && bfi output.b && rm -f output.b" > /hackenv/ibin/asmbf
+2020-01-02 15:37:45 <HackEso> No output.
+2020-01-02 15:37:48 <kspalaiologos> (ugly shit but should work)
+2020-01-02 15:37:53 <kspalaiologos> `! asmbf out .0
+2020-01-02 15:37:55 <HackEso> No output.
+2020-01-02 15:37:58 <kspalaiologos> ?
+2020-01-02 15:38:04 <kspalaiologos> ``` ls
+2020-01-02 15:38:09 <HackEso> asmbf-1.2.6.tar.gz \ asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ just \ karma \ le \ paste \ program \ spline \ spout \ test \ test.sh \ what.tar.gz
+2020-01-02 15:38:19 <kspalaiologos> ``` cat <<<"asmbf && bfi output.b" > /hackenv/ibin/asmbf
+2020-01-02 15:38:21 <HackEso> No output.
+2020-01-02 15:38:23 <kspalaiologos> `! asmbf out .0
+2020-01-02 15:38:25 <HackEso> No output.
+2020-01-02 15:38:52 <kspalaiologos> `bfi output.b
+2020-01-02 15:38:53 <HackEso> No output.
+2020-01-02 15:38:55 <kspalaiologos> now i'm confused
+2020-01-02 15:38:58 <kspalaiologos> `cat output.b
+2020-01-02 15:38:59 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2020-01-02 15:39:05 <kspalaiologos> whoa, what
+2020-01-02 15:39:21 <kspalaiologos> `! asmbf "out .0"
+2020-01-02 15:39:22 <HackEso> No output.
+2020-01-02 15:39:30 <kspalaiologos> how do you use this `!?
+2020-01-02 15:39:32 <kspalaiologos> `?!
+2020-01-02 15:39:33 <HackEso> ​?!? No such file or directory
+2020-01-02 15:39:35 <kspalaiologos> `? !
+2020-01-02 15:39:36 <HackEso> ​! is a syntax used in Haskell and Prolog for solving evaluation order problems.
+2020-01-02 15:40:08 <fizzie> `! befunge 0"siht ekil">:#,_@
+2020-01-02 15:40:15 <HackEso> like this
+2020-01-02 15:41:39 <fizzie> I mean, `! itself literally just runs a binary from ibin. But mostly the assumption is for that to interpret the contents of its argument in some language or another.
+2020-01-02 15:41:55 <kspalaiologos> I
+2020-01-02 15:41:56 <kspalaiologos> don't get it
+2020-01-02 15:41:56 <fizzie> You don't *need* to integrate with `!, as the help text mentions, it's kind of stale now.
+2020-01-02 15:42:12 <kspalaiologos> why doesnt it work though
+2020-01-02 15:42:13 <kspalaiologos> look
+2020-01-02 15:42:21 <fizzie> What you put in ibin/asmbf should work as far as the wrapper goes.
+2020-01-02 15:42:21 <kspalaiologos> ``` asmbf out .0
+2020-01-02 15:42:23 <HackEso> No output.
+2020-01-02 15:42:26 <kspalaiologos> ``` bfi output.b
+2020-01-02 15:42:27 <HackEso> 0
+2020-01-02 15:42:29 <kspalaiologos> it should work
+2020-01-02 15:42:30 <kspalaiologos> but it doesnt
+2020-01-02 15:43:40 <fizzie> `` asmbf 'out .0'; cat output.b
+2020-01-02 15:43:42 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>[-]>++++++[<++++++++>-]<.[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2020-01-02 15:43:46 <fizzie> `` \! 'asmbf out .0'; cat output.b
+2020-01-02 15:43:47 <HackEso> ​+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2020-01-02 15:43:53 <wib_jonas> `? `!
+2020-01-02 15:43:54 <fizzie> Hm, well, that's kind of odd.
+2020-01-02 15:43:55 <HackEso> ​`! emulates the ! command of our former bot EgoBot. You write `! then the name of the language then a program, and it runs the program you give and returns the result. We used to use it to test out esoprograms in-channel all the time, but the set of included esolangs is fairly old now and so it's rarely used.
+2020-01-02 15:44:09 <fizzie> Oh, your wrapper just executes "asmbf" with no arguments.
+2020-01-02 15:44:17 <fizzie> That's why it doesn't work.
+2020-01-02 15:44:32 <fizzie> There's nothing in ibin/asmbf to use its command line for anything.
+2020-01-02 15:44:52 <fizzie> `sled /hackenv/ibin/asmbf//s|asmbf|asmbf "$@"|
+2020-01-02 15:44:55 <HackEso> ​/hackenv/ibin/asmbf//asmbf "$@" && bfi output.b
+2020-01-02 15:45:01 <fizzie> `` \! 'asmbf out .0'; cat output.b
+2020-01-02 15:45:04 <HackEso> 0+>+[<[>>+>+<<<-]>>[<<+>>-]>[[-]>>>>>>[-]>++++++[<++++++++>-]<.[-]<<<<<<]<<<[>>+>+<<<-]>>[<<+>>-]>[[-]<<<[-]>[-]>>]<<]
+2020-01-02 15:45:11 <fizzie> `! asmbf out .0
+2020-01-02 15:45:13 <HackEso> 0
+2020-01-02 15:45:15 <fizzie> There you go.
+2020-01-02 15:46:12 <kspalaiologos> ah
+2020-01-02 15:46:15 <kspalaiologos> so it takes input from args
+2020-01-02 15:46:19 <kspalaiologos> not stdin as I expected
+2020-01-02 15:46:19 <kspalaiologos> fine
+2020-01-02 15:47:05 <wib_jonas> there's some sort of wrapper invoked by many of the interpreters in ibin that bridge that
+2020-01-02 15:47:13 <wib_jonas> it's a set of arcane shell scripts
+2020-01-02 15:47:35 <kspalaiologos> which one
+2020-01-02 15:47:43 <fizzie> Yes, there's a canonical set of helper shell functions in /hackenv/lib/interp that many ibin/* interpreters use to turn the arguments into either stdin or a file.
+2020-01-02 15:47:46 <kspalaiologos> I want to see the arcane
+2020-01-02 15:47:51 <fizzie> Depending on what the underlying interpreter wants.
+2020-01-02 15:48:02 <kspalaiologos> ``` ls /hackenv/lib/interp
+2020-01-02 15:48:04 <fizzie> But of course in your case bin/asmbf wants command-line arguments too, so those aren't useful.
+2020-01-02 15:48:08 <HackEso> ​/hackenv/lib/interp
+2020-01-02 15:48:15 <kspalaiologos> helpful as heck
+2020-01-02 15:48:16 <fizzie> It's just one file they all source, https://hack.esolangs.org/repo/file/tip/lib/interp
+2020-01-02 15:48:20 <kspalaiologos> hackeso pls
+2020-01-02 15:48:33 <wib_jonas> ``` /bin/ls -abF /hackenv/ibin
+2020-01-02 15:48:34 <HackEso> ​./ \ ../ \ 1l* \ 2l* \ 7* \ adjust* \ asm* \ asmbf* \ axo* \ bch* \ befunge* \ befunge98* \ bf* \ bf16@ \ bf32@ \ bf8@ \ bf_txtgen* \ boolfuck* \ brachylog* \ c* \ cintercal* \ clcintercal* \ cxx* \ dimensifuck* \ forth* \ glass* \ glypho* \ haskell* \ help* \ java* \ k* \ kipple* \ lambda* \ lazyk* \ linguine* \ lua* \ malbolge* \ pbrain* \ perl* \ qbf* \ rail* \ rhotor* \ sadol* \ sceql* \ sh* \ slashes* \ trigger* \ udage01* \ underload
+2020-01-02 15:48:40 <wib_jonas> choose one of those
+2020-01-02 15:48:50 <kspalaiologos> ah!
+2020-01-02 15:48:54 <kspalaiologos> hm so maybe malbolge
+2020-01-02 15:49:07 <kspalaiologos> ``` at /hackenv/ibin/malbolge
+2020-01-02 15:49:07 <wib_jonas> ``` cat /hackenv/ibin/malbolge
+2020-01-02 15:49:08 <HackEso> bash: at: command not found
+2020-01-02 15:49:09 <HackEso> ​#!/bin/sh \ . ${HACKENV-/hackenv}/lib/interp \ interp_file ${HACKENV-/hackenv}/interps/malbolge/malbolge.bin
+2020-01-02 15:49:16 <kspalaiologos> .bin?
+2020-01-02 15:49:25 <kspalaiologos> who would give an elf binary this extension
+2020-01-02 15:49:38 <kspalaiologos> but it's interesting nonetheless
+2020-01-02 15:49:39 <fizzie> Why not? It's a binary.
+2020-01-02 15:49:51 <kspalaiologos> .bin or .hex is usually a flat binary
+2020-01-02 15:50:05 <kspalaiologos> while elf isn't quite a flat executable
+2020-01-02 15:50:14 <fizzie> It's all a matter of convention.
+2020-01-02 15:50:19 <kspalaiologos> possibly
+2020-01-02 15:50:30 <fizzie> `` ls /hackenv/interps/befunge  # as well
+2020-01-02 15:50:31 <HackEso> bef.bin \ bef.c \ USED_VERSION
+2020-01-02 15:50:48 <wib_jonas> no, a flat binary uses the extension .com
+2020-01-02 15:50:53 Joined: imode
+2020-01-02 15:50:53 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xkapastel, zemhill, zzo38
+2020-01-02 15:51:39 <kspalaiologos> I would disagree
+2020-01-02 15:51:46 <kspalaiologos> not only the .com extension
+2020-01-02 15:55:13 Quit: wib_jonas (Remote host closed the connection)
+2020-01-02 15:55:13 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, GeekDude, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zzo38
