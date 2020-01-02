@@ -400,3 +400,113 @@
 2020-01-02 18:29:22 <esowiki> 14[[07Esolang:Featured languages/Candidates14]]4 10 02https://esolangs.org/w/index.php?diff=68625&oldid=68623 5* 03B jonas 5* (+823) 10
 2020-01-02 18:29:35 <b_jonas> yeah
 2020-01-02 18:29:59 <b_jonas> there are also some interesting ais523 languages that I can propose next, but there's a limit of one proposal per person
+2020-01-02 18:30:26 <kspalaiologos> so if it's turing complete
+2020-01-02 18:30:29 <kspalaiologos> can one translate brainfuck to it?
+2020-01-02 18:30:38 <kspalaiologos> doesn't seem doable though
+2020-01-02 18:30:50 <b_jonas> technically you can, except for the IO
+2020-01-02 18:31:05 <kspalaiologos> what about the "infinite" memory
+2020-01-02 18:31:08 <kspalaiologos> and branching
+2020-01-02 18:31:15 <kspalaiologos> especially conditional one
+2020-01-02 18:31:32 <kspalaiologos> maybe my mind is constr
+2020-01-02 18:31:33 <kspalaiologos> ained
+2020-01-02 18:31:35 User Name: LKoen = LKoen!~LKoen@2a01cb0407597a00d97f8cac67497fae.ipv6.abo.wanadoo.fr
+2020-01-02 18:31:35 <LKoen> "unconditional branching" sounds like an alien concept
+2020-01-02 18:31:49 <kspalaiologos> ^ jmp %somewhere
+2020-01-02 18:32:08 <kspalaiologos> it's quite simple in nopfunge I believe
+2020-01-02 18:32:35 <kspalaiologos> also, as the minsky machine has just two registers
+2020-01-02 18:32:37 <b_jonas> the infinite memory is encoded in the two coordinates of the program counter of Nopfunge. there's a double-exponential blowup, so if you need n bytes of memory in brainfuck, the program counter coordinates will have 2**O(n) bits and will be of size 2**2**O(n)
+2020-01-02 18:32:48 <esowiki> 14[[07Truth-machine14]]4 M10 02https://esolangs.org/w/index.php?diff=68626&oldid=68587 5* 03BN 5* (+29) 10
+2020-01-02 18:32:57 <kspalaiologos> ** is exponentation?
+2020-01-02 18:32:59 <b_jonas> yes
+2020-01-02 18:33:17 <b_jonas> brainfuck is deterministic, the decisions corresponding to these deterministic branches will happen in the translated program
+2020-01-02 18:33:18 <kspalaiologos> it's interesting though
+2020-01-02 18:33:20 <b_jonas> again, no IO
+2020-01-02 18:33:27 <b_jonas> so it's brainfuck without the . or , statements
+2020-01-02 18:33:35 <kspalaiologos> 20 brainfuck cells, the minimum to run asm2bf
+2020-01-02 18:33:42 <kspalaiologos> will result in 2**2**20 bytes required
+2020-01-02 18:33:54 <b_jonas> no
+2020-01-02 18:33:58 <b_jonas> there's a big O in it
+2020-01-02 18:34:07 <b_jonas> and it's not 2**2**20 bytes
+2020-01-02 18:34:12 <kspalaiologos> how much is it?
+2020-01-02 18:34:20 <esowiki> 14[[07Truth-machine14]]4 M10 02https://esolangs.org/w/index.php?diff=68627&oldid=68626 5* 03BN 5* (+7) 10/* Tier */
+2020-01-02 18:34:25 <b_jonas> you never explicitly store the periodic code space, because it's periodic
+2020-01-02 18:34:34 <b_jonas> 2**2**O(n) is how large the program counter will grow
+2020-01-02 18:34:41 <b_jonas> that's not how large the source code is
+2020-01-02 18:34:48 <kspalaiologos> grow or reach?
+2020-01-02 18:34:59 <b_jonas> what's the difference?
+2020-01-02 18:35:17 <kspalaiologos> if the pointer will reach at most 2**2**O(n) the size is equal to square of it obviously
+2020-01-02 18:35:27 <kspalaiologos> (implying that it'll be a square)
+2020-01-02 18:35:29 <b_jonas> and of course you can set n to 20 only if it's fixed size brainfuck cells
+2020-01-02 18:35:41 <LKoen> oh my god
+2020-01-02 18:35:47 <b_jonas> the size of the imaginary playfield, yes, but you don't have to store that anywhere
+2020-01-02 18:35:48 <LKoen> "2**2**O(n)" o___O
+2020-01-02 18:35:51 <b_jonas> because it's a periodic playfield
+2020-01-02 18:35:58 <kspalaiologos> fine
+2020-01-02 18:36:03 <b_jonas> you only store one period, or two if you wish
+2020-01-02 18:36:15 <b_jonas> and the two coordniates of the program counter, which each have 2**O(n) bits
+2020-01-02 18:36:28 <kspalaiologos> ah ok
+2020-01-02 18:36:35 <kspalaiologos> I understand (a bit) now
+2020-01-02 18:36:40 <b_jonas> of course if your brainfuck program is one that runs forever and requires unbounded memory, then the translation will require unbounded memory too
+2020-01-02 18:37:34 <kspalaiologos> it's way more than 64 bits can hold
+2020-01-02 18:37:36 <kspalaiologos> not even trhing
+2020-01-02 18:37:43 <kspalaiologos> but a very nice concept isn't it
+2020-01-02 18:38:31 <kspalaiologos> maybe we should improve the minsky machine article
+2020-01-02 18:38:34 <kspalaiologos> because it's not helpful at all
+2020-01-02 18:38:41 <kspalaiologos> I seem to understand the topic so I may take on it later
+2020-01-02 18:39:13 <b_jonas> hmm yes, that's a good point
+2020-01-02 18:39:25 <kspalaiologos> because in practice it serves no information
+2020-01-02 18:39:54 <b_jonas> neither it nor the Fractran article gives a proof of Turing-completeness
+2020-01-02 18:39:58 <b_jonas> not even for many counters
+2020-01-02 18:40:07 <b_jonas> kspalaiologos: it does give some information. it links to useful books.
+2020-01-02 18:40:28 <b_jonas> I put one of those books there, one where I read that proof
+2020-01-02 18:41:21 <kspalaiologos> wait
+2020-01-02 18:41:25 <kspalaiologos> actually minsky machine is really interesting
+2020-01-02 18:41:48 <kspalaiologos> and does it mean that two celled brainfuck is also turing complete?
+2020-01-02 18:42:04 <kspalaiologos> it's mindblowing
+2020-01-02 18:42:29 <kspalaiologos> how for example do you calculate modulus of a number on this two register machine or two cells brainfuck
+2020-01-02 18:43:01 <b_jonas> no, I don't think so
+2020-01-02 18:43:34 <b_jonas> but brainfuck with a fixed constant number of bigint cells is Turing-complete
+2020-01-02 18:43:58 <b_jonas> https://esolangs.org/wiki/Brainfuck#Computational_class says that 3 cells are enough
+2020-01-02 18:43:59 <kspalaiologos> two bigint cells
+2020-01-02 18:44:05 <kspalaiologos> duh!
+2020-01-02 18:44:06 <kspalaiologos> three
+2020-01-02 18:44:08 <kspalaiologos> not two
+2020-01-02 18:44:23 <b_jonas> three for Brainfuck
+2020-01-02 18:44:51 <kspalaiologos> but
+2020-01-02 18:44:53 <int-e> you need one extra for conditionals
+2020-01-02 18:45:03 <b_jonas> two integers is enough for Turing-completeness for a Minsky machine, but requires double-exponential slowdown; three counters or more for a Minsky machine requires only an exponential slowdown
+2020-01-02 18:45:05 <kspalaiologos> if brainfuck had a digit near instruction
+2020-01-02 18:45:07 <kspalaiologos> a fixed digit
+2020-01-02 18:45:11 <kspalaiologos> and no pointer movement'
+2020-01-02 18:45:16 <kspalaiologos> (it seems like more constraining)
+2020-01-02 18:45:25 <kspalaiologos> it would be turing complete aswell with two cells
+2020-01-02 18:45:39 <b_jonas> what is a "digit near instruction"?
+2020-01-02 18:46:02 <kspalaiologos> 3+4- => will increment cell 3 and decrement cell 4
+2020-01-02 18:47:06 <b_jonas> but what control flow do you have? the control flow instructions are the real difference. you can just use < and > to choose cells
+2020-01-02 18:47:16 <int-e> Hmm? Why can't you translate that to >>>+>-<<<<?
+2020-01-02 18:47:48 <int-e> The problem isn't the arithmetic, it is testing a register for 0 and taking different paths in the program based on that
+2020-01-02 18:48:45 <int-e> ("register" being one of the simulated Minsky machine counters.)
+2020-01-02 18:49:06 <kspalaiologos> alright
+2020-01-02 18:49:17 <kspalaiologos> so how can you implement modulus on a three register brainfuck machine with bigint cells
+2020-01-02 18:49:25 <kspalaiologos> I'm intrested like never before
+2020-01-02 18:49:36 <kspalaiologos> *three cell brainfuck, sorry
+2020-01-02 18:49:41 <b_jonas> kspalaiologos: I don't know, look at that article I linked, maybe it gives a link
+2020-01-02 18:49:46 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=68628&oldid=68616 5* 03Star651 5* (+16) 10/* A */
+2020-01-02 18:50:13 <kspalaiologos> what I'm thinking about
+2020-01-02 18:50:18 <kspalaiologos> we could use these as stacks
+2020-01-02 18:50:44 <kspalaiologos> >> and << are implementable just using */ so it may be possible to have two "stacks" on this brainfuck variant
+2020-01-02 18:51:49 <kspalaiologos> so it's actually a PDA
+2020-01-02 18:51:51 <kspalaiologos> but it has two stacks
+2020-01-02 18:51:54 <kspalaiologos> so it's a turing machine
+2020-01-02 18:51:56 <kspalaiologos> but it makes no sense
+2020-01-02 18:52:04 <kspalaiologos> to extract a value off the stack one needs modulus
+2020-01-02 18:52:17 <kspalaiologos> and it's impossible to extract it using just three cells
+2020-01-02 18:54:00 <kspalaiologos> the proof has been made using collatz function
+2020-01-02 18:54:04 <kspalaiologos> interesting
+2020-01-02 18:56:21 User Name: arseniiv = arseniiv!~arseniiv@94.41.9.253.dynamic.ufanet.ru
+2020-01-02 18:56:21 <arseniiv> (unrelated) how do you represent cell complexes of arbitrary dimension? I’d use a dictionary from cells to their default orientations (in terms of default orientations of their boundary cells, downto points which are oriented unconditionally as e. g. positive) and then some dictionaries to represent the incidence, like boundaries and coboundaries, or just a plain dump of all incident cells for each of them, but which of these choices
+2020-01-02 18:56:21 <arseniiv> ave a chance to be the most practical?..
+2020-01-02 18:56:58 <arseniiv> default orientations would be useful to supplement the incidence info
+2020-01-02 18:57:15 <arseniiv> then one would be able to represent oriented paths etc.
+2020-01-02 18:59:06 <arseniiv> also there should be a quirk distinguishing internal orientations (the usual ones) and external ones (like in pseudovectors vs. vectors), as one can’t orient the Moebius strip complex in the internal way but can in external one
+2020-01-02 18:59:42 <arseniiv> I don’t see where the changes would be in the representation description above
