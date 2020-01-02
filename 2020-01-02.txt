@@ -510,3 +510,26 @@
 2020-01-02 18:57:15 <arseniiv> then one would be able to represent oriented paths etc.
 2020-01-02 18:59:06 <arseniiv> also there should be a quirk distinguishing internal orientations (the usual ones) and external ones (like in pseudovectors vs. vectors), as one can’t orient the Moebius strip complex in the internal way but can in external one
 2020-01-02 18:59:42 <arseniiv> I don’t see where the changes would be in the representation description above
+2020-01-02 19:00:56 <b_jonas> kspalaiologos: anyway, you're right, we should probably add a proof to the Minsky machine article about how they're turing-complete by simulating a multi-stack machine
+2020-01-02 19:01:05 <b_jonas> and ideally also the crazy proof for the two-counter machine
+2020-01-02 19:01:22 <b_jonas> because Nopfunge can only directly simulate the two-counter machine
+2020-01-02 19:02:00 <kspalaiologos> "crazy proof for the two-counter machine"
+2020-01-02 19:02:06 <kspalaiologos> that's what I'll spend my time on
+2020-01-02 19:02:07 <kspalaiologos> perfect
+2020-01-02 19:02:21 <kspalaiologos> at least I'll learn some about CS
+2020-01-02 19:04:10 <b_jonas> though I'll have to check the pages for ais's languages, one of them might already have a proof, since many of them are Minsky-based
+2020-01-02 19:04:16 <b_jonas> including The Waterfall Model
+2020-01-02 19:05:42 <b_jonas> kspalaiologos: "crazy" is only my opinion, I think ais or oerjan don't find it crazy
+2020-01-02 19:06:02 <b_jonas> but it's crazy in essentials, that is, the simulation must be crazy in that it needs the double-exponential slowdown as far as I understand
+2020-01-02 19:10:17 Quit: LKoen (Remote host closed the connection)
+2020-01-02 19:10:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-02 19:15:22 <kspalaiologos> I have to think for a while about it
+2020-01-02 19:15:26 <kspalaiologos> and top it off with asm2bf backend
+2020-01-02 19:15:33 <kspalaiologos> if my lifespan is long enough
+2020-01-02 19:15:49 <kspalaiologos> it's essentially subleq
+2020-01-02 19:15:54 <kspalaiologos> but better and worse in a couple of cases
+2020-01-02 19:16:13 <kspalaiologos> incdecne seems like a good name
+2020-01-02 19:18:54 Quit: kspalaiologos (Quit: Leaving)
+2020-01-02 19:18:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, sleepnap, Soni, sparr, sprocklem, stux|away, subleq, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-02 19:25:30 <int-e> That collatz construction is pretty tricky.
+2020-01-02 19:26:57 <int-e> (I was around when oerjan came up with that one, but I don't recall looking at it in detail before just now.)
