@@ -18,3 +18,35 @@
 2020-01-04 01:15:55 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprock1em, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
 2020-01-04 01:25:53 Joined: oerjan
 2020-01-04 01:25:53 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprock1em, stux|away, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zzo38
+2020-01-04 01:31:30 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2020-01-04 01:31:30 <oerjan> https://xkcd.com/2250/ OKAY
+2020-01-04 01:33:40 <fizzie> Acknowledged.
+2020-01-04 01:37:03 User Name: ArthurStrong = ArthurStrong!~ArthurStr@slow.wreckage.volia.net
+2020-01-04 01:37:03 <ArthurStrong> Hi all.
+2020-01-04 01:38:44 <oerjan> i find this edit a bit disturbing https://hack.esolangs.org/repo/rev/df528347dad2
+2020-01-04 01:39:21 <oerjan> `t doag interps/bfi
+2020-01-04 01:39:24 <HackEso> 12288:2020-01-02 <kspalaiologös> `` cp /hackenv/lib/kps/bfi /hackenv/interps/
+2020-01-04 01:39:33 <oerjan> oh
+2020-01-04 01:40:02 <oerjan> wait a minute, did it exist before, or not?
+2020-01-04 01:40:25 <fizzie> I don't think it did, actually.
+2020-01-04 01:40:25 <oerjan> apparently not. i guess it's ok then.
+2020-01-04 01:40:48 <oerjan> the repo browser is misleading
+2020-01-04 01:41:16 <fizzie> It does kind of break the interps structure a little.
+2020-01-04 01:41:35 <fizzie> Though it's not the first thing that does.
+2020-01-04 01:42:45 <fizzie> Arguably the "right" way to integrate with ! would be to put the sources in interps/subdir and, if it needs building, add to interps/Makefile. But nobody cares.
+2020-01-04 01:44:08 <fizzie> `` ls -l /hackenv/{bin/bfi,interps/bfi,lib/kps/bfi}  # I mean, this is a little silly
+2020-01-04 01:44:12 <HackEso> ​-rwxr-xr-x 1 1000 1000 13424 Nov 15 14:11 /hackenv/bin/bfi \ -rwxr-xr-x 1 1000 1000 19048 Jan  2 15:22 /hackenv/interps/bfi \ -rwxr-xr-x 1 1000 1000 19048 Dec 31 17:47 /hackenv/lib/kps/bfi
+2020-01-04 01:44:39 <fizzie> The last two are the same, I think the first one might be a much earlier version, and/or a different BF interpreter altogether.
+2020-01-04 01:45:37 <fizzie> (And then there's interps/egobf/src/egobfiNN, with different genetics.)
+2020-01-04 01:47:54 <oerjan> `t doat interps
+2020-01-04 01:47:57 <HackEso> 996:2012-12-09 <Gregör> tar xf egobot.tar.xz \ 1073:2012-12-14 <FireFl̈y> glass \ 4791:2014-09-07 <oerjän> interp glass {M[m(_o)O!"Hello World!"(_o)o.?]} \ 4909:2014-09-29 <oerjän> sed -i \'s/ulimit/#ulimit/\' interps/gcccomp/gcccomp \ 4916:2014-09-29 <oerjän> sed -i \'47iecho "$GCC" -x "$LANG" "$2" $FLAGS -o /tmp/compiled.$$ 2> /dev/null\' interps/gcccomp/gcccomp \ 4917:2014-09-29 <oerjän> revert \ 4918:2014-09-29 <oerjän> sed -
+2020-01-04 01:48:25 <oerjan> hm it was fairly early
+2020-01-04 01:49:45 <oerjan> `dowt zzo38
+2020-01-04 01:49:47 <HackEso> 0:2012-02-16 Initïal import.
+2020-01-04 01:51:13 <oerjan> b_jonas: the EgoBot import weren't quite from the start of HackEgo
+2020-01-04 01:51:18 <oerjan> *+s
+2020-01-04 01:51:56 <oerjan> (and even the Initial import wasn't quite the start, there was some history squashing at that point.)
+2020-01-04 01:52:55 <fizzie> My fallible recollection suggests HackEgo and EgoBot coincided for some time, which would mean there wouldn't've been a need for an EgoBot import, because the real thing was around.
+2020-01-04 01:55:14 <oerjan> yeah
+2020-01-04 01:55:52 <oerjan> i think EgoBot stayed around somewhat after the import too.
+2020-01-04 01:56:01 <oerjan> on and off
