@@ -182,3 +182,8 @@
 2020-01-04 13:28:34 <fizzie> `` rm /hackenv/bin/bfi; ln -s /hackenv/lib/kps/bfi /hackenv/bin/bfi  # no need for actual copies that you can forget to delete though
 2020-01-04 13:28:37 <HackEso> No output.
 2020-01-04 13:28:50 <fizzie> s/delete/update/
+2020-01-04 13:33:23 Quit: LKoen (Remote host closed the connection)
+2020-01-04 13:33:24 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zoobab, zzo38
+2020-01-04 13:39:22 <fizzie> And really the interps integration is an alternative, not really an addition. I don't think anything actually uses that copy of 'bfi', since even ibin/asmbf just uses the one in the path.
+2020-01-04 13:39:35 <fizzie> `` rm /hackenv/interps/bfi
+2020-01-04 13:39:38 <HackEso> No output.
