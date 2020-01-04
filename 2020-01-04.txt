@@ -97,3 +97,35 @@
 2020-01-04 08:43:11 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprock1em, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zzo38
 2020-01-04 09:25:44 Quit: oerjan (Quit: Nite)
 2020-01-04 09:25:45 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprock1em, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zzo38
+2020-01-04 09:35:51 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03JonoCode9374 5*  10moved [[02Ekg10]] to [[Keta]]: I decided upon a better name
+2020-01-04 09:36:34 <esowiki> 14[[07Keta14]]4 10 02https://esolangs.org/w/index.php?diff=68677&oldid=68675 5* 03JonoCode9374 5* (+3) 10
+2020-01-04 09:40:59 Joined: kspalaiologos
+2020-01-04 09:40:59 Names: \oren\, ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprock1em, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zzo38
+2020-01-04 09:49:55 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-01-04 09:49:55 <kspalaiologos> fizzie, the /hackenv/bin interpreter is outdated (v1.1.1 -> v1.2.6)
+2020-01-04 09:50:05 <kspalaiologos> I should have removed it, but I forgot.
+2020-01-04 09:50:16 <kspalaiologos> ``` rm -f /hackenv/bin/bfi
+2020-01-04 09:50:25 <HackEso> No output.
+2020-01-04 09:50:30 <kspalaiologos> ``` whereis bfi
+2020-01-04 09:50:31 <HackEso> bfi:
+2020-01-04 09:50:52 <kspalaiologos> ``` cp /hackenv/lib/kps/bfi /hackenv/bin/
+2020-01-04 09:50:55 <HackEso> No output.
+2020-01-04 09:51:00 <kspalaiologos> ``` whereis bfi
+2020-01-04 09:51:01 <HackEso> bfi: /hackenv/bin/bfi
+2020-01-04 09:51:29 <kspalaiologos> lag?
+2020-01-04 09:51:37 <kspalaiologos> hackenv/bin -> this is in the path, so asmbf script can work
+2020-01-04 09:52:14 <kspalaiologos> hackenv/lib/kps -> there are all the binaries, including bfasm, bfpp, bfmake, ...
+2020-01-04 09:52:29 <kspalaiologos> hackenv/[...]/interps -> you suggested me to put it here :p
+2020-01-04 09:53:23 <kspalaiologos> so in the end it has a couple of intergrations
+2020-01-04 09:53:30 <kspalaiologos> `! asmbf mov r1, .0/out r1
+2020-01-04 09:53:32 <HackEso> 0
+2020-01-04 09:53:42 <kspalaiologos> ``` asmbf mov r1, .0/out r1
+2020-01-04 09:53:44 <HackEso> No output.
+2020-01-04 09:53:52 <kspalaiologos> ``` asmbf mov r1, .0/out r1 && bfi output.b
+2020-01-04 09:53:53 <HackEso> 0
+2020-01-04 09:54:05 <kspalaiologos> `asmbf mov r1, .0/out r1
+2020-01-04 09:54:11 <HackEso> No output.
+2020-01-04 09:54:14 <kspalaiologos> ^this should display the code
+2020-01-04 09:54:16 <kspalaiologos> but it doesn'
+2020-01-04 09:54:20 <kspalaiologos> t for some reason, but it
+2020-01-04 09:54:22 <kspalaiologos> 's ok
