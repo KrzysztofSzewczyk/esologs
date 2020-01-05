@@ -167,3 +167,28 @@
 2020-01-05 16:18:31 <fizzie> Handy, they've added a "detected as X" note to the "all times are converted to your local time" message in the schedule page.
 2020-01-05 16:19:10 <fizzie> Now if they could only this time around shade the blocks in the past, highlight the currently running one, put a red line where we're now, or *something* like that.
 2020-01-05 16:27:58 <b_jonas> fizzie: is that about the GDQ schedule?
+2020-01-05 16:32:16 <fizzie> Yes.
+2020-01-05 16:34:49 <b_jonas> fizzie: but GDQ is sponsored by twitch, so they must go for webpages that are so heavy with client-side scripts that they're impossible to load in anything but a modern computer, even though other pages can show better quality videos easily on the same computer
+2020-01-05 16:35:01 <b_jonas> it wouldn't be twitch-like otherwise
+2020-01-05 16:35:19 <b_jonas> a simple server-side addition of a red line marking the current time wouldn't cut it
+2020-01-05 16:35:28 <b_jonas> it has to load a huge javascript library
+2020-01-05 16:36:51 <b_jonas> also, why don't the bash builtins pushd and popd have a single-letter switch to quiet their normal output?
+2020-01-05 16:38:04 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-01-05 16:38:04 <kspalaiologos> https://chat.stackexchange.com/transcript/message/51423495#51423495
+2020-01-05 16:38:05 <fizzie> The client-side local time conversion is pretty light. I mean, discounting jQuery.
+2020-01-05 16:38:21 <kspalaiologos> looks like our evil villain was there all the time :p
+2020-01-05 16:39:31 <b_jonas> fizzie: they have to add more stuff to that schedule page then
+2020-01-05 16:39:50 <b_jonas> dunno, mouseover popups to show the donation choices
+2020-01-05 16:40:25 <b_jonas> a sort widget
+2020-01-05 16:40:51 <b_jonas> or just no functionality, just loading and constructing the page content in javascript
+2020-01-05 16:41:47 <fizzie> Oh, is Twitch owned by Amazon? I didn't know that.
+2020-01-05 16:41:59 <b_jonas> fizzie: dunno but that seems likely
+2020-01-05 16:42:38 <fizzie> I was seeing all these "Subscribed with Twitch Prime" things, and thought they'd just copied the name, but apparently it's actually an Amazon subsidiary.
+2020-01-05 16:43:37 <b_jonas> fizzie: the Twitch Prime thing means that if you subscribe for Amazon Prime and pair your Amazon account with the Twitch account, you get some "free" stuff on Twitch
+2020-01-05 16:43:49 <b_jonas> twitch advertises that very agressively
+2020-01-05 16:47:14 Quit: heroux (Read error: Connection reset by peer)
+2020-01-05 16:47:15 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zoobab, zzo38
+2020-01-05 16:47:51 Joined: heroux
+2020-01-05 16:47:51 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xkapastel, zemhill, zoobab, zzo38
+2020-01-05 16:52:05 Quit: xkapastel (Quit: Connection closed for inactivity)
+2020-01-05 16:52:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
