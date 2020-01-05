@@ -208,3 +208,109 @@
 2020-01-05 17:18:22 <b_jonas> well sure, if you want, implement it in Java
 2020-01-05 17:29:46 <kspalaiologos> I like JAva
 2020-01-05 17:29:51 <kspalaiologos> why shouldn't implement it in Java
+2020-01-05 17:30:12 <b_jonas> if you like Java then sure, it's probably fine for this purpose
+2020-01-05 17:30:19 <kspalaiologos> or Elixir
+2020-01-05 17:30:22 <kspalaiologos> a hard decision
+2020-01-05 17:30:37 <b_jonas> I guess it's better than implementing an URL shortener in brainfuck
+2020-01-05 17:30:41 <kspalaiologos> `8ball Java (-) or Elixir (+)?
+2020-01-05 17:30:42 <HackEso> Concentrate and ask again.
+2020-01-05 17:30:46 <kspalaiologos> oh c'mon
+2020-01-05 17:31:01 <b_jonas> Java is a much better choice than brainfuck for this
+2020-01-05 17:31:07 <kspalaiologos> b_jonas, I'll do it on other occasion
+2020-01-05 17:31:11 <kspalaiologos> lmao, sure it is
+2020-01-05 17:31:15 <b_jonas> and we have a bot implemented in befunge
+2020-01-05 17:31:42 <kspalaiologos> `8ball Java (-) or Elixir (+)?
+2020-01-05 17:31:43 <HackEso> Cannot predict now.
+2020-01-05 17:31:46 <kspalaiologos> `8ball Java (-) or Elixir (+)?
+2020-01-05 17:31:47 <HackEso> It is certain.
+2020-01-05 17:31:47 <b_jonas> and mroman mentioned that he should implement blsqbot in blsq
+2020-01-05 17:32:05 <kspalaiologos> gah
+2020-01-05 17:32:10 <kspalaiologos> I need to modify my todolist
+2020-01-05 17:32:11 <b_jonas> and NotJack implemented a J evaluator bot in J
+2020-01-05 17:32:37 <kspalaiologos> . o O (soon: and kspalaiologos implemented a Brainfuck bot in Brainfuck)
+2020-01-05 17:32:47 <b_jonas> heck, I implemented my IRC bots in ruby 1.8, that's actually a worse choice than Java too
+2020-01-05 17:33:39 <b_jonas> it seemed like a good idea at the time
+2020-01-05 17:34:21 <kspalaiologos> I guess for this approach with brainfuck bot
+2020-01-05 17:34:23 <b_jonas> (actually back then they were started in ruby 1.6, but I ported them to 1.8 later)
+2020-01-05 17:34:44 <b_jonas> kspalaiologos: the problem with a brainfuck bot in brainfuck is that a brainfuck interpreter in brainfuck might be slow
+2020-01-05 17:34:55 <kspalaiologos> depends
+2020-01-05 17:35:00 <kspalaiologos> last time I used the Tritium interpreter
+2020-01-05 17:35:04 <kspalaiologos> and it was quite fast if you ask me
+2020-01-05 17:35:11 <b_jonas> you don't need much performance for just the IRC part
+2020-01-05 17:35:11 <kspalaiologos> and if it's too slow I can compile the brainfuck to optimized C
+2020-01-05 17:36:00 <fizzie> The zemhill of the underscores is done in Ruby too.
+2020-01-05 17:36:27 <b_jonas> but for the brainfuck part, your goal was that it should be able to run programs that take more time than what fungÐ¾t is willing to run
+2020-01-05 17:37:09 <b_jonas> and FireFly eventually ported jevalbot to ruby 2.something
+2020-01-05 17:37:22 <kspalaiologos> nice evasion
+2020-01-05 17:37:31 <kspalaiologos> of activating fungóts markov chains
+2020-01-05 17:38:36 <FireFly> fsvo 'ported'
+2020-01-05 17:38:52 <FireFly> I don't know ruby, and changed a handful of things it complained about to get it running (like 3-4 places or so)
+2020-01-05 17:39:20 <kspalaiologos> J seems like an intritiguing language
+2020-01-05 17:39:33 <FireFly> [ 'hi'
+2020-01-05 17:39:34 <j-bot> FireFly: hi
+2020-01-05 17:39:37 <FireFly> ok, it's still alive
+2020-01-05 17:39:44 <kspalaiologos> but why would anyone write in such an language
+2020-01-05 17:39:47 <b_jonas> kspalaiologos: it used to be a decent language, but it's old and maintained in the wrong way just like perl is
+2020-01-05 17:39:51 <kspalaiologos> it literally looks like Malbolge but scarier
+2020-01-05 17:39:55 <b_jonas> what? no
+2020-01-05 17:39:58 <kspalaiologos> Perl is awesome
+2020-01-05 17:40:03 <b_jonas> malbolge? no way
+2020-01-05 17:40:09 <kspalaiologos> quicksort=: (($:@(<#[), (=#[), $:@(>#[)) ({~ ?@#)) ^: (1<#)
+2020-01-05 17:40:13 <FireFly> APLs are very handy as ridiculously owerful calculators
+2020-01-05 17:40:14 <kspalaiologos> It literally looks like hell on earth
+2020-01-05 17:40:42 <kingoffrance> nah, that aint nothing kspalaiologos
+2020-01-05 17:40:44 <b_jonas> kspalaiologos: I think that expression is not something that people seriously write, it's just something people write to show off how ugly J is. there's a builtin sort operation.
+2020-01-05 17:41:10 <kspalaiologos> kingoffrance, let me show you my 50 entry PPCG Malbolge repo
+2020-01-05 17:41:11 <FireFly> well, it's a combination of being used to read it, of formatting/clarity, and of choosing a reasonable example
+2020-01-05 17:41:36 <kspalaiologos> I mean
+2020-01-05 17:41:37 <FireFly> I mean you can point at IOCCC and complain that C is a ridiculous language (which, well, wouldn't be the wrong conclusion, but...)
+2020-01-05 17:41:38 <FireFly> :p
+2020-01-05 17:41:47 <kspalaiologos> it was example given on Wikipedia
+2020-01-05 17:41:53 <FireFly> Honestly, I mostly use J as a ridiculously powerful calculator
+2020-01-05 17:41:54 <kspalaiologos> I didn't think that they are ranting J
+2020-01-05 17:41:57 <FireFly> fair
+2020-01-05 17:42:21 <kspalaiologos> 1:`($:@-&2+$:@<:)@.(>&2)
+2020-01-05 17:42:22 <kspalaiologos> fibonacci
+2020-01-05 17:42:26 <kspalaiologos> C'mon man
+2020-01-05 17:42:30 <kspalaiologos> it's literally write only
+2020-01-05 17:42:32 <b_jonas> kspalaiologos: have you written quicksort in other languages, and doesn't it also look bad?
+2020-01-05 17:42:44 <kspalaiologos> it looks decent
+2020-01-05 17:42:49 <b_jonas> kspalaiologos: that's also not something that people would write
+2020-01-05 17:42:57 <FireFly> There's many ways to implement fibonacci, and that one is one of the less natural ones in J
+2020-01-05 17:43:05 <b_jonas> it's one of the worst ones
+2020-01-05 17:43:13 <b_jonas> just try running it with 100 as the argument
+2020-01-05 17:43:17 <FireFly> it's a bit like insisting on writing an imperative solution in Haskell, instead of a functional one
+2020-01-05 17:43:28 <kspalaiologos> I don't understand a single character
+2020-01-05 17:43:30 <kspalaiologos> of this code
+2020-01-05 17:43:45 <FireFly> have you seen the Dyalog APL video on Game of Life?
+2020-01-05 17:43:50 <kspalaiologos> but it looks seductively
+2020-01-05 17:43:52 <FireFly> it's pretty neat
+2020-01-05 17:43:58 <FireFly> https://www.youtube.com/watch?v=a9xAKttWgP4
+2020-01-05 17:44:04 <b_jonas> it's like fibo 1 = 1; fibo 2 = 1; fibo k = fibo (k - 1) + fibo (k - 2); would you actually write that in Haskell?
+2020-01-05 17:44:07 <FireFly> (APL and J are similar enough that the concepts translate
+2020-01-05 17:44:30 <kspalaiologos> I don't know haskell
+2020-01-05 17:44:36 <b_jonas> kspalaiologos: what? not even the 2 in the middle, which is used to subtract 2 from the index?
+2020-01-05 17:44:37 <kspalaiologos> not a FP guy
+2020-01-05 17:44:48 <b_jonas> or the - which is used to do that subtraction?
+2020-01-05 17:44:53 <FireFly> [ 1 2 3 4
+2020-01-05 17:44:53 <j-bot> FireFly: 1 2 3 4
+2020-01-05 17:44:57 <FireFly> [ 1+2+3+4
+2020-01-05 17:44:58 <j-bot> FireFly: 10
+2020-01-05 17:45:00 <FireFly> [ +/ 1 2 3 4
+2020-01-05 17:45:01 <kspalaiologos> so it essentially subtracts & from @, right?
+2020-01-05 17:45:01 <j-bot> FireFly: 10
+2020-01-05 17:45:14 <b_jonas> well no
+2020-01-05 17:45:44 <b_jonas> oh right, a better analog in Haskell would be a stupid pointfree one
+2020-01-05 17:46:07 <b_jonas> with Applicative <*> and whatnot inside, so you can claim that it subtracts <&> from <*> or however that works
+2020-01-05 17:46:54 <b_jonas> but I'm not fluent in Haskell to write that
+2020-01-05 17:47:16 <kingoffrance> kspalaiologos, its not the bottle of poison labelled poison you have to worry about  https://www.youtube.com/watch?v=ar19vwtxEKs    youd have to convince me your code comes dressed as a goddess and then morphs into death;  malbolge i dont think makes any illusions about rescuing people :)
+2020-01-05 17:47:43 <kingoffrance> its called "malbolge" we know it cant be good
+2020-01-05 17:47:43 <kspalaiologos> lmao
+2020-01-05 17:48:08 <b_jonas> kspalaiologos: "Python" is labeled as poisonous too
+2020-01-05 17:48:27 <kingoffrance> lol
+2020-01-05 17:48:35 <kspalaiologos> <s> it's called JavaScript we know it can't be good </s>
+2020-01-05 17:49:41 <b_jonas> yes, I know it's a stupid example because pythons are actually constricting, not venomous
+2020-01-05 17:54:02 Quit: heroux (Read error: Connection reset by peer)
+2020-01-05 17:54:02 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-05 17:54:13 Joined: heroux
+2020-01-05 17:54:14 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
