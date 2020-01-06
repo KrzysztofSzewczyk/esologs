@@ -38,3 +38,52 @@
 2020-01-06 00:21:19 <b_jonas> which is why you don't just store the compressed image in a separate file
 2020-01-06 00:23:24 <zzo38> Yes, that is true.
 2020-01-06 00:23:56 <zzo38> And that is why it isn't stored in a separate file.
+2020-01-06 00:30:14 <b_jonas> zzo38: if you want to eg. send the uncompressed data to the printer, you can consider trying to not send that data through your process, so that your process only send ths compressed image to the forked process, and then the convereted output from that process is sent to whatever program does the printing
+2020-01-06 00:31:56 <b_jonas> then you don't need any non-blocking things
+2020-01-06 00:32:10 <b_jonas> but it's also not too hard to handle the two pipes in a select loop if you really need to
+2020-01-06 00:32:33 <zzo38> That picture is not the entire card, though, but only a part of it. And there is no guarantee that there will not be other stuff overlapping, or other things done to it before the page is completed.
+2020-01-06 00:33:21 <zzo38> (This program is meant to render cards for card games such as Magic: the Gathering; like MSE but different.)
+2020-01-06 00:33:47 <b_jonas> zzo38: and you want to process that uncompressed data together with some other data you read from the database, which is why you want it in the same process?
+2020-01-06 00:33:56 <zzo38> Yes.
+2020-01-06 00:34:43 <b_jonas> well, then either write something to a temporary file (that you unlink when you no longer need), or use a select loop to read and write the pipe in an unknown order
+2020-01-06 00:35:05 <b_jonas> if you need both sides from the same process then that's mostly what you can do
+2020-01-06 00:35:42 <b_jonas> though for some converters, you may be sure that it won't start writing even a header before it completely reads its input, in which case you can just write the input to the pipe and then read the output, without select or nonblocking
+2020-01-06 00:35:59 <b_jonas> that can depend on the converter and its options
+2020-01-06 00:36:05 <zzo38> Yes, OK. Probably I will just copy the data from the database to a temporary file when doing it, I suppose; that seems to be easily enough.
+2020-01-06 00:36:25 <zzo38> Yes, about what you said about the converter is true, but such thing is not known by this program
+2020-01-06 00:37:18 <b_jonas> of course another possibility is to also put the converter in the same process
+2020-01-06 00:37:30 <b_jonas> which I could do with ImageMagick in particualr
+2020-01-06 00:37:51 <b_jonas> because it has some dynamic libraries and documented interfaces
+2020-01-06 00:37:57 <b_jonas> C and C++ interfaces
+2020-01-06 00:38:30 <b_jonas> I think those allow reading compressed image streams from in memory, though I haven't actually tried that
+2020-01-06 00:38:46 <zzo38> Yes, although I am not even knowing if it is a format supported by ImageMagick or not, for one thing.
+2020-01-06 00:39:08 <b_jonas> even for embedding, I read/wrote the compressed image from/to disk files, I just manipulated the uncompressed image data in memory of the same process
+2020-01-06 00:39:39 <zzo38> (I can easily change how it communicates with the external program later if needed, I suppose.)
+2020-01-06 00:40:41 <b_jonas> sure, but you can do this with some libraries other than ImageMagick too
+2020-01-06 00:41:23 <b_jonas> there are good reasons for that, beacuse ImageMagick doesn't natively support everything
+2020-01-06 00:42:57 <zzo38> The way I have though, the user can install only the ones they need, rather than needing to add all of the dependencies that you don't use
+2020-01-06 00:42:59 <b_jonas> though you can also do conversion to a more convenient image format when you're importing to the database, and later read that convenient (but still compressed) input format with ImageMagick
+2020-01-06 00:44:19 <b_jonas> this can happen if you scan or photograph the card, but then preprocess the image and store the cleaned up image in the database as a jpeg
+2020-01-06 00:46:32 <b_jonas> that's when you can also rotate and crop and color correct the scan/photo, not just convert formats
+2020-01-06 00:46:40 <zzo38> Yes, I suppose that can also work, although then I wouldn't need to support more than one format inside the process (since conversion from any other format can be done before importing into the database), but JPEG is probably not a good choice in this case because JPEG is lossy.
+2020-01-06 00:47:29 <zzo38> (Also, the picture is not necessarily RGB and it might be CMYK instead.)
+2020-01-06 00:47:35 <b_jonas> you can still have more than one formats, since ImageMagick handles multiple formats with a natively built in decoder
+2020-01-06 00:48:00 <b_jonas> ImageMagick abstracts away some of those format differences
+2020-01-06 00:49:27 <zzo38> Probably only the artwork of the card would be stored in the database; the border pictures would be in external files.
+2020-01-06 00:49:33 <b_jonas> sure
+2020-01-06 00:49:48 <b_jonas> that doesn't change much of what I said
+2020-01-06 00:50:05 <b_jonas> mind you, these days there are too many cards with art extending outside the borders that you might not want to do that
+2020-01-06 00:50:19 <b_jonas> for the inner and middle borders that is
+2020-01-06 00:50:37 <b_jonas> you can do it with the outer black (or white) border, except for Un-sets
+2020-01-06 00:51:38 <b_jonas> but if you're assembling your own cards from art that you have, then you might store different elements of the card separately
+2020-01-06 00:51:38 <zzo38> Whether or not the art extends outside of the border wouldn't be built into the program anyways, since that stuff can be controlled by templates.
+2020-01-06 00:52:03 <zzo38> Have you used Magic Set Editor?
+2020-01-06 00:52:22 <b_jonas> one image for the art box, one image for the inner and middle border and text box, one for the text box watermark, and some for mana symbols
+2020-01-06 00:52:26 <b_jonas> no, I haven't used it
+2020-01-06 00:53:12 <b_jonas> I haven't created physical custom Magic cards, except simple proxies by putting a handwritten slip of paper next to the card inside the sleeve
+2020-01-06 00:54:40 <zzo38> Different elements of the card would be stored separately, some stuff (specific to these individual cards and the set) in the database, and other stuff (applicable to any cards) in the template.
+2020-01-06 00:57:36 <zzo38> If you are interested in TeXnicard then you should probably join the newsgroups of it. Also, for mana symbols I would probably want to use fonts instead (MSE uses pictures for the mana symbols, but I think to use fonts for the mana symbols will be better).
+2020-01-06 00:58:23 <b_jonas> sure, if you have a font that contains all forty-something mana symbols, then that can work
+2020-01-06 00:58:43 <b_jonas> plus the tap and untap symbol
+2020-01-06 00:59:01 Quit: FreeFull
+2020-01-06 00:59:02 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
