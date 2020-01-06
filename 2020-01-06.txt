@@ -830,3 +830,207 @@
 2020-01-06 16:29:52 <FireFly> yes
 2020-01-06 16:29:53 <kspalaiologos> right
 2020-01-06 16:29:58 <FireFly> it's all in the vocabulary
+2020-01-06 16:30:02 <wib_jonas> dear webpage of manufacturer, if I want to download the manual for your device, I'd like to tell you which device it is first and then choose from the languages in which a manual is available, rather than choose a language first then search for devices with a manual in that language. thank yuo.
+2020-01-06 16:30:07 <FireFly> https://www.jsoftware.com/help/dictionary/vocabul.htm  is quite handy
+2020-01-06 16:30:09 <arseniiv> btw one great thing about lisps is that their + − × / are often variadic
+2020-01-06 16:30:23 <kspalaiologos> yep
+2020-01-06 16:30:41 <kspalaiologos> otherwise you'd need to reduce
+2020-01-06 16:30:46 <kspalaiologos> not a great deal but saves time
+2020-01-06 16:31:12 <arseniiv> though now I seem to think (− 1 2 3) should be treated as (1 + 2) − 3 as we drop a left operand when writing (− 2)
+2020-01-06 16:32:00 <Taneb> That gives _1 _2 _3, right?
+2020-01-06 16:32:42 <kspalaiologos> [ - 1 2 3
+2020-01-06 16:32:43 <j-bot> kspalaiologos: _1 _2 _3
+2020-01-06 16:32:45 <kspalaiologos> ye
+2020-01-06 16:32:53 Joined: imode
+2020-01-06 16:32:54 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 16:32:56 <kspalaiologos> [ + - 1 2 3
+2020-01-06 16:32:56 <j-bot> kspalaiologos: _1 _2 _3
+2020-01-06 16:33:07 <Taneb> Well, it does in J. In Lisp I don't know
+2020-01-06 16:33:12 <kspalaiologos> [ - \ 1 2 3
+2020-01-06 16:33:12 <j-bot> kspalaiologos: _1  0  0
+2020-01-06 16:33:13 <j-bot> kspalaiologos: _1 _2  0
+2020-01-06 16:33:13 <j-bot> kspalaiologos: _1 _2 _3
+2020-01-06 16:33:16 <kspalaiologos> whoa
+2020-01-06 16:33:17 <kspalaiologos> wait
+2020-01-06 16:33:22 <kspalaiologos> why did it print out 3 messages
+2020-01-06 16:33:24 <Taneb> \ is not /
+2020-01-06 16:33:29 <FireFly> because you produced a 3x3 array
+2020-01-06 16:33:29 <kspalaiologos> k
+2020-01-06 16:33:34 <kspalaiologos> lmao
+2020-01-06 16:33:41 <arseniiv> J is jarring :P
+2020-01-06 16:33:54 <Taneb> APL is aplarring?
+2020-01-06 16:34:03 <arseniiv> (making jars)
+2020-01-06 16:34:13 <FireFly> it's a handy tool, and moreso I think it's handy to reason about programs in array-programming terms in my head sometimes
+2020-01-06 16:34:16 <kspalaiologos> wait a second
+2020-01-06 16:34:18 <arseniiv> hm what would alparring then mean
+2020-01-06 16:34:22 <kspalaiologos> does this bot have some kind of protection
+2020-01-06 16:34:25 <FireFly> another tool in the toolbox for reasoning about problems
+2020-01-06 16:34:27 <kspalaiologos> so it doesn't spam out the chat?
+2020-01-06 16:34:29 <arseniiv> parring with aluminium?
+2020-01-06 16:34:45 <arseniiv> [ - - - - 1 2 3
+2020-01-06 16:34:46 <j-bot> arseniiv: 1 2 3
+2020-01-06 16:34:51 <arseniiv> whyy
+2020-01-06 16:35:01 <arseniiv> [ \ \ \ 1 2 3
+2020-01-06 16:35:01 <j-bot> arseniiv: |syntax error
+2020-01-06 16:35:02 <j-bot> arseniiv: |       \\\1 2 3
+2020-01-06 16:35:11 <arseniiv> yes it’s quite protected
+2020-01-06 16:35:12 <FireFly> kspalaiologos: not entirely sure; I'd appreciate if you wouldn't try to get it to quit due to flooding
+2020-01-06 16:35:27 <kspalaiologos> I'll just check with 6 elements
+2020-01-06 16:35:29 <arseniiv> oh okay I won’t too
+2020-01-06 16:35:31 <kspalaiologos> if it prints out then it's flawed
+2020-01-06 16:35:38 <FireFly> I mean it's limited to three lines at a time
+2020-01-06 16:35:45 <kspalaiologos> [ - \ 1 2 4
+2020-01-06 16:35:46 <j-bot> kspalaiologos: _1  0  0
+2020-01-06 16:35:46 <j-bot> kspalaiologos: _1 _2  0
+2020-01-06 16:35:46 <j-bot> kspalaiologos: _1 _2 _4
+2020-01-06 16:35:47 <FireFly> but in principle that means you could spam lines and have it be amplified 1:3
+2020-01-06 16:35:48 <kspalaiologos> [ - \ 1 2 3 4
+2020-01-06 16:35:49 <j-bot> kspalaiologos: _1  0  0  0
+2020-01-06 16:35:49 <j-bot> kspalaiologos: _1 _2  0  0
+2020-01-06 16:35:49 <j-bot> kspalaiologos: _1 _2 _3  0
+2020-01-06 16:35:49 <j-bot> kspalaiologos: _1 _2 _3 _4
+2020-01-06 16:35:53 <kspalaiologos> well
+2020-01-06 16:35:53 <FireFly> ok maybe not 3
+2020-01-06 16:35:55 <FireFly> but some limit :P
+2020-01-06 16:36:01 <kspalaiologos> I'll try it on pm
+2020-01-06 16:36:01 <FireFly> [ i.10 10
+2020-01-06 16:36:02 <j-bot> FireFly:  0  1  2  3  4  5  6  7  8  9
+2020-01-06 16:36:02 <j-bot> FireFly: 10 11 12 13 14 15 16 17 18 19
+2020-01-06 16:36:02 <j-bot> FireFly: 20 21 22 23 24 25 26 27 28 29
+2020-01-06 16:36:02 <j-bot> FireFly: 30 31 32 33 34 35 36 37 38 39
+2020-01-06 16:36:02 <j-bot> FireFly: 40 41 42 43 44 45 46 47 48 49
+2020-01-06 16:36:02 <j-bot> FireFly: 50 51 52 53 54 55 56 57 58 59
+2020-01-06 16:36:02 <j-bot> FireFly: 60 61 62 63 64 65 66 67 68 69
+2020-01-06 16:36:03 <j-bot> FireFly: 70 71 72 73 74 75 76 77 78 79
+2020-01-06 16:36:03 <j-bot> FireFly: ...
+2020-01-06 16:36:03 <kspalaiologos> will it kick the bot?
+2020-01-06 16:36:07 <FireFly> ok that's the limit
+2020-01-06 16:36:21 <kspalaiologos> what's i.
+2020-01-06 16:36:34 * FireFly sighs
+2020-01-06 16:36:38 <kspalaiologos> ah
+2020-01-06 16:36:39 <kspalaiologos> it's seq
+2020-01-06 16:36:44 <kspalaiologos> but like
+2020-01-06 16:36:44 <kspalaiologos> worse
+2020-01-06 16:36:45 <FireFly> it'd be easiest if you reference the vocabulary for looking up verbs
+2020-01-06 16:36:55 <kspalaiologos> interesting
+2020-01-06 16:36:56 <arseniiv> kspalaiologos: i. is ι :D
+2020-01-06 16:37:00 <kspalaiologos> can I make it enumerate alphabet?
+2020-01-06 16:37:04 <kspalaiologos> or something else?
+2020-01-06 16:37:22 <FireFly> Well not per se
+2020-01-06 16:37:28 <kspalaiologos> there aren't really many operators here
+2020-01-06 16:37:50 <arseniiv> bet I have seen `atoi` in some language, related to ι but don’t remember in what a way
+2020-01-06 16:38:05 <kspalaiologos> but using this language already feels like driving a truck on thin ice
+2020-01-06 16:38:07 <FireFly> isn't that just "string to integer"
+2020-01-06 16:38:13 <kspalaiologos> yep it is
+2020-01-06 16:38:13 <FireFly> kspalaiologos: how so?
+2020-01-06 16:38:26 <kspalaiologos> seems illogical to me a bit
+2020-01-06 16:38:31 <kspalaiologos> but probably because I'm not used to APL
+2020-01-06 16:38:48 <kspalaiologos> is barely anyone using APL these days?
+2020-01-06 16:39:20 <FireFly> Not sure, I'm told it's still used a bit in financial stuffs
+2020-01-06 16:39:24 <FireFly> along with k
+2020-01-06 16:39:48 <Taneb> Didn't Phantom_Hoover get a job working with K?
+2020-01-06 16:39:49 <kspalaiologos> K is crazy too
+2020-01-06 16:40:10 <kspalaiologos> 2_&{&/x!/:2_!x}'!R
+2020-01-06 16:40:33 <kspalaiologos> FireFly, < K is the foundation for a family of financial products > -> you're right
+2020-01-06 16:41:15 <FireFly> I think that K is kind of the theoretically beautiful, minimalistic language in the family.. although it's also fairly different from APL and J in terms of how its arrays work
+2020-01-06 16:41:31 <FireFly> or well, it's more oriented around nested lists (a la lisps) than APL-style rectangular arrays
+2020-01-06 16:41:41 <FireFly> J is much more "batteries included"
+2020-01-06 16:42:27 <kspalaiologos> [ average=:+/ %
+2020-01-06 16:42:27 <j-bot> kspalaiologos: |ok
+2020-01-06 16:42:37 <kspalaiologos> [ average 4 5
+2020-01-06 16:42:38 <j-bot> kspalaiologos: 4.25 4.2
+2020-01-06 16:42:38 <j-bot> kspalaiologos: 5.25 5.2
+2020-01-06 16:42:48 <kspalaiologos> what have I done
+2020-01-06 16:44:06 * FireFly thinks
+2020-01-06 16:44:09 <int-e> beating the averages
+2020-01-06 16:44:45 <FireFly> created a hook that uh.. creates a table of the original input and the reciprocal?
+2020-01-06 16:44:46 <FireFly> I guess
+2020-01-06 16:44:53 <FireFly> I think you meant +/ % #
+2020-01-06 16:45:01 <int-e> Ah.
+2020-01-06 16:45:01 <FireFly> (a fork that divides the sum by the length)
+2020-01-06 16:45:15 <int-e> > [1/a + b | a <- [4,5], b <- [4,5]]
+2020-01-06 16:45:18 <lambdabot> [4.25,5.25,4.2,5.2]
+2020-01-06 16:45:27 <int-e> (wrong order, right numbers)
+2020-01-06 16:45:29 <FireFly> [ (;/ %) 1 2 3
+2020-01-06 16:45:30 <j-bot> FireFly: ┌─────┬──────────────┐
+2020-01-06 16:45:30 <j-bot> FireFly: │1 2 3│1 0.5 0.333333│
+2020-01-06 16:45:30 <j-bot> FireFly: └─────┴──────────────┘
+2020-01-06 16:45:36 <FireFly> well okay, not a great example
+2020-01-06 16:45:46 <kspalaiologos> how did you make that fancy table
+2020-01-06 16:45:47 <FireFly> but anyway
+2020-01-06 16:46:06 <FireFly> I used ; link, which boxes its left and right arguments before concatenating
+2020-01-06 16:46:13 <kspalaiologos> alright
+2020-01-06 16:46:13 <FireFly> [ <'hello'  NB. we have boxes
+2020-01-06 16:46:14 <j-bot> FireFly: ┌─────┐
+2020-01-06 16:46:14 <j-bot> FireFly: │hello│
+2020-01-06 16:46:14 <j-bot> FireFly: └─────┘
+2020-01-06 16:46:26 <FireFly> cats love J
+2020-01-06 16:46:26 <kspalaiologos> but this box seems a tiny bit off
+2020-01-06 16:46:28 <kspalaiologos> doesn't it
+2020-01-06 16:46:28 * FireFly nods
+2020-01-06 16:46:37 <int-e> [ <<'hello'
+2020-01-06 16:46:37 <j-bot> int-e: ┌───────┐
+2020-01-06 16:46:38 <j-bot> int-e: │┌─────┐│
+2020-01-06 16:46:38 <j-bot> int-e: ││hello││
+2020-01-06 16:46:38 <j-bot> int-e: │└─────┘│
+2020-01-06 16:46:38 <j-bot> int-e: └───────┘
+2020-01-06 16:46:40 <int-e> ...
+2020-01-06 16:46:46 <Taneb> int-e: what did you expect?
+2020-01-06 16:46:53 <kspalaiologos> wait
+2020-01-06 16:46:58 <kspalaiologos> thats actually very interesting
+2020-01-06 16:47:02 <kspalaiologos> [ <<<"bruh"
+2020-01-06 16:47:03 <j-bot> kspalaiologos: (< < <"_ _ _)"
+2020-01-06 16:47:07 <FireFly> lol
+2020-01-06 16:47:09 <kspalaiologos> [ <<<'bruh'
+2020-01-06 16:47:10 <j-bot> kspalaiologos: ┌────────┐
+2020-01-06 16:47:10 <j-bot> kspalaiologos: │┌──────┐│
+2020-01-06 16:47:10 <j-bot> kspalaiologos: ││┌────┐││
+2020-01-06 16:47:10 <j-bot> kspalaiologos: │││bruh│││
+2020-01-06 16:47:10 <j-bot> kspalaiologos: ││└────┘││
+2020-01-06 16:47:10 <j-bot> kspalaiologos: │└──────┘│
+2020-01-06 16:47:10 <j-bot> kspalaiologos: └────────┘
+2020-01-06 16:47:16 <int-e> Taneb: It did what I expected. But it's potentially very noisy.
+2020-01-06 16:47:33 <Taneb> int-e: I think that's true of a lot of things involving J
+2020-01-06 16:47:35 <FireFly> yeah, I wonder if the default output ought to be changed to the more consise way
+2020-01-06 16:47:42 <FireFly> I forget the foreign for it..
+2020-01-06 16:47:52 <FireFly> lessee
+2020-01-06 16:48:00 <Taneb> Maybe it could use double-lined boxes
+2020-01-06 16:48:10 <int-e> FireFly: "concise" if you're wondering about the spelling
+2020-01-06 16:48:28 <FireFly> whoops
+2020-01-06 16:48:33 <kspalaiologos> lessee
+2020-01-06 16:48:35 <kspalaiologos> what language is it
+2020-01-06 16:48:43 <kspalaiologos> french?
+2020-01-06 16:48:47 <int-e> engl-ish
+2020-01-06 16:49:03 <FireFly> kspalaiologos: "let's see"
+2020-01-06 16:49:08 <int-e> kspalaiologos: imagine a silent 't' after the first 'e'
+2020-01-06 16:49:18 <kspalaiologos> ah
+2020-01-06 16:49:23 <kspalaiologos> alright
+2020-01-06 16:49:26 <kspalaiologos> I misunderstood the context
+2020-01-06 16:49:38 <int-e> (engl-ish is a contraction of english-ish, of course)
+2020-01-06 16:49:55 <kspalaiologos> what
+2020-01-06 16:49:55 <int-e> `? ish
+2020-01-06 16:49:56 <HackEso> ish? ¯\(°​_o)/¯
+2020-01-06 16:50:02 <kspalaiologos> `? engl-ish
+2020-01-06 16:50:04 <kspalaiologos> `? english-ish
+2020-01-06 16:50:12 <kspalaiologos> ?
+2020-01-06 16:50:18 <kspalaiologos> `? test
+2020-01-06 16:50:22 <FireFly> [ (9!:2)''
+2020-01-06 16:50:22 <HackEso> engl-ish? ¯\(°​_o)/¯
+2020-01-06 16:50:22 <j-bot> FireFly: 5
+2020-01-06 16:50:23 <kspalaiologos> what just happened
+2020-01-06 16:50:24 <HackEso> english-ish? ¯\(°​_o)/¯
+2020-01-06 16:50:30 <HackEso> test failed. HackEgo-JUnit is not available.
+2020-01-06 16:50:32 <kspalaiologos> ah, a great lag
+2020-01-06 16:51:55 <int-e> kspalaiologos: https://www.thefreedictionary.com/ish has the right definition.
+2020-01-06 16:52:02 <int-e> (or right-ish?)
+2020-01-06 16:52:02 <kspalaiologos> is it possible to make a sleep in J?
+2020-01-06 16:52:11 <Taneb> Hmm, is "ish" a monad (in the Haskell sense)
+2020-01-06 16:52:20 <Taneb> If something is red, it's red-ish
+2020-01-06 16:52:28 <Taneb> If something is red-ish-ish, it's red-ish
+2020-01-06 16:52:37 <arseniiv> I don’t think the latter is true?
+2020-01-06 16:52:49 <Taneb> It's true-ish ;)
+2020-01-06 16:52:56 <int-e> . o O ( What color is horse red-ish? )
+2020-01-06 16:53:06 <arseniiv> hm maybe then it’s monad-ish
+2020-01-06 16:54:22 Joined: Sgeo
+2020-01-06 16:57:40 Quit: Sgeo (Ping timeout: 258 seconds)
+2020-01-06 16:58:33 <arseniiv> int-e: reminds me about a partially obtuse riddle mentioning a horse too, which has an usual translation “when one buys a horse, what (=in which state) it is?” and an intended translation like “when one have a horse washed” instead of the first, and the answer is then “it is wet”
