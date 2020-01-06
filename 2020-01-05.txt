@@ -399,3 +399,34 @@
 2020-01-05 22:41:50 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Mikadio 5*  10New user account
 2020-01-05 22:52:44 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=68693&oldid=68692 5* 03Mikadio 5* (+263) 10
 2020-01-05 22:55:04 <esowiki> 14[[07Brainfuck Contest 114]]4 10 02https://esolangs.org/w/index.php?diff=68694&oldid=67306 5* 03Mikadio 5* (+145) 10
+2020-01-05 23:32:59 <b_jonas> `? calesyta
+2020-01-05 23:33:01 <HackEso> calesyta? ¯\(°​_o)/¯
+2020-01-05 23:37:46 <zzo38> Would it be work to use pipe() to create a pipe and then use popen() and pass the other end of the pipe using /proc/.../fd/ files?
+2020-01-05 23:47:23 <b_jonas> zzo38: that's usually a bad idea, because you can deadlock yourself when both your program and the other program are blocked on a write with a full pipe
+2020-01-05 23:47:54 <b_jonas> so it only works if you use an event loop or something to check for when the read pipe is readable and when the write pipe is writable
+2020-01-05 23:47:59 <b_jonas> and read or write respectively
+2020-01-05 23:48:10 <b_jonas> it can be done, but in most cases it's not worth, unless you really need interactivity
+2020-01-05 23:48:40 <zzo38> O, yes, that is right. Is there some other way that you need not make a disk file?
+2020-01-05 23:49:35 <b_jonas> zzo38: make a file in a tmp file system and have no swap?
+2020-01-05 23:49:50 <b_jonas> usually I don't think it's worth to avoid creating files
+2020-01-05 23:49:57 <b_jonas> unless you tell why you really need that
+2020-01-05 23:50:26 <zzo38> I don't want to prevent swap, only to not add a file into the system.
+2020-01-05 23:50:39 <zzo38> (It is up to the operating system to decide whether or not to swap out)
+2020-01-05 23:50:49 <b_jonas> like for ugly privacy requirements where you want to limit what attackers can do if they can get physical access to your computer or root access after your program has finished
+2020-01-05 23:51:03 <b_jonas> zzo38: then just create a file on a tmpfs
+2020-01-05 23:52:34 <b_jonas> but if you really want, you can use an event loop and handle both the read and write pipes, buffering everything in memory
+2020-01-05 23:52:46 <b_jonas> just make sure to read all the data you can from the read pipe, even if you don't yet need it
+2020-01-05 23:52:57 <zzo38> I don't know much about tmpfs, but perhaps that would work
+2020-01-05 23:53:34 Quit: arseniiv (Ping timeout: 268 seconds)
+2020-01-05 23:53:35 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-05 23:53:36 <b_jonas> or you can spawn a separate thread or process for one end of the pipe if you want to waste more resources than a file
+2020-01-05 23:53:58 <b_jonas> but generally, if you don't need interactivity, just use a file
+2020-01-05 23:54:30 <zzo38> My computer says that /run is tmpfs
+2020-01-05 23:54:41 <b_jonas> if the input data is really short and the process you're spawning is suitable, you may be able to pass all the data in argv
+2020-01-05 23:56:20 <zzo38> Wikipedia says that tmpfs is used on /tmp but I do not see that on my computer.
+2020-01-05 23:57:02 <b_jonas> no, it's usually not on /tmp , though it is in some setups
+2020-01-05 23:57:12 <b_jonas> but you can mount any number of them
+2020-01-05 23:57:45 <b_jonas> basically it's just a file system that stores all its data in the file system caches, and never flushes those caches
+2020-01-05 23:59:11 <b_jonas> plus some extra magic so you can customize how much (virtual) memory it can consume and give ENOSPC when you try to consume more
+2020-01-05 23:59:25 <b_jonas> the data it uses can be swapped out
+2020-01-05 23:59:42 <b_jonas> if you have swaps set up, obviously
