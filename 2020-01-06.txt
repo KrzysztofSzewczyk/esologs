@@ -365,3 +365,60 @@
 2020-01-06 13:29:21 <kspalaiologos> and there is something that resembles the state
 2020-01-06 13:29:32 <kspalaiologos> Namespace for types?
 2020-01-06 13:29:39 <int-e> I really liked OO for MUD programming.
+2020-01-06 13:30:04 <kspalaiologos> alright?
+2020-01-06 13:30:18 <kspalaiologos> I thought about extending C a bit
+2020-01-06 13:30:20 <int-e> So you have monsters as objects, players as objects, things you carry around as objects, rooms as objects... it's mostly very tangible.
+2020-01-06 13:30:27 <kspalaiologos> yeah
+2020-01-06 13:30:34 <kspalaiologos> but you could do this in C
+2020-01-06 13:30:43 <kspalaiologos> look at linux source code and how the drivers are implemented
+2020-01-06 13:30:51 <int-e> "you can do this in C" is not a valid argument
+2020-01-06 13:31:19 <kspalaiologos> it would be as comfortable when done procedurally as the example you're giving
+2020-01-06 13:31:36 <int-e> It's basically a tautology. (You can program it in C, or you can't program it at all.)
+2020-01-06 13:33:22 <int-e> I'm quite happy with the fragment of C++ that has structs and classes, no inheritance, and a small amount of templates. I prefer it to doing the same thing in C because of the namespace thing, and well, because templates offer some amount of code generation when you need it.
+2020-01-06 13:34:12 <int-e> (Oh and exceptions see the occasional use as well... as non-local returns.)
+2020-01-06 13:44:14 <wib_jonas> int-e: yes, but with or without implicitly called user-defined destructors (and implicitly called copy/move constructors/initializers)? because that is, I think, what most clearly distinguishes C++ from C.
+2020-01-06 13:45:39 <kspalaiologos> one could employ boehm GC
+2020-01-06 13:45:41 <int-e> wib_jonas: I really try to stick to pod-types.
+2020-01-06 13:45:46 <kspalaiologos> all your low level stuff is gone
+2020-01-06 13:51:35 <int-e> kspalaiologos: I do use Haskell too. :P
+2020-01-06 13:52:02 <kspalaiologos> any ideas on brainfuck <=> SQLite interop?
+2020-01-06 13:52:10 <kspalaiologos> especially the callbacks
+2020-01-06 13:52:12 <kspalaiologos> how to get over 'em
+2020-01-06 13:52:55 <int-e> I'll go out on a limb and say I have better things to think about.
+2020-01-06 13:53:32 <kspalaiologos> it's already an amazing thing to think about
+2020-01-06 13:53:45 <kspalaiologos> also, as you use haskell you're probably experienced in CS theory
+2020-01-06 13:54:03 <kspalaiologos> would you tell me how the f*ck can 3-celled brainfuck be Turing complete
+2020-01-06 13:54:07 <int-e> I mean I admire your efforts to deprive "Brainfuck" of its esolang status, but I don't want to be part of it.
+2020-01-06 13:54:16 <kspalaiologos> I know about collatz function
+2020-01-06 13:54:21 <kspalaiologos> and I know it proves turing completness
+2020-01-06 13:54:34 <kspalaiologos> but it makes no sense to me that you can for example do modulus operation on it
+2020-01-06 13:54:35 <fizzie> There was that one brainfuck system call library thingamajick, what was it called? Wasn't really anything very surprising, though -- just a specific protocol for the input/output instructions.
+2020-01-06 13:54:36 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2020-01-06 13:54:36 <kritixilithos> kspalaiologos: oh you're extending bf and making it a proper language?
+2020-01-06 13:54:43 <int-e> kspalaiologos: Just work through oerjan's construction.
+2020-01-06 13:54:56 <int-e> It's only slightly tricky!!!1
+2020-01-06 13:55:07 <kspalaiologos> kritixilithos, wiring up SQLite to write an URL shortener in brainfuck
+2020-01-06 13:55:19 <kspalaiologos> int-e, I mean, possibly
+2020-01-06 13:55:21 <kritixilithos> what have you added so far?
+2020-01-06 13:55:33 <kspalaiologos> interop between brainfuck and sqlite
+2020-01-06 13:55:41 <kspalaiologos> currently you can just INSERT to the database
+2020-01-06 13:55:50 <kspalaiologos> SELECT is being worked on because I can't get over the callback mechanism
+2020-01-06 13:56:32 <kspalaiologos> I thought that if I had 3 bignum cells and a brainfuck like language
+2020-01-06 13:56:40 <kspalaiologos> to prove it's turing complete I'd simulate a stack machine
+2020-01-06 13:56:47 <kspalaiologos> that has two stacks and in result is turing complete
+2020-01-06 13:56:52 <kspalaiologos> so the proof is more practical
+2020-01-06 13:57:20 <kspalaiologos> to push something on a stack I'd just *= 255 & += n;
+2020-01-06 13:57:28 <kspalaiologos> but to pop something out of the stack I need modulus
+2020-01-06 13:57:40 <fizzie> There was https://esolangs.org/wiki/Systemf but that's not the one I was thinking of, it was more abstract and didn't introduce any new commands.
+2020-01-06 13:57:59 <kspalaiologos> there was ESOAPI for ESOOS
+2020-01-06 13:58:04 <kspalaiologos> but it's garbage for userland programming
+2020-01-06 13:58:12 <kspalaiologos> that used something along ANSI escapes but better
+2020-01-06 13:58:37 <int-e> kspalaiologos: pushing isn't the problem... popping is.
+2020-01-06 13:58:41 <fizzie> Right, and https://esolangs.org/wiki/PESOIX
+2020-01-06 13:58:42 <kspalaiologos> sure
+2020-01-06 13:58:52 <kspalaiologos> thats what I just said
+2020-01-06 13:58:52 <int-e> You'd need a division by a constant with remainder using only two cells.
+2020-01-06 13:58:57 <kspalaiologos> yes
+2020-01-06 13:59:07 <int-e> The fun thing about Collatz machines is that you get 3 cells for that task, effectively.
+2020-01-06 13:59:17 <int-e> s/machines/functions/
+2020-01-06 13:59:49 <kspalaiologos> but it would be possible to translate 3-cell brainfuck to 2-register MM
