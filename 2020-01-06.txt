@@ -1292,3 +1292,45 @@
 2020-01-06 22:57:47 <fizzie> int-e: I've been toying with the idea of doing p5.js visual illustrations out of my solutions, did two already -- https://zem.fi/tmp/aoc-2019-p5/ -- but not sure if I'll finish, not all of them are as visual. Though many are.
 2020-01-06 22:58:32 <int-e> I have not touched any AoC or Intcode... this year, I think.
 2020-01-06 22:59:11 <int-e> We should get kspalaiologos to write tools for that :P
+2020-01-06 23:02:22 <int-e> fizzie: Oh the CA one is pretty. In the asteroid scan too much is going on.
+2020-01-06 23:02:52 <fizzie> int-e: Did you let the scan run to part 2? I think that's better.
+2020-01-06 23:03:28 <fizzie> Part 1 is just a flickery mess, it's true.
+2020-01-06 23:03:32 <int-e> Hmm, ket me see.
+2020-01-06 23:03:55 <int-e> Oh I remember what it was... yes, part 2 should work better.
+2020-01-06 23:04:00 <fizzie> I mean, it's not going to be any prettier, just less messy.
+2020-01-06 23:04:16 <int-e> But now I missed the fun part.
+2020-01-06 23:05:13 <int-e> Yeah, part 2 is nicer :)
+2020-01-06 23:05:43 <fizzie> My target asteroid 200 was in the first sweep, not sure if that's always the case.
+2020-01-06 23:06:13 <int-e> Mine was too.
+2020-01-06 23:06:35 <int-e> And it was number 200 as well.
+2020-01-06 23:09:35 <int-e> Ah, you did the sweep differently :)
+2020-01-06 23:09:53 <int-e> I actually used https://en.wikipedia.org/wiki/Stern-Brocot_tree to get the possible directions in clockwise order.
+2020-01-06 23:11:23 <int-e> http://paste.debian.net/1124909/
+2020-01-06 23:12:44 <fizzie> Heh, interesting. Kind of more discrete.
+2020-01-06 23:14:58 <fizzie> I did consider doing the same thing I did (reuse part 1's 'get visible' function, sort the result) but using a quadrant-and-slope kind of thing for the sort instead of atan2.
+2020-01-06 23:15:38 <int-e> But yeah, atan2 seems simpler.
+2020-01-06 23:16:07 <int-e> Unless you worry about rounding errors...
+2020-01-06 23:16:46 <fizzie> I did, but it gave the right result. :)
+2020-01-06 23:17:10 <int-e> Oh yes, there is that in these competitions.
+2020-01-06 23:17:15 <fizzie> I guess the whole "only the visible ones" + the limited size of the grid means you can't really get angles that near each other.
+2020-01-06 23:19:58 <int-e> But let's see... two subsequent angles span a parallelogram of area 1, so the angle between them is arcsin(1/(ab)) where a and b are the lengths of the vectors... which are less than sqrt(2)*48.
+2020-01-06 23:20:13 <int-e> > asin (1/(2*48^2))
+2020-01-06 23:20:17 <lambdabot> 2.170138905922681e-4
+2020-01-06 23:20:41 <int-e> As you can see, no need to worry about rounding errors :)
+2020-01-06 23:21:31 <int-e> s/angles/directions/ (and by "direction" I mean an integer vector (p,q) with gcd(p,q) = 1)
+2020-01-06 23:22:30 <int-e> > atan2 1 1 - atan2 46 47
+2020-01-06 23:22:33 <lambdabot> 1.0752273791101219e-2
+2020-01-06 23:23:07 <int-e> > atan2 45 46 - atan2 46 47 -- ah, this is more like it
+2020-01-06 23:23:09 <lambdabot> -2.362948916323493e-4
+2020-01-06 23:23:53 <int-e> that should be the actual minumum achievable difference
+2020-01-06 23:24:06 <int-e> iuiuiu.
+2020-01-06 23:25:06 <int-e> > atan2 3 3 - atan2 5 5 -- now I'm curious
+2020-01-06 23:25:09 <lambdabot> 0.0
+2020-01-06 23:26:07 <int-e> fizzie: wait, your grid is so much smaller than mine!
+2020-01-06 23:26:26 <int-e> I got a 48x48 one.
+2020-01-06 23:26:36 <fizzie> Weird. That's what I got as my input file.
+2020-01-06 23:27:22 <fizzie> This is the one day I did real early (as in, leaderboard early), I guess it's technically possible they might have changed the size? Sounds odd though.
+2020-01-06 23:27:23 <int-e> 346 asteroids, not many more than yours
+2020-01-06 23:27:55 <int-e> Yeah, quite possibly.
+2020-01-06 23:28:36 <int-e> Or maybe they just picked a random value between 20 and 50.
+2020-01-06 23:28:54 <int-e> It's not like the problem became any simpler or harder because of it.
