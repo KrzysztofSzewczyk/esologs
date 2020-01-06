@@ -320,3 +320,10 @@
 2020-01-06 11:51:29 <kspalaiologos> really
 2020-01-06 11:51:37 <kspalaiologos> the program is around 40MB big
 2020-01-06 11:52:09 <Taneb> Then that's not very interesting
+2020-01-06 12:10:13 Quit: Sgeo (Ping timeout: 260 seconds)
+2020-01-06 12:10:14 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 12:17:57 <int-e> http://www.logique.jussieu.fr/~michel/bbc.html has some pertinent numbers
+2020-01-06 12:22:27 <Taneb> It looks like you can require more memory than there are atms in the universe with 2 symbols and 7 states
+2020-01-06 12:25:06 <int-e> Or 6 states, unless you compress the tape (assuming the tape is compressible... which seems likely since we do have a termination proof)
+2020-01-06 12:27:26 <int-e> (going by the 10^78 to 10^82 estimate for the number of atoms in the universe, with a very generous margin for error.)
+2020-01-06 12:29:47 <int-e> Of course the tape is very compressible if you accept a description of the form "tape after executing the TM M for n steps, starting from an empty tape".
