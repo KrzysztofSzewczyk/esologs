@@ -1243,3 +1243,26 @@
 2020-01-06 19:58:34 User Name: b_jonas = b_jonas!~x@catv-176-63-14-122.catv.broadband.hu
 2020-01-06 19:58:34 <b_jonas> kspalaiologos: for merging brainfuck equivalents, note that Ook! has some historical significance so I'd prefer it to have its own page
 2020-01-06 19:59:46 <b_jonas> kspalaiologos, ais523: the esolangs.org wiki has the api.php interface enabled, at https://esolangs.org/w/api.php , documented at https://www.mediawiki.org/wiki/API:Main_page ,
+2020-01-06 20:00:06 <b_jonas> that's the interface that I recommend if you want to make automated changes to lots of pages, or other complex automation
+2020-01-06 20:00:44 <b_jonas> it's not the only API, eg. there's also https://esolangs.org/wiki/Special:Export , but it's a very general one, and usually it's the most convenient one for automation
+2020-01-06 20:02:14 <esowiki> 14[[07User:CarlosLuna14]]4 M10 02https://esolangs.org/w/index.php?diff=68711&oldid=68689 5* 03CarlosLuna 5* (-196) 10Improving indentation
+2020-01-06 20:02:46 <b_jonas> kspalaiologos: yes, of course there are rate limits on the server. why would you think there aren't? the interface even tells you what rate it wants you to edit stuff, because sometimes the Mediawiki servers are overloaded, in which case they ask bots to edit slower
+2020-01-06 20:03:12 <b_jonas> what the client side does is to just read those rate limits in the replies and wait for the appropriate time
+2020-01-06 20:03:57 <b_jonas> "<ais523> that's one of the things the "bot flag" on an account is for, it disables the rate limits" => no, not really. the bot flag is more for marking bots that are trusted so that people patrolling RecentChanges or other lists of changes can easily ignore bot edits
+2020-01-06 20:08:33 <b_jonas> the point of the client-side rate limits is that they can submit your write request slowly enough that the server doesn't ban you for editing more quickly. those client-side rate limits are what let you spam the server. if you remove them, you'll just get your request refused by the server in a busy loop.
+2020-01-06 20:16:22 <arseniiv> <b_jonas> that's the interface that I recommend if you want to make automated changes to lots of pages, or other complex automation => this is great! (possibly; didn’t read what it allows)
+2020-01-06 20:17:01 <arseniiv> good that MediaWiki folks had thought about that
+2020-01-06 20:17:31 <fizzie> Just try not to get carried away.
+2020-01-06 20:18:04 <fizzie> (I'll be the one who has to restore from backup if you do.)
+2020-01-06 20:18:36 <fizzie> Also, anything that *requires* "complex automation" is probably sufficiently drastic to have a talk page discussion for a few months before implementing.
+2020-01-06 20:19:03 <fizzie> (Few months of esolangs.org time is probably equivalent of few days of Wikipedia time, relatively speaking.)
+2020-01-06 20:22:14 <b_jonas> fizzie: no it's not. en.wikipedia has hundreds of edits per minute, and even the smaller wikipedias have a lot of edits. the esolangs wiki has had less than 100000 edits total.
+2020-01-06 20:22:30 <fizzie> It doesn't scale that way.
+2020-01-06 20:22:46 <fizzie> It's a logarithm of edit speed or something.
+2020-01-06 20:23:23 <b_jonas> arseniiv: yes, it's generally a good api. not perfect, but good.
+2020-01-06 20:24:02 <b_jonas> sometimes it lags a little behind the other latest developments of mediawiki and its extensions, so there can be extension functions that work but not yet accessible through the api,
+2020-01-06 20:24:47 <b_jonas> or sometimes the permissions are inconsistent, as in there's at least one list that I can query through the default html interface anonymously, but get a permission error if I try to query it through api.php
+2020-01-06 20:24:59 <b_jonas> or was
+2020-01-06 20:25:44 <b_jonas> I met that problem a year ago, might be fixed by now
+2020-01-06 20:27:31 <arseniiv> <fizzie> Just try not to get carried away. => for my part, I’m not going to use it at all :D but glad anyway
+2020-01-06 20:29:44 <b_jonas> fizzie: discussion before implementing it => only if it has write operations I think. api.php is useful for read-only stuff too, such as watching new changes
