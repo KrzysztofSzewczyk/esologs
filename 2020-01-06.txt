@@ -144,3 +144,21 @@
 2020-01-06 04:03:35 <zzo38> I don't know.
 2020-01-06 04:06:09 <\oren\> should I rewrite my font editor in Rust?
 2020-01-06 04:08:18 <imode> what's the purpose?
+2020-01-06 04:37:42 <\oren\> it has a memory leak and I can't find it
+2020-01-06 04:38:05 <\oren\> if I rewrite it in rust, that is supposed to mean it can't have memory leaks
+2020-01-06 04:38:11 <zzo38> What font formats does it use?
+2020-01-06 04:38:15 <\oren\> CDF
+2020-01-06 04:38:19 <\oren\> BDF
+2020-01-06 04:38:28 <zzo38> OK
+2020-01-06 04:38:35 <zzo38> What is it written in now?
+2020-01-06 04:38:37 <\oren\> C
+2020-01-06 04:38:49 <zzo38> OK. Did you publish it?
+2020-01-06 04:44:00 <zzo38> I have read of use of farbfeld compressed with bzip2 for picture compression. However, if a picture is in JPEG format then it seem JPEG is a better compression, but farbfeld compressed with bzip2 will be a better compression than PNG in some cases.
+2020-01-06 04:44:29 <\oren\> http://www.orenwatson.be/neoletters_tools.tar
+2020-01-06 04:44:47 <zzo38> OK
+2020-01-06 04:53:44 Quit: heroux (Read error: Connection reset by peer)
+2020-01-06 04:53:44 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-06 04:54:25 Joined: heroux
+2020-01-06 04:54:25 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-06 04:56:02 <zzo38> What transformations can be done to improve JPEG compression without being more lossy?
+2020-01-06 04:56:17 <zzo38> (Assuming the file that you are trying to transform is already JPEG)
