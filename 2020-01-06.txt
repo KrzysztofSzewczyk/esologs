@@ -1101,3 +1101,112 @@
 2020-01-06 17:28:44 <kspalaiologos> k AutoWikiBrowser
 2020-01-06 17:29:55 <kspalaiologos> https://en.wikipedia.org/wiki/Wikipedia:AutoWikiBrowser/CheckPage#Approved_users
 2020-01-06 17:29:57 <kspalaiologos> what an idiotism
+2020-01-06 17:30:11 <kspalaiologos> a power user will just nop out the statements used for the check
+2020-01-06 17:30:17 <kspalaiologos> if it's open source its even easier
+2020-01-06 17:31:12 <ais523> kspalaiologos: it's pretty good at keeping out script kiddies
+2020-01-06 17:31:26 <kspalaiologos> in which way?
+2020-01-06 17:31:34 <kspalaiologos> there's no source
+2020-01-06 17:31:38 <ais523> they don't even know how to override the check
+2020-01-06 17:31:40 <kspalaiologos> so it's easy
+2020-01-06 17:31:48 <kspalaiologos> just use dotPeek
+2020-01-06 17:32:07 <kspalaiologos> or a proxy
+2020-01-06 17:32:28 <kspalaiologos> that will add my username to the wiki page, there must be a programmable tool for that
+2020-01-06 17:32:31 <ais523> also, the list is enforced two ways: both by the tool itself, and by Wikipedia administrators who can block accounts that are using automated editing illegally
+2020-01-06 17:32:49 <kspalaiologos> block is delayed
+2020-01-06 17:32:55 <kspalaiologos> whoever wants to do it will do it
+2020-01-06 17:32:59 <ais523> it's pretty hard to bypass the check in the tool unknowingly
+2020-01-06 17:33:13 <kspalaiologos> it seems like a cool thing to do this afternoon
+2020-01-06 17:33:28 <kspalaiologos> obviously I won't "test it"
+2020-01-06 17:33:46 <ais523> so using the tool contrary to the checkpage check is pretty strong evidence that someone is intentionally trying to violate policy
+2020-01-06 17:34:15 <kspalaiologos> protection on the clientside is useless
+2020-01-06 17:34:55 <kspalaiologos> other approach should be taken
+2020-01-06 17:34:59 <ais523> the thing is, on Wikipedia anything can be reverted
+2020-01-06 17:35:07 <kspalaiologos> ratelimits, have they heard of it
+2020-01-06 17:35:11 <ais523> and someone having bypassed a clientside check is good evidence that it /should/ be reverted
+2020-01-06 17:35:27 <kspalaiologos> possibly but reverting in batch can be sometimes bad
+2020-01-06 17:35:43 <kspalaiologos> maybe the user mixed good and bad contributions? maybe someone already touched the page since "change"?
+2020-01-06 17:35:47 <ais523> yes, that's why it's a good idea to have a system that lets you know whether reverting in batch is likely to be helpful
+2020-01-06 17:35:47 <kspalaiologos> just add ratelimits
+2020-01-06 17:36:00 <kspalaiologos> ratelimits on edits, no more than a page per minute
+2020-01-06 17:36:02 <ais523> also, I'm pretty sure there are systems that check to see if an account is editing too fast
+2020-01-06 17:36:11 <kspalaiologos> they have to check the list
+2020-01-06 17:36:14 <kspalaiologos> possibly
+2020-01-06 17:36:16 <ais523> that's one of the things the "bot flag" on an account is for, it disables the rate limits
+2020-01-06 17:36:22 <kspalaiologos> so the clientside protection is useless
+2020-01-06 17:36:25 <kspalaiologos> as the backend will take care
+2020-01-06 17:36:37 <ais523> but that has to be set manually and there's vetting of the user/bot first
+2020-01-06 17:36:56 <kspalaiologos> manually?
+2020-01-06 17:37:10 <kspalaiologos> just get an automated system that trashes account of an user that makes more than two edits a second constantly
+2020-01-06 17:37:38 <ais523> kspalaiologos: no, I mean permission to bypass rate limits has to be given manually
+2020-01-06 17:37:49 <kspalaiologos> like the entry on checklist
+2020-01-06 17:38:01 <ais523> the rate limits themselves are probably automatic, although I don't think I have perms to check atm
+2020-01-06 17:38:12 <kspalaiologos> you're a wikipedia admin?
+2020-01-06 17:38:14 <kspalaiologos> interesting
+2020-01-06 17:38:43 <kspalaiologos> c'mon man
+2020-01-06 17:38:47 <ais523> not right now, I was at one time though (I resigned due to lack of activity)
+2020-01-06 17:38:49 <kspalaiologos> they havent even obfuscated the assembly
+2020-01-06 17:39:37 <ais523> the abuse filter configuration is stored in a non-public database; however, there is a public page listing a subset of it, but it's unclear whether rate limits would be in the public or the private subset
+2020-01-06 17:40:03 <kspalaiologos> I haven't dug through mediawiki
+2020-01-06 17:40:18 <ais523> looking at the source code for this would be pointless because it's a configuration setting, not hardcoded
+2020-01-06 17:42:09 <ais523> OK, I checked the public part of the configuration: it states that a rate limit exists; however, the exact numbers are not public
+2020-01-06 17:42:46 <kspalaiologos> << This user doesn't have enough privileges to make automatic edits on this wiki. >>
+2020-01-06 17:42:57 <kspalaiologos> a check and the messagebox below
+2020-01-06 17:47:50 <fizzie> You just said the client-side protection is useless, now you're complaining about them not spending enough effort on it.
+2020-01-06 17:49:39 <kspalaiologos> well, you see
+2020-01-06 17:49:46 <kspalaiologos> when someone makes clientside protection
+2020-01-06 17:49:50 <kspalaiologos> they either resign before making it
+2020-01-06 17:49:54 <kspalaiologos> or make it hard to overcome
+2020-01-06 17:50:10 <ais523> or duplicate it on the server side
+2020-01-06 17:50:13 <kspalaiologos> there are no inbetweeners, because it has no sense to implement weak protection
+2020-01-06 17:50:52 <ais523> client-side validation that's duplicated on the server-side is pretty helpful because it saves the server time dealing with known bad values, and saves the user time too because the client-side check is faster when using a slow Internet connection
+2020-01-06 17:51:02 <kspalaiologos> wait
+2020-01-06 17:51:06 <kspalaiologos> for a clientside check
+2020-01-06 17:51:10 <kspalaiologos> they first connect to the wiki
+2020-01-06 17:51:15 <kspalaiologos> download allowed nicks list
+2020-01-06 17:51:27 <ais523> I'm talking in general here, rather than about AWB in particular
+2020-01-06 17:51:27 <kspalaiologos> and then they check whether the client can proceed or not
+2020-01-06 17:51:39 <kspalaiologos> well AWB uses inet connection for a clientside check
+2020-01-06 17:51:43 <ais523> in AWB, the server-side duplication is a little less accurate because it isn't always 100% obvious whether someone's using AWB or not
+2020-01-06 17:51:44 <kspalaiologos> so your argument is invalid
+2020-01-06 17:52:05 <ais523> which is the reason why the client-side check helps there
+2020-01-06 17:52:29 <kspalaiologos> it's not effective
+2020-01-06 17:52:44 <kspalaiologos> it would be a shame if (*cough*) someone, released an unlocked version.
+2020-01-06 17:52:49 <kspalaiologos> that's why it doesn't work
+2020-01-06 17:53:13 <ais523> people bypassing the check basically just costs the Wikipedia administrators time in cleaning the issue up, it doesn't do lasting damage
+2020-01-06 17:53:29 <kspalaiologos> it shouldn't cost anything
+2020-01-06 17:53:40 <ais523> so having an imperfect check is a good time-saving device, compared to having no client-side check
+2020-01-06 17:53:46 <kspalaiologos> if ratelimits were optimally implemented
+2020-01-06 17:54:17 <ais523> there are rate limits, but manual edits can go pretty quickly sometimes
+2020-01-06 17:54:25 <kspalaiologos> how quickly?
+2020-01-06 17:54:29 <ais523> I think I managed something like 8/minute manually cleaning up spam
+2020-01-06 17:54:50 <ais523> so the rate limits, despite not being public, are likely set to something comparable to that
+2020-01-06 17:54:52 <kspalaiologos> and you think that automatic tool will edit at 8 edits a minute?
+2020-01-06 17:54:57 <kspalaiologos> it'll go like crazy
+2020-01-06 17:55:11 <ais523> it can go much faster in full-auto mode, but that would be noticed
+2020-01-06 17:55:16 <ais523> and blocked very quickly
+2020-01-06 17:55:25 <kspalaiologos> well that's a point
+2020-01-06 17:55:46 <ais523> 30-60/minute is common for full-auto bots, with maxlag compensation
+2020-01-06 17:56:13 <kspalaiologos> anyways I think clientside check is nonsense
+2020-01-06 17:56:30 <ais523> you think it would be better to not have the check?
+2020-01-06 17:56:33 <kspalaiologos> my friend used to put anti-scriptkiddie check in his CS1.7 (or whatever it was called) bot
+2020-01-06 17:56:37 <wib_jonas> are you talking about irc rate limiting and jeval's rate limiter? I can tell you about these
+2020-01-06 17:56:46 <kspalaiologos> wikimedia
+2020-01-06 17:56:52 <ais523> there's a statement along the lines of "locks are to keep out honest users", this will prevent anyone honest using it without getting authorisation
+2020-01-06 17:57:01 <kspalaiologos> ais523, strengthten the check to make it more effective
+2020-01-06 17:57:06 <kspalaiologos> OR get rid of it completely
+2020-01-06 17:57:10 <wib_jonas> oh, wiki edits?
+2020-01-06 17:57:16 <kspalaiologos> just think of power users
+2020-01-06 17:57:22 <kspalaiologos> even a script kiddie can download a macro program
+2020-01-06 17:57:25 <kspalaiologos> that will record mouseclocks
+2020-01-06 17:57:28 <kspalaiologos> *mouseclicks
+2020-01-06 17:57:29 <kspalaiologos> and keystrokes
+2020-01-06 17:57:30 <ais523> it's easy to bypass by someone who wants to be an issue, but those people are rare, and the existence of the check makes it clear that such people are being intentionally unconstructive when they get caught (which normally happens quickly)
+2020-01-06 17:58:07 <wib_jonas> I guess I'll have to read this scrollback later, gtg now
+2020-01-06 17:58:18 <kspalaiologos> well
+2020-01-06 17:58:25 <kspalaiologos> I haven't been administrating a large site
+2020-01-06 17:58:25 Quit: wib_jonas (Remote host closed the connection)
+2020-01-06 17:58:26 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-06 17:58:47 <kspalaiologos> but I believe I'd get that sorted out in a better way it is right now
+2020-01-06 17:58:51 Joined: FreeFull
+2020-01-06 17:58:52 Names: \oren\, ^[, ais523, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-06 17:58:57 <kspalaiologos> obviously it's not terrible, it's just meh
