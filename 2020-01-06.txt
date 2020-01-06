@@ -192,3 +192,46 @@
 2020-01-06 05:27:44 <imode> you `calloc` a big ol' hunk of space for some glyphs but you never free them.
 2020-01-06 05:29:48 <imode> this is if you just load a font file, save and close. I imagine if you open another, you'll do the same allocations and lose the previous references.
 2020-01-06 05:29:57 <zzo38> I think valgrind can tell you which one is "lost", though.
+2020-01-06 05:30:27 <imode> it can and will.
+2020-01-06 05:30:55 <\oren\> yeah apparently I'm bad at know what valgrind is saying
+2020-01-06 05:33:01 <\oren\> I thought it meant I actually lost reference to that much
+2020-01-06 05:33:11 <imode> nah, just means it's in use at exit.
+2020-01-06 05:33:22 <imode> you'll see that with SDL and a couple of other libs.
+2020-01-06 05:36:32 <\oren\> I'm going to work on making these tools more flexible and possible to work on fonts with different dimensions
+2020-01-06 05:37:06 <imode> I dig the editing aesthetic. a lot of the glyphs are broken for me though.
+2020-01-06 05:37:52 <\oren\> Well it relies on my fon't particular method of displaying braille to look good
+2020-01-06 05:38:02 <imode> oh no the braile works great.
+2020-01-06 05:38:17 <imode> this is garbage on my screen, though: "𝔅𝔇𝔉𝕖𝕕𝕚𝕥"
+2020-01-06 05:38:42 <imode> too compressed I guess.
+2020-01-06 05:41:56 <\oren\> https://imgur.com/GKQKGJG
+2020-01-06 05:42:37 <imode> ah yeah, I can kinda see the edit part. capitals are just totally gone, though. my terminal is trying lmao.
+2020-01-06 05:42:38 <\oren\> it says BDF in fraktur and edit in blackboard bold
+2020-01-06 05:43:42 <\oren\> In my font, bold fraktur I gave up on and I made it uncial instead
+2020-01-06 05:43:50 <imode> looks solid on that screen.
+2020-01-06 05:45:45 <\oren\> https://imgur.com/yCgc3Kv I like how the unicode consortium added all these but then was like, full superscript and subscript alphabets? that's too far
+2020-01-06 05:46:23 <imode> unicode doesn't have those? wtf.
+2020-01-06 05:47:49 <\oren\> superscript small q, large C, Q, S, X, Y, Z are all that is missing for superscript
+2020-01-06 05:48:29 <zzo38> I made up a better character set for the specific use of being used on a fix pitch text grid, such as on a terminal emulator.
+2020-01-06 05:48:29 <\oren\> ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖ ʳˢᵗᵘᵛʷˣʸᶻ
+2020-01-06 05:48:46 <imode> why the hell are they missing?!
+2020-01-06 05:49:06 <imode> what do they have against q, C, Q, S, X, Y and Z?
+2020-01-06 05:49:18 Quit: stux (Ping timeout: 260 seconds)
+2020-01-06 05:49:19 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-06 05:49:24 <\oren\> there was a big argument on the Unicode mailing list about it
+2020-01-06 05:49:47 <\oren\> and basically the rasoning was, unicode isn't supposed to be used for formatting
+2020-01-06 05:49:54 <imode> bullshit.
+2020-01-06 05:50:01 <imode> that reasoning is bullshit.
+2020-01-06 05:50:02 <\oren\> it is bullshit
+2020-01-06 05:50:22 <imode> isn't there a character reversal glyph.
+2020-01-06 05:50:41 <imode> U+202E?
+2020-01-06 05:50:43 <zzo38> Unicode is very messy, and is equally bad for all uses.
+2020-01-06 05:51:42 <zzo38> However, it does have the advantage of being compatible with ASCII, at least.
+2020-01-06 05:51:46 <imode> yeah, bullshit, there's many, many, _many_ cases where unicode makes explicit statements about how a thing should be formatted. if that was a disagreement, the super and subscript forms shouldn't even be included, not this half measure.
+2020-01-06 05:54:23 <zzo38> Do you like my terminal character coding? (It is not meant to be used for other purposes, though; but there may be other character sets useful for the other purposes.)
+2020-01-06 05:54:38 <imode> I don't know your terminal character coding.
+2020-01-06 05:54:42 <\oren\> I have it on my todo list to add all the missing ones in hthe PUA in my font
+2020-01-06 05:55:18 Joined: stux
+2020-01-06 05:55:19 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-06 05:57:12 <zzo38> This is so far:  http://zzo38computer.org/textfile/miscellaneous/utce  Some stuff may be changed if needed
+2020-01-06 05:57:42 <zzo38> Some of these characters are also in Unicode but also many isn't.
+2020-01-06 05:58:20 <zzo38> (And in some cases, it does correspond to a Unicode character but the width may differ or the way different characters are distinguished may differ from Unicode.)
