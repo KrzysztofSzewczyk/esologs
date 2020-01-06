@@ -327,3 +327,41 @@
 2020-01-06 12:25:06 <int-e> Or 6 states, unless you compress the tape (assuming the tape is compressible... which seems likely since we do have a termination proof)
 2020-01-06 12:27:26 <int-e> (going by the 10^78 to 10^82 estimate for the number of atoms in the universe, with a very generous margin for error.)
 2020-01-06 12:29:47 <int-e> Of course the tape is very compressible if you accept a description of the form "tape after executing the TM M for n steps, starting from an empty tape".
+2020-01-06 13:04:25 <kspalaiologos> interesting
+2020-01-06 13:16:26 <kspalaiologos> << In Haskell, we don't talk about immutability. We talk about cytoendohygrobimorphisms in the category of endobiditricomanifolds and other elementary constructs. >>
+2020-01-06 13:16:37 <kspalaiologos> /r/shittyprogramming gold
+2020-01-06 13:17:35 <wib_jonas> ``` cat /hackenv/wisdom/zygo*
+2020-01-06 13:17:36 <HackEso> A zygohistomorphic prepromorphism is used when you really need both semi-mutual recursion and history and to repeatedly apply a natural transformation as you get deeper into the functor.
+2020-01-06 13:18:16 <kspalaiologos> wha
+2020-01-06 13:18:32 <kspalaiologos> ``` ls /hackenv/wisdom/zygo*
+2020-01-06 13:18:33 <HackEso> ​/hackenv/wisdom/zygohistomorphic prepromorphism
+2020-01-06 13:18:47 <kspalaiologos> interesting
+2020-01-06 13:18:54 <kspalaiologos> what is a monad anyway
+2020-01-06 13:19:17 <kspalaiologos> the definition in our Polish wiki used to look like verses summoning satan
+2020-01-06 13:19:18 <wib_jonas> kspalaiologos: https://wiki.haskell.org/Zygohistomorphic_prepromorphisms
+2020-01-06 13:19:32 <kspalaiologos> gosh it really exists
+2020-01-06 13:20:24 <wib_jonas> Unfortunately, no one can explain what a monad is. You have to see it for yourself.
+2020-01-06 13:21:09 <kspalaiologos> can one make a monad in C?
+2020-01-06 13:21:18 <kspalaiologos> or other language I'm at least barely familliar with
+2020-01-06 13:22:00 <int-e> kspalaiologos: https://willamette.edu/~fruehr/haskell/evolution.html seems somewhat relevant.
+2020-01-06 13:22:25 <wib_jonas> ^ ah yes, that too
+2020-01-06 13:22:56 <wib_jonas> I have my own factorial definition at http://www.math.bme.hu/~ambrus/pu/Bin.hs
+2020-01-06 13:22:57 <kspalaiologos> interesting
+2020-01-06 13:23:01 <kspalaiologos> I like scheme
+2020-01-06 13:26:24 <int-e> Monads in C... I suppose you can come up with some programming patterns, in a similar spirit as OO in C. But I wouldn't expect any benefit from going that route, just obfuscation.
+2020-01-06 13:26:35 Joined: kritixilithos
+2020-01-06 13:26:36 Names: \oren\, ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 13:27:09 <kspalaiologos> OO
+2020-01-06 13:27:12 <kspalaiologos> who would like OO
+2020-01-06 13:27:24 <kspalaiologos> all you need is procedural programming
+2020-01-06 13:27:40 <int-e> OO gives you associated namespaces for your types.
+2020-01-06 13:27:43 <int-e> I like that.
+2020-01-06 13:27:54 <kspalaiologos> the main principle of OO is encapsulation
+2020-01-06 13:28:13 <kspalaiologos> so you don't have a global state, but rather it's simplified down to object instances
+2020-01-06 13:28:34 Joined: arseniiv
+2020-01-06 13:28:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 13:28:43 <int-e> ("OO gives you namespaces for types" of course is the one benefit that you lose instantly when encoding it in C)
+2020-01-06 13:29:07 <kspalaiologos> if two objects instances mutate (send a message) to certain single object, you lose the benefit of encapsulation
+2020-01-06 13:29:21 <kspalaiologos> and there is something that resembles the state
+2020-01-06 13:29:32 <kspalaiologos> Namespace for types?
+2020-01-06 13:29:39 <int-e> I really liked OO for MUD programming.
