@@ -162,3 +162,33 @@
 2020-01-06 04:54:25 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
 2020-01-06 04:56:02 <zzo38> What transformations can be done to improve JPEG compression without being more lossy?
 2020-01-06 04:56:17 <zzo38> (Assuming the file that you are trying to transform is already JPEG)
+2020-01-06 05:09:37 <imode> \oren\: valgrind?
+2020-01-06 05:10:15 <imode> how do I build this?
+2020-01-06 05:11:21 <imode> and do you have a sample file?
+2020-01-06 05:11:40 <imode> built it, now I need a sample file.
+2020-01-06 05:16:50 <\oren\> http://www.orenwatson.be/neoletters.bdf
+2020-01-06 05:17:39 <zzo38> You could also try pcf2bdf
+2020-01-06 05:18:38 <\oren\> oh and it also need s UnicodeData.txt from the unicode foundation
+2020-01-06 05:18:53 <imode> mind linking me that?
+2020-01-06 05:19:18 <imode> nvm.
+2020-01-06 05:19:36 <\oren\> (this is how it displays the names) https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt
+2020-01-06 05:19:58 <imode> interesting..
+2020-01-06 05:20:04 <imode> how do I exit the editor?
+2020-01-06 05:20:12 <\oren\> ctrl-Q
+2020-01-06 05:20:24 <\oren\> or ctrl-X to exit without saving
+2020-01-06 05:21:32 <imode> interesting, yeah that's quite the memory leak. let's see if you clean up your allocated space.
+2020-01-06 05:21:46 <zzo38> What if you want to make a non-Unicode font though? Then the Unicode data is not applicable.
+2020-01-06 05:21:55 <imode> it looks like you never clean up the file judging by the size of the leak. the input BDF was ~3mb.
+2020-01-06 05:22:02 <\oren\> oh
+2020-01-06 05:22:05 <\oren\> hmmm
+2020-01-06 05:22:43 <imode> 4,347,372 bytes allocated and in-use at exit, but no double frees.
+2020-01-06 05:23:15 <\oren\> ok I'
+2020-01-06 05:23:30 <\oren\> fix that and then see if it still has a leak
+2020-01-06 05:24:24 <imode> I'm not that far in but I don't see any buffer cleanup, yeah.
+2020-01-06 05:26:26 <imode> when you load the font, you `malloc` quite a bit of stuff and attach it to the passed-in bdfinfo, but I don't see you freeing it.
+2020-01-06 05:26:42 <\oren\> I guess I kinda forgot that valgrind can't tell the difference between things still accessable at exit and things that have "actually" leaked
+2020-01-06 05:26:45 <imode> that plus a calloc and no free.
+2020-01-06 05:27:04 <imode> yeah you haven't lost the references to anything, you just haven't cleaned up the stuff you have references to.
+2020-01-06 05:27:44 <imode> you `calloc` a big ol' hunk of space for some glyphs but you never free them.
+2020-01-06 05:29:48 <imode> this is if you just load a font file, save and close. I imagine if you open another, you'll do the same allocations and lose the previous references.
+2020-01-06 05:29:57 <zzo38> I think valgrind can tell you which one is "lost", though.
