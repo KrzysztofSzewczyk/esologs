@@ -422,3 +422,61 @@
 2020-01-06 13:59:07 <int-e> The fun thing about Collatz machines is that you get 3 cells for that task, effectively.
 2020-01-06 13:59:17 <int-e> s/machines/functions/
 2020-01-06 13:59:49 <kspalaiologos> but it would be possible to translate 3-cell brainfuck to 2-register MM
+2020-01-06 14:00:04 <int-e> Not necessarily.
+2020-01-06 14:00:10 <kspalaiologos> why
+2020-01-06 14:00:25 <kspalaiologos> 2-register MM is turing complete
+2020-01-06 14:00:33 <kspalaiologos> it should be able to simulate any turing machine
+2020-01-06 14:00:43 <int-e> Fair enough.
+2020-01-06 14:00:55 <int-e> However then it won't be complexity preserving.
+2020-01-06 14:01:01 <kspalaiologos> yeah
+2020-01-06 14:01:08 <kspalaiologos> and the translation process may never finish
+2020-01-06 14:01:20 <int-e> A direcy, complexity preserving translation will almost certainly need 3 cells.
+2020-01-06 14:01:24 <int-e> *direct
+2020-01-06 14:01:26 <int-e> s/cells/counters/
+2020-01-06 14:01:33 <kspalaiologos> or yeah
+2020-01-06 14:01:46 <kspalaiologos> nut the thing that bothers me the most in this case are unbalanced loops
+2020-01-06 14:02:17 <kspalaiologos> because one can't refer to variable register using MM
+2020-01-06 14:02:28 <int-e> Because a 3-cell Brainfuck program can divide a counter that is known to be even by 2 in two cells, while keeping another counter around. A Minsky machine cannot divide a counter in place.
+2020-01-06 14:02:52 <int-e> The reference to a variable register isn't a problem... just make the tape position part of the MM state.
+2020-01-06 14:03:01 <kspalaiologos> ?
+2020-01-06 14:03:03 <kspalaiologos> how
+2020-01-06 14:03:21 <kspalaiologos> we can have just two registers, adding another variable to the state makes it very cheaty
+2020-01-06 14:03:25 User Name: arseniiv = arseniiv!~arseniiv@136.169.232.104
+2020-01-06 14:03:25 <arseniiv> hi hi hi
+2020-01-06 14:03:39 <int-e> Make the MM state a pair of program position (in the brainfuck program) and current tape position (0,1,2)
+2020-01-06 14:04:11 <kspalaiologos> in the runtime the state is constant?
+2020-01-06 14:04:12 <int-e> That way a 3-cell Brainfuck program of length l becomes a MM with 3 registers and 3*l states.
+2020-01-06 14:04:20 <kspalaiologos> no no no
+2020-01-06 14:04:25 <kspalaiologos> I'm not interested in 3 registers
+2020-01-06 14:04:26 <kspalaiologos> I want 2
+2020-01-06 14:04:33 <int-e> And that preserves complexity.
+2020-01-06 14:04:43 <int-e> *I*'m interested in preserving complexity here.
+2020-01-06 14:04:43 <kspalaiologos> complexity doesn't bother me
+2020-01-06 14:04:51 <kspalaiologos> well
+2020-01-06 14:05:08 <int-e> You can do the usual m to 2 counters reduction afterwards.
+2020-01-06 14:05:23 <int-e> At an exponential cost in runtime.
+2020-01-06 14:05:44 <kspalaiologos> how
+2020-01-06 14:05:45 <kspalaiologos> can I do that
+2020-01-06 14:07:46 <int-e> You encode counters a,b,...,z as 2^a 3^b ... 101^z. You can do division with remainder using one more counter... so you can check whether any of the original registers is 0 (--> not divisible by the corresponding prime), and increment and decrement counters as well.
+2020-01-06 14:08:02 <int-e> (did you know that 101 is the 26th prime...)
+2020-01-06 14:08:28 <kspalaiologos> umm, not
+2020-01-06 14:08:32 <kspalaiologos> *no
+2020-01-06 14:08:46 <kspalaiologos> but I still don't understand it
+2020-01-06 14:09:42 <int-e> increment b --> multiply the counter by 3. decrement b -> divide the counter by 3; if the remainder is 0, the decrement succeeds. Otherwise multiply by 3 and add the remainder back, and branch somewhere else.
+2020-01-06 14:10:33 <int-e> (You can keep track of the remainder in the finite state of the Minsky machine, and of the quotient in the other counter.)
+2020-01-06 14:11:00 <kspalaiologos> well
+2020-01-06 14:11:00 <kspalaiologos> yes
+2020-01-06 14:11:17 <kspalaiologos> but you need modulus
+2020-01-06 14:11:29 <kspalaiologos> and there is NO way to implement it on a 2 register MM
+2020-01-06 14:11:30 <int-e> that's what I just called remainder.
+2020-01-06 14:11:39 <kspalaiologos> yes
+2020-01-06 14:11:40 <kspalaiologos> I do realise
+2020-01-06 14:11:44 <int-e> You're wrong.
+2020-01-06 14:11:58 <kspalaiologos> how to do this
+2020-01-06 14:11:59 <int-e> You just need many states.
+2020-01-06 14:12:09 <int-e> Meh.
+2020-01-06 14:14:12 <int-e> http://paste.debian.net/1124843/
+2020-01-06 14:14:48 <int-e> It's important that we only ever divide by known constants.
+2020-01-06 14:16:46 <kspalaiologos> interesting
+2020-01-06 14:25:14 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Mister14 5*  10New user account
+2020-01-06 14:29:05 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=68699&oldid=68693 5* 03Mister14 5* (+245) 10/* Introductions */
