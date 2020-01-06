@@ -644,3 +644,189 @@
 2020-01-06 15:59:10 <kspalaiologos> everyone does
 2020-01-06 15:59:41 <wib_jonas> my very old code has assignments with no space before the equals sign, only after. it's horrible.
 2020-01-06 16:00:01 <kspalaiologos> I've seen code that has spaces before and after every paren
+2020-01-06 16:00:02 <kspalaiologos> going like
+2020-01-06 16:00:16 <kspalaiologos> while ( ( c = getchar () ) != EOF )
+2020-01-06 16:00:20 <wib_jonas> yeah
+2020-01-06 16:00:27 <wib_jonas> hey, that doesn't have space before and after every paren
+2020-01-06 16:00:42 <kspalaiologos> ()
+2020-01-06 16:00:55 <arseniiv> once I thought that the language should have a rational implicit conversion for any occasion, between any two types, and a special syntax (instead of plain method/function names) for most operations on standard types
+2020-01-06 16:00:58 <kspalaiologos> didn't copy it, because the code is long lost
+2020-01-06 16:01:17 <wib_jonas> oh yeah, my old code has space between the function name and the call parenthesis too. also horrible
+2020-01-06 16:01:37 <arseniiv> agree
+2020-01-06 16:01:51 <arseniiv> I almost never wrote like that at least
+2020-01-06 16:02:34 <arseniiv> maybe because I almost started with VB6 where the IDE formats your line as you leave it
+2020-01-06 16:02:34 <kspalaiologos> http://prntscr.com/qk1xun
+2020-01-06 16:02:46 <kspalaiologos> this is horrible too
+2020-01-06 16:02:53 <kspalaiologos> taken out of NT kernel's inet driver
+2020-01-06 16:02:57 <kspalaiologos> in the original form
+2020-01-06 16:03:54 <kspalaiologos> return( Err );
+2020-01-06 16:03:57 <kspalaiologos> and brackets around return
+2020-01-06 16:04:02 <kspalaiologos> it's the final boss of garbage code
+2020-01-06 16:07:41 <kspalaiologos> [ 5 * 4 + 3
+2020-01-06 16:07:41 <j-bot> kspalaiologos: 35
+2020-01-06 16:07:59 <kspalaiologos> are the expressions evaluated right to left, really?
+2020-01-06 16:08:06 <kspalaiologos> without caring about operator precendence?
+2020-01-06 16:08:20 <kspalaiologos> interesting
+2020-01-06 16:08:52 <FireFly> well, the operator precedence is "all verbs are equal precedence", and verb evaluation is right to left, yes
+2020-01-06 16:09:22 <FireFly> Iverson explained quite clearly why in one of his old papers on APL, I think it was in notation as a tool for thought
+2020-01-06 16:09:38 <FireFly> https://www.jsoftware.com/papers/tot.htm
+2020-01-06 16:10:19 <FireFly> in general, APL was developed as an alternate maths notation originally, designed to be more consistent than the conventional notation
+2020-01-06 16:10:37 <FireFly> it also amongst other things introduced the notation for floor and ceiling that we use today
+2020-01-06 16:11:25 Quit: kritixilithos (Quit: quit)
+2020-01-06 16:11:25 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 16:11:38 <kspalaiologos> interesting
+2020-01-06 16:12:26 <kspalaiologos> "A function taking a single argument on the right is called a monadic function, or a monad for short. "
+2020-01-06 16:12:38 <kspalaiologos> so monad is just an unary function?
+2020-01-06 16:13:06 <kspalaiologos> that's the real meaning of this buzzword which definition feels like reading Malbolge?
+2020-01-06 16:13:57 <kspalaiologos> [ % 4
+2020-01-06 16:13:57 <j-bot> kspalaiologos: 0.25
+2020-01-06 16:14:00 <kspalaiologos> this is cool though
+2020-01-06 16:14:10 <arseniiv> kspalaiologos: no, Haskell monads are the other sort :)
+2020-01-06 16:14:29 <kspalaiologos> so monad's definition varies by language?
+2020-01-06 16:14:46 <FireFly> kspalaiologos: compare "variadic", or the use of "monad", "dyad" in music
+2020-01-06 16:14:51 <fizzie> The definitive definition is whatever's in our wisdom, of course.
+2020-01-06 16:14:53 <fizzie> `? monad
+2020-01-06 16:14:53 <FireFly> (yes, it refers to the number of arguments)
+2020-01-06 16:14:54 <HackEso> Monads are just monoids in the category of endofunctors.
+2020-01-06 16:14:57 <fizzie> `? endofunctor
+2020-01-06 16:14:58 <HackEso> Endofunctors are just endomorphisms in the category of categories.
+2020-01-06 16:15:00 <FireFly> see also https://en.wikipedia.org/wiki/Arity#Terminology
+2020-01-06 16:15:02 <fizzie> `? endomorphism
+2020-01-06 16:15:05 <HackEso> Endomorphisms are just final morphisms.
+2020-01-06 16:15:08 <fizzie> `? morphism
+2020-01-06 16:15:10 <HackEso> A morphism is just a natural transformation between two diagrams of shape 1.
+2020-01-06 16:15:13 <fizzie> See, so useful.
+2020-01-06 16:15:21 <Taneb> `? final
+2020-01-06 16:15:23 <HackEso> ​"final" is an annotation in Java; it means the marked code will not be changed anymore and is a final version.
+2020-01-06 16:15:40 <fizzie> You have to pick words quite carefully to stay in the same domain of things.
+2020-01-06 16:15:42 <fizzie> `? category
+2020-01-06 16:15:43 <HackEso> A category is an enriched category where the enriching category is the category of classes.
+2020-01-06 16:15:57 <Taneb> `? class
+2020-01-06 16:15:58 <HackEso> class? ¯\(°​_o)/¯
+2020-01-06 16:16:15 <FireFly> a lot of J's terminology is borrowed from linguistics, I'm not sure if the use of monadic/dyadic (which also existed back in APL) are derived from the musical terms..
+2020-01-06 16:16:18 <arseniiv> so monad's definition varies by language? => I think these times “monadic” is far more often about category theory monads, not arity-one functions
+2020-01-06 16:16:26 <kspalaiologos> > Monads are just monoids in the category of endofunctors. <
+2020-01-06 16:16:28 <lambdabot> <hint>:1:25: error: parse error on input ‘in’
+2020-01-06 16:16:31 <kspalaiologos> thats like the wikipedia article looked like
+2020-01-06 16:16:35 <kspalaiologos> I swear it was this
+2020-01-06 16:16:37 <fizzie> `? kittegory
+2020-01-06 16:16:39 <HackEso> A kittegory is just a small category.
+2020-01-06 16:16:39 <kmc> yes, sometimes "monadic" just means "1-adic"
+2020-01-06 16:16:49 <kmc> or arity 1
+2020-01-06 16:16:54 <kmc> oh it also has a meaning in philosophy
+2020-01-06 16:17:02 <kmc> from kant i think
+2020-01-06 16:17:19 <arseniiv> <HackEso> A morphism is just a natural transformation between two diagrams of shape 1. => rofl
+2020-01-06 16:17:20 <int-e> . o O ( Classes were a concept in pre-anonymous internet that have since been replaced by finely meshed masks. )
+2020-01-06 16:18:15 <arseniiv> <kmc> from kant i think => wasn’t it Leibnitz?
+2020-01-06 16:18:31 <arseniiv> though they could be both making their own monads
+2020-01-06 16:18:42 <arseniiv> too many monads
+2020-01-06 16:18:59 <kspalaiologos> [ * + 4 3 2
+2020-01-06 16:19:00 <j-bot> kspalaiologos: 1 1 1
+2020-01-06 16:19:13 <kspalaiologos> [ + / 2 3 4
+2020-01-06 16:19:13 <j-bot> kspalaiologos: 9
+2020-01-06 16:19:18 <kspalaiologos> what the heck
+2020-01-06 16:19:18 <kspalaiologos> why
+2020-01-06 16:19:28 <FireFly> Hm?
+2020-01-06 16:19:30 <Taneb> What were you expecting?
+2020-01-06 16:19:44 <kspalaiologos> I just switched operators
+2020-01-06 16:19:46 <FireFly> in +/ 2 3 4  you have the adverb / modifying the verb + to produce "sum"
+2020-01-06 16:19:50 <kspalaiologos> its the same mathematical operation
+2020-01-06 16:19:53 <Taneb> op / x y z is equalivalent to x op y op z
+2020-01-06 16:19:56 <kspalaiologos> Ah I thought / is division
+2020-01-06 16:20:07 <kspalaiologos> I can't switch my mind to %
+2020-01-06 16:20:18 <arseniiv> [ % 0 0
+2020-01-06 16:20:19 <j-bot> arseniiv: _ _
+2020-01-06 16:20:25 <arseniiv> [ % 0 1
+2020-01-06 16:20:25 <j-bot> arseniiv: _ 1
+2020-01-06 16:20:28 <kspalaiologos> interesting
+2020-01-06 16:20:30 <arseniiv> [ % 1 0
+2020-01-06 16:20:30 <j-bot> arseniiv: 1 _
+2020-01-06 16:20:32 <arseniiv> hm
+2020-01-06 16:20:38 <kspalaiologos> [ % 1 1
+2020-01-06 16:20:38 <j-bot> kspalaiologos: 1 1
+2020-01-06 16:20:43 <arseniiv> I don’t comprehend
+2020-01-06 16:20:44 <kspalaiologos> no no no
+2020-01-06 16:20:47 <kspalaiologos> you need to place it like
+2020-01-06 16:20:50 <kspalaiologos> [ 0 % 0
+2020-01-06 16:20:51 <j-bot> kspalaiologos: 0
+2020-01-06 16:20:55 <kspalaiologos> there we go
+2020-01-06 16:21:00 <FireFly> arseniiv: unary % is reciprocal, so you're taking reciprocal of 0 or 1
+2020-01-06 16:21:04 <arseniiv> what, 0 / 0 = 0?..
+2020-01-06 16:21:09 <kspalaiologos> yes
+2020-01-06 16:21:10 <kspalaiologos> it's logical
+2020-01-06 16:21:22 <Taneb> It's just as true as any other answer you can give
+2020-01-06 16:21:27 * arseniiv cries in horror
+2020-01-06 16:21:35 * FireFly pats arseniiv
+2020-01-06 16:21:43 <kspalaiologos> A ha
+2020-01-06 16:21:44 <arseniiv> ah wait I thought about 0^0 maybe
+2020-01-06 16:21:46 <kspalaiologos> wait
+2020-01-06 16:21:50 <kspalaiologos> _ is Infinity
+2020-01-06 16:21:54 <Taneb> ] 0 ^ 0
+2020-01-06 16:21:56 <arseniiv> [ 2 ^ 3
+2020-01-06 16:21:57 <j-bot> arseniiv: 8
+2020-01-06 16:22:04 <arseniiv> [ 0 ^ 0
+2020-01-06 16:22:05 <j-bot> arseniiv: 1
+2020-01-06 16:22:09 <kspalaiologos> wait
+2020-01-06 16:22:10 <int-e> arseniiv: a/0 is a sane choice *if* you have to make / total.
+2020-01-06 16:22:11 <kspalaiologos> what was ^ for
+2020-01-06 16:22:20 <FireFly> expotential
+2020-01-06 16:22:21 <int-e> arseniiv: a/0 = 0 I mean.
+2020-01-06 16:22:23 <FireFly> or well, power
+2020-01-06 16:22:25 <kspalaiologos> so ^ == *:?
+2020-01-06 16:22:29 <int-e> 0^0 is 1 of course.
+2020-01-06 16:22:30 <FireFly> no, *: is square
+2020-01-06 16:22:34 <kspalaiologos> ah ok
+2020-01-06 16:22:36 <FireFly> *: is the same as ^&2
+2020-01-06 16:22:39 <FireFly> I suppose
+2020-01-06 16:22:41 <FireFly> at least for reals
+2020-01-06 16:22:57 <arseniiv> 1 => phew [I was trying to remember how’s that word written]
+2020-01-06 16:23:46 <kspalaiologos> / means reduce?
+2020-01-06 16:23:54 <arseniiv> int-e: maybe, but why not 1 for example. / is related to multiplication, 1 is too. 0 is less related
+2020-01-06 16:24:11 <FireFly> kspalaiologos: pretty much
+2020-01-06 16:25:08 <kspalaiologos> I think we should continue working on EsoOS
+2020-01-06 16:25:14 <int-e> arseniiv: Picking 0 makes (a+b)/c = a/c + b/c and (ab)/c = a(b/c) true unconditionally. So... the choice is pragmatic.
+2020-01-06 16:25:14 <kspalaiologos> and feature J as one of languages available there
+2020-01-06 16:25:57 <kspalaiologos> why does NB. denote a comment
+2020-01-06 16:26:06 <kspalaiologos> what's the acronym behind it
+2020-01-06 16:26:11 <FireFly> nota bene
+2020-01-06 16:26:15 <kspalaiologos> ah!
+2020-01-06 16:26:16 <arseniiv> int-e: is it because 0 is absorbing with regard to × just like ∞
+2020-01-06 16:26:25 <FireFly> it's been a sort of comment marker for 300 years
+2020-01-06 16:26:35 <int-e> arseniiv: People do not agree on this universally, of course. (There are some vocal people who think that x/0 should be left as unspecified as possible... it has a value, but you don't know what it is. But then you'll still have theorems like x/0 - x/0 = 0 that will annoy the purists that you were trying to please...)
+2020-01-06 16:26:54 <kspalaiologos> FireFly, yeah
+2020-01-06 16:26:56 <kspalaiologos> you're right
+2020-01-06 16:27:00 <kspalaiologos> I used to learn a tiny bit of Latin
+2020-01-06 16:27:13 <int-e> arseniiv: So given the choice between not satisfying the purists, and a little more convenience in proving things, I'd pick convenience every time out of 10 :)
+2020-01-06 16:27:13 <arseniiv> I like to imagine 0 in context of nonnegative integers or rationals as 2^∞ 3^∞ 5^∞ 7^∞ …
+2020-01-06 16:27:48 <kspalaiologos> [ >. 1
+2020-01-06 16:27:48 <j-bot> kspalaiologos: 1
+2020-01-06 16:27:49 <Taneb> [ 2 (*+*) 3
+2020-01-06 16:27:49 <j-bot> Taneb: 12
+2020-01-06 16:27:53 <kspalaiologos> [ >. 21.37
+2020-01-06 16:27:54 <j-bot> kspalaiologos: 22
+2020-01-06 16:28:00 <kspalaiologos> [ +\
+2020-01-06 16:28:00 <j-bot> kspalaiologos: +\
+2020-01-06 16:28:01 <kspalaiologos> [ +
+2020-01-06 16:28:02 <j-bot> kspalaiologos: +
+2020-01-06 16:28:14 <arseniiv> int-e: But then you'll still have theorems like x/0 - x/0 = 0 that will annoy the purists that you were trying to please... => yeah, I’ll be annoyed for sure
+2020-01-06 16:28:23 <int-e> arseniiv: Of course, in the end you still get plenty of theorems that divide by some d and require that d != 0.
+2020-01-06 16:28:25 <kspalaiologos> this was a great opportunity to make some brainfuck code
+2020-01-06 16:28:32 <arseniiv> [ ∞
+2020-01-06 16:28:33 <j-bot> arseniiv: |spelling error
+2020-01-06 16:28:33 <j-bot> arseniiv: |   ∞
+2020-01-06 16:28:33 <j-bot> arseniiv: |   ^
+2020-01-06 16:28:33 <kspalaiologos> [ >.
+2020-01-06 16:28:34 <j-bot> kspalaiologos: >.
+2020-01-06 16:28:42 <kspalaiologos> shouldn't 1 be assumed here?
+2020-01-06 16:28:45 <kspalaiologos> like it is with %?
+2020-01-06 16:28:48 <kspalaiologos> [ % 10
+2020-01-06 16:28:48 <j-bot> kspalaiologos: 0.1
+2020-01-06 16:29:07 <FireFly> I'm not sure what you mean
+2020-01-06 16:29:26 <FireFly> unary % is reciprocal, but in general the unary and binary case of a verb doesn't have to be related
+2020-01-06 16:29:33 <kspalaiologos> yes
+2020-01-06 16:29:38 <FireFly> unary >. is ceiling, binary >. is maximum I believe
+2020-01-06 16:29:42 <kspalaiologos> ah, so there is actually a monad
+2020-01-06 16:29:49 <kspalaiologos> for %
+2020-01-06 16:29:52 <FireFly> yes
+2020-01-06 16:29:53 <kspalaiologos> right
+2020-01-06 16:29:58 <FireFly> it's all in the vocabulary
