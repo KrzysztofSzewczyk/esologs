@@ -489,3 +489,158 @@
 2020-01-06 15:06:26 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-01-06 15:14:13 Joined: imode
 2020-01-06 15:14:14 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 15:30:53 <Taneb> I should try to learn J again
+2020-01-06 15:32:24 <kspalaiologos> https://www.jsoftware.com/help/learning/contents.htm
+2020-01-06 15:32:28 <Taneb> Never quite got the hooks and stuff last time
+2020-01-06 15:32:29 <kspalaiologos> I'll probably read this one
+2020-01-06 15:33:49 <wib_jonas> `python3 -cimport math; v = 5; print(v**v, math.factorial(v))
+2020-01-06 15:33:50 <HackEso> 3125 120
+2020-01-06 15:35:19 <kspalaiologos> a ha!
+2020-01-06 15:35:23 <kspalaiologos> I understand that J code above
+2020-01-06 15:35:38 <kspalaiologos> but not quite the tilde
+2020-01-06 15:36:26 <Taneb> [ ^~ 0 1 2 3 4 5
+2020-01-06 15:36:27 <j-bot> Taneb: 1 1 4 27 256 3125
+2020-01-06 15:36:49 <Taneb> ^~ is a monad (in the J sense, not the Haskell sense) which computes x^x
+2020-01-06 15:37:24 <kspalaiologos> << The symbol for division is % (percent). >>
+2020-01-06 15:37:25 <kspalaiologos> gosh why
+2020-01-06 15:37:42 <kspalaiologos> every single language uses slash for division
+2020-01-06 15:37:50 <kritixilithos> it looks closer to the apl �
+2020-01-06 15:38:09 <kspalaiologos> it has to be a joke
+2020-01-06 15:38:20 <kspalaiologos> also, why is - turned into a floor (_)?
+2020-01-06 15:38:30 <kritixilithos> `/` is used instead for reduce (and other stuff)
+2020-01-06 15:38:31 <HackEso> ​/`? No such file or directory
+2020-01-06 15:38:41 <wib_jonas> division should not get a precious single character symbol in any language, it's such a rare operation, it should just get named functions
+2020-01-06 15:38:43 <kspalaiologos> interestinb
+2020-01-06 15:39:54 <kritixilithos> kspalaiologos: because `-` is a function that can also be monadic, in which case it negates the right argument
+2020-01-06 15:40:00 <FireFly> kspalaiologos: - is used for subtraction and unary negation, but _ is used in a negative number literal
+2020-01-06 15:40:12 <kspalaiologos> so
+2020-01-06 15:40:15 <kspalaiologos> [ _2
+2020-01-06 15:40:15 <j-bot> kspalaiologos: _2
+2020-01-06 15:40:19 <kspalaiologos> well
+2020-01-06 15:40:24 <kritixilithos> look into apl if you don't like j's symbols
+2020-01-06 15:40:24 <kspalaiologos> it makes a tiny bit of sense
+2020-01-06 15:40:41 <kspalaiologos> what does it mean that it's monadsic
+2020-01-06 15:40:43 <kspalaiologos> *monadic
+2020-01-06 15:40:43 <wib_jonas> > let { f x = 10 * x; } in fmap f (3, 6, -2)
+2020-01-06 15:40:46 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-01-06 15:40:46 <lambdabot> error:
+2020-01-06 15:40:46 <lambdabot> • No instance for (Functor ((,,) Integer Integer))
+2020-01-06 15:40:46 <lambdabot> arising from a use of ‘e_110362’
+2020-01-06 15:40:46 <FireFly> unary
+2020-01-06 15:40:49 <wib_jonas> > let { f x = 10 * x; } in fmap f (3, 6)
+2020-01-06 15:40:52 <lambdabot> (3,60)
+2020-01-06 15:40:57 <wib_jonas> ^ this is why
+2020-01-06 15:41:16 <wib_jonas> and it's also why standard ML uses a different character for unary negation, though their specific choice is objectionable
+2020-01-06 15:41:24 <FireFly> I think most languages only let you express positive number literals, and simply have you apply negation on a positive literal
+2020-01-06 15:41:34 <kspalaiologos> yup
+2020-01-06 15:41:35 <kspalaiologos> that's right
+2020-01-06 15:41:36 <FireFly> [ -5
+2020-01-06 15:41:37 <j-bot> FireFly: _5
+2020-01-06 15:41:49 <kritixilithos> [ -2 3
+2020-01-06 15:41:50 <kspalaiologos> [ * 2 3
+2020-01-06 15:41:50 <j-bot> kritixilithos: _2 _3
+2020-01-06 15:41:51 <j-bot> kspalaiologos: 1 1
+2020-01-06 15:41:53 <wib_jonas> `python3 -cprint([10 * x for x in [3, 6, -2])
+2020-01-06 15:41:54 <HackEso> ​  File "<string>", line 1 \     print([10 * x for x in [3, 6, -2]) \                                      ^ \ SyntaxError: invalid syntax
+2020-01-06 15:41:54 <kspalaiologos> [ *: 2 3
+2020-01-06 15:41:55 <j-bot> kspalaiologos: 4 9
+2020-01-06 15:41:59 <kritixilithos> [ _2 3
+2020-01-06 15:41:59 <j-bot> kritixilithos: _2 3
+2020-01-06 15:42:00 <wib_jonas> `python3 -cprint([10 * x for x in [3, 6, -2]])
+2020-01-06 15:42:01 <HackEso> ​[30, 60, -20]
+2020-01-06 15:42:05 <kspalaiologos> it treats a single star like an empty variable?
+2020-01-06 15:42:06 <kspalaiologos> or what
+2020-01-06 15:42:12 <FireFly> what?
+2020-01-06 15:42:14 <kspalaiologos> (single -> without a colon)
+2020-01-06 15:42:16 <FireFly> no, *: is square
+2020-01-06 15:42:20 <kritixilithos> https://www.jsoftware.com/help/dictionary/vocabul.htm
+2020-01-06 15:42:38 <FireFly> I don't know what "treats like an empty variable" would mean here
+2020-01-06 15:42:48 <kritixilithos> it also is a function
+2020-01-06 15:42:50 <kspalaiologos> a ha
+2020-01-06 15:42:55 <kspalaiologos> so it returns the sign
+2020-01-06 15:43:02 <kspalaiologos> [ * _2
+2020-01-06 15:43:02 <j-bot> kspalaiologos: _1
+2020-01-06 15:43:04 <kspalaiologos> [ * 2
+2020-01-06 15:43:05 <j-bot> kspalaiologos: 1
+2020-01-06 15:43:06 <kspalaiologos> [ * -
+2020-01-06 15:43:07 <j-bot> kspalaiologos: * -
+2020-01-06 15:43:15 <kspalaiologos> interesting
+2020-01-06 15:43:21 <kspalaiologos> I see some obfuscation potential
+2020-01-06 15:43:27 <kritixilithos> [ (* -) 10
+2020-01-06 15:43:28 <j-bot> kritixilithos: _100
+2020-01-06 15:43:30 <wib_jonas> [ * 2j1
+2020-01-06 15:43:31 <j-bot> wib_jonas: 0.894427j0.447214
+2020-01-06 15:43:39 <kspalaiologos> what does j do
+2020-01-06 15:43:43 Quit: imode (Ping timeout: 260 seconds)
+2020-01-06 15:43:44 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, zemhill, zoobab, zzo38
+2020-01-06 15:43:45 <arseniiv> <kspalaiologos> every single language uses slash for division => Haskell uses / for division but also % to construct rationals from integer, e. g. 2 % 3 for the number 2/3, and they are stringified accordingly, though you can also write (2 :: Rational) / 3
+2020-01-06 15:43:48 <kspalaiologos> ah
+2020-01-06 15:43:53 <kspalaiologos> its imaginary/complex
+2020-01-06 15:43:53 <wib_jonas> kspalaiologos: a complex number literal
+2020-01-06 15:44:03 <arseniiv> > (2 :: Rational) / 3
+2020-01-06 15:44:06 <lambdabot> 2 % 3
+2020-01-06 15:44:27 <kspalaiologos> I'm an idiot when it comes to FP, I didn't use any FP language really
+2020-01-06 15:44:47 <kspalaiologos> but I spent a fair amount of time on low level programming
+2020-01-06 15:44:52 <arseniiv> this doesn’t change that J is a write-only esolang
+2020-01-06 15:44:54 <wib_jonas> `python3 -cprint(2+1j)
+2020-01-06 15:44:55 <HackEso> ​(2+1j)
+2020-01-06 15:44:56 <kspalaiologos> I wanted to learn FP but it seems too weird
+2020-01-06 15:44:59 <FireFly> what does 'low level' mean in this context?
+2020-01-06 15:45:01 <wib_jonas> `python3 -cprint(abs(2+1j))
+2020-01-06 15:45:02 <HackEso> 2.23606797749979
+2020-01-06 15:45:07 <wib_jonas> what
+2020-01-06 15:45:12 <kspalaiologos> FireFly, I've been writing kernels
+2020-01-06 15:45:13 <wib_jonas> oh, I want the sign
+2020-01-06 15:45:34 <kspalaiologos> I managed to write a simple java powered kernel lately
+2020-01-06 15:45:59 <kspalaiologos> it's based around stupid implementation of SE 1.5
+2020-01-06 15:46:00 <kritixilithos> "this doesn’t change that J is a write-only esolang" apl OTOH isn't write-only, because the glyphs are easier to read
+2020-01-06 15:46:11 <kspalaiologos> but hard to write
+2020-01-06 15:46:12 <kspalaiologos> so it'
+2020-01-06 15:46:14 <kspalaiologos> s read only
+2020-01-06 15:46:34 <kritixilithos> no, get an apl keybaord layout and it becomes easy to write
+2020-01-06 15:46:38 <wib_jonas> `python3 -cv = 2+1j; print(v / abs(v))
+2020-01-06 15:46:39 <HackEso> ​(0.8944271909999159+0.4472135954999579j)
+2020-01-06 15:46:52 <arseniiv> kspalaiologos: equational FP languages (like Haskell or my F-turned thing) are more readable than J, I assure you
+2020-01-06 15:46:58 <kspalaiologos> can't they use I instead of J to signify irrational unit?
+2020-01-06 15:47:07 <arseniiv> <kspalaiologos> s read only => rofl :D
+2020-01-06 15:47:31 <kspalaiologos> possibly
+2020-01-06 15:47:41 <kspalaiologos> I tried to get a taste of Elixir but currently it's 0-1 for me
+2020-01-06 15:48:30 <kspalaiologos> going so hard after the state seems peculiar to me
+2020-01-06 15:48:52 <kritixilithos> what about lisp
+2020-01-06 15:49:10 <kspalaiologos> I'll talk about lisp-likes: Used them, liked them
+2020-01-06 15:49:25 <wib_jonas> `python3 -cv = complex(2,1); s = v / abs(v); print("%f+%fI" % (s.real, s.imag)) # kspalaiologos: there, it uses I
+2020-01-06 15:49:26 <HackEso> 0.894427+0.447214I
+2020-01-06 15:49:53 <kspalaiologos> but my constrained mind seems to take lisp easier than languages camouflaging to be something really useful
+2020-01-06 15:50:24 <arseniiv> any lisp?
+2020-01-06 15:50:34 <arseniiv> your lisp may vary :D
+2020-01-06 15:50:42 <kspalaiologos> CL for me please
+2020-01-06 15:51:09 <arseniiv> bet Clojure, Racket, Scheme and CL have a ton of differences between each other
+2020-01-06 15:51:35 <arseniiv> ah, CL is secretly an imperative language if that tag is still useful
+2020-01-06 15:51:36 <kspalaiologos> JVM garbage
+2020-01-06 15:51:45 <arseniiv> from what I’ve seen
+2020-01-06 15:51:46 <kspalaiologos> is the difference in some cases
+2020-01-06 15:51:59 <kspalaiologos> I'm just an ordinary procedural programming fan
+2020-01-06 15:52:21 <kspalaiologos> willing to run a startup using Algol 68
+2020-01-06 15:54:12 <wib_jonas> kspalaiologos: how about using fortran 2019?
+2020-01-06 15:54:44 <kspalaiologos> Have you seen Cobol on Wheelchair (or Cogs)?
+2020-01-06 15:55:10 <kspalaiologos> /* it was Wheelchair: https://github.com/azac/cobol-on-wheelchair */
+2020-01-06 15:55:29 <kspalaiologos> it's actively developed (since I looked at it last time)
+2020-01-06 15:55:39 <arseniiv> :o
+2020-01-06 15:56:06 <kspalaiologos> "(c) <DATE OVERFLOW>" love it
+2020-01-06 15:56:13 <arseniiv> anyway I often like a clean piece of imperative code
+2020-01-06 15:56:52 <kspalaiologos> look on this clean piece of imperative code: https://github.com/kspalaiologos/asmbf/blob/master/bfasm.c
+2020-01-06 15:57:13 <arseniiv> but this is C!
+2020-01-06 15:57:23 <kspalaiologos> it's beautiful nonetheless
+2020-01-06 15:57:36 <kspalaiologos> and in fact
+2020-01-06 15:57:39 <kspalaiologos> it's very imperative
+2020-01-06 15:57:46 <arseniiv> and the piece is too long and is for an orchestra I think
+2020-01-06 15:58:05 <kspalaiologos> the only state is global
+2020-01-06 15:58:16 <kspalaiologos> and it's 2000 element int array
+2020-01-06 15:58:29 <kspalaiologos> gosh, 2k10 me was a stupid person
+2020-01-06 15:58:33 <arseniiv> risky, risky
+2020-01-06 15:58:34 <kspalaiologos> why didn't I rewrite it sooner
+2020-01-06 15:58:44 <kspalaiologos> why didn't I rewrite it to this day
+2020-01-06 15:59:04 <arseniiv> I often think that about myself too
+2020-01-06 15:59:10 <kspalaiologos> everyone does
+2020-01-06 15:59:41 <wib_jonas> my very old code has assignments with no space before the equals sign, only after. it's horrible.
+2020-01-06 16:00:01 <kspalaiologos> I've seen code that has spaces before and after every paren
