@@ -209,3 +209,104 @@
 2020-01-07 16:51:02 <fizzie> The examples listed in Wikipedia for Germany are pretty DSL-y, nothing about mobile.
 2020-01-07 16:51:15 <int-e> I can believe it for DSL.
 2020-01-07 16:51:50 <fizzie> Over in USA, T-Mobile and Verizon both went IPv6, I think that's what contributed mostly over there.
+2020-01-07 17:02:55 <fizzie> Hey, my phone has an IPv6 address from Three UK, that's actually new. It didn't use to.
+2020-01-07 17:03:59 <fizzie> (v4 in 10/8, v6 in 2a04:4a40::/29.)
+2020-01-07 17:04:06 <kspalaiologos> fizzie, is there an SVN/mercurial repo of lambdabot?
+2020-01-07 17:04:12 <kspalaiologos> also, is it used anywhere outside #esolangs?
+2020-01-07 17:04:31 <kspalaiologos> btw, >code review of IRC bot
+2020-01-07 17:04:32 <int-e> @version
+2020-01-07 17:04:33 <lambdabot> lambdabot 5.2
+2020-01-07 17:04:33 <lambdabot> git clone https://github.com/lambdabot/lambdabot
+2020-01-07 17:04:34 <kspalaiologos> why so serious :)?
+2020-01-07 17:04:46 <fizzie> I'm not responsible for lambdabot, but yes, it's used on many many channels.
+2020-01-07 17:05:00 <kspalaiologos> bruh
+2020-01-07 17:05:03 <int-e> kspalaiologos: fizzie is not involved in lambdabot, I'm running and sort-of maintaining it
+2020-01-07 17:05:05 <kspalaiologos> that's a pretty big bot
+2020-01-07 17:05:07 Joined: imode
+2020-01-07 17:05:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-07 17:05:23 <fizzie> And I was talking about changing the Google response, which does have a code review for hopefully obvious reasons.
+2020-01-07 17:05:24 <kspalaiologos> int-eresting
+2020-01-07 17:05:47 <kspalaiologos> fizzie, so you actually are a developer working for google?
+2020-01-07 17:05:56 <fizzie> Yes.
+2020-01-07 17:06:00 <int-e> "sort-of" meaning that, really, I'm not doing much.
+2020-01-07 17:06:21 <fizzie> int-e: That's the glamorous life of an IRC bot maintainer.
+2020-01-07 17:06:33 <fizzie> fungot: What have I done for you recently?
+2020-01-07 17:06:34 <fungot> fizzie: they say that everyone knows why this is true, but in thought, he would peel back a tiny nibble, and a horn.
+2020-01-07 17:06:44 <int-e> fizzie: I have open bug reports though.
+2020-01-07 17:07:26 <int-e> ^style
+2020-01-07 17:07:26 <fungot> Available: agora alice c64 ct darwin discworld enron europarl ff7 fisher fungot homestuck ic irc iwcs jargon lovecraft nethack* oots pa qwantz sms speeches ss wp ukparl youtube
+2020-01-07 17:07:29 <kspalaiologos> fizzie, that's actually interesting
+2020-01-07 17:07:31 <kspalaiologos> very interesting
+2020-01-07 17:07:37 <kspalaiologos> what projects are you responsible for?
+2020-01-07 17:07:46 <kspalaiologos> is it true that workers in Google are treated like meatbags?
+2020-01-07 17:08:10 <kspalaiologos> which language do you work primarly with?
+2020-01-07 17:08:36 <fizzie> I'm not sure I want to discuss it in all that much detail.
+2020-01-07 17:08:39 <int-e> . o O ( I expect pretty much all of that information is covered under an NDA that fizzie signed. )
+2020-01-07 17:08:58 <kspalaiologos> even the third one?
+2020-01-07 17:09:03 <kspalaiologos> so that presumes #2 is true
+2020-01-07 17:10:06 <fizzie> I'm pretty happy with Google as an employer, but there are also well-documented-in-the-media things that are less than perfect.
+2020-01-07 17:10:15 <myname> my number one question for google would by: why is youtube so horrible
+2020-01-07 17:10:39 <kspalaiologos> they must have forced you to say that
+2020-01-07 17:12:02 <int-e> myname: Because youtube is not really for you; you're the product that is being sold to advertisers.
+2020-01-07 17:12:21 <fizzie> I think there's at least one "open" "report" for HackEso too, I just keep forgetting about it. I think I was suggesting the GitHub issue tracker to keep track of them, but it might not be enabled.
+2020-01-07 17:12:45 <myname> int-e: well, to sell users you better treat them well enough
+2020-01-07 17:12:57 <kspalaiologos> you don't need to
+2020-01-07 17:13:04 <kspalaiologos> you just need to create monopoly on the market
+2020-01-07 17:13:07 <kspalaiologos> so no one can rival you
+2020-01-07 17:13:18 <int-e> myname: No, you just have to make sure they don't leave in troves.
+2020-01-07 17:13:26 <myname> i recently learned about a vrowser extension for managing subscriptions. no idea why that's not built-in
+2020-01-07 17:13:50 <kspalaiologos> google could just aswell wipe their arse with people's opinion
+2020-01-07 17:13:50 <myname> also, the search in watched videos does not include the description, which is stupid
+2020-01-07 17:14:58 <kspalaiologos> what is J really useful for
+2020-01-07 17:15:05 <kspalaiologos> not counting code obfuscation and codegolf
+2020-01-07 17:15:18 <kspalaiologos> maybe some advanced maths?
+2020-01-07 17:15:29 <fizzie> `le/rn bug//Feel free to file bugs at https://github.com/fis/hackbot/issues
+2020-01-07 17:15:31 <int-e> Actually, I don't even have an account. My main gripe is having to turn off the "auto play" feature all the time.
+2020-01-07 17:15:32 <HackEso> Learned 'bug': Feel free to file bugs at https://github.com/fis/hackbot/issues
+2020-01-07 17:16:03 <myname> int-e: managing subscriptions without an account is practically impossible
+2020-01-07 17:16:10 <int-e> (Correction... I do have an account because the google account is for everything. But I don't sign in, so effectively I treat it as not having one.)
+2020-01-07 17:16:12 Parted: Frater_EST
+2020-01-07 17:16:12 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-07 17:16:22 <myname> kspalaiologos: what is C really useful for?
+2020-01-07 17:16:27 <int-e> myname: Well in contrast to you I don't care about subscriptions.
+2020-01-07 17:16:42 Quit: kritixilithos (Quit: quit)
+2020-01-07 17:16:42 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-07 17:16:45 <kspalaiologos> myname, it's a general purpose language, but now it's shoved down to systems programming
+2020-01-07 17:16:49 <int-e> myname: core dumps?
+2020-01-07 17:16:55 <kspalaiologos> no one really writes desktop apps in C anymore
+2020-01-07 17:17:00 <fizzie> `? c
+2020-01-07 17:17:01 <HackEso> C is the language of��V�>WIד�.��Segmentation fault
+2020-01-07 17:17:11 <kspalaiologos> `? j
+2020-01-07 17:17:11 <int-e> Hah, I forgot about that one.
+2020-01-07 17:17:13 <HackEso> J started out as a synonym for I, but then branched out into an array of other uses.
+2020-01-07 17:17:21 <kspalaiologos> interesting
+2020-01-07 17:17:23 <kspalaiologos> `? i
+2020-01-07 17:17:24 <HackEso> I SIGNIFICAT NVMERVM VNVM
+2020-01-07 17:17:38 <kspalaiologos> I is the first number
+2020-01-07 17:17:40 <kspalaiologos> a ha!
+2020-01-07 17:17:43 <kspalaiologos> I remember some latin
+2020-01-07 17:18:15 <int-e> I sptted a feline in there.
+2020-01-07 17:18:20 <int-e> *spotted
+2020-01-07 17:21:52 Quit: rain1 (Quit: Lost terminal)
+2020-01-07 17:21:53 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-07 17:22:01 <int-e> myname: Ah, I found the cynical angle: If managing subscriptions is hard, then users spend more time on youtube.
+2020-01-07 17:24:06 <myname> but not watching ads
+2020-01-07 17:24:59 <kspalaiologos> adblock here
+2020-01-07 17:25:21 <kspalaiologos> I just indirectly donate to my favourite content creators on youtube/twitch
+2020-01-07 17:25:24 <int-e> kspalaiologos: not ublock or umatrix?
+2020-01-07 17:25:31 <kspalaiologos> I should have said
+2020-01-07 17:25:32 <kspalaiologos> adblocker
+2020-01-07 17:25:48 <kspalaiologos> but recently
+2020-01-07 17:25:54 <kspalaiologos> I'm using a tiny yet smart piece of software
+2020-01-07 17:26:00 <kspalaiologos> that tricks the google ads that I
+2020-01-07 17:26:03 <kspalaiologos> 'm actually clicking them
+2020-01-07 17:26:08 <kspalaiologos> and hides em afterwards
+2020-01-07 17:26:43 <kspalaiologos> a certain win-win situation
+2020-01-07 17:26:48 <kspalaiologos> for the creators and me obviously
+2020-01-07 17:27:05 <kspalaiologos> and I don't believe in non-irritating ads bullshit
+2020-01-07 17:27:13 <kspalaiologos> not going to browse web without an adblocker
+2020-01-07 17:28:20 <int-e> yeah
+2020-01-07 17:28:42 <int-e> a truly non-intrusive ad would be one you don't notice
+2020-01-07 17:28:54 <int-e> which makes it clear that such a thing can't exist
+2020-01-07 17:29:15 <Taneb> int-e: or it relies on subliminal messaging
+2020-01-07 17:29:28 <Taneb> Like subtle product placement in movies
