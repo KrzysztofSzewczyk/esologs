@@ -180,3 +180,32 @@
 2020-01-07 16:28:15 <kspalaiologos> bruh
 2020-01-07 16:28:17 <kspalaiologos> still the same
 2020-01-07 16:28:21 <int-e> OF COURSE
+2020-01-07 16:30:32 <fizzie> @google what is my ip
+2020-01-07 16:30:34 <lambdabot> http://www.google.com/url?q=https://whatismyipaddress.com/
+2020-01-07 16:30:34 <lambdabot> Title: Уведомление о переадресации
+2020-01-07 16:30:50 <fizzie> Aw, it doesn't do the answer-answer, it just does the first search result.
+2020-01-07 16:31:13 <int-e> It's fetching Google's redirect page that would redirect to the actual thing.
+2020-01-07 16:31:22 <int-e> So... the Title will not change.
+2020-01-07 16:31:52 <int-e> Also I'm not sure whether https works.
+2020-01-07 16:33:46 <fizzie> I'm tempted to patch in some easter egg query that'd make lambdabot print something funny, but that'd probably raise some eyebrows at code review time.
+2020-01-07 16:37:10 <int-e> @google 1 in in cm
+2020-01-07 16:37:11 <lambdabot> http://www.google.com/url?q=https://www.inches-to-cm.com/
+2020-01-07 16:37:11 <lambdabot> Title: Уведомление о переадресации
+2020-01-07 16:37:33 <int-e> Oh that's what you meant, I see. Yeah, that used to work at some point, but Google is very much of a moving target.
+2020-01-07 16:38:41 <fizzie> Oh yes. Though the answer box is probably a lot easier to scrape than the interactive unit converter widget. Not that I've ever looked at how the HTML looks like for either.
+2020-01-07 16:40:06 <fizzie> Anyway, there's a lot of user agenting going on to decide what to serve.
+2020-01-07 16:40:34 <fizzie> (Heh, I wonder how lambdabot queries appear in our browser classification.)
+2020-01-07 16:44:04 <int-e> I'm wondering what IP it actually uses for this. (IPv4 or IPv6 is the main question here)
+2020-01-07 16:45:28 <kmc> compromise on IPv5
+2020-01-07 16:45:45 <fizzie> Hey, the world has just (as in, mid-December) crossed 30% for IPv6: https://www.google.com/intl/en/ipv6/statistics.html
+2020-01-07 16:47:40 <int-e> somebody should tell the mobile phone providers
+2020-01-07 16:48:07 <fizzie> I suspect most of that is likely mobile/
+2020-01-07 16:48:17 <fizzie> There were a few high-profile mobile providers that went IPv6.
+2020-01-07 16:48:21 <int-e> "inet 100.73.48.224"
+2020-01-07 16:49:42 <int-e> Not here in Austria (or Germany for that matter), as far as I know.
+2020-01-07 16:50:11 <fizzie> Germany is apparently 51.3% IPv6.
+2020-01-07 16:50:13 <int-e> They have invested heavily in NAT, they have to use it ;)
+2020-01-07 16:50:35 <int-e> Yeah, maybe it happened and I just don't know.
+2020-01-07 16:51:02 <fizzie> The examples listed in Wikipedia for Germany are pretty DSL-y, nothing about mobile.
+2020-01-07 16:51:15 <int-e> I can believe it for DSL.
+2020-01-07 16:51:50 <fizzie> Over in USA, T-Mobile and Verizon both went IPv6, I think that's what contributed mostly over there.
