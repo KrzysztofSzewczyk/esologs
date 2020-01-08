@@ -88,3 +88,30 @@
 2020-01-08 14:25:05 <kspalaiologos> [ 0.5 + 0.5
 2020-01-08 14:25:06 <j-bot> kspalaiologos: 1
 2020-01-08 14:25:07 <kspalaiologos> it doesn't
+2020-01-08 14:37:32 <kspalaiologos> [ a =. 1 + b =. 5
+2020-01-08 14:37:33 <j-bot> kspalaiologos: |ok
+2020-01-08 14:37:59 <kspalaiologos> [ a =. 1 + b =. 5 a
+2020-01-08 14:37:59 <j-bot> kspalaiologos: |syntax error
+2020-01-08 14:37:59 <j-bot> kspalaiologos: |   a=.1+b=.    5 a
+2020-01-08 14:38:07 <kspalaiologos> [ (a =. 1 + b =. 5) a
+2020-01-08 14:38:07 <j-bot> kspalaiologos: |syntax error
+2020-01-08 14:38:08 <j-bot> kspalaiologos: |       (a=.1+b=.5)a
+2020-01-08 14:43:09 Joined: Frater_EST
+2020-01-08 14:43:10 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-08 14:43:11 <kspalaiologos> so
+2020-01-08 14:43:17 <kspalaiologos> first b=5 is evaluated
+2020-01-08 14:43:20 <kspalaiologos> and a=b+1
+2020-01-08 14:43:27 Parted: Frater_EST
+2020-01-08 14:43:27 <kspalaiologos> so a = 6 then
+2020-01-08 14:43:27 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-08 14:46:06 <myname> what other outcome would there be?
+2020-01-08 14:47:31 <kspalaiologos> a=1, b=5, the expression value would be 6
+2020-01-08 14:47:52 <kspalaiologos> but it kinda makes no sense as I remembered that expressions are always evaluated rtl
+2020-01-08 14:51:47 <kspalaiologos> When I try to use the following:
+2020-01-08 14:51:59 <kspalaiologos> v =: verb define / x + y / )
+2020-01-08 14:52:01 <kspalaiologos> (/ = newline)
+2020-01-08 14:52:07 <kspalaiologos> I get an syntax error
+2020-01-08 14:55:04 Joined: kritixilithos
+2020-01-08 14:55:05 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-08 14:58:06 Joined: jake
+2020-01-08 14:58:06 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jake, jix, joast, kingoffrance, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
