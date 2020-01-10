@@ -369,3 +369,117 @@
 2020-01-10 19:29:44 <b_jonas> kspalaiologos: try to use J to find (a) the largest number in this array, (b) the second largest number in this array: _0.772 0.492 _1.108 0.971 _1.131 _0.155 0.951 _0.069 1.500 _0.326 0.449 _1.901 _1.433 _0.352
 2020-01-10 19:29:53 <arseniiv> (dear fungot what is a cocategory?)
 2020-01-10 19:29:53 <fungot> arseniiv: is the hon. and learned friend the minister for a very powerful and is damning. it was absolutely for the european union have in fnord relationships, the women of the uk deserve to have the full support of the british government, the british government, the british government to the illegal wildlife trade, the government have
+2020-01-10 19:30:07 <arseniiv> ^style irc
+2020-01-10 19:30:07 <fungot> Selected style: irc (IRC logs of freenode/#esoteric, freenode/#scheme and ircnet/#douglasadams)
+2020-01-10 19:30:10 <kspalaiologos> I don't know how to iterate or loop by now
+2020-01-10 19:30:13 <arseniiv> (dear fungot what is a cocategory really?)
+2020-01-10 19:30:13 <fungot> arseniiv: parsing: unexpected end of file ( index: 12, row: 1, col: 3)
+2020-01-10 19:30:59 <kspalaiologos> https://www.jsoftware.com/help/jforc/loopless_code_i_verbs_have_r.htm#_Toc191734331
+2020-01-10 19:31:02 <kspalaiologos> I'm starting this chapter
+2020-01-10 19:31:10 <FireFly> you often don't really want to iterate or loop explicitly in J; it's an array-oriented language, so often the more idiomatic way to approach problems is by working on the entire array at once in different ways
+2020-01-10 19:31:57 <FireFly> (well, like, the implementation will at some level perform a loop of course, but you often don't really reason about it in a "loop" way)
+2020-01-10 19:32:27 <b_jonas> the answer for (b) should be 0.971 by the way
+2020-01-10 19:32:33 <kspalaiologos> I will try
+2020-01-10 19:32:34 <kspalaiologos> though
+2020-01-10 19:32:48 <kspalaiologos> [ I need to map it all to the > operator
+2020-01-10 19:32:49 <j-bot> kspalaiologos: |syntax error
+2020-01-10 19:32:49 <j-bot> kspalaiologos: |       I need to map it all to the>operator
+2020-01-10 19:32:50 <kspalaiologos> I believe
+2020-01-10 19:32:55 <kspalaiologos> (oops [)
+2020-01-10 19:33:25 <kspalaiologos> [ > 1 2 3
+2020-01-10 19:33:26 <j-bot> kspalaiologos: 1 2 3
+2020-01-10 19:33:31 <kspalaiologos> [ 1 2 3 > 1 2 3
+2020-01-10 19:33:32 <j-bot> kspalaiologos: 0 0 0
+2020-01-10 19:37:06 <kspalaiologos> [ a1 := ]`[@.(2&>@[)
+2020-01-10 19:37:07 <j-bot> kspalaiologos: a1 := ]`[@.(2&>@[)
+2020-01-10 19:37:15 <kspalaiologos> [ a:=]`[@.(2&>@[)
+2020-01-10 19:37:16 <j-bot> kspalaiologos: a: = ]`[@.(2&>@[)
+2020-01-10 19:37:23 <kspalaiologos> [ a=:]`[@.(2&>@[)
+2020-01-10 19:37:24 <j-bot> kspalaiologos: |ok
+2020-01-10 19:37:25 Quit: sprocklem (Ping timeout: 268 seconds)
+2020-01-10 19:37:26 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-10 19:37:27 <kspalaiologos> yay
+2020-01-10 19:37:33 <kspalaiologos> [ 2 a 3
+2020-01-10 19:37:34 <j-bot> kspalaiologos: 3
+2020-01-10 19:37:38 <kspalaiologos> [ 8 a 3
+2020-01-10 19:37:39 <j-bot> kspalaiologos: 3
+2020-01-10 19:37:42 <kspalaiologos> [ 8 a 4
+2020-01-10 19:37:43 <j-bot> kspalaiologos: 4
+2020-01-10 19:37:47 <kspalaiologos> bruh
+2020-01-10 19:38:04 <kspalaiologos> [ a=:]`[@.(y&>@[)
+2020-01-10 19:38:05 <j-bot> kspalaiologos: |ok
+2020-01-10 19:38:07 <kspalaiologos> [ 8 a 4
+2020-01-10 19:38:08 <j-bot> kspalaiologos: |domain error: a
+2020-01-10 19:38:08 <j-bot> kspalaiologos: |   8     a 4
+2020-01-10 19:38:13 <kspalaiologos> gah
+2020-01-10 19:38:24 <kspalaiologos> I concede defeat
+2020-01-10 19:39:11 Joined: sprocklem
+2020-01-10 19:39:12 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-10 19:40:00 <FireFly> huh that's a pretty cute implementation of maximum
+2020-01-10 19:40:17 <FireFly> kspalaiologos: if you just do @.> instead, that approach for defining maximum works
+2020-01-10 19:41:00 <b_jonas> [ s=: _0.772 0.492 _1.108 0.971 _1.131 _0.155 0.951 _0.069 1.500 _0.326 0.449 _1.901 _1.433 _0.352
+2020-01-10 19:41:00 <j-bot> b_jonas: |ok
+2020-01-10 19:41:01 <FireFly> since  x (g@.f) y  will run  (x f y)  to decide which verb of the gerund to apply
+2020-01-10 19:41:17 <FireFly> [ 2 (]`[@.>) 5
+2020-01-10 19:41:17 <j-bot> FireFly: 5
+2020-01-10 19:41:21 <FireFly> [ 5 (]`[@.>) 2
+2020-01-10 19:41:22 <j-bot> FireFly: 5
+2020-01-10 19:41:45 <b_jonas> [ +/>/~ s
+2020-01-10 19:41:45 <FireFly> kspalaiologos: so, right line of thinking there at least, I think :)
+2020-01-10 19:41:45 <j-bot> b_jonas: 9 3 10 1 11 6 2 5 0 7 4 13 12 8
+2020-01-10 19:42:38 <b_jonas> [ s{~0 i.~+/>/~ s
+2020-01-10 19:42:38 <j-bot> b_jonas: 1.5
+2020-01-10 19:43:10 <b_jonas> [ s{~1 i.~+/>/~ s
+2020-01-10 19:43:11 <j-bot> b_jonas: 0.971
+2020-01-10 19:43:26 <b_jonas> only that doesn't work well if there are equal elements
+2020-01-10 19:44:03 <b_jonas> this can be fixed if you compare indexes for equal elements, but it gets much uglier
+2020-01-10 19:44:39 <FireFly> huh, well that's not the approach I expected :p
+2020-01-10 19:45:09 * FireFly thinks
+2020-01-10 19:45:24 <b_jonas> of course not, I'm not giving away the easiest solution right after asking a question
+2020-01-10 19:45:35 <FireFly> heh
+2020-01-10 19:45:52 <FireFly> it's a cute approach though, thanks for showing it
+2020-01-10 19:45:53 <b_jonas> it's only like six characters anyway
+2020-01-10 19:46:17 <kspalaiologos> [ 5 (]`[@.>) 5
+2020-01-10 19:46:18 <j-bot> kspalaiologos: 5
+2020-01-10 19:48:53 <kspalaiologos> [ (+/ % #) 2 3 4
+2020-01-10 19:48:54 <j-bot> kspalaiologos: 3
+2020-01-10 19:48:58 <kspalaiologos> [ (+/ %) 2 3 4
+2020-01-10 19:48:59 <j-bot> kspalaiologos: 2.5 2.33333 2.25
+2020-01-10 19:48:59 <j-bot> kspalaiologos: 3.5 3.33333 3.25
+2020-01-10 19:48:59 <j-bot> kspalaiologos: 4.5 4.33333 4.25
+2020-01-10 19:49:06 <kspalaiologos> what did I just do
+2020-01-10 19:49:18 <kspalaiologos> [ (+/ #) 2 3 4
+2020-01-10 19:49:19 <j-bot> kspalaiologos: 5 6 7
+2020-01-10 19:50:15 <kspalaiologos> [ max:=(]`[@.>)/
+2020-01-10 19:50:16 <j-bot> kspalaiologos: |spelling error
+2020-01-10 19:50:16 <j-bot> kspalaiologos: |   max:=(]`[@.>)/
+2020-01-10 19:50:16 <j-bot> kspalaiologos: |   ^
+2020-01-10 19:50:20 <kspalaiologos> [ max=:(]`[@.>)/
+2020-01-10 19:50:21 <j-bot> kspalaiologos: |ok
+2020-01-10 19:50:24 <kspalaiologos> [ max 2 3 4
+2020-01-10 19:50:25 <j-bot> kspalaiologos: 4
+2020-01-10 19:50:28 <kspalaiologos> AAAAAAAAAAAAAA
+2020-01-10 19:50:30 <kspalaiologos> I DID IT
+2020-01-10 19:50:34 <kspalaiologos> [ max 2 3 4 3 6
+2020-01-10 19:50:35 <j-bot> kspalaiologos: 6
+2020-01-10 19:50:37 <kspalaiologos> [ max 7 2 3 4 3 6
+2020-01-10 19:50:38 <j-bot> kspalaiologos: 7
+2020-01-10 19:50:46 <kspalaiologos> b_jonas, look
+2020-01-10 19:50:48 <kspalaiologos> I did it
+2020-01-10 19:51:02 <b_jonas> kspalaiologos: are you sure? try it on that array that I gave
+2020-01-10 19:51:14 <b_jonas> _0.772 0.492 _1.108 0.971 _1.131 _0.155 0.951 _0.069 1.500 _0.326 0.449 _1.901 _1.433 _0.352
+2020-01-10 19:51:18 <kspalaiologos> [ s=: _0.772 0.492 _1.108 0.971 _1.131 _0.155 0.951 _0.069 1.500 _0.326 0.449 _1.901 _1.433 _0.352
+2020-01-10 19:51:19 <j-bot> kspalaiologos: |ok
+2020-01-10 19:51:22 <b_jonas> result should be 1.5
+2020-01-10 19:51:23 <kspalaiologos> [ max s
+2020-01-10 19:51:24 <j-bot> kspalaiologos: 1.5
+2020-01-10 19:51:30 <kspalaiologos> xaxaxaxaxa
+2020-01-10 19:51:31 <b_jonas> great
+2020-01-10 19:51:38 <FireFly> \o/
+2020-01-10 19:54:04 <int-e> lovely spam, oh wonderful spam
+2020-01-10 19:56:32 <b_jonas> kspalaiologos: of course, finding the second largest is harder
+2020-01-10 19:56:43 <FireFly> #jsoftware might be a better fit for learning J than #esoteric is
+2020-01-10 19:56:57 <kspalaiologos> wait
+2020-01-10 19:56:59 <kspalaiologos> a second
+2020-01-10 19:57:14 <b_jonas> ``` sleep 1; echo ok
+2020-01-10 19:57:16 <HackEso> ok
