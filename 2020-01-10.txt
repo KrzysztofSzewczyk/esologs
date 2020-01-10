@@ -543,3 +543,89 @@
 2020-01-10 22:27:46 <kspalaiologos> So game tick processing was delayed
 2020-01-10 22:27:52 <kspalaiologos> Because of calculations
 2020-01-10 22:28:14 <kspalaiologos> b_jonas, minecraft, Java
+2020-01-10 22:30:09 <kspalaiologos> b_jonas, could you give me a J challenge
+2020-01-10 22:30:26 <b_jonas> kspalaiologos: you still haven't solved the previous one. what's the second largest number in that array?
+2020-01-10 22:30:30 <int-e> Hah, kmc should have their own ideas what "mc" stands for.
+2020-01-10 22:30:36 <kspalaiologos> Ah
+2020-01-10 22:30:43 <kspalaiologos> 2nd largest you say
+2020-01-10 22:31:06 <kspalaiologos> Just sort the array
+2020-01-10 22:31:11 <kspalaiologos> Pick 2nd element
+2020-01-10 22:31:13 <b_jonas> it's supposed to be 0.971
+2020-01-10 22:31:22 <b_jonas> kspalaiologos: right, so do that in J. it's pretty short.
+2020-01-10 22:31:36 <kspalaiologos> I'm writing on mobile so I'll test it in the channel
+2020-01-10 22:32:27 <b_jonas> it's like 6 characters once you already defined the array s
+2020-01-10 22:32:34 <b_jonas> shoulnd't be hard to test on the channel
+2020-01-10 22:32:47 <kspalaiologos> Gosh J really has no sort prototype?
+2020-01-10 22:35:06 <kspalaiologos> [ bruh:=\:~
+2020-01-10 22:35:07 <j-bot> kspalaiologos: |spelling error
+2020-01-10 22:35:07 <j-bot> kspalaiologos: |   bruh:=\:~
+2020-01-10 22:35:07 <j-bot> kspalaiologos: |   ^
+2020-01-10 22:35:19 <kspalaiologos> Now all I need is just extract the 1st element
+2020-01-10 22:35:36 <kspalaiologos> [ bruh=:\:~
+2020-01-10 22:35:37 <j-bot> kspalaiologos: |ok
+2020-01-10 22:38:23 <kspalaiologos> [ a=:1{\:~
+2020-01-10 22:38:24 <j-bot> kspalaiologos: |ok
+2020-01-10 22:38:32 <kspalaiologos> [ a 1 2 3
+2020-01-10 22:38:33 <j-bot> kspalaiologos: 2
+2020-01-10 22:38:48 <kspalaiologos> b_jonas, can you test it?
+2020-01-10 22:39:05 <b_jonas> j-bot, ls
+2020-01-10 22:39:07 <b_jonas> j-bot, ls:
+2020-01-10 22:39:17 <b_jonas> j-bot list:
+2020-01-10 22:39:20 <b_jonas> j-bot?
+2020-01-10 22:39:24 <b_jonas> j-bot: 1
+2020-01-10 22:39:25 <j-bot> b_jonas: 1
+2020-01-10 22:39:30 <b_jonas> j-bot, list:
+2020-01-10 22:39:34 <b_jonas> what
+2020-01-10 22:39:39 <b_jonas> j-bot, sessions:
+2020-01-10 22:39:49 <b_jonas> I don't get j-bot syntax
+2020-01-10 22:39:52 <b_jonas> `whatis ls
+2020-01-10 22:39:53 <HackEso> ls(1) - list directory contents \ ls(1p) - list directory contents \ ls(1hackeso) - no description \ ls(8glibc) - File Attributes \ ls(8jevalbot) - show the name of all persistent sessions
+2020-01-10 22:39:55 <b_jonas> there is an ls command isn't there?
+2020-01-10 22:39:58 <kspalaiologos> Just paste it over
+2020-01-10 22:40:00 <b_jonas> j-bot ls:
+2020-01-10 22:40:13 <kspalaiologos> Gimme the data
+2020-01-10 22:40:29 <b_jonas> I think it's still on your session
+2020-01-10 22:40:41 <b_jonas> j-bot load: kspalaiologos
+2020-01-10 22:40:42 <j-bot> b_jonas, copied b_jonas,#esoteric from b_jonas,kspalaiologos
+2020-01-10 22:40:44 <b_jonas> [ a s
+2020-01-10 22:40:45 <j-bot> b_jonas: |value error: a
+2020-01-10 22:40:45 <j-bot> b_jonas: |       a s
+2020-01-10 22:40:48 <b_jonas> [ a
+2020-01-10 22:40:49 <j-bot> b_jonas: |value error: a
+2020-01-10 22:40:54 <b_jonas> j-bot load: kspalaiologos,
+2020-01-10 22:40:54 <j-bot> b_jonas, copied b_jonas,#esoteric from kspalaiologos,#esoteric
+2020-01-10 22:40:56 <b_jonas> [ a s
+2020-01-10 22:40:57 <j-bot> b_jonas: 0.971
+2020-01-10 22:40:59 <b_jonas> there
+2020-01-10 22:41:00 <b_jonas> [ s
+2020-01-10 22:41:01 <j-bot> b_jonas: _0.772 0.492 _1.108 0.971 _1.131 _0.155 0.951 _0.069 1.5 _0.326 0.449 _1.901 _1.433 _0.352
+2020-01-10 22:41:04 <kspalaiologos> Yay
+2020-01-10 22:41:05 <b_jonas> it was still in your j-bot session
+2020-01-10 22:41:10 <b_jonas> you just had to type [ a s
+2020-01-10 22:41:10 <kspalaiologos> And another one
+2020-01-10 22:44:34 <b_jonas> kspalaiologos: solve http://wiki.math.bme.hu/view/Informatika1-2010/Hazi5
+2020-01-10 22:44:36 <b_jonas> your input is
+2020-01-10 22:45:19 <b_jonas> [ s0=: 69 7 8 28 18 92 61 41 24 9 72 56
+2020-01-10 22:45:20 <j-bot> b_jonas: |ok
+2020-01-10 22:45:54 Quit: kspalaiologos (Ping timeout: 265 seconds)
+2020-01-10 22:45:54 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-10 22:46:33 <b_jonas> chunk them to distinct groups of length 3, so the first grtoup is [69, 7, 8], the second is [28,18,92], the third is [61,41,24] etc, compute the product of the three numbers in each of those groups, and the sum of those products
+2020-01-10 22:46:45 <b_jonas> no wait
+2020-01-10 22:46:47 <b_jonas> don't compute the sum
+2020-01-10 22:46:50 <b_jonas> just compute the list of products
+2020-01-10 22:47:07 <b_jonas> output should be 3864 46368 60024 36288
+2020-01-10 22:47:25 <b_jonas> but make it work for longer input vectors too, like the other examples on that page
+2020-01-10 22:47:44 <b_jonas> then solve http://wiki.math.bme.hu/view/Informatika1-2010/Hazi4
+2020-01-10 22:49:40 <b_jonas> inputs are:
+2020-01-10 22:49:47 <b_jonas> [ m1=: _2]\ 270 294 337 357 390 414 457 477 510 534 577 597 630 654 697 717 750 774 817 837 870 894 937 957 990 1014 1057 1077 1110 1134 1230 1254 1338 1362
+2020-01-10 22:49:47 <j-bot> b_jonas: |ok
+2020-01-10 22:49:50 <b_jonas> [ m2=: _2]\ 319 567 366 539 540 714 545 809 780 954 785 1055 900 1074 905 1169 1025 1280 1140 1324
+2020-01-10 22:49:51 <j-bot> b_jonas: |ok
+2020-01-10 22:50:06 <b_jonas> (copy them with "j-bot load: b_jonas," if you want)
+2020-01-10 22:50:49 <b_jonas> m1 are pairs of times from a railway timetable from town A to B, first in the pair is when the train departs from A (in minutes from midnight), second is when the train arrives in town B
+2020-01-10 22:51:02 <b_jonas> similarly m2 is timetable from B to C
+2020-01-10 22:51:15 <b_jonas> [ g=: 720
+2020-01-10 22:51:16 <j-bot> b_jonas: |ok
+2020-01-10 22:51:51 <b_jonas> you want to arrive to C at time g or before, when is the latest you can start from A, assuming it takes no time to transfer from one train to another in B
+2020-01-10 22:52:01 <b_jonas> answer should be 510
+2020-01-10 22:52:22 <b_jonas> solution should work for other inputs too of course
