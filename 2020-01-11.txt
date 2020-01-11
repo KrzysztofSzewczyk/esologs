@@ -377,3 +377,15 @@
 2020-01-11 19:23:34 Joined: rodgort
 2020-01-11 19:23:35 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux-, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
 2020-01-11 19:29:13 Joined: tromp
+2020-01-11 19:32:46 Quit: tromp (Ping timeout: 252 seconds)
+2020-01-11 19:41:21 <zzo38> How I thought version ten internet addresses should work is, there are sixteen octets. If the first twelve octets are all zero then it is a version 4 address with the same meaning as a version 4 address. If the first octet is less than 128 then it is various kind of specials (network specials, application specials, operating system specials, etc). Each customer will have 2^32 addresses which should be more than enough.
+2020-01-11 19:43:57 <int-e> zzo38: https://en.wikipedia.org/wiki/IPv4_mapped_address#IPv4-mapped_IPv6_addresses
+2020-01-11 19:44:13 <int-e> The prefix is not 0, but the idea exists.
+2020-01-11 19:46:06 <zzo38> I think the way it is done in IPv6 is messy, with multiple classes of such addresses, an unusual notation that is different from normal IPv6 notation, etc.
+2020-01-11 19:47:19 <zzo38> Sometimes there is a use for multiple classes, but usually it shouldn't care.
+2020-01-11 19:50:13 <int-e> I believe they consciously switched from octets to nybbles for the benefit of reverse DNS.
+2020-01-11 19:53:12 <int-e> Also https://xkcd.com/927/ applies equally well for standards that just try to do things "right".
+2020-01-11 19:53:13 <zzo38> (e.g. anything that can map version 4 addresses will do so; if it doesn't then it is just treated as a version 6 address passed to the next device on the network (such as the router, modem, ISP, etc); if the ISP supports this then they might have their own address prefix for such purpose and 0.0.0.0.0.0.0.0.0.0.0.0 is treated as an alias for it.)
+2020-01-11 19:56:47 <kspalaiologos> why jbot died
+2020-01-11 19:56:49 <kspalaiologos> reeeeeeee
+2020-01-11 19:59:56 <b_jonas> kspalaiologos: int-e killed it so that you don't spam the channel :-)
