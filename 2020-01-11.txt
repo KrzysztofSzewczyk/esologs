@@ -203,3 +203,103 @@
 2020-01-11 14:56:16 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab
 2020-01-11 14:56:39 Joined: LKoen
 2020-01-11 14:56:40 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab
+2020-01-11 15:09:23 Joined: Lord_of_Life
+2020-01-11 15:09:45 <b_jonas> kspalaiologos: see the logs, I told some after you left yesterday
+2020-01-11 15:09:53 <b_jonas> channel logs
+2020-01-11 15:10:25 <kspalaiologos> ah fine
+2020-01-11 15:10:27 <kspalaiologos> my inet died
+2020-01-11 15:12:23 Quit: Lord_of_Life (Ping timeout: 265 seconds)
+2020-01-11 15:12:32 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-01-11 15:13:23 <kspalaiologos> it's in hungarian
+2020-01-11 15:13:28 <kspalaiologos> will google translate do the job?
+2020-01-11 15:14:31 <kspalaiologos> alright I understand now
+2020-01-11 15:15:20 <kspalaiologos> I'll experiment in the channel
+2020-01-11 15:15:40 <kspalaiologos> [ 0 1 2 { 64 70 22 78 88 100
+2020-01-11 15:15:40 <j-bot> kspalaiologos: 64 70 22
+2020-01-11 15:18:14 <kspalaiologos> [ set=:64 70 22 78 88 100 36 49 53 70 53 85 35 87 18 72 99 74 30 99 19 72 10 100 59 9 99 80 27 56 42 71 94 51 64 47 12 23 9 30 13 91 71 61 18 5 4 60
+2020-01-11 15:18:15 <j-bot> kspalaiologos: |ok
+2020-01-11 15:18:18 <kspalaiologos> [ $set
+2020-01-11 15:18:19 <j-bot> kspalaiologos: 48
+2020-01-11 15:18:24 <kspalaiologos> [ i.$set
+2020-01-11 15:18:25 <j-bot> kspalaiologos: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+2020-01-11 15:18:37 <kspalaiologos> [ i.$set%3
+2020-01-11 15:18:37 <j-bot> kspalaiologos: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+2020-01-11 15:18:42 <kspalaiologos> [ i.($set%3)
+2020-01-11 15:18:43 <j-bot> kspalaiologos: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+2020-01-11 15:18:48 <kspalaiologos> [ ($set%3)
+2020-01-11 15:18:49 <j-bot> kspalaiologos: 48
+2020-01-11 15:18:54 <kspalaiologos> [ ($set)%3
+2020-01-11 15:18:55 <j-bot> kspalaiologos: 16
+2020-01-11 15:18:58 <kspalaiologos> [ i.($set)%3
+2020-01-11 15:18:59 <j-bot> kspalaiologos: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+2020-01-11 15:19:16 <kspalaiologos> alrightie
+2020-01-11 15:21:22 <kspalaiologos> [ * 1 2 3
+2020-01-11 15:21:22 <j-bot> kspalaiologos: 1 1 1
+2020-01-11 15:21:24 <kspalaiologos> [ *\ 1 2 3
+2020-01-11 15:21:25 <j-bot> kspalaiologos: 1 0 0
+2020-01-11 15:21:25 <j-bot> kspalaiologos: 1 1 0
+2020-01-11 15:21:25 <j-bot> kspalaiologos: 1 1 1
+2020-01-11 15:21:34 <kspalaiologos> [ *\ (1 2 3)
+2020-01-11 15:21:35 <j-bot> kspalaiologos: 1 0 0
+2020-01-11 15:21:35 <j-bot> kspalaiologos: 1 1 0
+2020-01-11 15:21:35 <j-bot> kspalaiologos: 1 1 1
+2020-01-11 15:21:53 <kspalaiologos> [ +\\ (1 2 3)
+2020-01-11 15:21:53 <j-bot> kspalaiologos: 1 0 0
+2020-01-11 15:21:53 <j-bot> kspalaiologos: 0 0 0
+2020-01-11 15:21:53 <j-bot> kspalaiologos: 0 0 0
+2020-01-11 15:21:53 <j-bot> kspalaiologos:
+2020-01-11 15:21:53 <j-bot> kspalaiologos: 1 0 0
+2020-01-11 15:21:54 <j-bot> kspalaiologos: 1 2 0
+2020-01-11 15:21:54 <j-bot> kspalaiologos: 0 0 0
+2020-01-11 15:21:55 <j-bot> kspalaiologos:
+2020-01-11 15:21:55 <j-bot> kspalaiologos: ...
+2020-01-11 15:22:01 <kspalaiologos> [ gosh
+2020-01-11 15:22:02 <j-bot> kspalaiologos: |value error: gosh
+2020-01-11 15:23:19 <kspalaiologos> [ f=:monad:'(0{x)*(1{x)*(2{x)'
+2020-01-11 15:23:20 <j-bot> kspalaiologos: |spelling error
+2020-01-11 15:23:20 <j-bot> kspalaiologos: |   f=:monad:'(0{x)*(1{x)*(2{x)'
+2020-01-11 15:23:20 <j-bot> kspalaiologos: |      ^
+2020-01-11 15:23:48 <kspalaiologos> [ f=: monad define (0{x)*(1{x)*(2{x) )
+2020-01-11 15:23:49 <j-bot> kspalaiologos: |index error
+2020-01-11 15:23:49 <j-bot> kspalaiologos: |   f=:monad define(0{x)*(1{x)*(2    {x))
+2020-01-11 15:24:07 <kspalaiologos> [ f=:(0{x)*(1{x)*(2{x)
+2020-01-11 15:24:07 <j-bot> kspalaiologos: |index error
+2020-01-11 15:24:07 <j-bot> kspalaiologos: |   f=:(0{x)*(1{x)*(2    {x)
+2020-01-11 15:24:18 <kspalaiologos> b_jonas, ideas, why can't I define that verb?
+2020-01-11 15:24:59 <kspalaiologos> [ f=:((0+y){x)*((1+y){x)*((2+y){x)
+2020-01-11 15:25:00 <j-bot> kspalaiologos: |domain error
+2020-01-11 15:25:00 <j-bot> kspalaiologos: |   f=:((0+y){x)*((1+y){x)*((2    +y){x)
+2020-01-11 15:25:17 <kspalaiologos> [ f =: monad : ((0+y){x)*((1+y){x)*((2+y){x)
+2020-01-11 15:25:18 <j-bot> kspalaiologos: |domain error
+2020-01-11 15:25:18 <j-bot> kspalaiologos: |   f=:monad :((0+y){x)*((1+y){x)*((2    +y){x)
+2020-01-11 15:25:30 <kspalaiologos> [ f =: dyad : ((0+y){x)*((1+y){x)*((2+y){x)
+2020-01-11 15:25:31 <j-bot> kspalaiologos: |domain error
+2020-01-11 15:25:31 <j-bot> kspalaiologos: |   f=:dyad :((0+y){x)*((1+y){x)*((2    +y){x)
+2020-01-11 15:25:40 <kspalaiologos> [ f =: dyad : ((0+y.){x.)*((1+y.){x.)*((2+y.){x.)
+2020-01-11 15:25:40 <j-bot> kspalaiologos: |spelling error
+2020-01-11 15:25:40 <j-bot> kspalaiologos: |   f =: dyad : ((0+y.){x.)*((1+y.){x.)*((2+y.){x.)
+2020-01-11 15:25:40 <j-bot> kspalaiologos: |                   ^
+2020-01-11 15:27:08 Quit: LKoen (Remote host closed the connection)
+2020-01-11 15:27:09 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab
+2020-01-11 15:28:08 <kspalaiologos> [ {. (1 2 3)
+2020-01-11 15:28:08 <j-bot> kspalaiologos: 1
+2020-01-11 15:28:12 <kspalaiologos> [ }. (1 2 3)
+2020-01-11 15:28:12 <j-bot> kspalaiologos: 2 3
+2020-01-11 15:28:25 Joined: LKoen
+2020-01-11 15:28:26 Names: \oren\, ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab
+2020-01-11 15:28:38 <kspalaiologos> [ f =: ((0+{.){}.)*((1+{.){}.)*((2+{.){}.)
+2020-01-11 15:28:38 <j-bot> kspalaiologos: |ok
+2020-01-11 15:28:42 <kspalaiologos> it can't work
+2020-01-11 15:28:46 <kspalaiologos> but it's worth giving it a shot
+2020-01-11 15:28:55 <kspalaiologos> [ f 0 1 2 3
+2020-01-11 15:28:56 <j-bot> kspalaiologos: 6
+2020-01-11 15:29:00 <kspalaiologos> damn
+2020-01-11 15:29:01 <kspalaiologos> it works
+2020-01-11 15:29:07 <kspalaiologos> [ f 1 1 2 3 4 5 6
+2020-01-11 15:29:08 <j-bot> kspalaiologos: 24
+2020-01-11 15:29:34 <kspalaiologos> wait, it just multiplied 4*6
+2020-01-11 15:29:36 <kspalaiologos> ommiting the 5
+2020-01-11 15:29:46 <kspalaiologos> [ f 1 1 2 3 4 5 6 7
+2020-01-11 15:29:46 <j-bot> kspalaiologos: 24
+2020-01-11 15:29:56 <kspalaiologos> [ 2 i.10
+2020-01-11 15:29:57 <j-bot> kspalaiologos: 1
