@@ -76,3 +76,7 @@
 2020-01-11 04:27:38 <pikhq> zzo38: I am somewhat curious how e.g. xz would perform for it
 2020-01-11 04:28:17 <pikhq> Also, given Farbfeld's whole deal, if something vaguely like PNG's filters mixed with more modern compression could do
 2020-01-11 04:28:32 <pikhq> (though I understand Farbfeld itself not doing it -- it's counter to the format's goals)
+2020-01-11 04:43:10 <zzo38> pikhq: I have tried xz; it is sometimes better and sometimes worse, although it helps a bit to change the alignment settings
+2020-01-11 04:49:40 <zzo38> But it would seem to me that compression specifically for pictures would work better. My idea was for the file to start with the header and then a sequence of filters to apply, and then the compressed picture data.
+2020-01-11 04:50:48 <zzo38> (These filters may include rotation, indexed colours, predictions, YCoCg, etc)
+2020-01-11 04:51:58 <zzo38> I personally have no need to store farbfeld pictures on disk, compressed or otherwise. I use farbfeld only as an intermediate format in pipes, which I think is a good use for it and farbfeld is a good format for that use.
