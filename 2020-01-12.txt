@@ -255,3 +255,66 @@
 2020-01-12 21:54:41 <int-e> requirement: "runs on my PC"
 2020-01-12 21:55:19 <kmc> yay :)
 2020-01-12 21:58:12 <esowiki> 14[[07NewFuck14]]4 10 02https://esolangs.org/w/index.php?diff=68814&oldid=68808 5* 03DmilkaSTD 5* (+96) 10
+2020-01-12 22:00:23 Joined: kspalaiologos
+2020-01-12 22:00:24 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:03:37 <b_jonas> int-e: my way to handle portability is to just make it give a reasonable compile time #error when there's no implementation for how you're compiling
+2020-01-12 22:03:58 <b_jonas> or, if that's hard, a runtime error with a reasonable message
+2020-01-12 22:07:07 <kmc> it's also not hard to use that gcc feature I forgot the name of
+2020-01-12 22:07:19 <kmc> which selects between multiple versions of a function at load time
+2020-01-12 22:07:26 <kmc> based on cpu flags
+2020-01-12 22:07:31 <kmc> it might be more of a glibc feature, but anyway
+2020-01-12 22:07:39 <kmc> it's good to have a portable fallback anyway for testing
+2020-01-12 22:08:01 <kmc> it does introduce a function pointer indirection though
+2020-01-12 22:08:09 <kmc> you can do the same thing with dynamic code patching but that's more complicated
+2020-01-12 22:10:37 Quit: Lord_of_Life (Ping timeout: 268 seconds)
+2020-01-12 22:10:37 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:10:48 <int-e> 'GNU indirect functions are an extension of ELF that allows you to make a decision about which implementation of a function to use at [dynamic] link time.'
+2020-01-12 22:11:09 Joined: Lord_of_Life
+2020-01-12 22:11:09 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:11:20 <int-e> I didn't know what it was called either but I did come across the concept at some point.
+2020-01-12 22:14:29 <b_jonas> kmc: sure but you usually don't want to actualy write the other implementation
+2020-01-12 22:15:12 <kmc> sounds like int-e already did
+2020-01-12 22:15:24 <kmc> typically you would do a portable version first, then the optimized
+2020-01-12 22:15:26 <kmc> and I think it's good to have a reference implementation anyway
+2020-01-12 22:15:29 <kmc> for testing
+2020-01-12 22:15:41 <b_jonas> I wouldn't. I would do premature optimization. whether it's a part I need to optimize or not.
+2020-01-12 22:15:44 <kmc> if you have both then it's very easy to test the fancy vector code just by throwing random inputs and comparing outputs
+2020-01-12 22:15:47 <kmc> lol
+2020-01-12 22:15:50 Quit: stux (Read error: Connection reset by peer)
+2020-01-12 22:15:51 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:16:00 <kmc> on top of that the portable code is probably easier to read if someone wants to understand what's going on
+2020-01-12 22:16:07 <kmc> if it doesn't have to be fast at all, it can be very clear
+2020-01-12 22:16:14 Joined: stux
+2020-01-12 22:16:14 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:16:54 <int-e> kmc: it's still around as a reference implementation anyway
+2020-01-12 22:18:57 <int-e> which is deliberately simple and not efficient, even for processors without fancy carryless multiplication instructions: http://paste.debian.net/1125758/ (and still not quite portable; it's missing the UINT64_C thingy)
+2020-01-12 22:22:15 <kmc> isn't uint64_t standard in C99 and later?
+2020-01-12 22:22:24 <kmc> what is this code for?
+2020-01-12 22:22:39 <int-e> kmc: UINT64_C is the macro for making a uint64_t literal.
+2020-01-12 22:22:44 <kmc> huh
+2020-01-12 22:22:58 <kmc> is it something like  #define UINT64_C(x) x ## ull
+2020-01-12 22:22:59 <kmc> ?
+2020-01-12 22:23:08 <kmc> I never knew that was needed
+2020-01-12 22:23:08 <int-e> Because you can't really know whether the suffix should be empty, ul or ull...
+2020-01-12 22:23:11 <kmc> mhm
+2020-01-12 22:23:15 <kmc> yay for C :eyeroll:
+2020-01-12 22:23:26 <kmc> I was just going to ask if you need a ull actually
+2020-01-12 22:23:38 <kmc> better put ullllll just in case
+2020-01-12 22:23:50 <int-e> s/empty/U/ (those are capital, aren't they?
+2020-01-12 22:24:00 <kmc> hm
+2020-01-12 22:24:01 <kmc> maybe
+2020-01-12 22:24:20 <fizzie> UINT64_C makes a uint_least64_t constant, actually.
+2020-01-12 22:24:32 <fizzie> I've always found that a little odd, but that's how it is.
+2020-01-12 22:24:35 <int-e> good enough?
+2020-01-12 22:24:42 <kmc> you could cast it
+2020-01-12 22:24:51 <int-e> I guess there are corner cases where that becomes an issue.
+2020-01-12 22:25:03 <fizzie> I assume it's mostly because uint64_t isn't required to exist.
+2020-01-12 22:25:10 <fizzie> But uint_least64_t is.
+2020-01-12 22:25:14 <kmc> oh really
+2020-01-12 22:25:17 <kmc> interesting
+2020-01-12 22:25:37 <fizzie> It's required to be defined, but only if the implementation provides a suitable type.
+2020-01-12 22:26:50 <fizzie> C18 7.20.1.1 Exact-width integer types: "These types are optional. However, if an implementation provides integer types with widths of 8, 16, 32, or 64 bits, no padding bits, and (for the signed types) that have a two's complement representation, it shall define the corresponding typedef names."
+2020-01-12 22:28:56 <int-e> Yeah that sounds like C.
+2020-01-12 22:29:48 <fizzie> I'm not really sure what UINT64_C and friends are for, I guess they're just supposed to look nicer than the corresponding cast.
+2020-01-12 22:29:48 Quit: kspalaiologos (Read error: Connection reset by peer)
+2020-01-12 22:29:48 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
