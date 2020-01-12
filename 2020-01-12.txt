@@ -318,3 +318,57 @@
 2020-01-12 22:29:48 <fizzie> I'm not really sure what UINT64_C and friends are for, I guess they're just supposed to look nicer than the corresponding cast.
 2020-01-12 22:29:48 Quit: kspalaiologos (Read error: Connection reset by peer)
 2020-01-12 22:29:48 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:30:31 <int-e> does POSIX amend this?
+2020-01-12 22:30:46 <fizzie> I think POSIX might require 8, 16, 32 and 64, yes.
+2020-01-12 22:31:29 <fizzie> Oh, heh. Actually, only 8, 16 and 32.
+2020-01-12 22:32:31 <fizzie> https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdint.h.html "[CX] The following types are required: int8_t, int16_t, int32_t, uint8_t, uint16_t, uint32_t. If an implementation provides integer types with width 64 that meet these requirements, then the following types are required: int64_t, uint64_t"
+2020-01-12 22:33:19 <int-e> Seems sane enough, honestly... 32 bit platforms are not that long gone, probably still lingering in may corners :)
+2020-01-12 22:33:26 <int-e> *many
+2020-01-12 22:33:36 <fizzie> Thing is, uint_least64_t and uint_fast64_t are still mandatory.
+2020-01-12 22:33:55 <int-e> Yeah that is strange :)
+2020-01-12 22:34:28 <int-e> . o O ( diverging realities are fun )
+2020-01-12 22:35:01 <fizzie> I guess maybe the reasoning was, the implementation might have to do something weird to support at-least-64-bit types, and might have a harder time providing the exact-width type.
+2020-01-12 22:35:21 <kmc> I mean the Intel 8051 8-bit architecture from 1980 is still around
+2020-01-12 22:35:29 <kmc> so yeah 32 bit is still common
+2020-01-12 22:35:45 <kmc> 32 bit is only starting to become common in embedded
+2020-01-12 22:36:02 <int-e> Hmm I suspect POSIX never worried about 8 bit architectures :)
+2020-01-12 22:36:12 <kmc> yeah but they do have C compilers
+2020-01-12 22:36:15 <kmc> to varying degrees
+2020-01-12 22:36:19 <int-e> 16 bit though, hmm. Tricky :)
+2020-01-12 22:36:33 <kmc> the PIC XC8 compiler has a "short long" type :)
+2020-01-12 22:36:54 <fizzie> Is that a 24-bit type?
+2020-01-12 22:36:56 <kmc> yes
+2020-01-12 22:37:08 Joined: imode
+2020-01-12 22:37:08 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 22:37:10 <int-e> Yes, C accomodates all sorts of niches, which goes a long way towards explaining their reluctance to mandate types. I'm really surprised to hear about uint_least64_t being madatory.
+2020-01-12 22:37:24 <kmc> avr-gcc has it too, but calls it something sensible: __uint24
+2020-01-12 22:37:52 <int-e> I suppose short long isn't worse than long double.
+2020-01-12 22:37:59 <fizzie> The Motorola DSP56K C compiler has a 24-bit 'int' and a 48-bit 'long'.
+2020-01-12 22:38:00 <kmc> gcc is more principled than most embedded compilers about how it handles extensions, syntactically
+2020-01-12 22:38:01 <int-e> (intel's 10 byte version)
+2020-01-12 22:38:08 <kmc> int-e: ah
+2020-01-12 22:38:09 <fizzie> (And a 24-bit 'char' as well.)
+2020-01-12 22:38:13 <kmc> is it 128 bit on ppc?
+2020-01-12 22:38:17 <int-e> (now mostly extinct because of SSE)
+2020-01-12 22:40:02 <fizzie> I think GCC on PPC did the double-double trick for long double.
+2020-01-12 22:40:40 <int-e> fancy
+2020-01-12 22:41:20 <fizzie> Where your extended-precision type is actually just two double-precision floats, organized so that you get about the same range as a regular double, but more or less double the precision.
+2020-01-12 22:41:26 <int-e> (IIRC Knuth covers this topic but I skipped that part.)
+2020-01-12 22:43:18 <arseniiv> I was thinking about that some day but wasn’t very sharp to think it in any detail
+2020-01-12 22:44:52 <zzo38> I didn't know about GNU indirect functions.
+2020-01-12 22:46:47 <fizzie> Fun fact: the typing of (non-U-suffixed) octal/hexadecimal literals is different than those of decimal constants. On (e.g.) x86-64, 0x80000000 is an `unsigned int`, while 2147483648 is a `long`.
+2020-01-12 22:47:43 <fizzie> https://ideone.com/aLGNHI as a corollary.
+2020-01-12 22:47:46 <kmc> ugh
+2020-01-12 22:48:41 <zzo38> I didn't know that either; why is that? Isn't there a U and L suffix so that you can use that to indicate it?
+2020-01-12 22:49:10 <fizzie> Yes, 2147483648U would be an unsigned int too.
+2020-01-12 22:49:46 <zzo38> (And, you can add a dot if you want a floating number.)
+2020-01-12 22:49:51 <fizzie> The way it works, the type (decimal, vs. octal/hexadecimal) and suffix (none, U, L, UL, LL, ULL) determine the possible list of types, and then the constant gets the first type on the list that it can be represented in.
+2020-01-12 22:50:39 <fizzie> `int`, `long` and `long long` is the list for unsuffixed decimal, but the list for unsuffixed octal/hexadecimal is `int`, `unsigned`, `long`, `unsigned long`, `long long`, `unsigned long long`.
+2020-01-12 22:50:41 <HackEso> int`,? No such file or directory
+2020-01-12 22:50:47 <fizzie> HackEso: Sorry.
+2020-01-12 22:52:08 <zzo38> O, that is how it works.
+2020-01-12 22:53:35 <fizzie> The official reason is: "Unlike decimal constants, octal and hexadecimal constants too large to be `int`s are typed as `unsigned int` if within range of that type, since it is more likely that they represent bit patterns or masks, which are generally best treated as unsigned, rather than 'real' numbers."
+2020-01-12 22:54:34 <zzo38> OK, although that still look like strange to me, and even then perhaps it might should depend how many leading zeros too (does it count the leading zeros?)
+2020-01-12 22:55:36 <fizzie> Any (nonzero) amount of leading zeros makes a constant octal, so... kinda? But not really.
+2020-01-12 22:56:20 <zzo38> No, I mean additional leading zeros for a octal or hexadecimal constant (after the initial 0 or 0x)
+2020-01-12 22:57:23 <fizzie> Oh. No, those don't matter.
