@@ -56,3 +56,23 @@
 2020-01-12 04:59:24 <kmc> and it would need to know about each syscall in that case
 2020-01-12 04:59:38 <kmc> or there may even be cases where it could be a pointer or not according to the semantics of the call
 2020-01-12 04:59:51 <FreeFull> I think the interpreter would have to know about the syscalls anyway
+2020-01-12 05:00:17 <kmc> why?
+2020-01-12 05:01:01 <FreeFull> So it knows how many inputs to take and how many outputs to provide. Unless you always have it do 6 arguments and ignore the extra ones
+2020-01-12 05:01:23 <kmc> yeah
+2020-01-12 05:01:28 <kmc> on linux anyway, I think it will work fine that way
+2020-01-12 05:02:01 <kmc> the syscall ABI is pretty simple
+2020-01-12 05:02:05 <FreeFull> And you'd need some way to deal with structs
+2020-01-12 05:02:49 <kmc> yeah the brainfuck code would need to manually construct the appropriate struct layout on the stack
+2020-01-12 05:02:52 <kmc> and then get a pointer to it
+2020-01-12 05:02:55 <kmc> s/stack/tape/
+2020-01-12 05:03:10 <kmc> it'd be a pain in the ass but
+2020-01-12 05:03:14 <kmc> this is esoprogramming
+2020-01-12 05:06:16 User Name: imode = imode!~linear@unaffiliated/imode
+2020-01-12 05:06:16 <imode> what's a _good_ alternative to syscalls, anyway.
+2020-01-12 05:09:37 <zzo38> You can also use calls for some kind of VM. I invented (but did not implement) a way to use Glk with Befunge, for example.
+2020-01-12 05:15:34 <kmc> what is Glk?
+2020-01-12 05:18:52 Quit: atslash (Quit: Leaving)
+2020-01-12 05:18:53 Names: \oren\, ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, zemhill, zoobab, zzo38
+2020-01-12 05:19:29 <zzo38> It is a API for setting up text windows for I/O especially in text adventure games. It also supports displaying pictures, sounds, music, file I/O, and date/time.
+2020-01-12 05:26:35 <kmc> ah, cool
+2020-01-12 05:26:37 <zzo38> It is a C API, although there is also a dispatch layer which uses a standardized format for arguments and uses numbers to identify each function (although a few functions cannot be dispatched, including the dispatching function itself).
