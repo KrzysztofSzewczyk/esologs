@@ -265,3 +265,19 @@
 2020-01-14 20:41:32 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zoobab, zzo38
 2020-01-14 20:44:29 Joined: sleepnap
 2020-01-14 20:44:29 Names: \oren\, ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, sleepnap, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-14 21:02:52 <zzo38> Fortunately, it is possible in PostScript to specify separations even if separations are not implemented, so even before I implement separations in TeXnicard it is still possible to specify the text separation like Magic: the Gathering uses such as by writing:   [/Separation /Text /DeviceGray {1.0 exch sub}] setcolorspace
+2020-01-14 21:04:34 <zzo38> The article I read did not metion the shiny mark I see on some newer cards (although maybe I missed it). Do you know how that works? Is it another separation?
+2020-01-14 21:07:15 User Name: b_jonas = b_jonas!~x@catv-176-63-13-193.catv.broadband.hu
+2020-01-14 21:07:15 <b_jonas> zzo38: you don't mean the hologram seal at the bottom, right?
+2020-01-14 21:07:45 <zzo38> Actually I do mean the hologram seal at the bottom, I think
+2020-01-14 21:08:41 <b_jonas> I think that one is on all rares and mythics since they introduced the new frame
+2020-01-14 21:10:19 <b_jonas> which was in 2014 for the Magic 2015 set I think
+2020-01-14 21:11:25 <b_jonas> I believe they put that on cards so that they're more difficult to counterfeit, but not on all cards presumably to save printing costs
+2020-01-14 21:14:05 <zzo38> Yes, probably, but I was wondering how the printing of it works. Is it a separation, or is it just added to the entire rare sheet afterward, or something else? (Anyways, TeXnicard is not only for Magic: the Gathering, and is intended to contain nothing specific to Magic: the Gathering, and some people may use to make other card games too.)
+2020-01-14 21:14:49 <b_jonas> I don't knowhow it's added
+2020-01-14 21:15:38 <zzo38> OK
+2020-01-14 21:19:12 <b_jonas> note that there's a different shiny seal at the bottom of some card sleeves
+2020-01-14 21:19:29 <b_jonas> its location and shape is different
+2020-01-14 21:19:38 <b_jonas> just in case you see those on photos of M:tG cards
+2020-01-14 21:23:01 <zzo38> OK
+2020-01-14 21:23:47 <b_jonas> there's probably some info about the seal on cards in a Wizards article back in 2014 when it was introduced, but probably not about the print technology
