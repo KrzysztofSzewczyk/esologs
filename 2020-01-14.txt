@@ -42,3 +42,23 @@
 2020-01-14 03:43:29 <esowiki> 14[[07Keta14]]4 10 02https://esolangs.org/w/index.php?diff=68842&oldid=68841 5* 03JonoCode9374 5* (+11) 10/* Terminology */
 2020-01-14 03:56:39 <zzo38> Another kind of font metric format could be, instead of the ligature/kerning and character info that TeX uses, to have the font design size and font parameters, and then a program used for rendering a sequence of characters in the font (some of which may have accent marks added), given as input the DPI, at size, left boundary type, right boundary type, and as output can execute instructions to move the cursor and to draw glyphs on the page.
 2020-01-14 03:57:09 <zzo38> This way it is possible to use multi-byte encodings, kerning and ligatures with accented letters, etc.
+2020-01-14 04:03:14 <zzo38> Is there a MIME type for PNG file storing CMYK data in place of RGBA?
+2020-01-14 04:09:21 <Lykaina> why would you store an imamge in cmyk?
+2020-01-14 04:09:40 <Lykaina> *image
+2020-01-14 04:11:24 <zzo38> For printing.
+2020-01-14 04:12:05 <Lykaina> oh, right
+2020-01-14 04:12:49 <Lykaina> though i thought PNG was always RGBA
+2020-01-14 04:13:46 <zzo38> PNG is always RGBA. But is there a MIME type to indicate that it is meant to be interpreted as CMYK instead?
+2020-01-14 04:14:11 <Lykaina> why would there be?
+2020-01-14 04:15:04 <zzo38> I don't know, but it is something that might be useful for something that I am making.
+2020-01-14 04:16:26 <Lykaina> make your on format based on netpbm?
+2020-01-14 04:16:41 <Lykaina> *own
+2020-01-14 04:17:29 <zzo38> NetPBM formats are not compressed.
+2020-01-14 04:17:34 User Name: imode = imode!~linear@unaffiliated/imode
+2020-01-14 04:17:34 <imode> can't you just shift the channels around and treat them as CMYK? the scales are the same, right?
+2020-01-14 04:17:43 <imode> 0-255?
+2020-01-14 04:18:55 <zzo38> Yes of course that is possible; I just wanted to know if there is a MIME type to indicate that it is doing that.
+2020-01-14 04:19:15 <Lykaina> iirc, 255 - R = C, and so on
+2020-01-14 04:20:39 <zzo38> Lykaina: If you do not include K, then yes, it is.
+2020-01-14 04:21:25 <Lykaina> how does the generation of K work?
+2020-01-14 04:29:09 <zzo38> I think there are a few different ways of doing it; in PostScript when using RGB colours on a CMYK device you can customize the way of doing that.
