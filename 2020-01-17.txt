@@ -112,3 +112,32 @@
 2020-01-17 14:09:31 <esowiki> 14[[07Unrandom14]]4 10 02https://esolangs.org/w/index.php?diff=68953&oldid=68952 5* 03InCrIpTiOn 5* (-1) 10fixed link for category
 2020-01-17 14:27:17 Quit: kritixilithos (Quit: quit)
 2020-01-17 14:27:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-17 14:36:21 <int-e> wib_jonas: you tend to know such things: how does one convert °C into °F in the `units` program? I thought it was degF and degC, but those are the proportional units (1.8 degF = 1 degC)
+2020-01-17 14:37:09 <wib_jonas> int-e: I don't know, I don't use the units program
+2020-01-17 14:37:16 <wib_jonas> I have a custom ftoc and ctof program here
+2020-01-17 14:37:22 <wib_jonas> `ftoc 100
+2020-01-17 14:37:24 <HackEso> 100.00°F = 37.78°C
+2020-01-17 14:38:09 <int-e> Ah. There are tempF/tempC linear functions/notation.
+2020-01-17 14:38:20 Quit: kspalaiologos (Quit: Leaving)
+2020-01-17 14:38:20 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-17 14:39:04 <int-e> `` units "tempF(100)" tempC
+2020-01-17 14:39:05 <HackEso> â€‹	37.777778
+2020-01-17 14:41:15 <int-e> (Basically, tempC(x) = x + 273.15K, and degC = K, and I forgot what the absolute zero based counterpart for Fahrenheit is.)
+2020-01-17 14:43:30 <wib_jonas> ``` units "tempF(100)" tempF
+2020-01-17 14:43:31 <HackEso> â€‹	100
+2020-01-17 14:43:57 <int-e> Is it Racine? *duckduckgos*
+2020-01-17 14:44:43 <int-e> Rankine. Kind of not close.
+2020-01-17 14:51:19 <int-e> https://en.wikipedia.org/wiki/Earth%27s_gravity has a surprising amount of content.
+2020-01-17 14:56:55 <wib_jonas> hmm... how should I code this
+2020-01-17 14:57:14 <int-e> `? this
+2020-01-17 14:57:15 <HackEso> This is something people on the channel like to talk about. We're often unsure what this is, though. Nobody likes this.
+2020-01-17 14:57:45 <wib_jonas> yes, that
+2020-01-17 14:57:57 <int-e> That's different.
+2020-01-17 14:57:58 <wib_jonas> I'll use type-safety to find errors
+2020-01-17 14:58:27 <wib_jonas> as in, I'll change the type of this object, so that I can find all other parts of the code that depend on the current content of the object
+2020-01-17 14:58:59 <wib_jonas> custom types are so useful, good thing most programming languages offer them now
+2020-01-17 14:59:02 <wib_jonas> well
+2020-01-17 14:59:02 <int-e> Oh yes, type-driven development.
+2020-01-17 14:59:11 <wib_jonas> most non-eso programming languages
+2020-01-17 14:59:29 <int-e> (Often useful in refactoring code.)
+2020-01-17 14:59:47 <wib_jonas> normally I do name-driven stuff, where, when I change the interface of a function or variable, I change its name so that anyone referring to it under the old name gives an error
