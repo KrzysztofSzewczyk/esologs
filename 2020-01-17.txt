@@ -141,3 +141,10 @@
 2020-01-17 14:59:11 <wib_jonas> most non-eso programming languages
 2020-01-17 14:59:29 <int-e> (Often useful in refactoring code.)
 2020-01-17 14:59:47 <wib_jonas> normally I do name-driven stuff, where, when I change the interface of a function or variable, I change its name so that anyone referring to it under the old name gives an error
+2020-01-17 15:00:09 <wib_jonas> but this time that won't work, because much of the code uses these objects as just comparable and hashable abstract objects
+2020-01-17 15:00:13 <wib_jonas> and I want to keep those parts
+2020-01-17 15:00:22 <wib_jonas> and only modify the parts of the code that destructure this object
+2020-01-17 15:02:03 <wib_jonas> I just have a naming problem, I don't know what to name one of the fields
+2020-01-17 15:02:35 <int-e> hmm, "foldl' f x . reverse" looks a bit pointless
+2020-01-17 15:07:14 Joined: sprocklem
+2020-01-17 15:07:14 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zemhill, zoobab, zzo38
