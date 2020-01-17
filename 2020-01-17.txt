@@ -79,3 +79,31 @@
 2020-01-17 13:25:54 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
 2020-01-17 13:25:54 <HackEso> anoia? ¯\(°​_o)/¯
 2020-01-17 13:25:57 <int-e> (cf. https://wiki.lspace.org/mediawiki/Anoia )
+2020-01-17 13:32:33 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-01-17 13:32:33 <wib_jonas> darn it, this stupid webpage won't give errors for an invalid url, neither in the status code, nor some nice error message in the content, it just returns an index page
+2020-01-17 13:32:37 <wib_jonas> how can I detect this?
+2020-01-17 13:32:41 <wib_jonas> I want to detect errors
+2020-01-17 13:33:15 <wib_jonas> I'm doing a mass download of 25000 pages, and so want to find errors before I download the index 10000 times
+2020-01-17 13:34:22 <int-e> Oh well, at least the bug is an upstream bug, not "mine".
+2020-01-17 13:35:06 <int-e> http://paste.debian.net/1126407/
+2020-01-17 13:35:36 <int-e> And it's also fairly obvious what is happening.
+2020-01-17 13:37:46 <arseniiv> first I thought you say Anoia causes that
+2020-01-17 13:38:01 <int-e> arseniiv: that is what I meant
+2020-01-17 13:38:26 <int-e> Anoia is also the goddess of silly bugs, to my mind.
+2020-01-17 13:38:39 <wib_jonas> int-e: it might be because the oeis site has changed a few times in the last decade. perlbot's oeis plugin is also bitrotten now.
+2020-01-17 13:38:41 <arseniiv> oh!
+2020-01-17 13:38:57 <int-e> addElement (t, x)   c | t `elem` "STU" = c { sequenceData = nums ++ sequenceData c }
+2020-01-17 13:40:18 <arseniiv> if it’s that then she may be very pleased when I write code from scratch, as I make many silly bugs before the code starts working as intented and can be gradually added to
+2020-01-17 13:40:52 <arseniiv> many of them just unattended typos
+2020-01-17 13:41:15 <arseniiv> or because of copy-pasting pieces and forgetting to rename something
+2020-01-17 13:41:49 <arseniiv> and that’s even despite I know not to copy-paste much
+2020-01-17 13:43:22 <int-e> wib_jonas: I imagine it's possible that OEIS never used to return more than one result in its text interface
+2020-01-17 13:43:50 <int-e> http://oeis.org/search?fmt=text&q=0,1,2,4
+2020-01-17 13:43:55 <int-e> (for example)
+2020-01-17 13:46:06 <int-e> So what the oeis package is doing is taking that text, and add all %S, %T and %U lines to the sequence. And it's clear that it doesn't expect more than one entry: addElement ('I', x) c = c { catalogNums = words x }
+2020-01-17 13:46:21 <int-e> (that's the sequence id(s))
+2020-01-17 13:47:46 <wib_jonas> int-e: ok
+2020-01-17 13:47:57 <wib_jonas> that sounds like it's possible to fix
+2020-01-17 13:50:10 <wib_jonas> ok, I started the download. it will try to download all 25252 pages, and *hopefully* detect if a page is not found.
+2020-01-17 13:50:35 <wib_jonas> but since the webpage doesn't give proper error messages for a wrong url, the error might slip through undetected.
+2020-01-17 13:55:50 <esowiki> 14[[07User:InCrIpTiOn14]]4 N10 02https://esolangs.org/w/index.php?oldid=68950 5* 03InCrIpTiOn 5* (+181) 10Me!
