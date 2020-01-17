@@ -175,3 +175,25 @@
 2020-01-17 15:54:23 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zemhill, zoobab, zzo38
 2020-01-17 15:55:09 <wib_jonas> arseniiv: see also https://en.wikipedia.org/wiki/Non-English-based_programming_languages
 2020-01-17 15:59:34 <arseniiv> wib_jonas: thanks
+2020-01-17 16:00:47 <esowiki> 14[[07Perligata14]]4 10 02https://esolangs.org/w/index.php?diff=68954&oldid=53828 5* 03B jonas 5* (+45) 10
+2020-01-17 16:04:59 Quit: wib_jonas (Remote host closed the connection)
+2020-01-17 16:04:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-17 16:05:03 <int-e> wib_jonas: https://github.com/bsl/oeis/pull/14 :-/
+2020-01-17 16:07:02 Joined: sprocklem
+2020-01-17 16:07:02 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, eno1, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-17 16:10:13 <fizzie> Heh, Flickr responses have one of those "hiring ads in HTTP headers" things.
+2020-01-17 16:10:35 <fizzie> There's also an X-Men quote in a "quote" header.
+2020-01-17 16:11:02 <fizzie> (Trying to figure out why the "figure out the color of anything via flickr image search" thing has stopped working.)
+2020-01-17 16:12:21 <int-e> duckduckgo is so terrible :/
+2020-01-17 16:14:20 <fizzie> This error message from urllib2 is pretty terrible. It just says "HTTPError()".
+2020-01-17 16:14:48 <int-e> Better than ed's "?".
+2020-01-17 16:15:02 <Taneb> int-e: by what metric in particular is duckduckgo terrible?
+2020-01-17 16:15:16 <int-e> Taneb: relevance of search results.
+2020-01-17 16:15:29 <Taneb> That sounds like an important metric for a search engine
+2020-01-17 16:15:40 <int-e> Taneb: I mean I have a pretty good idea why that is the case.
+2020-01-17 16:15:47 <int-e> Taneb: But it's still annoying :)
+2020-01-17 16:16:26 <int-e> (Why: duckduckgo does not track which links people actually click. And I suspect that this is a very effective relevance metric.)
+2020-01-17 16:16:53 <int-e> At least when it comes to determining the order of the top 10 results.
+2020-01-17 16:17:20 <int-e> ls
+2020-01-17 16:19:33 <int-e> Taneb: FWIW my current attempt was 'ghc 8.8.2' (which found a commit on gitlab) and 'ghc 8.8.2 download' (which found the download page for ghc 8.2.2...)
+2020-01-17 16:28:13 <Taneb> That is close to what you want but yet decidedly unhelpful
