@@ -141,3 +141,8 @@
 2020-01-21 20:38:07 <arseniiv> and these messages shouldn’t look like really unnecessary complications, they should rise from language’s notions organically, like INTERCAL’s politeness errors because there are too much or not enough `please` statements or something
 2020-01-21 20:39:21 <arseniiv> (though on the third hand, INTERCAL is pretty outdated in regards to cultural significance so how much up it sets the bar is not that relevant)
 2020-01-21 20:39:54 <arseniiv> (I mean, it was IIRC mostly a reaction to ALGOL and something like that?)
+2020-01-21 21:07:16 <b_jonas> arseniiv: if you make a language powerful enough at compile time, like haskell or C++, then people necessarily write programs that abuse that power and are too clever for their own good, and then you get error messages that are hard to understand despite all efforts of the compiler writers.
+2020-01-21 21:10:18 <arseniiv> b_jonas: yeah I know there can usually be only best-effort fixes, not a fix that would make all error messages immediately clear
+2020-01-21 21:11:34 <arseniiv> (hm though library writers may meddle with these matters in some cases, so no general compiler fix is needed yet their library would give more adequate error messages)
+2020-01-21 21:11:51 <b_jonas> and those are usually still better than the error messages you get at runtime segfaults after trashing memory by writing through out of bound indexes or stray pointers
+2020-01-21 21:27:18 <esowiki> 14[[07XENBLN14]]4 M10 02https://esolangs.org/w/index.php?diff=69132&oldid=69045 5* 03PythonshellDebugwindow 5* (+321) 10
