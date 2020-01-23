@@ -173,3 +173,27 @@
 2020-01-23 16:29:07 <wib_jonas> Maybe I should make it likely to contain rude words, like put ".ad." and ".sex." in domain names, to catch those stupid badly configured proxies that filter pages with those in the name
 2020-01-23 16:29:59 <rain1> here is a fun fact from #math
 2020-01-23 16:30:00 <rain1> have you ever convinced yourself of this seemingly-wacko-but-neat fact? In any metric space, if x_1, x_2, x_3, ... -> x  (convergence), then if p: N -> N  is any permutation whatsoever, the rearranged sequence  x_p(1), x_p(2), x_p(3), ... -> x  also.
+2020-01-23 16:30:14 <arseniiv> Taneb: maybe not for long!
+2020-01-23 16:30:27 <wib_jonas> rain1: yes, that one is true
+2020-01-23 16:32:37 <arseniiv> this one is of the sort of strange things that happen in infinite-dimensional vector spaces too
+2020-01-23 16:33:28 <arseniiv> I donâ€™t understand functional analysis because of those, I think
+2020-01-23 16:36:43 <kmc> wait, what's the definition of convergence
+2020-01-23 16:38:07 <rain1> forall eps, exists N, forall m,n >= N, |x_m - x_n| < eps
+2020-01-23 16:38:48 <kmc> oh
+2020-01-23 16:38:55 <kmc> yeah i guess it would be true
+2020-01-23 16:41:23 <kmc> assume this is true of the original sequence, then define N' = min(i where p(j) >= N forall j >= i)
+2020-01-23 16:41:48 <kmc> which must exist, because there are only a finite number of numbers less than N
+2020-01-23 16:41:48 <rain1> yeah nice way to do it
+2020-01-23 16:41:57 <kmc> weird
+2020-01-23 16:42:05 <kmc> thank you for the seemingly-wacko-but-neat fact
+2020-01-23 16:44:38 <kmc> I'm guessing there is some coffee in low earth orbit
+2020-01-23 16:44:47 <int-e> Ah it can be so much fun to spend hours on a one-off program so that it runs in a second rather than 5 minutes. :)
+2020-01-23 16:44:48 <kmc> although arguably that's 'held' by the earth just as much as the rest of the coffee
+2020-01-23 16:45:26 <wib_jonas> kmc: and some more in the solar system, next to Russell's teapot
+2020-01-23 16:45:43 Quit: wib_jonas (Remote host closed the connection)
+2020-01-23 16:45:43 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, zemhill, zoobab, zzo38
+2020-01-23 16:46:31 <int-e> Do astronauts drink coffee... really, why not...
+2020-01-23 16:46:33 <kmc> Russell's cafetière
+2020-01-23 16:55:44 <rain1> i never got the hang of thursdays
+2020-01-23 16:55:59 Quit: xkapastel (Quit: Connection closed for inactivity)
+2020-01-23 16:55:59 Names: \oren\, ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zoobab, zzo38
