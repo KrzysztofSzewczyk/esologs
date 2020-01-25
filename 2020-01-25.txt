@@ -200,3 +200,31 @@
 2020-01-25 15:58:41 <int-e> Which I find entirely reasonable. But Wikipedia isn't excactly known for being reasonable. :)
 2020-01-25 15:59:17 Quit: sftp (Ping timeout: 260 seconds)
 2020-01-25 15:59:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest15465, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-25 16:00:24 <kingoffrance> last i read IIRC some hurd movement was hoping to phase out any mach remnants
+2020-01-25 16:01:02 <kingoffrance> but perhaps hard to tell "one guy working alone sporadically thought he'd try that" versus "project is moving in that direction"
+2020-01-25 16:01:04 <int-e> I lost interest in Hurd before they ever made a release.
+2020-01-25 16:01:13 <kingoffrance> since they are arguably sometimes indistinguishable
+2020-01-25 16:01:44 Joined: sftp
+2020-01-25 16:01:44 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest15465, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-25 16:02:23 <kingoffrance> the release (debian i think) the installer borked on me, fs-related i think, so i lost interest at that point;  or i didnt find sufficient instructions to do it properly
+2020-01-25 16:02:31 <kingoffrance> s/debian/debian-based/
+2020-01-25 16:03:00 <kingoffrance> so when they get another release/installer i may browse again in a vm
+2020-01-25 16:04:02 <kingoffrance> i think they had some security issues, with a plan of ways to avoid, but hadnt been implemented yet IIRC
+2020-01-25 16:04:21 <kingoffrance> so there was a "plan" (maybe just one guy) hoping to correct some design flaws
+2020-01-25 16:04:48 <int-e> One of the deterrents is that the Linux kernel is amazingly reliable. I don't know what problem Hurd is solving (other than having a "true" GNU operating system, which I don't care about all that much.)
+2020-01-25 16:06:13 <int-e> And I do see the irony in putting that statement on #esoteric.
+2020-01-25 16:07:43 <kingoffrance> well, one can argue they tried to graft userland onto various kernels, and might have been better off starting from scratch than trying "shortcuts" :/  i dunno
+2020-01-25 16:08:05 <int-e> (The difference between Hurd and most #esoteric stuff is that the latter can usually be understood in a few minutes to hours, and often brings with it an intellectual challenge, which does alleviate an eternal problem... boredom.)
+2020-01-25 16:08:09 <kingoffrance> and that they werent "pure" enough, but gave in to temptation of quicker bootstrap
+2020-01-25 16:08:48 <kingoffrance> and now that upstream dies, they have to try to "ungraft" from upstream and pick a new kernel to foist onto
+2020-01-25 16:09:28 <kingoffrance> but with manpower they might argue that was/is the only sensical choice
+2020-01-25 16:09:38 <kingoffrance> despite having to "backtrack" now perhaps
+2020-01-25 16:11:46 <kingoffrance> i just like to build cross-compilers; i will revisit them someday i guess
+2020-01-25 16:13:57 <kingoffrance> last i checked, i dont recall they had a 64-bit thing yet either; which doesnt phase me, but for attracting new users/devs probably discourages things
+2020-01-25 16:14:13 <kingoffrance> and all the rust/etc. cant be helpful for existing code base either i imagine
+2020-01-25 16:14:29 <kingoffrance> (no pun intended, meant the "new" languages)
+2020-01-25 16:15:08 <kingoffrance> lots of the 'interest' of potential devs seems to be elsewhere
+2020-01-25 16:19:46 Joined: MDude
+2020-01-25 16:19:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest15465, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-25 16:25:08 <kingoffrance> i think i see what you mean now re: mach int-e    and my comment on "innards"   and "even if philosophy is defined as tech the other tech sits on top of" :/
+2020-01-25 16:25:27 <kingoffrance> without those "innards" the rest of "microkernel" idea falls apart
