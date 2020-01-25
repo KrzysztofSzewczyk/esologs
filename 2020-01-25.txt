@@ -389,3 +389,34 @@
 2020-01-25 22:57:46 Names: \oren\, ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
 2020-01-25 22:58:42 User Name: imode = imode!~linear@unaffiliated/imode
 2020-01-25 22:58:42 <imode> if you have a competing standard, and you think it's objectively better, then post it and advocate for its adoption.
+2020-01-25 23:00:21 <kingoffrance> i dont, i just am experimenting; that is the whole problem: i have different goals
+2020-01-25 23:00:37 <kingoffrance> theirs seems to be "there is no plaintext, only encodings"
+2020-01-25 23:00:54 <kingoffrance> to me, that is up to each os/cpu/whatever to decide what is the "native encoding" == plaintext (in that realm)
+2020-01-25 23:01:22 <kingoffrance> my "plaintext" == native tongue of whatever speaker/reader/listener
+2020-01-25 23:02:03 <kingoffrance> so we are oppositely focussed, coming from different directions
+2020-01-25 23:02:05 <imode> that's nice. the rest of us have to share information.
+2020-01-25 23:02:18 <imode> between systems.
+2020-01-25 23:02:40 <imode> and, there is no "plaintext": you're still interpreting numbers as glyphs or partial glyphs.
+2020-01-25 23:03:06 <kingoffrance> yes and no;   charsets dont necessarily mean "glyphs" IMO;  headless servers exist, for example
+2020-01-25 23:03:17 <kingoffrance> they can still process such data without displaying anywhere
+2020-01-25 23:03:41 <imode> a glyph does not have to be displayed to mean something in an encoding.
+2020-01-25 23:05:20 <zzo38> I think that one character set isn't going to be good for all purposes, so I do not have a competing standard, although I do have some which are specific to some purposes, and are not meant for all purposes.
+2020-01-25 23:05:28 <kingoffrance> exactly ^^^^^
+2020-01-25 23:06:04 <kingoffrance> its no different IMO than countries have some "native" language or not, or a set of languages they e.g. print laws in
+2020-01-25 23:06:09 <imode> unicode isn't the best. better than what we have.
+2020-01-25 23:06:17 <imode> s/have/have had
+2020-01-25 23:06:25 <kingoffrance> if in "real world' i ever had to do i18n stuff, i may feel different :)
+2020-01-25 23:06:25 <imode> a set of mutually incompatible encodings.
+2020-01-25 23:06:43 <kingoffrance> but for "hobby" stuff, it makes little sense to me
+2020-01-25 23:06:58 <imode> yeah if you're not doing anything serious, why bother trying.
+2020-01-25 23:07:22 <kingoffrance> well i just want my metaphorical france, not the metaphorical world :)
+2020-01-25 23:07:40 <kingoffrance> what does it profit a character set to gain the world and lose themself?
+2020-01-25 23:08:36 <kingoffrance> if anyone someday wants to "translate" my stuff, they will have ample means, i am not locking such out
+2020-01-25 23:08:57 <imode> crazy is in full force.
+2020-01-25 23:09:12 <int-e> `? esoteric
+2020-01-25 23:09:13 <HackEso> This channel is about programming -- for the other kind of esoterica, try #esoteric on EFnet or DALnet.
+2020-01-25 23:13:03 Quit: arseniiv (Ping timeout: 268 seconds)
+2020-01-25 23:13:03 Names: \oren\, ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-25 23:24:48 <imode> how would Thue's usability change if you added "nonlocal" matches? i.e for each rule, you have multiple substrings on the left and right, and only when all substrings on the left are present, they're replaced with the corresponding substrings on the right.
+2020-01-25 23:25:37 <imode> "foo:bar, baz:quux;" for example. the replacements only happen when both `foo` and `baz` are present in the input string.
+2020-01-25 23:27:11 <imode> but if they are, then `foo` gets replaced with `bar`, and `baz` gets replaced with `quux`.
