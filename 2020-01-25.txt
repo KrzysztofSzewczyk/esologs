@@ -166,3 +166,37 @@
 2020-01-25 15:27:18 <kingoffrance> so for me, as long as there is more than one technique/style, there MUST be multiple competing philosophies that inspired them somehow
 2020-01-25 15:28:23 <kingoffrance> to separate into multiple components rather than one giant monolithic thing is inherently "philosophical decision" IMO and not purely technical decision
 2020-01-25 15:28:43 <kingoffrance> although they might do one way or other for "technical reasons" of course
+2020-01-25 15:32:24 <esowiki> 14[[07User talk:Zzo3814]]4 10 02https://esolangs.org/w/index.php?diff=69336&oldid=67932 5* 03YamTokTpaFa 5* (+316) 10/* I'd like to learn about AAAAAAAAAAAAAA!!!! more. */
+2020-01-25 15:33:31 <esowiki> 14[[07User talk:Zzo3814]]4 M10 02https://esolangs.org/w/index.php?diff=69337&oldid=69336 5* 03YamTokTpaFa 5* (+19) 10/* Another question about index shifter */
+2020-01-25 15:35:10 <kingoffrance> so e.g. to me "microkernel" to me is a philosophy/idea first, that has technical implications, i dont consider such a technical decision, but preceding the tech/implementation that grows up around it/is supposed to morph to match that decision
+2020-01-25 15:35:56 <kingoffrance> same thing: people might choose such for technical reasons, but it is an idea foremost IMO before the "technique" becomes "visible"
+2020-01-25 15:36:11 <esowiki> 14[[07Talk:The Abstract Computer14]]4 N10 02https://esolangs.org/w/index.php?oldid=69338 5* 03YamTokTpaFa 5* (+154) 10Created page with "== Do you really nead the word the for article's name? == --~~~~"
+2020-01-25 15:37:13 <kingoffrance> so tech/technique to me is purely "manifested ideas" and cannot stand alone/there is no neutral
+2020-01-25 15:38:10 <esowiki> 14[[07Template talk:Reflist14]]4 N10 02https://esolangs.org/w/index.php?oldid=69339 5* 03YamTokTpaFa 5* (+145) 10Created page with "== How was this template supposed to be used? == --~~~~"
+2020-01-25 15:38:41 <kingoffrance> and people who ignore all the non-tech influences IMO leads to collosal mess of conflicting philosophies; ensures there implementation ends up scatterbrained
+2020-01-25 15:38:49 <kingoffrance> s/there/their/
+2020-01-25 15:45:18 <int-e> kingoffrance: The Mach "micro"kernel may be a good example.
+2020-01-25 15:48:05 <kingoffrance> most that stuff should be obvious/cliche, but some people you say "philosophical decision" they consider all such make-believe
+2020-01-25 15:48:21 <kingoffrance> or "business/marketing" and doesn't influence tech/implemntation at all :/
+2020-01-25 15:48:39 <kingoffrance> do explain int-e :)
+2020-01-25 15:52:12 <kingoffrance> ive heard people say it was slow, and gnu hurd i used to read a bit about, i dont recall some past hurd incarnations were sort of mach-based IIRC
+2020-01-25 15:52:16 Joined: LKoen
+2020-01-25 15:52:16 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest15465, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-25 15:52:22 <int-e> (As I was taught it, the main purpose of a microkernel based OS is fault isolation; a driver messing up should not affect the rest of the system as long as it doesn't need that particular driver. In order to do this without being ridiculously slow, you need cheap context switches, since many operations take 4 context switches (program -> kernel -> driver -> kernel -> program), possibly more,...
+2020-01-25 15:52:28 <int-e> ...rather than 2 (program -> kernel -> program) now. Mach tracked too much information about processes and threads in the kernel (I forgot most of the details; one was that they actually had message queues, which at the time was a bad trade-off... things may have changed), so context switches were basically as expensive as on a macrokernel, but you had more of them. So in order to be...
+2020-01-25 15:52:34 <int-e> ...competetive, they started putting drivers into kernel mode, and that defeats the purpose.)
+2020-01-25 15:53:26 <kingoffrance> sounds like they had a grand idea, were forced to compromise, and dissolved into reality :)
+2020-01-25 15:53:45 <kingoffrance> which didnt live up to the idea :/
+2020-01-25 15:54:12 <int-e> The Mach microkernel also isn't actually small. (Though I guess the really small microkernels of perhaps 16kb size only exist on embedded systems these days.)
+2020-01-25 15:55:11 <kingoffrance> when i used to read about hurd, part of reason it was slow moving seemed to be "upstream" kept dying :/
+2020-01-25 15:55:24 <kingoffrance> so then they'd have to scramble "do we keep our own fork going?" or try to "rebase" everything
+2020-01-25 15:55:36 <kingoffrance> and that explains why mach stuff died i suppose
+2020-01-25 15:55:40 <int-e> As I recall it, the original L4 microkernel for x86 was 8kb in size and made a point of having all common code paths fit into a single 4kb page, and the thread information in one or two cache lines.
+2020-01-25 15:55:41 <kingoffrance> work on it i mean
+2020-01-25 15:56:58 <kingoffrance> that makes total sense
+2020-01-25 15:57:10 <int-e> But it was written in assembly language, and the author died fairly young; all the L4 clones I know of are written mostly in C and C++.
+2020-01-25 15:57:42 <int-e> Uh, 48 actually. I though he was younger.
+2020-01-25 15:57:59 <int-e> https://en.wikipedia.org/wiki/Jochen_Liedtke <-- seems he's relevant enough for Wikipedia
+2020-01-25 15:58:41 <int-e> Which I find entirely reasonable. But Wikipedia isn't excactly known for being reasonable. :)
+2020-01-25 15:59:17 Quit: sftp (Ping timeout: 260 seconds)
+2020-01-25 15:59:17 Names: \oren\, ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, Guest15465, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
