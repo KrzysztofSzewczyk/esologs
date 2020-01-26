@@ -131,3 +131,19 @@
 2020-01-26 03:29:05 User Name: imode = imode!~linear@unaffiliated/imode
 2020-01-26 03:29:05 <imode> ASCII was created by big private organizations.
 2020-01-26 03:29:39 <imode> int-e: figured as much. suddenly orchestrating things with multiple cursors becomes so much easier.
+2020-01-26 03:40:15 <kingoffrance> i am, however, quite flattered that people think i simultaneously dont matter and should write a competing standard for commercial orgs to follow; it makes me feel very quantum
+2020-01-26 03:40:43 <kingoffrance> that, is how i really feel
+2020-01-26 03:41:01 <imode> I don't think you should write a competing standard. I think you should think before you speak about the suitability of a standard to your limited prospects.
+2020-01-26 03:41:27 <zzo38> How to do disk image swapping in DOSBOX?
+2020-01-26 03:41:35 <imode> on the "you don't matter", yeah, you don't. none of us here have any influence over standards adoption.
+2020-01-26 03:42:20 <imode> zzo38: I believe CTRL+F4?
+2020-01-26 03:42:30 <imode> see https://www.dosbox.com/wiki/IMGMOUNT
+2020-01-26 03:43:42 <zzo38> It says using multiple files is only supported for cue/iso images, but I am trying to mount a floppy disk image
+2020-01-26 03:44:14 <imode> hm.
+2020-01-26 03:47:30 <imode> looks like you can do something with the `boot` command, but yeah, it's not supported in the main builds of DOSBox..
+2020-01-26 03:47:32 <imode> weird.
+2020-01-26 03:53:28 <zzo38> I will try to just copy the files from the disk images all into one directory and see if that works.
+2020-01-26 03:54:33 <int-e> imode: could it have something to do with CD-ROMs being read-only...
+2020-01-26 03:55:03 <imode> more than likely, yeah. partial writes are a bitch.
+2020-01-26 03:58:17 <zzo38> Unfortunately, that didn't work. It requires either the original disk or a copy onto the same type of disk; it won't work if the installation files are in the hard drive, even if SUBST is used.
+2020-01-26 03:58:19 <int-e> When was the last time you've heard the term "webcast"?
