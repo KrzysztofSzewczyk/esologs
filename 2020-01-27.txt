@@ -169,3 +169,9 @@
 2020-01-27 19:16:37 Joined: FreeFull
 2020-01-27 19:16:37 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
 2020-01-27 19:57:34 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03PersonMan 5*  10New user account
+2020-01-27 20:07:16 <fizzie> fungot: You're long-running, right? Do you have checkpoints?
+2020-01-27 20:07:16 <fungot> fizzie: at least, there are five processes excluding the main one
+2020-01-27 20:07:34 <fizzie> Huh, sounds like it's a more complicated system than I thought.
+2020-01-27 20:07:56 <fizzie> fungot: Have you been refactoring yourself again? I'm pretty sure there was just one process when I wrote it.
+2020-01-27 20:07:57 <fungot> fizzie: picocpu. xd
+2020-01-27 20:29:20 <b_jonas> fizzie: he's stateless so he doesn't need them. he can just restart from a fresh random seed instead of continuing the same one from a checkpoint.
