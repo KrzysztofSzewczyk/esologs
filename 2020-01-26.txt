@@ -307,3 +307,16 @@
 2020-01-26 22:14:19 <esowiki> 14[[07CopyPasta Language14]]4 M10 02https://esolangs.org/w/index.php?diff=69388&oldid=69353 5* 03Rerednaw 5* (+0) 10Change a bit the Hello, World
 2020-01-26 22:39:28 Quit: Phantom_Hoover (Read error: Connection reset by peer)
 2020-01-26 22:39:28 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu2, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-26 23:43:35 <imode> I wonder how fast you can make Thue. wonder if you can make it compete with C.
+2020-01-26 23:44:18 <imode> like, what's the theoretical limit here that doesn't involve bringing in multiprocessing.
+2020-01-26 23:45:12 <imode> you're not gonna outshoot something that compiles down to machine code, but you could probably hit a sweet spot like Forths do.
+2020-01-26 23:50:15 <zzo38> Can you convert a JPEG file into another format and then reencode it as JPEG with the same settings without making it more lossy if the picture hasn't changed and the original JPEG file is lost?
+2020-01-26 23:53:40 <imode> that's a question that should be answered by attempting it tbh. I wanna say no.
+2020-01-26 23:54:20 <imode> JPEG is lossy, and if you do something like JPEG <-> PNG <-> JPEG, it's a form of generational noise.
+2020-01-26 23:54:41 <imode> https://en.wikipedia.org/wiki/Generation_loss
+2020-01-26 23:56:34 <zzo38> But shouldn't there be some way of making an encoder that supports doing it without further loss (as long as the colour space and quantization tables match the original)?
+2020-01-26 23:58:04 <esowiki> 14[[07Talk:ESON14]]4 10 02https://esolangs.org/w/index.php?diff=69389&oldid=69373 5* 03IFcoltransG 5* (+480) 10/* Binary trees in single commands */ new section
+2020-01-26 23:58:28 <esowiki> 14[[07ESON14]]4 10 02https://esolangs.org/w/index.php?diff=69390&oldid=69377 5* 03IFcoltransG 5* (+747) 10/* Commands */  Added commands for binary trees, general trees, directed graphs and undirected graphs.
+2020-01-26 23:58:53 <esowiki> 14[[07ESON14]]4 M10 02https://esolangs.org/w/index.php?diff=69391&oldid=69390 5* 03IFcoltransG 5* (+3) 10Fixed formatting of table
+2020-01-26 23:59:02 <imode> so you're saying if you have a JPEG, you convert it to a PNG, you want to transcode that back into a JPEG without any loss of data?
+2020-01-26 23:59:50 <zzo38> imode: Yes; assume that I know what colour space and quantization tables were used in the original JPEG file (since they may need to match in order to allow it to be reencoded without any further loss)
