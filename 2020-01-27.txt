@@ -63,3 +63,21 @@
 2020-01-27 03:01:38 <esowiki> 14[[07Arity14]]4 M10 02https://esolangs.org/w/index.php?diff=69413&oldid=69408 5* 03IFcoltransG 5* (+5) 10/* Dynamic arity */ Linked Python to Python
 2020-01-27 03:59:59 <kingoffrance> "you don't matter" is a new type of "FUD" i guess :/
 2020-01-27 04:00:51 <imode> onto ignore you go.
+2020-01-27 04:37:03 Quit: MDude (Quit: Going offline, see ya! (www.adiirc.com))
+2020-01-27 04:37:03 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-27 04:37:52 <int-e> <imode> I wonder how fast you can make Thue. <-- I'm afraid that's in "sufficiently smart compiler" territory; if you manage to unravel enough of the encodings you can be arbitrarily fast, but you'll be solving instances of undecidable problems at all times.
+2020-01-27 04:40:38 <imode> int-e: not sure I follow, can you explain further?
+2020-01-27 04:41:35 <int-e> Of course there's a lot you can do to make the rewriting engine faster... indexing (hashing) substrings, or, probably more fruitfully, analysing how right-hand sides overlap with left-hand sides to track redex creation, a good data structure for the strings themselves... but competing with C will be a huge stretch.
+2020-01-27 04:42:04 <int-e> imode: Imagine somebody has a C to Thue compiler. The resulting program(s) can be made as fast as the C program in principle...
+2020-01-27 04:42:29 <imode> how would that even work?..
+2020-01-27 04:42:34 <int-e> ...by reversing the compiler's operation.
+2020-01-27 04:42:58 Quit: FreeFull
+2020-01-27 04:42:58 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kingoffrance, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zoobab, zzo38
+2020-01-27 04:44:45 <imode> A C to Thue compiler would be trying to simulate things like variables, registers, etc.. mm.
+2020-01-27 04:45:15 <imode> thue to C would be guessing the things that the rules encode.
+2020-01-27 04:46:44 <int-e> Yes. Clearly this is hopeless without knowing what the compiler does, and likely still very hard if you have the compiler available.
+2020-01-27 04:46:51 <imode> making the rewriting engine faster seems to be a reasonable prospect.
+2020-01-27 04:47:28 <int-e> imode: Yeah I replied to the wrong part of your message really. My doubts are really connected to competing with C.
+2020-01-27 04:49:08 <imode> same. it'll have to remain interpreted, because there's nothing to "compile" to C: you'll end up with a rewrite engine that has hardcoded rules instead of ones loaded from a file.
+2020-01-27 04:49:26 <imode> unless you can guess the semantics of the rules and "derive" the thing they're designed to implement, like a multi-tape TM + states.
+2020-01-27 04:50:29 <imode> at that point you haven't "compiled Thue to C", you've taken an encoding of something in Thue and provided the equivalent encoding in C. arbitrary rules aren't possible.
