@@ -101,3 +101,24 @@
 2020-01-28 16:21:32 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=69460&oldid=69432 5* 03Sxakalo 5* (+296) 10/* Introductions */
 2020-01-28 16:21:53 <arseniiv> I think this version is not obviously isomorphic to those ones
 2020-01-28 16:25:29 <arseniiv> I’ll try to reformulate this so it’d use the complement of the list so we hopefully wouldn’t need (++)
+2020-01-28 16:30:09 <arseniiv> hm, wait ([0..a] ++ constant) is perfectly nice
+2020-01-28 16:35:59 <int-e> https://jacquesmattheij.com/warpdeck/WarpDeck-14.png . o O ( What exactly happens after year 2? )
+2020-01-28 16:36:06 <int-e> From https://jacquesmattheij.com/anatomy-of-a-scam/
+2020-01-28 16:40:46 * arseniiv tried to come up with a pun about a step function stepping on that graph and failed
+2020-01-28 16:43:16 <int-e> https://jacquesmattheij.com/warpdeck/WarpDeck-20.png is also ridiculous. It is a forecast. It goes down at some points, with *no* explanation why.
+2020-01-28 16:44:40 <int-e> (It's not even the same month each time. So not a seasonal effect.)
+2020-01-28 16:47:03 <int-e> But at least the revenues are exactly proportional to the number of posts. https://jacquesmattheij.com/warpdeck/WarpDeck-21.png
+2020-01-28 16:48:57 <esowiki> 14[[07$ $14]]4 10 02https://esolangs.org/w/index.php?diff=69461&oldid=69009 5* 03Sxakalo 5* (+157) 10
+2020-01-28 16:49:19 <arseniiv> inverted version, finally, and oh so long (dtb = dropTillBreak):
+2020-01-28 16:49:19 <arseniiv> > let { dtb x (y:xs) | x == y = dtb (x+1) xs ; dtb x xs = (x, x:xs) ; z xs = (let (x, xs') = dtb 0 xs in x : z xs') } in z []
+2020-01-28 16:49:22 <lambdabot> [0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,0,1,0,2,0,1...
+2020-01-28 16:54:10 <int-e> hmm that looks too complicated.
+2020-01-28 16:54:30 <int-e> But I do like the previous version... reminds me of binary counting in brainfuck.
+2020-01-28 16:54:50 <arseniiv> > let { d x (y:xs) | x == y = d (x+1) xs ; d x xs = x : d 0 (x:xs) } in take 50 $ d 0 []
+2020-01-28 16:54:53 <lambdabot> [0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,0,1,0,2,0,1...
+2020-01-28 16:55:06 <arseniiv> int-e: yes, I like the “positive” version more too
+2020-01-28 16:56:04 Joined: Frater_EST
+2020-01-28 16:56:04 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-01-28 16:56:16 <arseniiv> more so that (++) behaves good there
+2020-01-28 16:58:03 Quit: sprocklem (Ping timeout: 268 seconds)
+2020-01-28 16:58:03 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill, zzo38
