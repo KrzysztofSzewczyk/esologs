@@ -179,3 +179,56 @@
 2020-02-02 23:24:57 <arseniiv> sorry sorry lambdabot, I forgot again
 2020-02-02 23:27:44 <int-e> @botsnack
 2020-02-02 23:27:44 <lambdabot> :)
+2020-02-02 23:30:27 <arseniiv> int-e: is lambdabot memorious (let’s pretend that’s a word) about their miscallings?
+2020-02-02 23:32:31 <arseniiv> (ah, that should’ve been “do lambdabot remember…”, now I remember the word. As always the culprit is the wrong initial syntax which then blocks search of the word in the intended places of the head somehow, I think)
+2020-02-02 23:33:09 <arseniiv> s/do/does/, of course
+2020-02-02 23:33:43 <int-e> lambdabot doesn't hold grudges, generally.
+2020-02-02 23:34:05 <int-e> I sometimes ask her to ignore select people and bots.
+2020-02-02 23:34:32 <int-e> Just bots, really.
+2020-02-02 23:36:37 <int-e> `?
+2020-02-02 23:36:39 <HackEso> ​? ¯\(°​_o)/¯
+2020-02-02 23:36:49 <int-e> `"
+2020-02-02 23:36:50 <HackEso> 1/1:677) <elliott> @more  <elliott> @more  <elliott> @more  <elliott> @more  <elliott> @more  <elliott> @more  <elliott> @more  <elliott> :( \ 867) <hagb4rd> what is this set? sounds like shakespear  <fizzie> Yes, that's what people often say about Chrono Trigger.
+2020-02-02 23:37:10 <arseniiv> <int-e> Just bots, really. => phew, that’s soothing
+2020-02-02 23:39:50 <arseniiv> oh let’s test something
+2020-02-02 23:39:53 <arseniiv> > [1..
+2020-02-02 23:39:55 <lambdabot> <hint>:1:5: error:
+2020-02-02 23:39:55 <lambdabot> parse error (possibly incorrect indentation or mismatched brackets)
+2020-02-02 23:39:56 <arseniiv> damn
+2020-02-02 23:40:00 <arseniiv> > [1..]
+2020-02-02 23:40:03 <lambdabot> [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,...
+2020-02-02 23:40:04 <arseniiv> @more
+2020-02-02 23:40:05 <lambdabot> Plugin `more' failed with: Prelude.init: empty list
+2020-02-02 23:40:12 <arseniiv> here!
+2020-02-02 23:40:23 <arseniiv> int-e: is it intended?
+2020-02-02 23:41:11 <int-e> probably not
+2020-02-02 23:41:20 <arseniiv> I thought it would give off something here, as opposed to in private
+2020-02-02 23:41:42 <int-e> > fix error
+2020-02-02 23:41:44 <lambdabot> "*Exception: *Exception: *Exception: *Exception: *Exception: *Exception: *Ex...
+2020-02-02 23:42:00 <arseniiv> @more
+2020-02-02 23:42:00 <lambdabot> Plugin `more' failed with: Prelude.init: empty list
+2020-02-02 23:42:11 <arseniiv> no more fixes available
+2020-02-02 23:42:38 <int-e> @less
+2020-02-02 23:42:38 <lambdabot> Maybe you meant: oeis list let leet
+2020-02-02 23:43:08 <arseniiv> lool :D
+2020-02-02 23:43:23 <int-e> @. leet more
+2020-02-02 23:43:24 <lambdabot> Plugin `compose' failed with: Prelude.init: empty list
+2020-02-02 23:43:32 <int-e> he heh
+2020-02-02 23:44:13 <int-e> @metar lowi
+2020-02-02 23:44:14 <lambdabot> LOWI 022320Z AUTO VRB01KT 3000 -RA BR FEW001 SCT012 BKN060 05/05 Q1016
+2020-02-02 23:44:15 <arseniiv> do I understand that the buffer is here but it’s just already empty every time @more is called?
+2020-02-02 23:45:02 <int-e> Well, there is only one line of output, and @more is line-based.
+2020-02-02 23:45:10 <int-e> > 1
+2020-02-02 23:45:11 <int-e> @more
+2020-02-02 23:45:11 <lambdabot> Plugin `more' failed with: Prelude.init: empty list
+2020-02-02 23:45:12 <lambdabot> 1
+2020-02-02 23:45:17 <int-e> @more
+2020-02-02 23:45:17 <lambdabot> Plugin `more' failed with: Prelude.init: empty list
+2020-02-02 23:45:22 * int-e shrugs.
+2020-02-02 23:45:37 <int-e> I suspect it's just a bug, not a deeper mystery.
+2020-02-02 23:45:58 <int-e> @where motivation
+2020-02-02 23:45:58 <lambdabot> I know nothing about motivation.
+2020-02-02 23:46:23 <arseniiv> that reminds me I should look at the code sometime later, it should look interesting. I’m curious but not that curious to remember to schedule it some time
+2020-02-02 23:48:44 <arseniiv> “@where where” is really neat
+2020-02-02 23:52:40 <esowiki> 14[[07.mOdMoDwOrM14]]4 10 02https://esolangs.org/w/index.php?diff=69572&oldid=65106 5* 03IFcoltransG 5* (+151) 10Rewrote grammar fluency, and inserted puns and references to escape the ennui. Also added unimplemented category.
+2020-02-02 23:54:38 <esowiki> 14[[07.mOdMoDwOrM14]]4 M10 02https://esolangs.org/w/index.php?diff=69573&oldid=69572 5* 03IFcoltransG 5* (+180) 10TC-ness section
