@@ -376,3 +376,170 @@
 2020-02-04 16:29:21 <int-e> egelbot: let F = [ F -> [ 0 -> 1 | 1 -> 1 | X -> F (X - 2) + F (X - 1)] ] in fix F 5
 2020-02-04 16:29:21 <egelbot> 8
 2020-02-04 16:29:37 <wib_jonas> egelbot: def xn = 1; 3 + xn
+2020-02-04 16:30:10 <wib_jonas> egelbot: 4 + xn
+2020-02-04 16:30:14 <spruit11> Hmm.
+2020-02-04 16:30:36 <int-e> egelbot: def fix = [ F -> F (fix F) ]
+2020-02-04 16:30:39 <int-e> egelbot: let F = [ F -> [ 0 -> 1 | 1 -> 1 | X -> F (X - 2) + F (X - 1)] ] in fix F 5
+2020-02-04 16:30:43 <spruit11> You found a bug?
+2020-02-04 16:30:46 Quit: egelbot (Read error: Connection reset by peer)
+2020-02-04 16:30:47 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:30:48 <int-e> hmm
+2020-02-04 16:30:51 <int-e> okay.
+2020-02-04 16:30:54 <wib_jonas> hi int-e
+2020-02-04 16:31:01 Joined: egelbot
+2020-02-04 16:31:01 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:31:03 <spruit11> Not sure what happened there.
+2020-02-04 16:31:12 <int-e> egelbot: def fix = [ F X -> F (fix F) X ]
+2020-02-04 16:31:25 <spruit11> egelbot: def xn = 1
+2020-02-04 16:31:32 <spruit11> egelbot: xn + 3
+2020-02-04 16:31:32 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 16:31:32 <egelbot> 4
+2020-02-04 16:31:36 <spruit11> Hmm.
+2020-02-04 16:31:44 <wib_jonas> wait, you haven't been welcomed yet
+2020-02-04 16:31:48 <wib_jonas> `welcome spruit11
+2020-02-04 16:31:49 <HackEso> spruit11: Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: <https://esolangs.org/>. (For the other kind of esoterica, try #esoteric on EFnet or DALnet.)
+2020-02-04 16:31:51 <wib_jonas> `welcome egelbot
+2020-02-04 16:31:52 <HackEso> egelbot: Welcome to the international hub for esoteric programming language design and deployment! For more information, check out our wiki: <https://esolangs.org/>. (For the other kind of esoterica, try #esoteric on EFnet or DALnet.)
+2020-02-04 16:31:52 <egelbot> internal:1:90:syntactical:! unexpected
+2020-02-04 16:31:53 <int-e> spruit11: I guess  F -> F (fix F)  is too eager indeed.
+2020-02-04 16:32:03 <spruit11> Something I'll need to check. Haven't looked at the source code for a while.
+2020-02-04 16:32:07 <spruit11> Hello people!
+2020-02-04 16:32:34 <spruit11> Oh right. It's a recursive def of xn.
+2020-02-04 16:32:38 <wib_jonas> egelbot: }+{32}
+2020-02-04 16:32:38 <egelbot> internal:1:2:syntactical:primary expression expected
+2020-02-04 16:32:42 <wib_jonas> egelbot: {38}+{32}
+2020-02-04 16:32:42 <egelbot> (System:+ (System:cons 38 System:nil) (System:cons 32 System:nil))
+2020-02-04 16:32:57 <spruit11> def xn = (1; 3+ xn). That loops.
+2020-02-04 16:33:03 <wib_jonas> oh.
+2020-02-04 16:33:15 <wib_jonas> so how do I put two statements in one line, the first of which is a defn?
+2020-02-04 16:33:18 <wib_jonas> I'm not clear about the syntax here
+2020-02-04 16:33:30 <int-e> egelbot: let sum = fix [SUM {} -> 0 | SUM (cons x y) -> x + SUM y] in sum {1,2,3,4}
+2020-02-04 16:33:30 <egelbot> internal:1:41:semantical:undeclared x
+2020-02-04 16:33:34 <spruit11> You can't in the irc REPL.
+2020-02-04 16:33:41 <wib_jonas> ok
+2020-02-04 16:33:41 <int-e> egelbot: let sum = fix [SUM {} -> 0 | SUM (cons X Y) -> X + SUM Y] in sum {1,2,3,4}
+2020-02-04 16:33:41 <egelbot> internal:1:6:semantical:undeclared sum
+2020-02-04 16:33:49 <int-e> yeah...
+2020-02-04 16:33:50 <spruit11> It's either a def or an expression.
+2020-02-04 16:34:00 <int-e> egelbot: let SUM = fix [SUM {} -> 0 | SUM (cons X Y) -> X + SUM Y] in SUM {1,2,3,4}
+2020-02-04 16:34:00 <egelbot> 10
+2020-02-04 16:34:01 <wib_jonas> egelbot: 38&32
+2020-02-04 16:34:02 <egelbot> internal:1:4:semantical:undeclared &
+2020-02-04 16:34:06 <wib_jonas> egelbot: 38 | 32
+2020-02-04 16:34:06 <egelbot> internal:1:5:syntactical:| unexpected
+2020-02-04 16:34:09 <wib_jonas> egelbot: 38 & 32
+2020-02-04 16:34:09 <egelbot> internal:1:5:semantical:undeclared &
+2020-02-04 16:34:10 <int-e> The capital variable names are killing me.
+2020-02-04 16:34:13 <wib_jonas> egelbot: 38 < 32
+2020-02-04 16:34:13 <egelbot> System:false
+2020-02-04 16:34:19 <wib_jonas> egelbot: 38 <= 32
+2020-02-04 16:34:20 <egelbot> System:false
+2020-02-04 16:34:22 <wib_jonas> egelbot: 38 == 32
+2020-02-04 16:34:22 <egelbot> System:false
+2020-02-04 16:34:24 <wib_jonas> egelbot: 38 = 32
+2020-02-04 16:34:24 <egelbot> internal:1:5:syntactical:= unexpected
+2020-02-04 16:34:33 <wib_jonas> egelbot: 38 != 32
+2020-02-04 16:34:33 <egelbot> internal:1:5:syntactical:!= unexpected
+2020-02-04 16:34:39 <wib_jonas> egelbot: 38 <> 32
+2020-02-04 16:34:39 <egelbot> internal:1:5:semantical:undeclared <>
+2020-02-04 16:34:42 <spruit11> Had to make a decision. Prolog-like parsing simplifies a lot.
+2020-02-04 16:34:44 <wib_jonas> egelbot: 38 ~= 32
+2020-02-04 16:34:45 <egelbot> internal:1:5:semantical:undeclared ~=
+2020-02-04 16:34:47 <wib_jonas> egelbot: 38 /= 32
+2020-02-04 16:34:47 <egelbot> internal:1:5:semantical:undeclared /=
+2020-02-04 16:34:51 <wib_jonas> egelbot: 38 ^= 32
+2020-02-04 16:34:51 <egelbot> internal:1:5:semantical:undeclared ^=
+2020-02-04 16:35:07 <int-e> egelbot: not false
+2020-02-04 16:35:07 <egelbot> System:true
+2020-02-04 16:35:18 <spruit11> In an untyped language it's hard to disambiguate between constants and variables otherwise.
+2020-02-04 16:35:33 <spruit11> Simplified a lot.
+2020-02-04 16:36:08 <int-e> :t Just
+2020-02-04 16:36:09 <lambdabot> a -> Maybe a
+2020-02-04 16:36:20 <int-e> I'm kind of used to the opposite convention.
+2020-02-04 16:36:35 <spruit11> [ X -> X ] (how do I know X is a variable or constant?)
+2020-02-04 16:36:36 <j-bot> spruit11: X (- > X ] how do (8 8$0 0 1 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 0) know X is a variable or constant ?)
+2020-02-04 16:36:41 <wib_jonas> int-e: one is the prolog convention, the other is the Standard ML or Haskell conventino
+2020-02-04 16:36:47 <wib_jonas> and I suspect the prolog one is older
+2020-02-04 16:37:30 <spruit11> Right, you can trace back to Prolog and found they took the simplest convention known at that point.
+2020-02-04 16:37:47 <wib_jonas> there's also the cheating solution where constructors start with an uppercase letter, but there are a few lowercase keywords that are frequently constructors, like true false nil cons some none
+2020-02-04 16:37:48 <spruit11> It shaves of a context lookup and possible mistakes.
+2020-02-04 16:38:31 <wib_jonas> so back to that recursion, why did the definition of SumW that I try not work?
+2020-02-04 16:38:44 <wib_jonas> let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (F S) ] in SumW SumW Vn
+2020-02-04 16:38:50 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (F S) ] in SumW SumW Vn
+2020-02-04 16:38:50 <egelbot> (System:+ 38 (Dummy15DOT1 (System:cons 32 (System:cons 75 (System:cons -24 System:nil)))))
+2020-02-04 16:39:03 <spruit11> Dunno.
+2020-02-04 16:39:22 <spruit11> Don't you need fix?
+2020-02-04 16:39:34 <int-e> wib_jonas: because you need to invoke the recursive call using F F
+2020-02-04 16:39:34 <spruit11> Not sure what you're doing/
+2020-02-04 16:39:49 <wib_jonas> oh
+2020-02-04 16:39:52 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (F F S) ] in SumW SumW Vn
+2020-02-04 16:39:52 <egelbot> 121
+2020-02-04 16:39:57 <wib_jonas> that's it
+2020-02-04 16:40:08 <wib_jonas> though it's not the best way to implement sum, wait a moment
+2020-02-04 16:41:08 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumT = [ R B nil -> B | R B (cons X S) -> R R (B + X) S ] in let Sum S = SumT SumT 0 S in Sum Vn
+2020-02-04 16:41:08 <egelbot> internal:1:118:semantical:undeclared S
+2020-02-04 16:41:23 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumT = [ R B nil -> B | R B (cons X S) -> R R (B + X) S ] in let Sum = [ S -> SumT SumT 0 S ] in Sum Vn
+2020-02-04 16:41:24 <egelbot> 121
+2020-02-04 16:41:29 <spruit11> Neat!
+2020-02-04 16:42:01 <wib_jonas> egelbot: let Vn={38,32,75,-24} in let SumT=[R B nil->B|R B(cons X S)->R R(B + X)S] in let Sum=[S->SumT SumT 0 S] in Sum Vn
+2020-02-04 16:42:02 <egelbot> 121
+2020-02-04 16:42:26 Quit: sprocklem (Ping timeout: 240 seconds)
+2020-02-04 16:42:26 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:42:35 <wib_jonas> now I just also have to define some other list operations
+2020-02-04 16:42:42 <spruit11> Hehe, your LC fu is better than mine.
+2020-02-04 16:43:02 <spruit11> You can take a look at the prelude. Probably it's already in there.
+2020-02-04 16:43:05 <spruit11> Moment.
+2020-02-04 16:43:13 <wib_jonas> int-e: thanks, that was the problem
+2020-02-04 16:43:32 <spruit11> https://github.com/egel-lang/egel-bot/blob/master/src/script.eg
+2020-02-04 16:44:16 <wib_jonas> spruit: what I'd like to know is what built-in functions there are, since apparently the & operator doesn't work
+2020-02-04 16:44:38 <spruit11> I didn't document that, unfortunately.
+2020-02-04 16:45:03 <wib_jonas> it's probably somewhere in the source
+2020-02-04 16:45:32 <spruit11> Right. If you want to look at the source, it's here:
+2020-02-04 16:45:36 <spruit11> (moment)
+2020-02-04 16:45:38 <wib_jonas> https://github.com/egel-lang/egel/tree/master/src
+2020-02-04 16:45:55 <wib_jonas> mind you,
+2020-02-04 16:46:03 <wib_jonas> egelbot: say("foo"+"bar")
+2020-02-04 16:46:03 <egelbot> foobar
+2020-02-04 16:46:13 <spruit11> https://github.com/egel-lang/egel/tree/master/src/builtin
+2020-02-04 16:46:47 <wib_jonas> ah, the builtin directory. thanks
+2020-02-04 16:46:55 <spruit11> Those list the builtins. But they're pretty much still subject to change.
+2020-02-04 16:47:04 <spruit11> (Even if I didn't code for a while.)
+2020-02-04 16:49:05 <wib_jonas> hmm... so is there a chr function?
+2020-02-04 16:49:09 <spruit11> You'll mostly want https://github.com/egel-lang/egel/blob/master/src/builtin/system.cpp
+2020-02-04 16:49:58 <wib_jonas> ok, that'll take some time to read
+2020-02-04 16:50:12 <spruit11> Not sure it's in the bot.
+2020-02-04 16:50:16 <spruit11> Lemme check.
+2020-02-04 16:50:19 <spruit11> Uh.
+2020-02-04 16:50:28 <spruit11> egelbot: using String
+2020-02-04 16:50:40 <wib_jonas> egelbot: pack {110,114}
+2020-02-04 16:50:40 <egelbot> (System:pack (System:cons 110 (System:cons 114 System:nil)))
+2020-02-04 16:50:52 <spruit11> egelbot: toLower "A"
+2020-02-04 16:50:52 <egelbot> "a"
+2020-02-04 16:51:56 <wib_jonas> egelbot: pack { 'b' , 'f' }
+2020-02-04 16:51:56 <egelbot> "bf"
+2020-02-04 16:51:59 <wib_jonas> egelbot: 'b'
+2020-02-04 16:51:59 <egelbot> 'b'
+2020-02-04 16:52:03 <wib_jonas> egelbot: toInt 'b'
+2020-02-04 16:52:03 <egelbot> internal:1:2:semantical:undeclared toInt
+2020-02-04 16:52:15 <wib_jonas> egelbot: toint 'b'
+2020-02-04 16:52:15 <egelbot> 98
+2020-02-04 16:52:19 <wib_jonas> egelbot: totext 101
+2020-02-04 16:52:19 <egelbot> "101"
+2020-02-04 16:52:37 <wib_jonas> egelbot: char 101
+2020-02-04 16:52:37 <egelbot> (System:char 101)
+2020-02-04 16:53:22 <wib_jonas> I'll look more at this later
+2020-02-04 16:53:22 <spruit11> Uh, this is silly. I don't think there is.
+2020-02-04 16:56:43 <int-e> egelbot: 1 != 2
+2020-02-04 16:56:43 <egelbot> internal:1:4:syntactical:!= unexpected
+2020-02-04 16:56:46 <int-e> mmm
+2020-02-04 16:57:06 <int-e> (see also https://github.com/egel-lang/egel/blob/master/src/builtin/system.cpp#L344 )
+2020-02-04 16:57:20 <wib_jonas> so this is a symbolic term-rewriting thing like maple and mathematica, where if a function application makes no sense then the interpreter just leaves it as an unevaluated function application value?
+2020-02-04 16:57:27 Quit: cpressey (Quit: A la prochaine.)
+2020-02-04 16:57:27 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:57:48 <wib_jonas> egelbot: (3 4)
+2020-02-04 16:57:48 <egelbot> (3 4)
+2020-02-04 16:57:51 <spruit11> Something like that.
+2020-02-04 16:58:10 <wib_jonas> and are there values with mutable fields?
+2020-02-04 16:58:11 <spruit11> But worse than maple or mathematica. More a SASL.
+2020-02-04 16:58:43 <spruit11> No, there's mutation on expression but that's unsafe.
+2020-02-04 16:59:45 <spruit11> The language more serves as a front end on a thought I had about implementing an FP language in C++ in a memory-safe manner.
