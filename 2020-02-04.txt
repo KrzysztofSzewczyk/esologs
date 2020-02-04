@@ -878,3 +878,174 @@
 2020-02-04 19:29:02 <egelbot> System:int
 2020-02-04 19:29:19 <spruit11> egelbot: let X = [ _ -> 0 ] in (X 2) == (X 2)
 2020-02-04 19:29:19 <egelbot> System:true
+2020-02-04 19:31:31 <spruit11> Dunno?
+2020-02-04 19:31:38 <spruit11> What line?
+2020-02-04 19:31:45 <b_jonas> https://github.com/egel-lang/egel/blob/master/src/builtin/system.cpp#L372
+2020-02-04 19:32:01 <spruit11> Oh, right.
+2020-02-04 19:32:04 <b_jonas> also, is this actually using libicu somewhere? there's no mention in https://github.com/egel-lang/egel/blob/master/src/builtin/string.cpp , but perhaps it's used somewhere else
+2020-02-04 19:32:06 <spruit11> egelbot: (1 2)
+2020-02-04 19:32:06 <egelbot> (1 2)
+2020-02-04 19:32:22 <spruit11> So, that's under water an array [1,2].
+2020-02-04 19:32:28 <spruit11> You're not supposed to know.
+2020-02-04 19:32:30 User Name: arseniiv = arseniiv!~arseniiv@95.105.9.184.dynamic.ufanet.ru
+2020-02-04 19:32:30 <arseniiv> oh thanks for the link, I was lazy to see in the logs what this new language is
+2020-02-04 19:32:54 <b_jonas> arseniiv: I added a stub entry to the wiki
+2020-02-04 19:32:57 <spruit11> All strings are libicu strings.
+2020-02-04 19:33:09 <spruit11> Chars are UChar32.
+2020-02-04 19:33:38 <spruit11> There's a regex module but not available from the bot.
+2020-02-04 19:33:56 <b_jonas> egelbot: '\r'
+2020-02-04 19:33:56 <egelbot> internal:1:4:lexical:error in char
+2020-02-04 19:33:57 <arseniiv> b_jonas: neat!
+2020-02-04 19:33:58 <b_jonas> egelbot: '\n'
+2020-02-04 19:33:58 <egelbot> '\n'
+2020-02-04 19:34:06 <b_jonas> egelbot: '\\'
+2020-02-04 19:34:06 <egelbot> '\\'
+2020-02-04 19:34:09 <b_jonas> egelbot: '\\s'
+2020-02-04 19:34:09 <egelbot> internal:1:5:lexical:error in char
+2020-02-04 19:34:26 <spruit11> Yah, that gets parsed to a newline and unescaped again.
+2020-02-04 19:34:44 <arseniiv> BTW does anybody have a thought about this little detail of Haskell import system which I think isn’t too great: https://www.reddit.com/r/haskell/comments/ewrfaw/monthly_hask_anything_february_2020/fgjhwlz/
+2020-02-04 19:35:04 <spruit11> Don't expect too much support for unicode. I just took it as a good start.
+2020-02-04 19:35:18 <spruit11> Don't remember what lexer can handle.
+2020-02-04 19:35:38 <spruit11> But most unicode should be fine.
+2020-02-04 19:36:19 <spruit11> egelbot: '∀'
+2020-02-04 19:36:19 <egelbot> '∀'
+2020-02-04 19:36:28 <arseniiv> I’d like at least field names of a `data X` be either in a subnamespace `X` or a subnamespace named by the corresponding constructor (for the example, `X1.field1`), at least
+2020-02-04 19:36:30 <b_jonas> egelbot: unescape "foo\\rbar"
+2020-02-04 19:36:30 <egelbot> "foo\rbar"
+2020-02-04 19:36:52 <spruit11> There are namespaces, just not in the bot.
+2020-02-04 19:37:04 <b_jonas> egelbot: def car = [(cons X S) -> X]
+2020-02-04 19:37:11 <b_jonas> egelbot: car {3,1}
+2020-02-04 19:37:11 <egelbot> 3
+2020-02-04 19:37:23 <spruit11> egelbot: cons
+2020-02-04 19:37:24 <egelbot> System:cons
+2020-02-04 19:37:25 <arseniiv> spruit11: sorry that’s my ramblings about the Haskell in general :)
+2020-02-04 19:37:27 <b_jonas> egelbot: toint(car(unpack(unescape "\r")))
+2020-02-04 19:37:27 <egelbot> internal:1:30:lexical:error in string
+2020-02-04 19:37:37 <b_jonas> egelbot: toint(car(unpack(unescape "\\r")))
+2020-02-04 19:37:37 <egelbot> 13
+2020-02-04 19:37:39 <b_jonas> there it is
+2020-02-04 19:37:45 <b_jonas> egelbot: toint(car(unpack(unescape "\\x00")))
+2020-02-04 19:37:45 <egelbot> 0
+2020-02-04 19:37:47 <b_jonas> egelbot: toint(car(unpack(unescape "\\x0")))
+2020-02-04 19:37:47 <egelbot> 0
+2020-02-04 19:37:49 <b_jonas> egelbot: toint(car(unpack(unescape "\\x01")))
+2020-02-04 19:37:49 <egelbot> 1
+2020-02-04 19:37:51 <b_jonas> egelbot: toint(car(unpack(unescape "\\x0D")))
+2020-02-04 19:37:51 <egelbot> 13
+2020-02-04 19:37:53 <b_jonas> egelbot: toint(car(unpack(unescape "\\x0A")))
+2020-02-04 19:37:53 <egelbot> 10
+2020-02-04 19:38:04 <spruit11> I don't even remember that.
+2020-02-04 19:38:07 <b_jonas> egelbot: say(unescape "foo\\rbar")
+2020-02-04 19:38:07 <egelbot> foo
+2020-02-04 19:38:17 <b_jonas> egelbot: say(unescape "foo\\rPRIVMSG #esoteric :bar")
+2020-02-04 19:38:17 <egelbot> foo
+2020-02-04 19:38:17 <egelbot> bar
+2020-02-04 19:38:20 <b_jonas> oops
+2020-02-04 19:38:40 <b_jonas> egelbot: say(unescape "foo\\rPRIVMSG b_jonas :hello jonas")
+2020-02-04 19:38:40 <egelbot> foo
+2020-02-04 19:38:40 <spruit11> You hacked around it?
+2020-02-04 19:39:05 <spruit11> Oh right, doesn't escape \\r, only \\n.
+2020-02-04 19:39:08 <spruit11> Didn't know.
+2020-02-04 19:39:12 <spruit11> Will fix.
+2020-02-04 19:39:27 <b_jonas> it was one of the first things I tried, but say escapes "\n", and there's no chr function so I didn't know how to get a "\r" until I read the library
+2020-02-04 19:39:34 <b_jonas> make sure to escape "\x00" too
+2020-02-04 19:39:44 <spruit11> Right.
+2020-02-04 19:40:08 <spruit11> But you can easily blow up my laptop, so I won't run this a lot.
+2020-02-04 19:40:29 <b_jonas> yes, that's why I'm saying I should try to build and install this interpreter to HackEso
+2020-02-04 19:40:38 <b_jonas> you have the sources, if they can build cleanly then it should be possible
+2020-02-04 19:40:41 <spruit11> Needs more hacking and this was good enough for my purposes at the time.
+2020-02-04 19:40:54 <spruit11> I am not really that happy about the build.
+2020-02-04 19:41:23 <spruit11> It depends on libegel installed systemwide.
+2020-02-04 19:41:25 <b_jonas> ooh
+2020-02-04 19:41:33 <b_jonas> egelbot: head {3,1,4}
+2020-02-04 19:41:33 <egelbot> internal:1:2:semantical:undeclared head
+2020-02-04 19:41:36 <b_jonas> nope
+2020-02-04 19:41:44 <spruit11> You can work around that, if you know how to.
+2020-02-04 19:41:53 <b_jonas> egelbot: List:head {3,1,4}
+2020-02-04 19:41:53 <egelbot> 3
+2020-02-04 19:41:55 <b_jonas> there
+2020-02-04 19:42:12 <b_jonas> egelbot: List:nth {3,1,4} 0
+2020-02-04 19:42:12 <egelbot> (List:nth (System:cons 3 (System:cons 1 (System:cons 4 System:nil))) 0)
+2020-02-04 19:42:16 <spruit11> egelbot: using List
+2020-02-04 19:42:16 <b_jonas> egelbot: List:nth 0 {3,1,4}
+2020-02-04 19:42:16 <egelbot> 3
+2020-02-04 19:42:20 <b_jonas> egelbot: List:nth 1 {3,1,4}
+2020-02-04 19:42:20 <egelbot> 1
+2020-02-04 19:42:28 <spruit11> That opened the namespace.
+2020-02-04 19:42:40 <spruit11> egelbot: head {1,3}
+2020-02-04 19:42:40 <egelbot> 1
+2020-02-04 19:47:47 <b_jonas> egelbot: List:map [X->10*X] {7,6,1}
+2020-02-04 19:47:47 <egelbot> (System:cons 70 (System:cons 60 (System:cons 10 System:nil)))
+2020-02-04 19:48:06 <b_jonas> I wish the writer had a concise syntax for lists and tuples, rather than printing the internal form
+2020-02-04 19:48:14 <b_jonas> egelbot: (2,1)
+2020-02-04 19:48:14 <egelbot> (System:tuple 2 1)
+2020-02-04 19:48:17 <b_jonas> egelbot: 2;1
+2020-02-04 19:48:17 <egelbot> 1
+2020-02-04 19:48:24 <b_jonas> egelbot: (2;1)+10
+2020-02-04 19:48:24 <egelbot> 11
+2020-02-04 19:48:34 <b_jonas> egelbot: (;)
+2020-02-04 19:48:35 <egelbot> internal:1:3:syntactical:primary expression expected
+2020-02-04 19:49:22 <b_jonas> egelbot: 0x407f
+2020-02-04 19:49:22 <egelbot> 16511
+2020-02-04 19:49:23 <b_jonas> egelbot: 0x407F
+2020-02-04 19:49:23 <egelbot> internal:1:7:semantical:undeclared F
+2020-02-04 19:49:24 <b_jonas> eww
+2020-02-04 19:49:47 <b_jonas> egelbot: let F = 0 in 0x407F
+2020-02-04 19:49:47 <egelbot> (1031 0)
+2020-02-04 19:50:12 Joined: rain1
+2020-02-04 19:50:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 19:50:46 <b_jonas> egelbot: List:foldl (+) {"a","b","c"}
+2020-02-04 19:50:46 <egelbot> (List:foldl System:+ (System:cons "a" (System:cons "b" (System:cons "c" System:nil))))
+2020-02-04 19:50:52 <b_jonas> egelbot: List:foldr (+) {"a","b","c"}
+2020-02-04 19:50:52 <egelbot> (List:foldr System:+ (System:cons "a" (System:cons "b" (System:cons "c" System:nil))))
+2020-02-04 19:50:59 <b_jonas> egelbot: List:foldr (+) "" {"a","b","c"}
+2020-02-04 19:50:59 <egelbot> "abc"
+2020-02-04 19:51:00 <spruit11> You are thorough!
+2020-02-04 19:51:24 <spruit11> Could have save me a lot of unit tests. ;)
+2020-02-04 19:51:47 <b_jonas> thanks, I'll link to that line in the channel logs for my next interview :-)
+2020-02-04 19:52:12 <spruit11> I only did some tests in the REPL.
+2020-02-04 19:52:42 <spruit11> Just relying on what I know and whether it seemed correct on cursory glance.
+2020-02-04 19:52:54 <b_jonas> egelbot: List:foldr(+)""(List:map[K->List:nth{"zero","one","two","three"}K]{3,0,1,3})
+2020-02-04 19:52:54 <egelbot> (System:+ (List:nth (System:cons "zero" (System:cons "one" (System:cons "two" (System:cons "three" System:nil)))) 3) (System:+ (List:nth (System:cons "zero" (System:cons "one" (System:cons "two" (System:cons "three" System:nil)))) 0) (System:+ (List:nth (System:cons "zero" (System:cons "one" (System:cons "two" (System:cons "three" System:nil)))) 1) (System:+ (List:nth (System:cons "zero" (System:cons "one" (System:cons "two" (System:cons "th
+2020-02-04 19:53:01 <b_jonas> no
+2020-02-04 19:53:21 <b_jonas> egelbot: [K->List:nth{"zero","one","two","three"}K]0
+2020-02-04 19:53:21 <egelbot> (List:nth (System:cons "zero" (System:cons "one" (System:cons "two" (System:cons "three" System:nil)))) 0)
+2020-02-04 19:53:35 <b_jonas> egelbot: List:nth {"zero","one","two","three"} 0
+2020-02-04 19:53:35 <egelbot> (List:nth (System:cons "zero" (System:cons "one" (System:cons "two" (System:cons "three" System:nil)))) 0)
+2020-02-04 19:53:49 <b_jonas> egelbot: List:nth 0 {"zero","one","two","three"}
+2020-02-04 19:53:50 <egelbot> "zero"
+2020-02-04 19:53:51 <b_jonas> oh right
+2020-02-04 19:53:58 <b_jonas> egelbot: List:foldr(+)""(List:map[K->List:nth K{"zero","one","two","three"}]{3,0,1,3})
+2020-02-04 19:53:58 <egelbot> "threezeroonethree"
+2020-02-04 19:54:04 <b_jonas> good
+2020-02-04 19:54:21 <spruit11> \o/
+2020-02-04 19:55:08 <spruit11> I opened the namespace, you no longer need to type List.
+2020-02-04 19:55:29 <b_jonas> yes, but I want to write this is such a way that it works out of box when you rerun the interpreter
+2020-02-04 19:55:36 <spruit11> Ah, right.
+2020-02-04 19:55:54 <b_jonas> egelbot: List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: List:foldr(+)","(List:map[K->List:nth K{"}]{3,1,1,4})
+2020-02-04 19:55:54 <egelbot> "egelbot: List:foldr(+)\"\"(List:map[K->List:nth K{"
+2020-02-04 19:56:14 <b_jonas> egelbot: List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: List:foldr(+)","(List:map[K->List:nth K{"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1})
+2020-02-04 19:56:14 <egelbot> "egelbot: List:foldr(+)\"\"(List:map[K->List:nth K{\"\\\\\",\"\\\"\",\",\",\""
+2020-02-04 19:56:19 <spruit11> Wut?
+2020-02-04 19:56:22 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: List:foldr(+)","(List:map[K->List:nth K{"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1}))
+2020-02-04 19:56:23 <egelbot> egelbot: List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","
+2020-02-04 19:56:30 <b_jonas> I'm trying to write my favorite form of quine
+2020-02-04 19:56:44 <spruit11> Oh, I never was good at those.
+2020-02-04 19:56:52 <b_jonas> this is an easy one to write
+2020-02-04 19:56:56 <spruit11> Don't really grok them.
+2020-02-04 19:57:00 <spruit11> Neat!
+2020-02-04 19:57:12 <b_jonas> because it has a generic enough structure that works in many languages
+2020-02-04 19:57:53 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,2}))
+2020-02-04 19:57:53 <egelbot> egelbot: List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1...",
+2020-02-04 19:58:07 <b_jonas> that said, this might be too long for an irc line, so I'll have to specialize it
+2020-02-04 19:58:23 <spruit11> There's an eval too.
+2020-02-04 19:58:33 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,2,}))
+2020-02-04 19:58:34 <egelbot> internal:1:191:syntactical:primary expression expected
+2020-02-04 19:58:42 <spruit11> egelbot: eval "[X -> X]" 1
+2020-02-04 19:58:43 <egelbot> 1
+2020-02-04 19:58:47 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,2}))
+2020-02-04 19:58:47 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1...",
+2020-02-04 19:59:02 <spruit11> Not sure I implemented that correctly. But seems to work.
+2020-02-04 19:59:36 <spruit11> It leaks, since it needs to rerun the interpreter.
+2020-02-04 19:59:52 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 19:59:52 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1...
