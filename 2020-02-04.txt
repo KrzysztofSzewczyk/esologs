@@ -680,3 +680,201 @@
 2020-02-04 18:57:51 <b_jonas> so this term rewriting system has a full untyped lambda calculus in it, right?
 2020-02-04 18:59:48 Quit: wmww (*.net *.split)
 2020-02-04 18:59:49 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, xelxebar, zemhill, zzo38
+2020-02-04 19:00:30 Quit: LBPHacker (*.net *.split)
+2020-02-04 19:00:31 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, xelxebar, zemhill, zzo38
+2020-02-04 19:00:31 Quit: dog_star (*.net *.split)
+2020-02-04 19:00:32 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, xelxebar, zemhill, zzo38
+2020-02-04 19:00:33 Quit: shig (*.net *.split)
+2020-02-04 19:00:34 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, xelxebar, zemhill, zzo38
+2020-02-04 19:01:03 <b_jonas> egelbot: let Nth = [0 (X _) -> X | K (_ S) -> Nth (K - 1) S] in Nth 3 {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 19:01:03 <egelbot> internal:1:39:semantical:undeclared Nth
+2020-02-04 19:01:16 <b_jonas> oh yeah, recursion
+2020-02-04 19:01:43 <b_jonas> egelbot: let NthR = [R 0 (X _) -> X | R K (_ S) -> R R (K - 1) S] in let Nth = NthR NthR in Nth 3 {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 19:01:43 <egelbot> (Dummy57DOT2 Dummy57DOT2 3 (System:cons 38 (System:cons 32 (System:cons 75 (System:cons -24 (System:cons -19 (System:cons 53 (System:cons 14 (System:cons 13 (System:cons -28 (System:cons -52 (System:cons 93 (System:cons 90 (System:cons 80 (System:cons 22 (System:cons -98 (System:cons -14 (System:cons -96 (System:cons -81 (System:cons -95 System:nil))))))))))))))))))))
+2020-02-04 19:01:56 Joined: wmww
+2020-02-04 19:01:56 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 19:01:58 <b_jonas> egelbot: let NthR = [R 0 (cons X _) -> X | R K (cons _ S) -> R R (K - 1) S] in let Nth = NthR NthR in Nth 3 {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 19:01:58 <egelbot> -24
+2020-02-04 19:02:09 <b_jonas> egelbot: let NthR = [R 0 (cons X _) -> X | R K (cons _ S) -> R R (K - 1) S] in let Nth = NthR NthR in Nth 4 {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 19:02:09 <egelbot> -19
+2020-02-04 19:02:12 Joined: LBPHacker
+2020-02-04 19:02:12 Joined: dog_star
+2020-02-04 19:02:12 Joined: shig
+2020-02-04 19:02:12 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 19:03:51 Quit: imode (Ping timeout: 265 seconds)
+2020-02-04 19:03:51 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 19:06:29 Joined: arseniiv
+2020-02-04 19:06:29 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 19:06:59 <b_jonas> if we want to build the parts with libicu, then I think we'll need the libicu-dev debian package
+2020-02-04 19:07:17 <b_jonas> now let me see these builtin functions
+2020-02-04 19:08:34 <b_jonas> egelbot: k 3 7
+2020-02-04 19:08:34 <egelbot> 3
+2020-02-04 19:08:41 <b_jonas> egelbot: id 3
+2020-02-04 19:08:41 <egelbot> internal:1:2:semantical:undeclared id
+2020-02-04 19:08:45 <b_jonas> egelbot: identity 3
+2020-02-04 19:08:45 <egelbot> internal:1:2:semantical:undeclared identity
+2020-02-04 19:08:53 <b_jonas> egelbot: [X->X] 3
+2020-02-04 19:08:53 <egelbot> 3
+2020-02-04 19:09:01 <b_jonas> egelbot: [X X->X] 3 7
+2020-02-04 19:09:01 <egelbot> internal:1:5:semantical:redeclaration of X
+2020-02-04 19:09:20 <b_jonas> egelbot: +
+2020-02-04 19:09:20 <egelbot> internal:1:3:syntactical:primary expression expected
+2020-02-04 19:09:22 <b_jonas> egelbot: (+
+2020-02-04 19:09:22 <egelbot> internal:1:4:syntactical:primary expression expected
+2020-02-04 19:09:24 <b_jonas> egelbot: (+)
+2020-02-04 19:09:24 <egelbot> System:+
+2020-02-04 19:09:28 <b_jonas> egelbot: (+) 2 5
+2020-02-04 19:09:29 <egelbot> 7
+2020-02-04 19:09:54 <b_jonas> egelbot: let (+) = [X Y->(10*X)+Y] in 7+3
+2020-02-04 19:09:54 <egelbot> (Dummy67DOT0 Dummy67DOT1)
+2020-02-04 19:09:56 <b_jonas> nope
+2020-02-04 19:10:02 <b_jonas> egelbot: let (&) = [X Y->(10*X)+Y] in 7&3
+2020-02-04 19:10:02 <egelbot> internal:1:7:semantical:undeclared &
+2020-02-04 19:10:18 <b_jonas> egelbot: let 2 = 5 in 2
+2020-02-04 19:10:18 <egelbot> (Dummy69DOT0 5)
+2020-02-04 19:10:32 <b_jonas> how does that work?
+2020-02-04 19:10:33 Quit: LKoen (Remote host closed the connection)
+2020-02-04 19:10:33 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 19:10:36 <b_jonas> egelbot: let 2 0 = 5 in 2 0
+2020-02-04 19:10:37 <egelbot> (Dummy70DOT0 5)
+2020-02-04 19:10:46 <b_jonas> egelbot: let 2 0 = 5 in 2
+2020-02-04 19:10:46 <egelbot> (Dummy71DOT0 5)
+2020-02-04 19:10:55 <b_jonas> egelbot: let (2 0) = 5 in 2
+2020-02-04 19:10:55 <egelbot> (Dummy72DOT0 5)
+2020-02-04 19:11:09 <b_jonas> let X = 2 in X
+2020-02-04 19:11:15 <b_jonas> egelbot: let X = 2 in X
+2020-02-04 19:11:15 <egelbot> 2
+2020-02-04 19:12:09 <b_jonas> spruit11: what do declarations like 2 = 5 mean in egel?
+2020-02-04 19:12:38 <b_jonas> oh I see
+2020-02-04 19:13:47 <b_jonas> it just desugars (let 2 = 5 in 2) to something like ([2 -> 2] 5) I think
+2020-02-04 19:13:56 <b_jonas> egelbot: let 2 = 5 in 6
+2020-02-04 19:13:56 <egelbot> (Dummy74DOT0 5)
+2020-02-04 19:14:08 <b_jonas> egelbot: [2 -> 6] in 5
+2020-02-04 19:14:08 <egelbot> internal:1:11:syntactical:in unexpected
+2020-02-04 19:14:11 <b_jonas> egelbot: [2 -> 6] 5
+2020-02-04 19:14:11 <egelbot> (Dummy75DOT0 5)
+2020-02-04 19:14:14 <b_jonas> right
+2020-02-04 19:14:46 <b_jonas> ah
+2020-02-04 19:15:29 <b_jonas> egelbot: 16511&&40537
+2020-02-04 19:15:29 <egelbot> 89
+2020-02-04 19:15:44 <b_jonas> `perl -eprint(16511&40537)
+2020-02-04 19:15:45 <HackEso> 89
+2020-02-04 19:15:50 <spruit11> Right.
+2020-02-04 19:15:52 <b_jonas> egelbot: 16511||40537
+2020-02-04 19:15:52 <egelbot> 56959
+2020-02-04 19:15:55 <b_jonas> `perl -eprint(16511|40537)
+2020-02-04 19:15:56 <HackEso> 56959
+2020-02-04 19:16:05 <b_jonas> so these are in the standard library, just under a strange name. nice
+2020-02-04 19:16:07 <spruit11> A let is just a lambda.
+2020-02-04 19:16:29 <b_jonas> egelbot: 16511^^40537
+2020-02-04 19:16:29 <egelbot> 56870
+2020-02-04 19:16:34 <b_jonas> `perl -eprint(16511^40537)
+2020-02-04 19:16:35 <HackEso> 56870
+2020-02-04 19:16:40 <spruit11> The standard library wasn't very well thought over and is still subject to change.
+2020-02-04 19:16:44 <spruit11> egelbot: 1/0
+2020-02-04 19:16:45 <egelbot> (System:/ 1 0)
+2020-02-04 19:16:50 <b_jonas> egelbot: 0x407F
+2020-02-04 19:16:50 <egelbot> internal:1:7:semantical:undeclared F
+2020-02-04 19:17:21 <spruit11> Right, I still don't know whether to stop rewriting or throw an exception on `1/0`.
+2020-02-04 19:17:26 <b_jonas> egelbot: &H407F
+2020-02-04 19:17:26 <egelbot> internal:1:2:syntactical:primary expression expected
+2020-02-04 19:18:43 <b_jonas> egelbot: 1<<7
+2020-02-04 19:18:43 <egelbot> 128
+2020-02-04 19:18:48 <b_jonas> egelbot: 1<<12
+2020-02-04 19:18:48 <egelbot> 4096
+2020-02-04 19:18:49 <b_jonas> egelbot: 1<<22
+2020-02-04 19:18:49 <egelbot> 4194304
+2020-02-04 19:18:52 <b_jonas> egelbot: 1<<30
+2020-02-04 19:18:52 <egelbot> 1073741824
+2020-02-04 19:18:53 <b_jonas> egelbot: 1<<31
+2020-02-04 19:18:53 <egelbot> 2147483648
+2020-02-04 19:18:54 <b_jonas> egelbot: 1<<32
+2020-02-04 19:18:54 <egelbot> 4294967296
+2020-02-04 19:18:56 <b_jonas> egelbot: 1<<35
+2020-02-04 19:18:56 <egelbot> 34359738368
+2020-02-04 19:18:58 <b_jonas> egelbot: 1<<47
+2020-02-04 19:18:59 <egelbot> 140737488355328
+2020-02-04 19:19:02 <b_jonas> egelbot: 1<<62
+2020-02-04 19:19:02 <egelbot> 4611686018427387904
+2020-02-04 19:19:03 <b_jonas> egelbot: 1<<63
+2020-02-04 19:19:04 <egelbot> -9223372036854775808
+2020-02-04 19:19:05 <b_jonas> egelbot: 1<<64
+2020-02-04 19:19:05 <egelbot> 1
+2020-02-04 19:19:16 <b_jonas> egelbot: (1<<63)+(1<<63)
+2020-02-04 19:19:16 <egelbot> (System:+ -9223372036854775808 -9223372036854775808)
+2020-02-04 19:19:53 <b_jonas> egelbot: 2 != 3
+2020-02-04 19:19:54 <egelbot> internal:1:4:syntactical:!= unexpected
+2020-02-04 19:20:03 <b_jonas> egelbot: (!=) 2 3
+2020-02-04 19:20:03 <egelbot> System:true
+2020-02-04 19:20:05 <b_jonas> egelbot: (!=) 2 2
+2020-02-04 19:20:05 <egelbot> System:false
+2020-02-04 19:20:08 <b_jonas> heh
+2020-02-04 19:20:35 <b_jonas> egelbot: true == false
+2020-02-04 19:20:35 <egelbot> System:false
+2020-02-04 19:20:37 <b_jonas> egelbot: true == true
+2020-02-04 19:20:37 <egelbot> System:true
+2020-02-04 19:20:41 <b_jonas> egelbot: {} == {}
+2020-02-04 19:20:41 <egelbot> System:true
+2020-02-04 19:20:43 <b_jonas> egelbot: {2} == {3}
+2020-02-04 19:20:43 <egelbot> System:false
+2020-02-04 19:20:45 <b_jonas> egelbot: {2} == {2}
+2020-02-04 19:20:45 <egelbot> System:true
+2020-02-04 19:21:01 <spruit11> Ah. Not sure what unequality is.
+2020-02-04 19:21:04 <b_jonas> egelbot: [_->0] == [_->0]
+2020-02-04 19:21:04 <egelbot> System:false
+2020-02-04 19:21:07 <spruit11> egelbot: ~=
+2020-02-04 19:21:07 <egelbot> internal:1:4:syntactical:primary expression expected
+2020-02-04 19:21:30 <b_jonas> spruit11: (!=) is the unequality function, the lexer just doesn't tokenize it as an infix operator apparently
+2020-02-04 19:21:42 <spruit11> True.
+2020-02-04 19:21:45 <b_jonas> egelbot: {(!=) 2 2, (!=) 2 3}
+2020-02-04 19:21:45 <egelbot> (System:cons System:false (System:cons System:true System:nil))
+2020-02-04 19:21:52 <spruit11> Been a while. Never tested that it seems.
+2020-02-04 19:22:00 <b_jonas> egelbot: let X = [_->0] in X == X
+2020-02-04 19:22:00 <egelbot> System:true
+2020-02-04 19:22:20 <b_jonas> egelbot: let X = [_ _->0] in (X 2) == (X 2)
+2020-02-04 19:22:20 <egelbot> System:true
+2020-02-04 19:22:23 <spruit11> Neat.
+2020-02-04 19:22:32 <b_jonas> egelbot: let X = [_ _->0] in (X 2) == (X 1)
+2020-02-04 19:22:32 <egelbot> System:false
+2020-02-04 19:22:54 <b_jonas> egelbot: let (X, Y) = ([_ _->0], [_ _->0]) in (X 1) == (X 1)
+2020-02-04 19:22:54 <egelbot> System:true
+2020-02-04 19:22:56 <b_jonas> egelbot: let (X, Y) = ([_ _->0], [_ _->0]) in (X 1) == (Y 1)
+2020-02-04 19:22:56 <egelbot> System:false
+2020-02-04 19:22:58 <b_jonas> egelbot: let (X, Y) = ([_ _->0], [_ _->0]) in (Y 1) == (Y 1)
+2020-02-04 19:22:58 <egelbot> System:true
+2020-02-04 19:23:37 <b_jonas> hmm, so what are these array things?
+2020-02-04 19:23:52 <spruit11> What array?
+2020-02-04 19:24:04 <spruit11> Nice eq checks by the way.
+2020-02-04 19:24:54 <b_jonas> https://github.com/egel-lang/egel/blob/master/src/builtin/system.cpp#L372
+2020-02-04 19:25:02 <spruit11> Most of your eq checks used dyadidic lambda's.
+2020-02-04 19:25:05 <b_jonas> egelbot: toint "D"
+2020-02-04 19:25:05 <egelbot> 0
+2020-02-04 19:25:19 <b_jonas> egelbot: toint 'D'
+2020-02-04 19:25:19 <egelbot> 68
+2020-02-04 19:25:23 <b_jonas> egelbot: toint "32"
+2020-02-04 19:25:23 <egelbot> 32
+2020-02-04 19:25:26 <b_jonas> egelbot: toint '\n'
+2020-02-04 19:25:26 <egelbot> 10
+2020-02-04 19:25:32 <b_jonas> so that _is_ a newline
+2020-02-04 19:25:38 <b_jonas> egelbot: unpack "foo"
+2020-02-04 19:25:38 <egelbot> (System:cons 'f' (System:cons 'o' (System:cons 'o' System:nil)))
+2020-02-04 19:25:45 <b_jonas> egelbot: toint (unpack "\n")
+2020-02-04 19:25:45 <egelbot> (System:toint (System:cons '\n' System:nil))
+2020-02-04 19:25:49 <spruit11> Yah.
+2020-02-04 19:26:10 <b_jonas> egelbot: [{X} -> toint X] (unpack "\n")
+2020-02-04 19:26:10 <egelbot> 10
+2020-02-04 19:26:22 <b_jonas> so that is a newline
+2020-02-04 19:26:26 <b_jonas> egelbot: say "foo\nbar"
+2020-02-04 19:26:26 <egelbot> foo-bar
+2020-02-04 19:26:31 <b_jonas> egelbot: say "foo\r\nbar"
+2020-02-04 19:26:31 <egelbot> internal:1:11:lexical:error in string
+2020-02-04 19:26:40 <b_jonas> egelbot: say "foo\x0D\nbar"
+2020-02-04 19:26:40 <egelbot> internal:1:11:lexical:error in string
+2020-02-04 19:26:48 <spruit11> That's part of the hardening of the bot.
+2020-02-04 19:27:01 <spruit11> Just replaces \n with - in the output.
+2020-02-04 19:27:11 <spruit11> Just to be sure.
+2020-02-04 19:28:57 <b_jonas> spruit11: what are these arrays that that line in builtin/system.cpp refer to?
+2020-02-04 19:29:02 <b_jonas> egelbot: int
+2020-02-04 19:29:02 <egelbot> System:int
+2020-02-04 19:29:19 <spruit11> egelbot: let X = [ _ -> 0 ] in (X 2) == (X 2)
+2020-02-04 19:29:19 <egelbot> System:true
