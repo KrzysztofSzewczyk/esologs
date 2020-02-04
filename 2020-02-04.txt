@@ -1049,3 +1049,154 @@
 2020-02-04 19:59:36 <spruit11> It leaks, since it needs to rerun the interpreter.
 2020-02-04 19:59:52 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
 2020-02-04 19:59:52 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1..."}]{3,1,1...
+2020-02-04 20:00:06 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1...5,1,5}))"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:00:06 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1...5,1,5}))"}]{3,1,1...5,1,5}))
+2020-02-04 20:00:24 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:00:24 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:00:33 <spruit11> Got it?
+2020-02-04 20:00:43 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:00:43 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}]{3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:00:44 <spruit11> Looks right.
+2020-02-04 20:00:56 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:00:56 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:01:15 <b_jonas> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:01:15 <egelbot> egelbot: say(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: say(List:foldr(+)","(List:map[K->List:nth K{","}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-02-04 20:01:20 <b_jonas> probably
+2020-02-04 20:01:36 <b_jonas> it is possible to write much shorter quines of course, this is just one that I like because it's easy to write
+2020-02-04 20:01:59 <spruit11> I have no idea what you did but color me impressed.
+2020-02-04 20:02:27 <b_jonas> you can read the list manipulation part, right?
+2020-02-04 20:02:38 <spruit11> Yah.
+2020-02-04 20:02:56 <b_jonas> there's a list of strings, and a list of integers, and I index the list of integers with each of the list of strings and print them
+2020-02-04 20:03:12 <b_jonas> works well in most languages
+2020-02-04 20:03:24 <b_jonas> if they have a way to write string constants like this
+2020-02-04 20:03:34 <spruit11> This will need some thought on my part. I saved the expression for later.
+2020-02-04 20:04:53 <b_jonas> you can usually get shorter or nicer quines if you use properties that are more specific to the language
+2020-02-04 20:06:15 <spruit11> Looks okay enough to me.
+2020-02-04 20:07:17 <spruit11> I am off. Will let the bot run for a while.
+2020-02-04 20:07:17 <b_jonas> egelbot: "A""D"
+2020-02-04 20:07:17 <egelbot> ("A" "D")
+2020-02-04 20:07:46 <b_jonas> egelbot: [Q B->]"\"""\\"
+2020-02-04 20:07:46 <egelbot> internal:1:8:syntactical:primary expression expected
+2020-02-04 20:08:04 <spruit11> Yah, hint. There's no real difference between data constructors and other constants.
+2020-02-04 20:08:10 <spruit11> egelbot: 1 2
+2020-02-04 20:08:10 <egelbot> (1 2)
+2020-02-04 20:08:18 <spruit11> This works fine.
+2020-02-04 20:08:23 <spruit11> egelbot: cons 1 nil
+2020-02-04 20:08:23 <egelbot> (System:cons 1 System:nil)
+2020-02-04 20:08:29 <spruit11> This works fine
+2020-02-04 20:08:37 <spruit11> egelbot: nil 1 cons
+2020-02-04 20:08:37 <egelbot> (System:nil 1 System:cons)
+2020-02-04 20:08:41 <spruit11> But that too.
+2020-02-04 20:08:51 <spruit11> There's no difference. It's just composition.
+2020-02-04 20:09:27 <b_jonas> egelbot: [Q B L->L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q]"\"""\\""[Q B L->L+Q+B+...L+Q]"
+2020-02-04 20:09:27 <egelbot> "[Q B L->L+Q+B+...L+Q]\"\\\"\"\"\\\\\"\"[Q B L->L+Q+B+...L+Q]\""
+2020-02-04 20:09:39 <b_jonas> egelbot: [Q B L->L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q]"\"""\\""[Q B L->L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q]"
+2020-02-04 20:09:39 <egelbot> "[Q B L->L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q]\"\\\"\"\"\\\\\"\"[Q B L->L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q]\""
+2020-02-04 20:09:43 <b_jonas> no
+2020-02-04 20:09:44 <b_jonas> needs say
+2020-02-04 20:10:03 <b_jonas> egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"\"""\\""[Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"
+2020-02-04 20:10:03 <egelbot> [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"\"""\\""[Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"
+2020-02-04 20:10:11 <b_jonas> egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"\"""\\""egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"
+2020-02-04 20:10:12 <egelbot> egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"\"""\\""egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"
+2020-02-04 20:10:21 <b_jonas> egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"\"""\\""egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"
+2020-02-04 20:10:21 <egelbot> egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"\"""\\""egelbot: [Q B L->say(L+Q+B+Q+Q+Q+B+B+Q+Q+L+Q)]"
+2020-02-04 20:10:34 <b_jonas> egelbot: quote "a\nb"
+2020-02-04 20:10:34 <egelbot> internal:1:2:semantical:undeclared quote
+2020-02-04 20:10:42 <spruit11> Ah, You removed the fold.
+2020-02-04 20:10:44 <b_jonas> egelbot: escape "a\nb"
+2020-02-04 20:10:44 <egelbot> internal:1:2:semantical:undeclared escape
+2020-02-04 20:10:54 <b_jonas> spruit11: and removed the list indexing
+2020-02-04 20:11:17 <b_jonas> also wrote it in such a way that there's nothing after the final double quote, so we don't need a fourth string
+2020-02-04 20:14:08 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=69601&oldid=69589 5* 03B jonas 5* (+11) 10[[Egel]]
+2020-02-04 20:15:58 <esowiki> 14[[07Egel14]]4 10 02https://esolangs.org/w/index.php?diff=69602&oldid=69600 5* 03B jonas 5* (+9) 10
+2020-02-04 20:16:43 <b_jonas> egelbot: get 0 ("foo" "bar")
+2020-02-04 20:16:43 <egelbot> (System:get 0 ("foo" "bar"))
+2020-02-04 20:16:47 <b_jonas> egelbot: get ("foo" "bar") 0
+2020-02-04 20:16:47 <egelbot> (System:get ("foo" "bar") 0)
+2020-02-04 20:16:50 <b_jonas> egelbot: get ("foo" "bar") 1
+2020-02-04 20:16:51 <egelbot> (System:get ("foo" "bar") 1)
+2020-02-04 20:16:55 <b_jonas> egelbot: get {1,2} 0
+2020-02-04 20:16:55 <egelbot> (System:get (System:cons 1 (System:cons 2 System:nil)) 0)
+2020-02-04 20:16:59 <b_jonas> egelbot: get {6,7} 0
+2020-02-04 20:16:59 <egelbot> (System:get (System:cons 6 (System:cons 7 System:nil)) 0)
+2020-02-04 20:17:01 <b_jonas> egelbot: get {6,7} 1
+2020-02-04 20:17:01 <egelbot> (System:get (System:cons 6 (System:cons 7 System:nil)) 1)
+2020-02-04 20:17:03 <b_jonas> egelbot: get 0 {6,7}
+2020-02-04 20:17:03 <egelbot> (System:get 0 (System:cons 6 (System:cons 7 System:nil)))
+2020-02-04 20:17:11 <b_jonas> egelbot: get 0 (6 7)
+2020-02-04 20:17:12 <egelbot> (System:get 0 (6 7))
+2020-02-04 20:17:42 <b_jonas> egelbot: get (6 7) 0
+2020-02-04 20:17:43 <egelbot> (System:get (6 7) 0)
+2020-02-04 20:17:44 <b_jonas> egelbot: get (6 7) 1
+2020-02-04 20:17:45 <egelbot> (System:get (6 7) 1)
+2020-02-04 20:18:09 <b_jonas> egelbot: getv (6 7)
+2020-02-04 20:18:09 <egelbot> (System:getv (6 7))
+2020-02-04 20:18:21 <spruit11> Uh.
+2020-02-04 20:19:10 <b_jonas> egelbot: charAt "foo" 0
+2020-02-04 20:19:10 <egelbot> (String:charAt "foo" 0)
+2020-02-04 20:19:14 <b_jonas> egelbot: charAt 0 "foo"
+2020-02-04 20:19:14 <egelbot> 'f'
+2020-02-04 20:19:15 <b_jonas> egelbot: charAt 1 "foo"
+2020-02-04 20:19:16 <egelbot> 'o'
+2020-02-04 20:19:41 <spruit11> egelbot: getv (var 0)
+2020-02-04 20:19:41 <egelbot> internal:1:8:syntactical:primary expression expected
+2020-02-04 20:20:07 <spruit11> egelbot: getv (v 0)
+2020-02-04 20:20:07 <egelbot> 0
+2020-02-04 20:20:27 <spruit11> Right, that's for an unsafe extension of Egel.
+2020-02-04 20:20:44 <spruit11> egelbot: setv 1 (v 0)
+2020-02-04 20:20:44 <egelbot> (System:setv 1 (System:v 0))
+2020-02-04 20:20:51 <b_jonas> egelbot: 10 % 3
+2020-02-04 20:20:51 <egelbot> 1
+2020-02-04 20:21:03 <b_jonas> egelbot: next
+2020-02-04 20:21:03 <egelbot> internal:1:2:semantical:undeclared next
+2020-02-04 20:21:05 <b_jonas> egelbot: last
+2020-02-04 20:21:06 <egelbot> internal:1:2:semantical:undeclared last
+2020-02-04 20:21:11 <b_jonas> egelbot: data next
+2020-02-04 20:21:15 <b_jonas> egelbot: data last
+2020-02-04 20:21:20 <b_jonas> egelbot: {next, last}
+2020-02-04 20:21:20 <egelbot> (System:cons next (System:cons last System:nil))
+2020-02-04 20:21:29 <spruit11> egelbot: setv (v 1) 1
+2020-02-04 20:21:29 <egelbot> (System:v 1)
+2020-02-04 20:21:36 <spruit11> egelbot: setv (v 0) 1
+2020-02-04 20:21:36 <egelbot> (System:v 1)
+2020-02-04 20:21:39 <b_jonas> egelbot: loop
+2020-02-04 20:21:39 <egelbot> internal:1:2:semantical:undeclared loop
+2020-02-04 20:21:58 <spruit11> It overwrites the term. But the term needs to be a DAG, so that's unsafe.
+2020-02-04 20:22:50 <b_jonas> egelbot: def loop = [Func Init -> [(next X) -> loop Func X | (last R) -> R] (Func Init)]
+2020-02-04 20:23:07 <b_jonas> I'm trying to see if I can translate http://math.bme.hu/~ambrus/pu/olvashato/t2.olv
+2020-02-04 20:23:13 <b_jonas> egelbot: iota
+2020-02-04 20:23:14 <egelbot> internal:1:2:semantical:undeclared iota
+2020-02-04 20:24:45 <b_jonas> egelbot: def iota = [N -> loop [(K, D) -> if k <= 0 then last D else next (K - 1, cons (k - 1) D)] (n, {})]
+2020-02-04 20:24:45 <egelbot> internal:1:93:semantical:undeclared n
+2020-02-04 20:24:54 <b_jonas> egelbot: def iota = [N -> loop [(K, D) -> if k <= 0 then last D else next (K - 1, cons (k - 1) D)] (N, {})]
+2020-02-04 20:25:01 <b_jonas> egelbot: iota 7
+2020-02-04 20:25:22 <b_jonas> egelbot: 47319
+2020-02-04 20:25:28 <b_jonas> I probably made an infinite loop
+2020-02-04 20:25:33 <spruit11> Not exactly sure what that does but I like 'coalgebraic' loops more.
+2020-02-04 20:25:39 <spruit11> Oh right, moment.
+2020-02-04 20:25:49 Quit: egelbot (Read error: Connection reset by peer)
+2020-02-04 20:25:49 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 20:26:04 Joined: egelbot
+2020-02-04 20:26:04 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 20:26:22 <b_jonas> egelbot: data next
+2020-02-04 20:26:28 <b_jonas> egelbot: data last
+2020-02-04 20:26:41 <spruit11> egelbot: def ones = (1, [ _ -> ones ])
+2020-02-04 20:26:53 <spruit11> egelbot: ones
+2020-02-04 20:26:53 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 20:26:53 <egelbot> (System:tuple 1 onesDOT0)
+2020-02-04 20:27:08 <spruit11> egelbot: tail ones
+2020-02-04 20:27:08 <egelbot> internal:1:2:semantical:undeclared tail
+2020-02-04 20:27:12 <spruit11> uh.
+2020-02-04 20:27:28 <spruit11> egelbot: [ (X,Y) -> Y ] ones
+2020-02-04 20:27:29 <egelbot> onesDOT0
+2020-02-04 20:27:37 <spruit11> Oh, right.
+2020-02-04 20:27:55 <spruit11> egelbot: def ones = [ _ -> (1, ones) ]
+2020-02-04 20:28:01 <spruit11> egelbot: ones
+2020-02-04 20:28:01 <egelbot> ones
+2020-02-04 20:28:08 <spruit11> egelbot: ones 0
+2020-02-04 20:28:09 <egelbot> (System:tuple 1 ones)
+2020-02-04 20:28:19 <b_jonas> I probably did a stupid typo, but it's not easy to debug this
+2020-02-04 20:28:34 <spruit11> Right, that recursive can be used as an infinite list of ones.
+2020-02-04 20:28:48 <spruit11> Egel isn't user friendly.
+2020-02-04 20:29:02 <b_jonas> no, the code that I'm translating isn't user-friendly
+2020-02-04 20:29:38 <spruit11> Ah. ;)
