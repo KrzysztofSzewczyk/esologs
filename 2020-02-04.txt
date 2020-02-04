@@ -595,3 +595,88 @@
 2020-02-04 18:03:07 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
 2020-02-04 18:29:25 Joined: b_jonas
 2020-02-04 18:29:25 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 18:30:08 User Name: b_jonas = b_jonas!~x@catv-176-63-13-186.catv.broadband.hu
+2020-02-04 18:30:08 <b_jonas> egelbot: dog cat
+2020-02-04 18:30:08 <egelbot> internal:1:2:semantical:undeclared dog
+2020-02-04 18:30:15 <b_jonas> egelbot: cons 1 2 3
+2020-02-04 18:30:15 <egelbot> (System:cons 1 2 3)
+2020-02-04 18:30:38 <b_jonas> spruit11: how do you define a new named constructor?
+2020-02-04 18:31:13 <b_jonas> do you just def dog = [] ?
+2020-02-04 18:31:17 <b_jonas> egelbot: [] 2
+2020-02-04 18:31:17 <egelbot> internal:1:3:syntactical:-> expected
+2020-02-04 18:31:56 <b_jonas> egelbot: let F = [true -> "yes"] in {F true, F false, F 0, F 1, F -1, F {}}
+2020-02-04 18:31:56 <egelbot> (System:cons "yes" (System:cons (Dummy34DOT1 System:false) (System:cons (Dummy34DOT1 0) (System:cons (Dummy34DOT1 1) (System:cons (Dummy34DOT1 -1) (System:cons (Dummy34DOT1 System:nil) System:nil))))))
+2020-02-04 18:32:40 <b_jonas> egelbot: let F = [X Y -> (10 * X) + Y] in {F 7 1, F 7 0, F 0 2, (F 7) 1, F (7 1)}
+2020-02-04 18:32:41 <egelbot> (System:cons 71 (System:cons 70 (System:cons 2 (System:cons 71 (System:cons (Dummy35DOT1 (7 1)) System:nil)))))
+2020-02-04 18:33:38 <b_jonas> egelbot: let F = [X Y -> (10 * X) + Y] in [F -> F 2] (F 7)
+2020-02-04 18:33:38 <egelbot> 72
+2020-02-04 18:34:16 Parted: int-e
+2020-02-04 18:34:16 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 18:34:17 <b_jonas> egelbot: let F = [X Y -> (10 * X) + Y] in [S -> {S (F 7), S (F 6)}] [F -> F 2]
+2020-02-04 18:34:17 <egelbot> (System:cons 72 (System:cons 62 System:nil))
+2020-02-04 18:35:23 <spruit11> b_jonas: data
+2020-02-04 18:35:37 <spruit11> egelbot: data tree, leaf
+2020-02-04 18:35:51 <b_jonas> egelbot: [[0 -> 0] -> 3] [0 -> 0]
+2020-02-04 18:35:51 <egelbot> internal:1:3:syntactical:-> expected
+2020-02-04 18:35:57 <spruit11> egelbot: tree (leaf 1) (leaf 'a')
+2020-02-04 18:35:57 <egelbot> (tree (leaf 1) (leaf 'a'))
+2020-02-04 18:36:03 <b_jonas> egelbot: [0 -> 0] 0
+2020-02-04 18:36:04 <egelbot> 0
+2020-02-04 18:36:05 <b_jonas> egelbot: [0 -> 0] 1
+2020-02-04 18:36:05 <egelbot> (Dummy40DOT0 1)
+2020-02-04 18:36:39 <spruit11> It refuses to rewrite a combinator introduced by the lambda.
+2020-02-04 18:36:48 <spruit11> The language is very spartan.
+2020-02-04 18:36:51 <b_jonas> egelbot: let C = [tree -> 2 | leaf -> 0] in {C tree, C leaf}
+2020-02-04 18:36:51 <egelbot> (System:cons 2 (System:cons 0 System:nil))
+2020-02-04 18:37:16 <b_jonas> thanks
+2020-02-04 18:37:26 <spruit11> Np.
+2020-02-04 18:37:35 <spruit11> Nice to see some interest.
+2020-02-04 18:39:13 <b_jonas> egelbot: [(X Y) -> X] (2 5)
+2020-02-04 18:39:13 <egelbot> 2
+2020-02-04 18:39:16 <b_jonas> egelbot: [(X Y) -> Y] (2 5)
+2020-02-04 18:39:16 <egelbot> 5
+2020-02-04 18:39:28 <b_jonas> egelbot: [(X Y) -> Y] {2, 5}
+2020-02-04 18:39:28 <egelbot> (Dummy44DOT0 (System:cons 2 (System:cons 5 System:nil)))
+2020-02-04 18:39:33 <b_jonas> egelbot: [(X Y) -> X] {2, 5}
+2020-02-04 18:39:33 <egelbot> (Dummy45DOT0 (System:cons 2 (System:cons 5 System:nil)))
+2020-02-04 18:39:42 <b_jonas> egelbot: [(X Y Z) -> (X, Y, Z)] {2, 5}
+2020-02-04 18:39:42 <egelbot> (System:tuple System:cons 2 (System:cons 5 System:nil))
+2020-02-04 18:39:52 <b_jonas> what
+2020-02-04 18:39:56 <b_jonas> ah ok
+2020-02-04 18:40:03 <b_jonas> egelbot: [(X Y Z) -> X)] {2, 5}
+2020-02-04 18:40:04 <egelbot> internal:1:15:syntactical:] expected
+2020-02-04 18:40:07 <b_jonas> egelbot: [(X Y Z) -> X] {2, 5}
+2020-02-04 18:40:07 <egelbot> System:cons
+2020-02-04 18:40:11 <b_jonas> egelbot: [(X Y Z) -> Y] {2, 5}
+2020-02-04 18:40:11 <egelbot> 2
+2020-02-04 18:40:13 <b_jonas> egelbot: [(X Y Z) -> Z] {2, 5}
+2020-02-04 18:40:13 <egelbot> (System:cons 5 System:nil)
+2020-02-04 18:40:23 <b_jonas> egelbot: [(X Y) -> X] {2, 5}
+2020-02-04 18:40:24 <egelbot> (Dummy50DOT0 (System:cons 2 (System:cons 5 System:nil)))
+2020-02-04 18:40:32 <b_jonas> hmm
+2020-02-04 18:40:37 <b_jonas> egelbot: [(X Y) -> X] (2 5 1)
+2020-02-04 18:40:37 <egelbot> (Dummy51DOT0 (2 5 1))
+2020-02-04 18:40:57 <b_jonas> egelbot: [(X Y) -> X] (cons 2 {5})
+2020-02-04 18:40:58 <egelbot> (Dummy52DOT0 (System:cons 2 (System:cons 5 System:nil)))
+2020-02-04 18:41:01 <b_jonas> egelbot: [(X Y) -> X] ((cons 2) {5})
+2020-02-04 18:41:01 <egelbot> (Dummy53DOT0 (System:cons 2 (System:cons 5 System:nil)))
+2020-02-04 18:41:10 <b_jonas> egelbot: ((cons 2) {5})
+2020-02-04 18:41:10 <egelbot> (System:cons 2 (System:cons 5 System:nil))
+2020-02-04 18:42:32 Joined: FreeFull
+2020-02-04 18:42:32 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 18:42:41 <b_jonas> I wonder if we can build and install this on HackEso. the docs says that it needs libicu, but that's probably not unsurmountable
+2020-02-04 18:45:21 <spruit11> It isn't hardened.
+2020-02-04 18:45:46 <spruit11> Maybe if I harden it, or someone else writes a script around it.
+2020-02-04 18:46:29 <spruit11> I could limit the bot to 100k rewrites, just would take me some time, and I still wouldn't know if that's enough to harden.
+2020-02-04 18:46:44 <spruit11> Dunno.
+2020-02-04 18:50:32 <b_jonas> HackEso has a built-in time limit for its commands, so you don't need a time limit in the interpreter
+2020-02-04 18:50:47 <b_jonas> 60 seconds usually
+2020-02-04 18:55:03 Joined: b_jonas
+2020-02-04 18:55:38 Quit: b_jonas (Ping timeout: 240 seconds)
+2020-02-04 18:56:46 Nick Change: b_jonas -> b_jonas
+2020-02-04 18:56:50 <b_jonas> (sorry, technical difficulties)
+2020-02-04 18:57:30 <b_jonas> egelbot: let F = [X Y -> (10 * X) + Y] in {F 7 3, F 7, F}
+2020-02-04 18:57:30 <egelbot> (System:cons 73 (System:cons (Dummy55DOT1 7) (System:cons Dummy55DOT1 System:nil)))
+2020-02-04 18:57:51 <b_jonas> so this term rewriting system has a full untyped lambda calculus in it, right?
+2020-02-04 18:59:48 Quit: wmww (*.net *.split)
+2020-02-04 18:59:49 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, xelxebar, zemhill, zzo38
