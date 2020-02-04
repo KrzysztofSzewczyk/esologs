@@ -1227,3 +1227,136 @@
 2020-02-04 20:59:22 <b_jonas> that doesn't look right
 2020-02-04 20:59:26 <b_jonas> egelbot: let X = [1 -> 6 | X -> 7] in {X 0, X 1}
 2020-02-04 20:59:26 <egelbot> (System:cons 7 (System:cons 6 System:nil))
+2020-02-04 21:00:09 <b_jonas> egelbot: let X = [1 -> 6 | -> 7] in X 1
+2020-02-04 21:00:09 <egelbot> (7 1)
+2020-02-04 21:00:09 <spruit11> Nono, that's right.
+2020-02-04 21:00:15 <b_jonas> egelbot: let X = [1 -> 6] in X 1
+2020-02-04 21:00:15 <egelbot> 6
+2020-02-04 21:00:38 <spruit11> egelbot: [ -> 1 ] 2
+2020-02-04 21:00:39 <egelbot> (1 2)
+2020-02-04 21:00:52 <spruit11> A zero-adic lambda.
+2020-02-04 21:00:59 <spruit11> Just rewrites to 1.
+2020-02-04 21:01:18 <b_jonas> egelbot: [_ _ -> 6] 0 1
+2020-02-04 21:01:19 <egelbot> 6
+2020-02-04 21:01:23 <b_jonas> egelbot: [Z Z -> 6] 0 1
+2020-02-04 21:01:23 <egelbot> internal:1:5:semantical:redeclaration of Z
+2020-02-04 21:01:27 <b_jonas> nice
+2020-02-04 21:01:40 <b_jonas> egelbot: [_ _ -> 6 + _] 0 1
+2020-02-04 21:01:40 <egelbot> internal:1:14:semantical:undeclared _
+2020-02-04 21:01:59 <b_jonas> egelbot: P
+2020-02-04 21:01:59 <egelbot> internal:1:2:semantical:undeclared P
+2020-02-04 21:02:00 <spruit11> Hmm, kind-of right?
+2020-02-04 21:02:32 <spruit11> I shouldn't allow wildcards in expressions. That's a feature.
+2020-02-04 21:02:35 <spruit11> Will fix.
+2020-02-04 21:02:36 <b_jonas> what I don't understand is why def'ed variables are lowercase, as well as constructors, but local variables are uppercase. or is some of that optional?
+2020-02-04 21:03:05 <spruit11> Anything 'constant' is lowercase.
+2020-02-04 21:03:20 <spruit11> def f = [ X-> X ]
+2020-02-04 21:03:28 <spruit11> egelbot: def f = [ X-> X ]
+2020-02-04 21:03:32 <spruit11> egelbot: f
+2020-02-04 21:03:32 <egelbot> f
+2020-02-04 21:03:35 <b_jonas> def Pk1 = 1
+2020-02-04 21:03:37 <b_jonas> egelbot: def Pk1 = 1
+2020-02-04 21:03:38 <egelbot> internal:1:2:syntactical:combinator or operator expected
+2020-02-04 21:03:53 <spruit11> Right, it's a combinator which may rewrite.
+2020-02-04 21:04:23 <spruit11> egelbot: [ f -> 'hi' ] f
+2020-02-04 21:04:23 <egelbot> internal:1:11:lexical:error in char
+2020-02-04 21:04:31 <spruit11> egelbot: [ f -> "hi" ] f
+2020-02-04 21:04:32 <egelbot> "hi"
+2020-02-04 21:06:05 <spruit11> I took it as far as I could go. I.e., you have some 'introspection' qualities.
+2020-02-04 21:06:10 <spruit11> egelbot: sin
+2020-02-04 21:06:11 <egelbot> internal:1:2:semantical:undeclared sin
+2020-02-04 21:06:17 <spruit11> egelbot: Math:sin
+2020-02-04 21:06:17 <egelbot> Math:sin
+2020-02-04 21:06:26 <spruit11> egelbot: using Math
+2020-02-04 21:06:27 <b_jonas> ok that's weird
+2020-02-04 21:06:40 <spruit11> egelbot: [ sin -> "using sin" ] sin
+2020-02-04 21:06:41 <egelbot> "using sin"
+2020-02-04 21:07:46 <b_jonas> egelbot: [0 -> 6| ] 0
+2020-02-04 21:07:46 <egelbot> internal:1:11:syntactical:-> expected
+2020-02-04 21:07:47 <spruit11> I was looking for exploitable features in the operational model. But couldn't take it very far.
+2020-02-04 21:08:03 <b_jonas> egelbot: [0 -> 6| 1 X -> 7] 0 2
+2020-02-04 21:08:03 <egelbot> (6 2)
+2020-02-04 21:08:05 <b_jonas> egelbot: [0 -> 6| 1 X -> 7] 1 2
+2020-02-04 21:08:06 <egelbot> 7
+2020-02-04 21:08:17 <b_jonas> egelbot: [0 -> 6| X 1 -> 7] 0 1
+2020-02-04 21:08:18 <egelbot> (6 1)
+2020-02-04 21:08:27 <b_jonas> egelbot: [X 1 -> 7| 0 -> 6] 0 1
+2020-02-04 21:08:27 <egelbot> 7
+2020-02-04 21:08:40 <b_jonas> egelbot: [X 1 -> 7| -> 6] 0 1
+2020-02-04 21:08:41 <egelbot> 7
+2020-02-04 21:08:48 <b_jonas> egelbot: [1 -> 7| -> 6] 1
+2020-02-04 21:08:49 <egelbot> 7
+2020-02-04 21:09:16 <b_jonas> egelbot: let X = [1 -> 7| -> 6] in X 1
+2020-02-04 21:09:17 <egelbot> (6 1)
+2020-02-04 21:09:23 <b_jonas> ...
+2020-02-04 21:09:36 <spruit11> Hmm.
+2020-02-04 21:09:41 <b_jonas> yeah, nicely esoteric
+2020-02-04 21:09:53 <b_jonas> that other thing too, where
+2020-02-04 21:10:07 <b_jonas> egelbot: (cons 2) nil
+2020-02-04 21:10:07 <egelbot> (System:cons 2 System:nil)
+2020-02-04 21:10:11 <b_jonas> egelbot: {2}
+2020-02-04 21:10:12 <egelbot> (System:cons 2 System:nil)
+2020-02-04 21:10:15 <spruit11> It's probably something to do with let.
+2020-02-04 21:10:17 <b_jonas> functions are clearly curried
+2020-02-04 21:10:17 <b_jonas> but
+2020-02-04 21:10:26 <b_jonas> egelbot: [X Y -> 6] {2}
+2020-02-04 21:10:26 <egelbot> (Dummy33DOT0 (System:cons 2 System:nil))
+2020-02-04 21:10:30 <b_jonas> egelbot: [X Y Z -> 6] {2}
+2020-02-04 21:10:30 <egelbot> (Dummy34DOT0 (System:cons 2 System:nil))
+2020-02-04 21:10:40 <b_jonas> egelbot: [(X Y) -> 6] {2}
+2020-02-04 21:10:40 <egelbot> (Dummy35DOT0 (System:cons 2 System:nil))
+2020-02-04 21:10:42 <b_jonas> egelbot: [(X Y Z) -> 6] {2}
+2020-02-04 21:10:43 <egelbot> 6
+2020-02-04 21:10:53 <b_jonas> you can't match them as curried, you need to match the exact number of arguments
+2020-02-04 21:11:01 <b_jonas> that too is strange
+2020-02-04 21:11:03 <spruit11> Right.
+2020-02-04 21:11:35 <spruit11> Thinking about let X = [1 -> 7| -> 6] in X 1
+2020-02-04 21:12:05 <b_jonas> egelbot: [1 -> 7 | -> 6]
+2020-02-04 21:12:05 <egelbot> 6
+2020-02-04 21:12:19 <b_jonas> evaluates it nullary immediately
+2020-02-04 21:12:30 <b_jonas> egelbot: {[1 -> 7 | -> 6]}
+2020-02-04 21:12:30 <egelbot> (System:cons 6 System:nil)
+2020-02-04 21:12:33 <b_jonas> that too
+2020-02-04 21:12:38 <b_jonas> egelbot: ([1 -> 7 | -> 6],)
+2020-02-04 21:12:38 <egelbot> internal:1:19:syntactical:primary expression expected
+2020-02-04 21:12:43 <b_jonas> egelbot: tuple [1 -> 7 | -> 6]
+2020-02-04 21:12:43 <egelbot> (System:tuple 6)
+2020-02-04 21:13:06 <spruit11> egelbot: [ X -> X 1 ] [1 -> 7| -> 6]
+2020-02-04 21:13:06 <egelbot> (6 1)
+2020-02-04 21:13:21 <spruit11> Right, it fits if you understand the operational model.
+2020-02-04 21:13:32 <spruit11> It's eager.
+2020-02-04 21:13:55 <spruit11> This, [1 -> 7| -> 6], gets rewritten to 6 first, then applied.
+2020-02-04 21:14:16 <b_jonas> oh, that's a nice weasel phrase. "it fits if you understand the operational model." I'll try to tell that to my supervisor the next time something is broken at work
+2020-02-04 21:14:26 <spruit11> Hey!
+2020-02-04 21:14:26 <b_jonas> fungot, do you fit if you understand the operational model?
+2020-02-04 21:14:27 <fungot> b_jonas: http://lambda-the-ultimate.org/ node/ 841??!
+2020-02-04 21:14:42 <b_jonas> `8-ball do you fit if you understand the operational model?
+2020-02-04 21:14:43 <HackEso> It is decidedly so.
+2020-02-04 21:15:12 <spruit11> No, it's just that you need to be very careful with zero-adic functions.
+2020-02-04 21:15:25 <spruit11> They might rewrite before you apply them.
+2020-02-04 21:15:34 <spruit11> It's a feature, not a bug!
+2020-02-04 21:15:36 <b_jonas> "very careful" as in I should probably never use them
+2020-02-04 21:15:41 <spruit11> Right.
+2020-02-04 21:16:04 <spruit11> Like I said, I took the operational model as far as I could get it to go.
+2020-02-04 21:16:20 <spruit11> I wasn't designing something to be actually used.
+2020-02-04 21:16:30 <spruit11> This is #esoteric, right?
+2020-02-04 21:16:35 <b_jonas> yes
+2020-02-04 21:16:39 <spruit11> Right.
+2020-02-04 21:17:29 <spruit11> The thought was: Lisp got very far by exploiting their operational model as far as they could get it. Let's try the same.
+2020-02-04 21:18:23 <spruit11> I wanted to explore what you can do.
+2020-02-04 21:18:41 <spruit11> Most of what you can do turned out to be bad.
+2020-02-04 21:18:45 <spruit11> So?
+2020-02-04 21:20:22 <b_jonas> I think we can do this even without nullary functions:
+2020-02-04 21:21:18 <b_jonas> egelbot: [_ _ -> 2 | _ -> 1] 0 0
+2020-02-04 21:21:18 <egelbot> 2
+2020-02-04 21:21:24 <b_jonas> egelbot: ([_ _ -> 2 | _ -> 1] 0) 0
+2020-02-04 21:21:24 <egelbot> 2
+2020-02-04 21:21:34 <b_jonas> egelbot: let X = [_ _ -> 2 | _ -> 1] 0 in X 0
+2020-02-04 21:21:34 <spruit11> Right!
+2020-02-04 21:21:34 <egelbot> (1 0)
+2020-02-04 21:22:44 <spruit11> Sure, but you can do it!
+2020-02-04 21:22:59 <spruit11> It's a bit of joke, the language.
+2020-02-04 21:23:07 <spruit11> You're supposed to laugh now!
+2020-02-04 21:23:48 <spruit11> But I agree, variadic lambda's don't really make sense. At least, I haven't found good use for them yet.
+2020-02-04 21:24:03 <spruit11> Still looking, though.
+2020-02-04 21:24:11 <spruit11> Well, I was.
