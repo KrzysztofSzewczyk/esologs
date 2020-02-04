@@ -1200,3 +1200,30 @@
 2020-02-04 20:28:48 <spruit11> Egel isn't user friendly.
 2020-02-04 20:29:02 <b_jonas> no, the code that I'm translating isn't user-friendly
 2020-02-04 20:29:38 <spruit11> Ah. ;)
+2020-02-04 20:30:05 <spruit11> Anyway, back later.
+2020-02-04 20:44:16 <b_jonas> fizzie: I'm not sure if I'll try to build this egel interpreter on HackEso, but if I will, then I'll ask for the libicu-dev package. is that big? the library itself is already installed, only the dev package isn't, it seems
+2020-02-04 20:48:05 <spruit11> My advice: Don't install. I am perfectly fine as is.
+2020-02-04 20:48:24 User Name: zzo38 = zzo38!~zzo38@24.207.50.7
+2020-02-04 20:48:24 <zzo38> In 2600 it says: If you're referring to Spring having the IPv6 assignment of "2600" and not us, we definitely were not a part of how that played out. We'll have our revenge when IPv9 is implemented.
+2020-02-04 20:48:54 <b_jonas> spruit11: yes, but I want to experiment with the interpreter, and in a way that infinite loops don't kill it and suchlike
+2020-02-04 20:49:03 <zzo38> I thought that the next usable number of internet version numbering is ten and not nine, but, maybe I forgot or maybe they forgot or maybe we both forgot
+2020-02-04 20:49:13 <b_jonas> egelbot: ["a" -> 1 | X -> 0] "a"
+2020-02-04 20:49:13 <egelbot> 1
+2020-02-04 20:49:22 <b_jonas> egelbot: ["a" -> 1 | X -> 0] "b"
+2020-02-04 20:49:22 <egelbot> 0
+2020-02-04 20:50:21 <b_jonas> you can still run egelbot in paralllel to that
+2020-02-04 20:53:56 <spruit11> b_jonas: Oh. If you could get it to work otherwise I would want to see it!
+2020-02-04 20:55:09 <spruit11> egelbot: [ X Y -> 2 | X -> 1 | -> 0 ] 'a'
+2020-02-04 20:55:10 <egelbot> 1
+2020-02-04 20:55:12 <spruit11> egelbot: [ X Y -> 2 | X -> 1 | -> 0 ]
+2020-02-04 20:55:13 <egelbot> 0
+2020-02-04 20:55:35 <spruit11> b_jonas: There, the more esoteric part of Egel.
+2020-02-04 20:58:19 <b_jonas> spruit11: "otherwise"?
+2020-02-04 20:58:21 <b_jonas> other than what?
+2020-02-04 20:58:36 <b_jonas> egelbot: [-> 0]
+2020-02-04 20:58:36 <egelbot> 0
+2020-02-04 20:59:09 <b_jonas> egelbot: let X = [1 -> 6 | -> 7] in {X 0, X 1}
+2020-02-04 20:59:09 <egelbot> (System:cons (7 0) (System:cons (7 1) System:nil))
+2020-02-04 20:59:22 <b_jonas> that doesn't look right
+2020-02-04 20:59:26 <b_jonas> egelbot: let X = [1 -> 6 | X -> 7] in {X 0, X 1}
+2020-02-04 20:59:26 <egelbot> (System:cons 7 (System:cons 6 System:nil))
