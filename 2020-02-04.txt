@@ -195,3 +195,184 @@
 2020-02-04 15:57:13 <cpressey> Here are some possible transposition typos for `git`: `fur`, `hoy`, `dye`
 2020-02-04 15:57:46 <cpressey> I am no stranger to `hoy status`.
 2020-02-04 15:58:52 <Taneb> cpressey: because hands can be out of sync, "hot", "die"
+2020-02-04 16:02:53 Joined: egelbot
+2020-02-04 16:02:53 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:03:22 User Name: spruit11 = spruit11!~unknown@ip56522cc1.speed.planet.nl
+2020-02-04 16:03:22 <spruit11> egelbot: [X -> say X] "hello!"
+2020-02-04 16:03:22 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 16:03:22 <egelbot> hello!
+2020-02-04 16:03:35 <spruit11> \o/
+2020-02-04 16:04:01 <wib_jonas> egelbot: are you the replacement to kspalaiologos's bfbot?
+2020-02-04 16:04:01 <egelbot> internal:1:44:lexical:error in char
+2020-02-04 16:04:06 <spruit11> Can I occassionally run a bot here?
+2020-02-04 16:04:10 <wib_jonas> sure
+2020-02-04 16:04:14 <wib_jonas> if it's not too spammy
+2020-02-04 16:04:24 <wib_jonas> if it does cause too much spam then take it to #esoteric-blah
+2020-02-04 16:04:40 <spruit11> It's my own language.
+2020-02-04 16:05:04 <wib_jonas> `echo egelbot: hi
+2020-02-04 16:05:07 <HackEso> egelbot: hi
+2020-02-04 16:05:07 <egelbot> internal:1:2:semantical:undeclared hi
+2020-02-04 16:05:13 <spruit11> It only responds when you send it an expression.
+2020-02-04 16:05:36 <spruit11> `echo egelbot: say "hi"`
+2020-02-04 16:05:37 <HackEso> egelbot: say "hi"`
+2020-02-04 16:05:37 <egelbot> internal:1:10:lexical:unrecognized lexeme `
+2020-02-04 16:05:40 <wib_jonas> egelbot: say "`echo hi"
+2020-02-04 16:05:40 <egelbot> `echo hi
+2020-02-04 16:05:41 <HackEso> hi
+2020-02-04 16:06:21 <spruit11> egelbot: agitprop
+2020-02-04 16:06:21 <egelbot> visit https://egel-lang.github.io/
+2020-02-04 16:06:37 <spruit11> ^if you want to know more, read there.
+2020-02-04 16:06:37 <Taneb> I remember in another channel there was one bot that had a brainfuck interpreter, and one bot that printed the titles of webpages anyone linked
+2020-02-04 16:06:49 <wib_jonas> ooh, there's loke a documentation
+2020-02-04 16:07:17 <spruit11> It's an untyped rewriter. Think untyped lambda calculus with constants.
+2020-02-04 16:07:21 <wib_jonas> Taneb: yeah, there are some of those titlebots in some channels of irc. they're pretty annoying
+2020-02-04 16:07:21 <Taneb> Someone, naturally, made a brainfuck program that printed a URL, and put a webpage with that program as its title up
+2020-02-04 16:07:31 <Taneb> Which caused a loop
+2020-02-04 16:07:52 <Taneb> That channel now has a policy that all bots must use NOTIFY and not respond to NOTIFY
+2020-02-04 16:07:55 <spruit11> I can't really call it a proper PL so I thought maybe some of you would be interested.
+2020-02-04 16:08:07 <wib_jonas> Taneb: do you mean NOTICE rather than NOTIFY?
+2020-02-04 16:08:13 <Taneb> Quite possibly
+2020-02-04 16:09:06 <Taneb> Yes, I do
+2020-02-04 16:09:34 <wib_jonas> egelbot: say "hello,\nPRIVMSG #esoteric :fellow esoteric bots"
+2020-02-04 16:09:34 <egelbot> hello,-PRIVMSG #esoteric :fellow esoteric bots
+2020-02-04 16:10:16 <spruit11> The bot is not really hardened.
+2020-02-04 16:10:17 <wib_jonas> spruit11: sorry, there are some stupid commands that we have to test whenever something like an evaluator bot wanders in here
+2020-02-04 16:10:35 <spruit11> But I won't run it when I am not online.
+2020-02-04 16:10:44 <spruit11> It's easy to make it loop.
+2020-02-04 16:12:58 <wib_jonas> egelbot: [ X -> X X ] [ X -> X X ]
+2020-02-04 16:13:25 Quit: egelbot (Remote host closed the connection)
+2020-02-04 16:13:25 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:13:42 Joined: egelbot
+2020-02-04 16:13:42 <spruit11> Be nice to the bot!
+2020-02-04 16:13:42 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 16:14:19 <wib_jonas> egelbot: 98 + 46 + -36 + 80 + -20 + -90 + 13 + -3 + 60 + -68 + 20 + 55 + -46 + 47 + 42 + -2 + 34 + -1 + 28
+2020-02-04 16:14:20 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 16:14:20 <egelbot> 257
+2020-02-04 16:14:33 <wib_jonas> `perl -eprint(98 + 46 + -36 + 80 + -20 + -90 + 13 + -3 + 60 + -68 + 20 + 55 + -46 + 47 + 42 + -2 + 34 + -1 + 28)
+2020-02-04 16:14:34 <HackEso> 257
+2020-02-04 16:14:36 <spruit11> Is that correct?
+2020-02-04 16:14:41 <spruit11> Oh, neat.
+2020-02-04 16:14:57 <spruit11> Nice try, I am not that certain about my parsing.
+2020-02-04 16:15:22 <int-e> egelbot: 65536*65536
+2020-02-04 16:15:22 <egelbot> 4294967296
+2020-02-04 16:15:32 <int-e> egelbot: 4294967296*4294967296
+2020-02-04 16:15:33 <egelbot> (System:* 4294967296 4294967296)
+2020-02-04 16:15:47 <spruit11> It refuses to rewrite on overflow.
+2020-02-04 16:15:49 <wib_jonas> egelbot: 2 3
+2020-02-04 16:15:50 <egelbot> (2 3)
+2020-02-04 16:15:54 <spruit11> Occassionaly.
+2020-02-04 16:15:56 <wib_jonas> egelbot: 1 + 2 3
+2020-02-04 16:15:56 <egelbot> (System:+ 1 (2 3))
+2020-02-04 16:16:01 <wib_jonas> egelbot: 1 +
+2020-02-04 16:16:01 <egelbot> internal:1:6:syntactical:primary expression expected
+2020-02-04 16:16:05 <wib_jonas> egelbot: + 2
+2020-02-04 16:16:05 <egelbot> internal:1:2:semantical:undeclared !+
+2020-02-04 16:16:17 <wib_jonas> egelbot: 1 + + 2
+2020-02-04 16:16:18 <egelbot> internal:1:6:semantical:undeclared !+
+2020-02-04 16:16:39 <spruit11> Right, it complains it cannot find a monadic +.
+2020-02-04 16:17:08 <wib_jonas> egelbot: let vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 16:17:08 <egelbot> internal:1:78:syntactical:in expected
+2020-02-04 16:17:13 <wib_jonas> egelbot: let vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in vn[0]
+2020-02-04 16:17:13 <egelbot> internal:1:86:syntactical:-> expected
+2020-02-04 16:17:34 <spruit11> Bit of a hack, when it decides you wanted a monadic +, it looks for !+ in the context.
+2020-02-04 16:17:39 <wib_jonas> egelbot: let vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in car 0
+2020-02-04 16:17:40 <egelbot> internal:1:6:semantical:undeclared vn
+2020-02-04 16:17:51 <spruit11> It's not a lisp.
+2020-02-04 16:18:08 <Taneb> Few things are these days
+2020-02-04 16:18:15 <wib_jonas> egelbot: let vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in [cons x y -> x] vn
+2020-02-04 16:18:16 <egelbot> internal:1:6:semantical:undeclared vn
+2020-02-04 16:18:19 <spruit11> Variables are uppercase.
+2020-02-04 16:18:33 <wib_jonas> doesn't have to be a list to have useful library functions
+2020-02-04 16:18:39 <wib_jonas> egelbot: let Vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in [cons x y -> x] Vn
+2020-02-04 16:18:39 <egelbot> internal:1:88:semantical:undeclared x
+2020-02-04 16:18:54 <wib_jonas> oh, so lowercase words are taken as constructors or something?
+2020-02-04 16:18:54 <spruit11> X Y
+2020-02-04 16:18:58 <wib_jonas> egelbot: let Vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in [cons X Y -> x] Vn
+2020-02-04 16:18:59 <egelbot> internal:1:95:semantical:undeclared x
+2020-02-04 16:18:59 <spruit11> Right.
+2020-02-04 16:19:03 <wib_jonas> as in prolog
+2020-02-04 16:19:04 <wib_jonas> ok
+2020-02-04 16:19:09 <wib_jonas> egelbot: let Vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in [cons X Y -> X] Vn
+2020-02-04 16:19:09 <egelbot> (Dummy11DOT0 (System:cons 38 (System:cons 32 (System:cons 75 (System:cons -24 (System:cons -19 (System:cons 53 (System:cons 14 (System:cons 13 (System:cons -28 (System:cons -52 (System:cons 93 (System:cons 90 (System:cons 80 (System:cons 22 (System:cons -98 (System:cons -14 (System:cons -96 (System:cons -81 (System:cons -95 System:nil))))))))))))))))))))
+2020-02-04 16:19:15 <wib_jonas> nope
+2020-02-04 16:19:16 <spruit11> Constants or combinators.
+2020-02-04 16:19:38 <wib_jonas> I'm trying to get 38 but this didn't give that
+2020-02-04 16:19:43 <wib_jonas> egelbot: let Vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95} in [ cons X Y -> X ] Vn
+2020-02-04 16:19:43 <egelbot> (Dummy12DOT0 (System:cons 38 (System:cons 32 (System:cons 75 (System:cons -24 (System:cons -19 (System:cons 53 (System:cons 14 (System:cons 13 (System:cons -28 (System:cons -52 (System:cons 93 (System:cons 90 (System:cons 80 (System:cons 22 (System:cons -98 (System:cons -14 (System:cons -96 (System:cons -81 (System:cons -95 System:nil))))))))))))))))))))
+2020-02-04 16:20:00 <spruit11> (cons X Y)
+2020-02-04 16:20:30 <spruit11> egelbot: let X = {1,2} in [ (cons X Y) -> X ] X
+2020-02-04 16:20:31 <egelbot> 1
+2020-02-04 16:20:31 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in [ System:cons X Y -> X ] Vn
+2020-02-04 16:20:32 <egelbot> (Dummy14DOT0 (System:cons 38 (System:cons 32 (System:cons 75 (System:cons -24 System:nil)))))
+2020-02-04 16:20:43 <wib_jonas> oh right, parenthesis
+2020-02-04 16:20:48 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in [ (System:cons X Y) -> X ] Vn
+2020-02-04 16:20:49 <egelbot> 38
+2020-02-04 16:21:07 <spruit11> Right, your lambda was a ternary combinator.
+2020-02-04 16:21:18 <wib_jonas> egelbot: let X = 38; Y = 32 in X
+2020-02-04 16:21:19 <egelbot> internal:1:16:syntactical:in expected
+2020-02-04 16:21:22 <wib_jonas> egelbot: let X = 38, Y = 32 in X
+2020-02-04 16:21:23 <egelbot> internal:1:12:syntactical:in expected
+2020-02-04 16:21:28 <wib_jonas> egelbot: let X Y = 38 = 32 in X
+2020-02-04 16:21:29 <egelbot> internal:1:15:syntactical:in expected
+2020-02-04 16:21:31 <wib_jonas> egelbot: let X Y = 38 32 in X
+2020-02-04 16:21:32 <egelbot> (Dummy16DOT0 (38 32))
+2020-02-04 16:21:44 <wib_jonas> egelbot: let {X,Y} = {38,32} in X
+2020-02-04 16:21:44 <egelbot> 38
+2020-02-04 16:22:37 <spruit11> It sometimes refuses to rewrite an introduced unknown combinator (/LC expression). Usually, those start with Dummy.
+2020-02-04 16:22:48 <spruit11> It's not very user friendly.
+2020-02-04 16:22:54 <spruit11> Just me goofing.
+2020-02-04 16:23:52 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let Sum = [ nil -> 0 | X S -> X + (Sum Y) ] in Sum Vn
+2020-02-04 16:23:52 <egelbot> internal:1:64:semantical:undeclared Sum
+2020-02-04 16:24:09 <wib_jonas> do I need a Y combinator for this?
+2020-02-04 16:24:14 <spruit11> let X = F in E gets rewritten to [ X -> E ] F. [X->E] to Dummy something.
+2020-02-04 16:24:28 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW F = [ nil -> 0 | X S -> X + (F Y) ] in SumW SumW Vn
+2020-02-04 16:24:29 <egelbot> internal:1:67:semantical:undeclared F
+2020-02-04 16:24:41 <spruit11> Yah, you can either use top level recursive defs or local Y combinators.
+2020-02-04 16:25:00 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (F Y) ] in SumW SumW Vn
+2020-02-04 16:25:00 <egelbot> internal:1:78:semantical:undeclared Y
+2020-02-04 16:25:04 <spruit11> Local lets aren't recursive.
+2020-02-04 16:25:09 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let Sum = [ nil -> 0 | (cons X S) -> X + (Sum Y) ] in Sum Vn
+2020-02-04 16:25:09 <egelbot> internal:1:71:semantical:undeclared Sum
+2020-02-04 16:25:25 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (Sum Y) ] in SumW SumW Vn
+2020-02-04 16:25:25 <egelbot> internal:1:76:semantical:undeclared Sum
+2020-02-04 16:25:31 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (F Y) ] in SumW SumW Vn
+2020-02-04 16:25:31 <egelbot> internal:1:78:semantical:undeclared Y
+2020-02-04 16:25:36 <wib_jonas> egelbot: let Vn = {38,32,75,-24} in let SumW = [ F nil -> 0 | F (cons X S) -> X + (F S) ] in SumW SumW Vn
+2020-02-04 16:25:36 <egelbot> (System:+ 38 (Dummy24DOT1 (System:cons 32 (System:cons 75 (System:cons -24 System:nil)))))
+2020-02-04 16:25:38 <int-e> egelbot: def fix f = f (fix f)
+2020-02-04 16:25:39 <egelbot> internal:1:10:syntactical:= expected
+2020-02-04 16:25:50 <spruit11> It's eager.
+2020-02-04 16:25:59 <spruit11> Don't use lazy fixes.
+2020-02-04 16:26:08 <spruit11> Is that an eager fix?
+2020-02-04 16:26:13 <spruit11> No, right?
+2020-02-04 16:26:14 <wib_jonas> I don't know
+2020-02-04 16:26:34 <spruit11> Eager fixes need some protection to not loop. Moment
+2020-02-04 16:26:39 <spruit11> egelbot: agitprop
+2020-02-04 16:26:40 <egelbot> visit https://egel-lang.github.io/
+2020-02-04 16:26:46 <int-e> egelbot: def fix f x = f (fix f) x
+2020-02-04 16:26:46 <egelbot> internal:1:10:syntactical:= expected
+2020-02-04 16:26:50 <wib_jonas> def vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 16:26:53 <wib_jonas> egelbot: def vn = {38,32,75,-24,-19,53,14,13,-28,-52,93,90,80,22,-98,-14,-96,-81,-95}
+2020-02-04 16:27:00 <wib_jonas> egelbot: vn
+2020-02-04 16:27:01 <egelbot> (System:cons 38 (System:cons 32 (System:cons 75 (System:cons -24 (System:cons -19 (System:cons 53 (System:cons 14 (System:cons 13 (System:cons -28 (System:cons -52 (System:cons 93 (System:cons 90 (System:cons 80 (System:cons 22 (System:cons -98 (System:cons -14 (System:cons -96 (System:cons -81 (System:cons -95 System:nil)))))))))))))))))))
+2020-02-04 16:27:15 <int-e> egelbot: def fix F X = F (fix F) X
+2020-02-04 16:27:16 <egelbot> internal:1:10:syntactical:= expected
+2020-02-04 16:27:24 <int-e> egelbot: def fix = [ F X -> F (fix F) X ]
+2020-02-04 16:27:29 <spruit11> egelbot: def fix = [ F -> F [ X -> (fix F) X ] ]
+2020-02-04 16:28:00 <wib_jonas> egelbot: "foo"+"bar"
+2020-02-04 16:28:00 <egelbot> "foobar"
+2020-02-04 16:28:04 <wib_jonas> egelbot: "foo"+2
+2020-02-04 16:28:04 <egelbot> (System:+ "foo" 2)
+2020-02-04 16:28:10 <wib_jonas> egelbot: "foo" + 2
+2020-02-04 16:28:10 <egelbot> (System:+ "foo" 2)
+2020-02-04 16:28:21 <wib_jonas> egelbot: "foo" + (chr 110)
+2020-02-04 16:28:21 <egelbot> internal:1:11:semantical:undeclared chr
+2020-02-04 16:28:21 <spruit11> It refuses to rewrite that.
+2020-02-04 16:28:23 <int-e> egelbot: def fix = [ F X -> F (fix F) X ]
+2020-02-04 16:29:15 <spruit11> egelbot: fix [FAC 0 -> 1 | FAC N -> N * (FAC (N- 1)) ] 5
+2020-02-04 16:29:15 <egelbot> 120
+2020-02-04 16:29:20 <wib_jonas> egelbot: 2; 3
+2020-02-04 16:29:20 <egelbot> 3
+2020-02-04 16:29:21 <int-e> egelbot: let F = [ F -> [ 0 -> 1 | 1 -> 1 | X -> F (X - 2) + F (X - 1)] ] in fix F 5
+2020-02-04 16:29:21 <egelbot> 8
+2020-02-04 16:29:37 <wib_jonas> egelbot: def xn = 1; 3 + xn
