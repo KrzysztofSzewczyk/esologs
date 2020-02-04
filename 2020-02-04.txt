@@ -1487,3 +1487,110 @@
 2020-02-04 22:26:44 <b_jonas> egelbot: = 2 5
 2020-02-04 22:26:44 <egelbot> internal:1:2:syntactical:primary expression expected
 2020-02-04 22:26:45 <b_jonas> nope
+2020-02-04 22:35:42 <b_jonas> egelbot: != 2 5
+2020-02-04 22:35:42 <egelbot> internal:1:2:semantical:undeclared !!=
+2020-02-04 22:36:01 <spruit11> What are you trying to do?
+2020-02-04 22:36:10 <spruit11> egelbot: 2 == 5
+2020-02-04 22:36:11 <egelbot> System:false
+2020-02-04 22:36:16 <spruit11> egelbot: 2 != 5
+2020-02-04 22:36:16 <egelbot> internal:1:4:syntactical:!= unexpected
+2020-02-04 22:36:25 <spruit11> Uh. RIght.
+2020-02-04 22:36:34 <spruit11> egelbot: (!=) 2 5
+2020-02-04 22:36:34 <egelbot> System:true
+2020-02-04 22:36:41 <spruit11> Guess I never fixed that.
+2020-02-04 22:37:40 <b_jonas> just checking if using = as an infix invokes (!=)
+2020-02-04 22:37:53 <b_jonas> but it doesn't, probably because = is special in grammar for let
+2020-02-04 22:37:58 <spruit11> Right.
+2020-02-04 22:38:02 <b_jonas> and for def too
+2020-02-04 22:38:12 <spruit11> It's a keyword I think too.
+2020-02-04 22:39:44 <spruit11> Right, I checked in the lexer, it's definitely a keyword.
+2020-02-04 22:40:11 <spruit11> egelbot: != 1 2
+2020-02-04 22:40:11 <egelbot> internal:1:2:semantical:undeclared !!=
+2020-02-04 22:40:55 <spruit11> Right, I never used it so far. Another thing to fix. Probably I'll introduce another operator for that.
+2020-02-04 22:41:16 <b_jonas> I do appreciate that you at least added a proper arithmetical library
+2020-02-04 22:41:23 <b_jonas> egelbot: def (/=) = (!=)
+2020-02-04 22:41:23 <egelbot> internal:1:2:syntactical:combinator or operator expected
+2020-02-04 22:41:27 <spruit11> egelbot: def (~=) = [ X Y -> not ( X == Y ) ]
+2020-02-04 22:41:27 <egelbot> internal:1:2:syntactical:combinator or operator expected
+2020-02-04 22:41:33 <spruit11> egelbot: def ~= = [ X Y -> not ( X == Y ) ]
+2020-02-04 22:41:39 <b_jonas> egelbot: def /= = (!=)
+2020-02-04 22:41:47 <b_jonas> egelbot: 2 /= 2
+2020-02-04 22:41:47 <egelbot> System:false
+2020-02-04 22:41:48 <b_jonas> egelbot: 2 /= 3
+2020-02-04 22:41:48 <egelbot> System:true
+2020-02-04 22:41:49 Joined: int-e
+2020-02-04 22:41:50 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:41:57 <b_jonas> egelbot: (2,2)<(2,1)
+2020-02-04 22:41:57 <egelbot> System:false
+2020-02-04 22:41:59 <b_jonas> egelbot: (2,2)<(2,3)
+2020-02-04 22:41:59 <egelbot> System:true
+2020-02-04 22:42:02 Parted: int-e
+2020-02-04 22:42:02 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:42:03 <b_jonas> egelbot: (2,2)<(1,3)
+2020-02-04 22:42:03 <egelbot> System:false
+2020-02-04 22:42:05 <b_jonas> egelbot: (2,2)<(3,3)
+2020-02-04 22:42:06 <egelbot> System:true
+2020-02-04 22:42:07 <b_jonas> egelbot: (2,2)<(3,1)
+2020-02-04 22:42:07 <egelbot> System:true
+2020-02-04 22:42:09 <b_jonas> egelbot: (2,2)<(1,1)
+2020-02-04 22:42:09 <egelbot> System:false
+2020-02-04 22:42:24 <spruit11> Yah, it's overlap because operators starting with '!' are supposed to be prefix, I think.
+2020-02-04 22:42:34 <spruit11> Didn't think of it.
+2020-02-04 22:42:37 <spruit11> Will fix.
+2020-02-04 22:42:38 <b_jonas> it looks as if these try to do a full lexicographical ordering. that's nice.
+2020-02-04 22:42:42 <b_jonas> egelbot: 2 < true
+2020-02-04 22:42:43 <egelbot> System:true
+2020-02-04 22:42:59 <spruit11> Yah, it does a best effort on basis of a table.
+2020-02-04 22:43:50 <spruit11> The table orders operators lexicographically where the first char defines the class (infix/prefix).
+2020-02-04 22:44:28 Joined: int-e
+2020-02-04 22:44:28 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:44:31 <spruit11> That way you can always introduce an operator without thinking to much about fixity numbers.
+2020-02-04 22:44:40 User Name: int-e = int-e!~noone@int-e.eu
+2020-02-04 22:44:40 <int-e> FWIW, this is ridiculous: echo $(< 2020-02-04.txt wc -l) $(< 2020-02-04.txt grep -Ev 'egelbot' | wc -l) ==> 1424 622
+2020-02-04 22:44:59 <spruit11> But the table isn't stable yet.
+2020-02-04 22:45:14 <spruit11> Oh, right. Shall I shut it down?
+2020-02-04 22:45:28 <spruit11> I can run the bot in #egel.
+2020-02-04 22:47:44 <int-e> Well from where I'm standing (I'm a bit grumpy though) it would be nice if the noisy experiments could happen somewhere else... highlights are still welcome here?
+2020-02-04 22:50:40 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2020-02-04 22:50:40 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:52:36 <b_jonas> spruit11: is there a simple comment syntax?
+2020-02-04 22:52:58 <b_jonas> egelbot: (1.5<2,2.0<2,2.5<2)
+2020-02-04 22:52:58 <egelbot> (System:tuple System:false System:false System:false)
+2020-02-04 22:53:13 <b_jonas> egelbot: (2<1.5,2<2.0,2<2.5)
+2020-02-04 22:53:13 <egelbot> (System:tuple System:true System:true System:true)
+2020-02-04 22:54:15 <b_jonas> int-e: I asked if I could talk to the bot on a different channel. not yet apparently. it should be possible to install the interpreter to HackEso, in which case I could talk to it on both channels.
+2020-02-04 22:55:06 <b_jonas> egelbot: (abs 2,abs 2.0)
+2020-02-04 22:55:07 <egelbot> (System:tuple (Math:abs 2) 2.000000000000000)
+2020-02-04 22:55:27 <b_jonas> egelbot: 2+2.0
+2020-02-04 22:55:28 <egelbot> (System:+ 2 2.000000000000000)
+2020-02-04 22:55:47 <b_jonas> egelbot: (tofloat 2,toint 2,tofloat 2.0,toint 2.0,tofloat 2.5,toint 2.5)
+2020-02-04 22:55:48 <egelbot> (System:tuple 2.000000000000000 2 2.000000000000000 2 2.500000000000000 2)
+2020-02-04 22:56:04 <b_jonas> egelbot: (1/0,1.0/0.0)
+2020-02-04 22:56:04 <egelbot> exception(System:divzero)
+2020-02-04 22:56:08 <b_jonas> egelbot: (1.0/0.0)
+2020-02-04 22:56:09 <egelbot> exception(System:divzero)
+2020-02-04 22:56:20 <int-e> yeah fine. I'll be back in a couple of days then.
+2020-02-04 22:56:21 Parted: int-e
+2020-02-04 22:56:21 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:56:30 <b_jonas> that latter should probably give an infinity though
+2020-02-04 22:57:24 <b_jonas> egelbot: floor(1e199/3)
+2020-02-04 22:57:25 <egelbot> internal:1:9:semantical:undeclared e199
+2020-02-04 22:57:28 <b_jonas> egelbot: floor(1.0e199/3)
+2020-02-04 22:57:28 <egelbot> (Math:floor (System:/ 1.000000000000000e+199 3))
+2020-02-04 22:57:31 <b_jonas> uh
+2020-02-04 22:57:35 <b_jonas> egelbot: floor(1.e199/3)
+2020-02-04 22:57:35 <egelbot> internal:1:10:lexical:error in float
+2020-02-04 22:57:43 <b_jonas> egelbot: floor(1.e199/3.0)
+2020-02-04 22:57:43 <egelbot> internal:1:10:lexical:error in float
+2020-02-04 22:57:47 <b_jonas> egelbot: floor(1.0e199/3.0)
+2020-02-04 22:57:48 <egelbot> 3.333333333333333e+198
+2020-02-04 22:58:03 <spruit11> Comments start with #.
+2020-02-04 22:58:14 <spruit11> I had C-style but got rid of that.
+2020-02-04 22:58:16 <b_jonas> egelbot: toint(floor(1.0e199/3.0)) # let me test comment syntax
+2020-02-04 22:58:16 <egelbot> -9223372036854775808
+2020-02-04 22:59:03 <b_jonas> egelbot: (random,random,random)
+2020-02-04 22:59:04 <egelbot> (System:tuple 1681692777.000000 846930886.0000000 1804289383.000000)
+2020-02-04 22:59:20 <b_jonas> that is almost certainly a bug or a documentation bug
+2020-02-04 22:59:56 <spruit11> Which one?
+2020-02-04 23:00:00 <b_jonas> egelbot: [X->(X*X,X*X*X,X*X*X*X)]1.0e99
+2020-02-04 23:00:01 <egelbot> (System:tuple 9.999999999999999e+197 9.999999999999999e+296 inf)
