@@ -1594,3 +1594,100 @@
 2020-02-04 22:59:56 <spruit11> Which one?
 2020-02-04 23:00:00 <b_jonas> egelbot: [X->(X*X,X*X*X,X*X*X*X)]1.0e99
 2020-02-04 23:00:01 <egelbot> (System:tuple 9.999999999999999e+197 9.999999999999999e+296 inf)
+2020-02-04 23:00:02 <b_jonas> the random
+2020-02-04 23:01:23 <spruit11> Right. That's a bug.
+2020-02-04 23:02:32 <spruit11> egelbot: Math:random
+2020-02-04 23:02:32 <egelbot> 1714636915.000000
+2020-02-04 23:02:38 <spruit11> Weird.
+2020-02-04 23:03:16 <b_jonas> egelbot: say 3.2
+2020-02-04 23:03:16 <egelbot> 3.200000000000000
+2020-02-04 23:03:21 <b_jonas> egelbot: say (3.2,1)
+2020-02-04 23:03:21 <egelbot> (System:say (System:tuple 3.200000000000000 1))
+2020-02-04 23:03:31 <b_jonas> egelbot: say {3.2,1}
+2020-02-04 23:03:31 <egelbot> (System:say (System:cons 3.200000000000000 (System:cons 1 System:nil)))
+2020-02-04 23:04:32 <spruit11> Ah, random() in the C-source probably links to something else. Only way I can explain it.
+2020-02-04 23:05:53 <spruit11> There's a better random here: https://github.com/egel-lang/egel/blob/master/lib/random/random.cpp
+2020-02-04 23:06:01 <spruit11> But you can't use that from the bot.
+2020-02-04 23:07:19 <spruit11> I forgot. Fix /= and random. There was something else?
+2020-02-04 23:08:43 <spruit11> Oh, right. Escaping in the bot.
+2020-02-04 23:10:02 <b_jonas> egelbot: [F->F F tuple 5][F B X->[true->F F(B(X/10)(X-1))|false->B](-20<X)]
+2020-02-04 23:10:02 <egelbot> (Dummy105DOT2 Dummy105DOT2 (System:tuple 0 (5 -1)))
+2020-02-04 23:10:33 <b_jonas> egelbot: [F->F F tuple 5][F B X->[true->F F(B(X/10))(X-1)|false->B](-20<X)]
+2020-02-04 23:10:39 <b_jonas> oops
+2020-02-04 23:10:42 <b_jonas> sorry
+2020-02-04 23:10:50 <b_jonas> egelbot: 9999
+2020-02-04 23:10:57 <b_jonas> I think I made another infinite loop
+2020-02-04 23:11:13 Quit: egelbot (Read error: Connection reset by peer)
+2020-02-04 23:11:13 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:11:19 <spruit11> Anp
+2020-02-04 23:11:24 <spruit11> Uh. NP.
+2020-02-04 23:11:25 <b_jonas> but why is that infinite?
+2020-02-04 23:11:32 Joined: egelbot
+2020-02-04 23:11:32 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:11:38 <spruit11> I don't know what you're trying to do.
+2020-02-04 23:11:49 <b_jonas> numeric loop
+2020-02-04 23:12:28 <spruit11> The 'F F' after true?
+2020-02-04 23:12:38 <b_jonas> that's for the recursion
+2020-02-04 23:12:46 <b_jonas> see the prime lister above
+2020-02-04 23:12:54 <spruit11> I am not sure how your fixpoint work. But twice 'F F'?
+2020-02-04 23:13:05 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[true->F F([T->T T 2][T C->[_ true->B L|true _->B|_ _->T T(C+1)](0==L%C)(L<C*C)])(L+1)U|_->B](L<U)]
+2020-02-04 23:13:06 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 23:13:06 <egelbot> (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 23:13:07 <spruit11> *+s
+2020-02-04 23:13:31 <spruit11> Uh. You're already better at coding Egel than I am.
+2020-02-04 23:13:33 <b_jonas> that one has twice F F too
+2020-02-04 23:14:13 <b_jonas> no, I am just better at coding Egel than you are at reading Egel, especially when I write terse incomprehensible code with meaningless short variable names so that it's easy to type to irc
+2020-02-04 23:14:28 <b_jonas> this doesn't use much special properties of egel really
+2020-02-04 23:14:36 <b_jonas> just ordinary eager functional code
+2020-02-04 23:14:53 <spruit11> I have no problem meeting people smarter than me. ;)
+2020-02-04 23:15:03 <b_jonas> so where's the typo?
+2020-02-04 23:15:03 <spruit11> I find it impressive.
+2020-02-04 23:15:14 <b_jonas> egelbot: -20<-19
+2020-02-04 23:15:14 <egelbot> internal:1:5:syntactical:<- unexpected
+2020-02-04 23:15:17 <b_jonas> egelbot: -20< -19
+2020-02-04 23:15:17 <egelbot> System:true
+2020-02-04 23:15:18 <b_jonas> egelbot: -20< -20
+2020-02-04 23:15:19 <egelbot> System:false
+2020-02-04 23:15:20 <b_jonas> egelbot: -20< -21
+2020-02-04 23:15:20 <egelbot> System:false
+2020-02-04 23:16:14 <b_jonas> I don't understand why that's infinite
+2020-02-04 23:17:03 <spruit11> AH.
+2020-02-04 23:17:06 <spruit11> X-1
+2020-02-04 23:17:09 <b_jonas> ah
+2020-02-04 23:17:12 <b_jonas> egelbot: [F->F F tuple 5][F B X->;[true->F F(B X)(X- 1)|false->B](-20<X)]
+2020-02-04 23:17:12 <egelbot> internal:1:26:syntactical:primary expression expected
+2020-02-04 23:17:22 <b_jonas> egelbot: [F->F F tuple 5][F B X->[true->F F(B X)(X- 1)|false->B](-20<X)]
+2020-02-04 23:17:23 <egelbot> (System:tuple 5 4 3 2 1 0 -1 -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19)
+2020-02-04 23:17:25 <b_jonas> thanks
+2020-02-04 23:17:39 <b_jonas> egelbot: [F->F F tuple 5][F B X->[true->F F(B(0.1*tofloat X))(X- 1)|false->B](-20<X)]
+2020-02-04 23:17:40 <egelbot> (System:tuple 0.5000000000000000 0.4000000000000000 0.3000000000000000 0.2000000000000000 0.1000000000000000 0.000000000000000 -0.1000000000000000 -0.2000000000000000 -0.3000000000000000 -0.4000000000000000 -0.5000000000000000 -0.6000000000000001 -0.7000000000000001 -0.8000000000000000 -0.9000000000000000 -1.000000000000000 -1.100000000000000 -1.200000000000000 -1.300000000000000 -1.400000000000000 -1.500000000000000 -1.600000000000000 -1.70
+2020-02-04 23:17:47 <spruit11> Sorry, that's another one I don't really have a good solution for.
+2020-02-04 23:18:06 <b_jonas> nah, in normal non-IRC code I don't omit whitespace this much
+2020-02-04 23:18:26 <spruit11> Because it's untyped, it's hard to disambiguate between '-1' and '-' applied to '1'.
+2020-02-04 23:22:39 <spruit11> random binds to stdlib's random(). A number between 0 and RAND_MAX.
+2020-02-04 23:22:47 <spruit11> Mistake.
+2020-02-04 23:24:23 <b_jonas> egelbot: [F->F F tuple 5][F B X->[true->F F(B([P->P P 0(0.1*tofloat X)0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2*U*V)|_->sqrt(abs(U*U+V*V))](S<12)]))(X- 1)|false->B](-20<X)]
+2020-02-04 23:24:23 <egelbot> internal:1:131:semantical:undeclared sqrt
+2020-02-04 23:24:42 <b_jonas> egelbot: sqrt 2.0
+2020-02-04 23:24:42 <egelbot> internal:1:2:semantical:undeclared sqrt
+2020-02-04 23:24:45 <b_jonas> egelbot: Math:sqrt 2.0
+2020-02-04 23:24:45 <egelbot> 1.414213562373095
+2020-02-04 23:24:52 <b_jonas> egelbot: import Math
+2020-02-04 23:24:52 <egelbot> internal:1:9:syntactical:text expected
+2020-02-04 23:25:31 <b_jonas> what was the syntax for the import statement?
+2020-02-04 23:25:55 <spruit11> using
+2020-02-04 23:26:11 <spruit11> import is for files.
+2020-02-04 23:26:21 <b_jonas> egelbot: using Math
+2020-02-04 23:26:21 <spruit11> using for namespaces.
+2020-02-04 23:26:27 <b_jonas> egelbot: sqrt 2.0
+2020-02-04 23:26:27 <egelbot> 1.414213562373095
+2020-02-04 23:26:41 <b_jonas> egelbot: [F->F F tuple 5][F B X->[true->F F(B([P->P P 0(0.1*tofloat X)0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2*U*V)|_->sqrt(abs(U*U+V*V))](S<12)]))(X- 1)|false->B](-20<X)]
+2020-02-04 23:26:56 <b_jonas> sorry, I think that's another infinite loop
+2020-02-04 23:27:01 Quit: egelbot (Read error: Connection reset by peer)
+2020-02-04 23:27:01 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:27:07 <b_jonas> I mean it should have been done by now
+2020-02-04 23:27:16 Joined: egelbot
+2020-02-04 23:27:16 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:27:26 <spruit11> I did a reset.
+2020-02-04 23:27:50 <b_jonas> one difficulty is that since the < operator works on everything, if I pass the wrong object to the comparison, it might always return true, so the loop could run infinitely because of that
+2020-02-04 23:27:55 <b_jonas> even if I'm not passing a number
