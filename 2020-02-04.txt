@@ -1425,3 +1425,65 @@
 2020-02-04 21:59:01 <spruit11> If you really want it.
 2020-02-04 21:59:25 <b_jonas> are there infixes that behave like an uppercase variable?
 2020-02-04 21:59:35 <spruit11> Uh?
+2020-02-04 22:00:14 <b_jonas> you know, so when I write say (X & Y) it should be parsed as ((&) X Y) where (&) is like an uppercase name that you can use as a local variable in lambdas
+2020-02-04 22:00:24 <b_jonas> but possibly for an infix other than &
+2020-02-04 22:00:44 <b_jonas> like, infixes starting with : or something
+2020-02-04 22:00:44 <kmc> in GHC Haskell you can use :&
+2020-02-04 22:00:47 <kmc> mhm
+2020-02-04 22:00:59 <spruit11> Uhm, no. Guards are simplified expressions and parsed differently.
+2020-02-04 22:01:37 <spruit11> So, you can have [ (/) X Y -> 3 ] like guards, but that's about it.
+2020-02-04 22:01:49 <b_jonas> spruit11: even if I can't use the infix form in a pattern, only in an expression, my question stand
+2020-02-04 22:02:29 <b_jonas> spruit11: like can I write [(&) -> 3 & 7] [X Y -> 10*X+Y]
+2020-02-04 22:02:40 <b_jonas> egelbot: [(&) -> 3 & 7] [X Y -> 10*X+Y]
+2020-02-04 22:02:40 <egelbot> internal:1:4:semantical:undeclared &
+2020-02-04 22:02:43 <spruit11> I think so.
+2020-02-04 22:02:45 <b_jonas> where (&) should be a local variable
+2020-02-04 22:02:46 <b_jonas> ok
+2020-02-04 22:02:52 <spruit11> Oh, no.
+2020-02-04 22:02:54 Joined: sprocklem
+2020-02-04 22:02:54 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:03:00 <spruit11> Operators are always constants.
+2020-02-04 22:03:01 <b_jonas> so no local variable infixes
+2020-02-04 22:03:07 <spruit11> Just parsed differently.
+2020-02-04 22:03:48 <spruit11> There's no big difference between 'v' or '-' except they're parsed differently. And all uppercase are variables.
+2020-02-04 22:04:01 <spruit11> Right.
+2020-02-04 22:04:30 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F(B L)(L+1)U](L<U)]]
+2020-02-04 22:04:30 <egelbot> internal:1:69:syntactical:] unexpected
+2020-02-04 22:04:33 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F(B L)(L+1)U](L<U)]
+2020-02-04 22:04:33 <egelbot> (System:tuple 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110)
+2020-02-04 22:07:48 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true->B|false->[false->B L|true->T T(C+1)]C*C<=L]0==L%C])(L+1)U](L<U)]
+2020-02-04 22:07:48 <egelbot> System:false
+2020-02-04 22:08:21 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true->B|false->[false->B L|true->T T(C+1)](C*C<=L)](0==L%C)])(L+1)U](L<U)]
+2020-02-04 22:08:22 <egelbot> (System:tuple 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:08:33 <b_jonas> egelbot: [F->F F 2 3 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true->B|false->[false->B L|true->T T(C+1)](C*C<=L)](0==L%C)])(L+1)U](L<U)]
+2020-02-04 22:08:33 <egelbot> (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:09:15 <b_jonas> egelbot: [(0<0)->"yes"|_->"no"]true
+2020-02-04 22:09:15 <egelbot> internal:1:5:syntactical:) expected
+2020-02-04 22:10:53 <b_jonas> egelbot: [F->F F 2 3 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true _->B|_ false->B L|_ _->T T(C+1)](C*C<=L)(0==L%C)])(L+1)U](L<U)]
+2020-02-04 22:10:53 <egelbot> (2 3)
+2020-02-04 22:11:10 <b_jonas> egelbot: [F->F F 2 3 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true _->B|false false->B L|false true->T T(C+1)](C*C<=L)(0==L%C)])(L+1)U](L<U)]
+2020-02-04 22:11:11 <egelbot> (2 3)
+2020-02-04 22:11:22 <b_jonas> egelbot: [F->F F 2 3 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true _->B|false false->B L|false true->T T(C+1)](0==L%C)(C*C<=L)])(L+1)U](L<U)]
+2020-02-04 22:11:23 <egelbot> (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:11:47 <b_jonas> egelbot: [F->F F 2 3 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true _->B|_ true->T T(C+1)|_ _->B L](0==L%C)(C*C<=L)])(L+1)U](L<U)]
+2020-02-04 22:11:48 <egelbot> (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:12:04 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true _->B|_ true->T T(C+1)|_ _->B L](0==L%C)(C*C<=L)])(L+1)U](L<U)]
+2020-02-04 22:12:05 <egelbot> (System:tuple 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:12:45 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true true->B|_ true->T T(C+1)|_ _->B L](0==L%C)(C*C<=L)])(L+1)U](L<U)]
+2020-02-04 22:12:46 <egelbot> (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:13:42 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[false->B|true->F F([T->T T 2][T C->[_ true->B L|true _->B|_ _->T T(C+1)](0==L%C)(L<C*C)])(L+1)U](L<U)]
+2020-02-04 22:13:43 <egelbot> (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:14:12 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[true->F F([T->T T 2][T C->[_ true->B L|true _->B|_ _->T T(C+1)](0==L%C)(L<C*C)|_->B])(L+1)U](L<U)]
+2020-02-04 22:14:13 <egelbot> (Dummy72DOT4 Dummy72DOT5 (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109) 111 111 System:false)
+2020-02-04 22:14:27 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[true->F F([T->T T 2][T C->[_ true->B L|true _->B|_ _->T T(C+1)](0==L%C)(L<C*C)])(L+1)U|_->B](L<U)]
+2020-02-04 22:14:28 <egelbot> (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:14:53 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[true->F F([T->T T 2][T C->[_ true->B L|true _->B|_ _->T T(C+1)](0==L%C)(L<C*C)])(L+1)U|_->B](L<U)]
+2020-02-04 22:14:54 <egelbot> (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:18:15 <b_jonas> [ ')',~'(System:tuple ',":p:i.29
+2020-02-04 22:18:16 <j-bot> b_jonas: (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 22:19:27 Joined: LKoen
+2020-02-04 22:19:27 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 22:26:36 <b_jonas> oh wait
+2020-02-04 22:26:44 <b_jonas> egelbot: = 2 5
+2020-02-04 22:26:44 <egelbot> internal:1:2:syntactical:primary expression expected
+2020-02-04 22:26:45 <b_jonas> nope
