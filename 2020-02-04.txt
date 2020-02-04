@@ -543,3 +543,45 @@
 2020-02-04 16:58:11 <spruit11> But worse than maple or mathematica. More a SASL.
 2020-02-04 16:58:43 <spruit11> No, there's mutation on expression but that's unsafe.
 2020-02-04 16:59:45 <spruit11> The language more serves as a front end on a thought I had about implementing an FP language in C++ in a memory-safe manner.
+2020-02-04 17:00:23 <spruit11> It's just a funny thing, not really usable for anything.
+2020-02-04 17:00:50 <int-e> `grwp usable
+2020-02-04 17:00:52 <HackEso> No output.
+2020-02-04 17:01:07 <int-e> `quote usable
+2020-02-04 17:01:08 <HackEso> 690) <fungot> elliott_: how usable is borges in the real world
+2020-02-04 17:01:18 Joined: imode
+2020-02-04 17:01:18 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 17:01:31 <int-e> Doesn't come up much, it seems.
+2020-02-04 17:01:50 <wib_jonas> does say work like in blsq or lambdabot where it just returns an object that will be formatted without quoting anything, or is it a function with a side-effect?
+2020-02-04 17:02:03 <spruit11> The idea is that in memory, everyting is a DAG, given a number of invariants, and that makes for a robust C++ implementation.
+2020-02-04 17:02:40 <spruit11> That's the most important thing about this thingy, the rest is just me goofing with an untyped LC rewriter.
+2020-02-04 17:03:17 <esowiki> 14[[07Egel14]]4 N10 02https://esolangs.org/w/index.php?oldid=69600 5* 03B jonas 5* (+387) 10Created page with "Egel is a functional programming toy language created by Marco Devillers.  == External links == * [https://egel-lang.github.io/ Some documentation] * [https://github.com/egel-..."
+2020-02-04 17:03:34 <wib_jonas> we need at least a stub entry with pointers; I can add more details when I figure out what the heck the language is
+2020-02-04 17:04:12 <spruit11> You can look at the examples. It supports a number of thing you wont find in other LC languages.
+2020-02-04 17:04:13 <wib_jonas> I guess I can test that
+2020-02-04 17:04:38 <spruit11> Exception and multi-adic combinators.
+2020-02-04 17:04:41 <spruit11> *+s
+2020-02-04 17:04:51 <wib_jonas> egelbot: {38, say "foo", 32, say "bar", 75}
+2020-02-04 17:04:51 <egelbot> bar
+2020-02-04 17:04:52 <egelbot> foo
+2020-02-04 17:04:52 <egelbot> (System:cons 38 (System:cons System:nop (System:cons 32 (System:cons System:nop (System:cons 75 System:nil)))))
+2020-02-04 17:05:05 <wib_jonas> looks like it is a function with side effects
+2020-02-04 17:05:08 <wib_jonas> also...
+2020-02-04 17:05:26 <spruit11> egelbot: try 1 + throw "hi" catch [ X -> say X]
+2020-02-04 17:05:26 <egelbot> hi
+2020-02-04 17:05:36 <wib_jonas> looks like it can say more than one line to irc
+2020-02-04 17:05:44 <spruit11> Oh yah. Also: concurrency.
+2020-02-04 17:05:52 <spruit11> Yes, it could.
+2020-02-04 17:06:16 <spruit11> I think I put a delay on that but as I said, the bot isn't hardened.
+2020-02-04 17:06:48 <spruit11> I won't run it when I am not online. It's just to show-case.
+2020-02-04 17:07:15 <spruit11> Also for myself, you can blow up my laptop any time you feel like.
+2020-02-04 17:08:31 <wib_jonas> can the bot join more than one channel, so that we can experiment with possibly spammy things and then show only the result here?
+2020-02-04 17:08:39 <spruit11> No.
+2020-02-04 17:09:05 <wib_jonas> pity. that'd be a helpful feature, since the bot being new, we'll certainly do more experiments on it
+2020-02-04 17:09:10 <spruit11> I have #egel. But I don't go there anymore.
+2020-02-04 17:09:13 <wib_jonas> I will try to as well later
+2020-02-04 17:09:20 <wib_jonas> when I'm back
+2020-02-04 17:09:42 <wib_jonas> this looks like an interesting toy language
+2020-02-04 17:09:50 Quit: wib_jonas (Remote host closed the connection)
+2020-02-04 17:09:50 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill
+2020-02-04 17:09:52 <spruit11> Thanks!
+2020-02-04 17:09:56 <spruit11> Oh right.
