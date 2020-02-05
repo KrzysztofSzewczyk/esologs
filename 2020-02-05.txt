@@ -173,3 +173,47 @@
 2020-02-05 11:25:43 Quit: salpynx (Remote host closed the connection)
 2020-02-05 11:25:43 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, zemhill, zzo38
 2020-02-05 11:26:41 <myname> egel is horrible to search for if you are german because google will give you pages about the length of leeches
+2020-02-05 11:35:35 <wib_jonas> egelbot: [D -> (D (String:length "7"), D (String:length {7}), D (List:length "7"), D (List:length {7}))][(String:length _) -> "SL" | (List:length _) -> "LL" | (_ _) -> "A1" | V -> ("O", V)]
+2020-02-05 11:35:36 <egelbot> (System:tuple (System:tuple "O" 1) "SL" "LL" (System:tuple "O" 1))
+2020-02-05 11:36:01 <wib_jonas> egelbot: (7/2, 10/3, (-10)/3)
+2020-02-05 11:36:02 <egelbot> (System:tuple 3 3 -3)
+2020-02-05 11:37:03 <wib_jonas> egelbot: [_ -> ] 0
+2020-02-05 11:37:04 <egelbot> internal:1:8:syntactical:primary expression expected
+2020-02-05 11:44:18 <spruit11> wib_jonas: You can't.
+2020-02-05 11:46:14 <spruit11> It either rewrites a pattern, or not. I guess it could if I introduced guards but that turned out to be non-trivial.
+2020-02-05 11:46:36 <spruit11> For more or less exactly that reason, I estimate.
+2020-02-05 11:47:05 <spruit11> It needs to inspect something and then return on failure, that's non-trivial to implement.
+2020-02-05 11:47:59 <wib_jonas> ok, so even though builtin functions can do this, egel functions can't. if they want to return unevaluated, they should return some other unevaluated data.
+2020-02-05 11:48:09 <wib_jonas> egelbot: throw
+2020-02-05 11:48:10 <egelbot> internal:1:7:syntactical:primary expression expected
+2020-02-05 11:48:12 <wib_jonas> egelbot: throw 1
+2020-02-05 11:48:13 <egelbot> exception(1)
+2020-02-05 11:48:50 <spruit11> egelbot: try 1 + throw "hi" catch [ X -> say X ]
+2020-02-05 11:48:50 <egelbot> hi
+2020-02-05 11:49:06 <spruit11> ^syntax for try/catch and throw.
+2020-02-05 11:50:06 <wib_jonas> spruit: is there a nice way to test if a value is an integer (a float, a character, a string), or do I have to rely on things like whether String:length X is unevaluated like I tried above?
+2020-02-05 11:50:21 <wib_jonas> also, is there a nice way to test if something is an application, if I don't know the arity?
+2020-02-05 11:50:28 <wib_jonas> like a =.. function
+2020-02-05 11:50:53 <spruit11> The former I need to check, the latter, no. I could introduce combinators for that, though.
+2020-02-05 11:51:28 <spruit11> egelbot: [ X:int -> "yes" ] 1
+2020-02-05 11:51:28 <egelbot> internal:1:4:semantical:undeclared int
+2020-02-05 11:51:38 <spruit11> Hmm, did I remove that?
+2020-02-05 11:51:58 <wib_jonas> there was some builtin called int
+2020-02-05 11:52:01 <wib_jonas> egelbot: int
+2020-02-05 11:52:01 <egelbot> System:int
+2020-02-05 11:52:16 <wib_jonas> egelbot: [ int X -> "i" | "n" ] 2
+2020-02-05 11:52:17 <egelbot> internal:1:23:syntactical:-> expected
+2020-02-05 11:52:25 <wib_jonas> egelbot: [ int _ -> "i" | _ -> "n" ] 2
+2020-02-05 11:52:26 <egelbot> "n"
+2020-02-05 11:52:31 <wib_jonas> egelbot: [ int _ _ -> "i" | _ -> "n" ] 2
+2020-02-05 11:52:32 <egelbot> "n"
+2020-02-05 11:52:36 <wib_jonas> egelbot: [ int -> "i" | _ -> "n" ] 2
+2020-02-05 11:52:37 <egelbot> "n"
+2020-02-05 11:55:17 <spruit11> egelbot: [ X::int -> "yes" ] 1
+2020-02-05 11:55:18 <egelbot> "yes"
+2020-02-05 11:55:46 <spruit11> Needed to check in the source. For some reason I changed it to a double colon.
+2020-02-05 11:56:41 <spruit11> egelbot: [ X::int -> "an int" | X::float -> "a float" ] 1.0
+2020-02-05 11:56:41 <egelbot> "a float"
+2020-02-05 11:57:43 <spruit11> Allowing for an application is a good idea, btw. I'll see whether I can add that.
+2020-02-05 11:58:07 * spruit11 scribbles in his notes.
+2020-02-05 11:58:34 <spruit11> *testing on application.
