@@ -309,3 +309,18 @@
 2020-02-05 12:26:21 <egelbot> (Dummy58DOT0 (System:cons System:tuple (System:cons 2 System:nil)))
 2020-02-05 12:27:08 <spruit11> egelbot: [ _::cons -> "cons" ] {1,2}
 2020-02-05 12:27:08 <egelbot> "cons"
+2020-02-05 12:31:35 Quit: Lord_of_Life (Ping timeout: 260 seconds)
+2020-02-05 12:31:35 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, zemhill, zzo38
+2020-02-05 12:31:45 Joined: Lord_of_Life
+2020-02-05 12:31:46 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, zemhill, zzo38
+2020-02-05 12:33:06 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-02-05 12:56:22 <spruit11> Right, if (1 2 3) and (1 2) are compositions then why not (1)?
+2020-02-05 12:56:55 <spruit11> This is a case where the written syntax forces one to disambiguate.
+2020-02-05 12:56:59 <wib_jonas> spruit11: because this is a curried language, ((x y) z) is the same as (x y z)
+2020-02-05 12:57:40 <spruit11> Unfortunately, for the runtime model, that would mean checking loads of invariants to make sure a unary composition is never introduced.
+2020-02-05 12:58:31 <wib_jonas> you can introduce unary composition if you want, it's just that (1) shouldn't be one, because you want to use parenthesis to override precedence
+2020-02-05 12:59:14 <spruit11> Sure, but the point is that (1) shows you where the runtime model might disagree. Unary composition exists.
+2020-02-05 12:59:31 <spruit11> I.e., your syntax and ast might differ.
+2020-02-05 12:59:51 <wib_jonas> egelbot: 1 (2 3)
+2020-02-05 12:59:51 <spruit11> If the syntax would be unambiguous, I wouldn't have a problem.
+2020-02-05 12:59:51 <egelbot> (1 (2 3))
