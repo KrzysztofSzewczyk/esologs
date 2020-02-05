@@ -66,3 +66,33 @@
 2020-02-05 03:23:35 <zzo38> What exactly are you trying to do anyways?
 2020-02-05 03:27:37 <zzo38> Maybe then, we can see what to do about it.
 2020-02-05 03:28:52 <salpynx> The scaling problem was to for a 2D text substitution to replace say one character with a block of typeset text at a scaled to occupy the area of the original character, theoretically recursive to any level
+2020-02-05 03:31:42 <zzo38> O, OK. It should be possible to do that with TeX, I think (as long as the aspect ratio of the glyphs is maintained), although such a thing probably isn't going to work so well. TeX doesn't support arbitrary precision, but neither does PostScript, and I don't know if SVG does or not.
+2020-02-05 03:32:24 <salpynx> each of these text areas would have a position in its parent reference, but would itself potentially be a 'page' with its own layout. Effectively every symbol would be a character AND (potentially) a page
+2020-02-05 03:34:45 <salpynx> svg seems to be able to do arbitrary level nesting or scaling, which is why it seemed a better choice for extreme scaling.
+2020-02-05 03:34:47 <zzo38> TeX supports adding "specials" which you could use to represent whatever you want it to represent, such as links to other pages. PostScript doesn't, although I thought that they should add specials into level 4 PostScript, since it might be of use for some applications.
+2020-02-05 03:36:19 <salpynx> For the 2D replacement, something like TeX would be nicer for the concept, even if there is a limit to the nesting level I'd try to use it.
+2020-02-05 03:37:37 <zzo38> As I said, you could define a special for that purpose, and then use a specialized DVI viewer to use the page links to use arbitrary nesting/scaling.
+2020-02-05 03:38:33 Joined: Sgeo
+2020-02-05 03:41:59 Quit: Sgeo (Ping timeout: 265 seconds)
+2020-02-05 03:42:11 <salpynx> One of the things I've not fully completed or written up properly uses svgs with user defined units in Planck lengths to represent the source code. I haven't found a render that displays the objects properly with visible lines, but all the control points are in the correct places, and are converted to cm correctly. They validate as compliant svg.
+2020-02-05 03:42:56 Quit: Frater_EST (Read error: Connection reset by peer)
+2020-02-05 03:42:56 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-05 03:45:13 <zzo38> (And anyways, TeXnicard only produces raster output anyways, so is not suitable for what you are describing. But if you want to make up cards for games such as Magic: the Gathering or a card game you invent by yourself, and/or if you want to make the database of the cards too (and will want statistics and so on), and/or if you have used Magic Set Editor but want something better, then you should consider TeXnicard.)
+2020-02-05 03:47:08 <salpynx> I thought maybe the dc syntax would let arbitrary shapes and symbols be drawn on the cards (which is similar to another thing I was playing with), but from reading the docs, that looks like that has been completely replaced in the latest version
+2020-02-05 03:49:22 <zzo38> You can still do that using PostScript, which is still stack based programming. But neither version allows nesting to arbitrary levels.
+2020-02-05 03:50:32 <zzo38> (TeXnicard now uses a combination of PostScript and SQL, and also has something called EVALUATE code for some things (currently only gradients for pictures, but in future may do other stuff too).)
+2020-02-05 03:52:49 <salpynx> thanks for the 'special' tip I'll look into that. That looks like a way to get some basic output support using TeX, but still allowing for 'invisible' content to be present
+2020-02-05 03:53:23 <zzo38> Do you know any PostScript programming? PostScript can draw arbitrary shapes/symbols on the cards better than the old dc syntax could, although there are also many additional features specific to TeXnicard (such as PK font rendering, alpha transparency, etc). All PostScript commands which can draw graphics on the page still work.
+2020-02-05 03:54:16 User Name: tswett[m] = tswett[m]!tswettmatr@gateway/shell/matrix.org/x-iyzuusfcfcpnxmqm
+2020-02-05 03:54:16 <tswett[m]> Hey, anyone familiar with combinatorial game theory?
+2020-02-05 03:54:22 <salpynx> I'm not a Magic: the Gathering fan, but I like the idea of custom card games, and games in general
+2020-02-05 03:55:22 <tswett[m]> I'm wondering about a thing. Consider the game G = { Z | Z } — that is, either player may move to any integer.
+2020-02-05 03:55:31 <tswett[m]> Is G + G + 1 = 0?
+2020-02-05 03:56:17 <tswett[m]> Oh, I figured out the answer to my question in the process of typing it. The answer is no, it's equal to 1 and not 0.
+2020-02-05 03:56:22 <zzo38> salpynx: Well, TeXnicard isn't only for Magic: the Gathering. However, it is meant for card games (maybe someone can find a use for something else too, but I do not know of any).
+2020-02-05 03:56:26 <salpynx> No PostScript experience. I've only recently been teaching myself how to use LaTeX/TeX, which I like the idea of. PostScript doesn't excite me in the same way
+2020-02-05 03:57:00 <salpynx> tswett[m]: glad we could help!
+2020-02-05 03:57:19 <tswett[m]> Thanks. :D
+2020-02-05 03:58:22 <zzo38> tswett[m]: I have read about surreal numbers and how it is work with the game theory. By the rule of addition, I suppose, can figure out the answer of such question.
+2020-02-05 03:59:31 <tswett[m]> There's a simple proof that it can't be 0: if G + G + 1 were 0, that would mean that G + G = -1, but G + G is symmetrical about 0, so it can't be -1.
+2020-02-05 04:00:00 <tswett[m]> I think that in fact, G + G = 0 and so G + G + 1 = 1.
