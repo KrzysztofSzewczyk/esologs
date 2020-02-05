@@ -470,3 +470,26 @@
 2020-02-05 20:29:32 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
 2020-02-05 20:29:32 <kspalaiologos> greets
 2020-02-05 20:29:38 <kspalaiologos> any ideas on golfing this C program: http://kspalaiologos.baselinux.net/doc/golf.c ?
+2020-02-05 20:40:06 <b_jonas> egelbot: [F->{F 0,F 1,F 2}][X->if 0<X then [Y->X+Y] else [Y->10*X]]
+2020-02-05 20:40:07 <egelbot> (System:cons (Dummy61DOT2 0) (System:cons (Dummy61DOT1 1) (System:cons (Dummy61DOT1 2) System:nil)))
+2020-02-05 20:40:43 <b_jonas> egelbot: [F->{F 0,F 1,F 2}][X->if 0<X then [Y->X+Y] else [Y->10*Y]]
+2020-02-05 20:40:44 <egelbot> (System:cons Dummy62DOT2 (System:cons (Dummy62DOT1 1) (System:cons (Dummy62DOT1 2) System:nil)))
+2020-02-05 20:40:59 <b_jonas> egelbot: List:map [F->F 7] ([F->{F 0,F 1,F 2}][X->if 0<X then [Y->X+Y] else [Y->10*Y]])
+2020-02-05 20:40:59 <egelbot> (System:cons 70 (System:cons 8 (System:cons 9 System:nil)))
+2020-02-05 20:41:29 <b_jonas> egelbot: List:map [F->F 7] ([F->{F 0,F 1,F 2}][X->if 0<X then [Y->X+Y] else "zero"])
+2020-02-05 20:41:29 <egelbot> (System:cons ("zero" 7) (System:cons 8 (System:cons 9 System:nil)))
+2020-02-05 20:41:37 <b_jonas> egelbot: ([F->{F 0,F 1,F 2}][X->if 0<X then [Y->X+Y] else "zero"])
+2020-02-05 20:41:37 <egelbot> (System:cons "zero" (System:cons (Dummy65DOT1 1) (System:cons (Dummy65DOT1 2) System:nil)))
+2020-02-05 20:42:21 <b_jonas> egelbot: ([F->{F 0,F 1,F 2}][X->if 0<X then "add" [Y->X+Y] else "zero" [Y->10*Y]])
+2020-02-05 20:42:21 <egelbot> (System:cons ("zero" Dummy66DOT2) (System:cons ("add" (Dummy66DOT1 1)) (System:cons ("add" (Dummy66DOT1 2)) System:nil)))
+2020-02-05 20:42:35 <b_jonas> egelbot: ([F->{F 0,F 1,F 2}][X->if 0<X then [Y->X+Y] else [Y->10*Y]])
+2020-02-05 20:42:35 <egelbot> (System:cons Dummy67DOT2 (System:cons (Dummy67DOT1 1) (System:cons (Dummy67DOT1 2) System:nil)))
+2020-02-05 20:43:22 <b_jonas> egelbot: List:map [S::text F->(S,F 7)] ([F->{F 0,F 1,F 2}][X->if 0<X then "add" [Y->X+Y] else "zero" [Y->10*Y]])
+2020-02-05 20:43:22 <egelbot> (System:cons (Dummy68DOT0 ("zero" Dummy68DOT3)) (System:cons (Dummy68DOT0 ("add" (Dummy68DOT2 1))) (System:cons (Dummy68DOT0 ("add" (Dummy68DOT2 2))) System:nil)))
+2020-02-05 20:43:41 <b_jonas> egelbot: List:map [(S::text F)->(S,F 7)] ([F->{F 0,F 1,F 2}][X->if 0<X then "add" [Y->X+Y] else "zero" [Y->10*Y]])
+2020-02-05 20:43:42 <egelbot> (System:cons (System:tuple "zero" 70) (System:cons (System:tuple "add" 8) (System:cons (System:tuple "add" 9) System:nil)))
+2020-02-05 20:43:51 <b_jonas> ok
+2020-02-05 20:47:37 Quit: kspalaiologos (Quit: Leaving)
+2020-02-05 20:47:37 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mniip, moony, myname, myndzi, nchambers, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zzo38
+2020-02-05 20:53:17 Joined: Phantom_Hoover
+2020-02-05 20:53:17 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mniip, moony, myname, myndzi, nchambers, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zemhill, zzo38
