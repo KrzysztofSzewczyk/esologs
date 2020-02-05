@@ -1691,3 +1691,114 @@
 2020-02-04 23:27:26 <spruit11> I did a reset.
 2020-02-04 23:27:50 <b_jonas> one difficulty is that since the < operator works on everything, if I pass the wrong object to the comparison, it might always return true, so the loop could run infinitely because of that
 2020-02-04 23:27:55 <b_jonas> even if I'm not passing a number
+2020-02-04 23:30:19 <spruit11> A major problem with Egel is that if you make a typo in a recursive def, and it refuses to rewrite, it may just generate enormous terms.
+2020-02-04 23:30:27 <b_jonas> let me break that down
+2020-02-04 23:30:49 <spruit11> I thought it was something to exploit, but it seems throwing exceptions just works way better.
+2020-02-04 23:31:33 <spruit11> Like, if your numbers get large. You might end up with '+ bignum0 bignum1' expressions.
+2020-02-04 23:31:59 <spruit11> It's better to just throw an exception then, and I am going to change that.
+2020-02-04 23:32:38 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P(S+1)X Y(X+U*U-V*V)(Y+2*U*V)|_->(U,V)](S<10)]
+2020-02-04 23:32:38 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 23:32:38 <egelbot> (Dummy0DOT2 1 -0.8000000000000000 0.3000000000000000 -0.8000000000000000 (System:+ 0.3000000000000000 (System:* (System:* 2 0.000000000000000) 0.000000000000000)))
+2020-02-04 23:33:01 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2*U*V)|_->(U,V)](S<10)]
+2020-02-04 23:33:01 <egelbot> (System:tuple (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (System:- (System:* (System:+ -0.8000000000000000 (
+2020-02-04 23:33:01 Quit: egelbot (Excess Flood)
+2020-02-04 23:33:02 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:33:21 <spruit11> It refuses to rewrite something.
+2020-02-04 23:33:42 Joined: egelbot
+2020-02-04 23:33:42 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:33:46 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2*U*V)|_->(U,V)](S<2)]
+2020-02-04 23:33:46 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-04 23:33:46 <egelbot> (System:tuple (System:+ -0.8000000000000000 (System:- 0.6400000000000001 (System:* (System:+ 0.3000000000000000 (System:* (System:* 2 0.000000000000000) 0.000000000000000)) (System:+ 0.3000000000000000 (System:* (System:* 2 0.000000000000000) 0.000000000000000))))) (System:+ 0.3000000000000000 (System:* (System:* 2 -0.8000000000000000) (System:+ 0.3000000000000000 (System:* (System:* 2 0.000000000000000) 0.000000000000000)))))
+2020-02-04 23:33:48 <spruit11> '(System:* (System:* 2 0.000000000000000) 0.000000000000000))' <- doesn't seem right.
+2020-02-04 23:33:58 <b_jonas> ah
+2020-02-04 23:34:01 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(U,V)](S<2)]
+2020-02-04 23:34:02 <egelbot> (System:tuple -0.2499999999999999 -0.1800000000000000)
+2020-02-04 23:34:04 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(U,V)](S<10)]
+2020-02-04 23:34:05 <egelbot> (System:tuple -2.551589956236643 -3.469983401598749)
+2020-02-04 23:35:11 <b_jonas> ] (+*:)^:(11)~ _0.8j0.3
+2020-02-04 23:35:22 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(U,V)](S<11)]
+2020-02-04 23:35:23 <egelbot> (System:tuple -6.330173502603112 18.00794959165446)
+2020-02-04 23:36:28 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(abs U)+(abs V)<2](S<11)]
+2020-02-04 23:36:28 <egelbot> internal:1:88:semantical:undeclared abs
+2020-02-04 23:36:35 <b_jonas> egelbot: using Math
+2020-02-04 23:36:38 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(abs U)+(abs V)<2](S<11)]
+2020-02-04 23:36:39 <egelbot> System:false
+2020-02-04 23:37:28 <b_jonas> egelbot: [P->P P 0 -0.8 0.3 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(abs U)+(abs V)<2](S<11)]
+2020-02-04 23:37:29 <egelbot> System:false
+2020-02-04 23:39:21 <b_jonas> egelbot: [P->(P 0.3,P 0.4)][P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(abs U)+(abs V)<2](S<11)]-0.8
+2020-02-04 23:39:22 <egelbot> (System:tuple (Dummy7DOT1 0.3000000000000000) (Dummy7DOT1 0.4000000000000000) Dummy7DOT3 -0.8000000000000000)
+2020-02-04 23:39:46 <b_jonas> egelbot: [P->(P 0.3,P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(abs U)+(abs V)<2](S<11)]-0.8)
+2020-02-04 23:39:46 <egelbot> (System:tuple System:false System:false)
+2020-02-04 23:40:31 <b_jonas> egelbot: [P->(P 0.3,P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)]-0.8)
+2020-02-04 23:40:31 <egelbot> (System:tuple 0 0)
+2020-02-04 23:41:47 <b_jonas> egelbot: [P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)]-0.8)
+2020-02-04 23:41:48 <egelbot> " "
+2020-02-04 23:43:06 <b_jonas> egelbot: [P->(P -7)+(P -8)+(P -9)][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)](0.1*tofloat X))]
+2020-02-04 23:43:07 <egelbot> "   "
+2020-02-04 23:43:17 <b_jonas> egelbot: [P->(P -6)+(P -7)+(P -8)+(P -9)][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)](0.1*tofloat X))]
+2020-02-04 23:43:17 <egelbot> "    "
+2020-02-04 23:43:22 <b_jonas> that doesn't look right
+2020-02-04 23:43:35 <b_jonas> egelbot: [P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)]-0.6)
+2020-02-04 23:43:36 <egelbot> " "
+2020-02-04 23:43:39 <b_jonas> egelbot: [P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)]-0.2)
+2020-02-04 23:43:39 <egelbot> " "
+2020-02-04 23:43:51 <b_jonas> egelbot: [P->(P 0.3,P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2)](S<11)]-0.2)
+2020-02-04 23:43:52 <egelbot> (System:tuple 0 0)
+2020-02-04 23:44:15 <b_jonas> egelbot: [P->(P 0.3,P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(U,V)](S<11)]-0.2)
+2020-02-04 23:44:15 <egelbot> (System:tuple (System:tuple -0.2033919406239670 0.2129649016690347) (System:tuple -0.2238013223122670 0.2711989067998540))
+2020-02-04 23:45:31 <b_jonas> FireFly: J-bot stopped reacting
+2020-02-04 23:45:32 <b_jonas> ] 1
+2020-02-04 23:45:52 <b_jonas> egelbot: [P->(P 0.3,P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->(abs U)+(abs V)](S<11)]-0.2)
+2020-02-04 23:45:52 <egelbot> (System:tuple 0.4163568422930016 0.4950002291121210)
+2020-02-04 23:45:58 Quit: atslash (Quit: This computer has gone to sleep)
+2020-02-04 23:45:58 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:45:58 <b_jonas> oh
+2020-02-04 23:46:12 <b_jonas> egelbot: [P->(P -6)+(P -7)+(P -8)+(P -9)][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2.0)](S<11)](0.1*tofloat X))]
+2020-02-04 23:46:13 <egelbot> ":\'  "
+2020-02-04 23:46:39 <FireFly> [ 1
+2020-02-04 23:46:39 <j-bot> FireFly: 1
+2020-02-04 23:46:45 <FireFly> b_jonas: wrong prefix :p
+2020-02-04 23:46:47 <b_jonas> oh
+2020-02-04 23:46:59 <spruit11> Uh. What are you trying to do?
+2020-02-04 23:47:09 <b_jonas> and, while it accepts that prefix ] in private message, I put a space before it accidentally
+2020-02-04 23:47:15 <b_jonas> spruit11: more numeric calculations. you'll see.
+2020-02-04 23:47:20 <b_jonas> there were just some typos in my code
+2020-02-04 23:47:31 <spruit11> Ah.
+2020-02-04 23:47:42 <spruit11> I need food.
+2020-02-04 23:47:44 <spruit11> brb.
+2020-02-04 23:48:12 Joined: atslash
+2020-02-04 23:48:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xelxebar, zemhill, zzo38
+2020-02-04 23:49:39 <b_jonas> egelbot: [P->[H->H H""5][H B X->[true->H H(B+P X)(X- 1)|_->B](-20<X)]][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2.0)](S<11)](0.1*tofloat X))]
+2020-02-04 23:49:40 <egelbot> " \'::::::::::\'  \'\'\'       "
+2020-02-04 23:49:57 <b_jonas> egelbot: [P->[H->H H""5][H B X->[true->H H(B+P X)(X- 1)|_->say B](-20<X)]][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P 0.3)(P 0.4)]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2.0)](S<11)](0.1*tofloat X))]
+2020-02-04 23:49:58 <egelbot> '::::::::::'  '''
+2020-02-04 23:50:02 <b_jonas> good, good
+2020-02-04 23:51:18 <b_jonas> egelbot: [Y->[P->[H->H H""5][H B X->[true->H H(B+P X)(X- 1)|_->say B](-20<X)]][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P Y)(P(Y+ 0.1))]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2.0)](S<11)](0.1*tofloat X))]]0.3
+2020-02-04 23:51:19 <egelbot> '::::::::::'  '''
+2020-02-04 23:53:17 <b_jonas> egelbot: [H->H -0.9;H -0.7;H -0.5;H -0.3;H -0.1;H 0.1;H 0.3;H 0.5;H 0.7;H 0.9][Y->[P->[H->H H""5][H B X->[true->H H(B+P X)(X- 1)|_->say B](-20<X)]][X->[P->[0 0->" "|0 1->"."|1 0->"'"|1 1->":"](P Y)(P(Y+ 0.1))]([P X Y->P P 0 X Y 0.0 0.0][P S X Y U V->[true->P P(S+1)X Y(X+U*U-V*V)(Y+2.0*U*V)|_->[true->1|_->0]((abs U)+(abs V)<2.0)](S<11)](0.1*tofloat X))]]
+2020-02-04 23:53:18 <egelbot> .:.
+2020-02-04 23:53:19 <egelbot> .. ..::....
+2020-02-04 23:53:19 <egelbot> ::::::::::
+2020-02-04 23:53:20 <egelbot> ::::::::::::..:::
+2020-02-04 23:53:20 <egelbot> ::::::::::::::::::.....
+2020-02-04 23:53:21 <egelbot> .::::::::::::::::''
+2020-02-04 23:53:21 <egelbot> '::::::::::'  '''
+2020-02-04 23:53:22 <egelbot> .:'::::::::
+2020-02-04 23:53:23 <egelbot> .::
+2020-02-04 23:53:23 <egelbot> .'
+2020-02-04 23:53:39 <b_jonas> yay! Mandelbrot fractal calculation
+2020-02-04 23:53:44 <spruit11> Neat!
+2020-02-04 23:53:52 <spruit11> Or rather.
+2020-02-04 23:53:56 <spruit11> Awesome!
+2020-02-04 23:54:23 <b_jonas> it's basically translated from the Mandelbrot code in https://code.jsoftware.com/wiki/User:B_Jonas
+2020-02-04 23:55:08 <b_jonas> not exactly the same, but uses the same grid
+2020-02-04 23:56:33 <b_jonas> obviously it would have been nicer to write the top level loop as a loop too, rather than with a series of constants like that
+2020-02-04 23:56:37 <b_jonas> but I'm lazy now
+2020-02-04 23:57:35 <b_jonas> int-e: you wanted the highlights only, right? ^ Mandelbrot fractal calculation
+2020-02-04 23:58:08 <b_jonas> egelbot: [F->F F tuple 2 111][F B L U->[true->F F([T->T T 2][T C->[_ true->B L|true _->B|_ _->T T(C+1)](0==L%C)(L<C*C)])(L+1)U|_->B](L<U)] # also, list of primes
+2020-02-04 23:58:08 <egelbot> (System:tuple 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-04 23:58:23 <spruit11> It'll take me a week to understand this.
+2020-02-04 23:58:39 <spruit11> Was it difficult to translate from J?
+2020-02-04 23:59:16 <b_jonas> it's not that hard to understand
+2020-02-04 23:59:32 <b_jonas> it just has four nested loop-like thingies
+2020-02-04 23:59:54 <b_jonas> the outermost loop iterates on the rows of the output, that's the H -0.9;H -0.7;H -0.5;H -0.3;H -0.1;H 0.1;H 0.3;H 0.5;H 0.7;H 0.9 part
