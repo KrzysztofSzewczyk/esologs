@@ -217,3 +217,95 @@
 2020-02-05 11:57:43 <spruit11> Allowing for an application is a good idea, btw. I'll see whether I can add that.
 2020-02-05 11:58:07 * spruit11 scribbles in his notes.
 2020-02-05 11:58:34 <spruit11> *testing on application.
+2020-02-05 12:09:05 <spruit11> Right, I'll add checks like [g::app -> .. | f::comb -> ..] and some extra introspection combinators.
+2020-02-05 12:09:51 <wib_jonas> egelbot: [T -> (T true, T {}, T {1}, T nop, T 7, T 7.0, T 'a', T "a", T (2 3))] [true->"b", false->"b", _::int->"i", _::float->"f", _::char->"c", _::string->"s", _->"o"]
+2020-02-05 12:09:51 <egelbot> internal:1:83:syntactical:] expected
+2020-02-05 12:10:19 <wib_jonas> egelbot: [T -> (T true, T {}, T {1}, T nop, T 7, T 7.0, T 'a', T "a", T (2 3))] [true->"b"| false->"b"| _::int->"i"| _::float->"f"| _::char->"c"| _::string->"s"| _->"o"]
+2020-02-05 12:10:19 <egelbot> internal:1:142:semantical:undeclared string
+2020-02-05 12:10:25 <wib_jonas> egelbot: [T -> (T true, T {}, T {1}, T nop, T 7, T 7.0, T 'a', T "a", T (2 3))] [true->"b"| false->"b"| _::int->"i"| _::float->"f"| _::char->"c"| _::str->"s"| _->"o"]
+2020-02-05 12:10:26 <egelbot> internal:1:142:semantical:undeclared str
+2020-02-05 12:10:33 <wib_jonas> egelbot: [T -> (T true, T {}, T {1}, T nop, T 7, T 7.0, T 'a', T "a", T (2 3))] [true->"b"| false->"b"| _::int->"i"| _::float->"f"| _::char->"c"| _->"o"]
+2020-02-05 12:10:34 <egelbot> (System:tuple "b" "o" "o" "o" "i" "f" "c" "o" "i")
+2020-02-05 12:10:59 <wib_jonas> spruit11: what was the typename for strings?
+2020-02-05 12:11:14 <wib_jonas> egelbot: {1|2}
+2020-02-05 12:11:14 <egelbot> internal:1:4:syntactical:} expected
+2020-02-05 12:11:28 <wib_jonas> no improper list input syntax :-)
+2020-02-05 12:15:12 <spruit11> text?
+2020-02-05 12:15:29 <spruit11> egelbot: [ X::text -> "text" ] "hello"
+2020-02-05 12:15:29 <egelbot> "text"
+2020-02-05 12:15:56 <spruit11> egelbot: [ X::text -> "text" | X::char -> "char" ] 'a'
+2020-02-05 12:15:56 <egelbot> "char"
+2020-02-05 12:16:01 <spruit11> Right.
+2020-02-05 12:16:11 <wib_jonas> egelbot: [T -> (T true, T {}, T {1}, T nop, T 7, T 7.0, T 'a', T "a", T (2 3))] [true->"b"| false->"b"| _::int->"i"| _::float->"f"| _::char->"c"| _::text->"s"| (cons _ _)->"l"| (nil _)->"l"| _->"o"]
+2020-02-05 12:16:11 <egelbot> (System:tuple "b" "o" "l" "o" "i" "f" "c" "s" "i")
+2020-02-05 12:16:25 <wib_jonas> egelbot: {}
+2020-02-05 12:16:25 <egelbot> System:nil
+2020-02-05 12:16:30 <wib_jonas> egelbot: [T -> (T true, T {}, T {1}, T nop, T 7, T 7.0, T 'a', T "a", T (2 3))] [true->"b"| false->"b"| _::int->"i"| _::float->"f"| _::char->"c"| _::text->"s"| (cons _ _)->"l"| nil->"l"| _->"o"]
+2020-02-05 12:16:30 <egelbot> (System:tuple "b" "l" "l" "o" "i" "f" "c" "s" "i")
+2020-02-05 12:16:45 <wib_jonas> wait
+2020-02-05 12:17:01 <wib_jonas> egelbot: [X::int -> ("i", X)] (2 3)
+2020-02-05 12:17:02 <egelbot> (System:tuple "i" (2 3))
+2020-02-05 12:17:16 <wib_jonas> egelbot: [X::tuple -> ("t", X)] (2,3)
+2020-02-05 12:17:16 <egelbot> (System:tuple "t" (System:tuple 2 3))
+2020-02-05 12:17:22 <wib_jonas> ooh
+2020-02-05 12:17:32 <wib_jonas> egelbot: [X::tuple -> ("t", X)] (2,3,4,5)
+2020-02-05 12:17:33 <egelbot> (System:tuple "t" (System:tuple 2 3 4 5))
+2020-02-05 12:17:42 <wib_jonas> so this lets you recognize the head?
+2020-02-05 12:17:48 <wib_jonas> egelbot: [X::tuple -> ("t", X)] tuple
+2020-02-05 12:17:48 <spruit11> Oh, god. RIght.
+2020-02-05 12:17:48 <egelbot> (System:tuple "t" System:tuple)
+2020-02-05 12:17:57 <wib_jonas> egelbot: [X::tuple -> ("t", X)] {}
+2020-02-05 12:17:57 <spruit11> I forgot what it does that.
+2020-02-05 12:17:58 <egelbot> (Dummy48DOT0 System:nil)
+2020-02-05 12:18:01 <wib_jonas> egelbot: [X::tuple -> ("t", X)] 0
+2020-02-05 12:18:01 <egelbot> (Dummy49DOT0 0)
+2020-02-05 12:18:12 <wib_jonas> egelbot: [X::int -> ("t", X)] (int "foo")
+2020-02-05 12:18:13 <egelbot> (System:tuple "t" (System:int "foo"))
+2020-02-05 12:18:18 <wib_jonas> egelbot: (int "foo")
+2020-02-05 12:18:19 <spruit11> Need to think it over whether I can change it then. Should be possible.
+2020-02-05 12:18:19 <egelbot> (System:int "foo")
+2020-02-05 12:18:31 <spruit11> Unsure why I made that decision.
+2020-02-05 12:18:40 <wib_jonas> recognizing the head can be useful. it's halfway to a =.. introspection that breaks down any application
+2020-02-05 12:18:51 <wib_jonas> lets you recognize arbitrary tuples and all that
+2020-02-05 12:19:21 <wib_jonas> egelbot: [A@(B,C) -> (A,B,C)] (3,0)
+2020-02-05 12:19:22 <egelbot> internal:1:4:syntactical:-> expected
+2020-02-05 12:19:27 <wib_jonas> (had to try that)
+2020-02-05 12:19:30 <spruit11> I think it's because I am worried about unary tuples like (1).
+2020-02-05 12:19:59 <spruit11> So, I programmed defensively to just return the type of the head.
+2020-02-05 12:20:57 <spruit11> I don't know whether unary tuples are ever introduced. I don't think so, but that would need testing.
+2020-02-05 12:21:33 <wib_jonas> egelbot: (1,) # the parser doesn't recognize them,
+2020-02-05 12:21:34 <egelbot> internal:1:5:syntactical:primary expression expected
+2020-02-05 12:21:43 <wib_jonas> egelbot: tuple 1 # but you can make them explicitly
+2020-02-05 12:21:44 <egelbot> (System:tuple 1)
+2020-02-05 12:21:57 <wib_jonas> I don't see what that has to do with this though
+2020-02-05 12:22:03 <spruit11> Oh, right. Sorry, not tuples. Compositions.
+2020-02-05 12:22:22 <spruit11> Or arrays, internally.
+2020-02-05 12:22:28 <spruit11> egelbot: (1 2)
+2020-02-05 12:22:28 <egelbot> (1 2)
+2020-02-05 12:22:34 <spruit11> Stuff like that.
+2020-02-05 12:22:41 <spruit11> egelbot: (1)
+2020-02-05 12:22:42 <egelbot> 1
+2020-02-05 12:23:05 <spruit11> Right, there's something I didn't have time to think a lot about. What to do with (1)?
+2020-02-05 12:23:21 <wib_jonas> (1) is just 1
+2020-02-05 12:23:23 <spruit11> Is it a unary composition/array, or just a constant?
+2020-02-05 12:23:46 <wib_jonas> it's not a composition
+2020-02-05 12:23:50 <wib_jonas> it's just a different way to write 1
+2020-02-05 12:23:54 <spruit11> Right, but I have to absolutely certain it never introduces a unary composition in the runtime.
+2020-02-05 12:24:00 <spruit11> *to be
+2020-02-05 12:24:15 <wib_jonas> you may have unary compositions, but (1) isn't one
+2020-02-05 12:24:41 <spruit11> So, I programmed defensively around it, and just hoped that would turn out fine.
+2020-02-05 12:25:10 <spruit11> There are examples in the implementation (bytecode operators) I wasn't very certain.
+2020-02-05 12:25:12 <wib_jonas> egelbot: [_::1->"o"] 1
+2020-02-05 12:25:12 <egelbot> internal:1:6:syntactical:lowercase expected
+2020-02-05 12:25:22 <wib_jonas> egelbot: [_::(1)->"o"] 1
+2020-02-05 12:25:23 <egelbot> internal:1:6:syntactical:lowercase expected
+2020-02-05 12:25:42 <wib_jonas> egelbot: [_::_->"o"] 1
+2020-02-05 12:25:43 <egelbot> internal:1:6:semantical:undeclared _
+2020-02-05 12:26:05 <wib_jonas> egelbot: [_::tuple->"t"] tuple
+2020-02-05 12:26:05 <egelbot> "t"
+2020-02-05 12:26:12 <wib_jonas> egelbot: [_::tuple->"t"] (2,0)
+2020-02-05 12:26:12 <egelbot> "t"
+2020-02-05 12:26:20 <wib_jonas> egelbot: [_::tuple->"t"] {tuple,2}
+2020-02-05 12:26:21 <egelbot> (Dummy58DOT0 (System:cons System:tuple (System:cons 2 System:nil)))
+2020-02-05 12:27:08 <spruit11> egelbot: [ _::cons -> "cons" ] {1,2}
+2020-02-05 12:27:08 <egelbot> "cons"
