@@ -1,0 +1,24 @@
+2020-02-05 00:00:20 <b_jonas> the second one iterates on the characters, where X goes from 0.5 to -2.0 in steps of 0.1
+2020-02-05 00:00:45 <esowiki> 14[[07Talk:LSCEF14]]4 10 02https://esolangs.org/w/index.php?diff=69603&oldid=69575 5* 03IFcoltransG 5* (+630) 10/* ? */
+2020-02-05 00:00:58 <b_jonas> then there's a loop of only two steps, to get two pixels in one character of the output, that's the (P Y)(P(Y+ 0.1)) part
+2020-02-05 00:01:13 <b_jonas> and those two outputs are turned to one character with the lookup table [0 0->" "|0 1->"."|1 0->"'"|1 1->":"]
+2020-02-05 00:01:34 <spruit11> I'll save your explanation to a text file and think about it tomorrow.
+2020-02-05 00:02:11 <b_jonas> and there's the inner loop, in which X and Y are constant, representing a complex number (X,Y), and we iterate for 11 steps, S is the step counter, and (U,V) is the complex number that changes
+2020-02-05 00:02:25 <b_jonas> in each step, I square the complex number and add (X,Y) to it, which is the normal Mandelbrot loop
+2020-02-05 00:03:20 <b_jonas> at the end of the inner loop, I extract a result from the final value of (U,V) with [true->1|_->0]((abs U)+(abs V)<2.0)
+2020-02-05 00:03:34 <b_jonas> that result is 1 if the point is in the Mandelbrot set, or 0 if it isn't
+2020-02-05 00:03:50 <b_jonas> I use 0 and 1 instead of true and false only to make the lookup table shorter to write
+2020-02-05 00:04:08 <b_jonas> the second loop also concatenates the result characters
+2020-02-05 00:04:19 <b_jonas> and the string that we get for that line is printed with the say function
+2020-02-05 00:04:24 <b_jonas> that's about all there is to it
+2020-02-05 00:04:53 <b_jonas> to choose the grid of X and Y samples, I stole the numbers from the J snippets
+2020-02-05 00:10:01 <spruit11> Right, I am putting it into the examples dir.
+2020-02-05 00:10:11 <spruit11> B. Jonas fine as a reference?
+2020-02-05 00:10:41 <b_jonas> no, that's a messed up username that I ended up with after migration from the older wiki. please use b_jonas instead.
+2020-02-05 00:11:07 <b_jonas> the older wiki was of a sort that wanted CamelCase pagenames, then those got converted to Camel Case
+2020-02-05 00:11:25 <b_jonas> when they copied the content to a mediawiki
+2020-02-05 00:11:57 <spruit11> Excellent.
+2020-02-05 00:13:08 <spruit11> You want a link to a page you have. Only thing I got now is "b_jonas (freenode)". Not really descriptive.
+2020-02-05 00:13:17 <spruit11> Unless you prefer anonymity.
+2020-02-05 00:14:23 <spruit11> Okay, I am going with what I have now.
+2020-02-05 00:16:05 <spruit11> https://github.com/egel-lang/egel/blob/master/examples/mandelbrot.eg
