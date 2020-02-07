@@ -155,3 +155,22 @@
 2020-02-07 18:20:04 Quit: Sgeo (Ping timeout: 256 seconds)
 2020-02-07 18:28:24 Joined: test11
 2020-02-07 18:28:24 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, test11, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-07 18:30:06 User Name: test11 = test11_!4df31b5b@77.243.27.91
+2020-02-07 18:30:06 <test11> > putStr ((show(chr(ord '7')))++"test\n")
+2020-02-07 18:30:08 <lambdabot> <IO ()>
+2020-02-07 18:30:28 <test11> > ((show(chr(ord '7')))++"test\n")
+2020-02-07 18:30:30 <lambdabot> "'7'test\n"
+2020-02-07 18:33:53 <test11> > t="test"
+2020-02-07 18:33:55 <lambdabot> <hint>:1:2: error:
+2020-02-07 18:33:55 <lambdabot> parse error on input ‘=’
+2020-02-07 18:33:55 <lambdabot> Perhaps you need a 'let' in a 'do' block?
+2020-02-07 18:39:39 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03ElectricWah 5*  10New user account
+2020-02-07 18:42:48 Joined: sprocklem
+2020-02-07 18:42:48 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, test11, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-07 18:46:08 <test11> > take 39(map(\x->117-(mod(div(read(concat(map(\x->show(ord x))"\STX?3T\NUL\SOH0\"c\STX.SV:MN=\SOH3\STX2)+\SOH'`3\STX!\SOHA[\SOH2\STXKZD\STXN\"&$\STX5\"\ETX\SOH"))-1)(117^(38-x)))117))(iterate(+1)0))
+2020-02-07 18:46:10 <lambdabot> [50,51,49,53,49,32,83,101,103,109,101,110,116,97,116,105,111,110,32,102,97,1...
+2020-02-07 18:47:23 <test11> > take 39(map(\x->chr(117-(mod(div(read(concat(map(\x->show(ord x))"\STX?3T\NUL\SOH0\"c\STX.SV:MN=\SOH3\STX2)+\SOH'`3\STX!\SOHA[\SOH2\STXKZD\STXN\"&$\STX5\"\ETX\SOH"))-1)(117^(38-x)))117)))(iterate(+1)0))
+2020-02-07 18:47:25 <lambdabot> "\STXusu\ACK\ETXu\STX\DC1r\STXp\SOHt\SOH\STX%\STX\ETX3\STX\EOTk\STXt\STXs\ST...
+2020-02-07 18:49:35 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=69620&oldid=69608 5* 03ElectricWah 5* (+263) 10
+2020-02-07 18:57:38 <zzo38> I thought of the way to store a canonical Huffman table: First start one bit telling if the largest code length is odd or even. And then store the number of codes of each length using truncated binary. And then store the values in truncated binary, alternating lowest and highest values, in order that the window is made narrow after each one.
+2020-02-07 18:58:18 <zzo38> I have not compared this working with other schemes, such as the way used in DEFLATE. Do you know how well it work compared with the other way?
