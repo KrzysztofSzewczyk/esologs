@@ -174,3 +174,5 @@
 2020-02-07 18:49:35 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=69620&oldid=69608 5* 03ElectricWah 5* (+263) 10
 2020-02-07 18:57:38 <zzo38> I thought of the way to store a canonical Huffman table: First start one bit telling if the largest code length is odd or even. And then store the number of codes of each length using truncated binary. And then store the values in truncated binary, alternating lowest and highest values, in order that the window is made narrow after each one.
 2020-02-07 18:58:18 <zzo38> I have not compared this working with other schemes, such as the way used in DEFLATE. Do you know how well it work compared with the other way?
+2020-02-07 19:11:44 User Name: b_jonas = b_jonas!~x@catv-176-63-14-104.catv.broadband.hu
+2020-02-07 19:11:44 <b_jonas> zzo38: I don't know how that part of Deflate or Jpeg works
