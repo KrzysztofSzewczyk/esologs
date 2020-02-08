@@ -222,3 +222,38 @@
 2020-02-08 22:29:43 <spruit11> egelbot: try 1 + throw ([X Y -> say X " " Y] (2+2)) catch [ F -> F "?" ]
 2020-02-08 22:29:43 <egelbot> 4 ?
 2020-02-08 22:29:55 <spruit11> Just to be sure.
+2020-02-08 22:30:51 <spruit11> Yah, variadic magic _is_ evil when combined with eager semantics.
+2020-02-08 22:31:02 <b_jonas> > (maxBound - (0::Int8), maxBound - (0::Int)) -- ais523: try that in an untyped language
+2020-02-08 22:31:04 <lambdabot> (127,9223372036854775807)
+2020-02-08 22:31:04 <spruit11> But, ah well.
+2020-02-08 22:31:59 <ais523> b_jonas: I wasn't thinking in terms of existing programs still working, just in terms of the syntax and semantics making sense
+2020-02-08 22:32:19 <b_jonas> fizzie: can you please install libicu-dev onto HackEso inside, plus make it ignore egelbot while you're there?
+2020-02-08 22:33:48 <spruit11> b_jonas: nop is just the return value for "say". It needs to rewrite to some value.
+2020-02-08 22:34:03 <spruit11> b_jonas: Egel is impure, eager, weakly typed.
+2020-02-08 22:34:28 <ais523> spruit11: I think the "consensus" return value for that among computer scientists is to use an empty tuple
+2020-02-08 22:34:39 <ais523> there are a number of mathematical benefits to that particular value
+2020-02-08 22:34:45 <spruit11> ais523: Could be. I am not that informed.
+2020-02-08 22:34:52 <b_jonas> ais523: I don't think that's the consensus, that's just what Haskell uses
+2020-02-08 22:34:58 <ais523> OCaml too
+2020-02-08 22:36:04 <ais523> the reason is based on the properties of product and sum types, a type with only one possible value is a unit for a product type, thus a type with only one possible value is an empty tuple
+2020-02-08 22:36:24 <b_jonas> yes, but there can be multiple distinct types with only one possible value
+2020-02-08 22:36:27 <ais523> (likewise, the return value from functions that never return is an empty enum / a variant with no options, because it's the unit for a sum type)
+2020-02-08 22:36:45 <ais523> b_jonas: how do you distinguish the types?
+2020-02-08 22:37:07 <b_jonas> regardless of whether the language is weakly typed or compile time typed, you can use different types to distinguish isomorphic types for catching programming errors or making programming easier to think about
+2020-02-08 22:37:24 <ais523> I guess you just have to arbitraily say "these things belong to different types", mathematicians dislike that sort of arbitrary requirement
+2020-02-08 22:37:42 <ais523> because they're semantically identical after the language is compiled, they only affect type checking
+2020-02-08 22:37:49 <b_jonas> sure
+2020-02-08 22:52:47 <b_jonas> fungot, do lions eat watermelons?
+2020-02-08 22:52:48 <fungot> b_jonas: and got really scared :p. but, not a technical problem... altho my cat is in a
+2020-02-08 22:56:41 <kmc> Rust also uses an empty tuple
+2020-02-08 22:57:02 <kmc> if a function has no declared return type then it returns ()
+2020-02-08 22:57:18 <kmc> and "return;" is short for "return ();"
+2020-02-08 22:57:25 <spruit11> It makes a bit more sense to use a special value in an untyped language.
+2020-02-08 22:57:43 <spruit11> egelbot: nop
+2020-02-08 22:57:48 <kmc> and a { ... } block which ends with a non-expression (e.g. a semicolon-terminated statement) produces the value ()
+2020-02-08 22:57:49 <spruit11> egelbot: tuple
+2020-02-08 22:57:49 <egelbot> System:tuple
+2020-02-08 22:57:57 <spruit11> ^ because of that.
+2020-02-08 22:58:14 <kmc> (because blocks are expressions so it has to produce *something*)
+2020-02-08 22:58:42 <kmc> Rust's concrete syntax is all braces-and-semicolons but the abstract syntax is closer to ML than C
+2020-02-08 22:59:06 <kmc> seeing as most constructs are expressions and there are only a few kinds of non-expression statement
