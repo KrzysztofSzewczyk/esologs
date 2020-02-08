@@ -146,3 +146,28 @@
 2020-02-08 19:49:50 Joined: Phantom_Hoover
 2020-02-08 19:49:50 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
 2020-02-08 19:50:43 <zzo38> (That is, put the lowest element first, and then the highest element, and alternate the lowest and highest remaining element)
+2020-02-08 21:07:16 <arseniiv> <spruit11> If you pass around partially applied functions wouldn't that imply some form of GC too? => maybe not, if we would do something awful to pointers :D
+2020-02-08 21:07:30 <arseniiv> didn’t see there was answers, as no one mentioned me :P
+2020-02-08 21:11:06 <arseniiv> <zzo38> If you have "abcdefhijk" then you can put into the order "akbjcidhef" what is such an ordering called? => interesting thing, I haven’t seen a name for this
+2020-02-08 21:11:40 <zzo38> arseniiv: Have you seen this kind of ordering used with anything though?
+2020-02-08 21:12:45 <arseniiv> zzo38: maybe in a deck shuffling method, but I’m not sure that’s not my imagination
+2020-02-08 21:14:36 <b_jonas> arseniiv: I don't think that works as a deck shuffling method, because you can't quickly reverse a deck. it could be a pancake shuffling method, because you can reverse a stack of pancakes.
+2020-02-08 21:15:01 <arseniiv> I would name that a spiral ordering maybe, as one can draw an archimedean spiral with center somewhere near the midpoint of the string, and it will pass through the string’s characters in that order
+2020-02-08 21:15:18 <zzo38> It is used in a method of storing a Huffman tree that I invented, but I don't know how good it is compared with other methods. The values for each code length are stored in this order.
+2020-02-08 21:15:39 <zzo38> O, that is what it is called.
+2020-02-08 21:15:55 <arseniiv> b_jonas: now I want pancakes
+2020-02-08 21:16:04 <zzo38> I don't know what other uses there might be of such ordering
+2020-02-08 21:16:25 <zzo38> Do you have the ingredients to make pancakes?
+2020-02-08 21:17:05 <arseniiv> yeah, but it’s very late here and I’m going to take a bath and then sleep
+2020-02-08 21:17:33 <arseniiv> not so very late but still
+2020-02-08 21:17:43 <zzo38> O, OK. In morning you can make pancake then, if you like to do.
+2020-02-08 21:18:05 <arseniiv> it’s a good suggestion!
+2020-02-08 21:18:19 <arseniiv> well, bye
+2020-02-08 21:18:19 <b_jonas> fungot, do you eat pancakes
+2020-02-08 21:18:20 <fungot> b_jonas: i don't think you'd like grad cs? ( other than one .cpp
+2020-02-08 21:18:50 <arseniiv> fungot: do you bathe or are you intristically clean and shiny as bots go?
+2020-02-08 21:18:50 <fungot> arseniiv: wait a second
+2020-02-08 21:18:57 <arseniiv> haha
+2020-02-08 21:19:37 <arseniiv> maybe it’s because I again typoed “intrinsically”
+2020-02-08 21:23:38 Quit: arseniiv (Ping timeout: 240 seconds)
+2020-02-08 21:23:38 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
