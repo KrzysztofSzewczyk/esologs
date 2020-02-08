@@ -115,3 +115,28 @@
 2020-02-08 18:46:46 <zzo38> SQLite still uses ARCFOUR for random numbers, even though I have read somewhere that sometimes the period is too small.
 2020-02-08 18:56:59 <moony> This makes me think of just how tricky to design Rust's closures probably were
 2020-02-08 18:57:26 <moony> the language is built around tracking the lifetimes of everything, i'd imagine they could throw a wrench in the works
+2020-02-08 19:11:39 <kmc> yes, it was tricky
+2020-02-08 19:14:48 <kmc> https://doc.rust-lang.org/1.30.0/book/second-edition/ch19-02-advanced-lifetimes.html
+2020-02-08 19:15:04 <kmc> it's one of the reasons why they support bounds of the form "Type: 'lifetime" as well as "Type: Trait"
+2020-02-08 19:15:18 <kmc> meaning "everything in this Type is live for at least 'lifetime"
+2020-02-08 19:16:05 <kmc> it's not really unique to closures, because Rust closures (like C++ closures) are sugar for creating and populating an anonymous struct type with appropriate Fn/FnMut/FnOnce implementation
+2020-02-08 19:16:49 <kmc> and (like C++) higher order functions are either generic over that type (static dispatch) or take a "trait object" (dynamic dispatch)
+2020-02-08 19:17:21 <kmc> anyway it's a lot of complexity but integrating closures into this scheme of things is really powerful
+2020-02-08 19:18:00 <kmc> for example you can capture stack objects by reference without fear that the closure will escape that stack frame
+2020-02-08 19:18:28 <kmc> you can even build a "scoped threads" library around this, which allows you to spawn a thread that is guaranteed not to outlive that scope
+2020-02-08 19:18:56 <kmc> which is a nice starting point for very efficient data parallelism
+2020-02-08 19:19:18 <kmc> splitting work up among threads without having to copy the data that they will be working on
+2020-02-08 19:20:15 <kmc> although it's not perfect, I think the design of Rust came together really well
+2020-02-08 19:21:30 Joined: imode
+2020-02-08 19:21:30 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 19:22:28 <kmc> it was designed by some very smart people who didn't give up on having the trifecta of safe, fast, convenient
+2020-02-08 19:22:48 <kmc> and the tradeoff is complexity
+2020-02-08 19:22:59 <kmc> but the complexity is pretty harmonious and most of it's there for a good reason
+2020-02-08 19:23:19 <kmc> unlike C++, which is similarly or more complex but for mostly accidental reasons
+2020-02-08 19:23:48 <kmc> but yeah closures in Rust are funky
+2020-02-08 19:23:57 <kmc> there's the lifetime-bounds-on-captures thing I just discussed
+2020-02-08 19:24:28 <kmc> and then there's the question of capture by move vs. capture by reference
+2020-02-08 19:24:54 <kmc> and then there's the three call traits Fn/FnMut/FnOnce which determine whether you can move *out* of the captures, and whether you can mutate them
+2020-02-08 19:25:16 <kmc> 'mut' in Rust really means 'exclusive pointer' not 'mutation-allowing pointer'
+2020-02-08 19:25:38 <kmc> you need exclusive access to mutate, but it's the exclusivity that actually drives so much of the language design
+2020-02-08 19:25:51 <kmc> it's a much stronger difference than &T vs const &T in C++
