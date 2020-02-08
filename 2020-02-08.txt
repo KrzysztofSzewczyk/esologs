@@ -140,3 +140,9 @@
 2020-02-08 19:25:16 <kmc> 'mut' in Rust really means 'exclusive pointer' not 'mutation-allowing pointer'
 2020-02-08 19:25:38 <kmc> you need exclusive access to mutate, but it's the exclusivity that actually drives so much of the language design
 2020-02-08 19:25:51 <kmc> it's a much stronger difference than &T vs const &T in C++
+2020-02-08 19:48:40 <zzo38> If you have "abcdefhijk" then you can put into the order "akbjcidhef" what is such an ordering called?
+2020-02-08 19:49:15 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-02-08 19:49:15 <myname> like in the movie memento?
+2020-02-08 19:49:50 Joined: Phantom_Hoover
+2020-02-08 19:49:50 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 19:50:43 <zzo38> (That is, put the lowest element first, and then the highest element, and alternate the lowest and highest remaining element)
