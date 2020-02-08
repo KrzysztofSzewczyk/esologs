@@ -175,3 +175,50 @@
 2020-02-08 21:44:07 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
 2020-02-08 21:52:32 Joined: ArthurStrong
 2020-02-08 21:52:32 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 22:09:45 <spruit11> egelbot: try 1 + throw ([X Y -> say X " "] "hello") catch [ F -> F "world!" ]
+2020-02-08 22:09:46 <egelbot> hello
+2020-02-08 22:09:55 <spruit11> egelbot: try 1 + throw ([X Y -> say X " " Y] "hello") catch [ F -> F "world!" ]
+2020-02-08 22:09:55 <egelbot> hello world!
+2020-02-08 22:09:59 <spruit11> \o/
+2020-02-08 22:10:31 <spruit11> Just checking.
+2020-02-08 22:15:01 <b_jonas> what? how does that work
+2020-02-08 22:15:06 <b_jonas> egelbot: say "a" "b" "c"
+2020-02-08 22:15:06 <egelbot> abc
+2020-02-08 22:15:08 <b_jonas> what
+2020-02-08 22:15:11 <b_jonas> egelbot: (say "a") "b" "c"
+2020-02-08 22:15:11 <egelbot> abc
+2020-02-08 22:15:22 <b_jonas> egelbot: say "a"
+2020-02-08 22:15:22 <egelbot> a
+2020-02-08 22:15:34 <b_jonas> egelbot: (say "a", 0)
+2020-02-08 22:15:34 <egelbot> a
+2020-02-08 22:15:34 <egelbot> (System:tuple System:nop 0)
+2020-02-08 22:15:48 <b_jonas> egelbot: [(X, Y) -> X "b"] (say "a", 0)
+2020-02-08 22:15:48 <egelbot> a
+2020-02-08 22:16:01 <b_jonas> that's evil
+2020-02-08 22:16:06 <b_jonas> variadic magic
+2020-02-08 22:18:20 Quit: HackEso (Read error: Connection reset by peer)
+2020-02-08 22:18:21 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 22:19:13 Joined: HackEso
+2020-02-08 22:19:13 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 22:19:45 <b_jonas> egelbot: [X -> X "b"] say "a"
+2020-02-08 22:20:02 <b_jonas> egelbot: [X -> X "b"] (say "a")
+2020-02-08 22:20:02 <egelbot> a
+2020-02-08 22:20:18 <b_jonas> egelbot: nop "a"
+2020-02-08 22:20:31 <b_jonas> nop as a head suppresses the printing?
+2020-02-08 22:21:04 <b_jonas> egelbot: [V -> (V, V)] (7; 6)
+2020-02-08 22:21:04 <egelbot> (System:tuple 6 6)
+2020-02-08 22:21:41 <myname> egel looks a lot like haskell imo
+2020-02-08 22:22:49 <zzo38> It looks like difference to me.
+2020-02-08 22:23:20 <b_jonas> myname: egel is not lazy, and it's weakly typed
+2020-02-08 22:23:58 <b_jonas> egelbot: [V -> "unused"] (say "side effect")
+2020-02-08 22:23:58 <egelbot> side effect
+2020-02-08 22:23:58 <egelbot> "unused"
+2020-02-08 22:24:28 Quit: ArthurStrong (Quit: leaving)
+2020-02-08 22:24:28 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 22:28:18 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-02-08 22:28:18 <ais523> I can imagine a strict language that looks identical to Haskell, and is semantically very similar apart from being strict
+2020-02-08 22:28:37 <ais523> I guess I can imagine untyped Haskell too; does Haskell ever use its type system to figure out how to parse something?
+2020-02-08 22:29:26 <b_jonas> ais523: no, but Haskell uses typeclasses in a way that which class is chosen depends on the type of the result, not of the input arguments, like rust but unlike C++
+2020-02-08 22:29:43 <spruit11> egelbot: try 1 + throw ([X Y -> say X " " Y] (2+2)) catch [ F -> F "?" ]
+2020-02-08 22:29:43 <egelbot> 4 ?
+2020-02-08 22:29:55 <spruit11> Just to be sure.
