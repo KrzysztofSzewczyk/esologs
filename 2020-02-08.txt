@@ -257,3 +257,69 @@
 2020-02-08 22:58:14 <kmc> (because blocks are expressions so it has to produce *something*)
 2020-02-08 22:58:42 <kmc> Rust's concrete syntax is all braces-and-semicolons but the abstract syntax is closer to ML than C
 2020-02-08 22:59:06 <kmc> seeing as most constructs are expressions and there are only a few kinds of non-expression statement
+2020-02-08 23:01:48 <ais523> Rust has a bit of a backwards compatibility mess, though, with various competing empty types
+2020-02-08 23:02:08 <ais523> there's ! which wasn't a type for ages, and various empty enums invented to serve as an empty type until ! became a type
+2020-02-08 23:02:14 <ais523> I think that's likely to get fixed eventually though
+2020-02-08 23:04:39 <kmc> yeah
+2020-02-08 23:05:37 <kmc> Haskell doesn't have a standard empty type either, does it
+2020-02-08 23:05:48 <Taneb> Data.Void.Void is in base now
+2020-02-08 23:05:49 <kmc> and I don't think you can define it in standard Haskell
+2020-02-08 23:05:51 <kmc> ok
+2020-02-08 23:06:00 <Taneb> But that's a GHCism
+2020-02-08 23:06:09 <kmc> yeah
+2020-02-08 23:06:13 <b_jonas> kmc: you can define it with the GADT syntax these days
+2020-02-08 23:06:20 <kmc> but that's not in standard Haskell, is it?
+2020-02-08 23:06:23 <b_jonas> I think it's like data Void where {}
+2020-02-08 23:06:26 <b_jonas> no clue
+2020-02-08 23:06:39 <b_jonas> doesn't matter, GHC is the de facto standard
+2020-02-08 23:06:50 <kmc> if it's a de facto standard then it should be a lot better documented
+2020-02-08 23:07:03 <kmc> and they should at least have a subset of extensions which are semi guaranteed not to change randomly
+2020-02-08 23:07:04 <b_jonas> kmc: it is, there's a user manual that explains all the extensions
+2020-02-08 23:07:08 <kmc> """explains""
+2020-02-08 23:07:22 <kmc> "read this paper that we implemented a variant of half of"
+2020-02-08 23:07:39 <kmc> "and may completely change in the next minor version release"
+2020-02-08 23:09:15 <b_jonas> https://downloads.haskell.org/ghc/latest/docs/html/users_guide/glasgow_exts.html#declaring-data-types-with-explicit-constructor-signatures specifically
+2020-02-08 23:09:26 <b_jonas> kmc: well some extensions are like that, but some are pretty stable
+2020-02-08 23:09:43 <kmc> but there's no actual indication of which is which, is there?
+2020-02-08 23:10:28 <kmc> Rust has a lot of unstable features as well, and there's no Rust standard to begin with. but they're pretty careful about distinguishing stable from unstable features and not breaking backwards compat after something is declared stable
+2020-02-08 23:10:33 <b_jonas> and there's another extension to declare an empty enum, https://downloads.haskell.org/ghc/latest/docs/html/users_guide/glasgow_exts.html#data-types-with-no-constructors , but the GADT syntax is clearer
+2020-02-08 23:10:39 <kmc> GHC doesn't even comply with the Haskell spec anymore
+2020-02-08 23:10:46 <kmc> even with all extensions off
+2020-02-08 23:11:01 <kmc> there is valid Haskell 98 code that isn't accepted by GHC because they've defined stdlib stuff differently
+2020-02-08 23:11:31 Quit: Phantom_Hoover (Ping timeout: 265 seconds)
+2020-02-08 23:11:31 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-08 23:11:40 <b_jonas> kmc: you know there's a haskell 2010 standard, right? www.haskell.org/onlinereport/haskell2010/
+2020-02-08 23:11:44 <kmc> sure
+2020-02-08 23:11:59 <kmc> s/98/2010/ in what I said
+2020-02-08 23:12:00 <kmc> it's still true
+2020-02-08 23:12:08 <kmc> and Haskell 2010 is only a minor revision of Haskell 98
+2020-02-08 23:12:13 <b_jonas> and yes, one of the important changes is in the class hierarchy where Monads are now a ... Functor? or an Applicative? I don't follow
+2020-02-08 23:12:25 <kmc> it didn't capture most of the GHC extensions in use in 2010 let alone whatever crazy shit people are using now
+2020-02-08 23:12:48 <b_jonas> "minor revision"? it's what documents a lot of nice stable what used to be GHC extensions to haskell 98
+2020-02-08 23:13:04 <b_jonas> it doesn't want to revolutionize the language, but it gives you tools that you'll want to use without a standard anyway
+2020-02-08 23:13:21 <b_jonas> it only documents the more stable stuff, not every crazy experimental ghc extension
+2020-02-08 23:13:30 <b_jonas> and obviously it's like nine years old
+2020-02-08 23:13:57 <kmc> yes, it's a minor revision
+2020-02-08 23:14:31 <kmc> it included a small number of minor extensions to Haskell 98
+2020-02-08 23:14:47 <kmc> there are not many large Haskell programs that required GHC extensions with 98 but are valid standard Haskell 2010
+2020-02-08 23:14:51 <kmc> imo
+2020-02-08 23:15:17 <kmc> if they're going to have one language release per decade then they need to step up the pace a lot to be relevant at all
+2020-02-08 23:15:23 <kmc> and well
+2020-02-08 23:15:27 <kmc> they aren't relevant
+2020-02-08 23:15:35 <kmc> as you yourself said
+2020-02-08 23:15:56 <kmc> people don't code Haskell they code for GHC and whatever version happens to be available now
+2020-02-08 23:16:52 <b_jonas> kmc: yes. and that's not particularly different for rust either at the moment, until someone puts serious work into a rust frontend for gcc
+2020-02-08 23:17:18 <b_jonas> kmc: most current rust programs target the one rust compiler, and depend on how exactly it does type inference
+2020-02-08 23:18:38 <kmc> the difference is that they have a strong committment to not break code which compiles without extensions turned on
+2020-02-08 23:18:52 <kmc> and even run regression tests against the entire published ecosystem on crates.io
+2020-02-08 23:18:56 <b_jonas> kmc: except for when it depends on the type inference. but sure.
+2020-02-08 23:19:41 <b_jonas> anyway, I do understand that haskell isn't too relevant, and I wouldn't recommend to write programs in it, but that's mostly because it's this strange research language based on lazy pure garbage-collected you know what
+2020-02-08 23:21:07 <b_jonas> and I do like rust
+2020-02-08 23:21:15 <b_jonas> I'm just saying that some of your complaints seem unfair
+2020-02-08 23:22:26 <b_jonas> and yes, the rust devs do indeed to good job about backwards compatibility in practice, but you do get most of the backwards compatibility with GHC too, except for the stupid Monad superclass issue, which you can fix, unless you use one of the crazy experimental extensions
+2020-02-08 23:25:17 Joined: xkapastel
+2020-02-08 23:25:17 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-08 23:28:15 <zzo38> Is there a auto super class extension?
+2020-02-08 23:28:37 <b_jonas> dunno. you can try asking in #haskell.
+2020-02-08 23:28:40 <b_jonas> I mean
+2020-02-08 23:28:43 <b_jonas> dunno. you can try asking in #haskell .
