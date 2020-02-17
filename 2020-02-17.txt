@@ -147,3 +147,39 @@
 2020-02-17 13:28:41 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; ( rm -vf src/math.o; make -C src &>> buildlog )
 2020-02-17 13:29:14 <HackEso> No output.
 2020-02-17 13:29:51 <esowiki> 14[[07XENBLN14]]4 M10 02https://esolangs.org/w/index.php?diff=69921&oldid=69919 5* 03PythonshellDebugwindow 5* (+46) 10/* Number separation */
+2020-02-17 13:30:28 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; ( cd src; c++ --std=c++17 -Werror utils.o lexical.o operators.o syntactical.o ast.o transform.o semantical.o desugar.o lift.o emit.o builtin/system.o builtin/math.o builtin/string.o builtin/evaluate.o builtin/thread.o egel.o -ldl -lpthread -licuio -licui18n -licuuc -licudata -o egel ) &>>buildlog
+2020-02-17 13:30:32 <HackEso> No output.
+2020-02-17 13:31:56 <wib_jonas> ``` set -e; f=/hackenv/tmp/egel-master/a0.eg; echo $'using System\n using Math\ndef main = (3+5)' > "$f"; cd /; /hackenv/tmp/egel-master/src/egel "$f"
+2020-02-17 13:31:57 <HackEso> 8
+2020-02-17 13:34:30 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; make -C lib/io LIBS="-ldl -lpthread -licuio -licui18n -licuuc -licudata" &>> buildlog
+2020-02-17 13:34:36 <HackEso> No output.
+2020-02-17 13:35:35 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; mkdir stag; cp -vi lib/io/io.ego src/egel stag/
+2020-02-17 13:35:36 <HackEso> cp: cannot stat 'lib/io/io.ego': No such file or directory \ 'src/egel' -> 'stag/egel'
+2020-02-17 13:39:28 <esowiki> 14[[07Chevron14]]4 M10 02https://esolangs.org/w/index.php?diff=69922&oldid=69920 5* 03Superloach 5* (+500) 10add relative hop/skp/jmp
+2020-02-17 13:39:57 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; mkdir stag; cp -vi lib/io/io.o stag/
+2020-02-17 13:39:58 <HackEso> mkdir: cannot create directory 'stag': File exists
+2020-02-17 13:40:09 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; cp -vi lib/io/io.o stag/
+2020-02-17 13:40:14 <HackEso> ​'lib/io/io.o' -> 'stag/io.o'
+2020-02-17 13:40:57 <wib_jonas> no
+2020-02-17 13:41:17 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; rm -vf stag/io.o; cp -v lib/io.ego stag/
+2020-02-17 13:41:18 <HackEso> removed 'stag/io.o' \ 'lib/io.ego' -> 'stag/io.ego'
+2020-02-17 13:41:42 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'using System\nusing Math\nusing IO\ndef main = print "hello, world"' > a0.eg; ./egel io.ego a0.eg
+2020-02-17 13:41:43 <HackEso> No output.
+2020-02-17 13:41:52 <wib_jonas> that's better, no longer an error, though it doesn't seem to print anything
+2020-02-17 13:43:51 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; (for d in io fs random regex; do make -C lib/$d LIBS="-ldl -lpthread -licuio -licui18n -licuuc -licudata"; done) &>> buildlog
+2020-02-17 13:44:17 <HackEso> No output.
+2020-02-17 13:45:03 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master; cp -vi lib/*.ego stag
+2020-02-17 13:45:04 <HackEso> cp: overwrite 'stag/io.ego'? 'lib/fs.ego' -> 'stag/fs.ego' \ 'lib/random.ego' -> 'stag/random.ego' \ 'lib/regex.ego' -> 'stag/regex.ego'
+2020-02-17 13:45:19 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'using System\nusing Math\nusing IO\ndef main = (print "hello, world", 2)' > a0.eg; ./egel io.ego a0.eg
+2020-02-17 13:45:20 <HackEso> No output.
+2020-02-17 13:46:12 <wib_jonas> oh, I think it only loads io.ego, not the second argument
+2020-02-17 13:49:59 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\ndef main = print(String:unescape"hello\\nworld")' > a0.eg; ./egel a0.eg
+2020-02-17 13:50:00 <HackEso> hello \ world
+2020-02-17 13:50:07 <wib_jonas> ^ that. I've been missing an import statement
+2020-02-17 13:50:34 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\ndef main = (print "hello\\nworld)"' > a0.eg; ./egel a0.eg
+2020-02-17 13:50:35 <HackEso> a0.eg:6:1:syntactical:) expected
+2020-02-17 13:51:16 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"' > a0.eg; ./egel a0.eg
+2020-02-17 13:51:16 <HackEso> hello \ world
+2020-02-17 13:51:34 <wib_jonas> ok, now I need a wrapper with a prelude, and install this thing
+2020-02-17 13:52:40 Joined: kritixilithos
+2020-02-17 13:52:41 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zemhill, zzo38
