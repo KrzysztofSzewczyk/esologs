@@ -87,3 +87,21 @@
 2020-02-17 08:57:34 <int-e> And yes, this is intimately connected to the Hardy function. In fact if you are willing to accept a result that is larger by 2, you can save a couple of bits, by getting rid of the succ (succ n) thing, and starting at 3 instead of 1.
 2020-02-17 08:57:44 <tromp> you probably rediscovered Cichon's relation by yourself then
 2020-02-17 08:58:41 <tromp> yeah, those succs suck:-)
+2020-02-17 09:00:01 <tromp> i also revisited our programs on Laver tables
+2020-02-17 09:00:19 <tromp> those are even more fun than goodstein
+2020-02-17 09:00:53 <tromp> and have a natural killer big number (first time period exceeds 16)
+2020-02-17 09:01:22 <tromp> which takes almost exacty same number of bits as G(16)
+2020-02-17 09:03:18 <int-e> We have h_\alpha(n+2) - 2 = G_\alpha(n). The shift comes from the fact that the Goodstein sequence basically starts evaluation in base 3 (given the heriditary base 2 representation of the starting value in the form of an ordinal). But subtraction is awkward on Church numerals, so if you want G(16) rather than G(16)+2, it's easier to do the shift by 2 inside of the function... hence the two succ-s.
+2020-02-17 09:04:23 <tromp> i'm just as happy with G()+2 ...
+2020-02-17 09:05:07 <int-e> You came from a different angle, just trying to make big numbers. I wanted to have the Goodstein function.
+2020-02-17 09:06:31 <tromp> best to just define both variants
+2020-02-17 09:07:09 <int-e> 8 bits is what it saves
+2020-02-17 09:11:14 <int-e> and... pushed
+2020-02-17 09:19:05 <tromp> thanks
+2020-02-17 09:19:57 <int-e> The expw part looks funny in diagrammatic form.
+2020-02-17 09:23:45 Joined: TheLie
+2020-02-17 09:23:45 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-17 09:24:56 Quit: b_jonas (Remote host closed the connection)
+2020-02-17 09:24:57 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-17 09:27:38 Quit: TheLie (Remote host closed the connection)
+2020-02-17 09:27:39 Names: ^[, aji, aloril, APic, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
