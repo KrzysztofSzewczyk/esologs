@@ -199,3 +199,31 @@
 2020-02-17 14:28:30 <spruit11> Try ./a0.eg?
 2020-02-17 14:28:45 <spruit11> I'll look it up.
 2020-02-17 14:29:23 <wib_jonas> spruit: ./a0.eg did work, yes. but an absolute path didn't work.
+2020-02-17 14:30:47 <wib_jonas> spruit: this is a problem because . is in the search path by default, so you can't just execute scripts with any wd, you risk accidentally running files from the wd, which could be malicious. this is not such a big problmem on HackEso of course.
+2020-02-17 14:32:08 <spruit11> Oh, right. I'll check
+2020-02-17 14:32:48 <spruit11> You're correct. Bug.
+2020-02-17 14:34:55 <spruit11> I assume I only programmed it to look at extensions of paths. I.e., only look in the -I dirs.
+2020-02-17 14:35:03 <spruit11> See if I can add a clause.
+2020-02-17 14:35:43 <wib_jonas> thanks
+2020-02-17 14:35:58 <spruit11> The code is already there but I commented it out...
+2020-02-17 14:38:08 <spruit11> Ah, I get it. The .ego files need absolute paths to run a dlopen().
+2020-02-17 14:40:40 <spruit11> Hmm, I just removed the comments and everything seems to work anyway?
+2020-02-17 14:40:43 <wib_jonas> spruit11: and .eg script files need an absolute path to open(). sure.
+2020-02-17 14:40:58 <spruit11> I pushed the commit.
+2020-02-17 14:41:07 <spruit11> Hope it didn't break anything.
+2020-02-17 14:41:16 <spruit11> Seems to work on my end.
+2020-02-17 14:41:17 <wib_jonas> oh wait no, ignore the above one line
+2020-02-17 14:42:16 Joined: egelbot
+2020-02-17 14:42:16 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-17 14:42:28 <spruit11> egelbot: eval "[X->X]" 1
+2020-02-17 14:42:28 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-17 14:42:28 <egelbot> 1
+2020-02-17 14:42:34 Joined: MDude
+2020-02-17 14:42:34 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-17 14:42:38 <spruit11> That still seems to work too.
+2020-02-17 14:42:53 <spruit11> You should be fine. *Fingers crossed*
+2020-02-17 14:44:34 <spruit11> I guess a problem might arise since Egel's -I is different from the path dlopen() uses to search for files.
+2020-02-17 14:44:42 <spruit11> But it works for now.
+2020-02-17 14:45:45 <wib_jonas> thank you
+2020-02-17 14:46:09 <spruit11> I'll hack a check on '.ego' extensions later.
+2020-02-17 14:46:23 <spruit11> np
