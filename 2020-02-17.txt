@@ -183,3 +183,19 @@
 2020-02-17 13:51:34 <wib_jonas> ok, now I need a wrapper with a prelude, and install this thing
 2020-02-17 13:52:40 Joined: kritixilithos
 2020-02-17 13:52:41 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-17 14:05:15 User Name: spruit11 = spruit11!~unknown@ip56522cc1.speed.planet.nl
+2020-02-17 14:05:15 <spruit11> It worked?
+2020-02-17 14:05:16 <spruit11> Neat.
+2020-02-17 14:11:56 <wib_jonas> spruit11: there's still the problem that the interpreter doesn't seem to accept an absolute path for the script filename. I wonder if you could fix that.
+2020-02-17 14:12:11 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"' > a0.eg; ./egel /hackenv/tmp/egel-master/stag/a0.eg
+2020-02-17 14:12:13 <HackEso> input/output:file "/hackenv/tmp/egel-master/stag/a0.eg" not found
+2020-02-17 14:13:02 <wib_jonas> alternately, give a way to take the script from standard input, but without printing the prompts
+2020-02-17 14:13:07 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"' > a0.eg; ./egel </hackenv/tmp/egel-master/stag/a0.eg
+2020-02-17 14:13:08 <HackEso> ​>> >> >> >> >> >>
+2020-02-17 14:13:25 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"\nmain' > a0.eg; ./egel </hackenv/tmp/egel-master/stag/a0.eg
+2020-02-17 14:13:26 <HackEso> ​>> >> >> >> >> internal:1:32:syntactical:\ unexpected \ >>
+2020-02-17 14:13:34 <wib_jonas> ``` set -e; cd /hackenv/tmp/egel-master/stag; echo $'import "io.ego"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"'$'\nmain' > a0.eg; ./egel </hackenv/tmp/egel-master/stag/a0.eg
+2020-02-17 14:13:35 <HackEso> ​>> >> >> >> >> >> hello \ world>>
+2020-02-17 14:28:30 <spruit11> Try ./a0.eg?
+2020-02-17 14:28:45 <spruit11> I'll look it up.
+2020-02-17 14:29:23 <wib_jonas> spruit: ./a0.eg did work, yes. but an absolute path didn't work.
