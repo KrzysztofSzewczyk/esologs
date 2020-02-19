@@ -228,3 +228,69 @@
 2020-02-19 19:56:12 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
 2020-02-19 19:56:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
 2020-02-19 19:59:13 <int-e> arseniiv: This should approximate very well, but except for small n I would not have big hopes of finding the optimum. And I'm not really sure how small "small" is here.
+2020-02-19 20:00:49 <arseniiv> that one counterexample I found was pretty close to the optimum, yeah
+2020-02-19 20:00:56 <arseniiv> though maybe there are very bad ones
+2020-02-19 20:01:16 <arseniiv> I’d be interested what could be done to find them BTW :D
+2020-02-19 20:01:17 <int-e> Presumably you can randomize a little and avoid the terrible cases.
+2020-02-19 20:01:40 Joined: Phantom_Hoover
+2020-02-19 20:01:40 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-19 20:01:42 <b_jonas> arseniiv: I think how you find good approximations for these is to type your program into an irc channel full of geeks and hope they'll spend their time to torture their computer to find a good approximation and tell you
+2020-02-19 20:02:16 <b_jonas> unless of course your inputs are too secret
+2020-02-19 20:04:24 <int-e> arseniiv: I guess you can also make a collection of micro-optimizations... different multisets of proabilities that have almost the same sum, that you can swap between the partitions to make small adjustments.
+2020-02-19 20:05:23 <int-e> arseniiv: At the very least this gives you something to burn CPU cycles with, in contrast to the greedy algorithm which will be over very quickly and never get a better answer.
+2020-02-19 20:06:11 <arseniiv> int-e: b_jonas: (and others interested) tangentially, how would you generate *truly* uniform variates (on that same finite set 1..k) having an infinite sequence of fair coin flips? I believed one simple algorithm using a binary tree is optimal until I calculated the entropy several years later. Now I was told another algorithm, quite a more efficient one as it seems, though I haven’t checked its optimality by myself. Could you reinvent it? (It shoul
+2020-02-19 20:06:11 <arseniiv> n’t be hard, I wonder why I hadn’t stumbled upon it myself)
+2020-02-19 20:06:14 <int-e> I also don't have the right theoretical background on this.
+2020-02-19 20:06:32 <b_jonas> arseniiv: that one is much easier
+2020-02-19 20:06:49 <int-e> arseniiv: Welcome to the wonderful world of entropy coding.
+2020-02-19 20:07:00 <b_jonas> arseniiv: if k is small, throw your coin k times, if it is head the rth time but tail all other k-1 times, then your result is r, otherwise retry
+2020-02-19 20:07:15 <b_jonas> you can do better than this, arithmetic coding is probably optimal
+2020-02-19 20:07:36 <int-e> arseniiv: You can get as close as you want to log_2(k) coin flips per choice, but at the expense of keeping increasingly bigger entropy buffers.
+2020-02-19 20:08:59 <arseniiv> b_jonas: no, I have no practical need to solve instances of this problem, though it’s a bit interesting as we can see here :)
+2020-02-19 20:09:15 <b_jonas> arseniiv: or in practice, flip the coin enough times to get more than 256 bytes of entropy (how many times that is depends on p), feed that to initialize a cryptographic pseudonumber generator, and use the outputs of that for all the randomness you want to generate
+2020-02-19 20:09:17 <arseniiv> (that was an answer to the older post)
+2020-02-19 20:09:41 <arseniiv> <b_jonas> arseniiv: that one is much easier => yeah I know! :)
+2020-02-19 20:09:43 Joined: MDude
+2020-02-19 20:09:43 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-19 20:09:50 <b_jonas> you can get an arbitrarily long random output, nobody will notice that the seed is only 256 bits long
+2020-02-19 20:09:57 <b_jonas> s/256 bytes/256 bits/
+2020-02-19 20:10:09 <b_jonas> you can use 512 bits if you're particularly paranoid
+2020-02-19 20:10:30 <b_jonas> yeah, probably better use 512 bits
+2020-02-19 20:11:23 <arseniiv> <int-e> arseniiv: You can get as close as you want to log_2(k) coin flips per choice, but at the expense of keeping increasingly bigger entropy buffers. => yeah that’s what that newer algorithm needs, but it has a neat and very concise description which is yet to be spoiled here
+2020-02-19 20:11:40 * int-e shrugs.
+2020-02-19 20:11:52 <int-e> I'd use some kind of range coder.
+2020-02-19 20:12:27 <b_jonas> so if you know that your coin's probability is between 1/4 and 3/4, then the entropy of one flip is at least 0.81 bits, so flip 632 times and use that as your seed
+2020-02-19 20:13:34 <b_jonas> if you need only a few random outputs and you want fewer coin flips, then use arithmetic coding to approximate a real number with smaller and smaller intervals after each coin flip, and generate your randomness from that real number when the output is certain
+2020-02-19 20:14:26 <b_jonas> there's probably also a way to use arithmetic coding if you don't know the exact value of p, but it might be ugly
+2020-02-19 20:14:48 <b_jonas> at least I don't know a way how you'd do that optimally, but I could probably do it optimally by constant factor of flips
+2020-02-19 20:15:44 <b_jonas> the easiest way to do that is do pairs of coin flips, and rethrow for HH and TT
+2020-02-19 20:15:55 <b_jonas> and then use the HT and TH results as your fair flip input
+2020-02-19 20:16:01 <arseniiv> the description they gave me was this (for the fair coin): use the coin to divide a line segment into halves etc., and when the small subsegment is completely inside of one of k equal parts of the original segment, you have one value; then you divide that part into k parts and continue further. So I definitely see the need for unbounded entropy storage but the description is quite neat in itself
+2020-02-19 20:16:02 <spruit11> Neat.
+2020-02-19 20:16:27 <b_jonas> arseniiv: yes, that's how arithmetic coding works
+2020-02-19 20:16:32 <arseniiv> <b_jonas> if you need only a few random outputs and you want fewer coin flips, then use arithmetic coding to approximate a real number with smaller and smaller intervals after each coin flip, and generate your randomness from that real number when the output is certain => ah you wrote it all already
+2020-02-19 20:17:01 <arseniiv> so now I see how that person gave an answer almost immediately: they probably knew arithmetic coding too
+2020-02-19 20:17:53 <arseniiv> <b_jonas> and then use the HT and TH results as your fair flip input => definitely cool thing
+2020-02-19 20:18:11 <b_jonas> arseniiv: https://www.perlmonks.com/?node_id=877696 has an example code for arithmetic coding with big integers; practical algorithms for compression are trickier because they want to stream the output without having to keep all the input or all the output in memory
+2020-02-19 20:18:56 <int-e> arseniiv: this is a sketch: http://paste.debian.net/1131148/
+2020-02-19 20:19:21 <b_jonas> it's an example of steganographic typography: I use a known pre-existing text verbatim, and hide information in its presentation
+2020-02-19 20:19:30 <int-e> arseniiv: (It's not code because I (deliberately) didn't include the policy for balancing refills and making choices.)
+2020-02-19 20:20:00 <b_jonas> sadly it's not very impressive because I managed to hide very little information
+2020-02-19 20:20:29 <arseniiv> and the suboptimal algorithm was to have a set of nodes, just one node at the start, and double them for each coin flip, giving an answer if there are enough nodes, and continuing with the remainder of nodes otherwise. That gives quite a heavy entropy loss for some k but it runs in constant space
+2020-02-19 20:21:18 <arseniiv> (when optimizing, that relates to a binary digits of 1/k)
+2020-02-19 20:22:51 <int-e> arseniiv: I made this a sketch because I wanted to make the following point: This procedure does not waste any entropy, except in the FAIL case in make_choice. So in the long run, you need to minimize the probabilitiy of that case... which means you want to make the range large. The downside of having a large range is startup cost, and, if you overdo it, expensive computations. But in practice,...
+2020-02-19 20:22:57 <int-e> ...keeping r around 2^32 * max(k) is probably good enough.
+2020-02-19 20:23:24 <arseniiv> mhm
+2020-02-19 20:23:34 <int-e> (*waves hands*)
+2020-02-19 20:23:58 <arseniiv> I just can’t absorb too much at once :D
+2020-02-19 20:25:34 <arseniiv> wait, is it bounded-space after all?
+2020-02-19 20:25:45 <arseniiv> int-e: ^
+2020-02-19 20:25:49 <int-e> Well, that's up to the user...
+2020-02-19 20:26:01 <int-e> if you just keep adding flips you'll run out of space.
+2020-02-19 20:26:32 <int-e> (imagine an arbitrary precision type for "int")
+2020-02-19 20:27:11 <arseniiv> ah so it’s unbounded if we don’t want to lose entropy but if we can afford it I see, that can be simplified to the tree algotihm even
+2020-02-19 20:28:05 <arseniiv> but that one isn’t good because we can’t tweak it, and a normal arithmetic coding is tweakable
+2020-02-19 20:28:19 <arseniiv> (that one = tree one I described)
+2020-02-19 20:28:19 <int-e> what do you want to tweak?
+2020-02-19 20:28:57 <arseniiv> and your sketch shows how we can keep the buffer the length we want
+2020-02-19 20:29:27 <int-e> You can get arbitrary (rational) distributions with a fairly minor tweak...
