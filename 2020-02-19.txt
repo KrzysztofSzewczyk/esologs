@@ -187,3 +187,44 @@
 2020-02-19 19:27:01 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
 2020-02-19 19:28:56 Joined: LKoen
 2020-02-19 19:28:56 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-19 19:31:52 <arseniiv> suppose you have a biased coin with probability of heads p. How do you find the most uniform distribution on a set {1, …, k} which can be realized by n flips of that coin (and assigning each outcome to 1, …, k)? I came to a greedy algorithm which ended up not optimal. Brute force search suffers from combinatorial explosion even for quite small n, k
+2020-02-19 19:32:48 <b_jonas> arseniiv: ooh, a box packing thing.... I don't know
+2020-02-19 19:34:25 <int-e> arseniiv: You should try this months' Ponder This problem, it has a similar (but more awkward) binpacking flavour.
+2020-02-19 19:34:51 <arseniiv> my algorithm was the following: sort coin flip outcomes from the most probable to the least probable and then assign each one in turn so that the current (incomplete) distribution has the largest entropy. Sadly, for (n, k, p) = (4, 2, 0.7) that gives a suboptimal answer
+2020-02-19 19:36:11 <arseniiv> int-e: ok I’ll chek that out. Though I’m not at all into packing, this one just popped from a discussion of making almost uniform distributions with a fair coin, which is far more trivial
+2020-02-19 19:36:18 <int-e> arseniiv: It's something that /should/ be NP-hard but will be awkward to actually prove NP-hard.
+2020-02-19 19:36:26 <arseniiv> mmhm
+2020-02-19 19:36:26 <int-e> (The biased coin problem.)
+2020-02-19 19:36:37 <b_jonas> int-e: why should it be NP-hard?
+2020-02-19 19:37:57 <arseniiv> I reckon if we have a completely arbitrary distribution instead of the binomial here, it could get tricky enough to be more obviously NP maybe
+2020-02-19 19:38:02 <int-e> Because bin-packing is NP-hard and I don't see how the additional structure that is there helps once you get close to the optimum.
+2020-02-19 19:39:36 <int-e> (Though obviously I may just lack imagination. My "awkward to prove" includes the possibility that it's actually false for some incredible reason.)
+2020-02-19 19:40:05 <arseniiv> ❝Your challenge this month is to design a game with 10 ladders and snakes altogether that will lead to an expected number of moves (rounded to the 6th decimal place) of 66.978705.❞ => omg
+2020-02-19 19:40:21 <arseniiv> no no no I won’t
+2020-02-19 19:40:21 <int-e> arseniiv: If you have an arbitrary partition of 1 into positive rational numbers, and you try to split them as closely into two parts as possible, that *is* NP-hard.
+2020-02-19 19:40:56 <int-e> tow parts -> two equal parts
+2020-02-19 19:41:38 <b_jonas> int-e: but isn't it more like a lattice small vector search problem, with the O(sqrt(n)) types of boxes around n/p counting?
+2020-02-19 19:41:47 <int-e> (Deciding whether you can get equality is NP-complete, cf. https://en.wikipedia.org/wiki/Partition_problem)
+2020-02-19 19:41:48 <b_jonas> not that that helps much
+2020-02-19 19:42:46 <arseniiv> int-e: oh, that’s pretty close! I’ll tell this to the person which was interested in the packing. I bet 3, 5 etc. parts aren’t becoming not NP-hard suddenly too
+2020-02-19 19:43:55 <int-e> b_jonas: The downside is that the number of pieces you're working with is exponential in the input size.
+2020-02-19 19:44:32 <b_jonas> int-e: yes, but they're identical pieces, like in a small vector search problem, or like in that problem we considered some months ago about finding a number close to a target with only small divisors
+2020-02-19 19:44:39 <b_jonas> I should get back to that problem some day by the way
+2020-02-19 19:46:24 Joined: imode
+2020-02-19 19:46:24 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-19 19:48:13 <int-e> Hrm, we should probably make the output size the parameter here, not the input size (because the input is compressed too much. The output is a partition into k parts, each of which can be described by n (that's the number of different probabilities) n-bit numbers.)
+2020-02-19 19:49:02 <b_jonas> yes, but only sqrt(n) of those numbers can count
+2020-02-19 19:49:12 <b_jonas> well, O(sqrt(n))
+2020-02-19 19:49:28 <int-e> ?
+2020-02-19 19:49:46 <b_jonas> all the other types of boxes are small even if you take all the available ones together
+2020-02-19 19:50:07 <b_jonas> because of Cramer's theorem
+2020-02-19 19:50:30 <b_jonas> probably doesn't matter in whether it's NP-complete though
+2020-02-19 19:50:43 <int-e> But they're still important for the optimum.
+2020-02-19 19:51:03 <arseniiv> hopefully I infected you with not too hopeless a problem
+2020-02-19 19:51:24 <b_jonas> hmm, maybe they can be if the optimum is exponentially close to 1/k so you have to approximate it very closely
+2020-02-19 19:51:28 <int-e> arseniiv: Nah, I think it *is* hopeless.
+2020-02-19 19:51:48 <b_jonas> but not if you only want to get within 10**(-6) of 1/k
+2020-02-19 19:51:57 <int-e> b_jonas: Clearly the results about approximability do not carry over.
+2020-02-19 19:56:12 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2020-02-19 19:56:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-19 19:59:13 <int-e> arseniiv: This should approximate very well, but except for small n I would not have big hopes of finding the optimum. And I'm not really sure how small "small" is here.
