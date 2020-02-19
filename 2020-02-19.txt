@@ -294,3 +294,12 @@
 2020-02-19 20:28:19 <int-e> what do you want to tweak?
 2020-02-19 20:28:57 <arseniiv> and your sketch shows how we can keep the buffer the length we want
 2020-02-19 20:29:27 <int-e> You can get arbitrary (rational) distributions with a fairly minor tweak...
+2020-02-19 20:30:23 <int-e> The add_flip can be generalized to adding an arbitrary uniform choice (multiply by number of choices c instead of 2; add value [0..<c])
+2020-02-19 20:31:07 <arseniiv> <int-e> what do you want to tweak? => the amount of entropy we discard/keep. I just hadn’t thought about that at all before I wrote here, as I wasn’t aware in full that we need to have unbounded space to not lose entropy
+2020-02-19 20:31:56 <int-e> And then you can sample a distribution described by frequencies [a1,a2,...,an] in three steps: 1) sample uniformly from a1+a2+...+an choices. 2) find corresponding ak and offset into ak chunk (in range [0..<ak]). 3) add back a uniform choice of size ak with the offset as value to the pool.
+2020-02-19 20:33:10 <arseniiv> mhm
+2020-02-19 20:33:11 <int-e> Also, range coders are a kind of arithmetic coders anyway; the differences aren't so big.
+2020-02-19 20:36:33 <int-e> For this particular application (fair die rolls) I like the clean invariant (v uniformly random in [0..<r]), where with arithmetic coders one often has to worry about rounding or switch to rational numbers.
+2020-02-19 20:37:02 <int-e> But for the more common practial application (namely, compression) that hardly matters.
+2020-02-19 20:38:04 <int-e> good night
+2020-02-19 20:40:05 <arseniiv> int-e: good night!
