@@ -391,3 +391,103 @@
 2020-02-20 22:28:09 <HackEso> bash: /hackenv/egel-master/stag/egel: No such file or directory
 2020-02-20 22:28:20 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; >a0.eg echo $'import "/hackenv/egel-master/stage/io.ego"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"'; /hackenv/egel-master/stage/egel a0.eg
 2020-02-20 22:28:20 <HackEso> bash: /hackenv/egel-master/stage/egel: No such file or directory
+2020-02-20 22:30:39 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = print "hello\nworld"'; "$l/egel" a0.eg
+2020-02-20 22:30:40 <HackEso> hello \ world
+2020-02-20 22:30:55 <spruit11> \o/
+2020-02-20 22:31:32 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [F -> F 0; F 1; F 2; F 3; F 4; F 5][K -> print(tostring K+"\n")]'; "$l/egel" a0.eg
+2020-02-20 22:31:33 <HackEso> a0.eg:5:59:semantical:undeclared tostring
+2020-02-20 22:31:44 <spruit11> toString?
+2020-02-20 22:31:47 <spruit11> Unsure.
+2020-02-20 22:32:04 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [F -> F 0; F 1; F 2; F 3; F 4; F 5][K -> print(totext K+"\n")]'; "$l/egel" a0.eg
+2020-02-20 22:32:08 <HackEso> 0 \ 1 \ 2 \ 3 \ 4 \ 5
+2020-02-20 22:32:20 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [F -> F 0; F 1; F 2; F 3; F 4; F 5][K -> print(totext(K*(K+1)/2)+"\n")]'; "$l/egel" a0.eg
+2020-02-20 22:32:21 <HackEso> 0 \ 1 \ 2 \ 6 \ 8 \ 15
+2020-02-20 22:32:29 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [F -> F 0; F 1; F 2; F 3; F 4; F 5][K -> print(totext(K*K)+"\n")]'; "$l/egel" a0.eg
+2020-02-20 22:32:30 <HackEso> 0 \ 1 \ 4 \ 9 \ 16 \ 25
+2020-02-20 22:32:42 <b_jonas> wait, that previous one looked wrong
+2020-02-20 22:33:28 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = 2*(2+1)/2'; "$l/egel" a0.eg
+2020-02-20 22:33:29 <HackEso> 2
+2020-02-20 22:33:35 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = 2*(2+1)'; "$l/egel" a0.eg
+2020-02-20 22:33:36 <HackEso> 6
+2020-02-20 22:33:45 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = (2*(2+1))/6'; "$l/egel" a0.eg
+2020-02-20 22:33:46 <HackEso> 1
+2020-02-20 22:33:57 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = ((2*(2+1))/6)'; "$l/egel" a0.eg
+2020-02-20 22:33:58 <HackEso> 1
+2020-02-20 22:34:01 <b_jonas> what?
+2020-02-20 22:34:02 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = ((2*(2+1))/2)'; "$l/egel" a0.eg
+2020-02-20 22:34:07 <HackEso> 3
+2020-02-20 22:34:12 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = (2*(2+1))/2'; "$l/egel" a0.eg
+2020-02-20 22:34:13 <HackEso> 3
+2020-02-20 22:34:18 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = 2*(2+1)/2'; "$l/egel" a0.eg
+2020-02-20 22:34:18 <spruit11> Did I get priorities wrong?
+2020-02-20 22:34:19 <HackEso> 2
+2020-02-20 22:34:29 <b_jonas> you set the associativity of multiplication and division wrong, yes
+2020-02-20 22:34:35 <spruit11> Right.
+2020-02-20 22:34:46 <b_jonas> multiplications and divisions should be parenthisized from left to right
+2020-02-20 22:34:59 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [F -> F 0; F 1; F 2; F 3; F 4; F 5][K -> print(totext((K*(K+1))/2)+"\n")]'; "$l/egel" a0.eg
+2020-02-20 22:35:00 <HackEso> 0 \ 1 \ 3 \ 6 \ 10 \ 15
+2020-02-20 22:35:27 <spruit11> See if I can fix that.
+2020-02-20 22:38:20 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [ForN B -> ForN 0  [K -> print(totext((K*(K+1))/2) + "\n")]] ([U -> U U 0][U K N -> ])
+2020-02-20 22:38:20 <HackEso> bash: -c: line 0: unexpected EOF while looking for matching `'' \ bash: -c: line 1: syntax error: unexpected end of file
+2020-02-20 22:39:28 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [ForN B -> ForN 0 20 [K -> print(totext((K*(K+1))/2) + "\n")]] ([U -> U U][U K N B -> if K < N then (B K; U U (K + 1) N B) else nop])
+2020-02-20 22:39:29 <HackEso> bash: -c: line 0: unexpected EOF while looking for matching `'' \ bash: -c: line 1: syntax error: unexpected end of file
+2020-02-20 22:39:38 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [ForN B -> ForN 0 20 [K -> print(totext((K*(K+1))/2) + "\n")]] ([U -> U U][U K N B -> if K < N then (B K; U U (K + 1) N B) else nop])'
+2020-02-20 22:39:39 <HackEso> No output.
+2020-02-20 22:39:50 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [ForN B -> ForN 0 20 [K -> print(totext((K*(K+1))/2) + "\n")]] ([U -> U U][U K N B -> if K < N then (B K; U U (K + 1) N B) else nop])'; "$l/egel" a0.eg
+2020-02-20 22:39:51 <HackEso> ​(mainDOT1 (mainDOT5 mainDOT5))
+2020-02-20 22:40:20 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [ForN -> ForN 0 20 [K -> print(totext((K*(K+1))/2) + "\n")]] ([U -> U U][U K N B -> if K < N then (B K; U U (K + 1) N B) else nop])'; "$l/egel" a0.eg
+2020-02-20 22:40:21 <HackEso> 0 \ 1 \ 3 \ 6 \ 10 \ 15 \ 21 \ 28 \ 36 \ 45 \ 55 \ 66 \ 78 \ 91 \ 105 \ 120 \ 136 \ 153 \ 171 \ 190
+2020-02-20 22:40:31 <b_jonas> let's use your fancy let statement
+2020-02-20 22:40:46 <spruit11> Pffrt. Not sure what goes wrong. Maybe it'll need a lot of thought. 2*3+1=7. 2*3/2=1...
+2020-02-20 22:40:57 <spruit11> Could be an error in parsing.
+2020-02-20 22:41:10 <spruit11> Bit experimental.
+2020-02-20 22:41:36 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = let ForN = [U -> U U][U K N B -> if K < N then (B K; U U (K + 1) N B) else nop] in ForN 0 20 [K -> print(totext((K*(K+1))/2) + "\n")]'; "$l/egel" a0.eg
+2020-02-20 22:41:37 <HackEso> 0 \ 1 \ 3 \ 6 \ 10 \ 15 \ 21 \ 28 \ 36 \ 45 \ 55 \ 66 \ 78 \ 91 \ 105 \ 120 \ 136 \ 153 \ 171 \ 190
+2020-02-20 22:41:52 <b_jonas> let me find the prime factoring thingy
+2020-02-20 22:42:01 <b_jonas> no, not prime factoring
+2020-02-20 22:42:03 <b_jonas> prime testing
+2020-02-20 22:43:08 <b_jonas> ``` set -e; d=egel-scripts; mkdir -p $d; cd $d; l=/hackenv/tmp/egel-master/stage/; >a0.eg echo 'import "'"$l/io.ego"$'"\nusing System\nusing Math\nusing IO\n''def main = [F->F F tuple 2 111][F B L U->[false->B|true->F F([T->T T 2][T C->[true->B|false->[false->B L|true->T T(C+1)](C*C<=L)](0==L%C)])(L+1)U](L<U)]'; "$l/egel" a0.eg
+2020-02-20 22:43:09 <HackEso> ​(System:tuple 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109)
+2020-02-20 22:43:16 <b_jonas> ok
+2020-02-20 22:43:46 <b_jonas> I can probably install this, but I'll have to figure out what exactly to import and using, and write a wrapper
+2020-02-20 22:45:12 <b_jonas> spruit11: what happens when two functions brought in with using have the same name? I'd like to have System:length (the string function) in the main namespace, rather than List:length from prelude.eg
+2020-02-20 22:45:30 <b_jonas> I guess I could just modify the prelude, since I'm putting import and using statements somewhere anyway
+2020-02-20 22:45:32 <spruit11> It uses the first it finds in the context.
+2020-02-20 22:45:55 <spruit11> It would be trivial to check for clashes but I didn't implement that yet.
+2020-02-20 22:45:57 <b_jonas> and rename List:length to List:len or something
+2020-02-20 22:46:17 <spruit11> I'll accept any pull request you make.
+2020-02-20 22:46:21 <spruit11> Well, most.
+2020-02-20 22:46:47 <spruit11> Or if you want it, I'll change it myself.
+2020-02-20 22:48:09 <b_jonas> so the builtins go into System, Math, String.
+2020-02-20 22:48:26 <spruit11> Yah, and then there's IO for print.
+2020-02-20 22:48:42 <b_jonas> those are not builtins, they're in the libs
+2020-02-20 22:48:45 <spruit11> But everything is unstable. You're about the first, except for me, who uses this.
+2020-02-20 22:48:46 <b_jonas> I haven't looked at those in detail yet
+2020-02-20 22:49:11 <spruit11> At the moment, that's all 'alpha' stage. Like: Okay, this could work.
+2020-02-20 22:49:18 <b_jonas> ``` cp -vi /hackevn/tmp/egel-master/include/{prelude,prelude-hackeso}.eg
+2020-02-20 22:49:19 <HackEso> cp: cannot stat '/hackevn/tmp/egel-master/include/prelude.eg': No such file or directory
+2020-02-20 22:49:27 <b_jonas> ``` cp -vi /hackenv/tmp/egel-master/include/{prelude,prelude-hackeso}.eg
+2020-02-20 22:49:28 <HackEso> ​'/hackenv/tmp/egel-master/include/prelude.eg' -> '/hackenv/tmp/egel-master/include/prelude-hackeso.eg'
+2020-02-20 22:50:20 <spruit11> Looking at this now: https://github.com/egel-lang/egel/blob/master/src/syntactical.hpp#L612
+2020-02-20 22:50:28 <spruit11> Should be a bug somewhere.
+2020-02-20 22:51:23 <b_jonas> ``` mkdir -pv /hackenv/interps/egel
+2020-02-20 22:51:24 <HackEso> mkdir: created directory '/hackenv/interps/egel'
+2020-02-20 22:51:43 <b_jonas> ``` cp -v /hackenv/tmp/egel-master/stage/* /hackenv/interps/egel
+2020-02-20 22:51:46 <HackEso> ​'/hackenv/tmp/egel-master/stage/egel' -> '/hackenv/interps/egel/egel' \ '/hackenv/tmp/egel-master/stage/fs.ego' -> '/hackenv/interps/egel/fs.ego' \ '/hackenv/tmp/egel-master/stage/io.ego' -> '/hackenv/interps/egel/io.ego' \ '/hackenv/tmp/egel-master/stage/random.ego' -> '/hackenv/interps/egel/random.ego' \ '/hackenv/tmp/egel-master/stage/regex.ego' -> '/hackenv/interps/egel/regex.ego'
+2020-02-20 22:53:09 <b_jonas> also I should put some more utilities to the prelude later, like numeric ranges and a foreach
+2020-02-20 22:53:52 <b_jonas> in theory we could even invent a lazy list (iterator) type, but I won't bother with that now
+2020-02-20 22:54:12 <spruit11> Lazy lists are pretty straightforward.
+2020-02-20 22:54:29 <b_jonas> sure, but if you want lists, you need like fifty functions for them
+2020-02-20 22:54:43 <b_jonas> wait, I have a list library in prolog, let me show just how many you need
+2020-02-20 22:54:50 <spruit11> It's just a hassle in an eager language since you end up copying everything. Once eager, once lazy.
+2020-02-20 22:55:20 <spruit11> egelbot: def ones = [ _ -> (1, ones) ]
+2020-02-20 22:55:28 <spruit11> ^ I like that encoding.
+2020-02-20 22:55:32 <spruit11> egelbot: ones
+2020-02-20 22:55:33 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-20 22:55:33 <egelbot> ones
+2020-02-20 22:55:37 <spruit11> egelbot: ones nop
+2020-02-20 22:55:37 <egelbot> (System:tuple 1 ones)
+2020-02-20 22:56:28 <spruit11> 'Push the button' approach. Everytime you supply an argument, it gives another head/tail.
+2020-02-20 22:56:40 <spruit11> Coalgebraic, I guess.
+2020-02-20 22:59:09 <b_jonas> http://dpaste.com/34M0CW3
+2020-02-20 22:59:21 <b_jonas> ^ and that doesn't even have range functions
