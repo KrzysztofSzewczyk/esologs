@@ -176,3 +176,25 @@
 2020-02-20 11:54:52 <int-e> "order of keys doesn't matter" <--> "associative maps (or arrays)"
 2020-02-20 11:57:14 <cpressey> int-e: I think of ABTs as sort of being "nameless in spirit". Converting ABTs to de Bruijn-indexed trees before comparing them (or doing other operations on them) sounds like possible way to implement them.
 2020-02-20 11:58:48 * int-e shrugs.
+2020-02-20 12:00:37 <wib_jonas> sometimes I even need to compare small sets of things in which the order doesn't matter, in which case I sort them before comparing
+2020-02-20 12:11:59 <int-e> cpressey: I don't know, it just seems so shallow.
+2020-02-20 12:13:59 <int-e> (I've googled a bit and it appears that the focus with ABTs is really more of a design pattern to work with terms modulo alpha, resolving names when they are constructed and giving back fresh names when they're navigated. But even that design pattern is very shallow.)
+2020-02-20 12:14:12 Joined: sixyears
+2020-02-20 12:14:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, sixyears, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-20 12:14:35 User Name: sixyears = sixyears!~pcc31@c-73-241-96-119.hsd1.ca.comcast.net
+2020-02-20 12:14:35 <sixyears> howdy folks
+2020-02-20 12:15:34 <int-e> `relcome sixyears
+2020-02-20 12:15:35 <HackEso> ​06sixyears: 13Welcome 04to 07the 08international 09hub 02for 06esoteric 13programming 04language 07design 08and 09deployment! 02For 06more 13information, 04check 07out 08our 09wiki: 02<https://esolangs.org/>. 06(For 13the 04other 07kind 08of 09esoterica, 02try 06#esoteric 13on 04EFnet 07or 08DALnet.)
+2020-02-20 12:16:32 <sixyears> heck yeah, thank you
+2020-02-20 12:21:09 <sixyears> I've got this urge thats been floating around my head for a few years to make an esoteric programming language, but I'm honestly too inexperienced. figured i could soak up some information here via osmosis
+2020-02-20 12:21:52 <sixyears> is the channel inactive because its like 0 in the morning or is it just usually lowkey?
+2020-02-20 12:23:53 <FireFly> eh it varies, it's not super busy all the time
+2020-02-20 12:24:33 <sixyears> Fair!
+2020-02-20 12:24:35 <int-e> There are logs (see the topic) so you can judge for yourself.
+2020-02-20 12:24:48 <FireFly> it's like most IRC channels I guess
+2020-02-20 12:25:18 <sixyears> ah, gotcha. Peak houra and trough hours
+2020-02-20 12:25:21 <sixyears> makes sense
+2020-02-20 12:28:02 <int-e> You can always talk to fungot ;)
+2020-02-20 12:28:02 <fungot> int-e: how faulty! :p. google did indeed have sufficient context?
+2020-02-20 12:28:34 <sixyears> Fungot how has your day bern
+2020-02-20 12:28:42 <sixyears> been* oops
