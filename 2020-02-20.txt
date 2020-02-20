@@ -154,3 +154,25 @@
 2020-02-20 10:50:12 Joined: Sgeo
 2020-02-20 10:50:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
 2020-02-20 11:02:59 <int-e> https://mobile.twitter.com/Foone/status/1229641258370355200 is funny.
+2020-02-20 11:38:46 Joined: wib_jonas
+2020-02-20 11:38:47 Names: ^[, aji, aloril, APic, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-20 11:44:18 User Name: cpressey = cpressey!~cpressey@5.133.242.4
+2020-02-20 11:44:18 <cpressey> hi int-e
+2020-02-20 11:44:24 <cpressey> Do you like ABTs?
+2020-02-20 11:45:10 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
+2020-02-20 11:45:10 <Taneb> Algebraic Beta Types?
+2020-02-20 11:46:26 <cpressey> Abstract Binding Trees
+2020-02-20 11:47:02 <Taneb> What are they?
+2020-02-20 11:47:47 <cpressey> ABTs are ASTs with names-binders in them. Two ABTs are considered equivalent modulo alpha-conversion.
+2020-02-20 11:47:56 <Taneb> OK, I'm with you
+2020-02-20 11:49:29 <int-e> cpressey: I'm not sure I like them. I know them under the name "nominal datatypes" though (or maybe they're different but then I don't know what the difference is) from the Isabelle bubble. And there's a nominal rewriting concept in the rewriting bubble, too.
+2020-02-20 11:50:57 <int-e> I think I actually prefer nameless things (like de Bruijn indices) when push comes to shove.
+2020-02-20 11:52:49 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-02-20 11:52:49 <wib_jonas> cpressey: vegetarian alligator families?
+2020-02-20 11:53:09 <int-e> (Obviously when there's nominal rewriting, there's also nominal logic.)
+2020-02-20 11:53:39 <wib_jonas> anyway, I manipulate a lot of data structures that have arrays with the order (or keys) not mattering, and indexes into such arrays from other tables
+2020-02-20 11:53:50 <wib_jonas> like database row identifiers and such
+2020-02-20 11:54:31 <wib_jonas> of course sometimes I choose an order or key that matters, for convenience, or an order that doesn't semantically matter but makes debugging easy if I show the data in order
+2020-02-20 11:54:52 <int-e> "order of keys doesn't matter" <--> "associative maps (or arrays)"
+2020-02-20 11:57:14 <cpressey> int-e: I think of ABTs as sort of being "nameless in spirit". Converting ABTs to de Bruijn-indexed trees before comparing them (or doing other operations on them) sounds like possible way to implement them.
+2020-02-20 11:58:48 * int-e shrugs.
