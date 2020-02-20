@@ -64,3 +64,12 @@
 2020-02-20 02:29:07 <fizzie> https://hack.esolangs.org/repo/file/tip/bin/forth -- auto-adds the 'bye'.
 2020-02-20 02:29:18 <fizzie> `forth 2 2 + .
 2020-02-20 02:29:19 <HackEso> 4
+2020-02-20 02:31:26 <longname> So what would happen if you rm -rf /'d?
+2020-02-20 02:34:20 <fizzie> Depends on how exactly rm behaves with things. Assuming it actually removed the bits you have access to, it should get caught by a "have all the files been removed" check, because that's such a common idea. Assuming you circumvented that, it would commit a revision with no files, which either someone would `revert, or I'd do the same in an out-of-band manner because we don't need any more "delete and
+2020-02-20 02:34:26 <fizzie> then restore all" revisions in the history, they break a bunch of "who's edited this file" features.
+2020-02-20 02:35:12 <fizzie> https://hack.esolangs.org/repo/file/tip/share/scowrevs are pretty much all mass-edits of that kind.
+2020-02-20 02:35:46 <longname> Cool.
+2020-02-20 02:36:04 <longname> That is a really cool bot.
+2020-02-20 02:41:09 <fizzie> `` cut -d: -f1 ../share/scowrevs | while read r; do hg log -r $r -T '{desc}\n'; done | paste
+2020-02-20 02:41:18 <HackEso> https://hack.esolangs.org/tmp/paste/paste.1511
+2020-02-20 02:41:25 <fizzie> (All kinds of nonsense people have done.)
