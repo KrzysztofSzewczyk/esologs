@@ -365,3 +365,19 @@
 2020-02-21 12:54:18 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
 2020-02-21 12:55:04 Joined: tromp
 2020-02-21 12:55:04 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 13:00:46 <cpressey> int-e: I'm flattered but also fairly sure that any feedback I have would not be useful to you
+2020-02-21 13:02:16 <int-e> cpressey: Well I wouldn't know. But you were not really involved in this :)
+2020-02-21 13:06:44 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:d67:fbb5:f12:1ea5
+2020-02-21 13:06:44 <tromp> int-e in explaining hereditary notation, i wouldn't change 1 to 2^0, as 1 is alrd a digit in base 2. https://en.wikipedia.org/wiki/Goodstein%27s_theorem#Hereditary_base-n_notation doesn't do that either
+2020-02-21 13:09:26 <int-e> But this way it's closer to how the code works. Though I guess I should put the digits last (3^0 * 2 rather than 2 * 3^0) for the same reason...
+2020-02-21 13:13:48 <int-e> Oh whatever, I changed it
+2020-02-21 13:13:52 <int-e> (both things)
+2020-02-21 13:14:36 <tromp> maybe explain that later when you get to the code. for reader's initial understanding it's better to stop at digits below b, i think
+2020-02-21 13:14:53 <tromp> and limit notational clutter
+2020-02-21 13:15:29 <tromp> for BLC reference, use instead (or in addition) the reference 1 on https://tromp.github.io/cl/Binary_lambda_calculus.html
+2020-02-21 13:15:51 <tromp> which might survive my website:)
+2020-02-21 13:18:06 <int-e> Hmm, the links are both on tromp.github.io. The Binary_lambda_calculus.html doesn't have a page title :/
+2020-02-21 13:18:44 <int-e> But I'll pretend it's "Binary lambda calculus".
+2020-02-21 13:19:07 <int-e> (And it links to the playground anyway, if the reader makes it to the bottom.)
+2020-02-21 13:21:31 <tromp> i mean your paper should containt the reference to John Tromp, Binary Lambda Calculus and Combinatory Logic, in Randomness And Complexity, from Leibniz To Chaitin, ed. Cristian S. Calude, World Scientific Publishing Company, October 2008. (The last reference, to an initial Haskell implementation, is dated 2004)
+2020-02-21 13:28:16 <tromp> than the ordinal*s* themselves.
