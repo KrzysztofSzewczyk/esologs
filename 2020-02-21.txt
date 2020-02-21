@@ -336,3 +336,32 @@
 2020-02-21 12:28:58 <int-e> @unignore HackEso
 2020-02-21 12:28:58 <lambdabot> Plugin `system' failed with: user error (invalid usage)
 2020-02-21 12:29:04 <int-e> err
+2020-02-21 12:31:41 <int-e> Heh maybe I can induce cpressey to give feedback too if I claim that it's all about the power of folds.
+2020-02-21 12:33:27 <spruit11> I can change it but I am not sure what it'll break.. It'll take a bit to surpress '.'.
+2020-02-21 12:33:39 <spruit11> Do you really need it?
+2020-02-21 12:33:40 <int-e> (The fold angle is not a lie but I'm really not framing it in this way.)
+2020-02-21 12:35:33 <wib_jonas> spruit: I don't need it implicitly, it can be a different switch. I don't need it in the master version, I can make a fork. and I don't need it in a HackEso toy language, but I would need it in a serious language.
+2020-02-21 12:36:34 <wib_jonas> spruit: for quite a while I ran perl with a wrapper script that removes . from the search path (that's just a switch -M-lib=. or some such, I don't recall the exact syntax), until eventually perl removed it by default in some major version update
+2020-02-21 12:37:01 <spruit11> Ah well. I hacked something. Fingers crossed.
+2020-02-21 12:37:06 <wib_jonas> thanks
+2020-02-21 12:37:13 <wib_jonas> also I probably won't look at it today
+2020-02-21 12:37:34 <wib_jonas> and every time I say "I won't look at it today" there's some chance that I get bored and never get back to experimenting with the language
+2020-02-21 12:39:47 <spruit11> I committed the change which should surpress '.' when -I is used.
+2020-02-21 12:39:51 <spruit11> Untested.
+2020-02-21 12:40:24 <wib_jonas> thanks
+2020-02-21 12:40:27 <spruit11> No problem. You already gave Egel a lot of attention.
+2020-02-21 12:40:37 <spruit11> It's about time to wrap it up?
+2020-02-21 12:41:08 <spruit11> I mean, you want to create a wrapper around an installation, right?
+2020-02-21 12:41:23 <spruit11> (BTW, comment is #, missed that yesterday.)
+2020-02-21 12:46:12 <spruit11> Real life takes over here too. BBL.
+2020-02-21 12:46:13 <spruit11> o/
+2020-02-21 12:47:51 Joined: egelbot
+2020-02-21 12:47:51 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 12:53:26 <wib_jonas> spruit11: I'll definitely create a wrapper, and if you fixed those two mistakes then the wrapper will be able to work well
+2020-02-21 12:53:42 <wib_jonas> I just won't create it now, because I have to do real payed work too, or pretend to or whatever
+2020-02-21 12:54:03 <wib_jonas> I make my own crazy tools there
+2020-02-21 12:54:13 <wib_jonas> I don't plan to use egel for that
+2020-02-21 12:54:18 Quit: tromp (Remote host closed the connection)
+2020-02-21 12:54:18 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 12:55:04 Joined: tromp
+2020-02-21 12:55:04 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
