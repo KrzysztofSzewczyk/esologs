@@ -252,3 +252,87 @@
 2020-02-21 11:59:04 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
 2020-02-21 11:59:20 <wib_jonas> `fetch /hackenv/interps/egel/readme-hackeso.txt https://hack.esolangs.org/get/interps/egel/readme-hackeso.txt
 2020-02-21 11:59:21 <HackEso> 2020-02-21 11:59:20 URL:https://hack.esolangs.org/get/interps/egel/readme-hackeso.txt [1795/1795] -> "/hackenv/interps/egel/readme-hackeso.txt" [1]
+2020-02-21 12:01:00 <cpressey> Weeks ago, I puzzled over what it meant for Frege to be "a Haskell", now I'm going to puzzle over what it means to implement "a GHC".
+2020-02-21 12:01:41 <cpressey> For instance, to implement a GHC, must you be physically located in Glasgow? Is it a strict requirement?
+2020-02-21 12:02:40 <wib_jonas> cpressey: I don't know. there was an esoteric language featured on ICFP called GHC, but totally unrelated to the famous GHC
+2020-02-21 12:02:54 <wib_jonas> I don't know if it was implemented in Glasgow though
+2020-02-21 12:03:19 <wib_jonas> ICFP 2014
+2020-02-21 12:04:28 <esowiki> 14[[07User:B jonas14]]4 10 02https://esolangs.org/w/index.php?diff=70006&oldid=68094 5* 03B jonas 5* (+11) 10
+2020-02-21 12:12:15 <spruit11> I implemented a GHC once, the Grafwegen Hi Compiler. It was a language I made prior to Egel but it was way too much to get right. (A heterodox type system, compiled to C, ..)
+2020-02-21 12:12:22 <spruit11> Learned a lot from that.
+2020-02-21 12:12:50 <wib_jonas> nice
+2020-02-21 12:13:05 <spruit11> Most I learned was: don't create 'real' languages by yourself. The point where that can be done as a one-man-effort is gone.
+2020-02-21 12:13:16 <wib_jonas> I want to test something
+2020-02-21 12:13:42 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*3)'; /hackenv/interps/egel/egel a0.eg
+2020-02-21 12:13:43 <HackEso> ​(System:tuple 3 9)
+2020-02-21 12:14:25 <wib_jonas> ``` set -e; cd egel-scripts; d=/hackenv/tmp/egel-master/include/; mkdir -vp "$d"; echo BOO > "$d/prelude-hackeso.eg"; echo done
+2020-02-21 12:14:26 <HackEso> done
+2020-02-21 12:14:30 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*3)'; /hackenv/interps/egel/egel a0.eg
+2020-02-21 12:14:31 <HackEso> ​/hackenv/tmp/egel-master/include/prelude-hackeso.eg:1:1:syntactical:declaration or directive expected
+2020-02-21 12:14:38 <wib_jonas> ok that's still buggy
+2020-02-21 12:15:38 <wib_jonas> spruit11: if I give an absolute path (any path starting with a slash), you should not search for that file under the search path, you should only use the path as is
+2020-02-21 12:15:59 <wib_jonas> spruit11: because as is, the interpreter can still be confused by files in the pwd, so you can't just run egel scripts in any pwd
+2020-02-21 12:16:40 <wib_jonas> spruit11: this is important because it's darned hard to work it around properly by whoever invokes egel
+2020-02-21 12:17:33 <wib_jonas> you'd need to temporarily chdir to a safe path, but pass a file descriptor to the old wd, start egel, then in the wrapper script, after loading libraries, fchdir to the old wd, so that the egel script itself can conveniently access files in the wd with relative names
+2020-02-21 12:18:04 <spruit11> Uh. Right?
+2020-02-21 12:18:17 <spruit11> You need it to not search if the path start with '/
+2020-02-21 12:18:22 <spruit11> ', right?
+2020-02-21 12:18:29 <spruit11> I can do that.
+2020-02-21 12:18:33 <wib_jonas> yes, don't prepend stuff to absolute paths,
+2020-02-21 12:18:57 <wib_jonas> and ideally also add command-line switches such that I can invoke egel with my own search path that doesn't include "."
+2020-02-21 12:19:14 Quit: Sgeo (Read error: Connection reset by peer)
+2020-02-21 12:19:14 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 12:19:25 <wib_jonas> so in this case I'd put /hackenv/interps/egel into the search path, but . shouldn't be in that search path
+2020-02-21 12:19:42 Joined: Sgeo
+2020-02-21 12:19:42 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 12:20:16 <wib_jonas> or does the -I switch already do that? I haven't actually tested
+2020-02-21 12:20:50 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "prelude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*3)'; /hackenv/interps/egel/egel -I /hackenv/interps/egel/ a0.eg
+2020-02-21 12:20:51 <HackEso> ​(System:tuple 3 9)
+2020-02-21 12:21:17 <wib_jonas> ``` set -e; cd egel-scripts; d=/hackenv/tmp/egel-master/include/; echo BOO > "$d/perlude-hackeso.eg"; echo done
+2020-02-21 12:21:18 <HackEso> done
+2020-02-21 12:21:29 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "perlude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*3)'; /hackenv/interps/egel/egel -I /hackenv/interps/egel/ a0.eg
+2020-02-21 12:21:30 <HackEso> a0.eg:1:1:input/output:file "perlude-hackeso.eg" not found
+2020-02-21 12:21:34 <wib_jonas> oh great
+2020-02-21 12:21:40 <wib_jonas> I rescind my second objection
+2020-02-21 12:21:52 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "perlude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*3)'; /hackenv/interps/egel/egel a0.eg
+2020-02-21 12:21:53 <HackEso> a0.eg:1:1:input/output:file "perlude-hackeso.eg" not found
+2020-02-21 12:21:58 <wib_jonas> no wait
+2020-02-21 12:23:22 <int-e> tromp: If you're interested, I'd be happy to get some feedback on the introduction I wrote for https://int-e.eu/~bf3/tmp/Goodstein.pdf ... also, if there's a better way to cite BLC I'm all ears.
+2020-02-21 12:23:23 <wib_jonas> ``` set -e; >/hackenv/tmp/egel-scripts/hackenv/interps/egel/perlude-hackeso.eg" echo BOO; echo done
+2020-02-21 12:23:25 <HackEso> bash: -c: line 0: unexpected EOF while looking for matching `"' \ bash: -c: line 1: syntax error: unexpected end of file
+2020-02-21 12:23:30 <spruit11> I committed the start with '/' exception. No idea whether it'll work.
+2020-02-21 12:23:31 <wib_jonas> ``` set -e; >/hackenv/tmp/egel-scripts/hackenv/interps/egel/perlude-hackeso.eg echo BOO; echo done
+2020-02-21 12:23:32 <HackEso> bash: /hackenv/tmp/egel-scripts/hackenv/interps/egel/perlude-hackeso.eg: No such file or directory
+2020-02-21 12:23:58 <wib_jonas> ``` set -e; mkdir -pv /hackenv/tmp/egel-scripts/hackenv/interps/egel/
+2020-02-21 12:23:59 <HackEso> mkdir: created directory '/hackenv/tmp/egel-scripts/hackenv' \ mkdir: created directory '/hackenv/tmp/egel-scripts/hackenv/interps' \ mkdir: created directory '/hackenv/tmp/egel-scripts/hackenv/interps/egel/'
+2020-02-21 12:24:11 <wib_jonas> ``` set -e; >/hackenv/tmp/egel-scripts/hackenv/interps/egel/prelude-hackeso.eg echo BOO; echo done
+2020-02-21 12:24:14 <HackEso> done
+2020-02-21 12:24:18 <wib_jonas> ``` set -e; >/hackenv/tmp/egel-scripts/hackenv/interps/egel/perlude-hackeso.eg echo BOO; echo done
+2020-02-21 12:24:19 <HackEso> done
+2020-02-21 12:24:39 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "perlude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*4)'; /hackenv/interps/egel/egel a0.eg
+2020-02-21 12:24:40 <HackEso> a0.eg:1:1:input/output:file "perlude-hackeso.eg" not found
+2020-02-21 12:24:43 <int-e> tromp: (My plan is to submit it to the AFP, https://www.isa-afp.org/ )
+2020-02-21 12:25:05 <wib_jonas> ``` set -e; >/hackenv/tmp/egel-scripts/perlude-hackeso.eg echo BOO; echo done
+2020-02-21 12:25:06 <HackEso> done
+2020-02-21 12:25:08 <wib_jonas> ``` set -e; >/hackenv/tmp/egel-scripts/prelude-hackeso.eg echo BOO; echo done
+2020-02-21 12:25:08 * int-e kicks HackEso in the sheens.
+2020-02-21 12:25:09 <HackEso> done
+2020-02-21 12:25:14 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "perlude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*5)'; /hackenv/interps/egel/egel a0.eg
+2020-02-21 12:25:15 <HackEso> perlude-hackeso.eg:1:1:syntactical:declaration or directive expected
+2020-02-21 12:25:33 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "perlude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*5)'; /hackenv/interps/egel/egel -I /hackenv/interps/egel a0.eg
+2020-02-21 12:25:34 <HackEso> perlude-hackeso.eg:1:1:syntactical:declaration or directive expected
+2020-02-21 12:25:39 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "prelude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*5)'; /hackenv/interps/egel/egel -I /hackenv/interps/egel a0.eg
+2020-02-21 12:25:40 <HackEso> prelude-hackeso.eg:1:1:syntactical:declaration or directive expected
+2020-02-21 12:26:09 <wib_jonas> ``` rm -fv /hackenv/tmp/egel-scripts/prelude-hackeso.eg
+2020-02-21 12:26:11 <HackEso> removed '/hackenv/tmp/egel-scripts/prelude-hackeso.eg'
+2020-02-21 12:26:20 <wib_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "prelude-hackeso.eg"\nusing System\nusing Math\nusing String\nusing IO\ndef main = ''(3,3*5)'; /hackenv/interps/egel/egel -I /hackenv/interps/egel a0.eg
+2020-02-21 12:26:21 <HackEso> ​(System:tuple 3 15)
+2020-02-21 12:26:30 <wib_jonas> yes, my second object is still there
+2020-02-21 12:26:38 <wib_jonas> spruit: thanks
+2020-02-21 12:27:15 <wib_jonas> spruit11: ideally, make it so that if you give -I options from command line, then egel doesn't search in . , unless of course you give -I . in the command line. if you don't want that, for compatibility, then add some other switch to not search in .
+2020-02-21 12:27:36 <wib_jonas> because it would be better to also not have to use absolute paths
+2020-02-21 12:28:00 <spruit11> I'll look at it.
+2020-02-21 12:28:10 <wib_jonas> thank you
+2020-02-21 12:28:58 <int-e> @unignore HackEso
+2020-02-21 12:28:58 <lambdabot> Plugin `system' failed with: user error (invalid usage)
+2020-02-21 12:29:04 <int-e> err
