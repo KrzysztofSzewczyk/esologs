@@ -170,3 +170,45 @@
 2020-02-21 10:22:40 <cpressey> int-e: There seem to be lots of people who take pointfree-ness very seriously.
 2020-02-21 10:24:36 <Taneb> There's a whole game show on BBC about expressing Haskell functions without binding names
 2020-02-21 10:24:39 <Taneb> It's called Pointless
+2020-02-21 10:46:05 Joined: wib_jonas
+2020-02-21 10:46:05 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 10:47:15 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-02-21 10:47:15 <wib_jonas> `? zygohistomorphic prepromorphisms
+2020-02-21 10:47:16 <HackEso> A zygohistomorphic prepromorphism is used when you really need both semi-mutual recursion and history and to repeatedly apply a natural transformation as you get deeper into the functor.
+2020-02-21 10:47:21 <wib_jonas> yes
+2020-02-21 10:48:17 <wib_jonas> int-e: that makes sense, since the verb form is "inherit", not "inheret". but apparently the adjective doesn't inherit the spelling.
+2020-02-21 10:48:51 <int-e> wib_jonas: Tell that to my fingers.
+2020-02-21 10:49:53 <wib_jonas> "talk to the hand"
+2020-02-21 10:50:53 <int-e> Hmm, I guess that was implied.
+2020-02-21 10:54:37 Joined: egelbot
+2020-02-21 10:54:37 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-21 10:54:47 <spruit11> egelbot: 2*3/2
+2020-02-21 10:54:47 User Name: egelbot = egelbot!~egelbot@ip56522cc1.speed.planet.nl
+2020-02-21 10:54:47 <egelbot> 3
+2020-02-21 10:55:05 <spruit11> It seems it was just a mistake in priorities.
+2020-02-21 10:55:10 <spruit11> I guess.
+2020-02-21 10:56:30 <wib_jonas> spruit: no, it's a mistake in associativity. (*) and (/) should have the same precedence, and whatever associativity/fixity is the opposite that the power operator should have
+2020-02-21 10:56:43 <wib_jonas> egelbot: {2}*{3}/{4}
+2020-02-21 10:56:43 <egelbot> (System:/ (System:* (System:cons 2 System:nil) (System:cons 3 System:nil)) (System:cons 4 System:nil))
+2020-02-21 10:56:50 <wib_jonas> egelbot: {2}*{3}*{4}
+2020-02-21 10:56:50 <egelbot> (System:* (System:* (System:cons 2 System:nil) (System:cons 3 System:nil)) (System:cons 4 System:nil))
+2020-02-21 10:57:04 <wib_jonas> ok, that looks correct
+2020-02-21 10:57:16 <wib_jonas> egelbot: 100/2/2
+2020-02-21 10:57:16 <egelbot> 25
+2020-02-21 10:57:26 <spruit11> Egel doesn't have same precedence operators.
+2020-02-21 10:57:44 <wib_jonas> well it should
+2020-02-21 10:57:49 <spruit11> Sorry.
+2020-02-21 10:57:56 <wib_jonas> egelbot: 10*10/2*2
+2020-02-21 10:57:57 <egelbot> 25
+2020-02-21 10:58:12 <wib_jonas> egelbot: 10/2*2/10
+2020-02-21 10:58:12 <egelbot> 0
+2020-02-21 10:58:20 <wib_jonas> egelbot: ((10/2)*2)/10
+2020-02-21 10:58:20 <egelbot> 1
+2020-02-21 10:58:44 <wib_jonas> `python3 -cprint(10//2*2//10)
+2020-02-21 10:58:45 <HackEso> 1
+2020-02-21 10:58:59 <wib_jonas> spruit11: now you're misparsing that
+2020-02-21 10:59:08 <spruit11> Right.
+2020-02-21 10:59:26 <wib_jonas> C parses (10/2*2/10) as (((10/2)*2)/10)
+2020-02-21 10:59:40 <wib_jonas> admittedly I think there are interpreters where / has a higher precedence
+2020-02-21 11:00:00 Quit: tromp (Remote host closed the connection)
+2020-02-21 11:00:00 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
