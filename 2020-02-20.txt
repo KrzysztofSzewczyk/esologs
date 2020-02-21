@@ -588,3 +588,29 @@
 2020-02-20 23:28:44 <spruit11> Added the comap function.
 2020-02-20 23:28:53 <spruit11> Maybe make it pretty later.
 2020-02-20 23:29:01 <spruit11> https://github.com/egel-lang/egel/blob/master/examples/colist.eg
+2020-02-20 23:30:06 <b_jonas> also I'll have to look at what these four libraries in lib can do
+2020-02-20 23:30:14 <b_jonas> I mean their basics only
+2020-02-20 23:31:08 <spruit11> Yah, but very very alpha. Some are hurried implementations inspired by Ocaml, regex is just trying to get as much from libicu as I could.
+2020-02-20 23:31:18 <spruit11> But be my guest.
+2020-02-20 23:31:30 <spruit11> But I think you'll enjoy it more to just puzzle a bit.
+2020-02-20 23:31:49 <spruit11> I like your small programs.
+2020-02-20 23:31:52 <spruit11> More of those!
+2020-02-20 23:42:50 <esowiki> 14[[07Sunny morning14]]4 10 02https://esolangs.org/w/index.php?diff=69987&oldid=69980 5* 03Hakerh400 5* (+275) 10Update commands
+2020-02-20 23:45:28 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U][U U K N -> if K < N then cons K (U U (K + 1) N) N else {}] in ({3,4,5,6}, Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:45:29 <HackEso> a0.eg:4:38:semantical:redeclaration of U
+2020-02-20 23:45:42 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U][U K N -> if K < N then cons K (U U (K + 1) N) N else {}] in ({3,4,5,6}, Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:45:43 <HackEso> ​(System:tuple (System:cons 3 (System:cons 4 (System:cons 5 (System:cons 6 System:nil)))) (System:cons 3 (System:cons 4 (System:cons 5 (System:cons 6 System:nil 7) 7) 7) 7))
+2020-02-20 23:45:52 <b_jonas> no
+2020-02-20 23:46:33 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U][U K N -> if K < N then cons K (U U (K + 1) N) else {}] in ({3,4,5,6}, Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:46:34 <HackEso> ​(System:tuple (System:cons 3 (System:cons 4 (System:cons 5 (System:cons 6 System:nil)))) (System:cons 3 (System:cons 4 (System:cons 5 (System:cons 6 System:nil)))))
+2020-02-20 23:46:44 <b_jonas> better
+2020-02-20 23:48:58 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U] [U K N -> if K < N then cons K (U U (K + 1) N) else {}] in let Foreach = [U -> U U] [U B nil -> nop | U B (cons A D) -> B A; U U B D] in Foreach [] (Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:48:59 <HackEso> a0.eg:4:182:syntactical:-> expected
+2020-02-20 23:49:06 Quit: Phantom_Hoover (Ping timeout: 240 seconds)
+2020-02-20 23:49:06 Names: ^[, aji, aloril, APic, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-20 23:49:23 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U] [U K N -> if K < N then cons K (U U (K + 1) N) else {}] in let Foreach = [U -> U U] [U B nil -> nop | U B (cons A D) -> B A; U U B D] in Foreach [K -> print (tostring K + ",")] (Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:49:24 <HackEso> a0.eg:4:194:semantical:undeclared tostring
+2020-02-20 23:49:29 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U] [U K N -> if K < N then cons K (U U (K + 1) N) else {}] in let Foreach = [U -> U U] [U B nil -> nop | U B (cons A D) -> B A; U U B D] in Foreach [K -> print (totext K + ",")] (Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:49:30 <HackEso> 3,4,5,6,
+2020-02-20 23:49:37 <b_jonas> ``` set -e; cd egel-scripts; >a0.eg echo $'import "/hackenv/tmp/egel-master/include/prelude-hackeso.eg"\nusing System\nusing IO\ndef main = ''let Range2 = [U -> U U] [U K N -> if K < N then cons K (U U (K + 1) N) else {}] in let Foreach = [U -> U U] [U B nil -> nop | U B (cons A D) -> B A; U U B D] in Foreach [K -> print (totext (totext K) + ",")] (Range2 3 7)'; /hackenv/interps/egel/egel a0.eg
+2020-02-20 23:49:38 <HackEso> 3,4,5,6,
