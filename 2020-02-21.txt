@@ -68,3 +68,13 @@
 2020-02-21 03:29:11 <oerjan> it says patching yet did nothing
 2020-02-21 03:29:27 <oerjan> `t ` hg diff -c 12128 | patch -p1 -R
 2020-02-21 03:29:29 <HackEso> patching file karma \ Hunk #1 FAILED at 1. \ 1 out of 1 hunk FAILED -- saving rejects to file karma.rej
+2020-02-21 03:30:46 <oerjan> `cat ../karma
+2020-02-21 03:30:47 <HackEso> fizzie now has 2 karma.
+2020-02-21 03:31:20 <oerjan> oh...
+2020-02-21 03:32:33 <oerjan> `url ../karma
+2020-02-21 03:32:34 <HackEso> https://hack.esolangs.org/repo/file/tip/karma
+2020-02-21 03:35:25 <oerjan> *sigh* it's just the repo viewer confusing me because the file logs shown depend on revision you're in
+2020-02-21 03:35:54 <oerjan> `t ` rm karma.*
+2020-02-21 03:35:57 <HackEso> No output.
+2020-02-21 03:37:30 <oerjan> which is presumably what happened back when i did the original undo too
+2020-02-21 03:37:45 <oerjan> MOVE ALONG
