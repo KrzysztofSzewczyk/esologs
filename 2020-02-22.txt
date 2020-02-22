@@ -225,3 +225,19 @@
 2020-02-22 13:27:57 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, Women, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
 2020-02-22 13:29:29 <b_jonas> YAY! Order of the Stick (Giant in the Playground, giantitp) phpbb forum is back
 2020-02-22 13:29:32 <b_jonas> http://www.giantitp.com/index.html#oXsSwf27fSs6vscZlMX
+2020-02-22 13:32:32 User Name: Women = Women!~unknow@114.125.44.23
+2020-02-22 13:32:32 <Women> :(
+2020-02-22 13:32:46 Parted: Women
+2020-02-22 13:32:47 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 13:33:08 User Name: arseniiv = arseniiv!~arseniiv@136.169.210.57
+2020-02-22 13:33:08 <arseniiv> tromp: latter uses some cross between scott and church numerals => are they those where S n z' s' = s' n (n z' s')?
+2020-02-22 13:35:32 <arseniiv> I read somewhere about these and they were called Church—Scott in obvious manner :D
+2020-02-22 13:37:09 <tromp> arseniiv:   succ = \n\s\z. s z n; -- without the z on right these would be Scott numerals
+2020-02-22 13:38:40 <arseniiv> tromp: ah, interesting! What there is from Church, though?
+2020-02-22 13:39:44 <tromp> instead of applying f n times to z, they apply f sign(n) times to z
+2020-02-22 13:40:39 <arseniiv> oh
+2020-02-22 13:41:03 <tromp> hmm, that doesn't look right
+2020-02-22 13:41:52 <tromp> have to rethink that
+2020-02-22 13:45:15 <tromp> what they have from Church is that the successor case has the z argument available
+2020-02-22 13:55:55 <esowiki> 14[[07Mindwhipper14]]4 10 02https://esolangs.org/w/index.php?diff=70024&oldid=70019 5* 03Asasnat 5* (+39) 10
+2020-02-22 13:59:45 <int-e> tromp: But what you wrote lacks the actual recursive call; the caller could just apply the s to z themselves. \n\s\z. s (n s z) n would make a bit more sense to me, but that's what arseniiv had, only with the two arguments s and z swapped.
