@@ -106,3 +106,21 @@
 2020-02-22 07:59:31 Joined: tromp
 2020-02-22 07:59:31 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
 2020-02-22 07:59:52 <zzo38> How to determine what Linux kernel options are present in the current system?
+2020-02-22 08:04:52 User Name: Hooloovo0 = Hooloovo0!Hooloovoo@sorunome.de
+2020-02-22 08:04:52 <Hooloovo0> what kind of kernel options?
+2020-02-22 08:05:09 <Hooloovo0> often there's /proc/config.gz which will tell you how it was configured
+2020-02-22 08:05:55 <Hooloovo0> there's also kernel command line options which would be in /proc/cmdline
+2020-02-22 08:06:46 <zzo38> I don't have /proc/config.gz in my computer
+2020-02-22 08:07:00 <Hooloovo0> if config.gz isn't there, there's still a possibility it's in the kernel, but not advertised, I think the linux source has a tool to extract it
+2020-02-22 08:07:49 <Hooloovo0> what are you trying to do?
+2020-02-22 08:08:09 <zzo38> I just want to see how it was configured
+2020-02-22 08:09:36 <int-e> There may also be a config-* file corresponding to your kernel image in /boot/ ... though you have to trust the distribution on that.
+2020-02-22 08:09:45 Quit: imode (Ping timeout: 272 seconds)
+2020-02-22 08:09:45 Names: ^[, aji, aloril, APic, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 08:10:21 <zzo38> OK, I found it
+2020-02-22 08:10:21 <Hooloovo0> good point
+2020-02-22 08:10:29 <zzo38> That file is present
+2020-02-22 08:10:46 <Hooloovo0> scripts/extract-ikconfig could do it, but that's moot
+2020-02-22 08:12:08 <int-e> $ grep CONFIG_IKCONFIG /boot/config-$(uname -r)
+2020-02-22 08:12:08 <int-e> # CONFIG_IKCONFIG is not set
+2020-02-22 08:12:18 <int-e> wouldn't work anyway (Debian here)
