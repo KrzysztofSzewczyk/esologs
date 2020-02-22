@@ -241,3 +241,33 @@
 2020-02-22 13:45:15 <tromp> what they have from Church is that the successor case has the z argument available
 2020-02-22 13:55:55 <esowiki> 14[[07Mindwhipper14]]4 10 02https://esolangs.org/w/index.php?diff=70024&oldid=70019 5* 03Asasnat 5* (+39) 10
 2020-02-22 13:59:45 <int-e> tromp: But what you wrote lacks the actual recursive call; the caller could just apply the s to z themselves. \n\s\z. s (n s z) n would make a bit more sense to me, but that's what arseniiv had, only with the two arguments s and z swapped.
+2020-02-22 14:00:18 <int-e> so I'm a bit confused :)
+2020-02-22 14:01:08 <arseniiv> yeah I’m too but I thought I had misunderstood something
+2020-02-22 14:01:23 <int-e> \n\s\z. s z n might be a Scott encoding with a bit of extra Curry.
+2020-02-22 14:01:31 <tromp> oh, i thought Scott numerals lacked recursion
+2020-02-22 14:01:50 <int-e> They do.
+2020-02-22 14:01:57 <int-e> But Church is all about the recursion to my mind.
+2020-02-22 14:02:49 <tromp> so i forego the recursion because in laver you need to apply predecessor, which is easier with the non-recursive Scott numerals
+2020-02-22 14:03:41 <tromp> so now i can get pred without recursion, and use recursion for indexing a list
+2020-02-22 14:04:30 <arseniiv> right, that’s precisely the reason behind Church—Scott \n \z \s. s n (n z s)
+2020-02-22 14:04:36 <int-e> The extra z doesn't introduce recursion though, so I don't see the Church angle.
+2020-02-22 14:05:22 <tromp> like i said it's not Church style. it just has in common that both cases use the 2nd argument
+2020-02-22 14:05:31 <arseniiv> hm Church—Scott is worse than Church because of typing issues and is worse than Scott because of nonlinearity. Though I’m yet to get why linearity matters here
+2020-02-22 14:05:54 <tromp> i just stick z in there to save a few bits elsewhere
+2020-02-22 14:06:09 <int-e> tromp: I'd call it a (variant) Scott encoding
+2020-02-22 14:06:18 <arseniiv> tromp: but why z and not n?
+2020-02-22 14:06:51 <arseniiv> as far I understand z will not be useful(?)
+2020-02-22 14:06:51 <int-e> The variant allows you to write  n s z  instead of  n (s z) z.
+2020-02-22 14:07:11 <int-e> And you can get the Scott behavior back by doing  n (\_. s) z.
+2020-02-22 14:07:40 <int-e> So it's essentially the same?
+2020-02-22 14:07:52 <int-e> But incompatible, of course.
+2020-02-22 14:07:56 <tromp> yes, sorry for mentioning Church; it's just a Scott variant
+2020-02-22 14:08:28 <int-e> Okay. Glad we cleared that up :)
+2020-02-22 14:09:01 <tromp> so here's where the extra z comes in handy
+2020-02-22 14:09:07 <tromp> i can now define laver = \a. a (\b\a1. go a1 (idx b))
+2020-02-22 14:09:31 <int-e> arseniiv: These weird encoding tricks come up a lot when squeezing lambda terms.
+2020-02-22 14:09:36 <tromp> whereas with pure Scott i would need laver = \a\b. a (\a1. go a1 (idx b)) b
+2020-02-22 14:10:31 <int-e> arseniiv: Along with things like picking the right argument order, and doing some funny transformations on folds (which can be justified by free theorems).
+2020-02-22 14:10:35 <tromp> the former allow me to never show the 2nd argument to laver
+2020-02-22 14:11:08 <tromp> yes, i also put the tail before the head in my cons to save bits
+2020-02-22 14:12:22 <arseniiv> interesting
