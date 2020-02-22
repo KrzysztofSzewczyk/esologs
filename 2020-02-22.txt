@@ -33,3 +33,19 @@
 2020-02-22 02:28:58 <oerjan> and that's dubious. although some people like it that way.
 2020-02-22 02:29:24 <oerjan> egelbot: 1 - 2 - 3
 2020-02-22 02:29:36 <egelbot> -4
+2020-02-22 02:31:24 <oerjan> it accidentally works to have addition have lower precedence than subtraction, because (a + b) - c = a + (b - c)
+2020-02-22 02:31:55 <oerjan> so that's probably what's happening
+2020-02-22 02:34:06 <oerjan> multiplication lower than division would also work in a true field, but i think rounding may break that solution here
+2020-02-22 02:34:14 <oerjan> egelbot: 10 / 3
+2020-02-22 02:34:25 <egelbot> 3
+2020-02-22 02:35:33 <oerjan> egelbot: 10 * (2 / 5)
+2020-02-22 02:35:33 <egelbot> 0
+2020-02-22 02:35:42 <oerjan> egelbot: 10 * 2 / 5
+2020-02-22 02:35:43 <egelbot> 4
+2020-02-22 02:40:47 Quit: spruit11 (Ping timeout: 265 seconds)
+2020-02-22 02:40:47 Names: ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 02:41:31 Joined: spruit11
+2020-02-22 02:41:31 Names: ^[, aji, aloril, APic, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 02:43:27 <oerjan> @tell spruit11 ocaml has precedence decided by the first character, although it still manages to give * and / the same one afair.
+2020-02-22 02:43:27 <lambdabot> Consider it noted.
+2020-02-22 02:43:32 <oerjan> oh you returned
