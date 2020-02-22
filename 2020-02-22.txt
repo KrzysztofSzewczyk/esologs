@@ -320,3 +320,32 @@
 2020-02-22 16:45:18 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
 2020-02-22 17:12:27 Quit: myname (Ping timeout: 260 seconds)
 2020-02-22 17:12:27 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 17:32:09 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:71f0:ee99:694:c906
+2020-02-22 17:32:09 <tromp> ok, i switched to pure Scott numerals
+2020-02-22 17:32:20 <tromp> turns out you don't need a list index function in that caqse
+2020-02-22 17:33:19 <tromp> as long as your cons puts the tail before the head
+2020-02-22 17:33:54 Quit: Lord_of_Life (Read error: Connection reset by peer)
+2020-02-22 17:33:55 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 17:34:00 <tromp> i.e. cons = \h\t\z.z t h
+2020-02-22 17:34:09 <int-e> is it just me or does that sound a bit dirty
+2020-02-22 17:34:23 <tromp> in that case the n'th element of a list is simply  list n
+2020-02-22 17:34:47 <tromp> all is fair in war and codegolf:-)
+2020-02-22 17:36:08 <tromp> now my infinite laver is down to 223 bits
+2020-02-22 17:36:27 Joined: Lord_of_Life
+2020-02-22 17:36:27 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zemhill, zzo38
+2020-02-22 17:37:37 <tromp> and further down to 215  by switching laver arg order!
+2020-02-22 17:49:18 <tromp> and i have to say, the laver2 diagram looks awesome
+2020-02-22 17:49:40 <tromp> paste test:
+2020-02-22 17:49:44 <tromp> ┬──────────
+2020-02-22 17:49:44 <tromp> ┼─────┬────
+2020-02-22 17:49:44 <tromp> ┼─────┼─┬──
+2020-02-22 17:49:46 <tromp> │ ──┬─┼ ┼ ┬
+2020-02-22 17:49:48 <tromp> │ ┬─┼─┼ │ │
+2020-02-22 17:49:50 <tromp> │ │ ├─┘ │ │
+2020-02-22 17:49:52 <tromp> │ ├─┘   │ │
+2020-02-22 17:49:54 <tromp> └─┤     │ │
+2020-02-22 17:49:56 <tromp> └─────┤ │
+2020-02-22 17:49:58 <tromp> └─┘
+2020-02-22 17:50:00 <tromp> hmm, doesn't look good in my IRC client
+2020-02-22 17:50:12 <tromp> (that was just the pred function)
+2020-02-22 17:55:47 <int-e> looks fine for me, but I'd still prefer a pastebin.
