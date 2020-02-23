@@ -50,3 +50,19 @@
 2020-02-23 04:34:33 <imode> currently, I am creatively and motivationally dead.
 2020-02-23 04:34:46 <imode> halted all my projects. spent most of the day in bed.
 2020-02-23 04:35:03 <imode> here's to those of you who are enjoying your time.
+2020-02-23 05:30:52 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-02-23 05:30:52 <ais523> tswett[m]: thinking about the Martingale gambling strategy (i.e. always bet enough that a win would cover all your losses so far; note that this doesn't work in the real world either), I realized that casinos effectively run Ponzi schemes
+2020-02-23 05:31:07 <ais523> if every better had infinite capital they would all make a profit in the long term, and so would the casino
+2020-02-23 05:32:55 <tswett[m]> Do you mean they're Ponzi schemes at the bettors' expense or the investors'?
+2020-02-23 05:38:45 <tswett[m]> Let's see, I'm trying to figure out if my theorem is actually true or not.
+2020-02-23 05:39:43 <tswett[m]> Suppose you try to do the same thing with, say, roulette. Start with a dollar and bet 99% of your money each time; stop when you have either a billion dollars or a billionth of a dollar.
+2020-02-23 05:40:17 <tswett[m]> Well, that's not a useful strategy because you have less than a one in a billion chance of getting to a billion.
+2020-02-23 05:40:46 <tswett[m]> Let's say it's a 50-50 coin flip game instead of roulette.
+2020-02-23 05:43:03 <tswett[m]> You have a 50% chance of losing 99% and a 50% chance of winning 99%. But there's a lot of compounding burden. If you look at logarithmic percentages, the loss is 461%L, whereas the gain is only 69%L.
+2020-02-23 05:44:48 <tswett[m]> You're going for a billionfold increase, which means you want to gain 2072%L before you've lost 2072%L.
+2020-02-23 05:45:39 <tswett[m]> But each play loses you about 200%L on average, and it's very unlikely that the variance will make up for that average loss.
+2020-02-23 05:46:10 <tswett[m]> Okay, suppose you try to reduce your compounding burden by making much smaller bets. Let's say you only bet 1% of your money at a time.
+2020-02-23 05:46:25 <tswett[m]> Of course, you still have less than a one in a billion chance of getting to a billion.
+2020-02-23 05:48:06 <tswett[m]> Now a win gives you a 0.995%L increase and a loss gives you a 1.005%L decrease. You're still losing about 0.01%L on average, and now the variance is much, much less.
+2020-02-23 05:49:11 <tswett[m]> So what happens if you take the limit as the bet sizes approach zero? Well, the expected value of the game is 0 no matter what your bet size is, so even with an infinitesimal bet size, the expected value remains 0.
+2020-02-23 05:53:25 <tswett[m]> So now if you apply that to investing in geometric Brownian motion with leverage... I don't know what that limit looks like.
