@@ -151,3 +151,22 @@
 2020-02-23 13:41:41 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
 2020-02-23 13:43:21 Joined: LKoen
 2020-02-23 13:43:21 Names: ^[, aji, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zemhill, zzo38
+2020-02-23 14:33:00 <olsner> int-e: incidentally I spent most of this week working with (against?) Eigen
+2020-02-23 14:34:38 <int-e> olsner: I was just playing around. However, I made the mistake of looking at the machine code resulting from the naive M -= M.Identity()... and it had two nested loops :-/
+2020-02-23 14:34:51 <olsner> to modify a diagonal you can also do something like M.diagonal() -= 1; (but probably with a random extra .array() somewhere, and maybe it randomly doesn't work with scalars at that place)
+2020-02-23 14:35:26 <int-e> Ah, that looks more proper actually.
+2020-02-23 14:37:14 <int-e> Yeah, M.diagonal().array() -= 1 works.
+2020-02-23 14:37:54 <int-e> Thanks :)
+2020-02-23 14:42:25 <int-e> I find the documentation of Eigen hard to digest as well, btw. The problem being unfolding the abstraction to find out what methods actually exist.
+2020-02-23 14:43:27 <int-e> For example I almost missed Matrix::row(int) and Matrix::col(int).
+2020-02-23 14:45:37 <esowiki> 14[[07CopyPasta Language14]]4 M10 02https://esolangs.org/w/index.php?diff=70030&oldid=69586 5* 03Rerednaw 5* (+543) 10Examples and addition of the category Turing complete
+2020-02-23 14:45:40 <int-e> (Because it's defined in DenseBase)
+2020-02-23 14:45:52 <olsner> I tend to browse around randomly to find methods accidentally mentioned in examples :)
+2020-02-23 14:46:13 <esowiki> 14[[07CopyPasta Language14]]4 10 02https://esolangs.org/w/index.php?diff=70031&oldid=70030 5* 03Rerednaw 5* (-1) 10/* Mini Fibonacci sequience */
+2020-02-23 14:46:40 <int-e> Im also mildly curious how (in)sane  auto b = decltype(M.col(0))::Constant(-1);  is.
+2020-02-23 14:46:47 <esowiki> 14[[07CopyPasta Language14]]4 M10 02https://esolangs.org/w/index.php?diff=70032&oldid=70031 5* 03Rerednaw 5* (-11) 10/* Mini Fibonacci sequence */
+2020-02-23 14:46:56 <olsner> maybe the method to use is to just try stuff, like "I wish I could write X.row(foo) = bar" and then you find out both that row() exists and that it can be used as an lvalue
+2020-02-23 14:47:00 <int-e> (To get a compatible column vector with all entries equal to -1)
+2020-02-23 14:47:00 <esowiki> 14[[07CopyPasta Language14]]4 M10 02https://esolangs.org/w/index.php?diff=70033&oldid=70032 5* 03Rerednaw 5* (+1) 10/* Mini Fibonacci sequence */
+2020-02-23 14:49:08 <int-e> olsner: Unfortunately I don't have that kind of faith in library designers.
+2020-02-23 14:50:53 <int-e> olsner: But I was actually clued in on this by an example... which pointed me to the block interface, of which row() and col() are members.
