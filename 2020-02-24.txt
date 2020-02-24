@@ -122,3 +122,12 @@
 2020-02-24 11:46:35 <rain1> a good theoretical basis for hygiene is the scope sets system
 2020-02-24 11:47:27 <rain1> just like you can partially reduce lambda terms under binders etc. with beta reduction. the scope sets system lets you partially expand code with macros
 2020-02-24 11:51:11 <cpressey> rain1: Thanks, I'll look into that.
+2020-02-24 12:31:03 Quit: kritixilithos (Ping timeout: 240 seconds)
+2020-02-24 12:31:04 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-24 12:32:27 <int-e> cpressey: I mean its' obviously not useless... It solves one problem that plain de Bruijn indices have: it's easy to mess up the index of a bound variable because one entered another binder.
+2020-02-24 12:39:19 <wib_jonas> also with de Bruijn indexes, it's harder to see all occurances of a variable
+2020-02-24 12:39:35 <wib_jonas> at least for humans.
+2020-02-24 12:40:22 <wib_jonas> and you have to renumber everything when you want to change the program to introduce a new binding in the middle
+2020-02-24 12:43:52 <int-e> Which is a solvable problem as well if you introduce a dual for abstraction that removes a variable from scope.
+2020-02-24 12:46:57 <int-e> (Removal works by index when working with de Bruijn indices. Say  /2.t which means indices 0,1,2,3 inside t are mapped to 0,1,3,4... outside t. / is supposed to be the opposite of \.)
+2020-02-24 12:49:02 <int-e> And you have laws to push those around: /2.\t = \/3.t and /2.(t u) = (/2.t)(/2.u), or /2./5.t = /6./2.t
