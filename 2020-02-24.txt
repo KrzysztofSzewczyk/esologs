@@ -88,3 +88,19 @@
 2020-02-24 10:29:24 <wib_jonas> int-e: ok. I didn't know your particular case, I'm just saying this for the future
 2020-02-24 10:29:47 <wib_jonas> it doesn't come up too often anyway
 2020-02-24 10:29:49 <int-e> And I can probably speed this up significantly using https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula
+2020-02-24 10:30:30 <int-e> But I will focus on strategy first :)
+2020-02-24 10:30:58 <int-e> Though the stupid thing just found an eligible solution.
+2020-02-24 10:31:36 <int-e> (value: 66.97870495509361888)
+2020-02-24 10:32:05 <int-e> Well, not all of those digits are correct.
+2020-02-24 10:33:18 Quit: kritixilithos (Remote host closed the connection)
+2020-02-24 10:33:19 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-24 10:33:25 <wib_jonas> int-e: oh, and obviously, get a recent enough version of Eigen
+2020-02-24 10:33:39 <wib_jonas> and a non-ancient compiler
+2020-02-24 10:33:42 Joined: kritixilithos
+2020-02-24 10:33:43 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-24 10:33:45 <wib_jonas> but I think you figured that out yourself
+2020-02-24 10:37:23 <int-e> I didn't pay attention to that... for most stuff Debian unstable is fairly up-to-date. Seems to have worked out in this case as well.
+2020-02-24 10:44:27 <cpressey> Suppose we have a set of functions that map syntax to syntax. (You could call these functions "macros".) Further, we want to characterize some of these functions as "hygienic" and others as "not hygienic". I propose that the difficulty of doing this depends on the data structure we choose for representing syntax.
+2020-02-24 10:47:06 <cpressey> By "syntax" I mean, a chunk of a program. So, we could represent syntax as character strings. But then this characterization is difficult.
+2020-02-24 10:47:41 <cpressey> If we represent syntax with S-expressions, it's a little less difficult. If we represent it with ASTs, it should be less difficult still.
+2020-02-24 10:50:49 <cpressey> I don't think I've said anything really earth-shattering so far. But now, I propose: if we represent syntax with ABTs, it should be even less difficult still to make this characterization.
