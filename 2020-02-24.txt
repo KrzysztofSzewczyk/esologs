@@ -60,3 +60,31 @@
 2020-02-24 09:53:21 Names: ^[, aji, aloril, APic, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
 2020-02-24 09:54:12 Joined: tromp
 2020-02-24 09:54:12 Quit: tromp (Read error: Connection reset by peer)
+2020-02-24 10:03:55 Joined: kritixilithos
+2020-02-24 10:03:55 Names: ^[, aji, aloril, APic, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-24 10:14:31 Joined: cpressey
+2020-02-24 10:14:31 Names: ^[, aji, aloril, APic, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-24 10:14:36 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-02-24 10:14:36 <wib_jonas> If values of a type can have multiple possible representation of the same value, so I have a function that takes any representation to a canonical one, sometimes that's called a "canonical" value, sometimes a "normalized" value. when should I use which of those two words? and what's the verb form of "canonical", analogous to "normalize"?
+2020-02-24 10:15:38 User Name: cpressey = cpressey!~cpressey@5.133.242.4
+2020-02-24 10:15:38 <cpressey> I use the verb canonicalize
+2020-02-24 10:15:47 <cpressey> I don't know how many other people do
+2020-02-24 10:17:15 <wib_jonas> I'm asking because I want to name some function in a program that I'm writing of course
+2020-02-24 10:17:21 <wib_jonas> cpressey: I see
+2020-02-24 10:22:03 <int-e> Oh, -march=native makes a huge difference for Eigen, why didn't I think of that sooner.
+2020-02-24 10:23:28 <int-e> With thatr insight, lapack+openblas is still a bit faster, but only like 20% rather than by a factor of 2.
+2020-02-24 10:24:57 <wib_jonas> int-e: yes, because then you get to use more than just SSE2. but be careful, there's also a binary incompatibility issue if you link files compiled to Eigen with different optimization switches,
+2020-02-24 10:25:03 Quit: ArthurStrong (Quit: leaving)
+2020-02-24 10:25:04 Names: ^[, aji, aloril, APic, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moonythehammer, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-24 10:25:27 <int-e> Yeah, not an issue here.
+2020-02-24 10:25:56 <int-e> I've just been tinkering with http://www.research.ibm.com/haifa/ponderthis/challenges/February2020.html ... it's a just a single self-contained program.
+2020-02-24 10:26:12 <wib_jonas> and if you want to avoid that, you either need to set EIGEN_MAX_ALIGN_BYTES and EIGEN_MAX_STATIC_ALIGN_BYTES explicitly, or else be aware of which types can have different requirements depending on the switches.
+2020-02-24 10:26:15 <int-e> And the linear algebra is the boring bit.
+2020-02-24 10:26:40 <wib_jonas> int-e: try also -fno-math-errno
+2020-02-24 10:27:19 <wib_jonas> to make sure that the sqrt function doesn't try to check the flag and update errno taht is
+2020-02-24 10:27:45 <wib_jonas> ah, Markov chain stuff.
+2020-02-24 10:27:49 <int-e> Oh. But there should not be any no sqrt calls.
+2020-02-24 10:28:18 <int-e> It's just LU decomposition (that's the slow bit) and matrix multiplication.
+2020-02-24 10:29:24 <wib_jonas> int-e: ok. I didn't know your particular case, I'm just saying this for the future
+2020-02-24 10:29:47 <wib_jonas> it doesn't come up too often anyway
+2020-02-24 10:29:49 <int-e> And I can probably speed this up significantly using https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula
