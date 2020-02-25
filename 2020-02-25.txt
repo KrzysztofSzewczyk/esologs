@@ -221,3 +221,15 @@
 2020-02-25 12:19:12 <tromp> computing divisors by indexing cyclic lists
 2020-02-25 13:09:29 Joined: arseniiv
 2020-02-25 13:09:30 Names: ^[, aji, aloril, APic, arseniiv, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-25 13:31:08 <int-e> tromp: Oh I found your https://oeis.org/A114852
+2020-02-25 13:35:11 <int-e> Though I wanted
+2020-02-25 13:35:19 <int-e> this for sizes up to 100 :)
+2020-02-25 13:35:32 <wib_jonas> int-e: follow the references
+2020-02-25 13:35:38 <int-e> Terms with size up to 50: 145448015544; size up to 100: 14186608955706026703799033
+2020-02-25 13:36:06 <rain1> too many to check exaustively then
+2020-02-25 13:36:08 <int-e> wib_jonas: Well, the way I found the sequence is that I wrote code to compute it :P So I basically was already at my goal.
+2020-02-25 13:37:17 <wib_jonas> 145448015544 is around 2**38, 14186608955706026703799033 is around 2**84, for those who don't like counting digits because it's a computer's chore
+2020-02-25 13:40:25 <int-e> You can prune quite a bit (e.g., any terms with a non-duplicating beta-redex, possibly using some extended beta-reduction (what I have in mind is reducing  (\x\y\z.M[x,y,z]) r s t  to (\x\y.M[x,y,t]) r s).
+2020-02-25 13:40:59 <int-e> But the space will still be large after that.
+2020-02-25 13:54:37 Joined: xkapastel
+2020-02-25 13:54:37 Names: ^[, aji, aloril, APic, arseniiv, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zzo38
