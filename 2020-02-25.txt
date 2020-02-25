@@ -210,3 +210,12 @@
 2020-02-25 11:28:17 <rain1> I feel like it would be very interesting to approach this problem using automated theorem proving
 2020-02-25 11:36:19 <tromp> i specified normal order
 2020-02-25 11:55:31 <tromp> ps: fixed subject which moved it to https://mathoverflow.net/questions/353514/whats-the-smallest-lambda-calculus-term-not-known-to-have-a-normal-form
+2020-02-25 12:02:31 <int-e> tromp: Oh so you did, sorry. I was looking for something more verbose (leftmost outermost)
+2020-02-25 12:02:59 <tromp> i went with the Wikipedia nomenclature
+2020-02-25 12:04:26 <tromp> https://en.wikipedia.org/wiki/Lambda_calculus#Reduction_strategies
+2020-02-25 12:05:16 <tromp> i also thought it sounded less arbitrary:-)
+2020-02-25 12:07:27 <int-e> It does.
+2020-02-25 12:13:06 <tromp> i expect all terms under 50 bits should be manually decidable
+2020-02-25 12:13:58 <tromp> but things should get interesting under 100 bits
+2020-02-25 12:18:01 <tromp> one may be able to look for odd perfect number in under 200 bits
+2020-02-25 12:19:12 <tromp> computing divisors by indexing cyclic lists
