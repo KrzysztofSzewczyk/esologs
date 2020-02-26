@@ -278,3 +278,5 @@
 2020-02-26 20:51:48 <int-e> Now... similar to "moreover" and "ultimately" there is another pair, "also" and "finally". They use transitive reasoning; if you do  have "a = b" <proof> also have "b = c" <proof> finally have "foo" <proof> then the chained fact will be "a = c". (There's more to it; for example you can write "... = c" instead of "b = c", but this is the basic story.)
 2020-02-26 20:52:54 <int-e> The full gory details are somewhere in https://isabelle.in.tum.de/dist/Isabelle2019/doc/isar-ref.pdf
 2020-02-26 20:53:56 <int-e> (I also wonder whether any of that explanation made any sense.)
+2020-02-26 21:11:03 <zzo38> Converting the German "ss" ligature into uppercase (e.g. "\xDF".toUpperCase()) produces "SS" in V8 JavaScript, but leaves it unchanged in Mozilla JavaScript.
+2020-02-26 21:27:26 <b_jonas> int-e: wasn't the point that "moreover" and "ultimately" are strange words to be used as pl keywords?
