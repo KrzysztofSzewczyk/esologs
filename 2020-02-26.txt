@@ -129,3 +129,34 @@
 2020-02-26 10:57:58 <cpressey> I tried to learn Agda once. It didn't go well.
 2020-02-26 10:58:11 <int-e> I've actually used Coq a little bit: https://github.com/int-e/coq-playground/ (there's both a Coq and an Isabelle/HOL version of Dilworth's theorem in there. The Isabelle version is shorter, but it's not a fair comparison; I wrote the Isabelle version *after* the Coq version, so some of the compression is from understanding the proof better; another part is of course that I have much more...
 2020-02-26 10:58:17 <int-e> ...experience with Isabelle/HOL. I still think that Coq is a tad worse at arithmetic (which does come up a few times).
+2020-02-26 11:00:16 <cpressey> I have the following very general problem: dependent types rub me the wrong way.  I would have to learn to put that aside before I would be able to get very far with anything where type-value dependence is prominent.
+2020-02-26 11:00:42 <int-e> (Both developemnts have a huge monolithic proof at their core... Dilworth's theorem just keeps stacking more and more information extracted from the setup until finally it all combines into a successful conclusion. This means that factoring the proof would result in lemmas with tons of assumptions. The formalization is embarrassingly large compared to the paper proof; compare...
+2020-02-26 11:00:48 <int-e> ...https://en.wikipedia.org/wiki/Dilworth%27s_theorem#Inductive_proof .
+2020-02-26 11:01:20 <int-e> cpressey: Oh I'm not a huge fan of dependent types either *especially* for programming.
+2020-02-26 11:02:48 <int-e> Maybe it's a matter of having convenient coercions for the common case that you don't want to prove anything about your program and just get on with it.
+2020-02-26 11:03:22 <int-e> ("trust me, I know that n+m = m+n for natural numbers")
+2020-02-26 11:03:38 <Taneb> I like dependent types but mostly because I find them fun
+2020-02-26 11:03:56 <int-e> I'm less dismissive of their use in ITPs though.
+2020-02-26 11:04:15 <int-e> Since there the purpose is to prove everything rigorously.
+2020-02-26 11:05:26 <int-e> So it's more about expressiveness of the term language, and more expressiveness is usually better. (There's a cost to this... automatic proof methods have to deal with those types, so that gets harder.)
+2020-02-26 11:05:26 <Taneb> int-e: I know Agda has "trustMe : ∀ {a} {A : Set a} {x y : A} → x ≡ y", is this the kind of coercion you're after?
+2020-02-26 11:05:52 <int-e> Taneb: That's the kind of thing I'm after, yes. Except that's too verbose.
+2020-02-26 11:08:10 <int-e> Btw, I have not actually tried to use Agda; this is speculation, somewhat educated by working with constraints (and, to a far lesser extent, type literals) in Haskell.
+2020-02-26 11:08:19 <Taneb> Have you tried Lean? (disclaimer: I have not). I believe there you can do as much or as little proving as you like, but I may be mistaken
+2020-02-26 11:08:50 <int-e> Taneb: <int-e> I've been meaning to look at Lean for a while now.
+2020-02-26 11:09:12 <Taneb> Ah, I didn't see that
+2020-02-26 11:09:13 <int-e> (No, I can't really blame you for not reading all that.)
+2020-02-26 11:09:46 <int-e> (Especially since I am terrible at catching up on context myself.)
+2020-02-26 11:15:37 Quit: oerjan (Quit: Nite)
+2020-02-26 11:15:37 Names: ^[, aji, aloril, APic, arseniiv, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zzo38
+2020-02-26 11:15:37 <cpressey> There are a few ITPs based on set theory (Metamath, mainly) but they're a definite minority. The general feeling seems to be, if you want to formalize mathematics, you want to avoid set theory, you want to use type theory instead, so that some ill-defined things can't even be stated.
+2020-02-26 11:16:54 <cpressey> And then, beyond that, most of those ITPs use a type theory with dependent types, because more expressive. But is there any space for an ITP based on a non-depedent type theory?
+2020-02-26 11:17:21 <cpressey> Like (just blue-skying here) System F, or System F_omega?
+2020-02-26 11:18:02 <cpressey> (Or do you just get a programming language if you try that?)
+2020-02-26 11:19:00 <Taneb> I keep meaning to mess around more with metamath
+2020-02-26 11:20:12 <int-e> cpressey: I think I would like a System F ITP. But I'm not sure where it should come from... I mean these systems are typically developed in Academia and what can you publish about this? Any reviewer will say "but we already have Coq which does more"...
+2020-02-26 11:20:56 <int-e> (But as usual this may be my lack of imagination.)
+2020-02-26 11:23:57 <cpressey> It could come from the burgeoning field of esoteric proof languages... :)
+2020-02-26 11:24:09 <cpressey> Or it could if I had more spare time
+2020-02-26 11:25:01 <int-e> Well, making a /usable/ ITP is a huge effort.
+2020-02-26 11:25:12 <cpressey> No argument there
