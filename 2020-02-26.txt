@@ -174,3 +174,22 @@
 2020-02-26 12:26:27 <arseniiv> re esoteric proof languages: are there any? (and I’m almost hooked but I can’t say I could try making one myself, I have too little experience with things for simplifying proving in the real proof assistant thingies, so the image would be incomplete)
 2020-02-26 12:26:39 Joined: Bowserinator
 2020-02-26 12:26:39 Names: ^[, aji, aloril, APic, arseniiv, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zzo38
+2020-02-26 12:33:11 <int-e> arseniiv: can you name a non-esoteric one...
+2020-02-26 12:34:08 <arseniiv> int-e: erm, don’t Isabelle, Coq, Agda mentioned above count?
+2020-02-26 12:35:30 <cpressey> I have https://github.com/catseye/Maxixe but it's hardly esoteric.
+2020-02-26 12:35:45 <cpressey> Metamath's syntax certainly *looks* esoteric.
+2020-02-26 12:37:38 <int-e> arseniiv: I may have been somewhat facetious there. :P
+2020-02-26 12:39:28 <int-e> arseniiv: My more serious thought process went in the direction of minimal logic, pure Hilbert systems... anything that lacks second-order instantiation of lemmas because you can just redo the lemma's proof in place.
+2020-02-26 12:40:18 <arseniiv> cpressey: ah, hm, Metamath could be claimed to be an esoteric one, now that I think
+2020-02-26 12:40:32 <int-e> (This is a first-order logic phenomenon, obviously. You prove something that holds for an arbitrary predicate P. But you can't instantiate P later on.)
+2020-02-26 12:41:06 <arseniiv> <int-e> anything that lacks second-order instantiation of lemmas because you can just redo the lemma's proof in place. => but that’s too boring, or should I say, inhumane
+2020-02-26 12:43:27 <cpressey> If it's repetitive and inhumane in the way brainfuck code is repetitive and inhumane, that's an argument for it being esoteric
+2020-02-26 12:44:47 <cpressey> And maybe one could build on that to make something a bit more interesting.
+2020-02-26 12:48:02 <int-e> Yeah that was kind of my reasonings... those logics were not made to be used.
+2020-02-26 12:48:58 <int-e> They have their place in reasoning *about* proofs. (AKA Proof Theory.)
+2020-02-26 12:49:30 <int-e> So they're in a similar niche as (most) Turing tarpits.
+2020-02-26 12:50:21 <int-e> (most, because some of them are really hard to reason about, and also some of them are actually fairly programmable...)
+2020-02-26 12:53:49 <int-e> The main programmable Turing tarpit is lambda calculus, simply because the mechanism for evaluation that is offers is very close to the mechanism we use for code reuse: take an existing paramterized program and instantiate the paramter.
+2020-02-26 12:54:59 <int-e> Yes, basic data is represented in an unfamiliar way, but you can treat that as an abstraction... and soon you can write ordinary functional code.
+2020-02-26 12:57:13 Joined: rain1
+2020-02-26 12:57:13 Names: ^[, aji, aloril, APic, arseniiv, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xkapastel, xylochoron[m], zzo38
