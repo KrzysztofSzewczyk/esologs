@@ -172,3 +172,18 @@
 2020-02-27 21:27:24 <int-e> > 128/2^53 -- corresponding ulp
 2020-02-27 21:27:26 <lambdabot> 1.4210854715202004e-14
 2020-02-27 21:28:10 <int-e> b_jonas: So all things considered that's pretty good. And it's okay; I produce candidate solutions at 1e-12 and filter them with a GP script which is much slower but offers better precision.
+2020-02-27 21:30:22 <b_jonas> int-e: yeah, that's what I should do for the small prime factors problem. double precision is enough to filter down to a very small number of candidates. mind you, it's easier there because there's much less rounding error.
+2020-02-27 21:31:12 <int-e> Are you still planning to work on that?
+2020-02-27 21:31:26 <b_jonas> int-e: probably eventually some time... dunno
+2020-02-27 21:32:29 <int-e> b_jonas: I guess the real question is, would you mind if I told you what my approach was?
+2020-02-27 21:32:43 <b_jonas> int-e: I would't mind
+2020-02-27 21:32:56 <b_jonas> I am more or less already decided on my approach, though I can vary parameters
+2020-02-27 21:34:34 <int-e> b_jonas: I basically came up with a meet-in-the middle approach. The idea is that if you have N written as a product of (quite a few) primes, then it's very likely that the product can be split into two nearly equal parts. So if N is too big for brute force, I gather solutions centered around sqrt(N) first, and then look for pairs of those whose product is close to N.
+2020-02-27 21:35:12 <int-e> The caveat is that this easily misses solutions that have few distinct prime factor.
+2020-02-27 21:35:15 <int-e> *factors.
+2020-02-27 21:35:46 <int-e> You can compensate for that somewhat by also looking for solutions near N/p for primes p in the list.
+2020-02-27 21:37:05 <int-e> Anyway, the beauty of this approach is that you get closer to N (relatively speaking) as N increases.
+2020-02-27 21:38:54 User Name: tomaw = tomaw!tom@freenode/staff/tomaw
+2020-02-27 21:38:54 <tomaw> Global Notice] We're due to complete the final part of our services migration this weekend. Sunday, around 1800UTC ChanServ, NickServ etc will be offline for a short while. Further updates will be sent via WALLOPS (/mode yourNick +w to receive them)
+2020-02-27 21:55:12 <esowiki> 14[[07Alphaprint14]]4 M10 02https://esolangs.org/w/index.php?diff=70062&oldid=69189 5* 03PythonshellDebugwindow 5* (+21) 10
+2020-02-27 21:55:45 <esowiki> 14[[07Alphaprint14]]4 M10 02https://esolangs.org/w/index.php?diff=70063&oldid=70062 5* 03PythonshellDebugwindow 5* (+47) 10/* Structure */
