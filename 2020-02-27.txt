@@ -155,3 +155,20 @@
 2020-02-27 20:30:32 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-02-27 20:41:13 Joined: BWBellairs
 2020-02-27 20:41:13 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-27 21:08:17 <int-e> arseniiv: I've reached 14 digits after the decimal point for the Ponder This thing now :)
+2020-02-27 21:10:04 <arseniiv> int-e: huh
+2020-02-27 21:10:44 <arseniiv> isn’t that an overkill :D
+2020-02-27 21:10:59 <int-e> Well I wanted a star.
+2020-02-27 21:11:58 <int-e> But yes, it is. But I've just pursued a tiny idea I had while getting to 12 digits.
+2020-02-27 21:12:33 <int-e> The funny thing is that double precision isn't good enough for this.
+2020-02-27 21:13:26 <arseniiv> int-e: for the original 6-digit precision or for 14-digit one?
+2020-02-27 21:13:38 <int-e> the latter
+2020-02-27 21:14:02 <int-e> The rounding errors I get are on the order of 1e-13.
+2020-02-27 21:14:06 <arseniiv> ah. I wouldn’t be surprised if it’d be the former
+2020-02-27 21:15:23 User Name: b_jonas = b_jonas!~x@catv-176-63-14-56.catv.broadband.hu
+2020-02-27 21:15:23 <b_jonas> int-e: ouch
+2020-02-27 21:26:19 <int-e> > 70/2^53
+2020-02-27 21:26:21 <lambdabot> 7.771561172376096e-15
+2020-02-27 21:27:24 <int-e> > 128/2^53 -- corresponding ulp
+2020-02-27 21:27:26 <lambdabot> 1.4210854715202004e-14
+2020-02-27 21:28:10 <int-e> b_jonas: So all things considered that's pretty good. And it's okay; I produce candidate solutions at 1e-12 and filter them with a GP script which is much slower but offers better precision.
