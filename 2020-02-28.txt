@@ -118,3 +118,13 @@
 2020-02-28 12:47:32 <cpressey> I expect they don't consider the inconsistency an actual problem, they probably categorize it under "the interpreter may never halt if it is unable to prove that two values are equivalent."
 2020-02-28 12:48:44 <int-e> arseniiv: Well what int** adds is an oracle... I suspect for the whole arithmetic hierarchy, but I have not thought it through completely, just handwaved that each level of contravariance should give you an alternation in quantifiers.
 2020-02-28 12:49:19 <int-e> And, of course, inconsistency.
+2020-02-28 13:08:48 <cpressey> int-e: So Coq also has an "auto" tactic. I did my first proof in Coq, I got halfway, I wasn't sure how to finish it, so I tried "auto" and it worked. I'm still not sure what it did.
+2020-02-28 13:10:15 <int-e> I think it mostly uses existing introduction rules to solve goals recursively?
+2020-02-28 13:11:36 <int-e> There's some setup for this, where lemmas can be registered for use with auto... I forgot what it is. There is a #coq (or ##coq? should be the former...) btw.
+2020-02-28 13:12:12 <cpressey> The proof I was doing was a very simple one so I'm not surprised it worked, it's more of a comment on the opacity of working with tactics.
+2020-02-28 13:12:45 <int-e> oh yeah, but soon you'll be happy it worked and move on ;)
+2020-02-28 13:13:43 <int-e> But that said, at the beginning it may actually be worthwhile to attempt a more detailed proof without automatic tactics.
+2020-02-28 13:14:39 <int-e> Often the real problem is to find the applicable lemmas. And you'll need to do that yourself when the automatic methods fail (and they often do...).
+2020-02-28 13:16:57 <int-e> I forgot, but I have some notes here... http://paste.debian.net/1132703/
+2020-02-28 13:17:15 <int-e> (basic ideas for exploration)
+2020-02-28 13:22:09 <arseniiv> today is a good day
