@@ -142,3 +142,34 @@
 2020-02-28 13:58:41 <cpressey> I'm guessing sure they meant "levels of the arithmetic hierarchy" where they said "ordinals"
 2020-02-28 13:58:53 <cpressey> That's right, I'm guessing sure.
 2020-02-28 13:59:05 <cpressey> Not going to attempt to correct that.
+2020-02-28 14:00:31 <int-e> They could simply mean cardinals.
+2020-02-28 14:01:21 <wib_jonas> cpressey: that might make sense
+2020-02-28 14:02:00 <cpressey> "cardinal" would also make more sense than "ordinal"
+2020-02-28 14:02:04 <int-e> which makes a bit of sense; testing equality of two (int -> int) -> int -> int functions naively means testing all uncountably many (int -> int) functions.
+2020-02-28 14:04:01 <int-e> ("naively" -- I would expect that there is a countable test set that always works)
+2020-02-28 14:04:48 <int-e> On a meta level, at least. In fact... start with a countable model of ZFC ;)
+2020-02-28 14:09:34 Quit: sprocklem (Ping timeout: 255 seconds)
+2020-02-28 14:09:34 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xylochoron[m], zzo38
+2020-02-28 14:09:40 <wib_jonas> int-e: you can't find one of those models without being able to decide the truth of any unparametrized first order logic statement about natural numbers though
+2020-02-28 14:10:08 <wib_jonas> so no
+2020-02-28 14:11:44 <wib_jonas> it's no surprise, there's no easy cheat to collapse the arithmetical hierarchy
+2020-02-28 14:19:08 <esowiki> 14[[07Talk:Int**14]]4 10 02https://esolangs.org/w/index.php?diff=70069&oldid=70068 5* 03Int-e 5* (+603) 10/* Consistency */ more questions
+2020-02-28 14:25:29 <esowiki> 14[[07Talk:Int**14]]4 10 02https://esolangs.org/w/index.php?diff=70070&oldid=70069 5* 03Int-e 5* (+411) 10/* Consistency */
+2020-02-28 14:26:18 <int-e> wib_jonas: Oh sure, I didn't mean to suggest that any of this can actually be done in "practice".
+2020-02-28 14:26:37 Joined: wib_jonas80
+2020-02-28 14:26:37 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, trn, tromp, tswett[m], vertrex, wib_jonas, wib_jonas80, wmww, xylochoron[m], zzo38
+2020-02-28 14:27:11 <int-e> . o O ( what happened to 0 to 79? )
+2020-02-28 14:27:33 <kritixil1> fungot: which one's the real wib_jonas
+2020-02-28 14:27:33 <fungot> kritixil1: it might be
+2020-02-28 14:27:46 User Name: wib_jonas80 = wib_jonas80!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-02-28 14:27:46 <wib_jonas80> both
+2020-02-28 14:28:10 <wib_jonas80> I disconnected my laptop from the company network to diagnose a network problem
+2020-02-28 14:28:31 <wib_jonas80> then reconnected, but didn't bother to disconnect from irc first, so the other nick is still connected
+2020-02-28 14:28:34 <wib_jonas80> I'll fix that in a moment
+2020-02-28 14:28:48 Quit: wib_jonas (Disconnected by services)
+2020-02-28 14:28:48 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, trn, tromp, tswett[m], vertrex, wib_jonas80, wmww, xylochoron[m], zzo38
+2020-02-28 14:28:57 Nick Change: wib_jonas80 -> wib_jonas
+2020-02-28 14:28:57 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xylochoron[m], zzo38
+2020-02-28 14:29:06 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-02-28 14:29:06 <wib_jonas> there, now I'm wib_jonas
+2020-02-28 14:29:46 <wib_jonas> kritixil1: are you the real kritixilithos?
