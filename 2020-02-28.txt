@@ -108,3 +108,13 @@
 2020-02-28 12:28:42 <arseniiv> kritixil1: not yet
 2020-02-28 12:29:10 <int-e> Actually I'm sure this is ill-defined; one should be able to encode Russell's paradox in this.
 2020-02-28 12:29:34 <int-e> Unless it forbids recursion, hmm.
+2020-02-28 12:34:57 <arseniiv> if they wouldn’t mention pointer types as an analogy, which isn’t a good one anyway. they wouldn’t need to say several times that changing an int* value doesn’t change anything other
+2020-02-28 12:36:12 <int-e> Well, a lot of paradoxes anyway, maybe not Russell's in particular.
+2020-02-28 12:37:04 <cpressey> From one of the examples it looks like int* is the same as int(int) so what is this actually
+2020-02-28 12:40:08 <cpressey> C already has mappings from ints to ints, they're called functions
+2020-02-28 12:40:36 <arseniiv> yeah in Haskell terms it allows Bool and data NatF (n :: Nat) where { NatZ :: Nat -> NatF 0; NatS :: (NatF n -> NatF n) -> NatF (n + 1) }, only all the values are strict
+2020-02-28 12:41:55 <arseniiv> I’d also think that modern C++ frowns upon indexing pointers but IDK
+2020-02-28 12:42:47 <esowiki> 14[[07Talk:Int**14]]4 N10 02https://esolangs.org/w/index.php?oldid=70067 5* 03Int-e 5* (+257) 10question about consistency
+2020-02-28 12:47:32 <cpressey> I expect they don't consider the inconsistency an actual problem, they probably categorize it under "the interpreter may never halt if it is unable to prove that two values are equivalent."
+2020-02-28 12:48:44 <int-e> arseniiv: Well what int** adds is an oracle... I suspect for the whole arithmetic hierarchy, but I have not thought it through completely, just handwaved that each level of contravariance should give you an alternation in quantifiers.
+2020-02-28 12:49:19 <int-e> And, of course, inconsistency.
