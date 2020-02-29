@@ -140,3 +140,46 @@
 2020-02-29 14:28:05 <b_jonas> kspalaiologos: by the way, if you rewrote your bot and want its nickname back, ping me, I'll transfer it back
 2020-02-29 14:28:28 <kspalaiologos> hmmm, I've been doing different things lately
 2020-02-29 14:28:35 <kspalaiologos> but I'll try rewriting the bot
+2020-02-29 14:30:34 <cloaked> thanks all, nice to meet you
+2020-02-29 14:31:56 <cloaked> I like the lime slices- very tasteful :]
+2020-02-29 14:31:59 <int-e> kspalaiologos: There's `WeLcOmE as well, for symmetry
+2020-02-29 14:32:21 <cloaked> brb
+2020-02-29 14:32:30 <int-e> `welcom
+2020-02-29 14:32:31 <HackEso> welcom? No such file or directory
+2020-02-29 14:32:42 <int-e> `elcome
+2020-02-29 14:32:43 <HackEso> elcome o he nternational ub or soteric rogramming anguage esign nd eployment! or ore nformation, heck ut ur iki: <ttps://solangs.rg/>. (or he ther ind f soterica, ry #soteric n Fnet r ALnet.)
+2020-02-29 14:32:53 <int-e> (No symmetry there, apparently.)
+2020-02-29 14:34:43 <kspalaiologos> a friend let me run a malbolge program on his dgx2
+2020-02-29 14:34:57 <kspalaiologos> first time in my life I have seen my malbolge program run from start to end lol
+2020-02-29 14:35:09 <kspalaiologos> (a complex malbolge program obviously)
+2020-02-29 14:40:20 <arseniiv> hehe
+2020-02-29 14:42:38 <kspalaiologos> also my TI-link cable will be here in 9 days
+2020-02-29 14:42:49 <kspalaiologos> and I'm planning to do some interesting stuff with it
+2020-02-29 14:43:07 <kspalaiologos> like, program a tracker and use my TI-83+ as a music player
+2020-02-29 14:43:16 <kspalaiologos> because I've got a pair of headphones on 2.5mm jack lying around
+2020-02-29 14:43:40 <kspalaiologos> I thought about making a chess engine on a calculator, I've got it programmed and it plays out quite well
+2020-02-29 14:43:56 <kspalaiologos> around 600 byte binary, written in z80 asm
+2020-02-29 14:43:59 <b_jonas> how will that work? does the TI-83+ even have sound hardware that can play more than beeps?
+2020-02-29 14:44:13 <kspalaiologos> it has a jack port
+2020-02-29 14:44:16 <b_jonas> kspalaiologos: 600 bytes? isn't that shorter than Oscar Toledo's chess engines?
+2020-02-29 14:44:33 <b_jonas> port, sure, but you need something to generate the analog sound waves in real time behind that
+2020-02-29 14:44:47 <b_jonas> more than just beeps if you want to call it music
+2020-02-29 14:44:54 <kspalaiologos> toledos program is 300 bytes
+2020-02-29 14:44:57 <kspalaiologos> my program is 600 bytes
+2020-02-29 14:44:58 <b_jonas> oh
+2020-02-29 14:45:05 <b_jonas> I thought it was larger than that for some reason
+2020-02-29 14:45:19 <kspalaiologos> i'll play protracker modules
+2020-02-29 14:45:22 <kspalaiologos> using ti-83+
+2020-02-29 14:45:28 <kspalaiologos> it's perfectly possible
+2020-02-29 14:45:55 <kspalaiologos> I've wrote a program that imitates a tracker, i.e. it's just single channel, no mixing, and supports no effects
+2020-02-29 14:46:04 <kspalaiologos> I believe it'd run on TI-83+
+2020-02-29 14:46:08 <kspalaiologos> sound on ti83 has been done before
+2020-02-29 14:46:21 <b_jonas> single channel. ok.
+2020-02-29 14:46:30 <kspalaiologos> ^ na na, I'll get it to mix channels
+2020-02-29 14:46:39 <kspalaiologos> so I'll have mono output of up to 4 tones at a time
+2020-02-29 14:46:59 <kspalaiologos> that's enough for some chiptune music
+2020-02-29 14:47:11 <b_jonas> ok
+2020-02-29 14:47:29 <kspalaiologos> or I can just trim sample rate of some songs to 16k or 8k (it'd sound like garabage tho)
+2020-02-29 14:47:38 <kspalaiologos> but I believe it'd fit on ti-83+ without problems
+2020-02-29 14:49:27 <kspalaiologos> oh and I used J as a scripting language to solve a practical problem
+2020-02-29 14:49:29 <kspalaiologos> https://github.com/kspalaiologos/ticalc/blob/master/extract.ijs
