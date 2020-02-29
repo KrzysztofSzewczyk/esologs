@@ -199,3 +199,10 @@
 2020-02-29 15:28:07 <int-e> Well, producing a raw escape character, for example using $(printf '\e'), does the trick
 2020-02-29 15:28:20 <int-e> But it's UGLY.
 2020-02-29 15:28:22 <arseniiv> int-e: thank you for showing me ##math BTW
+2020-02-29 15:32:24 <arseniiv> though that haven’t solved the original issue. But then I stumbled upon a xenwiki’s MOS page for that other person and it cleared for me that I would ultimately need a continued fraction expansion as you suggested originally, or the claim would be too strong to be true
+2020-02-29 15:35:44 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:d1b4:8939:2b1:3324
+2020-02-29 15:35:44 <tromp> the modulo function i just wrote in  lambda calculus curiously doesn't normalize for modulo 0 :-)
+2020-02-29 15:55:45 Parted: cloaked
+2020-02-29 15:55:45 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, nvd, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-02-29 15:59:09 <b_jonas> int-e: produce a raw escape character with $'\e' instead
+2020-02-29 15:59:21 <b_jonas> or just match with perl instead
