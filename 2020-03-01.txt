@@ -164,3 +164,12 @@
 2020-03-01 09:10:33 <int-e> Well, this is branch & bound, and I'm already within one of the actual maximal count. So previously I enumerated all solutions of that size, until I found a larger one, and then enumerated all solutions of that size as well. Now I start trying to find *larger* solutions and stop at one.
 2020-03-01 09:10:49 <int-e> This happened because I *also* need to enumerate solutions exhaustively later on.
 2020-03-01 09:11:30 <int-e> And obviously(?) I use the same code for that.
+2020-03-01 10:08:26 Joined: xelxebar
+2020-03-01 10:08:27 Names: ^[, aji, aloril, APic, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-01 10:10:43 <int-e> Taneb: Obviously I changed the algorithm. "tweak" referred to the amound of code... something like 5 lines (introduce a bool variable, check it in one or two places)
+2020-03-01 10:19:27 <oerjan> `? algorithm
+2020-03-01 10:19:29 <HackEso> Algorithms (derived from the medieval "algorisms") are popular sayings by former president Al Gore, except for God's Algorithm which was invented by a Google computer cluster.
+2020-03-01 10:20:00 <int-e> Hmm, a mound of code?
+2020-03-01 10:21:25 <oerjan> wat
+2020-03-01 10:21:53 <int-e> oerjan: I saw that I made a typo.
+2020-03-01 10:23:00 <oerjan> oh
