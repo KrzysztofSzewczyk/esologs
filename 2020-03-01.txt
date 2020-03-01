@@ -274,3 +274,6 @@
 2020-03-01 20:08:34 <arseniiv> fungot: fnord?
 2020-03-01 20:08:34 <fungot> arseniiv: i would say rather that there has been some discussion about this in the def-bf code
 2020-03-01 20:08:59 <arseniiv> now they’re probably verbatimize again
+2020-03-01 20:40:41 <zzo38> Can a Tor hidden service be set up which uses protocols other than HTTP(S)?
+2020-03-01 20:43:00 <b_jonas> zzo38: I don't think Tor can care about that high level layer of the protocol
+2020-03-01 20:43:09 <b_jonas> it could care about it going over tcp
