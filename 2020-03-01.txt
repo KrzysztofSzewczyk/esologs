@@ -277,3 +277,6 @@
 2020-03-01 20:40:41 <zzo38> Can a Tor hidden service be set up which uses protocols other than HTTP(S)?
 2020-03-01 20:43:00 <b_jonas> zzo38: I don't think Tor can care about that high level layer of the protocol
 2020-03-01 20:43:09 <b_jonas> it could care about it going over tcp
+2020-03-01 21:28:30 <kmc> zzo38: yes, for example Freenode runs an IRCd on a Tor hidden service
+2020-03-01 21:28:35 <kmc> https://freenode.net/kb/answer/chat#accessing-freenode-via-tor
+2020-03-01 21:29:23 <kmc> I believe you can't do UDP, but anything TCP-based should work
