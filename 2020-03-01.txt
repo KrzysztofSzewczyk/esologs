@@ -197,3 +197,20 @@
 2020-03-01 15:31:36 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-01 16:10:14 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:4cb7:a22f:382:20d5
 2020-03-01 16:10:14 <tromp> trying o define an efficient equality for church numerals....
+2020-03-01 17:00:17 Joined: kritixilithos
+2020-03-01 17:00:18 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-01 17:18:09 <esowiki> 14[[07Asm2bf14]]4 10 02https://esolangs.org/w/index.php?diff=70095&oldid=70085 5* 03Palaiologos 5* (+408) 10
+2020-03-01 17:18:26 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-03-01 17:18:26 <kspalaiologos> https://esolangs.org/wiki/Asm2bf#Automated_calls
+2020-03-01 17:18:29 <kspalaiologos> that's amazing actually
+2020-03-01 17:18:45 <kspalaiologos> using cpp as my preprocessor has been great decision so far
+2020-03-01 17:25:11 <zzo38> I think that if you use the C preprocessor, then tokens should also be in the C format (such as using // or /* ... */ for comments, instead of other formats, and using 'x' for a single character literal); otherwise some things might get confused
+2020-03-01 17:26:55 <kspalaiologos> it works so far
+2020-03-01 17:27:05 <kspalaiologos> switching from C preprocessor will eventually happen
+2020-03-01 17:27:17 <kspalaiologos> but yeah I can see the problems
+2020-03-01 17:27:45 <kspalaiologos> the fact C preprocessor refuses to concat two non-tokens seems quite constraining
+2020-03-01 17:27:52 <kspalaiologos> I think I'll employ lua to do my preprocessing
+2020-03-01 17:28:40 <zzo38> Yes, that might work better
+2020-03-01 17:28:48 User Name: b_jonas = b_jonas!~x@catv-176-63-14-110.catv.broadband.hu
+2020-03-01 17:28:48 <b_jonas> `? password
+2020-03-01 17:28:51 <HackEso> The password of the month was fought for, and stomped on, but it remains unreconciled with
