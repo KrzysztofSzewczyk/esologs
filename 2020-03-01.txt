@@ -151,3 +151,16 @@
 2020-03-01 08:58:46 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
 2020-03-01 08:58:46 <Taneb> Groethendieck universes
 2020-03-01 08:59:20 <Taneb> Given a universe U, can we always define a universe V to be the smallest universe such that U is a set in V?
+2020-03-01 09:02:46 Quit: Phantom_Hoover (Ping timeout: 240 seconds)
+2020-03-01 09:02:46 Names: ^[, aji, aloril, APic, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xylochoron[m], zzo38
+2020-03-01 09:03:16 <Taneb> Oh, apparently that gets taken as an axiom
+2020-03-01 09:05:47 <int-e> tfw a tiny tweak to your program speeds it up by two orders of magnitude.
+2020-03-01 09:06:22 <Taneb> Commenting out the sleep calls?
+2020-03-01 09:06:26 <Taneb> ;)
+2020-03-01 09:07:51 <int-e> No, just realizing I do not need to enumerate *all* solutions while looking to bound their size.
+2020-03-01 09:08:11 <Taneb> If you think it might be interesting I would like to here what the change was
+2020-03-01 09:08:49 <Taneb> :)
+2020-03-01 09:09:00 <Taneb> That would speed it up a lot
+2020-03-01 09:10:33 <int-e> Well, this is branch & bound, and I'm already within one of the actual maximal count. So previously I enumerated all solutions of that size, until I found a larger one, and then enumerated all solutions of that size as well. Now I start trying to find *larger* solutions and stop at one.
+2020-03-01 09:10:49 <int-e> This happened because I *also* need to enumerate solutions exhaustively later on.
+2020-03-01 09:11:30 <int-e> And obviously(?) I use the same code for that.
