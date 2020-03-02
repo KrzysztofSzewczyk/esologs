@@ -203,3 +203,38 @@
 2020-03-02 13:25:21 <int-e> yeah it's 90 bits now :)
 2020-03-02 13:27:14 <tromp> would that be the first example of coroutines in the repo?
 2020-03-02 13:29:27 <int-e> pushed the div, so feel free to argue whether this is using coroutines or not.
+2020-03-02 13:33:10 <int-e> and mod is now 107 bits
+2020-03-02 13:34:02 <int-e> (Observation: n carries enough "recursive power" to avoid the full fixed point construction)
+2020-03-02 13:35:59 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=70102&oldid=70101 5* 03PythonshellDebugwindow 5* (+160) 10
+2020-03-02 13:36:18 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=70103&oldid=70102 5* 03PythonshellDebugwindow 5* (+0) 10/* Commands */
+2020-03-02 13:39:47 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2020-03-02 13:39:47 <kritixilithos> tromp: where is this AIT repo?
+2020-03-02 13:40:17 <tromp> https://github.com/tromp/AIT
+2020-03-02 13:40:59 <tromp> int-e: good point about using n as poor man's Y
+2020-03-02 13:41:39 <kritixilithos> so you're golfing functions in binary lambda calculus?
+2020-03-02 13:43:20 <kritixilithos> oh you're this guy https://tromp.github.io/cl/cl.html
+2020-03-02 13:44:52 <tromp> yep, that guy:)
+2020-03-02 13:45:17 <tromp> or rather, this guy https://github.com/tromp/
+2020-03-02 13:45:50 <tromp> int-e: that change also makes it so that mod n 0 no longer diverges:)
+2020-03-02 13:46:27 <tromp> now, we get mod n 0 = 1
+2020-03-02 13:46:43 <int-e> . o O ( very useful )
+2020-03-02 13:48:31 <tromp> it's really cool that you can define mod 0 m as m false, using only 2 bits for the inner argument
+2020-03-02 13:49:45 Quit: sprocklem (Ping timeout: 258 seconds)
+2020-03-02 13:49:45 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-02 13:50:49 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=70104&oldid=70103 5* 03PythonshellDebugwindow 5* (+18) 10/* Commands */
+2020-03-02 13:51:05 <int-e> so basically what "kills" the coroutine approach for mod is that the counter isn't monotonic, so I need to deal with an extra argument... doing that in three places adds up to 20-ish bits.
+2020-03-02 13:51:19 <int-e> (25)
+2020-03-02 13:53:01 <cpressey> dare I ask why the counter isn't monotonic
+2020-03-02 13:53:18 <tromp> mod m m < mod (m-1) m
+2020-03-02 13:53:18 <int-e> because it has to be reset when it reaches the modulus.
+2020-03-02 13:53:33 <cpressey> ah. hm. ok.
+2020-03-02 13:54:02 <int-e> in contrast to 'div', which is just, pass, pass, pass, bump counter, pass, pass...
+2020-03-02 13:55:17 <Taneb> Can you use mod x y = x - div x y to get any gain?
+2020-03-02 13:55:31 <Taneb> *x - y * div x y
+2020-03-02 13:55:43 <int-e> Taneb: No, I can't do - and * in 25 bits.
+2020-03-02 13:55:52 <Taneb> Ah :(
+2020-03-02 13:56:25 <int-e> (- is the worse of the two... 56 bits is the best I have for that)
+2020-03-02 13:57:08 <int-e> But even \m\n. \f\x. m f (n f x) is already 33 bits.
+2020-03-02 13:57:50 <int-e> err. what am I doing?
+2020-03-02 13:57:54 <int-e> that's addition.
+2020-03-02 13:58:39 <int-e> Multiplication *is* cheap, \m\n. \f. m (n f) = 19 bits. (These numbers change by about 10 when the thing is inlined.)
