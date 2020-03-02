@@ -163,3 +163,29 @@
 2020-03-02 12:29:41 Joined: ArthurStrong
 2020-03-02 12:29:41 Names: ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-02 12:29:44 <b_jonas> but that's not easy to fix it now
+2020-03-02 12:31:01 <FireFly> what other encoding is referred to that way?
+2020-03-02 12:31:15 <FireFly> That's the only one I know of under that name
+2020-03-02 12:31:37 <int-e> tromp: let's make that 95
+2020-03-02 12:31:52 <int-e> (and 88 for n/(m+1))
+2020-03-02 12:34:06 Joined: arseniiv
+2020-03-02 12:34:06 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-02 12:35:56 <b_jonas> FireFly: there's an encoding for algebraic types, where if you have a type with say three constructors A, B, C, then you encode a value A as (\a\b\c.a), the value (B x y) as (\a\b\c.bxy), and the value (C z) as (\a\b\c.cz)
+2020-03-02 12:36:30 <b_jonas> of which a special case is encoding False as (\f\t.f) and True as (\f\t.t)
+2020-03-02 12:36:38 <tromp> that's called the Scott encoding?
+2020-03-02 12:37:04 <b_jonas> is it? I think someone called it Church something, at least in the case of non-recursive data types
+2020-03-02 12:37:09 <b_jonas> let me look up the chat log
+2020-03-02 12:38:15 <b_jonas> hmm no, I'm probably just confused
+2020-03-02 12:38:19 <b_jonas> I don't know how all these encodings work
+2020-03-02 12:39:42 <FireFly> Ah, I guess the confusion might be due to there being a common subset of them?
+2020-03-02 12:40:12 <FireFly> So the Church booleans end up the same as the Scott encoding for a boolean type
+2020-03-02 12:40:14 <int-e> s/95/91/ (and 84 for n/(m+1)), hmm. But I think this may be it. mod will be worse.
+2020-03-02 12:41:30 <tromp> are you using any lists?
+2020-03-02 12:41:37 <int-e> no
+2020-03-02 12:41:49 <tromp> mine are all list based:(
+2020-03-02 12:43:34 <int-e> I'm thinking of this as coroutines for the time being.
+2020-03-02 12:43:58 <tromp> that's way more awesome than lists
+2020-03-02 12:45:39 <int-e> trying the same with mod now, hmm. doesn't terminate... what did I do wrong :)
+2020-03-02 12:46:03 Quit: kritixilithos (Ping timeout: 240 seconds)
+2020-03-02 12:46:04 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-02 12:48:36 <b_jonas> int-e: try not to divide by zero
+2020-03-02 12:51:12 <int-e> b_jonas: that wasn't the issue ;)
