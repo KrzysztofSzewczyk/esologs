@@ -139,3 +139,27 @@
 2020-03-02 11:59:28 <FireFly> or what's the bitcount for?
 2020-03-02 11:59:31 <int-e> tromp: But I also have 58 bit less than and less than or equal tests, and a 66 bit minimum.
 2020-03-02 11:59:39 <tromp> yes, size measured in blc encoding
+2020-03-02 12:02:13 <FireFly> ah right
+2020-03-02 12:08:05 <tromp> now embarking on a much more involved term looking for odd perfect numbers
+2020-03-02 12:13:12 <tromp> btw, modulo is <= 113 bits
+2020-03-02 12:13:49 <tromp> and div <= 126 bits
+2020-03-02 12:14:10 User Name: b_jonas = b_jonas!~x@catv-176-63-14-39.catv.broadband.hu
+2020-03-02 12:14:10 <b_jonas> tromp: could you look for Fermat primes 2**(2**k)+1 for 5<=k integer instead?
+2020-03-02 12:15:11 <tromp> that would be straightforward given our small primesieve
+2020-03-02 12:16:49 <tromp> will try later
+2020-03-02 12:17:39 <b_jonas> though I guess odd perfect numbers would be a more interesting goal
+2020-03-02 12:19:02 <tromp> so far, smallest conjecture testing program is 213 bit Laver table one
+2020-03-02 12:19:31 <tromp> goldbach sits at 267 bits
+2020-03-02 12:20:09 <int-e> div is <= 105 bits.
+2020-03-02 12:20:13 <tromp> i expect oddperfect to come in between those
+2020-03-02 12:20:25 <tromp> int-e: cool, something new!
+2020-03-02 12:20:42 <int-e> And \n m. n `div` (m+1) is even shorter.
+2020-03-02 12:25:21 <b_jonas> int-e: what representation of natural numbers are you using here for those bit counts?
+2020-03-02 12:27:03 <int-e> Church
+2020-03-02 12:27:44 <b_jonas> the original one, which encodes 4 as (\x.\y.x(x(x(x y)))) ?
+2020-03-02 12:28:53 <int-e> yes, that one
+2020-03-02 12:29:10 <cpressey> The orthodox Church encoding.
+2020-03-02 12:29:33 <b_jonas> it's confusing that that's called Church encoding
+2020-03-02 12:29:41 Joined: ArthurStrong
+2020-03-02 12:29:41 Names: ^[, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TellsTogo, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-02 12:29:44 <b_jonas> but that's not easy to fix it now
