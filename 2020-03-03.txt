@@ -92,3 +92,11 @@
 2020-03-03 08:18:02 <oerjan> assuming you mean 124 clocks
 2020-03-03 08:19:05 <oerjan> i think ais523 was aiming for something small enough that he could remember it for an actual tournament
 2020-03-03 08:19:26 <MTGBusyBeaver> yeah, i figured 20-30 would be sufficient.
+2020-03-03 09:20:14 <oerjan> oh i see you've been discussing on this channel before
+2020-03-03 09:22:16 <oerjan> <b_jonas> int-e: you can't really "filter" them after the fact, that's uncomputable and at least as halt as telling if a turing machine halts <-- there's a simple checkable property that ensures a TWM program never is ambiguous and which any other can be translated into
+2020-03-03 09:23:11 <oerjan> basically, if N is the number of clocks, multiply all adjustments by N, and let the clocks start with distinct values (mod N)
+2020-03-03 09:24:16 <oerjan> (well N>=number of clocks suffices)
+2020-03-03 09:25:51 <oerjan> then they can never become the same (mod N), so will never trigger simultaneously
+2020-03-03 09:27:02 <oerjan> MTGBusyBeaver: ^ in case you still have this problem
+2020-03-03 09:28:09 <oerjan> int-e: ^ you too
+2020-03-03 09:28:45 <b_jonas> oerjan: ais said that he's pretty sure there is a very small universal waterfall machine program, but it's hard to explicitly construct one
