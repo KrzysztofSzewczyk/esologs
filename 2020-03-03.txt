@@ -1,0 +1,53 @@
+2020-03-03 00:00:18 <longname> Infinite loops like that are handled weirdly depending on who you ask. Techncially they're illegal, and playing a card that would start infinite loop is an illegal play (Pole Position comes to mind)
+2020-03-03 00:00:53 <MTGBusyBeaver> YGO is probably not even as strong as regular expressions.
+2020-03-03 00:00:55 <b_jonas> longname: can you have an unlimited number of tokens on the battlefield at the same time?
+2020-03-03 00:01:16 <longname> Nope, you can have, at most 7 monsters total on the field.
+2020-03-03 00:01:42 <longname> and that's only under very specific circumstances (co-links)
+2020-03-03 00:01:45 <MTGBusyBeaver> Hearthstone is also very much limited in board/deck space so it would suffer the same limitations
+2020-03-03 00:01:45 <b_jonas> oh, so that's where Hearthstone got that rule from?
+2020-03-03 00:02:09 <MTGBusyBeaver> YGO is normally 5 right?
+2020-03-03 00:02:28 <longname> Yeah, 5 under normal circumstances
+2020-03-03 00:02:36 <b_jonas> MTGBusyBeaver: yes, Hearthstone is limited. but YGO is an older game.
+2020-03-03 00:02:40 <b_jonas> I see
+2020-03-03 00:03:45 <MTGBusyBeaver> so there is not much space for computation in YGO,
+2020-03-03 00:03:51 <longname> Master rule 4 introduced Extra Monster Zones, so with Link monsters you can have 7 max if both EMZs are connected by link monsters--again very specific scenario
+2020-03-03 00:03:56 <longname> Yeah, doesn't seem like it.
+2020-03-03 00:04:25 <b_jonas> oh well
+2020-03-03 00:06:10 <b_jonas> MTGBusyBeaver: but how would it even be possible to set up a situation where you can set up a busy beaver damage loop, but no infinite damage loop?
+2020-03-03 00:07:12 <MTGBusyBeaver> If the TM output tokens that couldn't attack until the TM halted.
+2020-03-03 00:07:35 <b_jonas> MTGBusyBeaver: sure, but why would the player choose to build that particular TM, instead of a TM... oh
+2020-03-03 00:07:47 <b_jonas> you want a combo that can only deal damage once
+2020-03-03 00:07:50 <b_jonas> that's clever
+2020-03-03 00:08:03 <b_jonas> does Goblin Cannon help?
+2020-03-03 00:08:19 <MTGBusyBeaver> no because it has to be in one chunk
+2020-03-03 00:08:27 <b_jonas> probably no, it's not better than like a Fireball
+2020-03-03 00:08:43 <b_jonas> or some other non-permanent that deals X damage, what's the simplest one
+2020-03-03 00:09:01 <b_jonas> why does the damage have to be in one chunk?
+2020-03-03 00:09:16 <MTGBusyBeaver> because the opponent would die and the game would end
+2020-03-03 00:09:29 <b_jonas> oh, you're not going by DMM's rules for this?
+2020-03-03 00:09:46 <b_jonas> though I also don't see how you'll limit the size of the Turing Machine.
+2020-03-03 00:10:07 <b_jonas> if you can set up a TM, you can probably clone the cards more times to set up a turing machine with a longer BB program and thus more damage
+2020-03-03 00:10:27 <MTGBusyBeaver> We will only have a finite amount of mana
+2020-03-03 00:10:49 <MTGBusyBeaver> and yes we can probably setup a VERY large TM
+2020-03-03 00:11:18 <b_jonas> Heat Ray
+2020-03-03 00:11:26 <b_jonas> that's the canonical instant that deals X damage for XR mana
+2020-03-03 00:12:06 <b_jonas> MTGBusyBeaver: ok, so how will you have only a finite amount of mana, and no Omnipotence I assume, but enough mana to build up a complicated combo?
+2020-03-03 00:12:17 <b_jonas> hmm
+2020-03-03 00:12:19 <MTGBusyBeaver> We are slightly limited by the number of creature types (~200) but we can just implement a UTM
+2020-03-03 00:12:21 <b_jonas> that does seem more easily solvable
+2020-03-03 00:12:38 <b_jonas> because there are some large infinite combos that involve mana
+2020-03-03 00:12:42 <b_jonas> large finite combos
+2020-03-03 00:13:07 <MTGBusyBeaver> heat ray is probably no good because as an instant we could inturrupt the TM's function
+2020-03-03 00:13:33 <MTGBusyBeaver> https://www.mtgsalvation.com/forums/magic-fundamentals/magic-general/615089-most-turn-1-damage-in-a-deck-with-no-infinite?page=97
+2020-03-03 00:13:45 <b_jonas> well Disintegrate if you want a sorcery
+2020-03-03 00:13:57 <b_jonas> but I assumed you'd be in a loop that you can't exit anyway, so you need an instant
+2020-03-03 00:14:14 <MTGBusyBeaver> no we want the loop to only exit if the machine halts
+2020-03-03 00:14:55 <MTGBusyBeaver> not asking you to read that whole 90+ page thread
+2020-03-03 00:15:14 <MTGBusyBeaver> but many of the "how?" questions are answere in there
+2020-03-03 00:16:51 <MTGBusyBeaver> for a full writeup of what we accomplished in old standard: https://docs.google.com/document/d/174jrMcjZ8rWurGCvylWyql9cH0sAVPIXPzT0ucMq308/edit?usp=sharing
+2020-03-03 00:19:07 <MTGBusyBeaver> (I'm FortyTwo on the forums there)
+2020-03-03 00:19:19 <MTGBusyBeaver> but that name was obviouslly taken here
+2020-03-03 00:21:52 <MTGBusyBeaver> anyway I g2g, thanks, I will check back.
+2020-03-03 00:21:56 Parted: MTGBusyBeaver
+2020-03-03 00:21:57 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-03 00:22:26 <b_jonas> MTGBusyBeaver: and you probably don't even need such complicated combos here, because you don't need a huge finite number of mana with power towers, only like a million mana, which should be easier to generate
