@@ -353,3 +353,66 @@
 2020-03-02 23:27:39 User Name: MTGBusyBeaver = MTGBusyBeaver!c73b3502@199.59.53.2
 2020-03-02 23:27:39 <MTGBusyBeaver> Hello, I have been working on doing the most possible damage in Magic the Gathering, without going infinite, and while we have gotten some big numbers, we would like to implement some sort of turing complete set of (forced) operations as the BusyBeaver function would grow even faster.
 2020-03-02 23:29:44 <MTGBusyBeaver> MTG has already been proved Turing complete, however all of the known setups actually allow for the creation of nondeterministic Turing machines, which could loop for an arbitrary amount of time before halting.
+2020-03-02 23:30:07 User Name: longname = longname!~airbouy@75-26-238-119.lightspeed.glvwil.sbcglobal.net
+2020-03-02 23:30:07 <longname> That's pretty cool.
+2020-03-02 23:30:14 <longname> I wonder if YGO is turing complete.
+2020-03-02 23:31:30 <MTGBusyBeaver> We have been trying to get https://esolangs.org/wiki/The_Waterfall_Model to work but have run into a few problems
+2020-03-02 23:32:02 <b_jonas> welcome, MTGBusyBeaver
+2020-03-02 23:32:06 <MTGBusyBeaver> YGO has finite board-space right? so I doubt it,
+2020-03-02 23:32:59 <longname> You do have an infinite hand and there's quite a lot of non-HOPT self bouncing effects
+2020-03-02 23:33:26 <b_jonas> MTGBusyBeaver: yes, ais523 was trying to get a simulation of that to work, and I think he did get it to work eventually, just didn't make a clear enough documentation of the details of that construction
+2020-03-02 23:35:05 <MTGBusyBeaver> There is a working construction, it just also allows for nondeterminism as nothing forces the encoded waterfall program to never have two registers zero simultaniously
+2020-03-02 23:36:00 <MTGBusyBeaver> and we have no way for that to trigger the halt
+2020-03-02 23:36:51 <b_jonas> MTGBusyBeaver: sure, but you can choose the program
+2020-03-02 23:37:03 <b_jonas> so just choose a waterfall model program that never has two register zero simultaneously
+2020-03-02 23:37:19 <b_jonas> you can translate any program to twm that way
+2020-03-02 23:37:19 <int-e> b_jonas: that's not useful for the busy beaver function though
+2020-03-02 23:37:46 <int-e> hmm
+2020-03-02 23:37:54 <b_jonas> int-e: why not?
+2020-03-02 23:38:02 <b_jonas> take a busy beaver turing machine, translate it to TWM
+2020-03-02 23:38:03 <MTGBusyBeaver> yeah we can't allow for even the opportunity for nonderterminism
+2020-03-02 23:38:22 <b_jonas> translation is rather inefficient because TWM is like that, but it works
+2020-03-02 23:38:23 <int-e> b_jonas: so you're saying, take a TC language, translate it to TWM in a special way, and then do BB on top of that?
+2020-03-02 23:38:36 <b_jonas> yes
+2020-03-02 23:38:47 <b_jonas> and then translate the TWM program to an M:tG game plan
+2020-03-02 23:39:21 <int-e> Makes sense, I just missed the first indirection.
+2020-03-02 23:39:30 <MTGBusyBeaver> But the MTG game plan with the same cards could make a nondeterministic TWM program and beat the BB bound
+2020-03-02 23:39:59 <b_jonas> MTGBusyBeaver: the game with the same cards could also just not enter any TWM loop, you might just never play the right combos
+2020-03-02 23:40:07 <b_jonas> setting up the combo is nontrivial, it's easy to mess it up actually
+2020-03-02 23:40:09 <int-e> b_jonas: I imagined you'd filter TWM programs for those that are "good" in the sense that they never have two zero registers as they run.
+2020-03-02 23:40:10 <b_jonas> I don't see the problem
+2020-03-02 23:40:33 <b_jonas> int-e: you can't really "filter" them after the fact, that's uncomputable and at least as halt as telling if a turing machine halts
+2020-03-02 23:40:47 <int-e> b_jonas: hence my initial response (and objection)
+2020-03-02 23:41:11 <b_jonas> right
+2020-03-02 23:41:32 <MTGBusyBeaver> but we get to pick our draws and plays, we wont "mess up" the combo, and if there is a line that does more damage we will take it
+2020-03-02 23:42:07 <MTGBusyBeaver> and if that amount of damage is unbounded, the deck is disqualified.
+2020-03-02 23:42:19 <b_jonas> MTGBusyBeaver: sure, but nothing in the deck forces you to do that specific combo. if you can go off with the deck, you can just win instantly rather than try to set up a combo
+2020-03-02 23:42:23 <b_jonas> oh I see
+2020-03-02 23:43:12 <b_jonas> MTGBusyBeaver: but then the TWM indeterminacy doesn't matter either, you could also set up a TWM program that deals infinite damage, or just deal infinite damage without going through the hoops
+2020-03-02 23:44:05 <b_jonas> longname: infinite hand like https://www.xkcd.com/1099/ ?
+2020-03-02 23:44:18 <MTGBusyBeaver> The idea is that the busy beaver machine would incidentially output tokens that could only attack after the TM halts
+2020-03-02 23:46:18 <b_jonas> https://www.xkcd.com/2275/ a Giant Spider? aaargh
+2020-03-02 23:47:23 <int-e> b_jonas: Have I complained already that covid-19 is a totally awful name? "corona virus disease 2019".
+2020-03-02 23:47:40 <b_jonas> int-e: yes, it should have a four-digit year name in there
+2020-03-02 23:48:03 <int-e> But the virus name got some actual symptoms, SARS-CoV-2.
+2020-03-02 23:48:27 <longname> Well.
+2020-03-02 23:48:37 <longname> You can only have 60 cards in your deck, max
+2020-03-02 23:48:44 <int-e> b_jonas: No, my complaint is about descriptiveness.
+2020-03-02 23:48:51 <longname> So I guess you could only have 60 cards in hand total.
+2020-03-02 23:49:27 <longname> Unless you took cards from your opponents hands too actually, so total 120
+2020-03-02 23:49:51 <int-e> "Standard decks must contain a minimum of sixty cards. There is no maximum deck size; however, one must be able to shuffle one's deck without assistance."
+2020-03-02 23:49:57 <int-e> has this changed?
+2020-03-02 23:50:22 <longname> I'm talkin' YGO, Beaver's talking MTG
+2020-03-02 23:50:29 <int-e> Oh.
+2020-03-02 23:52:04 <b_jonas> in M:tG, you can momentarily put tokens into your deck or your hand, though they disappear the next time state-based actions are processed, and in some crazy cases they actually matter in your deck and make it hard to figure out how to follow the rules
+2020-03-02 23:52:25 <int-e> b_jonas: "is just too catchy" -- is that a play on its virility?
+2020-03-02 23:53:11 <longname> Ah, hm. Then yeah I guess maybe YGO is impossible to make turing incomplete without some change in rules just 'cus of a lack of memory.
+2020-03-02 23:53:25 <longname> *impossible to make turing complete.
+2020-03-02 23:54:08 <b_jonas> longname: really? that's surprising
+2020-03-02 23:56:08 <longname> You can summon shitloads of tokens (actually infinitely in theory with some mayakura the destructor + utlimate offering + phantom skyblaster + gy looping shenanigans) but they can only appear on the field
+2020-03-02 23:57:24 <MTGBusyBeaver> The useful operations we have: 2xArcbond (when this creature takes damage it deals that much damage to each other creature) allow us to set up a 'clock' that locks us out of interaction once the TM has been put into motion until one of the targeted creatures dies, artificial evolution lets us change the creature types a card refers to, rotlung
+2020-03-02 23:57:24 <MTGBusyBeaver> reanimator (whenever a creature of type X dies create a 2/2 Y token) allows us to remake/change things Dralnu's Crusade (all X's are also Ys) lets us have things with multiple types.
+2020-03-02 23:58:34 <b_jonas> I mean, if it were impossible to make it Turing-complete because it lacks crazy building blocks like (Rotlung Reanimator or Xathrid Necromancer or Hungry Lynx) and Artificial Evolution
+2020-03-02 23:58:55 <MTGBusyBeaver> I'm thinking about trying some sort of cyclic tag system using Coat of arms (each creature gets +x+x for each creature that shares a type with it) but I dont think that is enough
+2020-03-02 23:58:55 <b_jonas> that wouldn't surprise me. but if you can actually prove that YGO is not TC because of lack of memory, that _would_ surprise me.
+2020-03-02 23:59:36 <b_jonas> it wouldn't surprise me for a newer game like Hearthstone that may be specifically designed to avoid such crazy combos, but Yu Gi Oh is old
