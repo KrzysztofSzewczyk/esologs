@@ -100,3 +100,19 @@
 2020-03-03 09:27:02 <oerjan> MTGBusyBeaver: ^ in case you still have this problem
 2020-03-03 09:28:09 <oerjan> int-e: ^ you too
 2020-03-03 09:28:45 <b_jonas> oerjan: ais said that he's pretty sure there is a very small universal waterfall machine program, but it's hard to explicitly construct one
+2020-03-03 09:30:02 <b_jonas> but for a tournament, you don't necessarily need a program with the smallest number of clocks, rather you'll need a program with a reasonable number of clocks where the numbers in the program matrix aren't too difficult to remember
+2020-03-03 09:30:43 <b_jonas> and that might be impossible
+2020-03-03 09:44:08 <oerjan> hm.
+2020-03-03 09:52:49 <b_jonas> the tournament rules have two rules relevant for this: 2.11 "Taking Notes", which says that during a game, you can't refer to notes except those taken during the game, except "Artistic modifications to cards that provide minor strategic information" with the Head Judge's permission, and I don't think a huge TWM program could count as such;
+2020-03-03 09:53:53 <b_jonas> and 5.5 "Slow Play", which I quote "Players must take their turns in a timely fashion regardless of the complexity of the play situation and adhere to time limits specified for the tournament. Players must maintain a pace to allow the match to be finished in the announced time limit.
+2020-03-03 09:54:37 <b_jonas> " which means you aren't allowed to take too much time just because before the tournament you came up with a funny strategy to create a hard to determine or even incomputable outcome
+2020-03-03 09:54:48 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-03-03 09:54:48 <myname> are those artistic modifications limited to the front side of the back or can i basically play with a marked deck?
+2020-03-03 09:55:14 <myname> knowing what i will draw next is quite the strategic information
+2020-03-03 09:55:25 <b_jonas> myname: you can't mark the backs unless those marks are completely covered by an opaque sleeves, there's a separate rule for that
+2020-03-03 09:55:44 <myname> :(
+2020-03-03 09:55:54 <b_jonas> myname: this causes actual problems because cards and/or sleeves become worn and accidentally marked over time
+2020-03-03 09:56:13 <myname> yeah, like in higurashi
+2020-03-03 09:56:29 <b_jonas> chapter 3 is relevant on this
+2020-03-03 09:56:55 <b_jonas> anyway, previously I suggested that rule 5.2 "Bribery" may also be relevant for the Turing Machine setup, but it seems it isn't
+2020-03-03 09:59:23 <b_jonas> anyway, these rules basically imply that to pull off the combo in a tournament, you have to be able to reconstruct it without prior notes, and do all that fast enough to fit the game or match in the time limit or before the opponent or a judge gets annoyed of you playing very slowly
