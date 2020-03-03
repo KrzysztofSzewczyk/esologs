@@ -83,3 +83,12 @@
 2020-03-03 07:48:52 User Name: MTGBusyBeaver = MTGBusyBeaver!4c69b9e2@c-76-105-185-226.hsd1.or.comcast.net
 2020-03-03 07:48:52 <MTGBusyBeaver> I think I have an implementation of https://esolangs.org/wiki/The_Waterfall_Model in Magic: The Gathering.  https://www.mtgsalvation.com/forums/magic-fundamentals/magic-general/615089-most-turn-1-damage-in-a-deck-with-no-infinite?comment=2434 But it seems that we might run out of creature type namespace, How big does a waterfall TM need to be to
 2020-03-03 07:48:53 <MTGBusyBeaver> encode a universal TM?
+2020-03-03 08:04:31 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2020-03-03 08:04:31 <oerjan> ais523 isn't here at the moment, he's the main one who's trying to do this.
+2020-03-03 08:04:39 <oerjan> MTGBusyBeaver: ^
+2020-03-03 08:05:57 <oerjan> although i think getting a "small" TC waterfall model may be exactly where he was stuck last i heard
+2020-03-03 08:08:19 <MTGBusyBeaver> Well it doesnt need to be tiny, there are 249 creature types so we get a size 124 waterfall machine
+2020-03-03 08:17:47 <oerjan> i'm pretty sure that's way more than needed
+2020-03-03 08:18:02 <oerjan> assuming you mean 124 clocks
+2020-03-03 08:19:05 <oerjan> i think ais523 was aiming for something small enough that he could remember it for an actual tournament
+2020-03-03 08:19:26 <MTGBusyBeaver> yeah, i figured 20-30 would be sufficient.
