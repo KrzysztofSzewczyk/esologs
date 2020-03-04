@@ -180,3 +180,41 @@
 2020-03-04 15:26:56 <int-e> And when you iterate, *you* have to come up with the TM of size BB(X) that outputs BB(BB(X))?
 2020-03-04 15:29:25 <MTGBusyBeaver> No we don't, knowing the machine exists is enough to define it.
 2020-03-04 15:29:57 <int-e> ...
+2020-03-04 15:30:09 <MTGBusyBeaver> for our purposes at least
+2020-03-04 15:30:27 <int-e> I'm missing something about the intention here.
+2020-03-04 15:30:54 <int-e> I thought you wanted to leave the game in a state where there are no choices left, and leave it to the arbiter to run it to its conclusion.
+2020-03-04 15:31:15 <MTGBusyBeaver> no, we want to do the most damage possible.
+2020-03-04 15:31:45 <int-e> Are you doing something like assuming best play by both players?
+2020-03-04 15:32:28 <int-e> (I suppose that would bring you into ATM territory where you can play such tricks indeed.)
+2020-03-04 15:32:41 <int-e> (But again, all the burden of finding the machines would be on the players.)
+2020-03-04 15:33:09 <MTGBusyBeaver> a little stronger than that. Our opponent knows what we are trying and is trying to either minimze the total damage or disqualify the deck by allowing it to go infinite.
+2020-03-04 15:35:23 <MTGBusyBeaver> single card draw is a Demonic Tutor in disguise: you can assume that the order of your deck is exactly what you want it to be. This veers pretty heavily into magical christmasland, but if we didn’t do it this way you’d have to figure out the average amount of damage a deck could deal, which is probably impossible.
+2020-03-04 15:35:24 <MTGBusyBeaver> with a deck of 60 wastes. However, they are still playing to stop you: if you give your opponent a choice, they will pick whichever one is worse for you. The only exception is that they won’t concede the game. This is a sadistic goldfish that wants to make you play it out.
+2020-03-04 15:35:24 <MTGBusyBeaver> of the time, so we define it like this: when you make your deck, I pick a finite number, say, a million, or Graham’s Number, or four. If, no matter what number I pick, there’s a line your deck can take that will deal at least that much damage, your deck goes infinite and is disqualified.
+2020-03-04 15:35:25 <MTGBusyBeaver> magic apply: if I put 80,000,000 copies of Shock on the stack and target my opponent with each one, they’ll die on the tenth one, and I’ll have dealt only 20 damage. In practice, that means you’re either winning with a giant X-spell or by attacking with a lot of very big creatures.
+2020-03-04 15:37:45 User Name: cpressey = cpressey!~cpressey@5.133.242.4
+2020-03-04 15:37:45 <cpressey> "Do the most damage possible in MtG" reminds me a lot of "Name the Biggest Number": https://www.scottaaronson.com/writings/bignumbers.html
+2020-03-04 15:38:20 <int-e> cpressey: I'll be generous and let you go first.
+2020-03-04 15:38:36 <int-e> (That's how it works, doesn't it?)
+2020-03-04 15:38:57 <tromp> int-e: did you say you had a less-than in 58 bits with coroutines?
+2020-03-04 15:40:34 <int-e> tromp: Yes.
+2020-03-04 15:40:50 <tromp> i was able to reproduce that:)
+2020-03-04 15:41:15 <tromp> much more straightforward than your div and even your min
+2020-03-04 15:41:33 <int-e> tromp: I thought that if you take 'min' as the blueprint you should be able to find the comparisons :)
+2020-03-04 15:41:35 <tromp> i see now what you mean by div (m+1) being ewsier
+2020-03-04 15:41:38 <cpressey> You can work on BB(10) and you can have a working theory for what BB(10) might be but you'll never know if it actually is BB(10).  Similarly, you could work on BB(BB(10)) but you have to revise your theory about BB(BB(10)) every time you revise your theory about BB(10).
+2020-03-04 15:42:12 <tromp> still surprising that you can do div m with only an additional appllication to id
+2020-03-04 15:42:16 <int-e> tromp: It has occurred to me that maybe a divisibility test would be a tad shorter than the modulo operation.
+2020-03-04 15:43:08 <int-e> (I haven't put that one to the test though, yet.)
+2020-03-04 15:45:05 <MTGBusyBeaver> that's not a problem? We are basically playing that name the biggest number game, We can get a bit beyond Ackermann numbers in standard.
+2020-03-04 15:45:25 <MTGBusyBeaver> (though on a later turn)
+2020-03-04 15:48:09 <tromp> int-e: did you also try a less-than-or-equal ?
+2020-03-04 15:48:22 <int-e> tromp: it's the same?
+2020-03-04 15:48:31 <int-e> tromp: I mean, swap the arguments and true and false
+2020-03-04 15:49:15 <tromp> good point:-)
+2020-03-04 15:51:23 Quit: kritixil1 (Ping timeout: 240 seconds)
+2020-03-04 15:51:24 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-04 15:54:19 Quit: sprocklem (Ping timeout: 258 seconds)
+2020-03-04 15:54:19 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-04 15:56:59 Joined: kritixil1
+2020-03-04 15:57:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
