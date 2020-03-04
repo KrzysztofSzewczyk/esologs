@@ -309,3 +309,59 @@
 2020-03-04 16:56:53 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70149&oldid=70147 5* 03PythonshellDebugwindow 5* (+89) 10/* Datatypes */
 2020-03-04 16:58:33 Quit: cpressey (Quit: A la prochaine.)
 2020-03-04 16:58:33 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-04 17:00:31 User Name: arseniiv = arseniiv!~arseniiv@136.169.205.177
+2020-03-04 17:00:31 <arseniiv> <MTGBusyBeaver> we are the NTM => I would doubt that
+2020-03-04 17:01:31 <int-e> many-world quantum physics gets somewhat close
+2020-03-04 17:01:43 <int-e> but even that has a hard time collecting results
+2020-03-04 17:08:58 <ais523> I guess the idea with this Magic construction is that it lets you calculate any number a UTM can calculate
+2020-03-04 17:09:05 <ais523> up to a certain size n
+2020-03-04 17:09:21 <ais523> so we know that it's capable of calculating BB(n) and no higher number, but we don't know what input you have to give it to produce that
+2020-03-04 17:09:59 <ais523> there doesn't seem to be a conceputal issue with iterating that: you could perhaps modify it so that it's capable of calculating a range of numbers of which the highest is BB(BB(n)), given the appropriate input
+2020-03-04 17:10:02 <ais523> but not be able to determine what that input is
+2020-03-04 17:10:22 <ais523> the reason this works is that what we have is, conceptually, an interpreter that refuses to run non-halting programs
+2020-03-04 17:11:09 <ais523> I really should create a universal interpreter for some TC language in TWM some day, even if it's far from optimal
+2020-03-04 17:11:15 <ais523> just to get a baseline
+2020-03-04 17:11:27 <ais523> on how many waterclocks you need
+2020-03-04 17:11:34 <ais523> I keep on getting sidetracked trying to optimise it
+2020-03-04 17:11:52 <MTGBusyBeaver> yeah, even if it is inefficient as long as it works with 124 waterclocks
+2020-03-04 17:12:10 <MTGBusyBeaver> which is probably way more than needed
+2020-03-04 17:12:41 <ais523> well, the limit's a little less than 124 because you need a few creature types to set it up, right? Cat in particular is unusable
+2020-03-04 17:12:57 <ais523> but much less than 124 seems definitely viable
+2020-03-04 17:13:28 <MTGBusyBeaver> well the halting clock is one of the 124
+2020-03-04 17:14:25 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70150&oldid=70149 5* 03PythonshellDebugwindow 5* (+372) 10/* Functions */
+2020-03-04 17:14:49 <MTGBusyBeaver> but we get to use everything else as we can make the setup creatures lose their types (and avoid arcbond damage) with One with the stars
+2020-03-04 17:14:52 <ais523> I personally count halt states, although not everybody does
+2020-03-04 17:15:20 <ais523> that's a fun card, and one I came up with myself when brainstorming custom cards (although my version of it was white)
+2020-03-04 17:16:48 <ais523> `card-by-name One With the Stars
+2020-03-04 17:16:50 <HackEso> No output.
+2020-03-04 17:17:03 <ais523> oh right, I need to persuade someone to add Theros Beyond Death to that thing
+2020-03-04 17:17:09 <ais523> `card-by-name Hungry Lynx
+2020-03-04 17:17:10 <HackEso> Hungry Lynx \ 1G \ Creature -- Cat \ 2/2 \ Cats you control have protection from Rats. (They can't be blocked, targeted, or dealt damage by Rats.) \ At the beginning of your end step, target opponent creates a 1/1 black Rat creature token with deathtouch. \ Whenever a Rat dies, put a +1/+1 counter on each Cat you control. \ C17-R
+2020-03-04 17:17:14 <MTGBusyBeaver> Enchanted permanent is an enchantment and loses all other card types. (It still has its abilities, but it’s no longer a creature.)
+2020-03-04 17:17:25 <ais523> I was mostly just trying to show it off
+2020-03-04 17:18:05 <ais523> b_jonas: can you update HackEso's M:tG database to include the latest cards? given the current topic of discussion it may well be relevant
+2020-03-04 17:18:20 <MTGBusyBeaver> well we don't use hungry lynx anymore
+2020-03-04 17:18:32 <MTGBusyBeaver> 'card-by-name coat of arms
+2020-03-04 17:18:41 <ais523> backquote, not apostrophe
+2020-03-04 17:18:52 <ais523> and yes, that was an interesting idea for the construction
+2020-03-04 17:18:52 <MTGBusyBeaver> `card-by-name coat of arms
+2020-03-04 17:18:53 <HackEso> Coat of Arms \ 5 \ Artifact \ Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Goblin Warriors and a Goblin Shaman are on the battlefield, each gets +2/+2.) \ EX-R, 7E-R, 8ED-R, 9ED-R, 10E-R, M10-R, DDS-R, H09-R
+2020-03-04 17:19:06 <ais523> my main aim was to hit the whole thing into a sideboard, so I wanted to do it with as few cards as possible
+2020-03-04 17:19:22 <ais523> but single-purpose cards are much better for what you're doing
+2020-03-04 17:20:57 <MTGBusyBeaver> it still fits in a sideboard
+2020-03-04 17:21:36 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 10 02https://esolangs.org/w/index.php?diff=70151&oldid=70150 5* 03PythonshellDebugwindow 5* (+245) 10/* Variables */
+2020-03-04 17:21:47 <ais523> hmm, neat
+2020-03-04 17:21:54 <ais523> but Coat of Arms is an artifact, so it might be hard to wish it out of the sideboard
+2020-03-04 17:23:08 <MTGBusyBeaver> there are several ways to wish for it
+2020-03-04 17:24:09 <MTGBusyBeaver> `card-by-name Karn, the great creator
+2020-03-04 17:24:11 <HackEso> No output.
+2020-03-04 17:24:44 <MTGBusyBeaver> hasn't been updated in a while?
+2020-03-04 17:24:50 <ais523> right, but the point is that you'd need extra cards in maindeck for sideboard
+2020-03-04 17:24:54 <ais523> yes, I think it's out of date
+2020-03-04 17:25:52 <MTGBusyBeaver> Fae of wishes is another pretty generic wish
+2020-03-04 17:26:12 <MTGBusyBeaver> and Mastermind's acquisition
+2020-03-04 17:26:28 <ais523> Omni-tell naturally runs multiple Cunning Wish and Burning Wish, which is one of the things that made it such a good shell to set the UTM up
+2020-03-04 17:26:41 <ais523> like, the whole point was to make a UTM that was tournament-competitive
+2020-03-04 17:27:19 <MTGBusyBeaver> well wish for Mastermind's acquisition for the rest of the SB
+2020-03-04 17:28:53 <MTGBusyBeaver> though the sb doesnt have enough slots to ensure your opponent can't interact also.
+2020-03-04 17:29:08 <MTGBusyBeaver> I think
