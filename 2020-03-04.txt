@@ -218,3 +218,60 @@
 2020-03-04 15:54:19 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-03-04 15:56:59 Joined: kritixil1
 2020-03-04 15:57:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-04 16:00:54 <int-e> MTGBusyBeaver: Which is fine. Basically you're looking for busy beavers, where the model of computation of M:tG. You can define a busy beaver function for that, say in terms of the deck size.
+2020-03-04 16:01:06 <int-e> MTGBusyBeaver: But none of that lets you iterate the busy beaver function itself.
+2020-03-04 16:01:14 <int-e> Because it's uncomputable.
+2020-03-04 16:01:54 <MTGBusyBeaver> only this week we worked out a turing machine setup that works in the rules,
+2020-03-04 16:02:36 <MTGBusyBeaver> and can set it up to be repeatable some finite number of times
+2020-03-04 16:03:16 <Taneb> There's no Turing machine that computes BB(x)
+2020-03-04 16:04:33 <MTGBusyBeaver> No, but there is some turing machine of size x that outputs BB(x)
+2020-03-04 16:05:04 <Taneb> There's certainly one that takes that many cycles to halt
+2020-03-04 16:05:37 <Taneb> Or well, writes that number of 1s on the tape
+2020-03-04 16:06:04 <int-e> Maybe "there's a line in your deck" is not precise enough.
+2020-03-04 16:06:05 <Taneb> You can't then take that number and emit BB(BB(x)) without knowing the answer beforehand
+2020-03-04 16:06:20 <int-e> What does that mean, exactly?
+2020-03-04 16:06:32 <Taneb> At which point, why not just do that directly? Why not go straight to BB(BB(x)) + 1?
+2020-03-04 16:06:41 <int-e> (Who gets to make the choices for that line of play?)
+2020-03-04 16:06:49 <MTGBusyBeaver> the opponent
+2020-03-04 16:07:00 <int-e> Yeah then you have no alternation.
+2020-03-04 16:07:13 <int-e> So no way of iterating the busy beaver function at all, not even theoretically.
+2020-03-04 16:07:16 <MTGBusyBeaver> why?
+2020-03-04 16:07:40 <tromp> int-e: please add div test term to the repo if it offers nontrivial improvement over mod size
+2020-03-04 16:07:53 <int-e> Because the opponent will just pick a non-terminating TM instead.
+2020-03-04 16:08:07 <tromp> shld be called divides.lam i guess
+2020-03-04 16:08:11 <MTGBusyBeaver> but a ton terminating TM doesnt do any damage
+2020-03-04 16:08:16 <MTGBusyBeaver> non*
+2020-03-04 16:08:30 <int-e> MTGBusyBeaver: "non-terminating" was for "something that does infinite damage".
+2020-03-04 16:08:38 <int-e> or unbounded, which is the same.
+2020-03-04 16:08:59 <MTGBusyBeaver> but the only way to do damage is by attacking with all the giant creatures the TM makes
+2020-03-04 16:09:08 <MTGBusyBeaver> if the TM never halts we cant attack
+2020-03-04 16:09:52 Joined: sprocklem
+2020-03-04 16:09:52 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-04 16:11:36 <int-e> Hmm. I see, I'm wrong about needing alternation.
+2020-03-04 16:12:09 <int-e> Plain non-determinism is enough, and you get that.
+2020-03-04 16:13:08 <MTGBusyBeaver> we need the TM to be deterministic, or we can just loop for an arbitrary amount of time and then halt
+2020-03-04 16:13:44 <int-e> The non-determinism is in the choices the player can make in setting up that TM.
+2020-03-04 16:14:40 <MTGBusyBeaver> yes we have that
+2020-03-04 16:16:30 <MTGBusyBeaver> The working TM implementation of the Waterfall Model is here: https://www.mtgsalvation.com/forums/magic-fundamentals/magic-general/615089-most-turn-1-damage-in-a-deck-with-no-infinite?comment=2434
+2020-03-04 16:17:58 <int-e> So we have: NTM A(n): guess TM B of size n; run B to completion; return number of steps taken,  and a computational model that discards all non-terminating runs and picks the maximum value produced by the others.
+2020-03-04 16:18:26 Joined: imode
+2020-03-04 16:18:26 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-04 16:20:29 <MTGBusyBeaver> pretty much
+2020-03-04 16:21:12 <cpressey> "a computational model that discards all non-terminating runs"
+2020-03-04 16:21:54 <MTGBusyBeaver> a run that never terminates does no damage and scores zero
+2020-03-04 16:22:33 <cpressey> How do you propose to test a run to see if it will never terminate
+2020-03-04 16:23:26 User Name: imode = imode!~linear@unaffiliated/imode
+2020-03-04 16:23:26 <imode> very carefully. ;)
+2020-03-04 16:24:22 <int-e> cpressey: You don't.
+2020-03-04 16:24:22 <MTGBusyBeaver> we don't need to every actually construct the busy beaver machines, just know that they are bounded by BB(n)
+2020-03-04 16:24:47 <int-e> cpressey: It's a perfectly fine definition, just not computable.
+2020-03-04 16:25:21 <int-e> MTGBusyBeaver: Obviously to actually deal that amount of money you still have to fine the busy beavers.
+2020-03-04 16:25:25 <int-e> money?
+2020-03-04 16:25:30 <int-e> Fun brain fart.
+2020-03-04 16:25:35 <int-e> I meant damage.
+2020-03-04 16:26:39 <imode> didn't know you bet on MTG int-e. :P
+2020-03-04 16:26:57 <MTGBusyBeaver> well we just want to set bounds for the damage, highest lowest bound with an upper bound wins
+2020-03-04 16:26:59 <int-e> imode: I don't. But I imagine it would be as good a way of losing money as all the others.
+2020-03-04 16:28:06 <imode> high-stakes MTG tournaments lmao.
+2020-03-04 16:28:27 <MTGBusyBeaver> so we can bound it by BB(...BB(X)...)
+2020-03-04 16:29:27 <MTGBusyBeaver> BB^X(X) for some large X
