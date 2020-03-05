@@ -323,3 +323,48 @@
 2020-03-05 17:58:16 <int-e> arseniiv: the disappointing thing about your � is that I couldn't see the difference in the terminal... somebody canonicalized it properly along the way.
 2020-03-05 17:58:50 <int-e> (irssi, screen, xterm... I don't want to figure out which)
 2020-03-05 17:59:19 <int-e> arseniiv: But the logs gave you away, and confirmed what the error message already suggested.
+2020-03-05 18:00:33 <arseniiv> int-e: ah, I didn’t think it would be non-obvious
+2020-03-05 18:00:52 <kmc> was it actually canonicalized? or just rendered the same way
+2020-03-05 18:01:12 <kmc> if a font has a character for � then it should use that for the combining-character version too
+2020-03-05 18:01:34 <kmc> you can usually tell when the combining sequences are rendered by combining glyphs
+2020-03-05 18:01:37 <kmc> because they look like ass
+2020-03-05 18:02:37 <arseniiv> kmc: yeah, frequently with fonts which aren’t up-to-date or whose creators think nobody uses non-accented non-latin
+2020-03-05 18:03:01 <arseniiv> or when font is okay but the renderer is not
+2020-03-05 18:03:58 <int-e> kmc: I pasted it into od -tx1
+2020-03-05 18:04:13 <kmc> ah
+2020-03-05 18:04:51 <arseniiv> the question is could an Unicode analogue be simpler? (IDK, but I know many people think it could be, but I’m not sure many of them aren’t overlooking things)
+2020-03-05 18:06:28 <kmc> there's a hot-button question if ever there was one
+2020-03-05 18:07:08 Joined: batman_nair
+2020-03-05 18:07:08 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, batman_nair, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 18:07:12 <kmc> given all the design requirements I think it couldn't be made that much simpler
+2020-03-05 18:08:07 <esowiki> 14[[07DINAC14]]4 N10 02https://esolangs.org/w/index.php?oldid=70175 5* 03PythonshellDebugwindow 5* (+8303) 10Better
+2020-03-05 18:08:38 <esowiki> 14[[07User:DINAC14]]4 M10 02https://esolangs.org/w/index.php?diff=70176&oldid=70173 5* 03PythonshellDebugwindow 5* (-8459) 10Blanked the page
+2020-03-05 18:08:43 <kmc> for example the requirement of round-trip compatibility with all legacy encodings adds a lot of complexity
+2020-03-05 18:08:46 <kmc> or at least a lot of characters
+2020-03-05 18:09:00 <kmc> that's why accented characters exist in both combined and combining-sequence versions
+2020-03-05 18:10:25 <kmc> but round trip compatibility is a nice thing to have because then you can design systems (programming languages, databases, etc) where all text is canonically represented as Unicode and you convert to/from legacy encodings at the edges
+2020-03-05 18:12:35 <int-e> arseniiv: I wasn't confused about what you did, I just looked for confirmation. Also, it could've been a zero-width space :)
+2020-03-05 18:16:34 <int-e> > text $ reverse "äa"
+2020-03-05 18:16:36 <lambdabot> äa
+2020-03-05 18:16:53 <int-e> > text $ reverse "�a"
+2020-03-05 18:16:55 <lambdabot> a�
+2020-03-05 18:17:00 <int-e> arseniiv: ^^ :)
+2020-03-05 18:18:36 Joined: LKoen
+2020-03-05 18:18:36 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, batman_nair, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 18:20:08 <arseniiv> int-e: nice!!
+2020-03-05 18:20:46 <arseniiv> <int-e> Also, it could've been a zero-width space :) => a good idea too
+2020-03-05 18:21:55 <arseniiv> <kmc> that's why accented characters exist in both combined and combining-sequence versions => oh, I didn’t think about the compatibility reason
+2020-03-05 18:22:39 <arseniiv> Unicode makes more sense now
+2020-03-05 18:25:38 <int-e> https://xkcd.com/927/
+2020-03-05 18:26:11 <int-e> Arguably we could get away without emoji. Or having a ton of different math fonts in there.
+2020-03-05 18:26:20 * int-e shrugs.
+2020-03-05 18:26:39 <int-e> Of course it's not that easy.
+2020-03-05 18:26:58 <arseniiv> yeah math fonts are a weird thing
+2020-03-05 18:27:07 <int-e> If Unicode didn't accept emoji, we'd have vendor-specific encodings for those, because clearly there's a desire to have them embedded in text.
+2020-03-05 18:27:26 <arseniiv> I wouldn’t say “a mistake” aloud but I’ll be thinking that secretly
+2020-03-05 18:27:33 <int-e> And I suspect the same kind of reasoning is behind the math fonts.
+2020-03-05 18:27:56 <arseniiv> but does anyone use them seriously?
+2020-03-05 18:28:05 <int-e> Otoho, why isn't there a full set of Shogi pieces?
+2020-03-05 18:28:37 <arseniiv> someone should propose
+2020-03-05 18:28:58 <int-e> chess: ♔♕♖♗♘♙♚♛♜♝♞♟ shogi: ⛉⛊☖☗
+2020-03-05 18:29:08 <int-e> seems a bit unfair.
