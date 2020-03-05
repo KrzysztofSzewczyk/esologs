@@ -75,3 +75,8 @@
 2020-03-05 10:21:08 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xylochoron[m], zzo38
 2020-03-05 10:32:17 <cpressey> Maybe tape cells contain pairs of continuations.  But what determines which one is chosen?
 2020-03-05 10:47:23 <cpressey> In the absence of closures, continuations are basically jump labels. Maybe this would be more like OISC et al.
+2020-03-05 11:23:33 <cpressey> On a Turing machine, jump labels are state labels.  So, in this, state labels and symbols are the same thing?
+2020-03-05 11:24:28 <cpressey> "If the state written on the tape is not S3, transition to state specified on the tape and move head left"
+2020-03-05 11:24:52 <cpressey> You have to use something like "not", obviously.
+2020-03-05 11:27:53 <cpressey> But then, you are introducing boolean expressions in these conditions.  That's more complexity than a simple table, and it's less pleasing.
+2020-03-05 11:28:36 <cpressey> But maybe not much, maybe you could still keep it simple somehow.
