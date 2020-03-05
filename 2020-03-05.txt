@@ -248,3 +248,78 @@
 2020-03-05 17:22:22 <arseniiv> <cpressey> Right, "what Haskell's 'do' notation desugars to", is what I meant => yeah, this is an interesting point! I didn’t connect these two before
 2020-03-05 17:29:05 <arseniiv> <int-e> (Obviously there's no way to go beyond the initial runCont. But inside that it felt more like full continuations to me.) => I think I’ve seen `reset` implemented using precisely `runCont` in there
 2020-03-05 17:30:01 <arseniiv> <int-e> Mostly because it violates the principle that the argument you're less likely to vary should go first, but also because it's the opposite order from M.! and I'd like to use `lookup` as an infix operator. Sigh. => yeah I think I was stunned by that too
+2020-03-05 17:30:53 <kspalaiologos> I did chess on TI83
+2020-03-05 17:31:05 <kspalaiologos> and it's only 2 kilobytes
+2020-03-05 17:32:15 <arseniiv> kspalaiologos: how often does it win you? (if you tested enough times)
+2020-03-05 17:32:24 <kspalaiologos> I just did the openings
+2020-03-05 17:32:33 <kspalaiologos> it has 6 ply search depth
+2020-03-05 17:32:46 <kspalaiologos> I beat it up with king's gambit but it's kinda unfair because the computer is materialistic
+2020-03-05 17:33:00 <kspalaiologos> and when it realises it should start defending instead of greedy taking my pieces it's already too late
+2020-03-05 17:33:03 <arseniiv> anyway I hadn’t written any chess at all so it should be cool!
+2020-03-05 17:33:31 <kspalaiologos> the C code size itself is around 800 bytes
+2020-03-05 17:33:43 <kspalaiologos> but it works, somehow
+2020-03-05 17:33:49 Joined: tromp
+2020-03-05 17:33:49 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 17:34:11 <kspalaiologos> next I'll try maybe tetris
+2020-03-05 17:34:27 <kspalaiologos> I did already pong in BASIC, it was a real torture tho
+2020-03-05 17:34:36 <kspalaiologos> took me around two boring lectures to finish it
+2020-03-05 17:35:17 <kspalaiologos> there are some problems tho
+2020-03-05 17:41:52 Quit: cpressey (Quit: A la prochaine.)
+2020-03-05 17:41:52 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 17:41:53 <kspalaiologos> damn it crashed in the middle of the game
+2020-03-05 17:42:45 <int-e> resign!
+2020-03-05 17:43:21 <int-e> Well, "rage quit" would be more accurate :P.
+2020-03-05 17:43:35 <arseniiv> roflol
+2020-03-05 17:43:46 <arseniiv> rofoldl*
+2020-03-05 17:45:16 <arseniiv> some haskell designs there associate with something Hebrew, like that double lambda thing, maybe it resembles an aleph…
+2020-03-05 17:47:38 <arseniiv> > let { the [x] = x; the _ = error "the: there are many or no values" }
+2020-03-05 17:47:39 <lambdabot> <no location info>: error:
+2020-03-05 17:47:39 <lambdabot> not an expression: ‘let { the [x] = x; the _ = error "the: there are man...
+2020-03-05 17:48:15 <int-e> lambdabot's not a repl
+2020-03-05 17:48:18 <int-e> there's @let though
+2020-03-05 17:48:38 <int-e> and @undef to undo all the damage @let can do
+2020-03-05 17:49:29 <arseniiv> > the "a"
+2020-03-05 17:49:31 <lambdabot> 'a'
+2020-03-05 17:49:47 Joined: FreeFull
+2020-03-05 17:49:47 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 17:49:56 <int-e> > the "�"
+2020-03-05 17:49:58 <lambdabot> '\228'
+2020-03-05 17:50:07 <arseniiv> > the "ä"
+2020-03-05 17:50:09 <lambdabot> *Exception: the: there are many or no values
+2020-03-05 17:50:19 <arseniiv> HAHAHA
+2020-03-05 17:50:32 <arseniiv> UNICODE IS ILL-DEFINED
+2020-03-05 17:51:24 <arseniiv> (not that it’s news or that I really think so)
+2020-03-05 17:51:46 <int-e> I'm surprised.
+2020-03-05 17:51:54 <int-e> I really think so. :P
+2020-03-05 17:52:15 <kmc> @let 2 + 2 = 5
+2020-03-05 17:52:17 <lambdabot> Defined.
+2020-03-05 17:52:19 <arseniiv> it’s ill-defined but not so ill-defined as to say that for the sake of it
+2020-03-05 17:52:19 <kmc> > 2 + 2
+2020-03-05 17:52:21 <lambdabot> error:
+2020-03-05 17:52:21 <lambdabot> Ambiguous occurrence ‘+’
+2020-03-05 17:52:21 <lambdabot> It could refer to either ‘Prelude.+’,
+2020-03-05 17:52:32 <int-e> > 2 L.+ 2
+2020-03-05 17:52:34 <lambdabot> 5
+2020-03-05 17:52:37 <int-e> @undef
+2020-03-05 17:52:37 <lambdabot> Undefined.
+2020-03-05 17:52:44 <kmc> qualified infix operators always look Wrong
+2020-03-05 17:52:55 <int-e> I got used to them.
+2020-03-05 17:52:57 <arseniiv> int-e: that’s cru… ah, you’ve undone that already
+2020-03-05 17:53:07 <arseniiv> > :t the
+2020-03-05 17:53:08 <esowiki> 14[[07XENBLN14]]4 M10 02https://esolangs.org/w/index.php?diff=70172&oldid=70110 5* 03PythonshellDebugwindow 5* (+124) 10/* Datatypes */
+2020-03-05 17:53:09 <lambdabot> <hint>:1:1: error: parse error on input ‘:’
+2020-03-05 17:53:10 <kmc> > let 2 + 2 = 5 in 2 + 2
+2020-03-05 17:53:12 <lambdabot> 5
+2020-03-05 17:53:19 <kmc> > let 2 + 2 = 5 in 1 + 1
+2020-03-05 17:53:21 <arseniiv> my poor the
+2020-03-05 17:53:22 <lambdabot> *Exception: <interactive>:3:5-13: Non-exhaustive patterns in function +
+2020-03-05 17:53:24 <kmc> F
+2020-03-05 17:53:35 <int-e> kmc: I use M.! quite a bit.
+2020-03-05 17:53:55 <arseniiv> kood emcening
+2020-03-05 17:54:44 <int-e> > let the x | [x] <- x = x in the []
+2020-03-05 17:54:46 <lambdabot> *Exception: <interactive>:3:5-24: Non-exhaustive patterns in function the
+2020-03-05 17:54:51 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03PythonshellDebugwindow 5*  10moved [[02User:PythonshellDebugwindow/(Unnamed language)10]] to [[User:DINAC]]: got a name
+2020-03-05 17:55:39 <int-e> Haskell: Oh my god, it's full of syntax!
+2020-03-05 17:58:16 <int-e> arseniiv: the disappointing thing about your � is that I couldn't see the difference in the terminal... somebody canonicalized it properly along the way.
+2020-03-05 17:58:50 <int-e> (irssi, screen, xterm... I don't want to figure out which)
+2020-03-05 17:59:19 <int-e> arseniiv: But the logs gave you away, and confirmed what the error message already suggested.
