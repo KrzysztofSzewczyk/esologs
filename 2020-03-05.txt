@@ -167,3 +167,63 @@
 2020-03-05 16:25:08 <kspalaiologos> I'm so out of ideas, what could go wrong
 2020-03-05 16:28:02 <arseniiv> re. shift…reset: a call to `reset` marks a place in the call stack and then when we call `shift`, that marks the other end of the segment which is cut away and packaged into a delimited continuation which is fed, as a kind of closure, to the function passed to `shift`. If `shift` doesn’t happen, so be it, the `reset` mark would perish when we step out of the call to `reset`. Yes this is more or less easy but nonetheless I’d have an effectful pr
 2020-03-05 16:28:02 <arseniiv> mitives instead of `shift` and handlers instead of both `reset` points and passing a “handler” to `shift`. This is the way with exceptions (`throw` as a handlerless `shift`, `catch` as a handler, though we don’t get a continuation because the effect is the most boring one possible)
+2020-03-05 16:31:19 <arseniiv> more specifically, because `throw :: exc -(Throws)> Void`, so if we would get a continuation, it would be an uncallable one (a → Void), and so we usually aren’t given one. If I get it right
+2020-03-05 16:31:39 <arseniiv> I would need to consult a paper on this if someone would be interested in these details
+2020-03-05 16:32:03 <int-e> we had a link to a paper here a while ago that cast continuations as evaluation contexts
+2020-03-05 16:32:26 <arseniiv> int-e: delimited too?
+2020-03-05 16:32:29 Quit: tromp (Remote host closed the connection)
+2020-03-05 16:32:29 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 16:32:34 <int-e> yes, delimited
+2020-03-05 16:32:49 <arseniiv> nice
+2020-03-05 16:32:51 <int-e> A context being a term with a single hole... it has a root and the hole where you can plug stuff in.
+2020-03-05 16:33:33 <arseniiv> btw if there’s a formulation more like effectful primitives + handlers instead like shift…reset, I may love delimited continuations back again
+2020-03-05 16:33:57 <cpressey> OK, so `shift` gets a ... a "delimited continuation" that extends from the `shift` to the `reset`.  What happens when you call this "delimited continuation"?  I mean, what happens when it finishes?
+2020-03-05 16:34:14 <cpressey> Does it return to somewhere?
+2020-03-05 16:34:37 <int-e> cpressey: you plug the argument into the place where reset was invoked.
+2020-03-05 16:34:49 <cpressey> So it returns to the `reset`.
+2020-03-05 16:34:59 <cpressey> So it's not a continuation at all, it's a regular function.
+2020-03-05 16:35:02 <arseniiv> but I think it isn’t too possible as there can be many sorts of effects, and we’ll need dynamic typing in the worst case, static in the best, and then we’ll get algebraic effects
+2020-03-05 16:35:25 <int-e> It's not really true that 'shift' gets a delimited continuation as an argument either. you can perform actual computations inside shift before `reset` is performed. It's all rather messy.
+2020-03-05 16:35:26 <arseniiv> cpressey: `shift` effectively would return out of a call to `reset`
+2020-03-05 16:35:45 <arseniiv> (that is, if it will at all)
+2020-03-05 16:36:05 <int-e> cpressey: And that part (evaluation before reset) makes it much closer to a continuation
+2020-03-05 16:36:12 <int-e> s/makes/brings/
+2020-03-05 16:36:24 <kspalaiologos> verdict: z88dk is garbage, omit it if you'd like to keep your sanity, tigcc doesn't target TI83 at all, therefore there is no C compiler for TI83+
+2020-03-05 16:36:26 <cpressey> Just never mind, I've already given up again
+2020-03-05 16:36:31 <int-e> you just "fix" the part where continuations never return.
+2020-03-05 16:36:31 <arseniiv> int-e: yeah `shift` gets a handler which it applies to a d. continuation
+2020-03-05 16:37:07 <int-e> (because that part makes continuations highly non-modular)
+2020-03-05 16:37:25 <int-e> but I'm not convinced that delimited continuations are actually modular, so, meh.
+2020-03-05 16:37:47 <cpressey> But they have so many useful applications, like...
+2020-03-05 16:38:03 <cpressey> Uh...
+2020-03-05 16:38:16 <arseniiv> <cpressey> So it's not a continuation at all, it's a regular function. => it’s both; one of the points of delimited continuations is that they are functions and so are composable and easy to do something with
+2020-03-05 16:38:41 <int-e> cpressey:  Writing papers.
+2020-03-05 16:39:31 <arseniiv> cpressey: it would be easier with a picture in mind, I think. I read a page somewhere, with simple examples, and now it seems I can succesfully rebuild the understanding from scratch
+2020-03-05 16:39:49 <arseniiv> I don’t remember what I’ve read though
+2020-03-05 16:40:49 <cpressey> Maybe I just associate continuations too closely with continuation-passing style.
+2020-03-05 16:40:49 <int-e> cpressey: I mean they're good for writing papers *about*, of course.
+2020-03-05 16:41:36 <arseniiv> <int-e> but I'm not convinced that delimited continuations are actually modular, so, meh. => don’t you think that’s because of `shift` taking a handler instead of `reset`? (Because I do)
+2020-03-05 16:41:41 <int-e> cpressey: Well CPS is special in that the continuations are never duplicated.
+2020-03-05 16:42:26 <cpressey> int-e: ?  I thought CPS was special because *everything* is a continuation (and everything ends by calling another continuation).
+2020-03-05 16:43:01 <int-e> Sure, it's also special in that way.
+2020-03-05 16:43:29 <cpressey> Maybe in practice, you'd also never duplicate a continuation, buuut... maybe there's a counterexample for that too, dunno
+2020-03-05 16:43:55 <arseniiv> CPS is good to implement, yeah. Nonlinear use of continuations seems to be a big problem in implementing analogous things (like alg. effects), as they get too costly AFAIR
+2020-03-05 16:44:02 <int-e> You don't do callCC in CPS.
+2020-03-05 16:45:14 <int-e> (where a continuation escapes itself and then later on you might continue at that point in execution several times... which is just weird.)
+2020-03-05 16:45:20 <arseniiv> BTW is there a computational framework in which CPS translation is trivial (like, you write it in the first place)
+2020-03-05 16:45:35 <int-e> CPS is a very sand fragment of what continuations can do.
+2020-03-05 16:45:42 <int-e> *sane
+2020-03-05 16:46:10 <kspalaiologos> sdcc as always nails the task
+2020-03-05 16:46:32 <int-e> `? sdcc
+2020-03-05 16:46:34 <HackEso> sdcc? ¯\(°​_o)/¯
+2020-03-05 16:47:14 Quit: sprocklem (Ping timeout: 265 seconds)
+2020-03-05 16:47:14 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-05 16:50:35 <cpressey> arseniiv: I hesitate to even mention this, but there's a strong similarity between CPS and Haskell's "do" notation
+2020-03-05 16:51:34 <int-e> ...
+2020-03-05 16:51:44 <int-e> I think you mean the stuff that the do notation *hides*
+2020-03-05 16:51:57 <int-e> foo >>= continuation
+2020-03-05 16:52:02 <cpressey> Right, "what Haskell's 'do' notation desugars to", is what I meant
+2020-03-05 16:54:57 <cpressey> do { x1 <- action1 ; x2 <- action2 ; mk_action3 x1 x2 }
+2020-03-05 16:55:02 <cpressey> becomes: action1 >>= (\ x1 -> action2 >>= (\ x2 -> mk_action3 x1 x2 ))
+2020-03-05 16:56:10 <cpressey> There's obviously some relationship between monads and continuations, and I've even heard people whisper about it on occasion, but I'm not sure I've ever seen it in broad daylight
+2020-03-05 16:58:09 <cpressey> (I don't think it's Cont. Cont is for people who can't handle CPS without it being wrapped in a monad. Or something.)
