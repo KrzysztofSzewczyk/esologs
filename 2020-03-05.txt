@@ -400,3 +400,12 @@
 2020-03-05 20:18:22 User Name: b_jonas = b_jonas!~x@catv-176-63-14-86.catv.broadband.hu
 2020-03-05 20:18:22 <b_jonas> `olist 1194
 2020-03-05 20:18:23 <HackEso> olist 1194: shachaf oerjan Sgeo FireFly boily nortti b_jonas
+2020-03-05 20:37:49 <arseniiv> is there a distinction between consistency and soundness in logic? I think I missed that one but now I suspect the first is syntactic and the second is semantic
+2020-03-05 20:39:55 <spruit11> That should be on wikipedia.
+2020-03-05 20:40:49 <arseniiv> ah, seems it’s more complicated: a set of formulas is or isn’t consistent, but soundness is a property of a particular logic. Hm I think there still were other uses of these words
+2020-03-05 20:40:54 <arseniiv> spruit11: fair
+2020-03-05 20:42:04 <spruit11> The usual distinction is soundness vs completeness.
+2020-03-05 20:42:32 <spruit11> Consistency is of course also an issue but most systems you'll encounter are consistent.
+2020-03-05 20:42:58 <spruit11> Unless you're interested in para-consistent logics, the subject doesn't come up a lot.
+2020-03-05 20:50:09 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70177&oldid=70174 5* 03PythonshellDebugwindow 5* (-24) 10Blanked the page
+2020-03-05 20:51:54 <arseniiv> ah, I think it clarified for me. Consistency of a set Γ is “not (Γ ⊦ ⊥)” and consistency of a logic is the consistency of ∅; and there is no “soundness of Γ” as it’s just not obvious how and for what reason would one define that
