@@ -300,3 +300,40 @@
 2020-03-06 13:27:03 <int-e> It's more bounding BBN(n) from below by (iterated) BB(m) where both iteration and m depend on the concrete n-sized program.
 2020-03-06 13:28:10 <myname> the amount of damage is obviously bounded by BBN(f(n)) for a function like f(n) = infty
 2020-03-06 13:28:30 <int-e> myname: Hey we're having a serious discussion here.
+2020-03-06 13:33:00 <int-e> cpressey: You're not wrong, there is something resembling BBN(n) for a fixed n here somewhere, namely in the task of finding an M:tG deck that allows dealing a huge amount of damage while having an upper bound on that damage.
+2020-03-06 13:34:34 <int-e> cpressey: But the point where the discussion started was that they wanted to find an M:tG deck, that is, an NTM, that actually computes BB(m) or BB(BB(m)) for another fixed m instead, so that they had something easier to work with: Busy beavers (for some deterministic model of computation that's easy to implement a universal machine for in TWM).
+2020-03-06 13:35:18 <cpressey> OK. "NTM" and "actually compute" do not go together. That's my first problem.
+2020-03-06 13:35:34 <int-e> You can define BB(n) but you can't compute it.
+2020-03-06 13:35:59 <int-e> The NTM semantics are something you can define, not compute.
+2020-03-06 13:36:08 <int-e> I should probably not have used "actually" there.
+2020-03-06 13:36:21 <int-e> s/actually computes/defines/
+2020-03-06 13:37:53 <int-e> You still need the busy beavers (not necesaarily the best ones) to actually play the game and deal some damage.
+2020-03-06 13:38:10 <cpressey> I think it is a bad idea to model a hand of cards an as NTM. I think it is better to model (hand of cards + player's strategy) as a DTM.
+2020-03-06 13:38:32 <int-e> Well, and I disagree completely.
+2020-03-06 13:40:23 <cpressey> Well...
+2020-03-06 13:41:16 <int-e> I honestly believe that NTM (and ATM for the full game) is the most natural model for this. I don't want to mess things up by restricting the players to a computable strategy. Not that it matters here... there are only finitely many choices to be made anyway.
+2020-03-06 13:41:39 <cpressey> Ha
+2020-03-06 13:42:02 <cpressey> Are there really only a finite many choices that a player can make when playing their hand?
+2020-03-06 13:42:17 <int-e> In this particular case? Yes.
+2020-03-06 13:42:18 <cpressey> If so then I object even more strongly to modelling that as an NTM
+2020-03-06 13:42:26 <cpressey> This is just combinatorics.
+2020-03-06 13:42:35 <cpressey> Occam would prefer you not complicate it unnecessarily, and so would I.
+2020-03-06 13:42:55 <int-e> Yes, don't model choices that happen on the fly as input, defying causality.
+2020-03-06 13:43:14 <int-e> Use the proper model for that, which is non-determinism.
+2020-03-06 13:44:18 <int-e> This may be our main disagreement really... I think non-determinism is *simple*.
+2020-03-06 13:45:05 <int-e> Yes, you get a tree of computations rather than a line. But that's all. Trees are simple.
+2020-03-06 13:48:05 <int-e> And "just combinatorics" -- in either case you still get to the point where the model of computation solves the halting problem for you.
+2020-03-06 13:48:41 <int-e> By simply disregarding non-terminating paths of execution (inputs for which your program doesn't terminate)
+2020-03-06 13:51:26 <cpressey> It seems to me that you would rather introduce an NTM that represents selecting all possible finite combinations from a finite set, than merely consider all possible finite combinations from a finite set, in your explanation, that's all.
+2020-03-06 13:52:35 <int-e> Yes. At least in this particular context.
+2020-03-06 13:52:55 Quit: sprocklem (Ping timeout: 255 seconds)
+2020-03-06 13:52:55 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 13:53:10 <cpressey> I would call that overkill, not just because it's nondeterministic, but also because it's a TM.
+2020-03-06 13:53:17 <int-e> (I could argue against the idea that I introduce the NTM... the NTM is already present in the game, to my mind. But meh.)
+2020-03-06 13:54:12 <int-e> Playing 13 No Need To Argue.ogg.
+2020-03-06 13:54:36 Quit: oerjan (Quit: leaving)
+2020-03-06 13:54:36 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 13:54:52 Quit: tromp (Read error: Connection reset by peer)
+2020-03-06 13:54:52 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 13:55:25 Joined: tromp
+2020-03-06 13:55:25 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
