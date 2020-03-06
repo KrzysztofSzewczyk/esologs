@@ -368,3 +368,76 @@
 2020-03-06 15:26:08 <Taneb> This has a terminating execution path for every natural number
 2020-03-06 15:29:07 <esowiki> 14[[07DINAC14]]4 M10 02https://esolangs.org/w/index.php?diff=70187&oldid=70182 5* 03PythonshellDebugwindow 5* (+198) 10/* Functions */ Clearing up GIVE $
 2020-03-06 15:29:42 <esowiki> 14[[07DINAC/STDLIB14]]4 M10 02https://esolangs.org/w/index.php?diff=70188&oldid=70186 5* 03PythonshellDebugwindow 5* (+21) 10/* Boolean */
+2020-03-06 15:30:42 Joined: int-e
+2020-03-06 15:30:42 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 15:31:08 User Name: int-e = int-e!~noone@int-e.eu
+2020-03-06 15:31:08 <int-e> cpressey: BBN(n) is cleverly defined to exclude not only non-terminating machines but also those that have unbounded results.
+2020-03-06 15:32:20 <cpressey> "they wanted to find an M:tG deck, that is, an NTM, that [defines] BB(m) or BB(BB(m)) for another fixed m instead, so that they had something easier to work with: Busy beavers (for some deterministic model of computation that's easy to implement a universal machine for in TWM)." My problem with this is in two parts:
+2020-03-06 15:33:21 <cpressey> 1) If they only have 125 waterclocks at their disposal to make this machine in TWM, then their damage is limited to BB(125) (or something proportional to it)
+2020-03-06 15:33:49 <int-e> You're ignoring the starting values of the clocks?
+2020-03-06 15:35:53 <cpressey> 2) If they use these 125 waterclocks to make a UTM, and then feed it some kind of TM description as part of how they play their hand, then I need an explanation why they are not allowed to give it an arbitrarily large TM description that produces BB(x) for arbitrarily large x, i.e. it would appear there is no upper bound at all.
+2020-03-06 15:36:32 <int-e> The x needs to be encoded in the deck, obviously.
+2020-03-06 15:36:43 <cpressey> Why obviously?
+2020-03-06 15:36:57 <int-e> Because otherwise, as you say, things would be unbounded.
+2020-03-06 15:37:15 <cpressey> How do we know they're not unbounded?
+2020-03-06 15:37:32 <int-e> Which is specifically forbidden by their task description... if the deck produces unbounded damage, it doesn't qualify.
+2020-03-06 15:38:06 <int-e> Which links back to "BBN(n) is cleverly defined to exclude not only  non-terminating machines but also those that have unbounded results."
+2020-03-06 15:38:15 <cpressey> Why does x need to be encoded in the deck as opposed to the choices that the player takes when they play their cards?
+2020-03-06 15:38:37 <int-e> ...
+2020-03-06 15:38:46 <int-e> We're running in circles here.
+2020-03-06 15:38:59 <int-e> You just asked that question, I just answered it.
+2020-03-06 15:39:03 <int-e> Nothing has changed in the meantime.
+2020-03-06 15:39:38 <cpressey> I guess there's something I still don't understand about how MtG is played.
+2020-03-06 15:39:38 <int-e> The encoding may be indirect, of course. In particular, x may be something like BB(10).
+2020-03-06 15:41:11 <cpressey> I don't even care about this, it's just frustrating that, every time I say something, hoping to get more clarity, I just get responses that seem to make it more opaque.
+2020-03-06 15:41:37 <Taneb> cpressey: I think you might have misinterpreted the nature of the puzzle
+2020-03-06 15:42:11 <Taneb> Or I have misinterpreted the nature of your complaint
+2020-03-06 15:42:48 <int-e> What frustrates *me* is that you seem to understand everything about this and still are, obviously, confused, and I have no idea what you are confused about.
+2020-03-06 15:43:59 <cpressey> I don't see how how n cards could *possibly* generate the number BB(BB(n)).
+2020-03-06 15:44:13 <cpressey> I can see how they could generate the number BB(n), yes.
+2020-03-06 15:44:30 <cpressey> But you see, I don't see how they could generate any number *larger* than it.
+2020-03-06 15:44:58 Quit: sprocklem (Ping timeout: 255 seconds)
+2020-03-06 15:44:58 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 15:45:05 <cpressey> Unless it's something like: n cards generates BB(n), then BB(n) *plays* of those cards, generates BB(BB(n)).  Something like that.
+2020-03-06 15:45:20 <int-e> BB_BB_googol: Guess a TM A of size 10^100. Run it to its conclusion, counting steps. Let m be the number of steps taken. Guess a TM B of size m. Run it to its conclusion, counting steps. Return the number of steps.
+2020-03-06 15:45:41 <int-e> (You can make the TMs your input. I don't care.)
+2020-03-06 15:46:07 <int-e> You discard all non-terminating runs, and take the maximum length of the terminating ones.
+2020-03-06 15:46:19 <int-e> That length is BB(BB(10^100)).
+2020-03-06 15:46:30 <int-e> s/length/value returned/
+2020-03-06 15:46:34 <int-e> (sorry)
+2020-03-06 15:46:52 <cpressey> "Guess a TM A of size 10^100" - May I ask to what object in the game of MtG does this A correspond?
+2020-03-06 15:47:20 <int-e> Some number of creatures of a particular creature type.
+2020-03-06 15:47:28 <int-e> Creature types === counters in TWM.
+2020-03-06 15:47:44 <cpressey> OK, can I ask another question/
+2020-03-06 15:47:47 <int-e> It's not a perfect analogy.
+2020-03-06 15:48:12 <int-e> I really prefer to think of this in terms of (N)TMs, because that's far more familar territory to me.
+2020-03-06 15:48:34 <cpressey> I can guess a TM of size 10^100.  Can I guess a TM of size 10^10000 instead?
+2020-03-06 15:48:50 <int-e> Sure. That would be a different NTM though.
+2020-03-06 15:49:26 <cpressey> Can I guess an arbitrarily large TM?
+2020-03-06 15:49:30 <int-e> No.
+2020-03-06 15:49:34 <cpressey> Why not?
+2020-03-06 15:49:42 <int-e> That's the whole point of building that bound into the NTM.
+2020-03-06 15:50:15 <cpressey> May I ask, what object in the game of MtG the NTM corresponds to?
+2020-03-06 15:50:46 <int-e> You have given the explanation above: If you /could/ guess a TM of arbitrary size, there would be no maximum result (the results would be unbounded), and we don't want that.
+2020-03-06 15:51:00 <int-e> The NTM is the deck of cards.
+2020-03-06 15:51:07 <cpressey> Wait what?
+2020-03-06 15:51:16 <cpressey> I thought we were trying to find out what the maximum result *is*.
+2020-03-06 15:51:42 <int-e> Find a deck of card whose maximum damage is bounded, but really really big.
+2020-03-06 15:52:03 <int-e> The damage is all done in the end, and corresponds to the number computed by the NTM.
+2020-03-06 15:52:19 <cpressey> The answer seems to be that you can find decks of cards that do arbirarily large finite damage.
+2020-03-06 15:52:33 <int-e> But the deck size is bounded.
+2020-03-06 15:52:35 <cpressey> I was pretty sure the constraint was that we had to avoid *infinite* damage.
+2020-03-06 15:53:08 <cpressey> What is the deck size bounded by?
+2020-03-06 15:53:14 <int-e> 60.
+2020-03-06 15:53:39 <int-e> Plus a side-board of, what, 10 cards? Something like that.
+2020-03-06 15:53:59 <int-e> But that's all so awfully M:tG-specific.
+2020-03-06 15:54:29 <cpressey> OK, so you're modelling this 60-card deck as an NTM with 60 states (roughly speaking).
+2020-03-06 15:54:56 <cpressey> But there is some reason this 60-state NTM can't guess (and then simulate) arbitrarily large DTMs.
+2020-03-06 15:55:00 <cpressey> But I'm not seeing that reason.
+2020-03-06 15:55:19 <int-e> https://esolangs.org/logs/2020-03-02.html#lNe
+2020-03-06 15:55:48 <int-e> cpressey: The bound (whatever it is) must be enforced by the NTM.
+2020-03-06 15:57:43 <int-e> cpressey: I doubt that the number of states corresponds to the number of cards in any nice fashion. But I also don't really care about that aspect of the problem.
+2020-03-06 15:58:28 <int-e> My interest is really this: My initial reaction to the idea that you can iterate the BB function was that this can't be done. No way. Then I homed in on alternation as a possibility, and then I realized that plain non-determinism is enough.
+2020-03-06 15:59:12 <int-e> Which was a new insight for me. And I'm still enjoying that.
+2020-03-06 15:59:41 <int-e> All the TWM and M:tG details... meh I just assume they work out somehow.
+2020-03-06 16:00:00 <int-e> And if they don't work out, that's no skin off my nose either.
