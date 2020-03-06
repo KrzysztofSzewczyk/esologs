@@ -441,3 +441,25 @@
 2020-03-06 15:59:12 <int-e> Which was a new insight for me. And I'm still enjoying that.
 2020-03-06 15:59:41 <int-e> All the TWM and M:tG details... meh I just assume they work out somehow.
 2020-03-06 16:00:00 <int-e> And if they don't work out, that's no skin off my nose either.
+2020-03-06 16:00:23 <cpressey> Whhhh
+2020-03-06 16:01:00 Joined: sprocklem
+2020-03-06 16:01:00 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 16:04:39 <cpressey> "if there is a line that does more damage we will take it", but "if that amount of damage is unbounded, the deck is disqualified.", so basically this is ruling out any sequence that grows forever.
+2020-03-06 16:05:19 <int-e> Yes. This is the same as ruling out an NTM that produces unbounded results.
+2020-03-06 16:09:33 <cpressey> OK, that makes sense I guess.
+2020-03-06 16:11:09 Quit: wib_jonas (Remote host closed the connection)
+2020-03-06 16:11:09 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 16:15:21 <cpressey> I can't quite convince myself of it.
+2020-03-06 16:20:59 <cpressey> "Let m be the number of steps taken. Guess a TM B of size m." ... the NTM has to allow guessing a TM as large as m, without knowing how big m is beforehand, but also has to prevent guessing arbitrarily large TMs.
+2020-03-06 16:21:42 <int-e> A is *deterministic*
+2020-03-06 16:22:09 <int-e> So it either fails to terminate (and we're good, the run will be discarded) or produce a fixed result.
+2020-03-06 16:22:19 <int-e> Same for B.
+2020-03-06 16:22:23 <cpressey> Back up
+2020-03-06 16:22:43 <int-e> m is bounded by BB(10^100).
+2020-03-06 16:23:06 <cpressey> I *understand* that A is deterministic; in fact I am assuming that the NTM correctly guessed the DTM which computes BB(10^100).
+2020-03-06 16:23:37 <int-e> So in that case m equals BB(10^100) by the point we're guessing B.
+2020-03-06 16:24:25 <int-e> So that's not arbitrarily large anymore?
+2020-03-06 16:24:33 <cpressey> Okay.
+2020-03-06 16:24:49 <int-e> (Though obviously so insanely large that it makes no difference in practice.)
+2020-03-06 16:25:16 <int-e> (Where "practice" refers to the scenario where we actually play out one of those runs with concrete choices for A and B)
+2020-03-06 16:29:51 <cpressey> OK, so there's a deck of 60 cards where there's a possible play that writes a TM A of size 10^100 to the tape and then simulates it to obtain m = BB(10^100) and then writes another TM, this one of size m, to the tape, and then simulates it to obtain BB(m), i.e. BB(BB(10^100)), and then does that much damage.
