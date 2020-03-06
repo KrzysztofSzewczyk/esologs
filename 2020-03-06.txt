@@ -190,3 +190,77 @@
 2020-03-06 12:28:31 <cpressey> This is maddening
 2020-03-06 12:29:13 <int-e> You do know about Universal Turing Machines, right?
 2020-03-06 12:29:25 <int-e> I need a break.
+2020-03-06 12:31:38 <int-e> But maybe I should make the idea concrete at least: NTM BB_googol: *guess* a TM A with 10^100 states. Use an UTM to run it to completion, counting steps. Return number of steps taken.
+2020-03-06 12:32:29 <int-e> And recall that the model of computation here maximizes the output of all the possible runs that terminate.
+2020-03-06 12:34:39 Quit: stux- (Quit: Aloha!)
+2020-03-06 12:34:40 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 12:35:36 <int-e> The corresponding TM would instead have to take the description of the TM of size 10^100 as input. By virtue of having input, it's not bounded by the busy beaver function.
+2020-03-06 12:35:51 Joined: stux
+2020-03-06 12:35:51 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 12:35:54 <cpressey> Are you trying to say that BB numbers on NTMs can be much larger than BB numbers for DTMs?  If so, I don't disagree.
+2020-03-06 12:37:16 <int-e> I guess so.
+2020-03-06 12:37:28 <int-e> However, then we're *definitely* not talking about BB for TWM here anymore.
+2020-03-06 12:37:45 <int-e> But something like BB for M:tG.
+2020-03-06 12:38:11 <int-e> Anyway, whenever I wrote "busy beaver" I meant DTM ones.
+2020-03-06 12:41:10 <cpressey> I'm still lost. I think I'll just resign.
+2020-03-06 12:42:30 <int-e> cpressey: Can you see what that BB_googol thing does and that the result is BB(10^100) where BB is the standard busy beaver function for DTMs?
+2020-03-06 12:43:40 <cpressey> I thought I did, but I guess not.
+2020-03-06 12:44:10 <int-e> mm
+2020-03-06 12:44:25 <cpressey> Or rather: BB_googol is just a NTM for computing BB(10^100) but why do we need that?
+2020-03-06 12:44:32 <cpressey> We can just say BB(10^100), we know what it means
+2020-03-06 12:44:54 <cpressey> This NTM doesn't relate to anything in the model we're working with
+2020-03-06 12:45:17 <int-e> Well the point is that the NTM can be written up as a program, and perhaps translated to a deck of cards.
+2020-03-06 12:45:42 <cpressey> Not unless the cards are played nondeterministically somehow
+2020-03-06 12:45:53 <cpressey> From what I understand about MtG, they're not, but I don't play that game
+2020-03-06 12:46:40 <cpressey> You can talk about "all possibly plays of a hand of cards" without using an NTM
+2020-03-06 12:46:41 <int-e> The whole point is that BB(10^100) is an upper bound on the possible outputs of terminating runs.
+2020-03-06 12:46:50 <cpressey> *possible
+2020-03-06 12:46:52 <int-e> Other than that, BB(10^100) will never materialize.
+2020-03-06 12:47:31 <int-e> cpressey: The choices that set up the TM are made during play though.
+2020-03-06 12:47:48 <int-e> So the NTM model matches the actual play much more closely than a TM with input.
+2020-03-06 12:49:10 <int-e> And of course, in real play, the player will just use the best TM they can prove termination of, not the busy beaver. (And I should probably allow TMs of size less than 10^100 as well :P)
+2020-03-06 12:49:46 <cpressey> But but but
+2020-03-06 12:50:11 <cpressey> So frustrating.
+2020-03-06 12:50:23 <cpressey> BB(n) is a function on a *set of Turing machines*, yes?
+2020-03-06 12:50:30 <cpressey> All TMs with size n.
+2020-03-06 12:50:36 <int-e> ?!
+2020-03-06 12:50:36 <lambdabot> Maybe you meant: v @ ? .
+2020-03-06 12:50:43 <int-e> BB(n) is a natural number.
+2020-03-06 12:50:48 <int-e> given a natural number n.
+2020-03-06 12:51:29 <int-e> It's the maximum of number of steps taken by any TM of size n (or less, but that's monotonic)
+2020-03-06 12:51:32 <cpressey> To compute BB(6) you must consider all TMs of size 6.
+2020-03-06 12:51:41 <int-e> that terminate.
+2020-03-06 12:52:11 <cpressey> "all TMs of size 6 that terminate" is a set of TMs.
+2020-03-06 12:52:12 <int-e> It's more like...
+2020-03-06 12:52:24 <int-e> ...to compute BB(6) you *would have to* consider all TMs of size 6.
+2020-03-06 12:52:36 <int-e> Because nobody's actually computing it.
+2020-03-06 12:52:56 <cpressey> Fine, for my present purposes this is nitpicking.
+2020-03-06 12:53:18 <cpressey> BB(6) is a result *about* a *set* of Turing machines.
+2020-03-06 12:54:00 <cpressey> All possible plays of a hand of MtG cards also represents a *set* of Turing machines.
+2020-03-06 12:55:01 <cpressey> All possible plays of a hand of MtG cards of size n, represents a set of Turing machines of size m (where n and m are, let's assume, linearly related.)
+2020-03-06 12:55:02 <myname> well, all plays of a hand in any card game does
+2020-03-06 12:55:26 <cpressey> Therefore the maximum damage a hand of MtG cards of size n can do, is proportional to BB(m).
+2020-03-06 12:55:37 <int-e> m? n?
+2020-03-06 12:55:49 Joined: TheLie
+2020-03-06 12:55:49 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 12:56:05 <cpressey> Using n MtG cards you can make a TWM program of size m.
+2020-03-06 12:56:10 <cpressey> is how I'm using those letters.
+2020-03-06 12:57:16 <myname> i doubt that line of reasoning
+2020-03-06 12:57:27 <int-e> You keep missing the fact that a program of bounded size can work on arbtirary sized data.
+2020-03-06 12:57:33 <myname> it fails if you have cards that do exponential damage
+2020-03-06 12:57:42 <myname> exactly that
+2020-03-06 12:57:44 <int-e> A singe universal machine can run everything.
+2020-03-06 12:57:49 <cpressey> int-e: No, the busy beaver function *accounts for that fact*.
+2020-03-06 12:58:16 <cpressey> BB(6) doesn't say *anything* about how much data any TM of size 6 uses or does not use.
+2020-03-06 12:58:34 <int-e> cpressey: Then stop saying "the" busy beaver function and define what you're actually using. "The" busy beaver function is for programs without input.
+2020-03-06 12:58:42 <int-e> cpressey: It starts on an empty tape.
+2020-03-06 12:58:44 <cpressey> I'm not talking about input.
+2020-03-06 12:58:45 <int-e> NO INPUT.
+2020-03-06 12:58:50 <cpressey> I agree, no input!
+2020-03-06 12:59:09 <int-e> The card games have input in the form of choices the players make.
+2020-03-06 12:59:10 <cpressey> The machines in BB(6) can use a lot of tape, even though they have no input
+2020-03-06 12:59:12 Quit: TheLie (Remote host closed the connection)
+2020-03-06 12:59:12 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 12:59:14 <int-e> This is CRUCIAL.
+2020-03-06 12:59:37 <cpressey> What kind of choices do the players make?
+2020-03-06 13:00:00 <int-e> Which cards to play, how much mana to spend on it, how often to repeat a cycle if they enter one...
