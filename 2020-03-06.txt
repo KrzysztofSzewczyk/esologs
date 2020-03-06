@@ -264,3 +264,39 @@
 2020-03-06 12:59:14 <int-e> This is CRUCIAL.
 2020-03-06 12:59:37 <cpressey> What kind of choices do the players make?
 2020-03-06 13:00:00 <int-e> Which cards to play, how much mana to spend on it, how often to repeat a cycle if they enter one...
+2020-03-06 13:00:03 <int-e> tons of them
+2020-03-06 13:00:04 <myname> the number of steps does not have to be proportional to the amount of damage
+2020-03-06 13:00:14 <myname> if one step doubles the damage, you are out of luck
+2020-03-06 13:00:17 <int-e> Which is why I have all those *guesses* up there.
+2020-03-06 13:01:54 <cpressey> OK. I don't play MtG, I'm not aware of the kinds of choices players can make.
+2020-03-06 13:01:58 <int-e> One of the real challenges they face is to make a TM interpreter that does *not* leave any choices to the players (with some constraints, like refusing to resign; the M:tG rules stipulate that a player may resign at any point during the game).
+2020-03-06 13:03:38 <cpressey> OK.
+2020-03-06 13:03:38 Quit: xelxebar (Remote host closed the connection)
+2020-03-06 13:03:39 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-03-06 13:05:25 <cpressey> I guess there's not much point trying to understand this, unless I want to understand the rules of MtG first, and I don't really have any interest in that
+2020-03-06 13:06:19 Joined: xelxebar
+2020-03-06 13:06:20 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 13:08:00 <int-e> For me the new insight here was that NTMs can compute (and even iterate computations of) the busy beaver function for DTMs.
+2020-03-06 13:08:59 <int-e> So for this purpose, M:tG is just a peculiar NTM. And I totally ignored TWM.
+2020-03-06 13:11:08 <cpressey> If there's an NTM that can compute the BB function then there's also an NTM that can solve the halting problem.
+2020-03-06 13:11:33 <int-e> (As a two-player game with best play, M:tG might actually be a full ATM. I don't know.)
+2020-03-06 13:12:18 <int-e> Well the halting problem is r.e. even with TMs.
+2020-03-06 13:12:59 <cpressey> I'm aware of that.
+2020-03-06 13:13:27 <int-e> And the usual acceptance condition for NTMs is "there is an accepting run", generalizing what you do for r.e. (accepts the input).
+2020-03-06 13:13:46 <int-e> So yes, that solves the halting problem.
+2020-03-06 13:15:18 * oerjan measures cpressey's brain pressure then hides behind a rock
+2020-03-06 13:15:19 <int-e> One real stumbling block for me is to extend this to a functional model of computation, that actually computes a value from the input.
+2020-03-06 13:15:31 <int-e> s/is/was/
+2020-03-06 13:16:07 * int-e sets fire to the dynamite stick that somebody placed under that rock earlier.
+2020-03-06 13:17:03 * oerjan gets incinerated
+2020-03-06 13:18:03 <cpressey> I have a hard time understanding why someone would think that they could extend "there exists an accepting path" to something that actually finds that path in all cases.
+2020-03-06 13:18:46 * int-e is beginning to think that cpressey is one of those constructivists he's heard rumors about
+2020-03-06 13:19:20 <int-e> I mean, it's just a definition.
+2020-03-06 13:21:29 <cpressey> I guess my brain pressure is just too high. Occupational hazard of us constructivists, don't ya know.
+2020-03-06 13:22:27 <int-e> We can do it mathematically (inside a proof, say). We can't do it in practice.
+2020-03-06 13:23:26 <int-e> Using classical logic, obviously, like most people.
+2020-03-06 13:24:29 <cpressey> It would still seem that you're simply saying something like, the maximum damage you can deal in a hand of n MtG cards, is BBN(n), where BBN(x) is the busy beaver number for an *NTM* with x states.
+2020-03-06 13:27:00 <cpressey> OK, BBN(m) where m is some function of n.
+2020-03-06 13:27:03 <int-e> It's more bounding BBN(n) from below by (iterated) BB(m) where both iteration and m depend on the concrete n-sized program.
+2020-03-06 13:28:10 <myname> the amount of damage is obviously bounded by BBN(f(n)) for a function like f(n) = infty
+2020-03-06 13:28:30 <int-e> myname: Hey we're having a serious discussion here.
