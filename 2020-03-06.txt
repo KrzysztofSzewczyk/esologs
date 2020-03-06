@@ -339,3 +339,32 @@
 2020-03-06 13:55:25 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-03-06 14:51:31 <cpressey> If you have an NTM that "guesses" an arbitrary DTM description and writes it to a tape, then uses a UTM to simulate that DTM and "produce" its result as an integer, there is no upper bound to the integer the NTM can "produce"; it only needs to "guess" bigger DTMs to get bigger numbers.
 2020-03-06 14:53:32 <cpressey> On the other hand, if there is a limit to the set of DTMs it can "guess" - if they are drawn from a finite set - then you don't need to talk about "guessing" them and then simulating them at all - you just have an enumeration of DTMs.
+2020-03-06 15:08:56 <int-e> cpressey: But I /prefer/ to do it by guessing.
+2020-03-06 15:09:10 Parted: int-e
+2020-03-06 15:09:10 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 15:10:34 Joined: sprocklem
+2020-03-06 15:10:34 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-06 15:12:38 <Taneb> Are you two doing the thing where you argue about a fundamentally unimportant detail while agreeing about all the important bits?
+2020-03-06 15:14:02 <cpressey> I think I disagree about some of the actual conclusions too, but it's hard enough to find out exactly what they are
+2020-03-06 15:14:44 <cpressey> Wouldn't BBN(x) be infinite for large enough x?
+2020-03-06 15:15:15 <esowiki> 14[[07DINAC/STDLIB14]]4 M10 02https://esolangs.org/w/index.php?diff=70186&oldid=70181 5* 03PythonshellDebugwindow 5* (+223) 10/* Arithmetic */
+2020-03-06 15:16:03 <Taneb> What is BBN?
+2020-03-06 15:16:16 <cpressey> Busy-beaver number for NTMs.
+2020-03-06 15:16:31 <Taneb> Where x is the number of states?
+2020-03-06 15:16:41 <cpressey> Yes
+2020-03-06 15:16:54 <Taneb> How would BBN(x) be > BB(x)?
+2020-03-06 15:17:10 <cpressey> The NTM has no limit to the number of states it can "guess" a DTM description to have, then it can simulate it with a UTM
+2020-03-06 15:17:31 <cpressey> So probably BBN(10) is infinite
+2020-03-06 15:17:51 <cpressey> If not 10, then some fairly small number, in the scheme of things
+2020-03-06 15:18:49 <Taneb> Hmm, wouldn't the definition of the busy beaver function preclude machines that might not halt, and hence preclude any that could be infinite
+2020-03-06 15:20:08 <cpressey> So probably BBN(10) is ω, is that better
+2020-03-06 15:21:05 <Taneb> I don't think I understand how you're defining BBN
+2020-03-06 15:22:20 <Taneb> I can't see how ω could even be in the codomain of BBN
+2020-03-06 15:22:59 <cpressey> OK. BB(x) is the largest number of steps any terminating DTM with x states takes before terminating. BBN(x) is the largest number of steps any terminating execution path of an NTM with x states.
+2020-03-06 15:23:30 <cpressey> *states has. Excuse my awkward phrasing.
+2020-03-06 15:23:42 <Taneb> Ah, I had taken BBN(x) to be the lagest number of steps of any terminating execution path of an NTM with x states that terminates in all execution paths
+2020-03-06 15:24:20 <Taneb> Because otherwise, BBN(2) is undefined, I think
+2020-03-06 15:25:58 <Taneb> Take a non-deterministic turing machine with states (I, H), and transitions I -> {1RI,1RH}
+2020-03-06 15:26:08 <Taneb> This has a terminating execution path for every natural number
+2020-03-06 15:29:07 <esowiki> 14[[07DINAC14]]4 M10 02https://esolangs.org/w/index.php?diff=70187&oldid=70182 5* 03PythonshellDebugwindow 5* (+198) 10/* Functions */ Clearing up GIVE $
+2020-03-06 15:29:42 <esowiki> 14[[07DINAC/STDLIB14]]4 M10 02https://esolangs.org/w/index.php?diff=70188&oldid=70186 5* 03PythonshellDebugwindow 5* (+21) 10/* Boolean */
