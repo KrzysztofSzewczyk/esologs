@@ -89,3 +89,22 @@
 2020-03-07 13:50:56 Quit: rain1 (Quit: Lost terminal)
 2020-03-07 13:50:57 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-07 14:22:40 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=70204&oldid=70203 5* 03PythonshellDebugwindow 5* (+103) 10/* Commands */
+2020-03-07 14:43:12 Joined: ais523
+2020-03-07 14:43:13 Names: ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-07 14:43:28 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-07 14:43:28 <ais523> my attempt at explaining the MTG busy beaver thing:
+2020-03-07 14:43:38 <ais523> the deck is designed so that it has two possible modes to be played in
+2020-03-07 14:44:18 <ais523> one mode allows the player to choose one of a finite (but very large) number of strategies, this produces an output which is a (deterministic) Waterfall Model program
+2020-03-07 14:44:49 <ais523> the number of waterclocks that can be used is bounded at 124; the size of the zeroing triggers is not inherently bounded, but it has a maximum because there are only finitely many strategies available
+2020-03-07 14:45:16 <ais523> the other mode deterministically simulates the Waterfall Model program to completion; if it is not a terminating program, the game immediately ends in a draw
+2020-03-07 14:45:45 <ais523> if you just have these two modes and nothing else, the largest possible output you can get is thus a busy beaver function (although not a cleanly defined one)
+2020-03-07 14:46:12 <ais523> now, what the players involved are looking to do is to create a deck that can be switched between these modes finitely many times
+2020-03-07 14:46:41 <ais523> so, first a player chooses, by their strategy, one of the possible Waterfall Model programs
+2020-03-07 14:46:51 <ais523> then, that program is simulated, and (if it halts) produces an output
+2020-03-07 14:47:20 <ais523> now, we go back to the first mode again, and use the output of that program as a bound on the size of the zeroing triggers of a second Waterfall Model program
+2020-03-07 14:48:07 <ais523> so we still have finitely many options here, but the number of options is now bounded by a busy beaver number that we calculated earlier
+2020-03-07 14:48:19 <ais523> repeat finitely many times
+2020-03-07 14:48:42 <ais523> the maximum possible final result is an iterated busy beaver number; however, due to busy beavers being uncomputable, it's not known what path you would have to take to reach that result
+2020-03-07 14:53:05 <b_jonas> can you really have a deck of Magic cards that can build Waterclock simulations but nothing slightly better?
+2020-03-07 14:54:07 <b_jonas> also, wait, what busy beavers?
+2020-03-07 14:54:20 <b_jonas> if the zeroing triggers aren't bounded, then can't you just choose an arbitrarily large number?
