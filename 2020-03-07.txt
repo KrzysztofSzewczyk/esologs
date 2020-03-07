@@ -108,3 +108,28 @@
 2020-03-07 14:53:05 <b_jonas> can you really have a deck of Magic cards that can build Waterclock simulations but nothing slightly better?
 2020-03-07 14:54:07 <b_jonas> also, wait, what busy beavers?
 2020-03-07 14:54:20 <b_jonas> if the zeroing triggers aren't bounded, then can't you just choose an arbitrarily large number?
+2020-03-07 15:13:07 <b_jonas> fungot, is the lifetime warranty in the base price for your immortality serum, or do you charge extra?
+2020-03-07 15:13:08 <fungot> b_jonas: isn't that roughly how your average server app works? just out of memory, then i wont be using motif as a template
+2020-03-07 15:17:14 <ais523> b_jonas: the way it works is that the deck generates large numbers some resource (e.g. mana) using a more traditional non-infinite combo, then that resources bounds the zeroing triggers by limiting how much time you have to set them up
+2020-03-07 15:18:23 <ais523> also, the key idea is to create a deck that can construct a Waterclock simulation, but has no instant speed effects that can be used to interfere with the simulation while it's running, and no way to create a gamestate where trigger stacking order is relevant
+2020-03-07 15:18:24 <ais523> that last part seems to be the hard part
+2020-03-07 15:18:24 Quit: ais523 (Remote host closed the connection)
+2020-03-07 15:18:24 Names: ^[, aji, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-07 15:20:34 Joined: ais523
+2020-03-07 15:20:34 Names: ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-07 15:21:20 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-07 15:21:20 <ais523> so it's not so much about "nothing slightly better" as "the only loops that aren't clearly bounded have no way to produce output if they're infinite, and no way to manually interrupt them"
+2020-03-07 15:21:21 <int-e> ais523: shouldn't the setup also include the initial values of the counters?
+2020-03-07 15:21:48 <int-e> If not, then my mental model of TWM isn't right.
+2020-03-07 15:21:57 <int-e> counters -> clocks
+2020-03-07 15:22:13 <ais523> int-e: oh, yes
+2020-03-07 15:22:46 <ais523> but it turns out that that's mostly irrelevant because you can use a zeroing trigger to set the initial values
+2020-03-07 15:23:03 <ais523> so even when restrictions on the initial values exist, they typically turn out not to matter
+2020-03-07 15:23:43 <int-e> Ah.
+2020-03-07 15:24:31 <int-e> Well, I thought the way to go about this was to work with a fixed TWM program that implements a universal machine. But maybe not.
+2020-03-07 15:25:01 <ais523> I think the idea is, as long as we know that at least one universal machine exists within our given bounds
+2020-03-07 15:25:03 <int-e> (And, upon reflection, probably not, because then encoding 124 triggers in the deck itself becomes infeasible.)
+2020-03-07 15:25:08 <ais523> then we know that we have some sort of busy beaver being calculated
+2020-03-07 15:25:31 <ais523> which is /either/ a busy beaver for the universal machine in question, /or/ a busy beaver for some other TWM program that fits witihin the bounds in question
+2020-03-07 15:25:46 <ais523> either way, it's a finite number by the definition of busy beavers, and it's bounded from below by the busy beaver for our particular UTM
+2020-03-07 15:25:48 <int-e> Yeah.
