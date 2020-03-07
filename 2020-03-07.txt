@@ -136,3 +136,51 @@
 2020-03-07 15:30:53 <esowiki> 14[[07User talk:Ais52314]]4 10 02https://esolangs.org/w/index.php?diff=70205&oldid=70194 5* 03Ais523 5* (+936) 10/* The Waterfall Model UTM */ the alternate version is not obviously either TC or non-TC
 2020-03-07 15:38:13 <b_jonas> what would be really crazy is if you could make a deck that not only can't make infinite loops, but where the computation (say the waterfall matrix values) are limited by some resource in the deck itself, like it can use numbers up to 2**200 if you have 200 spare Islands in the deck. deck size is limited to something between 100 and 5000 cards by the rule that you have to be able shuffle your deck
 2020-03-07 15:38:20 <b_jonas> without assistance. the number of players might not be limited, but I don't think there are tournament games with more than 8 players or more than 8 decks.
+2020-03-07 16:07:11 User Name: MTGBusyBeaver = MTGBusyBeaver!4c69b9e2@c-76-105-185-226.hsd1.or.comcast.net
+2020-03-07 16:07:11 <MTGBusyBeaver> Well we encountered a problem with our setup that currently makes iterating very difficult, but otherwise yes
+2020-03-07 16:08:28 <MTGBusyBeaver> The deck size is limited to 60, and we can use numbers up to around 10^^^^55
+2020-03-07 16:08:45 <b_jonas> what limits deck size to 60?
+2020-03-07 16:09:10 <int-e> b_jonas: arbitrariness
+2020-03-07 16:09:24 <MTGBusyBeaver> the rules, otherwise we could have a deck of an arbitrary number of relentless rats
+2020-03-07 16:09:41 <b_jonas> ais's deck is limited to 60 so that it can be more consistent in realistic games
+2020-03-07 16:10:11 <b_jonas> MTGBusyBeaver: no, not an arbitrary number. like I said above, there's a limit in the rules. It's just higher than 60 cards.
+2020-03-07 16:11:02 <ais523> b_jonas: MTGBusyBeaver's aiming for an entry in a competition that has specific rules, one of which is a maximum deck size of 60
+2020-03-07 16:11:04 <MTGBusyBeaver> his TM is actually trying to be SB only, so he can wish for the whole thing from a normal deck
+2020-03-07 16:11:07 <int-e> . o O ( Future M:tG players will be bred to have extra large hands. )
+2020-03-07 16:11:56 <MTGBusyBeaver> the shuffling limit is a soft limit, and hard to properly bound.
+2020-03-07 16:12:46 <int-e> What's "SB"?
+2020-03-07 16:12:46 <b_jonas> I see
+2020-03-07 16:12:50 <MTGBusyBeaver> you'll get people coming along saying "oh but i can shuffle 5001 cards"
+2020-03-07 16:13:15 <b_jonas> but those rules don't include DMM's special rule about infinite loop, because nobody knows how that would apply to setting up a simulation like this?
+2020-03-07 16:13:30 Joined: imode
+2020-03-07 16:13:30 Names: ^[, ais523, aji, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-07 16:13:31 <MTGBusyBeaver> SB=Sideboard
+2020-03-07 16:13:33 <b_jonas> int-e: sideboard
+2020-03-07 16:13:58 <MTGBusyBeaver> which is 15 extra cards you can bring that dont get shuffled into your main deck for game one
+2020-03-07 16:14:04 <b_jonas> int-e: no, those of us with large hands prefer the Rubik's cube
+2020-03-07 16:14:26 <MTGBusyBeaver> you can add/exchange them with the main deck or fetch them with cards like cunning wish
+2020-03-07 16:14:42 <int-e> b_jonas: I have an 8x8x8 one which I wish I had larger hands for. The other sizes I have are just fine :)
+2020-03-07 16:16:46 <b_jonas> int-e: also no because, outside of crazy exercises like this, you usually want your deck to be as small as the rules allow or close to it
+2020-03-07 16:16:48 <int-e> b_jonas: So, to put numbers to that, (8.2cm)^3 is uncomfortably big. (6.7cm)^3 (that's my 6x6x6 one) is fine.
+2020-03-07 16:17:02 <b_jonas> which is 60 cards for most constructed format, 100 cards for a few other constructed formats
+2020-03-07 16:17:19 <b_jonas> I see
+2020-03-07 16:20:08 <b_jonas> wait, 10^^^^55? that's rather big. and you hope to fit a universal computer within the same deck as the combo that does that?
+2020-03-07 16:20:22 <MTGBusyBeaver> yes
+2020-03-07 16:20:59 <b_jonas> wow
+2020-03-07 16:21:21 <MTGBusyBeaver> 10^^^^55 is a lot smaller than our other strategies, but the largest that looks to be compatible with the (Very restrictive) TM setup
+2020-03-07 16:21:33 <ais523> if you can use all 60 cards you can do things like compute the Ackermann function
+2020-03-07 16:22:42 <MTGBusyBeaver> Yeah, we have had Ackermann beating decks in standard for 3 years in a row now.
+2020-03-07 16:24:25 <MTGBusyBeaver> and vintage could already get quite beyond that, requiring the "fast growing hierarchy" notation
+2020-03-07 16:24:45 <MTGBusyBeaver> but BB functions are even better than that
+2020-03-07 16:25:13 <b_jonas> MTGBusyBeaver: and you're allowed to customize the deck of only one player for this, right? multiple players lets you separate different mechanisms with less risk of interactions much more easily.
+2020-03-07 16:25:33 <MTGBusyBeaver> yes our opponent's deck is 60 wastes
+2020-03-07 16:25:36 <b_jonas> ais523: I'm thinking not really about the number of cards here, but the interactions between the two machines
+2020-03-07 16:26:10 <ais523> b_jonas: the basic trick is that the whole deck is sorcery speed apart from the triggers that build the waterfall
+2020-03-07 16:26:51 <b_jonas> and the waterfall macnine program would execute without resolving?
+2020-03-07 16:26:59 <b_jonas> also I'll have to reread the older logs about this later
+2020-03-07 16:27:03 <b_jonas> I was just too busy during the week
+2020-03-07 16:27:43 <MTGBusyBeaver> it executes to completion without (meaningful) choices by either player
+2020-03-07 16:28:12 <ais523> except inasmuch as Arcbond is involved, which always struck me as a potential weak point
+2020-03-07 16:28:40 <MTGBusyBeaver> what do you mean?
+2020-03-07 16:28:56 <MTGBusyBeaver> what we choose to put arc bond on?
+2020-03-07 16:30:01 <ais523> trigger stacking
