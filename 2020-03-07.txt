@@ -133,3 +133,6 @@
 2020-03-07 15:25:31 <ais523> which is /either/ a busy beaver for the universal machine in question, /or/ a busy beaver for some other TWM program that fits witihin the bounds in question
 2020-03-07 15:25:46 <ais523> either way, it's a finite number by the definition of busy beavers, and it's bounded from below by the busy beaver for our particular UTM
 2020-03-07 15:25:48 <int-e> Yeah.
+2020-03-07 15:30:53 <esowiki> 14[[07User talk:Ais52314]]4 10 02https://esolangs.org/w/index.php?diff=70205&oldid=70194 5* 03Ais523 5* (+936) 10/* The Waterfall Model UTM */ the alternate version is not obviously either TC or non-TC
+2020-03-07 15:38:13 <b_jonas> what would be really crazy is if you could make a deck that not only can't make infinite loops, but where the computation (say the waterfall matrix values) are limited by some resource in the deck itself, like it can use numbers up to 2**200 if you have 200 spare Islands in the deck. deck size is limited to something between 100 and 5000 cards by the rule that you have to be able shuffle your deck
+2020-03-07 15:38:20 <b_jonas> without assistance. the number of players might not be limited, but I don't think there are tournament games with more than 8 players or more than 8 decks.
