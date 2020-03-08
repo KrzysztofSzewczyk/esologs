@@ -93,3 +93,20 @@
 2020-03-08 16:58:21 <ais523-> the way to think about it is that the zeroing triggers are delayed for a while, then all run at once
 2020-03-08 16:58:53 <ais523-> b_jonas: that's ais523|telnet (or ais523|nc) when I do it, and merits less than half an underscore
 2020-03-08 16:59:21 <ais523-> really, the issue with the underscore scale is that ais523_ is actually fairly restricted, there should have been more scales with fewer underscores than that
+2020-03-08 17:00:21 <b_jonas> I don't recall what exact program I used to connect from the rescue system of debian install images
+2020-03-08 17:00:38 <ais523-> b_jonas: that is very very close to my current half-underscore setup, as it happens
+2020-03-08 17:00:47 <MTGBusyBeaver> you think it is actually TC? Interesting. I'm having a hard time seeing how it could behave nicely.
+2020-03-08 17:01:19 <ais523-> as a general rule, if you can't easily prove something sub-TC, and don't notice a restriction that seems insurmountable, it usually is TC
+2020-03-08 17:02:10 <MTGBusyBeaver> if it is, that opens up a lot more waterclocks (249-c where c is some small constant like 3)
+2020-03-08 17:02:31 <MTGBusyBeaver> and makes the setup a lot easier
+2020-03-08 17:04:25 <b_jonas> I don't think the difference between 120 and 240 clocks matters, if your limit on the matrix values isn't small
+2020-03-08 17:04:26 <zzo38> I add the underscores when the server is unaware that the connection with the name "zzo38" is lost.
+2020-03-08 17:04:37 <MTGBusyBeaver> also there was a question about how these implementations handle the case when two waterclocks zero at the same time. Both of their rules get run before the next decrements.
+2020-03-08 17:07:32 <ais523-> that's OK, any deterministic resolution will be OK for this
+2020-03-08 17:07:43 <ais523-> because you can write programs to never need to do that
+2020-03-08 17:08:03 <ais523-> obviously it has to be deterministic so that you can't create a loop where a player controls the number of iterations
+2020-03-08 17:08:48 <MTGBusyBeaver> yeah, exactly. Thats why we are using Coat of Arms as the way to boost toughness
+2020-03-08 17:09:01 <MTGBusyBeaver> `card-by-name Coat of Arms
+2020-03-08 17:09:03 <HackEso> Coat of Arms \ 5 \ Artifact \ Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Goblin Warriors and a Goblin Shaman are on the battlefield, each gets +2/+2.) \ EX-R, 7E-R, 8ED-R, 9ED-R, 10E-R, M10-R, DDS-R, H09-R
+2020-03-08 17:12:39 Joined: kspalaiologos
+2020-03-08 17:12:39 Names: ^[, ais523-, aji, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xylochoron[m], zzo38
