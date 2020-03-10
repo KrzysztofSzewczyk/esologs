@@ -71,3 +71,17 @@
 2020-03-10 11:17:13 Names: ^[, aji, aloril, APic, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu2, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-10 11:17:51 Joined: sprocklem
 2020-03-10 11:17:51 Names: ^[, aji, aloril, APic, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu2, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 11:44:21 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
+2020-03-10 11:44:21 <Taneb> (I still don't get how those MtG people are managing to iterate the busy beaver function)
+2020-03-10 11:47:57 <cpressey> Taneb: I think of it this way: there is an NTM that recognizes BB(BB(100)) and recognizes no larger finite numbers.
+2020-03-10 11:48:40 <cpressey> It recognizes smaller numbers, too - I think that's unavoidable.
+2020-03-10 11:48:55 <cpressey> But BB(BB(100)) is the largest finite number it recognizes.
+2020-03-10 11:49:45 <Taneb> So they're calculating a set with an upper bound of BB(BB(100))?
+2020-03-10 11:51:04 <cpressey> For a certain deck, there is a set of possible plays; the largest-damage play in this deck does a damage of BB(BB(100)). They don't *calculate* it. But it is a *possible* play of the deck.
+2020-03-10 11:51:31 <cpressey> If you were to somehow guess it, you could play it. You wouldn't *know* you guessed it.
+2020-03-10 11:51:51 <cpressey> Importantly: any larger guess would not be playable, with this deck.
+2020-03-10 11:52:19 <Taneb> Right, I think I understand now
+2020-03-10 11:52:47 <Taneb> They're making decks with extremely high but finite upper bounds on how much damage they can do
+2020-03-10 11:54:08 Joined: Sgeo
+2020-03-10 11:56:00 <cpressey> Right (and part of that is disallowing a deck if it can deal unbounded damage).
+2020-03-10 11:57:27 Quit: Sgeo (Ping timeout: 265 seconds)
