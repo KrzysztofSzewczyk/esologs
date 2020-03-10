@@ -277,3 +277,26 @@
 2020-03-10 22:27:03 <b_jonas> so you can't deal an unlimited amount of life and continue the match
 2020-03-10 22:27:10 <b_jonas> game
 2020-03-10 22:28:07 <b_jonas> sort of like http://anselan.com/tutorial.html
+2020-03-10 22:38:48 <b_jonas> ais523: wait, can the second case, the case when you deal an unlimited amount of damage to the opponent but you do this so fast that he never loses the game, even happen? I don't think such a tight loop is possible, because the opponent would lose at state-based effect speed.
+2020-03-10 22:39:58 <b_jonas> or do you just mean an infinite loop that doesn't deal damage to the opponent?
+2020-03-10 22:40:51 <ais523> `card-by-name Arcbond
+2020-03-10 22:40:52 <HackEso> Arcbond \ 2R \ Instant \ Choose target creature. Whenever that creature is dealt damage this turn, it deals that much damage to each other creature and each player. \ FRF-R
+2020-03-10 22:41:30 <ais523> the specific example is two copies of Arcbond on creatures with lifelink and indestructible
+2020-03-10 22:41:42 <ais523> the loop does damage on every iteration, but the players gain life too, so it never actually exits
+2020-03-10 22:41:55 <ais523> this would be "infinite damage" except that the game rules prevent the loop happening, because it has no way to end
+2020-03-10 22:42:15 <ais523> (the actual combo doesn't IIRC involve lifelink at the moment, but it has an alternative method to gain the players life)
+2020-03-10 22:43:33 <b_jonas> oh wtf. why would Wizards think that's a good idea to print, even as a rare?
+2020-03-10 22:43:55 <b_jonas> ah, the players gain life
+2020-03-10 22:43:59 <b_jonas> tricky
+2020-03-10 22:44:36 <ais523> double arcbond is used for the steady decrement in the current busy beaver TWM construction
+2020-03-10 22:44:40 <b_jonas> and yes, the opponent gaining life explains why my reasoning is wrong
+2020-03-10 22:45:09 Quit: LKoen (Remote host closed the connection)
+2020-03-10 22:45:09 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 22:45:12 <b_jonas> ais523: I'm not surprised about constructions using them. I'm just surprised that they printed that in a standard-legal set.
+2020-03-10 22:46:32 <b_jonas> so what you mustn't put in these decks are combos that are unlimited and a player can choose how many times they execute it
+2020-03-10 22:46:54 <b_jonas> at least if there's any possibility that something from it can be converted to damage to the opponent
+2020-03-10 22:47:16 <ais523> right
+2020-03-10 22:56:15 Joined: LKoen
+2020-03-10 22:56:15 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 22:57:59 Quit: LKoen (Client Quit)
+2020-03-10 22:57:59 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
