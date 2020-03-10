@@ -142,3 +142,64 @@
 2020-03-10 14:58:24 <wib_jonas> ok, but BB_6 of a non-small number still sounds hard to attain to me, so I'll have to look up the details later
 2020-03-10 14:59:34 <MTGBusyBeaver> The TM construction uses 2 creature types per waterclock, so we are limited to 124 waterclock (plenty enough to implement a Universal TM)
 2020-03-10 14:59:51 <wib_jonas> yes, that part doesn't sound too limiting
+2020-03-10 15:00:29 <MTGBusyBeaver> and yes I plan on getting this properly written up so that interested parties dont have to comb through the 100+ page forum thread.
+2020-03-10 15:01:00 <wib_jonas> ah yes, that's always the plan. at least there's a forum thread and irc logs where I'll be able to see the main ideas
+2020-03-10 15:02:11 <MTGBusyBeaver> well I did it for beating ghram's number in standard last year
+2020-03-10 15:02:34 <wib_jonas> I don't even know yet how you'll get a waterclock from Door of Destinies... no wait, what enchantment was it?
+2020-03-10 15:03:08 <MTGBusyBeaver> `card-by-name rotlung reanimator
+2020-03-10 15:03:10 <HackEso> Rotlung Reanimator \ 2B \ Creature -- Zombie Cleric \ 2/2 \ Whenever Rotlung Reanimator or another Cleric dies, create a 2/2 black Zombie creature token. \ ONS-R
+2020-03-10 15:03:19 <wib_jonas> Coat of Arms
+2020-03-10 15:03:25 <MTGBusyBeaver> `card-by-name coat of arms
+2020-03-10 15:03:26 <HackEso> Coat of Arms \ 5 \ Artifact \ Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Goblin Warriors and a Goblin Shaman are on the battlefield, each gets +2/+2.) \ EX-R, 7E-R, 8ED-R, 9ED-R, 10E-R, M10-R, DDS-R, H09-R
+2020-03-10 15:03:40 <wib_jonas> I do understand the Rotlung Reanimator construction, more or less
+2020-03-10 15:03:48 <MTGBusyBeaver> `card-by-name Dralnu's crusade
+2020-03-10 15:03:49 <HackEso> Dralnu's Crusade \ 1BR \ Enchantment \ Goblin creatures get +1/+1. \ All Goblins are black and are Zombies in addition to their other creature types. \ PS-R
+2020-03-10 15:03:59 <wib_jonas> there are three cards like Rotlung Reanimator, and they are very important for all these constructions
+2020-03-10 15:04:19 <MTGBusyBeaver> yeah we actually use bishop of wings but thats probably not in the DB
+2020-03-10 15:04:34 <wib_jonas> ...
+2020-03-10 15:04:37 <wib_jonas> ok, then there's more than three
+2020-03-10 15:04:37 Joined: imode
+2020-03-10 15:04:37 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 15:05:21 <wib_jonas> I knew of Rotlung Reanimator, Xathrid Necromancer, Hungry Lynx.
+2020-03-10 15:05:39 <MTGBusyBeaver> hungry lynx doesnt make tokens, it buffs tokens
+2020-03-10 15:06:03 <MTGBusyBeaver> it got replaced by coat of arms
+2020-03-10 15:06:17 <MTGBusyBeaver> to not be a triggered effect
+2020-03-10 15:06:18 <wib_jonas> doesn't matter, it still refers two different creature types that you can evolve
+2020-03-10 15:06:28 <wib_jonas> in an assymetric manner
+2020-03-10 15:06:34 <wib_jonas> that's sort of the limiting factor
+2020-03-10 15:07:06 <wib_jonas> we have very few cards that refer two creature types in such a way that we can use it for constructions where one creature type is the trigger and the other is the action and it's repeatable enough to run the program
+2020-03-10 15:07:16 <MTGBusyBeaver> yeah so the construction is a bunch of crusades saying all X' are X
+2020-03-10 15:08:05 <MTGBusyBeaver> and the bishops triggering on X dying to make a',b',c's
+2020-03-10 15:08:25 <MTGBusyBeaver> and remaking the one X
+2020-03-10 15:08:37 <wib_jonas> but if you still have a card like Bishop of Wings in, then I'm not too surprised
+2020-03-10 15:08:50 <wib_jonas> I assumed too much when you mentioned the Coat of Arms
+2020-03-10 15:09:02 <wib_jonas> I mean, I'm still surprised about BB_6 on a large number
+2020-03-10 15:09:11 <wib_jonas> but not about having a working universal computer
+2020-03-10 15:09:29 <wib_jonas> just surprised on having a deck with such a large damage limit but no infinite damage loop
+2020-03-10 15:09:37 <wib_jonas> without DMM's additional rules
+2020-03-10 15:10:02 <MTGBusyBeaver> and yes there are often unintended infinites that need to get patched out
+2020-03-10 15:12:12 <wib_jonas> you know that ais's original attempt to simulate StackFlow failed beacuse of too much freedom on putting triggers onto the stack, and we never found a fix for that, right?
+2020-03-10 15:12:24 <wib_jonas> that's why it scared me when you mentioned trigger stacking order about this construction
+2020-03-10 15:13:00 <wib_jonas> eventually ais invented The Waterfall Machine instead, and simulated that, so that problem got solved, but still
+2020-03-10 15:13:23 <MTGBusyBeaver> that's why coat of arms is perfect, it doesnt matter what order the tokens get made in
+2020-03-10 15:13:34 <MTGBusyBeaver> they will all be the same size
+2020-03-10 15:13:51 <MTGBusyBeaver> and will all die at the same time
+2020-03-10 15:15:34 <MTGBusyBeaver> we do need to force only our opponent to have bishops when the TM starts running
+2020-03-10 15:15:52 <MTGBusyBeaver> so that the arcbond trigger is forced to be at the bottom.
+2020-03-10 15:16:50 <wib_jonas> but I don't understand how Coat of Arms is used, or how you're using creature types
+2020-03-10 15:17:12 <wib_jonas> do you have two creature types per clock? and how do you use them?
+2020-03-10 15:17:32 <MTGBusyBeaver> yeah 2 perclock
+2020-03-10 15:18:25 <MTGBusyBeaver> we have the main creature type and a secondary type for each clock
+2020-03-10 15:19:26 <MTGBusyBeaver> Dralnu's crusade gets hacked to say that the primary type is also the secondary type
+2020-03-10 15:20:11 <MTGBusyBeaver> Bishops trigger on the primary type dying and make secondary types for the appropriate clocks and also remake the primary
+2020-03-10 15:22:01 <MTGBusyBeaver> Coat of arms causes the secondary creatures to buff the primary ones, keeping them at the proper distance from dead, as well as ensuring that any damage that kills the primary will also kill all of the secondaries.
+2020-03-10 15:22:26 <wib_jonas> so you only have one creature per primary creature type?
+2020-03-10 15:22:30 <MTGBusyBeaver> yes
+2020-03-10 15:22:37 <wib_jonas> that might work
+2020-03-10 15:22:58 <wib_jonas> then only that one creature causes death triggers, but it takes its size from the lots of creatures of the secondary type
+2020-03-10 15:23:19 <wib_jonas> that's a new idea, I don't think I've seen it in the previous constructions, and it does explain Coat of Arms
+2020-03-10 15:25:43 <wib_jonas> that's a nice trick
+2020-03-10 15:26:14 <wib_jonas> there are a few cards that have such triggers built-in, I'll have to look at them if they're usable for something:
+2020-03-10 15:26:25 <MTGBusyBeaver> yeah, though we'd also like to know/prove if the variant without Dralnu's crusades is TC, there its just one creature type so the death triggers start getting multiplied and compoinding pretty quick
+2020-03-10 15:26:46 <wib_jonas> Mark of the Oni; Stenchskipper
+2020-03-10 15:29:49 <wib_jonas> maybe Ophiomancer but unlikely
