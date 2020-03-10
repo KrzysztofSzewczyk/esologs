@@ -259,3 +259,21 @@
 2020-03-10 20:25:17 <esowiki> 14[[07MyScript14]]4 M10 02https://esolangs.org/w/index.php?diff=70241&oldid=70239 5* 03PythonshellDebugwindow 5* (+1631) 10
 2020-03-10 21:18:49 Joined: sprocklem
 2020-03-10 21:18:49 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 22:13:05 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=70242&oldid=70183 5* 03Hakerh400 5* (+14) 10+[[Siterip]]
+2020-03-10 22:13:08 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=70243&oldid=70167 5* 03Hakerh400 5* (+14) 10+[[Siterip]]
+2020-03-10 22:14:05 Joined: ais523
+2020-03-10 22:14:05 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 22:14:36 <esowiki> 14[[07Siterip14]]4 N10 02https://esolangs.org/w/index.php?oldid=70244 5* 03Hakerh400 5* (+49652) 10+[[Siterip]]
+2020-03-10 22:15:26 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-10 22:15:26 <ais523> hmm, I've finally figured out why you can't create an infinite damage loop with the present construction
+2020-03-10 22:15:35 <ais523> it's set up so that you can't interrupt a damage loop at instant speed
+2020-03-10 22:15:46 <ais523> so either the loop ends naturally (e.g. with the opponent dying) in which case it isn't infinite
+2020-03-10 22:16:06 <ais523> or else, the loop /is/ infinite, but in that case the game ends in a draw before any damage is actually dealt, because it's infinite
+2020-03-10 22:16:24 <ais523> the important point is that you can't have any manual control over the amount of damage dealt once the loop is started
+2020-03-10 22:23:12 <ais523> this feels unsatisfyingly tautologous, it's "you can't create an infinite loop because you can't create an infinite loop"
+2020-03-10 22:23:30 <ais523> but it more boils down to "you can't create an arbitrarily large loop because you have no mechanism to specify an arbitrarily large number"
+2020-03-10 22:24:07 <ais523> it's rather counterintuitive to the normal idea of "no infinite combos", though; there are infinite combos, which can kill opponents from any amount of life, but you can't overkill via a chosen amount of life so it still fits the definition
+2020-03-10 22:27:03 User Name: b_jonas = b_jonas!~x@catv-176-63-14-64.catv.broadband.hu
+2020-03-10 22:27:03 <b_jonas> so you can't deal an unlimited amount of life and continue the match
+2020-03-10 22:27:10 <b_jonas> game
+2020-03-10 22:28:07 <b_jonas> sort of like http://anselan.com/tutorial.html
