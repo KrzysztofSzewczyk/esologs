@@ -123,3 +123,22 @@
 2020-03-10 13:52:57 <Cale> cpressey: Well, if somehow we could prove in ZFC that a Turing machine with a concrete representation only accepted, for example, BB(1919), then there would additionally be a finite sequence of steps in ZFC explaining the evaluation of that Turing machine on a particular numeral n = S(S(S...(SZ)...) and thus deciding the value of BB(1919). But there is a Turing machine with 1919 states which unless ZFC is
 2020-03-10 13:52:57 <Cale> inconsistent, ZFC can't prove that it terminates, because the machine searches for contradictions in ZFC.
 2020-03-10 13:57:49 <Cale> At the same time, it's fine that ZFC proves that such a Turing machine exists in the sense of proving a sentence of the form (exists x. ...) because it doesn't necessarily tell us what that machine is.
+2020-03-10 14:30:25 <cpressey> "The NTM that accepts BB(BB(100)) necessarily accepts smaller numbers too" <-- After taking a walk, I think this is not quite right now. But it all makes my head spin.
+2020-03-10 14:38:24 <Taneb> You can definitely make a turing machine that accepts that number and only that number, if you happen to out-of-band know what that number happens to be
+2020-03-10 14:41:05 <cpressey> "Do you accept this number?" "Yes." "Do you accept any smaller numbers?" "No." "Do you accept any larger numbers?" "Beats me, pal."
+2020-03-10 14:45:31 Joined: MTGBusyBeaver
+2020-03-10 14:45:32 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-10 14:47:13 User Name: MTGBusyBeaver = MTGBusyBeaver!4c69b9e2@c-76-105-185-226.hsd1.or.comcast.net
+2020-03-10 14:47:13 <MTGBusyBeaver> Sorry to miss the earlier conversation about how we iterate the BB function
+2020-03-10 14:48:07 <Taneb> No worries, I'm satisfied with it now
+2020-03-10 14:50:45 <MTGBusyBeaver> Without going too deep into the technical details, the TM outputs a resource (life) that we can use to increase the efficiency of our conversion into more/bigger TMs
+2020-03-10 14:51:24 <MTGBusyBeaver> chaining these together lets us get higher order BB functions.
+2020-03-10 14:53:28 <wib_jonas> sure, but don't you run out of kinds of resources? M:tG doesn't offer that many easily usable types, and you need some for internal use by the turing machine, and some for the part before that generates the resource that limits the entries of the waterfall matrix
+2020-03-10 14:54:14 <wib_jonas> don't you get all sorts of conflicts where the cards of the deck can be used in ways other than you planned?
+2020-03-10 14:56:07 <MTGBusyBeaver> yes the number of resources is why we are at about BB_6 instead of higher.
+2020-03-10 14:56:52 <MTGBusyBeaver> The TM itself uses creatures and bans many instants
+2020-03-10 14:57:34 <MTGBusyBeaver> The setup is extremely limiting with the number of creatures and enchantments we can have total
+2020-03-10 14:57:50 <MTGBusyBeaver> (non aura enchantments)
+2020-03-10 14:58:24 <wib_jonas> ok, but BB_6 of a non-small number still sounds hard to attain to me, so I'll have to look up the details later
+2020-03-10 14:59:34 <MTGBusyBeaver> The TM construction uses 2 creature types per waterclock, so we are limited to 124 waterclock (plenty enough to implement a Universal TM)
+2020-03-10 14:59:51 <wib_jonas> yes, that part doesn't sound too limiting
