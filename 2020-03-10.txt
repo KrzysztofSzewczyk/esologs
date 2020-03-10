@@ -85,3 +85,11 @@
 2020-03-10 11:54:08 Joined: Sgeo
 2020-03-10 11:56:00 <cpressey> Right (and part of that is disallowing a deck if it can deal unbounded damage).
 2020-03-10 11:57:27 Quit: Sgeo (Ping timeout: 265 seconds)
+2020-03-10 12:04:15 <esowiki> 14[[07Dotsy14]]4 N10 02https://esolangs.org/w/index.php?oldid=70238 5* 03Quadril-Is 5* (+333) 10Quick copy paste from samsung notes
+2020-03-10 12:05:08 <cpressey> "100" is just picked out of the air. int-e used 10^100. I think the actual constant is limited by what you can encode in the deck.
+2020-03-10 12:05:50 <cpressey> But I'm not sure you couldn't also make a deck iterate BB multiple times, so you could maybe BB(BB(BB(BB(BB(6))))) - you probably don't need a large constant.
+2020-03-10 12:10:28 <Taneb> 01:47 MTGBusyBeaver: so BB_2(X) is BB(BB(BB(...X) where there are BB(X) nested functions
+2020-03-10 12:10:28 <Taneb> 01:50 MTGBusyBeaver: We are currently getting to at least BB_6(X) and possibly to as much as BB_8(X)
+2020-03-10 12:12:25 <wib_jonas> wait what_
+2020-03-10 12:12:31 <wib_jonas> really?
+2020-03-10 12:13:44 <Taneb> I only have MTGBusyBeaver's word for it
