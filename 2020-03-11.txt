@@ -1,0 +1,74 @@
+2020-03-11 00:14:16 User Name: arseniiv = arseniiv!~arseniiv@94.41.3.175.dynamic.ufanet.ru
+2020-03-11 00:14:16 <arseniiv> was here a holy war about whether ++ and -- (and specifically, both prefix and postfix kinds of these) are such a good thing in a language?
+2020-03-11 00:15:06 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-11 00:15:06 <ais523> just putting this out there for people who are interested: I've made a draft of what a 10+halt-waterclock interpreter for a TC language in The Waterfall Model could look like: http://nethack4.org/pastebin/and-high-rise.txt
+2020-03-11 00:15:13 <b_jonas> arseniiv: not really a hot holy war, but python and ruby silently don't have them
+2020-03-11 00:15:32 <ais523> I haven't proved this TC, nor implemented the actual interpreter yet
+2020-03-11 00:15:42 <ais523> just described the basic design and what all the waterclocks are used for
+2020-03-11 00:15:47 <ais523> so it's quite possible there's a mistake
+2020-03-11 00:15:50 <ais523> but I thought I'd post it anyway
+2020-03-11 00:16:08 <ais523> it's almost certainly possible to do better than 10 but I thought I'd err on the side of producing something TC
+2020-03-11 00:16:42 <arseniiv> b_jonas: yeah Python is amidst sane ones here :) (for what I think)
+2020-03-11 00:17:18 Joined: MtGBusyBeaver
+2020-03-11 00:17:19 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MtGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-11 00:17:29 <b_jonas> ais523: do you also have a suspected order of magnitude on the upper bound of the waterfall matrix elements, as a function of the program size in some other more well-known computational model?
+2020-03-11 00:17:32 <arseniiv> ais523: The Waterfall Model is nice
+2020-03-11 00:17:44 <b_jonas> I'd like to know how many exponentials you need
+2020-03-11 00:18:16 <ais523> b_jonas: two of the matrix exponents are probably single-exponential in the size of a 2-tag system that emulates the program
+2020-03-11 00:18:30 User Name: MtGBusyBeaver = MtGBusyBeaver!4c69b9e2@c-76-105-185-226.hsd1.or.comcast.net
+2020-03-11 00:18:30 <MtGBusyBeaver> I am also curious to how big the initial setup needs to be
+2020-03-11 00:18:34 <ais523> err, actually 1, in this construction
+2020-03-11 00:18:42 <ais523> MtGBusyBeaver: a double-arrow number is enough, a single-arrow number might not be
+2020-03-11 00:18:55 <MtGBusyBeaver> ezpz
+2020-03-11 00:19:10 <ais523> I wasn't quite sure how powerful the pre-BB layers would be
+2020-03-11 00:19:34 <ais523> if you can reconfigure the machine between iterations you can make do with small numbers by constructing a Waterfall Model program whose purpose is to output a large number rather than to be a UTM
+2020-03-11 00:19:35 <MtGBusyBeaver> they are less powerful for sure, but they are still layers
+2020-03-11 00:19:57 <MtGBusyBeaver> so they are roughly one arrow each
+2020-03-11 00:19:58 <b_jonas> ais523: yes, but how about a 150***3 or 150***4 number? I'd like to know how many exponentials you need. a double arrow number like 150***150 is likely enough.
+2020-03-11 00:20:05 <ais523> but I figured you'd probably find a way to create a double-arrow number
+2020-03-11 00:20:27 <ais523> b_jonas: well, the issue is that you're encoding the UTM you want to run as the digits of a number
+2020-03-11 00:20:30 <b_jonas> not many of even your esolanguages need more than a few levels of exponential to simulate something sane
+2020-03-11 00:20:32 <ais523> so it's exponential in the size of the UTM
+2020-03-11 00:20:43 <b_jonas> ais523: yes, there are no inputs, only program
+2020-03-11 00:20:52 <b_jonas> both in the turing machine you run and the waterfall program
+2020-03-11 00:21:07 <ais523> I believed I only used a double-exponential (2**(2**x)) once, and even in that situation it later turned out to be unnecessary
+2020-03-11 00:21:07 <b_jonas> that's why I asked as a function of the program size
+2020-03-11 00:21:11 <ais523> *I believe
+2020-03-11 00:21:11 <MtGBusyBeaver> we can probably make something like 5-7 arrows with just what we have
+2020-03-11 00:22:00 <b_jonas> ais523: though I guess in this case I have to ask this restricted to less than a hundred waterclocks, regardless of input program size, to be more relevant for M:tG
+2020-03-11 00:22:10 <ais523> b_jonas: this is a specific construction with 10 waterclocks
+2020-03-11 00:22:15 <ais523> + a halt waterclock
+2020-03-11 00:22:25 <ais523> that I haven't figured out the details of yet, but have a basic plan for
+2020-03-11 00:22:43 <b_jonas> MtGBusyBeaver: I also guess that just a double arrow number like 150***150 should be enough for most programs
+2020-03-11 00:22:56 <b_jonas> four arrows like you mentioned earlier should be more than enough
+2020-03-11 00:22:58 <ais523> the idea is to implement a version of High Rise in base 3 where carrying is disallowed, sequences 0 and 1 are empty, and sequence 2 alternates between a geometric progression and 0
+2020-03-11 00:23:47 <ais523> that High Rise language, I'm about 99% confident has a fairly direct implementation of 2-tag
+2020-03-11 00:23:54 <MtGBusyBeaver> well once we run one BB we have access to that number so iterations really grow very fast
+2020-03-11 00:24:23 <ais523> via arranging the base of sequence 2's geometric progression so that the distances between pairs of 2s in the data string (with one intervening 2 between them) represent tag system elements
+2020-03-11 00:24:26 <b_jonas> MtGBusyBeaver: yes, the question is just how larege you need to start the bootstrapping
+2020-03-11 00:24:47 <arseniiv> . o O ( wait, only just now I noticed that zero arrows is the multiplication (and both can be denoted by an empty string), so arrow notation is even better than I thought! )
+2020-03-11 00:24:52 <b_jonas> it almost certainly won't be a problem in your M:tG construction, but I'm still curious for reasons other than that construction
+2020-03-11 00:24:55 <ais523> and I'm also fairly confident that a The Waterfall Model program using the waterclock assignment I linked above can be made to implement it
+2020-03-11 00:25:09 <MtGBusyBeaver> checking the logs for it
+2020-03-11 00:25:42 <MtGBusyBeaver> http://nethack4.org/pastebin/and-high-rise.txt this link?
+2020-03-11 00:25:43 <b_jonas> ais523: that should work. and how many exponentials do you need to encode *to* a 2-tag system
+2020-03-11 00:25:54 <ais523> now, if you have a double-arrow startup, you could make do with a fixed program (and simply varying the initial waterclock sizes) by writing a UTM in 2-tag and hardcoding that
+2020-03-11 00:25:59 <ais523> MtGBusyBeaver: right
+2020-03-11 00:26:12 <ais523> MtGBusyBeaver: although it's just a thought dump rather than presented in a way that's easy to follow
+2020-03-11 00:26:17 <ais523> https://esolangs.org/wiki/High_Rise might help for some context
+2020-03-11 00:26:48 <ais523> I will probably end up writing out the explicit proofs and Waterfall Model machine at some point, but likely not in the next few days because I have a day job
+2020-03-11 00:27:14 <ais523> b_jonas: I don't know offhand how complex UTMs in 2-tag are
+2020-03-11 00:27:15 <b_jonas> nice
+2020-03-11 00:27:43 <b_jonas> ais523: I'm not asking for an UTM there, rather how large the tag system program is as a function of the program you're compiling from
+2020-03-11 00:27:49 <ais523> the problem with languages that are "well known" to be TC is that I often haven't proved them TC myself and thus don't have much of an intuitive idea of what the complexities are like
+2020-03-11 00:28:03 <b_jonas> ais523: for the Waterfall model, you need an UTM so that the program always fits in 150 or so waterclocks, because the M:tG construction can't handle more
+2020-03-11 00:28:23 <ais523> b_jonas: well, this is the usual trick when optimising universal machines
+2020-03-11 00:28:38 <ais523> you want your machine to be small, so you want as little code as possible, so much of the complexity is in the data
+2020-03-11 00:28:47 <b_jonas> yeah, I guess that's true
+2020-03-11 00:28:59 <b_jonas> if you only care about program size, not runtime (and we don't care about runtime here), then an UTM probably helps
+2020-03-11 00:29:08 <ais523> just look at, e.g., Three Star Programmer or the I/D machine
+2020-03-11 00:29:28 <MtGBusyBeaver> well we have to do shenanigans to get 124 clocks
+2020-03-11 00:29:44 <ais523> the interpreters are ridiculously simple and small, but writing a program to do anything is very complex because you have to code all the basic operations you want into the program itself
+2020-03-11 00:29:52 <b_jonas> sure
+2020-03-11 00:29:55 <MtGBusyBeaver> 12 and under requires much less restriction on the setu
+2020-03-11 00:30:01 <MtGBusyBeaver> setup
