@@ -72,3 +72,72 @@
 2020-03-11 00:29:52 <b_jonas> sure
 2020-03-11 00:29:55 <MtGBusyBeaver> 12 and under requires much less restriction on the setu
 2020-03-11 00:30:01 <MtGBusyBeaver> setup
+2020-03-11 00:30:32 <ais523> Three Star Programmer requires a complex one-time setup just to be able to write to specific memory addresses, for example, then needs to neutralise the extra copies of that setup on every future iteration because it has no way to run code only once
+2020-03-11 00:30:57 <MtGBusyBeaver> and it looks like 10 is going to be enough for TC-ness
+2020-03-11 00:31:00 <ais523> MtGBusyBeaver: that's why I was aiming for 12 as a target, it's nice to have a concrete number rather than continuously worry about if I'm wasting a waterclock somewhere
+2020-03-11 00:31:12 <ais523> the 10 is almost certainly improvable, but I can't immediately see how
+2020-03-11 00:31:18 <b_jonas> "no way to run code only once" => oh no... Countercall
+2020-03-11 00:31:36 <ais523> b_jonas: I think oerjan proved Countercall sub-TC? although I can't remember
+2020-03-11 00:31:50 <b_jonas> did he?
+2020-03-11 00:32:03 <ais523> it'll be in the IRC logs from around when Countercall was created
+2020-03-11 00:32:16 <MtGBusyBeaver> also reading the logs, there are actually two ways for the MTG program to halt
+2020-03-11 00:32:22 <MtGBusyBeaver> either by killing them
+2020-03-11 00:32:37 <MtGBusyBeaver> or by killing all of the other arcbonded creatures
+2020-03-11 00:33:11 <MtGBusyBeaver> the second one can be delayed in a BB method and we can prevent them from dying
+2020-03-11 00:34:24 <MtGBusyBeaver> so the creatures with arcbond act as the halting clock
+2020-03-11 00:34:36 <ais523> one nice thing about your construction is that I think it has no limit on "self-reset" values, right?
+2020-03-11 00:34:43 <ais523> a waterclock that zeroes can set itself to any value
+2020-03-11 00:34:49 <MtGBusyBeaver> yes
+2020-03-11 00:35:15 <ais523> with the Hungry Lynx construction, I used Elesh Norn partly for the static +2/+2, giving me a self-reset max of 4, because I was worried it might not be high enough
+2020-03-11 00:35:26 <ais523> (although I think we subsequently discovered that a self-reset of 3 is enough)
+2020-03-11 00:35:50 <ais523> but large self-resets might be needed for the 10-waterclock construction
+2020-03-11 00:36:37 <MtGBusyBeaver> the +1/+1 from dralnu's crusade means we can't reset ourself smaller than 2
+2020-03-11 00:36:38 <b_jonas> ais523: I'm not entirely sure, but I think oerjan only conjectured that Countercall is not TC, and proved something much weaker
+2020-03-11 00:36:44 <ais523> ah, OK
+2020-03-11 00:36:54 <ais523> MtGBusyBeaver: there's no issue with low self-resets
+2020-03-11 00:36:55 <b_jonas> at least that's what it seems from checking the logs again
+2020-03-11 00:36:58 <b_jonas> but it could be hiding anywhere
+2020-03-11 00:37:02 <ais523> you can always just increase all the other waterclocks to compensate
+2020-03-11 00:37:15 <MtGBusyBeaver> yeah, but it is worth noting
+2020-03-11 00:37:35 <ais523> right, definitely worth being aware of all your limitations
+2020-03-11 00:38:36 <MtGBusyBeaver> also if you need any of the "growing"/"flooding" type clocks those don't count towards the 12 limit
+2020-03-11 00:39:26 <ais523> right, I figured that out; it might be interesting to try to create a UTM with some number of those
+2020-03-11 00:39:42 <ais523> you'd want to store data using the length of time the program had been running
+2020-03-11 00:40:00 <ais523> even with the help of a few normal clocks, though, it'd be a pain to keep things under control
+2020-03-11 00:40:09 <MtGBusyBeaver> yeah it seems really chaotic
+2020-03-11 00:40:21 <MtGBusyBeaver> volatile
+2020-03-11 00:43:33 <b_jonas> ais523: anyway, it's useful to know that you will probably be able to prove that 10 or 12 clocks are enough
+2020-03-11 00:43:55 <b_jonas> for turing-completeness that is
+2020-03-11 00:44:07 <MtGBusyBeaver> well that 10 proof looks close so 12 is almost assured
+2020-03-11 00:45:11 <b_jonas> oh, since we're talking about M:tG, I wanted to advertise the play-by-post M:tG variant game that we're running: https://forums.giantitp.com/showthread.php?601011
+2020-03-11 00:46:55 <MtGBusyBeaver> three card blind always interesting
+2020-03-11 00:47:12 <b_jonas> each round, players secretly choose a 3-card deck, then they're revealed, then each deck plays two games against each other deck, you don't lose for drawing from an empty library, all game information that would normally be hidden is known, we figure out the result of each game assuming perfect play,
+2020-03-11 00:47:30 <ais523> that sounds like 3-card blind so far
+2020-03-11 00:47:41 <ais523> I assume luck always goes against the player who put the luck card in their deck?
+2020-03-11 00:47:45 <MtGBusyBeaver> my first forum name was to participate in that on the old WotC
+2020-03-11 00:47:48 <MtGBusyBeaver> forums
+2020-03-11 00:47:59 <b_jonas> players get a point for a draw and three points for a match won, the player with the most points in that round wins the round and an internet point and right to boast.
+2020-03-11 00:48:16 <MtGBusyBeaver> IIRC luck was decided by the opponent
+2020-03-11 00:49:21 <b_jonas> ais523: yes, it's 3-card blind, and yes, random choices go against the person who put that card in their deck
+2020-03-11 00:51:26 <b_jonas> and it's vanishing, which means that the cards from the deck that won a round are banned from future rounds, except certain cards like basic lands and storage lands are immune to getting banned this way.
+2020-03-11 00:52:44 <b_jonas> and you aren't allowed to mulligan, despite that with the latest mulligan rule it would actually help you if you could
+2020-03-11 00:53:23 <b_jonas> but apparently the player base is conservative and not used to the new mulligan rule yet, so they don't want to upset the meta from that
+2020-03-11 00:55:38 <ais523> I can't think of many situations where you'd prefer to have a card in your deck than in your hand
+2020-03-11 00:55:46 <MtGBusyBeaver> miracles
+2020-03-11 00:55:47 <ais523> maybe if you're going second and the opponent is playing Thoughtseize or the like?
+2020-03-11 00:55:57 <ais523> oh yes, miracles, didn't think of that one but it's obvious now you said it
+2020-03-11 00:56:02 Quit: arseniiv (Ping timeout: 256 seconds)
+2020-03-11 00:56:03 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MtGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-11 00:56:31 <b_jonas> ais523: that's sort of why the situation didn't come up before the current mulligan rule
+2020-03-11 00:56:37 <b_jonas> but read the new mulligan rule:
+2020-03-11 00:57:44 <ais523> you put cards from hand on the bottom of your library, so you choose which one you put there
+2020-03-11 00:57:49 <ais523> rather than it being random
+2020-03-11 00:57:50 <b_jonas> exactly
+2020-03-11 00:58:09 <b_jonas> so now it mostly protects you from Burning Inquiry and other discards
+2020-03-11 00:58:25 <b_jonas> well, it would
+2020-03-11 00:58:31 <b_jonas> not completely, but to a very large amount
+2020-03-11 00:58:45 <b_jonas> only we don't allow mulliganing, as a house rule, so nope
+2020-03-11 00:59:12 <ais523> well, you have a house rule to not lose by outdraw
+2020-03-11 00:59:21 <ais523> but that can happen during mulligans in regular MTG
+2020-03-11 00:59:24 <ais523> so it's a bit of a weird interaction
+2020-03-11 00:59:44 <ais523> (admittedly, it requires Shahrazad to be possible in a black-border game)
