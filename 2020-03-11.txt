@@ -141,3 +141,67 @@
 2020-03-11 00:59:21 <ais523> but that can happen during mulligans in regular MTG
 2020-03-11 00:59:24 <ais523> so it's a bit of a weird interaction
 2020-03-11 00:59:44 <ais523> (admittedly, it requires Shahrazad to be possible in a black-border game)
+2020-03-11 01:00:22 <b_jonas> nevertheless, we did manage to get strange metas from newly released broken cards, most notably the non-black-bordered small print run cards Impatient Iguana and Mirror Lotus
+2020-03-11 01:00:34 <b_jonas> s/Mirror Lotus/Mirrored Lotus/
+2020-03-11 01:01:52 <ais523> `card-by-name mirrored lotus
+2020-03-11 01:01:52 <HackEso> No output.
+2020-03-11 01:02:09 <ais523> oh, wait, is this from Unsanctioned?
+2020-03-11 01:02:09 <b_jonas> *newly released*
+2020-03-11 01:02:13 <b_jonas> no
+2020-03-11 01:02:29 <ais523> oh, Mystery Booster Playtest
+2020-03-11 01:02:42 <b_jonas> ais523: technically does not require Shahrazad anymore, because of Karn Liberated, but that won't come up in a real game, because you'll win before it'd happen
+2020-03-11 01:02:46 <b_jonas> ais523: yes
+2020-03-11 01:02:50 <ais523> that isn't a silver-bordered card, it has a black border and a "not for constructed play" footer
+2020-03-11 01:03:06 <b_jonas> ais523: I didn't say silver-bordered, I only said non-black-bordered
+2020-03-11 01:03:14 <b_jonas> also not gold bordered
+2020-03-11 01:03:24 <b_jonas> I'm not sure if it technically counts as having any border
+2020-03-11 01:03:34 <ais523> the border is black, though, with a few intrusions
+2020-03-11 01:03:53 <MtGBusyBeaver> oh the playtest cards
+2020-03-11 01:03:54 <b_jonas> but isn't that just the border of the card that the playtest sticker is sticked on?
+2020-03-11 01:04:10 <b_jonas> the properties of that card shouldn't matter
+2020-03-11 01:04:19 <b_jonas> even if you can somehow see them
+2020-03-11 01:04:40 <ais523> b_jonas: the underlying card is part of the card, as printed, though
+2020-03-11 01:04:45 <ais523> the sticker is also part of the card
+2020-03-11 01:04:51 <ais523> they're on the same print sheet and printed together
+2020-03-11 01:05:03 <b_jonas> that said, there probably won't be a judgement on this, because there are only three un-cards that care about whether a card is black-bordered
+2020-03-11 01:05:12 <ais523> so the underlying card is part of the card; most of its properties don't matter because there's a sticker over it, but I'd argue it determines the border color
+2020-03-11 01:05:22 <b_jonas> ais523: yes, but the underlying card shouldn't matter to determine characteristics
+2020-03-11 01:05:30 <b_jonas> well I don't know
+2020-03-11 01:06:22 <ais523> the sticker doesn't cover the border
+2020-03-11 01:06:24 <b_jonas> maybe they are black-bordered then
+2020-03-11 01:06:38 <ais523> it's a bit like host/augment, parts of the card are covered by the augment but those parts that aren't still count
+2020-03-11 01:06:48 <ais523> or Curse of the Fire Penguin
+2020-03-11 01:06:53 <ais523> `card-by-name curse of the fire penguin
+2020-03-11 01:06:54 <HackEso> Curse of the Fire Penguin \ 4RR \ Enchantment -- Aura \ Enchant creature \ Curse of the Fire Penguin consumes and confuses enchanted creature. \ UNH-R \  \ Curse of the Fire Penguin Creature \ 4RR \ Creature -- Penguin \ 6/5 \ Trample \ When this creature dies, return Curse of the Fire Penguin to the battlefield. \ UNH-R
+2020-03-11 01:07:17 <ais523> was wondering how the bot would represent that thing
+2020-03-11 01:07:20 <ais523> I guess that's a decent effort
+2020-03-11 01:07:38 <b_jonas> ais523: I don't think playtest stickers are like that. if they were, I'd make an Ulamog proxy such that the sticker happens to not cover the mana cost {W}
+2020-03-11 01:07:51 <ais523> b_jonas: the cards in question are not playtest stickers
+2020-03-11 01:07:58 <ais523> they're cards whose design /looks/ like a playtest sticker
+2020-03-11 01:08:23 <b_jonas> sure
+2020-03-11 01:08:25 <ais523> but the sticker and underlying card are part of the same printed card, and in particular the underlying card is always the same
+2020-03-11 01:08:34 <b_jonas> and admittedly they made a good job where the playtest sticker covers almost everything
+2020-03-11 01:09:16 <ais523> I think I'd take border color and frame color from the underlying card, but pinline color from the sticker
+2020-03-11 01:09:28 <b_jonas> ok, then they're black-bordered cards that aren't valid for tournaments
+2020-03-11 01:09:33 <ais523> that said, I'm not sure if M:tG will ever have a card that cares about pinline color
+2020-03-11 01:09:34 <MtGBusyBeaver> Form of the mulldrifter is clearly on a mulldrifter though
+2020-03-11 01:09:44 <ais523> even silver-bordered
+2020-03-11 01:10:02 <b_jonas> that category already exists I think, because I think some very low print run cards were printed as black bordered with square corners rather than gold bordered
+2020-03-11 01:10:30 <b_jonas> pinline color would be tricky because pre-Mirrodin cards don't have it
+2020-03-11 01:10:53 <b_jonas> MtGBusyBeaver: heh, indeed
+2020-03-11 01:12:40 <b_jonas> MtGBusyBeaver: and One with Death is on One with Nothing
+2020-03-11 01:13:07 <ais523> One with Death is actually a fairly good card in constructed, IIRC
+2020-03-11 01:13:26 <ais523> because there are a few combos that force your opponent to resolve one of your spells, and that's about the strongest possible payoff for one of those
+2020-03-11 01:15:04 <b_jonas> ais523: that sounds a bit hard to do. isn't the normal route just donating an Illusions of Grandeur or a Phage?
+2020-03-11 01:16:26 <MtGBusyBeaver> Hive Mind + pact of negation
+2020-03-11 01:16:57 <ais523> I think Hive Mind is the most common core of the combo
+2020-03-11 01:16:59 <ais523> `card-by-name Hive Mind
+2020-03-11 01:17:00 <HackEso> Hive Mind \ 5U \ Enchantment \ Whenever a player casts an instant or sorcery spell, each other player copies that spell. Each of those players may choose new targets for their copy. \ M10-R
+2020-03-11 01:17:14 <ais523> you don't even need anything else when using One With Death because the opponent's copy resolves first
+2020-03-11 01:17:48 <ais523> the normal kill in tournaments uses pacts in the hope that the opponent doesn't have the right color of mana to pay for them
+2020-03-11 01:18:20 <b_jonas> I see
+2020-03-11 01:19:38 <b_jonas> I played a Phage deck twice in the three card blind, got a second place from it once, and that one doesn't try to get the opponent to resolve Phage, just puts it to play under the opponent's control (as one path to win; the other is to just play it and attack with it)
+2020-03-11 01:22:35 Quit: MtGBusyBeaver (Remote host closed the connection)
+2020-03-11 01:22:35 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-11 01:23:55 Joined: MTGBusyBeaver
+2020-03-11 01:23:55 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, MTGBusyBeaver, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
