@@ -343,3 +343,108 @@
 2020-03-12 19:29:18 <b_jonas> `datei
 2020-03-12 19:29:20 <HackEso> 2020-03-12 19:29:19.493 +0000 UTC March 12 Thursday 2020-W11-4
 2020-03-12 19:29:26 <b_jonas> 2020-W11-4 <--- that thing
+2020-03-12 19:30:17 <b_jonas> int-e: I think the date was written as 2020 MAY 30 first, then someone changed the MAY to 05 but wasn't precise enough with the corrector fluid
+2020-03-12 19:30:35 <b_jonas> or possibly 2020 MAI 30
+2020-03-12 19:31:26 <int-e> b_jonas: It's how Firefox renders the expiration date of certificates for me in the "Security" tab of the "Page info" dialog...
+2020-03-12 19:31:37 <int-e> (And no, it's M for all months.)
+2020-03-12 19:32:03 <int-e> This may have something to do with it, of course: LC_TIME="POSIX"
+2020-03-12 19:32:35 <b_jonas> int-e: oh, that's an improvement. aren't those expiration dates stored in some insane format in the certificates, with the fields in some random order like %m%d%y%H%M%C%Z,%S ?
+2020-03-12 19:33:21 <ais523> huh, so some of the BBC radio stations send a time reference signal by radio on the hour most hours, consisting of five short beeps and one longer beep
+2020-03-12 19:33:35 <ais523> but they adjust for leap seconds by sending an additional short beep on the leap second
+2020-03-12 19:33:50 <ais523> that's kind-of clever, I should listen out for it next time there's a leap second
+2020-03-12 19:33:50 <b_jonas> ais523: nice
+2020-03-12 19:34:20 <int-e> Annoyingly, LC_TIME has no effect on this. But setting LANG to en_US changes the format.
+2020-03-12 19:34:29 <ais523> this also adjusts for negative leap seconds in the obvious way, but a negative leap second has never happened
+2020-03-12 19:34:59 <b_jonas> the five beeps from radio was how I set my watch long ago, when the internet didn't exist, I wore a watch, and cheap watches keep time so inaccurately that I had to set the time often
+2020-03-12 19:35:40 <b_jonas> the television also showed the time but that was not usable for setting an accurate clock because it had an impredictible amount of delay up to 5 seconds
+2020-03-12 19:35:54 <ais523> I wonder whether radio-controlled clocks use the BBC time signal, or some other time signal
+2020-03-12 19:36:39 <b_jonas> I think they use some other signal
+2020-03-12 19:36:58 <b_jonas> but I'm not quite sure
+2020-03-12 19:37:04 <b_jonas> I don't like radio controlled clocks
+2020-03-12 19:37:50 <ais523> in the UK there's a phone number you can dial for an accurate time signal spoken as words
+2020-03-12 19:38:10 <ais523> (humans have recorded a description for every time it can display, a computer replays the human speaking the time)
+2020-03-12 19:38:20 <ais523> but it's rarely useful nowadays now that NTP exists, and IIRC fairly expensive
+2020-03-12 19:38:44 <b_jonas> yes, that still exists in Hungary, and surprisingly it's a three digit phone number too
+2020-03-12 19:39:22 <b_jonas> it's useful because you can use it on dumb analog home phone lines when the electricity is out
+2020-03-12 19:39:44 <int-e> also, imagine you're blind and need to know the current time
+2020-03-12 19:39:54 <ais523> you would probably have a local speaking clock, wouldn't you?
+2020-03-12 19:40:05 User Name: LKoen = LKoen!~LKoen@81.255.219.130
+2020-03-12 19:40:05 <LKoen> I had a blind teacher who had a wristwatch
+2020-03-12 19:40:13 <LKoen> he would touch the hands of the watch to know the time
+2020-03-12 19:40:19 <b_jonas> yes, a local speaking clock on your mobile phone, because you don't want to pay for the telephone call every time
+2020-03-12 19:40:20 <int-e> Yes, there are devices for that. But that niche by itself should justify the 3 digit number :)
+2020-03-12 19:40:41 <ais523> I just tried running `date | espeak` but its default output format isn't great for speaking
+2020-03-12 19:40:45 <int-e> Even if it's not used much.
+2020-03-12 19:41:28 <int-e> b_jonas: Hah. Now imagine making that into a cloud service that calls that phone number once per minute, and replays the resulting recording to all the users of the app.
+2020-03-12 19:42:25 <int-e> . o O ( The sad part is that I can't rule out with certainty that this is being done. We build amazingly stupid things. )
+2020-03-12 19:42:41 <b_jonas> there are some other potentially useful but rarely used services that used to be available on dumb phone lines but have been discontinued since. I imagine the speaking clock service is very cheap to run now so there's not much incentive to discontinue it
+2020-03-12 19:43:48 <ais523> `date '+%H:%M:, %A %-d  %Y' | espeak`
+2020-03-12 19:43:49 <HackEso> date: invalid date ‘'+%H:%M:\023, %A %-d \002 %Y' | espeak`’
+2020-03-12 19:43:59 <ais523> err, my client didn't interpret that well, n
+2020-03-12 19:44:00 <b_jonas> the Wikimedia Commons Picture of the Year competition round 1 voting is on, but I'm too tired to look through the images now. I'll have to remember to do that some time before the voting ends on 2020-03-22
+2020-03-12 19:44:13 <ais523> `quote privmsg #esoteric :date '+%H:%M:, %A %-d  %Y' | espeak
+2020-03-12 19:44:15 <HackEso> No output.
+2020-03-12 19:44:18 <ais523> date '+%H:%M:, %A %-d  %Y' | espeak
+2020-03-12 19:44:21 <ais523> there we go?
+2020-03-12 19:44:28 <LKoen> I don't know what's the command to make my computer speak
+2020-03-12 19:44:33 <ais523> apparently noy
+2020-03-12 19:44:34 <b_jonas> ais523: HackEso doesn't have a sound output
+2020-03-12 19:44:39 <ais523> b_jonas: I wasn't trying to run it
+2020-03-12 19:44:41 <ais523> just post it in IRC
+2020-03-12 19:44:45 <int-e> `date +%H:%M:%S, %A %-d  %Y
+2020-03-12 19:44:46 <HackEso> 19:44:46, Thursday 12  2020
+2020-03-12 19:44:50 <ais523> but apparently my client interprets escapes even in /quote
+2020-03-12 19:44:54 <LKoen> it has text-to-speech in system preferences / accessibility, but how to get it from terminal?
+2020-03-12 19:45:02 <ais523> date '+%H:%M:%S, %A %-d %B %Y' | espeak
+2020-03-12 19:45:05 <ais523> there we go
+2020-03-12 19:45:22 <ais523> `date '+%H:%M:%S, %A %-d %B %Y'
+2020-03-12 19:45:23 <HackEso> date: invalid date ‘'+%H:%M:%S, %A %-d %B %Y'’
+2020-03-12 19:45:29 <ais523> `` date '+%H:%M:%S, %A %-d %B %Y'
+2020-03-12 19:45:30 <HackEso> 19:45:29, Thursday 12 March 2020
+2020-03-12 19:45:40 <ais523> espeak is fairly good at pronouncing that format
+2020-03-12 19:46:15 <b_jonas> ais523: the actual speaking clock uses a different format including "half past" and "quarter to" and that sort of nonsense
+2020-03-12 19:46:32 <ais523> I didn't want an actual speaking clock-alike, just something I could tell the time from
+2020-03-12 19:46:41 <b_jonas> but we're slowly advancing towards using a proper positional number system
+2020-03-12 19:46:55 <b_jonas> so we can just use %H:%M:%S now
+2020-03-12 19:47:28 <b_jonas> and more importantly, almost nobody writes months in roman numerals now, so that's one less format for months that I have to deal with
+2020-03-12 19:47:54 <b_jonas> but I still hate how months are sometimes named and almost no calendar lists both the name and the number of months
+2020-03-12 19:48:16 <ais523> hmm, if you're going to have a d:m:y date format, an h:m:s time format is inconsistent
+2020-03-12 19:48:20 <ais523> it should be s:m:h for consistency
+2020-03-12 19:48:38 <b_jonas> I never know what number of month August and September are
+2020-03-12 19:48:42 <ais523> I wonder why times are consistently big-endian, whereas big-endian dates are rarely used outside technology
+2020-03-12 19:48:52 <b_jonas> ais523: no, I'm using %Y-%m-%d date format
+2020-03-12 19:48:53 <ais523> 8 and 9 respectively
+2020-03-12 19:49:05 <ais523> I was thinking of my espeak date format
+2020-03-12 19:49:48 <b_jonas> time formats are not consistently big endian, because "quarter to five" is not big endian, nor is "12 PM"
+2020-03-12 19:50:01 <b_jonas> or "12:10 PM"
+2020-03-12 19:50:50 <b_jonas> as for datetime formats, you know which website I hate the most about that?
+2020-03-12 19:51:26 <ais523> hmm, I just realised that middle-endianness is actually really common in the real world
+2020-03-12 19:51:30 <ais523> after seeing all these examples
+2020-03-12 19:51:41 <ais523> I hadn't thought of AM/PM as a digit but of course it is
+2020-03-12 19:52:37 <b_jonas> the OOTS forums, not because "Today, 07:25 PM" is a really stupid datetime format, but because of the hypocricy: it says " (ISO 8601)" after each such timestamp and links to some webpage on W3C about what date formats you should use.
+2020-03-12 19:53:18 <b_jonas> and no, I checked https://forums.giantitp.com/profile.php?do=editoptions , you can change the time zone, but you can't change to a saner datetime format
+2020-03-12 19:54:06 <ais523> the only forum where I customized the date/time format (beyond changing the timezone) was mafiascum.net, which appears to allow all of strftime
+2020-03-12 19:54:17 <ais523> that was because the default format didn't show the seconds and they were often important
+2020-03-12 19:54:24 <b_jonas> if you follow the "show printable version" of thread link, that timestamp changes to "2020-03-12, 07:25 PM"
+2020-03-12 19:54:26 <zzo38> Yes, some web forums allow that customization and some dont.
+2020-03-12 19:54:34 <zzo38> That is one thing how NNTP is better. While it uses one date/time format, the client can reformat it for display.
+2020-03-12 19:54:58 <b_jonas> zzo38: I could technically have a custom client for these forums too
+2020-03-12 19:55:17 <b_jonas> but the problem is that phpBB's HTML format changes so often that you'd have to replace half of your client every year
+2020-03-12 19:55:28 <b_jonas> I've parsed phpBB forums multiple times, they're never the same
+2020-03-12 19:55:32 <zzo38> b_jonas: Yes, or a GreaseMonkey script, or whatever, but that isn't that good (including for the reason you specify, and others)
+2020-03-12 19:55:54 <ais523> I think it's open source, isn't it? you could try to upstream an API
+2020-03-12 19:56:25 <b_jonas> ais523: you can't even deterministically parse the "Today" or "Yesterday" datetime format when it's near a day boundary
+2020-03-12 19:56:46 <ais523> does it give you a better format when you mouse-hover it?
+2020-03-12 19:56:58 <b_jonas> ais523: not the OOTS server, no.
+2020-03-12 19:57:00 <ais523> on Reddit the default time format is very imprecise but it gives you a proper datestamp in the title field
+2020-03-12 19:57:01 <b_jonas> some other websites do
+2020-03-12 19:58:15 <b_jonas> ais523: I don't need an "API", those are for sites that use so much crazy javascript for rendering that the normal web output can't be parsed, with the website possibly trying to add extra restrictive terms for anyone using the API; phpBB isn't like that, the HTML can be parsed just fine, almost everything is represented in there,
+2020-03-12 19:58:24 <b_jonas> it's just that they change the format every few years
+2020-03-12 19:58:27 Joined: Lord_of_Life
+2020-03-12 19:59:07 <ais523> b_jonas: well the point of the API is also to be stable and machine-parsable, avoiding the need to scrape
+2020-03-12 19:59:13 <b_jonas> I prefer websites where there's no separate API, instead the HTML format has reliable classes and other extra info that isn't necessarily used for rendering the default view, but reliable for anything you want to do client-side
+2020-03-12 19:59:15 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2020-03-12 19:59:30 <b_jonas> ais523: an API, sure. those are fine. it's "API"s that I don't like.
+2020-03-12 19:59:34 <ais523> Wikipedia's pages are very scrapable and I've written a number of scripts to scrape them, yet it was nonetheless decided that an API would be useful and it is widely used
+2020-03-12 19:59:46 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-03-12 19:59:54 <ais523> simply because it's less likely to break as a consequence of unrelated changes
