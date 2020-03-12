@@ -2,3 +2,28 @@
 2020-03-12 00:33:29 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-12 00:41:56 Joined: sprocklem
 2020-03-12 00:41:57 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 01:03:48 <esowiki> 14[[07Deadfish14]]4 10 02https://esolangs.org/w/index.php?diff=70254&oldid=70217 5* 03Oerjan 5* (+17) 10Undo revision 70217 by [[Special:Contributions/PythonshellDebugwindow|PythonshellDebugwindow]] ([[User talk:PythonshellDebugwindow|talk]]) (This is the reference interpreter, if you think it doesn't work you're thinking something wrong.)
+2020-03-12 01:06:13 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2020-03-12 01:06:13 <oerjan> unless some recent C standard broke it, or something.
+2020-03-12 01:14:54 <zzo38> What did they break this time?
+2020-03-12 01:17:28 Quit: sprocklem (Ping timeout: 256 seconds)
+2020-03-12 01:17:29 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 01:19:23 Joined: sprocklem
+2020-03-12 01:19:23 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 01:23:27 <int-e> nothing.
+2020-03-12 01:24:52 <int-e> I hope this is correct: We have an unsinged int x, and a comparison x == -1. The -1 is of type int and gets promoted to unsigned int (turning into 0xFFFFFFFF on 32 bit platforms) before the comparison is made.
+2020-03-12 01:25:21 <oerjan> yay
+2020-03-12 01:25:25 <int-e> shold probably give that a U suffix. But who cares.
+2020-03-12 01:25:30 <int-e> *should
+2020-03-12 01:25:48 <int-e> I'll own the "unsinged" though.
+2020-03-12 01:25:59 <int-e> `grwp unsigned
+2020-03-12 01:26:02 <HackEso> No output.
+2020-03-12 01:26:04 <int-e> `grwp unsinged
+2020-03-12 01:26:08 <HackEso> No output.
+2020-03-12 01:26:11 Nick Change: oerjan -> oerjan
+2020-03-12 01:26:13 Nick Change: oerjan -> oerjan
+2020-03-12 01:26:44 * oerjan torches int-e's unsinged int
+2020-03-12 01:26:52 <oerjan> *MWAHAHAHA*
+2020-03-12 01:28:01 <int-e> Well, I guess it's officially demoted to singed now.
+2020-03-12 01:28:27 <int-e> If it had been a fireball it might have been an explicit cast.
+2020-03-12 01:28:48 <int-e> But I'm not sure torches can be interpreted in terms of the C standard.
