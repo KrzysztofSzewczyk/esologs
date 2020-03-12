@@ -448,3 +448,58 @@
 2020-03-12 19:59:34 <ais523> Wikipedia's pages are very scrapable and I've written a number of scripts to scrape them, yet it was nonetheless decided that an API would be useful and it is widely used
 2020-03-12 19:59:46 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-03-12 19:59:54 <ais523> simply because it's less likely to break as a consequence of unrelated changes
+2020-03-12 20:00:03 <b_jonas> ais523: yes, mediawiki has the api.php which is mostly well designed, better than most others
+2020-03-12 20:00:10 <b_jonas> it's not perfect, but good enough
+2020-03-12 20:00:58 <b_jonas> I have used the mediawiki API for reading a few times, not yet for writing
+2020-03-12 20:01:43 <zzo38> I think it should be made to use NNTP; if a message is received by NNTP, the headers should be kept (including message ID if the client specifies one), and then decide how to render for the web interface (it should render the message as plain text, unless there is a "Content-type: text/markdown" header, perhaps); and then also implement other way around.
+2020-03-12 20:02:06 <zzo38> The web interface should also need to display the message ID and connection information, even if JavaScript and CSS are both disabled.
+2020-03-12 20:02:45 <arseniiv> once I considered making changes to espeak’s data to make it pronounce Russian better, but I think that’s a hard task without some software to help with editing and analyzing all the stuff e. g. in which direction vowel parameters should be changed, to not try all possible values in vain
+2020-03-12 20:03:30 <int-e> . o O ( esqueak )
+2020-03-12 20:04:02 <ais523> espeak is one of those programs which I would /expect/ to be almost impenetrable to someone not familiar with the code
+2020-03-12 20:04:26 <b_jonas> by the way, the IOCCC submission deadline is coming soon
+2020-03-12 20:04:26 <ais523> because it's trying to do something that, for most humans, would be poorly defined and very difficult to express rigorously
+2020-03-12 20:04:33 <ais523> oh, it's open again?
+2020-03-12 20:04:37 <b_jonas> yes
+2020-03-12 20:04:41 <ais523> I probably won't have a submission for this year
+2020-03-12 20:04:45 <arseniiv> and also this usually requires extending the dictionary with many rare wordforms
+2020-03-12 20:04:49 <ais523> I had a great idea a number of years ago but never had time to work on it
+2020-03-12 20:04:58 <ais523> (and another great idea a number of years ago which GregorR used to win)
+2020-03-12 20:05:40 <int-e> it's closing in a few days anyway
+2020-03-12 20:05:41 <b_jonas> I have a few IOCCC ideas, but most probably wouldn't work, and I didn't have the energy to work on the remaining ones
+2020-03-12 20:05:58 <b_jonas> if I felt like working on them, I wouldn't care about the deadline, because it's a recurring event now
+2020-03-12 20:06:15 <b_jonas> it doesn't matter much if I can only submit something two years later and it's judged two years after that
+2020-03-12 20:06:25 <b_jonas> well, it can matter a little
+2020-03-12 20:06:26 <b_jonas> but not too much
+2020-03-12 20:06:34 <arseniiv> ais523: ah, I didn’t mean the code, the language properties are defined in separate files
+2020-03-12 20:06:42 <ais523> arseniiv: those too
+2020-03-12 20:06:58 <arseniiv> yeah their format is quite complex I think
+2020-03-12 20:07:29 <b_jonas> arseniiv: it has to be. languages are complex if you want to text to speech them.
+2020-03-12 20:07:43 <zzo38> I have done some changes with espeak files before
+2020-03-12 20:07:53 <ais523> languages are complex full stop, apart from a few conlangs and computer languages
+2020-03-12 20:07:58 <arseniiv> and also there are the recordings for consonants, which also can require meddling with. Though the vowels may come first
+2020-03-12 20:08:02 <ais523> this is because information is complex
+2020-03-12 20:08:11 <ais523> and languages are about expressing information
+2020-03-12 20:08:19 <b_jonas> zzo38: are they domain-specific words, possibly acronyms, added to the dictionary with custom pronunciations
+2020-03-12 20:08:20 <arseniiv> yeah languages are a ton of complexity on so many levels
+2020-03-12 20:09:16 <zzo38> I did not do dictionary modification, just the speech modification
+2020-03-12 20:09:39 <arseniiv> though phonetics per se is not that complex, but even this one task, of representing an appropriate average phonetic invertory for a dialect, may be rendered hard to do, as in espeak
+2020-03-12 20:10:02 <b_jonas> "invertory"
+2020-03-12 20:10:07 <arseniiv> phonology is where things become more complex, and mapping from the written text, still more
+2020-03-12 20:10:57 <zzo38> Now I wonder if a file can be written for clock speech
+2020-03-12 20:11:16 <b_jonas> zzo38: there's an old IOCCC entry for that
+2020-03-12 20:17:59 Quit: arseniiv (Ping timeout: 258 seconds)
+2020-03-12 20:17:59 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-12 20:20:34 Joined: arseniiv
+2020-03-12 20:20:34 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-12 20:20:40 User Name: arseniiv = arseniiv!~arseniiv@94.41.9.97.dynamic.ufanet.ru
+2020-03-12 20:20:40 <arseniiv> I’m almost jealous for Spanish where marking accent is for what I know mandatory
+2020-03-12 20:21:39 <arseniiv> haha I accidentally forgot to pay to my ISP, here now take my money and give me #esotetic back
+2020-03-12 20:22:53 <arseniiv> and this post hadn’t even gone through:
+2020-03-12 20:23:00 <arseniiv> and with languages having accent which jumps here and there and isn’t usually marked in the text, oh. A dictionary wouldn’t solve annotating accents as this may require parsing the actual syntax to make out which of homographic words each one is. Happily, espeak allows to mark accents manually, and happily, Russian has only one kind of accent and no tones
+2020-03-12 20:24:34 <arseniiv> <b_jonas> "invertory" => hm? :)
+2020-03-12 20:27:02 <b_jonas> ¿„invertory„?
+2020-03-12 20:28:00 <int-e> arseniiv: you typoed that one first
+2020-03-12 20:28:19 <arseniiv> ww… why
+2020-03-12 20:28:32 <arseniiv> I’ll consult my dictionary one sec
+2020-03-12 20:28:44 <arseniiv> ah I see
+2020-03-12 20:29:18 <arseniiv> a sneaky one. I haven’t even noticed something’s wrong
