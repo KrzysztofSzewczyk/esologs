@@ -562,3 +562,18 @@
 2020-03-12 22:25:21 <arseniiv> do you like this? (not “esotetic” but data via effects)
 2020-03-12 22:28:53 <arseniiv> come to this, it may as well be called Esotetic Invertory
 2020-03-12 22:29:09 <arseniiv> this hypothetical language
+2020-03-12 22:32:41 <arseniiv> but I’m lazy to write many things needed for that to work at all: a basic stack language, quotes, quasiquoting, dictionary literals (maybe as a kind of macro), a couple of basic datatypes for making IO with, and also a symbol datatype too, for specifying effect names and constructors in handlers
+2020-03-12 22:33:18 <arseniiv> though one can do with integer indices for constructors, and then arrays instead of dictionaries. Hmm…
+2020-03-12 22:37:24 <b_jonas> arseniiv: modify an existing langauge then?
+2020-03-12 22:38:03 <arseniiv> b_jonas: it may be more tedious as I would need to understand how it works first
+2020-03-12 22:38:22 <arseniiv> I think I can minimize this thing sufficiently, though
+2020-03-12 22:47:24 Joined: oerjan
+2020-03-12 22:47:24 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-12 22:50:04 <int-e> . o O ( I hate email )
+2020-03-12 22:52:55 User Name: oerjan = oerjan!oerjan@sprocket.nvg.ntnu.no
+2020-03-12 22:52:55 <oerjan> are the logs down
+2020-03-12 22:55:46 <arseniiv> suppose one can push not only a fresh quote by using `[ ... ]` but also push a function pointer by just writing `'word` or something. Then I can make effect types into plain words, and effect constructor will just push that “effect quote” and an additional index. A handler will be able first to compare the pointer to the one it’s supposed to handle, and if it’s OK, it’ll apply it to the constructor index and select the handling
+2020-03-12 22:55:46 <arseniiv> path based on the result
+2020-03-12 22:55:46 <arseniiv> all that requires way less primitives but it can be wrapped gracefully. An effect constructor wrapper would just place an effect quote and index on the stack and call an universal `effect` primitive which would find a nearest correct handler nearest to the top of the call stack, slice a continuation, push it under those two valuesm call the handler etc. etc.
+2020-03-12 22:55:46 <arseniiv> though I’d be more glad if I’ll come up with something neater than arbitrary values to represent effect constructors. Or I should reject constructors altogether and think of that value as an argument. Hm but that way one could make it to shift/reset and this is too far
+2020-03-12 22:59:33 <oerjan> hm i think my net connection is dead slow
