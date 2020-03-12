@@ -550,3 +550,15 @@
 2020-03-12 21:11:03 <ais523> sometimes you can nickping someone with just tab, but the IRC client needs to guess a lot in that case
 2020-03-12 21:11:20 <ais523> I just tried it out and it guessed "b_jonas:" which seems like a reasonable guess in the circumstances
 2020-03-12 21:11:30 <b_jonas> ah, tab expansion
+2020-03-12 22:10:07 <arseniiv> in the meantime I hypothesize a concatenative language with dynamic-typed effects and handlers *rofl*
+2020-03-12 22:11:16 <arseniiv> though I think I’m doing something wrong as I came to need an additional `unhandle` primitive to be able to represent rethrowing an exception, when treating throwing exceptions as a type of effect
+2020-03-12 22:11:55 <arseniiv> or else the code would try to handle an exception thrown in the handler by that same handler
+2020-03-12 22:13:46 <arseniiv> . o O ( tab expansion makes your tabs 8 characters wide )
+2020-03-12 22:14:17 <arseniiv> tabstops*
+2020-03-12 22:17:27 <arseniiv> I thought I would be able to represent alg. datatypes and matching on their values via this effect framework, but it seems impossible. Their analogy is not of this kind
+2020-03-12 22:24:05 <arseniiv> hm or maybe with quasiquoting and making a set of data constructors separate from effect constructors one could go Scott on them: a data constructor DataX takes the corresponding number of values v1, …, vn from the stack and pushes a quote [ v1 … vn EffectX ]. Then a match construct pops a quote and evaluates it in the context of an effect handler corresponding to this data type. Hm but if one tries to handle a wrong value, it can be
+2020-03-12 22:24:05 <arseniiv> handled with some outer matching construct not intended to do so. Though that’s a pretty esotetic behaviour
+2020-03-12 22:24:16 <arseniiv> and again that typo
+2020-03-12 22:25:21 <arseniiv> do you like this? (not “esotetic” but data via effects)
+2020-03-12 22:28:53 <arseniiv> come to this, it may as well be called Esotetic Invertory
+2020-03-12 22:29:09 <arseniiv> this hypothetical language
