@@ -289,3 +289,57 @@
 2020-03-12 18:48:12 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-03-12 18:54:43 Quit: kritixil1 (Ping timeout: 240 seconds)
 2020-03-12 18:54:44 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-12 19:02:34 <olsner> (it's implementation-defined if statement numbering starts on 0 or 1)
+2020-03-12 19:09:20 User Name: b_jonas = b_jonas!~x@catv-176-63-14-83.catv.broadband.hu
+2020-03-12 19:09:20 <b_jonas> cpressey: or statements starting with PLEASE or PLEASE DO are compiled, statements starting with DO are interpreted
+2020-03-12 19:12:37 <int-e> PLEASE ABSTAIN FROM USING INTERCAL
+2020-03-12 19:13:30 <int-e> (Not serious, it's kind of fun. Though I haven't touched it in years...)
+2020-03-12 19:13:30 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 10 02https://esolangs.org/w/index.php?diff=70264&oldid=70247 5* 03PythonshellDebugwindow 5* (+20) 10
+2020-03-12 19:13:34 <b_jonas> int-e: no! don't do that, now we have to figure out how to do the equivalent of a REINSTATE from the C API
+2020-03-12 19:14:22 <int-e> b_jonas: pretend there was a line number and use a COME FROM statement?
+2020-03-12 19:14:49 <b_jonas> oh, that could work, yes
+2020-03-12 19:14:50 <int-e> Which is a fun way to effectively disable a statement... at least as long as the COME FROM is not ABSTAINED FROM.
+2020-03-12 19:16:03 <b_jonas> int-e: tcsh can run goto statements in an interactive shell, forwards and backwards across multiple separate input lines. you can goto back to lines that have already been executed immediately. this is such a nice eso feature that I don't understand why no other interactive interpreter supports it.
+2020-03-12 19:16:16 <b_jonas> allowing come from in an interactive interpreter would be impossible though.
+2020-03-12 19:16:22 <b_jonas> at least without a time machine.
+2020-03-12 19:17:03 <int-e> Yeah... and then things get paradoxical quickly
+2020-03-12 19:17:42 <int-e> but maybe many-world intercal would be a lot cooler than threaded intercal
+2020-03-12 19:21:00 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-12 19:21:00 <ais523> COME FROM [19:09]
+2020-03-12 19:21:03 <ais523> err
+2020-03-12 19:21:06 <ais523> DO COME FROM [19:09]
+2020-03-12 19:21:10 <ais523> my IRC client has timestamps, it's OK
+2020-03-12 19:21:32 <int-e> Now you just have to deal with time zones.
+2020-03-12 19:21:45 <int-e> Though I guess that was UTC.
+2020-03-12 19:21:45 <ais523> well it's correct for my client, so I get to use INTERCAL, at least
+2020-03-12 19:22:05 <ais523> it's GMT I think, which is basically identical to UTC but with some minor technical difference
+2020-03-12 19:23:27 <int-e> Does it alternate between GMT and BST?
+2020-03-12 19:23:42 <int-e> . o O ( time will tell )
+2020-03-12 19:23:49 <ais523> my client does, yes
+2020-03-12 19:24:05 <ais523> OK, so it seems that GMT is ambiguous with respect to how it handles leap seconds, but it's traditionally considered a proportion of a day
+2020-03-12 19:24:16 <ais523> so GMT times are supposed to smooth out leap seconds across the year
+2020-03-12 19:24:37 <ais523> and are apparently also affected by the tides (which influence the earth's rotation to some extent)
+2020-03-12 19:24:50 <ais523> also, once GMT had midday rather than midnight at time 0, but that was changed
+2020-03-12 19:25:12 <int-e> On computers you'll get something close to UTC anyway (maybe with smoothed leap seconds)
+2020-03-12 19:25:15 <ais523> but apparently you can write times like "December 31.5 GMT"
+2020-03-12 19:25:36 <ais523> which is a great idea, fractional days in dates is pretty obvious once you see it
+2020-03-12 19:25:44 <int-e> Fun.
+2020-03-12 19:26:49 <int-e> Though it's a bit odd to start at 1.0 and end at <32.0.
+2020-03-12 19:27:00 <b_jonas> ais523: oh yeah. http://www.madore.org/~david/weblog/d.2007-03-32.1434.html#d.2007-03-32.1434 is dated to a stylized nonexistent date
+2020-03-12 19:27:18 <ais523> March 32 2007
+2020-03-12 19:27:20 <ais523> how did that happen?
+2020-03-12 19:27:33 <b_jonas> ais523: deliberate style thing
+2020-03-12 19:27:47 <ais523> I guess it's the same basic concept as 9690 September, 1993
+2020-03-12 19:27:48 <b_jonas> David may have had to modify his blog engine to allow that for all I know
+2020-03-12 19:28:21 <int-e> What kind of format is this... '2020 M05 30'
+2020-03-12 19:28:32 <ais523> well it makes it clear what's the month and what's the day
+2020-03-12 19:28:36 <b_jonas> there's also http://www.madore.org/~david/weblog/d.2016-12-31.2414.html#d.2016-12-31.2414 which is dated to an existent date but its topic is a fictional date
+2020-03-12 19:28:39 <ais523> at least if you use a language where "month" starts with "m"
+2020-03-12 19:28:50 <b_jonas> well, more like the topic is what special event happens on a fictional day
+2020-03-12 19:28:59 <int-e> ais523: Oh that kind of makes sense. Still looks odd.
+2020-03-12 19:29:03 <ais523> perhaps it might be useful for unambiguity if you normally use a format that gives week numbers rather than month numbers
+2020-03-12 19:29:17 <ais523> (those normally put a W into the format to avoid people misinterpreting them as months)
+2020-03-12 19:29:17 <b_jonas> ais523: no, for week numbers you use
+2020-03-12 19:29:18 <b_jonas> `datei
+2020-03-12 19:29:20 <HackEso> 2020-03-12 19:29:19.493 +0000 UTC March 12 Thursday 2020-W11-4
+2020-03-12 19:29:26 <b_jonas> 2020-W11-4 <--- that thing
