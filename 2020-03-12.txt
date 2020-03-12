@@ -256,3 +256,24 @@
 2020-03-12 16:58:23 <Taneb> cpressey: it's not what I say that's profound, but the thoughts it inspires
 2020-03-12 16:59:17 <moony> ais523: Pharo smalltalk would work too'
 2020-03-12 16:59:22 <moony> it's written in a subset of itself
+2020-03-12 17:00:31 <ais523> well, lots of languages are
+2020-03-12 17:08:19 <moony> I kinda wish there was a JIT language that was implemented in itself. So even the JITting logic would be JIT'd
+2020-03-12 17:08:55 <int-e> Is that entering Featherweight territory?
+2020-03-12 17:09:22 <moony> ?
+2020-03-12 17:10:08 <ais523> most implementation schemes I thought of for Feather were something like that, although it was more like "alternating AOT compilation"
+2020-03-12 17:10:12 <ais523> maybe a JIT would work better, though
+2020-03-12 17:10:25 <ais523> (alternating AOT = when you alternate between compiling and running)
+2020-03-12 17:11:18 <Taneb> moony: isn't Pypy that?
+2020-03-12 17:11:30 <Taneb> (I don't know it very well though)
+2020-03-12 17:11:36 <moony> I think so?
+2020-03-12 17:11:44 <int-e> Alternating AOT is definitely a thing though... I believe both in the Smalltalk world and in the SML world, probably elsewhere as well.
+2020-03-12 17:12:31 <int-e> And it may extend to JIT (with the profiling-based hotspot optimization) as well.
+2020-03-12 17:13:15 <int-e> In my mental picture of this, the real trouble is to get rid of the bootstrapping parts eventually.
+2020-03-12 17:13:17 <esowiki> 14[[07Function x(y)14]]4 N10 02https://esolangs.org/w/index.php?oldid=70263 5* 03PythonshellDebugwindow 5* (+1528) 10Created page with "{{lowercase}} '''function x(y)''' is a language created by [[User:PythonshellDebugwindow]].  ==Syntax== To start a function:  function x() Or:  function x(y) Or it can have as..."
+2020-03-12 17:13:30 <cpressey> Alternating compilation: odd-numbered statements are interpreted, even-numbered statements are compiled
+2020-03-12 17:21:18 Quit: ais523 (Remote host closed the connection)
+2020-03-12 17:21:18 Names: ^[, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 17:22:30 Joined: ais523
+2020-03-12 17:22:30 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 17:26:42 Quit: cpressey (Quit: A la prochaine.)
+2020-03-12 17:26:42 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
