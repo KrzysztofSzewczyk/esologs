@@ -188,3 +188,71 @@
 2020-03-12 16:23:15 <int-e> And I use the list monad all the time.
 2020-03-12 16:24:31 <int-e> cpressey: The kind of deeply nested data structures that lens is (supposedly) good for just don't seem to come up in my code.
 2020-03-12 16:24:56 <int-e> And its vocabulary is just so overwhelming that I never really tried to learn any of it.
+2020-03-12 16:31:02 <cpressey> I'm more interested in recursion schemes. But, right now, even more interested in learning Coq and seeing what can be done with extraction.
+2020-03-12 16:31:56 <cpressey> I've worked through the exercises in the first 2 chapters of the first volme of https://softwarefoundations.cis.upenn.edu/ so far
+2020-03-12 16:33:54 <int-e> Do you use coqide or something else?
+2020-03-12 16:34:33 <wib_jonas> my recursion schemes are accidental infinite recursion bugs
+2020-03-12 16:35:03 <cpressey> I started out using jsCoq, then eventually figured out how to install CoqIDE, now using it instead
+2020-03-12 16:35:03 <int-e> wib_jonas: you could type them in a system with strong normalization
+2020-03-12 16:35:32 <int-e> (with obvious downsides)
+2020-03-12 16:35:37 Joined: ais523
+2020-03-12 16:35:38 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 16:35:50 <wib_jonas> int-e: even the simplest typesafe language would give an error (or at least warning) for that
+2020-03-12 16:35:51 <int-e> hais523
+2020-03-12 16:37:16 Quit: wib_jonas (Remote host closed the connection)
+2020-03-12 16:37:16 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 16:40:47 <esowiki> 14[[07Special:Log/delete14]]4 delete10 02 5* 03Ais523 5*  10deleted "[[02Category:Turing-complete10]]": category redirects don't actually work, the pages don't show up in the redirected-to category
+2020-03-12 16:41:26 <esowiki> 14[[07DINAC14]]4 M10 02https://esolangs.org/w/index.php?diff=70260&oldid=70222 5* 03Ais523 5* (+0) 10cat fix
+2020-03-12 16:41:49 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=70261&oldid=70204 5* 03Ais523 5* (+0) 10/* Resources */ cat fix
+2020-03-12 16:42:12 <esowiki> 14[[07MyScript14]]4 M10 02https://esolangs.org/w/index.php?diff=70262&oldid=70241 5* 03Ais523 5* (+0) 10cat fix
+2020-03-12 16:45:23 User Name: arseniiv = arseniiv!~arseniiv@94.41.3.175.dynamic.ufanet.ru
+2020-03-12 16:45:23 <arseniiv> <int-e> And its vocabulary is just so overwhelming that I never really tried to learn any of it. => I used lens in one unfinished interpreter project, I think the code was more or less nice but I haven’t used full potential of lens ever. Lens is mildly intriguing but I totally agree it’s so big and complex
+2020-03-12 16:46:38 <arseniiv> in that project, I used those assignment-like operations for State monadic code
+2020-03-12 16:46:45 <Taneb> I like lens, but I'm the one responsible for there being so many damn operators
+2020-03-12 16:46:49 <arseniiv> they were convenient
+2020-03-12 16:47:06 <Taneb> (because I needed <<+= for one thing so I added all the rest too)
+2020-03-12 16:47:28 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-12 16:47:28 <ais523> what does <<+= do?
+2020-03-12 16:47:32 <arseniiv> Taneb: oh now I know who to blame why I can’t let myself dive into them
+2020-03-12 16:48:13 <ais523> hmm, idea: a programming language that accepts every keyword, operator, control structure etc. from all other languages
+2020-03-12 16:48:13 <Taneb> ais523: "l <<+= n" adds the number n to the target of the lens l in the state, and returns the value before the addition was performed
+2020-03-12 16:48:52 <Taneb> (in a MonadState)
+2020-03-12 16:48:54 <ais523> hmm, oddly languages like C don't have a "postincrement-by" operator
+2020-03-12 16:49:11 <arseniiv> ais523: and all control structures which aren’t possibly implemented anywhere yet, like exitwhen
+2020-03-12 16:49:32 <Taneb> > runState (do _1 <<+= 3) (4, "hello")
+2020-03-12 16:49:35 <ais523> we can always create an esolang to have somewhere to put them
+2020-03-12 16:49:35 <lambdabot> (4,(7,"hello"))
+2020-03-12 16:49:49 <arseniiv> or a straightforward extension to exitwhen to allow it to represent arbitratry, albeit local, effects
+2020-03-12 16:50:25 <ais523> CLC-INTERCAL has a way to run a statement and it doesn't do anything until it becomes not an error, then it runs at that moment
+2020-03-12 16:50:33 <ais523> even though some other part of the code is executing
+2020-03-12 16:50:35 <ais523> I think, at least
+2020-03-12 16:50:43 <ais523> you can probably jury-rig an exitwhen out of that
+2020-03-12 16:51:27 <arseniiv> <Taneb> and returns the value before the addition was performed => mhmm could this kind of a behavior be abstracted out somehow?
+2020-03-12 16:52:29 <Taneb> :t (%%~)
+2020-03-12 16:52:30 <lambdabot> LensLike f s t a b -> (a -> f b) -> s -> f t
+2020-03-12 16:52:39 <ais523> arseniiv: Java uses the name "getAndUpdate" for that
+2020-03-12 16:52:47 <ais523> (Java doesn't have overloaded operators, just overloaded functions)
+2020-03-12 16:52:47 <Taneb> :t (<<%~)
+2020-03-12 16:52:49 <lambdabot> LensLike ((,) a) s t a b -> (a -> b) -> s -> (a, t)
+2020-03-12 16:53:21 <ais523> <<+= would be "getAndAdd"
+2020-03-12 16:53:31 * moony is wondering what's going on
+2020-03-12 16:53:44 <Taneb> moony: that is rather the point of this channel sometimes, I feel
+2020-03-12 16:54:21 <Taneb> Then you learn what's going on and we move on to something else, leaving you a little bit more enlightened in the mystical arts of the absolutely useless
+2020-03-12 16:54:42 Joined: kritixilithos
+2020-03-12 16:54:43 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, Sgeo, shig, shikhin, ski, Soni, sparr, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-12 16:54:55 User Name: moony = moony!moony@hellomouse/dev/moony
+2020-03-12 16:54:55 <moony> I feel that esoteric languages present a learning opprotunity, and as such are not absolutely useless
+2020-03-12 16:55:17 <Taneb> It's not the language that is useless, but what it teaches
+2020-03-12 16:55:31 <Taneb> In this case the language is more or less Haskell
+2020-03-12 16:56:28 <moony> "ais523 | hmm, idea: a programming language that accepts every keyword, operator, control structure etc. from all other languages"
+2020-03-12 16:56:49 <moony> just make a language that can selfmodify, and implement that as a construct in itself
+2020-03-12 16:56:58 <moony> i.e. make a FORTH and build from there :P
+2020-03-12 16:57:02 <cpressey> "It's not the language that is useless, but what it teaches" I'll have to remember that one
+2020-03-12 16:57:05 <ais523> or a CLC-INTERCAL
+2020-03-12 16:57:22 <ais523> although I guess IACC is the better term for it
+2020-03-12 16:57:29 <ais523> (the language in which CLC-INTERCAL is implemented)
+2020-03-12 16:57:33 <ais523> IACC itself is implemented in Perl, also IACC
+2020-03-12 16:57:48 <ais523> there is a very complex bootstrapping process involved
+2020-03-12 16:58:23 <Taneb> cpressey: it's not what I say that's profound, but the thoughts it inspires
+2020-03-12 16:59:17 <moony> ais523: Pharo smalltalk would work too'
+2020-03-12 16:59:22 <moony> it's written in a subset of itself
