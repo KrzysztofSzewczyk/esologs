@@ -577,3 +577,12 @@
 2020-03-12 22:55:46 <arseniiv> all that requires way less primitives but it can be wrapped gracefully. An effect constructor wrapper would just place an effect quote and index on the stack and call an universal `effect` primitive which would find a nearest correct handler nearest to the top of the call stack, slice a continuation, push it under those two valuesm call the handler etc. etc.
 2020-03-12 22:55:46 <arseniiv> though I’d be more glad if I’ll come up with something neater than arbitrary values to represent effect constructors. Or I should reject constructors altogether and think of that value as an argument. Hm but that way one could make it to shift/reset and this is too far
 2020-03-12 22:59:33 <oerjan> hm i think my net connection is dead slow
+2020-03-12 23:02:48 <arseniiv> oerjan: at least alternative logs http://tunes.org/~nef/logs/esoteric/?C=M;O=D do work. The primary ones don’t load for me right now too, but approx. 2 hours ago they did
+2020-03-12 23:03:49 <oerjan> i got the tunes
+2020-03-12 23:09:23 <ais523> <oerjan> are the logs down ← stalker mode is still updating live
+2020-03-12 23:09:49 <ais523> but I can't load the page in a new tab
+2020-03-12 23:09:58 <ais523> so I think the logs are updating but the webserver hosting them is having issues
+2020-03-12 23:10:39 <ais523> 504, apparently
+2020-03-12 23:14:17 <int-e> (re: email, but it turns out that poking people via email is more effective than leaving them reports on github)
+2020-03-12 23:17:51 Quit: xkapastel (Quit: Connection closed for inactivity)
+2020-03-12 23:17:51 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
