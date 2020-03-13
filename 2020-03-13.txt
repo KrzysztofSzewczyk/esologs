@@ -157,3 +157,15 @@
 2020-03-13 09:57:12 <kritixilithos> maybe for a particular program of this language, it runs the input as a TM, and after the completion of execution (if it does halt), the program returns 0
 2020-03-13 09:57:33 <Cale> Oh, that's a good one
 2020-03-13 09:58:29 <Cale> Just take any ordinary Turing complete language and make sure it can't produce any interesting output other than whether it terminated.
+2020-03-13 10:00:34 <Taneb> I think that might be too easy to argue it's not turing complete
+2020-03-13 10:00:40 <Taneb> It can semi-decide any semi-decidable language
+2020-03-13 10:01:01 <Cale> Well, it's supposed to not be Turing complete
+2020-03-13 10:01:18 <Cale> But have an uncomputable halting problem
+2020-03-13 10:02:00 <Cale> Of course, you might be able to also hope for a more practical language that could be used to solve a wider range of problems...
+2020-03-13 10:02:58 <Cale> Like, it should maybe contain a consistent type theory as a sublanguage.
+2020-03-13 10:02:59 <Taneb> I mean, argue it is turing complete
+2020-03-13 10:04:03 <Cale> Well, you can't solve most ordinary decision problems
+2020-03-13 10:04:15 <Cale> Like, the problem of whether the number on input is even
+2020-03-13 10:04:22 <Cale> You can only semi-decide it
+2020-03-13 10:27:43 Quit: atslash (Ping timeout: 255 seconds)
+2020-03-13 10:27:43 Names: ^[, aji, aloril, APic, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
