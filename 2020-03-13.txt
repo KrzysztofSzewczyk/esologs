@@ -35,3 +35,62 @@
 2020-03-13 00:58:44 <ais523> I may as well write my thoughts on that up here, too: the only thing that determines where new 2s are added in the data string is the distance between two (non-ignored) 2s scrolling off the data string
 2020-03-13 00:59:18 <ais523> the basic idea is to use two sorts of distances, small distances which also happen to be odd numbers, and large distances which also happen to be even numbers
 2020-03-13 00:59:40 <ais523> then small distances push the corresponding large distances onto the data string, large distances push a string of small distances onto the data string
+2020-03-13 01:00:17 <ais523> for the latter, you have a block of 1s in one half of the data string that matches up to the pattern you want (made of 1s) in the other half
+2020-03-13 01:00:52 <ais523> for the former, you have a sequence 101010101010101… in one half of the data string against a 1 in the other that adds up to a 2 only if you have a small (thus odd) distance
+2020-03-13 01:01:17 <ais523> and a few sporadic 1s in both halves which match up only when using a specific small distance
+2020-03-13 01:01:41 <ais523> err, I don't mean one half of the data string, I mean one half of the geometric sequence
+2020-03-13 01:01:52 <ais523> the ratio between successive elements is a very large power of 3
+2020-03-13 01:02:01 <ais523> and the two halves are around 3^n and 3^(n+1)
+2020-03-13 01:02:11 <ais523> actually this proof uses 9 rather than 3 but it's the same principle
+2020-03-13 01:02:33 <ais523> I probably haven't explained this very well, it'll probably be better to write it up as an actual proof, or else write a compiler
+2020-03-13 01:02:36 <ais523> to make it more formal
+2020-03-13 01:03:13 <MTGBusyBeaver42> thanks, this did actually help, high-rise is wierd
+2020-03-13 01:04:44 <ais523> it's funny, in the early history of esolangs, people made things like INTERCAL and Malbolge which were weird on purpose, for the sake of weirdness
+2020-03-13 01:05:04 Joined: Lord_of_Life
+2020-03-13 01:05:04 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, MTGBusyBeaver42, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 01:05:07 <ais523> and nowadays, when we look into the simplest, most fundamental available tarpits, we get just as much weirdness but it's naturally occurring
+2020-03-13 01:05:54 <MTGBusyBeaver42> Yeah I actually was looking at 3-star programmer randomly like a year ago
+2020-03-13 01:06:47 <ais523> there's a High Rise language in base 2, with carries allowed, which uses a blank sequence for 0 and a geometric (not interleaved-geometric) sequence for 1 which I'm genuinely not sure whether it's TC or not, it seems so close to being TC but I can't quite make it work
+2020-03-13 01:06:49 <MTGBusyBeaver42> so wierd for operations like that to be TC
+2020-03-13 01:08:26 <ais523> it gets easier once you realise that you can set things up so that some of the addresses are constants that always point to the same place, that effectively lets you get rid of stars when you don't want them
+2020-03-13 01:08:50 <ais523> it doesn't seem that ridiculous to me that a program based on ++*k, ++**k, ++***k can be TC for constant k
+2020-03-13 01:09:27 <ais523> only having increments available for writing and only having dereferences available for reading is painful, but by keeping regimented control over the whole of memory, it's not /that/ bad
+2020-03-13 01:11:35 <MTGBusyBeaver42> yeah, it is still bizarre to think about, more common operations like XOR are a lot easier to understand why.
+2020-03-13 01:12:18 <ais523> actually I think the hardest part with Three Star Programmer (and with the I/D machine) is that every statement has to increment /something/ so you need to find a lot of useless variables to throw your increments away in
+2020-03-13 01:13:13 <ais523> the TC proof for the I/D machine goes to the effort of setting up a queue that's never read from, just so that it can write to it the same way that it writes to the queue that it does use, thus vastly reducing the number of writes that need to be special-cased to sometimes write to somewhere useless
+2020-03-13 01:13:51 <ais523> this is a common trick in esoprogramming, I think, creating a dummy data structure that's just like your real, useful data structure so that you can throw away unwanted writes without using a conditional
+2020-03-13 01:14:02 <ais523> it was invented by Donald Knuth when he was programming in INTERCAL
+2020-03-13 01:15:16 <MTGBusyBeaver42> yeah I've definitely seen it before.
+2020-03-13 01:15:54 <MTGBusyBeaver42> anyway back to TWM->high-rise -> 2-tag -> TM
+2020-03-13 01:16:31 <MTGBusyBeaver42> what approximate ratio do we need in TWM to get an X state TM?
+2020-03-13 01:16:49 <ais523> let's see: a TWM program is defined by zeroing triggers and initial values
+2020-03-13 01:16:54 <ais523> and number of waterclocks
+2020-03-13 01:16:57 <ais523> the number of waterclocks is fixed
+2020-03-13 01:17:14 <ais523> the initial values could be small because 2-tag is good at bootstrapping itself
+2020-03-13 01:17:42 <ais523> (by "small" I mean in the 1000-10000 range, although you could add an additional waterclock if you needed them smaller)
+2020-03-13 01:18:06 <ais523> the zeroing triggers are mostly small but a few of them will be enormous, encoding the High Rise program that encodes the 2-tag program that encodes the TM
+2020-03-13 01:18:11 <MTGBusyBeaver42> Initial values are the same cost as the transitions
+2020-03-13 01:18:19 <ais523> right, that doesn't surprise me
+2020-03-13 01:19:35 <ais523> the size of the zeroing triggers will be a small multiple of the ratio of the High Rise geometric series times the base of High Rise geometric series, as a number
+2020-03-13 01:19:46 <ais523> but the 2-tag translation sees it as a string of digits
+2020-03-13 01:19:52 <ais523> which we'll be converting into a number using base 9
+2020-03-13 01:20:51 <ais523> the length of the string, I suspect is roughly quadratic in the number of colors of the 2-tag system (the length of the productions obviously also matters but it's only linear in those, so the number of colors probably dominates)
+2020-03-13 01:21:21 <ais523> so we have a number of the form 9^(2^colors)
+2020-03-13 01:21:34 <ais523> this is larger than most reasonable one-arrow numbers, but smaller than almost all two-arrow numbers
+2020-03-13 01:21:46 <ais523> wait, no
+2020-03-13 01:21:58 <ais523> it's 9^(colors^2 * constant) which is much smaller
+2020-03-13 01:22:21 <ais523> it's large as one-arrow numbers go, but perhaps in reach, and thus easily dominated by two-arrow numbers
+2020-03-13 01:22:47 <ais523> the question is, how large of a 2-tag system do you need to implement a UTM
+2020-03-13 01:23:13 <ais523> and I don't know that part because the 2-tag-from-UTM translation isn't one that I've personally worked on
+2020-03-13 01:23:49 <MTGBusyBeaver42> Well there are some pretty small UTMs
+2020-03-13 01:24:34 <ais523> there's a paper covering this but it isn't publicly available
+2020-03-13 01:24:53 <ais523> so I can't just look up the complexity
+2020-03-13 01:25:08 <ais523> ofc, the simpler the UTM, the larger the encoding of its input you typically need
+2020-03-13 01:26:43 <ais523> so the busy beaver function for a given UTM will grow more slowly the simpler the UTM is (although not much more slowly because busy beaver functions grow faster than anything computable, so they're all pretty fast)
+2020-03-13 01:26:44 <MTGBusyBeaver42> wait we dont need a UTM, we can encode the TM busy beaver as the 2-tag program
+2020-03-13 01:27:22 <ais523> right; and in fact you could encode a Waterfall Model busy beaver which would probably be busier (it would have to be at least as busy)
+2020-03-13 01:27:50 <MTGBusyBeaver42> Yeah once we iterate the conversion doesn't particularly matter
+2020-03-13 01:27:57 <ais523> it's an interesting problem because you need to show that the UTM exists in order to prove that the busy beaver function grows quickly, but the busiest beaver probably won't use one at all
+2020-03-13 01:28:40 <ais523> hmm, or maybe it will? that's an interesting question in its own right
+2020-03-13 01:29:05 <ais523> (and one that's very hard to answer because finding busy beavers is almost impossible even for very small machines)
+2020-03-13 01:29:51 <ais523> hey, #esoteric regulars: if you have a language that is sub-TC, does that imply that finding busy beavers for it is computable? or can a language be sub-TC and yet have an uncomputable halting problem?
