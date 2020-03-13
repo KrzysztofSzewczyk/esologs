@@ -345,3 +345,40 @@
 2020-03-13 16:29:12 <arseniiv> codata above reminded me about how I tried to invent what a coeffect should look like when I couldn’t sleep the day before. Does anybody knows if coeffects are at all considered somewhere?
 2020-03-13 16:29:49 Joined: LKoen
 2020-03-13 16:29:50 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, MTGBusyBeaver42, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 16:31:25 <wib_jonas> is that the dual of when nsiders are effected?
+2020-03-13 16:34:05 User Name: MTGBusyBeaver42 = MTGBusyBeaver42!c73b3502@199.59.53.2
+2020-03-13 16:34:05 <MTGBusyBeaver42> Regarding the non-TC halting problem I'd argue that forcing the output to be 0 is not enough to force something sub TC, as we also get how long it took to terminate.
+2020-03-13 16:34:20 <arseniiv> I thought something like: in an effectful computation, one can choose and use effect constructors as many times as they like, and in an effect handler, one “deconstructs” exactly one effect and they don’t choose which one, so a coeffectful computation may be where one uses a coeffect constructor just once and doesn’t choose which and a coeffect (co?)handler allows one to pick how many coeffects to eliminate. Looks like gibberish
+2020-03-13 16:35:11 <arseniiv> wib_jonas: hmmm?
+2020-03-13 16:35:52 <wib_jonas> arseniiv: sorry. stupid joke like the one about how cocoa is really just a
+2020-03-13 16:35:54 <wib_jonas> `? cocoa
+2020-03-13 16:35:56 <HackEso> A is a village in Norway. The BBC invented it by not understanding things on top of letters.
+2020-03-13 16:37:05 <arseniiv> wib_jonas: ah, “considers”. I thought it’s a special spelling of “insiders” but didn’t understand why
+2020-03-13 16:37:44 <arseniiv> though I don’t, still :D
+2020-03-13 16:38:00 <wib_jonas> no, that one is about Darth Sidious
+2020-03-13 16:38:02 <arseniiv> I like co jokes but hadn’t got this one
+2020-03-13 16:38:10 <arseniiv> hm
+2020-03-13 16:44:54 <ais523> arseniiv: IIRC coeffects are a real area of research that's quite busy
+2020-03-13 16:45:01 <ais523> I think I've met people who work on them
+2020-03-13 16:45:30 <ais523> they're the sort of thing that you use comonads to implement, just like you can use monads to implement effects
+2020-03-13 16:45:44 <ais523> and normally correspond to some sort of resource that is consumed by a computation
+2020-03-13 16:45:57 <arseniiv> ais523: do you know an expository paper or something?
+2020-03-13 16:46:12 <ais523> I was hoping there'd be a Wikipedia article but there isn't
+2020-03-13 16:46:16 <wib_jonas> .oO(if coeffects is a busy area with lots of researchers, then the coronavirus spreads there, so the ronavirus... nah, it doesn't work)
+2020-03-13 16:46:44 <arseniiv> (yeah I thought about comonads and resources/contexts but inside one head in the early morning it’s not that fruitful)
+2020-03-13 16:48:30 <arseniiv> I also imagined what it would do with a call stack but the result was of a mixed usefulness too
+2020-03-13 16:52:12 Joined: kritixilithos
+2020-03-13 16:52:13 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, MTGBusyBeaver42, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 16:52:35 <ais523> arseniiv: try this: http://tomasp.net/blog/2014/why-coeffects-matter/
+2020-03-13 16:52:48 <ais523> sorry for not answering earlier, I was reading it first to make sure that the author actually understood the subject, but he does
+2020-03-13 16:55:29 <ais523> (it strikes me that linking a random coeffect tutorial would have had the same risks as linking a random monad tutorial, but fewer people seem to write coeffect tutorials so they're probably of higher average quality)
+2020-03-13 16:55:39 <ais523> that said, the post does remind me a lot of a monad tutorial :-D
+2020-03-13 16:56:27 <MTGBusyBeaver42> "co-" is a common prefix, so I'm confident that constant concentrated comedy (contingent on contex of course) could confound/confuse the constituents in the conversation
+2020-03-13 16:56:41 <ais523> it's a running joke in #esoteric
+2020-03-13 16:56:43 <wib_jonas> what if you link to the Typeclassopedia instead, since that's known to be a good book? https://wiki.haskell.org/Typeclassopedia#Comonad
+2020-03-13 16:57:10 <ais523> wib_jonas: that doesn't explain much about why you'd use them
+2020-03-13 16:57:22 <wib_jonas> true, but it links to references about comonads
+2020-03-13 16:57:29 <wib_jonas> presumably those are pre-vetted
+2020-03-13 16:58:07 <MTGBusyBeaver42> I almost posted it like this: "-" is a mmon prefix, so I'm nfident that nstant ncentrated medy (ntingent on ntex of urse) uld nfound/nfuse the nstituents in the nversation
+2020-03-13 16:59:39 <ais523> you have to be careful, if comedy is confounding constituents, then nstituents should nfound medy
+2020-03-13 16:59:50 <ais523> because the co- relationship reverses subject and object
