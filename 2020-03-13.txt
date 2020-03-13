@@ -249,3 +249,43 @@
 2020-03-13 13:51:09 <cpressey> So we have lots of esolangs where we guess they are Turing-complete, and some where we even have informal proofs that they're TC. Do we have any where we have a formal, machine-checkable proof that it's TC?
 2020-03-13 13:52:35 <wib_jonas> cpressey: probably not machine-checkable, because nobody bothers to write those
 2020-03-13 13:53:01 <wib_jonas> but I can point to at least two books about theory of algorithms with formal proofs
+2020-03-13 14:00:37 <wib_jonas> cpressey: https://esolangs.org/wiki/Minsky_machine says "A proof of Turing-completeness is also given in the textbook ...", this is an important TC-ness theorem, because we often prove TC-ness by compiling Minsky machines (with a fixed number of counters) to an esolang
+2020-03-13 14:00:49 <wib_jonas> there are other similar classical computational models
+2020-03-13 14:02:59 <arseniiv> that reminds me I haven’t finished a Python module with utilities for working with generalized Minsky machines. Maybe I should start a C# module for that instead
+2020-03-13 14:06:31 <arseniiv> more like a reference implementation of the algorithm deciding whether an “algebraic type universe” is infinite and constructing a term and an unary function to realize Z and S
+2020-03-13 14:07:16 <int-e> fungot: have you stocked up on toilet paper?
+2020-03-13 14:07:17 <fungot> int-e: this is what you're trying to do, is to load it
+2020-03-13 14:16:30 Joined: ais523
+2020-03-13 14:16:30 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 14:16:55 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-13 14:16:55 <ais523> cpressey: the proofs have varying levels of formality, I'm not sure if any are machine-checkable
+2020-03-13 14:17:06 <wib_jonas> ah yes, cpressey summoned ais
+2020-03-13 14:17:25 <ais523> I have actually started writing TC proofs for a couple of esolangs in Agda, but abandoned them pretty early
+2020-03-13 14:17:38 <int-e> cpressey: This kind of stuff is really tedious, hard to justify the effort (unless you do it just for fun).
+2020-03-13 14:17:43 <ais523> it's not an easy sort of thing to translate into Agda
+2020-03-13 14:17:43 Quit: ais523 (Remote host closed the connection)
+2020-03-13 14:17:43 Names: ^[, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 14:17:55 Joined: ais523
+2020-03-13 14:17:55 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 14:18:08 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-13 14:18:08 <ais523> I was considering joining
+2020-03-13 14:18:17 <wib_jonas> the problem is that a lot of these proofs are really hairy, because eg. when you want to simulate a RAM machine with a turing machine, you need to be able to move all symbols on the tape to insert a space and get back to that space and copy all these move routines multiple times in the turing machine program so that you can return to the previous
+2020-03-13 14:18:17 <wib_jonas> state,
+2020-03-13 14:18:31 Topic (set by ais523): Welcome to the international center for esoteric programming discussion, design, development, and deployment! | https://esolangs.org | logs: https://esolangs.org/logs/ http://codu.org/logs/_esoteric/ http://tunes.org/~nef/logs/esoteric/?C=M;O=D https://github.com/kspalaiologos/esologs/
+2020-03-13 14:18:36 <ais523> I felt we needed a fourth d word
+2020-03-13 14:18:54 <wib_jonas> and be able to store numbers on the tape, and copy or compare numbers between faraway palces in the tape, etc
+2020-03-13 14:19:11 <ais523> right, I was concentrating mostly on simulating one queue-based language with another
+2020-03-13 14:19:17 <ais523> but even that is hard to prove things about in Agda
+2020-03-13 14:19:47 <int-e> I have a formalization that Minsky Machines can implement recursive functions in Isabelle/HOL. That went fairly well, but it's a really nice programming model compared to many esolangs.
+2020-03-13 14:20:23 <int-e> For example it's very easy to compose Minsky machines; just rename the states apart and add a few glue transitions.
+2020-03-13 14:20:47 <wib_jonas> and then you want to prove that you can translate a structured program (with if blocks, while blocks, function definitions and non-recursive function calls) to a finite control structure (either with a state for each possible call stack in the original program, or by storing return addresses as data);
+2020-03-13 14:21:02 <wib_jonas> then you want to prove the same thing for programs with recursive calls too; etc
+2020-03-13 14:21:03 <int-e> (And I did not impose any bound on the number of registers)
+2020-03-13 14:22:16 <wib_jonas> and then that you can translate a language that has closures (like lambda expressions) to a language that doesn't have closures but has recursive calls
+2020-03-13 14:22:31 <wib_jonas> there's a step between, that you can simulate function pointers
+2020-03-13 14:22:59 <wib_jonas> there are a lot of "high-level" abstractions in real programming languages that you need to be able to prove that a simple computation model can simulate
+2020-03-13 14:24:14 <int-e> You have to consider that each of these "simple steps" probably involves defining an intermediate language, a semantics for it, a translation, and proofs that the translation preserves the semantics, all for something that we can handwave through in a couple of lines of text.
+2020-03-13 14:24:26 <int-e> (Because it's highly intuitive.)
+2020-03-13 14:24:48 <wib_jonas> yeah
+2020-03-13 14:25:23 <wib_jonas> you have to define the translation of the intermediate states, and prove that each step preserves that translation, translating the effect of a step of one machine to the effect of a step of the other machine
+2020-03-13 14:26:03 <wib_jonas> of course it's more likely multiple steps of one machine
