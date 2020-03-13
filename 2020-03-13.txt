@@ -145,3 +145,15 @@
 2020-03-13 08:51:52 Names: ^[, aji, aloril, APic, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xylochoron[m], zzo38
 2020-03-13 08:58:52 Joined: xelxebar
 2020-03-13 08:58:52 Names: ^[, aji, aloril, APic, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 09:45:05 <Cale> Can an actually-implementable language be sub-TC and have an uncomputable halting problem?
+2020-03-13 09:45:59 <Cale> It seems likely to me
+2020-03-13 09:46:38 <Cale> Just saying "this thing has an uncomputable halting problem" doesn't feel like it should get you Turing completeness for free.
+2020-03-13 09:47:20 <Taneb> A program p in Language P does no computation and halts if and only if p doesn't halt
+2020-03-13 09:48:23 <Cale> Haha
+2020-03-13 09:49:25 <Cale> That sounds more like a description of a language with no correct implementation.
+2020-03-13 09:49:42 <Cale> But I can see what you're trying to do :)
+2020-03-13 09:53:09 <Cale> Maybe just take a single Turing machine whose halting already can't be decided... say it searches for a proof of a contradiction in our metatheory, and then define a language with but a single program whose implementation is that machine.
+2020-03-13 09:57:12 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2020-03-13 09:57:12 <kritixilithos> maybe for a particular program of this language, it runs the input as a TM, and after the completion of execution (if it does halt), the program returns 0
+2020-03-13 09:57:33 <Cale> Oh, that's a good one
+2020-03-13 09:58:29 <Cale> Just take any ordinary Turing complete language and make sure it can't produce any interesting output other than whether it terminated.
