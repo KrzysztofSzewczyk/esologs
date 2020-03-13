@@ -327,3 +327,8 @@
 2020-03-13 15:20:09 <int-e> The corrsponding notion to termination for codata is productivity: The outermost constructor is produced in finite time.
 2020-03-13 15:20:19 <int-e> Yes.
 2020-03-13 15:23:42 <cpressey> OK.
+2020-03-13 15:33:44 <ais523> cpressey: my Agda interpreters for TC languages had a cycle limit and got around the no-nonprovably-halting-programs restriction that way
+2020-03-13 15:34:05 <ais523> you proved two languages were equivalent by proving that if one halted after some number of cycles, the other would also halt after some number of cycles
+2020-03-13 15:42:01 <ais523> (and vice versa)
+2020-03-13 15:42:50 <wib_jonas> makes sense
+2020-03-13 15:48:09 <cpressey> OK. There would also seem to be a stronger definition of equivalence, where their behaviours have some correspondence regardless of whether they halt or not.
