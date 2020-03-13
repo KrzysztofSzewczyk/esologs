@@ -289,3 +289,24 @@
 2020-03-13 14:24:48 <wib_jonas> yeah
 2020-03-13 14:25:23 <wib_jonas> you have to define the translation of the intermediate states, and prove that each step preserves that translation, translating the effect of a step of one machine to the effect of a step of the other machine
 2020-03-13 14:26:03 <wib_jonas> of course it's more likely multiple steps of one machine
+2020-03-13 14:46:22 <cpressey> Is #coq a moderated channel? I tried to ask a question there but got "Cannot send to nick/channel".
+2020-03-13 14:46:38 <ais523> you can try writing /mode #coq while you're there
+2020-03-13 14:46:50 <cpressey> afaict it's mode is [+cnt] and afaict that does not mean it's moderated
+2020-03-13 14:46:50 <ais523> that should give you full information on what channel modes might prevent you sending there
+2020-03-13 14:47:24 <ais523> hmm, perhaps you're banned from it (although you're unlikely to be banned personally, this could happen as a result of a ban that matches on characteristics other than nick/ident/IP)
+2020-03-13 14:47:53 <wib_jonas> cpressey: are you logged in to nickserv? a lot of channels ban everyone who isn't logged in to nickserv
+2020-03-13 14:48:08 <cpressey> int-e: Do you know anything about extraction in Coq?
+2020-03-13 14:48:12 <ais523> err, muted, not banned
+2020-03-13 14:48:18 <ais523> if you were banned you wouldn't be able to join it
+2020-03-13 14:48:29 <int-e> cpressey: nothing beyond the term
+2020-03-13 14:49:25 <cpressey> OK. It's a really simple question, I expect I already know the answer, it would be nice to have it confirmed but I'll just keep reading and I'll eventually know
+2020-03-13 14:49:31 <int-e> cpressey: Meaning I think I know what it is abstractly, but not how it's done.
+2020-03-13 14:51:21 <cpressey> int-e: Well, it's this: Coq is guaranteed to terminate. Are the programs extracted from Coq also guaranteed to terminate?
+2020-03-13 14:51:32 <cpressey> I think it's "yes"
+2020-03-13 14:52:23 Quit: kritixilithos (Ping timeout: 240 seconds)
+2020-03-13 14:52:24 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 14:53:31 Joined: spruit11
+2020-03-13 14:53:31 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 14:53:58 Joined: kritixilithos
+2020-03-13 14:53:59 Names: ^[, ais523, aji, aloril, APic, arseniiv, art1, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-13 14:57:16 <int-e> cpressey: I think so too (though you can mess up the setup)
