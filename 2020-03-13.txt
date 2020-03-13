@@ -94,3 +94,12 @@
 2020-03-13 01:28:40 <ais523> hmm, or maybe it will? that's an interesting question in its own right
 2020-03-13 01:29:05 <ais523> (and one that's very hard to answer because finding busy beavers is almost impossible even for very small machines)
 2020-03-13 01:29:51 <ais523> hey, #esoteric regulars: if you have a language that is sub-TC, does that imply that finding busy beavers for it is computable? or can a language be sub-TC and yet have an uncomputable halting problem?
+2020-03-13 01:30:02 <MTGBusyBeaver42> Yeah, though how to define the size of a TWM busy beaver something like (Clocks, Max size)
+2020-03-13 01:30:23 <ais523> "number of Plant tokens required to set it up"
+2020-03-13 01:30:31 <MTGBusyBeaver42> yes
+2020-03-13 01:33:01 <MTGBusyBeaver42> if Flooding Waterfall Machines have real busy beavers then we can have a lot more freedom in the setup and probably get an extra layer of iterations too
+2020-03-13 01:33:50 <ais523> well, 10 waterclocks + a number of flooding clocks is going to give you much busier beavers, because you can write a UTM using the 10 waterclocks, and use the flooding clocks as additional storage that naturally tends to explode
+2020-03-13 01:34:11 <ais523> if all your waterclocks are flooding, I'm still unsure what happens
+2020-03-13 01:34:53 <ais523> I think the best way to think about the flooding version of the language is that the zeroing triggers actually run every cycle, but their effects don't become visible until their clock zeroes
+2020-03-13 01:35:22 <ais523> but that way of thinking about it hasn't helped me much with actually programming in the language :-D
+2020-03-13 01:37:57 <MTGBusyBeaver42> yeah, either way of thinking about it, there's not really a good way to encode the values, due to combining multiplication and addition/subtraction
