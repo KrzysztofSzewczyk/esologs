@@ -289,3 +289,62 @@
 2020-03-14 18:58:34 <b_jonas> but even if you don't want that, you can just move around files to a burn staging directory
 2020-03-14 18:58:41 <b_jonas> you don't need more space than the backup
 2020-03-14 18:59:41 <arseniiv> what I was doing when I used DVD backups => (I tried to solve that oprimization problem by hand, writing directories and parts of them; it was a grindy form of art)
+2020-03-14 19:00:06 <ais523> I would expect USB sticks to be more durable than DVDs (although considerably more expensive)
+2020-03-14 19:00:14 <ais523> that said, I'm not certain
+2020-03-14 19:00:42 <arseniiv> <b_jonas> but even if you don't want that, you can just move around files to a burn staging directory => yeah that was what I used to do and it was awful
+2020-03-14 19:01:10 <arseniiv> especially with video
+2020-03-14 19:01:21 <b_jonas> there's also the more trickier secret sharing method, in which you distribute some data (in practice a symmetricy cryptography) key among three CDs such that it can be reconstructed from any two, but not from any one. obviously then you can't just write the data in plain text. this can be useful if you want remote backups of your secret key in places where there's a chance that they can be stolen.
+2020-03-14 19:02:11 <ais523> hmm, I wonder if error correction codes can be used to do that trivially?
+2020-03-14 19:02:20 <ais523> start with your plaintext P; generate random data R
+2020-03-14 19:02:22 <b_jonas> ais523: it's hard to tell. SD cards are certainly more resistant to bad storage conditions, and I suspect that they last long, but I can't tell if they last longer than a DVD in ideal (library archives with controlled temperature)
+2020-03-14 19:02:28 <ais523> store P^R and R on the first two DVDs
+2020-03-14 19:02:40 <ais523> actually, no, that doesn't work
+2020-03-14 19:02:49 <ais523> because the "check" DVD will contain P in plaintext
+2020-03-14 19:02:53 <b_jonas> ais523: you can use a trivial xor method if you don't mind storing more data than necessary, which is fine with a secret key stored on digital media;
+2020-03-14 19:03:20 <b_jonas> ais523: if you want an optimal solution, you can use a solution based on polynomial interpolation, as explained in the description of David Madore's accidental IOCCC winnning entry
+2020-03-14 19:03:27 <ais523> IIRC the most common failure mode for flash memory (which SD cards and USB sticks are based on) is becoming read-only, which wouldn't be a huge issue in this context
+2020-03-14 19:03:41 <ais523> b_jonas: I normally use polynomial interpolation for this
+2020-03-14 19:03:56 <ais523> ever since I won a codegolf competition with it
+2020-03-14 19:04:16 <arseniiv> ais523: I’ve seen something like this a month or so ago, that’s why I mentioned redundancy in the first place. I’ll look for the link…
+2020-03-14 19:04:19 <ais523> it has basically no downsides as far as I can see, other than the finite field often being annoying to construct and operate on
+2020-03-14 19:04:21 <b_jonas> ais523: nice. that should be possible, because the IOCCC entry is naturally somewhat golfed too.
+2020-03-14 19:05:18 <b_jonas> and I know some golfy ways to act on finite fields (though these don't interpolate polynomials):
+2020-03-14 19:05:25 <ais523> it seems that in practice, finite fields are normally stored in lookup tables, because there aren't any "fast" ways of generating them on the fly (unless they have a prime size, obviously)
+2020-03-14 19:05:52 <ais523> at least, if you want to be able to number the elements consistently
+2020-03-14 19:05:53 <arseniiv> found it: https://viereck.ch/scatter/
+2020-03-14 19:06:45 <b_jonas> https://www.perlmonks.com/?spoil=1;node_id=863110 golfy computation on GF(128) based on bitshifts (I think there's a faster way but you can't easily write it in perl, you need to use cpu-specific carryless multiplication instructions); https://www.perlmonks.com/?node_id=862789 golfy GF(128) based on lookup tables;
+2020-03-14 19:07:20 <b_jonas> and there are much golfier ways to compute on GF(127)
+2020-03-14 19:07:25 <ais523> GF(256) is probably the most interesting one for error correction codes
+2020-03-14 19:07:42 <ais523> or GF(size of DVD), I guess
+2020-03-14 19:07:46 <b_jonas> ais523: sure, and David Madore's accidental IOCCC entry implements GF(255) IIRC
+2020-03-14 19:08:12 <b_jonas> nah, you need a size bigger than GF(255) only if you want to divide your code to more than 255 minus a few pieces
+2020-03-14 19:08:20 <ais523> is there a GF(255)? it isn't a prime power
+2020-03-14 19:08:27 <b_jonas> sorry, I mean GF(256)
+2020-03-14 19:09:15 <b_jonas> and even if you want more than 255 or so pieces, which isn't that unreasonable in some cases, you probably want a smaller field than the DVD-sized one
+2020-03-14 19:09:17 <arseniiv> b_jonas: minus how many pieces approximately?
+2020-03-14 19:09:32 <b_jonas> arseniiv: I think minus one piece in theory, but I'm not sure
+2020-03-14 19:09:50 <arseniiv> I see
+2020-03-14 19:10:21 <b_jonas> arseniiv: you store the value of the polynomial at 255 places, and its value at the remaining place (say 0) is the secret data
+2020-03-14 19:10:36 <b_jonas> and you choose all coefficients of teh polynomial except the constant one in a cryptographically random way
+2020-03-14 19:11:06 <ais523> b_jonas: that's if you want all the parts to be necessary
+2020-03-14 19:11:21 <b_jonas> ais523: no, you just choose a lower degree polynomial if you don't want that
+2020-03-14 19:11:25 <ais523> if you want all the parts but one to be necessary, you choose all the coefficients but two in a cryptographically random way, don't you?
+2020-03-14 19:11:28 <ais523> so you can have a lower degree
+2020-03-14 19:11:31 <b_jonas> if you choose a degree d polynomial, you need d+1 pieces
+2020-03-14 19:11:34 <ais523> oh, right, you choose the top one as 0
+2020-03-14 19:11:44 <ais523> so we had the same idea but expressed it different ways
+2020-03-14 19:12:51 <b_jonas> but in practice, it's enough to secret share a fresh symmetric crypto key this way, and encode all your data with that key
+2020-03-14 19:13:11 <arseniiv> yeah the scheme seems familiar but I don’t get yet how does it scale from a single scalar in GF(…) to a piece of data, is it just componentwise? Ah, it seems it should be the only way
+2020-03-14 19:13:43 <b_jonas> which is why it doesn't even matter much how efficient your implementation is, but you can get efficient implementations, because the CPU people optimized the implementations, because they need GF(2**n) computations for other reasons, such as CRC
+2020-03-14 19:14:04 <b_jonas> arseniiv: yes, you do this to each byte of the data
+2020-03-14 19:14:30 <b_jonas> arseniiv: see the comments in David Madore's program
+2020-03-14 19:14:46 <b_jonas> it describes the scheme well, plus also describes how it does computations on the particular finite field
+2020-03-14 19:15:51 <b_jonas> ftp://ftp.madore.org/pub/madore/misc/shsecret.c
+2020-03-14 19:16:55 <arseniiv> b_jonas: oh! I thought it would be obfuscated
+2020-03-14 19:17:27 <b_jonas> the IOCCC entry is based on that, and that one is obfuscated
+2020-03-14 19:18:30 <b_jonas> there's a great blog entry on it: www.madore.org/~david/weblog/d.2012-10-14.2083.html , telling that David didn't even know about the obfuscated program until the IOCCC committee announced the results and declared that David is also a winner because the obfuscated program was largely (and with attribution) based on his non-obfu program
+2020-03-14 19:19:04 <b_jonas> that is like winning winning the IOCCC
+2020-03-14 19:19:54 <b_jonas> I mean, that sentence is hard to parse, but
+2020-03-14 19:21:53 <arseniiv> ah, so he didn’t write an IOCCC entry himself!
+2020-03-14 19:21:54 <b_jonas> people sometimes say in an informal way that they won something that isn't even a competition because of style points, and in that sense, winning the IOCCC isn't a competition, because you wouldn't think there's a competition among IOCCC winners for who wins IOCCC the most awesome way, but it turns out that one can win that non-competition, and David showed how
+2020-03-14 19:22:15 <b_jonas> excatly, but the judges decided that he was an author
