@@ -506,3 +506,15 @@
 2020-03-16 14:47:16 <wib_jonas> so you have to find a link to it from the news archive or the forum if you want to buy it
 2020-03-16 14:48:55 <wib_jonas> or find it linked on Gumroad from the other books
 2020-03-16 14:50:15 <wib_jonas> but half price for book 4 is still 2600 forints for a book that contains mostly the same strips as the web, so I'll skip for now
+2020-03-16 15:45:22 <int-e> b_jonas: Well, I don't like that the kernels accumulate like that, especially because removing them with aptitude takes quadratic time. There must be a workaround for that.
+2020-03-16 15:49:53 <int-e> b_jonas: e.g. http://paste.debian.net/1135151/
+2020-03-16 15:51:49 <wib_jonas> int-e: they don't seem to accumulate just from debian for me, at least not to the amount you mention. debian only keeps one from each abi compat version, which is a level below the kernel version number but above the actual debian package version number, and supposedly increments only when the abi becomes incompatible between kernel and modules
+2020-03-16 15:52:32 <int-e> wib_jonas: I'm un debian unstable, which has many more kernels (and a good reason to keep *some* around. I just wish it wasn't every single one, ever)
+2020-03-16 15:52:41 <wib_jonas> whereas they often do kernel updates within an abi version, and I usually copy those kernels to my boot partition now (but only because of this weird setup; and I don't copy the modules)
+2020-03-16 15:52:47 <int-e> I'm *running
+2020-03-16 15:52:48 <wib_jonas> oh, debian unstable. that's different
+2020-03-16 15:52:59 <wib_jonas> I don't run unstable, and wouldn't run it
+2020-03-16 15:53:37 <wib_jonas> it takes quadratic time to remove them? ouch
+2020-03-16 15:54:11 <wib_jonas> it's no surprise that debian unstable has more kernel versions
+2020-03-16 15:58:24 <int-e> The obvious improvement here would be to not regenerate the initrd after every single purge. Not sure how to achieve that.
+2020-03-16 15:59:49 <wib_jonas> how does that even become quadratic?
