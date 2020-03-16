@@ -186,3 +186,13 @@
 2020-03-16 05:26:22 <ais523> I think the program is correct, although I'm not sure, it's pretty hard to test
 2020-03-16 05:26:36 <ais523> I think I'm going to try compiling it by hand
 2020-03-16 05:26:55 <zzo38> O, OK. I think that it is worth at least documenting WCK properly.
+2020-03-16 05:49:02 <ais523> what's 310031-in-base-5 in decimal?
+2020-03-16 05:50:46 <zzo38> If you mean 310031 is a base five number, then the decimal is 10016. (You can figure out this by dc easily. It can also be figured out easily in JavaScript and also in PostScript.)
+2020-03-16 05:51:17 <ais523> I thought dc might be able to do it, but I wasn't sure how
+2020-03-16 05:51:33 <ais523> thanks for the answer, anyway, you interpreted the question correctly
+2020-03-16 05:51:56 <zzo38> How to do in dc is: 5i310031p
+2020-03-16 05:54:33 <ais523> `dc 5i310031p
+2020-03-16 05:54:35 <HackEso> dc: Could not open file 5i310031p
+2020-03-16 05:54:39 <ais523> `` dc -e 5i310031p
+2020-03-16 05:54:40 <HackEso> 10016
+2020-03-16 05:54:42 <ais523> aha
