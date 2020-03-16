@@ -644,3 +644,16 @@
 2020-03-16 21:58:14 <b_jonas> I decided early that o-circumflex and o-doubleacute can look the same, that's the easy part.
 2020-03-16 21:58:42 <b_jonas> And I don't think this font will be usable for vietnamese,
 2020-03-16 21:59:51 <b_jonas> and it would be better if the same accent looks the same on most vowels
+2020-03-16 22:03:39 <b_jonas> so I have to be concerned with french/welsh that distinguishes e-acute, e-grave, e-circumflex, e-diaresis; portugese which distinguishes a-acute, a-grave, a-circumflex, a-tilde; romanian that distinguishes a-brevis from a-circumflex; swedish/finnish which distinguishes a-umlaut from a-ring; icelandic that distinguishes o-acute from o-diaresis;
+2020-03-16 22:07:45 <b_jonas> as well as some romanizations of non-latin scripts, in particular the ISO 9 transcription of russian which distinguishes e-circumflex from e-diaresis (ok that's not a new constraint); I can probably give up on chinese pinyin transcription just as on vietnamese; what else am I forgetting?
+2020-03-16 22:12:10 <b_jonas> oh yeah, also czech distinguishes u-acute from u-ring.
+2020-03-16 22:15:02 <b_jonas> I think I'll do the following: grave is left pixel, acute is right pixel, umlaut/diaresis is left and right pixels, circumflex or double acute is middle and right pixel, tilde is left and middle pixel, macron is left and middle and right pixels, ring or brevis or middle dot is middle pixel alone, and I'll figure out what to do with the caron later, it has to be distinct from the middle dot and the acute
+2020-03-16 22:15:08 <b_jonas> obviously
+2020-03-16 22:15:57 <b_jonas> no wait, that won't work, darn it
+2020-03-16 22:16:14 <b_jonas> the i with brevis has to differ from the i
+2020-03-16 22:16:44 <b_jonas> for latin
+2020-03-16 22:17:34 Quit: Hoolootwo (Remote host closed the connection)
+2020-03-16 22:17:34 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-16 22:18:38 <b_jonas> still, brevis as the middle dot is too mnemonic to give up. I might just special case the i with brevis
+2020-03-16 22:25:37 <b_jonas> ideally I should have a big table prepared for this that shows what letters each language and writing system that I commonly encounter use
+2020-03-16 22:29:57 <zzo38> I also thought a theme based on a supertype, could be world, and you can do more than what other sets have previously done, such as adding death triggers, world cards other than global enchantments, effects that add or remove the world supertype, that suppress the world rule temporarily, count world cards in some zone, etc.
