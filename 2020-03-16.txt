@@ -39,3 +39,65 @@
 2020-03-16 02:05:00 <int-e> But who knows. I may have misconfigured something, and I cannot really be bothered to debug this.
 2020-03-16 02:06:32 <int-e> Especially given the alternative that works.
 2020-03-16 02:29:32 <zzo38> Someone said they were considering updating NNTP for 2020, and posted a proposal to the IETF. I suggested increasing article numbers from 31-bits to 63-bits, and adding the WHOAMI command, both of these features I have implemented in my own software. Maybe the IETF will make this official.
+2020-03-16 02:30:38 <zzo38> (They also called Usenet "the world's largest social media network".)
+2020-03-16 02:31:08 Joined: ais523
+2020-03-16 02:31:09 Names: ^[, ais523, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-16 02:32:24 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-16 02:32:24 <ais523> hearing that Turbo Pascal is now available in perpetual free-trial form is pretty encouraging
+2020-03-16 02:32:29 <ais523> I still have some old Pascal code from a while back
+2020-03-16 02:32:46 <ais523> I remember translating it into C but the C ran more slowly; that surprised me at the time and still surprises me now
+2020-03-16 02:32:54 <ais523> maybe the Pascal had a better optimiser, or faster supporting libraries, or something
+2020-03-16 02:34:59 <ais523> oh wow, this pascal source is so old that the file ends with a literal ^Z character
+2020-03-16 02:35:06 <ais523> how long ago was it that text files stopped needing those?
+2020-03-16 02:35:55 <int-e> I'm not sure, was it when we abandoned CP/M?
+2020-03-16 02:35:56 <zzo38> Maybe Pascal is faster because it is DOS.
+2020-03-16 02:36:05 <ais523> the C compiler was also DOS
+2020-03-16 02:36:09 <ais523> I think, at least
+2020-03-16 02:39:07 <ais523> oh wow, the executable I compiled from the Pascal source still runs (in DOSBox)
+2020-03-16 02:39:08 <zzo38> Yes, although Pascal may be more suitable for DOS, at least in real mode.
+2020-03-16 02:39:13 <ais523> I guess that's not a surprise
+2020-03-16 02:39:35 <ais523> the executable I compiled from the C source does not run – it's missing dependencies – and I guess the problem is that those dependencies appear to be manually linked
+2020-03-16 02:39:44 <ais523> which could be very slow given that the pixels are written individually with function calls
+2020-03-16 02:40:02 <zzo38> What graphics mode?
+2020-03-16 02:40:43 <ais523> it looks like 16-color 640�480 VGA
+2020-03-16 02:41:02 <int-e> CP/M was a good guess, it seems; I vaguely remembered the record-based file access (which DOS mimics in its FCB interface for backward compatibility). "The CP/M file system only recorded the lengths of files in multiples of 128-byte "records", so by convention a Control-Z character was used to mark the end of meaningful data if it ended in the middle of a record."...
+2020-03-16 02:41:07 <int-e> ...https://en.wikipedia.org/wiki/End-of-file
+2020-03-16 02:42:27 <zzo38> Yes, although I don't know why it should be ^Z, since that isn't the ASCII code for end of file; ^D might make more sense
+2020-03-16 02:42:45 <int-e> But Z is the last letter of the alphabet.
+2020-03-16 02:43:04 <int-e> . o O ( It's the latin omega. )
+2020-03-16 02:44:09 <zzo38> Yes, although it stands for "substitute" and not "end of file", isn't it?
+2020-03-16 02:45:08 <int-e> Whatever that means.
+2020-03-16 02:46:44 <ais523> the intended use was as an equivalent of REPLACEMENT CHARACTER
+2020-03-16 02:46:47 <zzo38> I think "substitute" means there is no valid character, so it substitutes ^Z in its place.
+2020-03-16 02:46:50 <ais523> `unicode REPLACEMENT CHARACTER
+2020-03-16 02:46:52 <HackEso> ​�
+2020-03-16 02:47:20 <ais523> but it was mostly used for other purposes, and Unicode had to add a separate such character at U+FFFD
+2020-03-16 02:47:52 <int-e> Well, I remember that ^A and ^B displayed smileys. That's not in line with ASCII either. I don't think CP/M and DOS developers cared all that much.
+2020-03-16 02:48:16 <ais523> int-e: code page 437 assigns glyphs for characters in the C0 and C1 regions, in addition to G0 and G1
+2020-03-16 02:48:22 <int-e> (Or the PC BIOS developers which may be the actual people responsible?)
+2020-03-16 02:48:24 <zzo38> Yes, in the PC character set, the graphics at those points corrsepond to faces.
+2020-03-16 02:48:27 <ais523> the C0 characters are very hard to write on most output devices
+2020-03-16 02:48:48 <ais523> the C1 characters are incompatible with most of the relevant standards, but are used often enough that terminals often need to find a way to output them anyway
+2020-03-16 02:49:25 <zzo38> That is true of all of the control range; there are also graphics there on a PC, so that if you write directly to the video memory, they will be visible.
+2020-03-16 02:50:08 <int-e> Whatever. CP/M and by extention DOS used ^Z to mark the end of files. That's really where the discussion should've ended.
+2020-03-16 02:50:33 <ais523> policing topicality here can be kind-of hard :-D
+2020-03-16 02:50:35 <int-e> Unless you have a time machine.
+2020-03-16 02:50:36 <zzo38> Yes, that is probably why DOS does that, because of CP/M.
+2020-03-16 02:50:45 <ais523> and retrocomputing is closer to our main topic than much of what's discussed here
+2020-03-16 02:51:08 <int-e> ais523: I'm mostly annoyed at myself for participating in it beyond that point :)
+2020-03-16 02:51:09 <ais523> I've actually put thought into writing an esolang for retrocomputing purposes
+2020-03-16 02:51:32 <ais523> the main aim being to reduce the amount of RAM that a program written in it takes to run, as far as possible
+2020-03-16 02:51:35 <zzo38> Yes, and even in esolang wiki there is a few retrocomputing stuff. And, I do want to see your esolang for retrocomputing purposes once you write it.
+2020-03-16 02:52:03 <ais523> using any trick available; overlays, swapping to disk, using bytecode interpreters with compressed bytecode, etc.
+2020-03-16 02:52:27 <ais523> I didn't design most of the details
+2020-03-16 02:52:46 <ais523> one idea I had was for it to be a byte-compiled language where the bytecode used return-oriented programming
+2020-03-16 02:52:58 <ais523> as a method of compression in addition to a method of function calls
+2020-03-16 02:54:51 <ais523> another idea I had was to store all values as 1 byte on the stack, if they were more than 1 byte wide then a hash table element would be tied to the stack location and contain the real value, with the stack containing information to find the element
+2020-03-16 02:55:09 <ais523> you could probably do something similar with the heap
+2020-03-16 02:56:15 <ais523> but these are just ideas, and that's all I have, it's not like there's some big plan that I'm hiding
+2020-03-16 02:56:33 <zzo38> OK
+2020-03-16 02:57:15 <zzo38> I like those ideas
+2020-03-16 02:58:41 <zzo38> (I thought of the similar idea about return-oriented programming before, too)
+2020-03-16 02:59:24 <ais523> I'm actually surprised that return-oriented programming isn't done more often as a programming technique in cases where you don't have to use it
+2020-03-16 02:59:36 <ais523> (of course, for the exploits against W^X code, it's often necessary)
+2020-03-16 02:59:57 <ais523> I guess Underload has some similarities to return-oriented programming
