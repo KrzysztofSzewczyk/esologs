@@ -638,3 +638,9 @@
 2020-03-16 21:06:17 <zzo38> Can <marquee> be disabled in Firefox? I am fine with <blink>, but I don't like <marquee>.
 2020-03-16 21:20:18 <zzo38> Rosewater wrote about themes in Magic: the Gathering, including color, type, subtype, supertype, zone, and other possibilities.
 2020-03-16 21:20:54 <zzo38> I thought, make the zone theme based on stack, ante, and command zone.
+2020-03-16 21:49:24 <int-e> whatever happened to the battlefield and phasing
+2020-03-16 21:50:13 <zzo38> Phasing is no longer a separate zone than the battlefield, although that can be a theme too I suppose
+2020-03-16 21:57:46 <b_jonas> I'm trying to draw a tiny bitmap font where characters are 6 pixels high. so now I have to research which accented letters languages use, because I have to make some of the following characters look identical: a-grave, a-acute, a-circumflex, a-diaresis, a-tilde, a-brevis, a-macron, a-dotabove.
+2020-03-16 21:58:14 <b_jonas> I decided early that o-circumflex and o-doubleacute can look the same, that's the easy part.
+2020-03-16 21:58:42 <b_jonas> And I don't think this font will be usable for vietnamese,
+2020-03-16 21:59:51 <b_jonas> and it would be better if the same accent looks the same on most vowels
