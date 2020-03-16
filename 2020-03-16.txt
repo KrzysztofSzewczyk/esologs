@@ -518,3 +518,48 @@
 2020-03-16 15:54:11 <wib_jonas> it's no surprise that debian unstable has more kernel versions
 2020-03-16 15:58:24 <int-e> The obvious improvement here would be to not regenerate the initrd after every single purge. Not sure how to achieve that.
 2020-03-16 15:59:49 <wib_jonas> how does that even become quadratic?
+2020-03-16 16:00:21 <wib_jonas> I mean, maybe it regenerates the initrd with the current latest kernel version's modules every purge, but that's just linear,
+2020-03-16 16:00:39 <wib_jonas> plus it could regenerate the boot loader config file after every purge, which is technically quadratic but with a very small constant factor
+2020-03-16 16:01:46 <int-e> wib_jonas: because for some inexplicable reason, locating each of these images takes non-negligible time.
+2020-03-16 16:02:04 <int-e> so the initrd generation becomes noticably slower with more kernel images
+2020-03-16 16:02:43 <wib_jonas> also, out of curiosity, are you running debian unstable as a hobby for home, or for some job in sysadmin or similar capacity?
+2020-03-16 16:03:24 <int-e> This is at home. I wouldn't do it for servers. I would probably do it for my own software development needs if allowed.
+2020-03-16 16:03:54 <wib_jonas> not on live servers, sure, but are you doing it to be able to prepare for future system problems at work?
+2020-03-16 16:04:01 <int-e> It's a matter of laziness really... debian unstable is much better at having the latest versions of compilers and the like.
+2020-03-16 16:04:07 <wib_jonas> I'm asking more "for home" rather than "at home",
+2020-03-16 16:04:21 <wib_jonas> I see
+2020-03-16 16:04:43 <int-e> And it is surprisingly stable, given the name.
+2020-03-16 16:05:28 <int-e> Make no mistake, I've seen it break badly... happens once, maybe twice a year, and *most* of the time it's easy to fix.
+2020-03-16 16:06:05 <wib_jonas> sure, but I prefer that to happen not at unpredictable times, but at the times when I decide to upgrade to the latest stable version and spend days setting it up and debugging problems
+2020-03-16 16:06:17 <int-e> The last such annoyance was firefox relying on sqllite interna.
+2020-03-16 16:06:36 <int-e> I don't do automatic updates anyway.
+2020-03-16 16:06:42 <wib_jonas> and for the software where I particularly care about having the latest version, which could be compilers, or gimp 2.10, or whatever, they're usually easy to install
+2020-03-16 16:06:51 <wib_jonas> at least if you're not running a too old stable version
+2020-03-16 16:07:30 <int-e> Anyway, obviously this is not any kind of advice. For me, Debian unstable hits the sweet spot between stability and bleeding edge better than debian stable.
+2020-03-16 16:08:01 <int-e> And that may change.
+2020-03-16 16:08:20 <wib_jonas> sure, I don't do automatic updates either, I just put the security updates on occasionally, but those rarely break anything but firefox (which is its own sort of problem, debian basically doesn't have the resources to follow its changes), whereas for unstable you can't install just the security updates every month
+2020-03-16 16:08:30 <wib_jonas> sure, it can change
+2020-03-16 16:09:46 <wib_jonas> (I mean the above for my home machine; the work windows machine does run automatic updates)
+2020-03-16 16:10:00 <int-e> Also... I ran Gentoo for several years. So compared to that, Debian unstable is MUCH more convenient.
+2020-03-16 16:10:28 <int-e> (I can't justify Gentoo anymore except as a learning experience into how software is built and how many things can go wrong in the process.)
+2020-03-16 16:10:38 <wib_jonas> meanwhile, IOCCC submissions have ended
+2020-03-16 16:10:49 <wib_jonas> sure, I ran Gentoo too, but that was when I was young and had time for that sort of nonsense
+2020-03-16 16:10:57 <wib_jonas> and didn't know that I should be running debian
+2020-03-16 16:10:59 <esowiki> 14[[07TTTTTTTT14]]4 N10 02https://esolangs.org/w/index.php?oldid=70312 5* 03PythonshellDebugwindow 5* (+853) 10Created page with "'''TTTTTTTT''' is an esolang by [[User:PythonshellDebugwindow]].  ==Etymology== This language got its name from its longest keyword, which is also the only character in its ke..."
+2020-03-16 16:11:02 <int-e> At least I have one or two good stories to tell.
+2020-03-16 16:11:44 <int-e> Like the point where I removed libacl because I wasn't using access control lists... and core-utils (uh, what's the old name of that again?) broke.
+2020-03-16 16:11:48 <wib_jonas> eventually I managed to break the gentoo system too much, at which point I tried ubuntu for a few weeks, decided it wasn't for me and purged it without a backup, installed debian, and I've been running debian ever since (though multiple different installations of debian)
+2020-03-16 16:11:52 <kmc> I ran Gentoo when I got an amd64 machine and Debian still didn't have good support for it
+2020-03-16 16:12:00 <kmc> that was in 2004
+2020-03-16 16:12:07 <kmc> when I was young and had time for that sort of nonsense
+2020-03-16 16:12:11 <arseniiv> . o O ( Debian unsatiable )
+2020-03-16 16:12:56 <int-e> kmc: Yeah I basically stopped using Gentoo when I finally got a job. :P
+2020-03-16 16:13:04 <arseniiv> …I need to try Debian in a virtual machine probably…
+2020-03-16 16:15:48 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=70313&oldid=70264 5* 03PythonshellDebugwindow 5* (+96) 10/* "Hello" program */
+2020-03-16 16:17:35 <int-e> wib_jonas: Another related compromise would be Ubuntu (basically minus all the Ubuntu specific UI crap), which is sourced mainly from Debian unstable.
+2020-03-16 16:21:31 <esowiki> 14[[07TTTTTTTT14]]4 M10 02https://esolangs.org/w/index.php?diff=70314&oldid=70312 5* 03PythonshellDebugwindow 5* (+381) 10
+2020-03-16 16:22:06 <esowiki> 14[[07Infinite Goto14]]4 M10 02https://esolangs.org/w/index.php?diff=70315&oldid=70299 5* 03PythonshellDebugwindow 5* (+276) 10/* Syntax */ clearing up Line 27
+2020-03-16 16:22:44 <esowiki> 14[[07Infinite Goto14]]4 M10 02https://esolangs.org/w/index.php?diff=70316&oldid=70315 5* 03PythonshellDebugwindow 5* (+48) 10/* Resources */
+2020-03-16 16:26:02 Quit: Melvar (Quit: WeeChat 2.4)
+2020-03-16 16:26:03 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hoolootwo, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-16 16:28:11 <wib_jonas> int-e: well, it's been lots of years since I tried ubuntu, and it's changed during those years, so I can respectfully say that I'll consider that option and get back to them, and then never actually get back to them
