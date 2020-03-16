@@ -222,3 +222,87 @@
 2020-03-16 07:57:34 <Hooloovo0> (usually)
 2020-03-16 07:58:03 <b_jonas> btw, do we want a Planet of the Hats comic strip list, in the sense of `*list ?
 2020-03-16 07:58:33 <Hooloovo0> it also seems like that would only be useful on old CPUs... it would be hell on branch predictors
+2020-03-16 08:01:23 <b_jonas> int-e: "why do I have 17 linux kernel images installed" => I don't delete the old ones either until the space on the one gigabyte sized boot gets low
+2020-03-16 08:02:58 <b_jonas> kmc: in CP/M and DOS 1, can't just ask the kernel to read or write any number of bytes, instead you can only read a fixed size block, which corresponds to a block stored contiguously on the disk. as a consequence for this, the file size isn't stored in byte granularity either.
+2020-03-16 08:04:49 <b_jonas> this was the old default until unix came along, and it would still make sense for regular files, though with a variable block size that the kernel decides for you, because why the heck would you need a buffer for regular files both in the kernel and in userspace?
+2020-03-16 08:04:52 <kmc> what's the block size, and is it the same for every file?
+2020-03-16 08:04:59 <kmc> mm
+2020-03-16 08:05:04 <b_jonas> kmc: on CP/M and DOS 1, they are the same
+2020-03-16 08:05:23 <b_jonas> these days, it's only the same on one file system, might vary after that
+2020-03-16 08:05:26 <kmc> so�^Z is used to indicate the actual end of the file within the block?
+2020-03-16 08:05:37 <b_jonas> back then it was the same globally, because there was only one type of file system
+2020-03-16 08:05:41 <kmc> right
+2020-03-16 08:05:42 <b_jonas> kmc: for text files, yes
+2020-03-16 08:05:52 <b_jonas> other files like executables can have any format the programs handle
+2020-03-16 08:06:09 <Hooloovo0> it makes a lot of sense for floppy drives - the only writable sections are blocks
+2020-03-16 08:06:16 <kmc> also, why ^Z
+2020-03-16 08:06:26 <Hooloovo0> and in the early days of DOS and CP/M, that's all you really had
+2020-03-16 08:06:29 <kmc> doesn't ASCII have a C0 control code for end of file? is it ^Z?
+2020-03-16 08:07:02 <b_jonas> kmc: that was discussed earlier in chat, we don't know why ^Z but it would be stupid to change it now
+2020-03-16 08:07:11 <kmc> it's kind of tragic how the C0 control codes, most of which are never used, occupy prime 1-byte real estate in UTF-8
+2020-03-16 08:07:14 <kmc> c'est la vie
+2020-03-16 08:07:17 Quit: Sgeo (Read error: Connection reset by peer)
+2020-03-16 08:07:17 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xylochoron[m], zzo38
+2020-03-16 08:07:44 Joined: Sgeo
+2020-03-16 08:07:45 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xylochoron[m], zzo38
+2020-03-16 08:08:19 <Hooloovo0> anything >0x7f is undefined in ascii, right?
+2020-03-16 08:08:33 <b_jonas> Hooloovo0: that hasn't changed, even these days hard disks and SSDs are written in blocks. in fact, with hard disks having controllers built onto them, you can't even do anything about it, whereas back in the old days you had some control over the format of your floppies.
+2020-03-16 08:08:52 <zzo38> The ASCII control code for end of file isn't ^Z; that is due to CP/M, not ASCII.
+2020-03-16 08:09:03 <b_jonas> Hooloovo0: although file systems add an abstraction layer over that, where a logical block for storing files can be larger than the physical sectors
+2020-03-16 08:09:15 <kmc> (and the even more obscure C1 codes occupy 1-byte real estate in ISO 8859, but the 8-bit Windows code pages put printing characters there instead)
+2020-03-16 08:09:32 <Hooloovo0> yeah, I know that, but given the age and early status of the OSs, an there were no real alternatives to floppies...
+2020-03-16 08:09:36 <kmc> Hooloovo0: correct. ASCII is a 7-bit code
+2020-03-16 08:10:00 <b_jonas> Hooloovo0: sure there were, they were casettes, only those are much less reliable than floppy disks
+2020-03-16 08:10:13 <Hooloovo0> then how can you have C0/C1 codes? that's 8 bits
+2020-03-16 08:10:26 <Hooloovo0> technically, sure
+2020-03-16 08:10:28 <kmc> C0 and C1 are not meant to be hex numbers here
+2020-03-16 08:10:32 <Hooloovo0> ohhhh
+2020-03-16 08:10:32 <kmc> they're just called that for some reason
+2020-03-16 08:10:33 <b_jonas> and ROM cartridges of course, which are _more_ reliable than floppy disks, but you can only write them in huge production runs
+2020-03-16 08:10:52 * Hooloovo0 is currently in the middle of a tape backup
+2020-03-16 08:11:05 <kmc> C0 codes are 00-1F hex and C1 codes are 80-9F
+2020-03-16 08:11:24 <kmc> https://en.wikipedia.org/wiki/C0_and_C1_control_codes
+2020-03-16 08:11:33 <kmc> > ASCII defined 32 control characters, plus a necessary extra one for the all-1 DEL character (needed to punch out all the holes on a paper tape and erase it).
+2020-03-16 08:11:35 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-03-16 08:11:35 <lambdabot> <hint>:1:36: error: parse error on input ‘,’
+2020-03-16 08:11:43 <kmc> oh! so that's why DEL is 0x7F
+2020-03-16 08:11:45 <kmc> lol
+2020-03-16 08:11:53 <Hooloovo0> yeah, it's because of paper tape
+2020-03-16 08:11:56 <kmc> always wondered why they put it at the end
+2020-03-16 08:12:00 <b_jonas> kmc: and poor \x7F would be an orphan out of blocks if it weren't for that it used to be one of the more useful control characters for 7-bit paper tape
+2020-03-16 08:12:14 <b_jonas> yeah, you were faster
+2020-03-16 08:13:55 <Hooloovo0> 
+2020-03-16 08:16:12 <zzo38> Some people (such as myself) still use ASCII, though.
+2020-03-16 08:17:02 <Hooloovo0> did you get my BELs?
+2020-03-16 08:17:51 <zzo38> Yes, although it only displayed them because my IRC client filters control codes
+2020-03-16 08:18:31 <kmc> I didn't, nor are they in the logs
+2020-03-16 08:19:13 <kmc> "rice-\a\a-a-roni, the san francisco treat"
+2020-03-16 08:19:57 <zzo38> They are in the logs. (However, maybe you are looking at a different file than I am looking at.)
+2020-03-16 08:20:04 <moony> who posted BELs >:(
+2020-03-16 08:20:05 <kmc> oh I meant my local logs
+2020-03-16 08:20:12 * moony yells at Hooloovo0
+2020-03-16 08:20:21 Quit: imode (Ping timeout: 246 seconds)
+2020-03-16 08:20:21 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex-, wmww, xavo[m], xylochoron[m], zzo38
+2020-03-16 08:20:30 <zzo38> kmc: O, OK.
+2020-03-16 08:21:06 <moony> Hooloovo0: a lot of older IRC clients (NOT mine, i'm just messing with you) will actually cause the terminal "bell" (usually a beep) to go off if one is sent in a channel
+2020-03-16 08:21:10 * Hooloovo0  BELs at moony 
+2020-03-16 08:21:11 <moony> be careful :P
+2020-03-16 08:21:16 <kmc> ceci n'est pas une ␇
+2020-03-16 08:21:27 <Hooloovo0> yeah, I know
+2020-03-16 08:21:59 <Hooloovo0> I've IRC'd from a vax with an appropriately-aged terminal
+2020-03-16 08:22:10 <Hooloovo0> I got a good amount of bells
+2020-03-16 08:22:27 <Hooloovo0> apparently unicode fucks it up a lot
+2020-03-16 08:22:31 <kmc> nice
+2020-03-16 08:22:35 * moony may be getting a chance to remote into a VAX tonight, on that note. Moony is happy.
+2020-03-16 08:22:36 <kmc> does it have a mechanical bell
+2020-03-16 08:23:04 <Hooloovo0> my terminal doesn't
+2020-03-16 08:23:15 <Hooloovo0> but I know a couple people with ASR33s...
+2020-03-16 08:24:54 <Hooloovo0> hmm, I wonder if I can figure out how to make BEL make asterisk do a single ring...
+2020-03-16 08:25:38 <Hooloovo0> there's currently 3 physical bells on my desk, and one not far
+2020-03-16 08:27:28 <kmc> rofl
+2020-03-16 08:27:30 <kmc> that'd be a fun hack
+2020-03-16 08:27:36 <kmc> do you collect old phones or something?
+2020-03-16 08:27:53 <Hooloovo0> yeah
+2020-03-16 08:28:06 <Hooloovo0> I've got a couple channel banks
+2020-03-16 08:28:24 <Hooloovo0> I've been looking for a decent non-asterisk pbx
+2020-03-16 08:29:08 <Hooloovo0> I'm more into phone systems, but it's hard to be into that without also collecting phones
