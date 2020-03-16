@@ -101,3 +101,72 @@
 2020-03-16 02:59:24 <ais523> I'm actually surprised that return-oriented programming isn't done more often as a programming technique in cases where you don't have to use it
 2020-03-16 02:59:36 <ais523> (of course, for the exploits against W^X code, it's often necessary)
 2020-03-16 02:59:57 <ais523> I guess Underload has some similarities to return-oriented programming
+2020-03-16 03:00:05 <ais523> although there are a lot of differences too
+2020-03-16 03:02:45 <int-e> ais523: I imagine it's rather expensive because it messes up the builtin call-stack based branch prediction.
+2020-03-16 03:03:03 <ais523> int-e: that's not necessarily the case if using a bytecode interpreter
+2020-03-16 03:03:10 <int-e> (of modern CPUs)
+2020-03-16 03:03:23 <ais523> but yes, it seems likely you'd have a lot of mispredicted branches
+2020-03-16 03:03:29 <ais523> that doesn't matter so much in retrocomputing, though
+2020-03-16 03:04:37 <int-e> I've certainly played funny tricks with the stack in golfing assembly code
+2020-03-16 03:05:19 <int-e> (well, machine code is what was golfed, really, but I wrote it in assembly) really, but I
+2020-03-16 03:06:24 <int-e> ... ^J (line feed = return key) is next to ^K (delete until end of line)
+2020-03-16 03:06:43 <int-e> I've had so many IRC editing accidents because of this.
+2020-03-16 03:06:44 <ais523> well, you normally don't linefeed mid-line anyway
+2020-03-16 03:07:10 <ais523> oh, I see, you're trying to delete to the end of the line, but press ^J by mistake
+2020-03-16 03:07:17 <int-e> Yes.
+2020-03-16 03:07:20 <ais523> my most common accident of that nature is hitting Return instead of Backspace
+2020-03-16 03:07:43 <ais523> (which are, again, adjacent, and you need to reach a long way to hit backspace, over Return)
+2020-03-16 03:07:48 <int-e> Hmm. Wrong keyboard layout for this, \ is between backspace and return here.
+2020-03-16 03:07:56 <ais523> I guess you could reach for the left-hand side of Backspace
+2020-03-16 03:08:02 <int-e> This often happens involuntarily though:\
+2020-03-16 03:08:13 <ais523> no, I mean I could
+2020-03-16 03:08:15 <ais523> to avoid the issue
+2020-03-16 03:08:36 <ais523> but spoke ambiguously because basically nobody uses "one" as a pronoun nowadays and none of the common replacements are really satisfactory
+2020-03-16 03:09:38 <int-e> ais523: the "you" didn't affect what I typed at all :)
+2020-03-16 03:10:18 <int-e> I was just trying to relate to the problem and realized that I no longer have this particular one.
+2020-03-16 03:11:02 <ais523> ais523- was using a laptop that was dropped ~3 years ago as an emergency replacement
+2020-03-16 03:11:16 <ais523> the keyboard layout was very similar to my current layout except that home/end were swapped with pgup/pgdn
+2020-03-16 03:11:28 <int-e> yuck
+2020-03-16 03:11:36 <int-e> why do people get creative on that front...
+2020-03-16 03:11:57 <ais523> (also it was using a bootable USB stick as the OS because I didn't want to substantially change the existing filesystem (for archival purposes), and its existing OS hadn't been updated in 3 years)
+2020-03-16 03:12:14 <ais523> I felt that merited half an underscore
+2020-03-16 03:12:34 <int-e> Is this a weak form of vendor lockin?
+2020-03-16 03:12:46 <ais523> it could be, I guess
+2020-03-16 03:12:53 <int-e> You /could/ use any laptop but half of them will confuse you with their keyboard layout?
+2020-03-16 03:12:58 <ais523> I actually abandoned the old vendor (HP) because I didn't like its UEFI implementation
+2020-03-16 03:13:28 <ais523> hmm, should the pronoun be "their" rather than "its"? I never did decide whether a company is singular or plural
+2020-03-16 03:14:37 <ais523> the biggest offences of the implementation appeared to be a) making the secure boot variables read-only whenever they were edited once, until you did a full reset of the secure boot state
+2020-03-16 03:14:44 <int-e> I'd probably go for "their". But I also use singular "their" for gender-neutral means.
+2020-03-16 03:15:04 <ais523> b) resetting the default bootloader to Windows's bootloader whenever you went into the UEFI settings
+2020-03-16 03:15:08 <int-e> Though in this case I imagine a company as a group of people.
+2020-03-16 03:15:28 <ais523> I think it's fairly well established that companies don't have genders and don't use pronouns that are intended only for people
+2020-03-16 03:15:48 <ais523> so gender-neutrality isn't really an issue in this context, just singular/plural
+2020-03-16 03:16:00 <int-e> Oh yeah I remember having to jump through some hoops to boot Linux on my former work HP Elite notebook.
+2020-03-16 03:16:07 <ais523> I guess an Agoran "eir" wouldn't be that out of place, corporations act like people in some respects after all, and "eir" is appropriate for non-human people
+2020-03-16 03:16:39 <ais523> I think it's interesting that most Linux distributions don't add themselves to Windows' bootloader, it would seem like a logical thing to do
+2020-03-16 03:17:01 <ais523> (so that you could use either shim+GRUB, or Windows Boot Manager, based on personal preference; and yet boot into all your OSes either way)
+2020-03-16 03:18:36 <zzo38> If you use both Linux and Windows, then yes it can make sense I think
+2020-03-16 03:19:20 <ais523> I think it's interesting that the common Linux implementation has bootloaders stacked 3 deep
+2020-03-16 03:19:44 <int-e> speaking of booting... why do I have 17 linux kernel images installed :/
+2020-03-16 03:19:52 <ais523> (firmware UEFI → shim → grub), and if you have a multiboot setup this stacks bootloaders 4 deep (because grub chain-loads Windows Boot Manager)
+2020-03-16 03:20:12 <ais523> not all these levels are actually needed
+2020-03-16 03:21:03 <int-e> And why doesn't debian remove them all and then rebuild the initrds once.
+2020-03-16 03:21:24 <zzo38> I think UEFI isn't very good
+2020-03-16 03:21:31 <ais523> shim is a complicated compromise
+2020-03-16 03:21:34 <int-e> zzo38: whatever
+2020-03-16 03:22:23 <ais523> basically, it's a consequence of UEFI mandating an executable format that a) can only contain one digital signature and b) shipping with only Microsoft's key by default
+2020-03-16 03:22:34 <ais523> b) isn't part of the standard, it's just what happens in practice
+2020-03-16 03:23:04 <ais523> so it exists purely to validate a bootloader against someone else's key and then chain-load it
+2020-03-16 03:23:36 <ais523> the various Linux distros persuade Microsoft to sign versions of shim that recognise their key, which is easier than trying to persuade every motherboard manufacturer to recognise their key
+2020-03-16 03:24:25 <int-e> Hmm, with grubx64.efi isn't it just UEFI -> grub?
+2020-03-16 03:24:36 <ais523> int-e: whose signature does grub have?
+2020-03-16 03:25:06 <ais523> in my experience, distros put a signed version of grub into the UEFI bootloaders directory, but the UEFI refuses to load it unless someone manually changes the list of approved keys
+2020-03-16 03:25:08 <int-e> Oh. You want actual secure boot?
+2020-03-16 03:25:16 <ais523> why not?
+2020-03-16 03:25:24 <int-e> It's fine.
+2020-03-16 03:25:42 <int-e> And it explains the role of shim, I suppose.
+2020-03-16 03:26:00 <ais523> one of the many ideas I've had and will never have time to act on, is a UEFI program that lets the user manage keys manually, choosing who to trust and who not to trust
+2020-03-16 03:26:14 <ais523> together with kernels that check the filesystem for integrity during boot (at least, the parts they execute)
+2020-03-16 03:26:50 <ais523> you wouldn't need much more than a signed md5sums file and a more secure hashing algorithm than md5
+2020-03-16 03:28:52 <ais523> I guess an extreme version would require some sort of password to set files as +x…
+2020-03-16 03:29:24 <ais523> (under the control of the user, of course)
