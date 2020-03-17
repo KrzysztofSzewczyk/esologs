@@ -25,3 +25,7 @@
 2020-03-17 01:55:15 <ais523> it probably duplciates it to the child and closes its own copy, allowing the executed program to be responsible for closing the other copy
 2020-03-17 01:56:56 <ais523> (duplicating a file descriptor to a program you're about to execute is very easy, it's duplicating it to a program that's already running that's the hard part)
 2020-03-17 01:59:05 <zzo38> xinetd has the per_source option, I don't know if it would work properly if the program terminates. (I don't expect the rlimit options to work of course, meaning I would have to manage those by myself.)
+2020-03-17 02:26:28 <int-e> so... at a glance this will only break the obvious things: accounting (number of running instances, wait) and interception.
+2020-03-17 02:27:03 <int-e> per_source falls under accounting
+2020-03-17 02:27:45 <int-e> Also xinetd is a bit bigger than I expected.
+2020-03-17 02:28:03 <int-e> (but it's pretty nice code)
