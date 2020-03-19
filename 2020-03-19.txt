@@ -249,3 +249,19 @@
 2020-03-19 19:27:22 <tromp> i tested a subroutine to return tru for 6 and 28
 2020-03-19 19:27:32 <tromp> and false for all other numbers under 100
 2020-03-19 19:27:42 <b_jonas> oh nice, testing on even numbers
+2020-03-19 19:35:37 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-03-19 19:35:37 <ais523> how do Scott numerals work?
+2020-03-19 19:36:30 <tromp> scott_0    =   \s\z. z;  scott_succ = \n\s\z.s n;
+2020-03-19 19:37:02 <tromp> e.g scott_1 = \s\z.s scott_0
+2020-03-19 19:43:30 <tromp> down to 261
+2020-03-19 19:43:52 <tromp> using both Church and Scott now
+2020-03-19 19:46:16 <b_jonas> do you optimize the order of arguments in the representation too?
+2020-03-19 19:46:41 <tromp> i try to optimize every last bit
+2020-03-19 19:46:53 <tromp> so yeah, including order of args
+2020-03-19 19:47:22 <tromp> only requirement is program halts iff exists odd perfect number
+2020-03-19 19:48:19 <b_jonas> and that you can prove that, right?
+2020-03-19 19:48:30 <tromp> yes
+2020-03-19 19:51:38 <int-e> Hmm, termination only, that's another difference. I actually produce the perfect number.
+2020-03-19 19:53:09 <tromp> oh, then you can improve further
+2020-03-19 19:54:21 Quit: Phantom_Hoover (Ping timeout: 258 seconds)
+2020-03-19 19:54:21 Names: ^[, ais523, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
