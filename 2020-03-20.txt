@@ -176,3 +176,28 @@
 2020-03-20 21:09:49 Quit: Lord_of_Life (Ping timeout: 264 seconds)
 2020-03-20 21:10:19 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-03-20 21:29:17 <b_jonas> zzo38: sorry, it's today's xkcd
+2020-03-20 21:34:32 <zzo38> O, that's what it is.
+2020-03-20 21:36:34 <int-e> tbf, you just don't picture it all at once
+2020-03-20 21:38:17 <int-e> Imagine a 1m^3 cube, zoom in on a corner of 1mm^3 size, imagine that's your new 1m^3 cube. Repeat 4 times. Imagine that the cube you are now left with is 10 bytes then put it all together again.
+2020-03-20 21:39:22 Quit: rain1 (Quit: leaving)
+2020-03-20 21:39:22 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-20 21:41:22 User Name: arseniiv = arseniiv!~arseniiv@95.105.9.112.dynamic.ufanet.ru
+2020-03-20 21:41:22 <arseniiv> I think either I’ve gone crazy or I got an amalgamation of effects with coeffects, at least for a simple formulation of either, and in context of applicative programming with quotes
+2020-03-20 21:41:51 <int-e> arseniiv: how about both?
+2020-03-20 21:42:06 <arseniiv> maybe both :′(
+2020-03-20 21:43:13 <int-e> (But sorry, no constructive feedback is forthcoming from me; I can't bring myself to figure out what that might say.)
+2020-03-20 21:44:58 <arseniiv> all in all, an effect constructors abuses the part after it upto the end of the handled chunk; a coeffect constructor “retroactively” abuses a chunk from the start of the handled chunk upto before itself. Now we can make a bracket of these constructors, beginning with effect ctor and ending with coeffect ctor, and they would abuse the code between them, when handled
+2020-03-20 21:46:30 <int-e> where is the department for the prevention of code abuse when you need it
+2020-03-20 21:48:07 <arseniiv> though one needsnot only a handler but four extra additional converting routine arguments in case the bracket would be malformed. Usual effects with handlers use just a single one, when no effect constructor was called, and my coeffect analogy uses just one too, but this one seems to need four
+2020-03-20 21:48:52 <arseniiv> if this thing would work, I name it proeffects, as in “profunctor”
+2020-03-20 21:49:48 <arseniiv> though I’m explicitly not sure if it may be useful and if it may be generalized upto what effects-with-algebraic-declarations-and-handlers-and-whatnot are now
+2020-03-20 21:50:44 <arseniiv> on the plus side, in this case one doesn’t need separate effect and coeffect tagging on types
+2020-03-20 21:50:45 Joined: vivax
+2020-03-20 21:50:45 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, vivax, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-20 21:52:16 User Name: vivax = vivax!~vivax@66.79-161-35.customer.lyse.net
+2020-03-20 21:52:16 <vivax> hello
+2020-03-20 21:52:44 <arseniiv> `relcome
+2020-03-20 21:52:46 <HackEso> ​07Welcome 08to 09the 02international 06hub 13for 04esoteric 07programming 08language 09design 02and 06deployment! 13For 04more 07information, 08check 09out 02our 06wiki: 13<https://esolangs.org/>. 04(For 07the 08other 09kind 02of 06esoterica, 13try 04#esoteric 07on 08EFnet 09or 02DALnet.)
+2020-03-20 21:57:55 <arseniiv> at least I hope I’ll be able to explain what I did for effects in this concatenative typed setting. int-e would you be interested?
+2020-03-20 21:59:25 <int-e> sorry, no
+2020-03-20 21:59:32 <arseniiv> ah okay no problem
