@@ -188,3 +188,30 @@
 2020-03-22 19:51:44 Joined: mniip
 2020-03-22 19:51:44 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, eja00, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, vivax, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-03-22 19:52:23 <int-e> (Where ^ is exponentiation, of course.)
+2020-03-22 20:04:19 Quit: eja00 (Quit: Leaving)
+2020-03-22 20:04:19 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerling2, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, vivax, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-22 20:11:18 <tromp> int-e: i think your old gAckerman.lam has a bug
+2020-03-22 20:11:41 <tromp> it should have g = \n.n G succ n ?!
+2020-03-22 20:13:35 <int-e> that was 5 years ago... how am I supposed to remember :P
+2020-03-22 20:14:20 <tromp> i didn't realize you had such a file until I wrote a similar version independently:)
+2020-03-22 20:15:58 <int-e> Well it's a binary function as written, evidently
+2020-03-22 20:17:06 <int-e> is that even mine, hmm.
+2020-03-22 20:17:21 <int-e> Honestly, the style suggest it's your, and so does the file log.
+2020-03-22 20:17:35 <int-e> (style: I put spaces after the dots)
+2020-03-22 20:18:05 <tromp> Oops! you're right. it's mine!
+2020-03-22 20:18:21 <int-e> However, it still looks like a binary function to me and that would make it okay.
+2020-03-22 20:18:34 <tromp> sorry to suspect you of writing bugs:(
+2020-03-22 20:18:40 <int-e> Oh that's fine.
+2020-03-22 20:19:29 <int-e> And I've certainly thought about a generalized ackermann function before, but that was a ternary function. So the contents of the file caused some dissonance.
+2020-03-22 20:20:55 <tromp> that gAckerman is obsoleted by the new ackermann, so I can just remove it
+2020-03-22 20:21:05 <int-e> (and the file log is not always conclusive... this wouldn't have been the first time that you committed a file I wrote)
+2020-03-22 20:23:12 <tromp> pls let me know if there's any missing attribution
+2020-03-22 20:24:22 <int-e> No worries, if I felt I needed attribution I'd leave an authorship note it in the file.
+2020-03-22 20:24:46 <int-e> (I can't even name a specific example right now)
+2020-03-22 20:26:40 <int-e> Well, except BLC.hs which I just felt wasn't finished, but which does have an authorship comment.
+2020-03-22 20:28:51 <int-e> surprisingly it still compiles with ghc-8.8, even though I last updated it for ghc-8.4
+2020-03-22 20:29:27 <int-e> and it still works, too
+2020-03-22 20:29:28 <tromp> i'd forgotten there is such a thing. that does look very interesting
+2020-03-22 20:29:45 <b_jonas> int-e: did untyped lambda calculus change between those ghc versions?
+2020-03-22 20:29:49 <int-e> somebody (tm) should do this properly.
+2020-03-22 20:29:58 <int-e> b_jonas: No?
