@@ -112,3 +112,10 @@
 2020-03-23 14:22:06 <mroman> which clearly isn't feasible because that's O(n!))
 2020-03-23 14:26:04 <Taneb> https://en.wikipedia.org/wiki/Assignment_problem ?
 2020-03-23 14:27:57 <Taneb> Or https://en.wikipedia.org/wiki/Rank-maximal_allocation ?
+2020-03-23 14:37:42 <mroman> aren't those equivalent?
+2020-03-23 14:38:11 <Taneb> I think the latter is an example of the former
+2020-03-23 14:38:29 <mroman> you give an item somebody doesn't want a cost of 6, then the 5th preference 5, 4th preference 4
+2020-03-23 14:38:41 <mroman> then you use hungarian to minimize the cost?
+2020-03-23 14:44:03 <mroman> does hungarian always find an optimal solution?
+2020-03-23 14:44:14 <mroman> (kinda has to, otherwise it wouldn't really be a solution to the problem)
+2020-03-23 14:44:40 <mroman> but this online solver keeps saying "solution is not optimal"
