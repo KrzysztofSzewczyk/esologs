@@ -272,3 +272,24 @@
 2020-03-23 21:44:42 Quit: mroman (Remote host closed the connection)
 2020-03-23 21:44:42 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-23 21:59:59 <oerjan> <int-e> Or I could use the .. trick <-- you could also have used `whoops, which is so easy to remember hth
+2020-03-23 22:00:09 <oerjan> `cbt whoops
+2020-03-23 22:00:14 <HackEso> OLD="$HACKENV/wisdom/$1"; [ -z "$1" ] && OLD="$(lastfiles)"; NEW="${OLD}s"; if [ -f "$NEW" ]; then echo "«${NEW}» already exists"; exit 1; fi; mv "$OLD" "$NEW" && echo "«${OLD}» -> «${NEW}»"
+2020-03-23 22:04:36 <int-e> I've never seen this.
+2020-03-23 22:07:12 <int-e> https://hack.esolangs.org/repo/log?rev=whoops may explain why
+2020-03-23 22:08:31 <int-e> compare: https://hack.esolangs.org/repo/log?rev=%7B%2Cs%7D
+2020-03-23 22:13:11 <oerjan> i thought i'd used it more than that.
+2020-03-23 22:14:22 <oerjan> i suppose i forgot about it. and don't do that error very often.
+2020-03-23 22:14:35 <int-e> that probably includes a number of times where you *should* have used it :)
+2020-03-23 22:15:15 <int-e> and obviously the log doesn't include cases where it didn't work
+2020-03-23 22:16:10 <oerjan> `t hurl bin/whoops
+2020-03-23 22:16:11 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/whoops
+2020-03-23 22:16:30 <int-e> why t?
+2020-03-23 22:16:46 <int-e> (e-t-mology question)
+2020-03-23 22:17:34 <oerjan> top
+2020-03-23 22:18:43 <int-e> . o O ( how about "he" for "hackenv"... we could have "he hurl ..." then )
+2020-03-23 22:19:28 <int-e> though that's bad grammar
+2020-03-23 22:20:33 <oerjan> i wanted it to be just one letter, otherwise it wouldn't save anything...
+2020-03-23 22:29:05 <int-e> . o O ( `mkx ../bin/^//t "` $*" )
+2020-03-23 22:29:22 Joined: BadHotLady
+2020-03-23 22:29:22 Names: ^[, aji, aloril, APic, arseniiv, atslash, b_jonas, BadHotLady, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, oerjan, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-23 22:29:51 <int-e> a top hat?
