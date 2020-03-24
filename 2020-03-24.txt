@@ -107,3 +107,37 @@
 2020-03-24 13:28:19 <mroman> (currently we have two rooms)
 2020-03-24 13:28:41 <mroman> so like 10 people, 2 rooms meaning there will be two groups of 5 each day.
 2020-03-24 13:29:08 <mroman> also I guess it'll be unavoidable that somebody sees somebody multiple times.
+2020-03-24 13:31:32 Joined: kritixilithos
+2020-03-24 13:31:33 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-24 13:32:31 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2020-03-24 13:32:31 <kritixilithos> int-e: re your blc non-primitive recursive function, i suppose `\f\x blah` means `\f.(\x.blah)`?
+2020-03-24 13:38:36 <mroman> wib_jonas: http://codepad.org/VpWxojiJ
+2020-03-24 13:38:47 <mroman> ^- kinda like this (this is with 8 persons and 2 rooms of 4 persons each)
+2020-03-24 13:39:12 <mroman> so this arrangement would take 5 days. I have no idea if you can do it in less than 5 days.
+2020-03-24 13:39:22 <int-e> kritixilithos: Yes. (Though I'd expect myself to write \f\x. blah)
+2020-03-24 13:39:56 <kritixilithos> er yes you had the dot
+2020-03-24 13:40:25 <int-e> kritixilithos: But indeed this particular flavor of lambda calculus syntax makes the . optional, instead of allowing multiple variables after \
+2020-03-24 13:41:50 <int-e> kritixilithos: (context is https://github.com/tromp/AIT/ which has an implementation of BLC and a tool to convert lambda calculus (plus let) into BLC)
+2020-03-24 13:42:20 <wib_jonas> mroman: that's a slightly different question. for 10 people meeting in rooms of capacity 5 you need 4 days, but I don't know the answer in general for any number of peope and capacity of the rooms.
+2020-03-24 13:43:18 <wib_jonas> mroman: for 8 people with rooms of capacity 4, 3 days should be enough
+2020-03-24 13:45:49 <mroman> yeah
+2020-03-24 13:46:45 <mroman> I'm not so sure about that
+2020-03-24 13:47:56 <wib_jonas> why?
+2020-03-24 13:49:19 Joined: kspalaiologos
+2020-03-24 13:49:19 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-24 13:50:11 <int-e> Oh a combinatorial design problem...
+2020-03-24 13:50:23 Quit: Phantom_Hoover (Ping timeout: 265 seconds)
+2020-03-24 13:50:23 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-24 13:51:46 <mroman> see https://ibb.co/rpznWcp
+2020-03-24 13:52:15 <mroman> this is with three colors and clearly 1 hasn't been with 7 and 8.
+2020-03-24 13:52:36 <mroman> and 2 hasn't been with 8 for example
+2020-03-24 13:53:03 <mroman> and 5 hasn't been with 3
+2020-03-24 13:53:24 <mroman> etc. etc. I don't believe this can be done with 3 colors.
+2020-03-24 13:53:44 <mroman> (1 color = 1 day)
+2020-03-24 13:54:03 <int-e> Yeah I don't believe in 3 days either. 4 is possible.
+2020-03-24 13:54:28 <wib_jonas> maybe you're right
+2020-03-24 13:54:53 <int-e> wait
+2020-03-24 13:55:02 <int-e> I'm stupid.
+2020-03-24 13:56:16 <int-e> 3 works after all. 1234|5678, 1256|3478, 1278|3456
+2020-03-24 13:56:42 <int-e> (it even works if you have 4 couples that stick together)
+2020-03-24 13:59:01 <int-e> And that (4 couples that always stick together) corresponds to dividing K_4 into 3 perfect matchings, which is something I've done before.
