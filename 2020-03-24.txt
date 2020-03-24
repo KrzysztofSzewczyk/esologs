@@ -90,3 +90,20 @@
 2020-03-24 11:13:29 <HackEso> 75.00°F = 23.89°C
 2020-03-24 11:29:39 Joined: rain1
 2020-03-24 11:29:39 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-24 13:07:36 <wib_jonas> How do I configure firefox such that when I type into the urlbar, it does not open a popup with list of suggestions by default, but does still open it if I press down?
+2020-03-24 13:20:37 Joined: mroman
+2020-03-24 13:20:38 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-24 13:21:36 User Name: mroman = mroman!52c5a0eb@82-197-160-235.init7.net
+2020-03-24 13:21:36 <mroman> ok I have another question. Suppose I have N people that regularily meet in a room with space for M persons. Now I want to know how many meetings must I have such that every person has at least seen every other person once.
+2020-03-24 13:22:15 <wib_jonas> mroman: do they plan out the meetings to make this fast, or do M of them just meet randomly each turn?
+2020-03-24 13:22:26 <mroman> basically I have a set of N and pick subsets of M such that every member has been in a subset with every other member and I kinda want to know how many subsets I must pick.
+2020-03-24 13:22:32 <mroman> I guess that's the more mathematical description of the problem.
+2020-03-24 13:22:42 <wib_jonas> so you want to pick the meetings
+2020-03-24 13:24:06 <mroman> well... you have N persons and you divide them into groups of M persons and each of those persons shake hands. Then you select another group of M persons and so on. How many groups do I need to pick such that everybody has shaken hands with everybody.
+2020-03-24 13:24:20 <mroman> there's a whole bunch of similar problems that are fundamentally all the same underlying problem.
+2020-03-24 13:27:04 <mroman> but the actual RL problem I'm having is this: I have N persons and I have K rooms each allowing for N/K persons. Each day you split the people up. Obviously you can't be in two rooms on the same day. The question is how many days does it take such that everybody has been with everybody else.
+2020-03-24 13:27:09 <mroman> and I have no clue on how to do this :(
+2020-03-24 13:27:50 <mroman> the other question is how do I plan those subsets rather than just knowing how many days it takes.
+2020-03-24 13:28:19 <mroman> (currently we have two rooms)
+2020-03-24 13:28:41 <mroman> so like 10 people, 2 rooms meaning there will be two groups of 5 each day.
+2020-03-24 13:29:08 <mroman> also I guess it'll be unavoidable that somebody sees somebody multiple times.
