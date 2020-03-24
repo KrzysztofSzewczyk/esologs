@@ -141,3 +141,12 @@
 2020-03-24 13:56:16 <int-e> 3 works after all. 1234|5678, 1256|3478, 1278|3456
 2020-03-24 13:56:42 <int-e> (it even works if you have 4 couples that stick together)
 2020-03-24 13:59:01 <int-e> And that (4 couples that always stick together) corresponds to dividing K_4 into 3 perfect matchings, which is something I've done before.
+2020-03-24 14:00:01 <mroman> indeed
+2020-03-24 14:00:58 <mroman> now the question is whether it always requires 3 :)
+2020-03-24 14:01:02 <mroman> or whether it scales with more people
+2020-03-24 14:02:27 Joined: Phantom_Hoover
+2020-03-24 14:02:27 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, mroman, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-24 14:04:22 <int-e> So the same construction works if you have 4n people and rooms of capacity 2n.
+2020-03-24 14:08:19 <mroman> do you have some strategy to pick the groups?
+2020-03-24 14:09:20 <int-e> It reduces to the case of 4 people; rather than couples, pick groups of size n that stick together.
+2020-03-24 14:09:22 <mroman> (as in something that helps towards an algorithm :D)
