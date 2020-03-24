@@ -35,3 +35,9 @@
 2020-03-24 04:48:49 Names: ^[, aji, aloril, APic, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, longname, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-03-24 04:55:46 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=70460&oldid=70228 5* 03Fac 5* (+136) 10
 2020-03-24 04:59:21 <int-e> Meh. I thought I was getting closer to making lambdabot work with ghc-8.8... and now one dependency builds with ghc-8.8.1 but broke its API and knocked over some more dominoes.
+2020-03-24 05:03:05 <zzo38> What API broke?
+2020-03-24 05:22:22 <int-e> nothing interesting
+2020-03-24 05:22:29 <int-e> I'm just chasing dependencies.
+2020-03-24 05:23:20 <zzo38> OK
+2020-03-24 05:23:25 <int-e> https://hackage.haskell.org/package/dependent-sum-0.6.2.2 exports a different Data.GADT.Compare than the previous version
+2020-03-24 05:27:13 <zzo38> I thought they were not supposed to make incompatible unless the major version number is changed?
