@@ -41,3 +41,7 @@
 2020-03-24 05:23:20 <zzo38> OK
 2020-03-24 05:23:25 <int-e> https://hackage.haskell.org/package/dependent-sum-0.6.2.2 exports a different Data.GADT.Compare than the previous version
 2020-03-24 05:27:13 <zzo38> I thought they were not supposed to make incompatible unless the major version number is changed?
+2020-03-24 05:30:21 <int-e> zzo38: Yes. But accidents happen.
+2020-03-24 05:30:38 <zzo38> OK
+2020-03-24 05:31:00 <int-e> I'm partly responsible for this one, could've paid more attention in a pull request and avoided this.
+2020-03-24 05:39:25 <int-e> Though in that case I'd still be chasing the same dependencies, because dependent-sum-0.6.2.0 doesn't support ghc-8.8.1
