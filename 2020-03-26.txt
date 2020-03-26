@@ -218,3 +218,9 @@
 2020-03-26 20:59:01 <arseniiv> I obviously write `a −cs′→ Coe cs b` and then I’m stuck
 2020-03-26 20:59:33 Quit: Anabella (Client Quit)
 2020-03-26 20:59:33 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-26 21:01:20 <arseniiv> hm should I use CPS… `(Coe cs b → x) → (Coe cs′ a → x)` and then that’ll be `(b −cs→ x) → (a −cs′→ x)`, hm but should it really be backwards like that
+2020-03-26 21:02:31 <arseniiv> this all is about arrowifying (co)effectful computations to get rid of non-latent (co)effects, as in a concatenative language there are no values
+2020-03-26 21:15:48 <arseniiv> ah I think I understand the larger picture
+2020-03-26 21:16:39 Joined: Lord_of_Life
+2020-03-26 21:18:14 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2020-03-26 21:18:14 Nick Change: Lord_of_Life -> Lord_of_Life
