@@ -130,3 +130,21 @@
 2020-03-27 19:45:40 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloo42, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-03-27 20:24:01 Quit: kspalaiologos (Quit: Leaving)
 2020-03-27 20:24:02 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloo42, howlands, iczero, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchamber-, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-03-27 20:44:14 <int-e> \w h a t i s.a(\l.i t(\e r.a l))
+2020-03-27 20:47:31 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-03-27 20:47:31 <myname> so... poy is basically rust?
+2020-03-27 20:47:42 <myname> pony
+2020-03-27 20:53:45 <arseniiv> @type \w h a t i s.a(\l.i t(\e r.a l))
+2020-03-27 20:53:46 <lambdabot> error: parse error on input ‘.’
+2020-03-27 20:54:07 <arseniiv> @type \w h a t i s -> a(\l -> i t(\e r -> a l))
+2020-03-27 20:54:08 <lambdabot> error:
+2020-03-27 20:54:08 <lambdabot> • Occurs check: cannot construct the infinite type: t ~ t -> t3
+2020-03-27 20:54:08 <lambdabot> • In the first argument of ‘a’, namely
+2020-03-27 20:54:26 <arseniiv> int-e: lambdabot caught you
+2020-03-27 20:54:38 <int-e> arseniiv: at what? I knew it wasn't typeable.
+2020-03-27 20:55:00 <arseniiv> hm right wrom the start?
+2020-03-27 20:55:05 <arseniiv> from*
+2020-03-27 20:56:17 <int-e> I did have to think about it.
+2020-03-27 20:57:24 <int-e> But a(\l. [...] (a l)) is sufficient to rule out simple types
+2020-03-27 20:58:17 <int-e> (because then l must be a function from its own type to something)
+2020-03-27 20:58:52 <int-e> but typeability is overrated
