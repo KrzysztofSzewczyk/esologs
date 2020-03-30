@@ -84,3 +84,5 @@
 2020-03-30 11:59:50 <tromp> basically, during the reduction, i try to see if the current reduct by itself leads to a reduction in which it reappears as reduct
 2020-03-30 12:01:20 <tromp> it fails on some term of size 29 that I hope to cover today.
 2020-03-30 12:04:28 <tromp> ok, BB.lhs comitted
+2020-03-30 12:45:26 <int-e> So (\0 0) (\0 (\1 0)) of size 25 is the first fun term.
+2020-03-30 12:46:02 <int-e> (sorry, my code is zero-based somehow)
