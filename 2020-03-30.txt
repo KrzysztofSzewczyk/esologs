@@ -135,3 +135,15 @@
 2020-03-30 14:24:08 <int-e> Duh. Of course eta reduction is kind of helpful.
 2020-03-30 14:27:38 <tromp> i fixed the eta bug
 2020-03-30 14:29:38 <tromp> in repo now
+2020-03-30 14:30:09 <tromp> thx for unwittingly pointing that out:)
+2020-03-30 14:31:17 <tromp> we used to optimize (\2 1) to 2 instead of the correct 1
+2020-03-30 14:37:43 Quit: user24 (Remote host closed the connection)
+2020-03-30 14:37:43 Names: ^[, aji, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, SoniEx2, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m]
+2020-03-30 14:38:05 Joined: user24
+2020-03-30 14:38:05 Names: ^[, aji, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, ddmm, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, SoniEx2, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m]
+2020-03-30 14:42:12 <int-e> fun
+2020-03-30 14:42:54 <int-e> but do we want eta-reduction for this, hmm
+2020-03-30 14:43:41 <int-e> (I took "normal form" to mean beta normal form, not beta-eta normal form
+2020-03-30 14:43:44 <int-e> )
+2020-03-30 14:44:26 <int-e> funny, though perhaps not all that surprising, that it didn't affect the numbers
+2020-03-30 14:51:50 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03ThatOrdinaryGuy 5*  10New user account
