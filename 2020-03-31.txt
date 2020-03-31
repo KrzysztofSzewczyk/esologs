@@ -132,3 +132,33 @@
 2020-03-31 13:20:38 <esowiki> 14[[07Talk:Flurry14]]4 10 02https://esolangs.org/w/index.php?diff=70552&oldid=70549 5* 03Yul3n 5* (+169) 10
 2020-03-31 13:24:05 <tromp> int-e: how did you automate the proof of divergence for the 29-bit terms (\1 1) (\1 (\\3 2)),   (\1 1) (\1 (\1 (2 1))),   and (\1 1) (\1 (\2 1 1)) ?
 2020-03-31 13:26:16 <tromp> ignore the muddle one; i see you did that manually
+2020-03-31 13:35:19 Quit: user24 (Quit: Leaving)
+2020-03-31 13:35:19 Names: ^[, aji, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m]
+2020-03-31 13:36:43 User Name: wib_jonas = wib_jonas!b03f0c44@gateway/web/cgi-irc/kiwiirc.com/ip.176.63.12.68
+2020-03-31 13:36:43 <wib_jonas> how does this lambda thing work? can you effectively do lazy evaluation, as in, if there's a non-terminating term inside but it's never called, it isn't a problem?
+2020-03-31 13:39:09 <int-e> tromp: I want to sleep on what I did and document it properly, please remind me tomorrow
+2020-03-31 13:39:22 <wib_jonas> nic
+2020-03-31 13:40:24 <tromp> wib_jonas: for BB you take consider the normal form so any non terminating part is a problem
+2020-03-31 13:41:02 <int-e> tromp: but the idea is to generalize the (\1 1) (\1 1) thing, noting in particular that you can have additional contexts (\1 1) (\C[1 1]) (C may have lambdas and that shifts the variables) and also some additional abstractions (\1 1) (\1 (\1 1)).
+2020-03-31 13:41:08 <wib_jonas> tromp: but don't those non-terminating parts get discarded as you evaluate to the normal form?
+2020-03-31 13:41:08 <tromp> i.e. BB is not specific to any normalization strategy
+2020-03-31 13:41:22 <tromp> oh, you're right
+2020-03-31 13:41:48 <tromp> so you do need to use one that guarantees nf if one exists
+2020-03-31 13:42:06 <int-e> wib_jonas: left-most outermost is strongly normalizing (even hypernormalizing--that's a fun concept) for the untyped lambda calculus.
+2020-03-31 13:42:18 <int-e> err
+2020-03-31 13:42:20 <int-e> s/strongly//
+2020-03-31 13:42:39 <wib_jonas> int-e: right, that is lazy evaluation. and I assume you take this into account when you prove non-termination of a term.
+2020-03-31 13:43:25 <int-e> (normalizing = finds a normal form if it exists. strongly normalizing = that + termination. hypernormalizing: if you interleave the strategy and arbitrary reduction, you still reach the normal form if you don't starve the strategy)
+2020-03-31 13:44:35 <int-e> (such arbitrary reduction steps are highly useful for simplification, but also for program transformations)
+2020-03-31 13:44:37 <wib_jonas> int-e: I don't understand the distinction between the first two
+2020-03-31 13:45:08 <int-e> wib_jonas: strong normalization entails that normal forms always exist
+2020-03-31 13:47:38 <int-e> (And the term is usually used in contexts where the strategy doesn't matter, like simply typed lambda calculus, where unrestricted beta (or beta+eta) reduction is strongly normalizing)
+2020-03-31 13:48:03 <wib_jonas> er what? this is lambda calculus and you consider all terms, so a normal form doesn't always exist. how can "strong normalization entail" that and be meaningful?
+2020-03-31 13:48:14 <int-e> wib_jonas: it isn't
+2020-03-31 13:48:21 <int-e> wib_jonas: That's why I corrected to "normalizing"
+2020-03-31 13:48:45 <wib_jonas> ah
+2020-03-31 13:49:33 <esowiki> 14[[07Procedure14]]4 M10 02https://esolangs.org/w/index.php?diff=70553&oldid=70538 5* 03PythonshellDebugwindow 5* (+169) 10/* Define/Call Function */
+2020-03-31 13:55:47 <wib_jonas> http://sigbovik.org/2020/ says SIGBOVIK 2020 is a conference that isn't on-site but works by audio talks through the internet. it also says that it's "on April 1 at 5pm". what timezone?
+2020-03-31 13:56:56 <Taneb> At a guess, GMT-4
+2020-03-31 13:57:04 <wib_jonas> probably the New York timezone, yes
+2020-03-31 13:57:05 <Taneb> (the time zone of the usual venue)
