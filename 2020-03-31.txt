@@ -89,3 +89,30 @@
 2020-03-31 09:28:39 <rain1> very nice
 2020-03-31 09:28:40 <int-e> Taneb: c=9 should work; one can prefix terms with lambda 2 bits, or with (\x\y.x) (7 bits, plus 2 for the apply).
 2020-03-31 09:28:58 <int-e> err, I meant to put parentheses around (2 bits).
+2020-03-31 09:31:06 <int-e> tromp: now how does one automate such inductive arguements... eww.
+2020-03-31 09:31:10 <tromp> isn't prefixing with lambda enough to get BB(n+2) >= BB(n) + 2 ?
+2020-03-31 09:31:36 <int-e> tromp: But Taneb's statement has j >= i+c
+2020-03-31 09:31:39 <int-e> not j = i+c
+2020-03-31 09:31:41 <rain1> how hard would it be to write a program that can prove those TODO ones halt?
+2020-03-31 09:31:54 <int-e> tromp: so we need an odd offset as well
+2020-03-31 09:31:58 <rain1> it seems kind of tricky i'm not sure how it would be done
+2020-03-31 09:33:08 <int-e> rain1: well, there's a certain pattern to these proofs, terms that grow in a very regular fashion.
+2020-03-31 09:33:16 Quit: b_jonas (Quit: leaving)
+2020-03-31 09:33:16 Names: ^[, aji, aloril, APic, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-31 09:33:55 <int-e> So that could probably be captured somehow but it's highly unpleasant, and obviously once you do that you'll find terms with more complicated patterns, all up to the point where termination becomes unprovable.
+2020-03-31 09:33:57 <rain1> maybe hash each subterm, perform some reductions and then use the hash to look for repeating subterms?
+2020-03-31 09:34:33 <tromp> you don't get exact repetition though
+2020-03-31 09:34:36 <int-e> rain1: That's what we're doing already.
+2020-03-31 09:34:58 <int-e> rain1: It doesn't apply to those manual proofs (well the 3 I actually looked at)
+2020-03-31 09:35:59 <rain1> I see it now
+2020-03-31 09:37:02 <rain1> T (\1^k (T 1)) is kind of 'flat', it could basically be expressed as a string T \^k T 1 rather than a tree
+2020-03-31 09:37:50 <rain1> maybe when terms are flat it could be a simpler case
+2020-03-31 09:46:02 <int-e> Anyway, I'll leave BB(32) for a rainy day (there are few enough cases to be hopeful that they can be sorted out). But I think beyond that point it will very soon become a research grade problem (i.e., take a lot of effort and creativity). Obviously I have no clue where the unprovability territory starts.
+2020-03-31 09:49:41 <int-e> rain1: For reference, there are 978447 closed terms of size 32, so narrowing that down to 10 problematic cases is quite significant.
+2020-03-31 09:50:18 <rain1> that's really interesting, so that's where the real work was. how was that done?
+2020-03-31 09:51:24 <int-e> enumerate, reduce (with simplification along the way), try to detect loops and one relatively common class of non-terminating terms that does not have simple loops.
+2020-03-31 09:52:39 <int-e> Which, incidentally, only covers 2 terms of size 32. It can probably be generalized somewhat to cover a couple more.
+2020-03-31 09:54:37 <int-e> Taneb: actually I should've written c=8. But c=6 should also work: pick any variable n and replace it by \(n+1) 1 (which eta-reduces to n).
+2020-03-31 09:55:08 <int-e> Taneb: Which adds an abstraction, an application, and one extra bit for changing n to n+1, so that's 7 bits.
+2020-03-31 09:55:45 <int-e> Hmm, unfortunately though that only shows BB(n+7) >= BB(n).
+2020-03-31 09:56:09 <int-e> (Wheras BB(n+2) > BB(n) is strict.)
