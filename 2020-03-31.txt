@@ -55,3 +55,37 @@
 2020-03-31 08:51:55 <Hooloovo0> very nice, going to link to it since it seems like the beta/js(ugh, but whatever) version is much more usable http://www.robozzle.com/beta/
 2020-03-31 08:53:50 <Hooloovo0> hmm it doesn't seem like quite the same thing
 2020-03-31 08:55:12 <Hooloovo0> maybe if I play past the tutorials it will become more similar?
+2020-03-31 09:02:10 <Hooloovo0> it, yeah, doesn't seem so similar
+2020-03-31 09:03:03 <Hooloovo0> anyway, we have *ALL* the expansions... I'd be interested in making an online version, if I knew how to do that at all
+2020-03-31 09:04:21 <Hooloovo0> as a board game, the weapons upgrades seem like they're overpowered... but also some are as programmable as the players...
+2020-03-31 09:04:56 <Taneb> Hooloovo0: ooh, I think I played that once?
+2020-03-31 09:06:27 <Hooloovo0> nice!
+2020-03-31 09:07:47 <Hooloovo0> (implicit once-plague-is-over invitation) if any if any of you visit urbana
+2020-03-31 09:11:56 Joined: rain1
+2020-03-31 09:11:56 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-03-31 09:14:20 <Taneb> Unless you're in a village in Italy, that's slightly the wrong continent for me :(
+2020-03-31 09:19:34 <Hooloovo0> no, we're basically in the middle of NA :(
+2020-03-31 09:19:40 <tromp> BB(29) = 223
+2020-03-31 09:22:38 * Hooloovo0 reads up a lot on blc and bb
+2020-03-31 09:22:44 Joined: Lord_of_Life
+2020-03-31 09:23:03 <int-e> tromp: BB(30)=160, BB(31)=267
+2020-03-31 09:23:27 <int-e> tromp: I added a BB.txt
+2020-03-31 09:23:42 Quit: Lord_of_Life (Ping timeout: 256 seconds)
+2020-03-31 09:24:02 <tromp> you must have some way better divergence detection than me:)
+2020-03-31 09:24:02 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-03-31 09:24:27 <Taneb> \exists c, n. \forall i, i >= n. \forall j, j >= i + c. BB(j) > BB(i)?
+2020-03-31 09:24:30 <int-e> it's not fully automatic... I have 2 manual proofs (as indicated in the file)
+2020-03-31 09:24:37 <int-e> Taneb: not a clue
+2020-03-31 09:24:45 <tromp> i had 3 manual proofs at 29
+2020-03-31 09:24:47 <int-e> Taneb: Oh wait
+2020-03-31 09:24:52 <int-e> Taneb: that one is certainly true
+2020-03-31 09:25:23 <int-e> Taneb: I should figure out what the concrete c for which I can prove this is though... 20ish, maybe?
+2020-03-31 09:25:46 <tromp> probably true for c = 2
+2020-03-31 09:26:04 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-03-31 09:26:04 <rain1> which terms require manual proof?
+2020-03-31 09:26:16 <int-e> rain1: https://github.com/tromp/AIT/blob/master/BB.txt
+2020-03-31 09:26:58 <int-e> tromp: plausible, yes, but... :)
+2020-03-31 09:27:14 <tromp> i know, i wldn't bet my life on it:)
+2020-03-31 09:28:39 <rain1> very nice
+2020-03-31 09:28:40 <int-e> Taneb: c=9 should work; one can prefix terms with lambda 2 bits, or with (\x\y.x) (7 bits, plus 2 for the apply).
+2020-03-31 09:28:58 <int-e> err, I meant to put parentheses around (2 bits).
