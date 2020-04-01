@@ -129,3 +129,51 @@
 2020-04-01 12:12:02 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-04-01 12:21:58 Quit: rain1 (Quit: Lost terminal)
 2020-04-01 12:21:58 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-01 12:34:13 <tromp> int-e: could you represent Bot by Var maxInt instead ?
+2020-04-01 12:34:50 <tromp> (assuming incv would preserve it)
+2020-04-01 12:37:03 <int-e> Probably? Var -1 is another idea. But I started from scratch and this felt cleaner.
+2020-04-01 12:37:36 <tromp> it behaves similarly to my function eqfree in BB.lhs
+2020-04-01 12:39:18 <tromp> so you could avoid Bot by writing a custom S.member
+2020-04-01 12:39:56 <tromp> seems cleaner still
+2020-04-01 12:41:14 <int-e> (If I had worked on top of AIT.lhs I would probably have resorted to such trickery.)
+2020-04-01 12:41:29 <int-e> err
+2020-04-01 12:41:33 <int-e> BLC.lhs of course
+2020-04-01 12:41:43 <int-e> ...
+2020-04-01 12:41:59 <int-e> /undo
+2020-04-01 12:42:15 <tromp> Equality modulo free vars is hardly trickery
+2020-04-01 12:42:33 <int-e> I meant the Var -1 idea.
+2020-04-01 12:42:39 <tromp> oh sure
+2020-04-01 12:43:37 <tromp> but expressing Equality modulo free vars is cleaner than adding a Bot constructor to your terms
+2020-04-01 12:44:11 <tromp> seems cleaner imo :-)
+2020-04-01 12:46:04 <int-e> Yeah but it doesn't interact nicely with Ord.
+2020-04-01 12:46:21 <int-e> (not that it really matters)
+2020-04-01 12:47:26 <tromp> it matters for efficiency of set membership I guess
+2020-04-01 12:47:54 <int-e> sure but that's hardly the bottleneck at the set sizes I allow
+2020-04-01 12:48:15 <int-e> I used Data.Set out of habit, really.
+2020-04-01 12:49:11 <tromp> btw, you don't need to add all r to the set, just the ones where subst 0 a b is larger in size than r
+2020-04-01 12:49:37 <tromp> i.e. the local size minima
+2020-04-01 12:50:21 <int-e> I probably don't care :)
+2020-04-01 12:50:49 <tromp> not at these sizes no:)
+2020-04-01 12:50:52 <int-e> But yeah, good point.
+2020-04-01 12:51:17 <int-e> Actually I'm worried that it would explode. :)
+2020-04-01 12:51:22 <tromp> btw, my understanding of Haskell is lacking
+2020-04-01 12:51:48 <tromp> i thought i could change your b <- return (simp b)    to      let b = simp b
+2020-04-01 12:51:58 <int-e> that's recursive
+2020-04-01 12:52:12 <tromp> ah, now I see
+2020-04-01 12:52:27 <tromp> so i could just let sb = simp b
+2020-04-01 12:52:32 <int-e> true
+2020-04-01 12:52:33 <tromp> and avoid the reuse of b
+2020-04-01 12:52:48 <int-e> but the shadowing of the old version is a feature here
+2020-04-01 12:53:11 <tromp> how so?
+2020-04-01 12:53:25 <int-e> It means I will not accidently use it.
+2020-04-01 12:53:43 <tromp> ah, ok.
+2020-04-01 12:54:00 <tromp> a sanitation feature:)
+2020-04-01 12:54:19 <int-e> I usually use primes... and then I produce bugs by missing a prime somewhere :-/
+2020-04-01 12:54:54 <int-e> so I've become a believer in deliberate shadowing of identifiers.
+2020-04-01 12:55:22 <tromp> you're a prime example of a shadowy character:-)
+2020-04-01 12:55:30 <int-e> in lieu of assignments from imperative programming languages
+2020-04-01 12:57:09 Quit: xelxebar (Remote host closed the connection)
+2020-04-01 12:57:10 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xkapastel, xylochoron[m], zzo38
+2020-04-01 12:57:46 <tromp> yes, i guess imperative programs can be directly transcribed with  x = E replaced by x <- Just E
+2020-04-01 12:57:46 <int-e> > let f n | n <- n+1, n <- n*2 = n in f 4
+2020-04-01 12:57:49 <lambdabot> 10
