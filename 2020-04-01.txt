@@ -92,3 +92,32 @@
 2020-04-01 11:28:29 <int-e> (\1 1 1) (\\1 (\3) 1) looks like it is a WTW case.
 2020-04-01 11:28:49 <int-e> hmm, or does it.
 2020-04-01 11:29:29 <int-e> Nah, that was too quick. It's (unless I'm confusing myself) different.
+2020-04-01 11:30:18 <int-e> Oh. I *am* confusing myself.
+2020-04-01 11:30:55 <int-e> (Namely, 1 refers to the second argument, not the first.)
+2020-04-01 11:32:29 <int-e> So the conclusion is that generalizing this criterion would get rid of at least one remaining case for BB(32).
+2020-04-01 11:33:36 <rain1> are there any conditions on H?
+2020-04-01 11:34:38 <int-e> rain1: H ::= □ | \v. H | H T -- it's a context with the hole in head position
+2020-04-01 11:34:51 <int-e> (hence H)
+2020-04-01 11:34:52 <rain1> okay
+2020-04-01 11:38:11 <kspalaiologos> functional programming I smell
+2020-04-01 11:38:17 <kspalaiologos> understand nothing
+2020-04-01 11:39:10 <int-e> tromp: Anyway, the reason I blocked your question yesterday was because I had to figure out how to present this nicely... the initial thought process was very convoluted and not as rigorous as I liked. Sleeping on it helped... I could put things together in my head in the morning, then get up and write them down :)
+2020-04-01 11:39:55 <tromp> and nice it is:)
+2020-04-01 11:41:01 <int-e> (And as things stood yesterday, it might have turned out that the criterion was flawed. Embarrassing, but less embarrassing than being told by somebodye else :P -- I have some pride.)
+2020-04-01 11:45:42 <int-e> I wonder whether there's any serious literature on this question... identifying lambda terms with normal form.
+2020-04-01 11:46:04 <int-e> or rather, without.
+2020-04-01 11:46:16 <rain1> i would be interested in that oto
+2020-04-01 11:46:58 <rain1> I think they are called head recurrent terms
+2020-04-01 11:47:18 <int-e> that's a small subclass
+2020-04-01 11:52:20 <tromp> studying busy beavers is an exercise in recognizing ever wider classes of divergent behaviour
+2020-04-01 11:54:48 <int-e> and also, at some point, of compressing computations which we already know will be needed to find BB(38).
+2020-04-01 11:55:16 <int-e> (because 2^65536 is uncomfortably big)
+2020-04-01 11:55:22 <tromp> at least lambda calculus lends itself better to that than turing machines:)
+2020-04-01 11:55:44 <rain1> so much better
+2020-04-01 11:56:02 <int-e> Yeah the granularity is finer, so the difficulty rises a bit more gracefully.
+2020-04-01 11:56:06 <rain1> it's really interesting to study the lambda calculus BB
+2020-04-01 11:56:20 <tromp> TM busy beaver is stuck at 5 states, which is almost 50 bits
+2020-04-01 11:56:26 <rain1> i think it would also be interesting to check out the shortest terms that produce 2^n reductions and similar other functions
+2020-04-01 11:57:23 <int-e> maybe if you'd parameterize TMs by number of non-terminating transitions instead, you could do something more interesting
+2020-04-01 11:57:59 <int-e> But also, TMs are kind of icky to analyse; I wouldn't know where to begin :)
+2020-04-01 11:59:42 <int-e> (Okay, that's a lie. There's a fairly obvious notion of stationary loops that don't change the tape, and shifting loops that write the same string to the tape over and over again. And after that is where I think it becomes really ugly.)
