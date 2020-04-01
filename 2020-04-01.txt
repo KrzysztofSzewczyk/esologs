@@ -177,3 +177,23 @@
 2020-04-01 12:57:46 <tromp> yes, i guess imperative programs can be directly transcribed with  x = E replaced by x <- Just E
 2020-04-01 12:57:46 <int-e> > let f n | n <- n+1, n <- n*2 = n in f 4
 2020-04-01 12:57:49 <lambdabot> 10
+2020-04-01 13:00:10 <tromp> > let f n = do n <- Just n+1; n <- Just n*2 in f 4
+2020-04-01 13:00:14 <lambdabot> error:
+2020-04-01 13:00:14 <lambdabot> The last statement in a 'do' block must be an expression
+2020-04-01 13:00:14 <lambdabot> n <- Just n * 2
+2020-04-01 13:01:12 <tromp> > let f n = do n <- Just n+1; n <- Just n*2; return n in f 4
+2020-04-01 13:01:16 <lambdabot> error:
+2020-04-01 13:01:16 <lambdabot> • No instance for (Num (Maybe Integer))
+2020-04-01 13:01:16 <lambdabot> arising from a use of ‘e_1124’
+2020-04-01 13:01:29 Joined: xelxebar
+2020-04-01 13:01:30 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-01 13:02:12 <tromp> > let f n = do n <- Just (n+1); n <- Just n*2; return n in f 4
+2020-04-01 13:02:16 <lambdabot> error:
+2020-04-01 13:02:16 <lambdabot> • No instance for (Num (Maybe Integer))
+2020-04-01 13:02:16 <lambdabot> arising from a use of ‘e_1124’
+2020-04-01 13:02:22 <tromp> > let f n = do n <- Just (n+1); n <- Just (n*2); return n in f 4
+2020-04-01 13:02:25 <lambdabot> Just 10
+2020-04-01 13:02:51 <tromp> Just ice at last:-)
+2020-04-01 13:03:09 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=70568&oldid=70502 5* 03PythonshellDebugwindow 5* (+388) 10REgeex
+2020-04-01 13:28:18 <tromp> why does your simpA have an argument i that's always 0 ?
+2020-04-01 13:29:50 <int-e> because I had some idea that used it with 1 but didn't pan out
