@@ -69,3 +69,26 @@
 2020-04-01 10:46:52 <kspalaiologos> greets
 2020-04-01 10:47:19 <rain1> hey hows it going
 2020-04-01 10:48:19 <kspalaiologos> it's alright
+2020-04-01 11:03:33 <b_jonas> SIGBOVIK conference procedings are released
+2020-04-01 11:03:38 <b_jonas> http://sigbovik.org/2020/
+2020-04-01 11:03:38 <rain1> cool
+2020-04-01 11:03:46 <rain1> i was checking out poc or gtfo recently
+2020-04-01 11:03:49 <rain1> just remembered it recently
+2020-04-01 11:14:33 User Name: tromp = tromp!~tromp@ip-213-127-95-129.ip.prioritytelecom.net
+2020-04-01 11:14:33 <tromp> int-e: thanks for those nice additions. I see how (\1 (\\3 2)) is in your set W. Btw, do you mind me renaming B to V and W' to B in BB.txt ?
+2020-04-01 11:21:02 <int-e> tromp: fine with me
+2020-04-01 11:21:32 <int-e> (I used V for something else initially but then got rid of that)
+2020-04-01 11:22:04 <tromp> B for bodies and V for variables is more mnemonic. plus W and W' are harder to tell apart
+2020-04-01 11:23:14 <int-e> This generalizes to things like W T W -> H[W T W], but I haven't checked whether that applies to any of the remaining size 32 cases.
+2020-04-01 11:25:00 <int-e> (There's also W W W -> H[W W W], and W W T -> H[W W T] all with slightly different definitions for W and B)
+2020-04-01 11:25:13 <int-e> (So the families explode a bit.)
+2020-04-01 11:26:16 <tromp> yeah i noticed one of those W W W -> H[W W W] cases leading my program to hang at 34
+2020-04-01 11:26:35 <int-e> mine too
+2020-04-01 11:26:44 <int-e> (well, I didn't investigate which case it was)
+2020-04-01 11:27:05 <tromp> it was (\1 1 1) (\\1 2 2)
+2020-04-01 11:27:07 <int-e> (but it does run out of memory at 34)
+2020-04-01 11:27:43 <int-e> where memory is what I have here, which is 32G.
+2020-04-01 11:28:06 <tromp> my desktop has the same:)
+2020-04-01 11:28:29 <int-e> (\1 1 1) (\\1 (\3) 1) looks like it is a WTW case.
+2020-04-01 11:28:49 <int-e> hmm, or does it.
+2020-04-01 11:29:29 <int-e> Nah, that was too quick. It's (unless I'm confusing myself) different.
