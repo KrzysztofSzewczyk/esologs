@@ -142,3 +142,30 @@
 2020-04-02 15:37:14 <esowiki> 14[[07Cthulhu14]]4 10 02https://esolangs.org/w/index.php?diff=70596&oldid=66590 5* 03Yul3n 5* (+128) 10
 2020-04-02 16:49:29 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
 2020-04-02 16:49:29 <zzo38> O, in Magic: the Gathering now they made up cards that you can cast from your sideboard if certain conditions are met.
+2020-04-02 17:07:31 <b_jonas> zzo38: oh jesus they're making permanents made of multiple cards (like B.F.M.s or SNOT or meld or host) in black-bordered magic. in common. this will be a rules nightmare.
+2020-04-02 17:09:13 <b_jonas> also wtf is a Hero. it used to be a defunct creature type, but apparently there's now a card type, outside of standard-legal expansions, named the same.
+2020-04-02 17:09:49 <b_jonas> I really can't keep up with all this nonsense that wizards creates these days
+2020-04-02 17:10:17 <zzo38> I don't know all of the rules yet, but I am guessing it is similar to meld for the purpose of zone changes, although I don't know what happens to the spell once a permanent is mutated, since the permanent is an object that already existed, presumably it remains the same one, just with different characteristics.
+2020-04-02 17:15:25 <b_jonas> why the heck would they name something that goes onto the type line the same as a defunct creature type?
+2020-04-02 17:15:55 <b_jonas> unless it's for the same purpose, like Legendary named of Legend I guess
+2020-04-02 17:15:55 <zzo38> I don't know. I don't know what it means either, if anything.
+2020-04-02 17:17:30 <zzo38> I don't like all of the rules of Magic: the Gathering myself, such as rule 202.3b looks messy to me, and the rules prohibiting creatures from being attached to anything is also messy to me.
+2020-04-02 17:18:18 <zzo38> (Also, instead of [ability] counters, I would have made the rules [ability] tokens: An [ability] token is a Aura enchantment token with "enchant permanent" and "enchanted permanent has [ability]".)
+2020-04-02 17:18:28 <b_jonas> that's even worse than making an "Avatar" creature type
+2020-04-02 17:18:39 <b_jonas> because "Avatar" at least wasn't in the type line
+2020-04-02 17:19:02 <zzo38> What do you think about [ability] counters?
+2020-04-02 17:20:41 <b_jonas> I'm less afraid of those. they won't cause rules problems. they may cause playability problems, but wizards is aggressively checking for those, at least in standard, so it probably won't happen.
+2020-04-02 17:21:08 <b_jonas> it's certainly better than the workarounds like static abilities that apply "as long as" a permanent has a certain type of counter
+2020-04-02 17:21:54 <zzo38> Yes, it won't have rules problems, and avoids workarounds like that too.
+2020-04-02 17:22:13 <zzo38> Although as I said I would have done it as tokens instead
+2020-04-02 17:22:34 <b_jonas> or the ones that just modify characteristic forever without any marker like a counter, like Balduvian Frostwaker
+2020-04-02 17:22:45 <b_jonas> compared to those, an ability counter is a cleaner solution
+2020-04-02 17:23:07 <b_jonas> obviously they have to be careful balancing them so that they don't cause playability problems in formats with larger cardpool
+2020-04-02 17:23:15 <zzo38> Although there are disadvantages to using tokens too, such as status.
+2020-04-02 17:23:19 <b_jonas> `card-by-name Aquitect's Will
+2020-04-02 17:23:21 <HackEso> Aquitect's Will \ U \ Tribal Sorcery -- Merfolk \ Put a flood counter on target land. That land is an Island in addition to its other types for as long as it has a flood counter on it. If you control a Merfolk, draw a card. \ LRW-C, DDT-C
+2020-04-02 17:23:28 <b_jonas> ^ this is an example for the "as long as it has a flood counter" thing
+2020-04-02 17:25:36 <b_jonas> there's also the solution where they print tokens and do abilities like "create an aura enchantment token with shroud and enchant creature and 'enchanted creature has flying' attached to target creature", but it gets long and ugly to print such abilities, so it's not useful when they want to do in large numbers
+2020-04-02 17:28:01 <b_jonas> anyway, +X/+X counter tech has existed forever in Magic, so it's technology that's proven to work if they don't overuse it
+2020-04-02 17:29:27 <b_jonas> I just wonder if there's any clash with existing names of counters that happen to be ability words
+2020-04-02 17:29:48 <zzo38> Yes, I wondered about that too.
