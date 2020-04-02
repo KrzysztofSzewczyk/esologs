@@ -173,3 +173,27 @@
 2020-04-02 17:44:14 <zzo38> I don't know.
 2020-04-02 17:44:46 <zzo38> Another idea I thought of is for ability counters to use the words "[ability] ability counter".
 2020-04-02 17:49:34 <zzo38> Also, perhaps they will have to add a new sub-layer for ability counters.
+2020-04-02 18:06:54 <b_jonas> `card-by-name Soul Echo
+2020-04-02 18:06:55 <HackEso> Soul Echo \ XWW \ Enchantment \ Soul Echo enters the battlefield with X echo counters on it. \ You don't lose the game for having 0 or less life. \ At the beginning of your upkeep, sacrifice Soul Echo if there are no echo counters on it. Otherwise, target opponent may choose that for each 1 damage that would be dealt to you until your next upkeep, you remove an echo counter from Soul Echo instead. \ MI-R
+2020-04-02 18:08:22 <b_jonas> zzo38: ^ echo counter. echo used to be a keyword ability without a parameter.
+2020-04-02 18:10:54 <b_jonas> imagine suddenly having to pay WW for each counter on Soul Echo each turn
+2020-04-02 18:11:17 <zzo38> Echo costs only apply once.
+2020-04-02 18:11:31 <zzo38> O, OK, so there is one (although now that keyword ability has a parameter, so it is perhaps not as bad as the other one).
+2020-04-02 18:12:07 <b_jonas> oh true, you'd only pay it one turn
+2020-04-02 18:12:30 <b_jonas> like I said, echo didn't use to have a parameter. even the Comp rules mentions that.
+2020-04-02 18:12:35 <b_jonas> see the printed text of Acridian
+2020-04-02 18:13:09 <zzo38> Yes, I do know that.
+2020-04-02 18:15:02 <b_jonas> well, at least in this case, at worst they have to oracle patch it to use echo - {0} counters, or better, some other kind of named counters
+2020-04-02 18:15:48 <zzo38> Yes.
+2020-04-02 18:16:24 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-04-02 18:16:24 <rain1> hi
+2020-04-02 18:16:55 <zzo38> Still, I said it is messy due to things like this, and would prefer explicitly calling them "ability counters" in the text. The effect is the same, although it is more clearly what it means and provides better forward and backward compatibility.
+2020-04-02 18:19:14 <b_jonas> oh yeah, there are fuse counters, but they'd be really hard, probably impossible, to get them to a situation where it's ambiguous
+2020-04-02 18:19:20 <b_jonas> `card-by-name Goblin Bomb
+2020-04-02 18:19:21 <HackEso> Goblin Bomb \ 1R \ Enchantment \ At the beginning of your upkeep, you may flip a coin. If you win the flip, put a fuse counter on Goblin Bomb. If you lose the flip, remove a fuse counter from Goblin Bomb. \ Remove five fuse counters from Goblin Bomb, Sacrifice Goblin Bomb: Goblin Bomb deals 20 damage to target player or planeswalker. \ WL-R \  \ Goblin Bombardment \ 1R \ Enchantment \ Sacrifice a creature: Goblin Bombardment deals 1 damage to
+2020-04-02 18:19:34 <b_jonas> mentioned on multiple old cards
+2020-04-02 18:19:46 <esowiki> 14[[07Minimal operation language14]]4 M10 02https://esolangs.org/w/index.php?diff=70597&oldid=70574 5* 03PythonshellDebugwindow 5* (+1124) 10
+2020-04-02 18:20:03 <zzo38> The other possibility, other than explicitly saying they are ability counters in the effect that adds them, is to extend rule 111.10 similar to how I mentioned before.
+2020-04-02 18:20:34 <zzo38> (Although this results in a different effect than the other one.)
+2020-04-02 18:21:04 <b_jonas> they could also just explicitly list which named counters are ability counters
+2020-04-02 18:23:01 <zzo38> Yes, although I don't like that much either, since it interferes with unofficial cards.
