@@ -228,3 +228,15 @@
 2020-04-03 20:38:58 Joined: xkapastel
 2020-04-03 20:38:58 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-04-03 20:46:49 <tromp> BB.txt updated in repo
+2020-04-03 21:02:37 Quit: arseniiv (Ping timeout: 264 seconds)
+2020-04-03 21:02:38 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-03 21:17:41 <zzo38> Can division by zero errors be caught in Turbo Pascal?
+2020-04-03 21:21:38 <b_jonas> zzo38: division of what type?
+2020-04-03 21:22:28 <zzo38> Integer division.
+2020-04-03 21:23:27 <b_jonas> sure, but 16-bit or 32-bit? because 16-bit is a cpu built in instruction, but 32-bit need not be if you're compiling for 286. also, for what target? DOS or Win16?
+2020-04-03 21:24:00 <b_jonas> for DOS and 16-bit, you can probably just override the interrupt handler, as long as you restore the original handler when your program exits
+2020-04-03 21:24:08 <zzo38> Sixteen bits. Target is DOS.
+2020-04-03 21:24:33 <b_jonas> then probably override the interrupt handler.
+2020-04-03 21:25:06 <b_jonas> turbo pascal has a well-defined register use ABI so you can interface it with machine code
+2020-04-03 21:27:17 Joined: Lord_of_Life
+2020-04-03 21:29:34 Quit: Lord_of_Life (Ping timeout: 240 seconds)
