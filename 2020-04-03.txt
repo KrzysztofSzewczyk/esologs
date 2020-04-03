@@ -188,3 +188,40 @@
 2020-04-03 19:47:11 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-04-03 19:50:04 <MTGBusyBeaver42> Well theres a bit of rounding being lost in the bound. We get a few iterations just using our starting life total, and we can easily make our starting matrix for the first computation have values far more than 10^^^^10
 2020-04-03 19:51:31 <MTGBusyBeaver42> which was what ais theorized was required to get BB numbers with the 6 waterclock version
+2020-04-03 20:00:04 Quit: rain1 (Quit: Lost terminal)
+2020-04-03 20:00:05 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-03 20:01:50 <MTGBusyBeaver42> (I'm not sure exactly how big we can get the first computation, most of the tiers we get for the BB function also apply to our pre BB setup to get up to 10->10->16, but it doesn't show in the overall estimation)
+2020-04-03 20:02:28 Quit: xkapastel (Quit: Connection closed for inactivity)
+2020-04-03 20:02:28 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-03 20:03:16 <esowiki> 14[[07ADDI14]]4 10 02https://esolangs.org/w/index.php?diff=70610&oldid=65119 5* 03LegionMammal978 5* (+7730) 10copied operator tables
+2020-04-03 20:05:31 <b_jonas> anyway, iterating BB_n BB_n times to get BB_{n+1} is crazy
+2020-04-03 20:05:38 <MTGBusyBeaver42> so our first computation would last on the order of BB(x)  ticks, and we's get BB(x) colorless mana, which becomes BB(x) storm, and then BB(x) extra combat steps at the cost of a red mana
+2020-04-03 20:05:39 <b_jonas> that will result in even larger numbers than I can imagine
+2020-04-03 20:05:48 <b_jonas> and then you do BB_16
+2020-04-03 20:06:16 <b_jonas> that sounds crazy big, unless you messed something up and it just doesn't work and the deck can just deal 500 damage or something
+2020-04-03 20:07:08 <MTGBusyBeaver42> more likely is we have missed an infinite and the deck is disqualified :(
+2020-04-03 20:07:29 <esowiki> 14[[07Minimal operation language14]]4 M10 02https://esolangs.org/w/index.php?diff=70611&oldid=70600 5* 03PythonshellDebugwindow 5* (+11) 10/* Syntax */
+2020-04-03 20:08:57 <b_jonas> that too
+2020-04-03 20:09:16 <b_jonas> BB(BB(10^^^^10)) is already much larger than any number that I can imagine
+2020-04-03 20:09:23 <b_jonas> very likely even BB(10^^^^10) is
+2020-04-03 20:12:34 <MTGBusyBeaver42> even BB(1919) is beyond ZFC set theory
+2020-04-03 20:15:11 <MTGBusyBeaver42> in that someone has explicitly made a 2 symbol, 1919 state Turing Machine that halts IFF ZFC is inconsistent.
+2020-04-03 20:15:50 <b_jonas> MTGBusyBeaver42: yes, but that's for the turing machine BB, not for the waterclock BB
+2020-04-03 20:15:59 <b_jonas> for waterclocks, 1919 is probably not enough
+2020-04-03 20:16:24 <b_jonas> 10^^^^10 is way more than enough with a few dozen clocks
+2020-04-03 20:17:04 <MTGBusyBeaver42> true, but they still grow at an uncomputable rate
+2020-04-03 20:17:11 <b_jonas> that said, that particular 1919 state machine probalby does not halt
+2020-04-03 20:17:14 <b_jonas> so it doesn't really help you
+2020-04-03 20:17:52 <b_jonas> the rate, sure, I was just afraid that if you start form 120, then you get something silly like BB(120) = 1, and you can't even start to increase your numbers
+2020-04-03 20:18:06 <b_jonas> but I hope you checked that that's not the case with your construction
+2020-04-03 20:19:25 <MTGBusyBeaver42> oh no we can easily grow faster, consider the examples on the tutorial http://nethack4.org/esolangs/waterfall/
+2020-04-03 20:19:43 <b_jonas> by the way, beaver is particularly thematic for a waterclock machine, because they build dams
+2020-04-03 20:20:05 <b_jonas> so it should be like "busy ant" for a turing machine, and "busy beaver" for waterclock
+2020-04-03 20:20:42 <MTGBusyBeaver42> all of the halting examples take more than their maximum value to halt
+2020-04-03 20:22:20 <MTGBusyBeaver42> and yes, the name and theme of TWM is particularly suited to this challenge
+2020-04-03 20:23:58 <b_jonas> I guess it would be "busy bee" for a machine with a RAM, and "busy bird" for something based on combinator calculus or lambda calculus
+2020-04-03 20:25:11 <b_jonas> tromp: do you call it busy bird function?
+2020-04-03 20:25:22 <b_jonas> the binary lambda calculus one that is
+2020-04-03 20:27:35 <tromp> lno; i just call it BB_lambda
+2020-04-03 20:28:13 <tromp> as you can see at https://mathoverflow.net/questions/353514/whats-the-smallest-lambda-calculus-term-not-known-to-have-a-normal-form
+2020-04-03 20:29:29 <tromp> if you define one for combinators it's gonna grow slower
