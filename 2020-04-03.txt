@@ -168,3 +168,23 @@
 2020-04-03 19:10:50 <MTGBusyBeaver42> what would be helpful would be knowing whether the Flooding variant is Turing complete or not.
 2020-04-03 19:20:41 <b_jonas> MTGBusyBeaver42: I wanted to ask, what is the defn of BB_k?
 2020-04-03 19:21:34 <b_jonas> you only say what BB_2 is and it"s not clear how to continue
+2020-04-03 19:30:09 <b_jonas> also doesn't BB have two inputs, the nr of clocks and the bound on the matrix elements, and you vary only the latter?
+2020-04-03 19:30:49 <MTGBusyBeaver42> Bound on the matrix imput
+2020-04-03 19:31:28 <MTGBusyBeaver42> BB_n+1(x) is BB_n(x) nested BB_n(x) times
+2020-04-03 19:32:50 <b_jonas> do you always have 120 clocks? what is the matrix elt bound at the start?
+2020-04-03 19:33:12 <MTGBusyBeaver42> once we have more than 6 clocks we can implement a UTM where the simulated TM is bound by the input
+2020-04-03 19:33:44 <b_jonas> I mean it might not matter, you get a number that's larger than I can imagine
+2020-04-03 19:34:09 <MTGBusyBeaver42> we max out our clocks at half the number of creature types
+2020-04-03 19:35:01 <MTGBusyBeaver42> the 120 constant is the number of large life gains we can get in the setup
+2020-04-03 19:36:07 <MTGBusyBeaver42> which is mostly from the limits of the opponent's deck size
+2020-04-03 19:38:17 <MTGBusyBeaver42> We have them draw 53 cards and discard 60 for 113 just from their deck
+2020-04-03 19:40:50 <b_jonas> how do you get the output value from the waterclock machine?
+2020-04-03 19:42:07 <MTGBusyBeaver42> we make mana via Mana echoes and turn that into storm for Thousand Year Storm
+2020-04-03 19:43:14 <MTGBusyBeaver42> And eventually run out of attack steps so we have the last one trample over and kill them
+2020-04-03 19:45:32 <b_jonas> But what value does that read from the abstract machine? it's just that 120 sounds too small and I want to see this can even start to grow
+2020-04-03 19:46:21 User Name: esowiki = esowiki!~esowiki@unaffiliated/fizzie/bot/esowiki
+2020-04-03 19:46:21 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=70609&oldid=70590 5* 03PythonshellDebugwindow 5* (+33) 10/* M */
+2020-04-03 19:47:11 Joined: MDude
+2020-04-03 19:47:11 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-03 19:50:04 <MTGBusyBeaver42> Well theres a bit of rounding being lost in the bound. We get a few iterations just using our starting life total, and we can easily make our starting matrix for the first computation have values far more than 10^^^^10
+2020-04-03 19:51:31 <MTGBusyBeaver42> which was what ais theorized was required to get BB numbers with the 6 waterclock version
