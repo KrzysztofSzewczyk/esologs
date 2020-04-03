@@ -240,3 +240,36 @@
 2020-04-03 21:25:06 <b_jonas> turbo pascal has a well-defined register use ABI so you can interface it with machine code
 2020-04-03 21:27:17 Joined: Lord_of_Life
 2020-04-03 21:29:34 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2020-04-03 21:30:07 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-04-03 21:33:19 <zzo38> Do you know if Turbo Pascal has a IF expression (like C has the ?: expression)?
+2020-04-03 21:33:44 <b_jonas> zzo38: I don't think it has one, but you'll have to check the help
+2020-04-03 21:34:09 <b_jonas> zzo38: do you need a lazy one?
+2020-04-03 21:34:21 <b_jonas> I mean a shortcut one
+2020-04-03 21:34:53 <zzo38> Yes.
+2020-04-03 21:35:17 <b_jonas> I think you need a proper if statement, but I'm not sure
+2020-04-03 21:35:20 <zzo38> (Of course I can do without, although it would be helpful to have it if it does have.)
+2020-04-03 21:36:30 <b_jonas> zzo38: could you use borland C++ instead? you can even link compilation units among them together if you write C prototypes of the pascal functions, and compile exported C functions with the pascal calling convention
+2020-04-03 21:36:50 <b_jonas> it even has a slightly better optimizer
+2020-04-03 21:37:09 <b_jonas> and a comparably good library that comes with them
+2020-04-03 21:37:26 <b_jonas> though really ancient, confusing if you are used to modern C or modern C++
+2020-04-03 21:37:46 <zzo38> I doubt it is a good reason to change everything to C just due to such an operator, since a IF expression isn't really needed
+2020-04-03 21:37:54 <b_jonas> in particular, be REALLY careful with code that uses the "long long" type, because the borland compiler believes that's just a strange spelling of "long" and accepts it without warning and gives you a 32-bit integer
+2020-04-03 21:38:59 <b_jonas> zzo38: sure, that alone isn't a good reason to change
+2020-04-03 21:40:32 <b_jonas> also the pascal compiler is at least small. I could put turbo.exe (the GUI) and the few files it needs (but not the command-line compiler) to my compressed boot floppy with enough space for other programs, that's impossible for the borland C compiler with just a single 1.44 MB floppy
+2020-04-03 21:41:49 <b_jonas> but then you can probably afford multiple floppies, or a hard disk
+2020-04-03 21:42:11 <zzo38> Yes, I am storing the files on the hard disk
+2020-04-03 21:42:32 <b_jonas> termbot had both the pascal and the C compiler runnable from command line from its hard disk
+2020-04-03 21:42:41 <b_jonas> (also qbasic)
+2020-04-03 21:43:22 <b_jonas> (but qbasic is very hard to use, because its PRINT statement and error messages don't write to stdout/stderr)
+2020-04-03 21:44:12 <zzo38> I doubt that C is the best programming language for real-mode PC programming, due to the memory segmentation.
+2020-04-03 21:44:34 <b_jonas> zzo38: borland C has extensions to C for that
+2020-04-03 21:45:39 <zzo38> O, OK.
+2020-04-03 21:45:39 <b_jonas> you can declare pointers that point to specific program segments, dereference pointers to a specific segment, even have variables of type pointer to segment and dereference using those, or just have far or huge pointers
+2020-04-03 21:46:01 <b_jonas> IIRC there's a special infix operator :> to combine a segment with an offset
+2020-04-03 21:46:25 <b_jonas> of cousre you may still want to write some or all of your program in assembly, simply because the compiler doesn't optimize too well
+2020-04-03 21:48:26 <zzo38> The reason I am using Pascal is because I am modifying a program that is already written in Pascal, anyways.
+2020-04-03 21:49:26 <b_jonas> and do you want to compile it for DOS, as opposed to port it to a more modern linux pascal compiler?
+2020-04-03 21:50:26 <zzo38> Yes, I am compiling it for DOS. (I have no intention to port this program to other operating systems, although some other people are, either in Pascal or by rewriting it in C.)
+2020-04-03 21:50:57 <zzo38> It is ZZT. Do you like ZZT?
+2020-04-03 21:51:22 <b_jonas> I don't know, I don't follow these game engines much
+2020-04-03 21:55:58 <zzo38> I have made many changes, including removing the editor (in order to save memory; but there are external editors that can be used instead), allowing pushing X to clear the message line during game play, making HOME and END keys work in popup text windows, displaying file modification times in the save game menu, getting rid of the configuration menu and help menu (to save both memory and time), etc
