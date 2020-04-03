@@ -273,3 +273,13 @@
 2020-04-03 21:50:57 <zzo38> It is ZZT. Do you like ZZT?
 2020-04-03 21:51:22 <b_jonas> I don't know, I don't follow these game engines much
 2020-04-03 21:55:58 <zzo38> I have made many changes, including removing the editor (in order to save memory; but there are external editors that can be used instead), allowing pushing X to clear the message line during game play, making HOME and END keys work in popup text windows, displaying file modification times in the save game menu, getting rid of the configuration menu and help menu (to save both memory and time), etc
+2020-04-03 22:03:18 <zzo38> Does DOSBOX implement EMS?
+2020-04-03 22:03:26 <b_jonas> I hope so
+2020-04-03 22:05:13 <b_jonas> but if not, there are other emulators
+2020-04-03 22:12:10 <b_jonas> zzo38: try to run the MEM command, that should at least tell if EMM is enabled in your current config
+2020-04-03 22:13:22 <zzo38> It says 15168 Kb free expanded memory, so it looks like it is implemented (although I don't know if there are problems with the implementation).
+2020-04-03 22:18:30 <zzo38> Another emulator is Zeta, which is sometimes used with ZZT, although Zeta does not implement EMS as far as I can tell (even though the author of Zeta has also written the code to allow ZZT to use EMS)
+2020-04-03 22:20:52 <b_jonas> zzo38: I used Dosbox very little. I just ran most of my DOS programs on a real MS-DOS in a machine emulated by Bochs
+2020-04-03 22:21:02 <b_jonas> well, after I stopped running native DOS that is
+2020-04-03 22:21:56 <b_jonas> and DOS windows in Win16
+2020-04-03 22:24:09 <b_jonas> although that's sort of orthogonal, I have ran Win16 in the Bochs virtual machine
