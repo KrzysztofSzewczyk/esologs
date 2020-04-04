@@ -64,3 +64,61 @@
 2020-04-04 02:29:20 <b_jonas> I mentioned Balduvian Frostvaker earlier, which has the same problem, it has a repeatable effect that modifies a permanent without a timeout, so you want to mark it somehow
 2020-04-04 02:29:33 <b_jonas> since you would mark it with a bead anyway, it's better if the rules treat it as a real counter
 2020-04-04 02:29:36 <zzo38> That is probably correct.
+2020-04-04 02:30:27 <b_jonas> yes, it gets complicated because there are multiple different types of counters that your deck can give to any creature, but since they want to do such an effect in just this set, ability-granting counters are probably the best
+2020-04-04 02:33:24 <b_jonas> and yes, it will get ugly even in limited, because in just this one set Ikoria, you can get +1/+1, menace, deathtouch, trample, lifelink, flying, hexproof counters, just from commons and uncommons;
+2020-04-04 02:34:29 <ais523> it'll likely slow down tournaments a lot, because you can no longer just look at a creature's art and number of counters to know its stats
+2020-04-04 02:34:45 <b_jonas> and if you have rares, "Chevill, Bane of Monsters" puts bounty counters on any creature, other rares can add first strike, reach, vigilance counters (mind you, first strik counter probably apperas on an unrevealed uncommon too).
+2020-04-04 02:34:50 <b_jonas> ais523: exactly
+2020-04-04 02:35:03 <ais523> (OK, sometimes people played auras, but not very often in constructed tournaments)
+2020-04-04 02:35:08 <b_jonas> it's not a very good gimmick for a set, but there's probably been worse gimmicks
+2020-04-04 02:35:35 <b_jonas> ais523: and the decisions get hard too, because there are rares that by themself can grant many different type of counters
+2020-04-04 02:35:40 <ais523> Amonkhet had ridiculously complicated tokens
+2020-04-04 02:35:58 <ais523> back when I played, tokens were mostly just 1/1 creatures with no abilities, and you could represent them using beads
+2020-04-04 02:36:24 <zzo38> I just took a piece of paper and tore it and wrote the characteristics of the token on the paper.
+2020-04-04 02:36:39 <b_jonas> ok, admittedly that's just one card so far, "Vivien, Monster's Advocate" and it puts three types of counters
+2020-04-04 02:36:55 <b_jonas> plus "Crystalline Giant" which puts counters on itself only, and randomly
+2020-04-04 02:37:11 <b_jonas> apparently "Crystalline Giant" is rare, not mythic
+2020-04-04 02:38:01 <b_jonas> ais523: heck no, when I played, tokens were 1/1 green elves and 1/1 black-green elves and 1/1 green saprolings, and you had to distinguish them to know which ones get bonuses from the elf lords
+2020-04-04 02:38:41 <b_jonas> and I have to follow which ones are tapped, which ones have summoning sickness, and I want to have a lot of them, because the elf decks only wins if it takes the opponent over by growing big
+2020-04-04 02:38:42 <zzo38> Yes, and for effects which say "non-black" or "protection from black" or otherwise cares about the colors
+2020-04-04 02:38:53 <b_jonas> so it isn't that trivial to keep up
+2020-04-04 02:39:30 <b_jonas> zzo38: or just fear
+2020-04-04 02:39:44 <ais523> fear isn't used in standard-legal sets nowadays
+2020-04-04 02:39:48 <b_jonas> I know
+2020-04-04 02:39:57 <ais523> which I think is a pity
+2020-04-04 02:39:57 <zzo38> Yes, fear, too
+2020-04-04 02:40:01 <b_jonas> but we were talking about how magic was played back then
+2020-04-04 02:40:09 <ais523> in old magic, some colors had advantages in the ways that other colors interacted with them
+2020-04-04 02:40:21 <ais523> e.g. black creatures were harder to destroy, because many removal spells had a "nonblack" requirement
+2020-04-04 02:40:25 <zzo38> Make up custom (unofficial) sets with fear and whatever else, if you want to do, I think.
+2020-04-04 02:40:47 <ais523> but nowadays those requirements aren't kept to consistently, so any benefits of a card have to be on the card itself
+2020-04-04 02:41:02 <ais523> I guess it's clearer to new players to do it that way
+2020-04-04 02:43:59 <b_jonas> ais523: right, with Terror and Befoul (target nonblack nonartifact creature). but then it got uglier because we started to run removal like Doom Blade (target nonblack), Deathmark (target green or white creature), Soul Reap (target nongreen creature), Eyeblight's Ending (target non-Elf creature), and more weird ones
+2020-04-04 02:44:08 <b_jonas> as well as universal ones that just target any creature of course
+2020-04-04 02:44:48 <b_jonas> and those are just the black removal spells, the white ones are weird in different ways
+2020-04-04 02:44:58 <b_jonas> the black ones and the white ones also have varying effects
+2020-04-04 02:45:24 <b_jonas> it all gets complicated if you don't just run a red deck with simple lightning bolt style spells
+2020-04-04 02:46:05 <b_jonas> at least we lost "it can't be regenerated" clauses, which is a good thing
+2020-04-04 02:48:30 <ais523> I think that regenerate should have been templated as "the next time this creature would die, regenerate it instead"
+2020-04-04 02:48:44 <ais523> (with the word "regenerate" redefined to fit the new template)
+2020-04-04 02:48:50 <ais523> that would be much clearer on how regeneration works
+2020-04-04 02:49:14 <b_jonas> ais523: it might not fit on some of the more complicated cards though
+2020-04-04 02:49:16 <zzo38> What I don't like about "regenerate" is how it means two different things (although related), so that would help. However, I think that text is too long.
+2020-04-04 02:52:09 <b_jonas> regenerate is probably bad because it is one of those complicated keywords that appeared on many cards since early sets and the rules had to maintain and its use was continued as a sort of tradition, similar to protection and banding
+2020-04-04 02:52:36 <b_jonas> it's possible that the early sets shouldn't have started that tradition, but it's sort of too late now, and it would be even uglier to have a different regenerate-like ability in parallel
+2020-04-04 02:54:10 <ais523> such an ability exists and is commonly used, "gains indestructible until end of turn"
+2020-04-04 02:54:14 <b_jonas> this is still better than the simpler abilities that existed in lots of different versions, like reach, shroud, hexproof, lifelink, deathtouch, and all those triggers that grant +X/+X when the creature is (a) attacking (b) blocking (c) blocked (d) unblocked (c) blocked but with multipilicity (f) blocking but with multiplicity etc
+2020-04-04 02:54:18 <zzo38> I think regenerate, protection, and banding are all fine, although the wording for regeneration is bad due to how I mentioned.
+2020-04-04 02:55:06 <b_jonas> ais523: gains indestructible is somewhat more powerful though, because it doesn't remove the creature from combat
+2020-04-04 02:55:25 <b_jonas> though that only matters if there's more than one damage assignment time I guess
+2020-04-04 02:55:28 <b_jonas> or such things
+2020-04-04 02:55:53 <zzo38> Yes. One card I made up though is "Universal Salvation", which regenerates all permanents when it resolves.
+2020-04-04 02:56:09 <zzo38> I have also written cards with "regenerate and then destroy this permanent".
+2020-04-04 02:56:19 <b_jonas> `card-by-name bear umbra
+2020-04-04 02:56:20 <HackEso> Bear Umbra \ 2GG \ Enchantment -- Aura \ Enchant creature \ Enchanted creature gets +2/+2 and has "Whenever this creature attacks, untap all lands you control." \ Totem armor (If enchanted creature would be destroyed, instead remove all damage from it and destroy this Aura.) \ ROE-R
+2020-04-04 02:56:33 <b_jonas> ^ this is how regenerate should have been done originally, but it's incompatible with our regenerate
+2020-04-04 02:57:38 <b_jonas> with "The next time this creature would be destroyed" for repeatable abilities of course
+2020-04-04 02:58:41 <b_jonas> also lets you use {T} abilities of the creature after combat
+2020-04-04 02:58:52 <b_jonas> yes, I guess that one is somewhat similar to what ais suggests
+2020-04-04 02:59:15 <b_jonas> the "gains indestructible until end of turn"
+2020-04-04 02:59:37 <b_jonas> that might indeed be better
