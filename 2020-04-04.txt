@@ -8,3 +8,46 @@
 2020-04-04 00:48:27 <zzo38> (I have some other comments too, which I did not mention yet.)
 2020-04-04 00:50:22 <zzo38> Also, I think some people on this IRC may be playing mahjong? To those people, I want to ask what rule variations do you use, e.g. do you use any red fives (and if so how many), and do you use kuitan ari or kuitan nashi?
 2020-04-04 01:17:42 <zzo38> Also, what you thinking of the ability counters and other new rules of Magic: the Gathering cards?
+2020-04-04 01:36:16 <ais523> zzo38: I read your comment but didn't immediately have an opinion about it
+2020-04-04 01:36:23 <ais523> I'd have to remember how my game worked
+2020-04-04 01:37:02 <ais523> I think in order to make it into a proper game, you'd need to experiment with multiple versions of the rules until you found something that worked
+2020-04-04 01:37:19 <zzo38> I have a copy of your file in case you lost it.
+2020-04-04 01:37:21 <ais523> what are ability counters?
+2020-04-04 01:37:57 <zzo38> Something new in Magic: the Gathering apparently, that permanents with an ability counter have the corresponding ability.
+2020-04-04 01:38:16 <ais523> hmm, Netrunner has had that for ages
+2020-04-04 01:38:21 <zzo38> (I should think a new sublayer would be added to handle this, like there is a sublayer for power/toughness counters, presumably.)
+2020-04-04 01:38:27 <ais523> they're called "condition counters" and have abilities that affect the card they're on
+2020-04-04 01:38:34 <ais523> although, the only way to create them is that a card turns itself into the counter
+2020-04-04 01:38:46 <ais523> (this makes it easy to remember what the counter does, by seeing what card it is)
+2020-04-04 01:39:36 <zzo38> An idea I had before they did this was ability tokens, which is just another kind of predefined tokens.
+2020-04-04 01:42:19 Quit: hakatashi1 (Remote host closed the connection)
+2020-04-04 01:42:19 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-04 01:42:42 Joined: hakatashi
+2020-04-04 01:42:42 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, imode-ruby, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, laerlingSAP, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MTGBusyBeaver42, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-04 01:44:11 <MTGBusyBeaver42> No worries ais523, there have been a lot of changes to the deck recently packing in more optimizations
+2020-04-04 01:48:07 <MTGBusyBeaver42> I'm more worried about the judge calls about the new companions
+2020-04-04 01:48:25 <MTGBusyBeaver42> at least for the prerelease (if that even happens)
+2020-04-04 01:48:32 <ais523> in Netrunner? or in M:tG?
+2020-04-04 01:48:39 <MTGBusyBeaver42> in MTG
+2020-04-04 01:49:04 <ais523> ah right, I was confused because the new netrunner sets also have a mechanic called "companions" that are likely to cause judge calls
+2020-04-04 01:49:16 <ais523> (they lead to a lot of undos when playing online, and you can't really play not-online atm…)
+2020-04-04 01:49:47 <MTGBusyBeaver42> well these companions have a deckbuilding restriction
+2020-04-04 01:50:10 <MTGBusyBeaver42> I'm worries specifically about Lutri, the Spellchaser
+2020-04-04 01:50:26 <MTGBusyBeaver42> "Companion — Each nonland card in your starting deck has a different name. (If this card is your chosen companion, you may cast it once from outside the game.)"
+2020-04-04 01:51:18 <ais523> ugh, "starting deck" implies that the restrictions can be met or unmet as a consequence of sideboarding
+2020-04-04 01:51:26 <MTGBusyBeaver42> not only is that a complete freeroll in any izzet edh deck, its the only restriction that is easy to cheat on
+2020-04-04 01:51:28 <ais523> if not for that, you could probably just verify them in deck checks
+2020-04-04 01:51:50 <MTGBusyBeaver42> and will require deck checks
+2020-04-04 01:53:03 <ais523> anyway, when I saw the Amonkhet spoilers I thought it'd require too many counter/token types to work
+2020-04-04 01:53:10 <ais523> and still think I was right in retrospect
+2020-04-04 01:53:20 <ais523> I dislike keyword counters for a similar reason
+2020-04-04 01:53:51 <zzo38> I dislike ability counters for a different reason, which is namespace collision
+2020-04-04 01:54:56 <zzo38> (One way to avoid this is to write "flying ability counter" or "banding ability counter" instead of "flying counter" or "banding counter". Although my idea previously was tokens instead anyways, which has its own advantages and disadvantages over this way.)
+2020-04-04 01:55:32 <MTGBusyBeaver42> Please don't give out Banding counters
+2020-04-04 01:55:55 <ais523> "bands with other creatures with bands with other counters"
+2020-04-04 01:57:24 <MTGBusyBeaver42> you monster
+2020-04-04 01:58:45 <ais523> it demonstrates the namespace collision, though
+2020-04-04 01:58:50 <ais523> it's really hard to parse
+2020-04-04 01:59:15 <ais523> fwiw, I think the M10 rules update ruined banding
+2020-04-04 01:59:24 <ais523> when damage went on the stack, it was pretty easy to explain
+2020-04-04 01:59:59 <ais523> the more recent version of the combat rules is less loopholey but much more complex, and banding seems more complex still because it effectively sets the combat rules back to the older way of doing things
