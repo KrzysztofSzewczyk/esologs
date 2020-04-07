@@ -191,3 +191,7 @@
 2020-04-07 14:39:39 <int-e> > log (20^8/24)/log 2 -- naive estimate
 2020-04-07 14:39:41 <lambdabot> 29.990462258377743
 2020-04-07 14:48:55 <int-e> tromp: So... if we count closed terms... we reach that number (20^8/24) at size 41...
+2020-04-07 15:03:12 <tromp> the normal count is (4n+4)^2n for n state TMs
+2020-04-07 15:10:03 <tromp> 4*2*log(4*4+4) = 34.6
+2020-04-07 15:15:01 <tromp> in a straighforward encoding, you're use a whole number of bits per transition, and it would rise to 4*2*ceil(log(4*4+4)) = 40
+2020-04-07 15:15:08 <tromp> you'd use
