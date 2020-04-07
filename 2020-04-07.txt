@@ -171,3 +171,14 @@
 2020-04-07 12:18:29 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-07 12:34:56 <int-e> arseniiv: https://en.wikipedia.org/wiki/Iota_and_Jot#Jot sketches a proof of that
 2020-04-07 12:37:07 <arseniiv> int-e: thanks, the more general form of that statement, with arbitrary w, helps
+2020-04-07 14:23:24 <tromp> int-e: i checked all my TODOs for 34. so we can say that BB(34) = 5*2^16+6 = 327686
+2020-04-07 14:24:25 <tromp> that cannot happen with TM BB; predicting a value far in advance of checking it:)
+2020-04-07 14:25:10 <int-e> Well, granularity.
+2020-04-07 14:25:24 <int-e> What is a 34 bit TM? :)
+2020-04-07 14:26:12 <tromp> a 4 state TM takes more than 34 bits to describe
+2020-04-07 14:26:21 <int-e> Also up to this point the fairly naive filters (not counting the W or W2 criteria which are a bit more clever) have been embarrassingly effective.
+2020-04-07 14:27:07 <tromp> and BB(4) = 13
+2020-04-07 14:27:14 <tromp> for TMs
+2020-04-07 14:27:21 <int-e> (I still haven't looked at the W2 thing, and I think it'll be a couple of days before I do... I really want to give this problem a bit of thought first.)
+2020-04-07 14:27:57 <int-e> There is also some simplicity to BLC.
+2020-04-07 14:28:51 <tromp> yes, it's simpler, more fine-grained, faster growing, and naturally expressed in bits.   seems better in every respect...
