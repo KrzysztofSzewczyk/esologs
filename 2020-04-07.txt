@@ -112,3 +112,30 @@
 2020-04-07 08:26:33 <Phantom__Hoover> why?
 2020-04-07 08:27:01 <Phantom__Hoover> other goedel numberings are even uglier
 2020-04-07 08:29:40 <int-e> It's so, what's the word you used, clunky.
+2020-04-07 08:33:18 <Phantom__Hoover> the injection of SKI into jot is, the mapping from jot into the lambda calculus is very sleek
+2020-04-07 08:33:45 <Phantom__Hoover> i certainly can't envisage a better one
+2020-04-07 08:33:51 <int-e> I mean, it is an amazing feat in some way... making {AB} -> 1{A}{B} work, in particular, is impressive (though it's intimately tied to the translations of K and S. But 5 bits for K and 8 for S is ridiculous. And if you don't stick to the fragment defined by {.} I honestly have no clue what programs mean. Neither [F] S K nor S (K [F]) really make much operational sense to me.
+2020-04-07 08:34:53 <int-e> Just use ordered pairs to encode binary trees like everybody else.
+2020-04-07 08:36:27 <int-e> Phantom__Hoover: Let me stress again that this is a matter of taste to me. There's nothing objectively wrong with Iota or Jot, I think. They're just ugly ;-)
+2020-04-07 08:37:21 <tromp> i'm in perfect agreement with int-e :-)
+2020-04-07 08:37:56 <tromp> might be that we have similar taste...
+2020-04-07 08:41:51 <Phantom__Hoover> ah but that's what gives jot its sexy air of mystery
+2020-04-07 08:42:26 <Phantom__Hoover> clearly the vast majority of programs aren't simple encodings of SKI expressions so what's going on there?
+2020-04-07 08:43:27 <int-e> I expect it's just a terrible mess of chaos. Not that I've ever stared into that abyss at any depth ;)
+2020-04-07 08:44:18 <Phantom__Hoover> (this all started when i wondered how to encode church lists of ascii text out of boredom with normal online 'translate your text to binary!' converters)
+2020-04-07 08:45:23 <Phantom__Hoover> obviously {.} will give you a completely boring result
+2020-04-07 08:46:00 <int-e> tromp: I think we both like lambda calculus (and by extension, combinatory logic--I don't think either of us can program combinatory logic directly, but abstraction elimination does the trick without blowing programs up too much), and we both can be tracked down into golfing efforts (which favor concise encodings, obviously).
+2020-04-07 08:47:22 <int-e> Phantom__Hoover: If you find a way to navigate the swamp (yeah I'm changing analogies) that lies off the trodden path defined by {.}, I think you can really impress a few people :)
+2020-04-07 08:48:55 <tromp> you could see how far you get with a BB_jot
+2020-04-07 08:49:42 <int-e> How do you even measure the result size?
+2020-04-07 08:50:14 <tromp> there's always the blc size:-)
+2020-04-07 08:51:31 <int-e> or bcl size, I guess
+2020-04-07 08:52:31 <int-e> But I guess this is another source of ugliness... you can't do evaluation in the language that you write your programs in.
+2020-04-07 08:52:42 Nick Change: sebbu2 -> sebbu
+2020-04-07 08:52:43 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-07 08:53:01 <Phantom__Hoover> yes that's another issue, there are no clear reduction rules in terms of the 1/0 language
+2020-04-07 08:53:34 <int-e> Phantom__Hoover: Anyway I don't want to discourage you from studying this beast.
+2020-04-07 08:54:28 <Phantom__Hoover> i'll be impressed if i can find a concise encoding of 2 tbh
+2020-04-07 08:54:43 <Phantom__Hoover> 1 is just... 1, i'm p sure
+2020-04-07 08:55:35 <Phantom__Hoover> oh there's another snag which is that the majority of jot programs arent in 'normal form', i.e. the 1[A][B] construction is invalid for them
+2020-04-07 08:56:10 <Phantom__Hoover> but you can get around that by padding it on the left with enough 1s, and i think the number required is in general significantly less than you get from {.}
