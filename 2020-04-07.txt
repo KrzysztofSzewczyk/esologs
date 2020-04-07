@@ -182,3 +182,12 @@
 2020-04-07 14:27:21 <int-e> (I still haven't looked at the W2 thing, and I think it'll be a couple of days before I do... I really want to give this problem a bit of thought first.)
 2020-04-07 14:27:57 <int-e> There is also some simplicity to BLC.
 2020-04-07 14:28:51 <tromp> yes, it's simpler, more fine-grained, faster growing, and naturally expressed in bits.   seems better in every respect...
+2020-04-07 14:30:03 <int-e> The thing is, on an abstract level, what makes programming feasible is code reusage... giving a piece of code a name, and using it by that name somewhere else. Lambda calculus basically turns that principle into an evaluation mechanism, using substitution to put code where it's used so it can be evaluated. So it's eminently programmable, which is in stark contrast to Turing Machines.
+2020-04-07 14:30:55 <int-e> So perhaps it's not completely surprising that the human understandable (\x. x x x x) 2 is also an actual good busy beaver.
+2020-04-07 14:31:33 <int-e> (At least once you discover the Church numeral accident that exponentiation is just application.)
+2020-04-07 14:32:54 <int-e> But I still think the main factor is the better granularity of measuring program size.
+2020-04-07 14:33:30 <tromp> bits beat states
+2020-04-07 14:38:02 <int-e> Is there an analogue for http://oeis.org/A052200 (number of n-state 2-symbol TMs) modulo the obvious symmetries (permuting states, and I guess demanding that all states are reachable, at least in the graph given by the state transition diagram?)
+2020-04-07 14:39:39 <int-e> > log (20^8/24)/log 2 -- naive estimate
+2020-04-07 14:39:41 <lambdabot> 29.990462258377743
+2020-04-07 14:48:55 <int-e> tromp: So... if we count closed terms... we reach that number (20^8/24) at size 41...
