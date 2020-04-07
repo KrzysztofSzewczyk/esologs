@@ -269,3 +269,26 @@
 2020-04-07 22:28:51 <b_jonas> to make it fully cryptographically secure would be an overkill and even slower
 2020-04-07 22:29:37 <b_jonas> ais523: doesn't NH4 also care about that you can't deduce anything about past output other than what was told to you?
 2020-04-07 22:29:51 <ais523> oh yes, good point
+2020-04-07 22:30:12 <ais523> I haven't seen that mentioned as a cryptosecurity property in the past
+2020-04-07 22:30:30 <b_jonas> that's because it's implied by stronger properties I think
+2020-04-07 22:30:39 <b_jonas> anyway, 96 bits seems pretty small even for that,
+2020-04-07 22:30:42 <ais523> right, the stronger property is "you can't deduce past output from knowledge of the seed"
+2020-04-07 22:30:53 <b_jonas> but then, we're not basing our banking system on the NH4 random generator, it's just a game
+2020-04-07 22:31:16 <ais523> and of course, if you /can/ deduce past output from future output, then you can deduce it from knowledge of the seed simply by generating some future output from it and using it to calculate past output
+2020-04-07 22:31:32 <b_jonas> ais523: that's not quite precise
+2020-04-07 22:31:57 <b_jonas> I also require that you can't deduce past output from the combination of future output and other past output before that
+2020-04-07 22:32:01 <ais523> "you can't deduce past output from knowledge of the current internal state" is the precise formulation, I think
+2020-04-07 22:32:08 <ais523> oh, of the property that NH4 has
+2020-04-07 22:32:09 <b_jonas> just the current seed isn't enough for that
+2020-04-07 22:32:23 <b_jonas> yeah
+2020-04-07 22:34:18 <ais523> "if you have a sequence of RNG outputs where some are unknown, you can't deduce the unknown elements from the known elements"
+2020-04-07 22:34:52 <ais523> of course this is trivially false if the length of the sequence exceeds the period of the RNG, but we're assuming that the number of outputs which will ever be requested is small compared to the period
+2020-04-07 22:35:02 <b_jonas> ais523: sort of, but technically you need even stronger, because your knowledge need not be granular to individual elements of the sequence
+2020-04-07 22:35:35 <b_jonas> what is the period of the NH4 random generator (at an order of magnitude)?
+2020-04-07 22:36:01 <ais523> same as the state size, 2⁹⁶
+2020-04-07 22:36:42 <ais523> well, I don't know that for certain, but if it isn't, the cryptographic hash I'm using is utterly broken :-D
+2020-04-07 22:37:45 <b_jonas> ok
+2020-04-07 22:39:05 <ais523> actually, it's pretty certain that the period is 2⁹⁶ because the only way it couldn't be would be if the hash function ignored the first bit of its input entirely if it happened to be exactly 96 bits long
+2020-04-07 22:39:21 <ais523> and there's no way that brokenness of that magnitude wouldn't be noticed
+2020-04-07 22:40:13 Quit: ArthurStrong (Quit: leaving)
+2020-04-07 22:40:14 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
