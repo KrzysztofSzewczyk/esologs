@@ -338,3 +338,46 @@
 2020-04-08 16:28:06 <ais523> it appears to use isdigit() to parse constants
 2020-04-08 16:29:18 <ais523> so constants are any strings consisting entirely of digits
 2020-04-08 16:29:44 <ais523> I think variables will be stored as Python integers throughout
+2020-04-08 16:30:02 <ais523> unless rand/sine/cos/abssine are used
+2020-04-08 16:30:20 <ais523> or, hmm, no
+2020-04-08 16:30:20 <b_jonas> was probably posted today to the wiki because it has a function called passover: https://github.com/Abdur-rahmaanJ/css-script/blob/master/css_script/main.py#L351
+2020-04-08 16:30:35 <ais523> if you assign a constant to a variable the value seems to be stored as a string (?)
+2020-04-08 16:30:52 <ais523> oh, I see
+2020-04-08 16:31:07 <ais523> it uses floats to do arithmetic, even though it uses ints to store the result of transcendental operations, and strings to store constants
+2020-04-08 16:31:21 <ais523> (constant numbers)
+2020-04-08 16:32:06 <ais523> so yes, sub-TC because each program can only have finitely many variables
+2020-04-08 16:32:19 <b_jonas> ais523: no, it uses int to store the input of the transcendental constants, and yes that's weird
+2020-04-08 16:32:25 <ais523> err, ints are for the /argument/ to the transcendental operation
+2020-04-08 16:32:29 <ais523> * operations
+2020-04-08 16:32:39 Quit: baidicoot (Ping timeout: 265 seconds)
+2020-04-08 16:32:39 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 16:32:47 <ais523> I cannot refute the hypothesis that types in this language were just picked at random until it appeared to work
+2020-04-08 16:33:32 <b_jonas> that said this seems ot be the sort of interpreter where the author just adds the features they need at the time, and they may edit more features into it later as they want to write more programs, so it might just eventually grow more powerful by the time
+2020-04-08 16:34:18 <ais523> yes
+2020-04-08 16:34:25 <ais523> maybe they'll even get the domain name they want!
+2020-04-08 16:36:31 <b_jonas> ais523: yes, they claim to be a web developer
+2020-04-08 16:37:20 <b_jonas> although they also claim to do "IoT" and "Machine learning" and "Desktop development" so it might just be a fashionable keyword for the cv
+2020-04-08 16:37:39 <ais523> I think they're a web developer, just probably not a very good one
+2020-04-08 16:41:44 <b_jonas> also has an introductory programming book at https://github.com/Abdur-rahmaanJ/Think-Python-Fr/blob/master/all_in_one.md , let me see if that has code that looks better
+2020-04-08 16:46:58 <ais523> the main issue I note is that the indentation is wrong
+2020-04-08 16:47:04 <ais523> which, considering that this is Python, is something of an issue
+2020-04-08 16:47:21 <ais523> not always, but sometimes
+2020-04-08 16:48:54 <ais523> ah, I see
+2020-04-08 16:49:04 <ais523> it's a translation of a book by someone else
+2020-04-08 16:49:15 <ais523> "traduction du livre: Think Python, How To Think Like A Computer Scientist d'Allan Downey"
+2020-04-08 16:49:33 <ais523> and apparently unfinished, because the formatting goes crazy towards the end
+2020-04-08 16:51:30 <b_jonas> ais523: yes, the indentation of some code got lost somewhere in the conversions
+2020-04-08 16:53:13 <b_jonas> yes, probably because it's in progress
+2020-04-08 16:54:12 <ais523> this helps confirm my belief that indentation-sensitivity is too fragile for a serious programming language
+2020-04-08 16:54:19 <ais523> because code may be conveyed in formats that don't retain indentation well
+2020-04-08 16:56:35 <ais523> <HTML> Collect a sequence of code points that are ASCII digits from input given position, and interpret the resulting sequence as a base-ten integer.
+2020-04-08 16:56:50 <ais523> it goes to a huge amount of trouble to specify everything in great detail, but forgets to specify the endianness here
+2020-04-08 16:56:56 <ais523> I wonder if I should submit a bug report
+2020-04-08 16:57:38 <ais523> also, apparently -0 is a valid nonnegative integer in HTML, which is interesting as nonnegative integers are defined with a different parser from integers
+2020-04-08 16:58:02 <ais523> ah, wait, it isn't
+2020-04-08 16:58:13 <ais523> the parser for nonnegative integers will accept it, but you aren't allowed to include a minus sign in the input
+2020-04-08 16:58:18 <b_jonas> the first 9 chapters are formatted correctly and the code indentation looks fine in them
+2020-04-08 16:58:22 <ais523> err, a hyphen-minus sign
+2020-04-08 16:59:13 <ais523> heh, the endianness of the fractional part of a float /is/ specified, even though the endianness of the integer part isn't
+2020-04-08 16:59:37 Joined: baidicoot
+2020-04-08 16:59:37 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
