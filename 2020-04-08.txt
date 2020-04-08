@@ -306,3 +306,35 @@
 2020-04-08 15:32:46 <esowiki> 14[[07Css script14]]4 10 02https://esolangs.org/w/index.php?diff=70746&oldid=70744 5* 03LegionMammal978 5* (-19) 10formatting
 2020-04-08 15:40:47 <esowiki> 14[[07Cubically14]]4 10 02https://esolangs.org/w/index.php?diff=70747&oldid=52173 5* 03LegionMammal978 5* (+87) 10added repo link
 2020-04-08 15:42:00 <kspalaiologos> lmao what, css script?
+2020-04-08 16:05:12 <esowiki> 14[[07D1ffe7e45e14]]4 M10 02https://esolangs.org/w/index.php?diff=70748&oldid=62325 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-08 16:07:17 <ais523> the css script website appears to be a dead link already
+2020-04-08 16:07:33 <ais523> although the repo is up
+2020-04-08 16:09:00 <ais523> it appears to be a primitive-recursive language with a large number of primitives for graphical output
+2020-04-08 16:09:08 <ais523> I'm not sure what relationship it has to CSS
+2020-04-08 16:10:15 <ais523> ah no, I think it supports recursion, which would make it TC given bignums
+2020-04-08 16:10:20 <ais523> (e.g. you can implement Blindfolded Arithmetic)
+2020-04-08 16:10:56 <ais523> unless, hmm
+2020-04-08 16:11:11 <ais523> I don't think it has any conditionals and I'm not convinced that the arithmetic allows two variables as arguments
+2020-04-08 16:14:40 <ais523> OK, looking at the implementation, does seem to allow two variables, so yes, you can do Blindfolder Arithmetic
+2020-04-08 16:15:00 <ais523> and the relationship to CSS appears to be that the implementation's output is in CSS
+2020-04-08 16:16:07 <ais523> although, the output is hardcoded to go into the file C:/Users/Dell/Desktop/entry/git/css-script-candy/css_script/output.html, which strikes me as a fairly awkward API
+2020-04-08 16:16:46 <ais523> also the output appears to actually be HTML+CSS, not pure CSS
+2020-04-08 16:19:38 <ais523> that's a little disappointing, I was secretly hoping it would be CSS with a .html extension
+2020-04-08 16:22:42 <b_jonas> ais523: but doesn't the division operator do floating point division?
+2020-04-08 16:22:48 <b_jonas> also doesn't it use floating point numbers?
+2020-04-08 16:23:21 <b_jonas> if it's fixed size machine floats, then you can't do too much blindfolded arithmetic
+2020-04-08 16:25:09 <ais523> hmm
+2020-04-08 16:25:15 <ais523> I bet you could do something using floating-point errors
+2020-04-08 16:25:15 <b_jonas> hmm no, it is floor division, but it's still machine floating point
+2020-04-08 16:25:22 <ais523> if it really were float division)
+2020-04-08 16:25:23 <b_jonas> 64-bit floating point
+2020-04-08 16:25:33 <ais523> although it would still be sub-TC due to the floats only having finitely many values
+2020-04-08 16:25:52 <ais523> but Python has arbitrary-precision integers
+2020-04-08 16:26:02 <ais523> I'm not sure what happens if you add one of those to the floored result of a division
+2020-04-08 16:26:43 <b_jonas> python has arbitrary precision integers, but this impl doesn't do arithmetic on those
+2020-04-08 16:27:09 <b_jonas> https://github.com/Abdur-rahmaanJ/css-script/blob/master/css_script/main.py#L322
+2020-04-08 16:27:29 <b_jonas> float is the built-in floating point type, which uses 64-bit machine floats
+2020-04-08 16:27:53 <b_jonas> unless of course there's some trick elsewhere in that code
+2020-04-08 16:28:06 <ais523> it appears to use isdigit() to parse constants
+2020-04-08 16:29:18 <ais523> so constants are any strings consisting entirely of digits
+2020-04-08 16:29:44 <ais523> I think variables will be stored as Python integers throughout
