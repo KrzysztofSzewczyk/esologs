@@ -4,3 +4,24 @@
 2020-04-08 00:05:08 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-08 00:20:39 Joined: Sgeo
 2020-04-08 00:24:00 Quit: Sgeo (Ping timeout: 256 seconds)
+2020-04-08 00:36:31 <esowiki> 14[[07Parenthesis Hell14]]4 M10 02https://esolangs.org/w/index.php?diff=70709&oldid=18413 5* 03IFcoltransG 5* (+4) 10Linked to inspiration, Lisp
+2020-04-08 00:41:08 <esowiki> 14[[07Function x(y)14]]4 M10 02https://esolangs.org/w/index.php?diff=70710&oldid=70475 5* 03PythonshellDebugwindow 5* (+80) 10/* Syntax */ Yes // is Integer divison
+2020-04-08 00:41:49 <esowiki> 14[[07Function x(y)14]]4 M10 02https://esolangs.org/w/index.php?diff=70711&oldid=70710 5* 03PythonshellDebugwindow 5* (-86) 10/* FizzBuzz */
+2020-04-08 00:46:26 <esowiki> 14[[07Lisp14]]4 10 02https://esolangs.org/w/index.php?diff=70712&oldid=70114 5* 03IFcoltransG 5* (+430) 10/* List processing */ Added section on pronunciations and composed cars and cdrs
+2020-04-08 00:51:39 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-08 00:51:39 <imode> maybe some common sense can set me straight: I'm building a service. bit of a "high-class" version of LambdaMOO with an economy attached to the middle of it. in it, I need to be able to run user-submitted code. arbitrary user-submitted code.
+2020-04-08 00:52:30 <imode> this code needs to be sandboxed. so, I turn to "popular" tools. node.js springs to mind. seems alright enough. I have a couple of things like a job queue, an SQL ORM, websocket support...
+2020-04-08 00:52:58 <imode> I'm at a crossroads between two options. do I use something like a Forth, or PostScript. or do I use sandboxed JavaScript.
+2020-04-08 00:53:21 Quit: ais523 (Ping timeout: 265 seconds)
+2020-04-08 00:53:21 Names: ^[, aji, aloril, APic, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 00:53:48 <imode> I figured I'd first ask the esolangs channel because, why not. esolangs are kind of at the opposite end of the UX spectrum.
+2020-04-08 00:54:25 User Name: FreeFull = FreeFull!~freefull@defocus/sausage-lover
+2020-04-08 00:54:25 <FreeFull> imode: I'd do some sort of language-independent sandboxing instead
+2020-04-08 00:55:00 <imode> FreeFull: I'd take that route too. but there's a lot of variables associated with that.
+2020-04-08 00:55:02 <FreeFull> Actually, no, language-independent wouldn't be enough
+2020-04-08 00:55:27 <imode> bear in mind. user code runs per-command.
+2020-04-08 00:55:36 <FreeFull> Maybe Lua?
+2020-04-08 00:55:46 <imode> no good way to do memory limits.
+2020-04-08 00:55:55 <imode> or CPU time measurements.
+2020-04-08 00:56:18 <imode> imagine 10k+ users, all frothing at the chance to knock your machines out of memory.
+2020-04-08 00:57:54 <imode> it's essentially a choice between creating a slightly user-hostile environment, sacrificing user experience for simplicity and control, vs. using V8 isolates via an npm package called `isolated-vm`.
