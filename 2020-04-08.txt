@@ -591,3 +591,46 @@
 2020-04-08 20:59:46 <zzo38> ais523: Yes, I mean in BASIC
 2020-04-08 20:59:55 <ais523> however it has two different precedence override syntaxes and you can always solve an ambiguity caused by one by using the other instead
 2020-04-08 20:59:58 <b_jonas> ais523: wait, how is that disambiguated?
+2020-04-08 21:00:03 <b_jonas> and what's UT?
+2020-04-08 21:00:11 <ais523> b_jonas: it isn't but syntax errors are legal in INTERCAL
+2020-04-08 21:00:13 <b_jonas> does that work only when the statement is only ran when ignored?
+2020-04-08 21:00:16 <b_jonas> yeah
+2020-04-08 21:00:43 <ais523> I think all current interpreters arbitrarily ignore the DO in DO READOUT, at least if the statement is otherwise syntactically valid
+2020-04-08 21:00:45 <b_jonas> zzo38: yes, one letter is shorter
+2020-04-08 21:00:53 <ais523> it's unclear whether this is the correct course of action or not
+2020-04-08 21:01:03 <ais523> but it's INTERCAL, the spec is not exactly the most unambiguous of things
+2020-04-08 21:01:32 <ais523> incidentally, at least one INTERCAL programmer has seriously argued that spaces should be permitted inside keywords and even inside numerical constants and variable names
+2020-04-08 21:01:41 <ais523> but that isn't widely implemented
+2020-04-08 21:01:48 <arseniiv> <ais523> however it has two different precedence override syntaxes and you can always solve an ambiguity caused by one by using the other instead => esoteric
+2020-04-08 21:02:24 <ais523> arseniiv: Google's style guide suggests alternating between them to a) avoid any risk of an ambiguity that confuses the compiler, b) make it easier to read for a human
+2020-04-08 21:02:38 <b_jonas> ais523: are they storing INTERCAL programs on 5-bit ticker tape?
+2020-04-08 21:03:01 <ais523> I don't think so
+2020-04-08 21:03:08 <arseniiv> ais523: wait, there’s a Google style guide for INTERCAL? :o
+2020-04-08 21:03:11 <b_jonas> or transfer it by 5-bit modem?
+2020-04-08 21:03:15 <ais523> in fact there's no real evidence that Google has written any more than one INTERCAL program
+2020-04-08 21:03:22 <ais523> arseniiv: it was part of their April Fools thing one year
+2020-04-08 21:03:47 <Sgeo> Tcl's return is... complicated.
+2020-04-08 21:03:57 <arseniiv> ais523: that’s probably neat :F
+2020-04-08 21:03:59 <arseniiv> :D *
+2020-04-08 21:04:13 <ais523> it's offline nowadays, and the Internet Archive is down
+2020-04-08 21:04:19 <ais523> I have a saved local copy but will need to check the license before rehosting it
+2020-04-08 21:04:38 <arseniiv> don’t worry, the sole existence of it is enough for me :)
+2020-04-08 21:05:09 <arseniiv> I don’t know enough INTERCAL to appreciate the style guide sufficiently
+2020-04-08 21:05:17 <arseniiv> (maybe)
+2020-04-08 21:05:23 <ais523> the funny thing is, their INTERCAL program had a bug (or at least a nonportability)
+2020-04-08 21:05:31 <ais523> I sent them a pull request and they gave me commit access
+2020-04-08 21:05:39 <ais523> the repo ceased to exist shortly afterwards, when they closed the repo host
+2020-04-08 21:05:50 <ais523> so I was probably the only person outside Google to ever have commit access to it
+2020-04-08 21:06:31 <ais523> ugh, no explicit license on the repo :-(
+2020-04-08 21:06:35 <ais523> so I guess it's default-all-rights-reserved
+2020-04-08 21:06:48 <arseniiv> <ais523> so I was probably the only person outside Google to ever have commit access to it => hehe
+2020-04-08 21:07:54 <arseniiv> oh, btw if someone uses Freesound.org, they had an anniversary a couple days ago
+2020-04-08 21:09:23 <ais523> hmm, I found an archive of the program itself, on a Google host, with an apache2 license on it
+2020-04-08 21:09:30 <ais523> unfortunately the style guide is not in the same archive
+2020-04-08 21:10:24 <ais523> thus the license doesn't apply to it
+2020-04-08 21:13:15 Joined: baidicoot
+2020-04-08 21:13:15 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, nona, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 21:18:07 Quit: baidicoot (Ping timeout: 265 seconds)
+2020-04-08 21:18:07 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, nona, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 21:21:19 Quit: ais523 (Quit: quit)
+2020-04-08 21:21:19 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, nona, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
