@@ -25,3 +25,26 @@
 2020-04-08 00:55:55 <imode> or CPU time measurements.
 2020-04-08 00:56:18 <imode> imagine 10k+ users, all frothing at the chance to knock your machines out of memory.
 2020-04-08 00:57:54 <imode> it's essentially a choice between creating a slightly user-hostile environment, sacrificing user experience for simplicity and control, vs. using V8 isolates via an npm package called `isolated-vm`.
+2020-04-08 01:02:58 Quit: baidicoot (Ping timeout: 258 seconds)
+2020-04-08 01:02:58 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 01:03:27 <FreeFull> I'd go for something where there's a separate sandboxed process, and some sort of API to communicate with the main server process
+2020-04-08 01:08:33 <imode> I guess I'm also discounting what people did for the DCPU-16 or whatever that was.
+2020-04-08 01:09:17 <imode> for a game that never even released.
+2020-04-08 01:13:46 <FreeFull> You could have an entire virtual machine with its own instruction set, but that's definitely a bit overkill
+2020-04-08 01:14:20 <imode> I already have some prior work that does this.
+2020-04-08 01:15:15 <imode> which is why I'm torn. it brings up questions as to why JavaScript grew to be so popular, and whether an application's extensability mechanism will be used in spite of its current popularity.
+2020-04-08 01:20:38 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-04-08 01:20:38 <zzo38> Be careful if using the sandboxing in Node.js; use Object.create(null) to create the sandbox object, and don't put in any objects that come from outside of the sandbox.
+2020-04-08 01:20:53 <imode> I'd be using https://github.com/laverdet/isolated-vm
+2020-04-08 01:21:00 <FreeFull> Javascript is popular because it's pretty much only programming language all popular web browsers support
+2020-04-08 01:21:48 <zzo38> However, PostScript might work (in -dSAFER mode, which is now the default; you can also use writable systemdict to delete some entries that you don't want before locking it; for example, you probably don't need any of the graphics operations or device operations), and making your own variant of Forth could also work.
+2020-04-08 01:22:15 <zzo38> You could also use other implementations of JavaScript, and write your own interface to it.
+2020-04-08 01:22:59 <zzo38> There are many other possibilities too.
+2020-04-08 01:23:19 <imode> FreeFull: right. so it's popular based on the strength of its userbase, because its userbase is derived from people that use a web browser, and people that want to create things that fit in a web browser.
+2020-04-08 01:23:44 <zzo38> But in order to do memory limits and CPU time limits, you would do something else, such as setrlimit.
+2020-04-08 01:24:33 <zzo38> There is also, as mentioned, Lua, and also SQL, even. And actually there are many other possibilities too.
+2020-04-08 01:27:37 <imode> which possibilities will people actually tolerate, is the question.
+2020-04-08 01:28:21 <zzo38> I think different people may tolerate different things, perhaps.
+2020-04-08 01:28:57 <imode> I don't think my users want to do stack juggling in their heads.
+2020-04-08 01:29:20 <zzo38> Something that other programming languages can be compiled to might be helpful, maybe.
+2020-04-08 01:29:32 <imode> I was looking into WASM, but it's very immature.
