@@ -435,3 +435,78 @@
 2020-04-08 19:58:03 <ais523> I don't know much Tcl
 2020-04-08 19:58:16 <ais523> it looks intruiging but I've never had a sufficiently compelling use case for it to be worth learning it
 2020-04-08 19:58:24 <ais523> (although, I did learn enough to add it to the polyglot)
+2020-04-08 20:01:37 <fizzie> I seem to recall Eggdrop was scripted most commonly in Tcl.
+2020-04-08 20:01:45 <ais523> b_jonas: why the check of ayacc, incidentally?
+2020-04-08 20:01:46 <zzo38> Some of the building of SQLite and its documentation is using Tcl, I think.
+2020-04-08 20:01:50 <ais523> I can currently work on it a bit more freely than usual
+2020-04-08 20:01:53 <ais523> but haven't had a need to
+2020-04-08 20:04:37 <b_jonas> ais523: someone on IRC mentioned that they made a different custom yacc for some project they need, plus a lexer to go with it
+2020-04-08 20:04:56 <b_jonas> ais523: http://repo.hu/projects/byaccic/ with a push parser (stackless)
+2020-04-08 20:05:23 <zzo38> (Although, I think the coding for generating source files should be written in C and/or shell scripts, the coding for documentation generation should be written in PostScript, and the testing codes should be both Tcl and C.)
+2020-04-08 20:05:29 <b_jonas> also they searched for "ayacc" on google and found a different yacc that generates ada code or some such
+2020-04-08 20:05:39 <b_jonas> https://github.com/Ada-France/ayacc
+2020-04-08 20:05:44 <b_jonas> apparently the name is not unique enough
+2020-04-08 20:06:30 <b_jonas> maybe you should have called it aiyacc
+2020-04-08 20:07:09 <zzo38> Some things are going to have the same name due to not knowing that is something else called that, I will think, and other reasons too
+2020-04-08 20:07:45 Quit: rain1 (Quit: Lost terminal)
+2020-04-08 20:07:45 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:07:47 <zzo38> Another alternative to yacc is Lemon
+2020-04-08 20:08:05 <b_jonas> zzo38: we did look at that, but we agreed with ais523 that we don't like its interface
+2020-04-08 20:08:30 <ais523> I have been planning a more radical parser framework of my own, separate from ayacc (which exists to run pre-existing yacc programs)
+2020-04-08 20:08:53 <b_jonas> oh no... not a framework. I hate frameworks
+2020-04-08 20:09:04 <b_jonas> those are always the worst software to actually work with
+2020-04-08 20:09:04 <ais523> well, not a framework in /that/ sense, probably at least
+2020-04-08 20:09:13 <ais523> the basic idea is to combine the parse and lex phases via allowing the use of a state machine (effectively a regular expression) to do lookahead
+2020-04-08 20:09:51 <zzo38> Yes, if you do not like Lemon, then you do not have to use it, although I like the features of Lemon (although the documentation for Lemon now says that apparently Bison also has some of these features too, so it will work too).
+2020-04-08 20:09:53 <ais523> this means that if the grammar requires unlimited lookahead to function correctly (which it will in many cases), you will still need two passes over the input, although this time the first one goes backwards and the second one goes forwards
+2020-04-08 20:10:06 <ais523> zzo38: which specific features do you like?
+2020-04-08 20:10:39 <ais523> the other basic idea is, instead of running user-supplied code to split the input into data structures, to use optimized general-purpose data structures that are more efficient than linked trees
+2020-04-08 20:11:07 <ais523> although this means they can't be changed in-place, rather code that manipulates them works by treewalking an existing tree and creating a new tree as it does so
+2020-04-08 20:11:28 <ais523> the idea is to take advantage of vectorisation and memory locality
+2020-04-08 20:11:41 <zzo38> That you can have multiple parsers.
+2020-04-08 20:11:59 <zzo38> The tokenizer calling the parser is also useful for some programs.
+2020-04-08 20:12:24 <ais523> multiple parsers are trivial to implement even in yacc
+2020-04-08 20:12:35 <ais523> by adding an extra token at the start to choose between them
+2020-04-08 20:12:41 <ais523> although ayacc allows a more direct API for that
+2020-04-08 20:12:48 Joined: Maris
+2020-04-08 20:12:49 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maris, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:13:04 User Name: Maris = Maris!9db570ae@client-112-174.eduroam.elte.hu
+2020-04-08 20:13:04 <Maris> ohi
+2020-04-08 20:13:19 <ais523> hi Maris
+2020-04-08 20:13:39 <zzo38> The %fallback command is also useful for some programs, such as SQLite, and so are some of the other commands.
+2020-04-08 20:17:14 <zzo38> ais523: O, OK. I should look at the ayacc, although it is just a 403 error apparently because it requires darcs to work (although maybe 406 is better, or perhaps is better for it to download the files anyways, such as in a tape archive)
+2020-04-08 20:20:41 <ais523> zzo38: I can try to create a tarball for you, give me a moment
+2020-04-08 20:21:54 <ais523> zzo38: try http://nethack4.org/pastebin/ayacc-2020-04.tar.gz
+2020-04-08 20:22:21 <ais523> although, it will unpack into a folder called "mainline"
+2020-04-08 20:22:27 <ais523> it's actually ayacc though
+2020-04-08 20:23:27 <zzo38> OK, I downloaded that.
+2020-04-08 20:23:27 <b_jonas> zzo38: fun, that's what everyone complains about. I just pasted it temporarily to https://dpaste.org/qorS/raw though.
+2020-04-08 20:23:50 Joined: baidicoot
+2020-04-08 20:23:50 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maris, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:24:26 <b_jonas> `? ayacc
+2020-04-08 20:24:28 <HackEso> ayacc is ais523's yacc parser generator implementation, get it from darcs clone http://nethack4.org/projects/ayacc
+2020-04-08 20:24:45 <b_jonas> `learn ayacc is ais523's yacc parser generator implementation, get it from http://nethack4.org/pastebin/ayacc-2020-04.tar.gz or from darcs clone http://nethack4.org/projects/ayacc
+2020-04-08 20:24:48 <HackEso> Relearned 'ayacc': ayacc is ais523's yacc parser generator implementation, get it from http://nethack4.org/pastebin/ayacc-2020-04.tar.gz or from darcs clone http://nethack4.org/projects/ayacc
+2020-04-08 20:24:55 <b_jonas> hmm no wait
+2020-04-08 20:24:57 <b_jonas> `? rules of wisdom
+2020-04-08 20:24:59 <HackEso> unless essential for the entryâ€˜s humor, \ they should:  be understandable without the lookup key, be single spaced and end in a newline with no space before that, and use proper capitalization and punctuation
+2020-04-08 20:25:28 <b_jonas> `learn ayacc is ais523's yacc parser generator implementation, get it from http://nethack4.org/pastebin/ayacc-2020-04.tar.gz or from (darcs clone http://nethack4.org/projects/ayacc) .
+2020-04-08 20:25:30 <HackEso> Relearned 'ayacc': ayacc is ais523's yacc parser generator implementation, get it from http://nethack4.org/pastebin/ayacc-2020-04.tar.gz or from (darcs clone http://nethack4.org/projects/ayacc) .
+2020-04-08 20:25:38 <ais523> b_jonas: the pastebin thing is only temporary, I think
+2020-04-08 20:25:40 <b_jonas> is that the proper punctuation? or do I double-quote the first url?
+2020-04-08 20:25:41 <ais523> because it won't automatically update
+2020-04-08 20:25:45 <zzo38> You should fix the error message so that it tells you to use darcs or to download the .tar.gz file.
+2020-04-08 20:25:49 <b_jonas> ais523: yes, I said I temporarily pasted it there
+2020-04-08 20:26:03 <ais523> b_jonas: no, I mean the NH4 pastebin
+2020-04-08 20:26:07 <b_jonas> oh
+2020-04-08 20:26:12 <ais523> also, I believe the proper quotes for a URL are <>
+2020-04-08 20:26:25 <b_jonas> ais523: no, it's either double quotes or angle brackets, and I prefer double quotes
+2020-04-08 20:26:26 <ais523> I'm not sure on the proper quotes for a shell command, but I like «» because anything else seems potentially ambiguous
+2020-04-08 20:26:39 <b_jonas> I use parens for a shell command because that's actual shell syntax
+2020-04-08 20:27:11 <b_jonas> `learn ayacc is ais523's yacc parser generator implementation, get it from (darcs clone http://nethack4.org/projects/ayacc) or a snapshot from "http://nethack4.org/pastebin/ayacc-2020-04.tar.gz".
+2020-04-08 20:27:14 <HackEso> Relearned 'ayacc': ayacc is ais523's yacc parser generator implementation, get it from (darcs clone http://nethack4.org/projects/ayacc) or a snapshot from "http://nethack4.org/pastebin/ayacc-2020-04.tar.gz".
+2020-04-08 20:27:36 Quit: ski (Ping timeout: 256 seconds)
+2020-04-08 20:27:36 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maris, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:28:19 <ais523> oh, parens are plausible, they'd be no-ops in most circumstances
+2020-04-08 20:28:32 <ais523> although not in cases where the command would run differently in a subshell
+2020-04-08 20:28:44 <ais523> there's a difference between «cd /tmp» and «(cd /tmp)»
