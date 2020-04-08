@@ -219,3 +219,16 @@
 2020-04-08 08:58:12 <kspalaiologos> like this five you've posted is absurdly long
 2020-04-08 08:58:17 <int-e> So fundamentally you'll have to understand how data is encoded... that will probably take a while to become fluent with.
 2020-04-08 08:59:21 <int-e> kspalaiologos: It's only that big because it's the full Church numeral (\f\x. f (f (f (f (f x)))))
+2020-04-08 09:00:09 <kspalaiologos> (Outputting much more than 300 bits in Perl will land your computer in swap hell.) => lmao
+2020-04-08 09:00:19 <kspalaiologos> does blc consume this much memory?
+2020-04-08 09:01:22 <int-e> Asymptotically the program size doesn't matter... at a few hundred bits you can write decoders for much more efficient data formats.
+2020-04-08 09:02:13 <int-e> hmm. I suppose golfed blc code doesn't tend to be very friendly to garbage collection.
+2020-04-08 09:03:55 <int-e> Oh primes. The underlying algorithm uses a quadratic amount of memory I think (and the constant factor isn't small either).
+2020-04-08 09:04:10 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:b909:387b:8115:a623
+2020-04-08 09:04:10 <tromp> kspalaiologos: try reading https://tromp.github.io/cl/Binary_lambda_calculus.html
+2020-04-08 09:06:07 <int-e> The quadratic memory usage is a result of golfing; the constant factor could be improved by a better VM I suppose.
+2020-04-08 09:07:20 <tromp> int-e: i still need to fix the proof of the W2 rule. It's not true that B^V has (W^V)^+ W^V in head position
+2020-04-08 09:08:32 <tromp> the other observations still hold
+2020-04-08 09:09:07 <tromp> it would suffice to show that W^V is strict
+2020-04-08 09:09:55 <int-e> tromp: I'll take your word for it (still mulling over the problem myself)
+2020-04-08 09:10:08 <int-e> (so haven't looked at what your proposed generalization is)
