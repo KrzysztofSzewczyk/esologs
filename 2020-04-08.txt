@@ -510,3 +510,84 @@
 2020-04-08 20:28:19 <ais523> oh, parens are plausible, they'd be no-ops in most circumstances
 2020-04-08 20:28:32 <ais523> although not in cases where the command would run differently in a subshell
 2020-04-08 20:28:44 <ais523> there's a difference between «cd /tmp» and «(cd /tmp)»
+2020-04-08 20:33:18 Quit: Maris (Remote host closed the connection)
+2020-04-08 20:33:18 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:33:46 Joined: nona
+2020-04-08 20:33:47 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, nona, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:39:17 <b_jonas> ais523: I'm not sure it even makes sense to embed a shell command that doesn't run in a subshell into non-shell text. is there a shared library version of the shell that can run in other processes to do that?
+2020-04-08 20:39:35 <b_jonas> like for that cd thing
+2020-04-08 20:41:32 <ais523> b_jonas: you clearly haven't come across /bin/cd yet
+2020-04-08 20:41:49 <ais523> although admittedly that one was a joke
+2020-04-08 20:42:00 <b_jonas> you can embed perl or python that way and call their chdir functions and it affects the whole process
+2020-04-08 20:42:13 <ais523> although, if you're giving someone instructions
+2020-04-08 20:42:23 <ais523> it makes sense to intersperse shell commands and text, doesn't it?
+2020-04-08 20:42:34 <b_jonas> yeah, it can make sense
+2020-04-08 20:43:10 <b_jonas> maybe someone made a literate shell syntax somewhere, where every line not prefixed with a > is a comment that is used only when you typeset the program
+2020-04-08 20:43:32 <b_jonas> but the embeddable shell library sounds more esoteric
+2020-04-08 20:45:02 <ais523> why do languages have their own literate syntaxes, anyway?
+2020-04-08 20:45:20 <ais523> wouldn't it be more sensible to have a document format designed for literal programming, that can compile into a programming language?
+2020-04-08 20:45:26 <ais523> but it doesn't care about which one you're using
+2020-04-08 20:46:02 <b_jonas> ais523: there is such a generic preprocessor I think, but the problem is that a lot of languages use most ascii characters, so there's no single quote format that's convenient for everything
+2020-04-08 20:46:18 Quit: baidicoot (Ping timeout: 256 seconds)
+2020-04-08 20:46:18 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kiedtl, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, nona, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-08 20:47:01 <ais523> well, prefixing lines with > is pretty convenient for everything
+2020-04-08 20:47:37 <ais523> that can't possibly clash with anything in the program, the only potential clashes would be with the /document/
+2020-04-08 20:47:50 <b_jonas> ais523: sure, but then you want to refer to code snippets in the documentation part, and that's what gets ugly in them, as well as in all the javadoc/doxygen syntaxes too
+2020-04-08 20:48:10 <ais523> you mean, without them running?
+2020-04-08 20:48:12 <b_jonas> also some preprocessors allow you to change some or all of the magic characters, see https://esolangs.org/wiki/SIMPLE_(preprocessor)
+2020-04-08 20:48:31 <ais523> that seems to contradict the idea of literate programming a little
+2020-04-08 20:48:36 <b_jonas> ais523: usually yes, but I think CWEB even has some preprocessor macro thing that it can insert into code blocks or something
+2020-04-08 20:48:50 <ais523> incidentally, I realised that POD is a sort of mix between literate and illiterate programming
+2020-04-08 20:48:57 <b_jonas> I don't really know how this works, I don't really like literate programming so I never use it
+2020-04-08 20:48:58 <ais523> instead of having a comment marker for non-code, or a code marker for code
+2020-04-08 20:49:12 <b_jonas> having comment blocks and comment headers, doxygen-like, that's fine
+2020-04-08 20:49:12 <ais523> it has separators that are placed between code and non-code (and vice versa)
+2020-04-08 20:49:25 <b_jonas> and having a preprocessor can be interesting too
+2020-04-08 20:49:39 <arseniiv> ah, as the topic was about parsing a while back, how often do you encounter regex libraries supporting streams of arbitrary objects and not just characters? and maybe regexes for tree-like structures, do those exist at all?
+2020-04-08 20:50:26 <ais523> the former definitely should exist, but maybe doesn't
+2020-04-08 20:50:38 <ais523> what properties do these arbitrary objects have that distinguishes them from characters?
+2020-04-08 20:50:40 <b_jonas> I was actually thinking of a preprocessor variant of Consumer Society too. It needs three magic characters, but you can't find three convenient characters that work in all programming languages, so you'd use eg. `@$ in C but `?$ in python or something
+2020-04-08 20:51:07 <b_jonas> and I think `$~ in rust
+2020-04-08 20:51:25 <zzo38> CWEB also has the commands to specify if the next section is a named program block, unnamed program block, or documentation; you don't need any prefix for each line. WEB does more preprocessing though, in order to implement things that Pascal doesn't do by itself (although some modern implementations will do those things automatically).
+2020-04-08 20:51:28 <b_jonas> arseniiv: there are regex libraries that support arbitrary byte streams
+2020-04-08 20:51:38 <ais523> isn't @ unused in Rust at the moment?
+2020-04-08 20:51:42 <b_jonas> ais523: no
+2020-04-08 20:51:48 <ais523> ah, it got recycled?
+2020-04-08 20:51:49 <b_jonas> ais523: @ is used for bind patterns like in haskell
+2020-04-08 20:51:51 <arseniiv> also do you like parser combinators receiving arbitrary tokens and not just characters, and how much useful do you think is parser-driven tokenization (when the source can be tokenized differently based on what parser expects)
+2020-04-08 20:52:33 <ais523> arseniiv: parser-driven tokenization is required for some languages, if you want to have a separate parser and lexer
+2020-04-08 20:52:43 <ais523> but I think combining the parser and lexer is a more interesting goal
+2020-04-08 20:52:45 <b_jonas> ais523: as in if let x@C(y,z) = t { # matches if t has the constructor C, and binds fresh variables x, y, z
+2020-04-08 20:53:01 <b_jonas> $ is used for metaprogramming though, also like in haskell
+2020-04-08 20:53:17 <ais523> parser-driven tokenization is really confusing, though, so it's normally avoided where it isn't required
+2020-04-08 20:53:28 <arseniiv> b_jonas: Python has byte stream regexes too, though thereâ€™s a strange issue with named group names (non-ASCII names allowed for some reason)
+2020-04-08 20:53:40 <zzo38> I think PCRE supports byte streams (it can also use UTF-8 though).
+2020-04-08 20:53:42 <ais523> an example of where it's used in practice is parsing precedence overrides in C-INTERCAL
+2020-04-08 20:54:27 <b_jonas> SIMPLE allows you to override each of its magic characters, but that doesn't help you too much if you want convenient syntax, because it has like a dozen magic characters
+2020-04-08 20:54:40 <arseniiv> <ais523> parser-driven tokenization is really confusing, though, so it's normally avoided where it isn't required => I was afraid that would be the case, and thatâ€™s why it came to mind to ask, yeah
+2020-04-08 20:54:41 <b_jonas> it's also hard to use for other reasons
+2020-04-08 20:55:18 <ais523> arseniiv: it's worth mentioning that INTERCAL's grammar is actually ambiguous
+2020-04-08 20:55:29 <b_jonas> I wish I could definitely claim that it's esoteric, but there is a little evidence that David wrote it to preprocess some HTML files that are non-esoteric originally, so it's not pure esoteric in purpose
+2020-04-08 20:55:33 <ais523> the INTERCAL-72 manual has a note which basically just says "don't write programs that do that, it probably won't work"
+2020-04-08 20:56:31 <ais523> and there are some programs which are technically unambiguous but need infinite lookahead to sort the "ambiguity" out, so C-INTERCAL can pick the wrong parse earlier on
+2020-04-08 20:56:48 <ais523> (the manual gives it explicit permission to do that, though, probably because the original implementation had the same problem!)
+2020-04-08 20:56:53 <b_jonas> ais523: well, INTERCAL was created when ambiguous FORTRAN was one of the most used programming languages, so it makes sense that it takes _that_ feature from it
+2020-04-08 20:57:10 <ais523> what's the ambiguity in FORTRAN?
+2020-04-08 20:57:26 <b_jonas> ais523: I think it's not actually ambiguous, just requires too much lookahead
+2020-04-08 20:57:30 <b_jonas> I'm not sure
+2020-04-08 20:57:52 <arseniiv> <ais523> what properties do these arbitrary objects have that distinguishes them from characters? => for example they can be a countable set, but nonetheless with several known subsets and constants to use in matching. Though that still can be encoded via byte sequences, yeah
+2020-04-08 20:57:55 <b_jonas> something like in basic where it doesn't require whitespace, so DOFOO=2 is an assignment, DO FOO=2,3 is a loop head, but the space doesn't matter
+2020-04-08 20:58:02 <b_jonas> and the 2 can be a complicated expression
+2020-04-08 20:58:26 <b_jonas> just like A XOR 1 vs AX OR 1 in some old basic interpreters
+2020-04-08 20:58:28 <ais523> I'm not used to FORTRAN program using multiple-character variable names :-D
+2020-04-08 20:58:41 <b_jonas> ais523: what, they can have variable names up to 6 characters
+2020-04-08 20:58:46 <ais523> b_jonas: oh, there's an ambiguity like that in INTERCAL too!
+2020-04-08 20:58:48 <b_jonas> that's much better than basic, with its 2 characters
+2020-04-08 20:58:59 <ais523> DO READ OUT #1 versus DO REA DO UT #1
+2020-04-08 20:59:21 <ais523> that one caught out a few lesser-known INTERCAL interpreters when people started golfing
+2020-04-08 20:59:22 <zzo38> Can you put parentheses to resolve the ambiguity?
+2020-04-08 20:59:37 <ais523> zzo38: INTERCAL doesn't use parentheses as precedence overrides
+2020-04-08 20:59:40 <zzo38> At least some BASIC programs I have seen they only use one letter for variable names, sometimes followed by digits too
+2020-04-08 20:59:46 <zzo38> ais523: Yes, I mean in BASIC
+2020-04-08 20:59:55 <ais523> however it has two different precedence override syntaxes and you can always solve an ambiguity caused by one by using the other instead
+2020-04-08 20:59:58 <b_jonas> ais523: wait, how is that disambiguated?
