@@ -128,3 +128,28 @@
 2020-04-09 13:57:40 <int-e> `hurl ../bin/mlist
 2020-04-09 13:57:41 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/mlist
 2020-04-09 13:59:37 <cpressey> int-e: in "the language where all programs do nothing", all programs are self-interpreters.  You could add "non-trivial" to exclude this.
+2020-04-09 14:01:25 <int-e> "mlist" is obscure... https://esolangs.org/logs/2013-03-03.html#lRj ... I don't get it.
+2020-04-09 14:01:48 <int-e> cpressey: ais523 made that point; I actually made it non-trivial.
+2020-04-09 14:01:54 <cpressey> And much like how we can forbid "cheating quines" like 10 LIST 10 in BASIC, we can forbid any language that has a "self-interpret instruction".
+2020-04-09 14:02:15 <int-e> that's hard though
+2020-04-09 14:02:30 <cpressey> Any language where you have a self-interpret instruction, but it's not *obviously* a self-interpret instruction, is fair game
+2020-04-09 14:03:41 <cpressey> int-e: I was alluding to the technical meaning of "non-trivial" like it's used in Rice's theorem, but yes, ok, whatever, it's not important
+2020-04-09 14:03:59 <cpressey> Oh sorry yes
+2020-04-09 14:04:01 <int-e> There's a huge spectrum between strange machines that accidentally can interpret your language to something like a bytecode interpreter to interpreting the language itself.
+2020-04-09 14:04:09 <cpressey> I meant to reply to ais523
+2020-04-09 14:04:54 <int-e> Arguably you want to draw the line between the first two categories, and that seems to be very hard to capture formally to me.
+2020-04-09 14:05:18 <cpressey> I'd be interested to know what languages F_omega can and can't recognize
+2020-04-09 14:05:54 <cpressey> It must be more than PR, but less than RE
+2020-04-09 14:06:06 <int-e> `? F_ω
+2020-04-09 14:06:09 <HackEso> F_ω? ¯\(°​_o)/¯
+2020-04-09 14:06:15 <int-e> (I should probably know this)
+2020-04-09 14:06:33 <int-e> eg https://en.wikipedia.org/wiki/System_F#System_F%CF%89
+2020-04-09 14:08:07 <cpressey> Ah, there's also an implementation of Coq in Coq, which (assuming it's legit and not cheating somehow) suggests a similar thing might stand for that other corner of the lambda cube
+2020-04-09 14:10:28 <b_jonas> cpressey: in "http://www.madore.org/~david/weblog/d.2017-08-18.2460.html" the article that defines the (0) esolang, David Madore explains how you should define "self-interpreter" in a language that can't self-interpret in a traditional sense, like one that has only the power of primitive recursive
+2020-04-09 14:11:48 <b_jonas> in particular, if you restrict (0) to integer inputs, it's exactly as powerful as primitive recursive (BLoop), but he needs more generality than that there
+2020-04-09 14:13:37 <b_jonas> namely he wants to know what the easiest way is to prove that certain of those languages are equipowerful, and their computational complexity isn't as well known as the primitive recursive or the turing complete thing, and the only proof he knows is a really difficult one via such a full interpreter, which is annoying
+2020-04-09 14:21:48 <int-e> cpressey: Does it show that though? You'd have to check what kind of axioms the formalization uses.
+2020-04-09 14:25:57 <cpressey> int-e: That's what I meant by "assuming it's legit". I was in fact assuming it was invoking some kind of cheat, until I came across the F_omega self-interpreter paper - now I'm not so sure.
+2020-04-09 14:26:54 <cpressey> Well, I'm not convinced the F_omega thing isn't cheating somehow too. But I really just need to sit down and read it.
+2020-04-09 14:28:49 Quit: rain1 (Quit: Lost terminal)
+2020-04-09 14:28:49 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
