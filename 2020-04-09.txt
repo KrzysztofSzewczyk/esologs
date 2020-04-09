@@ -471,3 +471,149 @@
 2020-04-09 19:29:36 <kspalaiologos> I mean  that's understandable that it took around 10 times more time
 2020-04-09 19:29:45 <kspalaiologos> because it's very convenient to write
 2020-04-09 19:30:01 <ais523> what bignum library is the C program using?
+2020-04-09 19:30:03 <kspalaiologos> but I wouldn't make long term computations in it
+2020-04-09 19:30:05 <ais523> I'd expect that to dominate the time
+2020-04-09 19:30:07 <kspalaiologos> no bignum library
+2020-04-09 19:30:23 <ais523> oh, then the C program is probably just calculating the low 32/64 bits
+2020-04-09 19:30:25 <kspalaiologos> I just wrote a tiny multiplication algorithm over char array
+2020-04-09 19:30:32 <kspalaiologos> I'm not this foolish :p
+2020-04-09 19:30:38 <ais523> ah, so a handrolled bignum library
+2020-04-09 19:30:44 <kspalaiologos> it's literally 20 lines long
+2020-04-09 19:30:50 <ais523> seems about right
+2020-04-09 19:31:00 <kspalaiologos> numba's stored as base256
+2020-04-09 19:31:51 <ais523> anyway, it's clear to me that a "more intelligent" brachylog-alike could realise that 100!+1 is not the factorial of any number (e.g. by realising the factorial function is increasing)
+2020-04-09 19:32:15 <kspalaiologos> I doubt one would put time in this
+2020-04-09 19:32:20 <ais523> but our current declarative languages aren't up to the task of realising that and will keep brute-forcing possibilities for ever larger numbers forever
+2020-04-09 19:32:25 <kspalaiologos> I'd train an AI to solve these riddles for me because it's more probable
+2020-04-09 19:32:45 <ais523> hmm, /isn't/ this training an AI to solve riddles for you, in a way?
+2020-04-09 19:32:58 <kspalaiologos> you don't train an AI
+2020-04-09 19:33:02 <kspalaiologos> you just feed it data :p
+2020-04-09 19:33:14 <kspalaiologos> also the AI has been trained manually by prolog developers
+2020-04-09 19:33:18 <kspalaiologos> so it's kinda pants
+2020-04-09 19:33:37 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Galapagos 5*  10New user account
+2020-04-09 19:33:41 <ais523> ah, hmm
+2020-04-09 19:33:50 <ais523> there's a difference between strong AI, which figures things out itself from training data
+2020-04-09 19:34:00 <ais523> and weak AI which has more things hardcoded and is more specialised to one particular job
+2020-04-09 19:34:02 <kspalaiologos> I know nothing about AI
+2020-04-09 19:34:10 <kspalaiologos> don't speak the language of aliens to me
+2020-04-09 19:34:55 <kspalaiologos> I wish I knew more about theory of CS
+2020-04-09 19:35:11 <kspalaiologos> but never got around to learning it, because the sources are a bit uncomprehendable
+2020-04-09 19:35:23 <kspalaiologos> and even if the sources, there was no one to learn me it
+2020-04-09 19:35:27 <kspalaiologos> *teach
+2020-04-09 19:35:38 <ais523> well, CS theory is my job
+2020-04-09 19:35:44 <ais523> but it's a very big field, and I'm only interested in parts of it
+2020-04-09 19:35:47 <kspalaiologos> aren't you a harp tuner?
+2020-04-09 19:35:59 <kspalaiologos> I swear someone has been harp tuner over there
+2020-04-09 19:36:04 <kspalaiologos> `q harp
+2020-04-09 19:36:06 <HackEso> 1280) <ais523> hmm, I just remembered that I was formally trained to tune harps
+2020-04-09 19:36:17 <kspalaiologos> a, only formally trained, ok
+2020-04-09 19:36:17 <ais523> kspalaiologos: I was formally trained to tune harps, that doesn't mean it's my current job (or indeed that I've ever done it for money)
+2020-04-09 19:36:29 <ais523> it's more just a random fact
+2020-04-09 19:36:38 <kspalaiologos> fine :p
+2020-04-09 19:37:04 <kspalaiologos> how exactly do you monetise your CS knowledge
+2020-04-09 19:37:14 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=70788&oldid=70774 5* 03Galapagos 5* (+254) 10/* Introductions */
+2020-04-09 19:37:24 <ais523> in my case, it's more like monetising my esolang knowledge
+2020-04-09 19:37:29 <kspalaiologos> haha
+2020-04-09 19:37:33 <ais523> when a CS researcher comes up with an idea for a new style of programming
+2020-04-09 19:37:36 <kspalaiologos> I wish I found a way to do that
+2020-04-09 19:37:38 <ais523> they need someone to test it out and see if it could work
+2020-04-09 19:37:57 <ais523> and, well, there aren't that many people who are up for programming in newly invented languages, especially if they have to implement the language too
+2020-04-09 19:38:09 <kspalaiologos> so you're essentially a guinea pig for CS researchers?
+2020-04-09 19:38:20 <ais523> right, or was; my current job's drifted away a bit from that
+2020-04-09 19:38:29 <kspalaiologos> one can't write Brainfuck-based casino software forever :p
+2020-04-09 19:38:54 <kspalaiologos> `? kspalaiologos
+2020-04-09 19:38:55 <HackEso> kspalaiologos is a brainfuck addict and a late night Perl hacker. He's secretly disassembling brainfuck code for a casino that lost the source code. Apparently knows the secret of Malbolge.
+2020-04-09 19:38:57 <kspalaiologos> it's still here
+2020-04-09 19:39:09 <ais523> hmm, this implies that the casino compiled to BF
+2020-04-09 19:39:14 <ais523> which seems like an odd thing to do
+2020-04-09 19:39:27 <ais523> (otherwise, their BF code would /be/ the source code)
+2020-04-09 19:39:44 <kspalaiologos> yes thats right
+2020-04-09 19:40:03 <kspalaiologos> but they didn't tell me the name of tool
+2020-04-09 19:40:05 <kspalaiologos> it seemed decent
+2020-04-09 19:40:16 <kspalaiologos> supossedly the developer took it with him lol
+2020-04-09 19:40:25 <ais523> I love the idea that BF is fulfilling a similar role in industry as BANCStar
+2020-04-09 19:40:41 <ais523> or I should say "commerce", casinos aren't very industrial
+2020-04-09 19:40:49 <kspalaiologos> what is this
+2020-04-09 19:40:51 <kspalaiologos> BANCStar?
+2020-04-09 19:41:07 <ais523> it's basically a (really terrible) bytecode format that was used as the backend for some sort of commercial GUI program
+2020-04-09 19:41:19 <ais523> but the frontend that compiled to it was bad enough that people started programming in BANCStar directly
+2020-04-09 19:41:38 <kspalaiologos> lmao
+2020-04-09 19:41:39 <ais523> it's generally considered one of the worst programming languages to exist, other than ones which were intentionally created as bad (maybe even then, because it has less of an excuse)
+2020-04-09 19:41:41 <kspalaiologos> why was it invented
+2020-04-09 19:41:54 <kspalaiologos> what about COBOL or JavaScript
+2020-04-09 19:41:57 <kspalaiologos> they're terrible too
+2020-04-09 19:41:58 <ais523> the issue is that because it was a commercial product, nobody seems quite clear on the specs
+2020-04-09 19:42:05 <ais523> it is way worse than COBOL or JavaScript
+2020-04-09 19:42:22 <kspalaiologos> impossible
+2020-04-09 19:42:24 <kspalaiologos> let me look it up
+2020-04-09 19:42:32 <ais523> https://esolangs.org/wiki/BANCStar
+2020-04-09 19:42:47 <kspalaiologos> lmao what the hell is this
+2020-04-09 19:42:50 <kspalaiologos> what's the application of this
+2020-04-09 19:43:28 <kspalaiologos> I'd rather program in Malbolge
+2020-04-09 19:43:50 <ais523> <Wikipedia> BANCStar is a specialist computer programming language for financial applications.[citation needed] The language is an internal language for the National Financial Computer Services, Inc (later Broadway & Seymour) BANCStar application, which is software to automate the operations of a bank branch
+2020-04-09 19:44:04 <kspalaiologos> I knew that before
+2020-04-09 19:44:13 <kspalaiologos> but is there something like specific
+2020-04-09 19:44:18 <kspalaiologos> a name of software written in it
+2020-04-09 19:44:21 <kspalaiologos> a screenshot, photo
+2020-04-09 19:45:08 <ais523> actually, BANCStar was the name of the software written in it, but became attached to the language itself somehow
+2020-04-09 19:45:21 <ais523> the language itself was originally called "screen code" but it isn't a very memorable or searchable name
+2020-04-09 19:45:43 <ais523> it was intended to write user interfaces for banks, we don't know all that much beyond that though
+2020-04-09 19:46:20 <kspalaiologos> if I was the guy who wrote it
+2020-04-09 19:46:21 <zzo38> Some things have been figured out by looking at the existing programs, although some things are unknown, and some people (including myself) disagree about the ideas of what some of the commands are supposed to mean.
+2020-04-09 19:46:36 <kspalaiologos> I wouldn't admit I made it
+2020-04-09 19:47:01 <ais523> I mean, it makes /slightly/ more sense as a bytecode format than a programming language, but it's clearly terribly designed for either role
+2020-04-09 19:48:12 <kspalaiologos> if I knew malbolge before
+2020-04-09 19:48:16 <kspalaiologos> like, how to program it
+2020-04-09 19:48:19 <ais523> anyway, your casino programmer probably compiled to BF in the hope that the casino wouldn't then be able to fire them
+2020-04-09 19:48:22 <kspalaiologos> without willingness to remove my eyes
+2020-04-09 19:48:26 <ais523> because nobody would be able to do anything with the resulting code
+2020-04-09 19:48:39 <kspalaiologos> they wanted to have a Brainfuck or Malbolge solution
+2020-04-09 19:48:44 <kspalaiologos> because security standards :v)
+2020-04-09 19:48:46 <ais523> so maybe BANCStar has a similar purpose? it looks like the sort of thing that would only be created by a large collaboration though
+2020-04-09 19:49:04 <ais523> I would think using BF or Malbolge would be security through obscurity more than anything else
+2020-04-09 19:49:26 <ais523> raw uncommented BF isn't that much harder to understand than raw uncommented machine code
+2020-04-09 19:50:09 <zzo38> I think BANCStar was legitimate, and may have been originally designed to write the code directly but the designer decided it wasn't very good for that purpose and so made the screen generator instead and then never documented the code.
+2020-04-09 19:50:21 <kspalaiologos> ha ha ha
+2020-04-09 19:50:25 <kspalaiologos> now tell me
+2020-04-09 19:50:29 <kspalaiologos> if I wrote this in malbolge
+2020-04-09 19:50:39 <zzo38> (Of course I don't know, so, I just guess.)
+2020-04-09 19:50:40 <kspalaiologos> would there be a person willing to reverse enginner it?
+2020-04-09 19:50:46 User Name: kmc = kmc!~beehive@unaffiliated/kmcallister
+2020-04-09 19:50:46 <kmc> what's this about a casino using bf?
+2020-04-09 19:50:48 <kspalaiologos> just for a financial gain of few hundred points
+2020-04-09 19:51:00 <ais523> kspalaiologos: there are definitely people who would try just for the challenge, I'm not sure how far they'd get before giving up
+2020-04-09 19:51:03 <kspalaiologos> *pounds
+2020-04-09 19:51:10 <kspalaiologos> :p
+2020-04-09 19:51:11 <ais523> note that I believe that Malbolge is considerably easier to read than it is to write
+2020-04-09 19:51:36 <ais523> because the hardest part in Malbolge is making everything fit together so that it's encryption-stable and keeping control of the C and D pointers
+2020-04-09 19:51:40 <kspalaiologos> yeah, a bit like that
+2020-04-09 19:51:45 <ais523> and a reader doesn't have to do that, only a writer
+2020-04-09 19:51:58 <kspalaiologos> you're missing a very important thing:p
+2020-04-09 19:52:20 <kspalaiologos> a decent safe malbolge program would be around 10MB
+2020-04-09 19:52:29 <kspalaiologos> consume around 4GB of RAM I presume
+2020-04-09 19:52:36 <ais523> most of it would be no-ops, though, wouldn't it?
+2020-04-09 19:52:41 <kspalaiologos> wrong
+2020-04-09 19:52:54 <ais523> or, well, you can't put a stable no-op everywhere
+2020-04-09 19:53:08 <kspalaiologos> they would act a bit like these
+2020-04-09 19:53:12 <ais523> so I guess much of it is code that doesn't do anything but is not obviously a no-op
+2020-04-09 19:53:12 <kspalaiologos> but they wouldn't be these
+2020-04-09 19:53:26 <kspalaiologos> we need to distinguish malbolge  code and a bit optimized malbolge code
+2020-04-09 19:54:39 <ais523> that's a good point, though, distinguishing padding from useful code is going to be hard without prior knowledge of which is which
+2020-04-09 19:55:28 <kspalaiologos> yes
+2020-04-09 19:55:36 <kspalaiologos> sometimes you unroll the loop
+2020-04-09 19:55:39 <kspalaiologos> and it's viable
+2020-04-09 19:56:02 <kspalaiologos> you can view some malbolge samples and get a taste of this
+2020-04-09 19:56:12 <kspalaiologos> https://github.com/kspalaiologos/codegolf-submissions
+2020-04-09 19:56:15 <kspalaiologos> there should be around 30 of them
+2020-04-09 19:56:20 <ais523> I haven't found a good environment for reading Malbolge yet
+2020-04-09 19:56:33 <ais523> raw Malbolge is hard to read, normalized Malbolge doesn't contain all the information you'd need and doesn't really help much
+2020-04-09 19:56:43 <kspalaiologos> there are normalized malbolge translators
+2020-04-09 19:56:46 <kspalaiologos> yeah
+2020-04-09 19:57:17 <kspalaiologos> tbh I didn't write any RE tooling for malbolge
+2020-04-09 19:57:19 <kspalaiologos> just compilers
+2020-04-09 19:57:40 <kspalaiologos> simple small abstraction layers
+2020-04-09 19:57:48 <kspalaiologos> peephole opt
+2020-04-09 19:58:50 <ais523> anyway, something like https://github.com/kspalaiologos/codegolf-submissions/blob/master/60106.mb, I can tell that it's pretty NOP-heavy even without normalizing
+2020-04-09 19:59:34 <ais523> also, that appears to be not Malbolge, but rather HTML-escaped Malbolge
+2020-04-09 20:00:00 Quit: kritixilithos (Remote host closed the connection)
+2020-04-09 20:00:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
