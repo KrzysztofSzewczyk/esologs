@@ -81,3 +81,50 @@
 2020-04-09 13:20:36 <esowiki> 14[[07EGSHEL14]]4 M10 02https://esolangs.org/w/index.php?diff=70778&oldid=68935 5* 03LegionMammal978 5* (-10) 10fixed link
 2020-04-09 13:22:17 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:187:4f56:6aea:a3ca
 2020-04-09 13:22:17 <tromp> int-e: I think I properly fixed the proof for the generalized W rule, see latest commit
+2020-04-09 13:38:31 <esowiki> 14[[07ESOPUNK14]]4 M10 02https://esolangs.org/w/index.php?diff=70779&oldid=58027 5* 03LegionMammal978 5* (+2) 10/* Interpreters */ updated link
+2020-04-09 13:44:49 Joined: ais523
+2020-04-09 13:44:50 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 13:45:06 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-04-09 13:45:06 <ais523> <cpressey> For a long time I've held this conjecture: the weakest computational class in which a self-interpreter can be written, is Turing-complete. ← what about "the language where all programs do nothing"? that can self-interpret
+2020-04-09 13:45:11 Joined: kritixilithos
+2020-04-09 13:45:12 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 13:45:15 <ais523> and has a very weak computational class
+2020-04-09 13:45:24 <ais523> I think the question needs to be formulated more precisely, but am not sure how
+2020-04-09 13:45:58 Joined: birdt
+2020-04-09 13:45:58 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, birdt, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 13:47:05 <int-e> Nah that's probably just false... there seems nothing in a self-interpreter that makes a language more expressive than it already is.
+2020-04-09 13:47:16 <int-e> (You can add it as a primitive if all else fails.)
+2020-04-09 13:47:44 <esowiki> 14[[07ETalk14]]4 M10 02https://esolangs.org/w/index.php?diff=70780&oldid=13379 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-09 13:48:03 Quit: birdt (Quit: Fucking off.)
+2020-04-09 13:48:03 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 13:48:30 <ais523> ah right, "weak language + self-interpreting primitive" makes for another good counterexample
+2020-04-09 13:49:03 <ais523> I was also going to mention things like Easy but I think that's naturally TC
+2020-04-09 13:49:16 <ais523> given that it embeds BF
+2020-04-09 13:51:44 <int-e> I'm not saying it's not an interesting question though. Also the question of what adding self-interpretation does to a model of computation may be interesting, too. For example, it seems that PR (primitive recursion) + interpreter for PR (with a sane encoding for functions that can be manipulated with primitive recursive functions) goes beyond PR (because it escapes the leveling restriction).
+2020-04-09 13:53:16 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-04-09 13:53:16 <kspalaiologos> `? olist
+2020-04-09 13:53:18 <HackEso> olist is update notification for the webcomic Order of the Stick. http://www.giantitp.com/comics/ootslatest.html
+2020-04-09 13:53:23 <kspalaiologos> lmao what
+2020-04-09 13:53:57 <int-e> (Actually, if we call that PR'... PR' is not obviously capable of self-interpretation. I suspect it's not...)
+2020-04-09 13:54:59 <int-e> kspalaiologos: there's a few of those
+2020-04-09 13:55:50 <int-e> `? slist
+2020-04-09 13:55:52 <HackEso> Update notification for the webcomic Homestuck.
+2020-04-09 13:55:54 <int-e> `? smlist
+2020-04-09 13:55:56 <HackEso> Non-update notification for the webcomic Super Mega.
+2020-04-09 13:56:03 <int-e> `listlist
+2020-04-09 13:56:06 <HackEso> FireFlist* \ aglist* \ bardsworthlist* \ bobadventureslist* \ calesyta2016list* \ danddreclist* \ don'taskdon'ttelllist@ \ dontaskdonttelllist* \ ehlist* \ emptylist* \ erflist* \ flist* \ idealist* \ ioccclist* \ keenlist* \ list* \ listen* \ listlist* \ llist* \ makelist* \ makelistlist* \ minimalist* \ mlist* \ olist* \ pbflist* \ slist* \ smlist* \ stylist* \ testlist* \ xkcdwhatiflist* \ ysaclist*
+2020-04-09 13:56:17 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2020-04-09 13:56:17 <kritixilithos> `listlistlist
+2020-04-09 13:56:18 <HackEso> listlistlist? No such file or directory
+2020-04-09 13:56:29 <int-e> heh, stylist
+2020-04-09 13:56:52 <int-e> `? calesyta2016list
+2020-04-09 13:56:53 <HackEso> calesyta2016list? ¯\(°​_o)/¯
+2020-04-09 13:57:00 <int-e> this one can probably be removed :P
+2020-04-09 13:57:08 <int-e> `? mlist
+2020-04-09 13:57:09 <HackEso> mlist? ¯\(°​_o)/¯
+2020-04-09 13:57:30 <int-e> `hbrl mlist
+2020-04-09 13:57:31 <HackEso> hbrl? No such file or directory
+2020-04-09 13:57:35 <int-e> aww
+2020-04-09 13:57:40 <int-e> `hurl ../bin/mlist
+2020-04-09 13:57:41 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/mlist
+2020-04-09 13:59:37 <cpressey> int-e: in "the language where all programs do nothing", all programs are self-interpreters.  You could add "non-trivial" to exclude this.
