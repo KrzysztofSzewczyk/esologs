@@ -292,3 +292,12 @@
 2020-04-09 15:26:48 <kspalaiologos> yep
 2020-04-09 15:27:29 <ais523> you could probably just modify a BF Joust interpreter, RLE is part of the spec in BF Joust (although timing is also part of the spec so they will loop over RLEd sections one command at a time)
 2020-04-09 15:27:41 <ais523> the bigger problem would be finding an optimizing interpreter that takes RLE as input
+2020-04-09 15:30:42 <ais523> I've been meaning at some point to redo SSAPMMN but with more rigorous rules for how the internal asm-like format works, and accepting languages like BF, The Waterfall Model, etc., not just PMMN
+2020-04-09 15:50:50 <b_jonas> ais523: Bill Buzbee's retargeting a C compiler to Magic-1 is like that. Magic-1 has an accumulator instr set, sort of like 6502, so he lied to the compiler that there are 8 gp registers, but those are actually in memory
+2020-04-09 15:50:58 <b_jonas> http://www.homebrewcpu.com/
+2020-04-09 15:51:43 <b_jonas> only Magic-1 does not have zero-page addressing
+2020-04-09 15:51:53 <esowiki> 14[[07EnilKode14]]4 10 02https://esolangs.org/w/index.php?diff=70785&oldid=69288 5* 03EnilKoder 5* (-41) 10
+2020-04-09 15:58:25 <kspalaiologos> yes I've seen that going on
+2020-04-09 15:58:28 <kspalaiologos> it's quite normal
+2020-04-09 15:58:40 <kspalaiologos> when implementing Subleq to Brainfuck translator/interpreter (yes)
+2020-04-09 15:58:44 <kspalaiologos> that's what I did
