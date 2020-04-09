@@ -617,3 +617,97 @@
 2020-04-09 19:59:34 <ais523> also, that appears to be not Malbolge, but rather HTML-escaped Malbolge
 2020-04-09 20:00:00 Quit: kritixilithos (Remote host closed the connection)
 2020-04-09 20:00:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 20:00:07 <ais523> but not everywhere, some lines aren't escaped
+2020-04-09 20:00:38 <ais523> now I'm curious as to how that happened
+2020-04-09 20:00:56 <kspalaiologos> lol
+2020-04-09 20:00:58 <kspalaiologos> what
+2020-04-09 20:01:19 <kspalaiologos> I genuinely have no idea
+2020-04-09 20:02:04 <kspalaiologos> there aren't this many nop slides cmon
+2020-04-09 20:02:13 <ais523> they aren't long slides
+2020-04-09 20:02:25 <ais523> more, you have 20 commands in a row and perhaps 14/15 of them are nops
+2020-04-09 20:02:48 <ais523> I think, at least, it's a pain working out which of the 8 sequences a given reverse-ASCII sequence is
+2020-04-09 20:03:09 <ais523> I must be one of the few people who tries to sightread Malbolge, and it's mostly just to confirm it as Malbolge and get a feeling of the shape of the code
+2020-04-09 20:03:25 <kspalaiologos> hah
+2020-04-09 20:03:26 <ais523> I haven't gotten very far programming in it, I mostly just help beginners on Stack Overflow
+2020-04-09 20:03:38 <kspalaiologos> you help beginners program malbolge on stackoverflow
+2020-04-09 20:03:38 <kspalaiologos> lmao
+2020-04-09 20:03:47 <kspalaiologos> also brb I'll be back in a second
+2020-04-09 20:03:49 <ais523> (the idea is to fix whatever misconception they had that was making them think it was easier than it actually is, then they give up)
+2020-04-09 20:04:00 Quit: kspalaiologos (Quit: Leaving)
+2020-04-09 20:04:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 20:04:23 <zzo38> My guess is that command 3100 in BANCStar means that if the condition isn't true then it is an error and you have to rekey the input.
+2020-04-09 20:04:46 <zzo38> (This guess is based on how the command is used in the known programs.)
+2020-04-09 20:05:32 <ais523> zzo38: I'm just intrigued that BANCStar manages to be /so/ horrible it drives a brainfuck and Malbolge developer away in horror
+2020-04-09 20:06:00 <ais523> although I guess neither brainfuck nor Malbolge was designed to be a bad language (although neither was BANCStar…)
+2020-04-09 20:06:09 <ais523> Malbolge was designed to be hard to program in, which is different from being bad
+2020-04-09 20:06:29 <ais523> I forget the exact goal brainfuck was optimizing for, but it was something related to size or simplicity
+2020-04-09 20:07:11 <tromp> int-e: I read your AIT notes. excellent research! your note say that I1_f uses KO(t|s) but I guess you mean KO(t|s*) ?
+2020-04-09 20:08:04 <int-e> tromp: KO(t|u) is defined in terms of u^* just like Chaitin does.
+2020-04-09 20:08:32 <tromp> the main advantage of my KP is that such a thm with KP(t|s) instead of KP(t|s*) would be rather trivial. Ah, Ok. I thought it better to make the * explicit
+2020-04-09 20:09:03 <int-e> Which is a bit awkward, but it is what makes the other direction of the symmetry of information tick.
+2020-04-09 20:09:31 Nick Change: Bowserinator -> Rutherfordium
+2020-04-09 20:09:31 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, Rutherfordium, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 20:09:35 Nick Change: Rutherfordium -> Bowserinator
+2020-04-09 20:09:35 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 20:09:36 <tromp> an implicit * is just too confusing though
+2020-04-09 20:09:52 <int-e> As I said, I'm just following Chaitin there.
+2020-04-09 20:09:59 <tromp> and doesn't allow you to express the simple version
+2020-04-09 20:10:37 <int-e> I might change it. Maybe.
+2020-04-09 20:10:39 <tromp> i know, but I think this is one place where Chaitin should not be followed:)
+2020-04-09 20:10:58 <int-e> Opinion noted.
+2020-04-09 20:10:59 <int-e> :P
+2020-04-09 20:11:20 <esowiki> 14[[07PlusOrMinus 214]]4 M10 02https://esolangs.org/w/index.php?diff=70789&oldid=70768 5* 03PythonshellDebugwindow 5* (+50) 10/* Commands */ output
+2020-04-09 20:11:57 <tromp> I quite like your KO version too. But I'm not ready to replace KP with it. Maybe they should live side by side:-)
+2020-04-09 20:12:07 <int-e> Sure
+2020-04-09 20:12:41 <tromp> you will get a different halting probability. a simpler one. so that is one point in favor of yours
+2020-04-09 20:13:17 <int-e> Chaitin's u^* is a bit of a red herring actually... what is essential for the second part of the symmetry of information is knowing both H(u) and u.
+2020-04-09 20:13:50 <tromp> indeed
+2020-04-09 20:13:51 <int-e> (Because H(u) gives you a baseline for the probability P(u))
+2020-04-09 20:16:18 <tromp> btw, in a fit of optimism (about @w correctness and my manual proofs) I added BB(33) and BB(34) to OEIS
+2020-04-09 20:16:28 <tromp> W2 correctness
+2020-04-09 20:16:32 <ais523> what's the OEIS sequence number?
+2020-04-09 20:16:51 <ais523> ah, found it, http://oeis.org/A333479
+2020-04-09 20:16:53 <tromp> https://oeis.org/A333479
+2020-04-09 20:19:04 <ais523> that sequence grows surprisingly slowly
+2020-04-09 20:19:22 <ais523> at least to start with
+2020-04-09 20:19:34 <tromp> I suspect BB(35) = 38127987424941
+2020-04-09 20:19:34 <ais523> being a busy beaver sequence, it won't be long before it grows at rates too fast to comprehend or describe
+2020-04-09 20:19:57 <ais523> ah, that's more like it :-D
+2020-04-09 20:20:18 <ais523> what function is being approximately computed? or is it not easy to tell?
+2020-04-09 20:20:28 <ais523> most small busy beaver numbers "summarize" well
+2020-04-09 20:20:30 <tromp> we have BB(53) being an exponential tower with well over 256 levels
+2020-04-09 20:20:50 <ais523> `` printf "%x" 38127987424941
+2020-04-09 20:20:51 <HackEso> 22ad5d257ead
+2020-04-09 20:21:20 <int-e> tromp: Hmm, are you collecting those lower bounds somewhere?
+2020-04-09 20:21:50 <tromp> the math overflow has some, and this one I added as note in my OEIS draft
+2020-04-09 20:22:04 <tromp> it's just 3^3^3
+2020-04-09 20:23:17 <ais523> `! brachylog 3^₃^₃w
+2020-04-09 20:23:18 <HackEso> 19683 \ true.
+2020-04-09 20:23:28 <ais523> ah right, I associated that wrong
+2020-04-09 20:23:47 <tromp> size(church_n) = 5*n+6
+2020-04-09 20:24:08 <ais523> `! brachylog 3^₃;3~^w
+2020-04-09 20:24:11 <HackEso> ​ \ false.
+2020-04-09 20:24:14 <ais523> `! brachylog 3^₃,3~^w
+2020-04-09 20:24:32 <int-e> Ah, 3^3^3, of course.
+2020-04-09 20:24:46 <ais523> brachylog isn't very good at reassociating things
+2020-04-09 20:24:50 <HackEso> No output.
+2020-04-09 20:24:56 <ais523> and I keep getting , versus ; versus : confused
+2020-04-09 20:24:58 <int-e> > 5*3^3^3 + 6
+2020-04-09 20:25:00 <lambdabot> 38127987424941
+2020-04-09 20:25:06 <ais523> `! brachylog 3^₂₇w
+2020-04-09 20:25:07 <HackEso> 7625597484987 \ true.
+2020-04-09 20:25:20 <ais523> `! brachylog 3^₂₇×₅+₆w
+2020-04-09 20:25:21 <HackEso> 38127987424941 \ true.
+2020-04-09 20:25:26 <ais523> there we go
+2020-04-09 20:25:40 <int-e> `` dc <<<'3dd^^5*6+p'
+2020-04-09 20:25:41 <HackEso> 38127987424941
+2020-04-09 20:25:46 <ais523> fwiw, I figured out there was a pattern from the hexadecimal
+2020-04-09 20:26:13 <ais523> it looked a lot like it was something multiplied by 5, based on what digits resulted
+2020-04-09 20:26:16 <int-e> `` dc <<<'16o3dd^^5*6+p'
+2020-04-09 20:26:17 <HackEso> 22AD5D257EAD
+2020-04-09 20:26:18 <ais523> `` printf "%x" $((38127987424941/5))
+2020-04-09 20:26:19 <HackEso> 6ef79077fbc
+2020-04-09 20:26:39 <ais523> although I'm not sure that helped, now it just looks random :-D
+2020-04-09 20:27:21 <int-e> I had an advantage... I already knew the 5n+6 part.
+2020-04-09 20:28:21 <tromp> 3-powers are bound to look random in binary:(
+2020-04-09 20:29:30 <ais523> 2-powers seemed likely to show up before 3-powers, perhaps not though
