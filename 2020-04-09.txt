@@ -340,3 +340,134 @@
 2020-04-09 18:54:46 <esowiki> 14[[07FuckbeEs14]]4 M10 02https://esolangs.org/w/index.php?diff=70787&oldid=53228 5* 03LegionMammal978 5* (+14) 10fixed title
 2020-04-09 18:57:25 User Name: Fuchs = Fuchs!fuchs@freenode/staff/Fuchs
 2020-04-09 18:57:25 <Fuchs> Global Notice] Hello all, this is just a reminder that this weekend, planned Saturday April 11th early UTC afternoon, we will purge unused nicks, accounts and channels. Please see https://freenode.net/news/scheduled-maintenance-services-database-spring-cleaning for details and what you need to do in order to keep your rarely used nicknames.
+2020-04-09 19:02:43 Nick Change: noomy -> MoonyTheDwarf
+2020-04-09 19:02:44 Names: ^[, ais523, aji, aloril, APic, ARCUN, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MoonyTheDwarf, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 19:03:05 Nick Change: kmc -> kmcallister
+2020-04-09 19:03:05 Names: ^[, ais523, aji, aloril, APic, ARCUN, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmcallister, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, MoonyTheDwarf, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 19:03:07 Nick Change: kmcallister -> kmc
+2020-04-09 19:03:07 Nick Change: MoonyTheDwarf -> noomy
+2020-04-09 19:03:08 Names: ^[, ais523, aji, aloril, APic, ARCUN, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 19:05:02 <ais523> b_jonas: if the registers are actually in memory, why not have lots of them? register spills are a disaster in such an architecture because you're copying things from one memory location to another for no good reason
+2020-04-09 19:05:19 <kspalaiologos> actually, I'd say otherwise
+2020-04-09 19:05:22 <ais523> and providing additional registers in such an architecture is very cheap
+2020-04-09 19:05:51 <ais523> in RLE'd BF, providing additional registers is actually free because seeking to a fixed address has a constant cost regardless of the distance
+2020-04-09 19:06:06 <kspalaiologos> I mean if you're keen on making zillions of registers, then go ahead and index the whole tape
+2020-04-09 19:06:16 <kspalaiologos> but remember that you need a stack and taperam going
+2020-04-09 19:06:24 <kspalaiologos> and this makes things hairy
+2020-04-09 19:06:28 <kspalaiologos> why not operate on memory references then
+2020-04-09 19:06:31 <kspalaiologos> instead of registers
+2020-04-09 19:06:40 <kspalaiologos> add [0], [3]
+2020-04-09 19:06:57 <ais523> if the memory addresses have fixed locations on the tape then that's fine
+2020-04-09 19:07:04 <ais523> but I don't see a reason why they necessarily would
+2020-04-09 19:07:08 <kspalaiologos> they can be arbitrary aswell
+2020-04-09 19:07:23 <kspalaiologos> and if you're feeling eccentric enough, they can be nested
+2020-04-09 19:07:50 <ais523> I think I can see an argument for a zero-register construction
+2020-04-09 19:08:05 <ais523> I can't see an argument for a construction that has a number of general-purpose registers that's greater than zero, but small, though
+2020-04-09 19:08:40 <kspalaiologos> I've got 6 registers now
+2020-04-09 19:08:46 <kspalaiologos> and I think it's surely enough, at least for the time being
+2020-04-09 19:08:59 <kspalaiologos> I'm sure I'll extend it the later day, but remember that RLE'd brainfuck ain't a standard
+2020-04-09 19:09:16 <kspalaiologos> I've gone exactly through the same mindset as you, so my C compiler produces a 12MB brainfuck binary :v)
+2020-04-09 19:09:32 <kspalaiologos> *"binary" <- not a binary actually, just the output file
+2020-04-09 19:10:09 <kspalaiologos> I plan on adding a register or two for effective adresses
+2020-04-09 19:10:17 <kspalaiologos> and a couple of registers for the floating point operations
+2020-04-09 19:11:01 <ais523> how do you implement multiplication, btw? just a repeated addition loop?
+2020-04-09 19:11:14 <ais523> part of my motivation for using an 8-bit tape was to prevent operations like that being very slow
+2020-04-09 19:11:21 <kspalaiologos> 1[d+1-]d[2[1+e+2-]e[2+e-]d-]
+2020-04-09 19:11:38 <ais523> right, that looks like a repeated addition loop to me
+2020-04-09 19:11:42 <kspalaiologos> I preserve the registers aswell
+2020-04-09 19:11:44 <ais523> I felt that that wouldn't have the sort of performance I wanted
+2020-04-09 19:11:53 <kspalaiologos> what more do you want, I doubt one can do something about it
+2020-04-09 19:12:05 <kspalaiologos> and if it's actually possible to do that in a better way
+2020-04-09 19:12:09 <kspalaiologos> I'll happily learn how
+2020-04-09 19:12:39 <ais523> I'm not sure you can do something about it, either
+2020-04-09 19:12:48 <ais523> this is the point at which I gave up on my C-to-BF compiler
+2020-04-09 19:12:55 <ais523> because i couldn't find a solution to this that I was satisfied with
+2020-04-09 19:13:23 <ais523> ofc, optimizing BF compilers will recognise that sort of multiply and optimize it out anyway
+2020-04-09 19:13:30 <ais523> so maybe it isn't a real issue in practice
+2020-04-09 19:13:56 <kspalaiologos> >worrying about brainfuck code performance
+2020-04-09 19:14:00 <kspalaiologos> well
+2020-04-09 19:14:25 User Name: spruit11 = spruit11!~unknown@ip56522cc1.speed.planet.nl
+2020-04-09 19:14:25 <spruit11> Anyone here who could support an arxiv submission of an Egel paper of mine?
+2020-04-09 19:14:31 <ais523> why can't I worry about BF performance?
+2020-04-09 19:14:49 <kspalaiologos> you obviously can
+2020-04-09 19:14:51 <ais523> spruit11: oerjan is the first name that comes to mind, but isn't here at the moment
+2020-04-09 19:14:54 <kspalaiologos> but I can't find a point for this
+2020-04-09 19:15:10 <spruit11> How do I contact oerjan?
+2020-04-09 19:15:14 <ais523> of course, it would rather depend on how eso the paper was
+2020-04-09 19:15:15 <kspalaiologos> use @tell
+2020-04-09 19:15:32 <ais523> fizzie might be able to? not sure
+2020-04-09 19:15:39 <kspalaiologos> I mean - brainfuck isn't the best language for writing at least mildly performant applications in it's pure form
+2020-04-09 19:15:49 <kspalaiologos> and to do something more interesting and fast you have to extend it
+2020-04-09 19:15:54 <kspalaiologos> and it's a defeat of the purpose
+2020-04-09 19:16:00 <ais523> kspalaiologos: I see programming as communication, you're trying to tell a computer (or another human) what you mean
+2020-04-09 19:16:04 <spruit11> @tell oerjan Could, or would, you be so kind to support an arxiv submission of a paper I wrote?
+2020-04-09 19:16:04 <lambdabot> Consider it noted.
+2020-04-09 19:16:16 <spruit11> Thanks people.
+2020-04-09 19:16:34 <ais523> and that allows for optimization at both ends of the computation, both for the person writing it, and for the computer understanding it
+2020-04-09 19:16:45 <kspalaiologos> ais523, that's right, and that's a good mindset
+2020-04-09 19:16:58 <ais523> BF is a particularly simple form of programming, but a fully general one, so getting humans to be able to express ideas more efficiently, and computers to be able to understand and run them more efficiently, seems valuable
+2020-04-09 19:17:12 <kspalaiologos> OISC?
+2020-04-09 19:17:16 <kspalaiologos> simpler form of programming
+2020-04-09 19:17:30 <ais523> I care about OISCs too!
+2020-04-09 19:17:44 <kspalaiologos> I used to have a very similliar mindset on programming back in the day
+2020-04-09 19:17:53 <ais523> actually, most of the esolangs I care about are either a) simpler than BF in some senses, or else b) particularly interesting ways of conveying information about what you mean
+2020-04-09 19:18:22 <kspalaiologos> interesting
+2020-04-09 19:18:28 <kspalaiologos> for instance, which languages?
+2020-04-09 19:18:47 <ais523> Brachylog is one of my favourite languages
+2020-04-09 19:19:03 <ais523> it gets further than most languages at allowing you to express the problem, rather than having to describe a solution to it
+2020-04-09 19:19:39 <kspalaiologos> and brachylog solves the problem, right?
+2020-04-09 19:20:00 <ais523> right, given a description of the problem, it attempts to determine a solution to it without being explicitly told an algorithm
+2020-04-09 19:20:04 Quit: ARCUN (Remote host closed the connection)
+2020-04-09 19:20:05 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 19:20:09 <ais523> it isn't perfect at doing this, but it's better than most non-esolangs and almost all esolangs
+2020-04-09 19:20:25 <kspalaiologos> wait
+2020-04-09 19:20:27 <ais523> this has made it a particularly good language for programming competitions
+2020-04-09 19:20:30 <kspalaiologos> let's get to normal Prolog for a second
+2020-04-09 19:20:43 <ais523> normal Prolog is also pretty good at this, but it's rather low-level
+2020-04-09 19:20:58 <ais523> and you often have to pay attention to how it works internally to make your programs work
+2020-04-09 19:21:11 <kspalaiologos> are there some higher-level extensions?
+2020-04-09 19:21:29 <ais523> yes, Brachylog incorporates at least one (a constraint solver for integer arithmetic)
+2020-04-09 19:21:37 <kspalaiologos> that not necessairly make the engine create an O(N^N^N^N^N^N) solution
+2020-04-09 19:21:37 <ais523> also, its standard library just understands more concepts
+2020-04-09 19:21:48 <ais523> oh, performance is, of course, a huge issue when doing this sort of thing :-D
+2020-04-09 19:22:03 <kspalaiologos> for instance, what about a factorial
+2020-04-09 19:22:12 <kspalaiologos> what kind of algorithm will it come up
+2020-04-09 19:22:16 <kspalaiologos> (in terms of complexity)
+2020-04-09 19:22:34 <ais523> `! brachylog 100ḟ
+2020-04-09 19:22:35 <HackEso> ​ \ true.
+2020-04-09 19:22:38 <ais523> `! brachylog 100ḟw
+2020-04-09 19:22:39 <HackEso> 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000 \ true.
+2020-04-09 19:22:47 <kspalaiologos> because I'm starting to find the potential for this
+2020-04-09 19:22:49 <ais523> the thing is, Brachylog already knows what a factorial is
+2020-04-09 19:22:57 <ais523> (unlike Prolog)
+2020-04-09 19:23:08 <kspalaiologos> man, for example one could solve like logical riddles or something like that using prolog
+2020-04-09 19:23:11 <kspalaiologos> that's actually amazing
+2020-04-09 19:23:31 <kspalaiologos> and it would be ten times more amazing if it fit on my TI-83+
+2020-04-09 19:23:56 <ais523> `! brachylog 100⟦₁×w
+2020-04-09 19:23:58 <HackEso> 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000 \ true.
+2020-04-09 19:24:07 <ais523> there, that's without using the builtin
+2020-04-09 19:24:17 <ais523> "product of all the numbers from 1 to 100 inclusive"
+2020-04-09 19:25:00 <ais523> `! brachylog ⟦₁×93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000&w
+2020-04-09 19:25:01 <HackEso> 100 \ true.
+2020-04-09 19:25:09 <kspalaiologos> interesting
+2020-04-09 19:25:10 <ais523> see, you can't do /that/ from the definition in most languages
+2020-04-09 19:25:16 <ais523> and the performance still seemed to be pretty good
+2020-04-09 19:25:26 <ais523> `! brachylog ⟦₁×93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000001&w
+2020-04-09 19:25:33 <ais523> just curious as to whether it realises that's impossible
+2020-04-09 19:25:39 <kspalaiologos> can you write a program that calculates factorial of 1,000 and displays how many digits does it have?
+2020-04-09 19:25:40 <ais523> this is one of the biggest problems with Brachylog
+2020-04-09 19:25:56 <kspalaiologos> I want to "test" something
+2020-04-09 19:26:03 <HackEso> No output.
+2020-04-09 19:26:05 <kspalaiologos> mostly on tio.run, I won't kill HackEso xD
+2020-04-09 19:26:05 <ais523> `! brachylog 1000ḟlw
+2020-04-09 19:26:10 <HackEso> 2568 \ true.
+2020-04-09 19:26:16 <kspalaiologos> cool
+2020-04-09 19:26:39 <ais523> I'm basically 100% sure it actually calculated every digit, then counted them
+2020-04-09 19:26:46 <ais523> rather than doing anything to optimize the calculation
+2020-04-09 19:27:29 <ais523> Brachylog's biggest downside is that it the algorithms it uses look only locally, it knows what it's doing for each individual command in the program but looks at them in order and doesn't handle any sort of long-range optimization
+2020-04-09 19:28:51 <ais523> the syntax takes a bit of getting used to, too, but that's common with esolangs
+2020-04-09 19:29:19 <kspalaiologos> Brachylog: Real time: 1.940 s C: Real time: 0.286 s
+2020-04-09 19:29:26 <kspalaiologos> Factorial of 1000
+2020-04-09 19:29:36 <kspalaiologos> I mean  that's understandable that it took around 10 times more time
+2020-04-09 19:29:45 <kspalaiologos> because it's very convenient to write
+2020-04-09 19:30:01 <ais523> what bignum library is the C program using?
