@@ -711,3 +711,37 @@
 2020-04-09 20:27:21 <int-e> I had an advantage... I already knew the 5n+6 part.
 2020-04-09 20:28:21 <tromp> 3-powers are bound to look random in binary:(
 2020-04-09 20:29:30 <ais523> 2-powers seemed likely to show up before 3-powers, perhaps not though
+2020-04-09 20:30:19 <ais523> anyway, on another topic: what does the fastest possible FizzBuzz look like?
+2020-04-09 20:30:37 <ais523> I have a suspicion that you might not generate it in order
+2020-04-09 20:30:54 <ais523> (the aim here is to output the longest FizzBuzz sequence you can in, say, 1 second or 10 seconds)
+2020-04-09 20:31:03 <tromp> yes, BB(4) corresponds to 2^2^2^2
+2020-04-09 20:31:18 <tromp> BB(34)
+2020-04-09 20:32:17 <ais523> ah right, and that isn't on OEIS yet
+2020-04-09 20:32:34 <ais523> 65536 is possibly the non-small number that most commonly appears in busy beavers
+2020-04-09 20:32:53 <ais523> because there are a lot of different ways to construct it and it thus appears in a lot of different fast-growing sequences
+2020-04-09 20:32:54 <tromp> pretty awesome to have two consecutive comprehensible busy beaver numbers
+2020-04-09 20:33:38 <tromp> they're awaiting approval
+2020-04-09 20:34:00 <int-e> Well there's https://oeis.org/draft/A333479
+2020-04-09 20:35:09 <int-e> So we can see what you're doing if we want to :)
+2020-04-09 20:35:43 <int-e> Oh apparently that link format is not easily discoverable without an OEIS account.
+2020-04-09 20:42:53 <tromp> TMs describable in 35 bits only reach a busy beaver value of 13 :-(
+2020-04-09 20:44:59 <tromp> and those describable in 46 bits likely reach only 4098
+2020-04-09 20:45:57 <int-e> TMs are awkward to program
+2020-04-09 20:46:14 <tromp> a brainfuck busy beaver would struggle similarly
+2020-04-09 20:46:17 <ais523> by contrast, Brachylog reaches a program whose halting status is unknown in 24 bits
+2020-04-09 20:46:54 <tromp> sounds worthy of a blog post!
+2020-04-09 20:47:19 <ais523> https://codegolf.stackexchange.com/questions/97004/does-the-code-terminate/177438#177438
+2020-04-09 20:47:27 <tromp> thankcs
+2020-04-09 20:47:44 <int-e> I mean, if you look at how we program TMs in practice, the number of states is a fair measure of program size. There's a lot of messy behavior outside the fragment we actually have a chance of understanding well enough for actual programming.
+2020-04-09 20:47:51 Joined: ArthurStrong
+2020-04-09 20:47:51 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-09 20:48:48 <int-e> BLC also has a lot of garbage programs, of course, but the programmable fragment feels bigger.
+2020-04-09 20:49:54 <int-e> I can compute 0.291652 now, time for bed.
+2020-04-09 20:50:10 <ais523> golfing languages aim to maximise the size of the programmable fragment, more or less by definition, so you'd expect them to hit unknown BB values faster
+2020-04-09 20:50:18 <esowiki> 14[[07PlusOrMinus 214]]4 M10 02https://esolangs.org/w/index.php?diff=70790&oldid=70789 5* 03PythonshellDebugwindow 5* (+0) 10/* Examples */
+2020-04-09 20:51:08 <ais523> this particular program is weird, though, it's using string operators on numbers and generates the Smarandache sequence
+2020-04-09 20:51:34 <ais523> which is a weird sequence because every element checked so far is composite, even though there doesn't seem to be any particular reason why it should be
+2020-04-09 20:53:37 <ais523> someone did a busy-beaver-like search in number theory, too, and the simplest statement that neither they nor their program could prove true or false was "there are infinitely many prime numbers of the form x²-2"
+2020-04-09 20:54:17 <int-e> (the number 0.291652 is from http://www.research.ibm.com/haifa/ponderthis/challenges/April2020.html )
+2020-04-09 20:54:23 <ais523> but that can't easily be converted into a program that searches for a counterexample, you'd need a proof both ways
+2020-04-09 20:58:02 <tromp> that statement seems no simpler than goldbach's conjecture
