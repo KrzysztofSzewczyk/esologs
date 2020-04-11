@@ -68,3 +68,10 @@
 2020-04-11 04:49:15 <zzo38> Yes, although they didn't do that. Also many computers used 240p in order to avoid interlacing anyways, I think.
 2020-04-11 04:51:14 <b_jonas> zzo38: true, partly to avoid interlacing, and partly because the CPUs do 8 bit arithmetic, so having the width and height of the screen in pixels be just a bit lower than 256 (in the NES and the game boy) is both convenient for manipulating sprites and causes some amusing wraparound bugs (NES Jekyl and Hyde has the weirdest one, but there are minor ones in many other games)
 2020-04-11 04:54:22 <zzo38> Although the CRTC chip used in PC has a interlacing mode, although it isn't used in PC. (It also has a cursor blinking mode, which also isn't used in PC; the PC has its own logic for cursor blinking. I have the schematics, so I know how it is working, including the undocumented cyan/red/white mode.)
+2020-04-11 05:23:32 <b_jonas> I often see smbc comics that are very close to an xkcd strip, or backwards, but today is I think the first time when the strips for the same day are similar:
+2020-04-11 05:24:12 <b_jonas> https://www.smbc-comics.com/comic/inching vs https://xkcd.com/2292/ (for the future, because SMBC makes it very hard to find the strip for a given date)
+2020-04-11 05:29:02 <int-e> I'm reminded of https://futurism.com/coldest-hottest-temperatures-known-universe-infographic where a few of the higher temperatures are clearly estimates in Kelvin, converted to Celsius. (I remembered one, 99,999,999,726°C, but there are also 36,926°C and 6627°C.
+2020-04-11 05:29:06 <int-e> )
+2020-04-11 05:29:31 * int-e wonders how many single-line closing parenthesis he has in the log. Must be quite a few.
+2020-04-11 05:29:52 <int-e> (
+2020-04-11 05:30:01 <int-e> maybe I should try to compensate for them like this.)
