@@ -568,3 +568,137 @@
 2020-04-12 19:28:37 <ais523> although in this case the back-emf is basically only a problem during power on and power off, and maybe hblank
 2020-04-12 19:29:05 <ais523> because you're changing the value in a set pattern and can allow for the inductance in advance
 2020-04-12 19:29:25 <ais523> (also, during hblank, the beam is turned off so it doesn't matter if the voltage doesn't change instantly or linearly)
+2020-04-12 19:30:51 <ais523> so a typical TV's deflector coils would be in the 1-10 kilovolt range
+2020-04-12 19:30:55 <int-e> https://en.wikipedia.org/wiki/OLED#Efficiency_of_blue_OLEDs is one ingredient to the power efficiency puzzle
+2020-04-12 19:33:01 <int-e> Another, probably smaller, part is that perhaps there's more loss due to resistance between power supply and the actual LEDs. (All the energy emitted by the display has to be transported to some individual pixel, whereas for LCDs only a comparatively smaller power for driving the crystals plus the transistor has to be pushed to individual puzzles.)
+2020-04-12 19:33:18 <ais523> huh, according to Wikipedia, there are such things as CRT printers
+2020-04-12 19:33:24 <b_jonas> what
+2020-04-12 19:33:29 <ais523> they electrostatically charged the paper
+2020-04-12 19:33:35 <int-e> But the absence of efficient blue OLEDs seems more significant.
+2020-04-12 19:33:36 <ais523> then it was placed next to electrostatically charged ink
+2020-04-12 19:33:37 <b_jonas> that would be a laser printer
+2020-04-12 19:33:49 <int-e> ais523: fun.
+2020-04-12 19:33:52 <ais523> b_jonas: but with beta radiation, not electromagnetic radiation
+2020-04-12 19:34:04 <ais523> which I guess is the fundamental difference
+2020-04-12 19:34:22 <b_jonas> a laser printer electrostatically charges the paper, then discharges it with a laser beam anywhere where it wants to leave that white, then puts the paper next to the toner casette so it electrostatically attracts black ink
+2020-04-12 19:34:33 <b_jonas> I see
+2020-04-12 19:34:47 <b_jonas> that sounds rather impractical
+2020-04-12 19:34:51 <int-e> b_jonas: isn't it the drum that's being charged and discharged
+2020-04-12 19:34:57 <ais523> b_jonas: well it was abandoned in the 1960s
+2020-04-12 19:35:01 <ais523> so probably it was actually impractical
+2020-04-12 19:35:12 <b_jonas> int-e: I don't really know
+2020-04-12 19:35:21 <ais523> back then it took a while to discover the practical computer technologies, so they had to make do with eso computers until they found a practical way to do things
+2020-04-12 19:35:22 <int-e> superceded by better technology.
+2020-04-12 19:35:32 <b_jonas> I just use this nonsense as a customer
+2020-04-12 19:35:48 <int-e> b_jonas: I'm pretty sure it's the drum... otherwise buying the right paper for a laser printer would be a huge hassle.
+2020-04-12 19:36:06 <b_jonas> int-e: why? ordinary paper can be charge electrostatically
+2020-04-12 19:36:24 <Phantom_Hoover> crt printer still seems less out there than using crt for main memory which was totally mainstream for a while
+2020-04-12 19:36:32 <zzo38> There is no "c" in "supersedes"; even the specification for netnews articles says there is no "c" in "supersedes".
+2020-04-12 19:36:50 <int-e> b_jonas: charged and discharged reliably at 600 dpi?
+2020-04-12 19:37:11 <ais523> Phantom_Hoover: you have to realise just how terrible the available read/write memory technologies were in the 1940s
+2020-04-12 19:37:17 <b_jonas> int-e: only discharged at that resolution, they're charged uniformly
+2020-04-12 19:37:28 <ais523> there were no good options, so all the bad options were explored quite comprehensively
+2020-04-12 19:37:30 <Phantom_Hoover> i mean i know about mercury delay lines so im well aware
+2020-04-12 19:37:39 <int-e> b_jonas: I can't refute the idea, but I'm pretty sure it's the drum... which is a more or less fixed part of the printer so much easier to control anyway :P
+2020-04-12 19:37:46 <ais523> when magnetic core memory was invented in 1955 it was a huge relief to everyone
+2020-04-12 19:37:54 <ais523> (even though it's /still/ a terrible storage technology by modern standards)
+2020-04-12 19:38:08 <b_jonas> ais523: no surprise, because SRAM became practical only with integrated circuits
+2020-04-12 19:38:31 <Phantom_Hoover> it required at least the transistor one assumes
+2020-04-12 19:38:48 <Phantom_Hoover> was there a period where using discrete transistors for RAM was practical actually...?
+2020-04-12 19:39:05 <ais523> I have an old book about computers which is post-transistor but pre-integrated-circuit
+2020-04-12 19:39:27 <ais523> it talks about the use of transistors for logic, and also for amplification (for use in analog computers)
+2020-04-12 19:39:47 <ais523> but assumes magnetic core as the only practical memory technology for storing large amounts of read/write data
+2020-04-12 19:40:10 <b_jonas> ais523: only? doesn't it assume magnetic disks are available for that?
+2020-04-12 19:40:24 <b_jonas> I know they're not random accessible
+2020-04-12 19:40:29 <ais523> b_jonas: disks? no
+2020-04-12 19:40:36 <ais523> I'm not sure if magnetic tape had been invented at the time
+2020-04-12 19:40:42 <ais523> but disks are way newer than the book
+2020-04-12 19:40:46 <b_jonas> oh, pre-integrated-circuit
+2020-04-12 19:40:55 <b_jonas> that must be really old
+2020-04-12 19:41:05 <int-e> oh more crazy old memory devices... https://www.radiomuseum.org/forum/williams_kilburn_williams_kilburn_ram.html
+2020-04-12 19:41:08 <Phantom_Hoover> i legit didn't know tape was still widely used until i heard about it in training for my current job
+2020-04-12 19:41:21 <Phantom_Hoover> which is honestly somewhat surprising given how much general reading i do
+2020-04-12 19:41:32 <b_jonas> Phantom_Hoover: it's _optical_ tape that's currently widely used, for high capacity backups
+2020-04-12 19:41:41 <b_jonas> magnetic tapes are no longer widely used
+2020-04-12 19:41:46 <Phantom_Hoover> sceptical
+2020-04-12 19:41:48 Joined: nona
+2020-04-12 19:41:49 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, nona, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 19:42:17 <kspalaiologos> > object oriented thue
+2020-04-12 19:42:20 <lambdabot> error:
+2020-04-12 19:42:20 <lambdabot> Variable not in scope: object :: t0 -> t1 -> terror: Variable not in sco...
+2020-04-12 19:42:23 <kspalaiologos> oh boy, what is it now
+2020-04-12 19:42:29 <int-e> tapes are where the magneto-optical recording technology went, isn't it
+2020-04-12 19:42:29 <ais523> magnetic tape was still widely used for backups fairly recently
+2020-04-12 19:42:30 <b_jonas> and I don't think magnetic takes ever worked really well for digital data; they were used for analog data as in voice or video because the hardware is cheap, but the tape degraded too quickly
+2020-04-12 19:42:36 <b_jonas> ais523: oh ok
+2020-04-12 19:42:47 <ais523> (I'm not sure whether people would use "tar" for communicating with it, though!)
+2020-04-12 19:42:51 <b_jonas> then I'm just wrong
+2020-04-12 19:43:05 <kspalaiologos> this is amazing, but isn't it like
+2020-04-12 19:43:07 <Phantom_Hoover> yeah i think they're still the standard bulk archive medium in industry
+2020-04-12 19:43:18 <kspalaiologos> when a P/L is nondeterministic it's not the best idea to let it allow filesystem and stuff
+2020-04-12 19:43:45 <Phantom_Hoover> thue is only nondeterministic if you let it
+2020-04-12 19:44:03 <ais523> I get annoyed because most people interpret Thue's "nondeterministic" as "probabilistic"
+2020-04-12 19:44:13 <ais523> when I'm pretty sure it's nondeterministic in the CS theory sense, like a nondeterministic finite automaton
+2020-04-12 19:44:31 <Phantom_Hoover> i just read it as 'the choice of substitution is implementation-defined'
+2020-04-12 19:44:33 <ais523> this means that most existing Thue interps don't actually interpret it properly
+2020-04-12 19:45:09 <b_jonas> ais523: no, I think it's nondeterministic in the third sense, which is that the behavior is underspecified, interpreters choose whatever is the most convenient for them
+2020-04-12 19:45:12 <ais523> <Wikipedia> MIT wanted to charge IBM $0.02 per bit royalty on core memory.
+2020-04-12 19:45:19 <Phantom_Hoover> i'm v much with b here
+2020-04-12 19:45:35 <ais523> well, bear in mind that semi-Thue grammars were intended as a computational model
+2020-04-12 19:45:35 <b_jonas> not in the sense where it's probabilistic, nor in the sense where they theoretically find the one succeeding path among exponentially many failing paths
+2020-04-12 19:45:50 <Phantom_Hoover> the thue spec doesnt talk about that kind of branching execution anywhere, it's the parsimonious reading
+2020-04-12 19:46:07 <int-e> ais523: having worked in rewriting, I agree with what b_jonas said
+2020-04-12 19:46:13 <ais523> I'm trying to imagine where computer memories would be today if the royalty payments were 2� per bit
+2020-04-12 19:46:33 <Phantom_Hoover> also NFA semantics are kind of defined in terms of a machine accepting a language which makes no sense given thue's semantics
+2020-04-12 19:46:43 <int-e> which is why confluence is held in such high regard in the field because it largely says that the reduction strategy doesn't matter. (modulo non-termination issues)
+2020-04-12 19:46:54 <ais523> a modern computer would cost 80 billion dollars just in memory royalty payments alone
+2020-04-12 19:47:01 <ais523> (although maybe people would write more memory-efficient programs!)
+2020-04-12 19:47:18 <int-e> ais523: But maybe you'd also have a paycheck of corresponding size :P
+2020-04-12 19:47:41 <ais523> int-e: you think the problem would be solved using hyperinflation? that's ingenious, but would likely bring its own problems
+2020-04-12 19:48:30 <Phantom_Hoover> the value of the currency is indexed against the bit
+2020-04-12 19:48:35 <Phantom_Hoover> this is the true bitcoin
+2020-04-12 19:48:41 <int-e> Phantom_Hoover: <3
+2020-04-12 19:49:02 <b_jonas> I think it's But is it art that is nondeterministic in the theoretical CS
+2020-04-12 19:50:11 <ais523> b_jonas: yes BIIA? is CS-theory-nondeterministic
+2020-04-12 19:50:21 <ais523> and a few other languages like that
+2020-04-12 19:50:40 <ais523> most notably https://esolangs.org/wiki/Precognition, which I feel would be used much more if only I or someone else put in the necessary thought and time to implement it
+2020-04-12 19:51:02 <b_jonas> ais523: isn't that a patent royalty though, with the patent expiring in like 20 years?
+2020-04-12 19:51:10 <int-e> Phantom_Hoover: Let's make that a love parade: ☙♡♥❣❤❥❦❧🂱🎔💓💔💕💖💗💘💞🖤😍
+2020-04-12 19:51:40 <ais523> b_jonas: assume the lawyers could figure out some way to extend it :-D
+2020-04-12 19:51:50 <ais523> (that isn't legally meant to be possible, but patent law is a mess)
+2020-04-12 19:52:06 <b_jonas> they could extend it to 30 years. that'd still have expired 30 years ago.
+2020-04-12 19:52:34 <b_jonas> the way to extend it is to make an improved version so people use that instead of the original one, right?
+2020-04-12 19:52:56 <b_jonas> like they could patent DRAM
+2020-04-12 19:53:18 <b_jonas> and maybe patent different variants of DRAM
+2020-04-12 19:53:33 <ais523> patent the version with the sense/inhibit wires combined
+2020-04-12 19:53:36 <b_jonas> only of course IBM didn't come up with those
+2020-04-12 19:53:38 <ais523> but only when the first patent is running out
+2020-04-12 19:54:10 <int-e> . o O ( degauss your core )
+2020-04-12 19:55:07 <ais523> int-e: that would basically just delete the entirety of memory, wouldn't it?
+2020-04-12 19:55:10 <Phantom_Hoover> int-e, its fucked up how there are like 1000 heart emojis but 0 emojis aboutr the boys being back in town
+2020-04-12 19:55:15 <b_jonas> though wait, isn't most of the RAM made in China these days, and patents don't work there?
+2020-04-12 19:55:16 <ais523> replacing its contents with � bits (which are somewhere between 0 bits and 1 bits)
+2020-04-12 19:55:29 <int-e> Phantom_Hoover: it's a cruel world
+2020-04-12 19:55:44 <ais523> it's unclear what happens when a digital memory controller reads a memory cell with a value of �
+2020-04-12 19:55:46 <int-e> b_jonas: of course they work if they want to sell the stuff abroad
+2020-04-12 19:56:00 <ais523> presumably it would be interpreted as either 0 or 1, but whether this is deterministic or not depends on the exact details of the circuitry, I expect
+2020-04-12 19:56:02 <int-e> b_jonas: China is now patenting more than the US though :P
+2020-04-12 19:56:13 <b_jonas> int-e: the question is not how much they're patenting
+2020-04-12 19:56:18 <b_jonas> the question is how patents are enforced
+2020-04-12 19:56:34 <Phantom_Hoover> now im no expert but i believe quantum computing is basically when all your bits split in half and they tell you the prime factors of everyones private keys
+2020-04-12 19:57:23 <int-e> b_jonas: ask the WIPO.
+2020-04-12 19:57:48 <b_jonas> what is the WIPO?
+2020-04-12 19:57:50 <b_jonas> `? WIPO
+2020-04-12 19:57:52 <HackEso> WIPO? ¯\(°​_o)/¯
+2020-04-12 19:57:58 <int-e> Phantom_Hoover: You didn't have to elaborate after "im no expert" ;)
+2020-04-12 19:58:26 <int-e> World "Intellectual Property" Organization
+2020-04-12 19:58:32 <b_jonas> ah I see
+2020-04-12 19:58:35 <int-e> (I think they prefer it without the quotes)
+2020-04-12 19:58:53 <ais523> you can put the quotes in other places too
+2020-04-12 19:58:59 <ais523> "World" Intellectual Property Organization
+2020-04-12 19:59:04 <ais523> World Intellectual Property "Organization"
+2020-04-12 19:59:04 <b_jonas> ^ yes, because of China
+2020-04-12 19:59:09 <ais523> these are probably less accurate, but it's fun
+2020-04-12 19:59:19 <int-e> ais523: I like the former
+2020-04-12 19:59:39 <Phantom_Hoover> world "intellectual" property organisation
+2020-04-12 19:59:50 <Phantom_Hoover> these frauds couldnt tell their picassos from their nabokovs
