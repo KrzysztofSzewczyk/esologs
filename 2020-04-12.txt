@@ -302,3 +302,39 @@
 2020-04-12 17:23:53 <ais523> apparently the Amiga's floppy drive controller can be configured to any word size, that's "only" 30 years old
 2020-04-12 17:27:03 Quit: kritixilithos (Ping timeout: 240 seconds)
 2020-04-12 17:27:04 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 17:31:00 <esowiki> 14[[07Noit o' mnain gelb14]]4 M10 02https://esolangs.org/w/index.php?diff=70933&oldid=27090 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-12 17:36:03 <int-e> tromp: Hmm, looking at your criterion, I did re-discover that one myself in the meantime, with the same idea that ω-like terms are strict. (Pushed a more detailed proof.)
+2020-04-12 17:38:30 <ais523> hmm, there seem to be philosophical issues about how much data a disk can store
+2020-04-12 17:39:38 <ais523> with magnetic disk storage, there are physical limits to how densely you can pack transitions between 0s and 1s, but if you don't have any transitions for a sufficiently long time, it's difficult to read because you don't know where you are on the disk
+2020-04-12 17:40:06 <ais523> so, e.g., on a CD, every 8-bit byte of data is encoded as 17 bits on the disk
+2020-04-12 17:40:35 <int-e> tromp: I can't claim it's independent... you dropped a couple of hints on the channel.
+2020-04-12 17:40:41 <b_jonas> CD is rather different from magnetic storage though
+2020-04-12 17:41:04 <ais523> not really, you're right that it's optical rather than magnetic but much the same restrictions apply
+2020-04-12 17:43:20 <b_jonas> data CD has a lot more error correction codes than floppy disks, apparently mostly to survive scratches of the foil part of the CD
+2020-04-12 17:43:36 <b_jonas> admittedly it's newer
+2020-04-12 17:43:50 <ais523> ah right, error correction
+2020-04-12 17:44:02 <ais523> anyway, this leads to the philosophical question about just how large a file is
+2020-04-12 17:44:30 Quit: ositoblanco (Read error: Connection reset by peer)
+2020-04-12 17:44:30 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 17:44:36 <ais523> especially given that EOF needs to be encoded somehow
+2020-04-12 17:47:15 <esowiki> 14[[07Nouse14]]4 M10 02https://esolangs.org/w/index.php?diff=70934&oldid=34796 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-12 17:48:19 <b_jonas> it's quite crazy just how few error correction old floppy disks have. it's usually just a one or two byte checksum per sector.
+2020-04-12 17:48:52 <b_jonas> and the checksum isn't even CRC, it's just a bytewise XOR checksum. wouldn't that lead to corrupted files that aren't detected?
+2020-04-12 17:49:04 <int-e> https://en.wikipedia.org/wiki/Run-length_limited <-- oh, fancy, there are some prefix codes in there
+2020-04-12 17:49:54 <ais523> int-e: it wouldn't surprise me if optimal RLL codes /never/ had an integer number of bits per word
+2020-04-12 17:50:49 <int-e> well, nobody wants to implement an optimal code
+2020-04-12 17:51:22 <b_jonas> ais523: no, but they get pretty close. the code that the Commodore floppy uses encodes 4 bits to 5 physical bits, and there are 17 permissable codes for those 5 physical bits, of which 16 are used, IIRC
+2020-04-12 17:51:31 <ais523> int-e: it'd let you fit more data on your drive
+2020-04-12 17:51:45 <b_jonas> that's not optimal of course, because an optimal one would need to have much longer segments
+2020-04-12 17:51:58 <b_jonas> or some dependency between the adjacent chunks
+2020-04-12 17:52:11 <ais523> if you have a non-integer number of bits per word
+2020-04-12 17:52:19 <ais523> then I think you have dependency that lasts forever
+2020-04-12 17:52:28 <ais523> the last chunk on the disk might theoretically depend on the first chunk
+2020-04-12 17:52:38 <ais523> (assuming a perfect code)
+2020-04-12 17:52:56 <ais523> this would of course be bad for random-access writes, but might still be useful on a disk intended to be read-only
+2020-04-12 17:54:41 <ais523> hmm, maybe tape drives would be better for this than floppy disks
+2020-04-12 17:56:51 <b_jonas> even then you probably want units smaller than a whole disk. (it needn't be as small as the 256 byte sectors of course.) that doesn't lose you much with the encoding density if the chunks aren't too small.
+2020-04-12 17:58:30 <int-e> Actually the unit should probably be below a sector... to reduce latency.
+2020-04-12 17:58:48 <int-e> 256 byte sector? What hardware is that...
+2020-04-12 17:59:00 <b_jonas> int-e: no, it could be incrementally decodable
+2020-04-12 17:59:53 <int-e> b_jonas: Hmm, not reliably.
