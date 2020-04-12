@@ -702,3 +702,80 @@
 2020-04-12 19:59:19 <int-e> ais523: I like the former
 2020-04-12 19:59:39 <Phantom_Hoover> world "intellectual" property organisation
 2020-04-12 19:59:50 <Phantom_Hoover> these frauds couldnt tell their picassos from their nabokovs
+2020-04-12 20:00:04 <b_jonas> World Intellectual "Property" Organization works too in some sense
+2020-04-12 20:00:10 <int-e> (because it is about the so-called "developed countries" exploiting the so-called "developing countries"
+2020-04-12 20:00:13 <int-e> )
+2020-04-12 20:02:52 <int-e> fungot: where are you?
+2020-04-12 20:04:22 <kspalaiologos> a guy has inboxed me a few minutes ago
+2020-04-12 20:04:30 <kspalaiologos> he's made a proof-of-concept asm2bf IDE
+2020-04-12 20:04:59 <kspalaiologos> with language server, linter, syntax checking, formatter, syntax highlighting and code completion
+2020-04-12 20:05:08 <int-e> "inbox, v. ???"
+2020-04-12 20:05:21 <kspalaiologos> it's getting hillariously serious by now
+2020-04-12 20:05:44 <int-e> . o O ( Don't blame Hillary for that one )
+2020-04-12 20:06:43 <ais523> I wonder how many brainfuck IDEs the world needs
+2020-04-12 20:06:50 <ais523> esotericide is probably enough by itself
+2020-04-12 20:07:01 <ais523> and now there's another one?
+2020-04-12 20:07:16 <b_jonas> kspalaiologos: so this like plugs into MS visual studio?
+2020-04-12 20:07:23 <b_jonas> or Eclipse or whatever?
+2020-04-12 20:07:30 <kspalaiologos> standalone IDE
+2020-04-12 20:07:32 <kspalaiologos> terminal-based
+2020-04-12 20:08:36 <tromp> int-e: did you find Chaitin's thesis online?
+2020-04-12 20:08:53 <int-e> tromp: not recently
+2020-04-12 20:10:21 User Name: arseniiv = arseniiv_!~arseniiv@94.41.83.177.dynamic.ufanet.ru
+2020-04-12 20:10:21 <arseniiv> I like IDE plugins since some time now. A major IDE is usually well-debugged, functional etc., and to write it all from scratch? oh no. And usually the support for this or that language needs not as much work, for it to be done with quality, if writing it as a plugin for an existing IDE
+2020-04-12 20:10:26 Nick Change: arseniiv -> arseniiv
+2020-04-12 20:10:29 <tromp> the programs on https://int-e.eu/~bf3/AIT/ are not accompanied by the theorems they're proving
+2020-04-12 20:10:39 User Name: arseniiv = arseniiv!~arseniiv@94.41.83.177.dynamic.ufanet.ru
+2020-04-12 20:10:39 <arseniiv> I hadn’t written any plugins yet, though
+2020-04-12 20:10:46 Quit: Phantom_Hoover (Remote host closed the connection)
+2020-04-12 20:10:46 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, nona, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 20:11:31 <int-e> tromp: the statements are in the notes.
+2020-04-12 20:11:43 <int-e> it's all very much preliminary
+2020-04-12 20:12:02 <tromp> I see
+2020-04-12 20:14:07 <kspalaiologos> arseniiv, a language server makes it easy to plug asm2bf to vscode for instance
+2020-04-12 20:15:36 Quit: nona (Ping timeout: 240 seconds)
+2020-04-12 20:15:37 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 20:17:18 <ais523> kspalaiologos: I seriously looked into VS Code's language server / plugin architecture
+2020-04-12 20:17:21 <ais523> I hate it
+2020-04-12 20:17:36 <kspalaiologos> I don't use VSCode, problem solved
+2020-04-12 20:17:43 <kspalaiologos> meme made by Vim gang
+2020-04-12 20:18:11 <ais523> well, I really do like the idea of having a standard for communication between editors and programming language implementations
+2020-04-12 20:18:22 <ais523> I just really don't like the details of the Language Server Protocol
+2020-04-12 20:18:32 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-12 20:18:32 <imode> I don't need key combinations to pilot a car. this post was made by the nano gang.
+2020-04-12 20:18:55 <ais523> and the existence of a current standard that's bad is really frustrating, because it reduces the chance of getting a good standard (because you don't want two standards coexisting)
+2020-04-12 20:21:53 Quit: kritixilithos (Quit: quit)
+2020-04-12 20:21:53 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 20:22:18 <int-e> mediocre is the enemy of good?
+2020-04-12 20:22:40 <int-e> (It seriously is. I wonder whether it's something people commonly say.)
+2020-04-12 20:23:34 <b_jonas> int-e: people say it both ways
+2020-04-12 20:23:55 Joined: Phantom_Hoover
+2020-04-12 20:23:55 Quit: Phantom_Hoover (Changing host)
+2020-04-12 20:23:55 Joined: Phantom_Hoover
+2020-04-12 20:23:55 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 20:24:08 <int-e> I do know the "perfect is the enemy of good" version is a thing.
+2020-04-12 20:24:32 Quit: kspalaiologos (Quit: Leaving)
+2020-04-12 20:24:32 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 20:24:40 <ais523> every Language Server Protocol message must be prefixed by "Content-Length:", then a decimal number indicating the length, then two \r\n pairs, then a JSON object which contains the key/value pair "jsonrpc": "2.0"
+2020-04-12 20:24:58 <ais523> that's a crazy amount of overhead for every single message, much of it redundant
+2020-04-12 20:25:33 <ais523> also, this is the first time I've seen a string format which is somehow delimited and length-prefixed at the same time (the delimiter used to determine where the length ends)
+2020-04-12 20:25:44 <int-e> Does it specify a maximum length of the first line?
+2020-04-12 20:26:09 <ais523> no
+2020-04-12 20:26:27 <ais523> nor is there a theoretical maximum length, because JSON allows arbitrary amounts of whitespace
+2020-04-12 20:26:28 <int-e> Content-Length: 00000000000000000000000000000000000000...0000000000000000042\r\n
+2020-04-12 20:26:47 <ais523> oh, or that :-D
+2020-04-12 20:26:52 <ais523> I wonder how VS Code would react to that
+2020-04-12 20:26:54 <b_jonas> int-e: yeah, there are HTTP clients that have bugs with stuff like that
+2020-04-12 20:27:08 <int-e> b_jonas: color me unsurprised
+2020-04-12 20:27:28 <arseniiv> :((( I hoped VS Code would be better than this, ow
+2020-04-12 20:27:36 <ais523> arseniiv: this isn't even the worst bit
+2020-04-12 20:27:40 <ais523> I can't remember what the worst bit was
+2020-04-12 20:27:47 <ais523> and am unsure whether I should keep reading the specification to rediscover it
+2020-04-12 20:27:51 <b_jonas> like they receive FFFFFFFFFF\r\n for chunked encoding chunk header, and they try to allocate terabytes of memory and crash
+2020-04-12 20:27:54 <arseniiv> I believe
+2020-04-12 20:29:01 <int-e> ais523: I hope what's inside is actuall a json-rpc message at least.
+2020-04-12 20:29:27 <ais523> int-e: it's a compatible format, so yes
+2020-04-12 20:29:41 <int-e> (which mandates that version field)
+2020-04-12 20:29:51 User Name: Sgeo = Sgeo__!~Sgeo@ool-18b982ad.dyn.optonline.net
+2020-04-12 20:29:51 <Sgeo> https://dailyvoice.com/new-jersey/mercer/obituaries/covid-19-kills-renowned-princeton-mathematician-game-of-life-inventor-john-conway-in-3-days/786461/
+2020-04-12 20:29:52 <ais523> (it uses a subset of json-rpc, but defines the API in such a way that the remaining functionality could never be used)
