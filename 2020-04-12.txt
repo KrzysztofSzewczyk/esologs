@@ -851,3 +851,17 @@
 2020-04-12 22:52:24 <b_jonas> comments section has reactions by other people
 2020-04-12 22:52:51 <b_jonas> also https://terrytao.wordpress.com/2020/04/12/john-conway/
 2020-04-12 22:57:35 <esowiki> 14[[07Pile.js14]]4 M10 02https://esolangs.org/w/index.php?diff=70958&oldid=46341 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-12 23:09:29 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2020-04-12 23:09:29 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 23:11:02 <b_jonas> should we do something to https://esolangs.org/wiki/John_Horton_Conway ?
+2020-04-12 23:18:08 <int-e> well, the obvious  is -> was.
+2020-04-12 23:21:03 <kmc> that's sad
+2020-04-12 23:21:38 <kmc> RIP :(
+2020-04-12 23:27:41 <int-e> tromp: (\1 1 1) (\\2 (2 (1 2))) is not a winner, it has a normal form of size 4186155666, which the reduction engine in the blc tool can actually compute in a few minutes.
+2020-04-12 23:28:45 <int-e> > 3^27 / 4186155666
+2020-04-12 23:28:48 <lambdabot> 1821.6230100858843
+2020-04-12 23:29:14 <int-e> > (6*3^27+5) / 4186155666 -- small margin
+2020-04-12 23:29:17 <lambdabot> 10929.7380605165
+2020-04-12 23:29:24 <int-e> hrm
+2020-04-12 23:29:31 <int-e> > (5*3^27+6) / 4186155666
+2020-04-12 23:29:33 <lambdabot> 9108.115050430855
