@@ -190,3 +190,18 @@
 2020-04-12 13:28:25 <int-e> b_jonas: Oh great. Interfaces are created via the netlink (more specifically rtnetlink) protocol... the tools (iproute2) are developed in tandem with the kernel so this area is underdocumented. In particular, there's an IFLA_INFO_KIND attribute which one can set to "veth" to create that kind of device that I believe is not documented at all.
 2020-04-12 13:29:04 <b_jonas> int-e: right. that's why the next step is to ask people on irc.
 2020-04-12 13:29:21 <b_jonas> but you still have to look at the docs first before that
+2020-04-12 13:33:10 <int-e> (Of course you can just execute the 'ip' tool with the right parameters in whatever namespace you want to manipulate.)
+2020-04-12 13:33:35 Joined: Sgeo
+2020-04-12 13:34:05 <int-e> In any case, it can be figured out ... none of this is rocket science. :)
+2020-04-12 13:35:05 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 10 02https://esolangs.org/w/index.php?diff=70915&oldid=70913 5* 03PythonshellDebugwindow 5* (+50) 10
+2020-04-12 13:35:12 <int-e> Reading the iproute2 sources is doable as well (that's how I found the IFLA_INFO_KIND thing in the first place... well, after also looking at the veth.c in the kernel sources and finding a reference to a "kind").
+2020-04-12 13:35:41 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=70916&oldid=70915 5* 03PythonshellDebugwindow 5* (+14) 10
+2020-04-12 13:35:55 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=70917&oldid=70916 5* 03PythonshellDebugwindow 5* (-64) 10end test
+2020-04-12 13:36:34 Quit: Sgeo (Ping timeout: 240 seconds)
+2020-04-12 13:52:34 <esowiki> 14[[07User:PythonshellDebugwindow/Test14]]4 M10 02https://esolangs.org/w/index.php?diff=70918&oldid=70914 5* 03PythonshellDebugwindow 5* (+620) 10
+2020-04-12 13:53:06 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03PythonshellDebugwindow 5*  10moved [[02User:PythonshellDebugwindow/Test10]] to [[User:PythonshellDebugwindow/(Unnamed language)]]: another unnamed language
+2020-04-12 13:57:11 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70921&oldid=70919 5* 03PythonshellDebugwindow 5* (+436) 10/* Operators */
+2020-04-12 13:58:42 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70922&oldid=70921 5* 03PythonshellDebugwindow 5* (+87) 10/* Operators */
+2020-04-12 13:58:51 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70923&oldid=70922 5* 03PythonshellDebugwindow 5* (-2) 10/* Examples */
+2020-04-12 13:59:10 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70924&oldid=70923 5* 03PythonshellDebugwindow 5* (+4) 10/* Examples */
+2020-04-12 13:59:24 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=70925&oldid=70924 5* 03PythonshellDebugwindow 5* (+11) 10/* Operators */
