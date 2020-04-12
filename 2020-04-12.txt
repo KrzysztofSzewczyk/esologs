@@ -240,3 +240,65 @@
 2020-04-12 16:59:57 <b_jonas> what is an imp?
 2020-04-12 17:00:00 <b_jonas> an implementation?
 2020-04-12 17:00:01 <ais523> an imp is a machine code instruction that copies itself to the next memory location in memory
+2020-04-12 17:00:15 <ais523> so immediately after running, the next instruction now contains an imp too
+2020-04-12 17:00:21 <b_jonas> ah
+2020-04-12 17:00:34 <b_jonas> so it's a weird way to memset?
+2020-04-12 17:00:34 <ais523> it will inevitably end up filling all of memory unless it hits a page fault or some other thread overwrites it just as it's about to run
+2020-04-12 17:00:47 <b_jonas> ok
+2020-04-12 17:00:52 <ais523> well, I didn't think imps had any practical use
+2020-04-12 17:00:57 <ais523> but I was wrong, which is why I commented on it here
+2020-04-12 17:00:59 <b_jonas> but many machines already have copy instructions that you can use to fill memory
+2020-04-12 17:01:08 <b_jonas> as in memory copy instructions
+2020-04-12 17:01:10 <esowiki> 14[[07Nine14]]4 10 02https://esolangs.org/w/index.php?diff=70932&oldid=67039 5* 03LegionMammal978 5* (+173) 10added repo link and categories
+2020-04-12 17:01:30 <b_jonas> and they work on overlapping memory if you want to make many repeated copies of a pattern (even a single byte)
+2020-04-12 17:02:15 <b_jonas> and in the ones that don't, that's because there's a fast way based on normal instructions to do a block copy
+2020-04-12 17:02:28 <ais523> yes, but that's not great for zeroing all of memory because a) it'll end up overwiting itself at some point, b) it's likely to be more than a single instruction long
+2020-04-12 17:02:49 <b_jonas> ais523: sure, you zero all the memory other than that code instead
+2020-04-12 17:03:00 <ais523> I did some research into the fastest way to bulk-store memory on a modern processor, it appears to involve nontemporal writes of 128 bits at a time from multiple different source registers
+2020-04-12 17:03:14 <ais523> and that's a /lot/ of code
+2020-04-12 17:03:49 <b_jonas> ais523: so? why is that a problem. isn't this for zeroing memory to make sure that no information from before remains? just make sure when you load that block of code that it doesn't have holes, so nothing but that code remains.
+2020-04-12 17:03:52 <ais523> trying to get that to zero itself might be possible, though, because each loop iteration zeroes a huge amount of memory, so you could probably make the last iteration of the loop overwrite the entire program front-to-end
+2020-04-12 17:04:06 <ais523> b_jonas: I guess, but it's inelegant
+2020-04-12 17:04:16 <b_jonas> but if you want to zero that, you could use a slower but smaller zeroing method to zero that
+2020-04-12 17:04:46 <ais523> actually, I can see one potential issue with using an imp to zero memory: because all of memory is now filled with an imp, it guarantees that the entire state of the running program will be wiped out if the instruction pointer ever goes out of bounds, making it hard to debug what happened
+2020-04-12 17:05:17 <ais523> (unless your program counter doesn't wrap)
+2020-04-12 17:05:52 <b_jonas> ais523: also that only works if the memory that you want to write forms a single solid contiguous segment, which is not always true in machines with bank changing or ROM or something
+2020-04-12 17:06:14 <ais523> yes
+2020-04-12 17:06:20 <b_jonas> it doesn't need a page fault, just a ROM that ignores writes
+2020-04-12 17:07:01 User Name: APic = APic!apic@apic.name
+2020-04-12 17:07:01 <APic> Does the Name „Imp“ come from Corewar?
+2020-04-12 17:07:01 <ais523> anyway, on a vaguely related topic: does anyone know of computer storage devices that are reasonably possible to obtain in modern times, that store data (and transmit it to the computer) in 3-bit or 6-bit chunks?
+2020-04-12 17:07:02 <b_jonas> or an unmapped memory area that ignores writes, in case of those old cpus that are in sync with the RAM
+2020-04-12 17:07:04 <ais523> APic: yes
+2020-04-12 17:07:07 <APic> k
+2020-04-12 17:07:26 <b_jonas> ais523: does it have to be hardware? I can emulate such a thing in software
+2020-04-12 17:07:28 <ais523> six-channel paper tape would be an obvious choice but a) tape readers aren't readily available nowadays, b) six-channel is an uncommon size
+2020-04-12 17:07:55 <ais523> b_jonas: ideally yes; I can emulate it in software too, and was planning to, but if the software is itself stored on an 8-bit disk it doesn't fit the intended usecase
+2020-04-12 17:08:01 <b_jonas> I haven't heard of six-row paper tape
+2020-04-12 17:08:08 <b_jonas> only 5 row and 7 row
+2020-04-12 17:09:16 <ais523> I think 8-row was also used
+2020-04-12 17:09:21 <ais523> but yes, 6 was not a standard size
+2020-04-12 17:11:05 <b_jonas> ais523: on some floppy disk hardware, you could define a custom disk format that uses 6-bit bytes
+2020-04-12 17:11:25 <b_jonas> or 12-bit words or something
+2020-04-12 17:12:42 <ais523> I was wondering about reformatting a disk to use words that weren't 8 bits long
+2020-04-12 17:13:01 <ais523> I don't have that much of a grasp about how low-level reformatting of a disk (changing tracks, cylinders, etc.) works
+2020-04-12 17:13:12 <ais523> most of the "formatting" I'm aware of is actually file system creatino
+2020-04-12 17:13:15 <ais523> *creation
+2020-04-12 17:14:19 <b_jonas> ais523: on modern floppy drives, yes, because the hardware floppy controller handles most of those low level ops. but on the Commodore 1541, the floppy drive that is used the most often used with the Commodore 64, there's a cpu and rom and small RAM in the floppy drive that allows the user to reprogram it,
+2020-04-12 17:15:20 <b_jonas> and the program that runs on the floppy drive handles individual low level bit read/write one by one (the cpu is fast enough for that), where the low level bits are such that you can't write more than three consecutive 0s or else it won't reliably read back or some such,
+2020-04-12 17:15:52 <b_jonas> so the floppy drive program encodes 4 logical bits to 5 of those hardware bits, and it decodes an entire sector of I think 256 bytes before it reads it to the computer / after it writes it to the computer
+2020-04-12 17:16:10 <ais523> ooh, maybe you need to reprogram the floppy drive firmware
+2020-04-12 17:16:12 <ais523> I bet it's writable
+2020-04-12 17:16:15 <b_jonas> but programmers often reprogrammed the floppy drive because the default program in the RAM is very slow,
+2020-04-12 17:16:22 <ais523> actually figuring out how to write it is probably much harder tohugh
+2020-04-12 17:16:26 <b_jonas> which is why there's a lot of practical information on the web about how to reprogram it
+2020-04-12 17:16:59 <b_jonas> I don't know if anyone reprogrammed the drive to store 6-bit bytes, or how practical that is, because it's used with 8-bit computers
+2020-04-12 17:18:16 <b_jonas> on the PC, you can't change that part of the program, because the floppy controller handles that part of the decoding itself. you can still change some parts of the floppy format, but I believe not the part of how many bits a byte has.
+2020-04-12 17:19:00 <b_jonas> ais523: I think you can set the serial port of the PC to send and receive 6-bit bytes on a direct serial line, but that doesn't count as storage
+2020-04-12 17:19:22 <ais523> b_jonas: agreed
+2020-04-12 17:20:05 <ais523> setfdprm appears to think in terms of bytes, not bits, so I guess so does Linux
+2020-04-12 17:20:15 <ais523> and probably PC hardware as a whole
+2020-04-12 17:20:30 <ais523> so I guess you'd need to do sixbit-to-byte translation in the drive firmware
+2020-04-12 17:23:53 <ais523> apparently the Amiga's floppy drive controller can be configured to any word size, that's "only" 30 years old
+2020-04-12 17:27:03 Quit: kritixilithos (Ping timeout: 240 seconds)
+2020-04-12 17:27:04 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
