@@ -390,3 +390,103 @@
 2020-04-12 18:26:55 <kspalaiologos> so there's ultimately no reason to query BIOS
 2020-04-12 18:27:25 <b_jonas> well having a uniform sector size is certainly convenient for software
 2020-04-12 18:28:37 <kspalaiologos> anyways
+2020-04-12 18:31:58 <int-e> Hmm. INT 13 - HARD DISK - PS/1 and newer PS/2 - IDENTIFY DRIVE
+2020-04-12 18:32:20 <int-e> Okay, I'm confused here.
+2020-04-12 18:33:05 <int-e> Ah. Microsoft added extensions to INT 13? One of which allows to query the sector size.
+2020-04-12 18:35:09 <int-e> kspalaiologos: But yeah you're right, this is stored in the BPB (which I conveniently forgot about. It has been about 20 years since I actively knew this stuff...).
+2020-04-12 18:35:33 <int-e> My mistake was to look at INT 13 alone, but there is INT 1E - SYSTEM DATA - DISKETTE PARAMETERS
+2020-04-12 18:35:50 <kspalaiologos> also
+2020-04-12 18:35:54 <kspalaiologos> why would you query BIOS
+2020-04-12 18:35:56 <kspalaiologos> CMOS contains all this data
+2020-04-12 18:36:13 <kspalaiologos> I forgot which registers are they, but I'm 100% sure it contains data you need
+2020-04-12 18:36:27 <int-e> Well, eww.
+2020-04-12 18:36:43 <int-e> The BIOS is there so you don't have to do everything with in/out. :P
+2020-04-12 18:37:17 <kspalaiologos> writing CMOS is much cooler
+2020-04-12 18:37:26 <kspalaiologos> and faster!
+2020-04-12 18:37:29 <zzo38> Does any modern PC include a programming environment in ROM? I think it ought to do, whether it is BASIC, Forth, or assembly language. This way the computer is usable even without an operating system.
+2020-04-12 18:37:57 <int-e> ...
+2020-04-12 18:38:37 <int-e> Back in reality, no it doesn't, unless you count the utilities for flashing a new BIOS.
+2020-04-12 18:39:48 <kspalaiologos> you can "accidentally" set a BIOS password
+2020-04-12 18:40:10 <kspalaiologos> switch drive geometry around
+2020-04-12 18:40:19 <kspalaiologos> flash AMI/Award/Phoenix BIOS :P
+2020-04-12 18:41:01 <int-e> I prefer a computer in working order.
+2020-04-12 18:41:18 <kspalaiologos> it's just a personal preference :P
+2020-04-12 18:41:32 <int-e> Let me rephrase.
+2020-04-12 18:41:41 <int-e> This may sound extreme, but I prefer a computer in working order.
+2020-04-12 18:41:46 <kspalaiologos> yes, I know
+2020-04-12 18:42:08 <kspalaiologos> and I stated that I (may) like my old PC screwed
+2020-04-12 18:42:10 <int-e> I'm okay with it not running and Malbolge code though.
+2020-04-12 18:43:31 <kspalaiologos> I wonder could one smh find a vulnerability in the stock Malbolge interpreter
+2020-04-12 18:43:33 <int-e> Oh I have fond memories of a particular HDD failure. It was a 70MB MFM drive, no important data left on it (I think)... for which one of the address bits was broken.
+2020-04-12 18:44:00 <kspalaiologos> a week ago I ran my malware on an old DOS computer
+2020-04-12 18:44:02 <int-e> checkdsk & co. had a field day with it... and it took me some poking around to figure out just how broken it was :)
+2020-04-12 18:44:09 <kspalaiologos> now it doesn't boot from any device
+2020-04-12 18:44:26 <kspalaiologos> the hard disk contents are trashed
+2020-04-12 18:44:37 <int-e> mal(bolge soft)ware
+2020-04-12 18:44:41 <kspalaiologos> lmao
+2020-04-12 18:45:11 <kspalaiologos> I may have discovered a piece of code back then that may make CRT monitors explode
+2020-04-12 18:45:17 <kspalaiologos> but personally, didn't test it :P
+2020-04-12 18:46:17 <kspalaiologos> I wonder would dgx-2 run my chess engine
+2020-04-12 18:46:18 <int-e> capacitors, blue smoke
+2020-04-12 18:46:28 <kspalaiologos> in malbolge
+2020-04-12 18:46:59 <int-e> (You should not be able to blow up the CRT itself. But the high frequency circuit driving the beam... that's an entirely different story.)
+2020-04-12 18:47:07 <esowiki> 14[[07Nyarlathotep14]]4 M10 02https://esolangs.org/w/index.php?diff=70935&oldid=44425 5* 03LegionMammal978 5* (+24) 10/* External resources */ fixed link
+2020-04-12 18:48:15 Joined: kritixilithos
+2020-04-12 18:48:16 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 18:48:26 <int-e> I don't miss CRTs, except for one small thing...
+2020-04-12 18:48:37 <int-e> ...the psychedelic color effects that you could achieve with a magnet.
+2020-04-12 18:48:40 <kspalaiologos> thank god CRT monitors are gone
+2020-04-12 18:48:50 <kspalaiologos> I don't miss a single thing about them
+2020-04-12 18:49:08 <int-e> But really, that's the only positive thing about them that I can remember :)
+2020-04-12 18:49:31 <kspalaiologos> if I had a CRT monitor to spare
+2020-04-12 18:49:33 <int-e> Somebody should emulate it in an LCD. ;)
+2020-04-12 18:49:40 <kspalaiologos> and balls big enough to test the code
+2020-04-12 18:49:50 <kspalaiologos> we'd know definitely :p
+2020-04-12 18:50:04 Joined: ais523
+2020-04-12 18:50:04 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 18:50:08 <kspalaiologos> but it may explode only the cheapy monitors
+2020-04-12 18:50:19 <kspalaiologos> I could write a fuzzer though
+2020-04-12 18:50:37 <int-e> I *have* seen a blown up capacitor that was responsible for the horizontal ray alignment in a monitor I used to have.
+2020-04-12 18:50:50 <zzo38> The good thing about CRT is that it works OK even if the resolution is wrong. Other than that, I think CRT is not as good as LCD.
+2020-04-12 18:51:18 <int-e> I repared that actually... later it totally lost the green beam. That I didn't fix... got a new monitor soon after.
+2020-04-12 18:51:27 <kspalaiologos> also X-Rays
+2020-04-12 18:51:30 <kspalaiologos> that CRT emits
+2020-04-12 18:51:40 <int-e> (I know that it's not the beam that's colored, obviously.)
+2020-04-12 18:52:07 <kspalaiologos> also what's the blue smoke
+2020-04-12 18:52:15 <kspalaiologos> I've never had a crt monitor do that
+2020-04-12 18:52:19 <kspalaiologos> a capacitor is it?
+2020-04-12 18:52:27 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-04-12 18:52:27 <ais523> I'm not sure what specific component burns blue
+2020-04-12 18:52:32 <ais523> capacitor smoke is normally gray, in my experience
+2020-04-12 18:52:35 <int-e> "the face is typically made of thick lead glass so as to be highly shatter-resistant and to block most X-ray emissions"
+2020-04-12 18:52:38 <ais523> although maybe it depends on the type of capacitor
+2020-04-12 18:52:46 <int-e> I don't think the x-ray was a big issue in practice?
+2020-04-12 18:52:58 <int-e> ais523: I did not actually see the smoke :)
+2020-04-12 18:53:16 <ais523> kspalaiologos: re: deleting pages, it can't be done without an administrator verifying the deletion is appropriate/necessary, so that people can't unilaterally delete the history of content
+2020-04-12 18:53:19 <kspalaiologos> one can make a capacitor out of many things
+2020-04-12 18:53:27 <int-e> I guess blue is kind of the default color for smoke I've never seen myself, for no good reason.
+2020-04-12 18:53:30 <ais523> and especially for User talk: pages, which are often used to send people warnings, it's important to maintain a record
+2020-04-12 18:54:02 <kspalaiologos> so I wouldn't be surprised to see a capacitor emit blue smoke
+2020-04-12 18:54:04 <ais523> however, if there's no reason not to delete something and it's primarily the work of one person, we normally delete it on request unless there's a reason not to
+2020-04-12 18:54:25 <kspalaiologos> well my talk page is empty right now, deletion would be a cosmetical change but I don'
+2020-04-12 18:54:27 <kspalaiologos> t really care
+2020-04-12 18:54:56 <kspalaiologos> also, how often it happens that users get warned
+2020-04-12 18:55:11 <kspalaiologos> this wiki isn't moderated like very carefully and amount of trolls is moderately low
+2020-04-12 18:55:21 <int-e> kspalaiologos: haha, https://en.wikipedia.org/wiki/File:Degauss_in_progress.jpg
+2020-04-12 18:55:47 <kspalaiologos> whoa
+2020-04-12 18:55:51 <int-e> (didn't expect to see a picture of that... on Wikipedia)
+2020-04-12 18:56:01 <ais523> wow, it only just crossed my mind that plenty of today's computer users will never have seen a degauss
+2020-04-12 18:56:10 <ais523> back when I was in school we used to degauss monitors for fun
+2020-04-12 18:56:19 <ais523> (which was ultimately good for the monitors too, of course)
+2020-04-12 18:56:52 <kspalaiologos> I didn't see it being performed :P
+2020-04-12 18:57:03 <kspalaiologos> when CRT monitors were in use, I was just an average PC user
+2020-04-12 18:57:10 <ais523> most monitors of the time period had built-in degauss circuits
+2020-04-12 18:57:24 <ais523> so all you needed to do is to know which controls on the monitor triggered them
+2020-04-12 18:58:23 <kspalaiologos> how did you do that manually
+2020-04-12 18:58:33 <kspalaiologos> like when the circuit is not present at all
+2020-04-12 18:58:47 <ais523> you'd probably need a portable degaussing coil
+2020-04-12 18:58:50 <ais523> held close to the screen
+2020-04-12 18:59:36 <int-e> The picture is lacking the *foom* noise that went with the process though... let's check youtube.
+2020-04-12 18:59:37 <kspalaiologos> hmmmm
+2020-04-12 18:59:44 <kspalaiologos> I didn't know such things existed
+2020-04-12 18:59:58 <ais523> the noise of a degaussing is quite hard to describe
