@@ -490,3 +490,81 @@
 2020-04-12 18:59:37 <kspalaiologos> hmmmm
 2020-04-12 18:59:44 <kspalaiologos> I didn't know such things existed
 2020-04-12 18:59:58 <ais523> the noise of a degaussing is quite hard to describe
+2020-04-12 19:00:05 <ais523> kspalaiologos: apparently they were originally invented for use on warships
+2020-04-12 19:00:11 <ais523> so they'd have to be scaled down a lot to be used on a CRT monitor
+2020-04-12 19:00:37 <ais523> (warships benefit from being degaussed because many automated warship-detection devices used magnetism to do the detection)
+2020-04-12 19:00:53 <esowiki> 14[[07OOo CODE14]]4 M10 02https://esolangs.org/w/index.php?diff=70936&oldid=50071 5* 03LegionMammal978 5* (+36) 10/* External resources */ note
+2020-04-12 19:01:04 <kmc> 11:56 < ais523> back when I was in school we used to degauss monitors for fun
+2020-04-12 19:01:05 <kmc> same
+2020-04-12 19:01:12 <kmc> and when you degaussed one monitor it would slightly mess up the one next to it
+2020-04-12 19:01:44 <kmc> and yeah, the Navy had a degaussing station in San Francisco
+2020-04-12 19:01:50 <kmc> you can still go look at the shack which used to contain it
+2020-04-12 19:05:11 <ais523> Wikipedia says that portable degaussing coils for use on monitors exist, but give no information about what they look like, what shape they are, etc.
+2020-04-12 19:06:55 <ais523> it strikes me that maybe ebay will have listings for them
+2020-04-12 19:07:15 <ais523> yep
+2020-04-12 19:07:43 <ais523> there seem to be multiple different designs, some circular, some more wand-like
+2020-04-12 19:08:13 <int-e> https://www.youtube.com/watch?v=Zy-T6m7F_aQ is similar to what I remember
+2020-04-12 19:08:24 <int-e> (degauss sound)
+2020-04-12 19:08:48 <ais523> quite expensive nowadays, but that likely makes sense, I imagine there's not much call to manufacture new ones, so the supply will reduce faster than the demand
+2020-04-12 19:11:33 <b_jonas> when we first had TFT monitors, I liked CRTs because they had more vivid colors. but TFT monitors have improved since.
+2020-04-12 19:12:03 <b_jonas> and CRTs have other drawbacks, like a less sharp image and often flickering unless you drive it on a very high refresh rate
+2020-04-12 19:13:10 <ais523> CRTs often have lots of unnecessary additional circuitry for marketing reasons that slows their response time
+2020-04-12 19:13:17 <ais523> * TFTs, and later OLEDs
+2020-04-12 19:13:24 <ais523> it's the CRTs that typically don't
+2020-04-12 19:13:54 <ais523> I forget what technology modern screens typically use
+2020-04-12 19:14:00 <ais523> I think TFT is outdated by now
+2020-04-12 19:14:55 <ais523> hmm, maybe not, it was apparently used almost universally in 2013 but I can't find newer dat
+2020-04-12 19:14:57 <ais523> *data
+2020-04-12 19:15:25 <b_jonas> kspalaiologos: "deletion would be a cosmetical change" => it got deleted hours ago I think
+2020-04-12 19:15:59 <kspalaiologos> I see now
+2020-04-12 19:16:24 <b_jonas> ais523: "(warships benefit from being degaussed because many automated warship-detection devices used magnetism to do the detection)" => interesting, I didn't know this
+2020-04-12 19:16:38 Joined: Phantom_Hoover
+2020-04-12 19:16:38 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 19:17:06 <ais523> hmm, aparently OLEDs didn't catch on due to having a few issues that were hard to work around
+2020-04-12 19:17:10 <ais523> so probably we still use TFT variants
+2020-04-12 19:17:12 <int-e> ais523: I think the TFT part is still up-to-date (as far as LCD displays are concerned); what has changed are the mechanisms by which the liquid crystals affect the light. https://en.wikipedia.org/wiki/Thin-film-transistor_liquid-crystal_display has a list. TN is traditional, IPS is probably most common
+2020-04-12 19:18:05 <ais523> there are weird points in the comparison, e.g. OLEDs use less power than TFTs to display black, but more to display white
+2020-04-12 19:18:29 <ais523> so which is more efficient depends on what images are being viewed
+2020-04-12 19:19:42 <b_jonas> ais523: I think that's because they use these stupid heuristics where if the image is mostly dark, they turn the brighness of the leds down, which makes sense for stuff like TV films, but less for a computer interface. You can't really do with the fluorescent back lighting that traditional TFTs use.
+2020-04-12 19:19:56 <b_jonas> wait, they use more power to display white? how?
+2020-04-12 19:20:48 <b_jonas> don't LEDs automatically take half or a third of the power of the most efficient non-LED lighting because they are more narrow spectrum, it's just that they also have worse spectrum which is annoying
+2020-04-12 19:20:57 <ais523> b_jonas: the lighting on a TFT is also LED, though
+2020-04-12 19:21:06 <ais523> so maybe OLEDs draw more power than regular LEDs
+2020-04-12 19:21:36 <ais523> also, TFTs use white LEDs for their backlighting
+2020-04-12 19:21:41 <ais523> whereas an OLED uses a mix of red/green/blue
+2020-04-12 19:21:44 <ais523> which may well make a difference
+2020-04-12 19:21:55 <b_jonas> ah
+2020-04-12 19:22:13 <ais523> hmm, I miss being able to use computer monitors with the backlight off
+2020-04-12 19:22:16 <b_jonas> but aren't white leds also a mix of different colored leds?
+2020-04-12 19:22:19 <ais523> it was never very practical, but it was sort-of doable
+2020-04-12 19:22:23 <b_jonas> the magic part is the blue leds
+2020-04-12 19:22:24 <ais523> b_jonas: two rather than three (blue + orange)
+2020-04-12 19:22:40 <b_jonas> and they still are worse in blue than other light sources
+2020-04-12 19:22:47 <b_jonas> ok
+2020-04-12 19:22:49 <ais523> one of my older laptops, with the backlight off the monitor worked just fine in direct sunlight
+2020-04-12 19:22:56 <ais523> (but you had to turn it back on again in dimmer lighting conditions)
+2020-04-12 19:23:00 <b_jonas> ais523: is that a color monitor?
+2020-04-12 19:23:04 <ais523> yes
+2020-04-12 19:23:09 <esowiki> 14[[07Object oriented thue14]]4 10 02https://esolangs.org/w/index.php?diff=70937&oldid=54004 5* 03LegionMammal978 5* (-22) 10/* External resources */ fixed link
+2020-04-12 19:23:21 User Name: Phantom_Hoover = Phantom_Hoover!~phantomho@unaffiliated/phantom-hoover
+2020-04-12 19:23:21 <Phantom_Hoover> yeah you just need a sufficiently reflective back surface i'd guess
+2020-04-12 19:23:26 * ais523 visualises a CRT laptop
+2020-04-12 19:23:38 <b_jonas> ais523: there are "portable computers" with CRT
+2020-04-12 19:23:41 <b_jonas> they made sense back then
+2020-04-12 19:23:49 <ais523> I think the word "luggable" is often used for those
+2020-04-12 19:23:51 <b_jonas> rather small CRTs, mind you
+2020-04-12 19:23:56 <Phantom_Hoover> careful, your neck might collapse under the strain
+2020-04-12 19:24:32 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03LegionMammal978 5*  10moved [[02Object oriented thue10]] to [[Object oriented Thue]]: fix capitalization
+2020-04-12 19:24:32 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03LegionMammal978 5*  10moved [[02Talk:Object oriented thue10]] to [[Talk:Object oriented Thue]]: fix capitalization
+2020-04-12 19:24:41 <Phantom_Hoover> what are the limits on the geometry of a CRT like anyway
+2020-04-12 19:25:00 <Phantom_Hoover> like there's obviously a maximum practical angle on the cone but idk what constrains it
+2020-04-12 19:26:00 <ais523> to get the deflection of the beam (which is what moves it within the cone) you need huge voltages
+2020-04-12 19:26:21 <ais523> also, the greater the deflection angle, the more accurate you have to be
+2020-04-12 19:26:25 <b_jonas> yeah
+2020-04-12 19:27:16 <ais523> so you're trying to rapidly change the voltage on the deflector coils to a sequence of accurate, very high values, very rapidly
+2020-04-12 19:27:29 <ais523> and that's not very easy to do
+2020-04-12 19:27:54 <Phantom_Hoover> especially given the deflector coils are presumably inductors
+2020-04-12 19:28:14 <ais523> yes
+2020-04-12 19:28:37 <ais523> although in this case the back-emf is basically only a problem during power on and power off, and maybe hblank
+2020-04-12 19:29:05 <ais523> because you're changing the value in a set pattern and can allow for the inductance in advance
+2020-04-12 19:29:25 <ais523> (also, during hblank, the beam is turned off so it doesn't matter if the voltage doesn't change instantly or linearly)
