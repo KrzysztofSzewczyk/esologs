@@ -338,3 +338,55 @@
 2020-04-12 17:58:48 <int-e> 256 byte sector? What hardware is that...
 2020-04-12 17:59:00 <b_jonas> int-e: no, it could be incrementally decodable
 2020-04-12 17:59:53 <int-e> b_jonas: Hmm, not reliably.
+2020-04-12 18:00:08 <b_jonas> int-e: 256 byte sectors for the default format for the Commodore 1541 floppy drive still, but I think also PC floppy drives in some of the lower density modes
+2020-04-12 18:01:50 <b_jonas> int-e: https://en.wikipedia.org/wiki/List_of_floppy_disk_formats
+2020-04-12 18:02:58 <b_jonas> hmm no, that page says that PC floppy disk has formats with sector sizes 128, 1024, and 512 bytes. funny.
+2020-04-12 18:03:29 <b_jonas> and the first two only for the big floppy disks, so mostly just 512 bytes per sector
+2020-04-12 18:03:46 <b_jonas> so the Commodore formats then
+2020-04-12 18:06:26 Quit: ais523 (Ping timeout: 258 seconds)
+2020-04-12 18:06:26 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 18:14:08 <tromp> int-e: i'm glad to hear you find the new rule sound
+2020-04-12 18:19:13 <tromp> with the new rule, your BBx.hs will be able to examine all 35-bit terms except for some that follow this pattern:
+2020-04-12 18:19:19 <tromp> > toughtriples :: DB -> Bool
+2020-04-12 18:19:19 <tromp> > toughtriples (DBApp (DBLam (DBApp (DBApp (DBVar 0) (DBVar 0)) (DBVar 0))) (DBLam (DBLam (DBApp (DBVar 1) (DBApp (DBVar 1) _)))) ) = True
+2020-04-12 18:19:19 <tromp> > toughtriples _ = False
+2020-04-12 18:19:23 <lambdabot> <hint>:1:131: error:
+2020-04-12 18:19:23 <lambdabot> parse error on input ‘=’
+2020-04-12 18:19:24 <lambdabot> Perhaps you need a 'let' in a 'do' block?
+2020-04-12 18:19:24 <lambdabot> error:
+2020-04-12 18:19:24 <lambdabot> Not in scope: type constructor or class ‘DB’
+2020-04-12 18:19:25 <lambdabot> <hint>:1:16: error:
+2020-04-12 18:19:27 <lambdabot> parse error on input ‘=’
+2020-04-12 18:19:29 <lambdabot> Perhaps you need a 'let' in a 'do' block?
+2020-04-12 18:19:41 <int-e> lambdabot: woah, hold your horses
+2020-04-12 18:19:54 <int-e> tromp: this is a good argument against literate Haskell ;)
+2020-04-12 18:19:57 <tromp> ok, so pasting from literate Haskell is not the brightest idea:(
+2020-04-12 18:20:47 <tromp> it's terms like (\1 1 1) (\\2 (2 (???)))
+2020-04-12 18:21:12 <int-e> right, (\1 1 1) (\\2 (2 _))
+2020-04-12 18:21:44 <tromp> including our friend 3^3^3
+2020-04-12 18:21:44 <int-e> Oh is that the thing that explodes?
+2020-04-12 18:22:01 <tromp> and the inscrutable (\1 1 1) (\\2 (2 (1 2)))
+2020-04-12 18:22:03 <int-e> Makes sense, I guess.
+2020-04-12 18:22:12 <tromp> which could beat it
+2020-04-12 18:23:21 <kspalaiologos> possibly I may be having a brainfart right now, but I can't figure out one thing
+2020-04-12 18:23:29 <int-e> b_jonas: As far as I can see, the IBM BIOS had no function for querying the sector size... so from some point onwards everybody assumed 512 bytes.
+2020-04-12 18:23:32 <kspalaiologos> imagine an uint of given size
+2020-04-12 18:23:38 <tromp> note the similarity with the BB 31 recordholder (\1 1) (\\2 (2 (1 2)))
+2020-04-12 18:23:42 <int-e> b_jonas: the PC one, I mean
+2020-04-12 18:23:58 <kspalaiologos> now if it contains a certain value, and I'll keep subtracting a certain value from it over and over again
+2020-04-12 18:23:59 <int-e> tromp: Yeah I noticed the similarity.
+2020-04-12 18:24:13 <kspalaiologos> how can I determine will it ever reach zero
+2020-04-12 18:24:48 <tromp> \\2 (2 (1 2)) is the evil twin of \\2 (2 (2 1))    :-)
+2020-04-12 18:24:52 <int-e> kspalaiologos: check which of the value has more 0 bits at the end.
+2020-04-12 18:25:18 <kspalaiologos> 5 and 3 will finish
+2020-04-12 18:25:30 <kspalaiologos> 5 has more of them
+2020-04-12 18:25:52 <kspalaiologos> 5 and 6 won't finish
+2020-04-12 18:25:58 <kspalaiologos> and 5 still has more 0 bits at the end
+2020-04-12 18:26:12 <int-e> ka = b (mod m) has a solution k if gcd(a, m) divides b. In this case, m is a power of 2, 2^n, and the gcd can be found by looking at the trailing 0 bits.
+2020-04-12 18:26:18 <b_jonas> int-e: is that for the floppy or for the hard disk?
+2020-04-12 18:26:24 <int-e> b_jonas: yes.
+2020-04-12 18:26:31 <kspalaiologos> both
+2020-04-12 18:26:45 <kspalaiologos> isn't sector size saved in BPB?
+2020-04-12 18:26:55 <kspalaiologos> so there's ultimately no reason to query BIOS
+2020-04-12 18:27:25 <b_jonas> well having a uniform sector size is certainly convenient for software
+2020-04-12 18:28:37 <kspalaiologos> anyways
