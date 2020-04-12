@@ -120,3 +120,27 @@
 2020-04-12 10:43:07 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-12 10:52:05 Joined: LKoen
 2020-04-12 10:52:05 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, ositoblanco, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-12 11:01:54 <int-e> I've found another use for unshare() :-) http://paste.debian.net/1139892/
+2020-04-12 11:13:18 User Name: olsner = olsner!~salparot@c80-217-180-83.bredband.comhem.se
+2020-04-12 11:13:18 <olsner> hm, so that has to be setuid to be allowed to unshare? always seemed counterintuitive that sandboxing requires *additional* privileges... anything should be allowed to go further down its own rabbithole
+2020-04-12 11:14:16 <b_jonas> olsner: you can use most of clone unprivilaged
+2020-04-12 11:14:22 <b_jonas> and do some sandboxing for it
+2020-04-12 11:14:47 <b_jonas> but I think you need to be root to set up bridge network devices in the containing host, which is very useful for sandboxing
+2020-04-12 11:14:48 <int-e> b_jonas: oh, can I do that, hmm.
+2020-04-12 11:15:33 <b_jonas> olsner: anyway, that you can do sandboxing as user is a noble goal, and the Linux devs are trying to go there, but the fact is, it's really hard to get right, and we don't want to compromise the kernel with security bugs because of that, so it's going slow
+2020-04-12 11:16:08 <int-e> "Only a privileged process (CAP_SYS_ADMIN) can employ CLONE_NEWNET."
+2020-04-12 11:16:35 <b_jonas> int-e: yes, which make sense, you couldn't modify the network devices in the other namespace as non-root anyway
+2020-04-12 11:17:07 <b_jonas> in practice, you set up the sandbox with root privilages, then let the non-user access it
+2020-04-12 11:17:25 <int-e> I should probably learn about that. (At least set up a loopback device)
+2020-04-12 11:17:51 <b_jonas> int-e: sadly I don't know the details of sandbox network setup. I should learn about it some day.
+2020-04-12 11:18:19 <int-e> Yeah exactly my point, I don't know about it either.
+2020-04-12 11:18:25 <b_jonas> I guess start from (man 8 ip) and ask on irc
+2020-04-12 11:19:16 <int-e> There's also network_namespaces(7).
+2020-04-12 11:19:26 <olsner> makes sense that to e.g. bridge to a physical interface you'd need outside-system privileges, but it ought to be possible to e.g. set up an isolated sandbox and talk to it (e.g. do user-space port forwarding) without ever going "up" in privileges
+2020-04-12 11:20:22 <int-e> olsner: but why put all that policy into the kernel when you can write a userspace daemon to do all that
+2020-04-12 11:22:10 <int-e> (At the cost of messing up the process parenthood story.)
+2020-04-12 11:23:41 <int-e> Anyway, some day... and in the meantime I'll enjoy the 5 minute hack.
+2020-04-12 11:24:18 <int-e> b_jonas: Another starting point is the  unshare  command line tool, which supports at least some of the networking stuff.
+2020-04-12 11:27:34 Joined: Sgeo
+2020-04-12 11:28:17 <b_jonas> `? password
+2020-04-12 11:28:19 <HackEso> The password of the month is starving for attention.
