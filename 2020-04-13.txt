@@ -296,3 +296,77 @@
 2020-04-13 15:50:35 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-13 15:59:22 <oren> #! just gives me an warning
 2020-04-13 15:59:50 <b_jonas> hmm
+2020-04-13 16:00:36 <oren> Oh, right, that's because I'm using tcc
+2020-04-13 16:00:51 <oren> lol I forgot that my "cc" command is tcc
+2020-04-13 16:01:07 <oren> gcc throws an error
+2020-04-13 16:01:52 <b_jonas> ah
+2020-04-13 16:02:25 <oren> tcc supports shebang lines so you can have executable C "scripts"
+2020-04-13 16:02:27 <b_jonas> also, you invoke cc ? I always invoke gcc or g++ directly, rather than cc and c++
+2020-04-13 16:02:44 Joined: ais523
+2020-04-13 16:02:44 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 16:03:58 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-04-13 16:03:58 <ais523> b_jonas: based on experience with the megapolyglot, we believe the most portable way to start a program is with a "pre-preprocessed #line directive"
+2020-04-13 16:04:06 <ais523> which looks like # then a number then a string
+2020-04-13 16:04:16 <b_jonas> ais523: for a pre-processed file, sure
+2020-04-13 16:04:22 <b_jonas> pre-processed C file
+2020-04-13 16:04:28 <b_jonas> but then you can't use the preprocessor
+2020-04-13 16:04:35 <ais523> b_jonas: most C compilers are happy to accept pre-preprocessed input and will preprocess it a second time
+2020-04-13 16:04:42 <b_jonas> that doesn't hurt the polyglot much, but in real world C source files I want to use preprocessor directives
+2020-04-13 16:04:56 <b_jonas> wait really? they just accept a line directive?
+2020-04-13 16:04:57 <b_jonas> nice
+2020-04-13 16:05:01 <ais523> as are, oddly, many implementations for languages other than C, even if they don't normally use the C preprocessor
+2020-04-13 16:05:03 <b_jonas> I mean an output line directive
+2020-04-13 16:05:36 <ais523> yep, just tested
+2020-04-13 16:05:57 <b_jonas> ok
+2020-04-13 16:05:59 <ais523> # 1 "hello.c" \ int main(void) { \   puts("Hello, world!"); \ }
+2020-04-13 16:06:13 <ais523> compiled under gcc I get a warning for "hello.c" even though the file is named something else, about the implicit definition of puts
+2020-04-13 16:06:20 <ais523> and the resulting executable works fine
+2020-04-13 16:06:24 <b_jonas> um, that doesn't actually have a preprocessor directive like #include <stdio.h> after the line directive
+2020-04-13 16:06:50 <ais523> OK, I added a preprocessor directive, and it was honoured
+2020-04-13 16:06:55 <b_jonas> good
+2020-04-13 16:07:08 <ais523> which is not surprising, how would it know to turn the preprocessor off when it encountered the compiled-#line?
+2020-04-13 16:07:34 <b_jonas> yeah. I just expected that the output preprocessor line would give an error in the preprocessor
+2020-04-13 16:07:45 <ais523> it works in clang too: https://tio.run/#c-clang
+2020-04-13 16:07:47 <ais523> err
+2020-04-13 16:07:54 <ais523> https://tio.run/##S9ZNzknMS///X1nBUEEpIzUnJ18vWYlLOSU1LTMvVaG4pLRAoaC0pJgrM69EITcxM0@jLD8zRVOhmksBLKmh5AHSo6NQnl@Uk6KopGnNVcv1/z8A
+2020-04-13 16:08:22 <ais523> and tcc: https://tio.run/##S9YtSU7@/19ZwVBBKSM1JydfL1mJSzklNS0zL1WhuKS0QKGgtKSYKzOvRCE3MTNPoyw/M0VToZpLASypoeQB0qOjUJ5flJOiqKRpzVXL9f8/AA
+2020-04-13 16:08:28 <ais523> I've run out of C compilers to check on TIO now, though
+2020-04-13 16:10:37 <ais523> anyway, for ages the polyglot started with a compiled-#line directive then /*
+2020-04-13 16:10:52 <ais523> which causes a huge number of languages to temporarily suspend the parser
+2020-04-13 16:10:55 <b_jonas> https://rextester.com can compile with MSVC :-)
+2020-04-13 16:11:17 <ais523> (the filename was chosen to put lots of esolangs into a comment / string literal / large jump, too)
+2020-04-13 16:12:04 <ais523> source_file.c(1): error C2019: expected preprocessor directive, found '1'
+2020-04-13 16:12:06 <ais523> aww
+2020-04-13 16:12:29 <b_jonas> I don't know what version of MSVC it runs though
+2020-04-13 16:12:32 <ais523> I guess it wouldn't be the first time MSVC didn't follow a de-facto standard that nonetheless wasn't an actual standard
+2020-04-13 16:12:39 <ais523> Microsoft (R) C/C++ Optimizing Compiler Version 19.00.23506 for x64
+2020-04-13 16:12:55 <b_jonas> that's recent
+2020-04-13 16:12:55 <b_jonas> nice
+2020-04-13 16:15:47 <oren> yeah when I compile things I use cc typically, i think because one of my first computers had gcc installed as "cc" and didn't accept a "gcc" command
+2020-04-13 16:16:00 <b_jonas> I see
+2020-04-13 16:16:43 <oren> what's really weird is now you see people with clang installed as "gcc"
+2020-04-13 16:17:15 <b_jonas> that's not too weird, clang is pretty closely compatible to gcc
+2020-04-13 16:18:27 <oren> but what that means is, "gcc" has become so intrenched as "the command to compile stuff"
+2020-04-13 16:18:57 <oren> cc has been forgoten, even though it's one less letter to type
+2020-04-13 16:19:12 <b_jonas> yes, because before linux and gcc got so spread, there were computers with separate cc and gcc commands. that's why autoconf scripts try gcc first, before cc
+2020-04-13 16:19:41 <b_jonas> also now there's c99 as a command name too
+2020-04-13 16:19:57 <b_jonas> because of POSIX or something like that
+2020-04-13 16:20:47 <ais523> oren: my first UNIXish environment had cc as provided by the OS manufacturer, it wasn't gcc
+2020-04-13 16:21:18 <ais523> it also had c99 but I didn't discover that for ages, and it was presented as though it were an entirely separate program from cc (although of course they probably shared a lot of code)
+2020-04-13 16:21:43 <ais523> so I still think of cc as being "the OS stock C compiler" and gcc as being a specific C compiler
+2020-04-13 16:21:54 <ais523> and on Linux, assume that the two are the same, as gcc is the standard C compiler on Linux
+2020-04-13 16:22:00 <ais523> (but this doesn't hold on other Unices)
+2020-04-13 16:22:29 <b_jonas> just as glibc is also the standard on linuxes, but it might be one of the other brands of libc that imitate glibc
+2020-04-13 16:22:54 <ais523> "gcc" on Mac OS X is normally actually clang, isn't it, nowadays?
+2020-04-13 16:23:18 <ais523> now I'm interested in what "cc" typically is on BSD
+2020-04-13 16:23:36 <b_jonas> may depend on which BSD
+2020-04-13 16:23:55 <ais523> I was wondering about that
+2020-04-13 16:24:35 <ais523> I'm surprised that BSD doesn't get more attention, actually; it's a perfectly solid OS and for most programs, it's very comparable to Linux, with easy porting both ways
+2020-04-13 16:25:32 <myname> hardware compatibility, probably
+2020-04-13 16:26:08 <ais523> that sort-of makes sense, I assume it has a smaller community of driver-writers
+2020-04-13 16:26:24 <ais523> I'd expect the hardware compatibility to be at least decent on older machines, though
+2020-04-13 16:28:24 <b_jonas> I suspect that BSD doesn't get much attention because it's non-proselytizing, or however that word is called, that is, there is a small community of people who use BSD, but they aren't actively trying to convince other people to also use BSD, whereas Linux fanatics try to convince people to use Linux all the time
+2020-04-13 16:29:01 <ais523> well, when programmers proselytize, they often do so by writing code to make things more user-friendly
+2020-04-13 16:29:13 Joined: xkapastel
+2020-04-13 16:29:13 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 16:29:42 <b_jonas> that's the good kind, yes
