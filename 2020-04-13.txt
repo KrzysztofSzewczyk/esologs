@@ -11,3 +11,8 @@
 2020-04-13 00:48:13 <zzo38> One idea I thought of for Magic: the Gathering, is there is meld to make a single object from two objects, which are then two objects again when it leaves the battlefield, so I thought the other way would be something that causes the card to become two objects once it enters the battlefield, and then moving either or both of them causes it to become a single object again.
 2020-04-13 00:51:34 <zzo38> That is even more confusing, I think, but perhaps rules can be written which can work.
 2020-04-13 00:55:04 <zzo38> I thought, each half can have different characteristics, timestamps, controller, counters, status, damage, etc, but never different owners or zone.
+2020-04-13 01:01:24 <esowiki> 14[[07PyText?!.14]]4 10 02https://esolangs.org/w/index.php?diff=70966&oldid=53077 5* 03LegionMammal978 5* (+17) 10fixed code block
+2020-04-13 01:08:09 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03LegionMammal978 5*  10moved [[02Q-Bal10]] to [[Q-BAL]]: fix capitalization
+2020-04-13 01:08:40 <esowiki> 14[[07Q-BAL14]]4 10 02https://esolangs.org/w/index.php?diff=70969&oldid=70967 5* 03LegionMammal978 5* (+0) 10fixed capitalization
+2020-04-13 01:09:39 <zzo38> The problem is in case two effects conflict in which zone they are trying to move the two halfs to.
+2020-04-13 01:15:07 <zzo38> But, I think there are solutions to this too. One is the case of replacement effects, in which case the normal rules for replacement effects apply. The other case is if an effect tries to move one half to one zone and the other have to another zone, then it moves to the first zone, and the other half is no longer in the battlefield so the effect fails to find it and fails to move it.
