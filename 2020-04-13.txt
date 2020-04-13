@@ -24,3 +24,41 @@
 2020-04-13 01:46:18 Joined: sftp
 2020-04-13 01:46:19 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-13 01:58:10 <esowiki> 14[[07Qwertyuiopasdfghjkl;vb14]]4 M10 02https://esolangs.org/w/index.php?diff=70971&oldid=56020 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-13 02:00:59 <Sgeo> What file formats allow for one file that can be read in multiple formats?
+2020-04-13 02:14:10 <zzo38> Can you explain better what you mean, perhaps?
+2020-04-13 02:19:27 <ais523> Sgeo__: you mean like a polyglot?
+2020-04-13 02:19:53 <ais523> the main restriction is that the two formats can't require conflicting bytes at the same byte position (e.g. magic numbers that clash)
+2020-04-13 02:20:01 <Sgeo> Yes, like a file format polygot, png and something else for instance. I copuld have sworn I saw one in a book about web securit
+2020-04-13 02:20:02 <Sgeo> y
+2020-04-13 02:20:22 <ais523> normally, if there isn't something that obviously blocks it like that, you can make it work
+2020-04-13 02:20:38 <ais523> I vaguely remember that zip has its header at the end, so zip/something polyglots are common
+2020-04-13 02:21:30 <ais523> yep
+2020-04-13 02:21:38 <shachaf> Windows PE files don't have their header at the beginning, if I remember correctly?
+2020-04-13 02:21:41 <ais523> oh wow this format is stupid
+2020-04-13 02:22:06 <ais523> the zip file header comes at the end of the file, but its last field is free text (length-prefixed), it's variable length, and the header is at the start
+2020-04-13 02:22:19 <ais523> this implies among other things that it's possible to polyglot zip with itself without violating the format
+2020-04-13 02:22:22 <ais523> s oyou get an ambiguous zip file
+2020-04-13 02:23:14 <ais523> shachaf: there are two headers, one is the "MZ" magic number that has to go at the start but just indicates a DOS/Windows executable in general, there's a second header at a fixed offset that clarifies what sort of executable
+2020-04-13 02:23:32 <zzo38> You could have PNG and ZIP together; I have done that.
+2020-04-13 02:23:47 <shachaf> Hmm, maybe the MZ is still required, which would make sense.
+2020-04-13 02:24:04 <shachaf> But I vaguely remember something about a PE polyglot of some sort.
+2020-04-13 02:24:18 <ais523> "MZ" is probably short enough to work into a polyglot with something else
+2020-04-13 02:24:24 <ais523> source code, for example
+2020-04-13 02:24:54 <ais523> oh wow, could you create source code that compiles into itself?
+2020-04-13 02:24:57 <ais523> a sort of compile-time quine
+2020-04-13 02:25:19 <shachaf> Treating the compiler as an interpreter.
+2020-04-13 02:26:05 <esowiki> 14[[07Rand.Next()14]]4 M10 02https://esolangs.org/w/index.php?diff=70972&oldid=31579 5* 03LegionMammal978 5* (+14) 10fixed title
+2020-04-13 02:26:18 <shachaf> I suspect it wouldn't be possible with typical architectures and languages.
+2020-04-13 02:26:18 <ais523> well, you could go further and make the resulting executable print itself when actually run, too
+2020-04-13 02:26:46 <ais523> the problem is that languages have a fixed executable stub, normally, which clearly isn't valid source code
+2020-04-13 02:26:58 <ais523> at least if we're talking about Windows .exe
+2020-04-13 02:27:11 <shachaf> You could generate .com
+2020-04-13 02:27:11 <ais523> and I'm not sure what sort of linker magic you'd need to replace it
+2020-04-13 02:27:17 <ais523> .com would be a lot easier, yes
+2020-04-13 02:27:21 <zzo38> COM format DOS programs do not have MZ at the beginning; it is x86 instructions.
+2020-04-13 02:27:45 <shachaf> But even that doesn't sound very feasible with most languages.
+2020-04-13 02:28:11 <ais523> you just need to start a comment in one or the other language as soon as possible
+2020-04-13 02:29:02 <shachaf> Hmm.
+2020-04-13 02:29:30 <ais523> bleh, '/' isn't a valid machine code instruction on x86
+2020-04-13 02:29:36 <ais523> err, on x86_64
+2020-04-13 02:29:42 <ais523> .com is 32-bit, though, it might be valid there
