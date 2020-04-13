@@ -230,3 +230,62 @@
 2020-04-13 14:54:49 <b_jonas> Sgeo__: this yes, some files can contain fixed strings that help users identify the type of file, but aren't actually read by the reader, so they're optional.
 2020-04-13 14:55:33 <b_jonas> eg. many of my perl or python scripts start with a shebang line that is not really used for anything but helpful as a programmer
 2020-04-13 14:55:45 <b_jonas> #!perl or #!python3
+2020-04-13 15:01:26 <myname> aren't shebangs supposed to be absolute paths?
+2020-04-13 15:01:49 <myname> which is why you are seeing /bin/env python or the like
+2020-04-13 15:02:01 <b_jonas> myname: if you want to execute the script directly then yes
+2020-04-13 15:02:08 <b_jonas> but I don't do that, I execute them with perl or python3
+2020-04-13 15:02:21 <b_jonas> perl still reads command-line options from there
+2020-04-13 15:02:34 <b_jonas> and python has a py wrapper that reads the version number (python2 vs python3) and a bit more
+2020-04-13 15:02:41 <b_jonas> but I don't really use those features
+2020-04-13 15:02:51 <b_jonas> these are just mostly for convenience as a human
+2020-04-13 15:03:10 <b_jonas> also the .pl extension is terribly ambiguous
+2020-04-13 15:03:27 <b_jonas> at one point I wondered if we should just use .pm as the extension of all perl scripts
+2020-04-13 15:06:43 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-04-13 15:06:43 <ais523> @pl \x y -> y x
+2020-04-13 15:06:43 <lambdabot> flip id
+2020-04-13 15:06:59 <ais523> together with Perl and Prolog that's at least three meanings of pl
+2020-04-13 15:07:15 <b_jonas> that too, yes
+2020-04-13 15:07:21 <ais523> also I think there are circumstances under which shebangs work without the /
+2020-04-13 15:07:31 <ais523> but it probably depends a lot on the shell and OS
+2020-04-13 15:07:50 <ais523> there are some UNIXes which treat the magic number for an executable as "#! /" (four bytes)
+2020-04-13 15:07:58 <ais523> which is why I typically put a space in my shebangs
+2020-04-13 15:08:07 <ais523> even though I think that's an obsolete way of doing it
+2020-04-13 15:08:07 <b_jonas> I didn't know that
+2020-04-13 15:08:14 <b_jonas> I never put a space
+2020-04-13 15:08:43 <b_jonas> I just like shebang as a human-readable way to declare the type of a file, even to people not familiar with that file format
+2020-04-13 15:09:06 <b_jonas> obviously there are many formats where it doesn't work because they have a magic number at the start
+2020-04-13 15:09:26 <b_jonas> but file formats could be designed such that the magic number isn't at the start, so you can put a short comment at the start
+2020-04-13 15:10:19 <b_jonas> especially esoteric file formats
+2020-04-13 15:10:19 <ais523> <Wikpedia> It has been claimed that some old versions of Unix expect the normal shebang to be followed by a space and a slash (#! /), but this appears to be untrue;[citation needed]
+2020-04-13 15:10:20 <ais523> OK, that makes things even more interesting
+2020-04-13 15:10:21 <ais523> especially the {{cn}}
+2020-04-13 15:10:51 <esowiki> 14[[07Small14]]4 10 02https://esolangs.org/w/index.php?diff=70989&oldid=62150 5* 03LegionMammal978 5* (-571) 10rewrapped code blocks
+2020-04-13 15:12:25 Joined: kritixilithos
+2020-04-13 15:12:25 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 15:12:46 <ais523> in a work-in-progress version of Underlambda I put a shebang /in/ the magic number
+2020-04-13 15:12:46 <ais523> but it was controversial
+2020-04-13 15:12:47 Quit: ais523 (Remote host closed the connection)
+2020-04-13 15:12:47 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 15:12:55 <b_jonas> ais523: does linux even allow a space between the shebang and the interpreter filename, for the purpose of plain execve?
+2020-04-13 15:13:27 <b_jonas> oh also, it can be worth to design a file format such that it at least ignores a shebang line
+2020-04-13 15:13:56 <b_jonas> modern shell scripts already have that property, as well as perl and python scripts
+2020-04-13 15:14:00 Joined: ais523
+2020-04-13 15:14:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 15:14:09 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-04-13 15:14:09 <ais523> b_jonas: I believe it does
+2020-04-13 15:14:33 <ais523> one of the larger reasons for # comments is so that they're shebang-compatible
+2020-04-13 15:14:35 User Name: kritixilithos = kritixilithos!~kritixili@gateway/tor-sasl/kritixilithos
+2020-04-13 15:14:35 <kritixilithos> tromp: how are you defining busy beaver in BB.txt?
+2020-04-13 15:14:44 <ais523> and there are some languages that don't have # comments, but ignore the first line if it starts with #!
+2020-04-13 15:15:03 <b_jonas> ais523: no, I think that's backwards, the shebang magic bytes were chosen because they're compatible with shell script comments
+2020-04-13 15:16:00 <ais523> b_jonas: can't both be true?
+2020-04-13 15:16:16 <tromp> kritixilithos: see https://mathoverflow.net/questions/353514/whats-the-smallest-lambda-calculus-term-not-known-to-have-a-normal-form
+2020-04-13 15:16:20 <ais523> new language uses # comments, to be compatible with other tooling that assumes # comments
+2020-04-13 15:18:15 <b_jonas> ais523: probably, for some new languages
+2020-04-13 15:18:47 <b_jonas> also it's a pity that C preprocessors don't ignore the #! line, not even if you use a double slash at the start of the path
+2020-04-13 15:19:13 <b_jonas> so there's probably no way to start a C source file with a shebang
+2020-04-13 15:23:04 Quit: ais523 (Remote host closed the connection)
+2020-04-13 15:23:04 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 15:24:18 Joined: ais523
+2020-04-13 15:24:18 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 15:24:25 <b_jonas> not until someone adds an extension to the C preprocessor where #! is a null directive
