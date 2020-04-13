@@ -370,3 +370,39 @@
 2020-04-13 16:29:13 Joined: xkapastel
 2020-04-13 16:29:13 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-04-13 16:29:42 <b_jonas> that's the good kind, yes
+2020-04-13 16:31:33 <b_jonas> plus I think it's also that at least some BSD activity focuses on using BSD in servers and routers and the like
+2020-04-13 16:31:58 <b_jonas> rather than workstations or mobile phones
+2020-04-13 16:32:20 <ais523> huh, assuming you aren't on Windows: http://localhost:631
+2020-04-13 16:32:32 <ais523> I kind-of hope that thing's firewalled by default
+2020-04-13 16:33:07 <b_jonas> just look at https://www.pcbsd.org , they used to brand themselves as a FreeBSD variant useful as a desktop environment for ordinary home users, but the distribution has disappeared or got renamed, and they now target servers
+2020-04-13 16:33:20 <ais523> I guess that's one way to make a semi-major part of an operating system OS-independent but it still seems really weird
+2020-04-13 16:33:22 <b_jonas> ais523: is that the printer server?
+2020-04-13 16:33:49 <b_jonas> I don't have anything running on that port here
+2020-04-13 16:34:12 <ais523> b_jonas: yes
+2020-04-13 16:34:20 <ais523> it even has Apple branding
+2020-04-13 16:34:25 <ais523> despite me being on Linux
+2020-04-13 16:35:03 <ais523> it seems to contain a list of everything I've ever printed, too
+2020-04-13 16:35:15 <ais523> (although I hardly ever print things so it's quite short)
+2020-04-13 16:49:24 <ais523> hmm, I wonder what the greatest proportion of the set of all bytestrings is, such that after all common sorts of encoding-related damage, the original string can be uniquely reconstructed
+2020-04-13 16:49:58 <ais523> obviously sticking to printable ASCII survives all common forms of encoding-related damage, but I think you safely can expand this into some of the control codes and high-bit-set characters
+2020-04-13 16:50:19 <ais523> (but not all of them, because you need to be able to, e.g., distinguish an unchanged source from mojibake)
+2020-04-13 16:51:27 <esowiki> 14[[07Stacked Brainfuck14]]4 10 02https://esolangs.org/w/index.php?diff=70990&oldid=39483 5* 03LegionMammal978 5* (+36) 10/* Implementation */ fixed link
+2020-04-13 16:52:11 <b_jonas> that may depend on what you count as encoding-related. does word-wrapping count? HTML turning whitespace sequences to single spaces?
+2020-04-13 16:52:33 <b_jonas> old forums that output HTML from wiki-like input that change some spaces to nbsp?
+2020-04-13 16:54:47 <ais523> I think all those examples count
+2020-04-13 16:54:55 <ais523> so sticking to printable ASCII is not in fact enough
+2020-04-13 16:55:05 <ais523> (another encoding-related issue that can happen in printable ASCII: & becoming &amp;)
+2020-04-13 16:55:50 <b_jonas> oh yes, that too
+2020-04-13 16:56:18 <ais523> there's also the case of stray = signs from quoted-printable
+2020-04-13 16:56:29 <ais523> which can affect even input that's entirely alphanumeric
+2020-04-13 16:56:40 <b_jonas> would it count when web thingies replace anything with an @ sign in it with some javascript email address protection thing? when twitter or twitch chat replaces anything with a dot in it with a http hyperlink?
+2020-04-13 16:56:44 <ais523> and ASCII/EBCDIC misinterpretation, I guess, although that isn't common nowadays
+2020-04-13 16:57:14 <ais523> b_jonas: the former of those is done by Cloudflare under some circumstances, isn't it?
+2020-04-13 16:57:18 <ais523> which makes it very common
+2020-04-13 16:57:24 <ais523> and the latter is also frequently seen
+2020-04-13 16:57:36 <b_jonas> I've first seen it on the FSF's mailing list archive web interface
+2020-04-13 16:57:48 <ais523> (another related issue: ASCII sequences that look like emoticons being replaced with Unicode or even <img>-tag-based smileys)
+2020-04-13 16:58:07 <ais523> b_jonas: oh right, mailing list archives do that too
+2020-04-13 16:58:09 <b_jonas> oh yeah, Mibbit
+2020-04-13 16:58:27 <b_jonas> as well as some phpbb, and in fact twitch chat too now that I think of it
+2020-04-13 16:58:51 <b_jonas> changing the :D to a smiley in Data::Dumper, turning :) and :-) to the same thing
