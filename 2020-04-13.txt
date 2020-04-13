@@ -62,3 +62,34 @@
 2020-04-13 02:29:30 <ais523> bleh, '/' isn't a valid machine code instruction on x86
 2020-04-13 02:29:36 <ais523> err, on x86_64
 2020-04-13 02:29:42 <ais523> .com is 32-bit, though, it might be valid there
+2020-04-13 02:30:20 <ais523> ooh, it is
+2020-04-13 02:30:22 <ais523> also, I'm wrong
+2020-04-13 02:30:24 <ais523> .com is 16-bit
+2020-04-13 02:30:50 <shachaf> Hmm, https://www.felixcloutier.com/x86/das
+2020-04-13 02:30:53 <ais523> but "/*" corresponds to DAS followed by the first byte of a SUB instruction
+2020-04-13 02:30:55 <ais523> we can live with that
+2020-04-13 02:32:07 <ais523> actually we can't, short of inline asm
+2020-04-13 02:32:14 <ais523> but I guess inline asm is acceptable in a challenge like this
+2020-04-13 02:32:27 <ais523> or defining main as raw machine code, I guess
+2020-04-13 02:32:37 <shachaf> I thought your input would be assembly in the first place.
+2020-04-13 02:32:43 <ais523> oh, I was thinking C
+2020-04-13 02:32:50 <ais523> if very system-specific C
+2020-04-13 02:33:35 <shachaf> ; is CMP
+2020-04-13 02:35:02 <ais523> aww, I have a 16-bit compiler on this system but it seems to be missing the appropriate libraries to compile to DOS .com
+2020-04-13 02:35:22 <ais523> I guess the next question is "why do I have a 16-bit C compiler on this system" but I assume there was a reason at the time
+2020-04-13 02:36:01 <ais523> it takes K&R C as input; again I'm not entirely sure why
+2020-04-13 02:36:08 <ais523> but in my test program I had to correct "int main(void)" to "int main()"
+2020-04-13 02:36:27 <shachaf> `asm cmp eax, [rax]
+2020-04-13 02:36:28 <HackEso> 0:  3b 00   cmp eax,DWORD PTR [rax]
+2020-04-13 02:36:33 <shachaf> `cat ../bin/asm
+2020-04-13 02:36:34 <HackEso> ​#!/bin/sh \ echo "$1" > /tmp/asm.s; for o in ',' '-msyntax=intel -mnaked-reg,-M intel'; do if as ${o%,*} /tmp/asm.s -o /tmp/asm.o 2>>/tmp/asm.err; then objdump ${o#*,} -d --insn-width=20 /tmp/asm.o | sed -e "1,/0000000000000000/d" | perl -pe 'if (/^\s*(\w+:)\s*((?:\w\w )+)\s*(\S.*)$/) { ($a,$b,$c) = ($1,$2,$3); $_ = "$a  $b  ".($c =~ s/\s+/ /rg)."\n"; }'; exit; fi; done; cat /tmp/asm.err
+2020-04-13 02:37:04 <ais523> shachaf: you want most of the machine code program to be inside a string literal or comment from the point of view of the asm, and most of the asm to be goto'd over from the machine code program
+2020-04-13 02:37:17 <shachaf> Yes.
+2020-04-13 02:37:30 <shachaf> I was thinking of ; comments in an assembler.
+2020-04-13 02:37:52 <shachaf> It's easy enough if your language allows unprintable characters in comments, which I was thinking it wouldn't for some reason.
+2020-04-13 02:39:55 <ais523> that depends on the lexer more than anything else
+2020-04-13 02:40:07 <ais523> many languages even allow unprintables in string literals
+2020-04-13 02:43:42 <esowiki> 14[[07Redivider14]]4 10 02https://esolangs.org/w/index.php?diff=70973&oldid=25372 5* 03LegionMammal978 5* (+36) 10/* External resources */ fixed link
+2020-04-13 02:48:29 <zzo38> There is different assembly language for different computer and also different assembly language for the same computer too.
+2020-04-13 03:00:00 Quit: Taneb (Quit: I seem to have stopped.)
+2020-04-13 03:00:00 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, MDude, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
