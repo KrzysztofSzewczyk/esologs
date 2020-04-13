@@ -406,3 +406,107 @@
 2020-04-13 16:58:09 <b_jonas> oh yeah, Mibbit
 2020-04-13 16:58:27 <b_jonas> as well as some phpbb, and in fact twitch chat too now that I think of it
 2020-04-13 16:58:51 <b_jonas> changing the :D to a smiley in Data::Dumper, turning :) and :-) to the same thing
+2020-04-13 17:00:12 <ais523> ASCII-as-UTF-16 misinterpretation has to be pretty rare
+2020-04-13 17:00:17 <b_jonas> there's also some wordpress-based web comment forms that turn ascii double quotes to fancy quotes
+2020-04-13 17:00:30 <ais523> although didn't Notepad do that once?
+2020-04-13 17:00:50 <ais523> ah yes: https://en.wikipedia.org/wiki/Bush_hid_the_facts
+2020-04-13 17:01:01 <b_jonas> I think that usually happens backwards, reading an utf-16 file as if it was some ascii-compatible encoding and adding nul bytes between
+2020-04-13 17:02:04 <ais523> b_jonas: yes but in that case it's normally really obvious what happened
+2020-04-13 17:02:27 <ais523> if you see a file that looks like ASCII but there's a NUL byte every other byte, you can typically figure out what went wrong even if you've never heard of UTF-16
+2020-04-13 17:02:40 <ais523> (and some formats, like VT-100, ignore NUL, so the file will even appear to work)
+2020-04-13 17:02:40 <b_jonas> ah, I didn't know about that one
+2020-04-13 17:02:49 <ais523> (assuming it has no non-ASCII characters)
+2020-04-13 17:03:18 <b_jonas> usually yes. not if I just try to run a grep command, get no matches, and forget that the file is utf-16 encoded
+2020-04-13 17:03:37 <b_jonas> that happened to me a few times recently
+2020-04-13 17:04:42 Quit: MDude (Quit: Going offline, see ya! (www.adiirc.com))
+2020-04-13 17:04:43 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 17:06:04 <ais523> `unicode U+0D0A
+2020-04-13 17:06:07 <HackEso> ​ഊ
+2020-04-13 17:06:19 <ais523> hmm, that seems wrong
+2020-04-13 17:06:21 <ais523> `unicode 0D0A
+2020-04-13 17:06:22 <HackEso> ​ഊ
+2020-04-13 17:06:40 <ais523> `unidecode ഊ
+2020-04-13 17:06:41 <HackEso> ​[U+0D0A MALAYALAM LETTER UU]
+2020-04-13 17:06:49 <ais523> perhaps not
+2020-04-13 17:06:58 <ais523> I'm reading blog posts about the Notepad misdetection
+2020-04-13 17:07:20 <ais523> and one of them mentions that the CRLF character is explicitly illegal in Unicode, presumably to make detection easier
+2020-04-13 17:07:22 <ais523> I think it's just lying though?
+2020-04-13 17:07:26 <ais523> `unicode 0A0D
+2020-04-13 17:07:27 <HackEso> ​਍
+2020-04-13 17:07:36 <b_jonas> oh, there's also some encoding-related garbage that you can get from perl's encoding io layer, which is somehow messed up in more than one way
+2020-04-13 17:07:42 <ais523> hmm, perhaps it only detects it that way round
+2020-04-13 17:07:55 <ais523> but it'd be weird to have such a detection for one endianness but not the other
+2020-04-13 17:08:22 <ais523> I guess this is one argument to prefer UTF16-LE over UTF16-BE
+2020-04-13 17:08:30 <b_jonas> in particular, on windows with a native win32 perl, when I try to write a file with layer :encoding(utf-16-le):crlf , I get garbage. no, it doesn't just output the crlf wrong, it outputs everything wrong after some point in the file.
+2020-04-13 17:08:42 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=70991&oldid=70882 5* 03Hakerh400 5* (+134) 10/* Languages */
+2020-04-13 17:08:47 <b_jonas> many years ago I saw the encoding layer cause to output some lines twice.
+2020-04-13 17:08:56 <ais523> b_jonas: how does that compare to :crlf:encoding(utf-16-le)?
+2020-04-13 17:09:13 <ais523> I'd expect at least one of those to replace all the 0x0D bytes in the Unicode encoding with 0x0D/0x0A pairs, which would throw off the byte pairing
+2020-04-13 17:09:25 <b_jonas> ais523: I don't recall the details, I think it's just :encoding(utf-16-le) that's buggy, because :crlf is the default
+2020-04-13 17:09:43 <b_jonas> a workaround is to use :raw:encoding(utf-16-le) and then put crlf at the end of my lines manually
+2020-04-13 17:10:23 <b_jonas> ais523: no, it isn't just messed up in any of those trivial ways, and the output that I tried to write is mostly ascii
+2020-04-13 17:10:40 <b_jonas> I didn't really try to isolate the bug, I just gave up
+2020-04-13 17:10:43 <b_jonas> and worked it around
+2020-04-13 17:10:54 <b_jonas> and also trying to move away for perl, not only for this reason
+2020-04-13 17:11:05 <ais523> heh, the blog post later discuses the MALAYALAM LETTER UU issue
+2020-04-13 17:11:20 <ais523> b_jonas: what are you planning to move onto?
+2020-04-13 17:11:45 <b_jonas> ais523: python3. I already have a csv reader and writer in python, and a lot of more specific scripts related to work.
+2020-04-13 17:12:13 <b_jonas> eventually I should make a patched python3 that adds extra syntax so I can write python in a single line, useful for command-line or IRC
+2020-04-13 17:12:36 <b_jonas> it can be done in a sane backwards compatible way, I already have a candidate for the syntax
+2020-04-13 17:12:47 <ais523> b_jonas: I'm considering looking for alternatives to Perl, however I dislike Python and don't consider it a reasonable alternative for me
+2020-04-13 17:12:50 <b_jonas> ideally should get that thing into vanilla python, because I'm not the only one who's missing that feature
+2020-04-13 17:13:02 <b_jonas> but I'm not getting my hope up
+2020-04-13 17:13:33 <b_jonas> still, it's a pure syntax extension, so the modified python would be compatible with all existing python code, which is the whole point
+2020-04-13 17:13:43 <b_jonas> ais523: any specific reason why you dislike python
+2020-04-13 17:14:00 <b_jonas> one advantage of python is that the standard library is more suited to native windows
+2020-04-13 17:14:30 <b_jonas> not perfectly suited, it's still written by unix programmers, but you don't have to install CPAN modules to open files with non-ascii filenames or any of that nonsense
+2020-04-13 17:14:50 <ais523> b_jonas: I think the largest design flaw is to have a language where values carry types, with strong restrictions on how types can be combined + context-sensitive overloading, /but/ no static typing
+2020-04-13 17:15:21 <ais523> although Perl started to move in that direction over time with operator overloading, at least most packages keep the normal meanings of the operators
+2020-04-13 17:15:38 <ais523> + and * in Python can do two unrelated things based on where the arguments come from
+2020-04-13 17:16:27 <b_jonas> ais523: if you want static typing, there's always rust and C++, and you can mix them with python just as you can with perl
+2020-04-13 17:16:27 <ais523> `! python print("2" + 3)
+2020-04-13 17:16:27 <HackEso> ​/hackenv/bin/!: line 4: /hackenv/ibin/python: No such file or directory
+2020-04-13 17:16:27 <esowiki> 14[[07Asm2bf14]]4 10 02https://esolangs.org/w/index.php?diff=70992&oldid=70984 5* 03Palaiologos 5* (+275) 10
+2020-04-13 17:16:27 <ais523> `` echo 'print("2" + 3)' > /tmp/t.py; python3 t.py
+2020-04-13 17:16:27 <HackEso> python3: can't open file 't.py': [Errno 2] No such file or directory
+2020-04-13 17:16:27 <ais523> `` echo 'print("2" + 3)' > /tmp/t.py; python3 /tmp/tt.py
+2020-04-13 17:16:27 <HackEso> python3: can't open file '/tmp/tt.py': [Errno 2] No such file or directory
+2020-04-13 17:16:27 <ais523> `` echo 'print("2" + 3)' > /tmp/t.py; python3 /tmp/t.py
+2020-04-13 17:16:27 <HackEso> Traceback (most recent call last): \   File "/tmp/t.py", line 1, in <module> \     print("2" + 3) \ TypeError: can only concatenate str (not "int") to str
+2020-04-13 17:16:27 <ais523> `` echo 'print("2" * 3)' > /tmp/t.py; python3 /tmp/t.py
+2020-04-13 17:16:27 <HackEso> 222
+2020-04-13 17:16:31 <ais523> `` echo 'print(2 * 3)' > /tmp/t.py; python3 /tmp/t.py
+2020-04-13 17:16:32 <HackEso> 6
+2020-04-13 17:16:53 <ais523> so there's this big distinction between "2" and 2 in how they behave, and code will only be correct for one or the other
+2020-04-13 17:17:11 <b_jonas> ais523: I don't find that too much of a problem, but ok, that's a good specific answer
+2020-04-13 17:17:14 <ais523> but there's no sensible way to have this checked automatically
+2020-04-13 17:17:29 <ais523> Perl doesn't have this problem because "2" and 2 act very similarly in any numeric context
+2020-04-13 17:17:30 <b_jonas> I understand why you'd want different names for the concat and repeat operators
+2020-04-13 17:17:36 <ais523> and, indeed, in any string context
+2020-04-13 17:17:58 <ais523> you can distinguish them if you really want to, but normally you don't want to
+2020-04-13 17:18:18 <ais523> also this has lead to bugs in practice
+2020-04-13 17:18:27 <ais523> the Python program I most often use is the Jelly interpreter
+2020-04-13 17:18:30 <b_jonas> right, but in python, "2" and 2 never act similarly, so this generally doesn't cause confusion
+2020-04-13 17:18:38 <b_jonas> just like in C
+2020-04-13 17:19:04 <b_jonas> about the only time when they act similarly is if you pass them to the int or float constructor
+2020-04-13 17:19:08 <ais523> and it leads to programs like the following quine: https://tio.run/##y0rNyan8//9R4z4gerhjCRD9/w8A
+2020-04-13 17:19:14 <ais523> which isn't even valid Jelly but the interpreter doesn't notice
+2020-04-13 17:19:41 <ais523> b_jonas: the confusion is the lack of a type error when passing a value of the wrong type
+2020-04-13 17:20:07 <ais523> other things I dislike are the way it does variable declarations, and the whitespace-sensitivity
+2020-04-13 17:20:57 <ais523> also the package manager, but cpan the package managing software isn't all that great either (I'm fine with CPAN the repository, though, and with cpanm)
+2020-04-13 17:21:27 <b_jonas> ais523: right, but it doesn't occur often. the + operator for add vs concatenation, the * operator for multiplication vs repeat, the str function semi-pretty-printing things, int and float converting numbers or parsing strings, plus the [] operator for arrays vs dictionaries, those are about the only cases when this happens
+2020-04-13 17:21:38 <b_jonas> most of the time when I pass the wrong type of value, I get an error
+2020-04-13 17:21:58 <ais523> the ⁾⁾ḤḤ quine exploits the second case
+2020-04-13 17:22:12 <b_jonas> as for variable declarations and whitespace sensitivity, those complaints I do understand
+2020-04-13 17:22:16 <ais523> ⁾ creates a 2-character string, and a string in Jelly is an array of characters
+2020-04-13 17:22:17 <b_jonas> I want to fix the whitespace sensitivity
+2020-04-13 17:22:31 <b_jonas> I probably don't want to fix variable declarations, though there could be an extension fixing that
+2020-04-13 17:22:33 <ais523> so it creates the string ⁾Ḥ
+2020-04-13 17:22:41 <ais523> then Ḥ doubles a number, or all numbers in an array
+2020-04-13 17:22:42 <b_jonas> mind you, Julia's rules for variable declarations are way worse than python's IMO
+2020-04-13 17:22:47 <ais523> and you can guess what happened next :-D
+2020-04-13 17:23:10 <ais523> anyway, gtg
+2020-04-13 17:23:12 Quit: ais523 (Quit: quit)
+2020-04-13 17:23:13 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 17:25:05 <b_jonas> more likely in that crazy esolang idea that I'll probably never develop, the configurable one where you can choose between APL order and C order and even more for function calls, I'd have 2*2 options for how variable declarations and scoping work, as in 2 for explicit my and implicit nonlocal vs explicit nonlocal and implicit my, and if/while/for creating a scope vs if/while/for not creating a scope
+2020-04-13 17:26:14 <b_jonas> and allow to toggle those lexically within a scope
