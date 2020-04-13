@@ -535,3 +535,80 @@
 2020-04-13 18:14:47 <tromp> ok, i'll add an intermediate line =     H[W^V'[v := X^V] (W^V'[v := X^V] ∪ B^V'[v := X^V]) ]   to make the steps clearer
 2020-04-13 18:15:50 <int-e> Funny that we both added an nf[_]size command.
 2020-04-13 18:17:42 <tromp> i only did so after you mentioned it (but before checking the repo)
+2020-04-13 19:10:06 <kspalaiologos> so essentially if I wanted to write a JIT or AOT compiler based on my current interpreter in JAva
+2020-04-13 19:10:20 <kspalaiologos> should I target java bytecode, C, x86 assembly, llvm... ?
+2020-04-13 19:10:50 Joined: Phantom__Hoover
+2020-04-13 19:10:50 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom__Hoover, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 19:10:59 <kspalaiologos> I'm not really sure because I don't want to kill portability Java offers and overload my program with unnecessary external libraries or programs
+2020-04-13 19:11:09 <Sgeo> Homestuck music update!
+2020-04-13 19:11:13 Nick Change: Phantom__Hoover -> Guest51731
+2020-04-13 19:11:14 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest48241, Guest51731, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 19:11:31 <zzo38> I don't know, there are advantages and disadvantages in each case.
+2020-04-13 19:12:39 Quit: Guest48241 (Ping timeout: 260 seconds)
+2020-04-13 19:12:39 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest51731, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 19:13:02 <kspalaiologos> that's what I think
+2020-04-13 19:13:08 <kspalaiologos> so I can't make a decision really
+2020-04-13 19:13:16 <kspalaiologos> I think I may go with Java bytecode
+2020-04-13 19:13:19 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-13 19:13:19 <imode> where are you intending to run this.
+2020-04-13 19:13:31 <imode> and is this like a brainfuck interpreter?
+2020-04-13 19:13:31 <kspalaiologos> but then I'll have to clog my program with BCEL
+2020-04-13 19:13:55 <kspalaiologos> imode, said that already, I want it as portable as possible; and this is a brainfuck interpreter now, but I can eaisly transform it into a compiler
+2020-04-13 19:15:15 <zzo38> C code may be more portable, or a simple code using an emulation
+2020-04-13 19:15:32 <imode> you haven't said it in my logs, so I don't think asking is out of the question.
+2020-04-13 19:15:46 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-04-13 19:15:46 <ais523> kspalaiologos: if you're writing in Java, then Java bytecode may be a good target format, as the Java runtime will JIT that once you generate it
+2020-04-13 19:15:47 <imode> if you want portability, yeah, you can hardly beat Java.
+2020-04-13 19:15:55 <ais523> so you basically have a platform-independent JIT
+2020-04-13 19:16:12 <imode> if you want _actual_ portability, compile it to C. every platform has a C compiler at some point.
+2020-04-13 19:16:18 <kspalaiologos> well then
+2020-04-13 19:16:24 <ais523> at work I use a library called ASM (confusingly) to generate Java bytecode at runtime
+2020-04-13 19:16:32 <ais523> C is a good target language if you want AOT rather than JIT
+2020-04-13 19:16:33 <kspalaiologos> I'll go with BCEL instaed
+2020-04-13 19:16:42 <kspalaiologos> what about performance
+2020-04-13 19:16:46 <kspalaiologos> and optimization
+2020-04-13 19:17:08 <ais523> C compiler optimizers are pretty good nowadays, although I can normally beat them programming by hand
+2020-04-13 19:17:23 <kspalaiologos> C may be orders of magnitude more performant than Java
+2020-04-13 19:17:28 <ais523> although, the workings of modern computers are confusing, and optimizing for speed is really counterintuitive sometimes
+2020-04-13 19:17:39 <kspalaiologos> depends on your knowledge on the platforms
+2020-04-13 19:17:46 <kspalaiologos> cache lines, instruction alignment
+2020-04-13 19:17:54 <kspalaiologos> it all becomes logical at certain point
+2020-04-13 19:18:03 <ais523> out-of-order execution has a much larger impact than instruction alignment
+2020-04-13 19:18:11 <kspalaiologos> yeah this too
+2020-04-13 19:18:20 <ais523> and it interacts with caching in weird ways
+2020-04-13 19:19:34 <kspalaiologos> yeah, I'm going with java
+2020-04-13 19:19:41 <ais523> a while ago, to test out my optimization skills, I decided to aim for the following challenge: given a simple (inlinable) function that generates a continuous stream of bytes in a way that doesn't take up much of the CPU's time
+2020-04-13 19:19:47 <ais523> write the resulting bytes to memory as quickly as possible
+2020-04-13 19:19:53 <arseniiv> ha, C, Java. I plan to compile something into Python (as for programs written in it it’s pretty logical; there’s a module to work with its own AST and a function for compiling it)
+2020-04-13 19:19:54 <zzo38> I thikn computers should be designed less confusing
+2020-04-13 19:20:21 <ais523> it took a lot of attempts and experimentation to find an optimal (or as optimal as I could get it) solution, but I beat the C compilers fairly quickly
+2020-04-13 19:20:22 <kspalaiologos> python doesn't seem like a good target
+2020-04-13 19:20:37 <kspalaiologos> C is hard to optimize by the compiler
+2020-04-13 19:20:42 <kspalaiologos> you can't even reassociate math
+2020-04-13 19:20:48 <zzo38> You could also allow it to support multiple targets
+2020-04-13 19:20:49 <kspalaiologos> without changing behaviour of some snippets
+2020-04-13 19:21:03 <kspalaiologos> zzo38, not today, that's too much effort :P, I'll maybe support C later on
+2020-04-13 19:21:10 <ais523> (for people who are wondering, take a couple of 128-bit registers, store intermediate results there, and then write them using nontemporal writes; this is fastest even though GPR→vector register copies are documented as slow)
+2020-04-13 19:21:33 <ais523> (oddly, this was fastest even though the CPU had 256-bit registers available)
+2020-04-13 19:21:55 <kspalaiologos> it's always cheering to see a fellow assembly programmer
+2020-04-13 19:21:55 <arseniiv> <kspalaiologos> python doesn't seem like a good target => for production code, I more or less agree, but for quick proof-of-concept things why not
+2020-04-13 19:22:11 <kspalaiologos> ^ yeah, for a proof of concept python is sufficient
+2020-04-13 19:22:33 <arseniiv> assembly programmers are magicians
+2020-04-13 19:22:56 <kspalaiologos> Malbolge programmers are true magicians
+2020-04-13 19:23:09 <arseniiv> as any true magician, an assembly master is a rare sight
+2020-04-13 19:23:09 <ais523> I don't write in asm much, but I think it's an important language to know, especially when trying to work out how to write the quickest possible code
+2020-04-13 19:23:26 <kspalaiologos> seducers, thiefs, simonists
+2020-04-13 19:23:29 <ais523> I consider asm to be a fairly easy language to write (if you aren't aiming for performance), incidentally, it's just really time-consuming
+2020-04-13 19:23:45 <kspalaiologos> that's true
+2020-04-13 19:24:01 <arseniiv> <kspalaiologos> Malbolge programmers are true magicians => hmhm maybe they are abstract theoretical magicians then, and assembly ones, practicing ones ;D
+2020-04-13 19:24:01 <kspalaiologos> writing my Assembly implementation for the Seed generator has been a quite long process
+2020-04-13 19:24:08 <esowiki> 14[[07Indent14]]4 M10 02https://esolangs.org/w/index.php?diff=70993&oldid=70947 5* 03PythonshellDebugwindow 5* (+12) 10/* Examples */
+2020-04-13 19:24:15 <kspalaiologos> in fact, it took around 2 days to get it up and running
+2020-04-13 19:24:20 <kspalaiologos> did you check the code btw?
+2020-04-13 19:24:26 <kspalaiologos> I'm always up for some optimization tips
+2020-04-13 19:25:05 <ais523> I looked at it but didn't really read it
+2020-04-13 19:25:23 Quit: kritixilithos (Quit: quit)
+2020-04-13 19:25:23 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, Guest51731, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, kspalaiologos, laerling, lambdabot, LBPHacker, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-13 19:27:28 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=70994&oldid=70146 5* 03PythonshellDebugwindow 5* (+16) 10Removed redirect to [[User:PythonshellDebugwindow/(Unnamed language)]]
+2020-04-13 19:29:24 <arseniiv> though in view of wanting to call myself a bit of a magician too I need to postulate Haskell-or-other programmers should be magicians too, just of a school almost incompatible in its workings to an assembly ones. It’s even plain to see: an assembly magician assembles (with others) and a haskell one, well, “has call”, which might mean that they can talk to one another at a distance, which is quite a good trait these times. I’ll
+2020-04-13 19:29:24 <arseniiv> how myself out
