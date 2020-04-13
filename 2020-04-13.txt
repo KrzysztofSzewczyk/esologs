@@ -109,3 +109,17 @@
 2020-04-13 03:26:49 <Sgeo> Oh maybe because what you said
 2020-04-13 03:27:28 <zzo38> Another possibility might be that the index at the end of the file requires absolute offsets, although I don't know whether or not that is the case.
 2020-04-13 03:28:16 <zzo38> But I don't think so; I seem to remember I have once concatenated a PNG and ZIP together and was able to open it with either a PNG or ZIP program just fine.
+2020-04-13 03:31:23 <ais523> <Sgeo__> Not sure I understand the .zip header thing. Can I have another format's magic at the end still? ← yes, the last field of the .zip header (which goes at the end of the file) is "comment", which gives you room to stick another magic number in there
+2020-04-13 03:31:58 <ais523> also, the .zip file header references other parts of the file relative to the /start/ of the file, so a pure concatenation won't work
+2020-04-13 03:32:10 <Sgeo> ...how did unzip work?
+2020-04-13 03:32:18 <ais523> you can append to a .zip file without rewriting the first part of the file, but that requires small changes to the second part
+2020-04-13 03:32:34 <zzo38> Maybe I misremembered; I don't know
+2020-04-13 03:32:39 <ais523> Sgeo__: as far as I can tell from the specification, the format is ambiguous; you can write one file that's valid as a zip file in two different ways
+2020-04-13 03:32:45 <ais523> so presumably unzip has to pick one arbitrarily
+2020-04-13 03:32:46 <esowiki> 14[[07Rogex14]]4 10 02https://esolangs.org/w/index.php?diff=70976&oldid=70840 5* 03LegionMammal978 5* (-181) 10/* Interpreter */ fixed code block
+2020-04-13 03:33:23 <zzo38> O, maybe different implementations work differently. That is also who I was unable to unzip a PDF/ZIP combination file with one program but another program worked, I suppose.
+2020-04-13 03:35:42 <Sgeo> warning [WorldsPlayer-9567.zip]:  2438 extra bytes at beginning or within zipfile
+2020-04-13 03:35:42 <Sgeo> (attempting to process anyway)
+2020-04-13 03:48:59 Quit: MDude (Quit: Going offline, see ya! (www.adiirc.com))
+2020-04-13 03:48:59 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Maitor, Melvar, mich181189, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-13 03:59:17 <esowiki> 14[[07Cool14]]4 10 02https://esolangs.org/w/index.php?diff=70977&oldid=66898 5* 03Hdjensofjfnen 5* (+31) 10
