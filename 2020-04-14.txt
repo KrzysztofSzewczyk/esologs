@@ -21,3 +21,63 @@
 2020-04-14 02:47:01 <esowiki> 14[[07TinyBF14]]4 M10 02https://esolangs.org/w/index.php?diff=71011&oldid=50225 5* 03LegionMammal978 5* (+14) 10fixed title
 2020-04-14 03:07:00 Parted: Maitor
 2020-04-14 03:07:00 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kapilavashtu, kmc, laerling, lambdabot, LBPHacker, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, MDude, Melvar, mich181189, mniip, mra90, myname, myndzi, nchambers, ocharles, olsner, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-14 03:30:17 <zzo38> Is someone on today?
+2020-04-14 03:31:06 * pikhq is, actually
+2020-04-14 03:32:52 <zzo38> Is there a option in Firefox and/or other web browsers that cookies can be disabled except for redirects?
+2020-04-14 03:33:07 <pikhq> I have not seen such an option, no
+2020-04-14 03:34:06 <zzo38> What do you think of my idea of "fission" ability for Magic: the Gathering cards?
+2020-04-14 03:35:39 <pikhq> I must say, I missed your discussion of it, so I can't say
+2020-04-14 03:36:13 * pikhq should maybe get back into Magic after this is all over...
+2020-04-14 03:36:49 <zzo38> Starts at UNIX timestamp 1586738893.
+2020-04-14 03:37:33 <zzo38> Even if you are alone, you can still compose and/or solve puzzles of Magic: the Gathering, which is something I like to do.
+2020-04-14 03:38:15 <pikhq> My wife knows how to play, but I'm more into it than her, and she's been preoccupied with Final Fantasy 7 lately
+2020-04-14 03:38:44 <pikhq> otoh could do internet stuff
+2020-04-14 03:38:47 <zzo38> Do you like puzzles of Magic: the Gathering?
+2020-04-14 03:38:59 <pikhq> I have never really gotten into 'em
+2020-04-14 03:39:16 <pikhq> For me a decent chunk of the appeal of Magic _is_ the fact you're playing with other people
+2020-04-14 03:39:47 <pikhq> Like, yes, the game itself is appealing, but I also enjoy the social nature of it
+2020-04-14 03:40:01 <zzo38> There are some free open source implementations of Magic: the Gathering; one I looked at (but never used; I only looked at the code) is Xmage, which does not implement text changing effects.
+2020-04-14 03:40:14 <pikhq> Yeah, I've used some in the past
+2020-04-14 03:41:25 <zzo38> I thought to implement a RDF-based format which can implement many features of Magic: the Gathering much better. So, that is my suggestion to someone who is implementing Magic: the Gathering.
+2020-04-14 03:42:37 * pikhq wonders if she should rope her girlfriend into learning Magic :P
+2020-04-14 03:42:56 <pikhq> Probably not, unless she waaaants to...
+2020-04-14 03:43:45 <zzo38> You could ask if you want to, I suppose.
+2020-04-14 03:44:10 * pikhq nods
+2020-04-14 03:44:53 <zzo38> Chess (and many chess variants, too) can also easily be played by computer without specialized software, using IRC or a direct connection or whatever (or even by telephone, too, actually)
+2020-04-14 03:45:24 <zzo38> Card games is more difficult to do by computer without the specialized software, but chess game can be done easily.
+2020-04-14 03:45:31 <pikhq> Yeah, I mean, chess is trivial to do remotely.
+2020-04-14 03:45:43 <pikhq> Correspondence chess has been a Thing for ages, after all
+2020-04-14 03:46:56 <zzo38> Yes, it must have been. I don't know how old it is exactly, but I think it was even done by telegrams in the past
+2020-04-14 03:47:24 <ais523> pikhq: I've basically given up on Magic as a game to play, as opposed to a game to theorize about
+2020-04-14 03:47:41 <ais523> I've disliked the direction it's been going in for quite a while
+2020-04-14 03:47:53 <pikhq> I've only played Magic in kitchen table formats, thankfully
+2020-04-14 03:47:58 <zzo38> Dod you read my "fission" ideas about making a card that becomes two objects in the battlefield but only one outside (like the reverse of meld)?
+2020-04-14 03:48:50 <zzo38> ais523: I don't like many of the features of the rules either (or some of the card designs), but in some cases I have thought of how to make a variant rules, trying to make it close to the official rules though
+2020-04-14 03:51:38 <ais523> the basic problem is that Wizards are trying to make too many products for too many audiences, and are being pulled in too many directions and the quality has gone way down
+2020-04-14 03:52:10 <zzo38> Although some of these rules aren't so new, and some of them they have fixed (for example, I didn't like the planeswalker redirection rule and I am glad they removed it), but one rule I dislike is names for tokens, which seems mathematically klugy to me in the way the spelling works. Subtypes should be a separate namespace from names and shouldn't interact in this way (with the possible exception of conventional basic lands).
+2020-04-14 03:52:13 <ais523> actually, something similar to this is why I gave up on Pokémon (the video game, not the card game, and not the video game /of/ the card game)
+2020-04-14 03:52:52 <ais523> hmm, would "a land token named Island" tap for blue? my guess is no (but "an Island land token" would)
+2020-04-14 03:53:02 * pikhq shrugs
+2020-04-14 03:53:07 <zzo38> ais523: I agree with you about the land tokens.
+2020-04-14 03:53:18 <pikhq> tbh my time is nevertheless likely to be occupied
+2020-04-14 03:53:39 <zzo38> Since, "a land token named Island" still doesn't have the subtype Island, so it doesn't implicitly have "{T}: Add {U}".
+2020-04-14 03:53:57 <ais523> anyway, the M:tG Busy Beaver people are apparently trying to figure out a way to create an Ackermann-like function only it has the busy beaver function rather than an increment
+2020-04-14 03:54:14 <ais523> zzo38: right, I was just wondering whether there was a special rule for things named Island, or whether that only applies to cards
+2020-04-14 03:54:31 <ais523> like, a card named Island implicitly has the Island subtype
+2020-04-14 03:54:38 <ais523> if it's printed that way
+2020-04-14 03:54:44 <ais523> due to how Oracle text works
+2020-04-14 03:55:02 <ais523> but I guess that doesn't affect tokens that were created with the same name as a card due to Artificial Evolution
+2020-04-14 03:55:09 <ais523> or even naturally
+2020-04-14 03:55:30 <ais523> (IIRC think "Splinter" is both a card name, and a name of a token that can be created without text-changing effects)
+2020-04-14 03:55:41 <zzo38> ais523: O, yes, that is a rule of Oracle text for conventional basic lands. And, yes, it won't affect tokens of course, or even cards, just, I should think it should mean, as far as the game is concerned, a card printed with a given name has the text specified by the Oracle text as its initial text.
+2020-04-14 03:56:27 <zzo38> The exception I mentioned for conventional basic lands doesn't mean that names are subtypes, only that the name of "an Island land token" would compare as equal to the name of a card named "Island", but this isn't the case for creature tokens that are not explicitly given names (if they are explicitly given names, then they do compare equal to card names that are spelled the same way in English).
+2020-04-14 03:57:03 <ais523> I think removing special cases would be helpful
+2020-04-14 03:57:07 <ais523> `card-by-name Spreading Seas
+2020-04-14 03:57:08 <HackEso> Spreading Seas \ 1U \ Enchantment -- Aura \ Enchant land \ When Spreading Seas enters the battlefield, draw a card. \ Enchanted land is an Island. \ ZEN-C
+2020-04-14 03:57:48 <zzo38> That changes the subtype, not the name. It wouldn't change under the rules I mention.
+2020-04-14 03:57:49 <ais523> my preferred templating for the second ability would be «Enchanted land is an Island with "{T}: Add {U}" and no other subtypes or abilities.»
+2020-04-14 03:58:17 <ais523> as it is, there's a special rule that changing the subtype of a land removes all its abilities, and there's a special rule on the Island subtype to add the ability to tap for {U}
+2020-04-14 03:59:07 <zzo38> Yes, those are special cases. The special rule about changing the subtype of a land removing all abilities I agree is a bit klugy, but the rule that those subtypes implicitly cause it to have those abilities is I think probably important to keep how it is.
+2020-04-14 03:59:26 <ais523> the implicit rule for the Wall subtype got removed
+2020-04-14 03:59:54 <zzo38> Yes, and that is good that they removed the rule for Wall.
+2020-04-14 04:00:01 <pikhq> Yeah, that got swapped over to being an explicit ability, and thank goodness
