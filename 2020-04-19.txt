@@ -172,3 +172,28 @@
 2020-04-19 16:58:27 <int-e> that sounds really inefficient
 2020-04-19 16:58:37 <ais523> that's probably why it didn't catch on
 2020-04-19 16:59:17 <ais523> the main design goal appears to have been that a recipient could guess what it meant even if they didn't know the format, but that possibly isn't a useful design goal
+2020-04-19 17:00:13 Quit: craigo (Ping timeout: 264 seconds)
+2020-04-19 17:00:14 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-19 17:00:42 <ais523> ah no, it isn't hexadecimal, it must be something more efficient than that
+2020-04-19 17:00:48 <ais523> maybe base64'd utf-16?
+2020-04-19 17:01:03 <ais523> I just encoded a BOM into utf-7, it encoded as +/v8-
+2020-04-19 17:01:21 <int-e> it's a base64 variant wedeged between + and -.
+2020-04-19 17:01:22 <ais523> `` echo '/v8' | base64 -d | od -t x1z
+2020-04-19 17:01:23 <HackEso> base64: invalid input \ 0000000 fe ff                                            >..< \ 0000002
+2020-04-19 17:01:29 <ais523> yes, that looks like base64 to me
+2020-04-19 17:01:48 <int-e> (With the +- exception that maps to + as you said)
+2020-04-19 17:02:13 <ais523> base64 is still a bit inefficient but it isn't as inefficient as base16
+2020-04-19 17:02:55 <ais523> now I wonder how many editors will interpret files as UTF-7 if they start +/v8 followed by - or a non-base-64 character
+2020-04-19 17:02:59 <ais523> probably not many
+2020-04-19 17:03:29 <int-e> 'Older versions of Internet Explorer can be tricked into interpreting the page as UTF-7. This can be used for a cross-site scripting attack as the < and > marks can be encoded as +ADw- and +AD4- in UTF-7, which most validators let through as simple text.'
+2020-04-19 17:03:42 <int-e> So it did have serious applications :P
+2020-04-19 17:03:58 <ais523> oh right, IE
+2020-04-19 17:04:08 <ais523> I seem to remember someone managing an XSS attack against the #esoteric logs
+2020-04-19 17:04:17 <ais523> because IE was so permissive with encodings and MIME types
+2020-04-19 17:04:44 <int-e> And yes, it stacks on top of UTF-16. What a mess.
+2020-04-19 17:05:56 <ais523> I still think that, in a way, it's a pity that UTF-1 didn't catch on
+2020-04-19 17:06:33 <ais523> the rise of UTF-8 caused serious standards incompatibility problems, because UTF-8 uses C1 control codes for purposes other than their assigned meanings
+2020-04-19 17:07:28 <ais523> although, given that a C1 control code cannot appear in UTF-8 except immediately after a G1 character, this ambiguity should be fixable, but nobody I know of but me actually tries to fix it
+2020-04-19 17:09:19 <ais523> I guess part of the problem is that many of the C1 control codes are kind-of silly
+2020-04-19 17:11:52 Quit: tromp (Remote host closed the connection)
+2020-04-19 17:11:53 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
