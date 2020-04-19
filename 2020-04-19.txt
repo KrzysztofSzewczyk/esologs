@@ -379,3 +379,19 @@
 2020-04-19 21:22:36 <zzo38> Well, I cannot do that, so I will have to do it now, instead.
 2020-04-19 21:27:06 Quit: Phantom___Hoover (Ping timeout: 265 seconds)
 2020-04-19 21:27:06 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-19 21:34:09 User Name: tromp = tromp!~tromp@2a02:a210:ca3:2800:c48c:bbb2:381c:59f3
+2020-04-19 21:34:09 <tromp> int-e: TODOs at 36 completed manually. so BB(36) = Church 2^256 is proven modulo bugs in BB.lhs
+2020-04-19 21:35:46 <tromp> some TODOs could be eliminated if we can have H ::= □ | \v. H | H T | freeV H      and      B^V ::= W^V X^V | \v. B^V | B^V T | freeV B^V
+2020-04-19 21:39:58 Quit: user24 (Quit: Leaving)
+2020-04-19 21:39:58 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-19 21:43:59 <int-e> tromp: that's probably fine
+2020-04-19 21:44:55 <tromp> thanks for probable blessing:-)
+2020-04-19 21:49:45 Joined: Lord_of_Life
+2020-04-19 21:50:55 Quit: Lord_of_Life (Ping timeout: 250 seconds)
+2020-04-19 21:52:11 <int-e> tromp: you can generalize that a bit further to freeV T^* H
+2020-04-19 21:52:35 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-04-19 21:52:42 <int-e> (that * is replication, not function iteration)
+2020-04-19 21:53:02 Joined: tromp
+2020-04-19 21:55:16 User Name: tromp = tromp_!~tromp@2a02:a210:ca3:2800:15b2:7525:15fa:f922
+2020-04-19 21:55:16 <tromp> oh, good point, a normal form normalizes all arguments of a free variable
+2020-04-19 21:56:46 Quit: tromp (Ping timeout: 265 seconds)
