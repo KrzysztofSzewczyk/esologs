@@ -287,3 +287,7 @@
 2020-04-19 18:50:51 <HackEso> ​[b'abcd-lnd86f056o']
 2020-04-19 18:52:03 <shachaf> It encodes the code points and positions in base 36.
 2020-04-19 18:56:36 <arseniiv> ah, now I have read a part of discussion above too :D should have done that earlier
+2020-04-19 19:07:00 <b_jonas> ais523: also that's why we don't allow overlong encodings in UTF-8
+2020-04-19 19:24:41 <zzo38> For some applications, overlong encodings in UTF-8 is useful
+2020-04-19 19:25:41 <shachaf> Exploiting buggy software, for instance?
+2020-04-19 19:29:37 <zzo38> Maybe, although that isn't what I meant.
