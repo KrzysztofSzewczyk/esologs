@@ -205,3 +205,37 @@
 2020-04-19 17:33:54 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-19 17:35:57 Quit: tromp (Ping timeout: 272 seconds)
 2020-04-19 17:35:57 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-19 18:01:35 <b_jonas> oh nice. that's like the XSS attacks when a browser guesses that something is HTML even though the HTTP response header Content-Type says text/plain
+2020-04-19 18:12:33 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2020-04-19 18:12:33 <shachaf> This encoding is a bit inefficient but it seems OK.
+2020-04-19 18:12:44 <shachaf> The one that I don't get is Punycode. What's with that? It seems so complicated.
+2020-04-19 18:16:39 <int-e> Yeah, Punycode is pretty awful. It seems to be designed for a language like German where words are mostly ASCII with maybe one or two non-ASCII characters.
+2020-04-19 18:17:29 <int-e> "Punycode is a simple and efficient transfer encoding syntax [...]"
+2020-04-19 18:17:30 <shachaf> But even so, it seems completely unreadable by humans.
+2020-04-19 18:17:59 <FireFly> unreadable by humans, annoying to implement..
+2020-04-19 18:18:07 <int-e> I don't agree with this use of the word "simple".
+2020-04-19 18:18:53 <shachaf> `` python -c 'print([s.encode("punycode") for s in ["aaa", "aaaλ", "aaaaλ", "aaaλbbb"]])'
+2020-04-19 18:18:54 <HackEso> ​['aaa-', 'aaa-3ga8g', 'aaaa-tia7i', 'aaabbb-5la5m']
+2020-04-19 18:19:12 <shachaf> thunycode
+2020-04-19 18:19:25 <int-e> shachaf: Well one can kind of guess what "Mnchen-3ya" stands for.
+2020-04-19 18:19:41 <shachaf> But not by knowing anything about the string "3ya"!
+2020-04-19 18:19:53 <int-e> Sure.
+2020-04-19 18:19:56 <int-e> Welcome back btw.
+2020-04-19 18:20:10 <shachaf> You might as well write "M�nchen".
+2020-04-19 18:20:33 <shachaf> (Except it doesn't even tell you where the replacement character is.)
+2020-04-19 18:20:44 <zzo38> You might not have to implement Punycode, at least.
+2020-04-19 18:20:55 <shachaf> I'm probably only sort of back? Hard to say.
+2020-04-19 18:21:09 <zzo38> How do you meant only sort of back?
+2020-04-19 18:21:12 <int-e> The only good thing about punycode is that you generally don't see it in encoded form.
+2020-04-19 18:22:27 <shachaf> How about this Punycode replacement: You write "m-nchen--fc.com" for "m�nchen.com".
+2020-04-19 18:23:18 <shachaf> Each code point above 127 and - gets encoded as a -, and then they're listen in order in hexadecimal after the --
+2020-04-19 18:23:22 <shachaf> That's probably not very good.
+2020-04-19 18:23:30 <shachaf> Too verbose.
+2020-04-19 18:23:57 <shachaf> `` python -c 'print([s.encode("punycode") for s in ["привет"]])'
+2020-04-19 18:23:58 <zzo38> It helps since you can write domain names purely in the ASCII form. You can disable non-ASCII domain names and then it will still work, and avoid the homoglyph problems and missing fonts and so on, too.
+2020-04-19 18:23:58 <HackEso> ​['ae7lman4b1hcbbfh']
+2020-04-19 18:25:11 <zzo38> However, I should think they should not have needed support for domain names containing any characters not already valid in domain names anyways
+2020-04-19 18:26:26 <int-e> shachaf: I guess there's one advantage to punycode that's easy to miss: some character set restrictions (like domain names not containing dots) can be enforced on punycode encoded strings without decoding them
+2020-04-19 18:26:47 <int-e> But overall it doesn't seem very nice.
+2020-04-19 18:27:08 <shachaf> How does that work?
+2020-04-19 18:28:21 <int-e> the . would become part of the unencoded base character sequence before the final minus sign
