@@ -321,3 +321,54 @@
 2020-04-19 20:26:01 <ais523> if you have a string of character-like things that is not Unicode, it should probably be stored as an array of bytes
 2020-04-19 20:27:25 <ais523> also I think there's a missing " in the example near the start
 2020-04-19 20:27:28 <ais523> I haven't looked at this file for ages
+2020-04-19 20:31:12 <zzo38> I do not see anything about byte arrays; also, it doesn't seems to be able to use lists of exactly one element when dynamic types are used, from what I can tell.
+2020-04-19 20:31:57 <ais523> a list of one element is equivalent to the element itself
+2020-04-19 20:32:06 <ais523> and a byte array would be represented as a nonliteral containing the bytes as arguments
+2020-04-19 20:32:19 <ais523> e.g. (bytes 2 12 255 0 255)
+2020-04-19 20:32:39 <ais523> this is intended for use with schemas / strong typing, so you can always distinguish a singleton list from an element
+2020-04-19 20:32:54 <zzo38> Yes, that is what I thought about a list of one element, but if a distinction is needed between lists and non-lists then that won't work when dynamic types are used.
+2020-04-19 20:33:37 <zzo38> It says the format can be either statically or dynamically typed. With static types what you say will work, for the reason you mention, but that won't work so well for dynamic types, I think.
+2020-04-19 20:34:48 <ais523> well, there are two ways to think about dynamic typing
+2020-04-19 20:35:16 <ais523> IMO in a dynamically typed language, you should just treat the data as whatever type you're expecting it to have, and not care about what type it actually has
+2020-04-19 20:35:26 <zzo38> Also, the byte arrays done in the way like you mention does not seem to be efficient.
+2020-04-19 20:37:07 <b_jonas> ais523: that's perl typing or dwim scalars
+2020-04-19 20:37:54 <ais523> zzo38: yes, but this is a very uncommon use case
+2020-04-19 20:38:17 <ais523> b_jonas: yes, it's the only sensible way to do dynamic typing I think
+2020-04-19 20:38:22 <b_jonas> the other method is to write programs sort of like in a strongly typed language, except you omit some enum constructors in favor of storing multiple types and checking for them, mostly with a nul type versus other types, or an array versus a number
+2020-04-19 20:38:37 <b_jonas> and I prefer that style
+2020-04-19 20:38:42 <ais523> well, that and stringly typing, where everything is stored as a string (or else in some format that isn't a string but acts like one)
+2020-04-19 20:38:55 <b_jonas> yes, there's that too
+2020-04-19 20:39:09 <ais523> b_jonas: I think that style is kind-of terrible unless you have a huge supply of enum constructors that can just be used anywhere
+2020-04-19 20:39:20 <ais523> and do in fact use them everywhere
+2020-04-19 20:39:39 <ais523> "this function takes a string or an integer" is horrible in terms of self-documentation, and can't easily be modified into taking a string or a different type of string
+2020-04-19 20:40:14 <zzo38> For storing structured data which does not need to be parsed into other data structures after it is read, I like the format http://fileformats.archiveteam.org/wiki/PostScript_binary_object_format but it has the disadvantage that, unlike your format, it does not support streaming writing, and will require two passes to write.
+2020-04-19 20:41:02 <b_jonas> ais523: what do you call the kind of typing that x86 machine language or forth does, which isn't dynamic typing because there are no type tags in data, but also no type information at compile time?
+2020-04-19 20:41:41 <ais523> b_jonas: "everything is just bits"
+2020-04-19 20:41:46 <ais523> I'm not sure if it has a proper name beyond that
+2020-04-19 20:42:25 <ais523> hmm, actually I think this conversation has helped me clarify my understanding: type tags in data that just store the type rather than the meaning are about as useful as Hungarian notation that just stores the type rather than the meaning
+2020-04-19 20:42:59 <ais523> occasionally it helps, but only in programs where each type can only have one possible meaning, which is rare
+2020-04-19 20:43:20 <zzo38> Another format is RELOAD, which also supports efficient byte arrays like PostScript does, but that is with another different use. In RELOAD, all names are indicated by numbers, and which names correspond to which numbers is listed at the end. Although it requires parsing, it allows a program to write out using its own numbers, while when reading it can efficiently create a table mapping the file's numbers to its internal numbers.
+2020-04-19 20:45:20 <ais523> the gsap format I linked, the main motivation was to be able to implement most parser-like operations using only a single stack, + an append-only output
+2020-04-19 20:45:33 <ais523> to make the best possible use of memory bandwidth and cache
+2020-04-19 20:45:41 <b_jonas> ais523: is it "everything is just bits" even if you aren't manipulating bytes or fixed-size words, but nonnegative bignums such as in Amicus?
+2020-04-19 20:46:00 <ais523> b_jonas: well, the bignum is also just bits
+2020-04-19 20:46:07 <ais523> you have to know it's a bignum some other way to be able to operate on it correctly
+2020-04-19 20:46:16 <zzo38> ais523: Yes, it does have those advantages at least.
+2020-04-19 20:47:10 <b_jonas> ais523: well it is manipulated in binary
+2020-04-19 20:49:13 <b_jonas> ais523: meaning of the data => yes, which is some modern dynamically typed languages are object-oriented.
+2020-04-19 20:50:35 <ais523> anyway I find that in practice, Python or JavaScript programs nearly always are only meant to allow one type in each function argument / variable
+2020-04-19 20:50:57 <ais523> and this has to be documented and verified to always be the case by humans (or via some sort of typing extension to the language)
+2020-04-19 20:51:21 <ais523> so the dynamic typing mostly just serves to increase the risk of bugs and increase the amount of manual effort
+2020-04-19 20:51:23 <b_jonas> I quite like python's type system: objects have a class, which you can imagine as if all objects (except maybe small integers) have a class pointer in them, and the class determines the representation of the rest of that object, as in what fields it has for normal objects, or whether it's a variable sized object like tuple or bytes or str that has an variable sized array allocated inside the object (so
+2020-04-19 20:51:29 <b_jonas> it can't be resized).
+2020-04-19 20:51:49 <ais523> whereas if you're using Perl-style typing, it's very hard to get wrong because you can't accidentally pass a string rather than an integer or the like
+2020-04-19 20:51:57 <b_jonas> the actual representation could differ, this is just the notion
+2020-04-19 20:52:08 <zzo38> ais523: There are some exceptions though, sometimes I do use support for multiple types in a variable/argument although usually it is only one type. Especially if it accepts null in addition to another type.
+2020-04-19 20:52:15 <ais523> the basical problem here is to do with references, which are a fundamentally different thing from strings and integers
+2020-04-19 20:52:32 <b_jonas> and you can define new classes, and either you tell what fields they have, or you inherit from a class with one of those special variable sized representation.
+2020-04-19 20:52:33 <zzo38> Another case in JavaScript is sometimes a function might accept either a string or a byte array; this is used in Node.js to represent file names, for example.
+2020-04-19 20:52:54 <ais523> zzo38: "null or X" arguments have been a huge source of bugs historically, though; most modern programming languages use some techniques to ensure that nullability is always clear, and that the null case is handled if it could happen
+2020-04-19 20:53:16 <ais523> it's very easy to write a function where some input could be null but the programmer didn't realise it while writing the function
+2020-04-19 20:54:04 <zzo38> ais523: Yes; if you are using Haskell then you can use Maybe, although in JavaScript programs at least, I write it the way I need and it still works anyways.
+2020-04-19 20:54:48 <b_jonas> in any case, you can use python's class-object system to write programs where your functions accept many different types if you want
+2020-04-19 20:58:31 <zzo38> I am now trying to write a specification of a change set format for TeXnicard, which is intended to be readable ASCII text which can be included in netnews articles.
