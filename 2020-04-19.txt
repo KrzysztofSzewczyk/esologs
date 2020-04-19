@@ -239,3 +239,51 @@
 2020-04-19 18:26:47 <int-e> But overall it doesn't seem very nice.
 2020-04-19 18:27:08 <shachaf> How does that work?
 2020-04-19 18:28:21 <int-e> the . would become part of the unencoded base character sequence before the final minus sign
+2020-04-19 18:30:07 <int-e> (This is assuming that base characters can't be encoded in the final encoded part, which I believe is the case.)
+2020-04-19 18:30:25 <shachaf> So you mean it doesn't have an equivalent of overlong encodings of ASCII characters.
+2020-04-19 18:30:33 <shachaf> Right.
+2020-04-19 18:30:42 Joined: tromp
+2020-04-19 18:30:42 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-19 18:31:18 <shachaf> But you can still have encoding errors, right? Overlong encodings are already an error in UTF-8.
+2020-04-19 18:32:50 <int-e> I suppose so
+2020-04-19 18:32:54 Joined: tromp
+2020-04-19 18:33:12 <int-e> But I don't know for sure.
+2020-04-19 18:33:28 <int-e> (I'm not interested enough to check this in detail.)
+2020-04-19 18:34:17 <shachaf> I'm now reading about how Punycode actually works and it's kind of ridiculous.
+2020-04-19 18:34:31 <shachaf> `` python -c 'print([s.encode("punycode") for s in ["M�nchen"]])'
+2020-04-19 18:34:32 <HackEso> ​['Mnchen-bma9c']
+2020-04-19 18:36:45 Quit: tromp (Ping timeout: 272 seconds)
+2020-04-19 18:37:22 <int-e> It is kind of neat if you like arithmetic coding.
+2020-04-19 18:37:26 <esowiki> 14[[07User:PythonshellDebugwindow/Stub14]]4 N10 02https://esolangs.org/w/index.php?oldid=71244 5* 03PythonshellDebugwindow 5* (+26) 10Created page with "Leave this page as a stub."
+2020-04-19 18:38:07 <shachaf> I guess it's pretty efficient, at least.
+2020-04-19 18:38:32 <esowiki> 14[[07Esolang:Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=71245&oldid=70695 5* 03PythonshellDebugwindow 5* (+228) 10
+2020-04-19 18:43:24 <esowiki> 14[[07A14]]4 M10 02https://esolangs.org/w/index.php?diff=71246&oldid=68569 5* 03PythonshellDebugwindow 5* (+153) 10/* External links */
+2020-04-19 18:43:30 <shachaf> `` python -c 'print([s.encode("punycode") for s in ["b�cher"]])'
+2020-04-19 18:43:31 <HackEso> ​['bcher-lka2c']
+2020-04-19 18:43:45 <shachaf> What' going on there? Is it normalizing the Unicode into two characters before encoding or something?
+2020-04-19 18:44:04 <shachaf> `` python -c 'print([s.encode("punycode") for s in ["bücher"]])'
+2020-04-19 18:44:06 <HackEso> ​['bucher-xba75c']
+2020-04-19 18:44:22 <esowiki> 14[[07Ellipsis14]]4 M10 02https://esolangs.org/w/index.php?diff=71247&oldid=63411 5* 03PythonshellDebugwindow 5* (+76) 10cats
+2020-04-19 18:44:43 <shachaf> Oh, of course it's not.
+2020-04-19 18:45:16 <shachaf> Oh, it's a Python 2 thing, isn't it.
+2020-04-19 18:45:35 User Name: arseniiv = arseniiv!~arseniiv@136.169.207.19
+2020-04-19 18:45:35 <arseniiv> `` py
+2020-04-19 18:45:36 <HackEso> ​/hackenv/bin/`: line 5: py: command not found
+2020-04-19 18:45:41 <shachaf> `` python3 -c 'print([s.encode("punycode") for s in [u"b�cher"]])'
+2020-04-19 18:45:42 <HackEso> ​[b'bcher-kva']
+2020-04-19 18:47:10 <arseniiv> `` python3 -c 'print([s.encode("punycode") for s in ["�"]])'
+2020-04-19 18:47:11 <HackEso> ​[b'tda']
+2020-04-19 18:47:25 <arseniiv> okay I don’t get punycode at all
+2020-04-19 18:47:53 <shachaf> > foldr (\x y -> x + y * 36) 0 $ map (\d -> fromJust $ elemIndex d (['a'..'z'] ++ ['0'..'9'])) "tda"
+2020-04-19 18:47:55 <lambdabot> 127
+2020-04-19 18:48:06 <arseniiv> ah, and I think I first thought that’s the same as what urlencode does
+2020-04-19 18:48:41 <arseniiv> `` python3 -c 'print([s.encode("punycode") for s in ["ü"]])'
+2020-04-19 18:48:42 <HackEso> ​[b'u-ccb']
+2020-04-19 18:49:18 <shachaf> > text [chr (127 + 125)]
+2020-04-19 18:49:20 <lambdabot> �
+2020-04-19 18:49:49 <arseniiv> ah, so it seeingly first prefixes all ASCII codepoints from the string, if any, and then base-something-encoded string in full
+2020-04-19 18:50:01 <arseniiv> though I might have read about it already somewhere
+2020-04-19 18:50:50 <arseniiv> `` python3 -c 'print([s.encode("punycode") for s in ["aμb⚁cъd"]])'
+2020-04-19 18:50:51 <HackEso> ​[b'abcd-lnd86f056o']
+2020-04-19 18:52:03 <shachaf> It encodes the code points and positions in base 36.
+2020-04-19 18:56:36 <arseniiv> ah, now I have read a part of discussion above too :D should have done that earlier
