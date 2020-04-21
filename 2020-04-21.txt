@@ -154,3 +154,24 @@
 2020-04-21 12:35:01 <Taneb> What's the worst-case slowdown translating a turing machine into lambda calculus, I wonder?
 2020-04-21 12:43:26 Joined: arseniiv
 2020-04-21 12:43:26 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 13:05:32 <int-e> Taneb: it's basically functional programming... the tape becomes two stacks (cons lists), and the rest is finite control, so it's a constant factor for any fixed TM.
+2020-04-21 13:06:25 <Taneb> Is it therefore appropriate to expect BB_TM to be proportional to BB_LC?
+2020-04-21 13:06:34 <int-e> No.
+2020-04-21 13:06:59 <int-e> The finite control plus two stacks is a vanishingly small fragment of what LC can do.
+2020-04-21 13:07:21 <int-e> But on the other hand, sizes are not comparable at all either.
+2020-04-21 13:08:35 <int-e> If you're explicit about the construction you'll find functions f and g (probably polynomial) such that BB_TM(n) <= BB_LC(f(n)) and BB_LC(n) <= BB_TM(g(n)).
+2020-04-21 13:09:35 <int-e> But those bounds will be very coarse.
+2020-04-21 13:10:15 <int-e> (Because they'd be obtained by mapping lambda terms to a small fragment of Turing machines, and Turing machines to a small fragment of lambda terms.)
+2020-04-21 13:16:27 <tromp> f(n) <= 2*n*ceil(log_2(4*n+4))+O(1)
+2020-04-21 13:18:42 <tromp> g(n) is probably sublinear
+2020-04-21 13:20:48 <int-e> tromp: Uhm, that's a different BB_LC.
+2020-04-21 13:21:12 <int-e> (One with input.)
+2020-04-21 13:22:48 <int-e> The one we're currently studying (more you than I) doesn't have a dense encoding for bitstrings.
+2020-04-21 13:26:13 Quit: ArthurStrong (Quit: leaving)
+2020-04-21 13:26:13 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 13:27:34 <tromp> so then the 2*n shld be replaced by 28*n
+2020-04-21 13:27:41 <int-e> It's easy to encode 1 bit in 4-5 bits or 2 bits in 3-7 bits.
+2020-04-21 13:28:14 <int-e> you can do stuff like 1 (2 (1 (2 3))) for [0,1,0,1].
+2020-04-21 13:28:44 <tromp> oh, right
+2020-04-21 13:29:08 <int-e> (4-7, not 3-7, of course)
+2020-04-21 13:29:46 <int-e> I suppose you can get quite a bit more elaborate than that and get some way below 3.5 bits per bit.
