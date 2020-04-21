@@ -342,3 +342,44 @@
 2020-04-21 20:46:08 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=71297&oldid=71296 5* 03PythonshellDebugwindow 5* (+0) 10/* Unnamed language 2 */
 2020-04-21 21:24:08 <Taneb> `quote limerick
 2020-04-21 21:24:11 <HackEso> No output.
+2020-04-21 21:32:31 <b_jonas> `quote animated
+2020-04-21 21:32:32 <HackEso> 1107) <kmc> Sgeo: oh yeah those animated characters were built into the operating system and there was an API for them
+2020-04-21 21:32:33 <b_jonas> unicode
+2020-04-21 21:32:42 <b_jonas> animated emojis
+2020-04-21 21:33:15 <b_jonas> or just a blink attribute
+2020-04-21 21:33:25 <b_jonas> handled by the VGA card
+2020-04-21 21:34:17 <b_jonas> why do VGA cards even have a mode with blink attribute for text mode? blinking cursor, that I can see, but blinking characters are just annoying
+2020-04-21 21:34:27 <b_jonas> why'd they build that into hardware?
+2020-04-21 21:35:22 <b_jonas> I mean, in VGA it's mostly redundant because you could just emulate it by changing palette colors
+2020-04-21 21:35:25 <b_jonas> but still
+2020-04-21 21:35:49 <zzo38> The other PC video cards have that too in text mode
+2020-04-21 21:35:54 <zzo38> It isn't only VGA
+2020-04-21 21:36:04 <b_jonas> zzo38: right, but why?
+2020-04-21 21:36:54 <zzo38> I am not really sure why they put that in, although that function can be disabled.
+2020-04-21 21:36:58 User Name: kmc = kmc!~beehive@unaffiliated/kmcallister
+2020-04-21 21:36:58 <kmc> I'm guessing it was less of a "this is super useful" and more of a "we have this leftover attribute bit and this can be implemented with minimal hardware"
+2020-04-21 21:37:16 <kmc> it could be used for error messages to get the user's attention
+2020-04-21 21:37:42 <zzo38> Yes, probably. ZZT also uses it for flashy water
+2020-04-21 21:38:00 <b_jonas> or as decoration in like moves about hacking
+2020-04-21 21:38:04 <kmc> if the hardware supports blinking cursor then not much extra hardware is required for blinking arbitrary text
+2020-04-21 21:38:40 <zzo38> Yes, although the CRTC chip they used already supports cursor blinking, and yet they didn't use it, implementing their own instead.
+2020-04-21 21:38:54 <zzo38> Also, the cursor blinking rate and text blinking rate are different (although they are synchronized).
+2020-04-21 21:40:35 <kmc> huh
+2020-04-21 21:40:37 <kmc> okay
+2020-04-21 21:40:43 Quit: craigo (Ping timeout: 260 seconds)
+2020-04-21 21:40:43 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 21:40:56 Quit: xelxebar (Remote host closed the connection)
+2020-04-21 21:40:56 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xylochoron[m], zzo38
+2020-04-21 21:41:14 Joined: xelxebar
+2020-04-21 21:41:14 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 21:43:24 Joined: tromp
+2020-04-21 21:46:18 Quit: tromp (Ping timeout: 256 seconds)
+2020-04-21 21:46:45 Quit: tromp (Remote host closed the connection)
+2020-04-21 21:46:45 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 21:50:38 Joined: Lord_of_Life
+2020-04-21 21:52:54 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2020-04-21 21:53:26 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-04-21 21:58:22 Quit: zzo38 (Disconnected by services)
+2020-04-21 21:58:22 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m]
+2020-04-21 21:58:29 Joined: zzo38
+2020-04-21 21:58:29 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
