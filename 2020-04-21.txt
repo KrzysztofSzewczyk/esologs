@@ -127,3 +127,6 @@
 2020-04-21 10:54:22 <myname> is there something that prevents me from implementing my own c-style like strings on there?
 2020-04-21 10:55:18 <myname> like, if the last byte is not a zero, get the next value from the stack and interpret it as a continuation of the current string
 2020-04-21 10:55:37 <myname> slight drawback is a maximum of 31 byte overhead per string
+2020-04-21 11:09:33 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2020-04-21 11:09:33 <fizzie> Underload is hard enough (well, IMO) anyway, even without attempting to deal with a limitation like that.
+2020-04-21 11:16:08 <fizzie> A lot of programs contain (...):^ where ... is a substantial chunk of the program, and that involves having ... on the stack. It's not immediately obvious how to translate that to requiring less stack size.
