@@ -189,3 +189,16 @@
 2020-04-21 13:38:04 <int-e> So, 2.5 bits per bit if we encode in base 8. That's... better than expected already.
 2020-04-21 13:39:24 <int-e> >  [(4 + (n-1)/2) / logBase 2 n | n <- [2,4,7,8]]
 2020-04-21 13:39:27 <lambdabot> [4.5,2.75,2.493450309756155,2.5]
+2020-04-21 14:03:32 <b_jonas> kspalaiologos: my guess is that 32 bytes would be very limiting, but with a much larger constant size you could probably still implement a turing machine
+2020-04-21 14:03:47 <b_jonas> or a finite control two-stack machine or whatnot
+2020-04-21 14:04:15 <b_jonas> it's just that each of those elements will be very long because they each contain full a program for that two-stack machine,
+2020-04-21 14:04:26 <b_jonas> but since you can write a univeral machine for that, the size is effectively constant
+2020-04-21 14:04:32 <b_jonas> I could be wrong here
+2020-04-21 14:07:03 Quit: kritixilithos (Ping timeout: 240 seconds)
+2020-04-21 14:07:04 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 14:07:32 <b_jonas> this would be a rather inefficient means of computation of course, worse than brainfuck
+2020-04-21 14:07:47 <kspalaiologos> because I thought about implementing underload in Brainfuck
+2020-04-21 14:07:50 <kspalaiologos> but now, meeeeh
+2020-04-21 14:08:11 <kspalaiologos> it requires a lot of dynamic memory allocation I can't really simplify this much
+2020-04-21 14:10:38 Joined: kritixilithos
+2020-04-21 14:10:38 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
