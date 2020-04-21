@@ -175,3 +175,17 @@
 2020-04-21 13:28:44 <tromp> oh, right
 2020-04-21 13:29:08 <int-e> (4-7, not 3-7, of course)
 2020-04-21 13:29:46 <int-e> I suppose you can get quite a bit more elaborate than that and get some way below 3.5 bits per bit.
+2020-04-21 13:30:29 <int-e> > 8/logBase 2 5
+2020-04-21 13:30:30 <lambdabot> 3.4454124645871445
+2020-04-21 13:30:51 <int-e> (But base 5 is ugly when talking about bitstrings.)
+2020-04-21 13:31:16 Quit: rain1 (Quit: Lost terminal)
+2020-04-21 13:31:16 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, iczero, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-21 13:36:10 <int-e> > (4.5, 5.5/2, 6.5/logBase 2 6, 7.5/3) -- actually we can reverse the meanings of 1 and 2 (or 1..4) to make sure we get an encoding that only uses the average length, even in the worst case.
+2020-04-21 13:36:13 <lambdabot> (4.5,2.75,2.5145432470245206,2.5)
+2020-04-21 13:36:28 <int-e> huh.
+2020-04-21 13:36:40 <int-e> > (4.5, 5.5/2, 7/logBase 2 7, 7.5/3)
+2020-04-21 13:36:42 <lambdabot> (4.5,2.75,2.493450309756155,2.5)
+2020-04-21 13:37:05 <int-e> (I misread which base gave the optimal number of bits in this setting)
+2020-04-21 13:38:04 <int-e> So, 2.5 bits per bit if we encode in base 8. That's... better than expected already.
+2020-04-21 13:39:24 <int-e> >  [(4 + (n-1)/2) / logBase 2 n | n <- [2,4,7,8]]
+2020-04-21 13:39:27 <lambdabot> [4.5,2.75,2.493450309756155,2.5]
