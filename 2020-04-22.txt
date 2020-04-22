@@ -250,3 +250,21 @@
 2020-04-22 19:56:19 <imode> yup.
 2020-04-22 19:57:12 <arseniiv> it can be made into a its own kind of storage if it’s useful, but I didn’t experiment with this before, only read about it
 2020-04-22 19:59:33 <zzo38> I am not so interested in what imode is making unless perhaps the source code will be freely available and fully documented, and can be used with a telnet client. I also have no interest in joining a private alpha, regardless of the conditions.
+2020-04-22 20:01:49 <imode> well, if it helps, I plan on releasing a self-hostable version in the future that's FOSS.
+2020-04-22 20:02:38 <zzo38> Yes, that can help.
+2020-04-22 20:02:48 <imode> gotta make money somehow in the interrim.
+2020-04-22 20:03:19 <zzo38> Yes, OK, and even if the self-hostable FOSS version is available, you can still charge money for using on your server too, anyways, I think
+2020-04-22 20:04:19 Quit: S_Gautam (Quit: Connection closed for inactivity)
+2020-04-22 20:04:19 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 20:05:04 <imode> correct. typically there's a good stretch between when something is available and when the product is open sourced. the start-up costs involved are made back by the exclusivity in the first couple of months, and then after that you have an existing user base that's already present on your infra.
+2020-04-22 20:05:30 <zzo38> OK
+2020-04-22 20:05:46 <imode> so people who really wanna dig into the code and self-host will be happy, but I can still pay my engineers and offer convenience.
+2020-04-22 20:11:38 <Taneb> Today I was pondering about what monads in the poset of sets and the subset relation, considered as a category, look like
+2020-04-22 20:11:58 <Taneb> Then the friend I was talking to googled and apparently they're closure operators, which are apparently a thing
+2020-04-22 20:14:26 <Taneb> I love it when things are things
+2020-04-22 20:15:45 <arseniiv> and comonads there are… damn, I forgot the part where I read about functions on set algebras being the other way. They had a name for that too
+2020-04-22 20:17:09 <Taneb> Coclosure operator?
+2020-04-22 20:19:42 <arseniiv> Taneb: they had a usual name too, I think that was a chapter in Pierce, on recursive types, maybe regarding to the difference between μ and ν. That required a more general theory which I’ll try to find now what it was there about
+2020-04-22 20:20:13 <Taneb> Kernel operators?
+2020-04-22 20:26:53 <zzo38> TeXnicard seem not the only alternative to Magic Set Editor; I also found something called PrincessEdit, although I cannot seem to find any documentation about how to use it.
+2020-04-22 20:26:58 <arseniiv> ah, I found that part. There, several properties of a subset X ⊂ U, given a function F: P(U) → P(U) (P is powerset), are defined: X is F-closed if X ⊂ F(X), is F-consistent if F(X) ⊂ X (and a fixed point if F(X) = X, but that’s not interesting). So that’s not too related to closure operators but if it somehow is, co-operators may be called “consistency operators”, hm
