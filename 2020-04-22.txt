@@ -268,3 +268,21 @@
 2020-04-22 20:20:13 <Taneb> Kernel operators?
 2020-04-22 20:26:53 <zzo38> TeXnicard seem not the only alternative to Magic Set Editor; I also found something called PrincessEdit, although I cannot seem to find any documentation about how to use it.
 2020-04-22 20:26:58 <arseniiv> ah, I found that part. There, several properties of a subset X ⊂ U, given a function F: P(U) → P(U) (P is powerset), are defined: X is F-closed if X ⊂ F(X), is F-consistent if F(X) ⊂ X (and a fixed point if F(X) = X, but that’s not interesting). So that’s not too related to closure operators but if it somehow is, co-operators may be called “consistency operators”, hm
+2020-04-22 20:30:03 <arseniiv> ah, I see. For F being a closure operator at least requires any X ⊂ U be F-closed
+2020-04-22 20:30:30 <arseniiv> so F being a “consistency operator” should require any X be F-consistent
+2020-04-22 20:31:08 <arseniiv> as of monotonicity and idempotency of F in this case, I don’t know
+2020-04-22 20:33:34 <arseniiv> ah there is a simpler axiomatization: X ⊂ F(Y) iff F(X) ⊂ F(Y). Now it’s obvious how to dualize that! F(X) ⊂ Y iff F(X) ⊂ F(Y). And also we can plainly see monadic bind and comonadic extend here too, yeah
+2020-04-22 20:34:05 <arseniiv> in Kleisli or something something form
+2020-04-22 20:34:26 <arseniiv> I don’t know what I’m saying here
+2020-04-22 20:35:09 <arseniiv> ah, yes, they say on en.wikipedia the dual is called a kernel operator indeed! Or also an interior operator or a dual closure
+2020-04-22 20:36:53 <arseniiv> also when axiomatizing closure via monotonicity, idempotency and “any X is F-closed”, they say the dual has both first and second unchanged
+2020-04-22 20:40:39 <b_jonas> oh jesus, pointless topolocy
+2020-04-22 20:40:46 <b_jonas> this channel can get weird about mathematics
+2020-04-22 20:42:12 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=71330&oldid=71297 5* 03PythonshellDebugwindow 5* (-2408) 10/* Unnamed language 2 */
+2020-04-22 20:43:39 <arseniiv> b_jonas: topology is pointless, resistance is futile. We are fixed point
+2020-04-22 20:53:08 <esowiki> 14[[07Phile14]]4 N10 02https://esolangs.org/w/index.php?oldid=71331 5* 03PythonshellDebugwindow 5* (+3276) 10Created page with "'''Phile''' is an esolang by [[User:PythonshellDebugwindow]].  ==Syntax== Each line in Phile is one of the following:  OPEN ''fname'';  WRITE ''fname'' ''value'';  OVERWRITE '..."
+2020-04-22 20:54:57 <esowiki> 14[[07Phile14]]4 M10 02https://esolangs.org/w/index.php?diff=71332&oldid=71331 5* 03PythonshellDebugwindow 5* (+99) 10
+2020-04-22 20:57:13 Quit: kspalaiologos (Quit: Leaving)
+2020-04-22 20:57:13 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 20:57:31 <arseniiv> does a word for cold (an illness) in your languages have something in common not with being cold/chilled/frozen?
+2020-04-22 20:59:52 <fizzie> We typically call the common cold "flunssa", which as a word is obviously related to influenza/flu, which we call "influenssa".
