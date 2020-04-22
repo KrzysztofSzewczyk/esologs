@@ -227,3 +227,26 @@
 2020-04-22 19:09:50 <zzo38> Perhaps the prefix-based permissions like I mentioned might do.
 2020-04-22 19:13:52 <imode> thanks for the info. I think I've decided to have a very, very basic set of permissions that are applicable regardless of intent. owners of "servers" can determine who can use what procedures and primitives, and create roles for people that join.
 2020-04-22 19:16:25 <zzo38> OK
+2020-04-22 19:35:44 User Name: arseniiv = arseniiv!~arseniiv@136.169.207.172
+2020-04-22 19:35:44 <arseniiv> imode: oh you are making a multi-world-something-thing?
+2020-04-22 19:37:53 <arseniiv> and using that queue-based language we’ve discussed a handful of times? how had it evolved, did you add something else to threading?
+2020-04-22 19:45:09 <imode> arseniiv: yup! I'm taking a majority of the language and turning it into a multi-"world" multi-user environment.
+2020-04-22 19:45:24 <imode> I scrapped the concurrency features.
+2020-04-22 19:45:48 <imode> but I added things like lists, strings, floats, local and global (across all procedures and persistent) variables.
+2020-04-22 19:47:14 <imode> if you make a user account, you can join "worlds" other users have created.
+2020-04-22 19:48:10 <imode> each of these worlds constitutes a key-value database, a set of procedures, and a set of groups. there's also a package manager and a central package repository for importing new features into your world.
+2020-04-22 19:48:30 <arseniiv> that’s interesting. I’ll help you test this thing if you’d be interesting and I would be able to set up the things it would need
+2020-04-22 19:48:37 Quit: rain1 (Quit: leaving)
+2020-04-22 19:48:37 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 19:49:42 <imode> I'd love that! I plan on launching a private alpha to interested parties to test things out. eventually, I plan on having world ownership be a subscription service.
+2020-04-22 19:51:40 <imode> tiered by resources, essentially. if you want a larger call depth, more key-value entries, longer programs and larger scratch space, you can have that.
+2020-04-22 19:53:57 <arseniiv> imode: BTW how do you see (hm I forgot the accurate term) a “named-field spreadsheet” thing where if X is defined using Y and Y’s definition changes, X’s value would change automatically (and if X depends on itself, the system would strongly criticize you and not do anything)? It may or may not be useful in such setting. Certainly not for all definitions, but maybe for some specially marked ones
+2020-04-22 19:55:01 <imode> I'd see that as a dataflow graph.
+2020-04-22 19:55:32 <imode> if you change a cell, all cells that depend on that cell would have to update, and all cells that depend on the newly updated cells would have to update, so on and so forth.
+2020-04-22 19:55:51 <arseniiv> (in any case you can lambdabot me if I won’t be around, I’m lazy to logread for a long long time now)
+2020-04-22 19:56:04 <arseniiv> yeah that’s how I understand that thing is implemented
+2020-04-22 19:56:15 <imode> there's not much else you can do.
+2020-04-22 19:56:15 <arseniiv> and you check for cycles when a definition changes
+2020-04-22 19:56:19 <imode> yup.
+2020-04-22 19:57:12 <arseniiv> it can be made into a its own kind of storage if it’s useful, but I didn’t experiment with this before, only read about it
+2020-04-22 19:59:33 <zzo38> I am not so interested in what imode is making unless perhaps the source code will be freely available and fully documented, and can be used with a telnet client. I also have no interest in joining a private alpha, regardless of the conditions.
