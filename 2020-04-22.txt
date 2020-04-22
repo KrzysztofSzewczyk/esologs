@@ -64,3 +64,33 @@
 2020-04-22 09:20:24 <kspalaiologos> "given two rooted trees, calculate minimal amount of leafs to remove so that the trees are isomorphic" <- is there a smarter solution to that than bruteforce?
 2020-04-22 09:22:59 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=71302&oldid=71280 5* 03DanielCristofani 5* (+15) 10/* E */
 2020-04-22 09:26:47 <esowiki> 14[[07Egaharjb14]]4 M10 02https://esolangs.org/w/index.php?diff=71303&oldid=71301 5* 03DanielCristofani 5* (+0) 10
+2020-04-22 09:34:32 <int-e> kspalaiologos: are those trees ordered or unordered?
+2020-04-22 09:35:13 <kspalaiologos> they are unordered
+2020-04-22 09:35:55 <int-e> (just clarifying, it may not even make any real difference to hardness)
+2020-04-22 09:36:17 <kspalaiologos> I've heard that there's a more optimal solution to this problem
+2020-04-22 09:36:20 <kspalaiologos> but I can't figure it out
+2020-04-22 09:36:42 <int-e> "more optimal" :-/
+2020-04-22 09:37:27 Joined: rain1
+2020-04-22 09:37:28 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 09:38:22 <kspalaiologos> has lower computational complexity
+2020-04-22 09:40:38 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-04-22 09:40:38 <rain1> hi!
+2020-04-22 09:42:25 Quit: Sgeo (Read error: Connection reset by peer)
+2020-04-22 09:42:25 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 09:42:54 Joined: Sgeo
+2020-04-22 09:42:54 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 09:45:22 <esowiki> 14[[07Cell14]]4 10 02https://esolangs.org/w/index.php?diff=71304&oldid=68083 5* 03OsmineYT 5* (+56) 10
+2020-04-22 09:45:35 <int-e> kspalaiologos: but rooted, I hope
+2020-04-22 09:45:44 <kspalaiologos> yes obviously
+2020-04-22 09:46:05 <int-e> I suspect this one is actually in P.
+2020-04-22 09:48:44 <int-e> It's amenable to dynamic programming (in order to figure out the answer for the root, first compute the answer for all pairs of children of the root), with maximum weight bipartite matching to combine those values.
+2020-04-22 09:49:17 <int-e> (For this purpose, the value that is to be maximized is the number of leafs kept.)
+2020-04-22 09:52:10 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=71305&oldid=71288 5* 03OsmineYT 5* (+16) 10
+2020-04-22 09:52:30 Joined: Lord_of_Life
+2020-04-22 09:52:59 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=71306&oldid=71305 5* 03OsmineYT 5* (+1) 10
+2020-04-22 09:53:26 <esowiki> 14[[07User:OsmineYT14]]4 10 02https://esolangs.org/w/index.php?diff=71307&oldid=71306 5* 03OsmineYT 5* (-16) 10
+2020-04-22 09:53:34 Quit: Lord_of_Life (Ping timeout: 256 seconds)
+2020-04-22 09:53:49 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-04-22 09:55:02 <int-e> (Any unpaired children end up with 0 leafs; they are deleted in full. There may well be an off-by-one error in this logic, but essentially it should work like this.)
+2020-04-22 09:58:15 <kspalaiologos> I've already done the Newick parser
+2020-04-22 09:59:59 <int-e> Eww, Firefox, why? Why enlarge the location bar when it's focused?
