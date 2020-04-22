@@ -197,3 +197,30 @@
 2020-04-22 18:19:46 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-22 18:20:06 Joined: tromp
 2020-04-22 18:20:06 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-22 18:32:15 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-22 18:32:15 <imode> I recall someone in here playing ifMUD.
+2020-04-22 18:32:18 <imode> zzo38: was it you?
+2020-04-22 18:32:26 <zzo38> imode: Yes.
+2020-04-22 18:32:50 <imode> how do permissions/ownership principles work in ifMUD? if a person designs an object and others use it, how malicious can it be?
+2020-04-22 18:33:22 <zzo38> imode: It can teleport the user, but not much else.
+2020-04-22 18:34:21 <imode> I see. can one user's object interact with another user's object? is there a dedicated permissions system?
+2020-04-22 18:34:59 <zzo38> No, there is no permission system, unfortunately.
+2020-04-22 18:35:07 <imode> interesting.
+2020-04-22 18:35:27 <zzo38> (Well, there is a very limited one: If an object has the "examinable" flag set, then other users, and programs by other users, can read that object's fields; otherwise they are unreadable.)
+2020-04-22 18:36:24 <zzo38> There are also listening exits, which it would seem can be triggered by programs, so this can be done to activate another object remotely by a program even if you do not own it.
+2020-04-22 18:37:25 <zzo38> I wanted a more sophisticated permission system, where you can define group/other permissions (similar to UNIX permissions) on field names and on prefixes of field names (where the "group" is actually a channel), although this is not currently implemented.
+2020-04-22 18:37:48 User Name: oren = oren!~oren@ec2-18-234-164-48.compute-1.amazonaws.com
+2020-04-22 18:37:48 <oren> why do all putty-based terminal software hate diacricits
+2020-04-22 18:38:31 <oren> does anyone know of a terminal software that doesn't hate diacritics?
+2020-04-22 18:38:37 <imode> zzo38: how easy/difficult would you say it'd be to implement something like this purely in ifMUD coe?
+2020-04-22 18:38:39 <imode> s/coe/code
+2020-04-22 18:40:01 <zzo38> imode: The permissions system I mentioned I think would have to be done in Perl, although there are many things that can be done in ifMUD code; you can look at some of my object codes (most of them are set examinable) in order to see how I have done some of them
+2020-04-22 18:40:47 <imode> is ifMUD extensible via perl?
+2020-04-22 18:40:58 <imode> huh.
+2020-04-22 18:41:26 <zzo38> It is written in Perl, although only the server operator can alter its code (although apparently it is possible to alter it while it is running; I am not sure how that works, though)
+2020-04-22 18:42:06 <imode> the reason I ask is that I'm debating between including a permissions system for my project or allowing "world builders" to add it via plugins (along with other pieces of code).
+2020-04-22 18:42:30 <imode> right now all I do is hand you a postfix lang, a key-value db and a chat system.
+2020-04-22 18:42:46 <imode> and a way to import procedures via a "package manager".
+2020-04-22 18:44:13 <zzo38> I think that a permission system should be added, more than what ifMUD currently has (which is only the "examinable" flag, which isn't much)
+2020-04-22 18:50:18 Joined: kspalaiologos
+2020-04-22 18:50:18 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wlp1s1, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
