@@ -265,3 +265,17 @@
 2020-04-23 17:48:09 <esowiki> 14[[07Talk:Hello14]]4 10 02https://esolangs.org/w/index.php?diff=71384&oldid=20039 5* 03Willicoder 5* (+68) 10
 2020-04-23 17:48:19 <esowiki> 14[[07Talk:Hello14]]4 M10 02https://esolangs.org/w/index.php?diff=71385&oldid=71384 5* 03Willicoder 5* (+90) 10
 2020-04-23 17:51:35 <esowiki> 14[[07Talk:Stackint14]]4 10 02https://esolangs.org/w/index.php?diff=71386&oldid=71383 5* 03Willicoder 5* (+119) 10
+2020-04-23 18:00:49 <pikhq> This channel in particular probably works out fine as far as policy goes, considering we are _in fact_, not just de jure, associated with esolangs.org
+2020-04-23 18:07:24 <kmc> yeah
+2020-04-23 18:07:42 <kmc> and #trains is the official project channel of https://github.com/lexande/trainbot
+2020-04-23 18:07:45 <kmc> :P
+2020-04-23 18:07:46 <int-e> Which would make a good case for #esolangs
+2020-04-23 18:08:08 <int-e> But as far as I'm aware nobody's has been asking the question.
+2020-04-23 18:08:18 <int-e> (loudly enough to matter)
+2020-04-23 18:12:43 <esowiki> 14[[07Stackint14]]4 M10 02https://esolangs.org/w/index.php?diff=71387&oldid=71378 5* 03PythonshellDebugwindow 5* (+34) 10/* Commands */
+2020-04-23 18:13:18 <zzo38> Do you have comments about my (incomplete) set of Magic: the Gathering cards? I would also want the help with rendering templates (especially graphics and fonts).
+2020-04-23 18:16:32 <zzo38> I may also later write a export template for HTML, although I want to fix it so that if CSS is disabled then the text will be visible and if enabled (and implemented) then it can display the icons.
+2020-04-23 18:18:58 <int-e> fungot: anything?
+2020-04-23 18:18:59 <fungot> int-e: the guy complains how the lisp code alone. the pattern is
+2020-04-23 18:24:24 <zzo38> Now I added into the TeXnicard documentation about a common/ subdirectory for export templates, which contains files associated with the exported files for all card sets. For example, if you are exporting HTML, then icons and CSS may be included here; if you are exporting TeX, you may put a macro file here.
+2020-04-23 18:26:05 <zzo38> MSE has the copy_file function, although it requires the file to be copied for each exported card set.
