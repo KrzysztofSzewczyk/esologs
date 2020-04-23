@@ -152,3 +152,28 @@
 2020-04-23 14:27:59 <Taneb> You have x <= f(x) and f(f(x)) <= f(x) for all x
 2020-04-23 14:28:08 <Taneb> Which imply f(x) = f(f(x))
 2020-04-23 14:28:22 <Taneb> So, f is monotone, increasing, and idempotent
+2020-04-23 14:31:00 <Taneb> (for a poset this is known as a closure operator)
+2020-04-23 14:31:31 <arseniiv> what functors wouldn’t be a monad in this case? Hm maybe I shouldn’t try to think one up for 3, maybe 4 or 5 would be needed?
+2020-04-23 14:31:44 <Taneb> There's an example for 2
+2020-04-23 14:31:54 <Taneb> If you map everything to 0
+2020-04-23 14:32:03 <Taneb> That's a functor but not a monad
+2020-04-23 14:32:14 Joined: LKoen
+2020-04-23 14:32:15 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-23 14:32:54 <arseniiv> ah hmmm I can’t see what condition does it break
+2020-04-23 14:33:19 <arseniiv> it’s idempotent at least
+2020-04-23 14:33:43 <Taneb> We need the property that x <= f(x)
+2020-04-23 14:33:55 <Taneb> But 1 > f(1) = 0
+2020-04-23 14:34:02 <arseniiv> ah I parsed it the wrong way
+2020-04-23 14:34:13 <arseniiv> now I get what did you call increasing
+2020-04-23 14:34:29 <arseniiv> yes, that’s interesting!
+2020-04-23 14:34:40 <Taneb> I've seen that property called extensive
+2020-04-23 14:34:48 <arseniiv> and I think I glimpse already how does it make cubes
+2020-04-23 14:38:52 <arseniiv> so, we should increment each of 0, …, n−1 some steps up, but at the same time leave a segment at the top intact. Hm, no, I don’t see cubes yet. That should somehow give us 2^(n−1) possibilities but that seems too many atm
+2020-04-23 14:39:23 <Taneb> How many vertices does an n-dimensional hypercube have
+2020-04-23 14:47:17 Quit: tromp (Read error: Connection reset by peer)
+2020-04-23 14:47:17 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-23 14:47:37 Quit: ArthurStrong (Quit: leaving)
+2020-04-23 14:47:37 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-23 14:47:43 <Taneb> Hmm, what's a monad in the category of monads in some category?
+2020-04-23 14:48:17 <Taneb> For these categories, the category of monads is a poset so this should be not too tricky
+2020-04-23 14:53:55 <Taneb> I wonder if a monad in the category of monads works out to be a "commutative monad" in the same way as a monoid in the category of monoids is a commutative monoid
