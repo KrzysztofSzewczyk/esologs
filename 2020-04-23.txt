@@ -177,3 +177,26 @@
 2020-04-23 14:47:43 <Taneb> Hmm, what's a monad in the category of monads in some category?
 2020-04-23 14:48:17 <Taneb> For these categories, the category of monads is a poset so this should be not too tricky
 2020-04-23 14:53:55 <Taneb> I wonder if a monad in the category of monads works out to be a "commutative monad" in the same way as a monoid in the category of monoids is a commutative monoid
+2020-04-23 15:03:08 <Taneb> I think the answer to that is "no"
+2020-04-23 15:03:19 <Taneb> Monad(Monad(2)) is a poset with seven elements, I think
+2020-04-23 15:08:44 Quit: LKoen (Remote host closed the connection)
+2020-04-23 15:08:44 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-23 15:13:11 <Cale> A monad on a preorder is a closure operator.
+2020-04-23 15:13:38 <arseniiv> <Taneb> How many vertices does an n-dimensional hypercube have => ah I should have written 2^n but that’s even more than 2^(n−1) so I don’t yet see how could we have that many different monads there. I’ll draw some pictures later and then I think I’ll see
+2020-04-23 15:17:22 <Taneb> I believe we have 2^(n-1) monads
+2020-04-23 15:19:47 Quit: sprocklem (Ping timeout: 258 seconds)
+2020-04-23 15:19:47 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-23 15:21:26 Joined: sprocklem
+2020-04-23 15:21:26 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-23 15:22:07 <Cale> For a 2^n directed hypercube?
+2020-04-23 15:22:18 <Taneb> For the linear order of n elements
+2020-04-23 15:24:24 <Cale> Not 2^n?
+2020-04-23 15:24:39 <Taneb> No
+2020-04-23 15:24:39 <Cale> Choose any subset, and let those be the closed elements
+2020-04-23 15:26:13 <Cale> Closure operators on a partially ordered set are uniquely determined by the set of closed elements
+2020-04-23 15:26:17 <Taneb> Take the linear order on {0,1,2}. There are four monads on that, which I have written as 012, 022, 112, 222
+2020-04-23 15:27:27 <Cale> yeah, hmm
+2020-04-23 15:27:48 <Taneb> We can't take the empty set, and we must include the top element as closed
+2020-04-23 15:28:06 <Cale> Right
+2020-04-23 15:28:23 <Cale> It's the forced inclusion of the top that divides the number of options in two
+2020-04-23 15:28:30 <Taneb> Yeah
