@@ -50,3 +50,8 @@
 2020-04-23 04:17:05 Parted: wlp1s1
 2020-04-23 04:17:05 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-23 04:53:52 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Durkenheimer 5*  10New user account
+2020-04-23 05:00:52 <pikhq> I honestly don't _get_ some of the FastCGI-like stuff
+2020-04-23 05:01:14 <pikhq> Some of them are basically running HTTP semantics, over a socket, with just an arbitrarily different protocol
+2020-04-23 05:01:30 <pikhq> At which point... why not just do HTTP with the expectation you'll have a reverse proxy in front?
+2020-04-23 05:01:49 <pikhq> If you're fully expecting a reverse proxy to be in play, an acceptable HTTP implementation is _not that hard_
+2020-04-23 05:21:51 <esowiki> 14[[07AAAAAAAAAAAAAA!!!!14]]4 10 02https://esolangs.org/w/index.php?diff=71348&oldid=70455 5* 03YamTokTpaFa 5* (+6) 10how about this design
