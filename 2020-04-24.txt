@@ -126,3 +126,43 @@
 2020-04-24 17:57:09 <orbitaldecay> Does anyone know the name for what I'm doing with combinators here? https://wiki.forder.cc/wiki/Combinators
 2020-04-24 17:58:05 <orbitaldecay> Or a better way to approach it?
 2020-04-24 17:58:47 <orbitaldecay> I'm basically poking around for binary operators on subsets of combinators that form quasigroups, semigroups, maybe even a group?
+2020-04-24 18:00:45 <orbitaldecay> question #4 at the bottom is basically the whole point
+2020-04-24 18:04:26 <int-e> my takeaway from this page is that I hate postfix notation for combinatory logic
+2020-04-24 18:06:37 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-24 18:06:37 <imode> postfix notation is deceptively simple.
+2020-04-24 18:08:00 <int-e> 1. is a cute puzzle... if you let T = (\x. x x) (\P x y. (\x. x x) P y x) then T x y ->> T y x. (Now do the abstraction elminiation and be happy.)
+2020-04-24 18:09:00 Joined: tromp
+2020-04-24 18:09:00 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, Grimpoteuthis, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-24 18:09:21 <orbitaldecay> int-e: cool!
+2020-04-24 18:10:12 <orbitaldecay> I'm just dipping my toe in the water with combinators. Still have a lot to learn.
+2020-04-24 18:12:29 <orbitaldecay> I think 3. is a very interesting question too. I have an intuitive feel for it, but haven't formalized it yet.
+2020-04-24 18:13:31 <int-e> 2. is standard pairing: (\x y p. p x y)
+2020-04-24 18:13:40 <int-e> I don't understand 3.
+2020-04-24 18:15:03 <int-e> 4. probably has some silly (artificial) solution that embeds both ` and a representation of the starting term
+2020-04-24 18:17:33 <orbitaldecay> 3 is stating when is <*> closed under application
+2020-04-24 18:17:43 <int-e> but what does that mean?
+2020-04-24 18:17:47 <orbitaldecay> By definition it's closed under *
+2020-04-24 18:18:33 <orbitaldecay> if x, y are in <*> when is (xy) in <*> where the operation there is application, not *
+2020-04-24 18:18:55 <int-e> also what about silly things like \x y. x y
+2020-04-24 18:19:23 <int-e> (that is, a deliberately binary version of I)
+2020-04-24 18:20:23 <orbitaldecay> Let's call that I*, <I*``> is actually pretty weird. For x, y in <I*``>, x*y is always recursive
+2020-04-24 18:20:38 <orbitaldecay> so it just blows up my interpretter whenever I try to compute it
+2020-04-24 18:20:39 <orbitaldecay> haha
+2020-04-24 18:20:44 <int-e> I guess that's just ` really
+2020-04-24 18:21:18 <orbitaldecay> or maybe I'm thinking of I**
+2020-04-24 18:21:22 <orbitaldecay> I forget which one I tried
+2020-04-24 18:21:39 <int-e> So okay, 3 may be a difficult question... but why is it interesting?
+2020-04-24 18:22:12 <orbitaldecay> Well, I'm interested in doing subturing computation in a context closer to a group
+2020-04-24 18:22:38 <orbitaldecay> 3 isn't terribly important, but it'd be nice to have
+2020-04-24 18:22:58 <orbitaldecay> that way I could generate the set <*>, then the group operation would just be regular function application
+2020-04-24 18:23:11 <orbitaldecay> maybe a quasigroup, or whatever
+2020-04-24 18:23:20 <orbitaldecay> since associativity is probably a no go with any useful computation
+2020-04-24 18:23:32 <orbitaldecay> just some way to do algebra on programs
+2020-04-24 18:24:30 <int-e> associativity moves you close to string rewriting (semi-Thue systems).
+2020-04-24 18:24:51 <int-e> Which are Turing-complete but also awkward to actually use.
+2020-04-24 18:25:14 <orbitaldecay> It's been a long time since I've looked at semi-Thue systems. Lemme read the wiki real quick
+2020-04-24 18:26:03 <orbitaldecay> Ah, I see. Yeah associativity would basically give you a semi-thue system
+2020-04-24 18:27:11 <orbitaldecay> The crucial thing I want is for all x in <*> to have x^-1 in <*> where xx^(-1) = e
+2020-04-24 18:27:21 <orbitaldecay> not necessarily matching on the left and right sides
+2020-04-24 18:27:56 <orbitaldecay> either under the * operation, or under application (which I don't think is possible)
+2020-04-24 18:30:01 <orbitaldecay> and x^(-1) unique of course
