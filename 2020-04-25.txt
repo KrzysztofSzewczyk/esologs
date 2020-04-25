@@ -85,3 +85,38 @@
 2020-04-25 14:25:06 User Name: arseniiv = arseniiv_!~arseniiv@94.41.83.167.dynamic.ufanet.ru
 2020-04-25 14:25:06 <arseniiv> hi!
 2020-04-25 14:25:09 Nick Change: arseniiv -> arseniiv
+2020-04-25 14:32:29 User Name: arseniiv = arseniiv!~arseniiv@94.41.83.167.dynamic.ufanet.ru
+2020-04-25 14:32:29 <arseniiv> Zuma-themed impossible(?) puzzle: suppose you have N types of balls and an endless sequence Z → {1, ..., N} of them, such that a ball at each position is picked uniformly at random independent of all others. You can insert a ball of your choice between the 0th and 1st places in this sequence, and then if that makes a sequence of 3 or more balls of the same kind, they vanish, the sequence collapses and the same check (are there 3 or m
+2020-04-25 14:32:29 <arseniiv> re balls of the same kind at the cut position) happens again and again if necessary. What is the mean count of vanishes? vanished balls?
+2020-04-25 14:34:51 <int-e> why is that a function from Z, not N?
+2020-04-25 14:35:13 <arseniiv> at first I thought to allow placing a ball at any position, but I think this would make the problem ill-posed: I’d suppose there would be a possibility to make any count of vanishes but obviously not an infinite one
+2020-04-25 14:35:48 <int-e> The problem with using Z being that you have to specify what happens to the indices after removal
+2020-04-25 14:37:15 <arseniiv> int-e: two one-sided subsequences after the cut should then concatenate back
+2020-04-25 14:37:56 <arseniiv> and as in this case we remember the position of the cut point, we could put zeroth index anywhere we like
+2020-04-25 14:40:17 <int-e> Ah I misunderstood...
+2020-04-25 14:40:56 <int-e> so if you have 1122 and place a ball in the middle, you get two choices... which one do you pick?
+2020-04-25 14:41:12 <arseniiv> about N instead of Z: hmm I think that wouldn’t be neat enough; in the game if you happen to remove balls from the end of the chain, and there is a cluster of ≥3 balls right near them, that cluster won’t wanish, but in this formulation it would (and if it wouldn’t, that would be a boring setting)
+2020-04-25 14:42:11 <int-e> it's okay, I though it would collapse once and then you'd get to pick another ball
+2020-04-25 14:42:24 <int-e> I didn't read properly
+2020-04-25 14:42:49 <int-e> *thought (nor type, apparently.)
+2020-04-25 14:43:16 <arseniiv> <int-e> so if you have 1122 and place a ball in the middle, you get two choices... which one do you pick? => hm well maybe then we should first consider the setting where the ball is picked randomly not by us, and again uniformly of course
+2020-04-25 14:43:41 <int-e> so basically... don't place any ball at all
+2020-04-25 14:44:03 <arseniiv> also I think I word such questions in not the most understandable way too
+2020-04-25 14:44:16 <arseniiv> int-e: yeah
+2020-04-25 14:44:30 <int-e> "also I think...": I think you phrased that concern perfectly.
+2020-04-25 14:45:20 <arseniiv> maybe I should name things more often
+2020-04-25 14:45:53 <arseniiv> so I would backlink to them instead of using ambiguous anaphoric pronouns
+2020-04-25 14:46:48 <int-e> But hmm. The first collapse is special, but after that we're always faced with a random sequence that has a 1/(N-1) chance of equal balls in the middle instead of 1/N. So this should be quite feasible.
+2020-04-25 14:48:53 <arseniiv> don’t forget we need more than two, so we can’t just compare the ends
+2020-04-25 14:49:40 <int-e> Oh sure but that's not a huge deal.
+2020-04-25 14:50:10 <arseniiv> btw I have no solution to this, of course. I wanted to announce I won the main game mode in Zuma’s Revenge, but then I thought: wait, that can be made more on-topic
+2020-04-25 14:50:19 <int-e> The probability that the first collapse happens should be (1 + (N-1)/N + (N-1)^2/N^2)/N^3, and for subsequent collapses it's (1 + (N-1)/N + (N-1)^2/N^2)/((N-1)N^2) instead.
+2020-04-25 14:50:51 <arseniiv> I hoped I’d come up with something less tractable :D
+2020-04-25 14:52:11 <int-e> full notes ;-) http://paste.debian.net/1142975/
+2020-04-25 14:52:30 <int-e> Oh wait, that's for four.
+2020-04-25 14:52:33 <int-e> Stupid fenceposts
+2020-04-25 14:52:58 <int-e> So the probabilities should be (1 + (N-1)/N)/N^2 and (1 + (N-1)/N)/((N-1)N) instead.
+2020-04-25 14:53:55 <int-e> `? fencepost blaming
+2020-04-25 14:53:58 <HackEso> fencepost blaming? ¯\(°​_o)/¯
+2020-04-25 14:56:46 <int-e> Basically two things happen here: a) rather than looking at the colors, look at whether adjacent balls have the same color b) after a collapse, there are only N-1 possible colors for the two adjacent balls, but otherwise they are still uniformly random. So the probability of equality increases to the aforementioned 1/(N-1) instead of 1/N at that one place.
+2020-04-25 14:59:18 <int-e> (2n^2 - 3n + 1)/(n^4 - n^3 - 2n^2 + n) <-- look at this beauty (is it correct? who knows. it might be.)
