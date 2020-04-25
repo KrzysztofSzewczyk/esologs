@@ -169,3 +169,24 @@
 2020-04-25 16:56:38 <int-e> arseniiv: heh I wonder whether you'd like https://www.youtube.com/watch?v=H23AY8Kdx00 (especially after the 1:40 mark)
 2020-04-25 16:57:25 Joined: tromp
 2020-04-25 16:57:26 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-25 17:00:20 <arseniiv> int-e: ahhhhhhhh!!!
+2020-04-25 17:02:19 User Name: Sgeo = Sgeo!~Sgeo@ool-18b982ad.dyn.optonline.net
+2020-04-25 17:02:19 <Sgeo> I just saw a captcha that involved arranging puzzle pieces (on dreamviews.com). Apparently from KeyCAPTCHA
+2020-04-25 17:20:38 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-25 17:20:38 <imode> I see a lot of people praising Forth for its ease in implementation (almost to the level of occult worship), but I wonder if Tcl (or a similar language) would be a contender for ease of implementation.
+2020-04-25 17:20:44 <arseniiv> int-e: awhile ago, after several tries I got how to make a hard caramel succesfully, including unsticking it from the surface when it’s cold (I pour it onto baking paper) and now rarely I make some and crush it into small pieces to use instead of sugar for tea or something. I like it’s like a real glass and maybe it can be glassblowed (I hadn’t tried) and it would be cool. Hm I’ll google that, maybe someone had done that alread
+2020-04-25 17:21:51 <arseniiv> imode: due to code quotes? (Though I don’t know almost a thing about Tcl)
+2020-04-25 17:22:25 <imode> arseniiv: mostly due to the fact that, at its base, it's just a list of commands that's specially formatted.
+2020-04-25 17:22:39 <pikhq> I think Forth may be _easier_ than Tcl, but a Tcl implementation is not especially difficult.
+2020-04-25 17:23:29 <pikhq> http://oldblog.antirez.com/post/picol.html Like, this is a reasonably straightforward and functional Tcl implementation in 550 lines of reasonably natural C code.
+2020-04-25 17:23:40 <arseniiv> how about a really bare-bones Scheme?
+2020-04-25 17:23:57 <imode> on the gradient of "I can hack this up in less than a day" to "This is a multi-month project", I see Tcl as sitting a bit to the left above Forth. it's slightly more complex due to quoting.
+2020-04-25 17:24:27 <pikhq> Yeah, that seems about right.
+2020-04-25 17:24:43 <pikhq> It's not literally the easiest but nor is it that difficult, as far as these things go.
+2020-04-25 17:24:43 <arseniiv> I don’t particularly like concatenative languages without quoting though. It’s hard to go without when you taste it
+2020-04-25 17:25:08 <imode> I don't mind them. honestly all I really care about is implementation simplicity.
+2020-04-25 17:25:36 <imode> you can write good abstractions and tools in just about any language, but it takes more work in some than others.
+2020-04-25 17:25:51 <imode> I can write good concatenative code without quotes.
+2020-04-25 17:26:58 Quit: tromp (Remote host closed the connection)
+2020-04-25 17:26:58 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-25 17:28:16 <imode> it makes me wonder if there's some middleground between Tcl and Forth, without excess quoting and tokenization rules.
