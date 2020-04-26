@@ -174,3 +174,56 @@
 2020-04-26 03:59:02 <Train> If it is any of ^V<>, change the direction of motion to the direction of the arrow.
 2020-04-26 03:59:04 <Train> direction of motion to right. Otherwise, set the direction of motion to down.
 2020-04-26 03:59:06 <Train> required direction.
+2020-04-26 04:00:55 <zzo38> Why don't you post it on esolang wiki instead? (I can interact with MediaWiki sites on my computer just fine, although you can't write on there if you do not have an account.)
+2020-04-26 04:01:14 <Train> I haven't made an account yet.
+2020-04-26 04:01:35 <Train> I'm asking you guys for feedback, and also because I need help proving the turing completeness.
+2020-04-26 04:01:38 <zzo38> You could also just post a text file, e.g. with sprunge, which is a simple paste bin
+2020-04-26 04:01:50 <Train> or cryptopaste
+2020-04-26 04:02:55 <zzo38> The advantage of sprunge is that you can use it either with a web browser or with curl, both to send and to receive, and no account is needed.
+2020-04-26 04:03:14 <Train> wait it supports curl
+2020-04-26 04:03:55 <Train> http://sprunge.us/7UDn3W
+2020-04-26 04:04:14 <Train> omg it does
+2020-04-26 04:04:25 <Train> How on earth did I not know this?
+2020-04-26 04:08:42 <zzo38> OK, it look like good to me. It won't be Turing complete unless it has unlimited memory, either by an unlimited number of cells or being able to store numbers of an unlimited range in each cell.
+2020-04-26 04:08:56 <Train> I've worked that much out.
+2020-04-26 04:09:05 <zzo38> (Even if it does, that isn't the only criteria for Turing completeness though)
+2020-04-26 04:09:11 <Train> I know.
+2020-04-26 04:09:22 <Train> It wasn
+2020-04-26 04:09:49 <Train> 't actually Turing complete at first, but I added "n" to make it Turing complete.
+2020-04-26 04:12:48 <Train> Also, do you know how I could golf my addition program?
+2020-04-26 04:14:11 <Train> here it is: http://sprunge.us/CIxpGR
+2020-04-26 04:14:12 Joined: tromp
+2020-04-26 04:14:12 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 04:14:13 <zzo38> From your examples, it look like the instruction grid is the same as the data grid, so maybe it is possible to be Turing complete by self-modifying code without the "n" command, although I am unsure of such a thing. I have not proven it either way.
+2020-04-26 04:14:42 <Train> Yes, you are correct. However, I don't think that it is possible for it to be Turing complete without "n".
+2020-04-26 04:15:23 <zzo38> If cells store numbers in an unlimited range, then possibly you can try to prove Turing completeness by a Minsky machine.
+2020-04-26 04:15:28 <Train> Here's my reasoning: it has to carry out a different set of instructions based on input, and it can't conditionally branch without it, due to the fact that it doesn't have the mathematical manpower.
+2020-04-26 04:15:55 <Train> I might change it to unlimited range instead of 1 byte.
+2020-04-26 04:16:27 <zzo38> With a limited grid and limited range of values in each cell, it won't be Turing complete.
+2020-04-26 04:16:32 <Train> I know.
+2020-04-26 04:16:48 <Train> But in a theoretical infinite case, it is Turing complete.
+2020-04-26 04:16:53 <Train> Just like brainfuck isn
+2020-04-26 04:17:01 <Train> 't turing complete for a finite number of cells.
+2020-04-26 04:17:02 <zzo38> So you should change it to unlimited range, or else make the grid not wrap around (at least vertically, even if it does wrap around horizontally).
+2020-04-26 04:17:19 <Train> How would I go about I/O if I make it unlimited?
+2020-04-26 04:17:45 <zzo38> Input can still read a number in the range 0 to 255, and output can use the low 8-bits of the number.
+2020-04-26 04:18:03 <Train> Like the least significant 8 bits, or the most significant?
+2020-04-26 04:18:31 <zzo38> The least significant 8 bits.
+2020-04-26 04:18:40 Quit: tromp (Ping timeout: 265 seconds)
+2020-04-26 04:18:40 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 04:18:43 <Train> Okay, so basically VALUE MOD 256
+2020-04-26 04:18:48 <zzo38> Yes.
+2020-04-26 04:19:01 <Train> Okie, modifiying the interpreter now.
+2020-04-26 04:19:21 <Train> It's great to talk to experts.
+2020-04-26 04:20:26 <Train> What about negative underflow?
+2020-04-26 04:21:51 <zzo38> Again, you can just use the low 8-bits, that is still defined for negative numbers, although the modulo operator in the programming language in use might not work with it; you can use "VALUE AND 255" if the programming language you use supports bitwise AND operator, then that would work.
+2020-04-26 04:22:27 <Train> So if I have -1, it wraps around to 255?
+2020-04-26 04:23:34 <zzo38> Yes, it is treated as 255 for purpose of output (although still store it as -1, if you want Turing completeness by unlimited range of values in cells).
+2020-04-26 04:23:43 <Train> Alright.
+2020-04-26 04:24:36 <Train> Why does it need to be able to be negative for Turing completeness?
+2020-04-26 04:26:15 <zzo38> It doesn't, although it doesn't make sense for -1 to wrap around to 255 but for 256 to stay 256.
+2020-04-26 04:26:46 <Train> So, what should I do?
+2020-04-26 04:27:39 <zzo38> An alternative is to keep cell values bounded (in which case wrapping around from 0 to 255 and vice versa probably makes sense) and to instead make the grid size unbounded vertically (or horizontally), instead of wrapping; that would also make it Turing-complete.
+2020-04-26 04:28:02 <Train> I thought about that, but I just don't like the idea.
+2020-04-26 04:28:17 <zzo38> OK.
+2020-04-26 04:28:49 <esowiki> 14[[07L14]]4 10 02https://esolangs.org/w/index.php?diff=71431&oldid=70824 5* 03Voltage2007 5* (-117) 10
