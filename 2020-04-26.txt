@@ -538,3 +538,59 @@
 2020-04-26 22:57:56 <zzo38> Well, an alternative is The Amnesiac From Minsk; level 1 and 2 are Turing complete.
 2020-04-26 22:59:19 <zzo38> (Although I think Amnesiac From Minsk requires more than two registers to be Turing complete)
 2020-04-26 22:59:35 <Train> Yes, it does.
+2020-04-26 23:00:52 <Train> So, what does a failed decrement do?
+2020-04-26 23:00:58 <Train> Say we have both registers at 1
+2020-04-26 23:01:19 <Train> and we add one to the second one and decrement the second one twice.
+2020-04-26 23:01:23 <Train> what does that do?
+2020-04-26 23:01:36 <zzo38> Like a GOTO command, each decrement command in the program specifies what part of the program to execute next.
+2020-04-26 23:01:56 <Train> Yep, I follow.
+2020-04-26 23:02:08 <Train> So, how does a decrement say where to GOTO?
+2020-04-26 23:02:58 <zzo38> By specifying the address of the next instruction.
+2020-04-26 23:03:16 <Train> Okay... but it is just a decrement.
+2020-04-26 23:06:42 <Train> how does it specify an address?
+2020-04-26 23:07:12 <zzo38> Well, it is a parameter for the command.
+2020-04-26 23:07:12 <Train> The esolang wiki isn't very helpful either, and neither is wikipedia.
+2020-04-26 23:09:38 <Train> so the decrement command actually takes a parameter
+2020-04-26 23:09:59 <Train> so it's not just a decrement by 1
+2020-04-26 23:10:52 <zzo38> It is just a decrement by 1; the parameter is where to jump to.
+2020-04-26 23:11:23 <Train> Okay, so a decrement command takes 1 parameter, and if that decrement command cannot be executed, it jumps to that address in the program memory.
+2020-04-26 23:12:12 <zzo38> Yes.
+2020-04-26 23:12:19 <Train> Alright.
+2020-04-26 23:12:56 <Train> Is there a limit on how small the program can be to ensure turing completeness, or does it tend towards infinity?
+2020-04-26 23:13:02 <zzo38> I don't know.
+2020-04-26 23:13:14 <Train> Alright.
+2020-04-26 23:13:27 <Train> In theory, TrainCode should be able to implement a minsky machine..
+2020-04-26 23:14:43 <Train> Because it has flow control with "n"
+2020-04-26 23:15:37 <zzo38> Yes.
+2020-04-26 23:20:08 <Train> First, I'll implement a Minsky engine which I can then use a python program to produce traincode that can be fed into the Minsky Engine.
+2020-04-26 23:21:06 <Train> Hrmmmm
+2020-04-26 23:21:15 <Train> This will be hard.
+2020-04-26 23:21:34 <Train> Just going to brainstorm on here, check me if I'm wrong.
+2020-04-26 23:22:06 Nick Change: orbitaldecay -> orby
+2020-04-26 23:22:06 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 23:22:10 <Train> So, Line 2 of the code will be the Minsky instructions.
+2020-04-26 23:22:11 Nick Change: orby -> orbitaldecay
+2020-04-26 23:22:12 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 23:23:30 <int-e> mmm where is TrainCode?
+2020-04-26 23:24:07 <Train> Check the logs.
+2020-04-26 23:24:28 <Train> But here's traincode: http://sprunge.us/7UDn3W
+2020-04-26 23:24:33 <Train> just curl it
+2020-04-26 23:25:50 Quit: Lord_of_Life (Ping timeout: 260 seconds)
+2020-04-26 23:25:50 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 23:26:12 Joined: Lord_of_Life
+2020-04-26 23:26:12 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 23:27:07 <Train> zzo38, I think TrainCode does already have an infinite memory because of the size of the program.
+2020-04-26 23:27:20 <Train> Additionally, I need a better name for it.
+2020-04-26 23:27:29 <Train> TrainCode is not a very good name.
+2020-04-26 23:27:44 <int-e> look at this beautiful prompt color https://int-e.eu/~bf3/tmp/fruit.png :P
+2020-04-26 23:28:16 <Train> The font hurts, but it is a nice colour.
+2020-04-26 23:28:39 <int-e> it's a perfect raspberry color
+2020-04-26 23:28:51 <int-e> The font... well I've been using that same font for more than 20 years.
+2020-04-26 23:28:58 <Train> Ouch.
+2020-04-26 23:29:02 <int-e> It's hard to change now.
+2020-04-26 23:29:06 <zzo38> Why is the font hurts? It is the same font I use on my computer (but with different colours)
+2020-04-26 23:29:13 <Train> I prefer gridded fonts personally.
+2020-04-26 23:29:21 <int-e> (obviously it's not scaled up like that)
+2020-04-26 23:29:24 <Train> Or MC enchantment table.
+2020-04-26 23:29:29 <zzo38> And I prefer it than the other font
+2020-04-26 23:29:39 <Train> Anyway, back to esolanging.
