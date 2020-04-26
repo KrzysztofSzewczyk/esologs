@@ -376,3 +376,13 @@
 2020-04-26 16:59:02 <imode> inetd/xinetd seems to have been forgotten by a lot of mainstream developers. putting your crap in the cloud should be as simple as throwing a binary up there along with a service interlayer that hooks the sockets up for you.
 2020-04-26 16:59:36 <imode> we're back to CGI with Lambda, why not general TCP/UDP serves.
 2020-04-26 16:59:43 <imode> s/serves/servers
+2020-04-26 17:00:52 <zzo38> I use xinetd.
+2020-04-26 17:01:28 <imode> good.
+2020-04-26 17:02:55 <zzo38> Although, that is mainly because I implemented my own NNTP server and Gopher server and QOTD server.
+2020-04-26 17:03:24 <imode> right. if you wanted to handle web requests, use CGI.
+2020-04-26 17:04:16 <zzo38> Yes, CGI is useful for handing web requests, and xinetd is useful for handling such things as NNTP and so on.
+2020-04-26 17:04:59 <imode> I currently work for Amazon and I'm kind of shocked at the kinds of architecture people are promoting internally. it is _literally_ like CGI apps of the early 2000's.
+2020-04-26 17:05:09 <imode> just using "modern infrastructure".
+2020-04-26 17:09:12 <zzo38> Do you like this quine program?
+2020-04-26 17:29:20 <int-e> imode: so... simplicity by spawning a new process on every request?
+2020-04-26 17:29:40 <imode> yup.
