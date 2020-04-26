@@ -408,3 +408,18 @@
 2020-04-26 18:52:58 Quit: arseniiv (Ping timeout: 246 seconds)
 2020-04-26 18:57:30 Quit: rain1 (Quit: leaving)
 2020-04-26 18:57:30 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-26 19:10:04 <myname> i started writing a terminal ide for funciton. i am planing on a debugger, too. any non-obvious feature suggestions?
+2020-04-26 19:19:55 User Name: arseniiv = arseniiv_!~arseniiv@95.105.14.143.dynamic.ufanet.ru
+2020-04-26 19:19:55 <arseniiv> myname: I get it copy-pasting is obvious? Maybe some input/output/wire rearrangements?
+2020-04-26 19:20:00 Nick Change: arseniiv -> arseniiv
+2020-04-26 19:20:24 <myname> actually, i didn't consider copy-pasting yet :D
+2020-04-26 19:20:48 <myname> what do you mean by rearrangement?
+2020-04-26 19:20:55 <myname> https://imgur.com/a/7rZNuzF
+2020-04-26 19:20:59 <myname> my current state
+2020-04-26 19:24:18 User Name: arseniiv = arseniiv!~arseniiv@95.105.14.143.dynamic.ufanet.ru
+2020-04-26 19:24:18 <arseniiv> <myname> what do you mean by rearrangement? => a basic feature here would be simply moving (groups of) blocks to anywhere user wishes, with automatical rerouting of wires. I think there can be more to it, too, but I need to re-read Funciton page
+2020-04-26 19:25:07 <myname> arseniiv: i did consider that. like, removing wires where you are moving a block to and automatically extending at the other end
+2020-04-26 19:25:24 <myname> i am not sure how to feel about crossing wires yet, though
+2020-04-26 19:26:06 <arseniiv> hm, also how about find/replace? Allow replacing a, say, single block with a several blocks, if inputs and outputs are somehow made into correspondence
+2020-04-26 19:26:40 <myname> that would be tough ui-wise
+2020-04-26 19:28:32 <arseniiv> though hm I think the natural thing would be to move in the opposite direction: refactoring out functions from block groups. That would still require mapping inputs/outputs but maybe this case would be somehow easier
