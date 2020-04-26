@@ -75,3 +75,31 @@
 2020-04-26 00:29:23 <Train> Nice.
 2020-04-26 00:29:26 <Train> Very nice.
 2020-04-26 00:29:33 <int-e> (I'm really unhappy about Electron.)
+2020-04-26 00:30:39 <zzo38> I don't like Electron either. Although, if you document the protocol and then users can use whichever app they prefer, Electron or otherwise.
+2020-04-26 00:34:10 Quit: j-bot (Remote host closed the connection)
+2020-04-26 00:34:11 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 00:34:25 Joined: j-bot
+2020-04-26 00:34:26 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 00:35:31 <Train> I am writing out the documentation.
+2020-04-26 00:42:54 <zzo38> OK
+2020-04-26 00:44:12 Quit: Train (Remote host closed the connection)
+2020-04-26 00:44:13 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-26 00:52:24 <shachaf> int-e: I am boycotting electrons. Positive charge only for me.
+2020-04-26 00:53:43 <shachaf> Unfortunately I have two Electron programs on my computer, though one of them is usually not running.
+2020-04-26 00:54:22 <zzo38> Can you rewrite the program to not use Electron?
+2020-04-26 00:54:59 <int-e> Yes, you can rewrite programs.
+2020-04-26 00:55:02 <int-e> It's a lot of effort.
+2020-04-26 00:55:37 <shachaf> I can but it's a lot of effort.
+2020-04-26 00:55:51 <shachaf> One program is signal-desktop, which some people like to use to communicate.
+2020-04-26 00:56:12 <shachaf> I could reimplement the protocol and I'm sure I'd end up with something better because this program is very buggy.
+2020-04-26 00:56:34 <int-e> Hrm, why does that need the DOM part?
+2020-04-26 00:56:53 <int-e> (nodejs is perhaps only half as terrible as Electron)
+2020-04-26 00:57:07 <shachaf> It's a chat program with a user interface.
+2020-04-26 00:57:19 <int-e> Oh
+2020-04-26 00:57:25 <shachaf> Oh, you mean, why can't I just use the existing implementation?
+2020-04-26 00:57:32 <int-e> Sorry, brain fart. I should've been able to recognize "signal".
+2020-04-26 00:57:50 <shachaf> I guess I could do that, though it would probably force me to use JavaScript and other nonsense.
+2020-04-26 00:58:22 <int-e> Nah,I thought about generic signals and didn't see why it needed a GUI.
+2020-04-26 00:58:43 <zzo38> Node.js isn't that bad; it is a way to write programs in JavaScript. But, there are other programming languages too; they shouldn't need JavaScript for everything, because there is many other one for different purposes; some others are better for the other purpose.
+2020-04-26 00:58:59 <int-e> ...
+2020-04-26 00:59:29 <zzo38> Also, you could use WebAssembly too if you want to; if you have a recently enough version of Node.js then you can also write in WebAssembly. But, you shouldn't need Node.js at all if you prefer to write in C instead, I think.
