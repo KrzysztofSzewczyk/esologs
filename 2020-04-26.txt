@@ -498,3 +498,43 @@
 2020-04-26 22:24:10 <Train> I have quite a bit of experience, but this is my first fully finished esolang which is a proper turing tarpit.
 2020-04-26 22:29:10 <Train> I'm trying to make a brainfuck interpreter in it right now.
 2020-04-26 22:29:23 <Train> That will properly prove it's turing complete.
+2020-04-26 22:30:37 <Train> Do you think that is easily possible?
+2020-04-26 22:31:00 <zzo38> Yes, that will, although a way to convert a Minsky machine to TrainCode would also prove it Turing complete.
+2020-04-26 22:31:10 <Train> Yes.
+2020-04-26 22:31:57 <zzo38> (And that also seems easier to me, although I don't actually know because I haven't actually tried, so I just guess.)
+2020-04-26 22:32:10 <Train> I don't really understand what a Minsky machine is.
+2020-04-26 22:32:35 <Train> I understand the whole "there are x unbounded registers with two operations"
+2020-04-26 22:32:47 <Train> but i don't understand the alternate state transition
+2020-04-26 22:33:55 <zzo38> Well, if one register is zero, then it won't decrement and instead will make an alternate state transition. In TrainCode, you would use 32 instead of 0, and you would write "na" (with the "a" to the right of the "n") to produce the failing decrement, and do something else instead in that case.
+2020-04-26 22:34:42 <Train> does it have to be anything specific, or can it just be literally anything
+2020-04-26 22:35:11 <zzo38> I do not understand your question.
+2020-04-26 22:35:28 <Train> in the case of the failing decrement, what do I do?
+2020-04-26 22:36:08 <zzo38> A successful or failed decrement will jump to a different part of the code, causing different code to be executed. (This is what your "n" command does.)
+2020-04-26 22:36:43 <Train> ah yep
+2020-04-26 22:44:43 <Train> I'll use 2 registers. Does that make it Turing complete?
+2020-04-26 22:46:05 <zzo38> Yes.
+2020-04-26 22:46:12 <zzo38> Two registers is sufficient for Turing completeness.
+2020-04-26 22:46:29 <Train> Sweet. I'll use the cells at 0,1 and 1,1 for the registers.
+2020-04-26 22:47:00 <Train> I'll also need some way to store the code, or I could just directly output it.
+2020-04-26 22:47:49 <zzo38> I suggested using an external program which is capable of converting any Minsky machine (of two registers) into TrainCode; if it can do that, that is sufficient to prove Turing completeness.
+2020-04-26 22:48:39 <Train> Okay... couldn't I just have an I/O for the code.
+2020-04-26 22:49:02 <zzo38> (The converter can be written in whatever programming language you want)
+2020-04-26 22:49:12 <Train> Okay...
+2020-04-26 22:49:32 <zzo38> You could just have an I/O for the code, although it is probably easier to convert it with a separate program.
+2020-04-26 22:49:45 <Train> I don't think so.
+2020-04-26 22:50:12 <Train> Because stacked "n" commands allow for really easy elifs, I reckon I could do that.
+2020-04-26 22:51:31 <zzo38> Yes, it does do that.
+2020-04-26 22:51:47 <Train> So what are the operations?
+2020-04-26 22:51:55 <Train> I think I need four operations...?
+2020-04-26 22:52:11 <Train> Add to R1, subtract to R1 and the same for R2
+2020-04-26 22:52:34 <zzo38> Yes, and flow control based on whether the decrement is successful or failed.
+2020-04-26 22:52:40 <Train> And if the subtraction operation fails, it jumps forward a certain amount?
+2020-04-26 22:52:47 <Train> Is that what you mean?
+2020-04-26 22:53:18 <zzo38> The program tells it where to jump to.
+2020-04-26 22:53:33 <Train> What do you mean?
+2020-04-26 22:55:05 <Train> How does the program tell it where to jump to?
+2020-04-26 22:55:18 <zzo38> I am not sure how else to explain right now
+2020-04-26 22:55:57 <Train> Can you explain it really simply, step by step, because I am reasonably new to esolanging.
+2020-04-26 22:57:56 <zzo38> Well, an alternative is The Amnesiac From Minsk; level 1 and 2 are Turing complete.
+2020-04-26 22:59:19 <zzo38> (Although I think Amnesiac From Minsk requires more than two registers to be Turing complete)
+2020-04-26 22:59:35 <Train> Yes, it does.
