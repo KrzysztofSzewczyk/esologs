@@ -278,3 +278,26 @@
 2020-04-25 23:26:09 <int-e> "movie"; sounds like it records game inputs, one per frame
 2020-04-25 23:26:41 <int-e> . o O ( Details are to be found in the source code. )
 2020-04-25 23:28:31 <zzo38> I didn't tell it to record a movie (and the documentation and quick help says F9 is for screen snapshots, not movie), and it doesn't have the format that it says is the format for movies, anyways, although the filename is the same as what the documentation about the movie says it is.
+2020-04-25 23:33:53 <int-e> I'm not sure what you expected from us.
+2020-04-25 23:34:33 <int-e> (But this is true for almost all your questions, so maybe I shouldn't complain.)
+2020-04-25 23:35:37 <imode> it's a movie.
+2020-04-25 23:36:13 <zzo38> Maybe it is, but it doesn't have the format that I read about, nor was I trying to record a movie.
+2020-04-25 23:36:25 <imode> http://tasvideos.org/EmulatorResources/Mednafen/MCM.html
+2020-04-25 23:36:40 <imode> sounds like a pebcak problem.
+2020-04-25 23:36:53 <int-e> imode: I found that, hence the description above.
+2020-04-25 23:36:55 <zzo38> I read that, and, the file doesn't start with "MDFNMOVI", so it isn't a file of the format documented there.
+2020-04-25 23:37:03 Quit: tromp (Remote host closed the connection)
+2020-04-25 23:37:03 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-25 23:37:07 <int-e> zzo38: Have you tried "file" on the thing
+2020-04-25 23:37:26 <int-e> zzo38: Also you actually have the file, we don't. I don't know how many of us are using Mednafen; I don't.
+2020-04-25 23:37:52 <zzo38> O, "file" says it is a gzip file; I can try that.
+2020-04-25 23:39:03 <zzo38> Yes, it does seem to be; it still doesn't start with "MDFNMOVI" though; it starts with "MEDNAFENSVESTATE".
+2020-04-25 23:41:12 <zzo38> OK, trying rgbff on it produces a screen-shot, although not the one I expected.
+2020-04-25 23:41:17 <int-e> So... it's misnamed and ancient?
+2020-04-25 23:41:59 <int-e> (Apparently that magic string was changed in 2012)
+2020-04-25 23:42:52 <int-e> I'm not sure why I'm looking into this... I guess I just like hitting search engines with search terms.
+2020-04-25 23:43:34 <zzo38> I get a picture which is a screenshot from the correct game, although the state is not the state that I commanded it to make a screenshot of.
+2020-04-25 23:59:29 Joined: Train
+2020-04-25 23:59:30 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-25 23:59:34 User Name: Train = Train!ca9a8405@202-154-132-5.ubs-dynamic.connections.net.nz
+2020-04-25 23:59:34 <Train> Hello.
