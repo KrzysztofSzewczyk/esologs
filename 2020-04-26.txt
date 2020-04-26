@@ -247,3 +247,27 @@
 2020-04-26 04:54:27 <Train> testing
 2020-04-26 04:59:13 <Train> So, what do you think? You seem very experienced.
 2020-04-26 05:00:00 <zzo38> For one thing, I am not sure what exactly you are asking about. I did read the document you posted, and it look like OK to me, and these other stuff you now wrote also look like OK to me.
+2020-04-26 05:00:33 <zzo38> So if that is what you mean, then my answer is, I think it is good.
+2020-04-26 05:01:15 <Train> Okay, I'll rephrase. So, how should I set up negative numbers? Should I say "no, you can't have negative numbers" or should I just say "negative numbers allowed", or should i overflow it?
+2020-04-26 05:03:46 <zzo38> I think the mathematically sensible thing to do is to allow them, and use the low 8-bits for output, just like with positive numbers (it is well-defined how to do this).
+2020-04-26 05:04:07 <Train> Okay, so just reuse modulo again.
+2020-04-26 05:05:20 <zzo38> Yes, although in many programming languages, the result of modulo has the sign of the left operand, rather than the right, but if you have bitwise operators, use AND 255 instead of MOD 256 and then you avoid that problem (and the result is the same for positive numbers).
+2020-04-26 05:14:08 <Train> What on earth do you mean? I get the bit about the sign of the left operand rather than the right, but what do you mean by a bitwise operator?
+2020-04-26 05:15:02 <Train> Okay, I think I know what you mean.
+2020-04-26 05:15:10 <Train> I'll test it in Python now.
+2020-04-26 05:15:38 <Train> Okay, it works fine.
+2020-04-26 05:15:57 <Train> % is python's modulo operator, and -1%256 is 255
+2020-04-26 05:16:11 <Train> Uploaded to compiler.
+2020-04-26 05:16:18 <Train> Turing complete!
+2020-04-26 05:18:55 <zzo38> OK, then in Python the modulo operator  does use the right sign, unlike C and dc, so it works.
+2020-04-26 05:19:08 <Train> Yep.
+2020-04-26 05:24:46 <zzo38> This can be tested: If you write "d" and then "a" 256 times (or "b" 256 times) and then "c" and then "n", it should output the same byte as the input but always go down instead of right, even if you input a space. Then it will use unbounded cell values correctly in that case.
+2020-04-26 05:25:32 <Train> alright, testing it now
+2020-04-26 05:27:43 <Train> Yes, it works.
+2020-04-26 05:27:52 <Train> The interpreter is free of bugs.
+2020-04-26 05:28:17 <Train> I also found a pseudo-quine:
+2020-04-26 05:28:18 <Train> c
+2020-04-26 05:28:37 <zzo38> Ah, yes, that will work.
+2020-04-26 05:28:58 <zzo38> (Although it won't terminate)
+2020-04-26 05:29:12 <Train> I know.
+2020-04-26 05:29:30 <Train> Are there any quines that terminate? (Other than the trivial case of the null program)
