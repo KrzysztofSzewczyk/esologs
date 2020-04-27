@@ -594,3 +594,76 @@
 2020-04-26 23:29:24 <Train> Or MC enchantment table.
 2020-04-26 23:29:29 <zzo38> And I prefer it than the other font
 2020-04-26 23:29:39 <Train> Anyway, back to esolanging.
+2020-04-26 23:30:07 <int-e> Train: basically as long as my eyes can take it I'll probably stick to this font... I know its quirks (e.g. how 0 and O or l and | look...)
+2020-04-26 23:30:09 <zzo38> I don't know what is the better name for it.
+2020-04-26 23:30:23 <int-e> Train: But that doesn't mean anybody else should feel good about it :)
+2020-04-26 23:30:26 <Train> I'm thinking maybe something latin might sound nice.
+2020-04-26 23:31:26 <Train> Veritas sounds nice.
+2020-04-26 23:31:31 <Train> It's latin for Truth.
+2020-04-26 23:31:46 <zzo38> But, the size of the program doesn't cause it to have infinite memory; it only allows the programmer to set the memory to an arbitrarily large finite size, which isn't quite the same thing. Allowing the values of cells to be of unlimited range does give it infinite memory though.
+2020-04-26 23:31:54 <Train> Yes.
+2020-04-26 23:32:10 <Train> But in the special case of the minsky machine, there is no difference.
+2020-04-26 23:35:02 <int-e> mmm mirrors
+2020-04-26 23:35:14 <Train> Mirrors?
+2020-04-26 23:35:58 <int-e> Train: I just saw \ and /. And I'm reminded of https://esolangs.org/wiki/Trajedy even though that's very different.
+2020-04-26 23:36:58 <Train> Huh. I'd never even heard of Trajedy.
+2020-04-26 23:37:38 <int-e> I imagine that's probably true of most of the languages on the wiki :)
+2020-04-26 23:37:50 <Train> Lol, there's like 5000.
+2020-04-26 23:38:27 <int-e> Trajedy actually sparked quite a bit of discussion here when it was new (involving myself as well) though so it stood out.
+2020-04-26 23:38:43 <Train> It's an interesting concept.
+2020-04-26 23:39:08 <Train> I'm surprised it's turing complete.
+2020-04-26 23:39:43 <Train> But I can see how it is.
+2020-04-26 23:40:13 <Train> Anyway, I call dibs on language name Veritas, and because this chat is logged, people can see this.
+2020-04-26 23:42:14 <zzo38> OK
+2020-04-26 23:43:07 * int-e wonders how terrible Traincode would become without the n.
+2020-04-26 23:43:53 <Train> yeah
+2020-04-26 23:44:04 <Train> n is the only thing that can make flow control
+2020-04-26 23:44:14 <int-e> (you'd have to do *everything* with self-modifying code)
+2020-04-26 23:44:18 <Train> yeah
+2020-04-26 23:44:34 <int-e> whioch isn't unheard of in esolangs
+2020-04-26 23:44:36 <Train> but I've already established that's impossible to do *everything*
+2020-04-26 23:44:40 <Train> in TrainCode
+2020-04-26 23:45:09 <Train> most problems are possible, but none are trivial without n, and there are some that are impossible
+2020-04-26 23:45:11 <int-e> well, the wraparound kills the idea of infinite state, unless you start with an infinite grid
+2020-04-26 23:45:25 <Train> infinite number of states in each cell
+2020-04-26 23:45:26 <int-e> which, conceptually, I believe you could do
+2020-04-26 23:45:39 <Train> I could easily make an infinite grid.
+2020-04-26 23:45:45 <Train> But I chose a finite grid.
+2020-04-26 23:46:32 <int-e> The thing is, you could do that without radically changing the nature of the language. People have done similar things with Brainfuck.
+2020-04-26 23:46:54 <Train> Yeah, I made a brainfuck interpreter that had that.
+2020-04-26 23:46:56 <Train> ages ago
+2020-04-26 23:47:20 <int-e> (The original Brainfuck had 30k byte-sized cells... few clones adhered to that)
+2020-04-26 23:48:20 <Train> Yeah I know.
+2020-04-26 23:48:43 <Train> In my interpreter I kept the byte-sized cells, but made it infinite.
+2020-04-26 23:48:55 <Train> Was the original brainfuck turing-complete?
+2020-04-26 23:49:27 <int-e> Anyway, Traincode is a kind of minimal Befunge which judging by https://esolangs.org/wiki/Befunge#Related_languages is a surprisingly small niche.
+2020-04-26 23:49:41 <int-e> No, the original Brainfuck suffered from the limitation of having finite state.
+2020-04-26 23:49:53 <Train> Okay.
+2020-04-26 23:49:55 <Train> Thx.
+2020-04-26 23:50:10 <Train> So a turing-complete system must have infinite states?
+2020-04-26 23:50:31 <int-e> Yes. TC-ness is a bit overrated.
+2020-04-26 23:51:16 <Train> Yes, especially because esolangs are ESOTERIC
+2020-04-26 23:51:33 <Train> Almost any system is turing-complete.
+2020-04-26 23:51:44 <Train> Without too much effort.
+2020-04-26 23:51:50 <int-e> The usual view on any computer is that it's a finite state machine with a ridiculously huge state space... easily 2^2^2^40 states *excluding* external storage.
+2020-04-26 23:52:16 <int-e> So there's a disconnect between TC-ness (which computers aren't) and being useful for programming (which computers very much are).
+2020-04-26 23:52:20 <Train> Yep, but most esolangs deal with the hypothetical infinite case for the turing completeness proof.
+2020-04-26 23:52:35 <int-e> An interesting esolang case is Malbolge.
+2020-04-26 23:52:51 <Train> Yes.
+2020-04-26 23:53:08 <Train> Remember that paper which showed a way to functionally program in Malbolge?
+2020-04-26 23:53:11 <Train> That was insane.
+2020-04-26 23:53:48 <int-e> which has about 3^590490 states, which technically makes it a finite state machine, but you can still program it by selecting starting states that exhibit interesting behavior.
+2020-04-26 23:53:57 <Train> Yes.
+2020-04-26 23:54:29 <int-e> No, I don't. I have not actually delved into Malbolge programming... still amazed that people actually accomplished it :)
+2020-04-26 23:54:32 <Train> Since it has a finite number of programs, is it Turing complete? I wouldn't think so...
+2020-04-26 23:55:15 <Train> Okay, it's not.
+2020-04-26 23:55:17 <int-e> But it did change my view on what constitutes programming, and how it relates (or doesn't) to Turing-completeness.
+2020-04-26 23:55:34 <Train> Yes. Malbolge is one of the more out-there ones.
+2020-04-26 23:55:37 <int-e> It's a finite state machine, so it's not TC.
+2020-04-26 23:55:42 <Train> Okay.
+2020-04-26 23:56:38 <int-e> There's Malbolge Unshackled which lifts the memory constraint and is TC (as a programming language; implementations will be constrained by computer hardware).
+2020-04-26 23:56:47 <Train> Yes, I know.
+2020-04-26 23:57:07 <Train> It's just one of those languages that makes you think "who was sadistic enough to think of this"
+2020-04-26 23:58:22 <Train> Here's the Malbolge truth machine:
+2020-04-26 23:58:24 <Train> (aONMLKJIHGFEDCBA@?>=<;:98765FD21dd!-,O*)y'&v5#"!DC|Qzf,*vutsrqpF!Clk|ih
+2020-04-26 23:58:31 <Train> Wow.
