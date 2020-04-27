@@ -238,3 +238,45 @@
 2020-04-27 13:28:53 <fizzie> The access of a[-1] sounds fixable by making the latter loop `for(;++c<256;)` which would also be one character shorter than `for(;c<256;c++)`.
 2020-04-27 13:29:15 <int-e> a[257],c;main(){while(c=getchar()+1)a[c]++;while(c<257)a[c]--?putchar(c-1):c++;}
 2020-04-27 13:29:27 <int-e> is it possible to squeeze it all into a single loop?
+2020-04-27 13:30:01 <int-e> well, it's possible of course, but is it worthwhile in terms of size?
+2020-04-27 13:33:07 <int-e> oh there's this trick, too: a[257];main(c){while(c=getchar()+1)a[c]++;while(c<257)a[c]--?putchar(c-1):c++;}
+2020-04-27 13:33:31 <kspalaiologos> damn :p
+2020-04-27 13:33:37 <kspalaiologos> I forgot about it
+2020-04-27 13:34:32 <kspalaiologos> a[257];main(c){for(c=getchar()+1;a[c]++);while(c<257)a[c]--?putchar(c-1):c++;}
+2020-04-27 13:34:35 <kspalaiologos> this is even smaller
+2020-04-27 13:34:46 <kspalaiologos> wait: nope doesn't work
+2020-04-27 13:34:47 <int-e> kspalaiologos: but doesn't work
+2020-04-27 13:35:01 <kspalaiologos> need one more semicolon
+2020-04-27 13:35:07 <kspalaiologos> then it's equal size :p
+2020-04-27 13:35:18 <int-e> there's no point in replacing while(cond) by for(;cond;) unless you actually use those empty blocks for something.
+2020-04-27 13:36:06 <kspalaiologos> yeah true
+2020-04-27 13:37:39 <int-e> myname: it's a fine line... but out of bounds access can easily cause the program to misbehave, since you're relying on values of uninitialized (possibly not even present) memory.
+2020-04-27 13:43:05 <FireFly> hmm
+2020-04-27 13:43:45 <FireFly> how about  a[c]--?putchar(c-1):c++;  ->  a[c++]--&&putchar(--c);  to save one byte?
+2020-04-27 13:44:16 <int-e> FireFly: cute idea, but it's off by one
+2020-04-27 13:44:23 <FireFly> oh bummer
+2020-04-27 13:44:37 <FireFly> oh yeah
+2020-04-27 13:44:49 <FireFly> it'd have to be (c-=2) and then it doesn't save you anything
+2020-04-27 13:46:02 <FireFly> wait, not quite.. but yeah, off-by-one in the output
+2020-04-27 13:47:55 <b_jonas> `olist 1201
+2020-04-27 13:47:57 <HackEso> olist 1201: shachaf oerjan Sgeo FireFly boily nortti b_jonas
+2020-04-27 13:49:55 * int-e wonders how kspalaiologos feels about this kind of undefined behavior: a[257];main(d,c){for(;d<257;)c?a[c=getchar()+1]++:a[d]--?putchar(d-1):d++;}
+2020-04-27 13:50:08 <kspalaiologos> I'm always up for UB
+2020-04-27 13:50:28 <int-e> (and reliance on argc being 1)
+2020-04-27 13:50:45 <kspalaiologos> it makes code "interesting"
+2020-04-27 13:52:13 Quit: cpressey (Quit: WeeChat 1.9.1)
+2020-04-27 13:52:13 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-27 13:52:19 <esowiki> 14[[07Halt halt halt14]]4 M10 02https://esolangs.org/w/index.php?diff=71446&oldid=70593 5* 03PythonshellDebugwindow 5* (+0) 10/* Properties */ typofix
+2020-04-27 13:52:44 <int-e> but in any case, putting it all into a single loop seems to pay off.
+2020-04-27 13:53:53 <int-e> there, a bit cleaner: a[257],d;main(c){while(d<256)c?a[c=getchar()+1]++:a[d+1]--?putchar(d):d++;}
+2020-04-27 13:55:05 <int-e> wait, what exactly is wrong with FireFly's trick then...
+2020-04-27 13:55:18 <FireFly> int-e: it should be --c-1
+2020-04-27 13:55:44 <FireFly> I accounted for the ++ with a -- but didn't account for the off-by-one in the value actually passed to putchar
+2020-04-27 13:56:09 <int-e> yeah, but I changed something and now it applies: //a[257],d;main(c){while(d<256)c?a[c=getchar()+1]++:a[d+1]--?putchar(d):d++;}
+2020-04-27 13:56:14 <int-e> uh
+2020-04-27 13:56:18 <int-e> a[257],d;main(c){while(d<256)c?a[c=getchar()+1]++:a[++d]--&&putchar(--d);}
+2020-04-27 13:56:20 <int-e> that one.
+2020-04-27 13:56:37 <FireFly> oh neat
+2020-04-27 13:58:53 <int-e> (something: I shifted the counter by 1)
+2020-04-27 13:59:03 User Name: arseniiv = arseniiv!~arseniiv@94.41.81.251.dynamic.ufanet.ru
+2020-04-27 13:59:03 <arseniiv> hi hello have a good day
