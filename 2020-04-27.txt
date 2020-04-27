@@ -453,3 +453,28 @@
 2020-04-27 22:22:40 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
 2020-04-27 22:28:24 Joined: tromp
 2020-04-27 22:28:24 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-27 22:39:20 <orbitaldecay> anybody know of any other esolangs that would make interesting OSes?
+2020-04-27 22:39:27 <orbitaldecay> I've got a framework now, might as well use it
+2020-04-27 22:39:35 <zzo38> I am not sure.
+2020-04-27 22:39:51 <orbitaldecay> anything with a repl would work really
+2020-04-27 22:41:04 <orbitaldecay> it'd be cool to have a bootable iso that could multiboot a variety of esolang OSes
+2020-04-27 22:41:11 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-04-27 22:41:11 <myname> what does you os different from an interpreter besides the ability to boot into it?
+2020-04-27 22:41:45 <orbitaldecay> ring-0 access, so the ability to play with the hardware and full access to the cpu and ram
+2020-04-27 22:42:01 <orbitaldecay> but for most uses, no major difference
+2020-04-27 22:42:11 <orbitaldecay> would just be funny to write device drivers in brainfuck
+2020-04-27 22:42:31 User Name: b_jonas = b_jonas!~x@176.63.12.50
+2020-04-27 22:42:31 <b_jonas> orbitaldecay: so like easier to accidentally lose all your data with an OS
+2020-04-27 22:42:32 <myname> for various degrees of fun
+2020-04-27 22:42:55 <myname> but i don't see why you'd need a repl
+2020-04-27 22:42:56 <orbitaldecay> b_jonas: indeed. virtualbox is probably a smart way to go.
+2020-04-27 22:43:02 <myname> just make an inbuilt editor
+2020-04-27 22:43:02 <b_jonas> because there's no OS layer to enforce permissions on your user process
+2020-04-27 22:43:30 <orbitaldecay> you're saying that like it's a bad thing ;)
+2020-04-27 22:43:53 <b_jonas> some people consider it a good thing
+2020-04-27 22:44:09 <myname> having an editor and an interpreter would open your framework up to all ascii based 2d languages
+2020-04-27 22:44:37 <orbitaldecay> myname: that's an interesting idea
+2020-04-27 22:44:47 <myname> i'd rather write a device driver in befunge than in brainfuck
+2020-04-27 22:45:30 <orbitaldecay> brb
+2020-04-27 22:56:46 <pikhq> In principal you could have a standalone booting Brainfuck environment, but I foresee it being very difficult to do usefully.
+2020-04-27 22:58:09 <fizzie> Well, there's https://github.com/catseye/BefOS
