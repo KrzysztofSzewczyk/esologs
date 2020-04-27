@@ -99,3 +99,27 @@
 2020-04-27 02:50:16 * pikhq nods
 2020-04-27 02:53:39 <zzo38> The switches I want in the "cat" program are not shared at all with what the GNU implementation does; the stuff that the GNU implementation does is stuff that it seem to me should be better in separate programs; the program "cat" would just concatenate files (and/or standard input) only. But, there is a few option I think should be put in, such as to tell what to do in case of errors reading and in case of errors writing.
 2020-04-27 02:54:23 <pikhq> Hmm, those actually do seem somewhat more useful than the random transformations that GNU (and indeed, traditional Unix) cat can do
+2020-04-27 03:00:29 <shachaf> The purpose of cat is to copy data from a file or file descriptor to stdout. Concatenating files is secondary.
+2020-04-27 03:00:49 <shachaf> "purpose" according to https://en.wikipedia.org/wiki/POSIWID
+2020-04-27 03:01:02 <pikhq> lmao, well, given thaaaat
+2020-04-27 03:01:19 <imode> granted.
+2020-04-27 03:01:32 <zzo38> Well, that is just the case where the number of files to concatenate is only one, which is of course a common case, and there is nothing wrong with that.
+2020-04-27 03:05:38 Quit: Phantom_Hoover (Ping timeout: 260 seconds)
+2020-04-27 03:05:39 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-27 03:09:43 <pikhq> In a certain way of looking at it, I suppose
+2020-04-27 03:09:52 <pikhq> Just concatenating N files where N=1
+2020-04-27 03:09:55 <pikhq> Seems trivial but hey
+2020-04-27 03:13:39 <shachaf> How should this spawn function return values and errors?
+2020-04-27 03:14:00 <shachaf> I just changed it to return a positive PID on success and a negative errno on failure.
+2020-04-27 03:14:26 <pikhq> That seems reasonable enough, assuming your error results will fit in that
+2020-04-27 03:22:25 <shachaf> I guess I'll stick with it.
+2020-04-27 03:23:10 <shachaf> What about this file traversal API? How should it return errors?
+2020-04-27 03:23:33 <pikhq> Assuming you're limited to C APIs, kinda hard
+2020-04-27 03:23:42 <pikhq> There's a few options but none of them great
+2020-04-27 03:23:50 <shachaf> Right now it's used like this: "NNFTW nnftw; nnftw_start(&nnftw, path, flags); while (nnftw_next(&nnftw)) { ...nnftw.path, etc.... }"
+2020-04-27 03:24:23 <shachaf> There can be multiple errors as it fails to open directories and so on.
+2020-04-27 03:25:13 <shachaf> I could make it return an error, as in, you have to check nnftw.err before using the file name, but it seems easy to forget about that.
+2020-04-27 03:26:19 <zzo38> You can both set nnftw.err and then blank the file name too.
+2020-04-27 03:26:26 <shachaf> I was thinking that by default it'll silently ignore errors, but you can pass in a flag saying that you want them, and then you have to check .err before using it.
+2020-04-27 03:26:55 <zzo38> Some functions in SQLite that write the result to a pointer will write a null pointer when it returns an error (in addition to returning the error code, and saving it to be able to retrieve it later).
+2020-04-27 03:27:16 <zzo38> shachaf: Yes, that will work, I think
