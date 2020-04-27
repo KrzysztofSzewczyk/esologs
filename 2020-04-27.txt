@@ -39,3 +39,53 @@
 2020-04-27 01:58:42 <pikhq> I suppose it's not that surprising given the logs in the topic though
 2020-04-27 01:58:52 <pikhq> Which has been a thing for... ages?
 2020-04-27 01:59:15 <pikhq> Think that was there even back when I first joined. ... god, like 15 years ago
+2020-04-27 02:00:13 <TrainCode> On hackchat, most people have some sort of logger bot.
+2020-04-27 02:00:28 <TrainCode> Because the server doesn't store chatlogs.
+2020-04-27 02:00:39 <pikhq> I connect via a bouncer these days
+2020-04-27 02:01:07 <TrainCode> Paranoid much?
+2020-04-27 02:01:37 <pikhq> Hrm?
+2020-04-27 02:02:06 Joined: Phantom_Hoover
+2020-04-27 02:02:07 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TrainCode, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-27 02:02:29 <pikhq> The bouncer is being used for always-on and having shared client state between multiple systems, not for privacy reasons really
+2020-04-27 02:02:53 <TrainCode> Okay.
+2020-04-27 02:03:04 <zzo38> Freenode server doesn't store chat logs either I think; there is the bots to store the logs. (It is possible though to make a IRC server that does make public logs of public channels, although most don't.)
+2020-04-27 02:03:28 <pikhq> Better not be for privacy, seeing as "pikhq" is what I go by basically everywhere and you can pretty trivially find where in the world I live and where I work from there :)
+2020-04-27 02:04:26 <TrainCode> Hey, do you guys wanna talk on a hackchat?
+2020-04-27 02:05:23 <fizzie> Ooh, we have indeed had public logs for quite awhile.
+2020-04-27 02:05:26 <fizzie> [2003-01-18 02:49:02] < hcf> lament: would you like clog to log #esoteric?
+2020-04-27 02:05:26 <fizzie> [2003-01-18 02:50:58] < lament> i'm not sure. clog would talk more than an average regular :)
+2020-04-27 02:05:41 <TrainCode> Wow...
+2020-04-27 02:06:16 <pikhq> So, uh, given that you can probably find out a _lot_ of stuff about me if you're willing to pour over logs long enough :P
+2020-04-27 02:06:36 <pikhq> Or, more accurately, about teenage-to-early-college me mostly
+2020-04-27 02:07:50 * pikhq has, admittedly, grown and changed a fair bit since the now long gone year of 2005
+2020-04-27 02:10:56 Joined: diverger
+2020-04-27 02:10:57 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, divergence, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TrainCode, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-27 02:11:35 Quit: divergence (Ping timeout: 260 seconds)
+2020-04-27 02:11:35 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TrainCode, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-27 02:11:55 <TrainCode> Hey, do you guys wanna meet me on https://hack.chat/?esolangs
+2020-04-27 02:14:18 * pikhq doesn't particularly care to, but 🤷🏻‍♀️
+2020-04-27 02:15:52 <TrainCode> I like hackchat more. It just feels... polished, ya know?
+2020-04-27 02:16:27 <pikhq> I'm rather fond of my client
+2020-04-27 02:16:40 <TrainCode> What OS are you running?
+2020-04-27 02:17:11 <pikhq> This system is Windows, though my client is IRCCloud, which is useable from a lot of systems
+2020-04-27 02:17:25 <TrainCode> Do you have Chrome?
+2020-04-27 02:17:33 <TrainCode> Or python?
+2020-04-27 02:17:39 <TrainCode> Or nodejs?
+2020-04-27 02:18:09 <pikhq> Currently I'm using Firefox; I do have a Python interpreter or 3 installed here, but I don't have Node because I really don't touch JS stuff
+2020-04-27 02:18:21 <pikhq> I've also got a _few_ C compilers at my ready...
+2020-04-27 02:18:33 Quit: TrainCode (Remote host closed the connection)
+2020-04-27 02:18:33 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, noomy, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-27 02:19:10 <pikhq> Lessee, we've got MSVC, Windows-targetting clang, x86_64-linux-gnu targetting gcc, x86_64-linux-gnu targetting clang, and x86_64-linux-musl targetting gcc...
+2020-04-27 02:19:50 <pikhq> Not to mention, a couple Rust installs
+2020-04-27 02:20:46 <fizzie> I'm contractually obligated to not use any chat systems not supported by fungot, and I don't think I can manage to write to a web thing from Befunge quite as easily.
+2020-04-27 02:20:46 <fungot> fizzie: which is sort of what boolfuck is to brainfuck... and the format is a full statement) ( cond
+2020-04-27 02:21:02 <fizzie> (Also, it's sleepytime.)
+2020-04-27 02:21:07 <pikhq> valid
+2020-04-27 02:21:11 * pikhq pets fungot
+2020-04-27 02:21:11 <fungot> pikhq: why are you dividing with the number one thousand one, the argument list with default values would be thunks that did possibly some i/ o systems changed significantly.' wikipedia
+2020-04-27 02:21:20 <pikhq> Good bot.
+2020-04-27 02:21:27 <shachaf> Is there a place I can read about the implementation of async/await in V8? Does it turn into something significantly different from the source code transformation something like Babel would do?
+2020-04-27 02:22:04 <pikhq> Hmm, now you have me curious, shachaf
+2020-04-27 02:23:09 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-27 02:23:09 <imode> iirc async stuff is thrown into the void as "might happen on another thread, might not".
+2020-04-27 02:28:35 <pikhq> Also, hichaf
