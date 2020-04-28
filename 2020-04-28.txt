@@ -36,3 +36,38 @@
 2020-04-28 03:54:31 <pikhq> No, I lied, 2012
 2020-04-28 03:57:54 <zzo38> I played the GURPS on Sunday on the computer, and also a few weeks ago also on the computer. I also recorded all of them on the computer I rewrote it to write the story to read it
 2020-04-28 03:58:16 <Train> nice
+2020-04-28 04:00:26 <zzo38> They are readable on a Fossil wiki at http://zzo38computer.org/gurpsgame/1.ui but you can also download the Hamster archive with the files. If you find any mistake in it, please notify me.
+2020-04-28 04:01:29 <zzo38> The link I made to the figlet text from before is also from the GURPS game; since there is only one player I can use a direct connection and don't need IRC, and that is what the GM sent; I suppose he used a figlet text.
+2020-04-28 04:03:50 <zzo38> Train: I think that you should write about your esolang in the esolang wiki
+2020-04-28 04:04:55 <zzo38> (You can access http://zzo38computer.org/gurpsgame/1.har if you want to download the Hamster archive file. A Hamster archive is a sequence of lumps, where each lump consists of the null-terminated ASCII filename, 32-bit PDP-endian data size, and then the data.)
+2020-04-28 04:05:38 <pikhq> Why am I not surprised you have a bespoke archive format.
+2020-04-28 04:06:06 <shachaf> I appreciate the PDP-endian size.
+2020-04-28 04:06:20 <pikhq> It is amusing, to be sure.
+2020-04-28 04:06:47 <Train> zzo38, I don't know if I should write about my esolang. It needs some tidying up.
+2020-04-28 04:08:03 <zzo38> I didn't invent it. (If I did, I probably would have used big-endian or small-endian instead of PDP-endian. The format is otherwise good though, and keeping the same format allows better compatibility with other programs using the same format.)
+2020-04-28 04:09:32 <zzo38> (PDP-endian isn't so bad either, since it is just as easy to work with, so I am not complaining about it.)
+2020-04-28 04:11:36 <zzo38> Train: What you wrote on sprunge seem like good enough to me
+2020-04-28 04:12:10 <Train> There are a few cases of undefined behaviour.
+2020-04-28 04:13:11 <zzo38> Ah, yes, such as you don't specify what happen in case of end of file.
+2020-04-28 04:13:23 <Train> It can never reach EOF.
+2020-04-28 04:13:47 <zzo38> In the case of the "d" command, the input might reach EOF, though.
+2020-04-28 04:14:21 <Train> no, because it only takes 1 byte of input, which is the first byte of input from the input
+2020-04-28 04:14:50 <zzo38> O, well, you didn't mention that in the document.
+2020-04-28 04:15:06 <zzo38> (Nor does that make much sense to me.)
+2020-04-28 04:15:13 <Train> Yeah, that's why the documentation is incomplete.
+2020-04-28 04:15:56 <Train> And if the lines are different lengths, the interpreter is just like:
+2020-04-28 04:15:57 <Train> https://i.imgflip.com/36qm8e.png
+2020-04-28 04:16:19 <zzo38> It doesn't specify the range of values in cells either, although based on what we discussed before it should be unlimited.
+2020-04-28 04:16:42 <Train> Yes. It has to be unlimited to be Turing complete.
+2020-04-28 04:17:21 <zzo38> And, yes, about the program lines being different lengths; presumably the program is not valid if the lines are of different lengths, although one thing that it could be made to do is to pad them with spaces on the right.
+2020-04-28 04:17:57 <Train> I thought about that, but then it does have some interesting repercussions on the complexity.
+2020-04-28 04:18:29 <zzo38> Another possibility is just to display an error message.
+2020-04-28 04:18:37 <zzo38> (and refuse to execute the program)
+2020-04-28 04:18:49 <Train> For example, it can either crash the interpreter or undefined behaviour.
+2020-04-28 04:19:19 <zzo38> You could also just explicitly specify that it is undefined behaviour if such a program is given.
+2020-04-28 04:19:39 <Train> Perhaps.
+2020-04-28 04:19:54 <Train> I think I'll do the error messages and tidy up the interpreter now.
+2020-04-28 04:23:17 Quit: Train (Remote host closed the connection)
+2020-04-28 04:23:18 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-28 04:27:55 Joined: Train
+2020-04-28 04:27:56 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, lynn, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
