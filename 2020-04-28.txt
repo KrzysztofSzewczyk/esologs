@@ -224,3 +224,41 @@
 2020-04-28 22:59:32 <orbitaldecay> I think it's kind of useful, but not strictly necessary
 2020-04-28 22:59:35 <orbitaldecay> cool
 2020-04-28 22:59:51 <zzo38> orbitaldecay: I expect adding automatic numbers would make the program run more efficiently
+2020-04-28 23:00:10 <esowiki> 14[[07Minimal operation language14]]4 M10 02https://esolangs.org/w/index.php?diff=71468&oldid=71214 5* 03Hakerh400 5* (-13) 10/* Resources */  No longer dead
+2020-04-28 23:00:31 <orbitaldecay> yes, definitely, I've been trying to strike a balance between some kind of usability and keeping it minimal
+2020-04-28 23:00:56 <orbitaldecay> especially if I add RAM access, automatic numbers will be very handy
+2020-04-28 23:01:09 <zzo38> Yes.
+2020-04-28 23:04:33 <pikhq> I imagine that would be hard to use without them, yeah
+2020-04-28 23:04:40 Joined: tromp
+2020-04-28 23:04:40 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-28 23:04:51 <orbitaldecay> zzo38:: what piqued your interest in collation?
+2020-04-28 23:04:59 <orbitaldecay> this is an interesting document
+2020-04-28 23:05:27 <zzo38> orbitaldecay: Well, I want to make the random pack generation working for TeXnicard. One way to do it would be simulated collation, although there is other way too.
+2020-04-28 23:05:47 <orbitaldecay> What is TeXnicard?
+2020-04-28 23:05:49 <zzo38> I intend it can be supported both ways.
+2020-04-28 23:06:12 <zzo38> See http://zzo38computer.org/fossil/texnicard.ui for a description of TeXnicard.
+2020-04-28 23:06:29 <zzo38> Are you interested in custom cards for Magic: the Gathering or other card games?
+2020-04-28 23:07:55 <orbitaldecay> huh, interesting. I am interested in making card games, so it looks useful in that context.
+2020-04-28 23:08:11 <orbitaldecay> I dabble in making games on ocassion
+2020-04-28 23:08:13 Quit: TheLie (Remote host closed the connection)
+2020-04-28 23:08:13 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-28 23:08:48 <zzo38> If you have further questions after reading the documentation, please tell me so that I may add them into the documentation and/or the frequently asked questions section. You can ask me here, or on my NNTP server, or in the Fossil ticketing system.
+2020-04-28 23:09:22 Quit: tromp (Ping timeout: 265 seconds)
+2020-04-28 23:09:22 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-28 23:09:54 <zzo38> (Although the ticketing system is meant mainly for bug reports and feature requests. General discussion should preferably use the NNTP.)
+2020-04-28 23:10:59 <orbitaldecay> Cool, will do!
+2020-04-28 23:11:23 <orbitaldecay> I have a friend who is especially into making games (even moreso than myself) and would also find it very interesting
+2020-04-28 23:12:20 User Name: LKoen = LKoen!~LKoen@81.255.219.130
+2020-04-28 23:12:20 <LKoen> zzo38: would your texnicard software be recommended for card games other than magic?
+2020-04-28 23:12:36 <LKoen> say I want to make cards for dominion
+2020-04-28 23:13:03 <LKoen> orbitaldecay: you would probably be interested in Dvorak as well
+2020-04-28 23:13:17 <zzo38> LKoen: Yes, it is intended to be generic and not specific to Magic: the Gathering.
+2020-04-28 23:13:27 <LKoen> sounds great
+2020-04-28 23:15:49 <LKoen> orbitaldecay: see https://boardgamegeek.com/boardgame/9010/dvorak and http://www.dvorakgame.co.uk/index.php/Main_Page
+2020-04-28 23:16:41 <orbitaldecay> LKoen: Thanks!
+2020-04-28 23:17:18 <LKoen> the idea of the game is usually to make cards as the game goes
+2020-04-28 23:17:29 <LKoen> but the second link is a wiki full of pre-made decks
+2020-04-28 23:18:17 <zzo38> I should probably implement the paragraph formatting. (If you want to use it now, you would have to use PostScript text rendering instead, although I intend to implement TeX-like paragraph formatting too, using TeX fonts. PostScript text rendering will remain available, though, since that feature is included "for free".)
+2020-04-28 23:24:52 Joined: Lord_of_Life
+2020-04-28 23:27:11 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2020-04-28 23:27:45 Nick Change: Lord_of_Life -> Lord_of_Life
