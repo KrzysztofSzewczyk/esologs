@@ -91,3 +91,25 @@
 2020-04-29 09:19:25 Quit: Sgeo (Ping timeout: 264 seconds)
 2020-04-29 09:34:04 Joined: TheLie
 2020-04-29 09:34:04 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-29 10:32:45 Joined: rain1
+2020-04-29 10:32:46 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-29 10:39:43 User Name: cpressey = cpressey!~cpressey@79-65-251-142.host.pobb.as13285.net
+2020-04-29 10:39:43 <cpressey> The Jot page gives a method for translating SKI terms to Jot terms but it doesn't seem to say what to do with parentheses.
+2020-04-29 10:39:58 <cpressey> Or am I missing it?
+2020-04-29 10:40:50 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-04-29 10:40:50 <rain1> maybe the parens are not part of it
+2020-04-29 10:40:56 <rain1> just working on the AST directly
+2020-04-29 10:41:43 <cpressey> http://www.nyu.edu/projects/barker/Iota/ -- scroll down to "Here are the rules for mapping an arbitrary CL program into Jot:"
+2020-04-29 10:42:05 <cpressey> I fail to see how that translation gives different results for, say, I(SK) and (IS)K
+2020-04-29 10:42:59 <cpressey> Or is it understood that you translate starting at the deepest nested terms?
+2020-04-29 10:43:20 <rain1> let me see
+2020-04-29 10:44:18 <rain1> so SK maps to *[i*i*i*ii][*i*i*ii]
+2020-04-29 10:44:37 <rain1> and IS maps to *[*ii][*i*i*i*ii]
+2020-04-29 10:44:58 <cpressey> I think that's Iota; Jot is halfway down the page
+2020-04-29 10:45:07 <rain1> oh yeah sorry im reading the wrong bit
+2020-04-29 10:45:26 <rain1> oh and the square brackets aren't a thing
+2020-04-29 10:45:29 <rain1> that's the mapping
+2020-04-29 10:46:13 <rain1> so [I(SK)] = 1[I][SK] = 1[I]1[S][K] = 1[I]11111100011100
+2020-04-29 10:46:40 <rain1> and [(IS)K] = 1[IS][K] = 11[I][S][K] = 11[I]1111100011100
+2020-04-29 10:47:06 <rain1> so having the 1 is in a different place seems the only difference, for the bracketing
+2020-04-29 10:55:27 <cpressey> OK, so the translation has to follow the nesting.  Thanks.
