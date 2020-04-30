@@ -371,3 +371,61 @@
 2020-04-30 19:58:32 <imode> probably ones without floating point support.
 2020-04-30 19:58:49 <fizzie> Well, or using a non-IEEE-754 floating point format.
 2020-04-30 19:58:50 <orbitaldecay> in that case super common, most 8 and 16 bit chips don't have floating point support
+2020-04-30 20:00:18 <fizzie> SDCC's (emulated) floating point routines are non-IEEE.
+2020-04-30 20:00:23 <orbitaldecay> on those architectures floating point is simulated i software
+2020-04-30 20:00:34 <orbitaldecay> interesting
+2020-04-30 20:00:57 <fizzie> They're "IEEE-ish", but don't support e.g. subnormal numbers.
+2020-04-30 20:01:53 <zzo38> OK, although I suppose it is not needed to port TeXnicard to non-IEEE computers, since TeXnicard is intended for 32-bit or 64-bit computers, not 8-bit and 16-bits.
+2020-04-30 20:03:04 <orbitaldecay> Well, what does the C standard say about floats and doubles? If the C standard guarantees them to behave like IEEE floats and doubles, then I'd assume the compiler will take care of it.
+2020-04-30 20:03:12 <fizzie> It doesn't.
+2020-04-30 20:03:21 <orbitaldecay> Bummer
+2020-04-30 20:03:25 <rain1> I will need to study the discharged candidates on the discussion page tommorow
+2020-04-30 20:03:31 <fizzie> There's an appendix for IEEE floats and doubles, which the implementation can indicate by defining a macro.
+2020-04-30 20:03:47 <b_jonas> zzo38: common if you count it when you deliberately enable some aggressive settings or optimization flags for compilation units, such as the runtime option to not generate and read denormals on x86_64 to speed up operations that would generate such numbers
+2020-04-30 20:03:48 <orbitaldecay> rain1: cool, feel free to reach out
+2020-04-30 20:03:49 <zzo38> (And, I am not sure that SQLite works on non-IEEE computers anyways)
+2020-04-30 20:03:53 <fizzie> Other than that, the standard just gives a very abstract model, that can be implemented by a non-2 radix.
+2020-04-30 20:03:56 <orbitaldecay> I'm bob@forder.cc
+2020-04-30 20:04:32 <b_jonas> zzo38: that still uses numbers formatted as IEEE float, just not the IEEE float rules for arithmetic operations
+2020-04-30 20:04:37 <b_jonas> so I don't know if you count that
+2020-04-30 20:05:19 Quit: rain1 (Quit: leaving)
+2020-04-30 20:05:19 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-30 20:05:30 <fizzie> "An implementation that defines __STDC_IEC_559__ shall conform to the specifications in this annex."
+2020-04-30 20:06:20 <zzo38> b_jonas: Well, my program only cares that the "float" type is a 32-bit floating point and that it is either IEEE or big-endian (or both), and that if you write to a union with a int and float as a int and read it back as a float, that it can be read. (The reason for this confusion is presumably a bug in Adobe Distiller, which is software I don't even use.)
+2020-04-30 20:07:45 <b_jonas> zzo38: that part about the union sounds like it could be false on modern enough gcc because of how C handles unions, but I'm not quite sure
+2020-04-30 20:07:47 <zzo38> (Or possibly some other software from Adobe; I am not sure which.)
+2020-04-30 20:08:01 <b_jonas> zzo38: wait, what do you do with the union?
+2020-04-30 20:08:13 <fizzie> Use of union for type punning is sort of sanctioned.
+2020-04-30 20:08:25 <zzo38> Merely write a int to it and read back a float from it; the union is not used after that.
+2020-04-30 20:08:25 <b_jonas> read it back as a float and then read the union?
+2020-04-30 20:08:37 <b_jonas> I have no idea how the C rules work for that so I'd just avoid that
+2020-04-30 20:08:54 <b_jonas> as for float being 32-bit IEEE float format, that's probably true everywhere
+2020-04-30 20:09:32 <fizzie> b_jonas: There's a footnote about how it should work. "If the member used to read the contents of a union object is not the same as the member last used to store a value in the object, the appropriate part of the object representation of the value is reinterpreted as an object representation in the new type as described in 6.2.6 (a process sometimes called 'type punning')."
+2020-04-30 20:09:44 <b_jonas> zzo38: could you use memcpy for that instead? that definitely works and is usually optimized away, while I'm not sure about the union
+2020-04-30 20:10:14 <b_jonas> zzo38: also is this a C program or a C++ program?
+2020-04-30 20:10:19 <zzo38> It is C, not C++
+2020-04-30 20:10:43 <b_jonas> zzo38: I really don't understand the rules, and I suggest memcpy instead of a union
+2020-04-30 20:11:05 <b_jonas> but it's possible that a union is safe too
+2020-04-30 20:11:38 <zzo38> Search for "#define obj_ufloat" in http://zzo38computer.org/fossil/texnicard.ui/artifact/39edd63855a81b2b
+2020-04-30 20:12:14 <zzo38> On a non-IEEE computer, the floating number is stored using the native order.
+2020-04-30 20:12:42 <fizzie> Yeah, if you want you could do that with memcpy.
+2020-04-30 20:13:28 <fizzie> `float f; memcpy(&f, &(int){x}, sizeof (int)); f;` or suchlike. But I do think the union's allowed as well.
+2020-04-30 20:13:30 <HackEso> float? No such file or directory
+2020-04-30 20:13:36 <fizzie> HackEso: Don't you start.
+2020-04-30 20:14:11 <fizzie> Actually, I guess you could do it entirely with compound literals, thanks to memcpy returning dest. :)
+2020-04-30 20:14:57 <fizzie> As in `*(float *)memcpy(&(float){0}, &(int){x}, sizeof (int))`.
+2020-04-30 20:16:11 <b_jonas> fizzie: is that compound literal actually valid in C?
+2020-04-30 20:16:33 <fizzie> Should be. In C99 and above.
+2020-04-30 20:16:44 <b_jonas> weird
+2020-04-30 20:16:45 <zzo38> Yes, I could use memcpy, although I did it this way, and the quoted footnote would suggest that it could work. Although that isn't the point I am trying to make anyways, which is rather the Adobe bug (despite none of Adobe's software is in use here).
+2020-04-30 20:17:56 <fizzie> I like `&(T){x}` over `(T[]){x}` when it's "conceptually" a pointer to a single object rather than an array of length 1, though they are equivalent.
+2020-04-30 20:18:32 Joined: zseri
+2020-04-30 20:18:32 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-04-30 20:18:57 Quit: zseri (Client Quit)
+2020-04-30 20:18:57 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-30 20:19:27 Joined: zseri
+2020-04-30 20:19:27 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-04-30 20:19:39 Quit: TheLie (Ping timeout: 272 seconds)
+2020-04-30 20:19:39 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-04-30 20:20:50 <zzo38> I also don't know if possibly someone else might find the set of macros in the code I linked to to be useful in your own programs too maybe
+2020-04-30 20:29:38 <esowiki> 14[[07Cortex language 314]]4 M10 02https://esolangs.org/w/index.php?diff=71527&oldid=71429 5* 03PythonshellDebugwindow 5* (+2) 10
