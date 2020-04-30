@@ -37,3 +37,27 @@
 2020-04-30 04:19:53 <zzo38> Such as many files that aren't a disk file.
 2020-04-30 04:20:03 <imode> ah.
 2020-04-30 04:28:56 <shachaf> What is the API you want?
+2020-04-30 04:30:41 <zzo38> I was just wondering, actually.
+2020-04-30 04:31:59 <shachaf> There are all sorts of ways you might want to allocate memory for the file.
+2020-04-30 04:40:13 <imode> what happens if the file doesn't have an EOF character?
+2020-04-30 04:40:22 <imode> s/EOF character/EOF marker
+2020-04-30 04:41:33 <shachaf> Why would a file have an EOF character?
+2020-04-30 04:42:04 <zzo38> If it doesn't have EOF then it won't work, of course.
+2020-04-30 04:48:40 Joined: PlasmaPower
+2020-04-30 04:48:40 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, PlasmaPower, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-30 04:51:56 Joined: Train
+2020-04-30 04:51:57 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, PlasmaPower, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-30 04:53:49 User Name: Train = Train!ca9a845f@202-154-132-95.ubs-dynamic.connections.net.nz
+2020-04-30 04:53:49 <Train> Hello zzo38.
+2020-04-30 04:54:28 <zzo38> Hello
+2020-04-30 04:54:37 <pikhq> Hardly anyone uses an OS that has an EOF character as actually part of the file
+2020-04-30 04:54:47 <Train> I had an idea for an "improvement" on TrainCode.
+2020-04-30 04:54:57 <pikhq> Rather than just a weird artifact of APIs like getc()
+2020-04-30 04:56:50 User Name: PlasmaPower = PlasmaPower!~PlasmaPow@89.187.164.95
+2020-04-30 04:56:50 <PlasmaPower> I created this Befunge-98 snippet which freezes the cfunge and rcfunge interpreters: https://gist.github.com/PlasmaPower/39f01e1289d5d4bd84953335efd5f7de
+2020-04-30 04:57:19 <PlasmaPower> I'm not sure if anyone's done this before, but it creates a flying IP that's always going to be out of bounds, then uses another thread to overwrite the currently executing instruction to put it in string mode and process a space
+2020-04-30 04:57:33 <Train> Impressive.
+2020-04-30 04:57:36 <PlasmaPower> I'm guessing the interpreters get stuck trying to skip over future spaces
+2020-04-30 04:57:37 <PlasmaPower> thanks :)
+2020-04-30 04:58:32 <zzo38> Train: What is your idea for "improvement" on TrainCode?
+2020-04-30 04:59:42 <Train> Multiple trains.
