@@ -26,3 +26,14 @@
 2020-04-30 03:40:39 <zzo38> Maybe you are correct, but I also wanted to know if GNU or POSIX has it.
 2020-04-30 03:40:57 <shachaf> POSIX has mmap which might be better for many purposes.
 2020-04-30 03:47:11 <zzo38> Yes, for some purposes it is better.
+2020-04-30 04:15:46 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-30 04:15:46 <imode> C's standard library doesn't have a function like that. wouldn't that just be loading a file into memory byte by byte and operating on that.
+2020-04-30 04:16:05 Joined: craigo
+2020-04-30 04:16:42 <zzo38> Yes, it is like that. Of course it is not a problem if it doesn't have; I just was wondering about it.
+2020-04-30 04:17:30 <imode> C has functions to actively seek through files without loading them into memory.
+2020-04-30 04:18:14 <zzo38> Yes, but some files are not rewindable.
+2020-04-30 04:18:51 Quit: craigo (Ping timeout: 265 seconds)
+2020-04-30 04:19:05 <imode> such as?
+2020-04-30 04:19:53 <zzo38> Such as many files that aren't a disk file.
+2020-04-30 04:20:03 <imode> ah.
+2020-04-30 04:28:56 <shachaf> What is the API you want?
