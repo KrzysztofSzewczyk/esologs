@@ -16,3 +16,13 @@
 2020-04-30 02:33:33 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-04-30 02:38:11 Quit: tromp (Ping timeout: 272 seconds)
 2020-04-30 02:38:11 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-04-30 03:35:25 <zzo38> Does C have any function like PostScript's /ReusableStreamDecode filter?
+2020-04-30 03:37:07 <shachaf> What is that?
+2020-04-30 03:38:39 <zzo38> It reads an entire file into memory at once so that now it is seekable.
+2020-04-30 03:38:51 <zzo38> (Even if the original file wasn't seekable.)
+2020-04-30 03:39:57 <shachaf> Do you mean in the standard library?
+2020-04-30 03:40:00 <zzo38> Yes.
+2020-04-30 03:40:09 <shachaf> I'm not sure such a function belongs in the standard library.
+2020-04-30 03:40:39 <zzo38> Maybe you are correct, but I also wanted to know if GNU or POSIX has it.
+2020-04-30 03:40:57 <shachaf> POSIX has mmap which might be better for many purposes.
+2020-04-30 03:47:11 <zzo38> Yes, for some purposes it is better.
