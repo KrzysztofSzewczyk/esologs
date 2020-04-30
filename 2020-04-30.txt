@@ -309,3 +309,65 @@
 2020-04-30 19:29:08 <myname> 2 command bfs are pretty easy
 2020-04-30 19:29:16 <orbitaldecay> The simple translation definition formalizes the notion of "not cheating", otherwise you can do all kinds of context dependent nonsense and call it a minimization
 2020-04-30 19:29:24 <rain1> have you considered candidate based on the language of matching brackets?  [], [][], [][][], ..., [[]], [[[]]], ..., [[][]], type strings
+2020-04-30 19:30:17 <rain1> i guess all candidates are like that actually
+2020-04-30 19:30:23 <orbitaldecay> I have generally used [ and ] to discuss potential PF commands, but it is not known whether or not bracket matching of that type would be the appropriate grammar for a PF
+2020-04-30 19:30:42 <orbitaldecay> The syntax might be two [ for each ], e.g. [[], or something else
+2020-04-30 19:30:56 <rain1> interesting
+2020-04-30 19:31:22 <myname> what does "leave the machine in state t_1" mean in the definition of reversibility? the tape pointer?
+2020-04-30 19:31:31 <orbitaldecay> tape pointer + tape contents
+2020-04-30 19:31:40 <orbitaldecay> that comprises the entire state
+2020-04-30 19:31:48 <myname> ok
+2020-04-30 19:32:05 Joined: kevinalh
+2020-04-30 19:32:06 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-30 19:33:08 <orbitaldecay> 2 command BFs are easy that are not what I call "simple translations" of BF. e.g. unary, turning tarpits, etc.
+2020-04-30 19:33:53 <orbitaldecay> braincrash is the classic example of a turning tarpit that isn't actually a "simple translation" because it's context dependent
+2020-04-30 19:34:33 <rain1> i wish i could solve this problem
+2020-04-30 19:34:46 <rain1> i can't make my mind up if any PF exists or not
+2020-04-30 19:34:57 <orbitaldecay> try to find one
+2020-04-30 19:35:07 <orbitaldecay> I've been trying to prove they don't exist for years
+2020-04-30 19:35:46 <orbitaldecay> nanofuck is as small as I've gotten and I suspect it's minimal
+2020-04-30 19:36:38 <rain1> nanofuck is very impressive already
+2020-04-30 19:37:15 <orbitaldecay> NF wasn't hard to find. I'm sure there are other interesting 3 command variants aside from NF and NF'
+2020-04-30 19:37:39 <orbitaldecay> I mean, obviously there are an infinite number of 3 command variants, but most of them just contain huge swaths of nops
+2020-04-30 19:39:05 <rain1> i wonder if you could do that makes [] act like * but [][] act like brackets
+2020-04-30 19:39:11 <rain1> by using every second cell as a scratch space
+2020-04-30 19:39:44 <orbitaldecay> The idea behind requiring a "simple translation" is to restrict context dependence, which in my view is cheating
+2020-04-30 19:39:57 <myname> it's questionable if this is reversible
+2020-04-30 19:40:08 <orbitaldecay> if what is reversible?
+2020-04-30 19:40:45 <rain1> maybe it would only be reversible if we add a restriction that we must write [X][X] (same contents each time), but then htis probabyl violates the simple translation requirement
+2020-04-30 19:40:58 Quit: arseniiv (Ping timeout: 258 seconds)
+2020-04-30 19:40:58 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-30 19:41:11 <orbitaldecay> yeah, how do you translate [ into an RBF string if [ has different meanings in different contexts?
+2020-04-30 19:41:33 <orbitaldecay> you could store that context on the tape, but then you have to prevent it from being overwritten
+2020-04-30 19:41:46 <rain1> yeah storing it on the tape is what i was thinking
+2020-04-30 19:42:18 <rain1> i feel like the ability to use scratch space on the tape is what makes it hard to prove this impossible (or potentially gives us the ability to pull it off)
+2020-04-30 19:42:39 <rain1> but we only get a finite amount of data from this
+2020-04-30 19:42:47 <orbitaldecay> it depends on how you define the isomorphism between tapes
+2020-04-30 19:43:24 <orbitaldecay> if you say the tape has to be literally the same, then scratch space doesn't fly, if there just needs to be an isomorphism between the tapes, then map each cell position n to 2n in the converted tape
+2020-04-30 19:43:31 <orbitaldecay> that leaves 2n + 1 for scratch space
+2020-04-30 19:43:34 <rain1> yeah
+2020-04-30 19:44:05 <orbitaldecay> basically the pf language could only use the even cells and use the odd cells for storing context
+2020-04-30 19:44:27 <orbitaldecay> It's not the most satisfying answer, but if that's all that exists I'd be happy with it
+2020-04-30 19:45:43 <orbitaldecay> first priority would be making the tapes match exactly though
+2020-04-30 19:45:52 <orbitaldecay> like they do between RBF and NF
+2020-04-30 19:46:10 <rain1> maybe it could be proven that matching tapes is impossible
+2020-04-30 19:46:16 <orbitaldecay> hmm
+2020-04-30 19:46:20 <orbitaldecay> that's an interesting thought
+2020-04-30 19:46:23 <rain1> what would this additional restriction of matching tapes imply
+2020-04-30 19:46:51 <orbitaldecay> I mean, matching tapes is possible with 3 command simple translations because I've done it
+2020-04-30 19:47:07 <orbitaldecay> I've generally been going for matching tapes when looking for 2 command simple translations as well
+2020-04-30 19:47:18 <orbitaldecay> I haven't explored storing context on the tape very much
+2020-04-30 19:47:35 <orbitaldecay> it seems like that is a little bit of a loophole
+2020-04-30 19:47:51 <orbitaldecay> it might make sense to define simple translation as meaning identical tapes
+2020-04-30 19:48:21 <orbitaldecay> I just wanted to allow simple translations between languages that use different models
+2020-04-30 19:48:28 <orbitaldecay> like maybe one language doesn't have a tape and another does
+2020-04-30 19:48:40 <orbitaldecay> there could still be simple translations between them
+2020-04-30 19:50:18 Joined: TheLie
+2020-04-30 19:50:18 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-04-30 19:51:01 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Asdfasdf1 5*  10New user account
+2020-04-30 19:57:49 <zzo38> How common are using C programs on non-IEEE computers?
+2020-04-30 19:58:11 <orbitaldecay> What do you mean by non-IEEE computer?
+2020-04-30 19:58:32 User Name: imode = imode!~linear@unaffiliated/imode
+2020-04-30 19:58:32 <imode> probably ones without floating point support.
+2020-04-30 19:58:49 <fizzie> Well, or using a non-IEEE-754 floating point format.
+2020-04-30 19:58:50 <orbitaldecay> in that case super common, most 8 and 16 bit chips don't have floating point support
