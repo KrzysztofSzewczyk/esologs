@@ -601,3 +601,30 @@
 2020-05-01 16:28:56 <esowiki> 14[[07W (A)14]]4 10 02https://esolangs.org/w/index.php?diff=71583&oldid=71402 5* 03LegionMammal978 5* (-11) 10Undo revision 71402 by [[Special:Contributions/LegionMammal978|LegionMammal978]] ([[User talk:LegionMammal978|talk]])
 2020-05-01 16:28:59 <esowiki> 14[[07Resource14]]4 10 02https://esolangs.org/w/index.php?diff=71584&oldid=71403 5* 03LegionMammal978 5* (-11) 10Undo revision 71403 by [[Special:Contributions/LegionMammal978|LegionMammal978]] ([[User talk:LegionMammal978|talk]])
 2020-05-01 16:29:01 <esowiki> 14[[07Tq14]]4 10 02https://esolangs.org/w/index.php?diff=71585&oldid=71404 5* 03LegionMammal978 5* (-11) 10Undo revision 71404 by [[Special:Contributions/LegionMammal978|LegionMammal978]] ([[User talk:LegionMammal978|talk]])
+2020-05-01 16:32:41 <rain1> > BF derivatives
+2020-05-01 16:32:44 <lambdabot> error:
+2020-05-01 16:32:44 <lambdabot> Data constructor not in scope: BF :: t0 -> terror: Variable not in scope...
+2020-05-01 16:32:49 <rain1> is it possible to differentiate brainfuck programs?
+2020-05-01 16:32:54 Joined: tromp
+2020-05-01 16:32:54 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-05-01 16:34:26 <rain1> i like RBF
+2020-05-01 16:34:36 <rain1> it has a nice minimalism
+2020-05-01 16:42:46 <arseniiv> (BF)′ = B′F + BF′. A brain derivative may well be psyche, but I’ll abstain from finding the second one :?
+2020-05-01 16:47:04 Quit: rain1 (Quit: leaving)
+2020-05-01 16:47:04 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-05-01 16:49:21 <b_jonas> `! underload (hello )S
+2020-05-01 16:49:22 <HackEso> hello
+2020-05-01 16:50:03 <b_jonas> `` \! underload "(hello )S"
+2020-05-01 16:50:11 <HackEso> Attempt to execute unknown command 117
+2020-05-01 16:50:17 <b_jonas> ^ why does this one fail?
+2020-05-01 16:50:29 <b_jonas> where is that error message coming from?
+2020-05-01 16:53:10 Joined: zseri
+2020-05-01 16:53:10 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 16:54:19 <esowiki> 14[[07Simple translation14]]4 10 02https://esolangs.org/w/index.php?diff=71586&oldid=71582 5* 03Orby 5* (+280) 10
+2020-05-01 16:55:15 <int-e> `` \! "underload (hello )S"
+2020-05-01 16:55:16 <HackEso> hello
+2020-05-01 16:56:32 <b_jonas> int-e: oh right! sorry
+2020-05-01 16:56:42 <b_jonas> `! underload
+2020-05-01 16:56:42 <HackEso> Attempt to execute unknown command 117
+2020-05-01 16:56:49 <b_jonas> `! underload
+2020-05-01 16:56:50 <HackEso> No output.
