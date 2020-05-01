@@ -371,3 +371,51 @@
 2020-05-01 14:24:48 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
 2020-05-01 14:28:48 Joined: ais523
 2020-05-01 14:28:48 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 14:32:25 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-01 14:32:25 <ais523> orbitaldecay: I think there's multiple possible senses of the mapping
+2020-05-01 14:32:34 <ais523> there are senses in which you look only at halting behaviour
+2020-05-01 14:32:42 <ais523> and senses in which you look at some of the internal state too
+2020-05-01 14:32:51 <ais523> the later is hard to define rigorously, though, and leads to some odd results
+2020-05-01 14:33:18 <orbitaldecay> ais523: yes, I was thinking of redefining solely in terms of halting behavior
+2020-05-01 14:34:06 <ais523> e.g. think of a Salpynx-style simple translation that works via one command providing input to a second command that's an interpreter
+2020-05-01 14:34:22 <orbitaldecay> as, I think maybe, if the translated program halts iff the original program halts then the machine states must be isomorphic
+2020-05-01 14:34:40 <ais523> this can't lead to an internal state mapping in PF to/from RBF because RBF is reversible
+2020-05-01 14:36:03 <orbitaldecay> hmm, I have to think about that
+2020-05-01 14:36:18 <ais523> so, e.g., a no-op containing a loop that executes will lead to some permanent memory that that loop existed on the PF tape
+2020-05-01 14:36:54 <ais523> but I can't see a reason why that would apply to irreversible languages
+2020-05-01 14:37:34 <ais523> a separate thing I noticed is that PF (if it exists) does not necessarily have to be reversible
+2020-05-01 14:38:12 <ais523> the RBF translation of the PF might, when reversed, use command sequences that don't exist in PF; and the PF translation of the RBF might use sequences of commands that happen to be reversible even if the individual commands aren't
+2020-05-01 14:38:53 <orbitaldecay> ais523: but if there is an RBF translation of PF, and a PF translation of RBF, then there must be PF representations of inverses of PF operators.
+2020-05-01 14:39:43 <ais523> orbitaldecay: but if you map RBF to PF and back to RBF, the resulting tape may not be the same
+2020-05-01 14:40:04 <orbitaldecay> ooo you're right. that's tricky
+2020-05-01 14:40:11 <orbitaldecay> are we sure about that?
+2020-05-01 14:40:12 <ais523> this seems to be connected to eigenratios in a way, you'd expect an RBF→PF→RBF translation to expand the tape by some proportion
+2020-05-01 14:40:49 <orbitaldecay> what are eigenratios?
+2020-05-01 14:40:50 <ais523> it strikes me that part of the problem is that BF derivatives normally have no way to store temporary data without disturbing the existing tape
+2020-05-01 14:41:04 <ais523> an eigenratio is the speed at which a self-interpreter runs, compared to running the program natively
+2020-05-01 14:41:17 <orbitaldecay> ah, I see
+2020-05-01 14:42:02 <orbitaldecay> I'm currently creating a page for simple translations to discuss some of these idea further and flesh out generalizations
+2020-05-01 14:42:25 <ais523> I was considering creating a page about simple translations too, but it's your idea so you're probably a better person to do it
+2020-05-01 14:42:31 <orbitaldecay> I'm thinking of defining it so that A halts iff B halts
+2020-05-01 14:42:37 <orbitaldecay> we should collab on it
+2020-05-01 14:42:42 <orbitaldecay> in the spirit of wiki
+2020-05-01 14:42:44 <ais523> I would consider multiple possible definitions (without fixing a specific definition) because different cases could be interesting
+2020-05-01 14:43:36 <esowiki> 14[[07Cortex language 3A14]]4 M10 02https://esolangs.org/w/index.php?diff=71561&oldid=71559 5* 03PythonshellDebugwindow 5* (+372) 10/* Commands */
+2020-05-01 14:43:53 <orbitaldecay> Yeah, I agree that different cases should be explored
+2020-05-01 14:43:58 <esowiki> 14[[07Cortex language 3A14]]4 M10 02https://esolangs.org/w/index.php?diff=71562&oldid=71561 5* 03PythonshellDebugwindow 5* (+22) 10/* Commands */
+2020-05-01 14:44:17 <orbitaldecay> But as a start I really like the idea of avoiding getting into isomorphisms between machine states altogether
+2020-05-01 14:44:50 <orbitaldecay> Hmm, but dont we need some way to define analogous input?
+2020-05-01 14:48:53 <ais523> I find that I/O often complicates computational class discussions (I/O isn't needed at all to be TC, after all)
+2020-05-01 14:49:06 Quit: Phantom_Hoover (Ping timeout: 256 seconds)
+2020-05-01 14:49:06 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 14:49:27 <ais523> it'd be easy enough to come up with a noninteractive-I/O-dependent version of a simple translation, though ("the program halts, and the same input produces the same output")
+2020-05-01 14:49:40 <ais523> and the interactive I/O version is also obvious, just a little harder to define
+2020-05-01 14:52:03 <orbitaldecay> Yeah, I think I'm going to keep I/O out of the conversation for now completely
+2020-05-01 14:52:10 <orbitaldecay> as it just mucks up the ideas
+2020-05-01 14:52:15 <orbitaldecay> for no particularly good reason
+2020-05-01 14:55:51 <esowiki> 14[[07Cortex language 3A14]]4 M10 02https://esolangs.org/w/index.php?diff=71563&oldid=71562 5* 03PythonshellDebugwindow 5* (+40) 10
+2020-05-01 14:58:19 <esowiki> 14[[07Simple Translation14]]4 N10 02https://esolangs.org/w/index.php?oldid=71564 5* 03Orby 5* (+1974) 10Getting started
+2020-05-01 14:58:42 <orbitaldecay> ais523: wrote an initial definition, feel free to modify and expand
+2020-05-01 14:58:46 <orbitaldecay> going out for a smoke, brb
+2020-05-01 14:59:27 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03Ais523 5*  10moved [[02Simple Translation10]] to [[Simple translation]]: caps
+2020-05-01 14:59:50 <esowiki> 14[[07Simple translation14]]4 M10 02https://esolangs.org/w/index.php?diff=71567&oldid=71565 5* 03Ais523 5* (+23) 10cat
