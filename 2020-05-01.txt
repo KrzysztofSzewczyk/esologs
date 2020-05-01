@@ -289,3 +289,19 @@
 2020-05-01 11:27:16 <arseniiv> @tell cpressey <cpressey> BUT, "2+" and "+" are arguably not meaningful. => why not? "2+" adds 2 to the topmost stack element. If we have quotes, "[2+]" may be used somewhere a quote that changes the topmost elem is needed, e. g. in a looping contruct
 2020-05-01 11:27:16 <lambdabot> Consider it noted.
 2020-05-01 11:27:46 Joined: Lord_of_Life
+2020-05-01 11:30:48 Quit: Lord_of_Life (Ping timeout: 265 seconds)
+2020-05-01 11:30:48 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-05-01 11:36:51 Joined: ais523
+2020-05-01 11:36:52 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-01 11:37:34 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-01 11:37:34 <ais523> b_jonas: (non-volatile) inline asm looks like the perfect tool for this, AFAICT it suppresses exactly the compiler optimisations you want to suppress and no others
+2020-05-01 11:39:22 <ais523> it appears that the optimizer's assumptions for a non-volatile asm are that the same inputs always produce the same outputs and there are no side effects
+2020-05-01 11:40:04 <ais523> those are true for a non-associative floating point add, and I can't immediately think of any other properties it has
+2020-05-01 11:40:33 <ais523> of course, this is inherently system-specific, but arguably so is non-associative addition in the first plcae
+2020-05-01 11:42:11 <ais523> zzo38: I believe that the definition of a Babson task in M:tG should be a position where the opponent wishes for a card, and to win you have to wish for the same card
+2020-05-01 11:42:32 <ais523> the difficulty of this would presumably depend on the content of the sideboards, but assuming 15 different cards, it seems very difficult unless you can compare the card names somehow
+2020-05-01 11:42:39 <ais523> regardless of what the cards are
+2020-05-01 11:42:48 <ais523> (as long as they're all wishable by the opponent)
+2020-05-01 11:45:26 Quit: shig (Ping timeout: 256 seconds)
+2020-05-01 11:45:27 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-01 11:55:39 <ais523> orbitaldecay: the definition of "simple translation" strikes me as really important from the esoprogramming point of view, even outside any RBF-related contexts
