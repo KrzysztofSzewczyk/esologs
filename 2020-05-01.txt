@@ -494,3 +494,102 @@
 2020-05-01 15:29:36 <ais523> I guess you can think of it as an incremental self-interpreter
 2020-05-01 15:29:53 <orbitaldecay> of the state?
 2020-05-01 15:30:00 <ais523> orbitaldecay: no, but only through chance: because RBF is reversible the self-interpreter has no way to delete the program from the tape once it's finished
+2020-05-01 15:30:14 <ais523> this is specific to the fact that RBF is reversible
+2020-05-01 15:30:23 <ais523> and the fact that RBF programs with unbalanced () aren't valid
+2020-05-01 15:30:28 <ais523> or, well
+2020-05-01 15:30:44 <orbitaldecay> yeah I guess you  just erase all the temp stuff when you're done interpretting
+2020-05-01 15:30:48 <ais523> the point is that you don't need the translation of, say, *>(* to mean anything
+2020-05-01 15:31:02 <ais523> so the self-interpreter can check to see if we have a complete program with balanced parens
+2020-05-01 15:31:19 <orbitaldecay> ok, I get the problem
+2020-05-01 15:31:19 <ais523> if we do, it can evaluate it so far and then delete all the temporary state it used (except that it can't because RBF is reversible)
+2020-05-01 15:31:30 <orbitaldecay> right right
+2020-05-01 15:31:37 <ais523> if we don't, then the definition doesn't place constraints on what happens because the input program wasn't valid
+2020-05-01 15:32:39 <orbitaldecay> What if we require the machine state to be isomorphic after executing each command?
+2020-05-01 15:33:22 <ais523> I guess what you want to require is that the instruction pointer moves in the same way in both languages
+2020-05-01 15:33:40 <ais523> your "isomorphic after each command" seems to require an equivalence of instruction pointer movement to even be well-defined
+2020-05-01 15:33:56 <ais523> and the IP movement equivalent is sufficient by itself to ban Salpynx-style translations
+2020-05-01 15:34:02 <ais523> but, it seems hard to define rigorously
+2020-05-01 15:34:26 <orbitaldecay> yeah, particularly because the source and destination programs don't need to require the same number of symbols
+2020-05-01 15:34:33 <ais523> you can define it rigorously for RBF but I don't think it generalises to other languages
+2020-05-01 15:35:26 <orbitaldecay> I don't think so either
+2020-05-01 15:36:04 <orbitaldecay> I mean, the easiest and most restrictive way of dealing with it is to simply require that the languages use the same model
+2020-05-01 15:36:23 <orbitaldecay> so that's one view
+2020-05-01 15:36:43 <ais523> hmm, suppose you add to both languages a command that has some observable effect on the outside world, but doesn't affect the program's internal state
+2020-05-01 15:36:45 <orbitaldecay> that's good for talking about minimalizations of languages
+2020-05-01 15:36:56 <ais523> now you add it at the same point in both programs
+2020-05-01 15:37:02 <orbitaldecay> like an output command?
+2020-05-01 15:37:05 <ais523> right
+2020-05-01 15:37:14 <ais523> if the control flow is the same, it should run the same number of times in both programs
+2020-05-01 15:37:34 <ais523> but because it isn't allowed to affect the program's internal state, a Salpynx-style translation can't notice it exists
+2020-05-01 15:37:40 <ais523> so if you put it inside a loop it runs the wrong number of times
+2020-05-01 15:38:10 <ais523> I think this works for any programming language that allows an-arbitrary-effect-at-an-arbitrary point
+2020-05-01 15:38:25 <ais523> which may go some distance to coming up with a definition of what AAEAAAP actually means
+2020-05-01 15:39:29 <orbitaldecay> I am inclined to require a simple translation to use the same model for both languages and generalize from there, maybe a "generalized simple translation"
+2020-05-01 15:39:44 <orbitaldecay> could involve something like what you're talking about
+2020-05-01 15:40:15 <ais523> my #1 concern is making the definition as rigorous and non-corner-casey as possible
+2020-05-01 15:40:53 <orbitaldecay> I agree
+2020-05-01 15:41:40 <orbitaldecay> I am going to modify the simple translation page to require the same model as that's the spirit in which it was created. From there let's talk about generalizing it between models.
+2020-05-01 15:41:51 <ais523> anyway, I believe that a definition of simple translation that a) focuses entirely on halt behaviour, not internal state, b) allows an arbitrary prefix and suffix
+2020-05-01 15:42:02 <ais523> is an entirely different concept from yours but also randomly happens to be very useful for thinking about languages
+2020-05-01 15:42:20 <ais523> even though the definition is almost the same, it now permits almost anything (because it permits interpreters that look at a string literal)
+2020-05-01 15:42:53 <ais523> and the nice thing about permitting almost anything TC is that it /doesn't/ permit some things that are TC, which is valuable information in its own right
+2020-05-01 15:43:23 <ais523> I was hoping to call that "generalized simple translation" but perhaps it needs its own name
+2020-05-01 15:44:25 <ais523> anyway, even looking at the small picture, RBF→PF→RBF simple translation is a really interesting problem (I believe it's possible without Salpynx-style approaches, although you might need a lot of temporary tape space)
+2020-05-01 15:44:37 <ais523> and Underload→2-command Underload→Underload simple translation is also interesting
+2020-05-01 15:44:41 <ais523> at the lexical level
+2020-05-01 15:44:59 <orbitaldecay> Yeah, I am quite interested in exploring underload minimizations in this context
+2020-05-01 15:45:09 <ais523> we already have a translation that handles everything except "complex" (…), where the commands are (~)(:)(^)(a)(*)(!!!!!!) and ^
+2020-05-01 15:45:39 <esowiki> 14[[07Simple translation14]]4 10 02https://esolangs.org/w/index.php?diff=71582&oldid=71569 5* 03Orby 5* (-277) 10Changing definition to require same machine model between languages
+2020-05-01 15:46:12 <ais523> Underload is TC using finitely many possible (…) commands; the usual set is (~)(:)(!)(*)(a)(^), and it's trivial to break down any existing Underload programs to use only those 6 (…) commands
+2020-05-01 15:46:59 <ais523> and you can produce a simple translation between (~) (:) (!) (*) (a) (^) ~ : ! * a ^ Underload and (~)(:)(^)(a)(*)(!!!!!!) ^ Underload
+2020-05-01 15:47:31 <ais523> but what's piqued my interest is: in the full version of Underload, can you produce a simple translation of ( and ) on their own?
+2020-05-01 15:47:54 <ais523> I guess you could call this a "lexical simple translation" because it's based on the characters of the source code, not the individual commands
+2020-05-01 15:48:37 <orbitaldecay> interesting!
+2020-05-01 15:49:21 <orbitaldecay> I am concerned that the current definition of simple translation still allows for salpynx-style translations
+2020-05-01 15:50:07 <orbitaldecay> My brain is getting fuzzy
+2020-05-01 15:50:12 <ais523> the best part of Underload minimization, IMO, is when we discovered that ~ can be expressed in terms of the other commands, but it's really complicated to do so
+2020-05-01 15:50:31 <ais523> the shortest known implementation of ~ in terms of the others is a(!a)(!)(a*a*:*^!a*^):*^ which is just ridiculous :-)
+2020-05-01 15:50:53 <orbitaldecay> Man, I need to get into underload
+2020-05-01 15:52:29 <ais523> ^ul (a)(b)SS
+2020-05-01 15:52:29 <fungot> ba
+2020-05-01 15:52:37 <ais523> ^ul (a)(b)a(!a)(!)(a*a*:*^!a*^):*^SS
+2020-05-01 15:52:37 <fungot> ab
+2020-05-01 15:52:51 <ais523> ^ul (a)(b)a(!a)(!)(a*a*:*^!a*^)^SS
+2020-05-01 15:52:51 <fungot> b!
+2020-05-01 15:52:57 <ais523> ^ul (a)(b)a(!a)(!)(a*a*:*^!a*^)^SSS
+2020-05-01 15:52:57 <fungot> b!(a)
+2020-05-01 15:53:03 <ais523> ^ul (a)(b)a(!a)(!)(a*a*:*^!a*^)^SSSS
+2020-05-01 15:53:03 <fungot> b!(a) ...out of stack!
+2020-05-01 15:53:40 <b_jonas> ^ul (a)(b) ~ S(-)S
+2020-05-01 15:53:40 <fungot> ...bad insn!
+2020-05-01 15:54:01 <b_jonas> ^ul (a)(b)SS
+2020-05-01 15:54:01 <fungot> ba
+2020-05-01 15:54:09 <b_jonas> ^ul (a)(b) ~ S(z)S
+2020-05-01 15:54:09 <fungot> ...bad insn!
+2020-05-01 15:54:14 <b_jonas> ^ul (a)(b) ~ SS
+2020-05-01 15:54:15 <fungot> ...bad insn!
+2020-05-01 15:54:19 <b_jonas> ^ul (a)(b) ~ S
+2020-05-01 15:54:19 <fungot> ...bad insn!
+2020-05-01 15:54:21 <b_jonas> ^ul (a)(b)~S
+2020-05-01 15:54:22 <fungot> a
+2020-05-01 15:54:25 <b_jonas> oh, it doesn't like whitespace
+2020-05-01 15:54:32 <b_jonas> ^ul (a)(b)~S(-)SS
+2020-05-01 15:54:32 <fungot> a-b
+2020-05-01 15:54:40 <b_jonas> ^ul (a)(b)a(!a)(!)(a*a*:*^!a*^):*^S(-)SS
+2020-05-01 15:54:40 <fungot> a-b
+2020-05-01 15:55:15 <orbitaldecay> gtg, catch yall later
+2020-05-01 15:55:33 Quit: tromp (Remote host closed the connection)
+2020-05-01 15:55:34 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 15:56:16 <b_jonas> ^ul (a)(b)~*()SS
+2020-05-01 15:56:16 <fungot> ba
+2020-05-01 15:56:22 <b_jonas> ^ul (a)(b)*()SS
+2020-05-01 15:56:22 <fungot> ab
+2020-05-01 15:56:32 <b_jonas> ^ right, that's why you can't test with just SS
+2020-05-01 15:56:38 <b_jonas> ^ul (a)(b)*()S(-)SS
+2020-05-01 15:56:38 <fungot> -ab
+2020-05-01 15:56:46 <ais523> b_jonas: I was being sloppy, I know
+2020-05-01 15:56:51 <ais523> but it's good enough for testing when you know you aren't cheating
+2020-05-01 15:59:11 Quit: zseri (Quit: zseri)
+2020-05-01 15:59:11 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-05-01 15:59:35 <ais523> what we really need for this is the A command from Underlambda
+2020-05-01 15:59:50 <ais523> it puts parentheses around the /entire/ stack, not just the top element
