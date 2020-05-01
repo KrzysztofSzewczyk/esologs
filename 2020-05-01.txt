@@ -149,3 +149,49 @@
 2020-05-01 06:19:31 Joined: arseniiv
 2020-05-01 06:19:32 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-05-01 06:23:04 <b_jonas> Train: esowiki reports edits, and it may also be the bot that gets the logs for https://esolangs.org/logs/all.html most of the time
+2020-05-01 06:34:30 Joined: tromp
+2020-05-01 06:34:31 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-01 06:38:06 User Name: probablymoony = probablymoony!moony@hellomouse/dev/moony
+2020-05-01 06:38:06 <probablymoony> been a while since I've spoken in here
+2020-05-01 06:38:23 <probablymoony> but i've been working on a DEC VAX emulator (as the SIMH one is nigh unreadable and I needed something to do)
+2020-05-01 06:38:47 <probablymoony> and I finally have it in a state where I can extend it to be a full VAX implementation'
+2020-05-01 06:39:40 <probablymoony> it seems to take about 25-35ns per instruction right now with the MMU disabled (checks for it exist, but if it was enabled the program would crash as it's unimplemented.)
+2020-05-01 06:44:41 <probablymoony> also frankly my timing test is very crude :P
+2020-05-01 06:45:07 <zzo38> Did you implement the extensions? http://esolangs.org/wiki/User:Ian/Computer_architectures#Some_ideas_of_mine
+2020-05-01 06:45:30 <probablymoony> https://github.com/moonheart08/emutk/tree/master/emutk-vax if any reader is interested. Code's spaghetti but it works. Hmmm?
+2020-05-01 06:45:33 * probablymoony looks
+2020-05-01 06:46:11 <probablymoony> zzo38: also it's very early in-dev
+2020-05-01 06:46:18 <probablymoony> not all instrs are implemented (only a small subset)
+2020-05-01 06:46:21 <probablymoony> :P
+2020-05-01 06:46:48 <probablymoony> > code to be run from the registers
+2020-05-01 06:46:49 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-05-01 06:46:49 <lambdabot> error:
+2020-05-01 06:46:50 <lambdabot> • Variable not in scope:
+2020-05-01 06:46:50 <lambdabot> code
+2020-05-01 06:47:03 <probablymoony> that'd require me to upturn my entire execution model, I think i'm good :P
+2020-05-01 06:47:21 <probablymoony> > PC shenanigins
+2020-05-01 06:47:22 <zzo38> O, well, maybe once all of the instructions is implemented, then you can also add a option to make these extensions (or at least some of them), maybe
+2020-05-01 06:47:23 <lambdabot> error:
+2020-05-01 06:47:23 <lambdabot> Data constructor not in scope: PC :: t0 -> terror: Variable not in scope...
+2020-05-01 06:47:36 <probablymoony> I won't stop you. (you can already muck with PC, the emulator won't crash on you)
+2020-05-01 06:47:53 <probablymoony> it's only UB, not impossible
+2020-05-01 06:47:58 <probablymoony> and it was easier for me to allow it
+2020-05-01 06:48:47 <probablymoony> I was going to hold off on implementing instrs that need software float for a godo bit. We'll see.
+2020-05-01 06:48:53 <zzo38> Would you implement the microcodes?
+2020-05-01 06:48:59 <probablymoony> Likely not.
+2020-05-01 06:49:10 <probablymoony> goal is just the ISA, really
+2020-05-01 06:49:37 <probablymoony> once again, microcode would require a bunch of execution model redesigns and it'd be much much slower
+2020-05-01 06:50:44 <b_jonas> zzo38: re your question about subgames, I don't know the answer, but I decided that I gave up trying to understand the rules of subgames ever since they've been banned from Vintage
+2020-05-01 06:50:53 <probablymoony> zzo38: also thanks for that page
+2020-05-01 06:50:56 <b_jonas> I mean banned from all supported non-un formats
+2020-05-01 06:50:59 <probablymoony> i'll be giving it a good read
+2020-05-01 06:51:09 <b_jonas> but that's mostly the same
+2020-05-01 06:54:11 <probablymoony> zzo38: extra thanks, it immediately made me aware of an unemulated edge-case (incrementing immediates actually works)
+2020-05-01 06:54:22 <probablymoony> (or writing in general)
+2020-05-01 06:57:01 <zzo38> Writing immediates is something that some of my own designs supported even before I knew about VAX, just because, to me it is make sense, if it is orthogonal. However, on 6502 the instructions to write immediates don't work, and instead will result in reading immediate (and ignoring the value), it would seem to me.
+2020-05-01 06:57:03 Joined: Train
+2020-05-01 06:57:04 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, Train, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-01 06:58:30 <zzo38> (If it did work, it might be a good way to do bank switching in Famicom, when using a suitable mapper.)
+2020-05-01 06:59:36 <probablymoony> hmm
+2020-05-01 06:59:38 <probablymoony> actually
+2020-05-01 06:59:58 <probablymoony> I was considering rearranging my bus model so the bus is the "master" for everything, and the VAX CPU is just a device on it..
