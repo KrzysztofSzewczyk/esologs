@@ -17,3 +17,46 @@
 2020-05-01 01:26:51 Joined: kevinalh
 2020-05-01 01:26:51 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-05-01 01:28:58 <orbitaldecay> Does anyone know of a BF variant that executes the program in an implicit loop and only has if-blocks in the language?
+2020-05-01 01:30:06 <orbitaldecay> I think that would be TC too
+2020-05-01 01:31:57 <orbitaldecay> L00P is close
+2020-05-01 01:33:31 <b_jonas> orbitaldecay: it's hard to tell, as there are so many bf variants out there and it's hard to search their docs
+2020-05-01 01:33:44 User Name: int-e = int-e!~noone@int-e.eu
+2020-05-01 01:33:44 <int-e> As long as you ensure that the implicit loop is executed at least once... (an implicit while loop on an empty tape of 0s is a bit useless)...
+2020-05-01 01:33:46 <b_jonas> that looks like a variant that you can reasonably consider
+2020-05-01 01:34:47 <int-e> A large part of Brainfuck programming is getting out of loops :P
+2020-05-01 01:35:27 <orbitaldecay> cool cool
+2020-05-01 01:35:32 <int-e> Of course that's offset by having just one loop... so I'll not make any claims about which flavor is easier to use :P
+2020-05-01 01:37:03 User Name: Cale = Cale!~cale@2607:fea8:9960:35:c15e:8fc9:96ef:8ba2
+2020-05-01 01:37:03 <Cale> orbitaldecay: The printable subset of x86 assembly
+2020-05-01 01:37:10 <int-e> But I have no doubt that this is TC. With unbounded cells you should get a nice Minsky machine implementation; with bounded cells a more cumbersome Turing machine.
+2020-05-01 01:37:24 <Cale> x86 machine code rather
+2020-05-01 01:37:42 <Cale> https://www.youtube.com/watch?v=LA_DrBwkiJA&feature=youtu.be
+2020-05-01 01:37:42 <orbitaldecay> Cale: hahaha, in an implicit loop that would be great
+2020-05-01 01:38:16 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Spssyy 5*  10New user account
+2020-05-01 01:38:26 <int-e> Cale: yeah that one is quite awkward unless you allow run-time patching of the code to arbitrary values.
+2020-05-01 01:38:41 <Cale> There is an implicit loop if you're in the right mode
+2020-05-01 01:39:06 <orbitaldecay> Yeah, I remember playing around with printable machine code in the context of writing shell code to sneak into text fields that are validated
+2020-05-01 01:39:16 <orbitaldecay> In another life...
+2020-05-01 01:39:57 <shachaf> "if" should be called "affine while".
+2020-05-01 01:40:14 <b_jonas> orbitaldecay: ah yes, those php thingies that "validate" input by grepping for SQL keywords and for a less than sign followed by a letter, and then using them as unfiltered SQL or HTML if they don't contain them
+2020-05-01 01:40:18 <b_jonas> gotto love those
+2020-05-01 01:40:26 <shachaf> C has all four: do/while (relevant), if (affine), while, and a plain block.
+2020-05-01 01:40:26 <orbitaldecay> haha indeed
+2020-05-01 01:40:29 <int-e> iffing whale
+2020-05-01 01:40:56 Quit: ArthurStrong (Quit: leaving)
+2020-05-01 01:40:56 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-01 01:40:56 <orbitaldecay> good night all
+2020-05-01 01:42:40 <b_jonas> orbitaldecay: for printable x86 code, see https://esolangs.org/wiki/ABC_(compiler)
+2020-05-01 01:43:03 <Cale> orbitaldecay: That video I linked is where tom7 describes a C compiler he wrote which produces this weird printable assembly, and he makes use of the fact that if your address is in the top 16bit region and you issue the right kind of jump instruction, the instruction pointer gets ANDed with 0xffff automatically
+2020-05-01 01:43:13 <Cale> and that's how he does loops
+2020-05-01 01:43:17 <Cale> all the loops
+2020-05-01 01:43:22 <Cale> have to be that one
+2020-05-01 01:43:57 <Cale> er, printable machine code, I keep saying assembly :)
+2020-05-01 01:44:02 <b_jonas> Cale: right, the compiler is the one I just linked to
+2020-05-01 01:44:06 <Cale> yep
+2020-05-01 01:44:19 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=71540&oldid=71470 5* 03Spssyy 5* (+199) 10/* Introductions */
+2020-05-01 01:45:43 Joined: tromp
+2020-05-01 01:45:43 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-01 01:50:24 <esowiki> 14[[07User:Spssyy14]]4 N10 02https://esolangs.org/w/index.php?oldid=71541 5* 03Spssyy 5* (+439) 10Created page with "I am spssyy. I will frequently update this list below when I publish a new Esolang. I had written the documentation for Superset (formerly Brainfuck 3.0, now docs were deleted..."
+2020-05-01 01:50:53 Quit: tromp (Ping timeout: 272 seconds)
+2020-05-01 01:50:53 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
