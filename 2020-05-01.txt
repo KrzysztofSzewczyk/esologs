@@ -419,3 +419,78 @@
 2020-05-01 14:58:46 <orbitaldecay> going out for a smoke, brb
 2020-05-01 14:59:27 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03Ais523 5*  10moved [[02Simple Translation10]] to [[Simple translation]]: caps
 2020-05-01 14:59:50 <esowiki> 14[[07Simple translation14]]4 M10 02https://esolangs.org/w/index.php?diff=71567&oldid=71565 5* 03Ais523 5* (+23) 10cat
+2020-05-01 15:00:37 <esowiki> 14[[07Simple translation14]]4 10 02https://esolangs.org/w/index.php?diff=71568&oldid=71567 5* 03Orby 5* (+17) 10
+2020-05-01 15:03:11 <esowiki> 14[[07Simple translation14]]4 10 02https://esolangs.org/w/index.php?diff=71569&oldid=71568 5* 03Ais523 5* (+177) 10clarify introduction
+2020-05-01 15:03:47 <ais523> huh, interesting MediaWiki bug there: "show changes" showed your changes as well as mine, despite the lack of edit conflict
+2020-05-01 15:04:06 <esowiki> 14[[07Reversible Bitfuck14]]4 10 02https://esolangs.org/w/index.php?diff=71570&oldid=71520 5* 03Orby 5* (-1658) 10
+2020-05-01 15:04:35 <ais523> I wonder if we want the internal state mapping function at all
+2020-05-01 15:04:48 <ais523> I have the feeling that definitions with and without it are both interesting
+2020-05-01 15:04:52 <esowiki> 14[[07Nanofuck14]]4 M10 02https://esolangs.org/w/index.php?diff=71571&oldid=71523 5* 03Orby 5* (+6) 10
+2020-05-01 15:05:27 <esowiki> 14[[07Picofuck14]]4 M10 02https://esolangs.org/w/index.php?diff=71572&oldid=71521 5* 03Orby 5* (+6) 10
+2020-05-01 15:05:59 <esowiki> 14[[07User:Orby14]]4 M10 02https://esolangs.org/w/index.php?diff=71573&oldid=71535 5* 03Orby 5* (-38) 10
+2020-05-01 15:06:07 <esowiki> 14[[07Nanofuck14]]4 M10 02https://esolangs.org/w/index.php?diff=71574&oldid=71571 5* 03Ais523 5* (-38) 10remove redundant piping of links
+2020-05-01 15:06:36 <orbitaldecay> Well, I think we nee the internal state mapping to initialize the machines to the same state
+2020-05-01 15:07:27 <orbitaldecay> The state being the same on completion is less important I think
+2020-05-01 15:07:55 <ais523> well, thinking about languages
+2020-05-01 15:08:04 <ais523> I'm thinking of a simple translation as a mapping of the source code
+2020-05-01 15:08:10 <ais523> in which case it happens before parsing
+2020-05-01 15:08:19 <ais523> the current implementation seems to inherently assume that the language is concatenative, doesn't it?
+2020-05-01 15:08:20 <orbitaldecay> Feel free to generalize on the page
+2020-05-01 15:08:32 <orbitaldecay> a generalized simple translation could be really useful too
+2020-05-01 15:08:35 <ais523> (also, somehow I never realised until /just now/ that brainfuck is concatenative)
+2020-05-01 15:08:56 <orbitaldecay> I originally thought of all this in the context of minimization, but it sounds like you have a bigger vision for it
+2020-05-01 15:09:12 <esowiki> 14[[07Cortex language 314]]4 M10 02https://esolangs.org/w/index.php?diff=71575&oldid=71527 5* 03PythonshellDebugwindow 5* (-92) 10
+2020-05-01 15:09:45 <ais523> OK, so https://esolangs.org/wiki/Pure_BF is a joke
+2020-05-01 15:09:54 <ais523> but it does seem to be the view of BF-alikes that simple translation is taking
+2020-05-01 15:10:08 <esowiki> 14[[07Cortex language 3A14]]4 M10 02https://esolangs.org/w/index.php?diff=71576&oldid=71563 5* 03PythonshellDebugwindow 5* (+92) 10/* Commands */
+2020-05-01 15:10:47 <esowiki> 14[[07Cortex language 314]]4 M10 02https://esolangs.org/w/index.php?diff=71577&oldid=71575 5* 03PythonshellDebugwindow 5* (+40) 10
+2020-05-01 15:10:53 Quit: zseri (Quit: zseri)
+2020-05-01 15:10:53 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zzo38
+2020-05-01 15:11:02 Joined: zseri
+2020-05-01 15:11:02 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 15:11:25 <esowiki> 14[[07Truth-machine14]]4 M10 02https://esolangs.org/w/index.php?diff=71578&oldid=71430 5* 03PythonshellDebugwindow 5* (+33) 10/* Cortex language 3 */
+2020-05-01 15:13:53 <ais523> I guess the issue is that we normally see languages in almost any paradigm as a list of commands, that operate on state, and produce a state as output
+2020-05-01 15:14:38 <ais523> there are some exceptions, like control flow, and those not coincidentally cause the largest issues when writing simple translations
+2020-05-01 15:16:36 <orbitaldecay> yeah, mapping the IP to a functional language sounds weird
+2020-05-01 15:17:01 <orbitaldecay> idea: input and output buffers can be considered part of the state. No special consideration for I/O needed.
+2020-05-01 15:18:55 <ais523> one application for simple translations is in explaining the difference between the :*()a^ and ~:!()^ subsets of Underload
+2020-05-01 15:19:13 <ais523> the former subset appears to be a simple translation of Underload; the latter isn't "obviously" a simple translation
+2020-05-01 15:19:58 <orbitaldecay> I need to read up on underload
+2020-05-01 15:20:21 <ais523> you should, especially if you're interested in minimization
+2020-05-01 15:21:50 <arseniiv> int-e (or someone skilled in lambdabot’s workings): I tried to abuse lambdabot again, running this obfuscated code:
+2020-05-01 15:21:50 <arseniiv> @let data O z=O(z(O z)) -- this is a fixpoint of a functor like in Data.Fix
+2020-05-01 15:21:50 <arseniiv> > let{e m(O c)=m$fmap(e m)c;a g s=j g:a s(O[g,s]);j=e(fmap(+)(foldr(const.const$0)1)<*>sum)}in a(O[])$O[O[]]
+2020-05-01 15:21:50 <arseniiv> on my GHCi, it starts spewing out the first elements of the list pretty fast but here the computation just times out. I think I did something wrong, what could that be?
+2020-05-01 15:21:51 <lambdabot> .L.hs:174:1: error:
+2020-05-01 15:21:51 <lambdabot> Multiple declarations of ‘O’
+2020-05-01 15:21:51 <lambdabot> Declared at: .L.hs:172:1
+2020-05-01 15:21:56 <lambdabot> mueval-core: Time limit exceeded
+2020-05-01 15:22:05 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=71579&oldid=71513 5* 03PythonshellDebugwindow 5* (+96) 10/* Languages */
+2020-05-01 15:22:17 <ais523> actually for me, one of the most important unanswered questions wrt simple translations at the moment is whether there's some simple, objective way to exclude Salpynx-style translations
+2020-05-01 15:22:29 <arseniiv> (oh sorry I defined it earlier but that definition hadn’t changed)
+2020-05-01 15:23:04 <ais523> because those may permit simple translations into anything TC that obeys certain syntactic restrictions
+2020-05-01 15:24:21 <ais523> or, hmm
+2020-05-01 15:24:23 <orbitaldecay> okay, run this salpynx-style translation by me again
+2020-05-01 15:24:57 <ais523> the basic idea is that we have some sort of state that records whether or not we're in the middle of a loop
+2020-05-01 15:25:06 <ais523> commands run immediately if we aren't
+2020-05-01 15:25:22 <ais523> if we are, they just add themselves to some data structure, and then ] implements the entire loop
+2020-05-01 15:25:45 <ais523> the advantage of this is that there's no need for any PF command to translate to an unbalanced loop in RBF
+2020-05-01 15:26:04 Joined: kevinalh
+2020-05-01 15:26:04 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 15:26:04 <ais523> * the translation of ) implements the entire loop
+2020-05-01 15:27:01 <ais523> so you can create two commands, 1 and 0, where 1 just implements an internal counter, and 0 does all the real work, depending on context either executing a command, or storing that command in a data structure for later use
+2020-05-01 15:27:15 <ais523> 0 is in effect an RBF self-interpreter
+2020-05-01 15:27:18 Joined: imode
+2020-05-01 15:27:19 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, howlands, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar`, mich181189, mniip, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xkapastel, xylochoron[m], zseri, zzo38
+2020-05-01 15:27:24 <ais523> then you just map each RBF command to some string of 1s followed by 0
+2020-05-01 15:27:56 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=71580&oldid=71515 5* 03PythonshellDebugwindow 5* (+25) 10/* C */ + [[Cortex language 3A]]
+2020-05-01 15:28:05 <orbitaldecay> but how do you express the inverse translation table?
+2020-05-01 15:28:11 <orbitaldecay> e.g. what is 1 in RBF?
+2020-05-01 15:28:41 <esowiki> 14[[07Cortex language 3A14]]4 M10 02https://esolangs.org/w/index.php?diff=71581&oldid=71576 5* 03PythonshellDebugwindow 5* (+460) 10/* Examples */
+2020-05-01 15:28:43 <ais523> the inverse translation table is the hard part; 1 basically just has to increment a counter (although you need a complex tape encoding to /have/ a temporary counter in RBF)
+2020-05-01 15:28:54 <ais523> and 0 is an entire RBF self-interpreter with some additional functionality
+2020-05-01 15:29:11 <arseniiv> (oh, that translation technique reminds me how I implemented my first incomplete forth-like with quotes: if we are inside a quote, we continue completing it, then we push it on the stack finally—if we aren’t in a quote still; thought there are no more similarities regarding "]", as the evaluation would be a different operation, "!")
+2020-05-01 15:29:34 <orbitaldecay> is it possible to do that and maintain equivalence under isomorphism?
+2020-05-01 15:29:36 <ais523> I guess you can think of it as an incremental self-interpreter
+2020-05-01 15:29:53 <orbitaldecay> of the state?
+2020-05-01 15:30:00 <ais523> orbitaldecay: no, but only through chance: because RBF is reversible the self-interpreter has no way to delete the program from the tape once it's finished
