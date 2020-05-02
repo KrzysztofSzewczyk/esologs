@@ -250,3 +250,26 @@
 2020-05-02 06:59:28 <imode> instead of two stacks.
 2020-05-02 06:59:39 <dnm> zzo38: I appreciate hand-written PostScript.
 2020-05-02 07:00:01 <shachaf> zzo38: How many total halves are in TeXnicard?
+2020-05-02 07:00:12 <dnm> imode: Neat. What'd you implement it in?
+2020-05-02 07:00:14 <shachaf> I would love for the answer to be two halves, using a complicated polyglot technique.
+2020-05-02 07:00:47 <imode> the concurrent version is implemented as a preprocessor that generates lists of C preprocessor tokens, which flatten out into C code.
+2020-05-02 07:01:18 <zzo38> dnm: Yes, that is all I use PostScript for. I think PostScript isn't very good as a protocol or a document storage format, but as a programming language it is not bad, especially for doing graphics.
+2020-05-02 07:01:20 <imode> the non-concurrent version does the same, only it actually flattens out into if/while statements.
+2020-05-02 07:01:44 <dnm> imode: URL?
+2020-05-02 07:01:57 Quit: howlands (Ping timeout: 258 seconds)
+2020-05-02 07:01:57 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar`, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-02 07:02:08 <zzo38> shachaf: TeXnicard is not made of "halves", I think.
+2020-05-02 07:02:56 <imode> dnm: https://git.imode.tech/?p=mode;a=tree;h=refs/heads/master;hb=refs/heads/master it's pretty old, but eh.
+2020-05-02 07:04:22 <imode> the preprocessor is a simple flattening macro system. you take a token, you see if it has a definition, and then you slap that definition in the middle of your program source.
+2020-05-02 07:04:27 <imode> rinse and repeat until reduced.
+2020-05-02 07:05:20 <imode> this version generates a list of function pointers to be executed.
+2020-05-02 07:09:40 Joined: user24
+2020-05-02 07:09:40 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar`, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-02 07:12:05 <dnm> imode: Cool! This looks pretty clean, too!
+2020-05-02 07:12:49 <imode> thanks! the only fundamental manipulation/shuffling ops are dup, drop, swap and last.
+2020-05-02 07:13:07 <imode> last moves something from the end of the queue to the head of the queue. all other operations, like dup, take items from the head and enqueue results to the tail.
+2020-05-02 07:13:40 <imode> so you can make your queue look like and behave like a stack if you want.
+2020-05-02 07:13:49 <zzo38> Also, in TeXnicard, PostScript codes can call SQL codes.
+2020-05-02 07:14:04 <imode> all other forth primitives (even `pick`!) can be implemented as compound macros.
+2020-05-02 07:17:02 <imode> this particular version includes concurrency. so you can spawn up lightweight processes and communicate synchronously between them. you can simulate functions by spinning up a process, sending it data, and then waiting for the result to be sent back.
+2020-05-02 07:18:44 <imode> haven't mapped 'em to threads yet.
