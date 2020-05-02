@@ -158,3 +158,95 @@
 2020-05-02 06:29:19 <pikhq> The Java programmers don't just stay in Java land, I'm sad to report.
 2020-05-02 06:29:20 <shachaf> Fortunately C doesn't support this idiom.
 2020-05-02 06:29:36 <pikhq> C has its own downsides, of course.
+2020-05-02 06:30:05 <shachaf> It's true.
+2020-05-02 06:30:10 <shachaf> But what are the better options?
+2020-05-02 06:30:13 <zzo38> The problem with C is the confusing type syntax. (Well, it is one of them.)
+2020-05-02 06:30:51 <pikhq> Hardly ever is any given language going to be strictly "better" than the other, imo
+2020-05-02 06:31:02 <pikhq> All language decisions come with tradeoffs.
+2020-05-02 06:31:25 <shachaf> OK, but what can I use in practice for a thing that I might use C for right now?
+2020-05-02 06:31:25 <pikhq> It's a matter of which sacrifices you're willing to make for which benefits, really
+2020-05-02 06:31:41 <pikhq> Best choices are C, C++, and Rust in that general space
+2020-05-02 06:31:44 <zzo38> Depend what you are making, I think.
+2020-05-02 06:32:02 <shachaf> Rust seems to be going way in the wrong direction.
+2020-05-02 06:32:05 <shachaf> And C++ too.
+2020-05-02 06:33:06 <myname> why do you think rust is going in the wrong direction?
+2020-05-02 06:34:50 <zzo38> There are many good features of C that other programming languages don't do so well.
+2020-05-02 06:35:39 <myname> also, what's your suggestion to handle make_foo().with_thing(true).with_other_thing(5).all_done_now() better without sacrificing a reasonable type system
+2020-05-02 06:37:01 <pikhq> war on types
+2020-05-02 06:37:07 <pikhq> it's been all downhill since church
+2020-05-02 06:37:25 <myname> i see, you are a js dev
+2020-05-02 06:37:38 <pikhq> no, just a smartass
+2020-05-02 06:37:42 <pikhq> and professional yaml dev :/
+2020-05-02 06:37:47 <myname> haha
+2020-05-02 06:37:47 <shachaf> Uh oh.
+2020-05-02 06:37:53 <shachaf> Can I market some YAML to you?
+2020-05-02 06:37:59 <pikhq> No.
+2020-05-02 06:38:21 <pikhq> I have > 1 lines of YAML already, it's far too many
+2020-05-02 06:38:21 <myname> shachaf: what's such a good c feature?
+2020-05-02 06:39:13 <myname> whenever i think of c, i fail to think of any positives
+2020-05-02 06:39:44 <shachaf> It is pretty simple and mostly corresponds to how computers work.
+2020-05-02 06:39:58 <shachaf> Not that it maximizes either one.
+2020-05-02 06:40:17 <myname> well, it's macro assembler, but i don't see that as an advantage
+2020-05-02 06:40:57 <myname> you don't need to write how computers work. that will more likely produce bad code if you aren't an expert
+2020-05-02 06:41:18 <shachaf> I only want to be able to write code that corresponds to how computers work.
+2020-05-02 06:41:25 <shachaf> But most languages won't let you do that.
+2020-05-02 06:41:37 <shachaf> There are certainly features that would improve C.
+2020-05-02 06:42:06 <myname> write assembly, then. modern c compilers do stuff you would never imagine while writing your c code
+2020-05-02 06:42:58 <imode> write in forth.
+2020-05-02 06:43:07 <imode> be quirky.
+2020-05-02 06:43:16 <zzo38> C does have many good features, such as pointer arithmetic, setjmp/longjmp, macros, etc. But many things it doesn't do so well that assembly language is doing much better.
+2020-05-02 06:44:01 <myname> you can do that in rust, too, if you really wanted to. there's just virtually no reason to do so
+2020-05-02 06:44:36 <shachaf> Is Rust good?
+2020-05-02 06:44:57 <shachaf> Say you want to write a program that doesn't use malloc but has other allocation strategies. Doesn't Rust fight you all the time?
+2020-05-02 06:45:13 <myname> rust tries to remove as many errors as possible during compile time. big fan of that approach
+2020-05-02 06:45:55 <myname> what do you mean by that? you could easily write your own allocator and use that
+2020-05-02 06:46:09 <myname> in fact, the api is way easier to handle than that of c
+2020-05-02 06:46:15 <dnm> Since I'm idling in #esoteric, I think I mostly want to echo imode.
+2020-05-02 06:46:32 <myname> like, dealloc will get a pointer and the amount of memory to free
+2020-05-02 06:46:40 <myname> no need to keep track of sizes of data
+2020-05-02 06:46:49 <dnm> I don't know if Forth even counts as esoteric, actually. But of those recently mentioned...
+2020-05-02 06:47:23 <shachaf> Well, if you use arena allocation, you don't even need to call dealloc. But Rust is all about destructors and RAII and things like that, I think?
+2020-05-02 06:48:46 <myname> in safe code, it is, yeah. how's that a problem?
+2020-05-02 06:49:16 <dnm> shachaf: Consider Ada?
+2020-05-02 06:49:16 <shachaf> I mean, the things I'm talking about aren't even the real problem.
+2020-05-02 06:49:31 <shachaf> dnm: That's an option!
+2020-05-02 06:49:33 <myname> what is?
+2020-05-02 06:49:34 <shachaf> Not a real one, though.
+2020-05-02 06:49:37 <pikhq> I will not solve these problems for you.
+2020-05-02 06:49:44 <pikhq> I'm sorry, I'm a busy girl.
+2020-05-02 06:49:49 <pikhq> ;)
+2020-05-02 06:50:00 <dnm> shachaf: Not a real one?
+2020-05-02 06:50:12 <shachaf> Ada? I kind of doubt it.
+2020-05-02 06:50:19 <shachaf> Maybe for specialized things.
+2020-05-02 06:50:39 <dnm> shachaf: I guess I missed what the scenario is/constraints are
+2020-05-02 06:51:26 <dnm> Oh wait. Was it this? <shachaf> I only want to be able to write code that corresponds to how computers work.
+2020-05-02 06:51:42 <shachaf> I don't really know.
+2020-05-02 06:51:45 <pikhq> Yeah, I definitely won't be helpful for that.
+2020-05-02 06:52:10 <shachaf> I'm pretty sure dnm was suggesting Ada Lovelace.
+2020-05-02 06:52:25 <dnm> I mean, I could take a lot of issue with the idea that C is how computers work. But.
+2020-05-02 06:52:28 <shachaf> I'm confused about usage. Are you Ada Lovelace's namesake, or is she yours?
+2020-05-02 06:52:42 <shachaf> dnm: Well, I granted that!
+2020-05-02 06:52:51 <pikhq> I think she's my namesake.
+2020-05-02 06:53:13 <pikhq> Not a phrase that comes up much though
+2020-05-02 06:53:20 <dnm> shachaf: I was just saying Ada (as a language) could be considered re: <shachaf> Say you want to write a program that doesn't use malloc but has other allocation strategies. Doesn't Rust fight you all the time?
+2020-05-02 06:53:53 <pikhq> Huh, no, I'm her namesake apparently.
+2020-05-02 06:53:55 <shachaf> That's what I would have said, but then someone else was confused and now I'm confused.
+2020-05-02 06:54:01 <pikhq> English. Such a weird language.
+2020-05-02 06:54:03 <dnm> S'ok. Me too.
+2020-05-02 06:54:38 <dnm> imode: Speaking of Forth, you hacking anything in or adjacent to it?
+2020-05-02 06:54:38 <shachaf> The word "namesake" makes me think of the play Arcadia, where someone says "your illustrious namesake".
+2020-05-02 06:55:03 <pikhq> This is definitely more confusing than the mere namespace collision that is sharing a name with a programming language
+2020-05-02 06:55:23 <pikhq> Which is not very common, thankfully, so it usually doesn't matter
+2020-05-02 06:55:26 <shachaf> I guess Ada isn't directly mentioned in that play, though Byron is.
+2020-05-02 06:55:34 <shachaf> Maybe one character is based on her?
+2020-05-02 06:55:39 <shachaf> Lovelace, I mean.
+2020-05-02 06:55:49 <shachaf> Man, what a good play.
+2020-05-02 06:56:39 <shachaf> pikhq: Well, no one ever talks about Ada the programming language, whereas Lovelace is one of the only two people anyone ever names for "women in computing" for some reason.
+2020-05-02 06:57:01 <shachaf> So I imagine that collision happens a lot more.
+2020-05-02 06:57:27 <pikhq> It's a lovely name though.
+2020-05-02 06:58:48 <imode> dnm: yeah, I have a language called `mode` that's... kinda close to Forth?
+2020-05-02 06:59:18 <zzo38> I do sometimes use 6502 assembly language and Glulx assembly language, and sometimes write a program with more than one programming language, e.g. TeXnicard is written half in C, half in PostScript, and half in SQL.
+2020-05-02 06:59:21 <imode> it's pretty minimalist. the only single data structure you manipulate is a deque.
+2020-05-02 06:59:28 <imode> instead of two stacks.
+2020-05-02 06:59:39 <dnm> zzo38: I appreciate hand-written PostScript.
+2020-05-02 07:00:01 <shachaf> zzo38: How many total halves are in TeXnicard?
