@@ -553,3 +553,32 @@
 2020-05-03 22:57:31 <orbitaldecay> http://www.vetstreet.com/dr-marty-becker/my-dog-has-a-gay-tail-what-does-this-mean
 2020-05-03 22:57:49 Quit: Phantom__Hoover (Ping timeout: 264 seconds)
 2020-05-03 22:57:50 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-03 23:00:10 <int-e> That one could also feature in a spy movie.
+2020-05-03 23:01:17 <int-e> "As long as it’s wagging, I’m happy. And you should be, too."
+2020-05-03 23:01:44 <orbitaldecay> hahaha
+2020-05-03 23:02:49 <orbitaldecay> I really like this indirection idea. You could wrap a normal bf program in {} and have a memory mapped data pointer
+2020-05-03 23:04:47 <pikhq> How many BF derivatives even are there? Way the fuck too many, at least, but
+2020-05-03 23:05:16 <orbitaldecay> yeah, way too many
+2020-05-03 23:07:00 <int-e> pikhq: infinitely many, or close enough that it makes no difference
+2020-05-03 23:07:27 <shachaf> I've heard of derivatives of regular languages.
+2020-05-03 23:07:34 <shachaf> Maybe that extends to programming languages?
+2020-05-03 23:07:51 <orbitaldecay> if that's the case, brainfuck is like the latin of programming languages
+2020-05-03 23:07:56 <orbitaldecay> millions of little bastardizations
+2020-05-03 23:08:37 <int-e> shachaf: s/regular//
+2020-05-03 23:09:06 <int-e> (the point being that it's really an operation on any set of words)
+2020-05-03 23:10:16 <int-e> It's even relevant for context-free languages, cf. Greibach normal form.
+2020-05-03 23:12:39 <shachaf> I knew it was more general than regular languages but I wasn't sure how much.
+2020-05-03 23:12:48 <shachaf> But also if I just said "languages" it would be ambiguous.
+2020-05-03 23:12:49 <int-e> @metar lowi
+2020-05-03 23:12:50 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-05-03 23:12:50 <lambdabot> LOWI 032250Z AUTO 11003KT 070V140 9999 OVC070 09/03 Q1019
+2020-05-03 23:13:16 <shachaf> OK, I see, it's a pretty simple operation.
+2020-05-03 23:13:48 <int-e> shachaf: Maybe the ambiguity would've made it better? I'm not sure I would've found the alternative meaning ("formal languages" in addition to "programming languages") though... so maybe not.
+2020-05-03 23:14:08 <shachaf> Why is this called a derivative?
+2020-05-03 23:15:31 <int-e> I'm not sure. Maybe if you treat words as monomials over a ring you get something similar?
+2020-05-03 23:21:56 <shachaf> Hmm, looking at how the derivative of a regular expression is computed I guess I can see some similarity.
+2020-05-03 23:22:48 <pikhq> I feel like there's a difference between "an excessive finite number" and "actually infinite" :)
+2020-05-03 23:23:50 Joined: craigo
+2020-05-03 23:23:51 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-03 23:29:24 Joined: tromp
+2020-05-03 23:29:24 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
