@@ -148,3 +148,51 @@
 2020-05-03 02:06:12 Quit: Phantom_Hoover (Ping timeout: 258 seconds)
 2020-05-03 02:06:12 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-05-03 02:29:56 <int-e> shachaf: What about a standard NULL-terminated linked list?
+2020-05-03 02:32:19 <shachaf> Yes, that's another case that's similar.
+2020-05-03 02:32:51 <shachaf> You have n+1 total states for your pointer including the final null. Really this is a better example probably.
+2020-05-03 02:33:19 <int-e> for (int i = 0; i < n; i++) is amenable to the starting at -1 trick, and then it fits the pattern you want.
+2020-05-03 02:33:43 <int-e> But for linked lists you don't get a -1 that easily.
+2020-05-03 02:33:54 <shachaf> And also for pointers.
+2020-05-03 02:34:21 <shachaf> An array with n values has n+1 total pointers, &a[0] to &a[n], but &a[-1] is undefined behavior in C (and reasonably so).
+2020-05-03 02:34:28 <int-e> Well, for pointers you could argue that it's really a stupid limitation of C.
+2020-05-03 02:34:37 <shachaf> Maybe...
+2020-05-03 02:34:46 <shachaf> Anyway the linked list example is better. What do you do?
+2020-05-03 02:35:21 <int-e> I suppose you make the iterator look like a list element without a value?
+2020-05-03 02:35:29 <shachaf> You could add an extra "unstarted" state: struct ListIter { Node *node; bool started; };
+2020-05-03 02:35:50 <int-e> (I vaguely recall that Knuth has various list head tricks of that sort... I forgot the details.)
+2020-05-03 02:35:58 <shachaf> Then you can write write ListIter list_start(Node *node) { return (ListIter){.node = node, .started = false}; }
+2020-05-03 02:36:41 <int-e> *I* would probably not cram linked lists into that iterator style.
+2020-05-03 02:36:57 <shachaf> I mean, it's unnecessary, certainly.
+2020-05-03 02:37:05 <shachaf> You can just iterate manually and it works fine.
+2020-05-03 02:37:16 <shachaf> But I'm trying to figure out how to make it not horrible in simple cases.
+2020-05-03 02:37:28 <int-e> "not horrible"
+2020-05-03 02:37:38 <int-e> you're always so opinionated
+2020-05-03 02:37:48 <shachaf> bool list_next(ListIter *iter) { if (iter->started) { iter->node = iter->node->next; } else { iter->started = true; } return iter->node != 0; }
+2020-05-03 02:37:59 <shachaf> OK, how to make it elegant rather than mildly annoying.
+2020-05-03 02:39:48 <shachaf> I don't like this way very much. {.node = 0, .started = true} is the same as {.node = 0, .started = false}
+2020-05-03 02:39:55 <shachaf> Another option:
+2020-05-03 02:40:05 Quit: ArthurStrong (Quit: leaving)
+2020-05-03 02:40:05 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-03 02:40:08 <int-e> Well, my problem with this is... how is the compiler supposed to get rid of the bool and produce the right code (which is the normal for (node *i = begin; i; i = i -> next) ...)
+2020-05-03 02:40:27 <int-e> (don't ask me why I put spaces around the ->... too much Haskell, I suppose)
+2020-05-03 02:41:16 <shachaf> Well, really I want this style to work for more complicated kinds of iteration, where I think you have the same problem.
+2020-05-03 02:41:31 <int-e> Also the simple truth is that I'm so used to the three-part iteration that I don't even find it annoying.
+2020-05-03 02:41:39 <shachaf> But probably if you inline _next the control flow will be pretty simple?
+2020-05-03 02:41:44 <shachaf> Let's see, does this work?
+2020-05-03 02:41:49 <shachaf> struct ListIter { Node *node; Node *next; };
+2020-05-03 02:42:52 <int-e> (And the real improvement is to make the iterator manipulation implicit. "for (x: list) { ... }")
+2020-05-03 02:43:39 <shachaf> ListIter list_start(Node *node) { return (ListIter){.node = node}; }
+2020-05-03 02:44:00 <int-e> sure that isn't .next?
+2020-05-03 02:44:09 <shachaf> You're right, it's .next
+2020-05-03 02:44:38 <shachaf> bool list_next(ListIter *it) { it->node = it->next; if (it->node) { it->next = node->next; return true; } return false; }
+2020-05-03 02:44:44 <int-e> I suppose that works and might be amenable to compiler optimization
+2020-05-03 02:45:26 <int-e> Looks a bit like SSA style code.
+2020-05-03 02:46:21 <zzo38> Glulx has a built-in command for dealing with linked lists. I have used linked lists in C too though, as well as Glulx.
+2020-05-03 02:48:29 <zzo38> I found a implementation of vi for 6502, but it isn't for Famicom (yet), although Famicom keyboard doesn't have any ASCII characters beyond 95 anyways (although nothing stops you from displaying them).
+2020-05-03 02:49:02 <imode> vi for the 6502? color me interested.
+2020-05-03 02:49:11 <imode> vim for the 6502 would be an accomplishment.
+2020-05-03 02:50:53 <zzo38> There is http://vi65.sourceforge.net/ but unfortunately not for Famicom, and I have a Famicom (although not the keyboard for it, nor a cartridge to load my own software in)
+2020-05-03 02:51:24 <imode> could probably be ported, aye?
+2020-05-03 02:52:17 <zzo38> Yes, I suppose so.
+2020-05-03 02:53:25 <zzo38> Unfortunately, no emulator I know of supports separated disk images, even though I said that would be a better feature to have.
+2020-05-03 02:56:04 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03HTV04 5*  10New user account
