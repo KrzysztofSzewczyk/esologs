@@ -13,3 +13,44 @@
 2020-05-03 00:22:44 <Antebrationist> Oh zzo38, I have fully planned out the minsky machine and started to build it.
 2020-05-03 00:24:32 Quit: laerling (Changing host)
 2020-05-03 00:24:32 Joined: laerling
+2020-05-03 00:39:00 <zzo38> OK
+2020-05-03 00:46:00 <esowiki> 14[[07Rhoam14]]4 10 02https://esolangs.org/w/index.php?diff=71644&oldid=71640 5* 03EvilMuffinHa 5* (+972) 10
+2020-05-03 00:46:48 <esowiki> 14[[07Rhoam14]]4 10 02https://esolangs.org/w/index.php?diff=71645&oldid=71644 5* 03EvilMuffinHa 5* (+154) 10
+2020-05-03 00:47:16 <Antebrationist> What does esowiki do?
+2020-05-03 00:47:21 <esowiki> 14[[07Rhoam14]]4 10 02https://esolangs.org/w/index.php?diff=71646&oldid=71645 5* 03EvilMuffinHa 5* (-20) 10
+2020-05-03 00:47:50 <imode> says who changed what in the wiki.
+2020-05-03 00:48:28 <Antebrationist> So, its like an edit tracker.
+2020-05-03 00:48:35 <imode> yuh.
+2020-05-03 00:48:43 <shachaf> `5 w
+2020-05-03 00:48:46 <HackEso> 1/2:tetrapleur//tetrapleur is the new name of quadrilaterals. \ spore//spore <n> stores its input in tmp/spout and displays the nth line (default first). For a version considering irc line lengths, see sport. See also `spam. \ gey//I know nothing about Gey, sir. \ english channel//If it existed, the English Channel would separate Hexham from Finland. \ hppavilion[42]//hppavilion[42] is the awesomest person you will ever meet. Much a
+2020-05-03 00:48:48 <shachaf> `n
+2020-05-03 00:48:49 <HackEso> 2/2:esomer than oerjan.
+2020-05-03 00:48:56 <shachaf> `5
+2020-05-03 00:48:57 <HackEso> 1/2:457) <ais523> (Enigma is two games; one is solving Enigma puzzles, the other is working out how to represent things as Enigma puzzles, preferably with the minimal amount of lua and player-hidden information possible) \ 1093) <kmc> anyway getting naked and high in the desert doesn't make you a rebel, as much as I enjoy this activity \ 1231) <ais523> do we seriously not do quotes any more? \ 425) <Taneb> So it's like... Rummy mixed with...
+2020-05-03 00:49:01 <shachaf> `n
+2020-05-03 00:49:02 <HackEso> 2/2:reakout? \ 982) <zzo38> My opinion is that you are all wrong, as far as I can tell.
+2020-05-03 00:49:30 <int-e> `spam
+2020-05-03 00:49:30 <HackEso> 1/2:457) <ais523> (Enigma is two games; one is solving Enigma puzzles, the other is working out how to represent things as Enigma puzzles, preferably with the minimal amount of lua and player-hidden information possible) \ 1093) <kmc> anyway getting naked and high in the desert doesn't make you a rebel, as much as I enjoy this activity \ 1231) <ais523> do we seriously not do quotes any more? \ 425) <Taneb> So it's like... Rummy mixed with...
+2020-05-03 00:49:55 <Antebrationist> What?
+2020-05-03 00:49:56 <int-e> (What was `spam good for again?)
+2020-05-03 00:50:13 <shachaf> `` ls -ld ../bin/spam ../bin/n
+2020-05-03 00:50:17 <HackEso> lrwxrwxrwx 1 1000 1000   4 Jul  8  2017 ../bin/n -> spam \ -rwxr-xr-x 1 1000 1000 206 Nov 16 21:37 ../bin/spam
+2020-05-03 00:50:26 <int-e> Antebrationist: this channel has quite a few bots, some more noisy than others.
+2020-05-03 00:50:30 <shachaf> spam was just the original name for n before it was shortened to one letter.
+2020-05-03 00:50:30 <int-e> shachaf: Ah, thanks.
+2020-05-03 00:50:43 <int-e> shachaf: So the issue here is that `n loops.
+2020-05-03 00:50:52 <shachaf> `cbt n
+2020-05-03 00:50:52 <HackEso> line="${1-$(cat $HACKENV/tmp/spline)}"; len="$(awk 'END{print NR}' $HACKENV/tmp/spout)"; echo -n "$line/$len:"; sed -n "${line}{p;q}" $HACKENV/tmp/spout; echo "$((line<len?line+1:1))" > $HACKENV/tmp/spline
+2020-05-03 00:51:12 <shachaf> Maybe that's an issue?
+2020-05-03 00:51:14 <int-e> `? hackeso
+2020-05-03 00:51:15 <HackEso> HackEso is almost, but not quite, entirely unlike HackEgo.
+2020-05-03 00:51:16 <shachaf> It was intentional at the time.
+2020-05-03 00:52:24 <shachaf> OK, this API issue is kind of annoying. This program gives you a path, and what is normally a basename as an offset into that path.
+2020-05-03 00:52:26 <int-e> Antebrationist: Anyway, esowiki is useful... a) it's interesting to see what topics are currently hot on the wiki b) it enables more timely reactions to spam
+2020-05-03 00:52:46 <Antebrationist> Yeah. Agreed. Especially on b
+2020-05-03 00:52:55 <shachaf> The problem is, what it actually gives you is also supposed to be useful for openat(parent_dir_fd, ...)
+2020-05-03 00:53:12 <shachaf> That's almost the same as a basename except that at the root you want to use AT_FDCWD and a full path instead.
+2020-05-03 00:53:18 <int-e> Antebrationist: HackEso is more of a swiss army knife (it's a user mode linux sandbox and has grown a rich set of commands, most of questionable use, over time)
+2020-05-03 00:53:24 <shachaf> What's the solution? Should it give you a basename each time?
+2020-05-03 00:55:15 <Antebrationist> Ah... That makes sense.
+2020-05-03 00:56:15 <esowiki> 14[[07Rhoam14]]4 10 02https://esolangs.org/w/index.php?diff=71647&oldid=71646 5* 03EvilMuffinHa 5* (+383) 10
