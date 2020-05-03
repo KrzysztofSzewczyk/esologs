@@ -212,3 +212,24 @@
 2020-05-03 05:13:48 <zzo38> Now will you do it, then?
 2020-05-03 05:15:35 * pikhq wishes she could still focus on projects like that
 2020-05-03 05:15:40 <pikhq> A VAX emulator sounds neat
+2020-05-03 05:34:07 User Name: moony = moony!moony@hellomouse/dev/moony
+2020-05-03 05:34:07 <moony> zzo38: it's midnight
+2020-05-03 05:34:15 <moony> I am planning to go to bed :P
+2020-05-03 05:34:38 <moony> Maybe could add some instructions to the instr table but that's about it
+2020-05-03 05:35:10 <pikhq> It's also the weekend
+2020-05-03 05:35:27 <pikhq> Mind, you may have plans in the morning.
+2020-05-03 05:35:36 <pikhq> Sunday morning plans are not that uncommon, I suppose.
+2020-05-03 05:36:07 <zzo38> Some people go to church on Sunday, but now is not the time to do that, with these virus
+2020-05-03 05:36:11 <moony> I was planning to support a pseudo-64bit extension as a non-DEC-compliant feature flag, could go add those instr IDs
+2020-05-03 05:36:19 <shachaf> So a range iterator would look like struct It { int cur, end, value; };
+2020-05-03 05:36:38 <pikhq> Some churches have been doing video services for their congregation, which seems like a reasonable compromise.
+2020-05-03 05:36:42 <shachaf> It start(int end) { return (It){.end = end}; }
+2020-05-03 05:37:13 <moony> #[cfg(feature = "64bit")]
+2020-05-03 05:37:16 <moony> ADDQ2 = 0xC0FD,
+2020-05-03 05:37:18 <moony> this is gonna be repeated a lot
+2020-05-03 05:37:24 <pikhq> Not that I'm a follower of any organized religions myself, but hey, some people are.
+2020-05-03 05:37:32 <pikhq> 🤷🏻‍♀️
+2020-05-03 05:37:51 <zzo38> OK
+2020-05-03 05:38:16 <shachaf> It next(It *it) { if (it->cur >= it->end) return false; it->value = it->cur; it->cur++; return true; }
+2020-05-03 05:41:49 <shachaf> Can you translate between the two styles?
+2020-05-03 05:43:40 <shachaf> Aha.
