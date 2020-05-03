@@ -108,3 +108,38 @@
 2020-05-03 01:28:17 <int-e> `url
 2020-05-03 01:28:18 <HackEso> https://hack.esolangs.org/repo/
 2020-05-03 01:29:55 <b_jonas> what's the problem with the temp files?
+2020-05-03 01:30:13 <int-e> they show up in `ls
+2020-05-03 01:30:39 <int-e> now that $HACKENV/tmp is the default working directory
+2020-05-03 01:31:03 <b_jonas> meh
+2020-05-03 01:31:22 <int-e> It's not a big deal, more of a blemish.
+2020-05-03 01:33:55 <shachaf> `? this
+2020-05-03 01:33:56 <HackEso> This is something people on the channel like to talk about. We're often unsure what this is, though. Nobody likes this.
+2020-05-03 01:34:21 <int-e> One could just change the file names to .spline and .spout
+2020-05-03 01:34:28 <shachaf> Oh no.
+2020-05-03 01:34:42 <int-e> `cwlprits this
+2020-05-03 01:34:44 <HackEso> int-̈e oerjän olsnër
+2020-05-03 01:34:58 <int-e> Yeah I thought I probably added the last bit.
+2020-05-03 01:36:08 <shachaf> Did I ever mention the time I was talking to a coworker and they said they knew one person who used Gopher?
+2020-05-03 01:36:22 <shachaf> And then they talked about how that person would always ask "do you like this?".
+2020-05-03 01:36:34 <pikhq> lmao that's amazing
+2020-05-03 01:36:50 <int-e> Hah.
+2020-05-03 01:37:03 <int-e> A simple matter of zzoology.
+2020-05-03 01:37:59 <shachaf> Hmm.
+2020-05-03 01:38:06 <shachaf> I should get back to my SAT solver one day.
+2020-05-03 01:38:16 <shachaf> I don't really know how to do clause deletion nicely.
+2020-05-03 01:40:18 <shachaf> Also, I have a question about iterators.
+2020-05-03 01:40:40 <shachaf> I like this iterator style: Iterator it = thing_start(); while (thing_next(&it)) { ... }
+2020-05-03 01:40:58 <shachaf> Where ... might use it.value or something.
+2020-05-03 01:41:36 <shachaf> The question is, does this require the type to have more values than the classic style of iteration?
+2020-05-03 01:42:16 <shachaf> For example with "for (int i = 0; i < n; i++)", the value of i goes between 0 and n, so there are a total of n+1 value.
+2020-05-03 01:43:22 <shachaf> I guess the first question I should ask is, how would you do simple iteration like that in this style? Starting at a negative number or storing an extra boolean seems scow.
+2020-05-03 01:45:48 Quit: Sgeo (Read error: Connection reset by peer)
+2020-05-03 01:45:48 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-03 01:45:49 <shachaf> This specific case doesn't matter much, but it seems kind of annoying to give more complicated iterators an "unstarted" start which I sometimes end up doing.
+2020-05-03 01:45:56 <shachaf> state
+2020-05-03 01:47:40 Joined: Sgeo
+2020-05-03 01:47:41 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-03 01:50:37 Quit: Sgeo (Read error: Connection reset by peer)
+2020-05-03 01:50:38 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-03 01:51:55 Joined: Sgeo
+2020-05-03 01:51:56 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
