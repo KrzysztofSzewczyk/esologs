@@ -238,3 +238,12 @@
 2020-05-04 14:21:24 <orbitaldecay> zseri: hey, just sent you an e-mail
 2020-05-04 14:45:17 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=71678&oldid=71662 5* 03PythonshellDebugwindow 5* (+0) 10/* Languages */
 2020-05-04 14:46:45 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=71679&oldid=71677 5* 03PythonshellDebugwindow 5* (+10) 10/* Interpreter in {something ?} */
+2020-05-04 15:17:30 User Name: zseri = zseri!~zseri@ytrizja.de
+2020-05-04 15:17:30 <zseri> orbitaldecay, you've send me an OpenPGP-encrypted mail (which I was able to decrypt), but didn't send an pubkey to encrypt, and I wasn't able to fetch your key from the keyservers, and I wasn't able to fetch a *currently valid* key via WKD, hm. (all keys retrievable via WKD were expired)
+2020-05-04 15:18:35 <orbitaldecay> zseri: I did not intend to do that. I'm using protonmail. They must have automatically encrypted it for some reason?
+2020-05-04 15:19:29 <orbitaldecay> First time I've encountered that
+2020-05-04 15:21:48 <zseri> I found out that 'indirect BF' would probably require either BigNums or relative addressing (changed it to relative addressing for now). BF seems to have a direct equivalent in indirect BF, but that only works if the initial indirection is zero. Maybe it would be a good idea to add some operation which is able to deterministically and always reset the indirection to zero...
+2020-05-04 15:21:57 <esowiki> 14[[07&brainfuck14]]4 N10 02https://esolangs.org/w/index.php?oldid=71680 5* 03Orby 5* (+1606) 10Creating reference bf
+2020-05-04 15:23:44 <zseri> basically, there are two variants: unbounded cells with absolute addressing; and bounded cells with relative addressing...
+2020-05-04 15:28:22 <orbitaldecay> zseri: well, I think the model should use unbounded tape and unbounded positive cells with absolute addressing. Implementation can just use a tape of 65536 16-bit unsigned cells, or whatevs. But I think absolute addressing is important.
+2020-05-04 15:29:56 <orbitaldecay> I can show you the snippets of an implementation in C that I wrote that might make it clearer what I mean
