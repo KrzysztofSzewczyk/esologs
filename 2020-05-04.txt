@@ -247,3 +247,25 @@
 2020-05-04 15:23:44 <zseri> basically, there are two variants: unbounded cells with absolute addressing; and bounded cells with relative addressing...
 2020-05-04 15:28:22 <orbitaldecay> zseri: well, I think the model should use unbounded tape and unbounded positive cells with absolute addressing. Implementation can just use a tape of 65536 16-bit unsigned cells, or whatevs. But I think absolute addressing is important.
 2020-05-04 15:29:56 <orbitaldecay> I can show you the snippets of an implementation in C that I wrote that might make it clearer what I mean
+2020-05-04 15:30:38 <orbitaldecay> https://paste.forder.cc/ufowonijej.cs
+2020-05-04 15:30:58 <orbitaldecay> here's the pseudocode
+2020-05-04 15:33:11 <esowiki> 14[[07&brainfuck14]]4 10 02https://esolangs.org/w/index.php?diff=71681&oldid=71680 5* 03Zseri 5* (+54) 10
+2020-05-04 15:33:45 <orbitaldecay> Cool
+2020-05-04 15:34:37 <orbitaldecay> I switched to the *, & syntax because I'm really interested in [*] and I think writing [{] looks really strange
+2020-05-04 15:36:31 <zseri> relative addressing makes writing programs more complicated, but makes writing interpreters and compilers easier, and practically the pointer doesn't "jump back" to 0 with every indirection on a pre-filled cell (=0), but instead just stays there...
+2020-05-04 15:37:41 <zseri> maybe it would be possible to build a compiler that transforms programs from one form to the other, which would be really non-trivial to do manually...
+2020-05-04 15:38:25 <orbitaldecay> I prefer the absolute addressing model, but if you're interested in relative addressing by all means explore it and write about it on the wiki page
+2020-05-04 15:38:43 <orbitaldecay> Converting between the two could be really hard
+2020-05-04 15:40:23 <orbitaldecay> A really interesting implementation detail is what happens when you modify a cell that is part of the indirection chain
+2020-05-04 15:41:20 <zseri> (about converting) yep, but possible as long as no I/O is involved. Would probably require a execution or simulation of the whole thing, tho....
+2020-05-04 15:41:26 <orbitaldecay> e.g. tape is 1 2 3 0, indirection is 4, data pointer is 0, what does < do?
+2020-05-04 15:42:10 <esowiki> 14[[07Turing tarpit14]]4 M10 02https://esolangs.org/w/index.php?diff=71682&oldid=69821 5* 03PythonshellDebugwindow 5* (+37) 10/* Survey */ + Unary and rearange
+2020-05-04 15:43:23 <zseri> it would probably set cell 0 = 0, then the selected cell would stay the same... Or have I messed up the indirection count?
+2020-05-04 15:43:54 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=71683&oldid=71679 5* 03PythonshellDebugwindow 5* (-830) 10/* 2 */
+2020-05-04 15:43:56 <orbitaldecay> no, I agree
+2020-05-04 15:44:08 <esowiki> 14[[07Regimin14]]4 N10 02https://esolangs.org/w/index.php?oldid=71684 5* 03PythonshellDebugwindow 5* (+1434) 10Created page with "'''Regimin''' is a minimal 2D Turing-complete esolang by [[User:PythonshellDebugwindow]].  ==Program format== The program is expected to be a perfect square. Whitespace is ign..."
+2020-05-04 15:44:51 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=71685&oldid=71661 5* 03PythonshellDebugwindow 5* (+14) 10/* R */ + [[Regimin]]
+2020-05-04 15:44:53 <orbitaldecay> but ensuring that the interpreter does that correctly is tricky
+2020-05-04 15:45:14 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=71686&oldid=71678 5* 03PythonshellDebugwindow 5* (+45) 10/* Languages */
+2020-05-04 15:45:40 <zseri> it can be archieved by caching the pointer before accessing/modifying the cell.
+2020-05-04 15:46:52 <orbitaldecay> I think so, I think I've also handled that behavior correctly in the snippet I posted
