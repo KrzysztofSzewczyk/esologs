@@ -150,3 +150,10 @@
 2020-05-04 07:19:33 <zzo38> Do you like Mitrofanov's chess study?
 2020-05-04 07:22:20 <shachaf> jix: Oh, I just noticed you linked to the specific paper.
 2020-05-04 07:22:40 <shachaf> I just clicked on the PDF link and it took me to the entire book so I spent some time searching it for tiers.
+2020-05-04 07:38:58 Quit: imode (Ping timeout: 260 seconds)
+2020-05-04 07:38:58 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-04 07:43:43 <jix> shachaf: just remembered that I also wrote a short summary of what I did: https://jix.one/refactoring-varisat-4-heuristics/#clause-database-reduction
+2020-05-04 07:45:57 <jix> (that also explains a few things that Oh's paper probably takes for granted)
+2020-05-04 07:57:15 <shachaf> Which things?
+2020-05-04 07:58:07 <shachaf> I see, the glue level is the smallest number of total decisions that's been needed to reach a conflict or unit in the clause? Or something along those lines.
+2020-05-04 07:58:19 <shachaf> I should probably start by implementing a really simple heuristic for deletion and then jam it up later.
