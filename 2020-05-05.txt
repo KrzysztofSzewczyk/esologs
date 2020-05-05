@@ -202,3 +202,5 @@
 2020-05-05 13:24:00 <esowiki> 14[[07HGFTSNOA14]]4 M10 02https://esolangs.org/w/index.php?diff=71724&oldid=71675 5* 03PythonshellDebugwindow 5* (+141) 10/* Fibonacci numbers until variable t (finish) (help in InfiniteGoto interpreter) */
 2020-05-05 13:44:36 User Name: orbitaldecay = orbitaldecay!~bob@forder.cc
 2020-05-05 13:44:36 <orbitaldecay> zseri: could you elaborate? like a loop that checks the indirection count as a condition?
+2020-05-05 14:02:17 <zseri> yes.
+2020-05-05 14:08:30 <zseri> that is needed because there is no other way to check the indirection count without possibily causing UB or crashing the interpreter (I don't really want commands that silently 'do nothing' because then reverse operations could do unintended stuff)...
