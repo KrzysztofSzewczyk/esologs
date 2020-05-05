@@ -254,3 +254,32 @@
 2020-05-05 18:25:21 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=71739&oldid=71738 5* 03PythonshellDebugwindow 5* (-1113) 10
 2020-05-05 18:27:53 Quit: kevinalh (Ping timeout: 260 seconds)
 2020-05-05 18:27:53 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-05 18:34:56 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-05-05 18:34:56 <rain1> Has there been any updates on picofuck?
+2020-05-05 18:35:33 User Name: orbitaldecay = orbitaldecay!~bob@forder.cc
+2020-05-05 18:35:33 <orbitaldecay> rain1: there haven't been. I've been playing around with some different ideas
+2020-05-05 18:35:47 <orbitaldecay> specifically &brainfuck
+2020-05-05 18:36:02 <orbitaldecay> any progress on your side?
+2020-05-05 18:36:25 Joined: kevinalh
+2020-05-05 18:36:26 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-05 18:36:43 <rain1> nothing more than what I said the other day
+2020-05-05 18:36:52 <rain1> what did you mean by "&brainfuck"
+2020-05-05 18:37:06 <rain1> the problem is very interesting and i want to work on it more
+2020-05-05 18:37:11 <orbitaldecay> https://esolangs.org/wiki/%26brainfuck
+2020-05-05 18:37:27 <orbitaldecay> I also find the picofuck problem very interesting and want to work on it more
+2020-05-05 18:37:50 <orbitaldecay> I have kind of a fuzzy idea for a potential way to get picofuck to work
+2020-05-05 18:38:27 <rain1> aha that is a wonderful idea
+2020-05-05 18:38:32 <rain1> reference brainfuck
+2020-05-05 18:38:39 <rain1> Cool! Good luck!
+2020-05-05 18:38:57 <orbitaldecay> if one instruction incremented a counter, and the other instruction was an interpreter that executed the instruction referenced by the interpreter, it might be kind of a cheaty way to get it to work
+2020-05-05 18:39:22 <orbitaldecay> so, writing an rbf self interpreter might be a start
+2020-05-05 18:42:10 <esowiki> 14[[07User:PythonshellDebugwindow/XShell14]]4 N10 02https://esolangs.org/w/index.php?oldid=71740 5* 03PythonshellDebugwindow 5* (+1518) 10Created page with "=Pyvix= '''Pyvix''' is an esolang usable by the XShell operating system (XOS).  ==Learn by examples== ===Hello World===  get_os().exec("echo Hello World") Or:  get_os().cmd("e..."
+2020-05-05 18:44:36 Joined: psdw
+2020-05-05 18:44:37 Names: ^[, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, psdw, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-05 18:46:12 <orbitaldecay> I need to finally write an rbf interpreter
+2020-05-05 18:46:39 <orbitaldecay> Semordnilap is basically the same language and I've written an interpreter for that
+2020-05-05 18:51:27 <orbitaldecay> rain1: I have an idea for picofuck. I will type it up on the discussion page now.
+2020-05-05 18:52:14 <orbitaldecay> oh, I see you are already thinking along the same lines I am
+2020-05-05 18:52:24 <orbitaldecay> let me digest what you've written
+2020-05-05 18:55:51 <orbitaldecay> wait, are you salpynx on the wiki?
+2020-05-05 18:57:31 <rain1> no
