@@ -191,3 +191,32 @@
 2020-05-06 05:44:21 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-05-06 05:51:29 <zzo38> My program optionally allows the words "static" and/or "unsigned" at the beginning (although "const" currently isn't supported), and numbers can be written in octal, decimal, or hexadecimal.
 2020-05-06 05:53:06 <zzo38> Comments are also allowed.
+2020-05-06 06:08:11 <shachaf> Is the default octal, decimal, or hexadecimal?
+2020-05-06 06:08:26 <shachaf> I guess hexadecimal would be the most sensible default because it has the most digits.
+2020-05-06 06:09:33 <zzo38> I think it is hexadecimal default
+2020-05-06 06:11:42 <zzo38> The program I wrote for writing X bitmap format is hexadecimal only, and some programs I have tried assume the numbers are hexadecimal even if it isn't.
+2020-05-06 06:19:33 Joined: Antebrationist
+2020-05-06 06:19:34 Names: ^[, aji, aloril, Antebrationist, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nchambers, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-06 06:19:42 User Name: Antebrationist = Antebrationist!ca9a82b8@202-154-130-184.dsl-dynamic.connections.net.nz
+2020-05-06 06:19:42 <Antebrationist> Okay, more info on his code.
+2020-05-06 06:20:57 <Antebrationist> As requested. Hex numbers are a distinct data type, which he implemented as a String. Apparently, he made a program to compile stuff into it, so at least 8 lines of that was just method.
+2020-05-06 06:21:15 <Antebrationist> It's used for lots of small scripts.
+2020-05-06 06:21:26 <shachaf> `5 w
+2020-05-06 06:21:30 <HackEso> 1/3:firefly//FireFly was a short-running but well-loved sci-fi TV series released in 2003, starring Nathan Fillion and directed and written by Joss Whedon. It's also a room whose gimmick is that it gets darker as you kill the enemies. \ sex//Sex is a board game which originated in Britain in the 1870s before spreading throughout Europe in the 1890s. Sex was introduced to the rest of the world by a book, "The Complete Guide to Sex", writte
+2020-05-06 06:21:40 <shachaf> `n
+2020-05-06 06:21:41 <HackEso> 2/3: and published in 1932, based on the author's extensive experience with a wide variety of forms of European sex. \ bfjoust//bfjoust is a spamming tool for #esoteric. \ tetris//Tetris is where Soviet Russia was invented. Taneb was not present although Triangle and Robert were. \ hppavilion//hppavilion is the generator including, but not limited to, hppavilion[1], hppavilion[2], and hppavilion[42]. hppavilion is of length 37-42i-28j+4
+2020-05-06 06:21:47 <shachaf> `n
+2020-05-06 06:21:48 <HackEso> 3/3:-28ij+38ik+62jk+20ijk. A common alternative definition is the set of all items yielded by the general case of the generator. Not to be confused with hppavilion^k or hppavilion_m.
+2020-05-06 06:21:50 <Antebrationist> Adding 1 to a hex number: just incrementing it by 1.
+2020-05-06 06:22:03 <Antebrationist> shachaf, is HackEso a markov chain bot?
+2020-05-06 06:22:19 <shachaf> Who can say?
+2020-05-06 06:23:19 <zzo38> HackEso is a bot to run arbitrary programs. If there is a Markov program in there, then it will do that too, but that isn't what `5 w and `n do.
+2020-05-06 06:23:35 <Antebrationist> Okay. So what do they do?
+2020-05-06 06:23:42 <shachaf> `n could print the output of a Markov chain program.
+2020-05-06 06:25:22 <zzo38> Yes, but that isn't what it does; it just displays the contents of another file which the other program may add the output to.
+2020-05-06 06:25:31 <Antebrationist> Okay.
+2020-05-06 06:28:29 <zzo38> I can believe that he may have written some code using the programming language you mentioned, although I would not know much about it so do not know much without the context.
+2020-05-06 06:28:40 <int-e> okay that's the shower fixed
+2020-05-06 06:28:49 <Antebrationist> Not everything was in it.
+2020-05-06 06:28:55 <Antebrationist> Just small methods and whatnot.
+2020-05-06 06:29:13 <zzo38> Yes, it is what I would probably expect; not everything.
