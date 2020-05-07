@@ -390,3 +390,38 @@
 2020-05-07 20:57:09 Joined: psdw
 2020-05-07 20:57:09 Names: ^[, adu, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, psdw, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
 2020-05-07 20:58:06 <esowiki> 14[[07User:Salpynx/Simple translation conjecture14]]4 10 02https://esolangs.org/w/index.php?diff=71937&oldid=71908 5* 03Salpynx 5* (+1373) 10/* Concatenative semantics */ sub-unit fragment translations are possible in some language pairs; allowing size optimisation
+2020-05-07 21:04:53 Quit: psdw (Remote host closed the connection)
+2020-05-07 21:04:53 Names: ^[, adu, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:05:32 <esowiki> 14[[07User:Salpynx/Simple translation conjecture14]]4 M10 02https://esolangs.org/w/index.php?diff=71938&oldid=71937 5* 03Salpynx 5* (+362) 10/* Concatenative semantics */
+2020-05-07 21:10:42 <esowiki> 14[[07Streetcode14]]4 M10 02https://esolangs.org/w/index.php?diff=71939&oldid=71936 5* 03PythonshellDebugwindow 5* (+16) 10
+2020-05-07 21:17:54 Joined: salpynx
+2020-05-07 21:17:55 Names: ^[, adu, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:18:12 <orbitaldecay> salpynx: we meet at last!
+2020-05-07 21:19:26 User Name: salpynx = salpynx!794954f8@121.73.84.248
+2020-05-07 21:19:26 <salpynx> Hi! I just saw we missed each other by 10mins earlier :)
+2020-05-07 21:19:38 <orbitaldecay> Ha, yeah it was unfortunate
+2020-05-07 21:19:56 <orbitaldecay> Okay, so what do you think of the definition of simple translation as I have currently worded it?
+2020-05-07 21:20:26 <orbitaldecay> It doesn't explicitly tie the semantics of A and B, but there is an implied semantic interpretation of B according to the translation table
+2020-05-07 21:20:49 <orbitaldecay> I thought it was a better definition for the purposes of minimization
+2020-05-07 21:22:13 <salpynx> It seems good to me, it's the way I have been thinking about the problem.
+2020-05-07 21:22:37 Joined: Lord_of_Life
+2020-05-07 21:23:22 <orbitaldecay> Good. I think it captures the essence of the idea without needing to worry about isomorphisms between machine models and other silly problems
+2020-05-07 21:23:37 Quit: Lord_of_Life (Ping timeout: 264 seconds)
+2020-05-07 21:23:52 <orbitaldecay> I think it also reduces some aspects of the problem to a string game
+2020-05-07 21:23:56 Quit: tromp (Remote host closed the connection)
+2020-05-07 21:23:56 Names: ^[, adu, aji, aloril, APic, arseniiv, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:23:57 <salpynx> I had a moment of doubt when I thought there was some extra requirements on how the two translation tables had to be related to each other, but I think now the requirement is only that the tables need to exist independently?
+2020-05-07 21:24:16 <orbitaldecay> Define "need to exist independently"
+2020-05-07 21:24:52 <salpynx> I have a feeling that one way simple-translations can exist, i.e. one table can't be formed.
+2020-05-07 21:25:19 <orbitaldecay> Definitely, but "one way" simple translations also include things like trivial encodings
+2020-05-07 21:25:27 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-05-07 21:25:30 <orbitaldecay> e.g. encoding brainfuck in binary and calling it a two command language
+2020-05-07 21:25:45 <orbitaldecay> + is 000, - is 001, etc.
+2020-05-07 21:26:20 <salpynx> i.e Fractran -> RBF should be possible because of TC, but RBF -> Fractran  is not possible as a simple-translation because Fractran is not divisible into programmatic sub-units
+2020-05-07 21:27:01 <orbitaldecay> yeah, there is some sort of equivalence that is required by simple translation that is more specific than computational class
+2020-05-07 21:27:16 <salpynx> Also Deadfish -> BF is a possible simple-translation, because BF is more powerful than Deadfish, but BF -> Deadfish is not possible since Deadfish lis sub-TC
+2020-05-07 21:28:00 <orbitaldecay> I don't think "one way" simple translations are very interesting because I don't think they actually preserve anything useful
+2020-05-07 21:28:42 <orbitaldecay> I should say "one table simple translations"
+2020-05-07 21:28:59 <orbitaldecay> because under the current definition A can be a ST of B, but B not an ST of A
+2020-05-07 21:29:03 <salpynx> So I think the strict requirement that a simple translation has to be bi-directional is too much, but it is certainly an interesting case. Examining why translations can't be bi-directional is also interesting
+2020-05-07 21:29:35 <int-e> Oh scroll. Did you define "simple"?
