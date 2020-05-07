@@ -425,3 +425,62 @@
 2020-05-07 21:28:59 <orbitaldecay> because under the current definition A can be a ST of B, but B not an ST of A
 2020-05-07 21:29:03 <salpynx> So I think the strict requirement that a simple translation has to be bi-directional is too much, but it is certainly an interesting case. Examining why translations can't be bi-directional is also interesting
 2020-05-07 21:29:35 <int-e> Oh scroll. Did you define "simple"?
+2020-05-07 21:30:02 <salpynx> not really :)
+2020-05-07 21:30:12 <int-e> I'd expect "effective" = "computable" there.
+2020-05-07 21:30:40 <int-e> Or perhaps a restriction of that.
+2020-05-07 21:30:43 <orbitaldecay> Well, if we don't have the strict requirement then PF -> RBF is just + = 000, > = 001, < = 010, ( = 011, ) = 100
+2020-05-07 21:31:10 <orbitaldecay> no need to define 0 and 1 in terms of rbf at all
+2020-05-07 21:33:02 <int-e> (Fix any at most TC formalism and let the translation use that formalism. It could be as simple as a finite state transducer.)
+2020-05-07 21:33:07 <salpynx> hmm, I see your point, if a 2 way translation is possible, a one way translation is not very interesting or useful.
+2020-05-07 21:33:40 <int-e> But usually the 1-way translations are easier to come up with.
+2020-05-07 21:34:10 <int-e> Typically you have translations A -> B and B -> A that do not compose to the identity.
+2020-05-07 21:34:28 <orbitaldecay> Yeah, the 1-way translations are very easy to come up with but I fear that they don't carry much meaning
+2020-05-07 21:34:44 <orbitaldecay> int-e: no, not identity, but "eta-equivalent" in some sense
+2020-05-07 21:34:54 <orbitaldecay> to borrow that term
+2020-05-07 21:35:25 <int-e> Hmm, observationally equivalent in some sense?
+2020-05-07 21:35:34 <orbitaldecay> programs do the same thing
+2020-05-07 21:35:39 <int-e> (eta-reduction is something very specific in my mind)
+2020-05-07 21:35:51 <orbitaldecay> am I remembering the definition of eta equivalent correctly?
+2020-05-07 21:36:13 <int-e> \x. M x  -->  A  when x is not free in M
+2020-05-07 21:36:24 <int-e> (too lazy to find the lambda, so \ is a lambda)
+2020-05-07 21:36:36 <int-e> Ooph
+2020-05-07 21:36:42 <int-e> that A is an M.
+2020-05-07 21:37:26 <int-e> (I changed my mind about using A or M half-way through typing this... I should know better.)
+2020-05-07 21:37:36 <salpynx> Hang on though, if your one way PF -> RBF translation is  + = 000, > = 001, < = 010, ( = 011, ) = 100 , that's perfectly valid. Due to the nature of PF and RBF, I claim that a translation the other way is definitely possible,
+2020-05-07 21:37:37 <orbitaldecay> well, what I mean is that if you convert A -> B using table (1) then B -> A using table (2) then the final program should be equivalent to the original program in terms of what it actually does
+2020-05-07 21:38:06 <orbitaldecay> If you can find it, I'd love to see it :)
+2020-05-07 21:38:07 <int-e> orbitaldecay: usually when you have bijective translations it means the two languages are almost the same.
+2020-05-07 21:38:10 <salpynx> you have just made the RBF -> PF translation harder to come up with, by transferring the complexity to that direction
+2020-05-07 21:38:53 <int-e> So the while meaningful (in that you explain how exactly the languages correspond to each other), the translation will probably also be very boring.
+2020-05-07 21:39:06 <orbitaldecay> salpynx: maybe? I don't know
+2020-05-07 21:39:36 <orbitaldecay> int-e: See the nanofuck and reversible bitfuck translations, the translation is actually very interesting
+2020-05-07 21:39:38 <int-e> And I'm sure you can construct pairs of languages that contradict these ideas... emphasis on "construct".
+2020-05-07 21:41:36 <orbitaldecay> So, the whole motivation behind this "simple translation" idea, is to effectively define exactly what a minimization is. The source and destination languages are definitely almost the same
+2020-05-07 21:42:39 <orbitaldecay> But without requiring both tables, it is trivial to come up with two command minimizations of any language which is not very interesting
+2020-05-07 21:43:55 <salpynx> It's interesting because I am coming at this from a different angle, not related to minimisation, I was trying to find a way to translate code from one language to another using simply Godel numerings, so performing valid code translation without needing to pay any attention to semantics
+2020-05-07 21:44:58 <orbitaldecay> yes, I think there are bigger applications here than just minimization
+2020-05-07 21:44:59 <salpynx> the simple translation tables are a way to handle the semantic equivalence robustly to them perform a 'simple' operation to convert between two langauges
+2020-05-07 21:46:28 <orbitaldecay> I think the fact that you are approaching this from a different angle is very good. I think you're seeing things I'm not.
+2020-05-07 21:47:31 <salpynx> I think the idea of a 1 way simple translation is valid, but it's not a creative choice thing, either a 2-way translation exists between a language pair, or a simple translation is only possible in one direction. If a 2-way translation is possible, and one direction is trivial, the other will potentially be complex.
+2020-05-07 21:48:19 <salpynx> trivial bf substitutions are trivial, but that's just how they are, the model captures the reality
+2020-05-07 21:49:08 <orbitaldecay> agreed. Did you see what I wrote on what ais523 called "generalized simple translations" on the page?
+2020-05-07 21:49:11 Joined: ArthurStrong
+2020-05-07 21:49:12 Names: ^[, adu, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:49:38 Joined: tromp
+2020-05-07 21:49:39 Names: ^[, adu, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:49:48 <orbitaldecay> https://esolangs.org/wiki/User:Salpynx/Simple_translation_conjecture method section
+2020-05-07 21:52:32 <salpynx> I caught some of ais523's thought from the IRC logs, but I haven't checked back over all of them. I need to do that
+2020-05-07 21:52:58 Quit: adu (Quit: adu)
+2020-05-07 21:52:58 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:53:13 <orbitaldecay> yeah, he (she? they?) had some excellent insights
+2020-05-07 21:54:22 Quit: tromp (Ping timeout: 260 seconds)
+2020-05-07 21:54:23 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-07 21:54:44 <salpynx> My idea of the empty-string symbol started life as an EOF character, but I thought that was a bit to ASCII based, and assuming the existence of 'files' was not very general either. I thought the empty-string symbol was more general and had an established meaning when dealign with alphabets and symbols in a mathematical sense
+2020-05-07 21:55:46 <orbitaldecay> Well, I think the empty-string symbol specifically needs to be a NOP and it doesn't really make sense to translate it into something with any semantic value
+2020-05-07 21:55:58 <orbitaldecay> because in theory you can insert it anywhere
+2020-05-07 21:56:45 <orbitaldecay> I don't think the idea of α and ω as start and end markers is too out there
+2020-05-07 21:57:19 <orbitaldecay> because interpreters already implicitly deal with these concepts
+2020-05-07 21:57:34 <salpynx> I was trying to handle languages like unary and Lenguage and similar joke-like encoding langauges where I think the empty-string as end of source code has to be meaningful in any iterprerter. SIlly and extreme examples, but they are interesting for encoding in  some sense
+2020-05-07 21:59:22 <orbitaldecay> If we treat the code string as an algebraic structure, then the empty-string has a very specific meaning that is not equivalent to eof I think
+2020-05-07 21:59:48 Joined: tromp
+2020-05-07 21:59:48 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
