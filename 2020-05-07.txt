@@ -213,3 +213,36 @@
 2020-05-07 10:43:35 Joined: xylochoron[m]
 2020-05-07 10:43:35 Joined: tswett[m]
 2020-05-07 10:43:35 Names: ^[, aji, aloril, APic, atehwa, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m]
+2020-05-07 11:03:46 <esowiki> 14[[07User:Salpynx/Simple translation conjecture14]]4 10 02https://esolangs.org/w/index.php?diff=71902&oldid=71899 5* 03Salpynx 5* (+3263) 10/* Further claims */ high level Python -> Python examples, with arbitrary re-encoding
+2020-05-07 11:04:57 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-05-07 11:04:57 <rain1> hiya
+2020-05-07 11:07:13 User Name: salpynx = salpynx!794954f8@121.73.84.248
+2020-05-07 11:07:13 <salpynx> Hi
+2020-05-07 11:08:48 <salpynx> I'm loitering to discuss simple-translation ideas with Orby, and whomever else is interested
+2020-05-07 11:12:46 <rain1> cool!
+2020-05-07 11:13:36 <rain1> i am interested in it too
+2020-05-07 11:14:02 <salpynx> I just wrote a character-by-character zip file to python translator that reconstructs the zipped python source file functionality from the resulting generated (different) python code to test an idea about encoding. It makes me laugh, but I think there's an interesting point in there somewhere.
+2020-05-07 11:14:28 <rain1> I don't understand
+2020-05-07 11:14:34 <rain1> zip -> python
+2020-05-07 11:15:08 <rain1> is it on any zip or specific ips?
+2020-05-07 11:15:11 <rain1> zips*
+2020-05-07 11:16:02 <rain1> please explain it more
+2020-05-07 11:16:12 <salpynx> I zip some python source code, and claim that is some kind of encoded source, then perform a simple-translation on the zip-file, symbol by symbol, into python, which will produce the equivalent result of the file I zipped
+2020-05-07 11:16:26 <rain1> I see
+2020-05-07 11:17:58 <rain1> https://esolangs.org/wiki/User:Salpynx/Simple_translation_conjecture#Examples_using_a_high_level_language
+2020-05-07 11:18:00 <salpynx> it's actually quite trivial, but I think it illustrates a point I was exploring that arbitrarily re-encoding language still enables it to be simple-translate to another (or itself)
+2020-05-07 11:18:29 <rain1> i get what you are saying but doesn't this include a prefix string as well as translating each character
+2020-05-07 11:18:45 <rain1> I think that we need to differentiate between simple translation that does and doesn't include prefix,suffix strings
+2020-05-07 11:18:50 <rain1> because those can contain interpreters
+2020-05-07 11:18:55 <rain1> what do you think?
+2020-05-07 11:19:46 <salpynx> it's a suffix string. and the construction I was trying to justify, which should be able to work in an absolute worst case scenario, relies on just that suffix
+2020-05-07 11:19:55 Joined: kspalaiologos
+2020-05-07 11:19:55 Names: ^[, aji, aloril, APic, atehwa, atslash, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m]
+2020-05-07 11:20:18 <salpynx> being an interpreter (in my python example using the builtin `exec()`)
+2020-05-07 11:23:04 <salpynx> I was trying to form an argument that the empty-string is part of every alphabet set, so should be a valid symbol to translate. I get that it sounds like cheating, but I think it is reasonable to make a formal statement about alphabets being sets which contain the empty-string. I believe that is standard in set theory
+2020-05-07 11:23:11 <rain1> Maybe the distinction isn't so important though, because it may be possible t ohack around it using techniques similar to polyglot programs
+2020-05-07 11:23:30 <rain1> every symbol could map to   PREFIX[symbol]POSTFIX
+2020-05-07 11:23:51 <rain1> where PREFIX is something like "interpret the following string" and POSTFIXPREFIX is basically a comment
+2020-05-07 11:24:01 <salpynx> Yeah, I think a similar trick can be done in Python without the suffix trick, but not in one line like I did :)
+2020-05-07 11:27:39 <salpynx> I guess I'm trying to re-brand "just adding a  suffix" as not a special cheating case, but as a valid symbol substitution for the empty-string or (End-Of-File) symbol that is part of every formal alphabet set. I need to see if anyone buys that spin
+2020-05-07 11:28:17 <rain1> I think it's important, I think we need a name for each version
