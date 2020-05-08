@@ -12,3 +12,17 @@
 2020-05-08 00:24:21 <b_jonas> well, they're free software, so I can rename extern identifiers and recompile if I ever want to link these together
 2020-05-08 00:28:22 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
 2020-05-08 00:28:22 <zzo38> I try not to add too many dependencies, in order to avoid such thing, as well as other problems
+2020-05-08 00:30:25 <b_jonas> yes, it's unlikely that I'd ever want to link any two of these together
+2020-05-08 00:30:44 <b_jonas> but it could happen if I link together other bigger libraries that link them
+2020-05-08 00:30:57 <b_jonas> well, still unlikely
+2020-05-08 00:33:28 <esowiki> 14[[07Streetcode14]]4 M10 02https://esolangs.org/w/index.php?diff=71943&oldid=71939 5* 03PythonshellDebugwindow 5* (-139) 10
+2020-05-08 00:33:53 <b_jonas> zzo38: note though that I started to look at bellard's libbf exactly because it's a much smaller dependency than even MPIR
+2020-05-08 00:34:20 <b_jonas> obviously it is also worse in some respects than MPIR+MPFR, you can't expect it to do everything those larger libraries can do
+2020-05-08 00:34:58 <b_jonas> (and yes, it's also smaller than libtom or boost multiprecision)
+2020-05-08 00:36:56 <esowiki> 14[[07Streetcode14]]4 M10 02https://esolangs.org/w/index.php?diff=71944&oldid=71943 5* 03PythonshellDebugwindow 5* (+288) 10/* Streets */
+2020-05-08 00:39:24 <zzo38> It may be possible to fork the file if needed and if possible, to use #define commands to rename the functions. (Depending on the program, it might work.)
+2020-05-08 00:55:44 Quit: Lord_of_Life (Read error: Connection reset by peer)
+2020-05-08 00:55:45 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sdhand, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-08 00:56:53 Joined: Lord_of_Life
+2020-05-08 00:56:53 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sdhand, sebbu, sftp, Sgeo, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-08 00:57:39 <zzo38> Why the computer sounds like one of the fans keeps going faster and slower? The sensors doesn't mention that
