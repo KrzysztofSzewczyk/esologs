@@ -140,3 +140,50 @@
 2020-05-08 15:57:51 User Name: arseniiv = arseniiv!~arseniiv@136.169.232.2
 2020-05-08 15:57:51 <arseniiv> kmc: hi! How was your post about pi calculus been called? I remember you told about it something interesting and linked to the post with Haskell translation or something, and there was a helpful example to understand how the calculus works at all; I tried to tell a friend about the calculus and I think this example would be very helpful
 2020-05-08 15:59:30 <arseniiv> (I tried to search for it in my browser history and didn’t find anything)
+2020-05-08 16:00:22 <kmc> hi arseniiv! http://mainisusuallyafunction.blogspot.com/2011/09/lambda-to-pi.html
+2020-05-08 16:00:51 <kmc> it has a pi-calculus interpreter in Haskell, and a lamba calculus to pi calculus compiler
+2020-05-08 16:01:11 <kmc> glad you like, hope your friend likes it too
+2020-05-08 16:01:11 User Name: pikhq = pikhq!sid394595@gateway/web/irccloud.com/x-hovhomidionhhtrh
+2020-05-08 16:01:11 <pikhq> Oh right, I forgot that was your blog
+2020-05-08 16:01:25 <kmc> it's my old blog :)
+2020-05-08 16:01:28 <arseniiv> kmc: thank you very much!
+2020-05-08 16:01:28 <kmc> my new blog is https://kmcallister.github.io/skywave/
+2020-05-08 16:01:38 <kmc> I have different interests now
+2020-05-08 16:01:48 <kmc> though the old one was still pretty eclectic
+2020-05-08 16:01:51 <pikhq> Well yes I know that :)
+2020-05-08 16:02:00 <kmc> I've been thinking about writing another blog post soon actuall
+2020-05-08 16:02:04 <pikhq> More just, I forgot the pairing
+2020-05-08 16:02:37 <kmc> maybe about mushroom growing
+2020-05-08 16:02:49 <kmc> or maybe documenting one of my ham radio projects from long ago that i never did a proper writeup for
+2020-05-08 16:02:50 <pikhq> :)
+2020-05-08 16:05:12 <pikhq> (also, obl. hi, how are you doing this morning?)
+2020-05-08 16:05:36 <arseniiv> <kmc> maybe about mushroom growing => with mushroom photos?
+2020-05-08 16:06:02 <kmc> maybe! mushrooms are very photogenic!
+2020-05-08 16:06:09 <arseniiv> . o O ( hm can one grow a Befunge interpreter at home )
+2020-05-08 16:07:03 <kmc> https://imgur.com/a/eL4dgHC
+2020-05-08 16:08:31 <fizzie> "Fungal Computers Inc. 'Computers that grow on you'"
+2020-05-08 16:08:43 <fizzie> To quote https://www.bedroomlan.org/hardware/fungus/d/figure/default/1024w/fungal-growth-83.png
+2020-05-08 16:08:44 <myname> love it
+2020-05-08 16:09:40 <arseniiv> (I’m slightly afraid of mold: what would happen if I’ll breathe in its spores unknowingly?)
+2020-05-08 16:10:16 <myname> you'll become a cyborg, i guess
+2020-05-08 16:11:12 <pikhq> Or a cordyceps-style drone or smth
+2020-05-08 16:16:19 <kmc> fizzie: :D
+2020-05-08 16:16:31 <kmc> yeah spores can make you sick
+2020-05-08 16:16:36 <kmc> mushroom farmer's lung is a thing
+2020-05-08 16:19:37 * kmc just tossed out a big batch of mold :(
+2020-05-08 16:19:57 <kmc> you have to be vigilant, once you start growing mold it only makes the problem worse :(
+2020-05-08 16:20:04 <b_jonas> ouch mold
+2020-05-08 16:20:31 <kmc> pikhq: I'm doing well this morning, how bout you?
+2020-05-08 16:21:44 <pikhq> I'm doing alright! Kinda chill day at work today (read: I'm on IRC) and not hurting as much as I was yesterday
+2020-05-08 16:22:38 <pikhq> And, ooof. Mold instead of mushrooms :( no fun
+2020-05-08 16:25:19 <arseniiv> myname: pikhq: now how do I tell which one without experiencing it irreparably? :S
+2020-05-08 16:26:38 Joined: zseri
+2020-05-08 16:26:38 Names: ^[, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, S_Gautam, sdhand, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-08 16:27:14 <pikhq> I'm only mycologist-adjacent, but I think that's gonna be a matter of using a microscope to examine the mold to hopefully identify the species
+2020-05-08 16:27:36 <pikhq> Otoh, honestly, if it's mold maybe just don't risk it.
+2020-05-08 16:27:41 <arseniiv> cyborg seems way cooler than control by fungi. Hm wait it can be both at the same time and it will be dangerous, we are borg and all that
+2020-05-08 16:27:46 <pikhq> Those are generally not good things for people.
+2020-05-08 16:28:27 <pikhq> Fortunately, cordyceps is only that bad for, like, arthropods
+2020-05-08 16:28:51 <arseniiv> yeah, when I throw out something with mold inside, I’ll then wash my hands and face and even mouth
+2020-05-08 16:28:57 <pikhq> But idk, maybe you're a spider that speaks English
+2020-05-08 16:29:23 <arseniiv> I’m a google crawler^W^W^W^W wait have I said anything
