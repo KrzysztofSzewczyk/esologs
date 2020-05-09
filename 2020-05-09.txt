@@ -42,3 +42,58 @@
 2020-05-09 04:28:17 <shachaf> https://godbolt.org/z/FFkBtD
 2020-05-09 04:28:59 <shachaf> Oh boy, what an answer.
 2020-05-09 04:29:07 <shachaf> A better answer is surely to scrap std::bind.
+2020-05-09 04:30:43 <int-e> Thanks.
+2020-05-09 04:31:43 <shachaf> [&rng]() { return std::uniform_int_distribution<int>{0,1}(rng); } is probably clearer?
+2020-05-09 04:32:07 <shachaf> What a maze of std::little::passages, all different, it is to figure out what's going on here.
+2020-05-09 04:33:01 <shachaf> You can also just write [&]() { ... }
+2020-05-09 04:33:02 <int-e> Yeah I did manage to write the lambda. :)
+2020-05-09 04:33:25 <int-e> I'm more annoyed that I've been doing this wrong, blissfully unaware of the copy.
+2020-05-09 04:33:34 <shachaf> OK, I just felt like I should argue for the more reasonable thing a little more after mentioning the ridiculous thing.
+2020-05-09 04:34:33 <int-e> Well, it's the quicker fix :P
+2020-05-09 04:34:43 <int-e> (using std::ref that is.)
+2020-05-09 04:35:08 <shachaf> Maybe if you never ever have to understand what's going on with that code.
+2020-05-09 04:35:18 <shachaf> Man, C++ is so ridiculous.
+2020-05-09 04:35:39 <pikhq> I've said it before, and I'll say it many more times. It's one of my favorite esolangs.
+2020-05-09 04:35:52 <shachaf> Why?
+2020-05-09 04:35:56 <zzo38> https://en.wikipedia.org/wiki/LOOP_%28programming_language%29 This is the same idea I thought of the day before, but I used a different syntax. Set to zero is the name and a equal sign, increment is the name and a plus sign, loop is the name and then a left bracket and then the commands and then the right bracket, commands are separated by spaces.
+2020-05-09 04:35:58 <shachaf> I agree on the eso, but why favorite?
+2020-05-09 04:36:27 <int-e> shachaf: I finally noticed because I wanted to run several instances of my program, providing seeds on the command line (for reproducibility)... and saw that the seed had no effect. bummer.
+2020-05-09 04:36:50 <pikhq> idk, there's something amazing about this farce that people keep pretending that it's a Real Serious Language™ when it's about as well-designed as fucking MUMPS
+2020-05-09 04:37:02 <int-e> (out of laziness, the rng is a global variable, and I re-seeded it with the program argument)
+2020-05-09 04:37:25 <shachaf> I'm sure no harm can come of accidentally copying a random number generator.
+2020-05-09 04:37:44 <int-e> This is for http://www.research.ibm.com/haifa/ponderthis/challenges/May2020.html ... not production code by any standard.
+2020-05-09 04:37:54 <int-e> No harm at all...
+2020-05-09 04:38:12 <zzo38> Maybe; I don't know. Some people use C++, I use C. I also think many features of C++ are not so well designed, and had a different idea to do some of its similar things differently in C, but different and without any extra runtime libraries needed.
+2020-05-09 04:38:46 <int-e> shachaf: I mean who wouldn't want this: http://paste.debian.net/1145790/
+2020-05-09 04:39:25 <int-e> huh, that's missing two lines, #include <functional> and #include <iostream>
+2020-05-09 04:39:30 <shachaf> int-e: Exactly.
+2020-05-09 04:41:21 <zzo38> My idea was that you cannot overload the assignment operator, but you can overload the assignment through pointer operator. I don't know if overloading the assignment through pointer operator is possible in C++; do you know?
+2020-05-09 04:42:08 <shachaf> Which operator is that?
+2020-05-09 04:42:52 <zzo38> For example *x=y;
+2020-05-09 04:45:27 <shachaf> I doubt that can have a different interpretation from the separate meanings of * and =
+2020-05-09 04:45:57 <shachaf> zzo38: My idea (which is also the way ALGOL 68 and BLISS work) is that there are no mutable variables, only pointers.
+2020-05-09 04:46:25 <shachaf> And instead of a mutable variable you have an immutable pointer to a mutable memory cell.
+2020-05-09 04:46:46 <shachaf> So you might have to explicitly dereference: x = $x + 1
+2020-05-09 04:47:12 <shachaf> The assignment operator = takes two arguments, a reference and a value. The derefernece operator $ takes a reference and returns a value.
+2020-05-09 04:47:16 <zzo38> Yes, I think that way is good too, I like that too
+2020-05-09 04:47:20 <shachaf> Do you like this?
+2020-05-09 04:47:36 <zzo38> I answered that question already
+2020-05-09 04:47:41 <shachaf> Yes, I asked it too late.
+2020-05-09 04:47:45 <zzo38> OK
+2020-05-09 04:47:49 <shachaf> I'm worried that this will make code too verbose.
+2020-05-09 04:48:10 <shachaf> With all the extra dereferences you don't need to write in a typical language.
+2020-05-09 04:48:15 <shachaf> What do you think?
+2020-05-09 04:49:40 <zzo38> I think it is OK; some other programming languages already work similarly and it works OK, including Forth.
+2020-05-09 04:50:37 <shachaf> Say you have the equivalent of "T *array;" in C.
+2020-05-09 04:51:01 <shachaf> The C code "array[i]" would turn into "$array[$i]", I suppose.
+2020-05-09 04:51:20 <shachaf> Or "$($array + $i)". Does the [] have an implicit $?
+2020-05-09 04:52:03 <shachaf> In C a[i] is an lvalue, so really the direct corresponding thing here is just +.
+2020-05-09 04:52:17 <zzo38> I don't know.
+2020-05-09 04:52:21 <shachaf> $($a[$i]) is just ridiculous, though.
+2020-05-09 04:52:48 <shachaf> It all seem kind of noisy.
+2020-05-09 04:53:02 <shachaf> Another thing you can do is implicitly figure out when things are dereferenced, like ALGOL 68 does.
+2020-05-09 04:53:31 <shachaf> But then I'm worried that things are ambiuous, for example in the situation "int f(int *x);" vs. "int g(int x);" being called the same way.
+2020-05-09 04:53:39 <zzo38> I think is best then to don't have a [] notation
+2020-05-09 04:54:05 <shachaf> Then what instead?
+2020-05-09 04:54:11 <shachaf> Of course [] isn't the only problem, it's just one thing.
+2020-05-09 04:54:15 <zzo38> You can use + instead
