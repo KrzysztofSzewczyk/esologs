@@ -28,3 +28,17 @@
 2020-05-09 03:39:53 Quit: ArthurStrong (Quit: leaving)
 2020-05-09 03:39:53 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
 2020-05-09 03:52:57 <zzo38> See if you make up a card using any of these things.
+2020-05-09 04:00:54 Joined: ArthurStrong
+2020-05-09 04:00:54 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-09 04:14:37 Joined: Antebrationist
+2020-05-09 04:14:37 Names: ^[, aji, aloril, Antebrationist, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-09 04:15:49 User Name: Antebrationist = Antebrationist!ca9a8266@202-154-130-102.dsl-dynamic.connections.net.nz
+2020-05-09 04:15:49 <Antebrationist> orbitaldecay? I was reading the logs for esowar, and it seems very interesting. Is it only 1d?
+2020-05-09 04:18:16 <int-e> huh, in C++, is std::bind(std::uniform_int_distribution<int>{0,1}, rng); expected to take a copy of the rng? *mumble*
+2020-05-09 04:21:49 <shachaf> You mean instead of a pointer?
+2020-05-09 04:21:57 <shachaf> I guess it's impossible to know with these C++ things.
+2020-05-09 04:22:23 <shachaf> It is probably clearer to write it with a lambda.
+2020-05-09 04:27:27 <shachaf> Apparently "the answer" is to use std::ref.
+2020-05-09 04:28:17 <shachaf> https://godbolt.org/z/FFkBtD
+2020-05-09 04:28:59 <shachaf> Oh boy, what an answer.
+2020-05-09 04:29:07 <shachaf> A better answer is surely to scrap std::bind.
