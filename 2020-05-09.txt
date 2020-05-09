@@ -114,3 +114,12 @@
 2020-05-09 06:26:19 <ais523> your examples look weird to me, though, because the language in question used $ for dereference but := for assignment
 2020-05-09 06:26:43 <ais523> (= was used to define the value of an immutable thing as it came into scope)
 2020-05-09 06:29:58 <shachaf> ais523: Yes, I was thinking of that.
+2020-05-09 06:30:25 <shachaf> I think there's also the odd thing that when you switch something from immutable to mutable, you have to go through all the use sites and modify them.
+2020-05-09 06:30:42 <shachaf> It make some sense, but when you compare it to a C program it's pretty awkward.
+2020-05-09 06:31:26 <shachaf> Even if arrays are immutable, there are probably other things with similar problems.
+2020-05-09 06:32:38 <shachaf> But maybe an array that can be reassigned is a weird enough thing that $($arr)[$i] is fine.
+2020-05-09 06:32:57 <shachaf> What was the language in question?
+2020-05-09 06:34:07 <shachaf> I'm pretty curious how awkward this works out to be in practice.
+2020-05-09 06:34:52 <shachaf> Also, if you had structs, did e.g. struct dereference have a meaning for both references to structs and structs?
+2020-05-09 06:40:54 Quit: kevinalh (Ping timeout: 256 seconds)
+2020-05-09 06:40:55 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
