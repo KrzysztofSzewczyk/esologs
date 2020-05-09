@@ -123,3 +123,9 @@
 2020-05-09 06:34:52 <shachaf> Also, if you had structs, did e.g. struct dereference have a meaning for both references to structs and structs?
 2020-05-09 06:40:54 Quit: kevinalh (Ping timeout: 256 seconds)
 2020-05-09 06:40:55 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-09 07:32:40 <int-e> So... 100M generations per second on a single core. Yum :)
+2020-05-09 07:37:29 <int-e> (For the May Ponder This challenge, and with the fixed rule string from that challenge.)
+2020-05-09 07:56:17 <shachaf> Hmm, for 121 cells.
+2020-05-09 07:56:30 <shachaf> I wonder whether you can speed up a finite torus board with hashlife.
+2020-05-09 07:59:29 <int-e> doubt it.
+2020-05-09 07:59:54 <int-e> I mean, hashlife will kick in when you have a cycle... but for this problem, you're done at that point.
