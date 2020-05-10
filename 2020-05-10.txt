@@ -33,3 +33,24 @@
 2020-05-10 03:53:30 <zzo38> However, to answer your question, let's see the Migratory Greathorn card, first.
 2020-05-10 03:56:00 <zzo38> OK, rule 702.139d merely says "An ability that triggers whenever a creature mutates triggers when a spell merges with a creature as a result of a resolving mutating creature spell." I think it triggers after it is on the battlefield, so your opponent controls that ability, but you get to decide to put it on the top or bottom.
 2020-05-10 03:56:25 <zzo38> (If someone knows to the contrary, you can tell me, but I think it works like how I mentioned.)
+2020-05-10 04:02:31 <b_jonas> zzo38: yeah, there's a requirement that the parts of the mutated creature has to have the same owner, so this doesn't come up too often, but there are lots of effects to take control of a creature
+2020-05-10 04:03:08 <zzo38> I realized something, which is that if you are using my "generalized mutate" rule but only using official cards (maybe because it is a kind of Constructed game with both custom and official cards, but neither player decided to use any custom cards), nevertheless it has an effect on the game, because it is now possible to use Artificial Evolution to prevent a creature from mutating.
+2020-05-10 04:04:18 <zzo38> b_jonas: Yes. I wrote what is the best I can tell from reading the rules.
+2020-05-10 04:04:22 <b_jonas> heck, it's not even quite clear to me from the rules who will control the merged creature after you mutate, and whether the order of the cards depends for that
+2020-05-10 04:04:32 <b_jonas> ouch
+2020-05-10 04:05:23 <zzo38> I believe it will have the same controller as the original, because who controls a permanent is a continuous property, and continuous effects continue to apply.
+2020-05-10 04:09:42 <zzo38> (Rule 721.2c specifically says that continuous effects continue to apply.)
+2020-05-10 04:10:29 <b_jonas> zzo38: I don't know, there might not be a continuous effect if the original creature is a card that was put otb under the opponent's control, such as with Gruesome Encore.
+2020-05-10 04:11:34 <zzo38> I think that since it is a continuous property, it is still a continuous effect, although not a static effect.
+2020-05-10 04:12:04 <zzo38> Although, I am unsure.
+2020-05-10 04:13:28 <b_jonas> yeah, 721.2c says that the merged object is the same object as the permanent that already existed
+2020-05-10 04:14:22 <zzo38> However, I think that if (hypothetically) some static ability says "you control all blue permanents", and the mutation changes it to not blue, then since the mutation is a layer 1 effect and control is a layer 2 effect, this means that control effect will no longer apply (and Thoughtlace won't allow you to take it back, since that is a layer 5 effect).
+2020-05-10 04:15:26 <b_jonas> "you control all blue permanents" is a very unlikely effect, but sure
+2020-05-10 04:16:03 <zzo38> Yes, it is unlikely, but I was giving a hypothetical example.
+2020-05-10 04:18:21 <b_jonas> I should ask efnet/#mtgrules probably
+2020-05-10 04:19:00 <zzo38> Yes, perhaps they know better than I do.
+2020-05-10 04:19:14 <b_jonas> that or the scryfall web forum
+2020-05-10 04:19:36 <b_jonas> oh, but I should re-read the release notes first
+2020-05-10 04:20:04 <zzo38> Yes, maybe they answered the question for you
+2020-05-10 04:28:31 <zzo38> Do you like my "Master Shuffler" and "Malaclypse the Younger" Un-cards?
+2020-05-10 04:29:55 <b_jonas> I don't know, I haven't looked at your cards lately, especially not your un-cards
