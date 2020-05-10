@@ -390,3 +390,92 @@
 2020-05-10 22:59:27 <b_jonas> ais523: yes, I think the GB CPU accesses the PPU memory directly too
 2020-05-10 22:59:40 <imode> the GB has DMA as well.
 2020-05-10 22:59:49 <ais523> the PPU on the NES isn't accessed directly, rather there's a specialised memcpy instruction on the CPU for it
+2020-05-10 23:00:04 <ais523> that puts it in a mode which memcpies one byte per cycle into the PPU sprite memory
+2020-05-10 23:00:16 <b_jonas> I mean its tile and pattern memory, not the registers. accessing the registers is more complicated.
+2020-05-10 23:00:19 <ais523> (you can't write a memcpy that runs that fast on a 6502 normally)
+2020-05-10 23:00:24 <b_jonas> ais523: oh nice
+2020-05-10 23:00:26 <b_jonas> I didn't know about that
+2020-05-10 23:00:42 <b_jonas> memcopies one byte per cycle? yes, that's impossible on a normal 6502
+2020-05-10 23:00:53 <imode> https://gbdev.gg8.se/wiki/articles/Video_Display#LCD_OAM_DMA_Transfers
+2020-05-10 23:01:06 <b_jonas> like by far
+2020-05-10 23:01:14 <ais523> right, I can see why it was invented
+2020-05-10 23:01:33 <ais523> it shouldn't be too hard to add a few extra circuits to make that fast a memcpy possible using the normal on-chip ALU and read and write architecture
+2020-05-10 23:01:36 <b_jonas> cool. does the Game Boy has such a feature too?
+2020-05-10 23:01:42 <imode> see above.
+2020-05-10 23:01:46 <zzo38> It isn't a special instruction on the CPU, but rather a function of the APU to implement sprite DMA on NES. (However, the CPU and APU are the same physical chip)
+2020-05-10 23:01:49 <ais523> but, there's clearly no way to do it under software control so you'd need extra hardware to implement it
+2020-05-10 23:02:52 <b_jonas> ais523: yes, but the problem is that it has to be in the CPU, because those CPUs and PPUs access the memory in a synchronized way, it'd be hard to just do it asynhroniously from a separate device, and it wasn't easy to modify a CPU in such a way back then
+2020-05-10 23:03:15 Quit: ais523 (Quit: sorry for my connection)
+2020-05-10 23:03:15 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 23:03:15 <b_jonas> zzo38: what is the APU?
+2020-05-10 23:03:28 Joined: ais523
+2020-05-10 23:03:28 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 23:03:41 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-10 23:03:41 <ais523> huh, the Game Boy version is rather more advanced than the NES version
+2020-05-10 23:03:54 <b_jonas> sure, it's like 5 years more advanced
+2020-05-10 23:04:04 <ais523> apparently the CPU functions normally during the DMA, except that some of the memory buses are tied up
+2020-05-10 23:04:15 <b_jonas> and has a Z80-based chip with an address space larger than 16 bytes
+2020-05-10 23:04:16 <zzo38> b_jonas: The APU is the audio processing unit, although it also includes the OAM DMA and the game controller inputs.
+2020-05-10 23:04:16 <b_jonas> um
+2020-05-10 23:04:21 <b_jonas> address space larger than 16 bits
+2020-05-10 23:04:26 <ais523> so you can actually run code, just you need to run it from somewhere that isn't busy with the DMA
+2020-05-10 23:05:01 <pikhq> Hmm, that's rather handy.
+2020-05-10 23:05:02 <ais523> in practice the NES never ran out of address space anyway, in most configurations it has tons more address space than physical memory
+2020-05-10 23:05:07 <b_jonas> zzo38: but isn't the APU completely separate from the CPU and PPU and not even running from the same clock speed or something? or is that on a different console?
+2020-05-10 23:05:43 <ais523> although I think it needs to bank-switch on later chips because the address space is split up with certain parts being for certain purposes
+2020-05-10 23:05:46 <b_jonas> er what? doesn't the NES only have 16 bits of address space only?
+2020-05-10 23:05:50 <ais523> and you can run out of address space in a particular part
+2020-05-10 23:05:59 <zzo38> b_jonas: No, it uses the same clock speed.
+2020-05-10 23:06:00 <ais523> b_jonas: yes, but that's 64 KiB which is more than most NES games use
+2020-05-10 23:06:11 <b_jonas> zzo38: same clock speed, but not synchronized
+2020-05-10 23:06:31 <b_jonas> ais523: oh right, it's the SNES and Game Boy that has game cartridges up to 8 megabyte
+2020-05-10 23:06:41 <b_jonas> though 64 kilobytes still sounds pretty small for the NES
+2020-05-10 23:06:46 <ais523> with most games, quite a lot of that 64 KiB is either mirror ROM / mirror RAM (i.e. two addresses for the same byte in memory), or else open bus
+2020-05-10 23:06:46 <b_jonas> don't some NES games have more ROM than that?
+2020-05-10 23:06:59 <b_jonas> the later ones that is
+2020-05-10 23:07:02 <ais523> the games with more data stored normally use bank switching
+2020-05-10 23:07:05 <zzo38> Yes, it uses bank switching in the cartridge.
+2020-05-10 23:07:09 <b_jonas> yes, exactly, bank switching
+2020-05-10 23:07:14 <ais523> i.e. they have multiple different ROMs in the cartridge
+2020-05-10 23:07:18 <b_jonas> which means that they have ran out of address space, just solved it in a reasonable manner
+2020-05-10 23:07:22 Quit: TheLie (Remote host closed the connection)
+2020-05-10 23:07:22 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 23:07:25 <ais523> that's most important for background and sprite tables, which have a very small maximum size
+2020-05-10 23:08:29 <b_jonas> ais523: why? does the NES not have built-in video memory, unlike the GB?
+2020-05-10 23:08:52 <b_jonas> oh right, in the NES it's all in the same bus I think
+2020-05-10 23:09:07 <b_jonas> same memory
+2020-05-10 23:09:13 <b_jonas> so it's usually in the ROM or something
+2020-05-10 23:09:20 <ais523> b_jonas: it's complicated, there's video RAM for choosing where the sprites are on screen, and where the backgrounds are on screen
+2020-05-10 23:09:24 <b_jonas> whereas the GB has dedicated video memory that you have to write I think
+2020-05-10 23:09:35 <ais523> but the pixels that make up a particular sprite, or particular background, are read directly from the cartridge and normally assumed to be in ROM
+2020-05-10 23:09:42 <b_jonas> ok
+2020-05-10 23:09:43 <ais523> (of course there's nothing stopping the cartridge putting a RAM there instead)
+2020-05-10 23:09:59 <ais523> and the address space of that is really small
+2020-05-10 23:09:59 Joined: Antebrationist
+2020-05-10 23:10:00 Names: ^[, ais523, aji, aloril, Antebrationist, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 23:10:10 <zzo38> The NES does have built-in video memory, although it is not normally used for pattern tables (it is normally used for name tables instead).
+2020-05-10 23:10:19 <ais523> so it uses bank-switching more commonly than other parts of memory
+2020-05-10 23:10:20 <pikhq> (and a few games that do special, clever tricks will do exactly that)
+2020-05-10 23:10:37 <zzo38> (Although there is a signal in the cartridge to specify whether to use the internal video memory (CIRAM) or that in the cartridge.)
+2020-05-10 23:10:59 <b_jonas> hmm, it's possible that I'm misunderstanding something and the GB does this too
+2020-05-10 23:11:36 <b_jonas> because it only has 8 kilobytes of video memory, which is enough for scrolling the maps, with two bytes per 8x8 block on a 160x130 pixel or something screen, two layers, but way too little for pattern memory
+2020-05-10 23:11:57 <b_jonas> so it probably just addresses pattern memory that's usually bank switched in directly from the cart too
+2020-05-10 23:12:10 <ais523> zzo38: IIRC, the NES's graphics chip implements a virtual screen that's 512◊512, but its internal video memory only has enough space for half that
+2020-05-10 23:12:27 <zzo38> ais523: Yes, that is correct.
+2020-05-10 23:12:33 <ais523> so the cartridge needs to decide whether to make it 512◊256, 256◊512, or add additional memory of its own to get the full size
+2020-05-10 23:12:47 <zzo38> (Well, kind of. Part of each name table is used for attributes instead.)
+2020-05-10 23:13:25 <zzo38> Attributes are not stored with each cell, but rather each byte in the attribute area stores the attributes for four 2x2 blocks of cells.
+2020-05-10 23:13:37 <b_jonas> yes, on the NES you can choose a palette for each 16x16 pixel block
+2020-05-10 23:13:38 Quit: ais523 (Quit: quit)
+2020-05-10 23:13:39 Names: ^[, aji, aloril, Antebrationist, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 23:13:42 <b_jonas> but the original Game Boy doesn't have that
+2020-05-10 23:13:56 <b_jonas> you can only choose the palette per layer and per sprite (or per two sprites or something, I don't recall)
+2020-05-10 23:14:17 <b_jonas> but that's because it can only display four physical colors on the LCD
+2020-05-10 23:14:27 <b_jonas> whereas the NES can display much more colors
+2020-05-10 23:14:44 Quit: LKoen (Quit: ‚ÄúIt‚Äôs only logical. First you learn to talk, then you learn to think. Too bad it‚Äôs not the other way round.‚Äù)
+2020-05-10 23:14:44 Names: ^[, aji, aloril, Antebrationist, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 23:15:47 <b_jonas> mind you, I think it's unfair to call that "attribute memory", it's just palette memory, the tile map itself has per-tile attributes in it
+2020-05-10 23:16:09 <orbitaldecay> Antebrationist: forder.cc/esowar if you're interested there's a tourney server now
+2020-05-10 23:17:36 <b_jonas> also having tilemap first, and attribute memory in more expensive later versions is a pretty popular solution, it's happened for at least three computers: the game boy (if you upgrade to game boy color), the VT100-like terminals (where you just plug in additional RAM), and the Commodore home computers
+2020-05-10 23:17:55 <b_jonas> it's a good way to make a newer video chip that is compatible with older modes
+2020-05-10 23:18:12 <b_jonas> and software that is compatible with older non-color hardware without needing too much extra data
