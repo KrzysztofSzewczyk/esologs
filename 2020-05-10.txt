@@ -356,3 +356,37 @@
 2020-05-10 22:02:23 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
 2020-05-10 22:16:29 Quit: tromp (Remote host closed the connection)
 2020-05-10 22:16:29 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 22:37:06 <zzo38> Does it have pattern table bank switching like NES/Famicom does? I am unsure (I probably read it once but now I forget)
+2020-05-10 22:39:39 <b_jonas> zzo38: I don't remember the details
+2020-05-10 22:40:11 <b_jonas> zzo38: is pattern table bank switching when you switch the entire layer between two pattern tables of 256 tiles each?
+2020-05-10 22:40:26 <b_jonas> that's a good idea, that might be what's happening
+2020-05-10 22:41:39 Joined: ais523
+2020-05-10 22:41:39 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 22:41:39 <b_jonas> oops. falling into the first shallow sap hole in tree 2
+2020-05-10 22:41:52 <b_jonas> sorry, wrong channel again,
+2020-05-10 22:41:57 <b_jonas> chatting in multiple channels is confusing
+2020-05-10 22:48:48 <zzo38> Yes, that is what I mean
+2020-05-10 22:53:28 <pikhq> What's hard for them to do with that? Can't you just modify the background map, and simply change which tileset entries get used for certain tiles?
+2020-05-10 22:53:40 Joined: tromp
+2020-05-10 22:53:40 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 22:53:44 <pikhq> Maybe I'm missing something, but that's just in video RAM and doesn't need much CPU to do?
+2020-05-10 22:54:46 <imode> yeah iirc there's no limit to you altering PPU memory.
+2020-05-10 22:55:10 <b_jonas> pikhq; it's in the video RAM, but the CPU doesn't get that much time between frames, it's only like 1 megahertz speed with a Z80-like CPU, and it wants to do all sorts of other computations between frames
+2020-05-10 22:55:45 <b_jonas> and each tile pattern is 32 bytes long, and you usually have to update several tiles
+2020-05-10 22:56:50 <imode> I don't believe altering the bg tile table takes that much CPU.
+2020-05-10 22:56:57 <pikhq> Erm, I wasn't saying updating the tile pattern. I was saying update the _used tile in the background map_
+2020-05-10 22:57:08 <pikhq> Which is one byte per tile.
+2020-05-10 22:57:35 <b_jonas> pikhq: that's even harder, because you have to find which tiles to update there
+2020-05-10 22:57:48 <b_jonas> the same water tiles or muncher tiles usually appear a lot of times
+2020-05-10 22:58:23 Quit: tromp (Ping timeout: 265 seconds)
+2020-05-10 22:58:23 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-10 22:58:29 <imode> animated water usually is done in pretty short order.
+2020-05-10 22:58:47 <b_jonas> and the Game Boy only has 8x8 tiles, just like the NES, so there are a lot of tiles to look up
+2020-05-10 22:58:54 <b_jonas> 8x8 pixel sized tiles that is
+2020-05-10 22:59:00 <b_jonas> admittedly it has a smaller screen than the NES
+2020-05-10 22:59:06 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-10 22:59:06 <ais523> the NES CPU has a DMA to make it possible to update the sprite table quickly enough during vblank
+2020-05-10 22:59:21 <ais523> but it normally has plenty of time to update backgrounds just via regular CPU instructions
+2020-05-10 22:59:27 <b_jonas> ais523: yes, I think the GB CPU accesses the PPU memory directly too
+2020-05-10 22:59:40 <imode> the GB has DMA as well.
+2020-05-10 22:59:49 <ais523> the PPU on the NES isn't accessed directly, rather there's a specialised memcpy instruction on the CPU for it
