@@ -472,3 +472,20 @@
 2020-05-11 21:28:05 Names: ^[, adu, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
 2020-05-11 21:28:46 Quit: Lord_of_Life (Ping timeout: 260 seconds)
 2020-05-11 21:28:47 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-05-11 21:32:44 <tswett[m]> Let's see, what does it do with 0? There are 0 nested loops, so really we just have "increment X", so f(0) = 1.
+2020-05-11 21:33:32 <tswett[m]> With 1, we start with X = 1 and then do the following 1 time: increment X. So you get 2.
+2020-05-11 21:33:57 <tswett[m]> With 2, we start with X = 2 and then do the following 2 times: do the following X times: increment X.
+2020-05-11 21:34:18 <tswett[m]> "Do the following X times: increment X" means double X, so this amounts to starting with X = 2 and doing the following 2 times: double X.
+2020-05-11 21:34:25 <tswett[m]> So f(2) = 8.
+2020-05-11 21:34:45 <tswett[m]> f(0) = 1, f(1) = 2, f(2) = 8.
+2020-05-11 21:35:02 <tswett[m]> With 3, we start with X = 3 and then do the following 3 times: do the following X times: do the following X times: increment X.
+2020-05-11 21:35:05 <tswett[m]> In other words...
+2020-05-11 21:35:21 <tswett[m]> Start with X = 3 and then do the following 3 times: do the following X times: double X.
+2020-05-11 21:35:30 <tswett[m]> In other words...
+2020-05-11 21:35:56 <tswett[m]> Start with X = 3 and then do the following 3 times: set X to X * 2^X.
+2020-05-11 21:37:46 <tswett[m]> Okay, so we start with 3, and after the first step we have 3 * 2^3 = 24, then after the second step we have 24 * 2^24 = 402653184, then after the third and final step we have 402653184 * 2^402653184 = ...
+2020-05-11 21:37:50 <tswett[m]> I forget what that comes out to.
+2020-05-11 21:38:47 <zzo38> Well, it is probably too big, I suppose.
+2020-05-11 21:48:42 <tswett[m]> Let's see, that number is, of course, 3 * 2^3 * 2^24 * 2^402653184, meaning it's 3 * 2^402653211, meaning its binary representation is "11" followed by 402653211 "0"s.
+2020-05-11 21:50:32 <tswett[m]> If you made me write that as a string of bytes, I'd write it as 00000000 00000000 00000000 ... 00000000 00011000, where there are 50331651 "00000000" bytes.
+2020-05-11 21:51:02 <tswett[m]> So that number as a file would be a 50,331,652 byte file, but one which would compress very well.
