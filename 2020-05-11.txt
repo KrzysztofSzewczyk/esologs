@@ -489,3 +489,24 @@
 2020-05-11 21:48:42 <tswett[m]> Let's see, that number is, of course, 3 * 2^3 * 2^24 * 2^402653184, meaning it's 3 * 2^402653211, meaning its binary representation is "11" followed by 402653211 "0"s.
 2020-05-11 21:50:32 <tswett[m]> If you made me write that as a string of bytes, I'd write it as 00000000 00000000 00000000 ... 00000000 00011000, where there are 50331651 "00000000" bytes.
 2020-05-11 21:51:02 <tswett[m]> So that number as a file would be a 50,331,652 byte file, but one which would compress very well.
+2020-05-11 22:11:33 Quit: tromp (Remote host closed the connection)
+2020-05-11 22:11:34 Names: ^[, adu, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 22:17:46 Quit: adu (Quit: adu)
+2020-05-11 22:17:46 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 22:22:24 <tswett[m]> In completely unrelated news, anyone want to talk about sliced tangle diagrams?
+2020-05-11 22:23:28 <tswett[m]> A couple of years ago, I came up with a notation for writing knots, links and tangles, and some rules for manipulating this notation.
+2020-05-11 22:23:57 <tswett[m]> Then I figured that the notation is probably something that would be kind of obvious to a knot theorist, so surely someone's already invented it.
+2020-05-11 22:24:17 <tswett[m]> Sure enough, someone has. The notations are called sliced tangle diagrams.
+2020-05-11 22:24:18 <zzo38> What is that notation? I don't know of knot theory, but maybe someone else does know
+2020-05-11 22:24:30 <zzo38> O, is there a Wikipedia article about that?
+2020-05-11 22:24:37 <tswett[m]> I doubt it.
+2020-05-11 22:26:04 <tswett[m]> Imagine you have a box with zero or more holes arranged in a row in the top and zero or more holes arranged in a row in the bottom.
+2020-05-11 22:26:28 <tswett[m]> The box is filled with zero or more strings. Each string either forms a closed loop, or exits the box through exactly two of the holes.
+2020-05-11 22:26:32 <tswett[m]> Each hole has exactly one string exiting the box through it.
+2020-05-11 22:26:37 <tswett[m]> Such a box is called a tangle.
+2020-05-11 22:27:26 <tswett[m]> There are five "elementary tangles". They are...
+2020-05-11 22:27:51 <tswett[m]> I, which represents a box with a hole in the top and in the bottom, and a string running straight from the top hole to the bottom hole
+2020-05-11 22:28:07 <tswett[m]> A, which represents a box with two holes in the bottom and a string connecting them in the most straightforward manner
+2020-05-11 22:28:20 <tswett[m]> V, which is the vertical mirror image of A
+2020-05-11 22:29:07 <tswett[m]> Z, which represents a box with two holes in the top and two holes in the bottom, and a string going straight from each hole to the diagonally opposite hole, where the string connecting top-right to bottom-left passes in front of the string connecting top-left to bottom-right
+2020-05-11 22:29:32 <tswett[m]> N, which is the mirror image (about any of the 3 coordinate planes) of Z
