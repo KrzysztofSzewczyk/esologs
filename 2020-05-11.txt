@@ -60,3 +60,31 @@
 2020-05-11 01:58:41 <Antebrationist> Orbitaldecay, how many warriors are we allowed to submit?
 2020-05-11 01:59:02 <orbitaldecay> Antebrationist: feel free to add any creations to the wiki page too. No limit.
 2020-05-11 01:59:24 <Antebrationist> Okay... this will be interesting, as I am about to submit my first one.
+2020-05-11 02:00:18 <orbitaldecay> Cool!
+2020-05-11 02:02:13 <orbitaldecay> You can use the debugger to test ideas too
+2020-05-11 02:02:34 <orbitaldecay> It's pretty helpful
+2020-05-11 02:02:49 <Antebrationist> Okay. Thanks!
+2020-05-11 02:03:03 Joined: Phantom_Hoover
+2020-05-11 02:03:04 Names: ^[, aji, aloril, Antebrationist, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sdhand, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 02:16:53 <Antebrationist> orbitaldecay, do we need a + at the start, so that the r our program starts on becomes a d?
+2020-05-11 02:17:14 <Antebrationist> and so loops can happen. For example, the program [>+] does nothing, right?
+2020-05-11 02:18:45 <int-e> it depends on where your agent starts
+2020-05-11 02:19:07 <orbitaldecay> I recommend you play with the interpretter to test ideas. The only way to guarantee a cell is not r is [+] followed by a certain number of +
+2020-05-11 02:19:09 <Antebrationist> Let's say that it starts on an r, since that is overwhelmingly more likely than the reverse.
+2020-05-11 02:19:13 <int-e> (Hmm, I forgot whether it can be placed on top of a program.)
+2020-05-11 02:19:41 <Antebrationist> Thanks, orbitaldecay!
+2020-05-11 02:19:55 <orbitaldecay> The robot can start on a program, butprobably won't
+2020-05-11 02:19:58 <orbitaldecay> Np
+2020-05-11 02:20:04 <int-e> Antebrationist: you can do +[>+] to get the look started with higher probability.
+2020-05-11 02:20:20 <Antebrationist> Yeah, I noticed that program too.
+2020-05-11 02:20:56 <int-e> or do things like [[>+]+]+[[>+]+]
+2020-05-11 02:21:24 <Antebrationist> What does that do?
+2020-05-11 02:21:40 <int-e> it just tries harder to keep going
+2020-05-11 02:22:49 <int-e> basically, when a loop is skipped or exited, it does another increment and tries again.
+2020-05-11 02:23:02 <Antebrationist> Okay.
+2020-05-11 02:23:16 <int-e> oh that can be simplified slightly: [>+]+[[>+]+]
+2020-05-11 02:24:18 <Antebrationist> Does the first [>+] ever terminate, or does it just plough forwards until it reaches an r?
+2020-05-11 02:24:27 <int-e> (And then there's loop unrolling to move a bit faster. stuff like [>+>+>+>+]. Oh well.)
+2020-05-11 02:24:42 <int-e> ...if you incrment a ] then the result is r...
+2020-05-11 02:26:15 <Antebrationist> I might try and make a program that flies right until it hits a ], then moves left and destroys everything it can find until it hits an r.
+2020-05-11 02:28:58 <Antebrationist> My bot "griefer" does slightly better than chance.
