@@ -447,3 +447,28 @@
 2020-05-11 20:52:32 <esowiki> 14[[07Binary14]]4 M10 02https://esolangs.org/w/index.php?diff=72118&oldid=72116 5* 03PythonshellDebugwindow 5* (-9) 10fix user link
 2020-05-11 20:53:54 Quit: arseniiv (Ping timeout: 258 seconds)
 2020-05-11 20:53:54 Names: ^[, adu, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 21:02:13 <zzo38> What is the function that has a number of nested "repeat X times" loops equal to the initial value of X, and the inside of the innermost loop is to increment X?
+2020-05-11 21:10:33 User Name: tswett[m] = tswett[m]!tswettmatr@gateway/shell/matrix.org/x-lvgdahdubuldpibw
+2020-05-11 21:10:33 <tswett[m]> Sounds like the Ackermann function?
+2020-05-11 21:11:28 <b_jonas> no, I think it's tetration or something
+2020-05-11 21:12:02 <zzo38> This function has only one input though, and one output.
+2020-05-11 21:12:46 <tswett[m]> Oh right.
+2020-05-11 21:13:00 <tswett[m]> So, f(3) would be calculated like...
+2020-05-11 21:13:06 <fizzie> Wouldn't that just be 1, 2*2, 3*3*3, 4*4*4*4, aka X^X? Well, maybe I thought it too fast.
+2020-05-11 21:13:53 <tswett[m]> x_1 = x; repeat(x_1) { x_2 = x; repeat(x_2) { x_3 = x; repeat (x_3) { x = x + 1; } } } return x;
+2020-05-11 21:14:45 <tswett[m]> Actually I forgot to put x = 3; at the beginning of that.
+2020-05-11 21:14:51 <fizzie> Oh, it's "repeat X times" with the new value of X?
+2020-05-11 21:14:57 <tswett[m]> Hmmmm. That's a very interesting function.
+2020-05-11 21:14:57 <zzo38> fizzie: Yes.
+2020-05-11 21:15:01 <zzo38> With the new value of X.
+2020-05-11 21:15:13 <zzo38> (at the time each loop is entered)
+2020-05-11 21:15:13 Quit: kevinalh (Ping timeout: 264 seconds)
+2020-05-11 21:15:14 Names: ^[, adu, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 21:16:00 <fizzie> I guess my default procedure for figuring out what that is would be to evaluate the first few values and feed it to OEIS. :)
+2020-05-11 21:17:33 Joined: kevinalh
+2020-05-11 21:17:34 Names: ^[, adu, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 21:26:31 Joined: Lord_of_Life
+2020-05-11 21:28:04 Quit: Phantom_Hoover (Ping timeout: 272 seconds)
+2020-05-11 21:28:05 Names: ^[, adu, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-11 21:28:46 Quit: Lord_of_Life (Ping timeout: 260 seconds)
+2020-05-11 21:28:47 Nick Change: Lord_of_Life -> Lord_of_Life
