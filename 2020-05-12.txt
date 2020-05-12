@@ -34,3 +34,20 @@
 2020-05-12 02:08:06 Joined: Phantom_Hoover
 2020-05-12 02:08:06 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
 2020-05-12 02:27:24 <zzo38> I have the other question about the function I mentioned before: Which other functions is it faster than and slower than?
+2020-05-12 02:39:04 Quit: imode (Ping timeout: 246 seconds)
+2020-05-12 02:39:05 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-12 02:41:12 Joined: imode
+2020-05-12 02:41:13 Names: ^[, ais523, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, copumpkin, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kevinalh, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-12 02:42:27 <zzo38> (What is its Grzegorczyk index?)
+2020-05-12 02:44:29 <b_jonas> zzo38: I suspect that it grows as tetration
+2020-05-12 02:44:39 <b_jonas> but I'm not certain
+2020-05-12 02:44:57 <b_jonas> no wait
+2020-05-12 02:45:01 <b_jonas> what was your function exaclty?
+2020-05-12 02:45:37 <b_jonas> dunno
+2020-05-12 02:46:02 <zzo38> It is a number of nested "repeat X times" loops, nested X times, with the inside being "increment X".
+2020-05-12 02:46:55 <zzo38> A function that does grow as tetration presumably has a Grzegorczyk index of 4, I think.
+2020-05-12 02:51:51 <b_jonas> zzo38: can you define your function more precisely? because I don't understand what you want the loops to do
+2020-05-12 02:51:57 <int-e> sounds vaguely ackermann-like
+2020-05-12 02:52:17 <int-e> (with the nesting level of the loops as the first argument)
+2020-05-12 02:57:16 <zzo38> b_jonas: I am not sure how to explain it better, right now
+2020-05-12 02:58:12 <int-e> The point is, one can define the Ackermann function as a kind of function iteration: A_0(x) = x+1; A_n(x) = A_(n-1)^x(1)... and I believe that loop function is L_0(x) = x+1; L_(n+1)(x) = L_n^x(x) which is very similar.
