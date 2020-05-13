@@ -239,3 +239,57 @@
 2020-05-13 17:25:48 Joined: kspalaiologos
 2020-05-13 17:25:49 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri
 2020-05-13 17:27:03 <esowiki> 14[[07Simple translation14]]4 M10 02https://esolangs.org/w/index.php?diff=72224&oldid=72222 5* 03Orby 5* (+0) 10/* Rank of monoid */
+2020-05-13 17:30:39 Joined: zzo38
+2020-05-13 17:30:40 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-13 17:35:14 User Name: arseniiv = arseniiv!~arseniiv@94.41.81.24.dynamic.ufanet.ru
+2020-05-13 17:35:14 <arseniiv> <kspalaiologos> any opinions on the draft? esowiki bot should have mentioned it above => please forgive me but I think the description is even harder to wrap one’s head about than with descriptions of my esolangs :) though I can definitely see a couple of alike typos in 8.1.b…8.1.j (7.1.a, 7.1.b are mentioned but probably 8.1.a, 8.1.b should be there instead)
+2020-05-13 17:35:46 <arseniiv> I’d say a couple of examples would make the deal way easier
+2020-05-13 17:35:53 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-05-13 17:35:53 <kspalaiologos> ah yes I forgot
+2020-05-13 17:36:10 <arseniiv> (I’m myself bad with examples BTW)
+2020-05-13 17:36:11 <esowiki> 14[[07Esofun14]]4 10 02https://esolangs.org/w/index.php?diff=72225&oldid=72215 5* 03Palaiologos 5* (+0) 10
+2020-05-13 17:36:28 <kspalaiologos> the spec is confusing
+2020-05-13 17:36:31 <kspalaiologos> and the language isn't inished yet
+2020-05-13 17:36:40 <arseniiv> kspalaiologos: also, voyad is a cool word, thanks
+2020-05-13 17:36:47 <kspalaiologos> there are at least 30 ways a `+' operator can behave
+2020-05-13 17:36:52 <kspalaiologos> depending on the current context
+2020-05-13 17:36:56 <arseniiv> oh
+2020-05-13 17:37:15 <kspalaiologos> ultimately this language will be harder than Malbolge, but also way cleaner
+2020-05-13 17:37:20 <kspalaiologos> and way more advanced
+2020-05-13 17:37:55 <arseniiv> (you wrote you’d like to break another unprogrammable language, do you make this one so that there would be something new to break?)
+2020-05-13 17:37:58 <arseniiv> oh!
+2020-05-13 17:38:14 <arseniiv> while I wrote the question you’ve already answered it
+2020-05-13 17:38:16 <kspalaiologos> yeah, obviously :d
+2020-05-13 17:38:32 <kspalaiologos> and I'd love to see bigger programs in it
+2020-05-13 17:38:44 <kspalaiologos> but I doubt someone would decide to take his time trying to work out... this
+2020-05-13 17:39:33 <arseniiv> hm how hard it is to design such a language?.. If that’s not too hard, I’d try to make something and see how fast you’re going to crack it, it might be fun
+2020-05-13 17:40:28 <arseniiv> though making the language cleaner would make the task harder
+2020-05-13 17:40:38 <kspalaiologos> hah, well, you need to actually ensure that the draft is consistent
+2020-05-13 17:41:12 <kspalaiologos> if it's not consistent and there is a slight chance some behavior is inconsistent, then I'm most probably not touching it
+2020-05-13 17:41:29 <kspalaiologos> also I already put a lot of work into the draft lol
+2020-05-13 17:41:33 <arseniiv> for now I try to write some parsing stuff in Python but later maybe I’ll try a thing or other
+2020-05-13 17:41:36 <kspalaiologos> I've been writing it and pondering for around 2 hours
+2020-05-13 17:41:54 <kspalaiologos> oh and I forgot about something
+2020-05-13 17:42:00 <kspalaiologos> why isn't there my Malbolge self interpreter linked on my user page
+2020-05-13 17:42:24 <arseniiv> <kspalaiologos> if it's not consistent and there is a slight chance some behavior is inconsistent, then I'm most probably not touching it => yeah I like my descriptions be consistent. They should clearly define if something does something or is it an UB if it’s chosen so
+2020-05-13 17:43:31 <esowiki> 14[[07User:Palaiologos14]]4 M10 02https://esolangs.org/w/index.php?diff=72226&oldid=70870 5* 03Palaiologos 5* (+126) 10
+2020-05-13 17:43:42 <arseniiv> anyway have a good time with this language. I’ll maybe try to understand a later draft
+2020-05-13 17:44:27 <kspalaiologos> lol, thanks
+2020-05-13 17:44:34 Joined: gnu-nobody
+2020-05-13 17:44:34 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, gnu-nobody, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-13 17:44:39 <kspalaiologos> but the draft in my predictions will grow massively
+2020-05-13 17:44:56 <kspalaiologos> just the list of adverbs or verbs for instance - there can be up to 512 of them
+2020-05-13 17:45:04 <kspalaiologos> and if I want to make my language fullfill the design goals
+2020-05-13 17:45:12 User Name: gnu-nobody = gnu-nobody!~a@24.133.64.54
+2020-05-13 17:45:12 <gnu-nobody> it seems that i missed some discussion regarding palaiologos' lang
+2020-05-13 17:45:25 <kspalaiologos> I have to design 256 monadic, 256 niladic, 256 voyadic, 256 dyadic verbs and 256 adverbs
+2020-05-13 17:45:47 <gnu-nobody> and none of them should be no-ops?
+2020-05-13 17:46:03 <kspalaiologos> I plan on adding one eaisly accessible no-op
+2020-05-13 17:47:22 <kspalaiologos> my ideas include adding a verb related to generating stuff with mersenne twister (lmao)
+2020-05-13 17:47:30 <kspalaiologos> packing data, primitive compression
+2020-05-13 17:47:47 <kspalaiologos> the real hell will be implementing all of this, lol
+2020-05-13 17:48:10 <kspalaiologos> but with a draft it's always more enjoyable
+2020-05-13 17:52:45 Quit: kspalaiologos (Quit: Leaving)
+2020-05-13 17:52:45 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, gnu-nobody, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-13 17:53:02 Joined: kspalaiologos
+2020-05-13 17:53:03 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, gnu-nobody, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, opticnerve, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
