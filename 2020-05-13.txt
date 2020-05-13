@@ -355,3 +355,32 @@
 2020-05-13 22:47:19 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03OpenByte 5*  10New user account
 2020-05-13 22:56:40 Quit: tromp (Remote host closed the connection)
 2020-05-13 22:56:40 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-13 23:02:56 Joined: tromp
+2020-05-13 23:02:56 Names: ^[, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-13 23:08:59 <orbitaldecay> salpynx: you there?
+2020-05-13 23:09:10 <esowiki> 14[[07Talk:Simple translation14]]4 10 02https://esolangs.org/w/index.php?diff=72250&oldid=71834 5* 03Salpynx 5* (+3579) 10Explanation of deferred parsing tricks WRT simple-translations
+2020-05-13 23:09:52 User Name: salpynx = salpynx!794954f8@121.73.84.248
+2020-05-13 23:09:52 <salpynx> orbitaldecay: yes, just finished typing up my latest thoughts on my ST tricks -- hopefully they make some kind of sense!
+2020-05-13 23:10:19 <orbitaldecay> cool! reading now. I also made a lot of progress today as recorded on the simple translation page.
+2020-05-13 23:15:03 <orbitaldecay> Okay, interesting. Need some time to digest that. I realized today that, for concatenative languages like bf-alikes, the minimization problem is essentially determining the rank of the monoid which is formed by the language
+2020-05-13 23:15:29 <orbitaldecay> on which a lot of work has been done
+2020-05-13 23:15:46 <orbitaldecay> in the special case of rbf, that monoid is actually a group, and finding the rank of a group is even easier
+2020-05-13 23:17:34 <salpynx> I need to keep reading up on groups -- I may have overlooked the significance of the 'reversible' part of RBF when it comes to groups too. I think you implied that it was significant?
+2020-05-13 23:18:16 <orbitaldecay> Groups are pretty straightforward to understand. It's a set with a binary operator that is associative, there's an identity, and every element has an inverse
+2020-05-13 23:19:20 <orbitaldecay> In the case of rbf, the binary operator is concatenation, the empty string is the identity, and the inverses go *: self inverse, >:<, (:)
+2020-05-13 23:20:03 <orbitaldecay> that doesn't totally nail it because there's more structure than that, but the rbf monoid is a quotient of that group
+2020-05-13 23:20:31 <orbitaldecay> the rank is just the cardinality of the smallest generating set, i.e. the smallest set of operators that can be combined to form any program
+2020-05-13 23:20:50 <orbitaldecay> rank is obviously <= 3 due to nanofuck
+2020-05-13 23:21:36 <salpynx> right, I hadn't focused on determining the specific inverses, that helps.
+2020-05-13 23:22:06 <orbitaldecay> yeah, once you identify the inverses then the simple translation problem can be viewed as a problem of group presentation
+2020-05-13 23:22:23 <orbitaldecay> https://en.wikipedia.org/wiki/Presentation_of_a_group
+2020-05-13 23:23:23 <orbitaldecay> so, rank(<a,b,c|a^2=empty string>) >= rank(rbf) basically
+2020-05-13 23:23:54 <orbitaldecay> unfortunately rank(<a,b,c|a^2>) = 3, so it doesn't actually tighten the bound from what we already know
+2020-05-13 23:24:19 <salpynx> That was where I stalled, applying what I understood about groups specifically to the RBF and PF examples. I got the free group structure, but wasn't sure if we needed more detail in the relations
+2020-05-13 23:24:48 <orbitaldecay> more generally, simple translations of concatenative languages can be viewed as a problem of monoid presentation (a monoid is just a group that doesn't necessarily have inverses)
+2020-05-13 23:25:19 <orbitaldecay> the a^2 = e relation doesn't actually help, but it is true (a = *)
+2020-05-13 23:28:19 <orbitaldecay> https://en.wikipedia.org/wiki/Presentation_of_a_monoid is a gold mine
+2020-05-13 23:28:20 <salpynx> I think I can put the investigation of simple-translation tricks behind me now. I feel like I understand why if PF is possible using 0 as a self-interpreter that is not as interesting a result as a more direct translation which you are aiming for. Now that I can separate the two approaches, it should be possible to prove whether a direct
+2020-05-13 23:28:20 <salpynx> translation or not.
+2020-05-13 23:28:38 <salpynx> is possible
+2020-05-13 23:29:16 <orbitaldecay> yes, I think I have also made progress. I realize now that what I was trying to capture with the definition of a simple translation is really just the problem of determining the rank of the monoid of a concatenative language
