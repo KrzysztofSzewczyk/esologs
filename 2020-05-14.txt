@@ -9,3 +9,39 @@
 2020-05-14 01:22:04 <int-e> Hmm, doesn't look too interesting
 2020-05-14 01:24:56 <jonathanr> What languages did you use before?
 2020-05-14 01:29:57 <shachaf> I used alpha-beta pruning before.
+2020-05-14 01:34:33 <int-e> Did it help?
+2020-05-14 01:38:13 <shachaf> Yes! It was great.
+2020-05-14 01:38:22 <shachaf> Do you understand PVS/Scout?
+2020-05-14 01:38:37 <shachaf> I would like to improve my understanding of the whole null window search deal.
+2020-05-14 01:39:05 <int-e> No I don't.
+2020-05-14 01:40:59 <int-e> I could barely expand PVS without looking it up. My first thought was what theorem provers have to do with all this.
+2020-05-14 01:47:40 <jonathanr> shachaf How did you use Alpha Beta without the use of comments?
+2020-05-14 01:48:23 <int-e> I did rewrite my cellular automaton update function for Ponder This in assembly though, just for laughs... it ended up 20% faster than the corresponding C, which I think is decent nowadays.
+2020-05-14 01:48:48 <shachaf> Did you do some sort of fancy SIMD thing?
+2020-05-14 01:48:50 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-05-14 01:48:50 <zzo38> In assembly langauge for what instruction set?
+2020-05-14 01:48:51 <int-e> > 1/1.2
+2020-05-14 01:48:52 <lambdabot> 0.8333333333333334
+2020-05-14 01:48:56 <int-e> no SIMD at all
+2020-05-14 01:49:23 <int-e> or is that 16% faster...
+2020-05-14 01:49:50 <jonathanr> 16 and 2/3
+2020-05-14 01:50:02 <int-e> jonathanr: it's not that precise
+2020-05-14 01:50:08 <int-e> or accurate
+2020-05-14 01:50:47 <int-e> > 21/25.5
+2020-05-14 01:50:49 <lambdabot> 0.8235294117647058
+2020-05-14 01:50:54 <int-e> > 25.5/21
+2020-05-14 01:50:56 <lambdabot> 1.2142857142857142
+2020-05-14 01:51:12 <jonathanr> Using fractions is more precise than decimal, unless I find a way to write ­­¯ over the numbers
+2020-05-14 01:51:18 <int-e> (those are the approximate cycle counts)
+2020-05-14 01:51:34 <int-e> shachaf: I did think about it but I don't think it'll pay off.
+2020-05-14 01:52:13 <int-e> shachaf: The proper way to do SIMD is to move it to a GPU, which will be much slower for an individual update but make up for it by massive (compared to CPU) parallelization.
+2020-05-14 01:52:33 <shachaf> Sure.
+2020-05-14 01:53:09 <shachaf> Do you like this? where this = alpha-beta pruning
+2020-05-14 01:53:20 <int-e> `? this
+2020-05-14 01:53:22 <HackEso> This is something people on the channel like to talk about. We're often unsure what this is, though. Nobody likes this.
+2020-05-14 01:55:49 <int-e> shachaf: The trouble is, 128 bit shifts are not a good fit for Intel's SIMD stuff. With x86_64 you have those cute shld/shrd instructions. To do that in SSE, you need to shift, then use the weird byte-wise shift on top, then shift in the other direction, and combine the results. And I think the CPU can issue twice as many integer operations as SSE instructions.
+2020-05-14 01:56:35 <int-e> But I didn't try.
+2020-05-14 01:57:35 <shachaf> It's great how you use these tricks to do an exhaustive search of a game tree to depth 13 or however much.
+2020-05-14 01:57:38 <shachaf> Such a big tree.
+2020-05-14 01:57:46 <int-e> (gcc knows how to use the shld/shrd instructions, too. The speedup I have is mostly from better instruction scheduling... I save a few mov instructions as well, but those are essentially free.)
+2020-05-14 01:58:40 <int-e> Those modern CPUs are such beasts.
