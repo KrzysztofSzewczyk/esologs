@@ -45,3 +45,13 @@
 2020-05-14 01:57:38 <shachaf> Such a big tree.
 2020-05-14 01:57:46 <int-e> (gcc knows how to use the shld/shrd instructions, too. The speedup I have is mostly from better instruction scheduling... I save a few mov instructions as well, but those are essentially free.)
 2020-05-14 01:58:40 <int-e> Those modern CPUs are such beasts.
+2020-05-14 02:00:46 <int-e> not %rax; or %rbx, %rax <-- as far as I understand it, this fuses into a single micro-op. My first instinct was to move the `not` instructions further up to get rid of a data dependency and stall... and that made the code slower.
+2020-05-14 02:02:19 <zzo38> I don't really like the way they do it so much, though. I like MMIX instruction set.
+2020-05-14 02:02:24 <int-e> And the CPU will reorder instructions on its own as well...
+2020-05-14 02:02:54 * int-e shrugs.
+2020-05-14 02:03:07 <int-e> Nobody uses MMIX though.
+2020-05-14 02:04:13 <int-e> "the CPU" is an i7-6850K; I expect Ryzen does similar things. The low power models are less crazy. ARM as well, I suppose.
+2020-05-14 02:04:27 <int-e> (That is, ARM is less crazy as well, I suppose.)
+2020-05-14 02:05:26 <zzo38> There is not suitable hardware for MMIX made yet (other than a few FPGA stuff which is incomplete, as far as I know), although there are software implementations of MMIX that can measure the number of cycles.
+2020-05-14 02:07:46 <int-e> TBH I have not even read the MMIX document, because I hardly see the point.
+2020-05-14 02:09:22 <zzo38> Well, I think that it is a better instruction set than ARM and some other stuff. However, there is a few things I would have done differently, such as I would have explicit caching only and no implicit caching, and I would also have a "Muxcomp" operator.
