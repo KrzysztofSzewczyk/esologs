@@ -225,3 +225,18 @@
 2020-05-14 19:29:09 <b_jonas> the tasks and solutions are linked from https://www.komal.hu/verseny/korabbi.h.shtml with the relevant dates,
 2020-05-14 19:29:23 <Lymia> language barriers yay
 2020-05-14 19:29:45 <b_jonas> plus the tasks are also linked from https://www.komal.hu/verseny/korabbi.e.shtml in English translation
+2020-05-14 19:30:05 <b_jonas> the solutions aren't, but at least the source codes for the solutions shouldn't require translation, even if the explanations do
+2020-05-14 19:30:46 <b_jonas> at least one of the early solutions that they released in Pascal is broken too by the way, which may have discouraged them from releasing real runnable programs
+2020-05-14 19:31:42 <b_jonas> and I don't mean broken as in it has a few portability problems or it fails in some weird corner case, but that the program source code is entirely not powerful enough to do what the problem asked for
+2020-05-14 19:41:43 <Lymia> ... eek.
+2020-05-14 19:42:47 <b_jonas> Note that this was back between 2001-09 and 2003-01. Me and everyone else were very young back then. And it's not like they had much money to pay to the college students that they roped in to write most of those problems and solutions.
+2020-05-14 19:42:53 <b_jonas> So there are excuses.
+2020-05-14 19:43:15 <b_jonas> Believe me, the programs I write these days are better. They're not perfect of course, but they're buggy in more advanced way,
+2020-05-14 19:43:25 <b_jonas> and I managed to write larger programs that are still usable.
+2020-05-14 19:44:16 <b_jonas> Plus the internet was young, there weren't many opportunities to learn good practices from others yet.
+2020-05-14 19:45:56 <b_jonas> Also KöMaL had a homepage where they listed a copy of those programs and solutions (besides the printed journal), but it only added a forum to the homepage in 2003-11 apparently, so I couldn't really talk to many people about those example solutions either.
+2020-05-14 19:51:27 User Name: gnu-nobody = gnu-nobody!~a@24.133.64.54
+2020-05-14 19:51:27 <gnu-nobody> b_jonas: isn't I.10 just a simple convex hull?
+2020-05-14 19:52:12 <b_jonas> gnu-nobody: it's supposed to be, yes. but the example solution is broken.
+2020-05-14 19:53:13 <gnu-nobody> Also as far as I can see the solution is using an O(n^2) sort
+2020-05-14 19:59:56 <b_jonas> gnu-nobody: the larger problem is that the solution usually runs into a division by zero
