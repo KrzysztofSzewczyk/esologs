@@ -57,3 +57,10 @@
 2020-05-15 04:48:03 <int-e> can't be arsed.
 2020-05-15 04:49:26 <zzo38> OK
 2020-05-15 04:57:26 <shachaf> I was using __m128 v;
+2020-05-15 05:15:39 <int-e> mmm
+2020-05-15 05:21:00 <int-e> funny, if I change that to "+x" (*(__m128d*)&v) it's accepted in clang++ and faster than before in g++
+2020-05-15 05:21:44 <int-e> also funny: -fheinous-gnu-extensions
+2020-05-15 05:23:21 <zzo38> What does that do exactly?
+2020-05-15 05:24:02 <int-e> it's a pretty silly way to cast a value while still being an lvalue
+2020-05-15 05:24:51 <zzo38> I just found out now that clang has a \p escape for making Pascal strings, apparently.
+2020-05-15 05:27:42 <int-e> shachaf: so that gets it down to the 23 cycles without hacking the assembly code, and g++ and clang++ end up being equally fast (unsurprisingly, since the only thing they really add is a loop counter)
