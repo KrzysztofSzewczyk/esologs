@@ -303,3 +303,6 @@
 2020-05-16 20:12:24 <imode> you could theoretically build everything, I guess, from dup, swap, drop, apply, quote/cons/whatever and pattern matching.
 2020-05-16 20:12:32 <imode> including arithmetic ops.
 2020-05-16 20:14:04 <imode> the base operators don't apply to things like other operators, only to lists and primitive "data".
+2020-05-16 20:32:48 <zzo38> OK.
+2020-05-16 20:34:15 <zzo38> (Although I don't really like hastebin, which serves HTML instead of plain text, even with the ".txt" extension and even if you add a Accept header to indicate that you want plain text. But I have figured out how to get plain text. Remove ".txt" and add "documents/" before the filename, and then it will be JSON; the property called "data" contains the text. It isn't as good as real plain text, though.)
+2020-05-16 20:55:36 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=72353&oldid=72311 5* 03PythonshellDebugwindow 5* (+62) 10/* Memory */
