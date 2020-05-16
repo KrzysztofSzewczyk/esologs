@@ -344,3 +344,17 @@
 2020-05-16 22:27:58 <arseniiv> so that gives me ideas about fixed prefix and suffix for some rules which should match to consider a parse as a faulty variant of that rule and none alternative to it when a choice can be made
 2020-05-16 22:28:48 <arseniiv> but this looks like a hard thing to do in LTR top-down parsing which I try to stick with
 2020-05-16 22:29:26 <arseniiv> even if for example we precompute possible n-token prefixes and suffixes of each nonterminal, what good would it give here
+2020-05-16 22:30:35 <arseniiv> but I think the idea for searching the first “reasonable” semicolon can be fleshed out in some other way
+2020-05-16 22:33:04 <arseniiv> (I suppose annotating these kinds of “faulty” grammars in some special way to make such guesses of “typoed parses” possible—I just don’t know yet which annotations should there be)
+2020-05-16 22:37:44 <arseniiv> the first idea was to add a ?-like “quantifier”, let’s say P↑, with meaning “if you fail in parsing P, consider that a typoed variant of P and go forth as usual”, but this is too bad. Then I thought about adding an atomic parser ↓ to mark up to which part you may fail (as semicolons, which I used when pondering that, come last), but this works bad with LTR)
+2020-05-16 22:38:38 <arseniiv> I think I should have googled error recovery beforehand, I still haven’t
+2020-05-16 22:39:33 <arseniiv> does this all have sense?
+2020-05-16 22:41:16 <arseniiv> okay there are some search results. Definitely should have read up first
+2020-05-16 22:42:52 <arseniiv> ah, yes, and I forgot that I mentioned error productions before and even noted this would be a good start
+2020-05-16 22:52:50 Quit: arseniiv (Ping timeout: 256 seconds)
+2020-05-16 22:52:50 Names: ^[, aji, aloril, APic, atehwa, atslash, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, doesthiswork, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-16 22:55:47 User Name: b_jonas = b_jonas!~x@catv-176-63-12-101.catv.broadband.hu
+2020-05-16 22:55:47 <b_jonas> atslash: I specifically said that that's why you need to design your grammar such that it has such markers, and most modern languages aren't like that, they allow embedding anything in anything. python doesn't let you put statements inside expressions, so you can't have a semicolon inside a statement.
+2020-05-16 22:55:52 <b_jonas> um
+2020-05-16 22:55:53 <b_jonas> misping
+2020-05-16 22:55:57 <b_jonas> arsenniv: ^
