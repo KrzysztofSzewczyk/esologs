@@ -245,3 +245,31 @@
 2020-05-18 22:59:19 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
 2020-05-18 22:59:19 <ais523> orbitaldecay: hmm, I'm not sure we've /proved/ Clementine TC yet
 2020-05-18 22:59:33 <ais523> because Underload programs allow arbitrary literals, and we need to prove that those can be constructed in Clementine
+2020-05-18 23:00:22 <ais523> specifically we need to show translations for (a) (~) (^) (:) (!) (*), once you have those you can create arbitrary literals via a'ing and *'ing them
+2020-05-18 23:00:41 <ais523> at the moment only a ~ ^ : ! * have translations, not the quoted version
+2020-05-18 23:00:44 <ais523> (you also need a translation for () but it just translates to ())
+2020-05-18 23:03:10 <ais523> hmm… are we sure that https://esolangs.org/wiki/Functional_deadfish is unusable for programming?
+2020-05-18 23:03:16 <ais523> it isn't obvious to me that it's sub-TC
+2020-05-18 23:03:46 <ais523> although, functions can't define other functions, which makes it more likely that it's a push-down automaton than anything else
+2020-05-18 23:06:14 Joined: sebbu
+2020-05-18 23:06:15 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, doesthiswork, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zseri, zzo38
+2020-05-18 23:07:32 <esowiki> 14[[07User talk:InfiniteDonuts14]]4 10 02https://esolangs.org/w/index.php?diff=72451&oldid=72394 5* 03ElectricWah 5* (+196) 10
+2020-05-18 23:09:57 <esowiki> 14[[07Functional deadfish14]]4 10 02https://esolangs.org/w/index.php?diff=72452&oldid=72384 5* 03Ais523 5* (+653) 10I am not convinced this is unusable for programming
+2020-05-18 23:12:45 <orbitaldecay> ais523: I was just thinking the same thing. But I suspect it's possible because we can cat arbitrary (e) and (k)
+2020-05-18 23:14:04 <ais523> yes, I believe what you have to do is to take the definitions of a, ~, ^ and friends in terms of () (e) (k) k
+2020-05-18 23:14:19 <ais523> then use the typical Underload constant construction tricks to join all the e's and k's together using Underload operations
+2020-05-18 23:15:25 <ais523> on an unrelated note, something that's been bothering me for years and I was just reminded of: what's the pun in "beta-Juliet"? it's from a series of languages which are named after car manufacturers
+2020-05-18 23:15:30 <ais523> but unlike the others, I don't get that one at all
+2020-05-18 23:15:39 <ais523> even if I try to pronounce it with an American accent
+2020-05-18 23:15:55 <ais523> oh, just got it, it isn't pronunciation at all
+2020-05-18 23:16:01 <ais523> it's "alfa-romeo" + 1
+2020-05-18 23:16:33 <ais523> not fair having one of the puns work on a different principle from the others :-(
+2020-05-18 23:17:09 <orbitaldecay> Yep yep, I'll probably write it up tonight
+2020-05-18 23:18:54 Quit: zseri (Quit: zseri)
+2020-05-18 23:18:55 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, doesthiswork, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-18 23:19:26 User Name: b_jonas = b_jonas!~x@catv-176-63-12-101.catv.broadband.hu
+2020-05-18 23:19:26 <b_jonas> oh nice
+2020-05-18 23:21:05 <esowiki> 14[[07Maentwrog14]]4 10 02https://esolangs.org/w/index.php?diff=72453&oldid=72376 5* 03Ais523 5* (+126) 10former dead link is no longer dead; fix hatnote; explain the history of this page
+2020-05-18 23:29:49 Quit: LKoen (Remote host closed the connection)
+2020-05-18 23:29:49 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, doesthiswork, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-18 23:29:52 <orbitaldecay> ais523: isn't it trivial to convert X to (X)? Just follow each clementine command in X with a*
