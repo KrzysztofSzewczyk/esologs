@@ -1,1 +1,30 @@
 2020-05-19 00:00:00 <esowiki> 14[[07Clementine14]]4 M10 02https://esolangs.org/w/index.php?diff=72456&oldid=72455 5* 03Orby 5* (+36) 10/* Translation from Underload into Clementine */ Bolding Clementine commands
+2020-05-19 00:01:32 <esowiki> 14[[07Clementine14]]4 M10 02https://esolangs.org/w/index.php?diff=72457&oldid=72456 5* 03Orby 5* (+4) 10Bolding clementine commands for readability
+2020-05-19 00:01:53 <ais523> orbitaldecay: I haven't checked in detail, but it doesn't look wrong, at least
+2020-05-19 00:02:12 <orbitaldecay> Okay, thanks. I'll go back over them as well.
+2020-05-19 00:03:25 <zzo38> Here is a custom Magic: the Gathering card that I found in a box with other card games:  Sad Jester {UU} Creature - Human (0/1) ;; {WB}, {T}: Add {UU}.
+2020-05-19 00:04:16 <esowiki> 14[[07Clementine14]]4 M10 02https://esolangs.org/w/index.php?diff=72458&oldid=72457 5* 03Orby 5* (+6) 10/* Translation from Clementine into Underload */ Bolding more clementine commands
+2020-05-19 00:05:49 <ais523> zzo38: that doesn't look like a very powerful card
+2020-05-19 00:06:54 <zzo38> Yes, it doesn't look that good to me either
+2020-05-19 00:10:17 <shachaf> Maybe it's better in the presence of other cards, like Festering Newt/Bogbrew Witch/Bubbling Cauldron.
+2020-05-19 00:10:55 <b_jonas> there are creatures that tap to convert color, but I think they take just one mana as input
+2020-05-19 00:11:10 <b_jonas> s/convert/filter/
+2020-05-19 00:11:13 <zzo38> Yes. Although I looked and found a lot more custom cards too.
+2020-05-19 00:11:27 <b_jonas> and some might take {1}... let me search
+2020-05-19 00:11:51 <esowiki> 14[[07User:Salpynx/Pico14]]4 10 02https://esolangs.org/w/index.php?diff=72459&oldid=72340 5* 03Salpynx 5* (+5162) 10now with full brainfuck IO support in 2 symbols. My brain does hurt now.
+2020-05-19 00:12:52 <b_jonas> ``` card-by-name "Ceta Disciple" # a search finds a few
+2020-05-19 00:12:53 <HackEso> Ceta Disciple \ U \ Creature -- Merfolk Wizard \ 1/1 \ {R}, {T}: Target creature gets +2/+0 until end of turn. \ {G}, {T}: Add one mana of any color. \ AP-C
+2020-05-19 00:12:59 <b_jonas> `card-by-name Fire Sprites
+2020-05-19 00:13:00 <HackEso> Fire Sprites \ 1G \ Creature -- Faerie \ 1/1 \ Flying \ {G}, {T}: Add {R}. \ LE-C, ME3-C
+2020-05-19 00:13:05 <b_jonas> `card-by-name Helionaut
+2020-05-19 00:13:06 <HackEso> Helionaut \ 2W \ Creature -- Human Soldier \ 1/2 \ Flying \ {1}, {T}: Add one mana of any color. \ AP-C
+2020-05-19 00:13:18 <b_jonas> `card-by-name Neera Disciple
+2020-05-19 00:13:19 <HackEso> No output.
+2020-05-19 00:13:20 <zzo38> Some seem a little bit too powerful, some seem a bit too less powerful, and some of them have effects that won't work or that are unclear. One of them says if it is tapped at the end of your turn, shuffle it into your library. It should probably be something like "At the beginning of each end step, if ~ is tapped, shuffle it into its owner's library."
+2020-05-19 00:14:23 <b_jonas> `card-by-name Viridian Acolyte
+2020-05-19 00:14:24 <HackEso> Viridian Acolyte \ G \ Creature -- Elf Shaman \ 1/1 \ {1}, {T}: Add one mana of any color. \ DST-C
+2020-05-19 00:16:15 <esowiki> 14[[07User:Salpynx/Pico14]]4 M10 02https://esolangs.org/w/index.php?diff=72460&oldid=72459 5* 03Salpynx 5* (+295) 10/* Hello World! */ source bf version of the code
+2020-05-19 00:18:49 Quit: ornxka (Quit: No Ping reply in 180 seconds.)
+2020-05-19 00:18:49 Names: ^[, ais523, aji, aloril, APic, Arcorann, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, doesthiswork, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-19 00:20:00 Joined: ornxka
+2020-05-19 00:20:00 Names: ^[, ais523, aji, aloril, APic, Arcorann, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, doesthiswork, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
