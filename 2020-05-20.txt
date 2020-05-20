@@ -181,3 +181,22 @@
 2020-05-20 10:58:28 <spruit11> Oops.
 2020-05-20 10:58:32 <spruit11> Never mind.
 2020-05-20 10:59:23 Joined: tromp
+2020-05-20 11:00:49 <b_jonas> ais523: but rm -r also does rmdir, to which the garbage collector thing doesn't apply, rmdir plain just deletes a directory
+2020-05-20 11:01:41 <b_jonas> also rm still works on file systems like FAT, which doesn't have inodes, nor anywhere you could store a link count
+2020-05-20 11:03:04 Quit: tromp (Ping timeout: 256 seconds)
+2020-05-20 11:03:29 Joined: gnu-nobody
+2020-05-20 11:03:29 Names: ^[, ais523, aji, aloril, APic, Arcorann, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, gnu-nobody, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-20 11:03:53 <myname> fizzie: how do you rearrange text using rm?
+2020-05-20 11:04:23 <ais523> b_jonas: does rmdir unlink directories on filesystems that allow for directory hardlinks?
+2020-05-20 11:05:13 <ais523> oh! another thing I did today was to change my bash prompt to show my primary group, rather than my user
+2020-05-20 11:05:33 <ais523> because for all the regular user accounts I use the primary group and user are the same, but sometimes I temporarily switch primary group
+2020-05-20 11:05:41 <ais523> and I want a reminder of when I've done that
+2020-05-20 11:06:08 <b_jonas> ais523: I don't know, "directory hardlinks" is something that I only heard as having existed historically, I don't think I've ever met it as something that actually exists
+2020-05-20 11:06:41 <b_jonas> I don't even know if that ever coexisted with a hierarchical file system
+2020-05-20 11:07:11 <b_jonas> maybe it was used back in pre-v1 unix when every call that needed a path instead took two arguments, a directory name and a file name, with no separators in them
+2020-05-20 11:08:34 <ais523> I vaguely remember NTFS supporting something directory-hardlink-like, it might be different though
+2020-05-20 11:09:58 <b_jonas> I think they just have three different types of symlink
+2020-05-20 11:10:05 <b_jonas> or four
+2020-05-20 11:10:11 <b_jonas> each of which work on directories
+2020-05-20 11:11:38 <b_jonas> although I'm not sure I could even distinguish between "like a symlink" and "like a hardlink" for aliases that are set up by the operating system and that I would never try to remove or rename because I'm sure it would either fail or break something important
+2020-05-20 11:12:20 <b_jonas> I'm not trying to deliberately break my windows systems at work, they break on their own, or third party software that I install breaks them
