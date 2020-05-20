@@ -200,3 +200,12 @@
 2020-05-20 11:10:11 <b_jonas> each of which work on directories
 2020-05-20 11:11:38 <b_jonas> although I'm not sure I could even distinguish between "like a symlink" and "like a hardlink" for aliases that are set up by the operating system and that I would never try to remove or rename because I'm sure it would either fail or break something important
 2020-05-20 11:12:20 <b_jonas> I'm not trying to deliberately break my windows systems at work, they break on their own, or third party software that I install breaks them
+2020-05-20 11:38:01 Quit: ais523 (Ping timeout: 264 seconds)
+2020-05-20 11:38:02 Names: ^[, aji, aloril, APic, Arcorann, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, gnu-nobody, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-20 11:45:49 <fizzie> myname: The description had an "or" condition, not an "and" condition.
+2020-05-20 11:46:03 <fizzie> It's "designed to perform such editorial functions as -- deletion of data".
+2020-05-20 11:46:29 <fizzie> But, yeah, ais523's point on it not actually deleting data is fair enough.
+2020-05-20 11:48:33 <myname> but dd would modify data
+2020-05-20 11:53:25 <fizzie> Hypothetically, you could be using rm for "rearranging text" if you had a document split across multiple files in a scheme where you include all files and use file name sort order to control how they're arranged.
+2020-05-20 11:53:57 <fizzie> Like, my thesis was split to 00_preface.tex, 01_intro.tex and so on, though I don't think I had a wildcard include or anything.
+2020-05-20 11:54:30 <fizzie> (mv maybe more so.)
