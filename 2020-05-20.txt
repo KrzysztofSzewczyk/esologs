@@ -133,3 +133,23 @@
 2020-05-20 09:29:24 <ais523> vim is more powerful but takes more thought to use
 2020-05-20 09:29:45 <int-e> ironically I don't use any of the advanced features
 2020-05-20 09:29:48 <ais523> I think vim is probably only worth using if you're willing to put in enough practice to use it via instinct so that you don't have to think
+2020-05-20 09:30:09 <ais523> like, being able to say "delete 7 words" is powerful, but being able to /count/ 7 words is hard
+2020-05-20 09:30:51 <b_jonas> ais523: right, when you don't want to think that much, you press v then keep hitting e until it reaches the end of what you want to delete, then d
+2020-05-20 09:30:53 <int-e> emacs is my go to editor for most things. specific IDEs I've used include Isabelle/jEdit, coqide, eclipse.
+2020-05-20 09:31:06 <ais523> b_jonas: what's the difference between e and w?
+2020-05-20 09:31:09 <b_jonas> I can occasionally count 7 characters, but I don't think I ever tried to count 7 words
+2020-05-20 09:31:16 <b_jonas> ais523: e goes to the end of a word, w goes to the start of a word
+2020-05-20 09:31:19 <b_jonas> both move forward
+2020-05-20 09:31:25 <ais523> ah right
+2020-05-20 09:31:32 <ais523> vim has so many subtle differences like that
+2020-05-20 09:31:37 <int-e> b_jonas: not a Haiku person
+2020-05-20 09:32:50 <ais523> I think Emacs controls are better for deleting words one at a time, you hold meta and tap d for each word you want to delete
+2020-05-20 09:34:57 <b_jonas> ais523: more importantly, when you do that in emacs, you get one entry in the yank list. vim doesn't try to unify adjacent deletions, so if you hit x four times to delete four characters, you get four yank entries.
+2020-05-20 09:37:01 <ais523> huh, I actually used /6/ editors
+2020-05-20 09:37:04 <ais523> I forgot that one of them was sed
+2020-05-20 09:37:17 <ais523> because automated editing is a little different in nature from human editing
+2020-05-20 09:37:46 <ais523> seven if you count readline at the bash prompt, but you shouldn't
+2020-05-20 09:37:56 <ais523> (and rather more if you count random text input boxes in GUI applications)
+2020-05-20 09:41:55 <int-e> . o O ( like this one in irssi, minus the "G" )
+2020-05-20 09:42:28 <int-e> I really don't think we should count these. :)
+2020-05-20 09:44:09 <int-e> (For example, ghci uses haskeline, which is distinct from readline even though it feels basically the same. If I start looking around a bit I suspect I might find an editline user as well.)
