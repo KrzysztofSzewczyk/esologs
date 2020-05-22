@@ -169,3 +169,47 @@
 2020-05-22 12:28:27 Names: ^[, adu, aji, aloril, andrew_gtgt, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
 2020-05-22 12:28:33 User Name: andrew_gtgt = andrew_gtgt!6d5dc807@109-93-200-7.dynamic.isp.telekom.rs
 2020-05-22 12:28:33 <andrew_gtgt> hello
+2020-05-22 12:33:40 Joined: gnu-nobody
+2020-05-22 12:33:41 Names: ^[, adu, aji, aloril, andrew_gtgt, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, gnu-nobody, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, zzo38
+2020-05-22 12:35:37 <fizzie> Odd, this git repository has a [remote "origin"], but it's configured with url = X.Y.Z.W:foo, where X.Y.Z.W is the IP address of the machine itself (not loopback, its public address) and "foo" the name of the directory it's in. I wonder what happened here.
+2020-05-22 12:36:22 <myname> why is that odd? it's fairly normal imho
+2020-05-22 12:36:33 <andrew_gtgt> new idea: esolang whose only data source is its own source code
+2020-05-22 12:36:59 <myname> andrew_gtgt: so basically anything that does not read from stdin?
+2020-05-22 12:37:13 <andrew_gtgt> yeah and also cannot do stuff like
+2020-05-22 12:37:20 <andrew_gtgt> say, push to the stack
+2020-05-22 12:37:24 <andrew_gtgt> push new thigns to the stack
+2020-05-22 12:37:36 <andrew_gtgt> only reads data from its source code and modifies itself
+2020-05-22 12:38:09 Joined: Lord_of_Life
+2020-05-22 12:38:23 <myname> no stack at all is pretty limited, i suppose
+2020-05-22 12:38:42 <myname> befunge can do that with a reasonably bounded stack
+2020-05-22 12:39:02 <myname> bullying automatons could fall into your idea
+2020-05-22 12:39:31 <andrew_gtgt> or an esolang where you input a number
+2020-05-22 12:39:38 <andrew_gtgt> and it takes the number's prime factors
+2020-05-22 12:39:48 <andrew_gtgt> then reads the digits of those prime factors like instructions
+2020-05-22 12:40:02 <myname> fractran is pretty close
+2020-05-22 12:40:04 <andrew_gtgt> effectively, the job is to find a number whose factors spell out a program
+2020-05-22 12:40:26 <andrew_gtgt> or  verify a prime number which works like that
+2020-05-22 12:40:39 Quit: Lord_of_Life (Ping timeout: 258 seconds)
+2020-05-22 12:41:00 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-05-22 12:41:51 <andrew_gtgt> maybe another thing that plays with numbers
+2020-05-22 12:44:30 <myname> you can do an awful lot with numbers. under a few transformation rules, every program can correspond to a number
+2020-05-22 12:45:04 <myname> iirc there is a bf derivate that just uses an unary number that it transforms into bf code to execute
+2020-05-22 12:45:36 <andrew_gtgt> yes
+2020-05-22 12:46:47 <fizzie> myname: I don't think it's normal for a repository's "origin" remote to refer to itself. Usually it's a *different* machine it was cloned from.
+2020-05-22 12:47:42 <myname> but you'd have to create it at some point
+2020-05-22 12:47:58 <fizzie> Yes, but "git init" doesn't set up any remotes at all.
+2020-05-22 12:48:08 <myname> okay
+2020-05-22 12:48:23 <myname> i rarely use vcs locally
+2020-05-22 12:48:34 <myname> i wish i did, would give me a reason to try pijul
+2020-05-22 12:48:34 <fizzie> It's also paradoxically three commits ahead of itself (in the sense of HEAD vs. refs/remotes/origin/HEAD).
+2020-05-22 12:48:49 <andrew_gtgt> also: a language which also creates languages and sometimes passes execution to them>
+2020-05-22 12:49:05 <fizzie> (I'm guessing I just transplanted the whole directory from some other system rather than cloning it properly, and never cleaned up.)
+2020-05-22 12:49:36 <myname> the head issue is interesting
+2020-05-22 12:49:46 <myname> i never considered that to be different things at all
+2020-05-22 12:50:15 <fizzie> I imagine that's just because the remote refs aren't updated until you actually fetch from the remote.
+2020-05-22 12:51:23 <myname> that is actually pretty neat
+2020-05-22 12:51:34 <myname> so i can just git pull to get back to a safed state
+2020-05-22 12:51:48 <myname> no more need for branches!
+2020-05-22 12:54:15 <andrew_gtgt> is this about github
+2020-05-22 12:55:15 <myname> no, about git
+2020-05-22 12:55:22 <andrew_gtgt> oh
