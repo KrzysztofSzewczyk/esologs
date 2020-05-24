@@ -63,3 +63,16 @@
 2020-05-24 02:06:12 Names: ^[, adu, aji, aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-05-24 02:14:45 Joined: imode
 2020-05-24 02:14:46 Names: ^[, adu, aji, aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-24 04:32:08 <zzo38> How big is IINL^[IINL(3)](0) compared with Skewes's number and other big numbers like that?
+2020-05-24 04:32:13 <Mysteryhunter> hi
+2020-05-24 04:33:43 <Arcorann> What's IINL stand for?
+2020-05-24 04:36:32 <zzo38> Increment in nested loops
+2020-05-24 04:37:48 <Arcorann> Is there a link to the function definition?
+2020-05-24 04:40:23 <zzo38> Article <1589825967.bystand@zzo38computer.org> on sci.math gives a description. I also described it before on this IRC (although I didn't call it "IINL" yet by that time).
+2020-05-24 04:41:24 <zzo38> Make a number of nested "repeat X times" loops where the number of nesting is the initial value of X (the input of the function), and inside of the innermost loop is "increment X" command. The output is the final value of X after all of those loops are finished.
+2020-05-24 04:46:12 <Arcorann> IINL(x) = f_omega(x) in the fast-growing hierarchy, if my understanding is correct
+2020-05-24 04:48:21 <zzo38> Yes, that is what I thought (or at least its Grzegorczyk index is omega), although I have not proven this.
+2020-05-24 04:50:56 <Arcorann> Which means  IINL^[IINL(3)](0) lies between f_{omega+1}(3) and f_{omega+1}(f_{omega}(3)) (haven't done the full calculation)
+2020-05-24 04:53:10 <zzo38> Ah, OK.
+2020-05-24 04:56:23 <Arcorann> If we let f_0(x) = x+1 and f_k(x) be defined by repeat X times { x := f_{k-1}(x) } then f_k(x) = f_{k-1}^x(x) which is the definition of FGH
+2020-05-24 04:58:35 <zzo38> O, OK. That makes sense now
