@@ -76,3 +76,7 @@
 2020-05-24 04:53:10 <zzo38> Ah, OK.
 2020-05-24 04:56:23 <Arcorann> If we let f_0(x) = x+1 and f_k(x) be defined by repeat X times { x := f_{k-1}(x) } then f_k(x) = f_{k-1}^x(x) which is the definition of FGH
 2020-05-24 04:58:35 <zzo38> O, OK. That makes sense now
+2020-05-24 05:26:19 <zzo38> But when you get into infinite ordinals, then what? Some ordinals are limit ordinals and have no predecessor.
+2020-05-24 05:29:03 <Arcorann> Each ordinal alpha is assigned a fundamental sequence -- a sequence of ordinals which is increasing and has limit alpha
+2020-05-24 05:29:41 <Arcorann> For example, the fundamental sequence for omega (for the Wainer hierarchy) is given by omega[n] = n
+2020-05-24 05:29:48 <Arcorann> Thus, f_omega(n) = f_n(n)
