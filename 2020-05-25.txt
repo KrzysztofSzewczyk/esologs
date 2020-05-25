@@ -411,3 +411,54 @@
 2020-05-25 14:28:19 <wib_jonas> zzo38: yes, precomposing the accents is implemented in TeX by LaTeX packages, but you usually enter the precomposed character in some encoding, which is also implemented in TeX by some LaTeX packages
 2020-05-25 14:29:17 <wib_jonas> precomposed characters are necessary both for kerning and for hyphenation
 2020-05-25 14:30:01 <zzo38> Yes, I did just think of hyphenation, when you mentioned LaTeX packages
+2020-05-25 14:30:48 Quit: tromp (Remote host closed the connection)
+2020-05-25 14:30:48 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 14:31:49 <wib_jonas> implemented by some combination of LaTeX core, and the fontenc, babel, and inputenc LaTeX packages, but I don't know more specifically
+2020-05-25 14:32:51 <zzo38> I probably do not need to implement hyphenation in TeXnicard (do any card games need it?), although of course the user can still use precomposed accents if they are using a suitable font.
+2020-05-25 14:33:17 Quit: TheLie (Remote host closed the connection)
+2020-05-25 14:33:18 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 14:33:23 <ais523> I can imagine that card games that wanted a large font size might want hyphenation
+2020-05-25 14:33:33 <ais523> because when using a large font size there isn't much space on the card
+2020-05-25 14:34:00 <wib_jonas> zzo38: I don't know. does TeXnicard want to remain specific to card games, or are you planning to widen its purpose?
+2020-05-25 14:34:15 <zzo38> ais523: Yes, I suppose that is possible, maybe
+2020-05-25 14:34:59 <zzo38> wib_jonas: If the purpose is widened, it would probably still only be used for producing decks of cards, even if the cards are not used in a game.
+2020-05-25 14:35:14 <zzo38> (It isn't intended to be used for typesetting documents.)
+2020-05-25 14:35:15 <wib_jonas> zzo38: are you even sure that there isn't some obscure M:tG card that uses hyphenation?
+2020-05-25 14:35:38 <zzo38> wib_jonas: No, although if you know of one, please mention it.
+2020-05-25 14:35:41 <ais523> if there is it's probably from Alpha or some similarly early set
+2020-05-25 14:36:27 <wib_jonas> zzo38: https://scryfall.com/card/unh/107/ though you won't find that hyphenation point automatically
+2020-05-25 14:36:48 <ais523> wow, Alpha's font size is ridiculously variable
+2020-05-25 14:37:34 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Yoel 5*  10New user account
+2020-05-25 14:39:27 <ais523> Lure in Alpha is hyphenated
+2020-05-25 14:39:34 <ais523> `card-by-name Lure
+2020-05-25 14:39:35 <HackEso> Lure \ 1GG \ Enchantment -- Aura \ Enchant creature \ All creatures able to block enchanted creature do so. \ A-U, B-U, U-U, RV-U, 4E-U, IA-U, 5E-U, 6E-U, MM-U, 7E-U, 8ED-U, CHK-U, 10E-U, M12-U, IMA-U \  \ Lure of Prey \ 2GG \ Instant \ Cast this spell only if an opponent cast a creature spell this turn. \ You may put a green creature card from your hand onto the battlefield. \ MI-R \  \ Lurebound Scarecrow \ 3 \ Artifact Creature -- Scarecro
+2020-05-25 14:39:56 <ais523> also its wording in Alpha is so much more complicated than the Oracle text :-)
+2020-05-25 14:40:12 <ais523> https://scryfall.com/card/lea/211/lure
+2020-05-25 14:40:36 Quit: Arcorann (Read error: Connection reset by peer)
+2020-05-25 14:40:37 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 14:40:43 <zzo38> wib_jonas: Yes, OK, well probably at least at first, I wouldn't implement any hyphenation, but I don't know about in future (but of course someone else can contribute an implementation if they need that feature somehow). Although the unusual formatting in Un-sets is unlikely to be able to be typeset automatically by any program I think (although TeXnicard might still be capable of making the card database).
+2020-05-25 14:41:25 <ais523> looks like the hyphens stayed until fourth edition
+2020-05-25 14:42:08 <wib_jonas> ais523: yeah, it has hyphenation even in revised, which means I might have even seen a hyphenated revised card somewhere (not Lure specifically)
+2020-05-25 14:45:15 <zzo38> I think some writers don't like hyphenation, anyways
+2020-05-25 14:46:19 <esowiki> 14[[07SpaghettiScript14]]4 10 02https://esolangs.org/w/index.php?diff=72843&oldid=72836 5* 03UltimateProGrammer 5* (+793) 10Added FizzBuzz Example and Optional Commands
+2020-05-25 14:47:43 <zzo38> Or maybe I could just add support for manually specified hyphens like the \discretionary command in TeX. I found a implementation of the TeX hyphenation in PostScript, so I suppose if someone really wants hyphenation in TeXnicard, they can adapt that PostScript program for use with TeXnicard.
+2020-05-25 14:48:19 <wib_jonas> it's possible that *modern* M:tG cards don't use hyphenation though, and so it might not be required to support hyphenation if you're making a program to typeset new cards
+2020-05-25 14:48:46 <ais523> I think TeXnicard isn't meant to be specific to M:tG? just to games in general that are made out of cards with rules on them?
+2020-05-25 14:48:59 <ais523> (not necessarily even TCGs)
+2020-05-25 14:49:04 <zzo38> ais523: That is correct.
+2020-05-25 14:49:57 <wib_jonas> sure, M:tG is just the collectible card game that I'm the most familiar with
+2020-05-25 14:50:31 <ais523> I'm probably more familiar with Android: Netrunner at this point
+2020-05-25 14:50:48 <ais523> although I haven't played it much recently bcause the online site isn't very friendly to network problems
+2020-05-25 14:53:02 <orbitaldecay> morning all
+2020-05-25 14:53:19 <wib_jonas> https://scryfall.com/card/3ed/80/sirens-call another uncommon from Revised that has hyphenation
+2020-05-25 14:55:48 <zzo38> One of the hyphens there (in "non-wall") is probably explicit, at least.
+2020-05-25 14:56:16 <Mysteryhunter> morning^^
+2020-05-25 14:56:25 <Mysteryhunter> hereits5PM
+2020-05-25 14:56:38 <Mysteryhunter> uamericans
+2020-05-25 14:56:42 <Mysteryhunter> :)
+2020-05-25 14:57:10 <wib_jonas> zzo38, ais523: here's a modern hyphenation: https://scryfall.com/card/iko/34/de/blitzsturm-capridor
+2020-05-25 14:57:52 <Mysteryhunter> but.hey.in.india.its10.30PM
+2020-05-25 14:58:14 <ais523> wib_jonas: that's a hard hyphen, not a soft hyphen
+2020-05-25 14:58:34 <wib_jonas> ais523: no it's not, not inside Kampfschaden
+2020-05-25 14:58:49 <int-e> Mysteryhunter: https://en.wikipedia.org/wiki/Time_zone
+2020-05-25 14:59:29 <Mysteryhunter> u.wanna.tell.me.who.has.as.desktop.wallpaper.all.timezones.anything.about.timezones?
