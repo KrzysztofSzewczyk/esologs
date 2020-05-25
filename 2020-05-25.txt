@@ -572,3 +572,29 @@
 2020-05-25 16:52:08 <esowiki> 14[[07Hexadecimal Stacking Pseudo-Assembly Language14]]4 M10 02https://esolangs.org/w/index.php?diff=72857&oldid=72856 5* 03PythonshellDebugwindow 5* (-13) 10style
 2020-05-25 16:54:08 Joined: b_jonas
 2020-05-25 16:54:09 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-25 17:03:41 User Name: imode = imode!~linear@unaffiliated/imode
+2020-05-25 17:03:41 <imode> I see someone was here to hear me ask about the parentheses thing.
+2020-05-25 17:05:36 <int-e> fizzie: https://esolangs.org/logs/ seems to be having trouble
+2020-05-25 17:06:41 <fizzie> I really need to properly debug that thing. All I can tell is that it's got something to do with the stalker mode, and *appears* to be a bug in the civetweb server's websocket support, but it's entirely possible that I'm just using it wrong.
+2020-05-25 17:08:03 <fizzie> I've restarted it, and it's working again for me. For a little while, anyway.
+2020-05-25 17:15:38 <fizzie> Here's a random question -- what do you call C++ header files? I've always done .cc for sources, and just used .h for headers, but I'm getting a little tired of adding "// Local Variables:\n// mode: c++\n// End:\n" at the end of every such file in order for Emacs to realize they need c++-mode.
+2020-05-25 17:15:50 <fizzie> Maybe I should go with .hh then.
+2020-05-25 17:16:10 <imode> .hpp? :shrug:
+2020-05-25 17:16:35 <fizzie> I'd need to switch using .cpp for the sources for that, because .cc / .hpp would be just silly.
+2020-05-25 17:17:18 <imode> I haven't heard of people using .cc.
+2020-05-25 17:17:52 <imode> I take that back, I think I've seen some projects using that.
+2020-05-25 17:19:38 <fizzie> Google C++ style uses .cc with plain .h, although I think I adopted that before I knew.
+2020-05-25 17:20:32 * int-e is using .cc and .h, has considered .hh.
+2020-05-25 17:21:05 <fizzie> Someone must've probably data-mined GitHub to figure out the relative popularity of each extension.
+2020-05-25 17:21:15 <int-e> .cpp reminds me of the C preprocessor.
+2020-05-25 17:22:17 <fizzie> The ones I've heard of are .cpp, .cc, .cxx, .c++ and .C. The last isn't particularly friendly to case-insensitive (esp. non-case-preserving) filesystems.
+2020-05-25 17:22:50 <int-e> I imagine .c++ also causes trouble on some file systems
+2020-05-25 17:22:59 Joined: sleepnap
+2020-05-25 17:23:00 Names: ^[, ais523, aji, aloril, APic, arseniiv, ArthurStrong, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-25 17:23:02 <int-e> and/or HTTP
+2020-05-25 17:27:11 <zzo38> I have mostly seen .cpp, with .h for the header files.
+2020-05-25 17:28:29 <esowiki> 14[[07Parentheses only14]]4 10 02https://esolangs.org/w/index.php?diff=72858&oldid=72855 5* 03Hakerh400 5* (-181) 10/* Computation */ Group A must have at least two elements at that point, so that sentence was redundant
+2020-05-25 17:29:15 User Name: b_jonas = b_jonas!~x@catv-176-63-12-50.catv.broadband.hu
+2020-05-25 17:29:15 <b_jonas> fizzie: I call them .h except when I add a new header to a project that already has a filename convention for this
+2020-05-25 17:29:36 User Name: arseniiv = arseniiv!~arseniiv@94.41.226.83.dynamic.ufanet.ru
+2020-05-25 17:29:36 <arseniiv> hi
