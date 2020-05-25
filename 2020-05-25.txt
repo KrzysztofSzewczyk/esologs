@@ -307,3 +307,53 @@
 2020-05-25 12:41:59 Joined: Lord_of_Life
 2020-05-25 12:44:18 Quit: Lord_of_Life (Ping timeout: 256 seconds)
 2020-05-25 12:44:19 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-05-25 13:12:16 Joined: ais523
+2020-05-25 13:12:17 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 13:13:24 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-25 13:13:24 <ais523> wib_jonas: a while back, there was a situation where someone was trying to sell a commercial derivative of some GPL'ed code, and they had (as legally required) released the source, so I tried to get it to compile but the toolchain was insane
+2020-05-25 13:13:36 <ais523> I almost managed to do so, but with the issue that I couldn't link in libm without everything breaking
+2020-05-25 13:13:43 <ais523> so instead, I reimplemented all the libm functions it was using
+2020-05-25 13:13:57 <ais523> one of them was round; I replaced round(x) with (int)(x+0.5)
+2020-05-25 13:14:52 <wib_jonas> which version of GPL?
+2020-05-25 13:15:30 <wib_jonas> I guess it doesn't matter for this
+2020-05-25 13:15:58 Quit: zzo38 (Ping timeout: 260 seconds)
+2020-05-25 13:15:59 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m]
+2020-05-25 13:16:13 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-05-25 13:16:13 <rain1> do you want a problem
+2020-05-25 13:16:38 <rain1> put 3*n balls in box A. there are 3 boxes. in step k you must move k balls to another box.
+2020-05-25 13:16:47 <ais523> which probably isn't quite mathematically perfect but should be close enough
+2020-05-25 13:16:48 <rain1> by step n you can have n balls in each box
+2020-05-25 13:17:02 <ais523> wib_jonas: 1, but indeed it doesn't matter much
+2020-05-25 13:17:03 <rain1> n>=5
+2020-05-25 13:17:18 <ais523> 3 would be relevant in that if the build instructions were insufficient, the derivative would be illegal
+2020-05-25 13:17:22 <wib_jonas> there's a GPL1? I thought they numbered it from 2
+2020-05-25 13:17:37 <ais523> there was, it isn't used any more, it's really buggy
+2020-05-25 13:17:46 <ais523> and I'm not sure there was a single standardised version of it
+2020-05-25 13:17:56 <ais523> but rather lots of tweaked versions, a little like MIT and BSD nowadays
+2020-05-25 13:17:56 <wib_jonas> ok good
+2020-05-25 13:18:02 User Name: Arcorann = Arcorann_!~awych@121-200-6-58.79c806.syd.nbn.aussiebb.net
+2020-05-25 13:18:02 <Arcorann> There's at least one Tetris clone licensed under GPL1, back when it was new
+2020-05-25 13:20:02 <wib_jonas> what I'd like is an MIT-like license, that is, just a sticky disclaimer of warranties, but with the special property that where it allows anyone to redistribute identical or derived versions, it explicitly says "perpetual worldwide" or words to such effect.
+2020-05-25 13:20:33 <wib_jonas> I'm uneasy by the licences not stating those explicitly, I'm worried that it will bite *someone* *somewhere* eventually
+2020-05-25 13:21:24 <moony> ais523: doesn't the x+0.5 method of round have trouble with negatives?
+2020-05-25 13:21:43 <ais523> moony: ah right, I think it does
+2020-05-25 13:21:51 <ais523> e.g. -2.2 would round to -1 which is obviously wrong
+2020-05-25 13:22:00 <wib_jonas> moony: yes, and also with numbers larger than an int, but presumably that didn't matter in the particular source code file that ais edited
+2020-05-25 13:22:02 <ais523> but the number in question was always positive
+2020-05-25 13:23:38 <moony> also, on a different note: Texas Instruments is pulling support for assembly programs on the TI-84 Plus
+2020-05-25 13:23:52 <moony> new versions of the OS will no longer support ASM programs
+2020-05-25 13:23:54 <moony> TI--
+2020-05-25 13:23:56 <wib_jonas> moony: what exactly would "pulling support" mean?
+2020-05-25 13:24:03 <moony> wib_jonas: they no longer run.
+2020-05-25 13:24:27 <moony> they're removing the functionality entirely
+2020-05-25 13:24:49 <wib_jonas> you can't make them run at all? like, you have to root your calculator before you can even technically run one, as opposed to they just aren't willing to give help and documentation and tell you to run them at your own risk?
+2020-05-25 13:25:02 <moony> You have to roll back the OS or use a different OS, yes.
+2020-05-25 13:25:24 <wib_jonas> wow
+2020-05-25 13:25:44 <ais523> by asm do you mean actual asm, or do you mean machine code?
+2020-05-25 13:25:55 <wib_jonas> is there a money-back guarantee with this, where you can get your money back if you claim that you bought the calculator because you wanted to run machine code programs too and get updates?
+2020-05-25 13:26:05 <moony> ais523: machine code. The official OS has no assembler.
+2020-05-25 13:26:17 <moony> wib_jonas: I haven't a clue
+2020-05-25 13:26:43 <moony> at least the security keys for the OS have been an open secret for a long time now
+2020-05-25 13:26:54 <moony> so "rooting" the device isn't very hard
+2020-05-25 13:27:24 <moony> they claim they did this to prevent cheating, but imo it doesn't really change anything at all
+2020-05-25 13:27:46 <wib_jonas> sure
