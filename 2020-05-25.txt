@@ -598,3 +598,58 @@
 2020-05-25 17:29:15 <b_jonas> fizzie: I call them .h except when I add a new header to a project that already has a filename convention for this
 2020-05-25 17:29:36 User Name: arseniiv = arseniiv!~arseniiv@94.41.226.83.dynamic.ufanet.ru
 2020-05-25 17:29:36 <arseniiv> hi
+2020-05-25 17:30:03 <int-e> no, .hi is taken for Haskell interface files ;)
+2020-05-25 17:32:17 <zzo38> GCC accepts .cc, .cp, .cxx, .cpp, .CPP, .c++, and .C.
+2020-05-25 17:32:51 <myname> why not .CP or .CC?
+2020-05-25 17:33:21 <arseniiv> <int-e> .cpp reminds me of the C preprocessor. => . o O ( C’goheaderomorphic preprocessomorphism )
+2020-05-25 17:33:31 <zzo38> I don't know, but it isn't listed in the man page
+2020-05-25 17:34:13 <arseniiv> int-e: (rofl)
+2020-05-25 17:35:04 <zzo38> (For header files, the extension is irrelevant unless you want to compile the header files alone, which GCC does implement.)
+2020-05-25 17:42:16 Quit: ArthurStrong (Ping timeout: 265 seconds)
+2020-05-25 17:42:16 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-25 17:44:53 Quit: tromp (Remote host closed the connection)
+2020-05-25 17:44:53 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-25 17:45:19 <arseniiv> my friend suggested .c⁤⁤ which is a three-character extension ending with two `U+2064 INVISIBLE PLUS`es
+2020-05-25 17:47:16 <rain1> lol
+2020-05-25 17:47:21 <rain1> i checked U+2064, it's real
+2020-05-25 17:48:27 <rain1> https://www.youtube.com/watch?v=Z_zmZ23grXE
+2020-05-25 17:48:42 <fizzie> It also appears to accept .hh, .H, .hp, .hxx, .hpp, .HPP, .h++ and .tcc as C++-specific header extensions.
+2020-05-25 17:48:53 <arseniiv> rain1: of course it’s real, duh. We live in U+2062 INVISIBLE TIMES :D
+2020-05-25 17:49:02 <rain1> hahaha
+2020-05-25 17:49:45 <fizzie> `quote INVISIBLE TIMES
+2020-05-25 17:49:46 <HackEso> 990) <fizzie> "May you live in INVISIBLE TIMES." --Old Chinese proverb. (It can look confusing when written with the proper Unicode.)
+2020-05-25 17:50:05 <arseniiv> and now he suggested .c⧺ (U+29FA DOUBLE PLUS)
+2020-05-25 17:50:06 Joined: tromp
+2020-05-25 17:50:07 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-25 17:50:33 <arseniiv> fizzie: rofoldr :D
+2020-05-25 17:51:24 <fizzie> .c‡ might also be an option.
+2020-05-25 17:52:46 <b_jonas> kspalaiologos: if you want to write a floating point unit, look at https://bellard.org/softfp/ , which contains the original softfp library by Bellard as well as the larger qemu softfloat library that emulates almost enough operations to be used in qemu for the rare non-hardware-accelerated floating point case
+2020-05-25 17:53:08 <kspalaiologos> it's crappy
+2020-05-25 17:53:09 <b_jonas> kspalaiologos: plus obviously look at TAOCP chapter 4
+2020-05-25 17:53:17 <kspalaiologos> I've got a better idea on implementing my floating point stuff
+2020-05-25 17:53:30 <arseniiv> fizzie: ‡ isn’t that quite a double dagger to shoot oneself in the leg with
+2020-05-25 17:53:33 <kspalaiologos> IEEE754 and such are the worst thing to implement in Brainfuck
+2020-05-25 17:53:47 <kspalaiologos> my system will be simply based on fractions, mostly on performance / size / simplicity ratio
+2020-05-25 17:54:01 <rain1> https://www.youtube.com/watch?v=Qr28DwXeyu0
+2020-05-25 17:54:02 <b_jonas> kspalaiologos: for that I can just say that I wouldn't want to implement anything in brainfuck
+2020-05-25 17:54:07 Parted: Frater_EST
+2020-05-25 17:54:07 Names: ^[, ais523, aji, aloril, APic, arseniiv, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zseri, zzo38
+2020-05-25 17:54:07 <rain1> particle based CA
+2020-05-25 17:54:24 <b_jonas> and if implementing IEEE754 is hard, that is just another extra evidence for that
+2020-05-25 17:54:34 <kspalaiologos> b_jonas, well, you won't implement, while I'm willing to
+2020-05-25 17:54:49 <b_jonas> ok, I'm just giving a hint
+2020-05-25 17:54:49 <kspalaiologos> and so far IEEE754 is the worst way to approach this problem
+2020-05-25 17:54:59 <kspalaiologos> I've seen softfloat
+2020-05-25 17:55:00 <b_jonas> I'm not saying that you should use that library as is
+2020-05-25 17:55:01 <kspalaiologos> or softfp
+2020-05-25 17:55:08 <kspalaiologos> it's too bloated
+2020-05-25 17:55:12 <arseniiv> kspalaiologos: the best floating point is a fixed point :?
+2020-05-25 17:55:17 <rain1> http://www.ventrella.com/Clusters/
+2020-05-25 17:55:24 <kspalaiologos> I also considered fixed point
+2020-05-25 17:55:31 <kspalaiologos> it's not a bad idea actually in terms of accuracy
+2020-05-25 17:55:37 <kspalaiologos> but it's quite hard to write performant routines for that
+2020-05-25 17:56:00 <kspalaiologos> like, a 16-bit interpreter
+2020-05-25 17:56:19 <kspalaiologos> smallest value is 1/65536
+2020-05-25 17:56:45 <kspalaiologos> not bad - approximately 0.00001
+2020-05-25 17:57:01 <kspalaiologos> 2/65536 is 0.00003
+2020-05-25 17:58:56 <arseniiv> kspalaiologos: oh, have you also heard about posit arithmetic and something like that? I think I asked about them here but now I absolutely don’t remember what the opinion on their usefulness or novelty was
