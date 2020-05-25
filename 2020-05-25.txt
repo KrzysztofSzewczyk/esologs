@@ -399,3 +399,15 @@
 2020-05-25 13:55:31 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
 2020-05-25 13:55:31 <zzo38> ais523: I have seen that idea before, I think.
 2020-05-25 13:55:52 <ais523> also è is such a pain to type, the grave accent is typed on this layout as altgr-# and because it's a UK keyboard, # is three keys to the right of L, way beyond my normal typing position
+2020-05-25 14:09:15 <zzo38> wib_jonas: Well, I am not using Unicode, so I have neither the problems nor the benefits of it. Instead, my idea is an extension of the font metric file; each font declares its own precomposed characters (if any).
+2020-05-25 14:10:19 <zzo38> If you specify a base and accent separately, it will select the precomposed character instead if it is present; if there is no glyph for a precomposed character, it will automatically be decomposed for display (whether the precomposed character was entered explicitly or whether it was automatically converted into the precomposed character).
+2020-05-25 14:11:03 <wib_jonas> zzo38: sure, but that doesn't change much of what you need here, except when "not using Unicode" means a legacy system like an old text mode video card or printer that can only have a very limited number of precomposed glyphs
+2020-05-25 14:11:05 <zzo38> But what I mentioned before about ligatures and kerns was for the case where there is no precomposed variant in the font.
+2020-05-25 14:11:30 <wib_jonas> zzo38: ok
+2020-05-25 14:12:21 <zzo38> (Specifically, that ligatures are always disabled, positive kerns are always enabled, and negative kerns are sometimes enabled or sometimes disabled depending on the height of the adjacent characters.)
+2020-05-25 14:18:58 <zzo38> I have not actually tried this, so I don't know if this output looks reasonable and whether it is better or worse than what TeX does, but do you know?
+2020-05-25 14:21:02 <wib_jonas> I don't know, because I think non-precomposed accents don't really come up, outside of math mode, but math mode has very different rules for kerning anyway
+2020-05-25 14:23:46 <zzo38> The Computer Modern fonts have no precomposed accents, and TeX doesn't have the ability to automatically select a precomposed character when an accent is specified anyways (unless you enter the precomposed character explicitly, which is probably what you would do if you are writing a document in a language other than English, anyways).
+2020-05-25 14:28:19 <wib_jonas> zzo38: yes, precomposing the accents is implemented in TeX by LaTeX packages, but you usually enter the precomposed character in some encoding, which is also implemented in TeX by some LaTeX packages
+2020-05-25 14:29:17 <wib_jonas> precomposed characters are necessary both for kerning and for hyphenation
+2020-05-25 14:30:01 <zzo38> Yes, I did just think of hyphenation, when you mentioned LaTeX packages
