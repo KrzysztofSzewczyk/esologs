@@ -357,3 +357,45 @@
 2020-05-25 13:26:54 <moony> so "rooting" the device isn't very hard
 2020-05-25 13:27:24 <moony> they claim they did this to prevent cheating, but imo it doesn't really change anything at all
 2020-05-25 13:27:46 <wib_jonas> sure
+2020-05-25 13:33:14 <rain1> does anyone want to play nim?
+2020-05-25 13:33:20 <rain1> A:3 B:5 C:2
+2020-05-25 13:33:22 <ais523> nim is a solved game, isn't it?
+2020-05-25 13:33:38 <ais523> A:3 B:1 C:2 is I believe the correct solution there
+2020-05-25 13:33:51 <rain1> A:1 B:1 C:2
+2020-05-25 13:33:51 <ais523> regardless of whether you're playing "all-zeroes wins" or "all-zeroes loses"
+2020-05-25 13:34:01 <ais523> OK, now I need to know the victory condition to play my next move
+2020-05-25 13:34:13 <rain1> you can choose
+2020-05-25 13:34:31 <ais523> if all-zeroes wins, I play A:1 B:1 C:0
+2020-05-25 13:34:55 <rain1> A:0 B:1 C:0
+2020-05-25 13:35:02 <ais523> A:0 B:0 C:0
+2020-05-25 13:35:07 <rain1> thanks!
+2020-05-25 13:35:07 <ais523> I win
+2020-05-25 13:35:49 <ais523> I feel like knowing the solution to a solved game is the sort of skill that could come in handy if you could persuade other people to play it for money, or the like
+2020-05-25 13:36:11 <rain1> i was surprised you knew a winning move regardless of win condition
+2020-05-25 13:37:00 <ais523> it only matters at the point when the winning move is to reduce the board to some number of 1s and some number of 0s
+2020-05-25 13:37:19 <ais523> at the time you do that, you're reducing a 2 or higher (otherwise the board would be in the some-number-of-1s-some-number-of-0s situation already)
+2020-05-25 13:37:31 <ais523> so depending the win condition you reduce it to either a 0 or a 1 to produce an odd or an even number of 1s
+2020-05-25 13:37:50 <ais523> * depending on the win condition
+2020-05-25 13:38:18 <ais523> in all the previous moves, the win condition doesn't matter because if you give the opponent the opportunity to reduce to just 1s and 0s you've lost anyway
+2020-05-25 13:45:03 Quit: tromp (Remote host closed the connection)
+2020-05-25 13:45:03 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m]
+2020-05-25 13:46:06 Joined: tromp
+2020-05-25 13:46:06 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m]
+2020-05-25 13:46:23 <wib_jonas> I think unqualified Num means the game where all zeroes wins, and there's some fancy name for the one where all zeroes loses
+2020-05-25 13:47:57 <wib_jonas> also I've read the solution for all zeroes loses once, but I didn't really remember it, so I couldn't have given the winning moves for that for certain
+2020-05-25 13:48:01 <ais523> it's "misere" with an accent, but I forget which accent and which letter it goes on
+2020-05-25 13:48:06 <ais523> (although the first e looks like a plausible place)
+2020-05-25 13:48:41 <ais523> "misère", I just looked it up
+2020-05-25 13:49:04 <ais523> https://en.wiktionary.org/wiki/mis%C3%A8re
+2020-05-25 13:49:10 <ais523> apparently the term is more general than just Nim
+2020-05-25 13:49:25 <ais523> "2. In which a player unable to move wins."
+2020-05-25 13:49:42 <ais523> I wasn't expecting to see a definition so precisely applicable in a general-purpose dictionary
+2020-05-25 13:50:59 <wib_jonas> well, wiktionary might not be a typical dictionary for such technical terms
+2020-05-25 13:52:26 <fizzie> https://www.merriam-webster.com/dictionary/mis%C3%A8re just has the noun.
+2020-05-25 13:53:06 Joined: zzo38
+2020-05-25 13:53:07 Names: ^[, ais523, aji, aloril, APic, Arcorann, arseniiv, ArthurStrong, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, Vorpal, wib_jonas, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 13:55:00 <ais523> I've long thought that in chess, being stalemated should count as a win (this is more interesting than the variant where being stalemated counts as a loss)
+2020-05-25 13:55:06 <ais523> presumably, that's technically misère chess
+2020-05-25 13:55:31 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-05-25 13:55:31 <zzo38> ais523: I have seen that idea before, I think.
+2020-05-25 13:55:52 <ais523> also è is such a pain to type, the grave accent is typed on this layout as altgr-# and because it's a UK keyboard, # is three keys to the right of L, way beyond my normal typing position
