@@ -1,0 +1,18 @@
+2020-05-25 00:00:40 <imode> it's definitely not a pretty language, but you can do some interesting things in it.
+2020-05-25 00:00:55 <imode> for example, you can define what `if` and `if/else` are.
+2020-05-25 00:01:03 <orbitaldecay> Nice, hopping in the car but will read shortly. Here's what I'm working on https://esolangs.org/wiki/User:Orby/Term_rewriting_metalanguage
+2020-05-25 00:01:10 <imode> been reading that.
+2020-05-25 00:01:14 <imode> looks neat.
+2020-05-25 00:02:44 <imode> if is just `def [true if] [rapply] def [false if] [rdrop]`
+2020-05-25 00:03:08 <imode> if/else is `def [true if/else] [rapply rdrop rswap] def [false if/else] [rapply rdrop]`
+2020-05-25 00:05:12 <imode> it's not satisfying because you still have all those pre-defined things in the way. I guess I just like stuff like Thue more because you have no assumptions other than "I will replace this thing with this other thing at random".
+2020-05-25 00:05:50 <imode> out of chaos on a 1D line, you can enforce order.
+2020-05-25 00:05:54 <orbitaldecay> Hatebin link is not loading. Confirm?
+2020-05-25 00:06:21 <imode> loading for me.
+2020-05-25 00:06:43 <orbitaldecay> Hmm, will try again
+2020-05-25 00:16:05 <orbitaldecay> I hate to be a bother, but could you post it somewhere else? I really want to read what you're working on but hatebin in timing out for me.
+2020-05-25 00:22:03 Joined: tromp
+2020-05-25 00:22:03 Names: ^[, adu, aji, aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 00:27:01 Quit: tromp (Ping timeout: 272 seconds)
+2020-05-25 00:27:01 Names: ^[, adu, aji, aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 00:29:29 <orbitaldecay> imode: ping
