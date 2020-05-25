@@ -16,3 +16,31 @@
 2020-05-25 00:27:01 Quit: tromp (Ping timeout: 272 seconds)
 2020-05-25 00:27:01 Names: ^[, adu, aji, aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
 2020-05-25 00:29:29 <orbitaldecay> imode: ping
+2020-05-25 00:30:19 <imode> pong.
+2020-05-25 00:30:58 <esowiki> 14[[07Talk:(1) Grace sent you a message14]]4 N10 02https://esolangs.org/w/index.php?oldid=72830 5* 03JonoCode9374 5* (+223) 10Created page with "Yeah thanks a lot. My browser thinks I've got one notification now, when I don't. ~~~~ ;P"
+2020-05-25 00:31:29 <imode> https://pastebin.com/raw/dcYx4u1i
+2020-05-25 00:31:38 <imode> weird that hatebin is timing out.
+2020-05-25 00:32:19 <orbitaldecay> Definitely, thank you reading now
+2020-05-25 00:34:53 <imode> I think the problem is that there's way too many assumptions baked into the interpreter here.
+2020-05-25 00:36:43 <imode> it's not really a "rewriting language" if you aren't utilizing the rewriting part of it any further than base cases.
+2020-05-25 00:38:20 <b_jonas> I don't see spruit's language as a "term rewriting language" either, even though he claims it's a term rewriting language
+2020-05-25 00:40:04 Joined: Lord_of_Life
+2020-05-25 00:43:50 Quit: Lord_of_Life (Ping timeout: 272 seconds)
+2020-05-25 00:43:51 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-05-25 00:51:04 <imode> it's not satisfying to write in a language with pre-baked assumptions. it's more fun to build those things.
+2020-05-25 00:54:30 <orbitaldecay> imode: What you have there reminds me a lot of concatenative combinators
+2020-05-25 00:55:28 <imode> yeah. it kinda just popped out.
+2020-05-25 00:55:29 <orbitaldecay> Have you read the paper by Brent Kirby? I think you'd find use for it here
+2020-05-25 00:55:50 <orbitaldecay> It's very accessible too
+2020-05-25 00:55:55 <imode> Concatenative Calculus?
+2020-05-25 00:56:05 <imode> theory of concatenative combinators, I take it.
+2020-05-25 00:56:15 <orbitaldecay> correct
+2020-05-25 00:56:23 <imode> yeah, I've been all around the concatenative scene.
+2020-05-25 00:56:48 <orbitaldecay> Gotcha, I've only stumbled onto it recently
+2020-05-25 00:57:46 <imode> it's an interesting idea. the language (and interpreter) has left and right-handed versions of all of the combinators (dup swap drop quote cat call).
+2020-05-25 00:58:07 <orbitaldecay> It seems to me like what you need is a good basis to work with
+2020-05-25 00:58:14 <imode> it just doesn't strike me as satisfying.
+2020-05-25 00:58:28 <imode> you pre-suppose things and quoted lists of things.
+2020-05-25 00:59:06 Joined: sleepnap
+2020-05-25 00:59:06 Names: ^[, adu, aji, aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, Mysteryhunter, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, sleepnap, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-25 00:59:28 <orbitaldecay> And you'd prefer to build those lists out of some other primitive?
