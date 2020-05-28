@@ -149,3 +149,17 @@
 2020-05-28 14:18:37 <arseniiv> @tell imode oh! Maybe that’s why I sensed I encountered something like that not long ago!
 2020-05-28 14:18:37 <lambdabot> Consider it noted.
 2020-05-28 14:19:56 <arseniiv> though IIRC it doesn’t work like a Markov algorithm would, having a specific order of rules very important to execution results
+2020-05-28 14:30:37 <cpressey> arseniiv: ah, you want non-deterministic tree-rewriting?  (I mean: what Thue calls "non-deterministic")
+2020-05-28 14:31:52 <cpressey> (s/tree/term/ if you like)
+2020-05-28 14:35:25 <arseniiv> cpressey: maybe non-deterministic is also an option! (MA, on the other hand, is deterministic.) Though right now I don’t want the language badly, that was just an option for writing a simple register machine implementation to add to my friend’s repo of various idiomatic implementations of the same machine with the same functionality in different languages. We also consider writing that machine in itself, but I’m lazy to begin. Th
+2020-05-28 14:35:25 <arseniiv> n I thought maybe I’ll be able to write the impl in MA, but that quickly proven itself *very* tarpit-y and I quitted
+2020-05-28 14:40:48 <cpressey> To be clear, I don't mean really non-deterministic, I mean, like Thue, you are given no guarantee of the order that the rewrites will happen (so if you want your program to have consistent behaviour, you need to code those guards into your program.)
+2020-05-28 14:42:09 <cpressey> Maybe you understood that
+2020-05-28 14:42:16 <cpressey> I can never tell with this word
+2020-05-28 14:42:27 <cpressey> I don't know enough about Markov algorithms to say
+2020-05-28 14:42:58 <cpressey> I tend to confuse it with "Markov chain" which I do tend to think of as something generated with a random factor
+2020-05-28 14:43:05 <cpressey> and thus not deterministic
+2020-05-28 14:43:36 <cpressey> At any rate, I don't think I've seen a term-rewriting version of Thue, which is basically what I was thnking of
+2020-05-28 14:47:41 <arseniiv> cpressey: yeah yesterday I almost wrote “Markov chain” several times too when mentioning them in another place
+2020-05-28 14:47:43 Quit: Arcorann (Read error: Connection reset by peer)
+2020-05-28 14:47:44 Names: ^[, aji, aloril, APic, arseniiv, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
