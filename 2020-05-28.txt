@@ -172,3 +172,12 @@
 2020-05-28 15:47:19 <arseniiv> woah, I’ve came up with a datatype “a complex number z with |z| ≤ 1”. One can overflow on addition, but not multiplication, and maybe one also could use as literals only numbers of form exp(i t) with t from a fixed finite subset of reals
 2020-05-28 15:48:58 <arseniiv> adding a special value ∞ to this type in lieu of IEEE 754 can be useful^W esoful, moreso if arithmetic is defined with it in a weird way
 2020-05-28 15:51:51 <arseniiv> of course having a value of that type represented by a pair of regular IEEE 754 float64s is also quite eso in runtime behaviour (an expression may overflow suddenly when mathematically its value is in the disk)
+2020-05-28 16:01:46 Quit: cpressey (Quit: WeeChat 1.9.1)
+2020-05-28 16:01:46 Names: ^[, aji, aloril, APic, arseniiv, atehwa, baidicoot, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, Vorpal, wmww, xavo[m], xelxebar, xylochoron[m], zzo38
+2020-05-28 16:05:17 User Name: FreeFull = FreeFull!~freefull@defocus/sausage-lover
+2020-05-28 16:05:17 <FreeFull> arseniiv: It would probably be easier to represent it as a magnitude, angle pair
+2020-05-28 16:05:51 <arseniiv> FreeFull: but not as eso! Though this way addition and subtraction would get weird rounding errors, I like it
+2020-05-28 16:06:17 <FreeFull> Right, a + ib makes it easier to do addition
+2020-05-28 16:06:32 <arseniiv> also I think ∞ should be printed and read as “FAR”
+2020-05-28 16:06:35 <FreeFull> r*exp(i t) makes it easier to do multiplication
+2020-05-28 16:07:01 <arseniiv> yeah
