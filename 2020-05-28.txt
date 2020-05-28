@@ -168,3 +168,7 @@
 2020-05-28 15:08:39 <esowiki> 14[[07Comefrom0x1014]]4 M10 02https://esolangs.org/w/index.php?diff=72995&oldid=70900 5* 03PythonshellDebugwindow 5* (+0) 10
 2020-05-28 15:11:14 <esowiki> 14[[07Category:Implemented14]]4 M10 02https://esolangs.org/w/index.php?diff=72996&oldid=7903 5* 03PythonshellDebugwindow 5* (+1) 10
 2020-05-28 15:15:49 <esowiki> 14[[07Ais52314]]4 M10 02https://esolangs.org/w/index.php?diff=72997&oldid=53460 5* 03PythonshellDebugwindow 5* (+14) 10
+2020-05-28 15:40:12 <esowiki> 14[[07Forbin14]]4 M10 02https://esolangs.org/w/index.php?diff=72998&oldid=72976 5* 03PythonshellDebugwindow 5* (+271) 10
+2020-05-28 15:47:19 <arseniiv> woah, I’ve came up with a datatype “a complex number z with |z| ≤ 1”. One can overflow on addition, but not multiplication, and maybe one also could use as literals only numbers of form exp(i t) with t from a fixed finite subset of reals
+2020-05-28 15:48:58 <arseniiv> adding a special value ∞ to this type in lieu of IEEE 754 can be useful^W esoful, moreso if arithmetic is defined with it in a weird way
+2020-05-28 15:51:51 <arseniiv> of course having a value of that type represented by a pair of regular IEEE 754 float64s is also quite eso in runtime behaviour (an expression may overflow suddenly when mathematically its value is in the disk)
