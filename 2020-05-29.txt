@@ -124,3 +124,37 @@
 2020-05-29 12:19:02 Names: ^[, AdrameleK, aji, aloril, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
 2020-05-29 12:29:17 Quit: sprocklem (Ping timeout: 258 seconds)
 2020-05-29 12:29:17 Names: ^[, AdrameleK, aji, aloril, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-29 12:30:59 Joined: sprocklem
+2020-05-29 12:31:00 Names: ^[, AdrameleK, aji, aloril, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-29 12:33:19 Joined: ais523
+2020-05-29 12:33:20 Names: ^[, AdrameleK, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-29 12:33:36 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-29 12:33:36 <ais523> <cpressey> Weird. Half the internet just died for me. ← perhaps your DNS server died? then you'd only be able to visit sites for which your browser had the IP address cached
+2020-05-29 12:34:29 <ais523> (or where the IP address had been cached by some other part of your network stack)
+2020-05-29 12:35:32 <int-e> hmm. Does Not Serve
+2020-05-29 12:39:34 <shachaf> My naive sudoku DPLL solver was much faster than my somewhat less naive DPLL SAT solver at solving sudoku puzzles.
+2020-05-29 12:39:44 <shachaf> At first I was frustrated by it, but then I realized my encoding was bad:
+2020-05-29 12:40:22 <shachaf> I gave it constraints like "at least one of each digit in each row", where I should have given it "at most one" instead, since that was truer to what the direct solver was doing.
+2020-05-29 12:41:03 <ais523> would giving /both/ constraints make it faster or slower?
+2020-05-29 12:41:29 <ais523> my intuition says that the more constraints you can give a SAT solver, the better; but I don't know whether that's true for algorithms used by SAT solvers in practice
+2020-05-29 12:42:59 <esowiki> 14[[07Brainmaker14]]4 M10 02https://esolangs.org/w/index.php?diff=73046&oldid=73043 5* 03PythonshellDebugwindow 5* (-5) 10eso styles
+2020-05-29 12:43:41 <esowiki> 14[[07Meta Turing-complete14]]4 M10 02https://esolangs.org/w/index.php?diff=73047&oldid=30899 5* 03PythonshellDebugwindow 5* (+23) 10
+2020-05-29 12:43:43 <shachaf> I suspect it's mostly true, unless the clauses are pretty useless.
+2020-05-29 12:44:01 <shachaf> I don't know that these "at least" clauses are very useful.
+2020-05-29 12:46:23 <shachaf> Also, my naive sudoku solver was fast on the few instances I tried it on, but when I tried it on a bunch more it took as much as 70 seconds.
+2020-05-29 12:47:58 <shachaf> (I wrote it in Python in about 20 minutes a few months ago, it's not meant to be fast or anything.)
+2020-05-29 12:48:28 <shachaf> I wonder whether random variable ordering + Luby restarts would speed it up a lot. Probably?
+2020-05-29 12:50:12 <ais523> this reminds me of the time when there was a spontaneous unofficial competition to write Polarium solvers
+2020-05-29 12:50:16 <ais523> the winner turned out to be a SAT solver
+2020-05-29 12:50:25 <ais523> configured to understand Polarium
+2020-05-29 12:50:46 <shachaf> That's pretty promising.
+2020-05-29 12:52:06 <ais523> (the rules of Polarium: you have an m by n grid, the cells at the border are all gray, the others are each either black or white; you need to come up with a continuous non-self-intersecting path of squares connected at their edges, starting and ending anywhere, that for each horizontal row on the grid, either goes through every black square on the row but no white squares, or through every white square on the grid but no black squares)
+2020-05-29 12:53:23 <shachaf> Every white square on the grid?
+2020-05-29 12:53:43 <ais523> err, on the row
+2020-05-29 12:53:44 <ais523> not the grdi
+2020-05-29 12:53:47 <ais523> sorry
+2020-05-29 12:54:35 <ais523> it strikes me that there's no particular reason why puzzles should confine themselves to gray squares at the border but nowhere else, but that seems to be the convention
+2020-05-29 12:56:56 <shachaf> Is it http://bach.istc.kobe-u.ac.jp/copris/puzzles/polarium/index.html ?
+2020-05-29 12:57:37 <shachaf> I should make my SAT solver good.
+2020-05-29 12:57:48 <shachaf> I bet it's not that much more work to make it acceptable.
+2020-05-29 12:59:55 <ais523> that appears to be a solver for the same puzzle, although it appears to have been created independently of our competition
