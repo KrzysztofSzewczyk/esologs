@@ -140,3 +140,56 @@
 2020-05-30 11:51:03 <b_jonas> I don't know, but I think that's a well known question and there are candidates on the internet, though it might be hard to prove which one is "the hardest"
 2020-05-30 11:55:25 <shachaf> I suspect they're kind of sensitive to specific choices you make so it's hard to call one the hardest.
 2020-05-30 11:55:53 <shachaf> But SAT solvers do lots of restarts anyway so they'll probably find a nice variable ordering and solvulate it all easy-peasy-like.
+2020-05-30 12:11:03 User Name: Arcorann = Arcorann!~awych@121-200-6-58.79c806.syd.nbn.aussiebb.net
+2020-05-30 12:11:03 <Arcorann> https://www.telegraph.co.uk/news/science/science-news/9359579/Worlds-hardest-sudoku-can-you-crack-it.html <-- from searching "hardest sudoku"
+2020-05-30 12:18:34 <b_jonas> shachaf: yeah, I'm probably just biased against SAT solvers, I don't trust them much
+2020-05-30 12:19:35 <b_jonas> though perhaps I should be biased against them less than how much I'm biased against machine learning, GPU programming, multi-threading, and just-in-time compilation
+2020-05-30 12:20:03 Joined: ais523
+2020-05-30 12:20:04 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 12:20:16 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-05-30 12:20:16 <ais523> that's a weird set of biases
+2020-05-30 12:20:38 <ais523> I'm biased against machine learning, in favour of GPU programming and multithreading, and mostly neutral on JIT compilation
+2020-05-30 12:20:50 <ais523> although I think people don't AOT compile nearly as much as they should
+2020-05-30 12:21:00 <shachaf> When is JIT compilation good?
+2020-05-30 12:21:10 User Name: arseniiv = arseniiv_!~arseniiv@136.169.200.160
+2020-05-30 12:21:10 <arseniiv> b_jonas: oh, these are almost all what I consider magic at least partially. Though GPU programming is just a thing like microcontrolles which I simply don’t know now and don’t intend to dive into, and not magic
+2020-05-30 12:21:14 Nick Change: arseniiv -> arseniiv
+2020-05-30 12:21:22 <ais523> shachaf: I can see an argument for JIT compiling specialised code
+2020-05-30 12:21:31 <ais523> e.g. you see a function is being called with argument 2 a lot
+2020-05-30 12:21:31 <b_jonas> ais523: no it's not. all four are technologies that are (or were) overhyped, used for marketing and/or actual solutions for problems where they hurt more than they help. I should add blockchains to that list, but that's too obvious.
+2020-05-30 12:21:37 <ais523> so you recompile it inlining 2 as a parameter
+2020-05-30 12:21:40 User Name: arseniiv = arseniiv!~arseniiv@136.169.200.160
+2020-05-30 12:21:40 <arseniiv> and multithreading should be a very different kind of magic if at all
+2020-05-30 12:21:47 <b_jonas> ais523: SAT solvers don't match that set, which is why I should be less biased against them
+2020-05-30 12:21:56 <shachaf> I feel like understanding your code is so valuable, though.
+2020-05-30 12:22:09 <ais523> shachaf: even AOT compilation doesn't help much with that
+2020-05-30 12:22:29 <shachaf> But I can see some uses for JIT, I suppose. But not just general-purpose code in your regular programming language.
+2020-05-30 12:22:30 <ais523> especially as most people don't understand what's going on with machine code
+2020-05-30 12:23:11 <shachaf> Are things like regular expression JITs worthwhile?
+2020-05-30 12:23:16 <ais523> there's a side advantage of JIT which isn't technically confined to JITs but is normally only seen there: you can distribute platform-independent binaries
+2020-05-30 12:23:25 <b_jonas> as a result, they're also all technologies that I'd be reluctant to use, and where I sell myself to employers as being an expert of more traditional programming tech as opposed to those overhyped stuff that everyone tries to learn these days, giving a ... uh, insert buzzwords here, the point is that I can write straightforward code to translate domain-specific knowledget such that for many problems I
+2020-05-30 12:23:31 <b_jonas> get a better solution than those hyped tech that your other candidates would try to sell you
+2020-05-30 12:23:36 <ais523> regular expression JITting is definitely useful in the case where the regular expression is only known at runtime
+2020-05-30 12:23:41 <shachaf> For runtime user-entered regular expressions, I mean. If they're known at compiletime then there's no reason to JIT, of course, you just want a specialized AOT compiler.
+2020-05-30 12:23:42 <ais523> regexes have to be compiled to get good performance
+2020-05-30 12:24:06 <ais523> as for known-at-compile-time, it probably depends on how large the resulting state machine is
+2020-05-30 12:24:33 <shachaf> b_jonas: I wish GPU programming was more like CPU programming, where you could target a GPU rather than bizarro languages and compilers provided by vendors.
+2020-05-30 12:24:42 <ais523> if the source is much smaller than the binary, and the compiler is already on the target machine
+2020-05-30 12:24:43 <ais523> it may make sense to just ship the code
+2020-05-30 12:24:49 <b_jonas> but I'm familiar enough with multithreading that I can write code to use it sanely and reliably when it's really needed, and I at least try to recognize when each of these technology could be useful in which case I can advise them to ask someone who is good at those techniques to use them
+2020-05-30 12:24:52 <ais523> shachaf: oh yes, GPU toolchains are all-around horrible
+2020-05-30 12:25:05 <ais523> Vulkan is an improvement on what came before but it may not be enough of an improvement
+2020-05-30 12:25:36 <ais523> b_jonas: one thing I dislike about multithreading is languages that require multithreaded code to do things that shouldn't need it
+2020-05-30 12:25:56 <myname> like, oop languages?
+2020-05-30 12:25:57 <shachaf> Isn't Vulkan just a huge complicated mess that is also not relevant to almost any platforms?
+2020-05-30 12:25:58 <ais523> e.g. because they have no way to block on two unrelated things simultaneously
+2020-05-30 12:26:16 <arseniiv> <b_honas> SAT solvers don't match that set => hmm, yet?..
+2020-05-30 12:26:19 <ais523> shachaf: it has fewer levels of abstraction than, say, DirectX or OpenGL
+2020-05-30 12:26:37 <ais523> which automatically means that working around its messes is more viable than working around its competitors' messes
+2020-05-30 12:26:41 <arseniiv> I heard they use a SAT solver to (type)check F* code
+2020-05-30 12:27:30 <ais523> well, Damas-Milner typechecking is basically a sort of SAT solver, but the algorithm is very simple and (with a Hindley-Milner type system) known to terminate
+2020-05-30 12:28:24 <ais523> btw, my view on multithreading is quite different from most people's; I believe that a program that can't be trivially made multithreaded is inherently inefficient, and thus only suitable for tasks where an inherently inefficient program is acceptable
+2020-05-30 12:28:52 <ais523> e.g. ls has no reason to be CPU-efficient because it spends almost all its time blocking on I/O anyway
+2020-05-30 12:28:55 <b_jonas> arseniiv: I don't think they ever will. just look at TAOCP. anything that TAOCP covers won't go into that set. SAT solving is in TAOCP, JIT compilation is minimally mentioned in vol 1 about interpreters, multithreading is specifically excluded from the series' topic in the introduction (though I think a few exercises mention locking), GPU programming is I think excluded though the intro doesn't
+2020-05-30 12:29:01 <b_jonas> specifically mention that because GPUs didn't exist when vol 1 third edition was printed,
+2020-05-30 12:29:13 <b_jonas> and ... what were the others? blockchains and machine learning aren't covered either.
