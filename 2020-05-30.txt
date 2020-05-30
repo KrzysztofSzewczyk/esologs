@@ -271,3 +271,140 @@
 2020-05-30 12:59:26 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
 2020-05-30 12:59:44 <ais523> hmm, what's the minimum set of constants required to implement @pl?
 2020-05-30 12:59:54 <ais523> and is it TC?
+2020-05-30 13:00:40 <ais523> :t (.)
+2020-05-30 13:00:40 <lambdabot> (b -> c) -> (a -> b) -> a -> c
+2020-05-30 13:00:42 <ais523> :t ap
+2020-05-30 13:00:44 <lambdabot> Monad m => m (a -> b) -> m a -> m b
+2020-05-30 13:00:58 <ais523> :t ($)
+2020-05-30 13:00:59 <lambdabot> (a -> b) -> a -> b
+2020-05-30 13:01:06 <b_jonas> `? duloc
+2020-05-30 13:01:08 <HackEso> duloc? ¯\(°​_o)/¯
+2020-05-30 13:01:10 <ais523> ah right, ap is the monad version of ($)
+2020-05-30 13:02:42 <shachaf> s/k/y, I suppose?
+2020-05-30 13:03:07 <shachaf> Plus things like constructors and eliminators to handle data types.
+2020-05-30 13:03:55 <ais523> @pl (\x -> x x)(\x -> x x)
+2020-05-30 13:03:58 <lambdabot> ap id id (ap id id)
+2020-05-30 13:03:58 <lambdabot> optimization suspended, use @pl-resume to continue.
+2020-05-30 13:04:22 <ais523> huh, I wonder if its optimizer went into an infinite loop
+2020-05-30 13:04:27 <shachaf> Yes.
+2020-05-30 13:04:45 <ais523> I don't think the double mockingbird even types in Haskell, does it?
+2020-05-30 13:04:48 <ais523> :t (\x -> x x)
+2020-05-30 13:04:49 <lambdabot> error:
+2020-05-30 13:04:49 <lambdabot> • Occurs check: cannot construct the infinite type: t ~ t -> t1
+2020-05-30 13:04:49 <lambdabot> • In the first argument of ‘x’, namely ‘x’
+2020-05-30 13:04:52 <ais523> yep
+2020-05-30 13:04:53 <shachaf> pl isn't typed
+2020-05-30 13:05:08 <ais523> :t ap id id
+2020-05-30 13:05:10 <lambdabot> error:
+2020-05-30 13:05:10 <lambdabot> • Occurs check: cannot construct the infinite type: a ~ a -> b
+2020-05-30 13:05:10 <lambdabot> Expected type: (a -> b) -> a
+2020-05-30 13:05:40 <ais523> perhaps s and k alone are enough in that case
+2020-05-30 13:05:49 <ais523> you can write y and/or z in terms of them
+2020-05-30 13:06:32 <shachaf> For @pl's purposes, sure, but if you give it type-checking Haskell it will produce a type-checked pl version.
+2020-05-30 13:07:01 <shachaf> @pl foo x = if x == 0 then 0 else f (x - 1)
+2020-05-30 13:07:01 <lambdabot> foo = ap (flip if' 0 . (0 ==)) (f . subtract 1)
+2020-05-30 13:07:12 <shachaf> Uh.
+2020-05-30 13:07:16 <shachaf> @pl foo x = if x == 0 then 0 else foo (x - 1)
+2020-05-30 13:07:16 <lambdabot> foo = fix (ap (flip if' 0 . (0 ==)) . (. subtract 1))
+2020-05-30 13:07:40 <ais523> ah right, so now we have a fixed-point combinator
+2020-05-30 13:08:28 <ais523> and y is enough to implement that sort of fixed-point combinator in a lazy language
+2020-05-30 13:08:58 <ais523> > fix (\x -> 2 - x)
+2020-05-30 13:09:01 <lambdabot> *Exception: <<loop>>
+2020-05-30 13:09:16 <ais523> Haskell's fixed-point combinator kind-of sucks, though
+2020-05-30 13:09:25 <shachaf> Why?
+2020-05-30 13:09:38 <ais523> \x -> 2 - x has a fixed point, but Haskell's fix couldn't find it
+2020-05-30 13:09:57 <shachaf> It did find it.
+2020-05-30 13:10:12 <ais523> `! brachylog ~-₂?w
+2020-05-30 13:10:14 <HackEso> ​ \ false.
+2020-05-30 13:10:26 <ais523> oh right, ~- is +
+2020-05-30 13:10:27 <shachaf> I guess you mean you want a specific fixed point, but it always finds the least fixed point.
+2020-05-30 13:10:57 <shachaf> Do you know the answer to this question: Why do type theory types require recursion to be strictly positive, rather than just positive?
+2020-05-30 13:11:02 <ais523> what determines whether a fixed point is higher or lower than bottom?
+2020-05-30 13:11:20 <ais523> I'm not sure what you mean by positive recursion
+2020-05-30 13:11:35 <shachaf> I mean types that are recursive and refer to themselves in positive position.
+2020-05-30 13:11:52 <shachaf> There's a partial order of definedness, with bottom at the bottom (hence the name).
+2020-05-30 13:12:22 <ais523> `! brachylog 2-↙..w
+2020-05-30 13:12:23 <HackEso> 1 \ true.
+2020-05-30 13:12:26 <ais523> there we go
+2020-05-30 13:12:53 <b_jonas> does haskell even have to have a finite basis of combinators for @pl, given that you can't type some of the untyped combinators?
+2020-05-30 13:13:06 <b_jonas> maybe you need an infinite set of looping combinators
+2020-05-30 13:13:26 <ais523> shachaf: oh, I see, so to get a result from fix, you need to write f in such a way that f bottom != bottom
+2020-05-30 13:13:49 <b_jonas> anyway, I'll afk very soon, be back in 2.5 days probably
+2020-05-30 13:14:26 <shachaf> Right.
+2020-05-30 13:15:28 <ais523> and that's only possible if f takes multiple arguments, so that the argument that isn't bottom can be used to determine whether or not to look at the first argument
+2020-05-30 13:15:40 <ais523> or if f ignores its first argument entirely, I guess
+2020-05-30 13:15:50 <ais523> > fix (const 8)
+2020-05-30 13:15:51 <lambdabot> 8
+2020-05-30 13:16:18 <ais523> > fix (\x -> x == true)
+2020-05-30 13:16:20 <lambdabot> error:
+2020-05-30 13:16:20 <lambdabot> • Variable not in scope: true :: Bool
+2020-05-30 13:16:20 <lambdabot> • Perhaps you meant data constructor ‘True’ (imported from Data.Bool)
+2020-05-30 13:16:25 <ais523> > fix (\x -> x == True)
+2020-05-30 13:16:28 <lambdabot> *Exception: <<loop>>
+2020-05-30 13:16:32 <ais523> > fix (\x -> x == False)
+2020-05-30 13:16:35 <lambdabot> *Exception: <<loop>>
+2020-05-30 13:16:45 <shachaf> Well, it's possible in other cases.
+2020-05-30 13:16:47 <shachaf> > fix (1:)
+2020-05-30 13:16:48 <lambdabot> [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1...
+2020-05-30 13:16:49 Quit: b_jonas (Remote host closed the connection)
+2020-05-30 13:16:49 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 13:17:18 <ais523> ah right, the bottom is at the tail of the infinite list
+2020-05-30 13:17:32 <ais523> > fix fix
+2020-05-30 13:17:34 <lambdabot> error:
+2020-05-30 13:17:34 <lambdabot> • Occurs check: cannot construct the infinite type: a ~ a -> a
+2020-05-30 13:17:34 <lambdabot> Expected type: a -> a
+2020-05-30 13:17:39 <arseniiv> <ais523> `! brachylog 2-↙..w  <HackEso> 1 \ true. => how does it do that?
+2020-05-30 13:18:19 <ais523> arseniiv: . is a variable in Brachylog, and concatenation means "assert equal" so 2-↙.. means "assert that 2 minus . equals ."
+2020-05-30 13:18:38 <ais523> when I then use w to output the value of .
+2020-05-30 13:18:43 <ais523> it uses a constraint solver to figure out what value it has to have
+2020-05-30 13:19:12 <shachaf> Hmm, I like constraint solvers.
+2020-05-30 13:19:19 <shachaf> I don't really know how Prolog works.
+2020-05-30 13:19:35 <ais523> the ↙ is just used to give - an argument because Brachylog operators are unary by default unless you explicitly make them binary
+2020-05-30 13:19:43 <shachaf> Is it just defined to use backtracking?
+2020-05-30 13:19:53 <arseniiv> ais523: shachaf: ah, so that’s why it called -log!
+2020-05-30 13:20:04 <ais523> shachaf: in original/standard Prolog, yes, but modern Prolog has deviated from that somewhat
+2020-05-30 13:20:12 <ais523> there are now two levels of solving ability
+2020-05-30 13:20:22 <ais523> the outer one uses backtracking, the inner one uses a constraint solver
+2020-05-30 13:20:44 <ais523> although, even in traditional Prolog, there was some limited constraint-solving ability that didn't involve backtracking
+2020-05-30 13:20:55 <ais523> I'm not sure if we have a Prolog impl in HackEso to demosntrate, though
+2020-05-30 13:21:04 <shachaf> Prolog is also pretty related to index notation, I think.
+2020-05-30 13:21:13 <shachaf> Man, index notation is so good.
+2020-05-30 13:21:35 <arseniiv> I seem to remember something like this discussed here
+2020-05-30 13:21:36 <ais523> but, e.g., concat([1,2,3],B,A), B=[4,5,6] will give you the output A=[1,2,3,4,5,6] with no backtracking involved
+2020-05-30 13:21:47 <ais523> because it's one of the case that traditional prolog's constraint-solver handles
+2020-05-30 13:22:30 <shachaf> Oh, because the naive thing would be to assign values to B and A at the first statement, and then backtrack when you see that your guess for B was wrong?
+2020-05-30 13:22:39 <arseniiv> can one mix Prolog and session types?
+2020-05-30 13:22:41 <ais523> err, it's called "append", not "concat"
+2020-05-30 13:22:48 <ais523> shachaf: right
+2020-05-30 13:23:13 <ais523> if you write append(B,[1,2,3],A),B=[4,5,6]. then the constraint solver can't handle it
+2020-05-30 13:23:31 <ais523> so the backtracker is engaged, it finds the solution A=[4,5,6,1,2,3], then goes into an infinite loop looking for a second solution
+2020-05-30 13:23:46 <ais523> trying longer and longer guesses for B
+2020-05-30 13:23:59 <shachaf> Why can't it handle it?
+2020-05-30 13:24:14 <ais523> it has a special case for the end of the list but not for the start of a list
+2020-05-30 13:24:31 <shachaf> Oh, it's just a super-duper-special-case-a-majig.
+2020-05-30 13:24:41 <ais523> ?- append([1,2,3],B,A).
+2020-05-30 13:24:41 <lambdabot> Maybe you meant: v @ ? .
+2020-05-30 13:24:42 <ais523> A = [1, 2, 3|B].
+2020-05-30 13:24:52 <ais523> there, we can see the special case being written in the output
+2020-05-30 13:24:55 <esowiki> 14[[07Symbols14]]4 M10 02https://esolangs.org/w/index.php?diff=73082&oldid=73081 5* 03PythonshellDebugwindow 5* (+35) 10/* Javascript */ fix
+2020-05-30 13:24:56 <shachaf> Oh, hmm, I see now, maybe that makes sense.
+2020-05-30 13:25:00 <shachaf> Because it's a linked list structure.
+2020-05-30 13:25:12 <shachaf> This is the origin of difference lists, I remember now.
+2020-05-30 13:25:29 <shachaf> `? cut elimination
+2020-05-30 13:25:30 <ais523> right, the special case is actually for an unknown argument to a functor
+2020-05-30 13:25:30 <HackEso> The cut-elimination theorem states that any Prolog program written using the cut operator ! can be rewritten without using that operator.
+2020-05-30 13:25:31 <ais523> such as "cons"
+2020-05-30 13:25:52 <ais523> which means that for a list, the constraint solver handles unknown elements and unknown tails, but no other cases
+2020-05-30 13:26:53 <esowiki> 14[[07Phile14]]4 M10 02https://esolangs.org/w/index.php?diff=73083&oldid=71332 5* 03PythonshellDebugwindow 5* (+0) 10/* Syntax */
+2020-05-30 13:27:15 <esowiki> 14[[07Phile14]]4 M10 02https://esolangs.org/w/index.php?diff=73084&oldid=73083 5* 03PythonshellDebugwindow 5* (+1) 10/* Syntax */
+2020-05-30 13:27:26 <ais523> I think the explicit evaluation order is one of the least elegant things about Prolog
+2020-05-30 13:27:33 <arseniiv> eh, it should have been using some length information in the `append` definition. But then it would need to compute lengths of known arguments and it may end up slow without caching which list had been shown to have which length
+2020-05-30 13:28:03 <ais523> arseniiv: the normal implementation "append" (and the implementation in the standard library) works by looping over all possible lengths
+2020-05-30 13:29:00 <ais523> ?- length(B, 3), append(B, [1,2,3], A), B=[4,5,6].
+2020-05-30 13:29:00 <lambdabot> Maybe you meant: v @ ? .
+2020-05-30 13:29:02 <ais523> B = [4, 5, 6],
+2020-05-30 13:29:03 <ais523> A = [4, 5, 6, 1, 2, 3].
+2020-05-30 13:29:19 <esowiki> 14[[07HGFTSNOA14]]4 M10 02https://esolangs.org/w/index.php?diff=73085&oldid=71724 5* 03PythonshellDebugwindow 5* (+29) 10/* Function arguments/return */
+2020-05-30 13:29:19 <ais523> when we set the length of B explicitly, there's no backtracking involved because "append" has only one case to check
+2020-05-30 13:29:38 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=73086&oldid=72868 5* 03PythonshellDebugwindow 5* (-22) 10/* Random name generator */
+2020-05-30 13:29:54 <ais523> the reason for the infinite loop without the "length" is just that nothing is known about B until after "append" runs, and Prolog has a set evaluation order so it can't take into account any knowledge about what B is about to become
