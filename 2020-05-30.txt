@@ -122,3 +122,21 @@
 2020-05-30 10:57:21 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-05-30 11:14:06 <shachaf> @tell ais523 I have a concrete instance where adding the "at least one" constraints makes my solver find UNSAT instantly, but with only "at most one" it takes 18 seconds.
 2020-05-30 11:14:06 <lambdabot> Consider it noted.
+2020-05-30 11:39:46 <b_jonas> shachaf: is it a pigeonhole trick where you have n of those disjoint at most one groups on the left side, a bunch of transformations, and then an at least constraint on the right side that actually forces the at least one constraint in a way that your solver can't quickly notice?
+2020-05-30 11:40:51 <b_jonas> you know, like put 8 black queens on a chessboard such that no pair of queens defend each other
+2020-05-30 11:41:44 <shachaf> What do you mean?
+2020-05-30 11:42:35 <b_jonas> shachaf: the at most one constraint is that each row has at most one queen. that much is easy from the description, because two queens on a row would attack each other. the least one constraint would be that you put at least one queen in every row, which is not so obvious.
+2020-05-30 11:43:17 <b_jonas> if you know the at least one constraint, then you can find solutions more quickly, because the solver won't try to explore solutions where all squares of a row are excluded.
+2020-05-30 11:43:26 <b_jonas> s/solutions/partial solutions/
+2020-05-30 11:45:04 <shachaf> b_jonas: Oh, the context here is sudoku.
+2020-05-30 11:45:19 <shachaf> Where I have constraints like "at least one of each digit on this row" and "at most one".
+2020-05-30 11:48:55 <b_jonas> shachaf: yes, that's similar
+2020-05-30 11:49:21 <b_jonas> it's the same pigeonhole sort of constraint, when you want exactly one of each row, but you can prove that
+2020-05-30 11:50:02 <b_jonas> though of course these problems are special enough that you probably don't want to solve them by general SAT solvers, but rather by specialized solutions or at least finite domain solvers
+2020-05-30 11:50:18 <b_jonas> for sudoku you can probably find a lot of different solvers on the net
+2020-05-30 11:50:21 <shachaf> It's not clear.
+2020-05-30 11:50:27 <shachaf> What's the hardest 9x9 sudoku?
+2020-05-30 11:50:35 <shachaf> I imagine it's still pretty easy for a CDCL solver.
+2020-05-30 11:51:03 <b_jonas> I don't know, but I think that's a well known question and there are candidates on the internet, though it might be hard to prove which one is "the hardest"
+2020-05-30 11:55:25 <shachaf> I suspect they're kind of sensitive to specific choices you make so it's hard to call one the hardest.
+2020-05-30 11:55:53 <shachaf> But SAT solvers do lots of restarts anyway so they'll probably find a nice variable ordering and solvulate it all easy-peasy-like.
