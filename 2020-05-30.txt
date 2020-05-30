@@ -193,3 +193,81 @@
 2020-05-30 12:28:55 <b_jonas> arseniiv: I don't think they ever will. just look at TAOCP. anything that TAOCP covers won't go into that set. SAT solving is in TAOCP, JIT compilation is minimally mentioned in vol 1 about interpreters, multithreading is specifically excluded from the series' topic in the introduction (though I think a few exercises mention locking), GPU programming is I think excluded though the intro doesn't
 2020-05-30 12:29:01 <b_jonas> specifically mention that because GPUs didn't exist when vol 1 third edition was printed,
 2020-05-30 12:29:13 <b_jonas> and ... what were the others? blockchains and machine learning aren't covered either.
+2020-05-30 12:30:34 <arseniiv> ais523: oh! that reminds me one question. How much GHC’s type system adds to HM to typecheck Haskell with all those extensions (maybe without UndecidableInstances and friends)
+2020-05-30 12:30:42 <arseniiv> do you know?
+2020-05-30 12:31:23 <shachaf> ais523: I'm not sure what it means to say that a program is inherently inefficient there.
+2020-05-30 12:31:23 <b_jonas> though of course we have the ed. Iv�nyi book, which specifically tries to cover topics that TAOCP doesn't cover, because TAOCP is so good that there's no point for them writing a book that says the same thing again
+2020-05-30 12:31:35 Quit: tromp (Remote host closed the connection)
+2020-05-30 12:31:36 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 12:32:12 <b_jonas> so ed. Iv�nyi has chapters for multithreaded programming, SQL databases (that one I'm neutral about... it's more complicated and refined than that but let's not get into that now), etc
+2020-05-30 12:32:13 <shachaf> Some tasks are hard to parallelize, and certainly hard to parallelize trivially. If there's no better option for doing that task, in what sense is it inefficient?
+2020-05-30 12:34:53 <ais523> arseniiv: I don't know about most extensions, but Rank2Types is type-checkable in theory but GHC can't do it, RankNTypes has undecidable typechecking
+2020-05-30 12:35:00 <ais523> this is the reason that Rank2Types is separate
+2020-05-30 12:35:28 <ais523> shachaf: I mean parallelizing to the extent that the underlying problem can be parallelized
+2020-05-30 12:35:34 <arseniiv> ais523: neat detail, thanks!
+2020-05-30 12:35:54 <shachaf> Do you mean inference rather than checking?
+2020-05-30 12:36:07 <ais523> for example, even if the task is entirely sequential (which is very rare), a program to solve it should at least be trivially modifiable to perform multiple unrelated instances of that task in parallel
+2020-05-30 12:36:12 <ais523> shachaf: yes
+2020-05-30 12:36:24 <ais523> or, well, checking of a program where the types might not all have been explicitly stated by the programmer, which is the same thing
+2020-05-30 12:36:29 <arseniiv> shachaf: inference too, yeah, what good is checking without inference
+2020-05-30 12:36:47 <b_jonas> arseniiv: wow, I didn't know that about rank 2 types
+2020-05-30 12:36:54 <shachaf> I think the claim that Rank2Types is inferrable in theory isn't very useful.
+2020-05-30 12:37:05 <arseniiv> I didn’t too
+2020-05-30 12:37:20 <ais523> shachaf: it was relevant in my PhD thesis, that's why I know it
+2020-05-30 12:37:24 <arseniiv> (was that a wrong one-character completion)
+2020-05-30 12:37:48 <b_jonas> oh yes, sorry
+2020-05-30 12:37:54 <shachaf> I mean, I'm not actually sure what the exact claim is, but my understanding is that you can do "whole program inference": If there are rank-2 types that can be assigned to the whole program, you can find them, but you can't do it locally.
+2020-05-30 12:38:08 <shachaf> ais523: Oh, then you must know much better than I do.
+2020-05-30 12:38:17 <shachaf> Is what I'm saying right?
+2020-05-30 12:38:46 <shachaf> Also, does the same argument about rank-2 types work for existentials?
+2020-05-30 12:38:55 <shachaf> I think it must since you can encode existentials with rank-2 types.
+2020-05-30 12:39:14 <ais523> there's more than one definition of existentials, and I forget which one Haskell uses
+2020-05-30 12:39:25 <ais523> but if it can be encoded using rank-2 types, it must be inferrable
+2020-05-30 12:40:19 <shachaf> Say you have an existentially typed thing like xs = [(1, intToString), (False, boolToString)]
+2020-05-30 12:40:25 <arseniiv> I glance to the GHC’s inference algorithm because I know if I would make a usable language, I’ll need all the types, and as subtyping is almost certainly no-go, something à la GHC or Rust would need to be used
+2020-05-30 12:40:41 <shachaf> You can assign that the existential types [exists a. (a, a -> String)], or (exists a b. (a, b)], or [exists a. a], etc.
+2020-05-30 12:40:46 <arseniiv> but I’m afraid to look into the concrete implementation (in GHC)
+2020-05-30 12:40:54 <shachaf> And there's no way to look at that list without seeing how it's being used and pick one of those.
+2020-05-30 12:42:34 <ais523> my main interest on existentials was related to type tags rather than to base types or function types, which is a bit different from what GHC is doing
+2020-05-30 12:43:08 Joined: tromp
+2020-05-30 12:43:08 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 12:43:18 <ais523> by "type tags" I mean things like the ! from linear logic
+2020-05-30 12:43:44 <arseniiv> <shachaf> And there's no way to look at that list without seeing how it's being used and pick one of those. => hm would that also be true for any advanced typing constructs? We use types to constrain operations which can be performed, after all, and when very abstract typing constructs emerge, they aren’t usually coupled to the data representation, so we shouldn’t be able to decide(?..)
+2020-05-30 12:43:46 <shachaf> But you can encode this rank-2. Ignoring the list, I guess: foo f = f (1, intToString)
+2020-05-30 12:43:47 <ais523> the field I was working in was related to making those things more precise, my thesis was about why the existing attempts at doing it didn't work
+2020-05-30 12:44:40 <shachaf> You can give foo the type forall r. ((Int, Int -> String) -> r) -> r, or forall r. (forall a. (a, a -> String) -> r) -> r, or forall r. (forall a. a -> r) -> r, etc.
+2020-05-30 12:44:40 <ais523> right, that foo version of things looks familiar to me
+2020-05-30 12:45:10 <shachaf> There's no clear most general type is I guess all I was trying to say.
+2020-05-30 12:45:29 <ais523> ah right
+2020-05-30 12:46:01 <ais523> I think my experience is that "most general type" equvialents might exist, but aren't actually types, they're some sort of complicated set of constraints
+2020-05-30 12:46:32 <ais523> there are some examples in my thesis where, due to constraint loops that are solvable, the normal subtyping relationships break down
+2020-05-30 12:46:32 <arseniiv> surely there could be something to reason about possible types in these cases? Which would complicate algorithms and maybe a type system itself, but maybe wouldn’t look too inhumane?
+2020-05-30 12:47:01 <arseniiv> <ais523> I think my experience is that "most general type" equvialents might exist, but aren't actually types, they're some sort of complicated set of constraints => something like that!
+2020-05-30 12:47:46 <arseniiv> it’s nontrivial that typechecking can be that nontrivial
+2020-05-30 12:47:54 <arseniiv> s/be/become
+2020-05-30 12:49:51 <ais523> <ais523's PhD thesis> Fact 6.2.13. There are terms which type in SCC and Bounded ICA, and which have all types for that term differ only in the bounds, but for which there is a covariant position in those types such that the set of bounds that can appear in that position in some type for that term is not the same as the set of all nonnegative integers.
+2020-05-30 12:50:18 <ais523> this is basically an argument against the existence of most-general-types
+2020-05-30 12:50:33 <ais523> because you don't expect to see extra restrictions in covariant positions
+2020-05-30 12:50:48 <ais523> (the fact in my thesis is a counterexample to a conjecture by someone else)
+2020-05-30 12:51:18 <ais523> I gave an explicit such term, λ q.(λ g.g(λ x.g(qx)))(λ b.(λ k.((k(λ u.u))(λ l.((kb)(λ m.(l(m( skip ))))))))(λ v.λ w.wv))
+2020-05-30 12:51:30 <ais523> which is kind-of surprising that it's the simplest known term with that property
+2020-05-30 12:51:36 <ais523> ("skip" is an arbitrary constant)
+2020-05-30 12:51:46 <ais523> (which has base type)
+2020-05-30 12:53:08 <ais523> :t \q -> (\g -> g(\x -> g (q x)))(\b -> (\k ->(\u -> u))(\l -> ((k b)(\m -> (l(m(0))))))))(\v -> \w -> w v))
+2020-05-30 12:53:10 <lambdabot> error: parse error on input ‘)’
+2020-05-30 12:53:39 <ais523> :t \q -> (\g -> g(\x -> g (q x)))(\b -> (\k -> ((k(\u -> u))(\l -> ((k b)(\m -> (l(m(0))))))))(\v -> \w -> w v))
+2020-05-30 12:53:40 <lambdabot> Num t => (t -> t -> t) -> t
+2020-05-30 12:53:48 <ais523> @pl \q -> (\g -> g(\x -> g (q x)))(\b -> (\k -> ((k(\u -> u))(\l -> ((k b)(\m -> (l(m(0))))))))(\v -> \w -> w v))
+2020-05-30 12:53:48 <lambdabot> flip (ap id . flip (.)) (flip (ap ($ id) . flip flip (. ($ 0)) . ((.) .) . flip id) (flip id))
+2020-05-30 12:54:01 <ais523> was just curious
+2020-05-30 12:54:23 <ais523> GHC doesn't see anything interesting about the term, but i guess that's because it isn't doing anything linear-logic-like
+2020-05-30 12:54:58 Quit: Lord_of_Life (Read error: Connection reset by peer)
+2020-05-30 12:54:58 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 12:55:54 Joined: Lord_of_Life
+2020-05-30 12:55:54 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 12:56:42 <ais523> :t flip flip
+2020-05-30 12:56:43 <lambdabot> b -> (a -> b -> c) -> a -> c
+2020-05-30 12:59:26 Quit: rain1 (Quit: leaving)
+2020-05-30 12:59:26 Names: ^[, adu, ais523, aji, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lucretia, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
+2020-05-30 12:59:44 <ais523> hmm, what's the minimum set of constants required to implement @pl?
+2020-05-30 12:59:54 <ais523> and is it TC?
