@@ -408,3 +408,61 @@
 2020-05-30 13:29:19 <ais523> when we set the length of B explicitly, there's no backtracking involved because "append" has only one case to check
 2020-05-30 13:29:38 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=73086&oldid=72868 5* 03PythonshellDebugwindow 5* (-22) 10/* Random name generator */
 2020-05-30 13:29:54 <ais523> the reason for the infinite loop without the "length" is just that nothing is known about B until after "append" runs, and Prolog has a set evaluation order so it can't take into account any knowledge about what B is about to become
+2020-05-30 13:30:40 <shachaf> What would Prolog be like if it was more like a SAT solver?
+2020-05-30 13:30:43 <esowiki> 14[[07Function x(y)14]]4 M10 02https://esolangs.org/w/index.php?diff=73087&oldid=70797 5* 03PythonshellDebugwindow 5* (-64) 10/* Syntax */ rm link
+2020-05-30 13:31:25 <ais523> shachaf: I have plans for something like this already
+2020-05-30 13:31:46 <ais523> the main idea is to start off by evaluating anything that can be evaluated efficiently, then anything that can be evaluated in known finite time
+2020-05-30 13:31:57 <ais523> and only resort to an infinite brute-force as the last resort
+2020-05-30 13:32:14 <ais523> (even then, breadth-first is better than depth-first so that you search every point in the infinite tree)
+2020-05-30 13:32:53 <shachaf> Or iterative deepening.
+2020-05-30 13:33:07 <ais523> iterative deepening and breadth-first are equivalent
+2020-05-30 13:33:26 <ais523> the only difference is that iterative deepening re-checks some cases it's already checked, in order to save the memory needed to remember that it's already checked them
+2020-05-30 13:33:34 <shachaf> Yes.
+2020-05-30 13:33:56 <shachaf> Well, hmm, not necessarily?
+2020-05-30 13:34:27 <shachaf> If you're doing something like alpha-beta pruning, can iterative deepening be better than breadth-first search?
+2020-05-30 13:34:54 <ais523> hmm, interesting; you'd need to use the alpha and beta values from lower levels to prune the higher levels in order to get any gain
+2020-05-30 13:35:01 <shachaf> That reminds me, is there a really nice way that I should understand PVS/Scout?
+2020-05-30 13:35:23 <shachaf> Well, you might get a better ordering on the earlier levels that you can use for the later levels.
+2020-05-30 13:35:36 <shachaf> Since alpha-beta is sensitive to the order of the nodes.
+2020-05-30 13:36:11 <shachaf> I'm actually not really sure what breadth-first alpha-beta would mean.
+2020-05-30 13:36:21 <ais523> shachaf: the best way to understand PVS is that it's like alpha-beta search, but instead of setting alpha and beta to worst case values, you set them to best case values so that the search can go faster
+2020-05-30 13:36:49 <ais523> you then have to redo the search if your values turned out to be too optimisitic, but luckily it's always possible to discover this during your iteration
+2020-05-30 13:37:15 <shachaf> Hmm, that's interesting, do you have a concrete case in mind?
+2020-05-30 13:37:27 <shachaf> Otherwise I'll try to think of one, maybe after sleeping.
+2020-05-30 13:37:35 <ais523> it's used in chess programs a lot
+2020-05-30 13:37:53 <shachaf> No, I mean a concrete tree that makes this best-case thing really clear.
+2020-05-30 13:38:10 <shachaf> I should probably work it out myself given your hint.
+2020-05-30 13:38:24 <ais523> concrete search trees are a pain to come up with
+2020-05-30 13:38:34 <shachaf> Yes, I just mean something small. Let me see.
+2020-05-30 13:38:59 <esowiki> 14[[07And then14]]4 M10 02https://esolangs.org/w/index.php?diff=73088&oldid=69363 5* 03PythonshellDebugwindow 5* (+7) 10
+2020-05-30 13:39:09 <shachaf> For regular alpha-beta, the insight is that if you have something like min(5, max(8, ...), ...), you don't need to compute the rest of the arguments to max.
+2020-05-30 13:39:30 <ais523> yes
+2020-05-30 13:39:45 <shachaf> Do I need three levels of tree for PVS?
+2020-05-30 13:40:17 <ais523> no, in PVS you see min(5, …) and just assume that nothing in the … will be lower than a 5
+2020-05-30 13:40:47 <ais523> you need to verify that, of course, but verifying it is faster than doing a full alpha-beta search because you don't track the values of alpha and beta
+2020-05-30 13:41:02 <ais523> if the verification fails, then you need to do a proper search because you have no idea what went wrong
+2020-05-30 13:41:48 <ais523> here's a different intution: a true depth-first search is "give me the exact evaluation of this position"
+2020-05-30 13:42:05 <ais523> an alpha-beta search is "give me the exact evaluation of this position if it's in the range 5 to 8, otherwise just say 'too low' or 'too high'"
+2020-05-30 13:42:27 <ais523> and a PVS search is "let me know if this position evaluates to ≥ 5 or < 5"
+2020-05-30 13:43:03 <shachaf> Which position? E.g. the second argument to min?
+2020-05-30 13:43:51 <ais523> in a PVS you do a proper alpha-beta search from the suspected-best candidate move in each position, then just try to prove that none of the others are better than it
+2020-05-30 13:44:33 <ais523> so, e.g. from the starting position in chess, if you think e4 is the best move, you get an evaluation for e4 using alpha-beta, then evaluate the position after d4 using a binary evaluation ("worse than e4" / "better than e4")
+2020-05-30 13:44:48 <ais523> if it's worse, you're good; if it's better, you need to do a full search again in order to find out the exact evaluation
+2020-05-30 13:44:49 <shachaf> Is the assumption here that alpha-beta will *probably* say ">= 5"?
+2020-05-30 13:44:53 <ais523> yes
+2020-05-30 13:45:15 <shachaf> Hmm, this is sounding pretty helpful.
+2020-05-30 13:45:32 <ais523> so PVS is really dependent on getting the moves in the right order; getting them in the wrong order doesn't affect correctness but the performance tanks
+2020-05-30 13:45:50 <shachaf> What's the reason the binary evaluation can be faster than full evaluation?
+2020-05-30 13:47:19 <ais523> with alpha/beta there's an overlap in the cutoff ranges for low cutoffs and high cutoffs, a value between alpha and beta can't be cut off whether it's high or low
+2020-05-30 13:47:20 <shachaf> And what's the reason it can be expressed using a regular alpha-beta search, just with different values for alpha and beta?
+2020-05-30 13:47:46 <shachaf> I suspect I can work out the answers to both of those questions with what you've given me.
+2020-05-30 13:47:48 <ais523> to get a PVS trial search out of an alpha-beta search algorithm you set alpha=beta
+2020-05-30 13:47:57 <ais523> so there's less (i.e. no) overlap in the cutoff ranges
+2020-05-30 13:48:06 <ais523> that makes cutoffs more frequent so the search goes faster
+2020-05-30 13:48:48 <ais523> (err, alpha and beta might have to differ by 1 depending on what your convention for range endpoints is, the idea is that every value is either a low cutoff when looking for low cutoffs, or else a high cutoff when looking for high cutoffs)
+2020-05-30 13:49:06 <ais523> (whereas alpha-beta has "in between" values)
+2020-05-30 13:50:59 <shachaf> This is seeming really nice but unfortunately I really need to go to sleep.
+2020-05-30 13:51:32 <shachaf> I'll think about this again after I wake up.
+2020-05-30 13:51:39 <shachaf> Thanks!
+2020-05-30 13:51:50 <arseniiv> shachaf: good night!
+2020-05-30 13:54:54 <arseniiv> ais523: please ping me any time if you would make something with these “sensible ordered Prolog” ideas you wrote, that looks very interesting to test
