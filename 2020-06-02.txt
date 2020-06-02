@@ -41,3 +41,12 @@
 2020-06-02 07:10:19 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
 2020-06-02 07:29:48 <shachaf> Sgeo: Do they actually lose parametricity?
 2020-06-02 07:30:00 <shachaf> I doubt it. I think it's something a bit more subtle than that.
+2020-06-02 07:32:00 <Sgeo> A function that wants to match on a type has to note that it's accepting a type in its type signature
+2020-06-02 07:32:17 <Sgeo> https://idris2.readthedocs.io/en/latest/tutorial/multiplicities.html
+2020-06-02 07:32:22 <Sgeo> "Note that multiplicities on the binders, and the ability to pattern match on non-erased types mean that the following two types are distinct
+2020-06-02 07:32:22 <Sgeo> "
+2020-06-02 07:32:30 <Sgeo> id : a -> a
+2020-06-02 07:32:31 <Sgeo> notId : {a : Type} -> a -> a
+2020-06-02 07:37:28 <b_jonas> so that's like when you have an Any class in Haskell, but you can match types on it because the Any class has a method that lets you macth the types, and the class constraint is passed explicitly?
+2020-06-02 07:52:57 Joined: rain1
+2020-06-02 07:52:57 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, Vorpal, wmww, xelxebar, xylochoron[m], zzo38
