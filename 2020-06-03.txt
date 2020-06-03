@@ -135,3 +135,57 @@
 2020-06-03 10:52:23 <int-e> And honestly I was surprised to save almost 20%, I expected less.
 2020-06-03 10:53:33 <int-e> The version I actually used in the challenge was the generic one.
 2020-06-03 10:56:06 <int-e> Anyway I think the main thing that kills the SSE2 code is the awkwardness of doing 128 bit shifts.
+2020-06-03 11:00:49 <shachaf> What's the awkwardness?
+2020-06-03 11:00:56 <int-e> I guess AVX would enable higher throughput, but that interacts awkwardly with cycle-finding.
+2020-06-03 11:01:11 <shachaf> Oh, is it shifting between lanes or something?
+2020-06-03 11:02:13 Joined: Lord_of_Life
+2020-06-03 11:02:33 <int-e> The awkwardness is that the full register moves, vpsrldq and so on, work in 8bit multiples. This compares infavorably to the x86_64 code which has shld and shrd...
+2020-06-03 11:02:49 Quit: S_Gautam (Quit: Connection closed for inactivity)
+2020-06-03 11:02:49 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-03 11:04:01 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2020-06-03 11:04:02 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-06-03 11:05:03 <shachaf> Oh, that's surprising.
+2020-06-03 11:05:05 <int-e> So basically >> 10 becomes *3* shift instructions and a bitwise or, instead of a shld and another shl. And the code is shifting a lot.
+2020-06-03 11:05:53 <int-e> uhm, "full register moves" was "full register shifts" in my brain
+2020-06-03 11:06:07 <int-e> (I guess moving is a kind of shifting?)
+2020-06-03 11:07:52 <shachaf> It's been a long time since I wrote SIMD code.
+2020-06-03 11:08:28 <int-e> Yeah this is a bad example for that anyway.
+2020-06-03 11:09:09 <int-e> I mainly did it because while I expected it to be slower than the x86_64 version, I wasn't entirely sure (and it is quite a close call anyway).
+2020-06-03 11:09:53 <shachaf> I guess a full register shift is a pretty unusual SIMD operation.
+2020-06-03 11:10:02 <int-e> (Obviously this is just my best effort... I may have missed some optimization opportunity.)
+2020-06-03 11:10:23 <int-e> Yeah, the "M" doesn't really apply here.
+2020-06-03 11:11:43 <int-e> The most satisfying idea here was the use of a sorting network.
+2020-06-03 11:13:04 <int-e> (The alternative would've been a combination of two half-adders (to combine pairs of inputs) and two full adders)
+2020-06-03 11:14:19 <shachaf> I like sorting networks.
+2020-06-03 11:14:33 <shachaf> Perhaps sorting networks are this.
+2020-06-03 11:16:22 <int-e> In any case, it was a fun experiment.
+2020-06-03 11:17:16 <int-e> And I managed to be cited twice in http://www.research.ibm.com/haifa/ponderthis/solutions/May2020.html :)
+2020-06-03 11:19:41 <int-e> shachaf: Anyway, I would expect the code to be the same speed or maybe a cycle slower with intrinsics.
+2020-06-03 11:20:06 <shachaf> Sure, I'm not suggesting it would make for faster code than writing assembly yourself.
+2020-06-03 11:20:38 <int-e> (the compiler's register allocation still kind of sucks... they get away with this because the CPUs make register-register moves mostly free)
+2020-06-03 11:20:57 <shachaf> POn
+2020-06-03 11:20:58 <shachaf> DER
+2020-06-03 11:21:07 Quit: Phantom_Hoover (Ping timeout: 260 seconds)
+2020-06-03 11:21:07 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-03 11:21:13 <int-e> shachaf: right
+2020-06-03 11:21:33 <shachaf> Are register allocators just doomed to be pretty good but not that good?
+2020-06-03 11:21:37 <int-e> (there's no good way of making a capital n at 3 pixel width)
+2020-06-03 11:22:03 <int-e> shachaf: Good question, I don't know, because compilers and CPUs are co-evolving.
+2020-06-03 11:22:04 <shachaf> If you're willing to give your optimizer more time, can it just solve the register allocation problem optimally, or is that intractable?
+2020-06-03 11:22:41 <shachaf> Of course there's also that.
+2020-06-03 11:23:17 <shachaf> I would be happy to give my compiler more time in super-optimized mode (and I want it to be much faster in regular mode).
+2020-06-03 11:24:12 <shachaf> Also, can you reuse these things between runs? For example a CDCL solver can probably remember its best learned clauses for the next run (and check whether whether they're still valid), maybe you can reuse that work in something like this?
+2020-06-03 11:24:28 <int-e> Which is actually an argument in favor of better register allocation in compilers... because we are increasingly focussing on energy efficiency and all that register renaming machinery isn't working for free.
+2020-06-03 11:24:28 <shachaf> Of course you could do regular incremental building too but maybe something deeper would be worthwhile, I don't know.
+2020-06-03 11:25:19 <int-e> reusing optimizations, sure, that's "just" a software engineering problem.
+2020-06-03 11:25:53 <shachaf> Well, I mean reusing learned clauses between *different* instances that are similar.
+2020-06-03 11:26:17 <shachaf> If you spend a lot of time running the optimizer on one function and then make a small change, maybe you can get an optimal solution quickly.
+2020-06-03 11:26:21 <int-e> There are superoptimizers, and I expect that reusing previous optimized code is pretty important there.
+2020-06-03 11:26:32 <shachaf> Though now that I write it out it seems a little implausible that it would work that well.
+2020-06-03 11:26:56 <int-e> But meh. I'm speculating instead of researching.
+2020-06-03 11:27:05 <shachaf> What are you researching?
+2020-06-03 11:27:43 <int-e> I mean this concrete question. Superoptimizers *exist*, surely people have written about them and how they're used as well.
+2020-06-03 11:28:20 <int-e> (Though somehow, the only context in which I've actually seen them is the Ethereum VM... :-/)
+2020-06-03 11:28:58 <int-e> I bet GPU vendors also have their own superoptimizers... which they run whenever a new game is released, distributing the results with a driver update.
+2020-06-03 11:29:45 Joined: TheLie
+2020-06-03 11:29:45 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
