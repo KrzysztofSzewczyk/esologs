@@ -696,3 +696,67 @@
 2020-06-03 20:29:49 <ais523> identity::<SomeSpecificType>::(expression)
 2020-06-03 20:29:53 <b_jonas> identity::<SomeSpecificType>(expression)
 2020-06-03 20:29:56 <ais523> not sure on the last ::
+2020-06-03 20:30:03 <b_jonas> no, I think it's a :: only on the left
+2020-06-03 20:30:11 <b_jonas> and I think the right one is an error
+2020-06-03 20:30:26 <ais523> yes; there /is/ a context where you need the :: on the right too, but it isn't that context
+2020-06-03 20:30:32 <b_jonas> and yes, you can also use it as a parameter to a higher-order function, which is the official argument for why it's in the stdlib now
+2020-06-03 20:31:25 <b_jonas> the same thing is useful in C++ too by the way, where it's not in the standard library yet, but I've used it for years in my previous work
+2020-06-03 20:31:38 <b_jonas> I call it ret_cast but I don't think that's a standard name
+2020-06-03 20:32:09 <ais523> it's very similar to static_cast, I guess
+2020-06-03 20:32:20 <ais523> the only difference is that you can take its address, I think?
+2020-06-03 20:32:32 <b_jonas> no, that's not the difference
+2020-06-03 20:32:37 <ais523> thus letting you use it as a function argument even without giving it an argument
+2020-06-03 20:32:50 <b_jonas> the difference is that it doesn't do certain explicit conversions that static_cast would do without a warning
+2020-06-03 20:33:05 <ais523> oh, such as long to int?
+2020-06-03 20:33:12 <b_jonas> no, long to int is the one I want to do without a warning
+2020-06-03 20:33:21 <b_jonas> numeric conversion is my primary use for ret_cast
+2020-06-03 20:33:26 <b_jonas> and that's why it has a rather long definition,
+2020-06-03 20:33:37 <ais523> I kind-of assumed static_cast would warn for the weirder conversions
+2020-06-03 20:33:38 <b_jonas> because you need to suppress warnings about implicit number conversion in that one function
+2020-06-03 20:33:40 <ais523> but maybe it doesn't
+2020-06-03 20:33:47 <ais523> void* to intptr_t, for example
+2020-06-03 20:34:03 <ais523> I guess there has to be a way to show that's intentional
+2020-06-03 20:34:11 <b_jonas> I think static_cast will call a one-argument constructor marked as explicit, without a warning
+2020-06-03 20:34:17 <b_jonas> that's the main problem
+2020-06-03 20:34:26 <b_jonas> but the detailed rules are so complicated that I can't remember them
+2020-06-03 20:34:28 <b_jonas> C++ is weird
+2020-06-03 20:34:41 <b_jonas> so I gave up and just use ret_cast whenever I don't want such a surprise
+2020-06-03 20:36:52 <b_jonas> the definition is: #if _MSC_VER \ #pragma warning(push) \ #pragma warning(disable: 4244 4267) \ #endif \ template<typename dest_type, typename src_type> inline dest_type ret_cast(src_type &&x) { return std::forward<src_type>(x); } \ #if _MSC_VER \ #pragma warning(pop) \ #endif
+2020-06-03 20:37:26 <b_jonas> and I think there's some magic syntax to suppress the same warnings in gcc/clang too, but it's not the same as in MSVC and I haven't looked up what it is
+2020-06-03 20:37:52 <ais523> thinking about it, void* to intptr_t should be reinterpret_cast, really
+2020-06-03 20:38:04 <ais523> but maybe there are machines in which the bits actually change
+2020-06-03 20:38:15 <esowiki> 14[[07ReThue14]]4 10 02https://esolangs.org/w/index.php?diff=73214&oldid=50430 5* 03DmilkaSTD 5* (+24) 10
+2020-06-03 20:38:33 <ais523> what are the two warnings being disabled?
+2020-06-03 20:38:36 <b_jonas> ais523: I think it's a reinterpret_cast, not a static_cast, and the bits can change in a reinterpret_cast, but again I'm not sure about the rules
+2020-06-03 20:38:58 <b_jonas> ais523: uh, something about implicit numeric conversion, but I'm not sure what, I'd have to look it up in the MSVC docs
+2020-06-03 20:39:15 <ais523> oh, I see, you're explicitly turning off long-to-int style warnings
+2020-06-03 20:39:33 <ais523> I don't know enough C++ to properly follow the moves here
+2020-06-03 20:39:45 <b_jonas> https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-levels-3-and-4-c4244?view=vs-2019
+2020-06-03 20:39:57 <ais523> if you use ret_cast on a variable, does its value get moved? I'm guessing no, because prefix && acts only on rvalues?
+2020-06-03 20:40:52 <ais523> also wow is that site badly organized
+2020-06-03 20:41:00 <ais523> you can't guess the URL for any particular warning
+2020-06-03 20:41:08 <b_jonas> ais523: admittedly that's for an old verions of MSVC I think
+2020-06-03 20:41:13 <b_jonas> but yes
+2020-06-03 20:41:19 <ais523> because it depends on some arbitrary grouping that you wouldn't be able to learn without first finding the page for the warning
+2020-06-03 20:42:37 <b_jonas> ais523: if you use it on a non-const varible of say type int, then it gets instantiated with src_type being int &, in which case the magic && in the argument list disappears because there's a & before it, and the function takes int & as a type, so it takes a non-const reference to the variable and copies ity
+2020-06-03 20:43:13 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=73215&oldid=73150 5* 03PythonshellDebugwindow 5* (+15) 10/* J */ + [[Jumplang]]
+2020-06-03 20:43:34 <b_jonas> whereas if you call it on an rvalue of type int, say ret_cast<long)(3+x), then the src_type is derived to be int, the function takes an argument int &&, and moves that value
+2020-06-03 20:43:44 <b_jonas> for an int this doesn't matter too much, because moving and copying it is the same thing
+2020-06-03 20:43:46 <ais523> how C++
+2020-06-03 20:44:09 <ais523> even Rust's move vs. copy rules are more complex than I'd like
+2020-06-03 20:44:13 <ais523> but this is worse
+2020-06-03 20:44:19 <ais523> (yes, I know Rust's are simple)
+2020-06-03 20:44:41 <b_jonas> but for a non-trivial type where moving and copying isn't the same, it can matter, and this mostly does the Right Thing^TM, except if you try to pass an initializer-list into it
+2020-06-03 20:45:07 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=73216&oldid=73162 5* 03PythonshellDebugwindow 5* (+99) 10/* Languages */
+2020-06-03 20:50:57 <b_jonas> also, today I read some of the (easy parts of) the source code of ImageMagick, to figure out what the interface of a certain public API function in MagickWand is, since it wasn't properly documented
+2020-06-03 20:52:38 <b_jonas> luckily the command line ImageMagick programs are implemented (mostly) in terms of MagickWand (the high-level C api of ImageMagick), so the source code for that has a place where it calls this function, and I could find out what it expects as the second argument from there
+2020-06-03 20:52:47 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-06-03 20:52:47 <zzo38> Which function?
+2020-06-03 20:53:23 <zzo38> (And, what version of ImageMagick?)
+2020-06-03 20:53:50 <b_jonas> MagickSetImageChannelMask and ImageMagick 7
+2020-06-03 20:54:07 <b_jonas> this corresponds to the -channel setting in command line
+2020-06-03 20:54:42 <b_jonas> the second argument is a bitmask for which enum values are defined in a header
+2020-06-03 20:56:35 <b_jonas> and I need this for the -combine operation, which takes multiple grayscale images and converts them to a single image with those used as different channels, but you have to tell what those channels are, eg. RGB, RGBA, IA, CYMK, etc, and you use the -channel option for that
+2020-06-03 20:56:55 <b_jonas> and then you have to restore that setting with +channel, which calls the same function with some default argument
+2020-06-03 20:59:24 Quit: tromp (Remote host closed the connection)
+2020-06-03 20:59:24 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
