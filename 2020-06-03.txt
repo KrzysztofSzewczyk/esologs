@@ -222,3 +222,29 @@
 2020-06-03 12:23:50 <int-e> Duckduckgo tried to be smart and turned out to be useless. Query: 0' oracle computability --> Answer: Did you mean 0' oracle compatibility?  plus a lot of hits for that...
 2020-06-03 12:24:15 <int-e> (putting "computability" in quotes helped, but it didn't even suggest that!)
 2020-06-03 12:26:38 <shachaf> int-e: For the benefit of players of AAA games, anyway. I'd rather have nVidia and AMD give developers the tools to make their programs fast themselves.
+2020-06-03 12:34:14 Quit: Phantom_Hoover (Ping timeout: 240 seconds)
+2020-06-03 12:34:14 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-03 12:40:59 <int-e> Yeah there's that.
+2020-06-03 12:49:43 <int-e> It's kind of unavoidable... in the gamer market segment, framerates in AAA titles is the main competetive factor.
+2020-06-03 12:51:09 <int-e> So whether it's GPU vendors lending expertise to the game developers, or optimizing shaders post release... something like that is bound to happen. And they may consider their internal tools not polished enough or too trade-secreted to be shared more widely.
+2020-06-03 12:52:04 <shachaf> Well, Intel doesn't send you CPU driver updates that recompile the code for popular programs to be faster.
+2020-06-03 12:52:13 <shachaf> I mean, uh, I mean, I sure *hope* they don't do that.
+2020-06-03 12:52:35 <int-e> Who's Intel again. (From a GPU market perspective, I mean)
+2020-06-03 12:53:21 <shachaf> I mean for CPU programs, not GPU.
+2020-06-03 12:53:24 <int-e> And only half kidding anyway.
+2020-06-03 12:53:37 <int-e> Ah.
+2020-06-03 12:55:08 <int-e> Intel isn't in the right position for that I suppose. It would be funny if VMs (e.g. Javascript ones) would be doing that for commonly distributed scripts.
+2020-06-03 12:55:18 <int-e> (/programs)
+2020-06-03 12:55:56 User Name: FireFly = FireFly!znc@freenode/staff/firefly
+2020-06-03 12:55:56 <FireFly> Kind of surprised they aren't, tbh
+2020-06-03 12:56:00 <int-e> But one key difference here is that the machine code isn't a trade secret.
+2020-06-03 12:56:02 Quit: sprocklem (Ping timeout: 256 seconds)
+2020-06-03 12:56:02 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-03 12:56:14 <FireFly> (well, browsers, and targetting key popular libraries)
+2020-06-03 12:56:27 <int-e> FireFly: same here, actually
+2020-06-03 12:57:16 <int-e> And who knows, maybe it's done and I just don't know.
+2020-06-03 12:57:23 * FireFly nods
+2020-06-03 12:57:32 Joined: sprocklem
+2020-06-03 12:57:33 Names: ^[, aji, aloril, APic, ArthurStrong, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-03 12:57:38 <shachaf> Well, it would be nice if GPU machine code wasn't a trade secret.
+2020-06-03 12:57:49 <int-e> OTOH maybe there are just too many versions of each Javascript library for this to be attractive.
