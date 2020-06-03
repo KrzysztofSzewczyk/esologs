@@ -278,3 +278,34 @@
 2020-06-03 15:29:03 <cpressey> What's our stance on languages that claim to be Turing-complete (i.e. they've been put in the "Turing complete" category, they have "Computational class: Turing complete" in their infobox) without even including a proof sketch?
 2020-06-03 15:29:23 <cpressey> I mean, it's not obvious to me that https://esolangs.org/wiki/(1)_Grace_sent_you_a_message is TC
 2020-06-03 15:29:28 <cpressey> It's plausible, but not obvious
+2020-06-03 15:30:23 <wib_jonas> cpressey: sometimes the Turing-completness is obvious. if it's not obvious and the page says nothing about it, not even a reference to some external doc, then I think we can remove the category and modify the text.
+2020-06-03 15:33:20 <wib_jonas> cpressey: https://esolangs.org/wiki/(1)_Grace_sent_you_a_message is turing-complete because you can translate 1.1 to it by doing one replacement step of the 1.1 program in a brainfuck program, set the resource limit such that that brainfuck program never overflows, and just make the two brainfuck programs in the Grace program identical
+2020-06-03 15:33:49 <wib_jonas> The problem is that it might be uncomputable
+2020-06-03 15:34:19 <wib_jonas> I'm not sure if it is
+2020-06-03 15:35:25 <wib_jonas> Heck, it's definitely more than TC. It computes recursively enumerable languages I think.
+2020-06-03 15:36:03 <wib_jonas> We should probably categorize it [[Category:Nondeterministic]] [[Category:Uncomputable]]
+2020-06-03 15:37:05 <wib_jonas> And my draft proof above is wrong, because Grace is defined such that the iteration of the brainfuck programs leads to an output that must match the input
+2020-06-03 15:40:55 <esowiki> 14[[07Talk:(1) Grace sent you a message14]]4 10 02https://esolangs.org/w/index.php?diff=73197&oldid=72830 5* 03Chris Pressey 5* (+307) 10
+2020-06-03 15:44:40 <cpressey> I can see how it could be TC if you use one of the LBA's to compute a single step of a TM and then iterate -- in fact I don't see why you'd need two LBAs, just iterating one should work.
+2020-06-03 15:48:41 <wib_jonas> cpressey: you need two TMs because the iterated process has to generate all possible inputs of Grace, so it has to be nondeterministic in some way
+2020-06-03 15:49:21 Quit: tromp (Remote host closed the connection)
+2020-06-03 15:49:21 Names: ^[, aji, aloril, APic, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-03 15:49:36 <wib_jonas> cpressey: the run of a Grace program always starts from an empty state, then modifies it iteratively by nondet transforming it to some possible output
+2020-06-03 15:50:00 <wib_jonas> then the program becomes accepting if the state can reach the input of the Grace program
+2020-06-03 15:50:42 <wib_jonas> this sadly makes IO for Grace ugly, because it can't support just any input format, you need to put some marker to distinguish inputs from strings you use as intermediate states
+2020-06-03 15:51:31 <wib_jonas> but if you use an input convention where, say, all inputs to Grace must start with a 1, and the intermediate states start with a 0, then you can compute any recursively enumerable set with a Grace program
+2020-06-03 15:51:35 <cpressey> tbh I don't see how you get any of that from the article
+2020-06-03 15:52:04 <wib_jonas> which part?
+2020-06-03 15:53:32 <wib_jonas> the paragraph above the last one tells how the program transforms a string, starting from the empty string, with brainfuck black boxes, by feeding the string as an input to bf and replacing it with the output
+2020-06-03 15:54:07 <esowiki> 14[[07User:PythonshellDebugwindow/GUI Display Language14]]4 M10 02https://esolangs.org/w/index.php?diff=73198&oldid=73165 5* 03PythonshellDebugwindow 5* (+89) 10
+2020-06-03 15:54:26 <cpressey> "the iterated process has to generate all possible inputs of Grace, so it has to be nondeterministic" -- no it doesn't?
+2020-06-03 15:54:28 <wib_jonas> then the last paragraph describes the IO convention of Grace, that is, that the Grace input must match the last state, and that this is nondeterministic in the sense that the Grace machine accepts an input string if there's any accepting path to it
+2020-06-03 15:54:38 <cpressey> You can deterministically generate all possible inputs?
+2020-06-03 15:54:56 <wib_jonas> cpressey: hmm ok, that's true, you could do that too
+2020-06-03 15:55:10 <wib_jonas> because there's no special mark for which state is final
+2020-06-03 15:55:41 <cpressey> anyway if Hakerh400 is as bored as their user log makes them look hopefully they'll be happy to explain why they claim it's TC
+2020-06-03 15:57:36 <wib_jonas> cpressey: still, for Turing-completeness, all you'd need is to pick one fixed non-empty string as a conventional input, and then compile your program to brainfuck iterations such that it outputs that special string if your program halts
+2020-06-03 15:57:56 <wib_jonas> then the Grace program will accept the special string iff your original program halts
+2020-06-03 15:58:18 <wib_jonas> and yes, for that much, one brainfuck program is enough
+2020-06-03 15:58:27 <wib_jonas> the second brainfuck program just makes it more powerful than TC
+2020-06-03 15:59:00 <wib_jonas> though not more powerful for any one fixed input, admittedly
