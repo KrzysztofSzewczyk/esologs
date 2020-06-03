@@ -343,3 +343,57 @@
 2020-06-03 18:11:18 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
 2020-06-03 18:13:12 <esowiki> 14[[07Brainfuck implementations14]]4 M10 02https://esolangs.org/w/index.php?diff=73204&oldid=73172 5* 03PythonshellDebugwindow 5* (+29) 10/* Implementations including Hardware */ cat
 2020-06-03 18:28:00 <esowiki> 14[[07User:PythonshellDebugwindow/GUI Display Language14]]4 10 02https://esolangs.org/w/index.php?diff=73205&oldid=73202 5* 03PythonshellDebugwindow 5* (+603) 10/* Brainfuck interpreter */
+2020-06-03 18:40:42 Quit: TheLie (Ping timeout: 246 seconds)
+2020-06-03 18:40:42 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 18:48:13 Joined: ais523
+2020-06-03 18:48:14 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 18:48:25 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-06-03 18:48:25 <ais523> b_jonas: Grace is definitely computable, it allows the 0 case to enter an infinite loop
+2020-06-03 18:48:40 <ais523> thus it can be computed simply by running all possible computations interleaved and seeing if any of them output 1
+2020-06-03 18:49:12 User Name: b_jonas = b_jonas!~x@catv-176-63-12-40.catv.broadband.hu
+2020-06-03 18:49:12 <b_jonas> ais523: hmm...
+2020-06-03 18:49:34 <b_jonas> so it's exactly turing-complete?
+2020-06-03 18:49:44 <b_jonas> I guess you're right
+2020-06-03 18:50:11 <ais523> for a TCness proof, I think it's sufficient for one program simply to create longer and longer internal states, and the other program to do all the real work
+2020-06-03 18:50:42 <b_jonas> ais523: that would work too, yes
+2020-06-03 18:50:58 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03WiseMan 5*  10New user account
+2020-06-03 18:51:47 <ais523> I think a much more interesting question is whether deterministic Grace is TC, I'm not convinced that it isn't
+2020-06-03 18:52:04 <b_jonas> though in a string replacement language like 1.1 or Thue, any one rule will increase the string length only by a constant term, so you can directly represent such a rule in Grace
+2020-06-03 18:52:15 <ais523> (i.e. with only one program rather than two)
+2020-06-03 18:52:23 <ais523> it clearly would be if not for the linear boundedness
+2020-06-03 18:52:46 <b_jonas> ais523: yes, it's still TC if you want a fixed Grace input, say always give "1" as the input.
+2020-06-03 18:52:57 <b_jonas> ais523: you can translate 1.1 into it, or a deterministic version of Thue
+2020-06-03 18:53:09 <b_jonas> where the brainfuck program always executes the first rule that matches
+2020-06-03 18:53:14 <esowiki> 14[[07Surtic14]]4 M10 02https://esolangs.org/w/index.php?diff=73206&oldid=72919 5* 03Digital Hunter 5* (-35) 10
+2020-06-03 18:53:15 <ais523> ah right, yes, or any language which works by transforming an internal state one step at a time
+2020-06-03 18:53:25 <b_jonas> 1.1 is a bit more complicated because you also need to store the finite control state in the string
+2020-06-03 18:53:28 <ais523> where each individual step grows the string only finitely
+2020-06-03 18:53:44 <ais523> actually my first thought for this was MiniMAX
+2020-06-03 18:54:02 <ais523> but that's awkward because you need a weird representation of the instruction pointer and old instruction pointer
+2020-06-03 18:54:42 <b_jonas> ais523: would a version of Thue that always does the first replacement rule that applies work?
+2020-06-03 18:54:47 <ais523> hmm, that made me think of an entirely different problem: what's the minimum number of word-pairs needed for the Post Correspondence Problem to be TC?
+2020-06-03 18:55:02 <ais523> b_jonas: yes
+2020-06-03 18:55:12 <b_jonas> is there a name for that deterministic Thue or something close?
+2020-06-03 18:55:23 <b_jonas> perhaps even an article on esolangs.org?
+2020-06-03 18:55:26 User Name: imode = imode!~linear@unaffiliated/imode
+2020-06-03 18:55:26 <imode> y'all talkin about thue.
+2020-06-03 18:55:39 <b_jonas> it's not 1.1, because 1.1 has a finite control state, so it's actually much harder to translate
+2020-06-03 18:55:48 <ais523> deterministic Thues have been talked about quite a bit, but there are two different ways to determinize Thue
+2020-06-03 18:55:56 <ais523> one is to always take the first rule, one is to always take the first position in the program
+2020-06-03 18:55:59 <imode> one is prioritization of rules and...
+2020-06-03 18:56:01 <imode> yeah.
+2020-06-03 18:56:02 <b_jonas> ais523: yeah
+2020-06-03 18:56:12 <b_jonas> in this case either one would work
+2020-06-03 18:56:15 <ais523> come to think of it, 2C would work great for this
+2020-06-03 18:56:18 <b_jonas> because you can translate either one to brainfuck
+2020-06-03 18:56:30 <ais523> as one step of 2C is a finite state machine
+2020-06-03 18:56:47 <imode> I've been working on a "brainfuck" to Thue translator since yesterday, funny this comes up now.
+2020-06-03 18:57:20 <ais523> how many tape cells do you need to convert arbitrary finite state machines to BF? my guess is 2, possibly 1 is enough
+2020-06-03 18:57:47 <ais523> (IIRC, 3 is enough to be TC if you have bignum cells, but obviously an FSM doesn't need bignums)
+2020-06-03 18:58:11 <imode> 1 would be enough, wouldn't it?
+2020-06-03 18:58:24 <imode> or would you need 2, one for state and one for input.
+2020-06-03 18:58:44 <ais523> oh, I didn't even think of putting the state in a cell
+2020-06-03 18:59:01 <ais523> I was thinking you use the IP to record the state, in which the hard part is whether or not you can escape from brackets without forgetting what you're doing
+2020-06-03 18:59:20 <ais523> you probably need 2 cells simply because you can't escape a loop unless the current cell is 0
+2020-06-03 18:59:33 <ais523> meaning that in 1-cell brainfuck, you can't remember anything across a ]
+2020-06-03 18:59:53 <imode> yeah.
