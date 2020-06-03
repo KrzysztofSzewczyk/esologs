@@ -493,3 +493,101 @@
 2020-06-03 19:29:52 <b_jonas> ^
 2020-06-03 19:29:59 <ais523> yes, we both thought of that test at once
 2020-06-03 19:30:00 <b_jonas> yeah, you tested the same thing
+2020-06-03 19:30:06 <ais523> that does look somewhat magical
+2020-06-03 19:30:34 <b_jonas> I guess it might still not be magical, if say (A;B) just checks whether the head of A is ->
+2020-06-03 19:30:44 <b_jonas> a normal predicate could do that
+2020-06-03 19:30:48 <ais523> I tend not to use -> anyway because it makes my head hurt, this shows why
+2020-06-03 19:31:08 <b_jonas> you know you can translate -> to ! right?
+2020-06-03 19:31:19 <ais523> I'd find that much clearer
+2020-06-03 19:31:41 <ais523> although doesn't the translation need an auxiliary predicate sometimes to control the scope of !?
+2020-06-03 19:31:50 <b_jonas> yes, it needs an auxiliary predicate
+2020-06-03 19:35:09 <ais523> I wonder why Lisp is as popular as it is, given the existence of Prolog
+2020-06-03 19:35:16 <ais523> I would have thought Prolog was just a strictly better Lisp
+2020-06-03 19:35:24 <ais523> that said, neither language is all that popular
+2020-06-03 19:38:27 <b_jonas> ais523: well the good news is, olvashato compiles conditionals or pattern matching to -> in general, but the current version optimizes them to ! when they're at the top level of a predicate
+2020-06-03 19:38:39 <int-e> Meh, Prolog has an awful execution model.
+2020-06-03 19:39:00 <ais523> you don't actually have to make use of the backtracking
+2020-06-03 19:39:03 <b_jonas> so it will make your head hurt less, and that was specifically the goal, though not for your head in particular, but for the head of the professor that read the homework prolog program generated with it
+2020-06-03 19:39:24 <b_jonas> however, I think the version that I used to submit the homework didn't have that optimization yet
+2020-06-03 19:39:41 <int-e> ais523: but backtracking is the default, you have to actively fight it if you don't want it
+2020-06-03 19:39:47 <b_jonas> or maybe it did have it, it just didn't have the similar optimization for the sml output? I dunno
+2020-06-03 19:39:52 <ais523> int-e: only if you use nondeterministic predicates
+2020-06-03 19:40:16 <int-e> and the syntax isn't all that great either.
+2020-06-03 19:40:18 <ais523> if all your predicates are deteriministic the evaluation order is the same as Lisp
+2020-06-03 19:40:18 * int-e shrugs
+2020-06-03 19:40:45 <int-e> I don't like Prolog. Lisp at least has meta-programming going for it.
+2020-06-03 19:41:13 <ais523> the point is that Prolog can be meta-programmed in exactly the same way
+2020-06-03 19:41:21 <b_jonas> ais523: no, prolog is not a strictly better list, because if you write a function composition expression like (a (b c)) in lisp, where a and b are functions, then in List you have to make up a variable name for the temporary, like (b(C, O), a(O, ...)) where O is the temporary variable that never appears in lisp
+2020-06-03 19:41:38 <ais523> b_jonas: oh yes, that's a good point
+2020-06-03 19:41:49 <b_jonas> ais523: also lisp has convenient first class functions, mutable bindings, mutable vectors, and some more convenient builtins
+2020-06-03 19:42:05 <int-e> (Lisp's main problem is one of attitude. The so called "common" lisp is huge, complex, badly documented unless you already know Lisp, and completely ignores the fact  that there's a plethora of languages outside of Lisp that you might want to bind to.)
+2020-06-03 19:42:17 <ais523> at one point I was considering a Prolog variant where predicates had a "return value", so writing A=f(B,C) in the variant would be equivalent to f(B,C,A) in actual Prolog
+2020-06-03 19:42:22 <b_jonas> ais523: mutable stuff is specifically hard to translate to prolog, whereas lisps have builtins for it (though they may differ between common lisp and scheme)
+2020-06-03 19:42:22 <esowiki> 14[[07Jumplang14]]4 N10 02https://esolangs.org/w/index.php?oldid=73208 5* 03PythonshellDebugwindow 5* (+893) 10Created page with "'''Jumplang''' is a [[brainfuck]]-derived esolang by [[User:PythonshellDebugwindow]] designed to be easier to implement in another esolang than normal brainfuck.  ==Difference..."
+2020-06-03 19:42:38 <b_jonas> ais523: that prolog variant exists, I think it's called Mozart or something
+2020-06-03 19:42:57 <int-e> But Lisp at least seemed worth using to me at some point until I ran into those problems. Prolog... never appealed to me except as a declarative-ish programming curiosity for simple backtracking solvers.
+2020-06-03 19:43:21 Quit: tromp (Remote host closed the connection)
+2020-06-03 19:43:21 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 19:44:18 <ais523> actually, I think I realised what I prefer about deterministic Prolog compared to Lisp: the quoting mechanisms are so much nicer
+2020-06-03 19:44:45 <ais523> that's probably a consequence of return values not existing, though
+2020-06-03 19:44:45 <b_jonas> ais523: apparently it's called Oz language and the implementation is called Mozart, just to confuse people
+2020-06-03 19:45:08 <ais523> hmm, maybe Prolog could do with some sort of scoped assert
+2020-06-03 19:45:14 <b_jonas> ais523: but the point is, you don't need quoting mechanisms if you program lisp like a sane procedural language
+2020-06-03 19:45:25 <ais523> Prolog does mutability just fine, its issue is that it's all global
+2020-06-03 19:45:40 <ais523> b_jonas: yes you do, e.g. when setting a variable
+2020-06-03 19:46:05 <ais523> if you do (set a b) then Lisp will attempt to evaluate both a and b, in order to generate the name of the variable it's setting and the value it's setting it to separately
+2020-06-03 19:46:06 <b_jonas> ais523: not for scheme, no. you might need it in lesser lisp variants, but those have other drawbacks too
+2020-06-03 19:46:20 <b_jonas> ais523: no, that's common lisp weirdness, we don't do that in scheme at all
+2020-06-03 19:46:46 <ais523> b_jonas: well in Common Lisp you normally use a macro setq that's just set with the first argument quoted
+2020-06-03 19:46:49 <b_jonas> you don't want to be able to access just any local variable by name, would you?
+2020-06-03 19:46:54 Joined: tromp
+2020-06-03 19:46:54 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 19:47:05 <b_jonas> that just makes optimization much harder than it should be
+2020-06-03 19:47:09 <b_jonas> scheme doesn't have that feature
+2020-06-03 19:47:21 <b_jonas> you can still access *global* variables by name, and mutate them too, if you want
+2020-06-03 19:47:27 <b_jonas> like in perl or python
+2020-06-03 19:47:29 <b_jonas> but not locals
+2020-06-03 19:47:40 <b_jonas> so the normal way to set a variable is (set! variablename value)
+2020-06-03 19:47:59 <ais523> ah, I always assumed that was analogous to setq, but maybe not?
+2020-06-03 19:48:02 <b_jonas> and that's the only builtin that can mutate a variable, though there are some other builtin macros
+2020-06-03 19:48:17 <b_jonas> ais523: it's analogous to setq, but there's no set that can modify a local variable by name
+2020-06-03 19:48:24 <ais523> it's magical because the name is being interpreted differently depending on the scope in which set! appears
+2020-06-03 19:48:45 <ais523> whereas setq is literally just adding an apostrophe
+2020-06-03 19:48:58 <b_jonas> ais523: you could say that, it's one of the few built-in expression types, but you can define a macro that does exactly that,
+2020-06-03 19:50:17 <ais523> fwiw, many Lisp programmers prefer to use recursion rather than mutable variables; I wonder if that's related to issues of identifier scoping?
+2020-06-03 19:50:31 <ais523> although maybe not, when I program OCaml I often choose to use recursion rather than mutable variables
+2020-06-03 19:50:38 <b_jonas> define is way more magical (it's still implemented as a macro, but it's implemented like -> can be implemented in prolog, where lambda looks in its body to find defines)
+2020-06-03 19:51:06 <ais523> (variables in OCaml are like variables in Algol; the variable /itself/ is immutable once assigned, but the variable's /contents/ can be mutable)
+2020-06-03 19:51:31 <ais523> it's like writing int *const x = malloc(sizeof(int)) in C
+2020-06-03 19:51:34 <b_jonas> ais523: do they really? there are very convenient macros to encapsulate that kind of recursion with immutable variables changing from one iteration to another, and I think lisp programmers would mostly use those, just like Haskell programmers
+2020-06-03 19:52:02 <ais523> b_jonas: I mean, instead of writing a loop that repeatedly mutates some variables
+2020-06-03 19:52:25 <b_jonas> ais523: well yes then. but I think Haskell and SML programmers do that too.
+2020-06-03 19:52:36 <ais523> you write a function that's the loop body, give those variables as arguments, and have it "mutate" the variables from one loop iteration to the next by calling itself with differnet arguments
+2020-06-03 19:52:41 <b_jonas> lisp just makes the mutating version easier than in SML and much easier than in Haskell
+2020-06-03 19:52:59 <b_jonas> heck, while we're there, you do that in prolog too, don't you?
+2020-06-03 19:53:00 <ais523> the mutating version is pretty easy in OCaml given the sugar that exists
+2020-06-03 19:53:12 <ais523> b_jonas: I do it in anything that's remotely functional, I may be unusual though
+2020-06-03 19:53:22 <b_jonas> yes, it's pretty easy in scheme too because of macros that sugar it
+2020-06-03 19:53:36 <ais523> `` ocaml --help
+2020-06-03 19:53:37 <HackEso> ​/hackenv/bin/`: line 5: ocaml: command not found
+2020-06-03 19:53:41 <ais523> aww
+2020-06-03 19:53:57 <ais523> although it'd be quite complex to hook up to HackEso as it is
+2020-06-03 19:54:02 <ais523> it's not a very commandliney language
+2020-06-03 19:54:20 <b_jonas> we don't have gnu prolog either
+2020-06-03 19:54:33 <b_jonas> ``` ghc --version
+2020-06-03 19:54:34 <HackEso> bash: ghc: command not found
+2020-06-03 19:54:39 <b_jonas> ``` ghci --version
+2020-06-03 19:54:40 <HackEso> bash: ghci: command not found
+2020-06-03 19:54:53 <b_jonas> we can't have everything in HackEso
+2020-06-03 19:54:57 Joined: craigo
+2020-06-03 19:54:57 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 19:55:06 <b_jonas> it already does a lot
+2020-06-03 19:57:46 <ais523> so this is what an imperative loop looks like in OCaml: https://tio.run/##HYtLDsIwDAX3OcVjx2cBLQskUHuVCBGHWnJt1EZqbx/cLt@8Gfu8R6lVqGBFh4ky2gdYwzKwEA4rejRIFuD/swPnjY2W0Lp@QxlIN3L1TTLvxRl3XNC8vPlNrCWSJmGl41x8fqPl6NTNU0imVOsf
+2020-06-03 19:58:28 <ais523> I like how clear the use/mention distinction is in OCaml, it distinguishes very clearly between a variable and its value
+2020-06-03 19:58:41 <b_jonas> ais523: ok, then that does seem to be stronger syntactic sugar than what scheme has
+2020-06-03 19:58:57 <b_jonas> oh wait, it has a reference
+2020-06-03 19:59:02 <b_jonas> then that is a mutating loop
+2020-06-03 19:59:09 <ais523> yes, that's a mutating loop
+2020-06-03 19:59:13 <ais523> not sugar for a recursive loop
+2020-06-03 19:59:14 <b_jonas> you can do that in scheme or SML then
+2020-06-03 19:59:21 <shachaf> I like the ALGOL 68/BLISS style but I'm not sure whether it's too complicated in practice.
