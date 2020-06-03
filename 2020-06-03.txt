@@ -591,3 +591,108 @@
 2020-06-03 19:59:13 <ais523> not sugar for a recursive loop
 2020-06-03 19:59:14 <b_jonas> you can do that in scheme or SML then
 2020-06-03 19:59:21 <shachaf> I like the ALGOL 68/BLISS style but I'm not sure whether it's too complicated in practice.
+2020-06-03 20:00:04 <b_jonas> SML has mutable cells, the same kind that OCaml has; scheme doesn't directly have them, but you can implement them easily as library functions based on either mutable bindings, or on mutable conses, or on mutable vectors.
+2020-06-03 20:00:06 <shachaf> Especially if you have a whole bunch of !s in one line, for a bunch of mutable variable dereference and array indexing and so on.
+2020-06-03 20:00:33 <b_jonas> but for a simple loop like that, you wouldn't do that
+2020-06-03 20:00:44 <b_jonas> ais523: how does the sugar for a recursive loop like that work in OCaml?
+2020-06-03 20:00:46 <shachaf> Probably you can implement mutable cells in Scheme in terms of continuations if you want to be all schemey about it.
+2020-06-03 20:01:05 <b_jonas> shachaf: eek
+2020-06-03 20:01:33 <b_jonas> oh right, I needn't ask that, that's what Rosetta Code is forr
+2020-06-03 20:01:49 <ais523> b_jonas: here's the recursive version: https://tio.run/##HYtLDsIwDAX3OcVjx2cBLQskUHuVCBGHWnJt1EZqbx/cLt@8Gfu8R6lVqGBFh4ky2gdYwzKwEA4rejRIFuD/swPnjY2W0Lp@QxlIN3L1TTLvxRl3XNC8vPlNrCWSJmGl41x8fqPl6NTNU0imVOsf
+2020-06-03 20:02:26 <shachaf> Another thing is that if you convert something from an immutable to a mutable variable, you need to change x to !x everywhere in your code.
+2020-06-03 20:02:32 <ais523> or an alternative version: https://tio.run/##RYsxDsIwEAR7v2LLBISAUFAg@IqFnDOc5JxRYiQX/N1sCsQ1u7Oay@E@pdaSFMwSEHBFfFsoms19cMTuhq5nq2tbrUpDI2PKIwbCAeUpxmFPlLQI6wYnbPmt5vC716xWvNiY1KRbCvHhc/RcUfvLXwyoTo0xnFv7Ag
+2020-06-03 20:02:33 <shachaf> It admittedly has different semantics.
+2020-06-03 20:02:34 <b_jonas> ais523: ^ I don't think that's the url you wanted to paste
+2020-06-03 20:02:36 <b_jonas> the first one
+2020-06-03 20:02:59 <ais523> oh yes, I pasted the same link twice
+2020-06-03 20:03:10 <ais523> just use the second one, then, the match is more idiomatic than an if/then anyway
+2020-06-03 20:04:01 <b_jonas> I think you could translate that latter one to SML or haskell in a straightforward way; in lisp you'd have to use an if or some other conditional construct rather than pattern guards
+2020-06-03 20:04:34 <ais523> you can do it using if just fine, but OCaml's if syntax is ugly if the inside of the if is nontrivial
+2020-06-03 20:04:35 <b_jonas> oh yeah, we now have egel as our esoteric functional language with pattern guards too
+2020-06-03 20:05:35 <ais523> I would be surprised if there were constructs in OCaml that didn't translate easily to SML, apart from the object-oriented stuff and maybe polymorphic variants
+2020-06-03 20:06:57 <ais523> they belong to the same language family, after all
+2020-06-03 20:08:27 <esowiki> 14[[07Talk:Esoteric coder14]]4 N10 02https://esolangs.org/w/index.php?oldid=73209 5* 03DmilkaSTD 5* (+118) 10Created page with "== Uhm.. == Esocoder sounds better --~~~~"
+2020-06-03 20:08:32 <b_jonas> ais523: yes, they share a common ancestor
+2020-06-03 20:08:55 <b_jonas> and yes, I should eventually get back to the egel language and install a version with a working wrapper to HackEso
+2020-06-03 20:09:04 <b_jonas> because it's such a conveniently useful esolang
+2020-06-03 20:10:05 <ais523> polymorphic variants are great, incidentally, they make some programming tasks (e.g. writing compilers for which intermediate representations have different constructs legal at different points in the compile) much easier
+2020-06-03 20:10:37 <b_jonas> that sounds nice. what are they?
+2020-06-03 20:10:55 <ais523> you basically just use enum tags at will, matching only on the tags you expect to be present at that point in the program, and generating only the ones you're supposed to generate
+2020-06-03 20:10:58 <b_jonas> are they open variants (like Haskell classes) or closed variants (like Haskell algebraic data types with disjuction)?
+2020-06-03 20:11:10 <ais523> and the compiler statically checks that the producers and consumers match up
+2020-06-03 20:11:18 <b_jonas> ah, anonymous closed variants then
+2020-06-03 20:11:23 <ais523> yes
+2020-06-03 20:11:43 <ais523> anonymous closed variants where you can reuse the same tags across different variants, perhaps with different types for the associated data
+2020-06-03 20:12:02 <b_jonas> can you also typedef specific unions of them, so that you get saner error messages from the typechecker?
+2020-06-03 20:12:05 <ais523> yes
+2020-06-03 20:12:08 <b_jonas> good
+2020-06-03 20:12:15 <b_jonas> yes, that sounds like very useful
+2020-06-03 20:12:47 <ais523> they can be open as well, if you write a match where the last case is _ then the type system takes note of that
+2020-06-03 20:13:04 <ais523> and will let the caller supply you anything
+2020-06-03 20:14:13 <b_jonas> in other languages, you have to simulate them in one way or another. you can simulate them with a wrapper to the largest enum type; or, if the related types are in a tree structure (which is common but not universal) with nested enums; or with some crazy magic in Haskell
+2020-06-03 20:14:18 <b_jonas> I don't remember how the last one works
+2020-06-03 20:14:23 <esowiki> 14[[07User:Emerald14]]4 10 02https://esolangs.org/w/index.php?diff=73210&oldid=73166 5* 03Emerald 5* (+2) 10Fixed heading size
+2020-06-03 20:15:13 <b_jonas> oh yeah, also with defining each type as separate enums and using compiler magic to write implicit cast functions from one to the other
+2020-06-03 20:15:35 <ais523> the OCaml implementation isn't quite as good as it could be, occasionally you need to explicitly write casts
+2020-06-03 20:15:44 <ais523> I'm not entirely sure what causes that to happen
+2020-06-03 20:16:01 <b_jonas> I was just thinking of these because I have an interpreter that may require such variant types where there are two related enums that overlap but neither is a subset of the other
+2020-06-03 20:16:49 <b_jonas> ais523: do you still have to write explicit casts if the involved enum types are closed and there are no free type paramters?
+2020-06-03 20:17:16 <ais523> b_jonas: it's confusing, I haven't figured out the exact trigger, it doesn't happen very often
+2020-06-03 20:17:37 <ais523> I think it's something like, if you use the same variable in two different contexts, and one context allows more variants than the other
+2020-06-03 20:17:41 <ais523> you need to write a cast
+2020-06-03 20:17:42 <b_jonas> no wait, that's not what I wanted to ask
+2020-06-03 20:17:49 <ais523> because the type inference algorithm is expecting each variable to have only one type
+2020-06-03 20:18:15 <b_jonas> ais523: do you still have to write explicit casts if the involved enum types are closed and there are no free type paramters, and the content of every constructor is exactly the same type everywhere (as opposed to a constructor appearing with different types, one of which is a subtype of another)?
+2020-06-03 20:18:35 <ais523> so if x can be either `A or `B, you can use it as a parameter to a function expecting a [`A | `B], or as a parameter to a function expecting a [`A | `B | `C]
+2020-06-03 20:18:46 <ais523> but if you try to use it with both, you need to write a cast or the type inference algorithm gets confused
+2020-06-03 20:19:16 <ais523> I think that's the only case that needs a cast, though
+2020-06-03 20:19:17 <b_jonas> ais523: how do you use the same variable as two different ones of those if the variable is immutable?
+2020-06-03 20:19:43 <ais523> b_jonas: well the variable is either a `A or a `B, right?
+2020-06-03 20:19:53 <ais523> so any function which accepts `A and `B as possible tags should be able to accept it
+2020-06-03 20:21:21 <ais523> or, hmm, this works: https://tio.run/##fcqxDsIwDIThnae4sR0YgLECCXiQFBU7WAoOal2pQ989xIi523@nLw@PdyolkYFxBs86mGRFf8X@ggNW9Devo9fd6wTRnfu47f9qqUoYNs4Ee9FPUprIXSWfUdQC6TOJUjNZnTFkDvVtGEvbdpskOinlCw
+2020-06-03 20:21:30 <b_jonas> ais523: is that even if you explicitly type the variable to an enum that can be `A or `B, as opposed to some case where the type inference just can't derive that because of confusing loops?
+2020-06-03 20:21:36 <ais523> so either the bug with casting has been fixed, or the cause is more complex
+2020-06-03 20:22:18 <ais523> here's how it looks with an explicit type: https://tio.run/##fYsxDsIwDEV3TvHHdmCAbiCQgGMglKLiBEvBqVpX6tC7hxgxd3v2fy91z0/MOZLC4wQ/SaecBO0F2zN2WNBejfZGN6MGLBvzw7r/t2YccC@rDY9SsIcOE0Hf9KsojmRN0fuBRR3JK7JQNWo5g0velW/lMdf1cVUJpuT8BQ
+2020-06-03 20:22:48 <b_jonas> ais523: wow, that looks like it has way too few parenthesis for something like this
+2020-06-03 20:23:40 <ais523> just for you, the same program with no parentheses: https://tio.run/##jYtBCsJADEX3PcW/gAt1p1hQjyEylZqMgTEjbQpd9O7jRFyLu5f893J/e6ZSEhkYB/CkvUlWdEesWqyxoDs5bZzOTluINu7H3/7XmrHDpa4@XGshDBsmgj3oU1EayZuqc5WXFqMNojFkDqLmj1e9LZDekyjtm/iPVsob
+2020-06-03 20:23:46 <b_jonas> I'll assume the cause is more complex, and it involves a case where the type inference algorithm can't easily see that the function can get only an `A or `B
+2020-06-03 20:23:51 <ais523> if you remove the explict type from x it has no brackets either!
+2020-06-03 20:24:08 <b_jonas> heh
+2020-06-03 20:24:20 <ais523> (|>) is the equivalent of flip ($)
+2020-06-03 20:24:25 <ais523> from Haskell
+2020-06-03 20:24:29 <esowiki> 14[[07Jumplang14]]4 M10 02https://esolangs.org/w/index.php?diff=73211&oldid=73208 5* 03PythonshellDebugwindow 5* (+190) 10
+2020-06-03 20:24:48 <ais523> and is probably the more readable argument order
+2020-06-03 20:25:06 <ais523> I'm not sure if OCaml even has ($) in its standard library, but it's easy enough to implement
+2020-06-03 20:25:34 <esowiki> 14[[07User:Emerald14]]4 10 02https://esolangs.org/w/index.php?diff=73212&oldid=73210 5* 03Emerald 5* (+319) 10Persuade
+2020-06-03 20:25:36 <ais523> OCaml operator names get a bit weird sometimes, because for mental parseability, all operators that start with the same first character have the same precedence
+2020-06-03 20:25:43 <b_jonas> ais523: the (general) identity function was added to the rust standard library only like a year ago
+2020-06-03 20:25:46 <ais523> e.g. |> has the same precedence as ||
+2020-06-03 20:25:47 <b_jonas> and it's useful
+2020-06-03 20:26:01 <b_jonas> and yes, it's also trivial to implement
+2020-06-03 20:26:05 <ais523> what type does it have?
+2020-06-03 20:26:14 <b_jonas> ais523: it's a generic function actually, so no single type
+2020-06-03 20:26:15 Quit: rain1 (Quit: leaving)
+2020-06-03 20:26:15 Names: ^[, ais523, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 20:26:16 <ais523> (in Rust, it's obvious in most languages)
+2020-06-03 20:26:30 <ais523> right, I was trying to figure out how you typed it in Rust
+2020-06-03 20:26:41 <b_jonas> it's like fn<T> identity(v: T) -> T { v }
+2020-06-03 20:26:46 <int-e> > let f = \case True -> 1; False -> 2 in map f [False ..] -- does this have too few parentheses as well?
+2020-06-03 20:26:49 <lambdabot> [2,1]
+2020-06-03 20:26:49 <ais523> ah right, of course
+2020-06-03 20:26:56 <b_jonas> so the specific type for any one T is fn(T) -> T
+2020-06-03 20:27:12 <b_jonas> the generic one doesn't have a type and can't be used as a first-class value
+2020-06-03 20:27:34 <b_jonas> sort of like in C++ until perhaps lately when they made them usable as a class value with a templated overloaded () operator
+2020-06-03 20:27:50 <ais523> I guess you could set T to dyn Any, but that isn't all that useful a type
+2020-06-03 20:28:14 <ais523> … would identity even work on dyn Any, or would you need a box?
+2020-06-03 20:28:27 <b_jonas> ais523: I don't think it would work, or at least it wouldn't be useful
+2020-06-03 20:29:01 <b_jonas> ais523: one of the reasons why the identity function is useful is that it lets you write type ascriptions, sort of like (expression :: SomeSpecificType) in haskell
+2020-06-03 20:29:11 <ais523> ah, that isn't what I was guessing at all
+2020-06-03 20:29:19 <esowiki> 14[[07User talk:Emerald14]]4 10 02https://esolangs.org/w/index.php?diff=73213&oldid=73170 5* 03Emerald 5* (+205) 10/* Tips For Making a Golfing Language */
+2020-06-03 20:29:23 <b_jonas> so you write them as identity<SomeSpecificType>(expression) in rust
+2020-06-03 20:29:28 <ais523> I thought you used it as a parameter to a higher-order function
+2020-06-03 20:29:32 <ais523> and no, you don't write them as that
+2020-06-03 20:29:37 <ais523> the < in that is the less-than operator
+2020-06-03 20:29:42 <b_jonas> yeah
+2020-06-03 20:29:49 <ais523> identity::<SomeSpecificType>::(expression)
+2020-06-03 20:29:53 <b_jonas> identity::<SomeSpecificType>(expression)
+2020-06-03 20:29:56 <ais523> not sure on the last ::
