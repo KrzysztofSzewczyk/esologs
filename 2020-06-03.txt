@@ -2,3 +2,21 @@
 2020-06-03 00:26:26 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
 2020-06-03 00:29:56 User Name: tswett[m] = tswett[m]!tswettmatr@gateway/shell/matrix.org/x-zbbyohcljagkubii
 2020-06-03 00:29:56 <tswett[m]> You know what we need more of? Antiprogramming languages.
+2020-06-03 00:30:32 <tswett[m]> With many programming languages, the natural state is that nothing happens, and you have to write code that causes the desired things to happen.
+2020-06-03 00:31:17 <shachaf> i,i substractive program synthesis
+2020-06-03 00:31:34 <tswett[m]> I define an "antiprogramming language" as a language in which the natural state is that anything could happen, and the sole purpose of the code is to prevent undesired things from happening.
+2020-06-03 00:34:15 <tswett[m]> fungot, does all that make sense to you?
+2020-06-03 00:34:15 <fungot> tswett[m]: how soon before gambit has had one.
+2020-06-03 00:42:08 <zzo38> Well, with C programming (at least with gcc), if you do not write any program then the linker won't work because there is no "main" function to start from.
+2020-06-03 00:47:51 Joined: imode
+2020-06-03 00:47:51 Names: ^[, aji, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zseri, zzo38
+2020-06-03 00:48:33 <shachaf> zzo38: Do you like the gcc linker?
+2020-06-03 00:48:39 <shachaf> Should I write my own linker?
+2020-06-03 00:50:05 <zzo38> Write your own linker if you need to, I suppose.
+2020-06-03 00:50:32 <zzo38> The gcc linker seems to work for me; I haven't done much other stuff with it than just compiling C programs though
+2020-06-03 00:52:41 <zzo38> Can you make a global variable of zero length to indicate something that the linker can use to decide something? If so, does the GNU linker support that use?
+2020-06-03 00:54:21 <shachaf> Making a symbol to indicate something is a standard trick, I think.
+2020-06-03 00:55:11 <zzo38> Yes, I have seen that, although I have not seen them being of zero length.
+2020-06-03 00:56:08 <shachaf> I see. I'm not sure how you'd do that in C, but I assume linkers support it fine.
+2020-06-03 00:56:10 <zzo38> (GNU C accepts zero length structures and zero length arrays; the latter is normally only used as the last item in a structure, although I can think of some other uses too, some of which have to do with macros.)
+2020-06-03 00:58:34 <shachaf> Indeed with GNU extensions you can write "int thing[0];" to make an zero-length symbol.
