@@ -397,3 +397,99 @@
 2020-06-03 18:59:20 <ais523> you probably need 2 cells simply because you can't escape a loop unless the current cell is 0
 2020-06-03 18:59:33 <ais523> meaning that in 1-cell brainfuck, you can't remember anything across a ]
 2020-06-03 18:59:53 <imode> yeah.
+2020-06-03 19:00:03 <b_jonas> ais523: there's also one-tape thue, in which the input, every string state, every search string, and every replacement string must contain exactly one "1"
+2020-06-03 19:00:09 <b_jonas> which works like a two-stack machine
+2020-06-03 19:00:12 <ais523> a conditional-goto version of BF would only need one cell to implement an FSM, and it only needs that cell to be able to read the input
+2020-06-03 19:00:28 <b_jonas> and you can check that it's locally deterministic
+2020-06-03 19:00:53 <ais523> hmm, this implies that structured programming can actually make languages less powerful sometimes
+2020-06-03 19:00:55 <b_jonas> cpressey: ^
+2020-06-03 19:01:26 <imode> yeah, that's kind of why I got off of it.
+2020-06-03 19:01:28 <b_jonas> basically you can translate a two-stack finite control machine to a Thue program that is intrinsically determinisitic, that's what I wanted to say
+2020-06-03 19:01:31 <imode> it's too restrictive.
+2020-06-03 19:02:40 <b_jonas> ais523: https://esolangs.org/logs/2020-06-01.html#lZb
+2020-06-03 19:03:58 <b_jonas> also, do prolog variants really use different atoms as the head of a non-empty list?
+2020-06-03 19:05:13 <b_jonas> yes they do. SWI prolog uses '[|]' as the head, gnu prolog uses '.' as the head
+2020-06-03 19:06:39 <b_jonas> This is like one of those weird BSD vs Sysv differences, isn't it?
+2020-06-03 19:08:41 <b_jonas> they also represent the empty list differently
+2020-06-03 19:12:38 <b_jonas> apparently in gnu prolog, the atom '[]' is the empty list, and '.'(Car,Cdr) is a non-empty list; in swi prolog, '[|]'(Car,Cdr) is a non-empty list, and the empty list isn't even an atom (wtf)
+2020-06-03 19:13:22 <esowiki> 14[[07Jumper14]]4 M10 02https://esolangs.org/w/index.php?diff=73207&oldid=65648 5* 03PythonshellDebugwindow 5* (-4) 10/* RAM */
+2020-06-03 19:16:09 <ais523> I think traditionally in Prolog, '.' is the name of the cons operator
+2020-06-03 19:16:20 <b_jonas> ais523: that's what I thought too
+2020-06-03 19:16:36 <ais523> I guess it's a good name because it's one of the few things that never parses as an operator naturally
+2020-06-03 19:16:44 <ais523> so it's unlikely to clash with a user-defined operator
+2020-06-03 19:17:01 <b_jonas> yes, nor does it parse as an atom
+2020-06-03 19:17:17 <ais523> `` swipl -qg 'display(/(A,B)).'
+2020-06-03 19:17:19 <HackEso> ​/(_380,_382)
+2020-06-03 19:17:24 <ais523> `` swipl -qg 'display(A/B).'
+2020-06-03 19:17:25 <HackEso> ​/(_380,_382)
+2020-06-03 19:17:30 <ais523> ah, OK
+2020-06-03 19:17:42 <ais523> for a moment I though it was making a distinction and got very confused
+2020-06-03 19:17:54 <ais523> GNU prolog uses infix notation when displaying operators, I think
+2020-06-03 19:17:54 <b_jonas> the parser makes a distinction
+2020-06-03 19:18:04 <b_jonas> ``` swipl -qg 'true(A,B)'
+2020-06-03 19:18:06 <HackEso> ERROR: -g true(A,B): catch/3: Undefined procedure: true/2 \ ERROR:   However, there are definitions for: \ ERROR:         true/0
+2020-06-03 19:18:12 <b_jonas> ``` swipl -qg 'L=true(A,B)'
+2020-06-03 19:18:13 <HackEso> No output.
+2020-06-03 19:18:28 <b_jonas> ``` swipl -qg 'L=true(A,B).'
+2020-06-03 19:18:29 <HackEso> No output.
+2020-06-03 19:18:34 <b_jonas> ``` swipl -qg 'L=true(A,B), display(L).'
+2020-06-03 19:18:34 <ais523> that's not a distinction between infix and prefix
+2020-06-03 19:18:35 <HackEso> true(_380,_382)
+2020-06-03 19:18:41 <b_jonas> ``` swipl -qg '(A true B), display(L).'
+2020-06-03 19:18:42 <HackEso> ERROR: -g (A true B), display(L).: Syntax error: Operator expected \ ERROR: (A \ ERROR: ** here ** \ ERROR:  true B), display(L).
+2020-06-03 19:18:50 <ais523> "true" isn't an operator
+2020-06-03 19:18:54 <b_jonas> yeah
+2020-06-03 19:19:07 <ais523> I think you can make things into operators in Prolog but forget how
+2020-06-03 19:19:22 <ais523> ``` swipl -qg 'display(!(A,B)).'
+2020-06-03 19:19:23 <HackEso> ​!(_380,_382)
+2020-06-03 19:19:30 <ais523> oh wow, I'm kind-of surprised that worked
+2020-06-03 19:19:38 <ais523> ``` swipl -qg '!(x,y).'
+2020-06-03 19:19:39 <HackEso> ERROR: -g !(x,y).: catch/3: Undefined procedure: !/2 \ ERROR:   However, there are definitions for: \ ERROR:         !/0
+2020-06-03 19:19:48 <ais523> looks like you can call a predicate ! if you want to
+2020-06-03 19:19:54 <ais523> presumably only if it has argumetns
+2020-06-03 19:20:31 <ais523> or maybe ! is implemented as a predicate that looks back along the call stack somehow?
+2020-06-03 19:20:48 <b_jonas> I think you could, but the above output doesn't really prove that
+2020-06-03 19:20:54 <ais523> most Prologs have a cut equivalent of setjmp/longjmp, but doing it without the setjmp is impressive
+2020-06-03 19:21:12 <ais523> I know the above output doesn't prove it, but it does make it more likely
+2020-06-03 19:24:07 <b_jonas> anyway, prolog doesn't have vararg predicates, so when it tries to execute a !, it can look up the atom together with its arity, and then find a very special magic builtin
+2020-06-03 19:24:28 <b_jonas> similarly for 2-arity ;
+2020-06-03 19:24:49 <ais523> you could use assert in a loop to emulate a varag predicate, but you'd have to stop generating at some maximum number
+2020-06-03 19:24:54 <b_jonas> it might even represent !/0 and !/2 with different words in the head internally
+2020-06-03 19:25:05 <ais523> also ; doesn't have to be magical, you can implement it in standard Prolog
+2020-06-03 19:25:13 <ais523> it's , that's magical
+2020-06-03 19:25:27 <b_jonas> ; is sort of magical because of how it behaves on the right side of a ->
+2020-06-03 19:25:40 <ais523> I thought that was just operator precedenc
+2020-06-03 19:25:43 <ais523> *precedence
+2020-06-03 19:25:45 <b_jonas> no
+2020-06-03 19:26:20 <b_jonas> ``` swipl -qg '(true->R=0;R=1), R.'
+2020-06-03 19:26:20 <HackEso> ERROR: -g (true->R=0;R=1), R.: '<meta-call>'/1: Type error: `callable' expected, found `0' (an integer)
+2020-06-03 19:26:27 <b_jonas> ``` swipl -qg '(true->R=0;R=1), display(R).'
+2020-06-03 19:26:29 <HackEso> 0
+2020-06-03 19:26:38 <b_jonas> ``` swipl -qg '(true->R=0;R=1)=..L, display(L).'
+2020-06-03 19:26:39 <HackEso> ​[;,->(true,=(_380,0)),=(_380,1)]
+2020-06-03 19:26:44 <b_jonas> hmm maybe it is
+2020-06-03 19:27:05 <b_jonas> ok sorry, I'm wrong
+2020-06-03 19:27:10 <b_jonas> maybe it's -> that's magical then?
+2020-06-03 19:27:16 <b_jonas> one of them has to be magical
+2020-06-03 19:27:44 <ais523> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), (true->or(R=0,R=1)), display(R).'
+2020-06-03 19:27:45 <HackEso> 0
+2020-06-03 19:27:58 <ais523> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), (true->or(R=0,R=1)), display(R), fail.'
+2020-06-03 19:27:59 <HackEso> 01
+2020-06-03 19:28:06 <ais523> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), (true->R=0;R=1), display(R), fail.'
+2020-06-03 19:28:08 <HackEso> 0
+2020-06-03 19:28:12 <ais523> OK, ; is magical
+2020-06-03 19:28:24 <ais523> or, wait, no
+2020-06-03 19:28:29 <ais523> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), (true->(R=0;R=1)), display(R), fail.'
+2020-06-03 19:28:30 <HackEso> 01
+2020-06-03 19:28:37 <ais523> yes, nonmagical, it's just operator precedence
+2020-06-03 19:29:00 <b_jonas> hmm wait, let me test this
+2020-06-03 19:29:06 <ais523> actually I'm not sure , is magical, I just can't see a way to define it except in terms of itself
+2020-06-03 19:29:32 <ais523> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), or((true->R=0),R=1), display(R), fail.'
+2020-06-03 19:29:33 <HackEso> 01
+2020-06-03 19:29:41 <b_jonas> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), ((true->R=0);R=1), display(R), fail.'
+2020-06-03 19:29:42 <HackEso> 0
+2020-06-03 19:29:49 <b_jonas> ``` swipl -gq 'assertz((or(X,Y) :- X)), assertz((or(X,Y) :- Y)), or((true->R=0),R=1), display(R), fail.'
+2020-06-03 19:29:50 <HackEso> 01
+2020-06-03 19:29:52 <b_jonas> ^
+2020-06-03 19:29:59 <ais523> yes, we both thought of that test at once
+2020-06-03 19:30:00 <b_jonas> yeah, you tested the same thing
