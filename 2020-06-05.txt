@@ -213,3 +213,20 @@
 2020-06-05 14:49:06 <cpressey> The ⊕ connective (XOR) is also commutative. But, hmm. Maybe that's not enough.
 2020-06-05 14:53:13 <cpressey> It needs to be idempotent, is that it?
 2020-06-05 14:57:00 <cpressey> "Idempotent" isn't quite the right word, maybe "monotonic" is better.
+2020-06-05 15:00:49 <esowiki> 14[[07Nutes14]]4 M10 02https://esolangs.org/w/index.php?diff=73290&oldid=73283 5* 03PythonshellDebugwindow 5* (-4) 10rm redlink
+2020-06-05 15:02:24 User Name: arseniiv = arseniiv!~arseniiv@95.105.1.170.dynamic.ufanet.ru
+2020-06-05 15:02:24 <arseniiv> cpressey: hm interesting but I
+2020-06-05 15:02:25 <arseniiv> oops
+2020-06-05 15:03:08 <arseniiv> …but I’m afraid there are strong no-go results re. this idea. For example I don’t think → qualifies
+2020-06-05 15:03:41 <arseniiv> I think first, the operation should be associative, and this denies us → and ↔
+2020-06-05 15:04:57 <arseniiv> associativity is absolutely needed when we want to define an operation on nonempty lists from an operation on pairs, likewise we need a neutral element to define the operation on empty lists
+2020-06-05 15:05:50 <arseniiv> hm also I hadn’t thought about operations on circular lists, it would be interesting, but that’s for another conversation
+2020-06-05 15:12:15 <arseniiv> now, why could ⊕ be a bad choice?.. hm at first it seems why not: it’s associative and has 0 as neutral element, all nice. Though it may be the case idempotence you named is after all the right restriction to add. It means it doesn’t matter how many times we accidentally count the same element in the underlying set, which is quite natural, though for example Σ doesn’t treat its domain that way. On the other hand it doesn’t t
+2020-06-05 15:12:16 <arseniiv> eat it that way because usually we sum not over a set, but over a function’s range, which shouldn’t be considered a mere set then, as it allows taking any value a specific number of times, which a mere set doesn’t distinguish
+2020-06-05 15:12:51 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-06-05 15:12:51 <zzo38> shachaf: I think a problem with that is that it incorrectly outputs non-ASCII characters without checking the locale.
+2020-06-05 15:17:21 <arseniiv> one can also see that ¬∀ and ¬∃ can’t arise in such a way from some operation, pity. Now we see why ∀ and ∃ have their own symbols but ¬∀ and ∄ have at the best part derivative ones
+2020-06-05 15:20:28 <esowiki> 14[[07Ruined BASIC14]]4 M10 02https://esolangs.org/w/index.php?diff=73291&oldid=68227 5* 03Simplemaker 5* (+5) 10/* Copying values */
+2020-06-05 15:21:17 <esowiki> 14[[07Ruined BASIC14]]4 M10 02https://esolangs.org/w/index.php?diff=73292&oldid=73291 5* 03Simplemaker 5* (+7) 10/* Copying values */
+2020-06-05 15:28:01 Joined: Remavas
+2020-06-05 15:28:01 Names: \\server\share, ^[, aji`, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
