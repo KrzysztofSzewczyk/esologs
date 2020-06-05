@@ -243,3 +243,41 @@
 2020-06-05 15:59:11 <cpressey> arseniiv: Can you represent each tile as a composition of the series of euclidean transformations that led up to it?
 2020-06-05 15:59:28 <arseniiv> or any other state when you glue tiles each time to the new tiles, so the error would accumulate
 2020-06-05 15:59:38 <arseniiv> cpressey: oh, interesting!
+2020-06-05 16:00:01 <arseniiv> but the error would accumulate anyway, wouldn’t it?
+2020-06-05 16:00:35 <arseniiv> maybe even more hm, though I’m not sure
+2020-06-05 16:01:15 <cpressey> Well, if the transformations themselves involve floating point, then yes, error would accumulate there, but could you represent them exactly somehow, with algebraic numbers?
+2020-06-05 16:01:39 <arseniiv> (storing already transformed points seems more useful for computing e. g. edge lengths and angles)
+2020-06-05 16:01:42 <cpressey> And only introduce floating point, and its error, at the end
+2020-06-05 16:03:00 <arseniiv> cpressey: yeah, I thought about “constructible numbers” like Q[√2][√(5+√2)] but they need much space and the algorithms are quite complex
+2020-06-05 16:03:34 <arseniiv> I realized only today one can use rigidity of the construction
+2020-06-05 16:05:36 <arseniiv> oh, also if you’re accidentally interested in numbers of that form, I’ll try to dig out an article with the algorithms
+2020-06-05 16:06:00 <arseniiv> I rewrote them in Mathematica so my code is unhelpful even to me as of now
+2020-06-05 16:06:18 <arseniiv> I didn’t even comment it as needed
+2020-06-05 16:06:45 <arseniiv> (I even don’t remember if it’s complete and working as it should, lol)
+2020-06-05 16:07:22 <cpressey> I know very little about computational geometry but your question was very similar to a discussion I remember having with someone many, many years ago.
+2020-06-05 16:07:41 <arseniiv> ah, I didn’t tell that I tried to prototype the thing a year or something ago, and then left it for a while, only yesterday to remember about why not again
+2020-06-05 16:08:22 <arseniiv> cpressey: interesting! what you talked about?
+2020-06-05 16:09:11 <arseniiv> did you talk*
+2020-06-05 16:12:21 <cpressey> I think it was about animating a rotating cube, rotating it a small amount on each frame, and the person I was talking to was worried that floating point error on each frame would accumulate
+2020-06-05 16:13:00 <cpressey> This was the 90's
+2020-06-05 16:14:33 <cpressey> Long before we had GPUs to do all this stuff for us :)
+2020-06-05 16:15:53 Quit: tromp (Remote host closed the connection)
+2020-06-05 16:15:53 Names: \\server\share, ^[, aji`, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-05 16:16:54 Joined: Melvar
+2020-06-05 16:16:54 Names: \\server\share, ^[, aji`, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-05 16:17:26 <arseniiv> cpressey: interesting but that has some merit even now, as multiplying quaternions is better than multiplying rotation matrices
+2020-06-05 16:18:02 <arseniiv> like, there is an obvious sensible way to normalize a quaternion and not a simple one to “orthogonalize” a matrix
+2020-06-05 16:18:18 <arseniiv> also, quaternions allow SLERP
+2020-06-05 16:18:40 <arseniiv> I mean, quite easlily allow, vs. the matrices
+2020-06-05 16:23:39 Quit: arseniiv (Ping timeout: 246 seconds)
+2020-06-05 16:23:39 Names: \\server\share, ^[, aji`, aloril, APic, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-05 16:23:59 Joined: arseniiv
+2020-06-05 16:23:59 Names: \\server\share, ^[, aji`, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-05 16:29:03 User Name: arseniiv = arseniiv!~arseniiv@95.105.1.170.dynamic.ufanet.ru
+2020-06-05 16:29:03 <arseniiv> though in applying a quaternion to a vector, one should be considerate and use an optimized procedure, not just make usual quaternion multiplication, which would be quite costly
+2020-06-05 16:29:03 <arseniiv> ah, and also for rotating many vectors in bunch, it’s better to convert q. to a matrix and use the latter, so matrices are useful at the end
+2020-06-05 16:29:03 <arseniiv> okay I spam the channel with googlable stuff sorry, though that’s a pretty neat stuff, I can’t get over it even if I don’t write 3D applications almost at all
+2020-06-05 16:29:03 <arseniiv> (and I intended to add a bit about logarithms, but IRC was wise to shut me out)
+2020-06-05 16:29:32 Quit: wib_jonas (Quit: Connection closed)
+2020-06-05 16:29:32 Names: \\server\share, ^[, aji`, aloril, APic, arseniiv, atehwa, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-05 16:29:52 <arseniiv> b_jonas: ah! am I late?
