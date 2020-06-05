@@ -398,3 +398,37 @@
 2020-06-05 21:57:58 Names: \\server\share, ^[, aji`, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-06-05 21:59:18 <fizzie> . o O (What sort of things are postposterous things?)
 2020-06-05 21:59:20 <arseniiv> ah, that word I remember still
+2020-06-05 22:07:10 <arseniiv> tried to find that article about arithmetic in Q[…][…]… and as it was prognosticated, I hadn’t find it. There are just too many items and any sensible keyword resulted in failure. At least I’m not committed to use this arithmetic anyway, but it’d be nice to re-read about it, sigh
+2020-06-05 22:19:14 <int-e> arseniiv: those ... are mysterious
+2020-06-05 22:20:50 <arseniiv> int-e: ..?
+2020-06-05 22:21:05 <int-e> Q[...][...]...
+2020-06-05 22:21:10 <arseniiv> aaah
+2020-06-05 22:21:35 * int-e is not fluent in Unicode.
+2020-06-05 22:21:38 <arseniiv> I thought those … were a textual ellipsis
+2020-06-05 22:21:50 <int-e> Sure, but what do they stand for?
+2020-06-05 22:21:55 <arseniiv> ah, Unicode
+2020-06-05 22:22:07 <int-e> Q[pi][sqrt(3)][z]
+2020-06-05 22:22:39 <int-e> There are numerous things you could put there.
+2020-06-05 22:22:50 <int-e> Possibly some quotients as well.
+2020-06-05 22:24:10 <arseniiv> ah, yes, something like that, but in this case all that mess denotes a field defined inductively: either that (ordered) field is Q or it is F[√s] for F being that kind of field, s ∈ F, is positive and not a square
+2020-06-05 22:24:44 <int-e> So... some specific algebraic numbers.
+2020-06-05 22:24:46 <arseniiv> so we just add some square roots in succession
+2020-06-05 22:24:48 <arseniiv> yeah
+2020-06-05 22:24:53 <arseniiv> and real ones
+2020-06-05 22:25:14 <arseniiv> at that
+2020-06-05 22:25:28 <int-e> Oh so s > 0?
+2020-06-05 22:25:46 <arseniiv> yeah, s > 0 and not a square, I was to brief
+2020-06-05 22:25:57 <arseniiv> too
+2020-06-05 22:26:24 <arseniiv> now I’m making famous native-speaker typos, danb
+2020-06-05 22:26:27 <arseniiv> damn*
+2020-06-05 22:26:30 <int-e> Hmm, is that exciting in anyway... I guess the inverses need work.
+2020-06-05 22:27:29 <arseniiv> finding inverses is not hard, it’s just like in C or like what is done to 1/(5 + 7√3) to get rid of the radical in the denominator
+2020-06-05 22:27:35 <int-e> And if you have many square roots, the question of FFT-like speedups arises as well, hrm. Not a clue :)
+2020-06-05 22:27:39 <arseniiv> but finding square roots…
+2020-06-05 22:28:15 <int-e> Ah you want to close Q under field operations and sqrt().
+2020-06-05 22:28:27 <int-e> (of non-negative numbers.)
+2020-06-05 22:28:43 <int-e> Is this for geometry?
+2020-06-05 22:29:06 <arseniiv> also this arithmetic is very space-inefficient, so one needs to find representations in Q[…]… with as few brackets as possible, for each new result. Or it would result in a gigabytes of numbers
+2020-06-05 22:29:19 <arseniiv> int-e: yeah
+2020-06-05 22:29:47 <arseniiv> it’s one of the ways to make tesselation-y computations work for sure
+2020-06-05 22:29:55 <arseniiv> but I dislike this way
