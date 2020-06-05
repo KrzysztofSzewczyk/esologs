@@ -209,3 +209,7 @@
 2020-06-05 14:24:32 <cpressey> I had this idea. ∀ is an abbreviation for a (possibly infinite) sequence of ∧'s, and ∃ is an abbreviation for a (possibly infinite) sequence of ∨'s, right? But ∧ and ∨ are just 2 of the 16 possible binary logical connectives. So there are at least 14 other possible quantifiers! But not all connectives are commutative like ∧ and ∨ are. For any of the non-commutative connectives, you'd need to
 2020-06-05 14:24:33 <cpressey> make it work on an ordered structure somehow.
 2020-06-05 14:25:18 <cpressey> But if you're OK with that, then the → quantifier looks to me as if it represents... mathematical induction... ?
+2020-06-05 14:46:59 <cpressey> The ↔ quantifier is commutative; if we notate it as [↔] then [↔]x.p(x) is equivalent to (∀x.p(x)) ∨ (∀x.¬p(x)) I think
+2020-06-05 14:49:06 <cpressey> The ⊕ connective (XOR) is also commutative. But, hmm. Maybe that's not enough.
+2020-06-05 14:53:13 <cpressey> It needs to be idempotent, is that it?
+2020-06-05 14:57:00 <cpressey> "Idempotent" isn't quite the right word, maybe "monotonic" is better.
