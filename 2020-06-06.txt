@@ -376,3 +376,31 @@
 2020-06-06 18:59:08 <fizzie> We used to have alternating ladder/torch/ladder/torch and that was good enough for climbing, but apparently no longer.
 2020-06-06 18:59:47 <b_jonas> fizzie: play a human or elf character instead of a goblin or dwarf or halfling
 2020-06-06 18:59:53 <b_jonas> then you can reach the ladder
+2020-06-06 19:03:01 <fizzie> I just respawned.
+2020-06-06 19:03:18 <fizzie> But I've found the Libmarine Subrary, and the Subree, and Vorpal's place.
+2020-06-06 19:03:36 <fizzie> And some fish, which I'm pretty sure didn't exist back then.
+2020-06-06 19:03:53 <fizzie> And some minecart stuff that almost certainly no longer works.
+2020-06-06 19:04:30 <int-e> . o O ( But where's the Tomb of the Jabberwacky? )
+2020-06-06 19:04:40 <arseniiv> <fizzie> We used to have alternating ladder/torch/ladder/torch and that was good enough for climbing, but apparently no longer. => economical :D
+2020-06-06 19:05:23 <zzo38> I have a list such as [1 2 [[3] [4] [[5] [6]] [7]] 8 [9] 10 [[11]] [12 13]] and need to convert to binary format such that each element of the list is stored consecutively; numbers store themself, while if the element is another list, it consists of a pointer to the beginning of the sublist and the length of the sublist (numbers and sublist pointers have the same length).
+2020-06-06 19:05:45 <zzo38> Furthermore, it should be streamed, so that you do not have to go back and patch the data with the pointers.
+2020-06-06 19:05:53 <zzo38> Do you know how to do this properly?
+2020-06-06 19:06:02 <b_jonas> zzo38: how do you distinguish between a number and a list then?
+2020-06-06 19:06:37 <zzo38> b_jonas: The data type is also stored in each element. (There is the type, length, and value; the "length" field is not used for numbers.)
+2020-06-06 19:07:02 <zzo38> Actually, there is a description of the format here: http://fileformats.archiveteam.org/wiki/PostScript_binary_object_format
+2020-06-06 19:07:08 <b_jonas> ah
+2020-06-06 19:08:06 <zzo38> Ghostscript has an implementation; its algorithm uses streaming like I mentioned, but enters incorrect pointers when you write nested arrays like my example.
+2020-06-06 19:09:33 <b_jonas> j-bot: 1
+2020-06-06 19:09:33 User Name: j-bot = j-bot!~jbot@hagall.firefly.nu
+2020-06-06 19:09:33 <j-bot> b_jonas: 1
+2020-06-06 19:09:36 Quit: TheLie (Remote host closed the connection)
+2020-06-06 19:09:37 Names: ^[, adu, aji`, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-06 19:10:51 Quit: tromp (Ping timeout: 246 seconds)
+2020-06-06 19:10:51 Names: ^[, adu, aji`, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-06 19:13:01 <zzo38> Do you understand this?
+2020-06-06 19:13:39 Joined: TheLie
+2020-06-06 19:13:40 Names: ^[, adu, aji`, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, Remavas, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-06 19:13:52 <b_jonas> zzo38: yes, but I don't want to think of how to sovle it now
+2020-06-06 19:14:00 <zzo38> The file called Resource/Init/gs_btokn.ps contains the implementation that Ghostscript uses (except the implementation of .bosobject which is written in C)
+2020-06-06 19:24:37 <fizzie> Beta 1.5: "The player can no longer climb ladders spaced every other block."
+2020-06-06 19:24:50 <fizzie> Looks like it was older than I thought.
