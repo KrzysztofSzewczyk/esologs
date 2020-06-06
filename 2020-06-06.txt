@@ -456,3 +456,8 @@
 2020-06-06 22:49:40 Names: ^[, adu, aji`, aloril, APic, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-06-06 22:50:51 <fizzie> Another odd thing is, I've got in my backup script a thing that checks (via D-Bus) that org.freedesktop.login1.Manager.IdleHint is true, and .IdleSinceHint >= 2 hours. It used to work, but now it's started to consider the system to be never idle, and I have no idea how that value gets derived.
 2020-06-06 22:55:11 <fizzie> (All I know is it's systemd-logind that's providing that service, somehow.)
+2020-06-06 23:08:55 Joined: Lord_of_Life
+2020-06-06 23:10:36 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2020-06-06 23:11:45 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-06-06 23:14:37 <fizzie> Ohh, I think I figured it out. Amazing.
+2020-06-06 23:23:29 <int-e> mm
