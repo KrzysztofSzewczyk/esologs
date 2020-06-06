@@ -99,3 +99,144 @@
 2020-06-06 12:28:43 <shachaf> I'm already using pulseaudio.
 2020-06-06 12:29:28 <fizzie> Oh, I see. Well, yeah. My volume control XMonad keybindings are now more or less defunct, because they were written for the ALSA API and would probably do the wrong thing.
 2020-06-06 12:29:42 <fizzie> (But there's a physical volume knob in the external USB DAC, which is the only audio output device I use, so it's kind of moot.)
+2020-06-06 12:30:09 <shachaf> I wrote a pulseaudio program to set the volume. It was a real maze of callbacks.
+2020-06-06 12:30:24 <shachaf> And that's just for the simplest task.
+2020-06-06 12:32:49 <shachaf> Man, I jammed up my C argument parser so you can specify things explicitly instead of parsing description strings.
+2020-06-06 12:32:57 <shachaf> This is more verbose but probably better?
+2020-06-06 12:34:05 <fizzie> Sounds plausible.
+2020-06-06 12:35:47 <shachaf> Now you specify arguments like MOP_OPT(&mop, .name = "verbose", .short_name = 'v', .help = "verbose mode") { printf("increasing verbosity\n"); }
+2020-06-06 12:36:29 <esowiki> 14[[071.114]]4 10 02https://esolangs.org/w/index.php?diff=73305&oldid=73288 5* 03Hakerh400 5* (+34) 10Fix typo and add interpreter
+2020-06-06 12:36:30 <b_jonas> shachaf: is there a way to give multiple alternative spellings/abbreviations for the long name? because I sort of think that long options are hard to design well without that.
+2020-06-06 12:36:41 <b_jonas> also that in most programs it's easier to just stick to short options
+2020-06-06 12:36:53 <shachaf> Hmm, not currently.
+2020-06-06 12:37:13 <fizzie> Do you have a `--helpfull` flag that's actually less helpful than `--help`?
+2020-06-06 12:37:18 <shachaf> I could add that but I'm unlikely to use it.
+2020-06-06 12:37:21 <b_jonas> shachaf: how do you specify whether the option has an argument in that?
+2020-06-06 12:37:29 <esowiki> 14[[07User:Hakerh40014]]4 M10 02https://esolangs.org/w/index.php?diff=73306&oldid=73156 5* 03Hakerh400 5* (+10) 10
+2020-06-06 12:37:34 <shachaf> fizzie: I'm not planning to go the way of gflags.
+2020-06-06 12:37:43 <shachaf> b_jonas: Currently with .wants_optarg = true
+2020-06-06 12:38:07 <shachaf> See https://slbkbs.org/tmp/mop/mop.h
+2020-06-06 12:38:08 <b_jonas> fungot: no, that probably uses the weird syntax --help --verbose
+2020-06-06 12:38:09 <fungot> b_jonas: if you make a file upload progress bar with rails and ajax things won't work, i mainly just idle on my other computer has 32 megs of ram
+2020-06-06 12:38:16 <b_jonas> argh
+2020-06-06 12:38:18 <b_jonas> fizzie: ^^
+2020-06-06 12:38:46 <fizzie> fungot: Where have you been hiding another computer in?
+2020-06-06 12:38:46 <fungot> fizzie: uh. openoffice help neglects to list one part of the course, and one mutex ( for committing optimistic concurrency logs)
+2020-06-06 12:38:56 <fizzie> So evasive.
+2020-06-06 12:39:20 <b_jonas> shachaf: I mean, except in some programs that really have a lot of options, the point of long options is just that it may be easier to remember/guess the option name, but that works well only if the program accepts multiple alternatives
+2020-06-06 12:39:44 <shachaf> No, the point of long options is that it's easier to read an invocation of a command that uses them.
+2020-06-06 12:39:54 <b_jonas> hmm ok
+2020-06-06 12:40:08 <fizzie> Now I'm wondering if there are many programs that will accept any unique abbreviation of an argument.
+2020-06-06 12:40:17 <shachaf> I mean, maybe the thing you said is also the point, but I don't really want people to be guessing options.
+2020-06-06 12:40:20 <b_jonas> fizzie: sadly yes
+2020-06-06 12:40:38 <b_jonas> fizzie: and that can cause backward compatibility failure when a later version adds an option
+2020-06-06 12:40:41 <shachaf> There are some option parsing libraries that will take any unambiguous prefix of a long option. That doesn't seem like a great idea to me.
+2020-06-06 12:40:47 <shachaf> For the reason b_jonas said.
+2020-06-06 12:41:03 <b_jonas> fizzie: gnu's getopt_long actually does that by default
+2020-06-06 12:41:20 <shachaf> whoa, so it does!
+2020-06-06 12:41:24 <shachaf> I somehow didn't know that.
+2020-06-06 12:41:39 <b_jonas> silently
+2020-06-06 12:41:40 <shachaf> `` /bin/ls --versi
+2020-06-06 12:41:41 <HackEso> ls (GNU coreutils) 8.30 \ Copyright (C) 2018 Free Software Foundation, Inc. \ License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>. \ This is free software: you are free to change and redistribute it. \ There is NO WARRANTY, to the extent permitted by law. \  \ Written by Richard M. Stallman and David MacKenzie.
+2020-06-06 12:41:48 <fizzie> Heh, I wasn't expecting it to be *that* common.
+2020-06-06 12:41:52 <b_jonas> is that version sort?
+2020-06-06 12:42:00 <b_jonas> like ls -v ?
+2020-06-06 12:42:14 <fizzie> `` /bin/ls --ve
+2020-06-06 12:42:15 <HackEso> ls (GNU coreutils) 8.30 \ Copyright (C) 2018 Free Software Foundation, Inc. \ License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>. \ This is free software: you are free to change and redistribute it. \ There is NO WARRANTY, to the extent permitted by law. \  \ Written by Richard M. Stallman and David MacKenzie.
+2020-06-06 12:42:44 <fizzie> `` /bin/ls --r
+2020-06-06 12:42:45 <HackEso> ​/bin/ls: option '--r' is ambiguous; possibilities: '--reverse' '--recursive' \ Try '/bin/ls --help' for more information.
+2020-06-06 12:42:47 <shachaf> I don't know why /bin/ls, given that ls isn't a shell builtin.
+2020-06-06 12:42:55 <fizzie> Yeah, I just copied it from you.
+2020-06-06 12:43:01 <b_jonas> ``` type ls
+2020-06-06 12:43:01 <shachaf> I mean I don't know why I did it.
+2020-06-06 12:43:02 <HackEso> ls is /hackenv/bin/ls
+2020-06-06 12:43:03 <b_jonas> ^ that's why
+2020-06-06 12:43:05 <b_jonas> also with sed
+2020-06-06 12:43:13 <shachaf> Oh, that's a good point!
+2020-06-06 12:43:15 <b_jonas> and I keep writing /bin/cat because I'm afraid that someone will override that too
+2020-06-06 12:43:30 <fizzie> `` ls --ve
+2020-06-06 12:43:31 <HackEso> ls (GNU coreutils) 8.30 \ Copyright (C) 2018 Free Software Foundation, Inc. \ License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>. \ This is free software: you are free to change and redistribute it. \ There is NO WARRANTY, to the extent permitted by law. \  \ Written by Richard M. Stallman and David MacKenzie.
+2020-06-06 12:43:34 <b_jonas> esolang has a lot of incompatible shadowed commands, they're annoying, I hate them
+2020-06-06 12:43:44 <b_jonas> ``` /bin/w
+2020-06-06 12:43:45 <HackEso> bash: /bin/w: No such file or directory
+2020-06-06 12:43:50 <b_jonas> ``` /usr/bin/w
+2020-06-06 12:43:50 <fizzie> I don't know if they're *that* incompatible.
+2020-06-06 12:43:50 <HackEso> ​ 12:43:50 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00 \ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+2020-06-06 12:43:58 <fizzie> Well, okay, that one definitely is.
+2020-06-06 12:44:11 <b_jonas> that's not the worst one
+2020-06-06 12:44:38 <shachaf> `5 /usr/bin/w
+2020-06-06 12:44:42 <HackEso> 1/2: 12:44:39 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00 \ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT \  12:44:39 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00 \ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT \  12:44:39 up 0 min,  0 users,  load average: 0.00, 0.00, 0.00 \ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT \  12:44:39 up 0 min,  0 users,  load aver
+2020-06-06 12:45:43 <fizzie> How wise.
+2020-06-06 12:45:55 <fizzie> `? wise
+2020-06-06 12:45:56 <HackEso> Uninstalling software installed by the Wise Installation Wizard is unwise. It's neither clockwise nor counterclockwise nor otherwise.
+2020-06-06 12:46:12 <shachaf> If Unix commands didn't want to be shadowed, they shouldn't have occupied such prime namespace.
+2020-06-06 12:46:17 <b_jonas> besides ls and sed, cc is also one that annoys me
+2020-06-06 12:46:19 <shachaf> Why is that in wisdom?
+2020-06-06 12:46:23 <b_jonas> yes, w is excusable
+2020-06-06 12:46:31 <shachaf> I kind of want to delete it but I feel like maybe I tried that before and someone reverted it.
+2020-06-06 12:46:43 <shachaf> I added it originally.
+2020-06-06 12:47:01 <shachaf> `` type cc
+2020-06-06 12:47:02 <HackEso> cc is /hackenv/bin/cc
+2020-06-06 12:47:08 <shachaf> `cbt cc
+2020-06-06 12:47:08 <fizzie> It does make me smile, which from the KonMari perspective suggests it should stay there?
+2020-06-06 12:47:09 <HackEso> ​#!/bin/sh \ echo "$@" | sed 's/\\n/\n/g' | gcc -w -Wfatal-errors -std=c11 -O2 -x c - -o /tmp/a.out && /tmp/a.out
+2020-06-06 12:47:33 <b_jonas> admittedly I installed /hackenv/bin/hello which also shadows a gnu utility incompatibly
+2020-06-06 12:47:48 <shachaf> whoa, what's bin/cc about? Bizarro mode 12,000.
+2020-06-06 12:48:02 <b_jonas> `whatis cc
+2020-06-06 12:48:07 <HackEso> cc(1hackeso) - no description
+2020-06-06 12:48:31 <fizzie> It's like a very poor man's copy of ##c's `,cc`, I think.
+2020-06-06 12:48:51 <shachaf> Should I actually do help autogeneration or is it not worth the trouble?
+2020-06-06 12:50:02 Quit: craigo (Ping timeout: 260 seconds)
+2020-06-06 12:50:02 Names: ^[, aji`, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-06 12:50:44 <b_jonas> I can understand ones like man and wget
+2020-06-06 12:50:48 <b_jonas> oh yeah, paste is another offender
+2020-06-06 12:50:50 <b_jonas> `type -a paste
+2020-06-06 12:50:51 <HackEso> type? No such file or directory
+2020-06-06 12:50:54 <b_jonas> ``` type -a paste
+2020-06-06 12:50:55 <HackEso> paste is /hackenv/bin/paste \ paste is /usr/bin/paste
+2020-06-06 12:50:57 <b_jonas> ^ no relations to each other
+2020-06-06 12:51:10 <esowiki> 14[[07Examinable Invocation Vector14]]4 M10 02https://esolangs.org/w/index.php?diff=73307&oldid=65707 5* 03PythonshellDebugwindow 5* (-10) 10unpipe cross-namespace link
+2020-06-06 12:51:17 <b_jonas> `whatis nooodl:
+2020-06-06 12:51:18 <HackEso> nooodl:(1hackeso) - noooooo description
+2020-06-06 12:51:45 <b_jonas> have I sleepadded that, or has someone else been using addwhatis?
+2020-06-06 12:55:35 <b_jonas> `run hg cat -r 11847 /hackenv/share/whatis | grep -i ooo # I sleepadded that
+2020-06-06 12:55:36 <HackEso> nooodl:(1hackeso) - noooooo description \ rnooodl(1hackeso) - no description
+2020-06-06 12:55:41 <b_jonas> I've no idea what that actually does
+2020-06-06 12:56:06 <int-e> `nooodl nooodl
+2020-06-06 12:56:07 <HackEso> nooodl? No such file or directory
+2020-06-06 12:56:28 <b_jonas> int-e: it has a colon
+2020-06-06 12:56:38 <fizzie> `` echo nooodl | rnooodl
+2020-06-06 12:56:39 <HackEso> nooooodl
+2020-06-06 12:56:42 <fizzie> `` echo nooodl | rnooodl
+2020-06-06 12:56:43 <HackEso> noooooooodl
+2020-06-06 12:56:50 <b_jonas> `nooodl: hello
+2020-06-06 12:56:51 <HackEso> hello
+2020-06-06 12:57:02 <b_jonas> `run hello | nooodl:
+2020-06-06 12:57:03 <HackEso> No output.
+2020-06-06 12:57:06 <b_jonas> `run hello
+2020-06-06 12:57:07 <HackEso> hello, world
+2020-06-06 12:57:12 <b_jonas> ``` type -a nooodl:
+2020-06-06 12:57:13 <HackEso> noooooooodl: is /hackenv/bin/nooooodl:
+2020-06-06 12:57:22 <b_jonas> ``` cat /hackenv/bin/nooodl:
+2020-06-06 12:57:23 <HackEso> â€‹ELF............>.....€(......@....... “..........@.8..@.........@.......@.......@.......h......h...................¨......¨......¨...........................................................¸......¸..................... ....... ....... ......	9......	9.....................`.......`.......`......ø......ø....................��......��......��......P......è...................ø�......ø�......ø�......à.......à..
+2020-06-06 12:57:28 <fizzie> The colon version seems to be not particularly useful.
+2020-06-06 12:57:34 <int-e> `` echo noodle | rnooodl
+2020-06-06 12:57:36 <HackEso> noodle
+2020-06-06 12:57:39 <esowiki> 14[[07Finite-state mach... wait, WHAT!?14]]4 M10 02https://esolangs.org/w/index.php?diff=73308&oldid=68858 5* 03PythonshellDebugwindow 5* (-29) 10/* References */ rm redtemplate
+2020-06-06 12:57:46 <fizzie> You need at least three o's to trigger that.
+2020-06-06 12:57:47 <int-e> Does it need three o's to trigger?
+2020-06-06 12:57:48 <shachaf> `` ls -l /hackenv/bin/nooodl:
+2020-06-06 12:57:49 <HackEso> lrwxrwxrwx 1 1000 1000 9 Jul  8  2017 /hackenv/bin/noooodl: -> /bin/echo
+2020-06-06 12:58:04 <b_jonas> `nooodl: hellooo wooorld nooodl
+2020-06-06 12:58:07 <HackEso> hellooo wooorld nooodl
+2020-06-06 12:58:15 <int-e> I thought it was two, so that a simple noodle would already be enlarged.
+2020-06-06 12:58:28 <shachaf> `dobg rnooodl
+2020-06-06 12:58:30 <HackEso> 8518:2016-06-17 <oerjän> ` hg cat -r 5060d5af0b98 bin/rnooodl >bin/rnooodl \ 8202:2016-05-29 <shachäf> sed -i s/w/wW/ bin/rnooodl \ 8198:2016-05-29 <oerjän> mkx bin/rnooodl//perl -pe \'s/([^w\\W])\\1\\1/"@{[$1 x(3+rand 7)]}"/ge\' \ 8197:2016-05-29 <oerjän> mkx bin/rnooodl//perl -pe \'s/([^w\\w])\\1\\1/"@{[$1 x(3+rand 7)]}"/ge\' \ 8196:2016-05-29 <oerjän> mkx bin/rnooodl//perl -pe \'s/(\\w)\\1\\1/"@{[$1 x(3+rand 7)]}"/ge\' \ 8195:201
+2020-06-06 12:58:31 <b_jonas> it's three, luckily. and I hate it even this way.
+2020-06-06 12:58:54 <b_jonas> I hate it because it makes ``` not output partial lines after a timeout
+2020-06-06 12:58:57 <fizzie> The colon thing is kind of odd. I guess it does "integrate" with the rnooodl call in `` though.
+2020-06-06 12:59:01 <b_jonas> that could be fixed by a better program, but ouch
+2020-06-06 12:59:12 <shachaf> Remember when rnooodl would take any letter rather than just os? That was so good.
+2020-06-06 12:59:36 <fizzie> `` nooodl: This is a thing that should get rnooodlified. Maybe best to add another nooodle to be sure.
+2020-06-06 12:59:37 <HackEso> This is a thing that should get rnooooooooodlified. Maybe best to add another nooodle to be sure.
+2020-06-06 12:59:46 <b_jonas> we should just ln -s /bin/cat /hackenv/bin/rnooodl
