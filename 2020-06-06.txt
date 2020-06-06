@@ -73,3 +73,10 @@
 2020-06-06 11:10:00 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-06-06 11:10:28 Joined: arseniiv
 2020-06-06 11:10:28 Names: ^[, aji`, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-06 11:55:20 <fizzie> @pl \d w -> f d >> t d w
+2020-06-06 11:55:20 <lambdabot> ap ((.) . (>>) . f) t
+2020-06-06 11:55:28 <fizzie> Hm, I don't think that's an improvement.
+2020-06-06 11:56:01 <fizzie> (Also it should've been >>= but that hardly matters.)
+2020-06-06 11:59:46 <olsner> @pl \d w -> f d >>= t d w
+2020-06-06 11:59:47 <lambdabot> ap ((.) . (>>=) . f) t
+2020-06-06 11:59:57 <olsner> indeed it didn't
