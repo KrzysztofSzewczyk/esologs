@@ -80,3 +80,22 @@
 2020-06-06 11:59:46 <olsner> @pl \d w -> f d >>= t d w
 2020-06-06 11:59:47 <lambdabot> ap ((.) . (>>=) . f) t
 2020-06-06 11:59:57 <olsner> indeed it didn't
+2020-06-06 12:13:05 <fizzie> Ugh. I wanted to do something XInput-related in my XMonad configuration, but the XMonad handleEventHook is in terms of Graphics.X11.Xlib.Extras.Event, which is a "processed" form of the raw XEvent and doesn't have support for extensions. It will just get turned into the fallback "AnyEvent", and all the interesting bits are discarded.
+2020-06-06 12:17:58 <shachaf> whoa, fizzie is doing Haskell?
+2020-06-06 12:18:14 <shachaf> I'm using i3 nowadays and it works pretty well. What a silly language Haskell is.
+2020-06-06 12:18:28 <fizzie> I strictly only ever touch it when fiddling with XMonad.
+2020-06-06 12:21:06 <fizzie> Now that I'm working from home, there's a lot more swapping of monitors for the work laptop, so I wrote a moderately clever and flexible AutoRandr module, which went pretty well. It talks to Xrandr directly, parses EDID data, and tries to find a matching configuration.
+2020-06-06 12:22:03 <fizzie> Inspired by that, I was now looking at also hooking in keyboard layout configuramation when XInput events happen, but that seems a little nastier. I may just fall back to the tiny "inputplug" program instead of integrating it to the window manager.
+2020-06-06 12:23:33 <fizzie> http://ix.io/2opR -- see, doesn't that look quite acceptable?
+2020-06-06 12:24:38 <fizzie> (Okay, I did cheat a little in that I do the reconfiguring through the xrandr CLI, rather than talking to the extension directly. I promise there was a good reason for that, I just forgot what it was.)
+2020-06-06 12:24:58 <shachaf> I have a program that monitors keyboard layout change events and a bunch of other things: https://slbkbs.org/tmp/statustext.c
+2020-06-06 12:25:40 <shachaf> (It just prints text to the status bar, though.)
+2020-06-06 12:26:02 <shachaf> As of recently I got wireless headphones, and it doesn't detect when I turn them on or off, and keeps displaying the volume for the old device. I don't think the ALSA exposes the thing I want, so I might have to switch to pulseaudio.
+2020-06-06 12:26:27 <shachaf> But having written a small amount of pulseaudio code I'm really not looking forward to that.
+2020-06-06 12:26:57 <fizzie> I'm back to pulseaudio, after going through OSS -> ALSA -> pulseaudio -> ALSA -> pulseaudio so far.
+2020-06-06 12:27:32 <shachaf> That randrConfig looks quite acceptable, though there's no reason for it to be in the window manager, is there?
+2020-06-06 12:28:02 <fizzie> Not really, other than a perverse joy of nudging XMonad closer and closer to a DE.
+2020-06-06 12:28:39 <shachaf> I meant switching to the pulseaudio API for getting volume information.
+2020-06-06 12:28:43 <shachaf> I'm already using pulseaudio.
+2020-06-06 12:29:28 <fizzie> Oh, I see. Well, yeah. My volume control XMonad keybindings are now more or less defunct, because they were written for the ALSA API and would probably do the wrong thing.
+2020-06-06 12:29:42 <fizzie> (But there's a physical volume knob in the external USB DAC, which is the only audio output device I use, so it's kind of moot.)
