@@ -117,3 +117,32 @@
 2020-06-07 13:13:39 <fizzie> :)
 2020-06-07 13:16:56 <b_jonas> [ 200*12*0.0254
 2020-06-07 13:16:56 <j-bot> b_jonas: 60.96
+2020-06-07 13:37:54 <fizzie> Sounds quite imperial-metric.
+2020-06-07 13:38:40 <b_jonas> fizzie: yes, 12*0.0254 is a foot
+2020-06-07 13:38:49 Joined: Frater_EST
+2020-06-07 13:38:49 Names: ^[, aloril, APic, arseniiv, atehwa, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-07 13:39:14 <fizzie> It did seem like something of that kind was afoot, yes.
+2020-06-07 13:39:31 <b_jonas> those are the only conversions I know off the top of my head, I only know very bad approximations for the mile, pound, ounces etc
+2020-06-07 13:39:46 <b_jonas> luckily the internet knows the exact values
+2020-06-07 13:39:54 <fizzie> 25.4mm for an inch is also the only one I remember.
+2020-06-07 13:40:11 <b_jonas> oh wait, I think I also know the Fahrenheit to Celsius coefficients
+2020-06-07 13:40:19 <b_jonas> ``` cat /hackenv/bin/f2c # these
+2020-06-07 13:40:22 <HackEso> cat: /hackenv/bin/f2c: No such file or directory
+2020-06-07 13:40:24 <b_jonas> um
+2020-06-07 13:40:29 <b_jonas> ``` cat /hackenv/bin/ftoc
+2020-06-07 13:40:30 <HackEso> ​#!/usr/bin/perl \ $f=0+$ARGV[0]; printf"%.2f°F = %.2f°C\n",$f,($f-32)*5/9;
+2020-06-07 13:40:32 <b_jonas> those, yes
+2020-06-07 13:40:48 <fizzie> I only ever remember the 32 of those.
+2020-06-07 13:43:08 <b_jonas> the linear factor is simple, it's the same as the aspect ratio of the sides of my home monitor, as opposed to the more narrow aspect ratio of the more common monitors such as the smaller ones I have to use at work
+2020-06-07 13:53:51 <fizzie> Hmm, I don't think I've heard of... 9:5? 18:10?
+2020-06-07 13:54:24 <b_jonas> fizzie: yes, 1920x1200 pixels, each pixel is a square
+2020-06-07 13:54:40 <fizzie> That's 16:10.
+2020-06-07 13:54:46 <fizzie> Or 8:5.
+2020-06-07 13:54:49 <b_jonas> oh wait
+2020-06-07 13:54:54 <b_jonas> ok I confused myself
+2020-06-07 13:56:13 <fizzie> . o O (Is there a word for "mnemonic" except that it makes you remember something wrong?)
+2020-06-07 13:57:03 <int-e> It's still a menomonic, isn't it.
+2020-06-07 13:57:16 <int-e> modulo the typo.
+2020-06-07 13:57:49 <fizzie> [noun] 1. mnemonic -- (a device (such as a rhyme or acronym) used to aid recall) [adj] 1. mnemonic, mnemotechnic, mnemotechnical -- (of or relating to or involved the practice of aiding the memory; "mnemonic device")
+2020-06-07 13:57:59 <fizzie> Well, maybe.
+2020-06-07 13:58:18 <b_jonas> dunno, call it a nmenomic maybe
