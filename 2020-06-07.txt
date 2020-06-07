@@ -8,3 +8,23 @@
 2020-06-07 01:59:22 User Name: Antebrationist = Antebrationist!ca9a80c1@202-154-128-193.ras-dynamic.connections.net.nz
 2020-06-07 01:59:22 <Antebrationist> Hello once more.
 2020-06-07 01:59:36 <Antebrationist> I have a question for all of you geniuses on here.
+2020-06-07 02:00:04 <Antebrationist> How many brainfuck programs exist which output exactly 50 characters within 256 instructions?
+2020-06-07 02:00:53 <Antebrationist> I've been searching for them with a quasi brute-force approach, but I've found almost 17k programs that do so.
+2020-06-07 02:02:23 <Antebrationist> I'll post a sprunge of them when it reaches 20k.
+2020-06-07 02:17:47 <fizzie> If I understood the question right, and did the math right, there are at least 5327151263612113856592028031288357293732322332076200467262309800346394628426291212883947264300775921573593383740227957048726152605949525557473303467998398691978171103221141995520 boring such programs.
+2020-06-07 02:17:57 <Antebrationist> Wow.
+2020-06-07 02:18:09 <Antebrationist> How on earth did you work that out?
+2020-06-07 02:18:46 <fizzie> That was (256 choose 50 * 4^(256 - 50), the number of 256-character programs that contain 50 .s and an arbitrary sequence of <>+-, and no loops.
+2020-06-07 02:18:59 <zzo38> Yes, I figured the same thing as a minimum bound.
+2020-06-07 02:19:00 <fizzie> s/50/50)/
+2020-06-07 02:19:09 <Antebrationist> Okay, thanks.
+2020-06-07 02:19:14 <fizzie> But as said, those are all pretty boring programs.
+2020-06-07 02:19:15 <zzo38> (Except that I haven't actually calculated it, but you have done.)
+2020-06-07 02:19:37 <Antebrationist> I think there's a lot more though.
+2020-06-07 02:20:06 <Antebrationist> Let x be a plus or minus symbol, and take programs of the following form.
+2020-06-07 02:20:07 <zzo38> Yes, there are probably more than that; these ones are only the ones without loops.
+2020-06-07 02:20:42 <Antebrationist> some chain of x [????]
+2020-06-07 02:20:59 <Antebrationist> the ???? can be .xxx x.xx xx.x or xxx.
+2020-06-07 02:21:01 <fizzie> Yes, there are many, many more, it's just much harder to calculate how many.
+2020-06-07 02:22:32 <Antebrationist> http://sprunge.us/um1R8P has just over 20k of the small ones.
+2020-06-07 02:23:52 <zzo38> Do you use the printobject and writeobject commands in PostScript (if you use PostScript at all)?
