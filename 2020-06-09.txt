@@ -386,3 +386,49 @@
 2020-06-09 20:12:37 <zzo38> Well, it is a bit different. I was thinking of chain segments like other (unnamed) segments declared in the ELF file would be loaded in memory; chain segments are the same but they have a name, and if it has a name then the operating system can retain whatever data is there rather than reset it, if both programs have the same name of chain segment. If the previous program doesn't have such a segment, then it is loaded like any other s
 2020-06-09 20:13:34 <zzo38> (So, it is otherwise like PT_LOAD, but it does not necessarily load the contents of the executable file.)
 2020-06-09 20:15:13 <zzo38> (Chain segments could be used for other purposes too, such as to implement overlays in a way that is sometimes done in DOS programs.)
+2020-06-09 20:30:43 <catern> I see
+2020-06-09 20:32:51 Joined: TheLie
+2020-06-09 20:32:51 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-09 20:46:42 <esowiki> 14[[07International Phonetic Esoteric Language14]]4 M10 02https://esolangs.org/w/index.php?diff=73462&oldid=73458 5* 03PythonshellDebugwindow 5* (+47) 10
+2020-06-09 20:49:10 <esowiki> 14[[07MindReadingFuck14]]4 M10 02https://esolangs.org/w/index.php?diff=73463&oldid=67577 5* 03PythonshellDebugwindow 5* (+22) 10/* Solve the halting problem */
+2020-06-09 20:49:47 <b_jonas> shachaf: "`rm ${list[@]}` [...] What can go wrong just from doing that?" => some things that you can fix by writing (rm -- "${list[@]}") instead, and apart from that, errors that you get when you expand a shell parameter or make variable that you thought would be defined but actually isn't and get an empty string, in which case you get serious bugs like that recent uninstaller that tried to rm -rf --
+2020-06-09 20:49:53 <b_jonas> "/usr/${SOMEVARIABLE}" and in fact deleted the /usr of anyone who tried to uninstall their program
+2020-06-09 20:50:10 <shachaf> b_jonas: Yes, I know.
+2020-06-09 20:50:34 <arseniiv> isEsoteric 'ꙮ'
+2020-06-09 20:50:35 <shachaf> The point is that hardly anyone writes that unless they're writing a script.
+2020-06-09 20:50:41 <esowiki> 14[[07NARchy14]]4 M10 02https://esolangs.org/w/index.php?diff=73464&oldid=58278 5* 03PythonshellDebugwindow 5* (-29) 10
+2020-06-09 20:50:44 <arseniiv> > isEsoteric 'ꙮ'
+2020-06-09 20:50:47 <lambdabot> True
+2020-06-09 20:50:52 <shachaf> So it highlights how different the UI vs. API thing even in the same program.
+2020-06-09 20:50:53 <arseniiv> int-e ^^^
+2020-06-09 20:51:04 <arseniiv> lambdabot knows it all
+2020-06-09 20:51:05 <shachaf> And of course this still doesn't solve every problem.
+2020-06-09 20:51:16 <int-e> Ah the abuses of @let.
+2020-06-09 20:51:29 <shachaf> For example if the list is empty this will still be an error.
+2020-06-09 20:51:33 <b_jonas> shachaf: as for "array may be empty" => yes, that can also cause serious bugs with some shell commands, though in the case of rm it's not generally a problem, unless it's a REALLY weird extglob nullglob problem where you accidentally remove a file named "!(*.jpg)"
+2020-06-09 20:51:57 <arseniiv> int-e: what @let?
+2020-06-09 20:51:57 <shachaf> It's a problem because rm will exit with 1 instead of 0.
+2020-06-09 20:52:03 <int-e> @undef
+2020-06-09 20:52:04 <lambdabot> Undefined.
+2020-06-09 20:52:12 <int-e> > isEsoteric 'ꙮ'
+2020-06-09 20:52:14 <lambdabot> error:
+2020-06-09 20:52:14 <lambdabot> Variable not in scope: isEsoteric :: Char -> t
+2020-06-09 20:52:19 <arseniiv> interesting :o
+2020-06-09 20:52:24 <int-e> @let isEsoteric _ = True
+2020-06-09 20:52:25 <lambdabot> Defined.
+2020-06-09 20:52:27 <int-e> > isEsoteric 'ꙮ'
+2020-06-09 20:52:29 <lambdabot> True
+2020-06-09 20:52:31 <int-e> @undef
+2020-06-09 20:52:31 <lambdabot> Undefined.
+2020-06-09 20:52:32 <b_jonas> "<catern> I would prefer rm to have a typed interface though, for sure" => you're in luck then, we have a remove C function for that, and various apis (mostly in high level languages) for recursive rm
+2020-06-09 20:52:44 <arseniiv> hm I think you retroactively defined it for that earlier case, then
+2020-06-09 20:53:17 <b_jonas> "<shachaf> zzo38: But that still doesn't handle the empty list case." => it does if you have a -f option. (rm -f --) successfully does nothing and returns true
+2020-06-09 20:53:33 <shachaf> Yes, but then it does -f on everything else.
+2020-06-09 20:53:54 <b_jonas> "<zzo38> Yes, but the empty list case is I think a problem with rm itself" => no, rm handles it well, it's more of a problem with programs that interpret an empty argument list as acting on stdin
+2020-06-09 20:56:22 <b_jonas> zzo38: re chain segments, instead on unix we have three different shared memory APIs in kernel+libc: mmap, sysv ipc, posix ipc. plus some higher level wrappers, such as one in boost whose purpose is to give a portable wrapper to unix vs windows.
+2020-06-09 20:57:16 Quit: rain1 (Quit: leaving)
+2020-06-09 20:57:16 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-09 20:57:48 <shachaf> Even if rm did work perfectly here, it wouldn't help you that much because that'd be a big outlier in terms of unixular utilities.
+2020-06-09 20:58:56 <b_jonas> that said, something like "chain segment" made sense in high level languages like BASIC on old machines that had very limited RAM, where you would often want to load another BASIC program in such a way as to replace most of your program, but you asked BASIC to chain some of your variables and/or some of your programs.
+2020-06-09 20:59:29 <esowiki> 14[[07Emoji14]]4 M10 02https://esolangs.org/w/index.php?diff=73465&oldid=65580 5* 03PythonshellDebugwindow 5* (+8) 10/* Interpreters */
+2020-06-09 20:59:55 <zzo38> Yes, using the CHAIN command, I think.
