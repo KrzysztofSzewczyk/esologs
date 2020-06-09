@@ -224,3 +224,8 @@
 2020-06-09 15:55:12 <b_jonas> but I sort of think that ideally, if you're not restricted to x86 or MMIX or any current architecture, 0=false -1=true would be the best representation, because that's easier with bitwise operations; but 0=false 1=true would be the best high level meaning (in the C++ sense), because that causes less confusion with signed and unsigned integer types
 2020-06-09 15:56:56 <b_jonas> and all the SSE and later x86 instructions know this, so the comparisons represent true as -1, and the instructions that takes boolean input from bytes (or longer words) check the sign bit only
 2020-06-09 15:59:37 <zzo38> Some programming languages don't have boolean values as separate values at all
+2020-06-09 16:00:51 <b_jonas> zzo38: yes, specifically C. modern C has a _Bool type, but as it's added later, all the comparison operators still return int, AS THEY SHOULD, DARN YOU STROTROUP
+2020-06-09 16:04:33 <b_jonas> but there's also the opposite, languages where neither booleans convert implicitly to integers nor any integers convert implicitly to booleans
+2020-06-09 16:05:01 <b_jonas> oh yeah, modern perl has yet another representation: the empty string as false and 1 as true
+2020-06-09 16:05:46 <b_jonas> except it's not really the empty string, it's a dual scalar that is the empty string as a string and 0 without warning as a number
+2020-06-09 16:06:17 <zzo38> I mean something a bit different though; for example, in many assembly language where you will have "jump if positive", "jump if nonzero", etc.
