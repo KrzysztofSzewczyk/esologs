@@ -432,3 +432,35 @@
 2020-06-09 20:58:56 <b_jonas> that said, something like "chain segment" made sense in high level languages like BASIC on old machines that had very limited RAM, where you would often want to load another BASIC program in such a way as to replace most of your program, but you asked BASIC to chain some of your variables and/or some of your programs.
 2020-06-09 20:59:29 <esowiki> 14[[07Emoji14]]4 M10 02https://esolangs.org/w/index.php?diff=73465&oldid=65580 5* 03PythonshellDebugwindow 5* (+8) 10/* Interpreters */
 2020-06-09 20:59:55 <zzo38> Yes, using the CHAIN command, I think.
+2020-06-09 21:01:11 <esowiki> 14[[07Brainfuck Contest 114]]4 M10 02https://esolangs.org/w/index.php?diff=73466&oldid=70716 5* 03PythonshellDebugwindow 5* (+1) 10/* Code that actually works as required */
+2020-06-09 21:02:25 <b_jonas> shachaf: you usually want -f when you invoke rm from a script. Even without -f, (rm --) does nothing, it just gives you an error, which is sometimes acceptible, the rest of the time you indeed may need a workaround
+2020-06-09 21:02:47 <b_jonas> but yes, empty list of files is a much bigger problem for other commands
+2020-06-09 21:02:50 <b_jonas> like grep or ls
+2020-06-09 21:03:39 <b_jonas> zzo38: but also the MERGE command, which is sort of the same but keeps all variables and most of the code, so it's more useful to load and unload overload code segments
+2020-06-09 21:04:22 <arseniiv> @let passwordOfTheMonth = "@let passwordOfTheMonth = \"" ++ take passwordOfTheMonth 27 ++ "\" -- is not quine"
+2020-06-09 21:04:23 <lambdabot> .L.hs:158:5: error:
+2020-06-09 21:04:23 <lambdabot> • Couldn't match expected type ‘Int’ with actual type ‘[Char]’
+2020-06-09 21:04:23 <lambdabot> • In the expression:
+2020-06-09 21:04:36 <arseniiv> @let passwordOfTheMonth = "@let passwordOfTheMonth = \"" ++ take 27 passwordOfTheMonth ++ "\" -- is not quine"
+2020-06-09 21:04:37 <lambdabot> Defined.
+2020-06-09 21:04:44 <arseniiv> > passwordOfTheMonth
+2020-06-09 21:04:47 <lambdabot> "@let passwordOfTheMonth = \"@let passwordOfTheMonth = \"\" -- is not quine"
+2020-06-09 21:05:13 <esowiki> 14[[07PythonshellDebugwindow/Rewriting Language14]]4 N10 02https://esolangs.org/w/index.php?oldid=73467 5* 03PythonshellDebugwindow 5* (+191) 10Created page with "An esolang based on [[string]] [[rewriting]].  Out of bounds indexing -> 0.  ==Examples== ===[[Cat]] program===  0..*=0..*H ===Reverse [[cat]]===  0..*=*..0H ===Truth-machin..."
+2020-06-09 21:05:15 <arseniiv> oh it’s way clumsier than intended
+2020-06-09 21:05:25 <arseniiv> @undef
+2020-06-09 21:05:25 <lambdabot> Undefined.
+2020-06-09 21:05:56 <esowiki> 14[[07PythonshellDebugwindow/Rewriting Language14]]4 M10 02https://esolangs.org/w/index.php?diff=73468&oldid=73467 5* 03PythonshellDebugwindow 5* (-191) 10delete!
+2020-06-09 21:06:01 <b_jonas> these days that sort of chaining is rarely relevant, because virtual memory helps you both ways: it lets you swap out parts of your program that are not needed right now, so you can just have one big program, and it lets you cache the contents of regular files that you use to pass data from one program to the next one, such as object files between a compiler and linker
+2020-06-09 21:06:06 <esowiki> 14[[07User:PythonshellDebugwindow/Rewriting Language14]]4 N10 02https://esolangs.org/w/index.php?oldid=73469 5* 03PythonshellDebugwindow 5* (+191) 10Created page with "An esolang based on [[string]] [[rewriting]].  Out of bounds indexing -> 0.  ==Examples== ===[[Cat]] program===  0..*=0..*H ===Reverse [[cat]]===  0..*=*..0H ===Truth-machin..."
+2020-06-09 21:09:36 <esowiki> 14[[07Heebolang14]]4 10 02https://esolangs.org/w/index.php?diff=73470&oldid=73413 5* 03Polybagel 5* (+755) 10
+2020-06-09 21:10:11 <esowiki> 14[[07Heebolang14]]4 10 02https://esolangs.org/w/index.php?diff=73471&oldid=73470 5* 03Polybagel 5* (+1) 10
+2020-06-09 21:10:40 <esowiki> 14[[07Heebolang14]]4 M10 02https://esolangs.org/w/index.php?diff=73472&oldid=73471 5* 03Polybagel 5* (+1) 10
+2020-06-09 21:11:00 <esowiki> 14[[07International Phonetic Esoteric Language14]]4 10 02https://esolangs.org/w/index.php?diff=73473&oldid=73462 5* 03Bigyihsuan 5* (+3568) 10
+2020-06-09 21:12:03 <esowiki> 14[[07International Phonetic Esoteric Language14]]4 10 02https://esolangs.org/w/index.php?diff=73474&oldid=73473 5* 03Bigyihsuan 5* (+107) 10
+2020-06-09 21:12:12 <zzo38> Why does Glulx require the number of arguments to be specified for Glk API calls, even though that can be determined automatically from the type (which the interpreter needs to know anyways, in order to parse the arguments properly)?
+2020-06-09 21:23:22 User Name: spruit11 = spruit11!~unknown@ip56522cc1.speed.planet.nl
+2020-06-09 21:23:22 <spruit11> To make it easy to walk or dump the stack?
+2020-06-09 21:24:53 <esowiki> 14[[07Swapper14]]4 10 02https://esolangs.org/w/index.php?diff=73475&oldid=52869 5* 03Voltage2007 5* (-399) 10bit big of an edit
+2020-06-09 21:25:21 <esowiki> 14[[07International Phonetic Esoteric Language14]]4 10 02https://esolangs.org/w/index.php?diff=73476&oldid=73474 5* 03Bigyihsuan 5* (+286) 10
+2020-06-09 21:28:06 Joined: Phantom_Hoover
+2020-06-09 21:28:06 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
