@@ -148,3 +148,21 @@
 2020-06-09 13:21:32 <arseniiv> hey what do you think you are doing
 2020-06-09 13:23:38 <int-e> what's with the changed return statement
 2020-06-09 13:24:04 <int-e> The rest looks like it might actually make the code work? I don't know.
+2020-06-09 13:30:12 <arseniiv> yes though Sequence was there for a reason
+2020-06-09 13:30:17 <arseniiv> I’ll editing that
+2020-06-09 13:30:35 <arseniiv> also I found out I ended up with a language which outputs always 0
+2020-06-09 13:35:34 User Name: catern = catern!~catern@catern.com
+2020-06-09 13:35:34 <catern> shachaf: I guess that neato is in regard to that link I sent you?
+2020-06-09 13:37:38 <esowiki> 14[[07BrainSoothe14]]4 10 02https://esolangs.org/w/index.php?diff=73426&oldid=73425 5* 03Arseniiv 5* (+56) 10I used `Sequence` for a reason, and the output should be, well, outputted
+2020-06-09 13:46:54 User Name: cpressey = cpressey!~cpressey@88.144.71.51
+2020-06-09 13:46:54 <cpressey> "There should be no literals at different positions which denote the same number." -- does that mean 'assert len(instructions) == len(set(instructions))' ?
+2020-06-09 13:53:30 <cpressey> arseniiv: ^^^ ?
+2020-06-09 13:54:13 <int-e> arseniiv: yeah that's not TC
+2020-06-09 13:54:41 <int-e> hmm
+2020-06-09 13:54:42 <cpressey> (I'm pretty sure it does, I'm mainly wondering if that line should be in the program to emphasise that part of the definition formally)
+2020-06-09 13:56:17 <int-e> arseniiv: At least as far as I can see. The (mod 0) instruction is just a nop, and we can always reduce x modulo all the lcm of all the other numbers.
+2020-06-09 13:56:35 <arseniiv> cpressey: yeah!
+2020-06-09 13:58:13 <arseniiv> cpressey: yeah it would be good. At first I added assertions about the length and nonnegativity but then scraped it because I forgot one can assert uniqueness as simple as you shown
+2020-06-09 13:58:16 <esowiki> 14[[07BrainSoothe14]]4 M10 02https://esolangs.org/w/index.php?diff=73427&oldid=73426 5* 03PythonshellDebugwindow 5* (+34) 10/* Pseudocode */ Sequence is an import
+2020-06-09 13:59:16 <arseniiv> I don’t even want to see what they’ve done this time
+2020-06-09 13:59:40 <arseniiv> I should’ve made that page my user’s subpage
