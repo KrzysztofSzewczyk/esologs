@@ -313,3 +313,64 @@
 2020-06-09 19:27:16 <shachaf> The thing where it parses everything upfront, and gives you the number of times each flag appears etc., is kind of different.
 2020-06-09 19:29:04 <esowiki> 14[[07International Phonetic Esoteric Language14]]4 N10 02https://esolangs.org/w/index.php?oldid=73458 5* 03Bigyihsuan 5* (+316) 10Created page with "The '''International Phonetic Esoteric Language''', abbreviated to '''IPEL''', is a stack-based [[esoteric programming language]] by [[User:Bigyihsuan]] based on the idea of u..."
 2020-06-09 19:29:31 <catern> well, yes, argument parsing isn't that fundamental, and especially not in C; better to use a better language for the command-line-UI and just call into C from there
+2020-06-09 19:30:17 <esowiki> 14[[07User:Bigyihsuan14]]4 N10 02https://esolangs.org/w/index.php?oldid=73459 5* 03Bigyihsuan 5* (+86) 10Created page with "This is my page!  '''Languages created:'''  * International Phonetic Esoteric Language"
+2020-06-09 19:30:24 <esowiki> 14[[07User:Bigyihsuan14]]4 10 02https://esolangs.org/w/index.php?diff=73460&oldid=73459 5* 03Bigyihsuan 5* (+4) 10
+2020-06-09 19:30:40 <catern> (on the other hand, in some ways, getopt-style CLI arguments are the only standard serialization form for data on Unix, so that could make it important... but probably not)
+2020-06-09 19:32:05 <shachaf> Why better to use two languages instead of one?
+2020-06-09 19:34:09 <catern> 'cause I don't want to do fancy UIs in C
+2020-06-09 19:35:06 <catern> but I presume C is important for some mysterious reason otherwise everyone wouldn't be writing all these argument parsing libraries for C
+2020-06-09 19:35:59 <catern> also, IPC is a hassle - my program should be available as a library anyway, and my program just a fancy UI over that library. well, that's my cached thought on the topic, maybe it's not right
+2020-06-09 19:36:27 <shachaf> I think something like that is right. Command line programs make for pretty bad libraries.
+2020-06-09 19:40:03 <catern> and if I'm writing in C, it's easy to write a library that's usable from many languages - so if I should be writing a library anyway, it's convenient and easy to write my UI in whatever language is best for writing in UIs
+2020-06-09 19:40:11 <shachaf> Mixing APIs and UIs has struck me as a bad idea for a long time.
+2020-06-09 19:40:42 <shachaf> I agree with that, but then what language should I write the UI in?
+2020-06-09 19:41:17 <zzo38> I think you could use C for both, if wanted
+2020-06-09 19:41:27 <catern> that's too concrete of a question for me, I only deal in vagueries
+2020-06-09 19:41:40 <catern> (in practice I use Python)
+2020-06-09 19:42:16 <shachaf> $ tym pip3 > /dev/null
+2020-06-09 19:42:20 <shachaf> time:   real 0.532s (user 0.488s, sys 0.044s; 99.96% cpu)
+2020-06-09 19:42:44 <zzo38> Some programming languages don't have the best way to access C libraries though; for example, PostScript doesn't have a good way to do it (mostly what I do then is using printobject and/or writeobject). Also, you can know how the Glk dispatch API works; it is a design that works better when used from multiple programming languages, than what C does.
+2020-06-09 19:42:45 <shachaf> Probably this program is an outlier, but over 500ms for printing the help screen isn't encouraging.
+2020-06-09 19:43:17 <catern> scheme? typescript? haskell?
+2020-06-09 19:43:34 <catern> surely there has to be some language that is good....!
+2020-06-09 19:43:52 <shachaf> If only there was. Then I could use it instead of C for the library as well.
+2020-06-09 19:44:27 <zzo38> Well, there are some, which as assembly language, but assembly language isn't so portable.
+2020-06-09 19:45:14 <catern> shachaf: going back a bit, do you not buy into the, "APIs are UIs" idea? (and symmetrically, UIs are APIs)
+2020-06-09 19:45:32 <catern> personally, I think merging UI and API closer together is a really interesting area for research
+2020-06-09 19:45:40 <shachaf> I do not.
+2020-06-09 19:45:45 <shachaf> Well, at least in their current state.
+2020-06-09 19:45:59 <shachaf> I agree that merging them could be interesting.
+2020-06-09 19:46:40 <zzo38> I think that sometimes APIs can be good as UIs, and sometimes not so much. (Other way around also)
+2020-06-09 19:46:45 <shachaf> There are many ways that Unix command line programs are designed to be UIs -- for human use on specific things -- rather than APIs.
+2020-06-09 19:47:22 <shachaf> Say you have `rm a b c`, and you want to parameterize that on a list of items. In bash you could write something like `rm ${list[@]}`
+2020-06-09 19:47:30 <shachaf> What can go wrong just from doing that?
+2020-06-09 19:47:52 <catern> many things, but that's partially bash's fault though
+2020-06-09 19:47:55 <shachaf> arr might be empty; an element of arr might start with -; an element of arr might contain whitespace; ...
+2020-06-09 19:48:06 <zzo38> I usually write "echo" first to check that it is correct
+2020-06-09 19:48:23 <esowiki> 14[[07Strvar14]]4 M10 02https://esolangs.org/w/index.php?diff=73461&oldid=71226 5* 03PythonshellDebugwindow 5* (+0) 10/* Interpreter test cases */
+2020-06-09 19:48:35 <zzo38> In shell scripts I might add -- before the other arguments
+2020-06-09 19:48:39 <catern> I would prefer rm to have a typed interface though, for sure
+2020-06-09 19:48:40 <shachaf> Some of these are just problems with the Unix command line norms, sure.
+2020-06-09 19:48:51 <shachaf> zzo38: But that still doesn't handle the empty list case.
+2020-06-09 19:49:04 <catern> e.g (filepath list) -> IO ()
+2020-06-09 19:49:08 <shachaf> Oh, also some items of arr -- which I called list above -- might contain whitespace.
+2020-06-09 19:49:48 <zzo38> Yes, but the empty list case is I think a problem with rm itself; rm should successfully do nothing if there are no arguments, I think.
+2020-06-09 19:50:13 <shachaf> A UI is intended to be discoverable as you use it, whereas an API has to be discoverable up-front, I suppose.
+2020-06-09 19:50:30 <catern> (for example, some complicated UI systems have macro systems which you can perform actions using the rich UI capabilities to, in effect, specify a program. and the most powerful IDEs can make it easy to quickly program against APIs through autocomplete and various things. could the two be merged closer together?)
+2020-06-09 19:51:33 <zzo38> I don't know, but I think that Unix command line is good for a lot of stuff, although for writing full programs, C and other programming languages are better
+2020-06-09 19:51:35 <catern> anyway, if they could be brought closer together, it would be interesting to, instead of the Unix interface which just passes a list of strings to rm, have a nicely typed interface for rm, and many other utilities like it
+2020-06-09 19:52:08 <shachaf> Yes, maybe a better shell UI would look a bit more like that, such that you pass structured data to "commands" (which might just be library calls), and it helps you put them together easily.
+2020-06-09 19:52:39 <shachaf> I've thought about things like that before. There are many other interface improvements you can make to terminals and shells.
+2020-06-09 19:54:28 <int-e> > isLower 'ꙮ'
+2020-06-09 19:54:30 <lambdabot> False
+2020-06-09 19:54:35 <int-e> > isUpper 'ꙮ'
+2020-06-09 19:54:37 <lambdabot> False
+2020-06-09 19:54:49 <zzo38> One thing I thought is in Plan10 to have "chain segments", and environment variables and command-line arguments are implemented using chain segments, but then you could define other interfaces too.
+2020-06-09 19:55:30 <catern> I have a vague suspicion that too many people have tried to make shells better or smarter in various ways - it might be a dead end - maybe it would be more productive to go the other direction, and use your fancy Emacs Agda IDE to manipulate files instead of snippets of code
+2020-06-09 19:56:27 <shachaf> I am not too much into turbo-fancy IDEs.
+2020-06-09 19:58:04 <int-e> . o O ( 100% CPU for a blinking cursor. )
+2020-06-09 19:59:21 <zzo38> If a program calls another program using exec(), and the new program and old program have any chain segments with the same name, then that memory is retained rather than being reset.
+2020-06-09 19:59:26 <catern> well, turbo-fancy IDEs are hard to manipulate and program right now, so it's quite reasonable. but maybe they can be made more programmable (in a way that your knowledge of the UI directly allow programmability)
+2020-06-09 19:59:46 Quit: xelxebar (Remote host closed the connection)
+2020-06-09 19:59:47 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xylochoron[m], zzo38
+2020-06-09 19:59:50 <catern> zzo38: what about passing file descriptors or other non-memory resources?
