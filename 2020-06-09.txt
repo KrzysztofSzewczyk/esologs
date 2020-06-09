@@ -231,3 +231,40 @@
 2020-06-09 16:06:17 <zzo38> I mean something a bit different though; for example, in many assembly language where you will have "jump if positive", "jump if nonzero", etc.
 2020-06-09 16:55:49 <esowiki> 14[[07Modulo14]]4 M10 02https://esolangs.org/w/index.php?diff=73438&oldid=71351 5* 03PythonshellDebugwindow 5* (+94) 10cats
 2020-06-09 16:58:15 <esowiki> 14[[07Swearjure14]]4 M10 02https://esolangs.org/w/index.php?diff=73439&oldid=43254 5* 03PythonshellDebugwindow 5* (-46) 10/* Examples */ format
+2020-06-09 17:00:37 <esowiki> 14[[07Poison14]]4 M10 02https://esolangs.org/w/index.php?diff=73440&oldid=62058 5* 03PythonshellDebugwindow 5* (+0) 10/* Help */
+2020-06-09 17:07:36 <arseniiv> <b_jonas> except it's not really the empty string, it's a dual scalar that is the empty string as a string and 0 without warning as a number => some strange entities do they have, eh
+2020-06-09 17:08:28 <esowiki> 14[[07Furcode14]]4 M10 02https://esolangs.org/w/index.php?diff=73441&oldid=69425 5* 03PythonshellDebugwindow 5* (+6) 10
+2020-06-09 17:08:55 <esowiki> 14[[07Furcode14]]4 M10 02https://esolangs.org/w/index.php?diff=73442&oldid=73441 5* 03PythonshellDebugwindow 5* (-11) 10unpipe user link
+2020-06-09 17:10:52 <b_jonas> arseniiv: nah, they have arbitrary dual scalars that contain a string and a number (the number can be any of a floating-point, an integer, or an unsigned integer),
+2020-06-09 17:11:58 <arseniiv> b_jonas: oh now I need to see how do they initialize them
+2020-06-09 17:12:04 <esowiki> 14[[07Brace For Impact14]]4 M10 02https://esolangs.org/w/index.php?diff=73443&oldid=64965 5* 03PythonshellDebugwindow 5* (+3) 10/* Turing complete Proof */ fix redirect
+2020-06-09 17:12:05 <b_jonas> it's just that *most* such dual scalars that are ever created are either implicitly upgraded from a scalar that has only a string that you use a number so perl caches the number, or from a scalar that stores a number but gets implicitly upgraded to contain a string too by converting the number, or from a boolean false.
+2020-06-09 17:12:38 <b_jonas> but you *can* create arbitrary dual string/number scalars, there's a convenient function for it too: Scalar::Util::dualvar
+2020-06-09 17:13:02 <b_jonas> (all this applies to perl 5.10 or later, I don't want to keep track of history before that)
+2020-06-09 17:13:33 <b_jonas> there are, of course, also scalars that are not numbers or strings or combinations of them
+2020-06-09 17:14:02 <arseniiv> premature optimization bears weird things
+2020-06-09 17:14:06 <b_jonas> most of them still implicitly convert to a number and to a string, but they don't upgrade to store that sort of thing
+2020-06-09 17:14:22 <b_jonas> arseniiv: it made sense back in ye old days when perl was first created. perhaps not so much now.
+2020-06-09 17:15:21 <arseniiv> there should be an esolang which has many strange things due to carefully crafted “historical” reasons
+2020-06-09 17:16:35 <b_jonas> arseniiv: sure, you can add fake history. that sort of thing can be interesting even if it's only very modern history.
+2020-06-09 17:16:38 <esowiki> 14[[07SMETANA To Infinity!/brainfuck14]]4 M10 02https://esolangs.org/w/index.php?diff=73444&oldid=49754 5* 03PythonshellDebugwindow 5* (+31) 10i should really make this a template
+2020-06-09 17:17:24 <b_jonas> it's the sort of thing that's mostly done by conscripters, who create esoteric (in our sense) natural languages, due to Tolkien's tradition, but it's still possible with esoteric programming langugaes
+2020-06-09 17:17:28 <arseniiv> like, once I thought about a stack language which had a queue “stack” among others. Also there was a duplicating stack and a dropping stack (push a value, then pop two copies of it from the first and no copies at all from the second; almost all the commands moved from one or several stacks to another)
+2020-06-09 17:18:29 <arseniiv> conlanging/conworlding is interesting, yeah, though I have too few head resources to craft these things in detail I’d like
+2020-06-09 17:18:43 <esowiki> 14[[07Pure BF/Implementation in Ocaml14]]4 M10 02https://esolangs.org/w/index.php?diff=73445&oldid=34859 5* 03PythonshellDebugwindow 5* (+13) 10
+2020-06-09 17:18:53 <esowiki> 14[[07Pure BF/Implementation in Ocaml14]]4 M10 02https://esolangs.org/w/index.php?diff=73446&oldid=73445 5* 03PythonshellDebugwindow 5* (+1) 10
+2020-06-09 17:19:07 <b_jonas> yes, sorry, conlangers and conscripters
+2020-06-09 17:19:25 <esowiki> 14[[07Pure BF/Implementation in Ocaml14]]4 M10 02https://esolangs.org/w/index.php?diff=73447&oldid=73446 5* 03PythonshellDebugwindow 5* (+0) 10
+2020-06-09 17:20:00 <b_jonas> arseniiv: does it count as a fake history when a language is designed as if its purpose was to implement in hardware, but you only ever plan to implement it in software? MIX and MMIX are such cases
+2020-06-09 17:20:16 <arseniiv> b_jonas: I think no conlang is good enough without considering its writing system in some detail, even if it’s an auxlang with latin alphabet
+2020-06-09 17:20:26 <arseniiv> so no harm mixing a bit
+2020-06-09 17:20:29 <esowiki> 14[[07Turth-machine14]]4 M10 02https://esolangs.org/w/index.php?diff=73448&oldid=66236 5* 03PythonshellDebugwindow 5* (+21) 10
+2020-06-09 17:20:49 <arseniiv> and no writing system is good without considering who would use it for what
+2020-06-09 17:21:41 <arseniiv> <b_jonas> arseniiv: does it count as a fake history when a language is designed as if its purpose was to implement in hardware, but you only ever plan to implement it in software? MIX and MMIX are such cases => this seems a boundary case but why not indeed
+2020-06-09 17:23:18 <b_jonas> arseniiv: I don't see why that would be the case, for two reasons. (1) there are and especially were a lot of natural languages that were used extensively and were certainly useful, but either were never written or were rarely contemporarily written so much that the writing clearly isn't what adds value. why would the writing be necessary for a conlang? this is opposed to a programming language, where I
+2020-06-09 17:23:24 <b_jonas> see why writing is generally the best form.
+2020-06-09 17:24:56 <b_jonas> (2) there are ancient languages where most people don't bother much with the original writing system, we just transcribe the relatively few artifacts we have and work with the transcriptions, because that's easier for us. ancient egyptian and akkadian would be examples for that. and even for languages where we still sort of use the same script, the writing has evolved a lot:
+2020-06-09 17:26:26 <b_jonas> consider latin, which has been a dead language for a pretty long time, but preserved due to the role of christianty. these days we write it in fancy Times roman and italic style lower case letters, with spaces and sometimes punctuation, that weren't used five hundred years ago and may have taken weeks for a scholar back then to adapt to.
+2020-06-09 17:27:15 <b_jonas> you could say it's sort of the same writing system, but a lot has changed. can you even read the Fraktur and Blackletter scripts that were used on some ceremonial official documents like university diplomas thirty years ago, and heavily actively used like 120 years ago?
+2020-06-09 17:27:37 <b_jonas> yes, some people can read them, in as much as some people can read Chinese too
+2020-06-09 17:28:48 <b_jonas> admittedly the writing system changes often more superficially than the spoken language, so deciphering the writing system style within the same script (latin in this example) and adapting to read it is much easier than deciphering and learning the language
