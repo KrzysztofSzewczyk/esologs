@@ -466,3 +466,32 @@
 2020-06-09 21:28:06 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-06-09 21:37:22 <b_jonas> zzo38: perhaps as a form of redundancy against programming errors?
 2020-06-09 21:38:54 <zzo38> Maybe.
+2020-06-09 22:18:41 Quit: adu (Quit: adu)
+2020-06-09 22:18:41 Names: ^[, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-09 22:19:21 <b_jonas> zzo38: can it be an artifact from a rarely used vararg function API, possibly one that's not even supported anymore, but whose existence has side effects to non-vararg functions? because that sort of happened to C varargs, which even on x86_64 have an effect on the ABI of a few non-vararg function calls, because we can't distinguish the ABI of vararg function calls from non-vararg calls, because that
+2020-06-09 22:19:27 <b_jonas> could break old C programs with no ANSI style prototypes for a function,
+2020-06-09 22:20:29 <b_jonas> even though nobody in the x86_64 era writes any new C programs that require that you can call a vararg function without a prototype, except when omitting #include <stdio.h> for golf purposes.
+2020-06-09 22:20:57 <fizzie> It would be perfectly legal to break those programs; it's not possible to call a vararg function without a prototype.
+2020-06-09 22:22:11 <fizzie> "If the expression that denotes the called function has a type that does not include a prototype -- [and if] the function is defined with a type that includes a prototype, and -- the prototype ends with an ellipsis --, the behavior is undefined."
+2020-06-09 22:22:24 <b_jonas> fizzie: not according to the current C standards (or even C89 I think), but in old compilers it was perfectly possible to call printf or open without a prototype, and as a result people wrote programs that did that and got away with it
+2020-06-09 22:22:49 <fizzie> Right, that sort of compatibility thing.
+2020-06-09 22:22:57 <b_jonas> fizzie: sure, the C standard says that exactly because we don't want to support that sort of nonsense forever into the future
+2020-06-09 22:23:08 <b_jonas> but for now we still have some ancient C programs without prototypes so we can't do it yet
+2020-06-09 22:23:21 <b_jonas> or we couldn't do it yet when x86_64 came out
+2020-06-09 22:23:22 <fizzie> Is that really true though? The x86-64 varargs ABI *is* different -- will compilers use it "just in case" if there's no prototype?
+2020-06-09 22:23:50 <zzo38> I don't think so, because Glk doesn't use varargs, and anyways it is Glulx, not C. (There is a C API for Glk too, although the Glk dispatch layer deals with the types of the functions and calls them (and also exposes the types in a portable format for all programming languages), so the Glulx interpreter will already know the type and number of arguments, even in case of extensions to Glk.)
+2020-06-09 22:24:06 <b_jonas> fizzie: I think so for at least one of the two x86_64 abis, but I'll have to look that up, and it impacts only a few function calls (depending on the type of arguments)
+2020-06-09 22:24:15 <fizzie> Apparently they do. Huh.
+2020-06-09 22:24:17 <zzo38> (And I have made some extensions to Glk. Making these extensions does not require changing the Glulx interpreter in any way.)
+2020-06-09 22:24:23 <fizzie> Well, it's not a huge hassle, addmittedly.
+2020-06-09 22:25:13 <fizzie> I would imagine for the SysV ABI it would affect all prototype-less calls, because you have to clear rax (or rather, set al to the "proper" value), which you otherwise wouldn't.
+2020-06-09 22:25:39 <b_jonas> fizzie: but you can see that the ABI is designed such that the called function can access the first argument without knowing what the type of the rest of the arguments are, which probably doesn't cause any performance problems, but even so it is a decision prompted by the vararg history
+2020-06-09 22:26:37 <b_jonas> I'll have to look up the details about the x86_64 ABIs in the Agner document later to tell what the AL thing was about, the one that can impact performance. I simply don't remember.,
+2020-06-09 22:27:26 <fizzie> You must set AL to the number of SIMD registers used for passing floating-point arguments if you're calling a varargs function.
+2020-06-09 22:27:43 <fizzie> http://ix.io/2oM5 does it for the call to f_noproto, and doesn't for the call to f_withproto.
+2020-06-09 22:28:13 <fizzie> I imagine it would by definition "affect" performance insofar that it's an extra instruction.
+2020-06-09 22:28:46 <b_jonas> fizzie: but in that case doesn't it impacts only functions that have arguments with floating point in them?
+2020-06-09 22:28:56 <fizzie> No, because you have to set it to 0 if they don't.
+2020-06-09 22:29:08 <b_jonas> fizzie: even if you have a prototype and so know that the function isn't vararg?
+2020-06-09 22:29:17 <b_jonas> which is the majority of function calls
+2020-06-09 22:29:22 <fizzie> Right, yes.
