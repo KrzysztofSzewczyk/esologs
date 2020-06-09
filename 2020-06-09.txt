@@ -495,3 +495,42 @@
 2020-06-09 22:29:08 <b_jonas> fizzie: even if you have a prototype and so know that the function isn't vararg?
 2020-06-09 22:29:17 <b_jonas> which is the majority of function calls
 2020-06-09 22:29:22 <fizzie> Right, yes.
+2020-06-09 22:30:01 <fizzie> The point I was trying to make is that the fact that it's "forced" to assume prototype-less functions might be varargs is affecting all calls to prototype-less functions.
+2020-06-09 22:30:13 <b_jonas> fizzie: ah ok
+2020-06-09 22:30:17 <b_jonas> that makes sense
+2020-06-09 22:31:23 <b_jonas> and we'll get rid of non-prototyped function calls way before we get rid of varargs in C, because *printf, *scanf and open are here to stay.
+2020-06-09 22:31:53 <b_jonas> (I know some other vararg C functions that are probably here to stay, but they're used less than those)
+2020-06-09 22:33:47 Quit: zzo38 (Quit: zzo38)
+2020-06-09 22:33:47 Names: ^[, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m]
+2020-06-09 22:34:41 Joined: zzo38
+2020-06-09 22:34:42 Names: ^[, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-09 22:35:04 <spruit11> The fact that you can walk the C stack probably made C++ exceptions possible..
+2020-06-09 22:36:22 <b_jonas> spruit11: that might be true historically (I don't know), but these days you can't walk the C stack
+2020-06-09 22:36:40 <spruit11> It was a conjecture. No idea.
+2020-06-09 22:36:42 <b_jonas> and by "these days" that was already true 20 years ago
+2020-06-09 22:36:42 <fizzie> I've been browsing the c2x draft (there's one from Feb this year), and it's got a few headline-grabbing features. Like, `strdup` is finally in, and the [[foo]] attribute syntax has been ported back from C++ (though only for [[nodiscard]], [[maybe_unused]], [[deprecated]] and [[fallthrough]], all of which are merely for better diagnostics).
+2020-06-09 22:38:00 <fizzie> Oh, and old-style function definitions are out, which is almost relevant to the earlier discussion.
+2020-06-09 22:38:37 <b_jonas> fizzie: is there any feature that they could consider standardizing in the form of an attribute and isn't merely for diagnostics? hmm yes, there is, [[no_unique_address]], but that's so new it just didn't have a chance to get into C standard proposals yet
+2020-06-09 22:38:51 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-06-09 22:38:51 <zzo38> OK, strdup is in, now, but is memdup in yet?
+2020-06-09 22:39:03 <fizzie> (Sort-of unfortunately prototype-free declarations aren't out.)
+2020-06-09 22:39:16 <spruit11> Link to the c2x draft?
+2020-06-09 22:39:20 <fizzie> `memdup` is not.
+2020-06-09 22:39:21 <HackEso> memdup`? No such file or directory
+2020-06-09 22:39:35 <fizzie> http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2478.pdf
+2020-06-09 22:39:43 <spruit11> Thanks.
+2020-06-09 22:40:33 <fizzie> There are also a bunch of more recent documents at http://www.open-std.org/jtc1/sc22/wg14/www/wg14_document_log.htm but no newer full working draft.
+2020-06-09 22:40:35 <b_jonas> fizzie: there's no point to remove prototype-free declarations from the standard, we'll not remove them from real life because they'll still in use (for compatibility only, with default warning, not for new code), so removing it from the standard would be ... oh I see. yes, ignoring the real world and depreciating something that is in use would be exactly the sort of thing that those standard committees
+2020-06-09 22:40:41 <b_jonas> occasionally try to do
+2020-06-09 22:40:47 Joined: imode
+2020-06-09 22:40:47 Names: ^[, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-09 22:40:59 <fizzie> Well, they removed `gets`.
+2020-06-09 22:41:10 <fizzie> I suspect it's still in use.
+2020-06-09 22:41:26 Joined: adu
+2020-06-09 22:41:26 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-09 22:41:28 <b_jonas> spruit11: you can probably find it from http://www.open-std.org/JTC1/SC22/WG14/
+2020-06-09 22:42:38 <b_jonas> fizzie: did they remove asctime or ctime?
+2020-06-09 22:43:11 <spruit11> Hmm. I guess unwinding is done by just tracing links.
+2020-06-09 22:43:11 <fizzie> No, but they added asctime_r and ctime_r.
+2020-06-09 22:43:17 <fizzie> So maybe that's a step?
+2020-06-09 22:43:31 <zzo38> Well, gets is the function they should remove.
