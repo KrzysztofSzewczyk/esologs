@@ -311,3 +311,17 @@
 2020-06-11 19:45:44 <shachaf> zzo38: I got rid of the « and » character.
 2020-06-11 19:45:47 <shachaf> Do you like this?
 2020-06-11 19:48:16 <zzo38> Got rod if it in what?
+2020-06-11 20:04:18 Joined: user24
+2020-06-11 20:04:18 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, vertrex, xelxebar, xylochoron[m], zzo38
+2020-06-11 20:06:29 <int-e> . o O ( <shachaf> zzo38: I got rid of the  and  character. )
+2020-06-11 20:07:35 <shachaf> zzo38: The file I linked before.
+2020-06-11 20:07:41 <shachaf> https://slbkbs.org/tmp/mop/mop.h
+2020-06-11 20:08:04 <shachaf> Is GNU-style options-after-arguments behavior a good idea?
+2020-06-11 20:10:30 <zzo38> I don't really like the GNU-style options-after-arguments.
+2020-06-11 20:14:25 <b_jonas> shachaf: I don't like gnu style options after options, but we can't get rid of it now
+2020-06-11 20:14:48 <shachaf> Options after options?
+2020-06-11 20:15:11 <b_jonas> so you have to assume that any program may or may not accept options after arguments, depending on what libc you compile it with, and be careful with arguments that start with a hyphen accordingly
+2020-06-11 20:15:18 <b_jonas> options after non-option arguments, sorry
+2020-06-11 20:18:58 <zzo38> I think that in some programs it is useful to specify options after another argument that takes its own options, such as if it an interpreter, then presumably the options for the interpreter should come before the filename, and options for the program being interpreted come after the filename.
+2020-06-11 20:21:00 <zzo38> Some programs use some other way to specify, such as in Ghostscript, if you write -- before the filename of the PostScript program, then options before -- are the options for Ghostscript (such as safe/unsafe mode, or the output device selection), and the options after the filename are the arguments to the PostScript program.
+2020-06-11 20:22:40 <zzo38> Another example (currently not implemented in any implementation I know of, though) is NES/Famicom emulation. The options for the interpreter itself come before the first cartridge filename; after that are the mapper arguments if any (most mappers do not use any arguments), and if a mapper argument is another cartridge, that one can in turn take its own mapper arguments, etc.
