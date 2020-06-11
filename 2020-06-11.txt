@@ -59,3 +59,26 @@
 2020-06-11 02:59:04 <Cale> It's a bit different because there aren't physical bits of cardboard in the world
 2020-06-11 02:59:12 Quit: Phantom_Hoover (Ping timeout: 256 seconds)
 2020-06-11 02:59:12 Names: ^[, adu, ais523, aloril, APic, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, quintopia, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, xelxebar, xylochoron[m], zzo38
+2020-06-11 03:00:29 <zzo38> Yes, but it can still be a problem, and a different one. You might want to use old rules, you might not like their software, etc. Actually, Magic: the Gathering also has the problem of old versions of the rules and Oracle texts not properly being archived, I think.
+2020-06-11 03:01:35 <zzo38> What ais523 did seems reasonable though: The primary key of a card definition is the name and version together, rather than only the name. That partially avoids the problem in Hearthstone, at least.
+2020-06-11 03:02:07 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-06-11 03:02:07 <ais523> I don't think I did that?
+2020-06-11 03:02:20 <zzo38> Of course, it is too late to change it now in either Magic: the Gathering or in Hearthstone, I think.
+2020-06-11 03:02:30 <ais523> name+version is the normal primary key in M:tG databases, though (except for Oracle-alikes)
+2020-06-11 03:03:23 <Cale> As I see it, there's no responsibility for the maker of a game to continue to support any part of it, or maintain historical information for themselves if they want to make changes. Obviously, people who are interested in the history of the game can maintain that information.
+2020-06-11 03:03:25 <zzo38> ais523: You did; I have the document you wrote on my computer.
+2020-06-11 03:03:52 <zzo38> Cale: Yes, I maintain history of the rules as far back as possible. Rule history and Oracle history are very important for puzzles.
+2020-06-11 03:04:08 <ais523> zzo38: oh, you mean not for M:tG
+2020-06-11 03:04:33 <ais523> that was a bit different because version numbers are part of the card, the intention was that reprinting a card would use the same version number, but a different number could be used for, e.g., balance fixes
+2020-06-11 03:05:01 <ais523> zzo38: are there any puzzles that require using multiple different sets of rules over the course of the puzzle?
+2020-06-11 03:05:26 <zzo38> You may be right about other M:tG databases,  but I don't really know. I think the artwork should remain archived, even if they would never be reprinted.
+2020-06-11 03:06:26 <zzo38> ais523: I don't know of any such puzzles, and most puzzles I know of don't specify a rules datestamp at all (except my own, to avoid this kind of problem).
+2020-06-11 03:07:22 <zzo38> What you say about version numbers, I know what you are saying, and it makes sense, but I meant as an alternative to what is probably being done in Hearthstone (at least, what I have heard; I think my brother plays), and not about Magic: the Gathering.
+2020-06-11 03:10:07 <ais523> I'm generally in favour of old versions / rules engines / patches of computer games being available in case they're superior to the current version (or more interesting in some other way), or just for historical interest
+2020-06-11 03:10:30 <ais523> this is one of the reasons I dislike "inherently online" games because they often have no way to play an old version
+2020-06-11 03:10:39 <zzo38> Yes, I agree with that.
+2020-06-11 03:11:01 <Cale> Yeah, all else being equal, that's preferable
+2020-06-11 03:14:57 <Cale> Chess 1.2 Patch Notes: * Fixed a bug introduced with faster pawns in 1.1 where pawns would sometimes capture a piece on different square from the one where they were going. * Fixed a bug where castling sometimes wouldn't work when unrelated back-rank squares were under attack. * We're aware of the bugs where pawns can't capture the piece that's in front of them, and can't move diagonally in cases where they're not
+2020-06-11 03:14:58 <Cale> capturing a piece, and are working on fixes - stay tuned in the next patch.
+2020-06-11 03:16:09 <zzo38> (There are other reasons to dislike "inherently online" games too; the reason you specify is only one of the reasons.)
+2020-06-11 03:23:59 <zzo38> Does anyone still maintain the old Oracle texts and artwork? Does anyone maintain even changes to multiverse ID numbers if needed? What about rule changes? I think Yawgatog used to do some of these, but no longer does. I have a directory on my computer of all versions of the rules since 2007-05-01, but I am interested in older rules too, because there are puzzles older than that.
