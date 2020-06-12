@@ -86,3 +86,24 @@
 2020-06-12 10:53:20 User Name: cpressey = cpressey!~cpressey@88.144.71.51
 2020-06-12 10:53:20 <cpressey> int-e: Those two rewrite-rule-operators turn out to form a semiring (nearly). But, they also turn to be, not what I want (in terms of what I thought they might be practical for.)
 2020-06-12 10:56:27 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73655&oldid=73654 5* 03D 5* (+808) 10
+2020-06-12 11:04:47 Joined: stux
+2020-06-12 11:04:48 Names: ^[, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, xelxebar, xylochoron[m], zzo38
+2020-06-12 11:05:05 Joined: TheLie
+2020-06-12 11:05:05 Names: ^[, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, quintopia, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, xelxebar, xylochoron[m], zzo38
+2020-06-12 11:09:44 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73656&oldid=73655 5* 03D 5* (+909) 10
+2020-06-12 11:10:41 <esowiki> 14[[07Small14]]4 M10 02https://esolangs.org/w/index.php?diff=73657&oldid=71593 5* 03D 5* (+0) 10
+2020-06-12 11:14:55 <cpressey> Changing Rn & Rm to mean "apply first Rn then Rm in sequence" probably also gets a semiring.
+2020-06-12 11:15:41 Joined: Lord_of_Life
+2020-06-12 11:17:01 <cpressey> + is associative and commutative.  0 is an artifical rule that never matches anything.  & is associative.  1 is an artificial rule that can always be applied, but which never changes anything.
+2020-06-12 11:18:01 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73658&oldid=73656 5* 03D 5* (+375) 10
+2020-06-12 11:18:20 Quit: Lord_of_Life (Ping timeout: 256 seconds)
+2020-06-12 11:18:30 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-06-12 11:20:23 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73659&oldid=73658 5* 03D 5* (+288) 10
+2020-06-12 11:22:02 <cpressey> To be clearer, Rn & Rm => "If Rn can be applied and then Rm can be applied, then apply Rn and then apply Rm" -- that way R & 0 = 0 for all R.
+2020-06-12 11:23:11 <cpressey> Hm, maybe & isn't associative
+2020-06-12 11:24:12 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73660&oldid=73659 5* 03D 5* (+80) 10
+2020-06-12 11:26:20 User Name: rain1 = rain1!~debian@unaffiliated/rain1
+2020-06-12 11:26:20 <rain1> hell
+2020-06-12 11:26:21 <rain1> hello
+2020-06-12 11:27:13 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73661&oldid=73660 5* 03D 5* (+45) 10
+2020-06-12 11:29:30 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=73662&oldid=73661 5* 03D 5* (+174) 10
