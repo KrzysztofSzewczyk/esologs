@@ -51,3 +51,134 @@
 2020-06-19 16:59:43 Nick Change: sebbu2 -> sebbu
 2020-06-19 16:59:44 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
 2020-06-19 16:59:46 <kspalaiologos> I'll add reconnection attempts
+2020-06-19 17:00:13 <b_jonas> ideally you probably want some kind of incremental timeouts, where it reconnects immediately the first time, but then with progressively more sleep, and after like 14 attempts it waits a day between reconnections
+2020-06-19 17:00:33 Quit: kspalaiologos (Read error: Connection reset by peer)
+2020-06-19 17:00:34 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:02:23 Joined: kspalaiologos
+2020-06-19 17:02:23 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:02:26 User Name: kspalaiologos = kspalaiologos!~root@206.ip-51-91-102.eu
+2020-06-19 17:02:26 <kspalaiologos> my IRC client crashed
+2020-06-19 17:02:34 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-06-19 17:02:34 <ais523> reconnecting once every half hour doesn't seem excessively spammy to me?
+2020-06-19 17:02:51 <kspalaiologos> anyways, I've added a mechanism that will stop attempting after there have been 5 reconnect attempts before
+2020-06-19 17:02:58 <ais523> that's 48 quitjoins a day, there's normally much more conversation than that
+2020-06-19 17:02:59 <kspalaiologos> and it will drop me an e-mail
+2020-06-19 17:03:11 <b_jonas> ais523: it's probably borderline
+2020-06-19 17:03:21 <b_jonas> on some days we have very little traffic
+2020-06-19 17:03:21 <ais523> make sure it doesn't email you every half-hour, that can get annoying quickly
+2020-06-19 17:03:30 <ais523> I once accidentally configured my server to email me every minute
+2020-06-19 17:03:48 <ais523> luckily I was online at the time and, unsurprisingly, noticed pretty quickly
+2020-06-19 17:04:17 <kspalaiologos> if it will mail me every half an hour, I'll notice it fsater
+2020-06-19 17:04:20 <ais523> and I run my own mailserver so there was no issue with address reputation as a consequence
+2020-06-19 17:04:28 <kspalaiologos> also, the counter zeroes, so 5 * 30min = 2,5h
+2020-06-19 17:04:41 <kspalaiologos> a mail every 2 and 1/2 hour isn't much trouble for me
+2020-06-19 17:05:09 <ais523> doesn't that mean it'll try to connect 4 times every 2� hours?
+2020-06-19 17:05:36 Joined: S_Gautam
+2020-06-19 17:05:36 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:06:23 <kspalaiologos> tries once => wait for 30 min => tries 2nd time => wait for 30min => tries 3rd time => wait for 30min => tries 4th time => wait for 30min => tries 5th time => errrr send me an email, stop attempting
+2020-06-19 17:06:28 User Name: arseniiv = arseniiv!~arseniiv@136.169.210.76
+2020-06-19 17:06:28 <arseniiv> @tell cpressey wait, if R & R = 0 then 0 = (R | S) & (R | S) = R & R | R & S | S & R | S & S = R & S | S & R = R & S | R & S = R & S, is that right?..
+2020-06-19 17:06:28 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-06-19 17:06:28 <lambdabot> Consider it noted.
+2020-06-19 17:06:32 Quit: S_Gautam (Client Quit)
+2020-06-19 17:06:32 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:06:43 <kspalaiologos> if R&R=0 then R must be 0
+2020-06-19 17:06:59 Joined: S_Gautam
+2020-06-19 17:06:59 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:07:04 User Name: esowiki = esowiki!~esowiki@unaffiliated/fizzie/bot/esowiki
+2020-06-19 17:07:04 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Gorbit99 5*  10New user account
+2020-06-19 17:07:32 <ais523> not in Tandem, where R&R is artificially 0 because & is more like an exclusive-and
+2020-06-19 17:07:32 <arseniiv> kspalaiologos: hehe there’s another meaning to &, see https://esolangs.org/wiki/Tandem :)
+2020-06-19 17:07:37 <kspalaiologos> oh f.ck
+2020-06-19 17:07:43 <kspalaiologos> the bot spilled its stderr on my screen
+2020-06-19 17:07:58 <ais523> also, I love esolangs, they make concepts like "exclusive-and" viable
+2020-06-19 17:07:58 Quit: S_Gautam (Client Quit)
+2020-06-19 17:07:58 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:08:00 <kspalaiologos> I can't see anything
+2020-06-19 17:08:03 <kspalaiologos> did it quit?
+2020-06-19 17:08:17 <ais523> gitloggeris still online; is that your bot?
+2020-06-19 17:08:26 <kspalaiologos> yes, ah, I see the problem
+2020-06-19 17:08:27 Joined: S_Gautam
+2020-06-19 17:08:27 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:08:28 <kspalaiologos> wchar print
+2020-06-19 17:08:51 <b_jonas> ais523: hmm, I thought you were working on one of these declarative languages, with the intent that it should be more expressive in a declarative way than Brachylog
+2020-06-19 17:10:00 <kspalaiologos> alright, /redraw fixes the problem
+2020-06-19 17:10:18 <ais523> b_jonas: yes
+2020-06-19 17:10:21 <arseniiv> @tell cpressey so AFAIU the R & R = 0 is always true only for atomic rules, but the example above shows complex rules won’t be annihilated when conjusquared
+2020-06-19 17:10:21 <lambdabot> Consider it noted.
+2020-06-19 17:10:52 Quit: kspalaiologos (Quit: leaving)
+2020-06-19 17:10:52 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, xelxebar, zzo38
+2020-06-19 17:11:08 <ais523> arseniiv: is there actually a requirement for | to distribute over &?
+2020-06-19 17:11:34 Joined: wmww
+2020-06-19 17:11:34 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, wmww, xelxebar, zzo38
+2020-06-19 17:11:41 Joined: kspalaiologos
+2020-06-19 17:11:41 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, wmww, xelxebar, zzo38
+2020-06-19 17:11:54 <arseniiv> ais523: hm maybe not, I had read it in “Conjunction distributes over disjunction: Ri & (Rj | Rk) = (Ri & Rj) | (Ri & Rk) (and the other direction too, because it's commutative.)”
+2020-06-19 17:13:42 <arseniiv> wait, this is the needed distributivity, I thought there is the other one
+2020-06-19 17:14:07 <arseniiv> hm
+2020-06-19 17:15:08 <arseniiv> it should be formally proven in Agda^W^W
+2020-06-19 17:16:40 <arseniiv> were there languages like Tandem before? Seems very cool to me at the end
+2020-06-19 17:16:58 <ais523> what property of it do you consider interesting?
+2020-06-19 17:17:22 <ais523> there are certainly languages which play around in a similar space in terms of semantics, but they don't necessarily have the same properties that Tandem does
+2020-06-19 17:18:09 <arseniiv> I haven’t thought of rewriting many disjoint places before, though I can see it may be grown from my questions about rewriting S-expressions a while ago, dumb me
+2020-06-19 17:20:26 <arseniiv> also a while ago I made a string-rewriting thing which used if the rule was applied succesfully to continue applying following rules, though that wasn’t by all means minimal and I artifically bounded it to sub-TC by requiring placing a finite repeat count for each loop
+2020-06-19 17:20:39 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=74037&oldid=73967 5* 03Gorbit99 5* (+117) 10
+2020-06-19 17:20:49 <esowiki> 14[[07GORBITSA14]]4 10 02https://esolangs.org/w/index.php?diff=74038&oldid=74033 5* 03Gorbit99 5* (-713) 10fixed some incorrect info
+2020-06-19 17:20:53 <arseniiv> I intended it to be a text-generating tool but it ended up unwieldy
+2020-06-19 17:21:11 User Name: kspalaiologos = kspalaiologos!~root@206.ip-51-91-102.eu
+2020-06-19 17:21:11 <kspalaiologos> I spent too much time yesterday and two days ago figuring 3sp
+2020-06-19 17:21:42 <kspalaiologos> this language seems just... so volatile, so spaghetti-y that I can't find a good way of programming it other than either genetic algorithm OR compiling some predictable assembly into large-ass code
+2020-06-19 17:22:00 <ais523> the latter approach is the better one I think
+2020-06-19 17:22:04 <ais523> although, the hardest part is startup
+2020-06-19 17:22:11 <kspalaiologos> I'll end up with malbolge 2.0
+2020-06-19 17:22:20 <kspalaiologos> with programs being bigger than the observable universe
+2020-06-19 17:22:24 <ais523> which places some fairly extreme constraints on your program because the startup code has to run every iteration
+2020-06-19 17:22:38 <kspalaiologos> I did such a thing with asm2bf while implementing labels
+2020-06-19 17:22:45 <kspalaiologos> the entire code runs inside a large loop
+2020-06-19 17:23:02 <ais523> start with "freestart 3*", where you get to initialize memory as you like separately from the program, as a wimpmode
+2020-06-19 17:23:10 <ais523> that isn't too hard to program in once you see the tricks
+2020-06-19 17:23:19 <arseniiv> <kspalaiologos> with programs being bigger than the observable universe => hm that gives an idea of executing compressed programs... surely some languages would allow that?
+2020-06-19 17:23:19 <kspalaiologos> it's 100% doable, but I just can't notice some things
+2020-06-19 17:23:37 <kspalaiologos> if you managed to write a good malbolge interpreter that would run my programs compressed
+2020-06-19 17:23:40 <ais523> arseniiv: in https://esolangs.org/wiki/Tip the program is infinitely long, but compresses well
+2020-06-19 17:23:49 <kspalaiologos> I'd really really appreciate it :p
+2020-06-19 17:24:06 <ais523> what sort of repetition normally exists within your programs?
+2020-06-19 17:24:14 <kspalaiologos> my malbolge programs? no-ops
+2020-06-19 17:24:26 <kspalaiologos> to nail the memory adresses
+2020-06-19 17:24:30 <ais523> do they execute/get encrypted? or are they jumped over?
+2020-06-19 17:24:38 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=74039&oldid=73245 5* 03PythonshellDebugwindow 5* (+8) 10force toc
+2020-06-19 17:24:41 <kspalaiologos> 50/50 I'd say
+2020-06-19 17:24:52 <kspalaiologos> you'd have to figure out what does each one do
+2020-06-19 17:24:59 <kspalaiologos> but I believe it's all doable
+2020-06-19 17:25:00 <arseniiv> kspalaiologos: no thanks :D I don’t even into Malbolge, I mean in the sense I don’t even remember how it works at all. It ciphers something and has several opcodes and that’s all I remember
+2020-06-19 17:25:09 <ais523> the hard part isn't so much running the compressed program, but updating it as it encrypts
+2020-06-19 17:25:15 <kspalaiologos> the malbolge code follows a lot of repetitions
+2020-06-19 17:25:20 <ais523> within the compressed program
+2020-06-19 17:25:33 <kspalaiologos> I mean, you could theoretically parse my malbolge programs into some form of readable assembly using regex
+2020-06-19 17:25:43 <kspalaiologos> because I haven't gone crazy on golfing the output
+2020-06-19 17:25:59 <esowiki> 14[[07User:PythonshellDebugwindow/200114]]4 M10 02https://esolangs.org/w/index.php?diff=74040&oldid=72878 5* 03PythonshellDebugwindow 5* (+38) 10rdr
+2020-06-19 17:26:43 <kspalaiologos> I compile them from a very sophisticated assembly
+2020-06-19 17:26:54 <ais523> I'd say a "compressed Malbolge executor" would be trivial, with an appropriately designed compression format, if not for the fact that Malbolge is self-modifying and you need to remember in what ways the program has self-modified
+2020-06-19 17:26:55 <kspalaiologos> my current opus magnum is a forth-like interpreter in Malbolge
+2020-06-19 17:27:19 <kspalaiologos> it's overall around two megabytes of my handcrafted assembly code
+2020-06-19 17:27:28 <kspalaiologos> and it works, very slowly
+2020-06-19 17:27:37 <kspalaiologos> I've left a fact(4) program to run overnight
+2020-06-19 17:27:40 <kspalaiologos> and it produced correct result
+2020-06-19 17:27:49 <ais523> I wonder if it would be efficient to store the original program, plus a count of encryptions that have been performed on each memory cell, plus a separate sparse array for memory cells that have been modified directly
+2020-06-19 17:27:58 <ais523> and do dynamic RLE on the encryption counts
+2020-06-19 17:28:07 <kspalaiologos> I.. don't think so
+2020-06-19 17:28:25 <kspalaiologos> because Malbolge follows the von neumann architecture, so you store data with the code
+2020-06-19 17:28:34 <ais523> right, that's what the final array is for
+2020-06-19 17:28:35 <kspalaiologos> and the code can grow quite big
+2020-06-19 17:28:37 <arseniiv> I don’t even into Malbolge => am not*
+2020-06-19 17:28:45 <kspalaiologos> I mean - my malbolge programs often swap
+2020-06-19 17:28:50 <kspalaiologos> to produce a meaningful result
+2020-06-19 17:28:55 <kspalaiologos> and I have a machine with 16 gigabytes of RAM
+2020-06-19 17:29:08 <ais523> I think with most Malbolge programs, the proportion of the memory that is used as useful data is very small, right?
+2020-06-19 17:29:16 <kspalaiologos> yes
+2020-06-19 17:29:24 <kspalaiologos> if you find out the storage format, you're pretty much home
+2020-06-19 17:29:26 <ais523> it's almost all either a) padding, b) self-encrypting code where the encryption isn't useful it just happens
+2020-06-19 17:29:33 <esowiki> 14[[07Template:Cs14]]4 M10 02https://esolangs.org/w/index.php?diff=74041&oldid=73533 5* 03PythonshellDebugwindow 5* (+29) 10
+2020-06-19 17:29:34 <kspalaiologos> yes
+2020-06-19 17:29:50 <arseniiv> <kspalaiologos> my current opus magnum is a forth-like interpreter in Malbolge => wow
+2020-06-19 17:29:53 <esowiki> 14[[07GORBITSA14]]4 10 02https://esolangs.org/w/index.php?diff=74042&oldid=74038 5* 03Gorbit99 5* (-5) 10typo
