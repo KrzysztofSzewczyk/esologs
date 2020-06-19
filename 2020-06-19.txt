@@ -388,3 +388,9 @@
 2020-06-19 18:27:00 <ais523> my current plan is to use executable code as the tags
 2020-06-19 18:27:15 <ais523> and just eval it to do the equivalent of the case table
 2020-06-19 18:27:26 <ais523> that works best if you have only one table, of course
+2020-06-19 18:28:28 <arseniiv> hm how frequently is there an instruction which takes [f, args…] to f(args…)?
+2020-06-19 18:28:49 <ais523> in Jelly it's a two-byter
+2020-06-19 18:29:13 <ais523> maybe a third when it's part of a larger program, to disambiguate what applies to what
+2020-06-19 18:29:39 <arseniiv> though one table constraint is not good for big tasks
+2020-06-19 18:29:46 <ais523> would be vḤ, I think
+2020-06-19 18:29:56 <ais523> no, other way round, Ḥv
