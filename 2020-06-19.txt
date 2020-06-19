@@ -282,3 +282,106 @@
 2020-06-19 17:59:28 <ais523> but making each of them crazily context-sensitive to increase how powerful it is
 2020-06-19 17:59:43 <kspalaiologos> that's exactly like the adverb system works in my language.
 2020-06-19 18:00:01 <ais523> it's not that rare for a full program that does something in, say, Jelly to be shorter than the name of the builtin in Mathematica
+2020-06-19 18:01:08 <arseniiv> yep, Mathematica surely takes the eloquent path to naming
+2020-06-19 18:01:10 <kspalaiologos> sigh, Jelly
+2020-06-19 18:01:20 <ais523> anyway, one major category of builtins that doesn't seem to be mentioned is builtins with block arguments
+2020-06-19 18:01:23 <kspalaiologos> if mathematica has names like Jelly builtins, and had them triggered by adverbs
+2020-06-19 18:01:26 <kspalaiologos> then well
+2020-06-19 18:01:57 <ais523> most mathematica builtins take lots of parameters though, and need them to avoid being too inflexible
+2020-06-19 18:02:24 <kspalaiologos> 256 adverbs, 256 instructions = 65536 possible builtins to squish into the language
+2020-06-19 18:02:29 <arseniiv> are there golf languages utilizing Hindley—Milner typing? Though I think I asked that and someone answered already
+2020-06-19 18:02:37 <kspalaiologos> that you have accessible using two keystrokes
+2020-06-19 18:02:45 <kspalaiologos> and sometimes, in 70% of times, using a single keystroke
+2020-06-19 18:03:08 <ais523> arseniiv: I answered https://esolangs.org/wiki/Husk to a similar question
+2020-06-19 18:03:22 <arseniiv> kspalaiologos: but how would one program in it^W^W^W^W^W^W^W
+2020-06-19 18:03:44 <arseniiv> ais523: ah! thanks I think it was you that time even
+2020-06-19 18:03:50 <int-e> arseniiv: counting to 7 is too much to ask
+2020-06-19 18:03:51 <ais523> kspalaiologos: you can't have 256 of each and have them both accessible in a single byte
+2020-06-19 18:04:03 <ais523> unless you insist on having exactly one adverb on every instruction
+2020-06-19 18:04:10 <int-e> arseniiv: but I think you deleted everything except the kspalaiologos: part
+2020-06-19 18:05:15 <arseniiv> int-e: that’s intentional, yeah. Hm or I got lost in the semantics
+2020-06-19 18:05:20 <kspalaiologos> ais523: adverbs are toggle/set
+2020-06-19 18:05:29 <kspalaiologos> so you can have the adverb already set, so you don't have to type it again
+2020-06-19 18:05:40 <kspalaiologos> arseniiv: that's the only real problem
+2020-06-19 18:05:42 <ais523> kspalaiologos: how do you distinguish between an adverb and an instruction?
+2020-06-19 18:05:46 <kspalaiologos> programming will be hard as heck
+2020-06-19 18:05:48 <ais523> you can't have 256 of each
+2020-06-19 18:05:56 <ais523> you need a bit to say which is which
+2020-06-19 18:06:02 <kspalaiologos> ais523: no, you're getting it wrong
+2020-06-19 18:06:09 <kspalaiologos> let's use pseudocode
+2020-06-19 18:06:23 <kspalaiologos> "toggle adverb B; do operation; do operation;"
+2020-06-19 18:06:33 <kspalaiologos> 1st and 2nd operation will work with the adverb
+2020-06-19 18:06:35 <kspalaiologos> b toggled
+2020-06-19 18:06:41 <ais523> kspalaiologos: you have 256 "toggle adverb" bytes and 256 "do operation" bytes
+2020-06-19 18:06:48 <ais523> that's more than 256 possibilities for each byte
+2020-06-19 18:07:10 <kspalaiologos> or, in literal code, tB..
+2020-06-19 18:07:23 <kspalaiologos> instruction t toggles an adverb
+2020-06-19 18:07:33 <ais523> the total number of adverbs + the total number of instructions needs to equal 256, if you want an 8-bit character set
+2020-06-19 18:07:57 <kspalaiologos> I'm afraid that you can't parse this language without ambiguities
+2020-06-19 18:08:07 <ais523> oh wow, now /that's/ an interesting answer
+2020-06-19 18:08:24 <kspalaiologos> you're looking at this problem like, if B is an adverb I set with tB, B is not usable as an instructio
+2020-06-19 18:08:27 <ais523> if you can make that work, the language got a lot more interesting
+2020-06-19 18:08:30 <kspalaiologos> and this is false, because you can
+2020-06-19 18:08:56 <kspalaiologos> there are also tons upon tons of type corrections and most operations introduce automatic reduce
+2020-06-19 18:09:02 <kspalaiologos> because the main datatype is a stack of lists
+2020-06-19 18:09:02 <ais523> hmm, is "toggle adverb" an instruction?
+2020-06-19 18:09:21 <kspalaiologos> it's `t'
+2020-06-19 18:09:31 <kspalaiologos> inb4: you can have t as an adverb
+2020-06-19 18:10:02 <ais523> oh, I see
+2020-06-19 18:10:04 <kspalaiologos> current adverb list is in pont 5, any other adverb can be flipped, but it makes no sense, because it doesn't change anything
+2020-06-19 18:10:13 <ais523> so instead of 1 byte to toggle and 1 byte per instruction
+2020-06-19 18:10:22 <ais523> you need, in effect, 2 bytes to operate a toggle
+2020-06-19 18:10:28 <kspalaiologos> yes
+2020-06-19 18:10:29 <ais523> but the instructions are 1 byte each when not toggled
+2020-06-19 18:10:33 <kspalaiologos> yes
+2020-06-19 18:10:44 <kspalaiologos> I also plan on somehow optimizing the toggles for size
+2020-06-19 18:10:52 <ais523> I think this can be a sensible way to design a language
+2020-06-19 18:11:01 <ais523> although it's possible that your numbers are off
+2020-06-19 18:11:10 <kspalaiologos> I plan on adding the instruction that will unpack a character to bits
+2020-06-19 18:11:17 <ais523> 256 sets seems like it's maybe too much
+2020-06-19 18:11:19 <kspalaiologos> and then set the adverbs in given range with this
+2020-06-19 18:11:33 <kspalaiologos> that's why I'm allowing to set for example adverb state to a list
+2020-06-19 18:11:44 <kspalaiologos> so you can compress your adverbs and then unpack them in runtime, and pop it to the adverb list
+2020-06-19 18:11:45 <ais523> err, 2²⁵⁶ sets is definitely too much
+2020-06-19 18:11:54 <ais523> even though there will be a lot of overlap
+2020-06-19 18:11:57 <kspalaiologos> because there will be an instruction for compression/decompression
+2020-06-19 18:12:23 <kspalaiologos> I also plan on implementing logical date operations
+2020-06-19 18:12:32 <kspalaiologos> unlike literally any other non-eso language out there
+2020-06-19 18:12:36 <ais523> maybe just have 8 bits of adverbs, for a total of 256 instruction sets, and have the toggle instruction unpack a literal byte?
+2020-06-19 18:12:48 <kspalaiologos> that's one way to do it
+2020-06-19 18:12:54 <kspalaiologos> i'll consider it
+2020-06-19 18:13:53 <kspalaiologos> ah, and you can also bend the type correction rules
+2020-06-19 18:14:18 <kspalaiologos> and I plan on adding a builtin to override all the existing instructions via the link mechanism
+2020-06-19 18:14:37 <kspalaiologos> so that you can create a link bound to either an instruction or an ID, that will execute and then pass the control to another link
+2020-06-19 18:14:40 <kspalaiologos> with the same name
+2020-06-19 18:15:03 <kspalaiologos> so you could e.g. override 0 with f0RN
+2020-06-19 18:15:13 <kspalaiologos> this has no effect, but you could theoretically put something useful there
+2020-06-19 18:15:40 <kspalaiologos> you can also declare identifier links, not bound to an instruction, rather, an identifier
+2020-06-19 18:15:45 <kspalaiologos> that you can call using '. syntax
+2020-06-19 18:16:01 <ais523> I take it this is designed to be a golfing language for writing large programs, then?
+2020-06-19 18:16:15 <arseniiv> hm now I thought “simple complex” and suddenly there is an idea of writing programs as cell complexes
+2020-06-19 18:16:30 <kspalaiologos> well, yes
+2020-06-19 18:16:38 <kspalaiologos> because writing simple programs in it makes no sense
+2020-06-19 18:16:43 <kspalaiologos> but for large scale code golf, it's perfect
+2020-06-19 18:16:52 <kspalaiologos> and very competetive, because most of the times you can golf the hell out of the code
+2020-06-19 18:20:06 <kspalaiologos> imagine, you have to for example golf a SKI calculus evaluator
+2020-06-19 18:20:33 <kspalaiologos> it'd be quite easy with functional languages and all that fluff, but stuff like osable or jelly don't seem like they have a simply and small way of solving this problem
+2020-06-19 18:20:46 <kspalaiologos> while in this language, there's a high chance you'd get it done in well under 50 characters
+2020-06-19 18:21:08 <arseniiv> better, directed ones. Starting with 2-cells, one has a big selection of polygons to choose from, 3-cells may vary in form further, but maybe even with 2-complexes which consist of 0-, 1- and 2-cells, one can encode something in a good way. There can be edges (1-cells) which are attached only by one of their vertices, any number of this kind of edge sticking from any vertex. Maybe one could use boundary and coboundary operators to define actions… An
+2020-06-19 18:21:08 <arseniiv> maybe the state of a program can be made a form on the complex, or a collection of forms of all degrees (here, 0-, 1- and 2-, each on cells of a corresponding order). Hmm
+2020-06-19 18:21:11 <ais523> that seems like an interesting challenge, actually
+2020-06-19 18:22:39 <arseniiv> ais523: kspalaiologos: is there a way algebraic types could work in a golflang?
+2020-06-19 18:23:35 <kspalaiologos> that's a bit hairy when I think about it, but I guess it's doable
+2020-06-19 18:23:42 <ais523> what do you mean by algebraic types? sum types and product types?
+2020-06-19 18:23:56 <ais523> normally golflangs are untyped, so you just use heterogenous lists for everything
+2020-06-19 18:23:57 <arseniiv> tagged sum types
+2020-06-19 18:24:06 <arseniiv> with products in each alternative
+2020-06-19 18:24:08 <ais523> e.g. instead of a(1,2) you use ['a',1,2]
+2020-06-19 18:24:32 <arseniiv> though it can be tagged sums + products not packed together
+2020-06-19 18:24:42 <ais523> or, well, you use whatever representation gives you the shortest code, but golflangs are normally good at operating on lists even if they have distinguished elements
+2020-06-19 18:25:16 <arseniiv> I’d say heterogeneous lists would suffice if there’s something like pattern matching
+2020-06-19 18:26:17 <arseniiv> though I don’t think one can do something feasible without constructing case tables
+2020-06-19 18:26:25 <arseniiv> and they would take up space
+2020-06-19 18:26:39 <ais523> I'm thinking about how I'd write this program
+2020-06-19 18:26:47 Quit: kspalaiologos (Quit: leaving)
+2020-06-19 18:26:47 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
