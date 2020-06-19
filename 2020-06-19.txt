@@ -470,3 +470,34 @@
 2020-06-19 21:59:29 <b_jonas> I have written such a csv reader and writer, and I believe it's correct now, but it's UGLY AS HELL
 2020-06-19 21:59:36 <b_jonas> I hate whoever invented these quoting standards
 2020-06-19 21:59:58 <arseniiv> b_jonas: including detecting malformed input => hopefully I won’t need to do that!
+2020-06-19 22:01:29 <arseniiv> okay I suggest using `{|` and `|}` as escapes for `{` and `}` for example. Is it good?
+2020-06-19 22:01:31 <b_jonas> whereas the reader and writer for my dump format is trivial, so trivial that I implemented a writer even in VBA, which is such a horrible language that I choose dump everything and then process them in external code rather than try to implement anything nontrivial in VBA directly. I could similarly easily write a reader for this format in VBA, though I haven't done yet, and it would be trivial, at least
+2020-06-19 22:01:37 <b_jonas> the parsing and unescaping parts would be trivial.
+2020-06-19 22:02:02 <b_jonas> arseniiv: again, no clue, because I hate braced format strings in first place
+2020-06-19 22:02:48 <arseniiv> VBA is horrible, I agree as someone who wrote in it and in VB6 for some time when there was no internet access and prior to finding a CD with Delphi
+2020-06-19 22:03:20 <arseniiv> b_jonas: let’s pretend they aren’t for format strings
+2020-06-19 22:03:50 <arseniiv> though I won’t name another application from the top of the head
+2020-06-19 22:03:51 <b_jonas> though I haven't tried to use the foreign call interface of VBA yet, but maybe I should, linking a DLL and calling my own C functions might work better than dumping to a file in some cases
+2020-06-19 22:04:05 <b_jonas> I should definitely experiment with how easy or difficult that is
+2020-06-19 22:04:30 <b_jonas> arseniiv: no clue then, I can't really tell how you should escape something unless there's an actualy application that I can imagine
+2020-06-19 22:05:09 <b_jonas> meanwhile, I managed to cause a rules debate in the M:tG 3-card blind thread
+2020-06-19 22:05:11 <arseniiv> I think FFI declarations were more or less good but I didn’t write them those times, only marveled at someone’s registry access code from wherever
+2020-06-19 22:05:37 <arseniiv> VBA should interoperate well with COM+! (I’ll show myself out)
+2020-06-19 22:05:55 <b_jonas> I submitted a deck based on a judgement I received in a private message from the then GM in the previous thread, and the players somehow don't want to use that, despite that in general we use most of the rules from that thread.
+2020-06-19 22:06:48 <b_jonas> arseniiv: yes, if I was a windows programmer then I wouldn't even try to use VBA, just call the VBA interface of this application through some COM or whatever interface that is from a non-VBA program
+2020-06-19 22:06:54 <b_jonas> a C++ or C# program or something
+2020-06-19 22:07:13 <b_jonas> I know there's such an interface, but given that I'm not a windows program and don't want to become one, I have never learned how that thing works
+2020-06-19 22:07:47 <arseniiv> maybe C# would be better these times though I didn’t try, I avoid
+2020-06-19 22:08:16 <arseniiv> I mean I did try C# and wrote much in it but didn’t try connections of this sort
+2020-06-19 22:08:30 <b_jonas> it's still not ideal, because the application interface has a few functions that you can access from the UI and I really want to access them from VBA but there's no interface yet, plus a few of the interface functions have bugs
+2020-06-19 22:08:41 <b_jonas> but still much better than the terrible UI and trying to do everything manually with it
+2020-06-19 22:10:33 <zzo38> arseniiv: I have also thought to use US, RS, GS, FS, and the SQLite command-line interface supports this format, too.
+2020-06-19 22:11:05 Joined: TheLie
+2020-06-19 22:11:05 Names: ^[, adu, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-19 22:11:12 <arseniiv> zzo38: neat! didn’t know, thanks
+2020-06-19 22:11:18 <zzo38> (And when doing that, I have used \x10 as an escape character, too)
+2020-06-19 22:13:13 <b_jonas> admittedly I cheat, and use a second escaping mechanism: "\x0B" is a one-byte escape for "\r\n", because that's by far the most common thing I have to escape
+2020-06-19 22:13:40 <b_jonas> but this doesn't change the properties of the format much, it's still very easy to write and read
+2020-06-19 22:14:44 Quit: LKoen (Quit: Leaving)
+2020-06-19 22:14:44 Names: ^[, adu, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-19 22:15:23 <arseniiv> interestingly, I see AHK pastes US and RS in full but stumbles on GS and FS for some reason
