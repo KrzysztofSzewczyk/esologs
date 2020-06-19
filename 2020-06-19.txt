@@ -444,3 +444,29 @@
 2020-06-19 21:07:17 <b_jonas> so that's what I usually use
 2020-06-19 21:29:40 Quit: TheLie (Ping timeout: 244 seconds)
 2020-06-19 21:29:40 Names: ^[, adu, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-19 21:39:24 <esowiki> 14[[07GORBITSA14]]4 M10 02https://esolangs.org/w/index.php?diff=74059&oldid=74058 5* 03X39 5* (+1) 10/* Specification */ Fixed Typos
+2020-06-19 21:45:34 <arseniiv> b_jonas: how do you think, is there a better way to escape a character than x ↦ xx, xx ↦ xxx, xxx ↦ xxxx?
+2020-06-19 21:47:49 <b_jonas> arseniiv: that would be ugly, how would you put a different escape starting with x after that?
+2020-06-19 21:48:22 <arseniiv> xxxxxd?
+2020-06-19 21:48:31 <arseniiv> ah
+2020-06-19 21:48:34 <b_jonas> but how do you distinguish wh...
+2020-06-19 21:49:57 <arseniiv> hm it seems a while ago I ended up with a way both unambiguously parsable and resembling this one
+2020-06-19 21:50:04 <b_jonas> ideally K&R should have said something like \m is an escape for a backslash, and then everyone copies that together with \n and \t, and perl's and php's quoting functions would turn a backslash to that
+2020-06-19 21:50:45 <b_jonas> and then \mm is a two-level escape of a backslash, while \m\m is an escape for two backslashes, \mn is a double escape for a newline etc
+2020-06-19 21:51:24 <arseniiv> ah, yeah, \ \m \mm \mmm is the way I think that was
+2020-06-19 21:53:19 <arseniiv> what would you suggest for the case of paired characters? Like, in C# and newer Python3 there are `{` and `}` in format strings, which escape as `{{` and `}}`. This explodes as well as `\\`
+2020-06-19 21:54:03 <b_jonas> in some dump files that I both write and read, I use an escape format where "\x10" is an escape character, to unescape remove it and xor the next byte with 0x20, so a line feed is escaped by "\x10J" and the character itself is escaped as "\x10P", and I use "\x1F" as the string delimiter and if that one came up in a string that would be escaped as "\x10_" too
+2020-06-19 21:54:43 <b_jonas> for something like C/perl/php/sql source code I wouldn't recommend this, you want them to be printable ascii rather than control characters
+2020-06-19 21:55:14 <arseniiv> b_jonas: how do you read those files though?
+2020-06-19 21:55:55 <b_jonas> arseniiv: I hate python's format string syntax in first place, for reasons unrelated to that escape syntax, but luckily python also offers a more traditional format mechanism with a format syntax like C's printf, so that's what I always use
+2020-06-19 21:56:49 <b_jonas> arseniiv: what do you mean how I read them? I either read them with perl or python scripts where I have a function that does the unescaping, and they're easier to read than CSVs because I can read them line by line and a line break always means the end of the record with no mucking about with escaped line breaks,
+2020-06-19 21:57:03 <arseniiv> I advocated (and I think I still do) US, RS, GS and FS as a CSV replacement but unfortunately they aren’t printable either, though many editors would print them good, but the other issue people wouldn’t be able to input them well
+2020-06-19 21:57:23 <arseniiv> b_jonas: ah, I see
+2020-06-19 21:57:45 <b_jonas> or by eyeballing at them in a text editor, which displays control characters in some fancy way, and again it's easy because then there are no escaped line breaks, so every record is a single line
+2020-06-19 21:58:13 <b_jonas> I also work with CSVs, because I interface with existing programs that read and write them, and quoting line breaks is more ugly there
+2020-06-19 21:58:28 <arseniiv> US, RS, GS and FS => I need to add them to my AHK script, for some reason they aren’t there—at least to test various text editors
+2020-06-19 21:59:04 <arseniiv> yeah, escaped line breaks aren’t good for the eyes
+2020-06-19 21:59:15 <b_jonas> have you ever tried to implement a CSV reader and writer that handles quoted line breaks, quoted field separators, and quoted double quotes, correctly in all corner cases, including detecting malformed input and including accepting either "\n" or "\r\n" as the field separator but preserving the distinction between them inside quoted strings?
+2020-06-19 21:59:29 <b_jonas> I have written such a csv reader and writer, and I believe it's correct now, but it's UGLY AS HELL
+2020-06-19 21:59:36 <b_jonas> I hate whoever invented these quoting standards
+2020-06-19 21:59:58 <arseniiv> b_jonas: including detecting malformed input => hopefully I won’t need to do that!
