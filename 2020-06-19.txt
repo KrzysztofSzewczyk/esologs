@@ -406,3 +406,22 @@
 2020-06-19 19:34:34 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
 2020-06-19 19:34:34 <zzo38> I was working on my own golf programming language involving the PC character set
 2020-06-19 19:37:51 <zzo38> Its data types are: number (a rational number with an optional French suit), list (can contain data of multiple types), function, dictionary (key/value pairs with no duplicate keys), mark (there is only one kind of mark; this is similar to the mark in PostScript).
+2020-06-19 20:07:14 <ais523> SKI combinator calculus in 40 bytes of Jelly, and I haven't really tried to properly golf it yet: https://tio.run/##y0rNyan8//9Rw5zDO47uebiz5XDLsU3JCUD@o6Y1D3fMBzIOLX7UMPPhzmYgs@zhju0Pd@57uHOWjrX@o4a5QPahJVz@D3d3H1p0aOvh@UA9ZfqHtvo83N11aKv9////o6Oj1YvVddQz1WMhBDI/Wz02FgA
+2020-06-19 20:07:52 <ais523> or to write the program itself, “øżṄÄƲc`“€ḟ“£’ṃ“vḷṾṚ,;/”Ṿ¤¶Oị¢µß€v/µLỊµ?
+2020-06-19 20:09:48 <ais523> evaluation is eager, function before argument; it goes into an infinite loop (sadly not tail-recursive) if the SKI term doesn't normalize, or prints out some Jelly code that implements the function in question if it does normalize
+2020-06-19 20:11:35 <ais523> come to think of it, this also shows why writing golfing languages designed for large programs is kind-of pointless: you could instead write a small decompressor and use eval, as is done here
+2020-06-19 20:13:22 <esowiki> 14[[07Beautiful day14]]4 N10 02https://esolangs.org/w/index.php?oldid=74051 5* 03Hakerh400 5* (+2098) 10+[[Beautiful day]]
+2020-06-19 20:13:25 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=74052&oldid=73985 5* 03Hakerh400 5* (+20) 10+[[Beautiful day]]
+2020-06-19 20:13:30 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=74053&oldid=73775 5* 03Hakerh400 5* (+20) 10+[[Beautiful day]]
+2020-06-19 20:14:35 Names: ^[, adu, ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-19 20:14:38 <ais523> services should be working again now
+2020-06-19 20:16:17 <b_jonas> uh, that's a lot of scrollback I should read later. is there something that should really concern me?
+2020-06-19 20:16:50 <ais523> you mean from today? or from the earlier logs that have now been fixed?
+2020-06-19 20:16:59 <ais523> it's just been basic, on-topic conversation, there's just been a lot of it
+2020-06-19 20:17:06 <ais523> from today, at least
+2020-06-19 20:17:06 <b_jonas> from today, after I entered
+2020-06-19 20:17:26 <b_jonas> there wasn't much from before that, I looked at the one logs server that was still available
+2020-06-19 20:17:54 <b_jonas> only even though I was joined, I was looking at other more urgent stuff
+2020-06-19 20:22:00 <ais523> sadly Jelly's escaping syntax blows up exponentially, so my SKI interpreter in Jelly isn't going to work on nontrivial programs
+2020-06-19 20:27:00 Quit: ais523 (Quit: quit)
+2020-06-19 20:27:00 Names: ^[, adu, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
