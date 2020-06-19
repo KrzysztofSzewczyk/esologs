@@ -182,3 +182,103 @@
 2020-06-19 17:29:34 <kspalaiologos> yes
 2020-06-19 17:29:50 <arseniiv> <kspalaiologos> my current opus magnum is a forth-like interpreter in Malbolge => wow
 2020-06-19 17:29:53 <esowiki> 14[[07GORBITSA14]]4 10 02https://esolangs.org/w/index.php?diff=74042&oldid=74038 5* 03Gorbit99 5* (-5) 10typo
+2020-06-19 17:30:14 <ais523> and at any given instant in time, there are going to be large runs in the number of times that specific instructions have encrypted
+2020-06-19 17:30:34 <esowiki> 14[[07Category:Particle automata14]]4 M10 02https://esolangs.org/w/index.php?diff=74043&oldid=8177 5* 03PythonshellDebugwindow 5* (+33) 10cat
+2020-06-19 17:30:36 <kspalaiologos> yes, and a viable thing is also guessing the encryption patterns
+2020-06-19 17:30:40 <ais523> so if we just store it in terms of ranges, "from address 10000 to address 12345 every instruction has encrypted 5 times"
+2020-06-19 17:30:53 <ais523> then the encryption counts shouldn't need much memory to store
+2020-06-19 17:30:54 <kspalaiologos> like, if you place a no-op somewhere, after executing it can turn into a movd, a jump, a halt, and god knows what else
+2020-06-19 17:31:15 <kspalaiologos> when you're preserving functions, for example the movd wrapper, the movd is executed, and then it turns into a nop, and then back again
+2020-06-19 17:31:18 <kspalaiologos> that's called a cycle
+2020-06-19 17:31:22 <kspalaiologos> or at least that's how I call it
+2020-06-19 17:31:34 <kspalaiologos> I don't think there's proper terminology for malbolge
+2020-06-19 17:31:35 <ais523> working out what's in memory from original value plus encryption count is constant time, if the address hasn't been written through d
+2020-06-19 17:32:17 <ais523> …does anyone write Malbolge programs where addresses are written through d and /then/ encrypted?
+2020-06-19 17:32:58 <arseniiv> (BTW what would you advice when one does want to write a translator but doesn’t want to hand-wite a parser nor to use an existing parser framework nor to complete their own framework at last? Maybe there still is an option?)
+2020-06-19 17:33:04 <ais523> that seems a bit unlikely to me because it's a hard operation to make work, the original Malbolge intepreter actually segfaults if the written value is outside the ASCII range (presumably because the case was never tested)
+2020-06-19 17:33:25 User Name: int-e = int-e!~noone@int-e.eu
+2020-06-19 17:33:25 <int-e> arseniiv: Train a neural network on examples ;-)
+2020-06-19 17:33:41 <ais523> arseniiv: haven't you excluded all the cases apart from persuading someone else to write a new parser framework and using that?
+2020-06-19 17:34:13 <arseniiv> ais523: oh! that’s an interesting case though I don’t want to go that way yet
+2020-06-19 17:34:26 <kspalaiologos> well, depends on what do you mean by this
+2020-06-19 17:34:43 <ais523> or, well, waiting for someone to write a new parser framework and using it
+2020-06-19 17:34:44 <kspalaiologos> for example, if I have a movd, I call it, and then restore the old instruction back
+2020-06-19 17:34:58 <kspalaiologos> that's not the most efficient approach, but it's simple and reliable
+2020-06-19 17:35:07 <kspalaiologos> so my proposition is
+2020-06-19 17:35:19 <ais523> actually, another option that isn't logically excluded is to abandon your own parser framework, write an entirely new one and use it, but it seems like more effort than the options that have already been excluded
+2020-06-19 17:35:33 <kspalaiologos> somehow finding out where the real instructions are stored, identify the calling and restoring code, and then build upon that to optimize real instruction calls
+2020-06-19 17:35:53 <ais523> ooh, I think I realised the right format for storing memory
+2020-06-19 17:36:06 <ais523> if a value is in the ASCII range, you store it as an encryption count, starting from some constant ASCII character
+2020-06-19 17:36:14 <ais523> if outside the range, you just store it as the number
+2020-06-19 17:36:19 <ais523> then you use some sort of dynamic RLE-ing
+2020-06-19 17:36:37 <arseniiv> ais523: hmmm hm I’ll go persuade some friends then :D // oh, that new idea is what I think I would end up doing some time after, though that new framework would be just a rewriting of the larger portion of the old and that’s definitely still a work so I procrastinate all I can
+2020-06-19 17:37:25 Joined: Sgeo
+2020-06-19 17:37:25 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, vertrex, wmww, xelxebar, zzo38
+2020-06-19 17:37:27 <arseniiv> (also do you have a SAT solver somewhere inside, I didn’t think there can be so many missed perfectly valid alternatives at all :D)
+2020-06-19 17:37:53 <ais523> I was trying to run through the truth table in my head
+2020-06-19 17:38:04 <ais523> or, not the full table, but at least identifying the variables
+2020-06-19 17:38:11 <arseniiv> hm that’s particularly useful
+2020-06-19 17:38:20 <ais523> it's similar enough to esoprogramming that it didn't seem that much out of character
+2020-06-19 17:38:34 <esowiki> 14[[07GORBITSA14]]4 10 02https://esolangs.org/w/index.php?diff=74044&oldid=74042 5* 03ZippyMagician 5* (+159) 10Explanation
+2020-06-19 17:38:48 <arseniiv> yeah I even saw the contracted truth tables or what was they called, they can be useful for manipulating in the head
+2020-06-19 17:38:53 <int-e> arseniiv: it's like solving a Sudoku ;)
+2020-06-19 17:39:21 <arseniiv> int-e: the thing I don’t enjoy too much but do when there’s nothing else to do, yeah
+2020-06-19 17:40:43 <int-e> I'm no good at Sudokus, really. Fortunately there are plenty of other logic puzzles that exercise your internal SAT solver. :)
+2020-06-19 17:40:50 <arseniiv> (when there’s nothing else to do and a sudoku nearby; I won’t try googling one or downloading a sudoku app. Though once I had a good one in an old phone, which marked possible variations with a good clear font)
+2020-06-19 17:41:05 <arseniiv> int-e: lolol
+2020-06-19 17:41:20 <arseniiv> I should remember the “internal SAT solver” thing
+2020-06-19 17:41:41 <int-e> arseniiv: that was *your* idea
+2020-06-19 17:42:06 <esowiki> 14[[07User:PythonshellDebugwindow/AllTheCats14]]4 N10 02https://esolangs.org/w/index.php?oldid=74045 5* 03PythonshellDebugwindow 5* (+524) 10.
+2020-06-19 17:42:08 <arseniiv> I pretend it wasn’t
+2020-06-19 17:42:21 <arseniiv> ah
+2020-06-19 17:42:23 <esowiki> 14[[07Talk:GORBITSA14]]4 N10 02https://esolangs.org/w/index.php?oldid=74046 5* 03X39 5* (+291) 10Created page with "== GORBITSA Program Format == It was never specified that GORBITSA format is as followed <blockquote>Instructions must be separated by spaces, an instruction consists of a val..."
+2020-06-19 17:42:46 <esowiki> 14[[07Talk:GORBITSA14]]4 10 02https://esolangs.org/w/index.php?diff=74047&oldid=74046 5* 03X39 5* (+42) 10
+2020-06-19 17:42:46 <arseniiv> no, I phrased that sufficiently differently so I wouldn’t think this form all by myself
+2020-06-19 17:42:56 <arseniiv> so no you gen thanks after all
+2020-06-19 17:43:00 <arseniiv> get*
+2020-06-19 17:44:05 <esowiki> 14[[07GORBITSA14]]4 10 02https://esolangs.org/w/index.php?diff=74048&oldid=74044 5* 03X39 5* (-48) 10/* Specification */ Fixed mistakes
+2020-06-19 17:46:25 Joined: xylochoron[m]
+2020-06-19 17:46:25 Joined: tswett[m]
+2020-06-19 17:46:25 Names: ^[, adu, @ais523, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-19 17:47:08 <arseniiv> okay I think handcrafted top-down parsers aren’t yet too bad a taste, especially for a grammar like Tandem has
+2020-06-19 17:47:44 <arseniiv> also top-down parsing does seem like the thing most comfortable to do by hand
+2020-06-19 17:49:16 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2020-06-19 17:49:16 <fizzie> "Recursive descent" is the usual word, and they're pretty common to handcraft.
+2020-06-19 17:49:21 <fizzie> Go's parser is one of those.
+2020-06-19 17:49:27 <kspalaiologos> would someone like to proofread / help me making an interpreter for this: https://esolangs.org/wiki/Esofun
+2020-06-19 17:49:40 <kspalaiologos> ultimately I plan on creating _the ultimate_ golfing language
+2020-06-19 17:49:57 <arseniiv> also do you know Pratt parsers? I implemented a toy with them once but I think they aren’t much better in error reporting (and other UX things for a parser framework’s client) than other approaches so I ended up leaving them where they were
+2020-06-19 17:50:07 <int-e> kspalaiologos: pfft
+2020-06-19 17:50:43 <kspalaiologos> what :p
+2020-06-19 17:50:47 <arseniiv> kspalaiologos: but that description is still too long
+2020-06-19 17:50:51 <int-e> "ultimate <anything>"
+2020-06-19 17:51:05 <int-e> okay, *almost* anything
+2020-06-19 17:51:08 <arseniiv> the ultimate antepenultimatum
+2020-06-19 17:51:22 <kspalaiologos> it'd be ultimate due to it's design goals
+2020-06-19 17:51:23 <kspalaiologos> just look at them
+2020-06-19 17:51:50 <arseniiv> I like partial orders for the reason there may be more than one maximal elements :D
+2020-06-19 17:52:22 <int-e> kspalaiologos: I'll read it when I've found the ultimate natural number.
+2020-06-19 17:53:14 <int-e> . o O ( naming of art periods is silly, but I think we have not yet had an ultimate one. )
+2020-06-19 17:53:29 <ais523> I'm not too keen on stack-based golfing languages, they're great for linear programs in the linear-logic sense (i.e. programs where each input and intermediate value is used exactly once) but it's common to want to use values multiple times
+2020-06-19 17:53:50 <ais523> and stack-based languages often have to waste a considerable portion of their command-space expressing how that happens
+2020-06-19 17:54:08 <arseniiv> int-e: the historical periods too, though maybe they aren’t that bad in English and other languages, I didn’t look at these
+2020-06-19 17:54:36 <int-e> arseniiv: that's related, but art periods are more finely grained
+2020-06-19 17:54:47 <int-e> so the silliness becomes more obvious
+2020-06-19 17:55:44 <ais523> I also think that in golfing languages, it's normally a mistake for there to be any distinction between a string and a list of characters, or between a character and its codepoint (the only time when it isn't is if you have overloaded operators)
+2020-06-19 17:56:37 <kspalaiologos> ais523: I don't think so - stack based approach opens opportunities for tacit and concentative programming
+2020-06-19 17:56:49 <kspalaiologos> and so far it's been proven that these paradigms shine when it comes to code golf
+2020-06-19 17:56:52 <ais523> tacit languages normally don't have a stack
+2020-06-19 17:57:04 <arseniiv> <int-e> so the silliness becomes more obvious => also in different art forms they use the same word for different periods, AFAIR
+2020-06-19 17:57:11 <ais523> stacks aren't incompatible with the idea of tacit programming, but also aren't required
+2020-06-19 17:57:40 <kspalaiologos> forth is a tacit and concentative programming language
+2020-06-19 17:57:46 <kspalaiologos> so is J, APL, K and so forth
+2020-06-19 17:58:06 <ais523> forth isn't tacit in a way that saves bytes, though
+2020-06-19 17:58:41 <kspalaiologos> well, I plan on adding absurd amount of builtins
+2020-06-19 17:58:47 <kspalaiologos> triggered by various adverbs
+2020-06-19 17:59:01 <kspalaiologos> this makes me think that well, that's a lot of room for optimizations
+2020-06-19 17:59:01 <ais523> I'm actually going the other way with my golfing languages
+2020-06-19 17:59:12 <ais523> trying to reduce the number of builtins so that they can have shorter names
+2020-06-19 17:59:24 <kspalaiologos> then it's not good for golfing, because you'll get outgolfed by Mathematica
+2020-06-19 17:59:28 <ais523> but making each of them crazily context-sensitive to increase how powerful it is
+2020-06-19 17:59:43 <kspalaiologos> that's exactly like the adverb system works in my language.
+2020-06-19 18:00:01 <ais523> it's not that rare for a full program that does something in, say, Jelly to be shorter than the name of the builtin in Mathematica
