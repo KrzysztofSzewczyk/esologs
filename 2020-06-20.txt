@@ -535,3 +535,17 @@
 2020-06-20 21:28:53 <int-e> Ah. Right, I see now.
 2020-06-20 21:29:00 <shachaf> So it's only "at most" constraints, not "at least".
 2020-06-20 21:29:27 <int-e> Hrm, I wonder how obvious that is.
+2020-06-20 21:31:57 <shachaf> Hmm, I should implement restarts in my solver.
+2020-06-20 21:32:14 <shachaf> Seems like an important (and easy) feature.
+2020-06-20 21:33:02 <int-e> I suppose, once you have any kind of learning and possibly variable selection heuristics...
+2020-06-20 21:33:32 <shachaf> Oh, right, I also need to implement a variable selection heuristic.
+2020-06-20 21:33:43 <shachaf> Right now I'm using a static heuristic which doesn't seem great.
+2020-06-20 21:34:04 <shachaf> That's probably even more important than restarts.
+2020-06-20 21:34:12 <shachaf> Otherwise there's no point to restarting.
+2020-06-20 21:34:18 <shachaf> I had some randomness before but I took it out.
+2020-06-20 21:52:03 <spruit11> Yah. They come together.
+2020-06-20 21:53:05 <int-e> shachaf: do SAT solvers still struggle if you pre-assign the first row to 123456789?
+2020-06-20 21:53:40 <shachaf> Good question. For a lot of my puzzles I've been trying to break this symmetry with the rules themselves, but of course the diagonal constraints don't do that.
+2020-06-20 21:53:45 <int-e> (or something similar that breaks the symmetries)
+2020-06-20 21:58:34 <int-e> My really old C++ solver takes 1.2ms if given that first row. 0.44s without symmetry breaking (a significant part of the former time is spent on initialization).
+2020-06-20 21:59:40 <int-e> But the numbers look like it's not completely obvious.
