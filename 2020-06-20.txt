@@ -549,3 +549,24 @@
 2020-06-20 21:53:45 <int-e> (or something similar that breaks the symmetries)
 2020-06-20 21:58:34 <int-e> My really old C++ solver takes 1.2ms if given that first row. 0.44s without symmetry breaking (a significant part of the former time is spent on initialization).
 2020-06-20 21:59:40 <int-e> But the numbers look like it's not completely obvious.
+2020-06-20 22:00:14 <int-e> "it" being the fact that no such sudokus-with-distinct-diagonal-entries exist
+2020-06-20 22:03:38 <zzo38> rain1: About assumption of uniqueness, I personally don't make that assumption unless the rules say it is unique (which I have seen in some puzzles, but not Sudoku).
+2020-06-20 22:08:29 <shachaf> int-e: Wait, now it's instant.
+2020-06-20 22:08:50 <shachaf> Hmm, it must've been somethig more complicated.
+2020-06-20 22:09:05 <shachaf> My solver is also instant.
+2020-06-20 22:09:27 <shachaf> Oh, wait.
+2020-06-20 22:11:04 <int-e> shachaf: Note that this isn't a SAT solver, it's a dedicated Sudoku solver.
+2020-06-20 22:11:13 <shachaf> Yes.
+2020-06-20 22:11:17 <int-e> But hmm, only 75 nodes? Maybe this is obvious after all.
+2020-06-20 22:11:49 <int-e> But it's hard to say; my search assigns all places for a digit at once.
+2020-06-20 22:12:14 <shachaf> I had some leftover clues I forgot about.
+2020-06-20 22:12:24 <shachaf> MiniSAT took ~40s with the symmetry breaking, I think.
+2020-06-20 22:12:48 <int-e> 5273809 nodes without symmetry breaking
+2020-06-20 22:15:34 <shachaf> It takes MiniSAT 294s without symmetyr breaking.
+2020-06-20 22:15:42 <shachaf> With symmetry breaking it's instant.
+2020-06-20 22:15:56 <int-e> hmm. decent.
+2020-06-20 22:16:12 <shachaf> By which I mean 0.5s, not really instant.
+2020-06-20 22:16:40 <esowiki> 14[[07GORBITSA14]]4 M10 02https://esolangs.org/w/index.php?diff=74144&oldid=74134 5* 03ZippyMagician 5* (-10) 10Fix
+2020-06-20 22:23:17 <int-e> Upon closer inspection I doubt it's obvious, that 75 number is pretty misleading :)
+2020-06-20 22:27:18 <shachaf> CaDiCaL takes 509s to show UNSAT.
+2020-06-20 22:27:31 <shachaf> And 0.045s with symmetry breaking.
