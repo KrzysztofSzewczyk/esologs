@@ -70,3 +70,115 @@
 2020-06-20 05:58:01 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=74064&oldid=74056 5* 03Dion 5* (+133) 10
 2020-06-20 05:59:10 Joined: ais523
 2020-06-20 05:59:10 Names: ^[, ais523, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-20 06:00:29 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-06-20 06:00:29 <ais523> "<ais523> sadly Jelly's escaping syntax blows up exponentially" => that's sad ← nowadays I normally make it a goal of mine to have nestable string literal syntax when I design languages that benefit from string literals
+2020-06-20 06:01:12 <ais523> the crazy thing is that Jelly actually uses “” quotes to delimit strings, but the delimiters have special meanings when they appear inside a string so they can't be nested in the usual way
+2020-06-20 06:08:39 <b_jonas> ais523: hmm... maybe I should reconsider the esoteric syntax that I was planning to use for the shortcut syntax for printing literal strings in Consumer Society (for debug purposes, interpreters aren't required to print the string, they're only required to recognize the syntax and be able to skip over the string)
+2020-06-20 06:09:14 <b_jonas> it blows up exponentially if you try to make a Consumer Society program that prints a Consumer Society program that prints etc
+2020-06-20 06:09:32 <ais523> <arseniiv> b_jonas: how do you think, is there a better way to escape a character than x ↦ xx, xx ↦ xxx, xxx ↦ xxxx ← this doesn't work for the string delimeter, at least not at the end of the string, unless you have some sort of C-like string concatenation rule in the parser
+2020-06-20 06:09:37 <b_jonas> admittedly in that case you could just use ordinary programming to compress the exponential sequence
+2020-06-20 06:09:44 <ais523> because when you see "a""" you don't know whether you're still inside the string or not
+2020-06-20 06:10:29 <b_jonas> ais523: yeah, I told him and he already admitted that
+2020-06-20 06:10:42 <ais523> ah right
+2020-06-20 06:10:50 <ais523> that's what I get for not reading the whole scrollback before commenting
+2020-06-20 06:11:31 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2020-06-20 06:11:31 <shachaf> Are there logic languages that are more like SAT than like Prolog? What would they be like?
+2020-06-20 06:11:35 <b_jonas> yeah, I do that all the time too
+2020-06-20 06:11:48 <b_jonas> shachaf: yes, SAT solvers
+2020-06-20 06:12:13 <ais523> hmm, in C, can't you get linear-growth repeated escaping by using trigraphs?
+2020-06-20 06:12:32 <shachaf> What I mean is that the execution strategy is more like SAT, which is very different from Prolog.
+2020-06-20 06:12:35 <b_jonas> ais523: you can get linear growth with just "\x5C"
+2020-06-20 06:12:39 <b_jonas> and I usually write "\x5C"
+2020-06-20 06:12:50 <shachaf> I mean, like SAT solvers. But the actual language is more usable.
+2020-06-20 06:13:05 <ais523> \ escapes to ?\?/ escapes to ??\?/?/ escapes to ???\?/?/?/ and so on
+2020-06-20 06:13:13 <ais523> but \x5C is possibly clearer?
+2020-06-20 06:13:21 <ais523> I guess neither is particularly readable
+2020-06-20 06:13:24 Joined: user24
+2020-06-20 06:13:24 Names: ^[, ais523, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-20 06:13:40 <ais523> SMT2 appears to be a fairly featureful language
+2020-06-20 06:13:42 <b_jonas> ais523: the problem is that the easily available escaping function like perl's quotemeta or whatever that thing is in php uses the syntax that blows up exponentially, and that's the function you'll use in a golf language
+2020-06-20 06:13:46 <ais523> you can use it in a non-SAT-solving way
+2020-06-20 06:13:53 <ais523> the syntax is a little ridiculous but not /too/ ridiculous
+2020-06-20 06:14:09 <b_jonas> in a turing-complete language, you always have some way to avoid the exponential blowup
+2020-06-20 06:14:21 <b_jonas> I actually use "\x5C" most of the time to represent a backslash in my programs
+2020-06-20 06:14:29 <b_jonas> I hate "\\"
+2020-06-20 06:14:56 <ais523> \x5C is a little less portable-in-theory than ?\?/, isn't it?
+2020-06-20 06:15:03 <b_jonas> but I only started this a few years ago, and there are some pragmagic reasons for it like windows cmd syntax
+2020-06-20 06:15:04 <ais523> because there's no guarantee that 5C = backslash
+2020-06-20 06:15:13 <ais523> although, many recent compilers don't implement trigraphs by default
+2020-06-20 06:15:23 <ais523> also, I haven't seen "pragmagic" before but I like it
+2020-06-20 06:15:25 <b_jonas> ais523: but \x5C is much more portable to things that aren't C with trigraphs (or C++ with trigraph)
+2020-06-20 06:15:33 <b_jonas> uh, that was a typo
+2020-06-20 06:15:40 <b_jonas> I wanted to say pragmatic
+2020-06-20 06:15:48 <ais523> \u005C may be more portable to non-C things
+2020-06-20 06:16:04 <ais523> b_jonas: I thought it was a parallel with "automagic" and was trying to figure out the meaning
+2020-06-20 06:16:20 <b_jonas> ais523: yeah, but it doesn't work in C or perl or ... let me test bash, I don't know what it implements these days
+2020-06-20 06:16:35 <b_jonas> ``` echo $'u\x5Cv\u005Cw'
+2020-06-20 06:16:37 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2020-06-20 06:16:37 <HackEso> u\v\w
+2020-06-20 06:16:42 <b_jonas> hmm, it does work in bash
+2020-06-20 06:16:44 <ais523> I guess "automagic" means "it just works in this context because we put effort into making sure it would work", so "pragmagic" would mean "I do this because it just works in a range of contexts, even without the contexts trying to make it work"
+2020-06-20 06:16:51 <b_jonas> ok, then it only doesn't work in perl
+2020-06-20 06:17:00 <ais523> `` perl -E 'say "\u005C"'
+2020-06-20 06:17:03 <HackEso> 005C
+2020-06-20 06:17:08 <ais523> `` perl -E 'say "\u{005C}"'
+2020-06-20 06:17:09 <HackEso> ​{005C}
+2020-06-20 06:17:17 <ais523> `` perl -E 'say "\x{005C}"'
+2020-06-20 06:17:18 <HackEso> ​\
+2020-06-20 06:17:19 <b_jonas> ais523: perl's syntax is \x{005C} or \x{5C}
+2020-06-20 06:17:21 <ais523> right
+2020-06-20 06:17:30 <ais523> I knew it had a syntax for that, just took me a moment to remember it
+2020-06-20 06:17:48 <ais523> I think the "consensus" escaping format is that \u takes four hex digits and \U takes eight
+2020-06-20 06:17:51 <b_jonas> but in python, it's \x5C or \u005C , either are the same
+2020-06-20 06:17:52 <ais523> although \U is less widely implemented
+2020-06-20 06:18:02 <b_jonas> ais523: yes, it spread from Java
+2020-06-20 06:18:06 <ais523> and in a way, the first two of those eight digits are pointless
+2020-06-20 06:18:12 <b_jonas> Java is influential
+2020-06-20 06:18:23 <ais523> I'm not sure Java supports \U, I thought you were supposed to \u out a surrogate pair
+2020-06-20 06:18:32 <ais523> but I admit it's never come up
+2020-06-20 06:18:39 <b_jonas> ais523: the first two of those eight digits is future compatibility for when unicode decides to grow its code space again
+2020-06-20 06:18:58 <Arcorann> I wonder how long it'll take before Unicode doesn't have enough codepoints
+2020-06-20 06:19:13 <b_jonas> and yes, I know that that's hard because UTF-16 is designed around the current limit
+2020-06-20 06:19:43 <ais523> UTF-16 is dying out in non-Microsoft contexts
+2020-06-20 06:19:47 <ais523> albeit slowly
+2020-06-20 06:20:05 <Arcorann> I seem to remember there being an era when there was a Private Use Area in the eight-hex-digit region
+2020-06-20 06:20:07 <ais523> oh, and Funciton, but I doubt the Unicode Consortium cares much about that
+2020-06-20 06:20:21 <ais523> isn't there an entire astral plane that's private use?
+2020-06-20 06:20:22 <shachaf> ais523: Maybe SMT2 is an answer, though I kind of doubt you'd want to do programming in it.
+2020-06-20 06:20:34 <shachaf> Maybe the answer is a regular old language that generates SMT instances.
+2020-06-20 06:20:37 <ais523> shachaf: I think I tried once, although I also think I changed my mind pretty quickly
+2020-06-20 06:20:49 <shachaf> I need to learn how SMT solvers work.
+2020-06-20 06:21:02 <shachaf> I have a vague idea of how DPLL(T) works now but there a lot of other things going on.
+2020-06-20 06:21:16 <ais523> you mean internally, or from the user's point of view?
+2020-06-20 06:21:22 <ais523> I get the impression that there's quite a range of different internal algorithms
+2020-06-20 06:21:52 <b_jonas> ais523: ok, but does that help? microsoft isn't dying out, and I'm using utf16 because some windows program (which has some half-assed unicode support, though I can't understand why because apparently people in china just use illegal copies without paying the license) only accepts utf16-le as input
+2020-06-20 06:22:06 <shachaf> I mean internally.
+2020-06-20 06:22:22 <shachaf> Do you mean a range of theories or a range of implementation strategies for the non-theory part of the solver?
+2020-06-20 06:22:25 <Arcorann> I briefly wondered once if someone would invent a conlang that uses a script with exactly 65537 invented characters, just so that it can't fit in the Plane 15 PUA
+2020-06-20 06:22:43 <shachaf> I know there's DPLL(T), and something called MCSAT which is different, but I thought the general idea didn't vary that much.
+2020-06-20 06:23:11 <b_jonas> Arcorann: I think that plane only has 65534 usable code points, but there's a second smaller private use area so I don't think 65537 is enough
+2020-06-20 06:23:36 <Arcorann> I ended up checking and found that plane 16 is also a PUA
+2020-06-20 06:23:45 <ais523> there's a small PUA in the BMP, too
+2020-06-20 06:24:03 <b_jonas> oh, there are two planes?
+2020-06-20 06:24:24 <b_jonas> I thought it was one plane plus a small one in the material plane
+2020-06-20 06:24:38 <ais523> shachaf: both the SMT solvers I've used appear not to care much about which theory is selected, for those solvers the theory selection has a syntactic effect on what programs you can write
+2020-06-20 06:24:48 <ais523> but the internal algorithms look at what you actually wrote, not the theory you selected
+2020-06-20 06:25:03 <shachaf> Which sorts of theories did you use?
+2020-06-20 06:25:07 <shachaf> (And which solvers?)
+2020-06-20 06:25:49 <ais523> I started using z3 because it was the best-known, and moved onto Yices because it was much faster on the programs i was writing
+2020-06-20 06:26:24 <Arcorann> I looked up the PUAs in no-longer-valid regions, they were 0xE00000 to 0xFFFFFF and 0x60000000 to 0x7FFFFFFF
+2020-06-20 06:26:30 <ais523> I experimented with a range of theories, mostly involving arithmetic on fixed-bitwidth integers plus something vaguely array-like
+2020-06-20 06:27:30 Quit: ais523 (Quit: sorry for my connection)
+2020-06-20 06:27:30 Names: ^[, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-20 06:27:39 <b_jonas> Arcorann: nice. is there an infinite set of private use codepoints if you allow more than 32 bits?
+2020-06-20 06:27:42 Joined: ais523
+2020-06-20 06:27:42 Names: ^[, ais523, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-20 06:28:19 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-06-20 06:28:19 <ais523> come to think of it, it's actually fairly easy to extend UTF-16 to more than 21 bits
+2020-06-20 06:28:32 <ais523> just write two or more high surrogates followed by a low surrogate
+2020-06-20 06:29:04 <b_jonas> ais523: that would lose some of the nice properties, eg. now you could have a false match if you tried to do a substring search codepoint-wise
+2020-06-20 06:29:13 <ais523> this has no clashes with existing UTF-16; I think it sorts correctly too
+2020-06-20 06:29:16 <b_jonas> but a more tricky scheme that keeps this is possible
+2020-06-20 06:29:30 <Arcorann> http://www.open-std.org/CEN/TC304/guidecharactersets/guideannexb.html <-- original description of UCS
+2020-06-20 06:29:36 <ais523> I agree that it has substring match issues, although there's a simple test to see if they occurred
+2020-06-20 06:29:43 <b_jonas> but utf-8 extends much more easily
