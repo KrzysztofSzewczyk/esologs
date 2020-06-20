@@ -182,3 +182,112 @@
 2020-06-20 06:29:30 <Arcorann> http://www.open-std.org/CEN/TC304/guidecharactersets/guideannexb.html <-- original description of UCS
 2020-06-20 06:29:36 <ais523> I agree that it has substring match issues, although there's a simple test to see if they occurred
 2020-06-20 06:29:43 <b_jonas> but utf-8 extends much more easily
+2020-06-20 06:30:08 <shachaf> I've been reading some of the Yices code.
+2020-06-20 06:30:10 <shachaf> It's great.
+2020-06-20 06:30:30 <ais523> b_jonas: isn't there a limit to how far UTF-8 extends while keeping the nice properties?
+2020-06-20 06:30:42 <shachaf> Isn't the existing UTF-16 self-synchronizing in a way that this extension isn't?
+2020-06-20 06:30:52 <ais523> using FE as an initial byte works fine, using FF is problematic if you want to be able to extend it
+2020-06-20 06:30:54 <b_jonas> ais523: no
+2020-06-20 06:31:01 <esowiki> 14[[07MAWP14]]4 N10 02https://esolangs.org/w/index.php?oldid=74065 5* 03Dion 5* (+1179) 10Created page with "'''MAWP''' is a stack-based [[esoteric programming language]] that was made in 2020.    ==Language Overview== '''MAWP''' works on an integer stack, starting with an initial va..."
+2020-06-20 06:31:03 <b_jonas> ais523: at least not the nice properties that I care about
+2020-06-20 06:31:21 <b_jonas> ais523: it breaks the property that the first byte tells you how long the representation is, but you can't keep that forever
+2020-06-20 06:31:33 <b_jonas> it still keeps all the substring and sorting properties
+2020-06-20 06:31:40 <ais523> b_jonas: what about the property that no character is a substring of any other character?
+2020-06-20 06:32:22 <ais523> once you reach FF as a prefix, what's new about the second byte that makes it distinguishable from the first byte of some other character?
+2020-06-20 06:33:06 <ais523> you've already used up your entire stock of distinguished bytes
+2020-06-20 06:33:22 <b_jonas> ais523: that property is still kept
+2020-06-20 06:33:27 <ais523> how?
+2020-06-20 06:33:36 <b_jonas> ais523: wait, I have this written up somewhere I think
+2020-06-20 06:34:28 <b_jonas> darn, I may have deleted it
+2020-06-20 06:35:28 <Arcorann> I once pondered defining more surrogates in one of the higher planes, so that six bytes would be used above plane 16
+2020-06-20 06:35:39 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=74066&oldid=74065 5* 03Dion 5* (+371) 10
+2020-06-20 06:35:41 <b_jonas> Arcorann: yes, that would probably be the sanest solution
+2020-06-20 06:35:43 <shachaf> Also, a lot of SMT solvers support quantifiers?
+2020-06-20 06:35:51 <ais523> shachaf: with limits, yes
+2020-06-20 06:35:58 <shachaf> I read some things about that but I'm still not really sure how it works.
+2020-06-20 06:36:05 <ais523> they're incredibly useful, but also hard to implement efficiently
+2020-06-20 06:36:19 <ais523> so there are normally restrictions on them based on what the internal algorithm supports
+2020-06-20 06:37:24 <Arcorann> Though thinking about it again that solution would actually be twelve bytes (six BMP surrogates to express three high plane surrogates to express one 31-bit codepoint)
+2020-06-20 06:38:23 <ais523> can't you just use an astral surrogate followed by two "ordinary" low surrogates?
+2020-06-20 06:38:29 <ais523> UTF-8-style
+2020-06-20 06:38:43 <b_jonas> ais523: anyway, the encoding above asiic, basically works like this. take the binary form of your codepoint, pad it so the length is 11 plus a multiple of 5 bits. prepend a 0 bit and then prepend a 1 bit for each group of 5 bits that it's longer than 11 bits. then break the resulting bit string to 6 bit chunks (since the above guarantees the length is a multiple of six bits), prepend 11 to the first one
+2020-06-20 06:38:49 <b_jonas> and 10 to the rest of them
+2020-06-20 06:39:14 <b_jonas> ais523: you can see how to undo this procedure: strip the first two bits of each byte, and you get a unary encoding of the length, then a 0 bit, then the bits of the code point
+2020-06-20 06:39:37 User Name: rain1 = rain1!~rain1@unaffiliated/rain1
+2020-06-20 06:39:37 <rain1> hi!
+2020-06-20 06:39:38 <b_jonas> you have to be careful with endianness and rejecting overlong encodings of course
+2020-06-20 06:39:50 <ais523> rain1: hi
+2020-06-20 06:39:54 <b_jonas> but the unary encoding of the length ensures that the substring property is kept
+2020-06-20 06:40:05 <ais523> b_jonas: oh, I see, the continuation bytes of the length start 10
+2020-06-20 06:40:16 <b_jonas> there's nothing really special about FD or FE or FF
+2020-06-20 06:40:37 <b_jonas> ais523: well, they would, but not many
+2020-06-20 06:40:53 <b_jonas> not much software actually supports this. perl does, I think, but only up to 2**64
+2020-06-20 06:41:17 <b_jonas> most software just rejects anything over 2**31 or anything over 0x10FFFF
+2020-06-20 06:41:24 <b_jonas> which is fine for non-esoteric applications of course
+2020-06-20 06:41:30 <ais523> b_jonas: I was trying to determine how you distinguished a length continuation byte from a starting byte
+2020-06-20 06:41:36 <ais523> I didn't think of encoding the length within continuation bytes
+2020-06-20 06:41:38 <b_jonas> as long as you don't mess it up in a way that leads to security vulnerabilities
+2020-06-20 06:41:43 <ais523> like, ordinary continuation bytes
+2020-06-20 06:42:20 <ais523> also, "0x10FFFF" is such a boring way to say it, why not write out 1114111? it's much prettier-looking and shorter
+2020-06-20 06:42:38 <shachaf> But it hides the structure of the number.
+2020-06-20 06:43:41 <ais523> 17×2¹⁶-1 is the same length and more descriptive structurally
+2020-06-20 06:43:56 <b_jonas> ais523: yeah, the first byte that's neither FF nor BF determines the length if your input is valid
+2020-06-20 06:44:39 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=74067&oldid=74066 5* 03Dion 5* (+2502) 10
+2020-06-20 06:45:10 <b_jonas> ais523: because I once spent hours debugging a segfault from writing 8096 instead of 8196, and from that point on I'm careful to use hexadecimal numerals for numbers like this, because computers make fewer mistakes than I do
+2020-06-20 06:45:20 <Arcorann> https://en.wikipedia.org/wiki/UTF-8#History
+2020-06-20 06:45:36 <b_jonas> hexadecimal numerals or relying on constant folding
+2020-06-20 06:45:41 <ais523> 2�� is 8192, although you might of course have wanted 2��+4
+2020-06-20 06:45:43 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=74068&oldid=74052 5* 03Dion 5* (+11) 10
+2020-06-20 06:46:23 <ais523> it does seem helpful to memorize constants like 65536 or 4294967296 or 1103515245, though
+2020-06-20 06:46:30 <b_jonas> I'm not sure what exact number I wanted, it's for the ioctl to load VGA text mode font
+2020-06-20 06:46:39 <b_jonas> memorizing them to recognize them, sure
+2020-06-20 06:46:44 Joined: nfd9001
+2020-06-20 06:46:44 Names: ^[, ais523, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-20 06:46:49 <b_jonas> but I don't want to write them
+2020-06-20 06:46:55 <shachaf> I think (16+1)¹⁶-1 is even more descriptive.
+2020-06-20 06:47:01 <b_jonas> admittedly I just wrote 65534 above, so I do sometimes write them
+2020-06-20 06:47:07 <ais523> I don't have 2⁶⁴ memorised
+2020-06-20 06:47:11 <shachaf> Perhaps (2^4+1)^16-1, or even (2^4+1)^(2^4)-1
+2020-06-20 06:47:28 <b_jonas> shachaf: um, but it's neither
+2020-06-20 06:47:40 <ais523> 16 wasn't chosen due to being 2⁴, though
+2020-06-20 06:47:41 <shachaf> Er, so it isn't.
+2020-06-20 06:47:47 <b_jonas> shachaf: it's 17*2**16-O(1)
+2020-06-20 06:48:03 <shachaf> The number I wrote is obviously wrong.
+2020-06-20 06:48:16 <shachaf> 16 wasn't chosen due to being 2⁴ but it was surely chosen due to being a power of 2.
+2020-06-20 06:49:10 <b_jonas> shachaf: hmm, that's a good question, how much of an accident it is that the 8-bit bytes that won out over 9-bit and 6-bit bytes uses 8 which is a power of 2?
+2020-06-20 06:49:30 <b_jonas> it's certainly convenient for some things, but I don't know if it could have historically been different
+2020-06-20 06:50:01 Quit: nfd (Ping timeout: 264 seconds)
+2020-06-20 06:50:01 Names: ^[, ais523, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-20 06:50:07 <b_jonas> could we have ended up in an alternate univerese where everything is 9 bits or 18 bits or 36 bits or 72 bits long?
+2020-06-20 06:50:33 <ais523> in fact, the extra 16 planes don't have anything to do with the number 16, the number of planes was chosen so that there would be (2¹⁰×2¹⁰) bytes in them, 16 just happens to 2²⁰÷2¹⁶
+2020-06-20 06:50:34 <b_jonas> or where everything is 6 bits or 12 bits or 24 bits or 48 bits or 96 bits long?
+2020-06-20 06:50:46 <ais523> that's a power of two because it's the ratio between two powers of 2
+2020-06-20 06:51:29 <ais523> nine-bit bytes were used seriously for quite a while
+2020-06-20 06:51:37 <b_jonas> yes, and so were 12-bit words
+2020-06-20 06:51:53 <ais523> I've worked on a computer that used 14-bit words in ROM (but 8-bit bytes in RAM)
+2020-06-20 06:52:10 <b_jonas> that's why I mentioned those specific numbers, not 7-bit bytes (which were mostly used in communication, not in computations), or trits (which were used in some experimental computers
+2020-06-20 06:52:14 <b_jonas> )
+2020-06-20 06:52:28 <b_jonas> ais523: oh yeah, microcontrollers sometimes do that thing
+2020-06-20 06:52:55 <ais523> I think 14 was chosen because it's a good size for fixed-width instructions on a microcontroller, and it also lets you store strings in ROM two-per-character (assuming ASCII)
+2020-06-20 06:53:12 <ais523> err, two-characters-per-word
+2020-06-20 06:53:38 <b_jonas> yeah, something like that. but if those things spread, we'd still end up having quantities that are power of two bit sized.
+2020-06-20 06:54:14 <b_jonas> it's the multiples of 9 bit and multiples of 6 bits that were used as word sizes that I'm mostly concerned about, though admittedly I don't know too much about retrocomputing
+2020-06-20 06:54:47 <ais523> right, the most relevant non-power-of-two number I see is 59049, and that's only because it's used by both TriINTERCAL and Malbolge as the number of possible 10-trit values
+2020-06-20 06:55:28 <ais523> 3¹⁰ seems to have been chosen as the standard size of a ternary word in esoprogramming so that it can be simulated using a binary computer with 16-bit words
+2020-06-20 06:55:38 <b_jonas> yeah, but those are both made as deliberately esoteric choices
+2020-06-20 06:55:51 <ais523> TriINTERCAL also supports a 3²⁰-bit word; I think the Malbolge version that does that is called Malbolge-20
+2020-06-20 06:56:01 <b_jonas> they use base 3 because non-eso doesn't use base 3
+2020-06-20 06:56:02 <ais523> which should really be properly specified this year, for the naming pun
+2020-06-20 06:56:34 <b_jonas> ais523: you have to talk to kspalaiologos for that one
+2020-06-20 06:56:49 <ais523> oh, it's on Esolang already
+2020-06-20 06:56:59 <ais523> dating from 2017
+2020-06-20 06:57:10 <b_jonas> but I fear it'll faill into that limbo like the befunge extensions that technically exist but people don't use it
+2020-06-20 06:57:46 <ais523> kspalaiologos uses it
+2020-06-20 06:57:53 <b_jonas> oh wow
+2020-06-20 06:58:03 <b_jonas> nice
+2020-06-20 06:58:13 <ais523> I can't get at the spec, though, because the domain is using a security certificate from a different domain
+2020-06-20 06:58:16 <ais523> let me try the web archive
+2020-06-20 06:58:35 <b_jonas> you can't get at the spec? is this a good time to ask if the C-intercal docs are still unreachable?
+2020-06-20 06:59:11 <ais523> they're reachable in a convoluted way, because the source repository from them is online somewhere
+2020-06-20 06:59:14 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=74069&oldid=74067 5* 03Dion 5* (+14) 10
+2020-06-20 06:59:37 <b_jonas> ok
