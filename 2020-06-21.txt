@@ -232,3 +232,54 @@
 2020-06-21 20:29:08 <rain1> im not sure if it is nxn anymore
 2020-06-21 20:29:32 <rain1> maybe it's 2^n x 2^n i only did this with n=2 before
 2020-06-21 20:29:51 <arseniiv> rain1: oh! This seems both a more right way to do things and both a more intellectually demanding one (reading about finding a basis for Q(x)). Hm did you mean Q[x]? All a1, …, an are positive and don’t have a square root in the corresponding fields Q, Q[√a1], …, Q[√a1]…[√a(n−1)]
+2020-06-21 20:30:46 <rain1> let's think about the n=3 case, say sqrt(2), sqrt(3), sqrt(5)
+2020-06-21 20:30:51 <arseniiv> rain1: hm if the size is exponential then surely a plain multiplication of (X − x), (X − one conjugate of x), … (X − the last conjugate of x) will be the same complexity?
+2020-06-21 20:30:55 <rain1> yeah it has size 2^3 = 8...
+2020-06-21 20:30:56 <rain1> my bad
+2020-06-21 20:31:52 <rain1> I believe that a = sqrt(2) + sqrt(3) + sqrt(5), will be a primitive element so {1,a,a^2,a^3,a^4,...,a^7} will be a basis
+2020-06-21 20:32:19 <arseniiv> no problem. I started thinking about this problem by reading a Python impl of constructible numbers here: https://github.com/leovt/constructible/blob/master/constructible.py#L323 (it follows another impl in Haskell but that one doesn’t concerns itself with hashes and minimal polys)
+2020-06-21 20:32:30 <rain1> so it will not be too bad to produce the 2^n x 2^n matrix
+2020-06-21 20:33:00 <rain1> hm but the min poly is not enough
+2020-06-21 20:33:18 <rain1> you also need an approximation of the value or something, to uniquely determine which root of the minpoly you are referring to?
+2020-06-21 20:33:54 <arseniiv> for the hash? why? If 2^n elements have the same hash and n is a reasonable value which won’t blow one’s RAM off, I think it should be cool
+2020-06-21 20:34:33 <arseniiv> (and the equality testing is covered without resorting to the hash; this one is easy)
+2020-06-21 20:34:38 <rain1> ah right!
+2020-06-21 20:35:02 <rain1> earlier I meant det(M - Ix)
+2020-06-21 20:36:19 <arseniiv> ah, yeah, I read that as “the characteristic polynomial of M” and negated that typo :D
+2020-06-21 20:38:59 User Name: moony = moony!moony@hellomouse/dev/moony
+2020-06-21 20:38:59 <moony> ^help
+2020-06-21 20:38:59 User Name: fungot = fungot!~fungot@unaffiliated/fizzie/bot/fungot
+2020-06-21 20:38:59 <fungot> ^<lang> <code>; ^def <command> <lang> <code>; ^show [command]; lang=bf/ul, code=text/str:N; ^str 0-9 get/set/add [text]; ^style [style]; ^bool
+2020-06-21 20:39:05 <rain1> I guess the constrible numbers is the field with all square roots added(?)
+2020-06-21 20:39:13 <rain1> connstructable
+2020-06-21 20:39:32 <arseniiv> yeah
+2020-06-21 20:40:28 <arseniiv> it’s a union of all Q[√…]…finite…[√…]
+2020-06-21 20:41:24 <arseniiv> a union in a sensible manner, I don’t know how that’s done precisely but for any two elements you can find a Q[√…]…finite…[√…] they both immerse in
+2020-06-21 20:42:56 <b_jonas> arseniiv: it's done by making it a subfield of the field of complex numbers
+2020-06-21 20:43:45 <arseniiv> I worry current implementations don’t try to compress the count of field extensions too eagerly for it to be usable in actual computations, but I haven’t read their code (neither Python, nor Haskell) enough
+2020-06-21 20:44:12 <arseniiv> b_jonas: ah, that thing. Then the reals would be sufficient for the case used in geometry
+2020-06-21 20:44:27 <b_jonas> arseniiv: I think GAP's implementation handles that well, I don't know about other implementations
+2020-06-21 20:44:55 <rain1> or just all real square roots
+2020-06-21 20:45:08 <b_jonas> arseniiv: reals vs complexes doesn't matter much here on account that sqrt(-x) = i*sqrt(x), so the complex version is just the real version extended with i
+2020-06-21 20:45:30 <b_jonas> no wait, that's not enough proof
+2020-06-21 20:45:30 <arseniiv> agree
+2020-06-21 20:45:35 <arseniiv> oh
+2020-06-21 20:46:33 <arseniiv> at least I agree something like that should be going there, C being algebraically closed and all that
+2020-06-21 20:49:48 <rain1> i like also how the origami constructible numbers includes cube roots
+2020-06-21 20:50:25 <arseniiv> this is nice
+2020-06-21 20:50:37 <rain1> so you can trisect angles
+2020-06-21 20:50:44 <rain1> I don't know how this relates to cube roots
+2020-06-21 20:50:47 <rain1> but i heard you can
+2020-06-21 20:54:37 <b_jonas> yes, the point is that you can write the square root of a complext number as sqrt(x + i*y) = sqrt((sqrt(x**2+y**2) + x)/2) + i*sqrt((sqrt(x**2+y**2+y)/2), which is not an equation I know by heart but I probably should, but I do know that it exists,
+2020-06-21 20:54:56 <rain1> you don't need to know it
+2020-06-21 20:55:08 <rain1> I didn't know this
+2020-06-21 20:55:46 <b_jonas> and beacuse of that, if you want to do calculations on complex numbers with square roots and field ops, you can emulate them with square roots and field ops on real numbers,
+2020-06-21 20:56:34 <b_jonas> which is the same as doing compass and ruler constructions, so you don't get more constructible numbers on complexes, or more square root field extensions if you allow complex square roots;
+2020-06-21 20:57:15 <b_jonas> but this case contrasts to cube roots, where you definitely can't compute the cube root of a complex number using just real cube roots, real square roots, and field operations and i
+2020-06-21 20:57:15 <arseniiv> oh I think I nailed the algorithm to compute a minpoly
+2020-06-21 20:57:26 <rain1> noice
+2020-06-21 20:57:28 <rain1> how did you do it?
+2020-06-21 20:58:17 <b_jonas> which is why you can't solve some cubic equations with real coeffs using only real cube roots, but you can solve them using complex square roots.
+2020-06-21 20:58:34 <rain1> woah
+2020-06-21 20:59:06 <b_jonas> That's not really why you can't construct angle trisections: you can't construct either kind of cube root with a compass, you can't even construct 2**(1/3) with a compass
+2020-06-21 20:59:35 <b_jonas> although you would need a complex cube root for angle trisection.
