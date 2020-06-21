@@ -608,3 +608,10 @@
 2020-06-20 23:22:37 Names: ^[, adu, aloril, APic, arseniiv, ArthurStrong, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-06-20 23:27:19 <shachaf> The trouble is that I'm using other SAT solvers so I need to support DIMACS anyway.
 2020-06-20 23:27:37 <shachaf> So I just work around it with tools to pre- and post-process the datums I have.
+2020-06-20 23:31:39 Joined: Lord_of_Life
+2020-06-20 23:31:53 Quit: Lord_of_Life (Ping timeout: 258 seconds)
+2020-06-20 23:34:10 <int-e> shachaf: well you could have a dimacs variant that has an extra line specifying the weights for the variables?
+2020-06-20 23:34:20 <esowiki> 14[[07Taktentus14]]4 M10 02https://esolangs.org/w/index.php?diff=74146&oldid=50760 5* 03PythonshellDebugwindow 5* (+67) 10/* External resources */ from categories import languages, implemented, y_2015
+2020-06-20 23:34:25 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-06-20 23:34:37 <shachaf> I might just put these things in comments for my solver.
+2020-06-20 23:34:52 <shachaf> First I need to make my solver good enough that I don't need to use other solvers all the time.
