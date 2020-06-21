@@ -283,3 +283,73 @@
 2020-06-21 20:58:34 <rain1> woah
 2020-06-21 20:59:06 <b_jonas> That's not really why you can't construct angle trisections: you can't construct either kind of cube root with a compass, you can't even construct 2**(1/3) with a compass
 2020-06-21 20:59:35 <b_jonas> although you would need a complex cube root for angle trisection.
+2020-06-21 21:00:40 <arseniiv> rain1: the conjugation on each level of the Q[...]... tower has usual complex conjugation properties like (xy)′ = x′y′, (x + y)′ = x′ + y′, 0′ = 0, 1′ = 1 so we can conjugate polynomials coefficientwise and get polynomials for larger and larger products of monomials each for its own conjugate of the number
+2020-06-21 21:00:48 <b_jonas> note that in the above formula, if x and y are real, all four square roots have nonnegative real numbers as the argument
+2020-06-21 21:00:58 <b_jonas> arseniiv: does that make sense?
+2020-06-21 21:02:47 <arseniiv> for example we start with P0 ≡ X − x, then let’s denote more and more deep conjugations as ′, ″, ‴, …, then (X − x) (X − x′) is the same as (X − x) (X − x)′ = P0 P0′ =: P1, then we do P1 P1′ =: P2 and so on for each field extension right to the inner Q then we’re done
+2020-06-21 21:03:06 <arseniiv> I don’t know how bad it is but seems pretty economical
+2020-06-21 21:03:22 <rain1> oh yeah i see
+2020-06-21 21:03:33 <rain1> but this would require lots of multiplications in the base field
+2020-06-21 21:03:49 <rain1> it will work though
+2020-06-21 21:04:00 <arseniiv> ah but there’s a little caveat, we need to skip “inessential extensions” which give the same P
+2020-06-21 21:04:24 <esowiki> 14[[07User:Dominic Zdan14]]4 10 02https://esolangs.org/w/index.php?diff=74208&oldid=74203 5* 03Dominic Zdan 5* (+57) 10/* What im working on */
+2020-06-21 21:04:32 <b_jonas> arseniiv: there's actually an algorithm to do computations on constructible numbers using nothing but fancy square root stuff, no fancy field theory tricks, but in general it's so slow that it's impractical, which is why you want an implementation like that in GAP (which actually handles a much larger subset of algebraic numbers than constructible numbers)
+2020-06-21 21:04:44 <arseniiv> I mean, if Pi′ = Pi, then we set P(i+1) := Pi, not a square
+2020-06-21 21:05:41 <arseniiv> b_jonas: do you mean something better than 2^n rational numbers for each Q[√a1]…[√an]?
+2020-06-21 21:06:23 <b_jonas> arseniiv: the former isn't much better than that (you can use a sparse vector), I don't know how the latter works
+2020-06-21 21:07:00 <b_jonas> you can look it up in the docs
+2020-06-21 21:07:08 <arseniiv> maybe the latter uses something about modules and things like Gr�bner bases or what was it
+2020-06-21 21:07:34 <rain1> you can work in the ring Q[x,y,z]/(x^2-2,y^2-3,z^2-5)
+2020-06-21 21:07:49 <rain1> field
+2020-06-21 21:08:18 <b_jonas> I know there's also an algorithm to compute with arbitrary algebraic complex numbers, but it's so difficult that I know of only one thing that implements it, and that thing is Mathematica and its implementation is effectively a black-box. I have no idea how that algorithm works.
+2020-06-21 21:08:43 <b_jonas> arseniiv: the GAP docs has a description, if you can't find it ping me and I'll look up a link
+2020-06-21 21:09:05 <b_jonas> plus it's open source
+2020-06-21 21:09:15 <arseniiv> <b_jonas> arseniiv: does that make sense? => I certainly remember finding a formula for sqrt(x + iy) but I don’t remember if that ended up as your one sorry
+2020-06-21 21:09:26 <rain1> I always thought that would be a good project to do, exact algebraic computations
+2020-06-21 21:09:37 <rain1> I think that a pair of approximation + minpoly would be OK
+2020-06-21 21:09:53 <rain1> since an approximation is enough to let you compute a more accurate approximation
+2020-06-21 21:10:23 <arseniiv> hm that one was reminiscent of half-sine and half-cosine formulas I think (for obvious reasons of course) but I think it would need some cooking to turn into this one
+2020-06-21 21:10:31 <rain1> i'm not exactly sure how you + and * these elements
+2020-06-21 21:10:55 <arseniiv> <b_jonas> arseniiv: the GAP docs has a description, if you can't find it ping me and I'll look up a link => thanks! Though I’m not pursuing this think that hard yet
+2020-06-21 21:10:57 <b_jonas> never mind, I'll look it up: https://www.gap-system.org/Manuals/doc/ref/chap18.html
+2020-06-21 21:10:59 <rain1> but it would be very cool to do this exact computation with algebraic numbers
+2020-06-21 21:11:50 <rain1> perhaps the LLL algorithm would be fine
+2020-06-21 21:12:00 <rain1> you would just need a way to know how accurate an approximation is needed
+2020-06-21 21:12:05 <b_jonas> arseniiv: yes, it's not trivial that the algebraic numbers even form a field
+2020-06-21 21:12:13 <b_jonas> that's why you need minimal polynomials
+2020-06-21 21:12:26 <arseniiv> <b_jonas> never mind, I'll look it up: https://www.gap-system.org/Manuals/doc/ref/chap18.html => how does one represent those extensions via cyclotomic numbers?
+2020-06-21 21:12:54 <rain1> I may implement this
+2020-06-21 21:13:05 <rain1> are there some cool uses of it I could do if i make this?
+2020-06-21 21:13:13 <b_jonas> though for just constructible numbers, it is trivial that they form a field, that's basically how they're defined
+2020-06-21 21:14:23 <rain1> i have a bunch of math stuf i want to implement actually
+2020-06-21 21:14:26 <rain1> symmetric polys
+2020-06-21 21:14:44 <arseniiv> <rain1> are there some cool uses of it I could do if i make this? => precisely checking if tiles of some constructible (or algebraic) tileset match and constructing pieces of tesselations this way
+2020-06-21 21:15:10 <arseniiv> I saw into the constructible numbers once because of precisely this
+2020-06-21 21:15:52 <arseniiv> now I intend to use floating point and correct inaccuracies in some unknown manner but it should be possible as the construction is rigid
+2020-06-21 21:16:43 <rain1> oh yes
+2020-06-21 21:16:50 <b_jonas> arseniiv: I might be wrong here, but I think cyclotomic numbers are closed to field ops and square root, so any constructible number is a cyclotomic number. for representing a specific field extension, I don't know, you probably want a finite basis (a set of cyclotomics that generate your field), except this time you represent those numbers as cyclotomics
+2020-06-21 21:17:01 <rain1> there was also CReal which was very cool
+2020-06-21 21:17:15 <b_jonas> and do the field operations and square root on numbers represented as cyclotomics
+2020-06-21 21:17:31 <rain1> every abelian extension is a subfield of a cyclotomic field I think
+2020-06-21 21:17:46 <arseniiv> rain1: I implemented quaternionic logarithm once though I don’t think I know what branch that code selects; at least exponentiating it should give back the original number, modulo rounding errors
+2020-06-21 21:18:11 <arseniiv> it’s a pity I hadn’t found formulas anywhere, they’re quite simple
+2020-06-21 21:18:36 <arseniiv> and the result for a rotation quaternion is its axis-angle representation
+2020-06-21 21:19:45 <b_jonas> arseniiv: that's easy, you can implement it based on complex logarithm, because any non-real quaternion generates (as a real vector space) a set isomorphic (as a field) to complex numbers, and you can just construct the isomorphism with complex numbers trivially and compute logarithm there
+2020-06-21 21:19:50 <arseniiv> all the possible values of the logarithm in that case would just have the same axis and the angle + 2 π Z, as is indeed logical
+2020-06-21 21:20:23 <rain1> arseniiv, what would be an example of these algebraic tilings?
+2020-06-21 21:20:57 <rain1> https://blogs.ams.org/visualinsight/2013/09/01/algebraic-numbers/
+2020-06-21 21:21:25 <arseniiv> b_jonas: hm I didn’t thought about this that way but yeah I used that the vector quaternion squares to −1
+2020-06-21 21:21:39 <b_jonas> in practice this means you split your argument to its real part p and imaginary part q, compute r the mangitude of q, compute u + i*v = log(p + i*r), then log(p + q) = u + q/r*v
+2020-06-21 21:22:43 <arseniiv> rain1: I mean, if there is a tiling which uses regular heptagons, as they aren’t constructible, so one will indeed need arbitrary algebraic numbers to represent tilings with tiles like that
+2020-06-21 21:22:59 <rain1> interesting
+2020-06-21 21:23:55 <rain1> https://blogs.ams.org/visualinsight/2014/11/15/packing-regular-heptagons/
+2020-06-21 21:25:39 <arseniiv> rain1: oh, so one can use only two kinds of tiles, that kite-like one added
+2020-06-21 21:25:43 <b_jonas> arseniiv: but there's no such tiling, at least not in the Eucleadian plane. there is a hyperbolic tiling of course.
+2020-06-21 21:26:02 <arseniiv> that would be a nice test, to construct a piece of this packing, for the framework
+2020-06-21 21:26:21 <arseniiv> b_jonas: I mean not by only heptagons :D
+2020-06-21 21:27:06 <arseniiv> I quite like tilings with many kinds of tiles, compared to regular ones, they are boring
+2020-06-21 21:27:25 Quit: rain1 (Quit: Leaving)
+2020-06-21 21:27:25 Names: ^[, ais523, aloril, APic, arseniiv, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-21 21:27:31 <arseniiv> (the regular ones are boring; I need to use commas the right way)
+2020-06-21 21:27:46 <arseniiv> I’ll go to, I think
+2020-06-21 21:29:07 <b_jonas> arseniiv: well ok, at least there's no tiling with regular heptagons and other regular polygons either
