@@ -30,3 +30,10 @@
 2020-06-22 02:49:56 <zzo38> Are there common formats for storing halftone patterns? I have an idea about applying halftoning to a input file in the separations output format, and to produce a output file in the same format but with the halftoning applied. It might or might not change the resolution, and might or might not change the set of separations (one reason they might change is in case you are doing CcMmYK printing).
 2020-06-22 02:56:27 <b_jonas> zzo38: I think those are usually stored mostly temporarily and in whatever format the printer accepts, since the halftoning you use will depend on the printer
 2020-06-22 02:59:57 <zzo38> Yes, I know that, although using printer-specific formats is probably only useful if the halftoning is implemented in the printer, isn't it?
+2020-06-22 03:06:45 <b_jonas> zzo38: no, I don't think so. the printer-specific format can contain a compressed bitmap form of the halftoned images, already halftoned, plus possibly some text, in which case the printer needn't implement halftoning, only decoding the bitmap and rendering text
+2020-06-22 03:06:53 <b_jonas> that would be the case for at least old matrix printers
+2020-06-22 03:07:22 <b_jonas> and possibly also some old laser printers too, from before they started to put hundreds of megabytes of RAM into them
+2020-06-22 03:07:54 <b_jonas> though it's possible that laser printers intrinsically need that much RAM because they have to print quickly and so need to render a whole page in memory before printing,
+2020-06-22 03:08:27 <b_jonas> unlike inkjets and matrix printers, which can print line by line or in even smaller granularity as long as the data comes in the order corresponding to physical movements of the hand
+2020-06-22 03:08:31 <b_jonas> s/hand/head/
+2020-06-22 03:08:48 <b_jonas> so make that old inkjets
