@@ -331,3 +331,29 @@
 2020-06-22 18:45:16 <arseniiv> I shouldn’t ever read comments, I shouldn’t ever read comments, I shouldn’t ever read comments. period
 2020-06-22 18:45:17 <arseniiv> “COMEFROM is alive and well, and very widely used. The only change made was that the marketing guys rebranded it as ‘exception handling’.”
 2020-06-22 18:45:40 <arseniiv> especially old comments
+2020-06-22 19:04:43 <b_jonas> was 1205 olisted yet?
+2020-06-22 19:05:08 <b_jonas> no
+2020-06-22 19:05:13 <b_jonas> `olist 1205
+2020-06-22 19:05:16 <HackEso> olist 1205: shachaf oerjan Sgeo FireFly boily nortti b_jonas
+2020-06-22 19:10:55 <zzo38> Do you know if any HTML viewing software (such as a web browser) has a table of contents function?
+2020-06-22 19:14:32 <int-e> arseniiv: hrm that's just wrong
+2020-06-22 19:17:01 <int-e> arseniiv: the sad truth is that come from is just a goto with the roles of labels and goto interchanged. Exceptions can be used to implement a limited form of goto. That is ignoring threaded INTERCAL, which does not match exception handling at all.
+2020-06-22 19:17:25 <int-e> Exceptions respect a form of dynamic scope; goto/come from don't.
+2020-06-22 19:18:19 <int-e> What is true is that various facets of unstructured programming are alive, more or less controlled. Exceptions are closer to the uncontrolled end of the spectrum than not.
+2020-06-22 19:21:32 <zzo38> Sometimes this role reversal is useful. I sometimes use COME FROM in assembly language programming. I implemented a COME FROM command in the MIXPC assembler because it can be useful for implementing jump tables.
+2020-06-22 19:21:32 User Name: imode = imode!~linear@unaffiliated/imode
+2020-06-22 19:21:32 <imode> I never had much stock in strictly structured programming ever since I saw how "forced" a lot of things are when you disallow unstructured constructs.
+2020-06-22 19:22:05 <zzo38> (It will be compiled into code that use goto instead of come from)
+2020-06-22 19:22:31 <int-e> speaking of come from, what happened to aspect-oriented programming?
+2020-06-22 19:22:59 <int-e> is that still a thing outside of property systems with update notifications/modifiers?
+2020-06-22 19:23:39 <int-e> (and, I guess, event systems in general)
+2020-06-22 19:23:52 <zzo38> But I also think that unstructured constructs are useful in addition to structured constructs.
+2020-06-22 19:23:58 <arseniiv> <int-e> arseniiv: hrm that's just wrong => exactly!
+2020-06-22 19:27:26 <arseniiv> I thought I would find some arguments against the precomposed unicode character … but I found only a meagre one (in many fonts it renders almost like plain ... concatenation of dots and that’s for many people is not good, they want more space, usually NARROW NO-BREAK SPACE
+2020-06-22 19:27:33 <arseniiv> `unidecode …
+2020-06-22 19:27:34 <HackEso> ​[U+2026 HORIZONTAL ELLIPSIS]
+2020-06-22 19:27:40 <arseniiv> this is my one
+2020-06-22 19:29:22 <int-e> arseniiv: I prefer ... in fixed width fonts, … is just too short.
+2020-06-22 19:29:33 <arseniiv> precomposed / plain / with narrow nbsp / with nbsp: … ... . . . . . .
+2020-06-22 19:29:56 <arseniiv> int-e: yeah, … in monospace makes me uncomfortable too
+2020-06-22 19:29:58 <int-e> for the same reason, narrow nbsp = nbsp, of course
