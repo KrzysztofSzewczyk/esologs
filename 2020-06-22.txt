@@ -1,0 +1,18 @@
+2020-06-22 00:33:34 User Name: impomatic = impomatic!~impomatic@host86-152-245-222.range86-152.btcentralplus.com
+2020-06-22 00:33:34 <impomatic> Is anyone here a ghostscript wizard? I've got a file where all the pages are set to letter size, but the actual content is half-letter.
+2020-06-22 00:34:20 <impomatic> I can resize the pages, but the actual content is half on the final page, half off. I just need to figure out how to shift it down a bit.
+2020-06-22 00:35:25 <b_jonas> impomatic: I think the page size is included only in the DSC comments, so you can edit that. but there's a chance that the content wasn't aligned to the origin of the postscript coordinate system, in which case you'll get the empty half of the paper.
+2020-06-22 00:35:38 <b_jonas> impomatic: can you try that first? if that doesn't work, I'll try to look for some other solution
+2020-06-22 00:41:22 User Name: zzo38 = zzo38!~zzo38@host-24-207-48-139.public.eastlink.ca
+2020-06-22 00:41:22 <zzo38> impomatic: I use Ghostscript.
+2020-06-22 00:41:37 <zzo38> You can set the page size using command-line arguments, or using setpagedevice.
+2020-06-22 00:42:01 <impomatic> Thanks
+2020-06-22 00:42:04 <zzo38> (I don't use DSC though, but I know that you can use setpagedevice to set the page size)
+2020-06-22 00:43:00 <impomatic> I am using this command-line: gs -o tcwn11.pdf -sDEVICE=pdfwrite -g3960x6120px spring92.ps
+2020-06-22 00:43:20 <impomatic> On this file http://pauillac.inria.fr/~doligez/corewar/tcwn/spring92.ps.gz
+2020-06-22 00:43:21 <zzo38> If you want to shift down the contents of the page, you can use set your own transformation matrix.
+2020-06-22 00:43:44 <impomatic> It's resizing the pages, just half the text isn't on the page.
+2020-06-22 00:46:09 <zzo38> You would use the translate command to move the origin of the coordinate system.
+2020-06-22 00:47:06 <impomatic> Thanks, just going to look up translate
+2020-06-22 00:51:26 <b_jonas> impomatic: the pstops tool from impomatic can resize pages and translate the contents without rewriting anything, so it keeps basically all the info that was in the postscript
+2020-06-22 00:54:19 <b_jonas> so I recommend pstops, it's probably the best solution unless you generated the postscript file yourself
