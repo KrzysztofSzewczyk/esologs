@@ -189,3 +189,14 @@
 2020-06-22 13:22:22 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=74240&oldid=74091 5* 03PythonshellDebugwindow 5* (+17) 10/* F */
 2020-06-22 13:25:15 <esowiki> 14[[07Tandem14]]4 M10 02https://esolangs.org/w/index.php?diff=74241&oldid=74227 5* 03PythonshellDebugwindow 5* (+30) 10/* Computational class */ cat
 2020-06-22 13:29:28 <esowiki> 14[[07Far14]]4 M10 02https://esolangs.org/w/index.php?diff=74242&oldid=57490 5* 03PythonshellDebugwindow 5* (+161) 10/* External resources */ cats + copy refimpl
+2020-06-22 13:33:44 Quit: TheLie (Remote host closed the connection)
+2020-06-22 13:33:44 Names: ^[, ais523, aloril, APic, Arcorann, b_jonas, Banana51, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-22 13:46:48 User Name: cpressey = cpressey!~cpressey@79-72-200-113.dynamic.dsl.as9105.com
+2020-06-22 13:46:48 <cpressey> There's a Turing machine that writes a `1` onto its current tape cell, then moves the tape head left, then repeats this indefinitely, with the property that the tape has one more `1`s on it at each step.
+2020-06-22 13:47:05 <cpressey> s/left/right I suppose
+2020-06-22 13:47:34 <cpressey> either that or turn the TM around 180 degrees
+2020-06-22 13:54:33 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
+2020-06-22 13:54:33 <Taneb> Or start the infinite tape in the middle
+2020-06-22 13:55:11 <Taneb> cpressey: so, what's interesting about this TM to you
+2020-06-22 13:59:00 <cpressey> If you have a language, and you can't write a program that has this behaviour in that language, then that language isn't Turing-complete.
+2020-06-22 13:59:43 <Taneb> The only observable behaviour being "it doesn't halt"
