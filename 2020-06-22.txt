@@ -254,3 +254,20 @@
 2020-06-22 14:44:42 <arseniiv> though I intend to write just the essential part, the runtime, without a parser and maybe without IO yet
 2020-06-22 14:58:17 <cpressey> Taneb: OK.  There is a single TM that inputs a number in binary and accepts iff it is a prime number, no matter how large that number is.
 2020-06-22 14:58:44 <cpressey> If you have a language and you can't write that TM in that language then that language isn't Turing complete.
+2020-06-22 15:01:18 <Taneb> Yes
+2020-06-22 15:02:13 <cpressey> My point is that, sometimes, a language is claimed to be Turing complete, and often the counterexample is a very simple Turing machine.
+2020-06-22 15:06:08 <cpressey> Or rather, that I've seen the same misconceptions over and over about what makes a language Turing-complete, and I'm trying to come up with simple-to-understand counterexamples for them.
+2020-06-22 15:11:11 <esowiki> 14[[07Boolfuck14]]4 10 02https://esolangs.org/w/index.php?diff=74243&oldid=69886 5* 0320kdc 5* (+23) 10/* Differences from Brainfuck */ Clarify the non-existence of - with information from the Boolfuck website.
+2020-06-22 15:11:16 <arseniiv> cpressey: “In this mode, if M(Ri | Rj) contains more than one element, an unrecoverable error to the effect of "ambiguous rewrite choice presented" occurs.” => should it be dependent not on M(Ri | Rj) having many elements? It can contain many and still not indicate Ri and Rj change the same stack?
+2020-06-22 15:12:34 <cpressey> Right, that needs to be rephrased significantly.
+2020-06-22 15:12:41 <arseniiv> I’d say, if (l, αi) ∈ M(Ri) and (l, αj) ∈ M(Rj) with αi ≠ αj?
+2020-06-22 15:13:06 <arseniiv> (then the error)
+2020-06-22 15:15:25 <cpressey> If M(R) contains more than one match involving the same stack, there should be an error.
+2020-06-22 15:15:40 <esowiki> 14[[07Boolfuck14]]4 M10 02https://esolangs.org/w/index.php?diff=74244&oldid=74243 5* 03PythonshellDebugwindow 5* (+29) 10/* External resources */ cat
+2020-06-22 15:16:46 <arseniiv> but for conjunction, there would be 0 instead?
+2020-06-22 15:18:29 <esowiki> 14[[07If the question specifies that the number of the words should be less than 3, and the number of words in your answer is larger than 3, your answer is automatically wrong.14]]4 M10 02https://esolangs.org/w/index.php?diff=74245&oldid=70541 5* 03PythonshellDebugwindow 5* (+97) 10/* Syntax */ cats
+2020-06-22 15:18:44 <esowiki> 14[[07If the question specifies that the number of the words should be less than 3, and the number of words in your answer is larger than 3, your answer is automatically wrong.14]]4 M10 02https://esolangs.org/w/index.php?diff=74246&oldid=74245 5* 03PythonshellDebugwindow 5* (+2) 10
+2020-06-22 15:20:04 <cpressey> If M(Ri | Rj) is ambiguous, is M(Ri & Rj) = 0?  Yes, I think so.
+2020-06-22 15:20:32 <cpressey> Or rather, is Ri & Rj = 0.  Yes.
+2020-06-22 15:21:07 <cpressey> Because L(Ri) intersect L(Rj) would never be empty in that case.
+2020-06-22 15:22:26 <esowiki> 14[[07Iflang14]]4 M10 02https://esolangs.org/w/index.php?diff=74247&oldid=70155 5* 03PythonshellDebugwindow 5* (+171) 10cats + bold
