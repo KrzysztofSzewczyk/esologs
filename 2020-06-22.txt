@@ -357,3 +357,79 @@
 2020-06-22 19:29:33 <arseniiv> precomposed / plain / with narrow nbsp / with nbsp: … ... . . . . . .
 2020-06-22 19:29:56 <arseniiv> int-e: yeah, … in monospace makes me uncomfortable too
 2020-06-22 19:29:58 <int-e> for the same reason, narrow nbsp = nbsp, of course
+2020-06-22 19:30:12 <arseniiv> ait
+2020-06-22 19:30:18 <arseniiv> wait why
+2020-06-22 19:30:19 <int-e> And IRC is a monospace environment.
+2020-06-22 19:30:22 <int-e> (For me)
+2020-06-22 19:30:41 <arseniiv> I didn’t get about narrow nbsp
+2020-06-22 19:30:43 <int-e> because this is a terminal
+2020-06-22 19:31:07 <arseniiv> ah, you just stated that they are same length
+2020-06-22 19:31:12 <zzo38> I also don't like ligatures in fixed width fonts; unfortunately 2600 used ligatures in fixed width fonts, I wrote to complain, and they said they didn't have that but if they did, indeed it shouldn't use ligatures in fixed width fonts, but they still didn't fix it, anyways.
+2020-06-22 19:31:26 <int-e> arseniiv: they are indistinguishable :P
+2020-06-22 19:31:49 <arseniiv> so, monospace fonts screw us both on part of … and \.\s\.\s\.
+2020-06-22 19:32:04 <int-e> maybe if … was a wide character (which, for some reason, do exist. Japanese and Chinese are too popular I guess.)
+2020-06-22 19:32:15 <arseniiv> int-e: yep space isn’t even a grapheme as there are no strokes :D
+2020-06-22 19:32:40 <zzo38> Maybe if you didn't use Unicode and use a better character set for fixed width text on grid based displays, can be better
+2020-06-22 19:32:44 <int-e> (And they don't break the invariant that each character has a corresponding integer cursor position)
+2020-06-22 19:32:58 <arseniiv> <int-e> maybe if … was a wide character (which, for some reason, do exist. Japanese and Chinese are too popular I guess.) => this is actually a very good proposal
+2020-06-22 19:33:32 <int-e> zzo38: Could you stop with these purely hypothetical exercises that assume some kind of better world...
+2020-06-22 19:33:49 <zzo38> Well, I was making a better character set for this purpose.
+2020-06-22 19:34:47 <int-e> Unicode is a blessing, because it's seeing so broad adaptation. We don't need the n+1st standard that throws us back into the heterogenic past where non-ASCII messages never looked the same for sender and receiver.
+2020-06-22 19:34:57 <arseniiv> my friend had an intention to make a better encoding once, but then they stopped for some reason
+2020-06-22 19:35:18 <zzo38> Even with Unicode they don't always are the same, especially with different versions sometimes
+2020-06-22 19:35:28 <zzo38> (such as if they change the width of the characters)
+2020-06-22 19:35:32 <arseniiv> emoji: the bane of unicode
+2020-06-22 19:35:43 <zzo38> arseniiv: What was their use of the better encoding?
+2020-06-22 19:35:58 <zzo38> (I think that different encodings can be good for different uses; you can't have one good for everything)
+2020-06-22 19:36:04 <int-e> arseniiv: there are also all those arabic ligatures before they learned better
+2020-06-22 19:36:06 <arseniiv> (soon in your nearest movie theater)
+2020-06-22 19:36:28 <int-e> But Unicode is firmly in the "good enough" category in my book.
+2020-06-22 19:36:53 <arseniiv> int-e: yeah, actually I thought one of arguments against … precompose would be “that’s outdated like ā”
+2020-06-22 19:37:00 <zzo38> Yes, emoji is bane of Unicode too. One thing Unicode is workable for (although emoji doesn't help it, and other things also don't help so much) is for searching many documents in many languages, although someone on this IRC suggested before "Duocode", which might be even a bit better too
+2020-06-22 19:37:23 <esowiki> 14[[07Generic 2D Brainfuck14]]4 M10 02https://esolangs.org/w/index.php?diff=74271&oldid=68873 5* 03PythonshellDebugwindow 5* (+174) 10/* Examples */ cats
+2020-06-22 19:37:26 <arseniiv> zzo38: hmm I don’t particularly remember but they intended to make it cover at least a part of CJK I think
+2020-06-22 19:38:00 <arseniiv> there was an intent to use scoped modes in the text for different sub-encodings, which is all I still remember
+2020-06-22 19:38:07 <zzo38> Even if you do use Unicode, simply specifying the character code as "Unicode" is actually insufficient, for a few reasons (one of them being han unification).
+2020-06-22 19:40:50 <arseniiv> <int-e> all those arabic ligatures before they learned better => BTW also Turkish İ and ı which pair with ASCII i and I respectively. Poor choice for implementability of text algorithms
+2020-06-22 19:42:04 <arseniiv> (the better one would be maybe to add duplicate non-ASCII i and I. I know it adds to characters many can misplace but but but)
+2020-06-22 19:43:08 <arseniiv> and I’m very glad I don’t write in languages that use letters which are represented by these codepoints
+2020-06-22 19:43:23 <arseniiv> unfortunately
+2020-06-22 19:44:16 <zzo38> My own is UTCS, which is designed only for fix pitch text, although there are wide characters. There is both a 8-bit encoding and a 16-bit encoding. Both encodings are compatible with ASCII, and you can determine the widths of characters using a simple rule (no need for long tables).
+2020-06-22 19:44:56 <zzo38> (The width of a character is simply the sum of the widths of the bytes that make it up (or, in the case of the 16-bit encoding, the sum of the widths of those 16-bit units).)
+2020-06-22 19:45:51 <zzo38> The widths of bytes are: 0x00-0x1F and 0x7F = undefined, 0xC0-0xFF = zero, 0x20-0x7E and 0x80-0xBF = one.
+2020-06-22 19:46:14 <int-e> arseniiv: even the emoji are probably a good thing, because the ideal alternative world where nobody embeds emojis inside text messages just doesn't exist. this way, such messages can be exchanged between different vendors and look more or less the same
+2020-06-22 19:46:58 <zzo38> They don't look the same; the icons they use are different, even though they are similar, even the minor differences sometimes they call it a problem.
+2020-06-22 19:47:08 <int-e> "more or less"
+2020-06-22 19:47:19 <arseniiv> `unidecode  . . .
+2020-06-22 19:47:20 <HackEso> ​[U+0020 SPACE] [U+002E FULL STOP] [U+202F NARROW NO-BREAK SPACE] [U+002E FULL STOP] [U+202F NARROW NO-BREAK SPACE] [U+002E FULL STOP]
+2020-06-22 19:47:24 <arseniiv> yesh
+2020-06-22 19:47:43 <arseniiv> (I added this simulacrum to my AutoHotkey script)
+2020-06-22 19:48:15 <myname> i learned here that "invisible plus" is a thing
+2020-06-22 19:48:31 <arseniiv> <int-e> this way, such messages can be exchanged between different vendors and look more or less the same => yeah, though that leaves much space for grumblings anyway
+2020-06-22 19:48:35 <myname> i still fail to understand why anybody would ever need that
+2020-06-22 19:48:50 <arseniiv> like, “a woman with bunny ears? really??”
+2020-06-22 19:49:06 <int-e> arseniiv: compromises everywhere
+2020-06-22 19:49:09 <arseniiv> `quote invisible times
+2020-06-22 19:49:10 <HackEso> 990) <fizzie> "May you live in INVISIBLE TIMES." --Old Chinese proverb. (It can look confusing when written with the proper Unicode.)
+2020-06-22 19:49:22 <arseniiv> myname: ^ though you know that probably way earlier
+2020-06-22 19:50:15 <arseniiv> int-e: yes that’s really the one mature thing to say (and think), but boooriiing (no)
+2020-06-22 19:50:33 <arseniiv> I understand but many don’t
+2020-06-22 19:51:50 <int-e> arseniiv: The same is true for all the things that are missing... no smiley with dollar symbol eyes? (I think. It's hard to be sure.)
+2020-06-22 19:51:54 <b_jonas> arseniiv: like I said, with the turkish i, we're screwed no matter what we did. Even if you had a time machine to go all the way back before telegraphs and bribed every single inventor, there's nothing you could do to handle both the latin iI and the turkish iİıI sanely, short of murdering Kemal Atatürk so his alphabet never spreads.
+2020-06-22 19:52:22 <int-e> (Maybe Disney would sue the Unicode consortium over this.)
+2020-06-22 19:52:50 <b_jonas> Everything else, including the various cyrillic alphabets and vietnamese etc, can be fixed, but turkish i versus the rest of the world is just hopeless.
+2020-06-22 19:53:06 <zzo38> Is there a version of xterm that supports the DEC technical character set directly rather than using Unicode? (You can select the DEC technical character set, but it internally converts to Unicode for font lookup, which results in some characters being missing.)
+2020-06-22 19:55:34 <arseniiv> int-e: here it is 🤑
+2020-06-22 19:55:35 <b_jonas> zzo38: I don't know, I don't use xterm anymore (I have it installed as a fallback just in case urxvt becomes broken somehow and I need a terminal to reinstall urxvt). I didn't notice any missing characters, but if there are, you can probably modify the lookup tables in the source code of the terminal emulators to fix that.
+2020-06-22 19:55:44 <myname> my favourite thing related to the turkish I is the php bug that made it nearly unusable in turkish locales
+2020-06-22 19:55:46 <b_jonas> In particular, I do have the DEC technical snowman.
+2020-06-22 19:56:18 <int-e> `unidecode 🤑
+2020-06-22 19:56:19 <HackEso> ​[U+1F911 MONEY-MOUTH FACE]
+2020-06-22 19:56:31 <int-e> what a great description.
+2020-06-22 19:56:46 <arseniiv> hopefully it either renders on your side with a good font or doesn’t at all. At my side it’s quite terrifying black-white. In Telegram it was way nicer
+2020-06-22 19:56:54 <arseniiv> int-e: yeah
+2020-06-22 19:57:15 <int-e> I should've realized that it's "MONEY"
+2020-06-22 19:58:29 <myname> basically, what php did was to lowercase every class and interface name for classloading purposes. even the included ones. this results in "class Foo implements Iterator" to try loading ıterator which it fails to find
+2020-06-22 19:58:36 <zzo38> Some of the characters are not even in Unicode, so I want to convert internally to UTCS instead, which does include all of the characters in all DEC terminals, Atari, Apple, Commodore, Infocom, PC, etc.
+2020-06-22 19:59:23 <zzo38> Here is so far my specification:  http://zzo38computer.org/textfile/miscellaneous/utce
+2020-06-22 19:59:54 <zzo38> Another thing I like about xterm is it uses bitmap fonts, so they aren't fuzzy
