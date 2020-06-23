@@ -297,3 +297,41 @@
 2020-06-23 18:51:09 User Name: b_jonas = b_jonas!~x@catv-176-63-11-153.catv.broadband.hu
 2020-06-23 18:51:09 <b_jonas> @messages-louder
 2020-06-23 18:51:09 <lambdabot> You don't have any messages
+2020-06-23 19:04:23 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=74346&oldid=74270 5* 03Dion 5* (+35) 10
+2020-06-23 19:04:25 Joined: kspalaiologos
+2020-06-23 19:04:25 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloo42, imode, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], user24, vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-23 19:04:56 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=74347&oldid=74346 5* 03Dion 5* (+63) 10
+2020-06-23 19:12:17 <rain1> @messages-louder
+2020-06-23 19:12:17 <lambdabot> You don't have any messages
+2020-06-23 19:12:42 <arseniiv> how would you approach the following?: for a positive integer n, find a pair of positive integers a, b such that n = a^2 b and b is square-free?
+2020-06-23 19:13:48 <rain1> I think there will not be that many possible values of a so I would check a=1,2,..,floor(sqrt(n))
+2020-06-23 19:14:13 <rain1> is that the right way?
+2020-06-23 19:14:27 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-06-23 19:14:27 <kspalaiologos> I've got a concern today about implementing stack-based effective values for asm2bf
+2020-06-23 19:14:33 <arseniiv> (the author of that constructible number Python module uses this for economy of future computations, I think: adding √b should be better than adding √n)
+2020-06-23 19:14:51 <rain1> https://en.wikipedia.org/wiki/Radical_of_an_integer I found this
+2020-06-23 19:14:54 <kspalaiologos> it is as follows - the stack internally looks like 0 5 1 6 1 7 1 [0]... when there are 5, 6 and 7 pushed
+2020-06-23 19:15:10 <kspalaiologos> now, how to extract the nth element from the end from this data structure
+2020-06-23 19:15:30 <kspalaiologos> hopefully without relying on more than two zero cells after the stack end
+2020-06-23 19:15:54 <rain1> > Currently, no feasible (polynomial time) algorithm is known for recognizing squarefree integers or for computing the squarefree part of an integer. In fact it may be the case that this problem is no easier than the general problem of integer factorization.
+2020-06-23 19:15:56 <lambdabot> <hint>:1:10: error: parse error on input ‘,’
+2020-06-23 19:16:10 <arseniiv> rain1: something like that is written but there is a todo try better. I suggested precomputing decompositions for a bunch of small n’s but I have no idea if it’s actually useful
+2020-06-23 19:16:11 <kspalaiologos> if N is known at compile time, that's easy, but this problem has been troubling me for some time now with variable arguments
+2020-06-23 19:17:26 <rain1> i suppose if you have a list of 100 primes, you can pull the square part of those primes off
+2020-06-23 19:17:44 <rain1> and then if you have anything left use a slower algorithm for it, but you can start after prime 100
+2020-06-23 19:18:03 <rain1> give p it's fast to find the biggest r, p^r | n i think
+2020-06-23 19:18:05 <arseniiv> rain1: w-wait I think b from that decomposition doesn’t relate anyhow directly to the radical?
+2020-06-23 19:18:46 <rain1> N = a^2 b,  b = N/a^2 = rad(N)  doesn't it?
+2020-06-23 19:19:02 <arseniiv> for example rad (4 ⋅ 9) = 6 but b = 1
+2020-06-23 19:20:30 <rain1> oh shit
+2020-06-23 19:20:50 <arseniiv> and it seems b shouldn’t give us any hints how to compute rad?.. We have rad n = lcm(rad a, b) though if I’m not mistaken
+2020-06-23 19:21:24 <arseniiv> as we definitely have rad b = b, yes
+2020-06-23 19:25:01 <zzo38> Due to something I was working on (Digi-RGB), there is the need to compute the square root and squarefree core in O(n) time, although the squarefree core is known to be one of four possibilities, and the input number is known to be less than an implementation-defined maximum.
+2020-06-23 19:26:05 <rain1> what are the four possibilites?
+2020-06-23 19:26:07 <zzo38> Additionally, if it is possible to do, the computation may begin before the input number is known.
+2020-06-23 19:26:37 <zzo38> rain1: The four possibilities are 1, 3, 5, and 10.
+2020-06-23 19:26:42 <rain1> OK!
+2020-06-23 19:27:54 <arseniiv> rain1: the radical page though gave me a hint I should look for a square-free part. I even found something, let’s see…
+2020-06-23 19:28:23 <arseniiv> zzo38 already named that though, while I searched
+2020-06-23 19:28:36 <rain1> I suppose the radical helps you find the square-part very fast
+2020-06-23 19:28:55 <rain1> via gcd(rad^(2r), n)
