@@ -101,3 +101,23 @@
 2020-06-23 09:35:04 <esowiki> 14[[07Tandem14]]4 10 02https://esolangs.org/w/index.php?diff=74281&oldid=74280 5* 03Chris Pressey 5* (+441) 10Describe two possible modes for handling nondeterminism.
 2020-06-23 09:56:28 <esowiki> 14[[07Tandem/Sketch of a Tandem Interpreter14]]4 N10 02https://esolangs.org/w/index.php?oldid=74282 5* 03Chris Pressey 5* (+1669) 10Sketch a Tandem interpreter.
 2020-06-23 09:57:55 <cpressey> arseniiv: Maybe https://esolangs.org/wiki/Tandem/Sketch_of_a_Tandem_Interpreter will help clarify things?
+2020-06-23 10:04:10 <cpressey> I called that "pseudo-code" but it should really be runnable if all the helper functions were defined.
+2020-06-23 10:07:39 <arseniiv> cpressey: oh! BTW did you see my yesterday’s implementation?
+2020-06-23 10:12:18 <arseniiv> this pseudocode is way simpler than what I’ve done with disjointness checking :D
+2020-06-23 10:13:29 <arseniiv> ah, no, I now see `case intersect (labelsOf r1) (labelsOf r2) of`
+2020-06-23 10:14:07 <cpressey> arseniiv: No, I missed that -- I don't always read the logs.  Actually I'm reading the logs now and I can't seem to find it?
+2020-06-23 10:14:31 <arseniiv> but your sketch doesn’t allow R | R = R
+2020-06-23 10:14:39 <arseniiv> I’ll find the link
+2020-06-23 10:15:07 <arseniiv> here it is: https://hatebin.com/gnbvdqgvrh
+2020-06-23 10:15:37 <arseniiv> though I should find the place in the logs, there was something else
+2020-06-23 10:15:44 <cpressey> Cool, thanks!
+2020-06-23 10:17:51 <arseniiv> starts here: https://esolangs.org/logs/2020-06-22.html#lId ← there is a error in the push-down automaton example at esowiki
+2020-06-23 10:19:45 <cpressey> Argh yes, I see. Thanks for spotting that, I'll fix it.
+2020-06-23 10:20:48 <esowiki> 14[[07Tandem14]]4 10 02https://esolangs.org/w/index.php?diff=74283&oldid=74281 5* 03Chris Pressey 5* (+0) 10/* Implementing Automata in Tandem */ Fix PDA example - thanks go to arseniiv for noticing and reporting
+2020-06-23 10:21:13 <arseniiv> yw!
+2020-06-23 10:23:46 <cpressey> As to R | R = R, you're right, my sketch fails to get that, thanks again. I'll think about how to fix it.
+2020-06-23 10:25:33 <arseniiv> I used a “world diff”, all replacements which were made by the rule, and tested their disjointness
+2020-06-23 10:26:06 <arseniiv> though I think I should have simplified things a bit
+2020-06-23 10:26:49 <arseniiv> in my code there are two different representations now I think for the same thing (such a diff and a set of redexes)
+2020-06-23 10:27:07 <arseniiv> hm wait they aren’t even redexes, they are (label, replacement result) pairs
+2020-06-23 10:27:26 <arseniiv> I’ll need to rename things a bit too, then
