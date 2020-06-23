@@ -335,3 +335,22 @@
 2020-06-23 19:28:23 <arseniiv> zzo38 already named that though, while I searched
 2020-06-23 19:28:36 <rain1> I suppose the radical helps you find the square-part very fast
 2020-06-23 19:28:55 <rain1> via gcd(rad^(2r), n)
+2020-06-23 19:33:30 <b_jonas> arseniiv: getting the square part of a number? hmm... that's either easy or hard, but I can't remember which. I should look it up.
+2020-06-23 19:35:04 <arseniiv> “No algorithm is known for computing any of these square-free factors which is faster than computing the complete prime factorization. In particular, there is no known polynomial-time algorithm for computing the square-free part of an integer, nor even for determining whether an integer is square-free.[1]” <https://en.wikipedia.org/wiki/Square-free_integer> where [1] = Adleman, Leonard M.; Mccurley, Kevin S. "Open Problems in Number Theoretic Comp
+2020-06-23 19:35:04 <arseniiv> exity, II". Lecture Notes in Computer Science: 9
+2020-06-23 19:36:49 <zzo38> (Note in Digi-RGB, the input number will effectively be given in unary, and you may read it up to twice.)
+2020-06-23 19:40:47 <arseniiv> OEIS gives funny a(n) = rad n / a(n / rad n) for the squarefree part
+2020-06-23 19:43:53 <b_jonas> arseniiv: ok, then I don't have to look it up
+2020-06-23 19:44:30 <b_jonas> arseniiv: note that there is an algorithm to find the squarefree part of a polynomial IIRC
+2020-06-23 19:45:02 <b_jonas> you can of course always try a full prime decomposition, that tends to work well for non-large numbers
+2020-06-23 19:45:11 <b_jonas> there are decent implementations for it
+2020-06-23 19:47:49 <b_jonas> and if you have a part that you can't factorize, check if it's a square, in which case you know the answer
+2020-06-23 19:50:26 <arseniiv> b_jonas: is searching for integer square root of an exact square faster than trying to decompose it without checking if it’s a square?
+2020-06-23 19:50:37 <int-e> https://mathoverflow.net/questions/16098/complexity-of-testing-integer-square-freeness has some rather discouraging things to say about this
+2020-06-23 19:50:39 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=74348&oldid=74323 5* 03PythonshellDebugwindow 5* (+80) 10/* 110010000100110110010 */
+2020-06-23 19:51:16 <esowiki> 14[[07GORBITSA14]]4 M10 02https://esolangs.org/w/index.php?diff=74349&oldid=74204 5* 03Geek Joystick 5* (+1) 10/* Implementations */
+2020-06-23 19:51:29 <esowiki> 14[[07GORBITSA14]]4 M10 02https://esolangs.org/w/index.php?diff=74350&oldid=74349 5* 03Geek Joystick 5* (-1) 10/* Implementations */
+2020-06-23 19:53:02 <zzo38> Actually there are other restrictions in the case of Digi-RGB too, for example, it is known that the input number will always be a multiple of four.
+2020-06-23 19:56:54 <b_jonas> arseniiv: yes, taking square root of an integer is very fast
+2020-06-23 19:57:16 <b_jonas> so yes, if you think your number is likely square, you can try that first before trying to decompose it
+2020-06-23 19:58:12 <zzo38> What reasons do you have to needing to compure squarefree cores?
