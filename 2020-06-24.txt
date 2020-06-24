@@ -283,3 +283,40 @@
 2020-06-24 12:54:13 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=74368&oldid=74367 5* 03PythonshellDebugwindow 5* (+64) 10/* Commands */
 2020-06-24 12:57:24 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=74369&oldid=74368 5* 03PythonshellDebugwindow 5* (+196) 10/* 110010000100110110010 */
 2020-06-24 12:57:45 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=74370&oldid=74369 5* 03PythonshellDebugwindow 5* (+6) 10/* Memory */
+2020-06-24 13:00:37 <arseniiv> now I think I nailed one of uncomfortable things about great many fonts: their glyph for ∞ is too small
+2020-06-24 13:01:25 <arseniiv> something with relative size almost like in TeX is more nice
+2020-06-24 13:07:20 Quit: kspalaiologos (Read error: Connection reset by peer)
+2020-06-24 13:07:20 Names: ^[, aloril, APic, Arcorann, arseniiv, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 13:07:40 Joined: kspalaiologos
+2020-06-24 13:07:40 Names: ^[, aloril, APic, Arcorann, arseniiv, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 13:08:12 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-06-24 13:08:12 <kspalaiologos> I've added many things to asm2bf since the last time I was here
+2020-06-24 13:08:18 <kspalaiologos> ` ls
+2020-06-24 13:08:19 <HackEso> ​? Permission denied
+2020-06-24 13:08:20 <kspalaiologos> `ls
+2020-06-24 13:08:21 <HackEso> asmbf-1.2.7 \ banana.txt \ bfi \ compiled_brachylog.pl \ egel-master \ egel-scripts \ egel.zip \ eGtbSgN68aHU \ just \ karma \ le \ output.b \ paste \ program \ spline \ spout \ test \ test.sh
+2020-06-24 13:08:22 <kspalaiologos> is hack eso gone?
+2020-06-24 13:08:58 <kspalaiologos> no, just laggy as usual, ok
+2020-06-24 13:11:33 <kspalaiologos> so, all in all, I added data labels, r5 and r6 are stable and tested, the codebase is 95% C, conditional pipelines, advanced conditional instructions (c[log op][rel op]), flag register, effective adresses, virtual instruction calls, constant preprocessor for redefining symbols, long instruction names, bit operations, snippet optimizations, error messages, bfi decimal flags, rewritten bfmake in Perl, effective adresss and stack based adressing.
+2020-06-24 13:11:33 <kspalaiologos> I also added the incunabulum to the repository
+2020-06-24 13:11:49 Joined: cpressey
+2020-06-24 13:11:49 Names: ^[, aloril, APic, Arcorann, arseniiv, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 13:12:07 <kspalaiologos> all in all - I think so far it's amazing
+2020-06-24 13:13:58 <kspalaiologos> so for example a modern hello world looks like this: &string / txt "Hello World!" / @puts / movf r2, *string(r1, r0, 1) / cne r2, 0 / cout r2 / cadd r1, 1 / cjnz %puts / out 10
+2020-06-24 13:14:42 <kspalaiologos> I haven't been updating the esolangs wiki page for a very long time, because I'm writing a developers journal about asm2bf and I plan to include all the documentation in there
+2020-06-24 13:15:18 <wib_jonas> so you'll link that from the wiki article?
+2020-06-24 13:15:29 <kspalaiologos> yes
+2020-06-24 13:15:38 <kspalaiologos> I plan on removing all the content and just linking to it
+2020-06-24 13:15:57 <kspalaiologos> because it has a lot of latex-specific stuff and a lot of figures, I think it's not feasible to store it on esolangs wiki
+2020-06-24 13:16:13 <kspalaiologos> and, that may sound ridicously, but asm2bf is slowly becoming a non-esolang
+2020-06-24 13:17:39 <wib_jonas> kspalaiologos: especially since you have an interpreter for it that skips the whole historically motivated brainfuck phase. you might just turn it to an ordinary interpreted toy language
+2020-06-24 13:18:04 <kspalaiologos> I really like the architecture though
+2020-06-24 13:18:09 <wib_jonas> (or compiled if you add an x86_64 backend too)
+2020-06-24 13:18:18 <kspalaiologos> brainfuck has helped me innovate assembly a bit, how stupid it may sound
+2020-06-24 13:18:59 <kspalaiologos> sadly no one is interested in abstracting brianfuck, so I'm a lone developer
+2020-06-24 13:22:03 <esowiki> 14[[07User:PythonshellDebugwindow/Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=74371&oldid=74370 5* 03PythonshellDebugwindow 5* (+126) 10/* Snippets */
+2020-06-24 13:23:40 <wib_jonas> kspalaiologos: sure, a lot of toy languages have motivations, even if it's not too recognizable from the toy language then
+2020-06-24 13:27:36 <wib_jonas> eg. komalpsz was directly motivated by pre-written programs that I wanted to try to run, scan and geo were motivated by a programming course where I was supposed to write a parser as one of the requirements, olvashato was supposed to help write homework where we had to submit a solution for the same task implemented in two different languages,
+2020-06-24 13:27:36 <wib_jonas> Amicus is an educational language where the motivation was to define Hyperamicus, etc
+2020-06-24 13:29:00 User Name: cpressey = cpressey!~cpressey@79-72-200-113.dynamic.dsl.as9105.com
+2020-06-24 13:29:00 <cpressey> <arseniiv> I’d then separate matching success from the set of all changes made so this could both succeed and do no changes <= lα → α already does succeed and make no changes though?  (when l contains α, I mean; if it contains something else, it fails to match and makes no changes (because failing to match never makes a change))
