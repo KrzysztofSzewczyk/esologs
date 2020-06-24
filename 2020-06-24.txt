@@ -102,3 +102,24 @@
 2020-06-24 03:59:29 <shachaf> Here's a problem: 7 people solved my puzzle, so I'm pretty sure it's solvable. But I (and a person who wrote up their reasoning) is stuck on how to make a particular inference.
 2020-06-24 03:59:35 <shachaf> s/is/am/
 2020-06-24 03:59:49 <shachaf> (Or something, that grammatical situation is obviously impossible to deal with correctly.)
+2020-06-24 04:00:11 <shachaf> I want to submit the puzzle to be solved by people but I don't know what to do about this one step.
+2020-06-24 04:02:17 Joined: ArthurStrong
+2020-06-24 04:02:17 Names: ^[, aloril, APic, Arcorann, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spencer, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 04:02:52 <int-e> ... just nope.
+2020-06-24 04:03:58 <shachaf> My SAT solver tells me it's true, so who needs anything else?
+2020-06-24 04:15:57 <shachaf> Is it guaranteed in Linux that getauxval(AT_EXECFN) will exist and have some string value?
+2020-06-24 04:22:06 <int-e> shachaf: you may break tools like valgrind
+2020-06-24 04:22:36 <int-e> (though by the looks of it, that sets AT_EXECFN, but to argv[0] rather than the full path?)
+2020-06-24 04:23:36 <shachaf> AT_EXECFN is already a relative path.
+2020-06-24 04:23:58 <shachaf> I want an alternative to argv[0] that's reliable, since argv[0] can just be a null pointer.
+2020-06-24 04:24:32 <int-e> LD_SHOW_AUXV=1 valgrind sleep 1 2>/dev/null --> [...] AT_EXECFN:            sleep [...]
+2020-06-24 04:25:25 <shachaf> Oh, it shows an absolute path without valgrind in that case, interesting.
+2020-06-24 04:25:29 <zzo38> Why does the Wikipedia article about printing registration have a "see also" link that links to the Japanese wikipedia?
+2020-06-24 04:25:55 <shachaf> `` cd /bin; LD_SHOW_AUXV=1 ./sleep 0 | grep EXECFN
+2020-06-24 04:25:56 <HackEso> AT_EXECFN:       ./sleep
+2020-06-24 04:26:00 <shachaf> `` LD_SHOW_AUXV=1 sleep 0 | grep EXECFN
+2020-06-24 04:26:02 <HackEso> AT_EXECFN:       /bin/sleep
+2020-06-24 04:26:33 <shachaf> I guess this is the first argument to execve.
+2020-06-24 04:27:34 <int-e> or execvp? that might explain the lack of path lookup
+2020-06-24 04:27:52 <shachaf> I mean, in the non-valgrind case.
+2020-06-24 04:28:06 <shachaf> It's populated by the kernel so I imagine it's based on execve.
