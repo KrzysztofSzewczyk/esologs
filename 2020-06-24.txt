@@ -66,3 +66,39 @@
 2020-06-24 03:28:02 <int-e> (In the forum.)
 2020-06-24 03:28:54 <int-e> But I'm struggling to find a good word fort *that*.
 2020-06-24 03:29:04 <int-e> -t
+2020-06-24 03:30:06 <int-e> I guess "Abrufe" is the established term, even though it's technical (focussing on requests rather than the fact that they're usually displayed somewhere)
+2020-06-24 03:31:24 Quit: spencer (Remote host closed the connection)
+2020-06-24 03:31:24 Names: ^[, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 03:31:44 Joined: spencer
+2020-06-24 03:31:44 Names: ^[, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spencer, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 03:31:47 <shachaf> How should this library support a whole bunch of data types?
+2020-06-24 03:32:31 <shachaf> Say int x; OPT_INT(&x), int64_t x; OPT_INT64(&x); and so on with UINT64, unsigned long, etc.
+2020-06-24 03:32:46 <shachaf> Maybe it should take a scanf-style format string or something and let scanf do the work?
+2020-06-24 03:33:56 <int-e> https://logic-masters.de/Raetselportal/Suche/erweitert.php clarifies. It has the option to search for puzzles that are observed/watched ("beobachtet") by more than a given number of people. No clue what that does though... notify you of new solvers?
+2020-06-24 03:34:11 <int-e> Obviously I will not register just to find out.
+2020-06-24 03:34:51 <shachaf> It suppots all of < <= = >= =
+2020-06-24 03:34:53 <shachaf> Very thorough.
+2020-06-24 03:35:11 <shachaf> It's good that they have both strict and nonstrict inequality, since the number of solvers is real.
+2020-06-24 03:36:38 <int-e> I'm missing a negation
+2020-06-24 03:37:04 <int-e> I also like that = is the default
+2020-06-24 03:37:30 <shachaf> You should solve my puzzles and then register in order to rate it at 120% goodness points.
+2020-06-24 03:37:39 <int-e> Hmm, "toroidal". Toroidal Hashiwokakero could be confusing.
+2020-06-24 03:37:39 <shachaf> I imagine you're really into laboriously solving sudoku puzzles by hand.
+2020-06-24 03:38:16 <int-e> No.
+2020-06-24 03:38:45 <int-e> I find Sudokus hard in an unsatisfying way. There's too much information to track for my small brain; I'm more of a fan of visual patterns.
+2020-06-24 03:40:11 <shachaf> I was secretly imagining something more along those lines.
+2020-06-24 03:41:12 <int-e> I can't look at a Sudoku and just see all the 1s (or whatever digit); I have to painstakingly scan all squares to find them.
+2020-06-24 03:41:22 <shachaf> Oh man. The actual way you're supposed to tell whether sscanf matched the entire input string is with %n?
+2020-06-24 03:41:24 <int-e> And finding missing numbers is worse.
+2020-06-24 03:41:39 <shachaf> So much for the scanf idea.
+2020-06-24 03:41:56 <int-e> I believe so, yes. sscanf is a bit of a pain.
+2020-06-24 03:42:04 <shachaf> So much for that.
+2020-06-24 03:42:46 <shachaf> Maybe I should just support intmax_t and call it a day.
+2020-06-24 03:42:53 <shachaf> Or: Support nothing and call it a day.
+2020-06-24 03:44:37 Quit: clog (Ping timeout: 264 seconds)
+2020-06-24 03:44:37 Names: ^[, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spencer, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 03:44:45 Joined: clog
+2020-06-24 03:44:45 Names: ^[, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, spencer, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-24 03:59:29 <shachaf> Here's a problem: 7 people solved my puzzle, so I'm pretty sure it's solvable. But I (and a person who wrote up their reasoning) is stuck on how to make a particular inference.
+2020-06-24 03:59:35 <shachaf> s/is/am/
+2020-06-24 03:59:49 <shachaf> (Or something, that grammatical situation is obviously impossible to deal with correctly.)
