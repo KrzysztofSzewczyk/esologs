@@ -123,3 +123,18 @@
 2020-06-24 04:27:34 <int-e> or execvp? that might explain the lack of path lookup
 2020-06-24 04:27:52 <shachaf> I mean, in the non-valgrind case.
 2020-06-24 04:28:06 <shachaf> It's populated by the kernel so I imagine it's based on execve.
+2020-06-24 04:31:29 <shachaf> Is it just me or did glibc printf use to be able to handle null %s and now it doesn't?
+2020-06-24 04:32:30 <int-e> dunno? it does print (null) here
+2020-06-24 04:32:30 <shachaf> `cc #include <stdio.h>\n int main() { printf("%s", (char *)0); }
+2020-06-24 04:32:32 <HackEso> ​(null)
+2020-06-24 04:32:52 <int-e> uh
+2020-06-24 04:33:13 <int-e> scratch that, it actually segfaults
+2020-06-24 04:33:33 <shachaf> It segfaults here too.
+2020-06-24 04:33:38 <shachaf> I guess they changed it at one point.
+2020-06-24 04:34:24 <int-e> printf("%s %d\n", (char *)0, 42); works fine?
+2020-06-24 04:34:42 <int-e> Ah.
+2020-06-24 04:34:44 <int-e> This is gcc.
+2020-06-24 04:34:58 <int-e> gcc optimizes printf("%s\n", ...) to puts.
+2020-06-24 04:35:02 <shachaf> Aha!
+2020-06-24 04:35:20 <shachaf> Now that you mention it I think I've noticed this before a trillion years ago and forgot about it.
+2020-06-24 04:35:48 <shachaf> Good thing printfing a null pointer is undefined behavior so this is fine.
