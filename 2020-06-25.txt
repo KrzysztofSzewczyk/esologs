@@ -206,3 +206,19 @@
 2020-06-25 14:28:11 Joined: rain1
 2020-06-25 14:28:11 Names: ^[, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
 2020-06-25 14:29:17 <cpressey> Asteration does always succeed now - I forgot to update that section.
+2020-06-25 14:30:09 <cpressey> The weird way it was defined previously should've tipped me off that something wasn't right
+2020-06-25 14:31:24 <esowiki> 14[[07Tandem14]]4 10 02https://esolangs.org/w/index.php?diff=74464&oldid=74432 5* 03Chris Pressey 5* (-45) 10/* Asteration */ Fix statement about when asteration succeeds.
+2020-06-25 14:33:42 <esowiki> 14[[07Tandem14]]4 10 02https://esolangs.org/w/index.php?diff=74465&oldid=74464 5* 03Chris Pressey 5* (+142) 10/* Algebraic properties */ Fix left-distributive identity (& is no longer commutative) and mention right-distributive.
+2020-06-25 14:34:20 <arseniiv> cpressey: also do you want to add 0 and 1 to the inductive definition of a rule now?
+2020-06-25 14:34:31 <cpressey> Yes i probably do. And to the implementation too :)
+2020-06-25 14:35:52 <arseniiv> I hadn’t yet started rewriting my one too
+2020-06-25 14:45:06 <esowiki> 14[[07Tandem14]]4 10 02https://esolangs.org/w/index.php?diff=74466&oldid=74465 5* 03Chris Pressey 5* (+352) 10Add 0 and 1 to inductive definition.
+2020-06-25 14:46:30 <esowiki> 14[[07Tandem/Tandem.hs14]]4 10 02https://esolangs.org/w/index.php?diff=74467&oldid=74427 5* 03Chris Pressey 5* (+33) 10Add Zero and One to the implementation.
+2020-06-25 14:47:04 <cpressey> rewrite Zero c = Nothing; rewrite One c = Just c
+2020-06-25 14:47:08 <cpressey> how elegant is that
+2020-06-25 14:47:54 <arseniiv> cpressey: “R* means: repeatedly apply R while M(R) is nonempty.” => this could be reformulated too via the new M(R, S), I’d do it myself but I don’t know how to say S is the new state each time, succinctly
+2020-06-25 14:49:08 <arseniiv> cpressey: hm maybe it’s possible to generalize rules in some manner and make them instances of Functor etc.
+2020-06-25 14:54:16 Joined: t20kdc
+2020-06-25 14:54:16 Names: ^[, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-25 14:56:11 <Taneb> You know like the idea of rank 1, rank 2 functions in Haskell?
+2020-06-25 14:56:17 <Taneb> Is there such thing as a rank omega function?
