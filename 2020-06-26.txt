@@ -192,3 +192,23 @@
 2020-06-26 13:22:12 <arseniiv> many people get it wrong including me
 2020-06-26 13:22:13 <Taneb> (List A ~= Exists (n :: Nat). Fin n -> A)
 2020-06-26 13:23:07 <arseniiv> agree
+2020-06-26 13:30:35 <Taneb> I don't know much about dimensional analysis of logarithmic quantities but I've thought about it in the past and it sounds quite interesting!
+2020-06-26 13:32:06 <wib_jonas> arseniiv: we should say that a nat is equal to i radians (or maybe -i radians, who knows) in the same sense as a light-second is equal to i seconds (or -i seconds, who knows) in special relativity
+2020-06-26 13:34:03 <Taneb> wib_jonas: a nat here being the natural logarithmic unit of information?
+2020-06-26 13:35:30 <wib_jonas> Taneb: yes, 1 nat = 1/log(2) bit
+2020-06-26 13:36:32 <Taneb> wib_jonas: I'm not sure I understand how that equivalence would work
+2020-06-26 13:37:17 <wib_jonas> hmm yeah, that doesn't really make sense
+2020-06-26 13:37:49 <Taneb> Maybe a century or two ago the time/distance equivalence would have been equally confusing
+2020-06-26 13:38:53 <wib_jonas> but I mean, if your entropy is v nat, that means exp(-v) is the mean probability of the outcome; if your angle is phi radians, that means exp(i*v) is ... something
+2020-06-26 13:39:05 <wib_jonas> in both case nats and radians are the natural units to take exp frmo
+2020-06-26 13:39:33 <Taneb> Getting pretty close to Euler's identity there
+2020-06-26 13:39:37 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=74498&oldid=74497 5* 03A 5* (+13) 10/* Add two inputted numbers */
+2020-06-26 13:44:04 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=74499&oldid=74498 5* 03A 5* (+55) 10
+2020-06-26 13:44:38 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=74500&oldid=74499 5* 03A 5* (-22) 10/* Instruction list */
+2020-06-26 13:49:26 <arseniiv> wib_jonas: that’s why I think squared interval is the right unit: then we’re absolved of deciding should we take sqrt of it (and which branch), or sqrt of its absolute value. or what
+2020-06-26 13:52:55 <arseniiv> also the thing is there’s no natural choice to treat timelike nor spacelike interval squares as positive, though physics text often commit to one choice and calculate everything using it instead of treating interval squares as an abstract real linear space. It should be abstract both because of this unorientedness and because there is no natural interval unit (when we’re not in GR, as we often are when working in QED for example)
+2020-06-26 13:56:13 <arseniiv> so,  strictly speaking, physicist’s riemannian pseudometric is not a real-valued bilinear form but a bilinear map to the 1-dimensional “squared interval space”. Though physical-minded people I told this to was not accepting this for some reason. Though they also were very coordinate-minded
+2020-06-26 13:56:36 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=74501&oldid=74500 5* 03A 5* (-53) 10
+2020-06-26 13:56:36 <arseniiv> and in coordinates, no one will hear you %s
+2020-06-26 13:57:36 <wib_jonas> arseniiv: I don't really understand that physics talk... I guess I deserve that for mentioning special relativity
+2020-06-26 13:57:37 <arseniiv> where %s = “make suggestions about the right invariant notions”
