@@ -109,3 +109,27 @@
 2020-06-26 09:51:49 <shachaf> I like this approach.
 2020-06-26 09:55:40 <esowiki> 14[[07Subleq/subleq.py14]]4 N10 02https://esolangs.org/w/index.php?oldid=74490 5* 03Chris Pressey 5* (+3502) 10Add public domain interpreter and simple assembler for Subleq.
 2020-06-26 09:57:57 <esowiki> 14[[07Subleq14]]4 10 02https://esolangs.org/w/index.php?diff=74491&oldid=74489 5* 03Chris Pressey 5* (+112) 10/* See also */ Add subleq.py
+2020-06-26 10:00:49 <esowiki> 14[[07Subleq14]]4 10 02https://esolangs.org/w/index.php?diff=74492&oldid=74491 5* 03Chris Pressey 5* (+244) 10/* Printing characters in a loop */ Add raw, non-assembly version of the Hello, world program
+2020-06-26 10:13:47 <shachaf> int-e: OK, this is pretty neat.
+2020-06-26 10:14:14 Joined: Lord_of_Life
+2020-06-26 10:14:31 <shachaf> Do you mind if I send your solution to people (with credit, of course) if I submit the puzzle?
+2020-06-26 10:14:43 <shachaf> This is pretty different from how I was thinking about it.
+2020-06-26 10:15:18 <int-e> go ahead
+2020-06-26 10:15:31 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2020-06-26 10:15:32 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-06-26 10:17:43 <shachaf> By name or nick?
+2020-06-26 10:18:27 <int-e> yes
+2020-06-26 10:18:40 <int-e> I don't really care either way.
+2020-06-26 10:18:45 <shachaf> This explains some of the properties of the puzzle that I was seeing, about the rows being so determined.
+2020-06-26 10:21:11 Quit: atslash (Ping timeout: 260 seconds)
+2020-06-26 10:21:11 Names: ^[, aloril, APic, Arcorann, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-26 10:21:25 Joined: atslash
+2020-06-26 10:21:25 Names: ^[, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-26 10:22:16 <int-e> honestly if I had not seen just how restrictive the at-at-most-11 constraint was, I wouldn't have bothered
+2020-06-26 10:22:41 <int-e> s/at-at/at/tuttering
+2020-06-26 10:23:49 <shachaf> Yes, most of the information propagates within rows, or something like that.
+2020-06-26 10:25:58 <shachaf> The other puzzle I uploaded is a lot easier, I think. Probably too easy? I have a harder version but I'm worried it's too hard.
+2020-06-26 10:26:10 Quit: atslash (Ping timeout: 256 seconds)
+2020-06-26 10:26:10 Names: ^[, aloril, APic, Arcorann, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-06-26 10:26:56 Joined: atslash
+2020-06-26 10:26:56 Names: ^[, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd9001, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
