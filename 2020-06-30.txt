@@ -449,3 +449,27 @@
 2020-06-30 21:28:41 <shachaf> Er, I meant "Leaf a".
 2020-06-30 21:28:56 <arseniiv> ah
 2020-06-30 21:29:20 <arseniiv> wait, and I lied, of course versions with Leaf and Leaf a are different
+2020-06-30 21:30:06 <shachaf> Anyway I'd be pretty surprised if you figured out a type that has this property.
+2020-06-30 21:30:35 <arseniiv> I would be too! Now I have no hope after series failed me
+2020-06-30 21:31:02 <shachaf> I mean, of course there's an isomorphism between 1 + Nat and Nat^2. That's why you need naturality.
+2020-06-30 21:33:21 <arseniiv> I had not much hope from the start as I haven’t got as many mathematician friend as Baez does, so if they haven’t figured it out in several weeks or years (supposing that after that they either forgot ot he wouldn’t append a note to that old post when the solution would be found), how would I in a burst of procrastinative initiative (at most a couple of hours)?
+2020-06-30 21:33:32 <arseniiv> s/friend/friends
+2020-06-30 21:34:29 <arseniiv> here’s another question, maybe more fruitful: how would one prove that there’s no such type?
+2020-06-30 21:34:44 <arseniiv> (in a suitable type theory)
+2020-06-30 21:36:06 <arseniiv> so we could say Φ is almost surely not a regular tree type or what are they called (not a polynomial nor a recursive type involving polynomials)
+2020-06-30 21:37:14 <arseniiv> though I’m not entirely sure about recursive polynomial types. I thought any of them is isomorphic to some series, and if that’s not the case…
+2020-06-30 21:37:56 <arseniiv> and maybe unique types couldn’t save us either
+2020-06-30 21:38:33 <arseniiv> er, “generalized unique types”, like U such that U³ ≅ 0
+2020-06-30 21:38:40 <arseniiv> nilpotent types
+2020-06-30 21:39:15 <arseniiv> and on that my knowledge of various type-algebraic things ends
+2020-06-30 21:41:25 <arseniiv> well, also I heard about realizing negative and quotient types—and they say that’s hard on its own and then so much as impossible if one wants to have both together
+2020-06-30 21:48:13 <arseniiv> also of note: it seems one can’t talk about an antidiagonal X^2̲ (and a diagonal in first place) of X² if not (Eq X). For the same reason one can’t talk about an upper antidiagonal X^2̲ / 2! ≡ binom(X, 2) if not (Ord X). That shouldn’t directly relate to the previous, I’m just reading old sigfpe
+2020-06-30 21:49:03 <arseniiv> (one can replace 2 with n here)
+2020-06-30 21:50:46 <arseniiv> @ask rain1 BTW what did you wanted symmetric polynomials for? Just curious
+2020-06-30 21:50:46 <lambdabot> Consider it noted.
+2020-06-30 21:55:00 Quit: zzo38 (Disconnected by services)
+2020-06-30 21:55:00 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar
+2020-06-30 21:55:04 Joined: zzo38
+2020-06-30 21:55:04 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-06-30 21:58:19 Quit: t20kdc (Remote host closed the connection)
+2020-06-30 21:58:20 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
