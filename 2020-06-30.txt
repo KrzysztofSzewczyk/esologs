@@ -73,3 +73,66 @@
 2020-06-30 08:58:04 <int-e> Brainfuck has an array, but I don't think that was essential for this idea to work out.
 2020-06-30 08:59:06 <int-e> But I'm not sure. Do you have a concrete language in mind? The actual operations kind of matter.
 2020-06-30 08:59:19 <int-e> Also I/O is a bit iffy.
+2020-06-30 09:00:15 <cpressey> In Hoare's 1969 paper he concocts a "language of while programs" for demonstrating his axiomatic semantics stuff.
+2020-06-30 09:01:01 <cpressey> I think Wang also used a similar/the same language in some papers.
+2020-06-30 09:01:22 <cpressey> And it's basically become A Staple of proglang semantics texts.
+2020-06-30 09:02:22 <cpressey> It's based on the observation that, if you have "while", you don't need "if", "for", "do-while", etc.
+2020-06-30 09:02:44 <int-e> The main issue is that you don't get a proper conditional. Instead, any code that wants to be executed conditionally has to be painstakingly instrumented to not have any effect based on some condition.
+2020-06-30 09:02:53 <int-e> (The main issue with do-while)
+2020-06-30 09:03:14 <myname> either that or be reversible, yeah
+2020-06-30 09:03:28 <int-e> But in the case of Brainfuck without I/O that instrumentation is possible.
+2020-06-30 09:03:46 <rain1> wow how does that instrumentation work? that is a different approach than I tohught of
+2020-06-30 09:04:13 <int-e> rain1: see the link cpressey posted above, where this discussion started.
+2020-06-30 09:05:08 <int-e> (Which has a translation for >.< that works by accident.)
+2020-06-30 09:06:00 <int-e> cpressey: I guess that also rules out any proper recursion (where a function would eventually call itself again).
+2020-06-30 09:06:04 <cpressey> I could believe that everyone just adopted "while" programs and ignored "do-while" programs because it was easy to show that "while" was universal (in this sense) and people just didn't care about "do-while" programs because they already had their example language for semantics
+2020-06-30 09:06:18 <int-e> cpressey: So for *practical* programming, do-while is certainly not sufficient.
+2020-06-30 09:06:18 <rain1> yep
+2020-06-30 09:06:23 <rain1> it's super interesting
+2020-06-30 09:07:13 <int-e> But from there to the claim that this may not even be TC... that's a long stretch.
+2020-06-30 09:07:17 <int-e> far stretch?
+2020-06-30 09:07:26 <cpressey> You do need to implement reversibility to make it work, but reversible computing didn't really become a studied thing until much later
+2020-06-30 09:07:29 <rain1> im certain it's TC
+2020-06-30 09:07:35 <rain1> but it's very interesting that this is not trivial to show
+2020-06-30 09:08:00 <cpressey> If there is a proof of it in the literature, it might be in the reversible computing literature
+2020-06-30 09:08:25 <int-e> well that brainfuck thing is certainly not reversible
+2020-06-30 09:08:46 <cpressey> int-e: you just said something about undoing what it just did though
+2020-06-30 09:09:01 <cpressey> That's all I mean by reversible in this instance
+2020-06-30 09:09:10 <rain1> I was thinking maybe you could translate reversible-bitfuck ==> doBF
+2020-06-30 09:09:13 <rain1> but actually it seems kinda hard
+2020-06-30 09:09:18 <int-e> cpressey: Yes, but that's on the level of a single brainfuck operation.
+2020-06-30 09:09:28 <int-e> +, -, >, <.
+2020-06-30 09:09:40 <int-e> [ and ] do non-reversible things.
+2020-06-30 09:09:40 User Name: j-bot = j-bot!~jbot@hagall.firefly.nu
+2020-06-30 09:09:40 <j-bot> int-e: |spelling error
+2020-06-30 09:09:40 <j-bot> int-e: |   and ] do non-reversible things.
+2020-06-30 09:09:40 <j-bot> int-e: |                           ^
+2020-06-30 09:09:45 <int-e> j-bot: thanks
+2020-06-30 09:09:45 <j-bot> int-e: |value error: thanks
+2020-06-30 09:10:00 <myname> :D
+2020-06-30 09:11:01 <rain1> :D
+2020-06-30 09:11:33 <myname> it's interesting that it does complain about things but not the rest, though
+2020-06-30 09:11:58 <int-e> cpressey: And it's really inspiration. Look at what + does: it adds 1 to the flag (so now it's 1 or 2), adds the result to the actual cell and a temporary one (because brainfuck), then subtracts 1 from the result, copies the temp back to the flag, and then subtracts 1 from the flag again.
+2020-06-30 09:12:50 <int-e> That is reversible, of course. But the main reason for that is that Brainfuck's + operation itself is reversible.
+2020-06-30 09:13:51 <myname> okay, first things first: in a do-while bf, could you easily clone a cell?
+2020-06-30 09:14:31 <int-e> Assume you have non-negative values only, then just add 1 first, and in the end remove 1 from the clones.
+2020-06-30 09:15:54 <int-e> Or perhaps start one level below that: +[-] resets a cell to 0.
+2020-06-30 09:16:39 <myname> right, sounds reasonable. so let's assume 0/1 only, then you could replace a + in a do-while with [+{go to condition clone}-]-, couldn't you?
+2020-06-30 09:16:42 <cpressey> On that page Rdebath also reports that they've used the reduction to translate some non-trivial brainfuck programs to Do-While-Brainfuck, and run them on their Do-While-Brainfuck interpreter successfully.
+2020-06-30 09:16:59 <cpressey> While not a proof, it's pretty good evidence that the reduction is mostly not broken.
+2020-06-30 09:17:08 <int-e> Yeah this is the main reason why I'm fairly confident that this works :)
+2020-06-30 09:17:25 <int-e> Because as you can also see in that discussion, I got some details wrong at first.
+2020-06-30 09:17:39 <int-e> (I'd have to check the page history for details, not inclinded to do that.)
+2020-06-30 09:18:11 <myname> cpressey: couldn't tgey just reduce the bf interpreter in bf to do-whie-bf?
+2020-06-30 09:18:57 <cpressey> Brainfuck's +-<> are reversible, but if you had to do it in a language with non-reversible things like "a := b + 5", you could implement reversibility in the reduction (i.e. in this case, save the old value of a on a stack or smth)
+2020-06-30 09:19:11 <int-e> myname: note that there's no translation for ',', and the translation for '.' produces extra NUL outputs when "skipped".
+2020-06-30 09:19:30 <myname> too bad
+2020-06-30 09:19:45 <myname> we need multi-tape bf with the input on the second tape :>
+2020-06-30 09:20:11 <cpressey> well, "while programs" don't usually have I/O either
+2020-06-30 09:20:11 <int-e> unavoidable, really... you have to make I/O primitives conditional in the language if you want a proper I/O-conforming reduction.
+2020-06-30 09:20:55 <int-e> At least for the usual interactive programming model we have for terminals.
+2020-06-30 09:21:19 <int-e> I guess s=programming=I/O=
+2020-06-30 09:27:44 Joined: tswett[m]
+2020-06-30 09:27:44 Names: ^[, aloril, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, xelxebar, xylochoron[m], zzo38
+2020-06-30 09:27:44 Joined: wmww
+2020-06-30 09:27:44 Names: ^[, aloril, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
