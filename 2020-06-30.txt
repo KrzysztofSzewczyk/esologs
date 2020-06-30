@@ -238,3 +238,32 @@
 2020-06-30 10:27:22 <myname> anybody here has an opinion about zenonzard?
 2020-06-30 10:27:29 <wib_jonas> int-e: are those cardboard playing pieces that need to be shuffled and then indistinguishable, without putting them inside a fancy scrabble bag?
 2020-06-30 10:27:45 <wib_jonas> Carcassone tiles come pre-cut so they look the same
+2020-06-30 10:30:54 Joined: TheLie
+2020-06-30 10:30:54 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zzo38
+2020-06-30 10:31:18 <int-e> wib_jonas: As I recall it they come in a cardboard grame but are all attached to that the same way (just two spots, easy to break).
+2020-06-30 10:31:37 <rain1> what is the square root of the language of squarefree words
+2020-06-30 10:31:45 <int-e> But maybe Carcassonne was an exception. I don't know this for any specific game.
+2020-06-30 10:31:56 <int-e> rain1: irrational
+2020-06-30 10:32:28 Quit: impomatic (Quit: impomatic)
+2020-06-30 10:32:28 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zzo38
+2020-06-30 10:32:45 Joined: impomatic
+2020-06-30 10:32:45 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zzo38
+2020-06-30 10:33:11 <wib_jonas> "<cpressey> [...] Apparently there is also no concrete example of a context-free grammar for a non-deterministic-context-free language?" => s -> a | c; a -> epsilon | C a | D a | A a B a; c -> epsilon | A c | B c | C c D c; the language of strings where either A and B are balanced matching parenthesis or C and D are balanced matching parenthesis.
+2020-06-30 10:34:37 <wib_jonas> or wait....
+2020-06-30 10:34:48 <wib_jonas> maybe that can be parsed with a deterministic machine? let me think
+2020-06-30 10:37:30 <wib_jonas> no, I think it can't be. without backtracking or arbitrary lookahead you can't tell which of AB or CD will match, so if a long prefix of the string has both AB and CD balanced so far, then the state plus stack of the machine would have to track both the depth of A and the depth of C of the prefix, be able to increment and decrement either at any
+2020-06-30 10:37:31 <wib_jonas> time depending on the input, and a stack machine can't do that.
+2020-06-30 10:39:45 <wib_jonas> this is effectively the trick I want to use to make Consumer Society intrinsically nondeterministic context free, though I use a larger alphabet
+2020-06-30 10:39:53 <int-e> wib_jonas: woah, using lower case for non-terminals and upper case for terminals is confusing.
+2020-06-30 10:40:12 <wib_jonas> int-e: sorry
+2020-06-30 10:40:30 <wib_jonas> but I think that's the way at least one book notates then
+2020-06-30 10:40:31 <wib_jonas> them
+2020-06-30 10:40:52 <int-e> there's always somebody that breaks the conventions FOR NO GOOD REASON
+2020-06-30 10:41:10 <int-e> doesn't make it right :P
+2020-06-30 10:41:55 <wib_jonas> ok, make it S -> A | C; A -> epsilon | c A | d A | a A b A; C -> epsilon | a C | b C | c C d C; the language of strings where either a and b are balanced matching parenthesis or c and d are balanced matching parenthesis.
+2020-06-30 10:42:35 <cpressey> idea: de Bruijn indices, except they're for nonterminals
+2020-06-30 10:42:52 <cpressey> (yes, yes, I know)
+2020-06-30 10:43:24 <wib_jonas> of course this is true for Consumer Society only if you look at it at just the right level, because after parsing it is Turing-complete and so it's uncomputable to determine if the program will run into a semantic error at runtime
+2020-06-30 10:47:27 Joined: t20kdc
+2020-06-30 10:47:27 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, impomatic, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rain1, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, zzo38
+2020-06-30 10:51:31 <arseniiv> cpressey: hmm
