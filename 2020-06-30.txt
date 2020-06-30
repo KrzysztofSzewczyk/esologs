@@ -428,3 +428,24 @@
 2020-06-30 20:49:33 <arseniiv> an arithmetical error (alas!) and an unique type deliver the solution: (1 + U)² ≅ 1 + 2U ❝≅❞ 1 + (1 + U) (what was I thinking?!)
 2020-06-30 20:55:52 <arseniiv> double mistake: I thought this still gives a correct solution when U is a singleton, but no, U ≇ 1 for the same reason I remembered it here, becase of its square. And anyway that’d be boring: one wants to find an infinite Φ
 2020-06-30 20:57:32 <shachaf> If it's a natural isomorphism then Φ should be a functor, right?
+2020-06-30 21:01:54 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=74817&oldid=74751 5* 03PythonshellDebugwindow 5* (+774) 10
+2020-06-30 21:03:26 Quit: rain1 (Quit: Leaving)
+2020-06-30 21:03:26 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-06-30 21:13:32 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=74818&oldid=74817 5* 03PythonshellDebugwindow 5* (-1) 10/* The blues instruction */
+2020-06-30 21:14:26 Quit: dog_star (Ping timeout: 246 seconds)
+2020-06-30 21:14:26 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-06-30 21:14:32 <arseniiv> shachaf: mm I don’t know if a concrete type may be a functor. In the tree case though, T = μx. T′x where T′ is indeed a functor 1 + X²
+2020-06-30 21:14:40 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=74819&oldid=74818 5* 03PythonshellDebugwindow 5* (+53) 10/* Interpreter */
+2020-06-30 21:15:19 Joined: dog_star
+2020-06-30 21:15:19 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, orin, ornxka, paul2520, pikhq, ProofTechnique, rawr, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-06-30 21:16:37 <arseniiv> yeah I think one may ask about a functor F such that (μx. Fx)² ≅ 1 + (μx. Fx) though I’m not sure if we can take μx off and simplify this
+2020-06-30 21:19:45 <arseniiv> suppose now U³ ≅ 0. Then (A + U + U²)² ≅ A² + 2AU + (1 + A) U² = hmm no. Let’s try infinite series
+2020-06-30 21:24:05 <arseniiv> ha, that just delegates the problem to finding the first coefficient of the series with the same property
+2020-06-30 21:24:55 <shachaf> Well, you care about the shape, not just the cardinality.
+2020-06-30 21:25:13 <arseniiv> yes
+2020-06-30 21:26:49 <arseniiv> in one place there were stated such an isomorphism requires inspecting no more than a fixed amount of data constructors
+2020-06-30 21:26:59 <shachaf> I wasn't talking about the functor F that you're taking the fixed point of, but about the functor e.g. Tree a = Leaf | Branch (Tree a) (Tree a)
+2020-06-30 21:28:31 <arseniiv> isn’t that just a constant functor (technically, up to replacing Leaf with Leaf a, but they should be equivalent)
+2020-06-30 21:28:41 <shachaf> Er, I meant "Leaf a".
+2020-06-30 21:28:56 <arseniiv> ah
+2020-06-30 21:29:20 <arseniiv> wait, and I lied, of course versions with Leaf and Leaf a are different
