@@ -84,3 +84,21 @@
 2020-07-02 10:58:43 <shachaf> Chet out my fancy inotify program: https://shachaf.net/tmp/mustardwatch/mustardwatch.c
 2020-07-02 10:58:52 <shachaf> It uses ptrace to detect what files a program uses and reruns it when they change.
 2020-07-02 10:59:53 <Taneb> shachaf: that's a pretty cool idea
+2020-07-02 11:01:02 <int-e> cpressey: This category is *totally* Brainfuck-centric: https://esolangs.org/wiki/Category:Before_1993
+2020-07-02 11:01:42 <int-e> Hah, we have Perl and Python?
+2020-07-02 11:04:07 <int-e> (The latter article is a disappointment.)
+2020-07-02 11:13:50 <esowiki> 14[[07Talk:Javagony Turing-completeness proof14]]4 N10 02https://esolangs.org/w/index.php?oldid=74945 5* 03Chris Pressey 5* (+582) 10Feedback on this proof
+2020-07-02 11:17:34 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-07-02 11:17:34 <myname> cpressey: i think that decrementing part is just the loop condition
+2020-07-02 11:19:50 <cpressey> Yes, they're demonstrating that Javagony can do something that brainfuck interpreters do, I get that
+2020-07-02 11:19:59 <myname> like, translation of a bf program to javagony is the following: translate +.<> as written on the page. for [subprogram] create a method with that translation in Proof class and make call to proof.doWhileReadNe0(subprogramMethod)
+2020-07-02 11:20:04 <myname> it's not an interpreter
+2020-07-02 11:20:07 <Taneb> You know, I've never tried writing a brainfuck self-interpreter
+2020-07-02 11:20:11 <Taneb> I might give it a go
+2020-07-02 11:20:13 <myname> it's a framework for translating arbitrary bf programs
+2020-07-02 11:21:17 <cpressey> I stand by my statement that it's halfway to a brainfuck interpreter, which would be a 100% convincing proof of its TCness
+2020-07-02 11:22:52 <myname> ++[>+<-] would translate to: Proof.subprogram() { tape.right(); tape.write(tape.read() - 1); tape.left(); tape.write(tape.read() + 1); } and in main tape.write(tape.read() + 1); tape.write(tape.read() + 1); proof.doWhileReadNe0(proof.subprogram);
+2020-07-02 11:23:13 <myname> yeah, you could write an interpreter, but that not what this proof is about
+2020-07-02 11:23:17 <int-e> cpressey: I guess the simple truth is that Brainfuck is the one minimal programming language that everybody has heard of.
+2020-07-02 11:23:44 <int-e> (for some pretty big value of "everybody")
+2020-07-02 11:24:25 <myname> technically, that "proof" is not a real proof since it does not show that the translation does have the same semantics as the bf programm you are translating
