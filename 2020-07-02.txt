@@ -217,3 +217,80 @@
 2020-07-02 17:25:59 <esowiki> 14[[07BytFuck14]]4 M10 02https://esolangs.org/w/index.php?diff=74981&oldid=74869 5* 03DmilkaSTD 5* (+0) 10grammar+=2
 2020-07-02 17:29:21 Joined: b_jonas
 2020-07-02 17:29:21 Names: ^[, aloril, APic, arseniiv, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-02 17:31:05 <esowiki> 14[[07Revolution 914]]4 M10 02https://esolangs.org/w/index.php?diff=74982&oldid=36109 5* 03DmilkaSTD 5* (+16) 10
+2020-07-02 17:33:54 <esowiki> 14[[07Revolution 914]]4 M10 02https://esolangs.org/w/index.php?diff=74983&oldid=74982 5* 03DmilkaSTD 5* (+148) 10
+2020-07-02 17:34:50 <arseniiv> b_jonas: hi
+2020-07-02 17:37:53 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-07-02 17:37:53 <kspalaiologos> hello
+2020-07-02 17:38:17 <kspalaiologos> I'm looking for an esolang to build an interpreter for
+2020-07-02 17:38:26 <kspalaiologos> I'd like to target something turing complete
+2020-07-02 17:38:47 <kspalaiologos> and preferably something that already has some code samples, but isn't trivial to program (like bf substitutions or smth)
+2020-07-02 17:39:08 <kspalaiologos> bonus points for evil bit-level twiddling operations
+2020-07-02 17:39:27 User Name: b_jonas = b_jonas!~x@catv-176-63-12-10.catv.broadband.hu
+2020-07-02 17:39:27 <b_jonas> hello arseniiv, kspalaiologos
+2020-07-02 17:39:59 <kspalaiologos> i considered malbolge, but it's so well known that the surprise aspect is over :p
+2020-07-02 17:40:13 <arseniiv> <kspalaiologos> bonus points for evil bit-level twiddling operations => ohohoho can’t advice anything sorry
+2020-07-02 17:40:32 <kspalaiologos> bonus points =/= all points :p
+2020-07-02 17:40:57 <kspalaiologos> I just want to develop something as a showcase of what my x86 packer/obfuscator can do
+2020-07-02 17:41:48 <kspalaiologos> I thought about writing a NAND-based lang
+2020-07-02 17:41:55 <kspalaiologos> with some encryption or something
+2020-07-02 17:43:01 <b_jonas> kspalaiologos: why does it have to be an esoteric language? you could just write a C compiler, there are plenty of code examples of C, including ones that do weird stuff
+2020-07-02 17:43:37 <kspalaiologos> it's very simple: because esolangs aren't this easy to work your way through
+2020-07-02 17:43:54 <kspalaiologos> some of my crackmes feature esolang X, which has a checker for the solution, with an x86 interpreter bundled
+2020-07-02 17:44:10 <kspalaiologos> so I'm looking for this X esolang that I could use for making a crackme
+2020-07-02 17:44:26 <kspalaiologos> there are bonus points for it being hard and not very common, because it adds up some difficulty
+2020-07-02 17:44:54 <kspalaiologos> also the interpreter has to be non-trivial, so the code protection stuff can really show off
+2020-07-02 17:45:19 <b_jonas> kspalaiologos: how about one of the older ICFP languages then?
+2020-07-02 17:45:41 <b_jonas> including the ones that aren't documented on the esolang wiki, like the space navigation language
+2020-07-02 17:45:41 <kspalaiologos> uh, I looked it up, it seems interesting
+2020-07-02 17:45:50 <kspalaiologos> is there a list or something?
+2020-07-02 17:45:53 <b_jonas> or Intcode which isn't ICFP but similar
+2020-07-02 17:45:56 <kspalaiologos> the google doesn't link to anything useful
+2020-07-02 17:46:09 <b_jonas> kspalaiologos: sadly the old ICFP contest pages are hard to find,
+2020-07-02 17:46:32 <b_jonas> many of the websites are no longer online, since they're all organized by different groups
+2020-07-02 17:46:37 <b_jonas> http://icfpcontest.github.io/ has some links
+2020-07-02 17:46:45 <kspalaiologos> I used malbolge and I liked it, because a) it was hard to program/read/write b) encryption c) weird operators
+2020-07-02 17:47:16 <kspalaiologos> yeah
+2020-07-02 17:47:21 <kspalaiologos> ICFP seems like the way to go
+2020-07-02 17:47:27 <kspalaiologos> there is some interesting stuff there
+2020-07-02 17:47:34 <b_jonas> ICFP 2000 has GML, a stack-based pure functional language,
+2020-07-02 17:47:40 <b_jonas> well, almost pure functional
+2020-07-02 17:47:47 <b_jonas> the ray-tracing output is a side-effect
+2020-07-02 17:48:21 <b_jonas> 2004 has the ant brain language
+2020-07-02 17:48:40 <b_jonas> where you control a swarm of ants by writing a program that is running in the brain of each ant
+2020-07-02 17:48:43 <b_jonas> in a very limited language
+2020-07-02 17:48:58 <kspalaiologos> ah, this one is entertaining
+2020-07-02 17:49:14 <b_jonas> 2014 has two languages: GHC and GCC, one the style of 8-bit cpus, the other a haskell-style functional language
+2020-07-02 17:49:40 <kspalaiologos> the 9-bit one seems promising
+2020-07-02 17:49:43 <kspalaiologos> *8
+2020-07-02 17:50:01 <b_jonas> 2011 has Lambda: the Gathering, a card game with a programming element, where you make a move by composing a function with another function from either the left or right
+2020-07-02 17:50:18 <b_jonas> see https://esolangs.org/wiki/Category:ICFP_contest
+2020-07-02 17:50:56 <kspalaiologos> nice
+2020-07-02 17:51:00 <kspalaiologos> I will evilify it to be hard to program
+2020-07-02 17:51:03 <b_jonas> 2007 has Fuun DNA and RNA, where DNA acts as a turing-complete preprocessor and RNA is a vector drawing language with no programming constructs directly inside it which is why you use the preprocessor
+2020-07-02 17:51:04 <kspalaiologos> and it will make a good tool
+2020-07-02 17:51:10 <b_jonas> it's a very interesting string-based language
+2020-07-02 17:51:42 <b_jonas> oh, and 2006 has UM-32, another low-level cpu-like language, I recommend that one
+2020-07-02 17:51:45 <b_jonas> see https://esolangs.org/wiki/UM-32
+2020-07-02 17:51:56 <kspalaiologos> yes yes
+2020-07-02 17:52:00 <kspalaiologos> this is the one on my mind
+2020-07-02 17:52:00 <b_jonas> well, see the original contest description that must be linked from it instead
+2020-07-02 17:52:23 <b_jonas> and there were contests every year since, but I don't have the links
+2020-07-02 17:52:48 <kspalaiologos> I'll remove instructions 3,4,5
+2020-07-02 17:53:01 <kspalaiologos> 8,9 and add realloced permagen instead
+2020-07-02 17:53:11 <kspalaiologos> or not
+2020-07-02 17:53:16 <kspalaiologos> because this seems like harvard architecture to me
+2020-07-02 17:54:16 <b_jonas> kspalaiologos: if you change instructions, you won't be able to run the code that contains the contest
+2020-07-02 17:54:23 <b_jonas> you wanted code examples, there is one, the Codex
+2020-07-02 17:54:29 <b_jonas> if you want to run that, you need the full language
+2020-07-02 17:54:32 <kspalaiologos> I can write em myself
+2020-07-02 17:55:01 <b_jonas> oh, so you don't want existing example programs after all?
+2020-07-02 17:56:37 <kspalaiologos> example programs are here to point me the direction
+2020-07-02 17:56:46 <esowiki> 14[[07BF-ASM:814]]4 M10 02https://esolangs.org/w/index.php?diff=74984&oldid=74789 5* 03DmilkaSTD 5* (-1865) 10
+2020-07-02 17:56:46 <kspalaiologos> not for anything else
+2020-07-02 17:56:58 <b_jonas> and to test the correctness of your interpreter
+2020-07-02 17:57:06 <kspalaiologos> yes
+2020-07-02 17:57:09 <kspalaiologos> and, hah, interesting to see
+2020-07-02 17:57:13 <kspalaiologos> someone is taking on brainfuck assembly too
+2020-07-02 17:57:44 <esowiki> 14[[07BF-ASM:814]]4 M10 02https://esolangs.org/w/index.php?diff=74985&oldid=74984 5* 03DmilkaSTD 5* (+28) 10
+2020-07-02 17:59:21 <esowiki> 14[[07BF-ASM:814]]4 M10 02https://esolangs.org/w/index.php?diff=74986&oldid=74985 5* 03DmilkaSTD 5* (-13) 10
