@@ -60,3 +60,39 @@
 2020-07-03 09:23:45 Names: ^[, aloril, APic, Arcorann, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
 2020-07-03 09:24:02 Quit: imode (Ping timeout: 256 seconds)
 2020-07-03 09:24:02 Names: ^[, aloril, APic, Arcorann, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-03 09:31:00 <esowiki> 14[[07ASCII14]]4 10 02https://esolangs.org/w/index.php?diff=75046&oldid=69949 5* 03Lebster 5* (+4256) 10added table
+2020-07-03 09:31:46 Joined: craigo
+2020-07-03 09:31:46 Names: ^[, aloril, APic, Arcorann, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, craigo, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-03 09:31:53 <shachaf> `5 w
+2020-07-03 09:31:57 <HackEso> 1/1:lkoen//LKoen vivait en haut de la Tour Eiffel, mais il s'est préfixé d'un L et s'est envolé. \ paperless//In a paperless world, rock would never lose. \ dew//In the Famous Mountains of York, Taneb makes dew. \ warning//Warnings indicate when you are doing something dangerous, like using operator precedence. \ just intonation//Bad-tempered people can be recognized by just intonation.
+2020-07-03 09:34:52 <int-e> `cwlprits just intonation
+2020-07-03 09:34:54 <HackEso> JafeÌˆt
+2020-07-03 09:35:29 <int-e> maybe it was funny in context? seems entirely forgettable to me...
+2020-07-03 09:37:14 User Name: cpressey = cpressey!~cpressey@88.144.69.222
+2020-07-03 09:37:14 <cpressey> int-e: I think it's play on "bad-tempered" vs "well-tempered"?
+2020-07-03 09:37:35 <int-e> cpressey: ah, maybe
+2020-07-03 09:37:56 * int-e isn't very musical.
+2020-07-03 09:38:21 <cpressey> @tell arseniiv Right, so lambdabot doesn't actually tell you that you have messages, until you *say something* on the channel.
+2020-07-03 09:38:21 <lambdabot> Consider it noted.
+2020-07-03 09:38:35 <int-e> cpressey: it certainly makes it better :)
+2020-07-03 09:39:31 <int-e> cpressey: I believe the main lambdabot authors were the screen- or irc bouncer kind of people.
+2020-07-03 09:40:00 <int-e> which makes merely joining a channel a bad indicator of activity
+2020-07-03 09:40:56 <cpressey> it's just that we were trying to figure out what the trigger actually was, the other day
+2020-07-03 09:41:39 <int-e> It's activity on the channel. And then there's a rate limit, so I suppose testing it out can be a little hard.
+2020-07-03 09:42:47 <int-e> (I'd have to check the code, but I believe it just keeps a time stamp of the latest notification which is checkd even when there are new messages.)
+2020-07-03 09:44:19 <int-e> Let me check actually.
+2020-07-03 09:46:02 <int-e> I'm wrong. There is a rate limit (pretty low, once per day), but it is reset when a new message is added.
+2020-07-03 09:49:07 <shachaf> It's an above-average pun for wisdom, I think!
+2020-07-03 09:50:07 <int-e> shachaf: It's good, but too advanced for me.
+2020-07-03 09:51:32 <int-e> does anybody else find youtube's (relatively new) mini player annoying?
+2020-07-03 09:53:21 <shachaf> I'm not sure I've seen it.
+2020-07-03 09:53:24 <int-e> (What happens is that I search for a video, click a thumbnail, and expect to get the video page... but if I click a bit too far to the right it triggers the "add to queue" action that activates the mini player.)
+2020-07-03 09:53:56 <shachaf> YouTube seems pretty user-hostile to me. They always turn on autoplay which I doubt is what hardly anyone wants by default, but is surely good for \rainbow{engagement}.
+2020-07-03 09:54:55 <int-e> Good use of the rainbow command.
+2020-07-03 09:55:24 <int-e> Yes, autoplay is high on my personal list of youtube annoyances.
+2020-07-03 09:55:33 <shachaf> I would use the actual rainbow command, but I think you have colors and colours disabled.
+2020-07-03 09:55:43 <int-e> I do.
+2020-07-03 09:55:48 <shachaf> Anyway, as Google says: "We believe that advertising can be effective without being flashy. We donâ€™t accept popâ€“up advertising, which interferes with your ability to see the content youâ€™ve requested."
+2020-07-03 09:55:54 <shachaf> I think YouTube captures this quite well.
+2020-07-03 09:56:51 <shachaf> Man, the Pragmatics of SAT workshop is in about 4 hours.
+2020-07-03 09:57:08 <shachaf> I kind of want to try attending but I doubt I should be awake then.
