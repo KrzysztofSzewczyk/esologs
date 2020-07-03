@@ -139,3 +139,45 @@
 2020-07-03 10:28:41 <int-e> (or setlinebuf)
 2020-07-03 10:29:03 <shachaf> I wonder what would be a good API to give callers in practice.
 2020-07-03 10:29:52 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2020-07-03 10:30:01 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-07-03 10:30:07 <int-e> Hmm, wasn't aware of fmemopen.
+2020-07-03 10:31:09 <int-e> (or its dynamic friend, open_memstream)
+2020-07-03 10:33:07 <shachaf> That's another thing I was considering.
+2020-07-03 10:33:26 <shachaf> Or rather I was considering open_memstream, I didn't know about the other one.
+2020-07-03 10:35:03 <shachaf> In the general case you don't necessarily want the entire output to be in memory, though. You just want a fixed buffer that you can flush.
+2020-07-03 10:35:28 <shachaf> I guess setbuf works OK but it makes the caller do more work.
+2020-07-03 10:37:53 <shachaf> Maybe the function should do its own buffering.
+2020-07-03 10:38:07 <int-e> ideally you'd add a buffer temporarily if there isn't one already... but you can't query whether an fd is buffered, I think.
+2020-07-03 10:38:32 <int-e> Err, file handle, of FILE * type.
+2020-07-03 10:39:15 <shachaf> Yes.
+2020-07-03 10:39:32 <shachaf> I mean, the ideal API to present is maybe something like a state machine, but that makes the function way more work to write.
+2020-07-03 10:44:19 <cpressey> /* Note: this function makes many small writes to the FILE * passed to it -- it may behoove you to ensure it is buffered. */
+2020-07-03 10:44:36 <cpressey> That's all I'd do
+2020-07-03 10:44:42 <int-e> "behoove"
+2020-07-03 10:44:50 <int-e> so fancy
+2020-07-03 10:47:00 <cpressey> It's a word that I use strangely frequently considering how funny it is
+2020-07-03 10:47:10 <cpressey> It's just that it's the mot juste sometimes
+2020-07-03 10:47:46 <int-e> It's fine, just really rare, and maybe a tad condescending.
+2020-07-03 10:48:10 <cpressey> "it may be in your interests to ensure that it's buffered" is a bit long.  "You might want to ensure it is buffered", maybe.
+2020-07-03 10:48:20 <cpressey> My point is, I don't know what the caller wants.
+2020-07-03 10:48:20 <int-e> So maybe a bit out of place for technical documentation? I don't know.
+2020-07-03 10:48:36 <cpressey> Maybe they want lots of small writes on an unbuffered stream.  It's possible!
+2020-07-03 10:48:55 <int-e> It's hard to phrase this in a way that does not come across as condescending. You are giving advice after all.
+2020-07-03 10:49:34 <cpressey> The other option is just to have the first part of the comment, and hope the client can infer the second part.
+2020-07-03 10:50:19 <int-e> As a result, this function may be slow on unbuffered streams.
+2020-07-03 10:50:56 <cpressey> Sure, that's less opinionated.
+2020-07-03 10:51:55 <int-e> You better ensure the stream is buffered unless you like your code slowing down to a crawl!
+2020-07-03 10:52:11 <int-e> You are somewhere in the middle of that spectrum :)
+2020-07-03 10:52:52 <int-e> This is also really close to bikeshedding.
+2020-07-03 10:54:14 <shachaf> cpressey: OK, but it's supposed to be maximally convenient to use.
+2020-07-03 10:54:58 <shachaf> Maybe making every caller do setbuf is OK, but it seems annoying since this'll be in all of my programs.
+2020-07-03 10:56:40 <int-e> maximal convenience indicates you should bite the bullet and do your own internal buffering, and live with the memory overhead and potential double copying.
+2020-07-03 10:56:47 <shachaf> The specific case is a function that generates --help text for programs.
+2020-07-03 10:57:06 <shachaf> So it probably all doesn't matter.
+2020-07-03 10:57:15 <int-e> otoh this doesn't sound performance critical at all
+2020-07-03 10:57:37 <shachaf> It isn't.
+2020-07-03 10:57:45 <int-e> then KISS it
+2020-07-03 10:58:08 <shachaf> It's just this does things like indenting by printing a bunch of spaces in a loop, and it's not great to have each one be a system call.
+2020-07-03 10:58:22 <int-e> (Huh, why have I never seen anybody use that as a verb? It's so natural!)
+2020-07-03 10:58:58 <int-e> I guess the sexual connotations make it inappropriate in most contexts.
+2020-07-03 10:58:58 <shachaf> I think everyone says "KitSS". It really rolls off the tongue.
