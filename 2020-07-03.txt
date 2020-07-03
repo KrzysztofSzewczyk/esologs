@@ -259,3 +259,47 @@
 2020-07-03 13:55:06 <esowiki> 14[[07Talk:Assemblyfuck14]]4 10 02https://esolangs.org/w/index.php?diff=75080&oldid=75079 5* 03DmilkaSTD 5* (+105) 10
 2020-07-03 13:55:29 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=75081&oldid=74951 5* 03Skyf0l 5* (+114) 10I have added me !
 2020-07-03 13:57:52 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=75082&oldid=75066 5* 03PythonshellDebugwindow 5* (+1112) 10
+2020-07-03 14:02:47 User Name: cpressey = cpressey!~cpressey@88.144.69.222
+2020-07-03 14:02:47 <cpressey> arseniiv: hi.  Generalized Minksy machine is very cool, but to implement it in Tandem wouldn't you need to be able to define a concrete string representation for each of the values? Would there be a way to do this canonically?
+2020-07-03 14:04:30 <arseniiv> cpressey: hi!
+2020-07-03 14:04:33 <cpressey> (btw, Tandem is still broken, because ⊥ and algebraic manipulations hate each other)
+2020-07-03 14:06:11 <arseniiv> I’d represent values in a prefix (Polish) notation, or maybe in a S-expression notation or similar, but it seems they are all stack-unfriendly
+2020-07-03 14:07:04 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=75083&oldid=72330 5* 03PythonshellDebugwindow 5* (+261) 10/* Commands */ code tags + newline is obvious
+2020-07-03 14:07:15 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=75084&oldid=75083 5* 03PythonshellDebugwindow 5* (-35) 10/* Truth-machine */
+2020-07-03 14:08:23 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=75085&oldid=75084 5* 03PythonshellDebugwindow 5* (-16) 10/* Auto-formatting */
+2020-07-03 14:08:36 <esowiki> 14[[07Eso2D14]]4 M10 02https://esolangs.org/w/index.php?diff=75086&oldid=75085 5* 03PythonshellDebugwindow 5* (+12) 10/* Auto-formatting */ edit spam
+2020-07-03 14:08:49 <esowiki> 14[[07User:PythonshellDebugwindow/(Unnamed language)14]]4 M10 02https://esolangs.org/w/index.php?diff=75087&oldid=75082 5* 03PythonshellDebugwindow 5* (+379) 10/* Elements */
+2020-07-03 14:08:58 <arseniiv> for example let { data Nat = Z | S Nat; data ListN = N | C Nat ListN }, then I would represent C (S (S Z)) $ C Z $ C (S (S (S Z))) N as CSSZCZCSSSZN or (C(S(SZ))(CZ(C(S(S(SZ)))N)))
+2020-07-03 14:09:36 <esowiki> 14[[07Esolang:Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=75088&oldid=74809 5* 03PythonshellDebugwindow 5* (+12) 10
+2020-07-03 14:09:44 <arseniiv> hm no, it seems S-expressions may be friendly if we use something to track open parentheses discarded, why
+2020-07-03 14:09:46 <esowiki> 14[[07Esolang:Sandbox14]]4 M10 02https://esolangs.org/w/index.php?diff=75089&oldid=75088 5* 03PythonshellDebugwindow 5* (+10) 10
+2020-07-03 14:10:33 <arseniiv> well that’s all like you used for the usual Minsky machine with nats, though you used an empty string for Z
+2020-07-03 14:10:57 <esowiki> 14[[07Talk:Assemblyfuck14]]4 10 02https://esolangs.org/w/index.php?diff=75090&oldid=75080 5* 03DmilkaSTD 5* (+349) 10
+2020-07-03 14:11:09 <arseniiv> CSSZCZCSSSZN => looks Czech and Hungarian to me
+2020-07-03 14:11:32 <esowiki> 14[[07Talk:Assemblyfuck14]]4 10 02https://esolangs.org/w/index.php?diff=75091&oldid=75090 5* 03DmilkaSTD 5* (+16) 10
+2020-07-03 14:13:25 <arseniiv> cpressey: answering your question in full, yeah, I believe a representation like those would be canonical. We can even use multi-letter constructors, I forgot one can match many characters at once
+2020-07-03 14:15:49 <arseniiv> like Cons␣S␣S␣Z␣Cons␣Z␣Nil␣ for the prefix version, ending each name in a space. Though this is not the deal of course, but it’s neat we can be faithful to the details of the original haskell-like naming of constructors
+2020-07-03 14:15:56 <esowiki> 14[[07Talk:Assemblyfuck14]]4 10 02https://esolangs.org/w/index.php?diff=75092&oldid=75091 5* 03DmilkaSTD 5* (+2213) 10
+2020-07-03 14:16:14 <esowiki> 14[[07BF-ASM:814]]4 10 02https://esolangs.org/w/index.php?diff=75093&oldid=75070 5* 03DmilkaSTD 5* (+134) 10
+2020-07-03 14:16:18 <arseniiv> I like these space brackets ␣␣␣
+2020-07-03 14:16:30 Joined: kspalaiologos
+2020-07-03 14:16:30 Names: ^[, adu, aloril, APic, Arcorann, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, craigo, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-03 14:16:50 <arseniiv> I used them sometimes long time ago when I wrote programs by hand
+2020-07-03 14:17:11 <arseniiv> don’t remember where I learned about them
+2020-07-03 14:17:46 <cpressey> I see, I think.  Well, as long as you can build & consume them from one side only, you only need one stack to hold them (and if you can't, you can probably put them across two stacks, like a tape, if you're prepared to juggle them a bit)
+2020-07-03 14:17:54 <arseniiv> kspalaiologos: hi how are your languages doing?
+2020-07-03 14:18:13 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-07-03 14:18:13 <kspalaiologos> I wrote an emulator
+2020-07-03 14:18:16 <kspalaiologos> for this UM32 thingy
+2020-07-03 14:18:43 <kspalaiologos> it works, and it's moderately obfuscated
+2020-07-03 14:18:52 <kspalaiologos> the best settings for some reason break the program so I'm checking it
+2020-07-03 14:19:08 <arseniiv> cpressey: yeah maybe two stacks would be enough, didn’t thought about that. One is definitely not, as we can’t add from another end. Hmm how about a deque-rewriting language where you can match on both ends?
+2020-07-03 14:20:27 Quit: atslash (Read error: Connection reset by peer)
+2020-07-03 14:20:27 Names: ^[, adu, aloril, APic, Arcorann, arseniiv, ArthurStrong, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, craigo, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-03 14:20:59 Joined: atslash
+2020-07-03 14:20:59 Names: ^[, adu, aloril, APic, Arcorann, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, craigo, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-03 14:21:51 <arseniiv> though that would need a revamp of the Haskell impl as it currently uses lists
+2020-07-03 14:22:09 <arseniiv> and that would be not a minimal language anymore
+2020-07-03 14:29:10 Joined: RiriSec
+2020-07-03 14:29:10 Names: ^[, adu, aloril, APic, Arcorann, arseniiv, ArthurStrong, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, craigo, Cubix, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, RiriSec, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-03 14:29:23 <kspalaiologos> aye
