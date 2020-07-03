@@ -96,3 +96,46 @@
 2020-07-03 09:55:54 <shachaf> I think YouTube captures this quite well.
 2020-07-03 09:56:51 <shachaf> Man, the Pragmatics of SAT workshop is in about 4 hours.
 2020-07-03 09:57:08 <shachaf> I kind of want to try attending but I doubt I should be awake then.
+2020-07-03 10:00:50 <int-e> I guess the mini player (or rather, the queuing feature that goes with it) could actually be fun if I didn't trigger it accidently so much.
+2020-07-03 10:01:57 <int-e> But then again, 95% of the time I want to watch one video at a time.
+2020-07-03 10:02:57 <int-e> I think I even asked here how to play an individual video from a playlist not too long ago.
+2020-07-03 10:03:35 <int-e> Oh well. Enough whining about bad UI/UX for today. :)
+2020-07-03 10:08:26 <shachaf> Using random SAT instances for testing was probably not a great idea.
+2020-07-03 10:10:07 <int-e> hmm
+2020-07-03 10:11:01 <cpressey> Speaking of \rainbow{engagement}, I am saddened to note that Mozilla has apparently decided that their browser's "blank page" should in fact include headlines/previews of "recommended articles"
+2020-07-03 10:11:15 <int-e> I know I've read a bit about random instances but nothing stuck.
+2020-07-03 10:12:13 <shachaf> Well, many of the interesting tricks are just not very relevant for random instances.
+2020-07-03 10:12:20 <int-e> cpressey: Yeah I still configure it to have a proper blank page.
+2020-07-03 10:12:47 <shachaf> Apparently there was a lot of progress when people started using industrial instances instead of random instances as benchmarks?
+2020-07-03 10:13:13 <shachaf> I heard a similar thing about allocators -- that people used to test allocator performance with synthetic workloads, and they became much better when people started using real workloads.
+2020-07-03 10:13:22 <int-e> It's hard to have random instances that simultaneously exhibt the kind of locality you get in real life.
+2020-07-03 10:13:49 <int-e> But that's just a vague idea that sounds smart, with no real insight in how to overcome it.
+2020-07-03 10:14:11 <shachaf> https://ece.uwaterloo.ca/~vganesh/Publications_files/vg2015-SATGraf-SAT15.pdf is probably related to that?
+2020-07-03 10:15:00 <shachaf> I like the pretty SAT instance pictures.
+2020-07-03 10:15:04 <int-e> cpressey: mozilla's doing way too much syndication these days.
+2020-07-03 10:15:22 <int-e> including things like "recommend extensions when you browse"
+2020-07-03 10:15:28 <int-e> s/when/as/
+2020-07-03 10:15:31 <cpressey> int-e: Yeah, I've noticed.
+2020-07-03 10:16:21 <shachaf> Today's recommended extension is .jpg
+2020-07-03 10:17:36 <int-e> `? password
+2020-07-03 10:17:37 <HackEso> The password of the month is peeping Tom.
+2020-07-03 10:19:50 <int-e> Ah right, null window searches.
+2020-07-03 10:19:59 <int-e> Anyway, July's is still up for grabs.
+2020-07-03 10:20:20 <shachaf> `learn The password of the month is still up for grabs.
+2020-07-03 10:20:25 <HackEso> Relearned 'password': The password of the month is still up for grabs.
+2020-07-03 10:21:39 <int-e> mmm setting potm by proxy
+2020-07-03 10:21:52 <shachaf> I figured you were doing that.
+2020-07-03 10:22:06 <shachaf> I mean, with maybe 70% confidence.
+2020-07-03 10:22:13 <shachaf> Of course I don't get points for saying that after you.
+2020-07-03 10:22:57 <int-e> I wasn't, but is anybody going to believe that...
+2020-07-03 10:23:09 <shachaf> Oh no.
+2020-07-03 10:23:33 <shachaf> Now it's the worst of all worlds for me.
+2020-07-03 10:23:55 <shachaf> Hmm, I have this function that writes some strings to a FILE * argument. If you pass it stdout it works fine, but if you pass it stderr it writes and flushes a lot of small strings.
+2020-07-03 10:23:59 <shachaf> What's the way to get around that?
+2020-07-03 10:24:18 <shachaf> I guess ideally it wouldn't write to a FILE * at all but just give you a string, or something...
+2020-07-03 10:24:44 <shachaf> Well, I don't know what's ideal.
+2020-07-03 10:27:03 Joined: Lord_of_Life
+2020-07-03 10:28:20 <int-e> tinker with setbuf() to make stderr buffered, or write to a string buffer, then write that to the file?
+2020-07-03 10:28:41 <int-e> (or setlinebuf)
+2020-07-03 10:29:03 <shachaf> I wonder what would be a good API to give callers in practice.
+2020-07-03 10:29:52 Quit: Lord_of_Life (Ping timeout: 246 seconds)
