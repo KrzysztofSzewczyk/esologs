@@ -282,3 +282,92 @@
 2020-07-04 18:29:21 <kspalaiologos> the packed executables have a detection rate (false positives) of 1-4/72
 2020-07-04 18:29:55 <kspalaiologos> it also bundles some inlined intrisic functions
 2020-07-04 18:30:01 <kspalaiologos> that Visual C doesn't inline for whatever reason
+2020-07-04 18:30:21 <kspalaiologos> it can unwrap malloc/realloc/free calls into HeapAlloc/HeapRealloc etc
+2020-07-04 18:30:36 <kspalaiologos> so the dependency on the C runtime is really not a thing
+2020-07-04 18:30:57 <kspalaiologos> it can also do switch table mangling (literally every tool I tested for disassembly or decompilation has failed on this)
+2020-07-04 18:32:29 <kspalaiologos> there are a couple of disadvantages - you need to make a preset for every release (id est, review 500 checkboxes and comboboxes and other dialog popups regarding obfuscation, optimization and shrinking)
+2020-07-04 18:33:01 <kspalaiologos> and it sometimes produces crashing code, so I'm doing unit tests all the time and improving the transformers to be less aggressive if not desired
+2020-07-04 18:33:32 <kspalaiologos> I also wrote such a tool for Java, and I considered writing one for Lua to first mangle the Lua source code, then build it using luac, strip symbols and then obfuscate it on the assembly level
+2020-07-04 18:33:54 <kspalaiologos> cracking, reverse-engineering and malware is just my thing :p, especially malware analysis
+2020-07-04 18:34:05 <kspalaiologos> I have 100GB of malware samples on my PC
+2020-07-04 18:34:18 User Name: zzo38 = zzo38!~zzo38@host-24-207-14-22.public.eastlink.ca
+2020-07-04 18:34:18 <zzo38> arseniiv: I just read the documentation of the database software to learn SQL. (In my case, I use SQLite; maybe you use something else)
+2020-07-04 18:37:42 <b_jonas> kspalaiologos: 100 GB of malware samples?
+2020-07-04 18:37:44 <b_jonas> that sounds crazy
+2020-07-04 18:38:22 <kspalaiologos> yes
+2020-07-04 18:38:31 <kspalaiologos> DOS, Windows, Linux, MacOS, Symbian
+2020-07-04 18:38:37 <kspalaiologos> I have malware for most platforms
+2020-07-04 18:38:42 <kspalaiologos> I think I have some for 6502 computers
+2020-07-04 18:38:58 <kspalaiologos> there's also a lot of disassemblies I did, source code leaks
+2020-07-04 18:39:17 <kspalaiologos> but I'm a bit selfish and I'm not willing to share my malware :p
+2020-07-04 18:39:35 <kspalaiologos> but, if someone really wants... :d
+2020-07-04 18:40:06 <esowiki> 14[[07Talk:C-Hex14]]4 N10 02https://esolangs.org/w/index.php?oldid=75227 5* 03Feet2picture 5* (+15) 10Created page with "DISCUSSION PAGE"
+2020-07-04 18:40:16 <b_jonas> no thanks, I don't want 100 GB of malware
+2020-07-04 18:40:24 <b_jonas> kspalaiologos: do you do that for work?
+2020-07-04 18:40:27 <kspalaiologos> malware is lovely
+2020-07-04 18:40:33 <kspalaiologos> I wish I could work with malware
+2020-07-04 18:40:46 <kspalaiologos> I'm a poor student, what else can I do
+2020-07-04 18:40:52 <zzo38> I have the code for a computer virus of thirteen bytes:  35 00 3C 41 87 F2 CD 21 93 B4 40 CD 21
+2020-07-04 18:40:57 <kspalaiologos> I earn by writing assignments for people
+2020-07-04 18:41:09 <kspalaiologos> zzo38, I made a MBR overwriting trojan with a graphical payload in 86 bytes
+2020-07-04 18:41:51 <kspalaiologos> ugh what did I just witness
+2020-07-04 18:41:55 <b_jonas> kspalaiologos: I don't mean malware specifically, but reverse engineering in general
+2020-07-04 18:41:58 <b_jonas> `? kspalaiologos
+2020-07-04 18:42:00 <HackEso> kspalaiologos is a brainfuck addict and a late night Perl hacker. He's secretly disassembling brainfuck code for a casino that lost the source code. Apparently knows the secret of Malbolge.
+2020-07-04 18:42:05 <kspalaiologos> I wish I could work with RE
+2020-07-04 18:42:07 <arseniiv> zzo38: thanks! I used SQLite a bit and read its docs, yeah, though I don’t think that’d be a friendly introductory read :)
+2020-07-04 18:42:07 <b_jonas> the casino brainfuck disassembly counts
+2020-07-04 18:42:19 <kspalaiologos> or sell my obfuscators
+2020-07-04 18:43:05 <kspalaiologos> sigh I need to run this virus, because it's not obvious at first what does it do
+2020-07-04 18:43:24 <zzo38> arseniiv: Well, I don't know, but at least I found it suitable.
+2020-07-04 18:43:30 <kspalaiologos> I see a file write
+2020-07-04 18:43:50 <kspalaiologos> does it like, overwrite command.com or something?
+2020-07-04 18:43:52 <kspalaiologos> interesting
+2020-07-04 18:44:27 <b_jonas> kspalaiologos: now you have 100000013 bytes of malware
+2020-07-04 18:44:32 <arseniiv> <b_jonas> no thanks, I don't want 100 GB of malware => I bet at least half of it is a single virus written in Malbolge
+2020-07-04 18:44:38 <kspalaiologos> kek
+2020-07-04 18:44:50 <arseniiv> I knew you’d like that :D
+2020-07-04 18:44:54 <kspalaiologos> sure I would
+2020-07-04 18:45:08 <kspalaiologos> ugh it seems like I'm out of VMs
+2020-07-04 18:45:18 <kspalaiologos> I nuked all my VMs before, I need to install DOS
+2020-07-04 18:46:08 <arseniiv> zzo38: anyways that’s a good advice in general, I’d say
+2020-07-04 18:46:32 <b_jonas> perhaps it's one of those barely portable malware that work only with a specific old version of DOS
+2020-07-04 18:46:46 <kspalaiologos> no
+2020-07-04 18:46:49 <b_jonas> and only if you sys a floppy disk first thing you do
+2020-07-04 18:46:49 <kspalaiologos> I see the source code
+2020-07-04 18:46:59 <kspalaiologos> I'm 90% sure it pulls filename from the RAM
+2020-07-04 18:47:02 <kspalaiologos> within the first instruction
+2020-07-04 18:47:04 <kspalaiologos> opens the file
+2020-07-04 18:47:06 <kspalaiologos> and then truncates it
+2020-07-04 18:47:17 <kspalaiologos> I just have no idea which file is it
+2020-07-04 18:47:27 <kspalaiologos> // typing :wq! in MS-DOS edit was a brainfart
+2020-07-04 18:50:01 <kspalaiologos> yeah, int21h AH=3Ch is file open/truncate
+2020-07-04 18:50:09 <kspalaiologos> AL=0x00 it was set for whatever reason
+2020-07-04 18:50:18 <kspalaiologos> xor usage seems dubious here too
+2020-07-04 18:50:31 <kspalaiologos> inc cx => creates a readonly file
+2020-07-04 18:50:41 <kspalaiologos> xchg si, di => ??
+2020-07-04 18:50:49 <kspalaiologos> then it does int21h ah=0x40
+2020-07-04 18:50:56 <kspalaiologos> and this is file write
+2020-07-04 18:51:10 <b_jonas> "for whatever reason" => it's set because loading a two-byte constant to AX is three bytes, loading a one-byte constant to AH is three bytes, so it's usually free to set AX together
+2020-07-04 18:51:27 <kspalaiologos> there is no need to
+2020-07-04 18:51:30 <kspalaiologos> because AL ain't used
+2020-07-04 18:52:29 <kspalaiologos> xor ax,0x3c00 is 35 00 3c
+2020-07-04 18:52:39 <kspalaiologos> mov ah,0x3c is b43c
+2020-07-04 18:52:42 <kspalaiologos> it's one byte shorter
+2020-07-04 18:53:06 <b_jonas> hmm
+2020-07-04 18:53:15 <b_jonas> ok sorry I'm just stupid
+2020-07-04 18:53:55 <b_jonas> maybe it just wants to confuse antivirus tools that quickly look for MOV AH stuff
+2020-07-04 18:54:02 <kspalaiologos> may it be
+2020-07-04 18:54:50 <kspalaiologos> huh what
+2020-07-04 18:54:51 <kspalaiologos> it's not a trojan
+2020-07-04 18:54:57 <kspalaiologos> it just displays random gibberish for hell knows what reason
+2020-07-04 18:55:30 <kspalaiologos> system is intact
+2020-07-04 18:56:05 <kspalaiologos> my 2-byte virus is better: FAF4
+2020-07-04 18:56:36 <kspalaiologos> it will just wait for NMI
+2020-07-04 18:56:44 <kspalaiologos> more malicious version is EBFE
+2020-07-04 18:56:48 <kspalaiologos> id est, `jmp $'
+2020-07-04 18:58:24 <kspalaiologos> it doesn't work, because it tries to read the filename from ds:dx, which points to ds:0000
+2020-07-04 18:58:32 <kspalaiologos> in my case, it was some random gibberish
+2020-07-04 18:58:40 <kspalaiologos> the file open fails with code ax=05h
+2020-07-04 18:59:39 <kspalaiologos> it tries then to open file 05h
+2020-07-04 18:59:40 <kspalaiologos> and overwrite it
