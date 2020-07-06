@@ -228,3 +228,24 @@
 2020-07-06 15:39:27 <esowiki> 14[[07User:PythonshellDebugwindow/Cmt14]]4 M10 02https://esolangs.org/w/index.php?diff=75396&oldid=75395 5* 03PythonshellDebugwindow 5* (+18) 10/* Hello World! */ outputTt
 2020-07-06 15:57:46 <esowiki> 14[[07Special:Log/upload14]]4 upload10 02 5* 03Hakerh400 5*  10uploaded "[[02File:Yume - unsolved puzzle.png10]]": Yume - example of an unsolved puzzle.
 2020-07-06 15:58:53 <myname> why aren't those files linked?
+2020-07-06 16:07:45 Joined: b_jonas
+2020-07-06 16:07:45 Names: ^[, adu, ais523, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, brj, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-06 16:08:26 <arseniiv> b_jonas: hi
+2020-07-06 16:08:50 User Name: b_jonas = b_jonas!~x@catv-176-63-12-89.catv.broadband.hu
+2020-07-06 16:08:50 <b_jonas> hello
+2020-07-06 16:09:18 <arseniiv> double precision is both better and worse than I thought
+2020-07-06 16:10:41 <myname> in comparisson to single precision?
+2020-07-06 16:11:16 <arseniiv> hmm I hadn’t tried to calculate that thing in it but it should be definitely bad
+2020-07-06 16:11:43 <esowiki> 14[[07Special:Log/upload14]]4 upload10 02 5* 03Hakerh400 5*  10uploaded "[[02File:Yume - solved puzzle.png10]]": Yume - an example of a solved puzzle.
+2020-07-06 16:14:29 <b_jonas> no, compared to what he tought
+2020-07-06 16:17:23 <arseniiv> I try to find a way to make points’ coordinates more accurate when new tiles glue to the old ones but I don’t see anything worthy. In the big hexagon case above, there would be only one interesting gluing at the very end, and even in this case I’m not sure I understand how to proceed. We could re-glue the last hexagon to the first, which definitely would be better, but then should we to continue with the same for another hexagons,
+2020-07-06 16:17:23 <arseniiv> when do we stop?.. and do we just replace old points with new ones or make some arithmetic with both to equalize something? I’ve no idea
+2020-07-06 16:18:43 <arseniiv> when more than two tiles neighbor each other, the matter is even foggier
+2020-07-06 16:19:57 <esowiki> 14[[07User:Hakerh400/Yume14]]4 N10 02https://esolangs.org/w/index.php?oldid=75399 5* 03Hakerh400 5* (+1326) 10game
+2020-07-06 16:20:09 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=75400&oldid=74629 5* 03Hakerh400 5* (+31) 10/* Games */
+2020-07-06 16:20:59 <arseniiv> though 1e-8 is a pretty good accuracy and maybe no one wishes to generate tiling chunks of more than a thousand tiles
+2020-07-06 16:27:33 <arseniiv> also this is a pretty extreme error margin, as mostly people are interested in chunks without holes in them, either growing them by subdivision or carefully adding tiles at the border
+2020-07-06 16:28:12 Joined: Frater_EST
+2020-07-06 16:28:13 Names: ^[, adu, ais523, aloril, APic, arseniiv, ArthurStrong, atslash, b_jonas, Bowserinator, brj, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi2, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, nfd, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-06 16:28:30 <arseniiv> this example shows that holes do matter, though, howewer little it may be for 10k tiles as circumference
+2020-07-06 16:28:44 <arseniiv> 60k*
