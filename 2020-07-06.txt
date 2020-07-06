@@ -67,3 +67,10 @@
 2020-07-06 04:54:31 <lambdabot> amstan says: best device i ever used, my nexus tablet is only an alarm clock now \ Cheshire says: Ruby is the same as Java
 2020-07-06 04:58:54 User Name: zzo38 = zzo38!~zzo38@host-24-207-14-22.public.eastlink.ca
 2020-07-06 04:58:54 <zzo38> I think it is not the same?
+2020-07-06 05:03:49 <shachaf> Man, is there no way to do nonblocking reads on stdin when it's a tty device?
+2020-07-06 05:04:58 <zzo38> Maybe you have to switch it to noncanonical mode; I don't know
+2020-07-06 05:05:41 <shachaf> Even then reads are blocking, right?
+2020-07-06 05:06:11 <zzo38> Well, I think you can set reads to be nonblocking then
+2020-07-06 05:06:21 <shachaf> Is the thing people do to read one byte at a time, and poll between each byte?
+2020-07-06 05:06:27 <shachaf> You can?
+2020-07-06 05:07:03 <zzo38> I am not sure though; maybe I misremembered
