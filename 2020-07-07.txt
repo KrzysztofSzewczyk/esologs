@@ -67,3 +67,14 @@
 2020-07-07 05:29:13 <shachaf> It's reporting that there's something to read on fd 0, but then read blocks.
 2020-07-07 05:29:14 Quit: brj (Ping timeout: 240 seconds)
 2020-07-07 05:29:14 Names: ^[, aloril, APic, Arcorann, arseniiv, ArthurStrong, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi3, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-07 05:31:37 <zzo38> It might only work properly in noncanonical mode; I remember once doing something with that, and I think that is what I did to make it work.
+2020-07-07 05:34:33 <zzo38> I think there must be some way to do it, but unfortunately I don't know exactly what way it is.
+2020-07-07 05:34:49 <zzo38> (But if nothing else works, then I suppose you can use a pipe.)
+2020-07-07 05:45:56 <zzo38> Did you try noncanonical mode to see if that works?
+2020-07-07 05:47:33 <shachaf> I didn't.
+2020-07-07 05:47:53 <shachaf> Part of what's going on is that I'm running a child process and that process is being stopped.
+2020-07-07 05:48:09 <shachaf> So I'd have to detect that and switch modes back and forth, I suppose.
+2020-07-07 05:48:16 <shachaf> Maybe I'll just not worry about it.
+2020-07-07 05:49:53 <zzo38> Maybe the child process being stopped is what is doing something with it?
+2020-07-07 05:50:15 <zzo38> I don't really know exactly what you are doing, anyways
+2020-07-07 05:50:40 <shachaf> I'm not exactly sure what this program is but I suppose it's a sort of debugger.
