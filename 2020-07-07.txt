@@ -78,3 +78,7 @@
 2020-07-07 05:49:53 <zzo38> Maybe the child process being stopped is what is doing something with it?
 2020-07-07 05:50:15 <zzo38> I don't really know exactly what you are doing, anyways
 2020-07-07 05:50:40 <shachaf> I'm not exactly sure what this program is but I suppose it's a sort of debugger.
+2020-07-07 06:00:36 <zzo38> The man page for epoll suggests that it should be possible with a terminal in canonical mode to read/write until EAGAIN.
+2020-07-07 06:01:00 <zzo38> Maybe there is a bug in the system? I don't know.
+2020-07-07 06:02:22 <shachaf> OK, maybe I just need to use canonical mode.
+2020-07-07 06:02:44 <shachaf> I didn't notice that bit.
