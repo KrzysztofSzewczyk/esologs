@@ -231,3 +231,14 @@
 2020-07-08 18:24:43 <zzo38> Now I read about Quasijarus compression format, which has the same .Z extension as UNIX compression, but the format is like gzip except the different header, which doesn't include the filename and timestamp.
 2020-07-08 18:26:11 <zzo38> (That is apparently now the compression format used in BSD.)
 2020-07-08 18:28:39 Joined: tromp
+2020-07-08 18:32:29 Quit: tromp (Ping timeout: 272 seconds)
+2020-07-08 18:35:51 <esowiki> 14[[07Surtic14]]4 10 02https://esolangs.org/w/index.php?diff=75573&oldid=74584 5* 03Digital Hunter 5* (+109) 10/* Example programs */ added a quine program
+2020-07-08 18:36:16 <esowiki> 14[[07Surtic14]]4 M10 02https://esolangs.org/w/index.php?diff=75574&oldid=75573 5* 03Digital Hunter 5* (+17) 10/* Quine */
+2020-07-08 18:42:52 <zzo38> (Or at least, some versions of BSD.)
+2020-07-08 18:48:10 <esowiki> 14[[07Microjump14]]4 M10 02https://esolangs.org/w/index.php?diff=75575&oldid=74399 5* 03PythonshellDebugwindow 5* (+239) 10cats
+2020-07-08 18:48:52 User Name: b_jonas = b_jonas!~x@catv-176-63-12-99.catv.broadband.hu
+2020-07-08 18:48:52 <b_jonas> zzo38: how does such a format even get created? isn't gzip as old as zlib?
+2020-07-08 18:49:05 <b_jonas> and the filename is optional in the gzip format
+2020-07-08 18:49:45 <b_jonas> I know people also use zlib without the header, but that's mostly for network formats
+2020-07-08 18:50:13 <esowiki> 14[[07Dig straight down like an idiot14]]4 M10 02https://esolangs.org/w/index.php?diff=75576&oldid=72646 5* 03PythonshellDebugwindow 5* (+122) 10cats
+2020-07-08 18:54:24 <zzo38> I think this format is supported only on VAX versions of BSD (although it could easily be implemented on other systems too), and they did that because they didn't want GNU software in their system nor the extra stuff in the gzip header, but also didn't like LZW and wanted a better compression algorithm.
