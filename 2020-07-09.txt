@@ -122,3 +122,24 @@
 2020-07-09 13:23:53 <rain1> woah that is a cool idea
 2020-07-09 13:29:06 <arseniiv> I’m only uncertain that I haven’t seen this approach mentioned anywhere yet, though I haven’t read much too
 2020-07-09 13:29:26 <esowiki> 14[[07Warp14]]4 M10 02https://esolangs.org/w/index.php?diff=75636&oldid=68611 5* 03PythonshellDebugwindow 5* (+94) 10cats
+2020-07-09 13:30:27 <esowiki> 14[[07Warp14]]4 M10 02https://esolangs.org/w/index.php?diff=75637&oldid=75636 5* 03PythonshellDebugwindow 5* (+92) 10harp is still alive!
+2020-07-09 13:30:44 <esowiki> 14[[07Harp14]]4 M10 02https://esolangs.org/w/index.php?diff=75638&oldid=69929 5* 03PythonshellDebugwindow 5* (+69) 10
+2020-07-09 13:34:54 <arseniiv> ah, and one of the problems even without Q_{kn} is that the dimension of Q_k over Q is usually less than k so there are many equivalent Q^n representations we’ll need to check. Maybe that’s why it may end up being of no use
+2020-07-09 13:35:08 <arseniiv> s/Q_k/S_n
+2020-07-09 13:37:56 <rain1> what would galois theory tell us. Q_kn / Q is (Z_kn/Z)^* and Q_n / Q is (Z/nZ)^*
+2020-07-09 13:38:19 <rain1> are we looking for Q_kn / Q_n of degree 2?
+2020-07-09 13:38:34 <rain1> i'm not sure exactly because maybe the extension field will change based on x
+2020-07-09 13:38:36 <arseniiv> it should be that, yeah
+2020-07-09 13:38:57 <arseniiv> hmm why would it?
+2020-07-09 13:39:06 <rain1> well for example Z is in Q_n
+2020-07-09 13:39:17 <rain1> and square roots of different elements of Z ends up with different Q_p
+2020-07-09 13:39:24 <rain1> not p sorry
+2020-07-09 13:39:50 <arseniiv> ah, yes, then we’ll need different k for different elements
+2020-07-09 13:41:17 <arseniiv> when there are only finitely many sqrts, we’ll end up in some Q_m with large m, but a different one each time despite starting with Q each time
+2020-07-09 13:44:05 <esowiki> 14[[07User talk:Emerald14]]4 10 02https://esolangs.org/w/index.php?diff=75639&oldid=75590 5* 03DmilkaSTD 5* (+62) 10
+2020-07-09 13:53:20 Joined: craigo
+2020-07-09 13:53:20 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi3, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-09 13:55:25 <arseniiv> yeah, my squareness-in-Q_n method is hard. Take for example 4 ∈ Q_2. If we represent it as 4 + 0 ζ₂ or 2 + (−2) ζ₂, under F we have (4, 4) and (0, 4) which tell us 4 is indeed a square in Q_2, but if we represent 4 = 3 + (−1) ζ₂, under F we have (2, 4) which has an entry 2 not a square. So we need to make sure to find the right representation or this criterion is useless
+2020-07-09 13:56:13 <esowiki> 14[[07DINAC14]]4 M10 02https://esolangs.org/w/index.php?diff=75640&oldid=74236 5* 03PythonshellDebugwindow 5* (+22) 10/* Datatypes */ bold
+2020-07-09 13:56:32 <esowiki> 14[[07ASCII14]]4 M10 02https://esolangs.org/w/index.php?diff=75641&oldid=75046 5* 03PythonshellDebugwindow 5* (-15) 10
+2020-07-09 13:59:48 <arseniiv> I wonder if the “balanced” representation, where coefficients of ζ_n, (ζ_n)*, −ζ_n and −(ζ_n)* are the same up to sign, is the one. Coincidently, 4 = 2 + (−2) ζ₂ is such a representation
