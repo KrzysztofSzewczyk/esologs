@@ -143,3 +143,60 @@
 2020-07-09 13:56:13 <esowiki> 14[[07DINAC14]]4 M10 02https://esolangs.org/w/index.php?diff=75640&oldid=74236 5* 03PythonshellDebugwindow 5* (+22) 10/* Datatypes */ bold
 2020-07-09 13:56:32 <esowiki> 14[[07ASCII14]]4 M10 02https://esolangs.org/w/index.php?diff=75641&oldid=75046 5* 03PythonshellDebugwindow 5* (-15) 10
 2020-07-09 13:59:48 <arseniiv> I wonder if the “balanced” representation, where coefficients of ζ_n, (ζ_n)*, −ζ_n and −(ζ_n)* are the same up to sign, is the one. Coincidently, 4 = 2 + (−2) ζ₂ is such a representation
+2020-07-09 14:00:21 <esowiki> 14[[07Spite14]]4 M10 02https://esolangs.org/w/index.php?diff=75642&oldid=41532 5* 03PythonshellDebugwindow 5* (+116) 10
+2020-07-09 14:01:14 <esowiki> 14[[07Spite14]]4 M10 02https://esolangs.org/w/index.php?diff=75643&oldid=75642 5* 03PythonshellDebugwindow 5* (+15) 10/* External resources */ dead
+2020-07-09 14:01:41 <arseniiv> hm but in this definition this representation is not unique (0 = x + x ζ₂ for any x ∈ Q)
+2020-07-09 14:02:06 <esowiki> 14[[07`LML14]]4 M10 02https://esolangs.org/w/index.php?diff=75644&oldid=65091 5* 03PythonshellDebugwindow 5* (+34) 10Bold
+2020-07-09 14:02:14 <arseniiv> where coefficients of ζ_n, (ζ_n)*, −ζ_n and −(ζ_n)* are the same up to sign => s/ζ_n/ζ_n^k for all integer k
+2020-07-09 14:03:48 <esowiki> 14[[07Track14]]4 M10 02https://esolangs.org/w/index.php?diff=75645&oldid=17531 5* 03PythonshellDebugwindow 5* (+75) 10/* Examples: */ cat + links
+2020-07-09 14:04:58 <esowiki> 14[[07XRF14]]4 M10 02https://esolangs.org/w/index.php?diff=75646&oldid=52414 5* 03PythonshellDebugwindow 5* (+4) 10/* Overview */ link+grm
+2020-07-09 14:05:24 <arseniiv> maybe we need [ζ_n^k] x = − [−ζ_n^k] x and [ζ_n^k] x = [ζ_n^{−k}] x precisely (and x should be real, and if we are not in Q_{2n}, then the first condition is inapplicable)
+2020-07-09 14:06:52 <arseniiv> *then*, for this representation, we at least have the squareness criterion right for Q₂
+2020-07-09 14:07:19 <arseniiv> I’m not sure it will be so in Q₄
+2020-07-09 14:10:27 <arseniiv> in Q₄ the representation is again not unique :( we should restrict the freedom of coefficients of ±i. Hm maybe we should just postulate that [ζ_{4n}^n] x = [ζ_{4n}^{−n}] x = 0
+2020-07-09 14:11:02 <arseniiv> hopefully one doesn’t need to add more restrictions when n divides 8 etc.
+2020-07-09 14:11:18 <arseniiv> I’m out
+2020-07-09 14:11:25 <esowiki> 14[[07Fishstacks14]]4 M10 02https://esolangs.org/w/index.php?diff=75647&oldid=49157 5* 03PythonshellDebugwindow 5* (+102) 10cleanup + cats
+2020-07-09 14:13:26 <esowiki> 14[[07Calcutape14]]4 M10 02https://esolangs.org/w/index.php?diff=75648&oldid=71490 5* 03PythonshellDebugwindow 5* (-11) 10cat + wikify
+2020-07-09 14:15:18 <esowiki> 14[[07Puzzlang14]]4 M10 02https://esolangs.org/w/index.php?diff=75649&oldid=57363 5* 03PythonshellDebugwindow 5* (+21) 10/* Overview */
+2020-07-09 14:16:10 <esowiki> 14[[07Puzzlang14]]4 M10 02https://esolangs.org/w/index.php?diff=75650&oldid=75649 5* 03PythonshellDebugwindow 5* (+40) 10/* Variants */ wkp_link + cats
+2020-07-09 14:18:05 <esowiki> 14[[07Fit14]]4 M10 02https://esolangs.org/w/index.php?diff=75651&oldid=70229 5* 03PythonshellDebugwindow 5* (-3) 10lin
+2020-07-09 14:20:30 <esowiki> 14[[07SovietCode14]]4 M10 02https://esolangs.org/w/index.php?diff=75652&oldid=70048 5* 03PythonshellDebugwindow 5* (+155) 10cats'
+2020-07-09 14:20:48 <esowiki> 14[[07SovietCode14]]4 M10 02https://esolangs.org/w/index.php?diff=75653&oldid=75652 5* 03PythonshellDebugwindow 5* (+14) 10/* Code examples */ car
+2020-07-09 14:22:01 Joined: RiriSec
+2020-07-09 14:22:01 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi3, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, RiriSec, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-09 14:22:07 User Name: RiriSec = RiriSec!~igor@217.97.35.43.ipv4.supernova.orange.pl
+2020-07-09 14:22:07 <RiriSec> fungot, tell me something
+2020-07-09 14:22:08 <fungot> RiriSec: programs don't require computers.... aka scheme evangelist... long live scheme! it adds for you!
+2020-07-09 14:22:24 Joined: kspalaiologos
+2020-07-09 14:22:24 Names: ^[, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi3, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, RiriSec, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-09 14:22:38 <int-e> fungot: stop being coherent
+2020-07-09 14:22:39 <fungot> int-e: tre pasted " insertion-sort" at http://paste.lisp.org/ display/ 5606, or 6000 network. the pos was supposedly locked down, after all... as you do in c
+2020-07-09 14:22:44 <esowiki> 14[[07Crazy14]]4 M10 02https://esolangs.org/w/index.php?diff=75654&oldid=73036 5* 03PythonshellDebugwindow 5* (+106) 10
+2020-07-09 14:22:46 <RiriSec> kspalaiologos: hewwo
+2020-07-09 14:22:55 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.71
+2020-07-09 14:22:55 <kspalaiologos> hi
+2020-07-09 14:23:10 <RiriSec> it's not like we're talking... all the time XD
+2020-07-09 14:23:25 <kspalaiologos> :p not at all
+2020-07-09 14:23:34 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03PythonshellDebugwindow 5*  10moved [[02No10]] to [[No.]]: fix title
+2020-07-09 14:23:49 <kspalaiologos> fungot, tell me something about asm2bf
+2020-07-09 14:23:49 <fungot> kspalaiologos: you ' mericans... don't know that
+2020-07-09 14:24:02 <kspalaiologos> troubling! one day he mentioned asm2bf I recall it
+2020-07-09 14:24:14 <RiriSec> you know, 6700 messages in +/- 5 days
+2020-07-09 14:24:25 <esowiki> 14[[07Aggressthon14]]4 M10 02https://esolangs.org/w/index.php?diff=75657&oldid=66675 5* 03PythonshellDebugwindow 5* (-17) 10internal link
+2020-07-09 14:24:32 <RiriSec> fungot, did you know elephans are just dolphins with legs?
+2020-07-09 14:24:32 <kspalaiologos> <fungot> kspalaiologos: take define-syntax, make your bfasm be a backend. i'm sure they've got plans for it. :p
+2020-07-09 14:24:32 <fungot> RiriSec: quuux, fnord... ( but then my code isn't particularly memory-hungry anyway :) this'll be fun... like a rotating screen :p " package" is a string, after all
+2020-07-09 14:24:32 <fungot> kspalaiologos: find the best result
+2020-07-09 14:24:56 <kspalaiologos> it's quite fun how he's using fnords in places of stuff he doesn't know what to put in
+2020-07-09 14:25:03 <esowiki> 14[[07Hello, world!14]]4 M10 02https://esolangs.org/w/index.php?diff=75658&oldid=66689 5* 03PythonshellDebugwindow 5* (+12) 10/* See also */ another'
+2020-07-09 14:26:26 <RiriSec> fungot, tell me something about asm2bf
+2020-07-09 14:26:26 <fungot> RiriSec: hi luxy!
+2020-07-09 14:26:35 <RiriSec> a
+2020-07-09 14:26:39 <RiriSec> oh well
+2020-07-09 14:29:05 <arseniiv> ^help
+2020-07-09 14:29:05 <fungot> ^<lang> <code>; ^def <command> <lang> <code>; ^show [command]; lang=bf/ul, code=text/str:N; ^str 0-9 get/set/add [text]; ^style [style]; ^bool
+2020-07-09 14:29:16 <arseniiv> ^style
+2020-07-09 14:29:16 <fungot> Available: agora alice c64 ct darwin discworld enron europarl ff7 fisher fungot homestuck ic irc* iwcs jargon lovecraft nethack oots pa qwantz sms speeches ss wp ukparl youtube
+2020-07-09 14:29:26 <arseniiv> ^bool
+2020-07-09 14:29:26 <fungot> No.
