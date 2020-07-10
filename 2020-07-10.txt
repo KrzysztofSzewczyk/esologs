@@ -677,3 +677,64 @@
 2020-07-10 11:55:59 <shachaf> And certainly all the other numbers are treated uniformly.
 2020-07-10 11:58:44 <shachaf> Uh, I meant you want k+1 numbers <N+1, each with probability k+1/N+1
 2020-07-10 11:59:50 <int-e> https://paste.debian.net/1155889/
+2020-07-10 12:00:25 <int-e> I find this conceptually easier, don't sort, just produce permutations
+2020-07-10 12:01:07 <shachaf> But that searches the array linearly.
+2020-07-10 12:01:15 <int-e> it's not about performance
+2020-07-10 12:01:26 <int-e> it's about correctness
+2020-07-10 12:01:33 <shachaf> Sure. I mean, this is why I phrased it as a set.
+2020-07-10 12:01:47 <int-e> I find it harder to digest as a set
+2020-07-10 12:03:01 <shachaf> Fair enough.
+2020-07-10 12:03:31 <shachaf> Here's a source: https://fermatslibrary.com/s/a-sample-of-brilliance
+2020-07-10 12:04:40 <int-e> (The advantage of the list is that each sequence of random sample produces excactly one list *and vice versa*)
+2020-07-10 12:04:46 <shachaf> I didn't even think about producing permutations with it, that's neat.
+2020-07-10 12:05:05 <shachaf> In particular the way it distinguishes the picking N+1 case from the picking some previously-picked number case.
+2020-07-10 12:05:21 <shachaf> Even though they have the same effect on the set.
+2020-07-10 12:05:23 <int-e> (Still something to think about but you don't have to count anything to see that it's fair.)
+2020-07-10 12:10:55 <wib_jonas> shachaf: so this is like Roger Hui's solution, but doesn't keep track of the order of the objects in the output, so if you want an ordered sample, you need an extra permute step afterwards?
+2020-07-10 12:11:08 <wib_jonas> interesting
+2020-07-10 12:11:46 <wib_jonas> of course, Roger Hui's solution specifically wants to pick an ordered set, and... let me look up how Knuth's exercise is phrased, but I guess it should ideally talk about both
+2020-07-10 12:12:15 <wib_jonas> and Roger Hui's solution needs the extra bookkeeping to know which element to move even if k is large
+2020-07-10 12:14:36 <wib_jonas> shachaf: interesting, thank you for mentioning this algorithm.
+2020-07-10 12:15:01 <wib_jonas> shachaf: to be clear, is this the one you said was Floyd's?
+2020-07-10 12:15:03 <shachaf> If you want the order, you can do what int-e did.
+2020-07-10 12:15:20 <int-e> mumble 'If you are a programmer, you might be surprised but other people normally don’t like hierarchies.'
+2020-07-10 12:15:27 <int-e> unfortunately, I'm a programmer
+2020-07-10 12:15:30 <esowiki> 14[[07Obfuna14]]4 10 02https://esolangs.org/w/index.php?diff=75724&oldid=36826 5* 03DmilkaSTD 5* (-3) 10
+2020-07-10 12:15:52 <wib_jonas> shachaf: yes, int-e does a linear traversal, which works for small k only
+2020-07-10 12:15:57 <shachaf> I didn't actually read your description of Roger Hui's solution carefully. My solution doesn't store the dense array, only the hash table, and extracted the result from the hash table keys later.
+2020-07-10 12:16:12 <shachaf> wib_jonas: Sure, but if you want to store both an array and a set, you can do that.
+2020-07-10 12:16:25 Joined: t20kdc
+2020-07-10 12:16:25 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 12:16:30 <shachaf> The same transformation applies to both algorithms.
+2020-07-10 12:16:35 <wib_jonas> shachaf: or you can permute randomly afterwards
+2020-07-10 12:16:36 <shachaf> Or, hmm, maybe I'm just saying nonsense.
+2020-07-10 12:18:56 <shachaf> Anyway, if you don't care about the order of the elements, you can just store a hash table, without the dense array, for the algorithm you described.
+2020-07-10 12:18:58 <wib_jonas> TAOCP 3.4.2. exercise 16. and it asks for a sorted output, so that Floyd thing is acceptable for that
+2020-07-10 12:19:10 <wib_jonas> shachaf: yes, and you only store keys in the hash table, not values
+2020-07-10 12:20:18 <shachaf> I do not have TAOCP unfortunately.
+2020-07-10 12:21:56 <esowiki> 14[[07Recurl14]]4 M10 02https://esolangs.org/w/index.php?diff=75725&oldid=23463 5* 03PythonshellDebugwindow 5* (+66) 10notice
+2020-07-10 12:22:45 <shachaf> So this is presented as an exercise, not a full thing discussed in the main text?
+2020-07-10 12:22:58 <esowiki> 14[[07Amycus14]]4 M10 02https://esolangs.org/w/index.php?diff=75726&oldid=58495 5* 03PythonshellDebugwindow 5* (+2) 10fix term
+2020-07-10 12:23:10 <wib_jonas> shachaf: yes
+2020-07-10 12:23:15 <wib_jonas> the dense case is in the main text
+2020-07-10 12:23:19 <int-e> wib_jonas: again, I wrote that code not to be fast but to be clear and simple
+2020-07-10 12:23:22 <shachaf> I guess it has no obligation to be complete.
+2020-07-10 12:23:34 <esowiki> 14[[07Amicus14]]4 M10 02https://esolangs.org/w/index.php?diff=75727&oldid=58499 5* 03PythonshellDebugwindow 5* (+2) 10erm
+2020-07-10 12:23:42 <int-e> wib_jonas: because I didn't understand why the sampling was uniform when it was phrased in terms of a set
+2020-07-10 12:24:04 <esowiki> 14[[07Amycus Severus14]]4 M10 02https://esolangs.org/w/index.php?diff=75728&oldid=57642 5* 03PythonshellDebugwindow 5* (-7) 10unpipe & term
+2020-07-10 12:24:43 <esowiki> 14[[07Hyperamicus14]]4 M10 02https://esolangs.org/w/index.php?diff=75729&oldid=58494 5* 03PythonshellDebugwindow 5* (+2) 10link
+2020-07-10 12:24:56 <esowiki> 14[[07Hyperamicus14]]4 M10 02https://esolangs.org/w/index.php?diff=75730&oldid=75729 5* 03PythonshellDebugwindow 5* (+0) 10user a
+2020-07-10 12:25:04 <shachaf> Is the dense case "do a Fisher-Yates shuffle, but stop once you've shuffled the last k elements of the array"?
+2020-07-10 12:25:20 <wib_jonas> shachaf: yes
+2020-07-10 12:25:31 <esowiki> 14[[07GolfScript14]]4 M10 02https://esolangs.org/w/index.php?diff=75731&oldid=67212 5* 03PythonshellDebugwindow 5* (+0) 10/* Overview */
+2020-07-10 12:25:45 <wib_jonas> The main text also discusses the problem where you read N records in sequence once and want to keep k random records from them, but you don't know N in advance
+2020-07-10 12:25:55 <esowiki> 14[[07GolfScript14]]4 M10 02https://esolangs.org/w/index.php?diff=75732&oldid=75731 5* 03PythonshellDebugwindow 5* (+23) 10/* External resources */ cat langs
+2020-07-10 12:26:18 <shachaf> The thing called reservoir sampling?
+2020-07-10 12:26:47 <wib_jonas> yes
+2020-07-10 12:26:54 <wib_jonas> and wait, I might be wrong here about the dense case, let me reread
+2020-07-10 12:28:46 <shachaf> A lot of these things seem almost too simple to have names.
+2020-07-10 12:29:19 <int-e> Oh the "Add file" UI isn't new, it's just much more visible now.
+2020-07-10 12:29:39 <wib_jonas> the main text says "Algorithm P can easily be modified to yield a random permutation of a
+2020-07-10 12:29:39 <wib_jonas> random combination" where Algorithm P is the shuffle
+2020-07-10 12:29:56 Joined: clog
+2020-07-10 12:29:56 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
