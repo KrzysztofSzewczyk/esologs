@@ -485,3 +485,59 @@
 2020-07-10 10:26:26 <wib_jonas> shachaf: the motivation is a hypothetical game where the balls are resources that the player can collect then spend, like coins or ammo, a box is a fixed place on the map where the player can collect the resource, but unlike in traditional games, you can't just collect infinitely many resources by just replaying the same one level (whichever is
 2020-07-10 10:26:27 <wib_jonas> easy and fast and has lots of boxes), but there's also not just a finite amount of resources you can collect, they respawn in levels when you spend them.
 2020-07-10 10:27:28 <wib_jonas> The pages are levels or rooms, or just regions of the map handled together for efficiency if there are no level/room boundaries.
+2020-07-10 10:35:38 <int-e> wib_jonas: not sure what you want to do with the page constraint https://paste.debian.net/1155884/ is a sketch of something that I might try
+2020-07-10 10:36:44 <wib_jonas> int-e: pages are not a constraint, they're just a hint that may make it possible to optimize the real-world implementation, especially on a machine where RAM doesn't have uniform access time.
+2020-07-10 10:37:16 <wib_jonas> It can be useful because the heap solutions that I mentioned use a lot of ugly random access of single records each across many cache lines.
+2020-07-10 10:38:04 <int-e> the thing I'm sketching doesn't have brilliant locality properties either
+2020-07-10 10:38:18 <int-e> but it's way simpler than a heap
+2020-07-10 10:39:29 Joined: Lord_of_Life
+2020-07-10 10:40:25 <int-e> (it's related to the trick that you use to get constant time operations (including initialization to zero) using two arrays)
+2020-07-10 10:40:46 <rain1> <shachaf> Do you find solving Stephen's Sausage Roll fun?
+2020-07-10 10:41:05 <rain1> I like this game a lot, but it's hard. I haven't completed it
+2020-07-10 10:41:05 <shachaf> I like that trick, I was just thinking about that.
+2020-07-10 10:41:30 <shachaf> I mean, I was thinking about it after seeing your code.
+2020-07-10 10:42:58 Quit: Lord_of_Life (Ping timeout: 260 seconds)
+2020-07-10 10:43:04 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-07-10 10:44:57 <int-e> rain1: how many sausages did you get?
+2020-07-10 10:45:22 <int-e> (174 here)
+2020-07-10 10:45:38 <rain1> 105
+2020-07-10 10:46:12 <int-e> I feel better ;)
+2020-07-10 10:46:50 <int-e> But yes, seriously, it's hard. It *starts out* with levels that would be hard in other games, and mostly it just gets harder.
+2020-07-10 10:47:01 <int-e> Or that's how I recall it, I've played this years ago.
+2020-07-10 10:48:45 <int-e> Apparently (looking at save files) May  3  2017 is when I started, May 13  2017 is when I solved my last level.
+2020-07-10 10:49:18 <rain1> yeah it starts out very very hard
+2020-07-10 10:49:22 <wib_jonas> I see, you have a right-growable array that stores the indexes of the empty boxes in an arbitrary order, and a full array that stores for each box the index into that full array. You keep the two in sync.
+2020-07-10 10:49:24 <rain1> and then it gets way harder
+2020-07-10 10:49:35 <rain1> i like the courage of a game to do that, baba is like that too
+2020-07-10 10:49:55 Quit: tromp (Ping timeout: 256 seconds)
+2020-07-10 10:49:56 Names: ^[, aaaaaa, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 10:50:11 <int-e> Hmm. Baba has some tutorial levels at least. Hmm.
+2020-07-10 10:50:25 <shachaf> int-e: I'm confused by your code, actually.
+2020-07-10 10:50:44 <int-e> I tried, but I may have gotten it wrong.
+2020-07-10 10:50:53 <wib_jonas> For (A) you just look in the second array, for (B) you push a value to the first array an mark its index in the second, for (C) you repeatedly pick a random element from the first array, remove it, keep it dense by moving an element from the there, adjust first array in both places.
+2020-07-10 10:51:07 <wib_jonas> That does work and is better than what I suggested. I should have thought of it, thank you.
+2020-07-10 10:51:19 <shachaf> int-e: Say you empty 3, and then empty 1, and then fill 3. What's the state you're supposed to be in?
+2020-07-10 10:51:34 <int-e> But the idea is that -1 in `filled` represents filled boxes and each empty box has a corresponding entry in the `avail` array; these two entries point to each other.
+2020-07-10 10:51:57 <shachaf> Yes, I understand that bit, with the dense and sparse arrays.
+2020-07-10 10:52:07 <wib_jonas> I'm also confused by the code, but to be fair int-e said "sketch"
+2020-07-10 10:52:08 <int-e> Oh. I'm missing an update to `filled` when I move avail[i] = avail[free-1];
+2020-07-10 10:52:15 <int-e> As I said, I may have gotten it wrong.
+2020-07-10 10:52:34 <shachaf> Oh, you want to be setting avail[filled[i]]
+2020-07-10 10:52:40 <int-e> The missing bit is setting filled[avail[i]] = i.
+2020-07-10 10:53:12 <shachaf> I think it's a bit more complicated than that?
+2020-07-10 10:53:36 <int-e> filled[avail[i] = avail[free-1]] = i;
+2020-07-10 10:54:03 <wib_jonas> The more local version needs to do the ugly binomial calculations, which is sort of a tradeoff of more time for less storage.
+2020-07-10 10:54:34 <int-e> shachaf: I'm not sure why it needs to be more complicated than that
+2020-07-10 10:55:38 <int-e> I suppose C++ frowns upon using `free` as an identifier ;-)
+2020-07-10 10:55:40 <wib_jonas> I guess you could do an intermediate thing where instead of binomial calculations you just repeatedly increase the delay counters by one. You still need a weighted random choice, but that's not that bad.
+2020-07-10 10:55:59 <wib_jonas> int-e: I think it only frowns upon using it as a *global* identifier or macro
+2020-07-10 10:56:20 <wib_jonas> I think you're fine using it as local
+2020-07-10 10:57:20 <wib_jonas> also don't try to use j0 as a global function name in C, as I learned from mysterious linker errors...
+2020-07-10 10:58:01 <int-e> Bessel
+2020-07-10 10:58:03 <wib_jonas> nor nl, beacuse curses is old and pollutes the global C namespace with nonsense like that, and we couldn't get rid of it yet
+2020-07-10 10:59:09 <int-e> rain1: I've started a new game just to see what it was like and... how do you figure out what the objective is ;)
+2020-07-10 10:59:20 <rain1> that's part of the fun!
+2020-07-10 10:59:32 <int-e> I mean, I remember it.
+2020-07-10 10:59:45 <wib_jonas> the objective is to get the credit screen to appear... wait, what game is this?
+2020-07-10 10:59:52 <int-e> But I don't recall how I figured it out.
+2020-07-10 10:59:57 <rain1> replaying it, I find different win conditions
