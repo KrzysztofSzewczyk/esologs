@@ -934,3 +934,25 @@
 2020-07-10 19:57:43 Names: ^[, adu, aloril, APic, arseniiv, b_jonas, bangyen, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, deschutron, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-07-10 19:58:23 <b_jonas> If MIX is esoteric in that sense, then I'm too old to notice that, I don't know much about archeological computer design, and don't recognize any way how it's not like what could be a real computer at that time.
 2020-07-10 19:58:45 <b_jonas> Maybe someone who designed computers back then and really understood what that entails would notice such details.
+2020-07-10 20:00:03 <zzo38> There are some features I don't know if it is, such as automatic character set conversion, and having the possibility of both binary and decimal versions of the same kind of computer, but maybe they are, I don't know
+2020-07-10 20:01:50 <b_jonas> zzo38: what do you mean by automatic character set conversion? any Hollerith card reader does that, because there are 12 holes but the reader encodes them in an Ebcdic byte that has less than 12 bits. MIX just uses an encoding to a character code that isn't used elsewhere.
+2020-07-10 20:02:11 <zzo38> Yes, but MIX doesn't use EBCDIC.
+2020-07-10 20:02:40 <b_jonas> it uses a similar encoding that is easy to encode or decode between Hollerith cards, at least on a decimal MIX
+2020-07-10 20:03:03 <b_jonas> for letters and numbers, bottom hole encodes the second digit, top hole if any encodes first digit
+2020-07-10 20:03:30 <b_jonas> it differs because EBCDIC is an eight-bit encoding and MIX has six-bit bytes
+2020-07-10 20:03:46 <b_jonas> and EBCDIC has a shitton of variants, like ASCII has a lot of ISO-646-* variants
+2020-07-10 20:04:22 <b_jonas> MIX character code probaly has variants with different printers printing different ones, and possibly for Hollerith cards too
+2020-07-10 20:04:49 <b_jonas> since some codes don't correspond to characters, or correspond to characters that not all card readers or card punchers or printers or teletypes can read/write
+2020-07-10 20:05:37 <b_jonas> that's why the two different version of what two of the three greek characters in the character sets are isn't necessarily a bug, there may be MIX printers with different characters of the corresponding head or place of the head
+2020-07-10 20:06:05 <b_jonas> just like how 8-bit computers have video cards with different accented characters in some places by different ROMs
+2020-07-10 20:06:46 <b_jonas> there are 8-bit BASIC-based personal computers where instead of @ they display an É or something
+2020-07-10 20:07:07 <b_jonas> and you have to write PRINTÉ instead of PRINT@ to write to a text file
+2020-07-10 20:07:32 <b_jonas> but the difference isn't in how BASIC works, just what character is shown on the monitor
+2020-07-10 20:11:47 <zzo38> But I think how some of the punctuations are encoded in MIX are not a standard card code, nor is the encoding of spaces matching codes of punch cards
+2020-07-10 20:12:38 <b_jonas> zzo38: is that even for punctuation that all MIX card readers are required to be able to read?
+2020-07-10 20:13:10 <zzo38> I do not remember, unfortunately. But, I suppose that is a valid point.
+2020-07-10 20:14:16 <b_jonas> Also, crap, my lip is swollen. If this worsense too much doesn't improve soon enough, I'll have to go to a weekend doctor or dentist, which always sucks.
+2020-07-10 20:14:30 <b_jonas> It started to swell during the afternoon.
+2020-07-10 20:18:54 <b_jonas> And the swelling is moving around my lip, counterclockwise when viewed from the font
+2020-07-10 20:18:57 <b_jonas> from the front
+2020-07-10 20:26:09 <arseniiv> oh
