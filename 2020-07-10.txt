@@ -459,3 +459,29 @@
 2020-07-10 09:56:59 <wib_jonas> Does my question make sense?
 2020-07-10 09:58:49 <int-e> So (A) and (B) are just operations on a boolean array?
 2020-07-10 09:59:51 <int-e> (Which does not support (C) efficiently by itself, but I'm trying to understand the problem here.)
+2020-07-10 10:04:32 <shachaf> Does it not?
+2020-07-10 10:04:49 <int-e> you'll have to scan the whole thing
+2020-07-10 10:05:42 <shachaf> Oh, I was thinking of a slightly different problem.
+2020-07-10 10:06:16 <int-e> I'm referring to the thing starting with "I have N small boxes"
+2020-07-10 10:06:41 <int-e> Mainly I'm trying to clarify what (A) and (B) are.
+2020-07-10 10:07:41 <int-e> The "bunch of boxes" is confusing me.
+2020-07-10 10:07:43 <wib_jonas> int-e: all of them are operations on a boolean array, yes, but if you have only a boolean array, (C) will be slow. that's correct.
+2020-07-10 10:08:09 <wib_jonas> each box is a boolean
+2020-07-10 10:08:15 <wib_jonas> and they're numbered to be in an array
+2020-07-10 10:08:34 <wib_jonas> (if they aren't entirely dense that doesn't matter, we'll just never empty those boxes then)
+2020-07-10 10:08:39 <int-e> Yeah "they're numbered" is what I was fishing for.
+2020-07-10 10:09:13 <int-e> (Hah, it feels odd to type "fishing" without 'ph'.)
+2020-07-10 10:09:41 <shachaf> fiphing?
+2020-07-10 10:09:57 <int-e> the phunster at work
+2020-07-10 10:10:01 Quit: Lord_of_Life (Read error: Connection reset by peer)
+2020-07-10 10:10:01 Names: ^[, aaaaaa, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 10:10:58 Joined: Lord_of_Life
+2020-07-10 10:10:58 Names: ^[, aaaaaa, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 10:11:15 <wib_jonas> I guess I could keep a counter for each page for the number of balls to be distributed
+2020-07-10 10:11:39 <wib_jonas> and to do (C), I iterate on all pages and generate the balls I add to the count in the correct distribution,
+2020-07-10 10:11:55 <wib_jonas> which I think you can somehow do with binomial magic... I'll have to look that up
+2020-07-10 10:12:28 <wib_jonas> I could even do that hierarchically on a high-arity tree with the boxes in the nodes
+2020-07-10 10:23:57 <shachaf> What is the context of this problem?
+2020-07-10 10:26:26 <wib_jonas> shachaf: the motivation is a hypothetical game where the balls are resources that the player can collect then spend, like coins or ammo, a box is a fixed place on the map where the player can collect the resource, but unlike in traditional games, you can't just collect infinitely many resources by just replaying the same one level (whichever is
+2020-07-10 10:26:27 <wib_jonas> easy and fast and has lots of boxes), but there's also not just a finite amount of resources you can collect, they respawn in levels when you spend them.
+2020-07-10 10:27:28 <wib_jonas> The pages are levels or rooms, or just regions of the map handled together for efficiency if there are no level/room boundaries.
