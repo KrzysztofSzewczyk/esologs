@@ -319,3 +319,75 @@
 2020-07-10 08:59:27 <int-e> Does this make sense? Not sure anybody is reading this. If not I should probably stop :)
 2020-07-10 08:59:55 <shachaf> I guess you can easily just add clauses incrementally, for CDCL solvers.
 2020-07-10 08:59:58 <rain1> is there some kind of polynomial time witness to a sat problem being unsatisfiable?
+2020-07-10 09:00:05 <shachaf> In fact I do that anyway for model counting.
+2020-07-10 09:00:53 <shachaf> I"m surprised that this kind of thing works better than asserting connectivity upfront.
+2020-07-10 09:01:04 <shachaf> Is that just because it's really awkward to encode?
+2020-07-10 09:01:10 <int-e> shachaf: There's *some* difficulty connected to simplification (which some SAT solvers do and which may eliminate variables) but nothing that can't be dealt with by some additional bookkeeping.
+2020-07-10 09:01:22 <int-e> yes.
+2020-07-10 09:01:45 <int-e> For those puzzles it's a *huge* unwieldy constraint (compared to all the other, local constraints).
+2020-07-10 09:01:59 <int-e> Which takes time to generate, and slows down unit propagation and all that.
+2020-07-10 09:02:10 <shachaf> Are there other kinds of constraint satisfaction problems that let you express that kind of thing more easily?
+2020-07-10 09:02:29 <int-e> And at least for human solvable puzzles, the connectivity/single loop constraints tend to play a rather minor role.
+2020-07-10 09:03:33 <int-e> There's actually an SMT solver that incorporates such things, https://github.com/sambayless/monosat
+2020-07-10 09:03:45 <int-e> Which I've never got around to play with...
+2020-07-10 09:04:23 <int-e> I view the incremental SAT solving approach I outlined as a poor person's version of SMT solving :)
+2020-07-10 09:05:20 <int-e> (Rather than checking the theory constraints on the fly, one waits for a complete solution of the propositional skeleton, and analyzes that for theory conflicts. Those become new clauses, and then the SAT solver can proceed.)
+2020-07-10 09:05:57 <int-e> (And hopefully this finishes before the clauses exceed the available memory.)
+2020-07-10 09:05:57 <shachaf> I see, you're viewing the circuitude as a theory constraint.
+2020-07-10 09:06:05 <int-e> Yes.
+2020-07-10 09:06:24 <shachaf> I need to learn how SMT solvers work better.
+2020-07-10 09:08:57 <shachaf> If you liked minisat, you're sure to like microsat: https://github.com/marijnheule/microsat/blob/master/microsat.c
+2020-07-10 09:10:24 <int-e> that coding style...
+2020-07-10 09:10:40 <shachaf> It's great, isn't it?
+2020-07-10 09:10:44 <shachaf> One thing per line, with a comment.
+2020-07-10 09:11:23 <int-e> "thing"
+2020-07-10 09:12:08 <int-e> lines 33 and 34 alone...
+2020-07-10 09:13:10 <int-e> (Though tbf, MiniSAT isn't all that pretty either, for different reasons.)
+2020-07-10 09:14:06 <shachaf> My solver is ~1000 lines of C right now.
+2020-07-10 09:14:43 <int-e> shachaf: btw do you use github often enough to confirm my suspicion that they moved the link to the commit history recently?
+2020-07-10 09:15:14 <int-e> or maybe I should hunt down an older screenshot... that may be easier than asking people
+2020-07-10 09:15:24 <shachaf> They redesigned the whole page recently, right?
+2020-07-10 09:15:37 <shachaf> https://github.blog/changelog/2020-06-23-design-updates-to-repositories-and-github-ui/
+2020-07-10 09:17:30 <shachaf> I've also found myself flummxed on this specific task since then.
+2020-07-10 09:18:51 <int-e> Here's an old screenshot, with "$nnn commits" at the top https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2017/11/Cloning-how-to-use-github-Edureka.png ... I'm pretty sure that was a link.
+2020-07-10 09:19:22 <int-e> I'm sure I'll get used to the change in a month or two.
+2020-07-10 09:19:28 <int-e> But for now it's pretty annoying.
+2020-07-10 09:19:37 <rain1> like that coding
+2020-07-10 09:19:41 <shachaf> It was.
+2020-07-10 09:19:46 <rain1> must be a fucking pest to work on without editor support
+2020-07-10 09:19:46 <shachaf> Another screenshot: https://tonsky.me/blog/github-redesign/10_as-is.png
+2020-07-10 09:20:11 <int-e> thanks
+2020-07-10 09:20:52 Joined: wib_jonas
+2020-07-10 09:20:52 Names: ^[, aaaaaa, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 09:22:32 <int-e> The other thing I've been wondering is who that 'Add file' UI is supposed to be for.
+2020-07-10 09:22:46 <int-e> Because I'm pretty sure it's not for developers.
+2020-07-10 09:23:27 <shachaf> Wow.
+2020-07-10 09:23:30 <int-e> (Or maybe... they are unifying the github and gist UIs?)
+2020-07-10 09:23:38 <shachaf> I clicked the "Add File" button and it automatically forked the repository?!
+2020-07-10 09:24:10 <int-e> That makes some amount of sense.
+2020-07-10 09:24:18 <shachaf> Now it needs my password to delete it.
+2020-07-10 09:24:26 <int-e> But it also seems rather surprising.
+2020-07-10 09:24:46 <shachaf> I am not particularly a fan of the whole forking model in GitHub.
+2020-07-10 09:24:47 <int-e> Right, because deleting repos requires a password.
+2020-07-10 09:24:49 <int-e> FUN.
+2020-07-10 09:24:54 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-07-10 09:24:54 <wib_jonas> hi #esoteric
+2020-07-10 09:25:27 <rain1> hi!
+2020-07-10 09:25:31 <int-e> Hmm, but it matches the git model... to make a change, you get your own copy of the repo, modify that, and then make a pull request.
+2020-07-10 09:25:48 <shachaf> Did y'all see https://github.com/shachaf/mustardwatch ?
+2020-07-10 09:25:52 <int-e> (Or send the patches by email.)
+2020-07-10 09:26:02 <rain1> lol
+2020-07-10 09:26:06 <int-e> shachaf: You've talked about it at length.
+2020-07-10 09:26:09 <shachaf> Oh.
+2020-07-10 09:26:22 <shachaf> Sounds like the kind of thing I might do.
+2020-07-10 09:26:37 <shachaf> Well, the GitHub pull requests aren't really part of the whole git model in the first place.
+2020-07-10 09:26:43 <shachaf> They're a separate code review tool.
+2020-07-10 09:26:57 <shachaf> I guess there's some connection to regular git pull requests.
+2020-07-10 09:27:33 <wib_jonas> "<rain1> is there some kind of polynomial time witness to a sat problem being unsatisfiable?" => not in general, because that would mean NP = coNP which we can't prove (though a few people suspect that it's true)
+2020-07-10 09:27:41 <wib_jonas> I think it's false
+2020-07-10 09:28:13 <int-e> shachaf: I think this is what you get if you combine the review-by-email and pull-from-this-repo requests in one UI, and modify it to be web-friendly.
+2020-07-10 09:28:27 <int-e> Yes, it's not the same, but most of the spirit seems to be preserved. YMMV.
+2020-07-10 09:28:56 <shachaf> Doesn't NP=coNP lead to some sort of hierarchy collapse?
+2020-07-10 09:29:30 <int-e> I thought it's weaker than the infamous NP = P.
+2020-07-10 09:29:46 <int-e> Which I think means no.
+2020-07-10 09:29:55 <int-e> But I'm not sure :-/
