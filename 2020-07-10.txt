@@ -272,3 +272,50 @@
 2020-07-10 08:17:05 <esowiki> 14[[07User:Bangyen14]]4 10 02https://esolangs.org/w/index.php?diff=75722&oldid=75719 5* 03Bangyen 5* (+11) 10/* Implementations */
 2020-07-10 08:29:54 User Name: rain1 = rain1!~rain1@unaffiliated/rain1
 2020-07-10 08:29:54 <rain1> yes where is oerjan
+2020-07-10 08:40:40 Quit: imode (Ping timeout: 246 seconds)
+2020-07-10 08:40:40 Names: ^[, aaaaaa, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 08:46:40 <int-e> shachaf: I guess GG is one of the more inane topics to ask this about :)
+2020-07-10 08:47:14 <int-e> (GG = Girl Genius)
+2020-07-10 08:48:08 <shachaf> int-e: I mean, it's no password of the month.
+2020-07-10 08:48:30 <shachaf> Now that's a critically important topic.
+2020-07-10 08:48:37 <int-e> Yeah, nobody cares about the potm.
+2020-07-10 08:48:39 <int-e> ;)
+2020-07-10 08:48:59 <int-e> Maybe 3 weeks from now.
+2020-07-10 08:49:06 <shachaf> i,i `learn The password of the day is [...]
+2020-07-10 08:49:11 <int-e> But for now, the topic is done, over and best left to rest.
+2020-07-10 08:49:40 <shachaf> So I jammed up my SAT solver with a couple of extra features and it made a big qualitative difference.
+2020-07-10 08:49:52 <shachaf> I mean, it can quickly solve instances that it wasn't able to solve previously.
+2020-07-10 08:50:42 <int-e> But how does it compare to minisat?
+2020-07-10 08:51:00 <int-e> (which is kind of the baseline solver)
+2020-07-10 08:51:24 <shachaf> And some of them -- like n-queens -- it solves a lot faster than MiniSAT! Somehow.
+2020-07-10 08:51:44 <shachaf> ...Was the line I just had in my text buffer, when I switched to the other window to verify that it was n-queens.
+2020-07-10 08:51:49 <int-e> that's interesting, unless it knows somthing about symmetries.
+2020-07-10 08:52:05 <shachaf> It doesn't. I think it's just getting lucky using silly simple heuristics.
+2020-07-10 08:52:23 <int-e> though hmm, those tend to be satisfiable, right?
+2020-07-10 08:52:33 <shachaf> I need to implement better restarts. I finally added restarts, but I don't even save level-0 assignments when I restart.
+2020-07-10 08:52:44 <int-e> so luck may be a factor :-/
+2020-07-10 08:52:59 <shachaf> Yes. I should probably have more UNSAT problems.
+2020-07-10 08:53:00 <rain1> have you tried to solve puzzles like slitherlink with your SAT solver?
+2020-07-10 08:53:31 <shachaf> Is sudoku a puzzle like slitherlink?
+2020-07-10 08:53:37 <int-e> Slitherlink is a bit awkward to encode...
+2020-07-10 08:53:39 <rain1> no, it's unlike slitherlink
+2020-07-10 08:53:42 <shachaf> I've solved sudoku and knight's tour.
+2020-07-10 08:53:50 <rain1> although it is created by the same author
+2020-07-10 08:53:52 <shachaf> Knights tour is kind of silly since there's a linear time algorithm for it.
+2020-07-10 08:54:00 <int-e> Though if you have knight's tour you can also do slitherlink.
+2020-07-10 08:54:18 <shachaf> Oh, Slitherlink is Loopy.
+2020-07-10 08:54:23 <int-e> Because it's also a tour.
+2020-07-10 08:54:43 <shachaf> I have some kind of quadratic encoding for knight's tour.
+2020-07-10 08:54:45 <rain1> yeah encoding that into SAT seems interesting, because you have global/topological constraints
+2020-07-10 08:54:55 <int-e> yeah, slitherlink = loopy
+2020-07-10 08:55:24 <int-e> IME these puzzles that involve tours or connectivity are better solved with incremental SAT-solving.
+2020-07-10 08:55:37 <shachaf> OK, this UNSAT problem -- pigeon-hole-10.cnf -- is interesting.
+2020-07-10 08:56:09 <shachaf> It's UNSAT, and I solve it quickly if I use static variable ordering, but not any of my really terrible dynamic variable orderings.
+2020-07-10 08:57:30 <int-e> (What I do is look for solutions without the connectivity constraint. Then, if there's a loop, I assert that I only want solutions that use one of the edges *adjacent* to the loop (for each loop) and continue. Or something closely resembling that.)
+2020-07-10 08:58:33 <shachaf> My static variable ordering is just to sort variables by the number of occurrences in all (initial) clauses.
+2020-07-10 08:58:52 <shachaf> And whenever I need a new variable I linearly scan through the list until I see one that isn't assigned.
+2020-07-10 08:58:55 <int-e> That's for hamiltonian (or close to hamiltonian) cycles that appear in Slitherlink. For connectivity, I do the same thing but for cuts through the underlying graph: For each cut in the candidate solution, one of the involved edges must be in the solution.
+2020-07-10 08:59:24 <shachaf> That's interesting.
+2020-07-10 08:59:27 <int-e> Does this make sense? Not sure anybody is reading this. If not I should probably stop :)
+2020-07-10 08:59:55 <shachaf> I guess you can easily just add clauses incrementally, for CDCL solvers.
+2020-07-10 08:59:58 <rain1> is there some kind of polynomial time witness to a sat problem being unsatisfiable?
