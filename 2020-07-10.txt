@@ -541,3 +541,97 @@
 2020-07-10 10:59:45 <wib_jonas> the objective is to get the credit screen to appear... wait, what game is this?
 2020-07-10 10:59:52 <int-e> But I don't recall how I figured it out.
 2020-07-10 10:59:57 <rain1> replaying it, I find different win conditions
+2020-07-10 11:00:08 <wib_jonas> is it still the sausage roll?
+2020-07-10 11:00:14 <int-e> yes
+2020-07-10 11:00:38 <rain1> oh sorry, I was thinking baba
+2020-07-10 11:00:48 <int-e> oh sorry
+2020-07-10 11:00:57 <int-e> Baba made it easier, I think
+2020-07-10 11:02:01 <int-e> Let's see.I deleted all my progress anyway
+2020-07-10 11:02:28 <wib_jonas> well Baba has the first level say "flag is win" or some such thing, right?
+2020-07-10 11:03:55 <shachaf> int-e: OK, I think you want something like: { int f = filled[i]; if (f != -1) { avail[f] = avail[free-1]; filled[avail[f]] = f; filled[i] = -1; free--; } }
+2020-07-10 11:04:30 <shachaf> You don't ever want avail[i], I think, probably you meant avail[f]? That's the bit that was confusing me.
+2020-07-10 11:05:25 <int-e> wib_jonas: yes. and the level is designed in a way that doesn't tempt you to mess with the text
+2020-07-10 11:06:35 <int-e> https://int-e.eu/~bf3/tmp/baba_start.png
+2020-07-10 11:08:16 <int-e> shachaf: ah yes. that looks like what I want indeed.
+2020-07-10 11:08:20 Joined: adu
+2020-07-10 11:08:20 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 11:08:48 <shachaf> In some universe you would have different types for sparse and dense indices.
+2020-07-10 11:08:52 <shachaf> (Not this one, though.)
+2020-07-10 11:09:06 <shachaf> Anyway this solution is good. I like it.
+2020-07-10 11:10:06 <wib_jonas> int-e: thanks for the link
+2020-07-10 11:11:01 <wib_jonas> shachaf: nah, I'd just use uint16_t or uint32_t for both, depending on whether I can have more than 65000 coins
+2020-07-10 11:11:24 <shachaf> I don't mean machine types but type checker types.
+2020-07-10 11:11:43 <shachaf> I don't think that's actually a great idea, but I do think it's easy to mix them up.
+2020-07-10 11:11:59 <shachaf> Do you know the problem of sampling k integers (in the range [0,N)) without replacement?
+2020-07-10 11:12:33 <wib_jonas> shachaf: yes, but still no, because this is simple enough to not require types. I might choose better identifier names of course.
+2020-07-10 11:12:52 <shachaf> When I tried to figure it out I came up with an OK answer, with the right asymptotic behavior, but it turned out there was an even nicer algorithm.
+2020-07-10 11:13:01 <shachaf> wib_jonas: Yes, that's why I said it's not in this universe.
+2020-07-10 11:14:28 <wib_jonas> shachaf: yes, I actually researched that. the dense case (k is on the order of magnitude of N) is well known. For the sparse case, TAOCP has one solution, but there's another solution that seems equally good, and was either invented or independently reinvented by Roger Hui, and that I should send as an improvement ticket to TAOCP, but I'm lazy and
+2020-07-10 11:14:28 <wib_jonas> have been putting it off as Knuth won't work on volume 2 for a long time.
+2020-07-10 11:14:55 <shachaf> wib_jonas: What are the two solutions?
+2020-07-10 11:14:57 <wib_jonas> I don't think either solution is clearly nicer than the other.
+2020-07-10 11:15:21 <shachaf> My solution used a lookup table, int->int, whereas the nicer solution only used a set of ints.
+2020-07-10 11:15:30 <shachaf> Uh, not a lookup table.
+2020-07-10 11:15:36 <shachaf> A map, modified at runtime.
+2020-07-10 11:16:12 <wib_jonas> shachaf: both solutions need a hash of size constant times k where the keys are indexes up to N, but in both cases the hash part is easy because you can use a trivial hash function because you will be storing random keys only.
+2020-07-10 11:16:22 <wib_jonas> but there are two ways to use that hash to pick a sample of size k.
+2020-07-10 11:16:50 <shachaf> wib_jonas: whoa, somehow I didn't make that observation, that you can use a simpler hash table because your keys are guaranteed random.
+2020-07-10 11:17:14 <shachaf> Or are they? Hmm.
+2020-07-10 11:17:40 <wib_jonas> shachaf: maybe you should read TAOCP then? the solution in TAOCP is to use the hash to store which items have been picked, keep picking a random item out of the N, redo the pick if you have already picked the same item, and repeat until you got k successes.
+2020-07-10 11:17:44 <int-e> rain1: Oh looks like 105 is actually a relatively nice phase of the game where you have plenty of levels to choose from (but it's hard to say)
+2020-07-10 11:18:15 <shachaf> wib_jonas: Redo the pick? Doesn't that have arbitrarily long worst case runtime?
+2020-07-10 11:18:34 <shachaf> You can do this with exactly k calls to the RNG.
+2020-07-10 11:18:39 <wib_jonas> shachaf: yes, but again it's uniform random so it's exponentially fast,
+2020-07-10 11:19:08 <wib_jonas> and in both cases you do this only if k is significantly less than N, so the probability that you pick the wrong thing is less than k/N, which is less than 1/5
+2020-07-10 11:19:22 <wib_jonas> you just do the normal dense solution if 5*k>=N
+2020-07-10 11:19:47 <rain1> yeah the difficulty curve isa lot kinder
+2020-07-10 11:19:49 <int-e> rain1: Anyway, at the point I reached I have one level to solve and I got totally stuck on that one. Which is... meh.
+2020-07-10 11:19:50 <shachaf> OK, but there are nice algorithms that just works in all cases.
+2020-07-10 11:19:52 <rain1> but still ends up being a super hard game
+2020-07-10 11:20:01 <rain1> int-e in SSR?
+2020-07-10 11:20:07 <int-e> rain1: yeah in SSR
+2020-07-10 11:20:12 <rain1> is that in the fire zone?
+2020-07-10 11:20:24 <int-e> No, I'm past that.
+2020-07-10 11:20:26 <wib_jonas> Roger Hui's solution is to simulate the dense algorithm, which maintains a permutation that is initially the identity permutation. It will change k random items and the k last items in that. So you store the k last items in a dense array, and any other items that don't match the identity in your hash. In this case the hash has values too, not just
+2020-07-10 11:20:26 <wib_jonas> keys.
+2020-07-10 11:20:28 <rain1> oh exciting
+2020-07-10 11:20:31 <rain1> i thought this was the last zone
+2020-07-10 11:20:52 <shachaf> wib_jonas: Oh, that's my solution.
+2020-07-10 11:20:56 <wib_jonas> In this case there's still potential redo: it comes from the algorithm to pick a uniform random number from a size that's something between N and N-k+1
+2020-07-10 11:20:57 <int-e> there's a sort of vikings zone
+2020-07-10 11:21:14 <wib_jonas> shachaf: right, that's why I think Roger Hui may have independently reinvented the solution
+2020-07-10 11:21:28 <shachaf> But Floyd's solution is even better.
+2020-07-10 11:21:31 <wib_jonas> shachaf: note that generating the single random pick comes with a chance to redo in first place
+2020-07-10 11:21:48 <wib_jonas> What's Floyd's solution?
+2020-07-10 11:21:49 <shachaf> Yes, noted.
+2020-07-10 11:22:28 <wib_jonas> I don't think you can have ANY solution with no chance to redo, because you have to pick one solution among binomial(N,k), and that's usually not a power of 2
+2020-07-10 11:23:18 <shachaf> I was taking "pick a single random number in [0,n)" as a primitive.
+2020-07-10 11:23:42 <wib_jonas> it can probably only be a power of 2 if k<=1, and k=1 is a special case with well-known solution, k=0 is trivial
+2020-07-10 11:23:48 <shachaf> Let me see if I can remember Floyd's solution and the phrasing I liked.
+2020-07-10 11:23:52 Quit: Phantom_Hoover (*.net *.split)
+2020-07-10 11:23:52 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 11:23:52 Quit: zzo38 (*.net *.split)
+2020-07-10 11:23:52 Quit: MDude (*.net *.split)
+2020-07-10 11:23:52 Quit: ocharles (*.net *.split)
+2020-07-10 11:23:53 Quit: lambdabot (*.net *.split)
+2020-07-10 11:23:53 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m]
+2020-07-10 11:24:21 <wib_jonas> shachaf: you can do that, but then you're cheating with accounting. in exchange for perhaps slightly more retries, the TAOCP solution has less bookkeeping and an easier implementation.
+2020-07-10 11:24:41 <wib_jonas> The hash table stores only values, not keys, and you only have to modify one element, not two.
+2020-07-10 11:24:47 <shachaf> That's a fair argument that I hadn't thought of.
+2020-07-10 11:25:02 <wib_jonas> There's no special case for when you pick one of the last elements either.
+2020-07-10 11:25:05 <shachaf> Floyd's algorithm also stored only values rather than key-value pairs.
+2020-07-10 11:25:47 <shachaf> Let me see if I can remember it exactly. It took me a bit to convince myself it was correct, but with the right phrasing it's hopefully obvious.
+2020-07-10 11:25:50 <wib_jonas> And if there's a "Floyd's solution" that isn't clearly worse than the TAOCP solution, why is that not in TAOCP in first place?
+2020-07-10 11:26:11 <wib_jonas> shachaf: yes, the same is true about Roger Hui's algorithm, since I read it in source code form
+2020-07-10 11:26:14 <shachaf> I don't know. I've only read the SAT section of TAOCP.
+2020-07-10 11:26:37 Quit: clog (Ping timeout: 264 seconds)
+2020-07-10 11:26:37 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m]
+2020-07-10 11:26:49 <int-e> rain1: there's a huge area to the south that goes all the way back (eastward) to the starting island... and probably beyond but that's about where I'm stuck
+2020-07-10 11:27:01 <wib_jonas> unless that solution is later or close in time to the third edition of vol 2 of course
+2020-07-10 11:27:29 Joined: Phantom_Hoover
+2020-07-10 11:27:29 Joined: zzo38
+2020-07-10 11:27:29 Joined: MDude
+2020-07-10 11:27:29 Joined: ocharles
+2020-07-10 11:27:29 Joined: lambdabot
+2020-07-10 11:27:29 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 11:29:40 <shachaf> To sample k numbers < N: First sample a smaller set of k-1 numbers < N-1. Then choose a random number i < N. If i isn't in the smaller set, then just add it. If i is in the set, add N-1 instead.
