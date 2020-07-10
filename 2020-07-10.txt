@@ -635,3 +635,45 @@
 2020-07-10 11:27:29 Joined: lambdabot
 2020-07-10 11:27:29 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
 2020-07-10 11:29:40 <shachaf> To sample k numbers < N: First sample a smaller set of k-1 numbers < N-1. Then choose a random number i < N. If i isn't in the smaller set, then just add it. If i is in the set, add N-1 instead.
+2020-07-10 11:30:29 Joined: arseniiv
+2020-07-10 11:30:29 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 11:34:13 <int-e> rain1: https://int-e.eu/~bf3/tmp/ssr-south-of-start.png ... actually I'm stuck quite a bit east from there.
+2020-07-10 11:34:32 <rain1> hmm
+2020-07-10 11:34:45 <int-e> rain1: and if I place the area correctly, the fire area is a good way west (and a bit to the north) from there.
+2020-07-10 11:34:55 <int-e> the ssr world is huge.
+2020-07-10 11:35:16 <rain1> ive restarted the game a couple times, to reintegrate the knowledge from earlier levels
+2020-07-10 11:35:31 <rain1> but i havent got past the fire zone yet
+2020-07-10 11:36:02 <int-e> I forgot what the twist in that area was... I played one level where you had to kind of plan for your way back
+2020-07-10 11:36:37 <int-e> and you had to work pretty hard on turning a roll by 90 degrees
+2020-07-10 11:37:02 Joined: tromp
+2020-07-10 11:37:02 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 11:37:34 <int-e> But meh, I think it'll just be an unfinished game for the time being. Lots of other games around.
+2020-07-10 11:38:31 <rain1> what other games do you like?
+2020-07-10 11:39:53 <shachaf> IntSet sample(int N, int k) { IntSet s = empty_set(); for (int i = N - k + 1; i <= N; i++) { int v = rand(i); if (!has(s, v)) { add(s, v); } else { add(s, i-1); } } return s; }
+2020-07-10 11:40:05 Joined: craigo
+2020-07-10 11:40:05 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, arseniiv, atslash, Bowserinator, BWBellairs, Cale, catern, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 11:40:27 <shachaf> This is just better than the simulated shuffle algorithm I came up with (which I guess Hui did first?).
+2020-07-10 11:41:28 <shachaf> If TAOCP has a section on sampling naturals sparsely without replacement, and it doesn't mention this algorithm, that's a glaring omission.
+2020-07-10 11:41:40 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03The Esolanger 5*  10New user account
+2020-07-10 11:41:40 <shachaf> I doubt that's the situation of the world.
+2020-07-10 11:41:59 <rain1> claim your $2.56
+2020-07-10 11:42:20 <wib_jonas> shachaf: I don't know who did first. I heard the solution from Roger Hui, and he confirmed in an email that he came up with the solution idependently, but this is something multiple people could have invented.
+2020-07-10 11:45:04 <int-e> rain1: I guess the genre that I play most is click&point adventures. But I kind of want to finish a first person shooter at some point. I almost made it through Bioshock Infinite... and then I lost the savegame in an OS reinstall (because it was in a place I didn't think to back up).
+2020-07-10 11:45:05 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=75723&oldid=75539 5* 03The Esolanger 5* (+188) 10/* Introductions */
+2020-07-10 11:46:07 <wib_jonas> rain1: it's not an error but a significant suggestion, so it's worth only $0.32, and that only if you're the first to suggest it
+2020-07-10 11:46:16 <int-e> I guess the only hard constraint is that I don't do multiplayer.
+2020-07-10 11:46:35 <wib_jonas> shachaf: I don't understand why that solution works yet
+2020-07-10 11:48:41 <int-e> it doesn't feel uniform
+2020-07-10 11:48:54 <shachaf> It is. But it uses trickery.
+2020-07-10 11:50:38 <wib_jonas> I kind of want to finish a first person shooter at some point => I think the most popular ones are Doom, Hexen, Perfect Dark, Half-Life.
+2020-07-10 11:50:59 <wib_jonas> Most popular as story in single-player mode that is, as opposed to multiplayer fights.
+2020-07-10 11:51:24 <wib_jonas> You should probably at least know about those four before deciding what to play.
+2020-07-10 11:51:49 <int-e> Ah, I think I get it. When you use i-1 you pretend that the element you clashed it actually had that index.
+2020-07-10 11:52:12 <int-e> But using a set obscures that fact, you should really sample an ordered list.
+2020-07-10 11:53:06 <wib_jonas> int-e: both the TAOCP algorithm and Roger Hui's algorithm actually samples an ordered list
+2020-07-10 11:54:29 <shachaf> Say you've sampled k numbers < N, stored in a set S. So each number <N has k/N probability of being in S.
+2020-07-10 11:54:49 <shachaf> You want k+1/N+1 numbers <N+1.
+2020-07-10 11:55:39 <shachaf> There are k numbers you've already chosen, along with N+1 itself, in the range you're picking from. So that gives the right probability of picking N+1.
+2020-07-10 11:55:59 <shachaf> And certainly all the other numbers are treated uniformly.
+2020-07-10 11:58:44 <shachaf> Uh, I meant you want k+1 numbers <N+1, each with probability k+1/N+1
+2020-07-10 11:59:50 <int-e> https://paste.debian.net/1155889/
