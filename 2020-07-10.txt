@@ -391,3 +391,71 @@
 2020-07-10 09:29:30 <int-e> I thought it's weaker than the infamous NP = P.
 2020-07-10 09:29:46 <int-e> Which I think means no.
 2020-07-10 09:29:55 <int-e> But I'm not sure :-/
+2020-07-10 09:30:41 <shachaf> Wikipedia says "If NP = co-NP then NP = PH."
+2020-07-10 09:30:51 <shachaf> I should know these things properly.
+2020-07-10 09:31:25 <wib_jonas> "<shachaf> They redesigned the whole page [github] recently, right?" => yes, they needed to do that to hide the change that they -- wait, Wikipedia? don't you look that up in the Complexity Zoo? -- show some other branch name instead of "master"
+2020-07-10 09:31:35 <int-e> Hmm.
+2020-07-10 09:31:45 <shachaf> I looked it up on the Google.
+2020-07-10 09:32:10 <wib_jonas> also, no way, last time I heard about this we certainly didn't know that
+2020-07-10 09:32:35 <int-e> I still get master branches.
+2020-07-10 09:33:22 <wib_jonas> int-e: ok, maybe not then
+2020-07-10 09:33:22 <shachaf> Now I'm thinking about it and I'm not even sure what sorts of things are in PSPACE and not in PH.
+2020-07-10 09:33:49 <shachaf> I guess a thing in PH requires you to specify the number of quantifiers upfront rather than being part of the input.
+2020-07-10 09:34:07 <shachaf> So I guess I actually do know.
+2020-07-10 09:34:11 <int-e> Well, PSPACE-complete stuff like QBF...
+2020-07-10 09:34:15 <shachaf> (I mean, unless PSPACE = PH.)
+2020-07-10 09:34:16 <wib_jonas> shachaf: the sokoban kind of problems, where you need to find solution that may be exponentially long
+2020-07-10 09:34:37 <shachaf> Right, but my question would have been, why is QBF not in PH? But then I figured it out.
+2020-07-10 09:34:39 <int-e> Or your favorite PSPACE-hard problem, #SAT.
+2020-07-10 09:34:52 <int-e> (Unless I'm mixing things up again. I may.)
+2020-07-10 09:35:25 <shachaf> #SAT is PSPACE-hard? Hm, what does that mean?
+2020-07-10 09:35:32 <shachaf> Er.
+2020-07-10 09:35:40 <int-e> Yeah, I can see the fun there... each QBF instance is in PH.
+2020-07-10 09:35:44 Joined: TheLie
+2020-07-10 09:35:44 Names: ^[, aaaaaa, aloril, APic, Arcorann, atslash, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, joel2, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, spruit11, stux, Taneb, TheLie, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-10 09:35:51 <shachaf> I thought you said PSPACE-complete again somehow, despite typing a different phrase.
+2020-07-10 09:36:11 <shachaf> I'm still not sure what it means, since #SAT isn't normally a decision problem, but maybe you just do the usual thing.
+2020-07-10 09:37:16 <wib_jonas> "<shachaf> Well, the GitHub pull requests aren't really part of the whole git model in the first place." => yes, the original git model is sending patch sets by email
+2020-07-10 09:38:08 <wib_jonas> github does the same but tries to remove the email part and do a web forum thread for pull requests instead of an email threads, because email is harder to centralize (at least if you're Microsoft not Google) and so harder to monetize
+2020-07-10 09:38:21 <wib_jonas> I think it's logical
+2020-07-10 09:38:29 <int-e> Hmm, the complexity wiki just has the weaker statement that PH is in P^{#P}
+2020-07-10 09:39:25 <shachaf> Last time I looked, GitHub didn't look like a good code review tool.
+2020-07-10 09:39:30 <shachaf> But people say it's better so maybe it's better?
+2020-07-10 09:39:41 <wib_jonas> shachaf: can you give a link to where wikipedia says that if NP = coNP then NP = PH?
+2020-07-10 09:39:57 <shachaf> https://en.wikipedia.org/wiki/Polynomial_hierarchy#Relations_between_classes_in_the_polynomial_hierarchy
+2020-07-10 09:40:46 <int-e> https://en.wikipedia.org/wiki/Toda%27s_theorem
+2020-07-10 09:40:59 <int-e> (is about #P)
+2020-07-10 09:42:12 <wib_jonas> hmm, it does say that there
+2020-07-10 09:42:31 <int-e> So yeah by the preceeding discussion this falls short of making it PSPACE-hard.
+2020-07-10 09:43:32 <shachaf> The nice thing about designing sudoku puzzles to be human-solvable is that id minisat doesn't find a solution within a few seconds, the puzzle probably won't be fun for a human.
+2020-07-10 09:43:33 <int-e> (Why? Maybe the reduction is exponential in the number of quantifier alternations or something like that.)
+2020-07-10 09:43:47 <shachaf> Or at least that's my heuristic. Maybe it's not entirely true.
+2020-07-10 09:44:19 <int-e> I imagine that's true.
+2020-07-10 09:44:37 <int-e> I imagine the converse doesn't work :P
+2020-07-10 09:44:40 <wib_jonas> I fail to find solving sokoban fun. It's a nice game in theory, but actually playing it just doesn't work well for me.
+2020-07-10 09:45:06 <int-e> Hmm. I used to play Sokoban *a lot*.
+2020-07-10 09:45:13 <shachaf> Do you find solving Stephen's Sausage Roll fun?
+2020-07-10 09:45:26 <int-e> shachaf: Only up to a point.
+2020-07-10 09:45:54 <shachaf> int-e: I found puzzles that were extremely restrictive with the SAT solver, so I thought they would be interesting for humans.
+2020-07-10 09:46:08 <shachaf> But it turns out to be too difficult, at least for me and a couple of other people.
+2020-07-10 09:46:13 <wib_jonas> ah yes, you are right
+2020-07-10 09:46:14 <wib_jonas> https://complexityzoo.uwaterloo.ca/Petting_Zoo#PH
+2020-07-10 09:46:15 <int-e> I gave up on it, around the point where puzzles started to rely on detaching the fork.
+2020-07-10 09:46:21 <wib_jonas> that confirms your statement
+2020-07-10 09:46:41 <wib_jonas> I don't know what Stephen's Sausage Roll is
+2020-07-10 09:47:29 <wib_jonas> anyway, I have an algorithm design question for you #esoteric
+2020-07-10 09:48:29 <int-e> SSR put some twists on a Sokoban-like game.
+2020-07-10 09:49:23 <int-e> My main complaint is actually that you don't get access to all the levels from the start, even though there's actually a reason for that...
+2020-07-10 09:50:19 <wib_jonas> I have N small boxes, where let's say N <= 40000. Each box has two states: empty or full. Initially all boxes are full. Then I want to perform an interactive sequence of three types of steps. (A) Query the state of a bunch of boxes. (B) Set a bunch of boxes from full to empty. (C) Given a number K, fill exactly K empty boxes such that the set of
+2020-07-10 09:50:20 <wib_jonas> boxes filled is chosen uniformly among all empty boxes and independently from previous random choices.
+2020-07-10 09:51:37 <wib_jonas> In practice, the boxes are in pages often accessed together, so I'll query all boxes in a few page together or fill a set of boxes that are some of the boxes within a few pages.
+2020-07-10 09:52:00 <wib_jonas> I know at least one way to do this, but I'd like the best practical way, in terms of memory efficiency and time efficiency.
+2020-07-10 09:53:10 <int-e> Meh I forgot how this works, wasn't there a way to turn the sausages...
+2020-07-10 09:53:46 <int-e> oh I know.
+2020-07-10 09:54:18 <wib_jonas> The best method I found so far is to store the empty boxes in a binary heap, with a dense index table from all boxes into the heap. For (A) we just look up which indexes are filled in the index table; for (B) we add boxes to the heap with random weights, (C) we remove the box with the highest weigh repeatedly K times.
+2020-07-10 09:55:28 <wib_jonas> You can alternately use a treap, sorted by box number, in which case you don't need a separate indexing table because you can traverse a section of the treap in order, but this doesn't seem better, it takes slightly more memory, and now you have child pointers among the nodes which a binary heap doesn't need.
+2020-07-10 09:55:43 <wib_jonas> They involve a bunch of random access in either case.
+2020-07-10 09:56:17 <wib_jonas> There's probably some better method by amortizing stuff, marking how many more boxes you have to fill in each page, but it doesn't seem trivial.
+2020-07-10 09:56:59 <wib_jonas> Does my question make sense?
+2020-07-10 09:58:49 <int-e> So (A) and (B) are just operations on a boolean array?
+2020-07-10 09:59:51 <int-e> (Which does not support (C) efficiently by itself, but I'm trying to understand the problem here.)
