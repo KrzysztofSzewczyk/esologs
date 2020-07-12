@@ -236,3 +236,21 @@
 2020-07-12 17:31:52 <zzo38> I like that Heirloom-mailx allows specifying pipes in many cases where a filename is expected. Why don't many other programs do things like that?
 2020-07-12 17:49:48 Joined: imode
 2020-07-12 17:49:48 Names: ^[, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, struct, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], yonderboi, zzo38
+2020-07-12 18:00:02 User Name: t20kdc = t20kdc!~20kdc@cpc139340-aztw33-2-0-cust225.18-1.cable.virginm.net
+2020-07-12 18:00:02 <t20kdc> zzo38: because they have forgotten their roots
+2020-07-12 18:00:30 <t20kdc> (or assume that /dev/stdin and /dev/stdout is available on the system and it's thus not-their-problem)
+2020-07-12 18:01:20 <t20kdc> to be honest I suspect it'd be more of a problem if shells were more configurable in regards to complex pipelines
+2020-07-12 18:01:26 <zzo38> t20kdc: For non-interactive software, using stdin/stdout works fine, but many programs have an interactive mode.
+2020-07-12 18:01:37 <zzo38> (Heirloom-mailx is interactive.)
+2020-07-12 18:01:53 <t20kdc> zzo38: then... if pipes are being specified, how?
+2020-07-12 18:02:58 <zzo38> In the case of Heirloom-mailx, when you tell it to save attachments, it will ask you for the filename for each one (with the default filename filled in, but it can be removed); if you write something starting with | then you can specify a pipe instead.
+2020-07-12 18:03:14 <zzo38> (For example, you can write |display to display a picture.)
+2020-07-12 18:03:19 <t20kdc> ooooh, I see
+2020-07-12 18:04:23 <t20kdc> that seems specific to interactive terminal applications, but when that is the case, that definitely sounds useful
+2020-07-12 18:04:48 <t20kdc> I was thinking you meant in terms of non-interactive applications, which definitely have a problem with complex pipeline routing
+2020-07-12 18:05:15 <t20kdc> specifically, the solution seems to be "more mkfifo"
+2020-07-12 18:05:38 <t20kdc> ...which is not very universally applicable
+2020-07-12 18:16:10 Joined: Phantom_Hoover
+2020-07-12 18:16:10 Names: ^[, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, struct, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], yonderboi, zzo38
+2020-07-12 18:24:51 Joined: Sgeo
+2020-07-12 18:24:51 Names: ^[, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, struct, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], yonderboi, zzo38
