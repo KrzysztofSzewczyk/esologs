@@ -24,3 +24,22 @@
 2020-07-12 03:01:56 Joined: adu
 2020-07-12 03:01:56 Names: ^[, adu, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, deschutron, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], yonderboi, zzo38
 2020-07-12 03:53:25 <zzo38> Book Mill {4} Artifact ;; Whenever you mill, if ~ is untapped, you gain that much life. ;; {4}: Mill 2 cards, and then put a card from your graveyard on the bottom of your library. This ability cannot be used if ~ is tapped. ;; Cycling {2}
+2020-07-12 04:03:21 <int-e> shachaf: My thinking was, the algorithm makes P(n,k) choices (permutations, k out of n), so if it's correct then there should be a bijection of runs to these permutations.
+2020-07-12 04:05:07 <shachaf> int-e: Right, once I thought that I realized it must be a permutation algorithm.
+2020-07-12 04:05:25 <int-e> https://www.youtube.com/watch?v=zFwHazFAPok (Nakamura plays Minesweeper) is a drinking game... count the number of times Nakamura says "last one"...
+2020-07-12 04:05:33 <shachaf> I wonder what one that makes P(n,k)/k! choices would look like.
+2020-07-12 04:06:44 <int-e> Hmm, hard to imagine, at least if those choices are supposed to be uniform.
+2020-07-12 04:07:10 <zzo38> In the Pokemon Pinball game, too many points can be earned in the Mewtwo stage. So, to avoid that, I play the Mewtwo stage without touching the flippers; you can try that if you want to.
+2020-07-12 04:07:18 <int-e> (non-uniformly you can break it down to binary choices which is relatively easy... pick the first element or not, unless forced)
+2020-07-12 04:08:04 <int-e> Which actually exists as an algorithm: to select k elements out of n, pick the first element with probability k/n, then proceed.
+2020-07-12 04:09:11 User Name: Sgeo = Sgeo!~Sgeo@ool-18b982ad.dyn.optonline.net
+2020-07-12 04:09:11 <Sgeo> Apparently in 2012 I posted "
+2020-07-12 04:09:11 <Sgeo> Can elephants juggle more than seven chainsaws?", and then made a comment about googling the entire question. That chat log is now the only result.
+2020-07-12 04:09:15 <int-e> (This is uniform in the end but relies on a non-uniform choice internally.)
+2020-07-12 04:09:54 <Sgeo> (My best first guess would be Triangle and Robert quote)
+2020-07-12 04:14:45 <int-e> hrm, there was a cute term for google queries with unique results... can't remember :-(
+2020-07-12 04:15:06 <esowiki> 14[[07High Rise14]]4 10 02https://esolangs.org/w/index.php?diff=75851&oldid=75816 5* 03Ais523 5* (+18) 10/* See also */ mention [[Spiral Rise]], the new and improved version of this language
+2020-07-12 04:15:31 <Sgeo> Relatedly ohnorobot (comic search engine) is dead.
+2020-07-12 04:16:51 <Sgeo> No, just the embed on T&R
+2020-07-12 04:22:12 <esowiki> 14[[07Re:direction14]]4 M10 02https://esolangs.org/w/index.php?diff=75852&oldid=75774 5* 03Ais523 5* (+1) 10/* Computational class */ punct
+2020-07-12 04:29:30 <esowiki> 14[[071+/Snippets14]]4 10 02https://esolangs.org/w/index.php?diff=75853&oldid=74306 5* 03TwilightSparkle 5* (+96) 10/* Easy */
