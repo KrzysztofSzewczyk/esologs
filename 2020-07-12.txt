@@ -348,3 +348,21 @@
 2020-07-12 22:56:51 <zzo38> I have a different idea how to do it, which would probably result in a more useful way anyways, which is that \write18 writes the text to the log file and also copies the text into an internal buffer. If you then try to open the file called ::pipe for reading or writing, then it executes the command stored in the internal buffer and allows reading/writing the pipe.
 2020-07-12 22:59:02 <b_jonas> zzo38: you could try to implement some of that as a patch
 2020-07-12 22:59:26 <b_jonas> TeXlive is open source
+2020-07-12 23:01:09 <zzo38> Yes, I could do.
+2020-07-12 23:03:14 <zzo38> (Other similar extensions would also be possible, such as ::sql to be able to deal with SQL databases.)
+2020-07-12 23:05:01 <b_jonas> zzo38: if you use \write as the interface, then pipes are probably universal enough, because anything external that you may want to access by just writing text into a pipe you want as an external program so you can use it for things other than TeX, including an SQL interface
+2020-07-12 23:05:14 <b_jonas> but if you implement extensions, they can use something other than a \write interface
+2020-07-12 23:10:54 <esowiki> 14[[07User:Bangyen14]]4 10 02https://esolangs.org/w/index.php?diff=75912&oldid=75911 5* 03Bangyen 5* (+62) 10
+2020-07-12 23:13:21 <esowiki> 14[[07Lightlang14]]4 10 02https://esolangs.org/w/index.php?diff=75913&oldid=70266 5* 03Bangyen 5* (+79) 10
+2020-07-12 23:13:32 <esowiki> 14[[07Lightlang14]]4 10 02https://esolangs.org/w/index.php?diff=75914&oldid=75913 5* 03Bangyen 5* (-2) 10
+2020-07-12 23:13:43 Joined: Arcorann
+2020-07-12 23:13:43 Names: ^[, aaaaaa, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, relrod, rodgort`, sebbu, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, struct, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-12 23:18:48 <b_jonas> Question. What are the most popular video games where you play a member of a D&D-style small adventuring party, where other members of that party are played by the computer, and this happens in a symmetrical way, in that depending on your choices, you could play different characters in a similar adventuring groups, so at least two members are potentially PCs, and this is a primary mode, not something
+2020-07-12 23:18:54 <b_jonas> badly tacked on to a multiplayer game?
+2020-07-12 23:18:57 <b_jonas> This doesn't restrict the genre too much.
+2020-07-12 23:21:47 <zzo38> Yes, they can; they could also be new commands. However there is the possibility that you might not want to change other stuff since it would be incompatible with other implementations of TeX, since some file might expect the working certain ways. (What I proposed pretty much guarantees that everything else continues to work, even if the extension isn't disabled.
+2020-07-12 23:22:08 <zzo38> (The two problems with the existing \write18 is that it seems to be write-only, and furthermore even if that feature is disabled, it doesn't work properly.)
+2020-07-12 23:22:26 <zzo38> b_jonas: Do you have examples of such game (even if they are not so popular or well known)?
+2020-07-12 23:27:12 <b_jonas> zzo38: I don't know any examples, or at least can't think of any
+2020-07-12 23:27:26 <b_jonas> but I don't play many such adventuring games
+2020-07-12 23:27:35 <b_jonas> not even ones where you control the whole party
