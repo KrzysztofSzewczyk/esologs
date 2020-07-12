@@ -298,3 +298,39 @@
 2020-07-12 21:28:26 Names: ^[, aaaaaa, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, struct, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-07-12 21:28:32 Joined: Phantom_Hoover
 2020-07-12 21:28:32 Names: ^[, aaaaaa, aloril, APic, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, relrod, rodgort`, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, struct, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-12 21:34:52 User Name: zzo38 = zzo38!~zzo38@host-24-207-14-22.public.eastlink.ca
+2020-07-12 21:34:52 <zzo38> b_jonas: For non-interactive programs, you are certainly correct; you can use the shell features.
+2020-07-12 21:35:56 <zzo38> Interactive programs that support specifying piped commands do include ed and vim, as well as Heirloom-mailx, and some programs I wrote myself (such as bystand, and the interactive mode of TeXnicard), but many newer programs unfortunately don't support such thing.
+2020-07-12 21:37:33 <b_jonas> such as most interactive editors
+2020-07-12 21:38:21 <b_jonas> zzo38: yeah, it can help for domain-specific programming languages too, TeX has such an extension these days
+2020-07-12 21:38:38 <b_jonas> even when they're not interactive
+2020-07-12 21:38:57 <b_jonas> general purpose programming languages of course already have such a feature, and I do use it often
+2020-07-12 21:39:41 <b_jonas> I even found out that Windows 7 uses a tiny pipe buffer by default, and if you want to send large amounts of data through a pipe with performance, you have to increase it with a system call
+2020-07-12 21:39:51 <zzo38> Yes, although TeX does have an interactive mode too. Ghostscript also provides the %pipe% device which is a nonstandard extension to PostScript, and Ghostscript also has an interactive mode (which is a standard feature of PostScript, actually).
+2020-07-12 21:39:52 <b_jonas> linux has changed to a larger default buffer a while ago now
+2020-07-12 21:40:17 <b_jonas> zzo38: no, I mean for TeX the popen extension is useful even without the interactive mode
+2020-07-12 21:40:34 <zzo38> Yes, it is useful even without the interactive mode.
+2020-07-12 21:41:17 <b_jonas> I used popens to ffmpeg and to qhull at work
+2020-07-12 21:41:39 <b_jonas> also ffplay, ffprobe, and imagemagick
+2020-07-12 21:41:54 <b_jonas> probably more
+2020-07-12 21:42:05 <zzo38> Isn't ffplay part of ffmpeg?
+2020-07-12 21:42:07 <b_jonas> oh yeah, also a popen to gnuplot
+2020-07-12 21:42:16 <b_jonas> yes, ffmpeg and ffprobe are the two other programs in ffmpeg
+2020-07-12 21:42:24 <b_jonas> I popened all three, and ffmpeg both for reading and for writing
+2020-07-12 21:42:44 <zzo38> How do you specify a pipe in TeX?
+2020-07-12 21:43:12 <b_jonas> also gnuplot, I wrote a weird development visualization program where I draw an animation with gnuplot, but control playback and settings real time with keystrokes on a command-line driver program
+2020-07-12 21:43:24 <b_jonas> zzo38: I don't remember
+2020-07-12 21:43:45 <b_jonas> it's some kind of extension, not in Knuth's master version
+2020-07-12 21:44:46 <zzo38> Yes, I thought so
+2020-07-12 21:48:23 <zzo38> Best would probably be an extension to the syntax for filenames, since then it is still really TeX; some other extensions aren't TeX
+2020-07-12 21:48:39 <b_jonas> zzo38: it's possible that I was wrong, and it can only run shell commands, rather than popen them, and the man page says it has to do with \write18
+2020-07-12 21:49:03 <b_jonas> but I haven't looked up in detail how that works
+2020-07-12 21:49:16 <b_jonas> it's probably in one of the documentations installed with TeXlive and typeset with tex
+2020-07-12 21:51:00 <zzo38> Yes, I think I read that too, but it isn't very good and it contradicts the specification of TeX. (Being able to use pipes would be more useful though, that only to run shell commands.)
+2020-07-12 21:52:30 <b_jonas> zzo38: I don't think it contradicts the specs, as it's optional and connected to a \write handle that a format could open by default, so it's like modifying a format
+2020-07-12 21:52:53 <b_jonas> and it will never be the default because of security reasons
+2020-07-12 21:52:59 <zzo38> Well, the problem (at least last time I checked) is a bug that occurs when that feature is disabled.
+2020-07-12 21:53:06 <b_jonas> oh?
+2020-07-12 21:53:21 <zzo38> (If that bug didn't occur, then it would be OK, I think.)
+2020-07-12 21:53:52 <zzo38> I don't remember the details of that bug, but I think it has to do with testing EOF.
+2020-07-12 22:00:00 <zzo38> Another bug is that if \write18 is disabled, then it should act the same as \write19, but instead it writes an error message to the log file.
