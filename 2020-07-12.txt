@@ -168,3 +168,20 @@
 2020-07-12 11:18:25 Names: ^[, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, deschutron, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], yonderboi, zzo38
 2020-07-12 11:27:20 Joined: arseniiv
 2020-07-12 11:27:20 Names: ^[, aloril, APic, Arcorann, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, deschutron, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], yonderboi, zzo38
+2020-07-12 11:32:23 <esowiki> 14[[07DIVCON14]]4 10 02https://esolangs.org/w/index.php?diff=75899&oldid=75101 5* 03A 5* (+69) 10/* Instruction list */
+2020-07-12 11:38:23 User Name: arseniiv = arseniiv!~arseniiv@94.41.4.55.dynamic.ufanet.ru
+2020-07-12 11:38:23 <arseniiv> int-e: shachaf: do SAT or SMT solvers usually have means to iterate all possible solutions, not just give a single model if one exists?
+2020-07-12 11:39:29 <arseniiv> hm wait lambdabot haven’t said I have messages :\
+2020-07-12 11:40:09 <arseniiv> @tell cpressey wow this sounds interesting! but I haven’t understood what it means yet
+2020-07-12 11:40:09 <lambdabot> Consider it noted.
+2020-07-12 11:41:49 <int-e> arseniiv: the latter. one reason is that enumeration doesn't work well with restarts (which the solvers tend to do... a lot)
+2020-07-12 11:42:59 <arseniiv> int-e: thank you!
+2020-07-12 11:43:11 <int-e> arseniiv: but they often have an incremental mode, where you can alternate between checking satisfiability (with model) and adding new constraints. So if there are few models you can rule out the ones you've seen with an additional constraint and continue.
+2020-07-12 11:43:34 <int-e> For example, this works well for checking uniqueness of solutions of puzzles.
+2020-07-12 11:44:40 <arseniiv> int-e: is there a way to enumerate all possible moves for a given position in e. g. checkers or backgammon?
+2020-07-12 11:45:26 <arseniiv> maybe an advanced SMT solver language may express it directly?.. and you have a single solution which contains the list of moves
+2020-07-12 11:45:33 <int-e> nah
+2020-07-12 11:46:20 <arseniiv> so then my Prolog-esque (and totally unimplemented) thing may be a better solution as I feared
+2020-07-12 11:46:37 <int-e> Well, I say "nah" but really I just don't know of anything like this.
+2020-07-12 11:47:11 <int-e> It does sound more like Prolog. Answer set programming may be relevant, I never figured out what that is exactly.
+2020-07-12 11:47:53 <arseniiv> answer set programming, haven’t heard about that yet
