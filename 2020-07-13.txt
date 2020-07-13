@@ -126,3 +126,22 @@
 2020-07-13 12:56:35 <wib_jonas> hey guys, some rubber duck style questions about designing a toy language that probably counts as esoteric.
 2020-07-13 12:59:52 <wib_jonas> firstly, in this language, I probably want to allow functions with multiple return values, even though probably none of the builtins or functions in the standard library will really use multiple returns. this can still make sense, right? I think it can because (1) scheme does this, (2) multiple returns can still be useful in functions for a larger
 2020-07-13 12:59:53 <wib_jonas> projects.
+2020-07-13 13:04:19 User Name: Taneb = Taneb!~Taneb@runciman.hacksoc.org
+2020-07-13 13:04:19 <Taneb> You have to think about how to define and how to use functions that return multiple values
+2020-07-13 13:05:40 <Taneb> And if a function can return a varying number of values
+2020-07-13 13:09:54 <wib_jonas> Taneb: yes, I did think of both of that, and that's why I think multiple return value functions would be a good match for the core language of this esoteric language. eg. you can imagine a stack-based language: multiple returns are trivial since it can just return on the stack. my language is not stack-based, but it's also not one where you use
+2020-07-13 13:09:55 <wib_jonas> algol/C-style nested parenthisized function calls, which is where multiple return values are hard.
+2020-07-13 13:10:21 <wib_jonas> multiple return values are also easy in a prolog-style language, where every intermediate result has a (local) name.
+2020-07-13 13:10:59 <wib_jonas> it may be easy or hard in a register-based low-level machine, depending on what sort of instructions you want.
+2020-07-13 13:20:46 <wib_jonas> I might have more questions, but I'm not sure how to ask them yet
+2020-07-13 13:23:38 User Name: arseniiv = arseniiv!~arseniiv@94.41.4.55.dynamic.ufanet.ru
+2020-07-13 13:23:38 <arseniiv> wib_jonas: hi! I agree multiple returns, if done right, are fairly indispensable
+2020-07-13 13:24:18 <arseniiv> they simplify matters even in μ-recursive functions formalism
+2020-07-13 13:24:47 <wib_jonas> may depend on what kind of language you have, but yeah
+2020-07-13 13:27:44 Quit: ocharles (*.net *.split)
+2020-07-13 13:27:44 Quit: lambdabot (*.net *.split)
+2020-07-13 13:27:44 Names: ^[, aaaaaa, aloril, APic, Arcorann, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-13 13:28:04 <arseniiv> you might even remember that simplified formalism has function concatenation which takes N^n → N^m1 and N^n → N^m2 to N^n → N^(m1 + m2), and that composition there becomes just plain composition of two functions A → B → C because of allowing concatenation
+2020-07-13 13:28:06 Joined: ocharles
+2020-07-13 13:28:06 Joined: lambdabot
+2020-07-13 13:28:06 Names: ^[, aaaaaa, aloril, APic, Arcorann, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, lucky, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom_Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort`, sebbu, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
