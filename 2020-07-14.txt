@@ -99,3 +99,34 @@
 2020-07-14 08:32:47 <esowiki> 14[[07DDuuaall14]]4 10 02https://esolangs.org/w/index.php?diff=75958&oldid=75957 5* 03A 5* (-125) 10
 2020-07-14 08:47:50 <shachaf> I like the way 2SAT is solvable by just doing regular DPLL, but never backtracking more than one level.
 2020-07-14 08:58:21 <shachaf> How many clauses of length > 2 do you need for SAT to be NP-complete?
+2020-07-14 09:00:37 <int-e> Well, SAT is in P for any fixed number of clauses of length > 2.
+2020-07-14 09:00:39 <myname> i'd say arbitrary many, because if you put an upper bound to it, there is an upper bound of the length of merged clauses
+2020-07-14 09:01:30 <int-e> (With k clauses of size n, you can try all choices of the positive literal for each clause in n^k calls to the 2SAT procedure.)
+2020-07-14 09:06:43 <shachaf> Hmm.
+2020-07-14 09:06:57 <shachaf> Sudoku is expressible using almost entirely 2-clauses, right?
+2020-07-14 09:07:14 <shachaf> You need one n-clause per cell to specify that a cell has at least one value, and that's it, I think.
+2020-07-14 09:07:33 <myname> i'm not sure about that
+2020-07-14 09:08:26 <myname> don't you need one n-clause per row/column/block?
+2020-07-14 09:08:51 <shachaf> You only need to say that there's at most one of each digit for each of those.
+2020-07-14 09:09:02 <shachaf> Which you can express with a bunch of 2-clauses.
+2020-07-14 09:09:09 <myname> how so?
+2020-07-14 09:10:52 <shachaf> (¬(0,0)=1 | ¬(0,1)=1) & (¬(0,0)=1 | ¬(0,2)=1) & ...
+2020-07-14 09:12:28 <myname> okay
+2020-07-14 09:13:06 <myname> but if n is the number of variables, you'd still need 3n clauses of size > 2, don't you?
+2020-07-14 09:13:11 <int-e> shachaf: true
+2020-07-14 09:13:56 <shachaf> For 9x9 sudoku the simple encoding has 9^3 variables and 9^2 clauses of length > 2.
+2020-07-14 09:14:34 <shachaf> Arbitrary sudoku is supposed to be NP-complete, right? I'm kind of surprised that you get that from a relatively small number of >2 clauses, though it does grow with the number of variables.
+2020-07-14 09:15:00 <int-e> If you generalize to a Sudoku of size nxn you end up with n^2 constraints of size n.
+2020-07-14 09:15:14 <shachaf> Right.
+2020-07-14 09:15:22 <int-e> (n = k*l if you have l*k boxes of size k*l)
+2020-07-14 09:15:31 <myname> shachaf: well, if you follow int-es reasoning above, you have n^n calls to 2sat
+2020-07-14 09:15:43 <myname> and n^n is no longer polynomial
+2020-07-14 09:15:55 <myname> (that doesn't mean there can not be another way)
+2020-07-14 09:15:58 <int-e> n^(2n), but that just makes it worse.
+2020-07-14 09:16:13 <int-e> err, what am I saying
+2020-07-14 09:16:15 <int-e> n^n^2
+2020-07-14 09:19:32 <int-e> Let's just do set cover. If k elements to cover and n sets, then you have a natural encoding with n variables indicating which sets to select, k constraints of size <= n (to ensure that each element is selected, and up to C(n,2) clauses of size 2 to ensure the selected sets don't overlap.
+2020-07-14 09:20:20 <int-e> If *there are* k elements...
+2020-07-14 09:22:36 <shachaf> Exact cover?
+2020-07-14 09:22:40 <int-e> yes
+2020-07-14 09:22:46 <shachaf> That does seem simpler.
