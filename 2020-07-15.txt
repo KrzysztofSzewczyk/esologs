@@ -125,3 +125,68 @@
 2020-07-15 15:13:09 <kspalaiologos> ^8ball or maybe, should I work on a crackme
 2020-07-15 15:13:09 <fungot> No.
 2020-07-15 15:13:17 <kspalaiologos> an uniform response.
+2020-07-15 15:30:37 <int-e> ^8ball Should 8ball be trusted?
+2020-07-15 15:30:37 <fungot> Yes.
+2020-07-15 15:30:43 <int-e> ^8ball Are you sure?
+2020-07-15 15:30:43 <fungot> Yes.
+2020-07-15 15:30:45 <int-e> Meh.
+2020-07-15 15:30:51 <int-e> I don't trust it :)
+2020-07-15 15:31:54 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2020-07-15 15:31:54 <fizzie> ^8ball Were you lying when you said it should be trusted?
+2020-07-15 15:31:54 <fungot> No.
+2020-07-15 15:32:02 <fizzie> I don't know, it looks pretty consistent to me.
+2020-07-15 15:32:12 <int-e> ^8ball Would you ever lie to me?
+2020-07-15 15:32:12 <fungot> No.
+2020-07-15 15:32:41 <int-e> ^8ball Are your replies predictable?
+2020-07-15 15:32:41 <fungot> Yes.
+2020-07-15 15:33:22 <fizzie> ^8ball Have I been testing these phrases in a query to get the replies I want?
+2020-07-15 15:33:22 <fungot> No.
+2020-07-15 15:33:31 <fizzie> (That's actually true, but getting a bit spooky.)
+2020-07-15 15:34:13 <int-e> It's just parity, right?
+2020-07-15 15:34:33 <myname> ^8ball it's just parity, right?
+2020-07-15 15:34:33 <fungot> Yes.
+2020-07-15 15:34:36 <fizzie> Yes, I think so.
+2020-07-15 15:34:40 <fizzie> ^show 8ball
+2020-07-15 15:34:40 <fungot> ,[[->+<],]>2+2<[->-[>+>2]>[+[-<+>]>+>2]<5]>4+<2[>2-+11[>+8>+4<2-]>+.+12.+14.>+2.<4-]>2[+10[>+7>+4<2-]>+.+33.>+2.<2]
+2020-07-15 15:34:47 <myname> it obviously is
+2020-07-15 15:34:48 <int-e> > odd . sum . map fromEnum $ "it's just parity, right?"
+2020-07-15 15:34:50 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-07-15 15:34:50 <lambdabot> True
+2020-07-15 15:34:53 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-07-15 15:34:53 <wib_jonas> ^8ball Are you giving an incorrect response right now?
+2020-07-15 15:34:53 <fungot> Yes.
+2020-07-15 15:35:05 <int-e> > odd . sum . map fromEnum $ "Were you lying when you said it should be trusted?"
+2020-07-15 15:35:07 <lambdabot> False
+2020-07-15 15:36:37 <int-e> . o O ( >2 is not shorter than >> )
+2020-07-15 15:37:06 * int-e is not used to RLE brainfuck.
+2020-07-15 15:37:37 <myname> i am a but confused about the fromEnum part
+2020-07-15 15:37:46 <myname> ah
+2020-07-15 15:37:48 <myname> nvmd
+2020-07-15 15:37:54 <int-e> fromEnum == ord here
+2020-07-15 15:37:58 <myname> yeah
+2020-07-15 15:38:08 <int-e> the difference is that fromEnum is always available while ord requires an import
+2020-07-15 15:38:35 <int-e> so I tend to use the former even though lambdabot has `ord` in scope.
+2020-07-15 15:42:22 <wib_jonas> int-e: from what I heard, fungot compiles brainfuck to some internal representation that uses RLE, and that's why it dumps it that way
+2020-07-15 15:42:23 <fungot> wib_jonas: not to mention... how we'll do no filesystem. are you going
+2020-07-15 15:42:41 <wib_jonas> fungot: yes, but it's probably not worth
+2020-07-15 15:42:42 <fungot> wib_jonas: there are quite a number of " molecules" ( gliders, stable patterns, etc.) for the wiki
+2020-07-15 15:43:25 <int-e> wib_jonas: that makes sense
+2020-07-15 15:43:55 <int-e> but it doesn't make the code easier to read ;)
+2020-07-15 15:44:16 <wib_jonas> int-e: might also make the code fit into a single IRC line when it otherwise wouldn't fit
+2020-07-15 15:45:40 <int-e> Though, to be fair, the division by 2 would be hard to digest independently of how the code is written.
+2020-07-15 15:47:12 Joined: xkapastel
+2020-07-15 15:47:12 Names: ^[, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zzo38
+2020-07-15 15:47:54 Joined: S_Gautam
+2020-07-15 15:47:54 Names: ^[, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, xylochoron[m], zzo38
+2020-07-15 15:47:55 <fizzie> Yes, that's the internal reason why it gets printed that way. Though it could definitely omit the count for 2 and print the symbol twice, since it already has custom logic for 1.
+2020-07-15 15:48:20 <fizzie> The internal representation also uses the same instruction for < and >, and + and -, so the "pretty"-printer needs to fix that as well.
+2020-07-15 15:48:37 <int-e> but okay, taking the <5 part on faith I see how the division part works :)
+2020-07-15 15:49:15 <int-e> Which is kind of satisfying because I have not touched Brainfuck in a while.
+2020-07-15 15:52:01 User Name: arseniiv = arseniiv!~arseniiv@94.41.4.55.dynamic.ufanet.ru
+2020-07-15 15:52:01 <arseniiv> hi have a nice day
+2020-07-15 15:54:27 <int-e> hello good bye arseniiv
+2020-07-15 15:55:32 <arseniiv> int-e why good bye? :′(
+2020-07-15 15:55:45 <arseniiv> s/int-e/int-e:
+2020-07-15 15:57:16 <int-e> arseniiv: because "have a nice day" is a parting greeting
+2020-07-15 15:57:26 <int-e> whether you intended it that way or not
+2020-07-15 15:59:04 <arseniiv> int-e: oh :D
