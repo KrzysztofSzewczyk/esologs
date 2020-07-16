@@ -227,3 +227,53 @@
 2020-07-16 19:09:58 <fizzie> Right now the best price-per-unit-of-storage size seems to be either 6 TB or 8 TB, but if I were to switch to that, I'd need to buy approximately 5 of them.
 2020-07-16 19:19:39 <arseniiv> ah, I have less than 3 TB of non-backup space, and more than 200 GB is used to hold a file I don’t particularly want to have but it hasn’t anywhere else to go if I don’t want to devote one of removable disks to it, as there are just two and they hold backups. Though I should better place them in different locations, not in the same drawer centimeters apart
 2020-07-16 19:22:02 <arseniiv> BTW is there any merit to wrap a removable HDD in metal foil as a kind of Faraday cage, would it be effective against EMP from a nearby lightning and does that happen often enough to be one of the main threats?
+2020-07-16 19:31:22 <fizzie> I don't have any data to back this up (no terminology pun intended), but I would imagine that's not super high up the list of most common failure modes.
+2020-07-16 19:33:45 <b_jonas> arseniiv: I don't think so. if you want to protect against lightning, pull out all cables from the hard disk and any other equipment nearby.
+2020-07-16 19:34:02 <b_jonas> like, if it's still in a computer chasis, pull all the cables from the chasis
+2020-07-16 19:34:27 <b_jonas> a typical computer chasis is already a Faraday cage, the lightning comes in on cables
+2020-07-16 19:34:36 <b_jonas> not necessarily on the power cable, it can come from a network cable too
+2020-07-16 19:34:58 <b_jonas> PurpleStar TwitchSings *
+2020-07-16 19:34:59 <arseniiv> b_jonas: would that help from a nearby lightning which doesn’t cause a spike in the power network?
+2020-07-16 19:35:57 <b_jonas> arseniiv: I think so, if the cables are removed from all the other equipment nearby
+2020-07-16 19:36:03 <b_jonas> but I'm not an experts
+2020-07-16 19:36:18 <arseniiv> I heard right near a lightning, as rare as it may be to be as near, there are quite a large field intensities. I don’t remember if I read about remagnetizing stuff, but I think I saw that somewhere
+2020-07-16 19:36:37 <b_jonas> hard disk data isn't too vulnerable to lightning strikes anyway. the electronics may be, but if it's only the electronics that breaks, a hard disk can still be read
+2020-07-16 19:36:53 <b_jonas> so you can recover the data. when the electronics in an SSD breaks, you're screwed, there's no way to fix it.
+2020-07-16 19:37:11 <fizzie> That's a pretty relaxed definition of "can" though.
+2020-07-16 19:37:20 <arseniiv> yeah but one would need to get it to service which is not always as cheap(?..)
+2020-07-16 19:37:26 <b_jonas> fizzie: yeah, you need a recovery service
+2020-07-16 19:38:36 <b_jonas> still, easier to recover from than when misbehaving software or malware or misbehaving wetware corrupts/deletes all your data
+2020-07-16 19:39:22 <arseniiv> not necessarily on the power cable, it can come from a network cable too => hm also you reminded me it even may induce currents in the cables not connected to a power source or the like, and still fry something
+2020-07-16 19:40:00 <b_jonas> arseniiv: yes, I specifically said "pull out all cables from ... and any other equipment nearby."
+2020-07-16 19:40:13 <fizzie> I was promised proper storms when I moved to the UK, but there's been hardly any.
+2020-07-16 19:40:56 <b_jonas> also, make sure your house doesn't catch fire from the lightning. house fires don't usually destroy the hard disk, but they can cause other severe damage.
+2020-07-16 19:41:48 <b_jonas> and make sure that if a lightning strikes a tree it doesn't fall onto your car
+2020-07-16 19:41:58 <b_jonas> also doesn't destroy hard disks but still
+2020-07-16 19:46:09 <arseniiv> <b_jonas> also, make sure your house doesn't catch fire from the lightning => that can be pretty assured, it’s all bricks on the outside and concrete slabs somewhere inside :D
+2020-07-16 19:47:51 <b_jonas> arseniiv: yeah, you don't live in America, it's easier here
+2020-07-16 19:48:12 <arseniiv> and I don’t have a car yay. It certainly might be useful but it entails so much hassle with gasoline prices, service prices, bureaucracy and at the last it would be a hard thing to get a licence and actually drive with my degree of myopia :D
+2020-07-16 19:48:20 <b_jonas> although we still have some ugly building fires sometimes, even in concrete buildings
+2020-07-16 19:49:06 <arseniiv> I’d like to drive in an experimental environment where I don’t need to worry about having a license, just for fun to try it out
+2020-07-16 19:49:10 <b_jonas> but mostly plausibly deniable motivated ones, like last time it was the offices of a political party, with lots of documents stored inside, that burned down in the city
+2020-07-16 19:49:30 <b_jonas> and an old storage building right at my previous job
+2020-07-16 19:49:55 <arseniiv> yeah, plastics which burn readily and so on, but usually one needs to set them on fire in a solid manner
+2020-07-16 19:50:15 <b_jonas> arseniiv: you can certainly get a driving license with myopia. I have one, and I already had bad myopia back then.
+2020-07-16 19:50:31 <b_jonas> admittedly it did get a bit worse, mostly in that my two eyes desyced
+2020-07-16 19:50:37 <arseniiv> but I don’t see how I would drive in the city
+2020-07-16 19:50:37 <b_jonas> so I have much worse binocular vision now
+2020-07-16 19:50:51 <b_jonas> oh, I don't drive either, I just have a driving license
+2020-07-16 19:51:01 <b_jonas> the town is terrible, I'd be afraid to drive here
+2020-07-16 19:51:03 <arseniiv> ah :D
+2020-07-16 19:51:06 <b_jonas> I can drive when I'm away
+2020-07-16 19:51:29 <b_jonas> I got the license around when I started university.
+2020-07-16 19:51:59 <arseniiv> I don’t want to get a license for naught, it’s pretty much work and social interactions with dubious persons which would comment on my height or something
+2020-07-16 19:52:08 <b_jonas> "set them on fire in a solid manner" => good thing we have ubiquitious litium batteries for that now
+2020-07-16 19:52:20 <arseniiv> yeah
+2020-07-16 19:52:22 <b_jonas> they're not only in electric wheelchairs, they're in every consumer electronics device
+2020-07-16 19:52:25 <b_jonas> now
+2020-07-16 19:52:50 <b_jonas> but even without that, there's the old-school car fuel or alcohol or other easily flammable liquids
+2020-07-16 19:52:54 <b_jonas> that are easy to buy
+2020-07-16 19:53:44 <arseniiv> alcohol especially these times as an antiseptic
+2020-07-16 19:54:26 <b_jonas> yeah, all the pharma companies realized that stopping their factories and turning them to package hand sanitizers to tiny bottles earns them a lot of money, because there's a shortage of the bottles on the market, the actual alcohol and isopropil-alcohol is widely available, and
+2020-07-16 19:54:56 <b_jonas> unlike when making drugs, they don't need to follow all the expensive strict quality control laws to just make hand sanitizer bottles
+2020-07-16 19:55:02 <b_jonas> so now we don't have drugs
