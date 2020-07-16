@@ -97,3 +97,24 @@
 2020-07-16 12:48:51 <int-e> @check \a b -> (a `xor` b == 1) == (abs (a-b) == 1 && even (min a b))
 2020-07-16 12:48:53 <lambdabot> +++ OK, passed 100 tests.
 2020-07-16 12:58:48 <int-e> (I started out with the thing on the right.)
+2020-07-16 13:00:42 <int-e> I've been toying around with this: https://paste.debian.net/1156599/ (that is, count the number of solutions to that "Regnarok puzzle" I brought up yesterday.)
+2020-07-16 13:10:32 Joined: wib_jonas
+2020-07-16 13:10:32 Names: ^[, aloril, APic, arseniiv, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-16 13:11:02 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-07-16 13:11:02 <wib_jonas> `olist 1207
+2020-07-16 13:11:04 <HackEso> olist 1207: shachaf oerjan Sgeo FireFly boily nortti b_jonas
+2020-07-16 13:15:40 User Name: arseniiv = arseniiv!~arseniiv@94.41.4.55.dynamic.ufanet.ru
+2020-07-16 13:15:40 <arseniiv> fare well
+2020-07-16 13:19:34 <arseniiv> <int-e> I've been toying around with this: https://paste.debian.net/1156599/ => how do you think, can it be solved neatly without enumerating a massive amount of things on a computer? purely pencil and paper style?
+2020-07-16 13:23:16 <int-e> arseniiv: it's in the middle
+2020-07-16 13:23:52 <int-e> A bit more tedious than I'd be comfortable with on pen&paper.
+2020-07-16 13:24:00 <arseniiv> so, the kind of puzzle I’m not experienced with at all
+2020-07-16 13:24:13 <int-e> The keyword is dynamic programming.
+2020-07-16 13:24:29 <int-e> Also, it turns out this thing has an OEIS entry.
+2020-07-16 13:25:17 <int-e> You can use brute force too, it will finish.
+2020-07-16 13:25:31 <arseniiv> <int-e> Also, it turns out this thing has an OEIS entry. => a sequence for various dimensions of the Jormungard (oh I think I made at least three errors in there writing by memory)
+2020-07-16 13:25:34 <arseniiv> ?
+2020-07-16 13:25:54 <int-e> varying the width
+2020-07-16 13:26:29 <arseniiv> I’d vary the height too, I think there should be a decent generalization which leaves only two degree 3 vertices
+2020-07-16 13:27:04 <int-e> Well, I'd advise against it.
+2020-07-16 13:28:48 <int-e> (You can ask the question but the counting will get more difficult.)
