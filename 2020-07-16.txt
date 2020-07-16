@@ -218,3 +218,12 @@
 2020-07-16 18:42:13 <rain1> yeah that story got me thinking
 2020-07-16 18:59:47 <b_jonas> have multiple disks, any one could break
 2020-07-16 18:59:56 <b_jonas> no, I don't always follow my own advice about backups
+2020-07-16 19:00:05 <b_jonas> I'm probably not the right person to ask about them
+2020-07-16 19:00:09 <b_jonas> about backup best practices
+2020-07-16 19:03:21 <arseniiv> b_jonas: I think "bless you" is the normal reply => oh, forgot about that one
+2020-07-16 19:04:26 <arseniiv> when I think about backups, I realize I don’t have enough disks
+2020-07-16 19:06:26 <fizzie> The problem with many disks is, if you choose to make one bigger, you may need to make the others bigger as well, and then it may become expensive.
+2020-07-16 19:08:17 <fizzie> For example, the three disks in my backup rotation cycle (one in the machine receiving weekly incremental backups, one on the shelf here, and one in an underground vault at an undisclosed location in the Finnish bedrock) are all 3TB, while the "working drives" in this machine are 4TB, which only works because I've excluded a bunch of useless junk from being backed-up.
+2020-07-16 19:09:58 <fizzie> Right now the best price-per-unit-of-storage size seems to be either 6 TB or 8 TB, but if I were to switch to that, I'd need to buy approximately 5 of them.
+2020-07-16 19:19:39 <arseniiv> ah, I have less than 3 TB of non-backup space, and more than 200 GB is used to hold a file I don’t particularly want to have but it hasn’t anywhere else to go if I don’t want to devote one of removable disks to it, as there are just two and they hold backups. Though I should better place them in different locations, not in the same drawer centimeters apart
+2020-07-16 19:22:02 <arseniiv> BTW is there any merit to wrap a removable HDD in metal foil as a kind of Faraday cage, would it be effective against EMP from a nearby lightning and does that happen often enough to be one of the main threats?
