@@ -294,3 +294,10 @@
 2020-07-16 21:15:33 <b_jonas> but it's better than nothing
 2020-07-16 21:17:03 <zzo38> Well, for one thing, I want to use lossless compression.
 2020-07-16 21:17:53 <zzo38> Another thing is might be wanted to decode as CMYK+spots
+2020-07-16 21:42:12 <arseniiv> zzo38: do you intend to use that in TeXnicard for card images? Maybe it would be good to just vectorize all the images? (with a sufficiently high contour complexity so they would look pleasing)
+2020-07-16 21:42:29 <zzo38> arseniiv: No, I intend to use it for picture fonts.
+2020-07-16 21:43:11 <arseniiv> zzo38: ah, though I’d suggest the same here too
+2020-07-16 21:45:05 <arseniiv> usually the images in a picture font aren’t too complex, right? Even emojis with color shades can be more or less well represented in vector. If one is allowed to use a blur filter as in SVG, much more so, I’d think
+2020-07-16 21:47:01 <zzo38> OK, maybe it is; then just the pictures can be added using PostScript codes.
+2020-07-16 21:47:21 <zzo38> TeXnicard does have a convolution filter command, so you can use that if you need blur
+2020-07-16 21:53:01 <zzo38> (It is not using SVG)
