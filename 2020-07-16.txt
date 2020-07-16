@@ -118,3 +118,21 @@
 2020-07-16 13:26:29 <arseniiv> I’d vary the height too, I think there should be a decent generalization which leaves only two degree 3 vertices
 2020-07-16 13:27:04 <int-e> Well, I'd advise against it.
 2020-07-16 13:28:48 <int-e> (You can ask the question but the counting will get more difficult.)
+2020-07-16 13:31:12 <int-e> "so, the kind of puzzle I’m not experienced with at all" <-- also the kind of puzzle I tend to enjoy a lot
+2020-07-16 13:31:15 <wib_jonas> ``` cat olist.new > /hackenv/bin/olist
+2020-07-16 13:31:18 <HackEso> No output.
+2020-07-16 13:31:38 <int-e> `hbrl olist
+2020-07-16 13:31:39 <HackEso> hbrl? No such file or directory
+2020-07-16 13:31:45 <wib_jonas> olist will now print the URL of the strip if you give it just a number as the argument; it will keep printing the arguments verbatim otherwise
+2020-07-16 13:31:50 <int-e> `hurl bin/olist
+2020-07-16 13:31:51 <HackEso> File is outside web-viewable filesystem repository.
+2020-07-16 13:31:55 <int-e> `hurl ../bin/olist
+2020-07-16 13:31:57 <HackEso> https://hack.esolangs.org/repo/log/tip/bin/olist
+2020-07-16 13:32:29 <wib_jonas> feel free to test in private message
+2020-07-16 13:33:15 <int-e> I just wanted to see the change.
+2020-07-16 13:33:35 <wib_jonas> it's bash black magic, I don't know how it works
+2020-07-16 13:34:01 <wib_jonas> I practicularly don't understand the xargs part that prints the tail, I just took that from the existing command
+2020-07-16 13:36:55 <int-e> arseniiv: https://gist.github.com/int-e/7bb736e366337379442d5899b3899963 is what I did :)
+2020-07-16 13:37:37 <int-e> (totally hardcoded to 4xn size)
+2020-07-16 13:38:53 <arseniiv> int-e: neat
+2020-07-16 13:39:07 <arseniiv> though I’m lazy to read it properly for now
