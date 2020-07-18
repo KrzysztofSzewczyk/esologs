@@ -40,3 +40,33 @@
 2020-07-18 07:37:55 Joined: aaaaaa
 2020-07-18 07:37:55 Names: ^[, aaaaaa, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
 2020-07-18 07:49:44 <esowiki> 14[[07List of ideas14]]4 10 02https://esolangs.org/w/index.php?diff=76027&oldid=75982 5* 03Orisphera 5* (+202) 10/* Ideas for Names */
+2020-07-18 08:41:02 User Name: salpynx = salpynx!794954f8@121.73.84.248
+2020-07-18 08:41:02 <salpynx> > error ("Hello World!\n^bf " ++ concat [map (:[]) "]><+-.,[" !! digitToInt c | c <- showIntAtBase 8 intToDigit 0x1b6db6f96dbe5b2db2db2d24a02cb3097d050134c92b6db6ed6dd26a9556dd92492c92492525d2dd ""])
+2020-07-18 08:41:04 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-07-18 08:41:04 <lambdabot> *Exception: Hello World!
+2020-07-18 08:41:04 <lambdabot> ^bf ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>...
+2020-07-18 08:41:16 User Name: rain1 = rain1!~rain1@unaffiliated/rain1
+2020-07-18 08:41:16 <rain1> haha
+2020-07-18 08:41:27 <rain1> ^bf ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>...
+2020-07-18 08:41:27 <fungot> Hello
+2020-07-18 08:41:41 <salpynx> :(
+2020-07-18 08:41:55 <salpynx> didn't quite work as hoped
+2020-07-18 08:42:29 <rain1> ^bf ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>--------.<++.>>+.+++++++++++++..---.+++.<<.++++++++.------.>>--------------------.++++.++++.<<-.+.+++++++.
+2020-07-18 08:42:29 <fungot> > error ("^bf!")
+2020-07-18 08:43:12 <salpynx> I was trying to pipe lambdabot's Haskell output to its own bf interpreter, then decided it'd be more fun to send it to fungot
+2020-07-18 08:43:39 <rain1> a bot wont interpret its own output
+2020-07-18 08:43:47 <rain1> but it seems that lambdabot is specially coded to ignore fungot
+2020-07-18 08:43:47 <fungot> rain1: in the hon. and learned friend the member for glasgow north, for the scottish government to the house to work with,
+2020-07-18 08:44:31 <salpynx> heh, they are ignoring each other!
+2020-07-18 08:49:24 <salpynx> @fungot do you ignore lambdabot?
+2020-07-18 08:49:24 <lambdabot> Unknown command, try @list
+2020-07-18 08:49:24 <fungot> salpynx: of the three to pass. i have three months worth of buffer, a bit to the wales bill, the agreement paves the way to have the proper resources follow health is of course the government have
+2020-07-18 08:50:19 <rain1> > reverse "tognuf"
+2020-07-18 08:50:21 <lambdabot> "fungot"
+2020-07-18 08:50:28 <rain1> "fungot"
+2020-07-18 08:50:28 <fungot> rain1: what the hon. member of this house, you and i, and the scottish government,
+2020-07-18 08:50:36 <rain1> I wonder what happened between them?
+2020-07-18 08:50:53 <myname> the bots prefix their output be a zero-woidth character iirc
+2020-07-18 08:51:01 <myname> in order to not trigger themself
+2020-07-18 08:51:14 <rain1> OH!
+2020-07-18 08:54:59 <salpynx> I wasn't trying to bot loop, just to chain a series of commands in lambdabot, but it seems the bf interpreter is not accessible from within @run ", unfortunately"
