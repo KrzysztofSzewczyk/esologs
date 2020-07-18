@@ -84,3 +84,24 @@
 2020-07-18 10:23:35 <b_jonas> in that one respect, buubot manages to be more esoteric but useful
 2020-07-18 10:29:03 <salpynx> ?. bf run concat [map (:[]) "]><+-.,[" !! digitToInt c | c <- showIntAtBase 8 intToDigit 0x1b6db6f96dbe5b2db2db2d24a02cb3097d050134c92b6db6ed6dd26a9556dd92492c92492525d2dd ""]
 2020-07-18 10:29:05 <lambdabot> Hello WWW
+2020-07-18 10:30:29 <salpynx> b_jonas: thanks, that's what I wanted! (the output above is different to what I got when I tested it in private msg)
+2020-07-18 10:30:54 <salpynx> ?. bf run concat [map (:[]) "]><+-.,[" !! digitToInt c | c <- showIntAtBase 8 intToDigit 0x1b6db6f96dbe5b2db2db2d24a02cb3097d050134c92b6db6ed6dd26a9556dd92492c92492525d2dd ""]
+2020-07-18 10:30:56 <lambdabot> Hello WWW
+2020-07-18 10:32:04 <esowiki> 14[[07Main Page14]]4 M10 02https://esolangs.org/w/index.php?diff=76028&oldid=66787 5* 03Lebster 5* (+1) 10Esolang -> Esolangs
+2020-07-18 10:33:01 <salpynx> odd, the output it 'Hello World!' when sent directly to lambdabot. It's different in the channel
+2020-07-18 10:36:00 <int-e> > concat [map (:[]) "]><+-.,[" !! digitToInt c | c <- showIntAtBase 8 intToDigit 0x1b6db6f96dbe5b2db2db2d24a02cb3097d050134c92b6db6ed6dd26a9556dd92492c92492525d2dd ""]
+2020-07-18 10:36:03 <lambdabot> "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-...
+2020-07-18 10:36:45 <int-e> note the ... at the end :-P
+2020-07-18 10:37:04 Joined: t20kdc
+2020-07-18 10:37:04 Names: ^[, aaaaaa, aloril, APic, Arcorann, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-18 10:40:07 <salpynx> oh! ellipsis = triple output, of course :)  Direct msg output doesn't get truncated in the same way.
+2020-07-18 10:40:23 <salpynx> I guess that's to prevent public channel spam
+2020-07-18 10:41:52 Joined: arseniiv
+2020-07-18 10:41:52 Names: ^[, aaaaaa, aloril, APic, Arcorann, arseniiv, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, xylochoron[m], zzo38
+2020-07-18 10:52:14 Joined: Lord_of_Life
+2020-07-18 10:53:25 User Name: arseniiv = arseniiv!~arseniiv@94.41.4.55.dynamic.ufanet.ru
+2020-07-18 10:53:25 <arseniiv> fungot is it hot // or is it cold huh fungold?
+2020-07-18 10:53:26 <fungot> arseniiv: the hon. member of this house, whom i do not always agree, he said this fnord before the us decided to relocate, creating 200 that have shut down the rail minister, the hon. and learned friend the member for the cotswolds, that
+2020-07-18 10:54:34 Quit: Lord_of_Life (Ping timeout: 258 seconds)
+2020-07-18 10:54:46 <arseniiv> ah, so you’re in parliament rooms still. Surely there is air conditioning somewhere, I’m glad for you
+2020-07-18 10:55:05 Nick Change: Lord_of_Life -> Lord_of_Life
