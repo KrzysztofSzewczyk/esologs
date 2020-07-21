@@ -139,3 +139,38 @@
 2020-07-21 09:27:26 <esowiki> 14[[07Esolangs14]]4 M10 02https://esolangs.org/w/index.php?diff=76091&oldid=75834 5* 03RocketRace 5* (+38) 10Clear up syntax
 2020-07-21 09:29:03 <esowiki> 14[[07User talk:Osmarks14]]4 10 02https://esolangs.org/w/index.php?diff=76092&oldid=76090 5* 03Osmarks 5* (+4845) 10
 2020-07-21 09:29:06 <esowiki> 14[[07Esolangs14]]4 M10 02https://esolangs.org/w/index.php?diff=76093&oldid=76091 5* 03RocketRace 5* (+43) 10/* Syntax */
+2020-07-21 09:31:00 <int-e> WTF?!
+2020-07-21 09:32:39 <shachaf> Wow, what a user talk page.
+2020-07-21 09:32:39 <int-e> ...those user talk page edits...
+2020-07-21 09:33:27 <myname> wait, you can insert html there?
+2020-07-21 09:35:08 <int-e> I don't think it's arbitrary CSS.
+2020-07-21 09:35:15 <int-e> Uh
+2020-07-21 09:35:46 <int-e> HTML. Mind wandering: allowing custom CSS is why this is allowed for <div> elements, I think.
+2020-07-21 09:41:19 <Arcorann> Surely that's breaking some sort of rule about talk pages
+2020-07-21 09:41:24 <int-e> myname: So basically I think this is working as designed... but CSS is crazy.
+2020-07-21 09:41:41 <myname> css IS crazy
+2020-07-21 09:41:55 <myname> css3 and html5 together are tc iirc
+2020-07-21 09:42:28 <int-e> "HTML5" is a huge bag of crap.
+2020-07-21 09:42:34 <myname> how so?
+2020-07-21 09:43:12 <myname> what i basically know about html5 is video/audio and also elements like dialog that look weirdly foreign to me
+2020-07-21 09:43:39 <int-e> Because it's not referring just to a plain markup language; it includes DOM and a lot of other Javascript crap.
+2020-07-21 09:44:03 <int-e> Or that's how I understand it.
+2020-07-21 09:44:17 <myname> i recently re-learned about the navigator object
+2020-07-21 09:44:30 <int-e> https://en.wikipedia.org/wiki/HTML5#New_APIs
+2020-07-21 09:44:39 <myname> the whole object is basically hardcoded legacy api
+2020-07-21 09:45:11 <myname> (and of course i stumbled over it while looking at code i kinda have to work with)
+2020-07-21 09:45:50 <myname> web storage is awesome!
+2020-07-21 09:46:58 <myname> what annoys me the most are all those websites that ask for permission to send notification for no reason
+2020-07-21 09:49:19 <int-e> you know that the primary use of those technologies will be better tracking
+2020-07-21 09:49:32 <fizzie> A lot of them do the notification thing on the initial page load, before you've even seen any of the content, that's the stupidest part.
+2020-07-21 09:49:43 <myname> well, maybe, but i wouldn't want to go back to the web of the 90s
+2020-07-21 09:50:37 <int-e> What was that odd notification service where the browser calls home to ask for new messages and the website gets an (identifiable) external link to send those messages to?
+2020-07-21 09:50:43 <int-e> It's all pretty terrible.
+2020-07-21 09:51:45 <int-e> Somebody should make a proper glossary for such terms. "richer browsing experience" = targeted ads.
+2020-07-21 09:52:24 <int-e> (from https://en.wikipedia.org/wiki/Microdata_(HTML) )
+2020-07-21 09:52:46 <int-e> "more relevant results" = targeted ads
+2020-07-21 09:53:33 <int-e> It's really too bad that Google (with Chrome as a driver) is so powerful in the W3C.
+2020-07-21 09:54:05 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=76094&oldid=76057 5* 03Heavpoot 5* (+1372) 10
+2020-07-21 09:55:11 <myname> it's difficult
+2020-07-21 09:55:22 <myname> there is really good stuff
+2020-07-21 09:55:45 <myname> i even am kinda okay with that whole "oh no, our adblockers will not work anymore" api change
