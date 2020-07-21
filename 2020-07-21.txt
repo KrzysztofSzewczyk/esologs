@@ -261,3 +261,4 @@
 2020-07-21 11:45:03 <arseniiv> I used an explicit encoding of CoNat in a non-haskell implemetation of “run the machine an amount of steps, or to the end, and tell if it was aborted or halted naturally”
 2020-07-21 11:46:31 <arseniiv> in a lazy language of course an implicit “Nat is codata” encoding suffices just right before one wants to know if they specified an infinite amount of steps or not, in finite time
 2020-07-21 11:48:10 <arseniiv> “run the machine an amount of steps, or to the end, and tell if it was aborted or halted naturally” → and the latter just uses prec' to decide if there are any available steps to continue. CoNat values themselves are black boxes
+2020-07-21 12:04:22 <esowiki> 14[[07User:Osmarks/114]]4 M10 02https://esolangs.org/w/index.php?diff=76122&oldid=76119 5* 03Osmarks 5* (+51) 10
