@@ -248,3 +248,16 @@
 2020-07-21 11:28:28 <arseniiv> (that is, in mathematical terms, X ↦ 1 + X)
 2020-07-21 11:29:28 <esowiki> 14[[07Rui14]]4 10 02https://esolangs.org/w/index.php?diff=76117&oldid=76056 5* 03DanielCristofani 5* (+108) 10/* Examples */
 2020-07-21 11:29:34 <esowiki> 14[[07DDuuaall14]]4 10 02https://esolangs.org/w/index.php?diff=76118&oldid=75958 5* 03D 5* (+34) 10
+2020-07-21 11:32:10 <esowiki> 14[[07User:Osmarks/114]]4 M10 02https://esolangs.org/w/index.php?diff=76119&oldid=76104 5* 03Osmarks 5* (+1362) 10
+2020-07-21 11:32:21 <arseniiv> an initial algebra means there is an unique morphism from it to any other algebra on the same functor, and now I tried to write its signature and mixed up something
+2020-07-21 11:35:31 <arseniiv> that should be { foldNat :: Nat → (Maybe a → a) → a; foldNat Z f = f Nothing; foldNat (S n) f = f (Just $ foldNat n f) } if I’m not mistaken
+2020-07-21 11:36:18 <esowiki> 14[[07DDuuaall14]]4 10 02https://esolangs.org/w/index.php?diff=76120&oldid=76118 5* 03D 5* (+1) 10/* Instruction list */
+2020-07-21 11:36:39 <arseniiv> and succ' :: Maybe Nat → Nat is a Nat algebra itself
+2020-07-21 11:41:20 <esowiki> 14[[07DDuuaall14]]4 10 02https://esolangs.org/w/index.php?diff=76121&oldid=76120 5* 03D 5* (+52) 10/* Primalty Tester */
+2020-07-21 11:41:54 <arseniiv> now, CoNat is a final coalgebra which means there is a unique morphism to it from any Maybe-coalgebra, which means
+2020-07-21 11:41:54 <arseniiv> { unfoldCoNat :: a → (a → Maybe a) → CoNat; unfoldCoNat x f = case f x of { Nothing → Z; Just y → S $ unfoldCoNat y f } }
+2020-07-21 11:41:54 <arseniiv> but this definition doesn’t work properly with an explicit encoding, as it should somehow detect infinite recursion and return Inf in that case. If we take plain Nat and treat it as codata, that would work fine, because Inf is encoded as `inf = S inf` there
+2020-07-21 11:43:40 <arseniiv> but we also of course have that Nat is a coalgebra (there is precNat :: Nat → Maybe Nat) and CoNat is an algebra (succ' above), just not the final/initial ones
+2020-07-21 11:45:03 <arseniiv> I used an explicit encoding of CoNat in a non-haskell implemetation of “run the machine an amount of steps, or to the end, and tell if it was aborted or halted naturally”
+2020-07-21 11:46:31 <arseniiv> in a lazy language of course an implicit “Nat is codata” encoding suffices just right before one wants to know if they specified an infinite amount of steps or not, in finite time
+2020-07-21 11:48:10 <arseniiv> “run the machine an amount of steps, or to the end, and tell if it was aborted or halted naturally” → and the latter just uses prec' to decide if there are any available steps to continue. CoNat values themselves are black boxes
