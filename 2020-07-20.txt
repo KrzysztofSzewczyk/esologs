@@ -251,3 +251,51 @@
 2020-07-20 23:28:22 Quit: tromp (Ping timeout: 256 seconds)
 2020-07-20 23:28:22 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux, t20kdc, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xkapastel, zzo38
 2020-07-20 23:29:39 <b_jonas> ais523: I'm asking about the difference between the two cases mostly because in the first case the labels would still be the same when the GUI language is different, whereas in the latter case they might differ
+2020-07-20 23:31:45 <ais523> ah, some languages have different words in common usage for "unschedule" versus "curtail"?
+2020-07-20 23:32:02 <ais523> I guess that's not surprising, there are unambiguous words for that in English, they just aren't used very often
+2020-07-20 23:33:36 <b_jonas> ais523: it depends, "interrupt" would sort of work for the latter in English, only that doesn't clearly say that you won't finish the work, you might continue it after an interruption; "abandon" or "exit" or "I changed my mind" might work in both cases
+2020-07-20 23:34:07 <b_jonas> I don't think there are unambiguous words for them in Hungarian either, but your preferred word might change
+2020-07-20 23:34:28 <b_jonas> because cancel buttons normally say "Mégse", which corresponds better to the first case
+2020-07-20 23:34:58 <ais523> "curtail" is almost unambiguous (in theory the verb could refer to scheduling the cancellation of an ongoing process at some future time, but that's unlikely to be what the user wants)
+2020-07-20 23:35:07 <ais523> but it's rarely used
+2020-07-20 23:35:57 <b_jonas> I guess there's also "give up"
+2020-07-20 23:36:18 <b_jonas> but only that, the formal equivalent "forfeit" wouldn't work
+2020-07-20 23:36:29 <ais523> now I'm amazed that "GO AWAY" isn't an INTERCAL command
+2020-07-20 23:36:44 <b_jonas> oh yeah, "leave"
+2020-07-20 23:37:05 <ais523> I guess it would jump to a random (numbered?) line and start executing from there? seems fairly easy to implement, albeit even less useful than most features in INTERCAL
+2020-07-20 23:37:44 <fizzie> I think almost all Finnish cancel buttons say "peruuta", which is the imperative mood of the verb "peruuttaa", which has a couple of context-sensitive uses (of a vehicle, to back up; of a marriage, to annul; and so on), even when better alternatives would exist.
+2020-07-20 23:38:08 <b_jonas> hmm, "annul"
+2020-07-20 23:38:27 <ais523> and I think INTERCAL is better off having commands that are quirky but usable, rather than entirely useless
+2020-07-20 23:38:38 <fizzie> (I'd like to see "dissolve" in a GUI as well.)
+2020-07-20 23:38:47 <zzo38> ais523: Yes, it is probably correct
+2020-07-20 23:38:52 <b_jonas> fizzie: hmm, when would you use that?
+2020-07-20 23:39:55 <b_jonas> "Abandon" would probably have worked on most cancel buttons in English, but it's probably too late to change that now
+2020-07-20 23:40:15 <fizzie> Maybe when you've made some sort of a grouping, and decide to remove it.
+2020-07-20 23:40:26 <ais523> b_jonas: it's still ambiguous in the cancel-a-cancel case
+2020-07-20 23:40:33 <b_jonas> ais523: yes
+2020-07-20 23:40:55 <ais523> for what it's worth, "discard" has seen a recent surge of usage for the "accept a cancel" case
+2020-07-20 23:41:18 <b_jonas> hmm
+2020-07-20 23:41:38 Quit: t20kdc (Remote host closed the connection)
+2020-07-20 23:41:38 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-07-20 23:45:20 <b_jonas> by the way, another GUI confirmation dialog box that I dislike is in VBA, when you want to delete a module from the project. it asks something to the effect of "Would you like to export this module before deleting it?" and only has Yes and No as buttons. If it had a Cancel button to make it not delete the module, it would be better, but since it only has Yes and No, as a user you can think it's asking
+2020-07-20 23:45:26 <b_jonas> to confirm deleting the module and give the opposite answer.
+2020-07-20 23:47:07 <b_jonas> but that's a small complaint. the positive side is that you can script the VBA editor itself with the same VBA and just type something like VBE.Module("module name here").Remove into the Immediate window to delete a module without a confirmation prompt.
+2020-07-20 23:47:57 <fizzie> Will it delete the module for both yes and no?
+2020-07-20 23:48:08 <b_jonas> fizzie: yes, but it won't delete it if you cancel the save dialog
+2020-07-20 23:49:18 <b_jonas> this is useful because importing a VBA module from a file (after deleting its previous version) is a reasonable way to do a string eval after running an external program to write you VBA code, and you may want that because VBA is not a very good language, so you may want to do computations in a separate program, though it seems you can also just mostly avoid VBA entirely and use the COM interface of the
+2020-07-20 23:49:24 <b_jonas> program that you're macroing directly from a program in some other language
+2020-07-20 23:50:33 <b_jonas> with the possible exception that you may need to write at least a VBA stub for a custom command that you want to assign to a menu entry or toolbar button or keyboard shortcut in the program that you're macroing, but there's probably a way to do even that without VBA, I just don't know it
+2020-07-20 23:51:33 <b_jonas> plus of course in programs that have a macro recorder (the one that I'm macroing doesn't), that usually emits the syntax of only one macro language, with the notable exception of Excel
+2020-07-20 23:52:17 Quit: xkapastel (Quit: Connection closed for inactivity)
+2020-07-20 23:52:17 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-20 23:53:32 <b_jonas> hmm, is there a version of Word after Word 6 that still has WordBasic but also has a COM interface? or maybe a version of CorelDraw or WordPerfect that has both CorelBasic and a COM interface? or a version of LibreOffice for windows with a COM interface?
+2020-07-20 23:54:10 <b_jonas> the latter might be the most likely, since I think you can't use COM interface on a non-windows platform
+2020-07-20 23:54:39 <b_jonas> or at least I think you can't use it on Linux, I don't know about windows
+2020-07-20 23:55:29 <b_jonas> there's a port of Excel 5, the program that introduced VBA, onto Mac OS classic, maybe that has VBA support
+2020-07-20 23:57:56 Joined: tromp
+2020-07-20 23:57:56 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-20 23:58:37 <b_jonas> (and yes, Wine is a windows platform, just as Cygwin is a unix platform)
+2020-07-20 23:59:01 Quit: ais523 (Ping timeout: 264 seconds)
+2020-07-20 23:59:01 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-20 23:59:04 <zzo38> There is XPCOM, but I don't know if they use it
+2020-07-20 23:59:54 <b_jonas> (and DOS4GW is a ... dunno)
