@@ -208,3 +208,43 @@
 2020-07-21 10:58:25 Quit: Lord_of_Life (Ping timeout: 264 seconds)
 2020-07-21 10:58:26 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-07-21 10:58:45 <esowiki> 14[[07Esolangs14]]4 10 02https://esolangs.org/w/index.php?diff=76115&oldid=76114 5* 03RocketRace 5* (+20) 10/* Examples */
+2020-07-21 11:18:20 Joined: arseniiv
+2020-07-21 11:18:20 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xelxebar, zzo38
+2020-07-21 11:18:43 User Name: arseniiv = arseniiv!~arseniiv@94.41.4.55.dynamic.ufanet.ru
+2020-07-21 11:18:43 <arseniiv> @messages-quiet
+2020-07-21 11:18:43 <lambdabot> Unknown command, try @list
+2020-07-21 11:18:49 <arseniiv> @messages
+2020-07-21 11:18:49 <lambdabot> You don't have any messages
+2020-07-21 11:19:00 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=76116&oldid=74420 5* 03Dion 5* (+61) 10
+2020-07-21 11:19:08 <arseniiv> @botsnack
+2020-07-21 11:19:08 <lambdabot> :)
+2020-07-21 11:20:43 Joined: salpynx
+2020-07-21 11:20:43 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xelxebar, zzo38
+2020-07-21 11:23:55 Quit: salpynx (Remote host closed the connection)
+2020-07-21 11:23:55 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], user24, vertrex, wmww, xelxebar, zzo38
+2020-07-21 11:24:01 <arseniiv> @let { data CoNat = Z | S CoNat | Inf; prec' Z = Nothing; prec' (S n) = Just n; prec' Inf = Just Inf; succ' Nothing = Z; succ' (Just Inf) = Inf; succ' (Just n) = S n; } -- explicit encoding of conaturals is useful sometimes, and in this formulation prec' and succ' are mutual inverses, though this succ' may be less useful than its summands
+2020-07-21 11:24:03 <lambdabot> .L.hs:189:14: error:
+2020-07-21 11:24:03 <lambdabot> Multiple declarations of ‘S’
+2020-07-21 11:24:03 <lambdabot> Declared at: .L.hs:164:12
+2020-07-21 11:24:29 <arseniiv> > :t S
+2020-07-21 11:24:31 <lambdabot> <hint>:1:1: error: parse error on input ‘:’
+2020-07-21 11:24:38 <arseniiv> @type S
+2020-07-21 11:24:39 <lambdabot> Ski
+2020-07-21 11:24:44 <arseniiv> ahaha
+2020-07-21 11:24:51 <arseniiv> @info Ski
+2020-07-21 11:24:51 <lambdabot> Ski
+2020-07-21 11:24:51 <myname> that's fair!
+2020-07-21 11:25:00 <myname> what are conaturals?
+2020-07-21 11:25:20 <arseniiv> this is when you treat `data Nat = Z | S Nat` as a codata
+2020-07-21 11:25:33 <myname> what
+2020-07-21 11:25:44 <arseniiv> they are, primarily, a coalgebra, but they admit successor anyway
+2020-07-21 11:26:13 <myname> i don't get how that's different from naturals, maybe besides inf
+2020-07-21 11:26:19 <arseniiv> I’m bad at expaining this, yeah
+2020-07-21 11:27:21 <arseniiv> Inf and its properties are a natural (oh, pun) consequence of this codata-coalgebra vs. algebra thing
+2020-07-21 11:27:44 <arseniiv> ah, they aren’t just a coalgebra, they are a final coalgebra, like Nat is an initial algebra
+2020-07-21 11:27:50 <arseniiv> for the same functor
+2020-07-21 11:27:58 <arseniiv> yes, that should make this a bit clearer
+2020-07-21 11:28:03 <arseniiv> and the functor is Maybe
+2020-07-21 11:28:28 <arseniiv> (that is, in mathematical terms, X ↦ 1 + X)
+2020-07-21 11:29:28 <esowiki> 14[[07Rui14]]4 10 02https://esolangs.org/w/index.php?diff=76117&oldid=76056 5* 03DanielCristofani 5* (+108) 10/* Examples */
+2020-07-21 11:29:34 <esowiki> 14[[07DDuuaall14]]4 10 02https://esolangs.org/w/index.php?diff=76118&oldid=75958 5* 03D 5* (+34) 10
