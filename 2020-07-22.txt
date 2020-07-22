@@ -122,3 +122,26 @@
 2020-07-22 08:30:17 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
 2020-07-22 08:52:07 Quit: b_jonas (Quit: Lost terminal)
 2020-07-22 08:52:07 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-22 09:01:32 Joined: clog
+2020-07-22 09:01:32 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-22 09:05:27 <int-e> how do you define "motherboard temperature" ;)
+2020-07-22 09:05:51 <int-e> Some weighted average maybe? Ironically you probably care most about the (literal) hotspots.
+2020-07-22 09:11:16 <shachaf> Hmm, rr has ptrace emulation, that's pretty fancy.
+2020-07-22 09:11:33 <shachaf> I mean that it uses ptrace but it can trace a program that also uses ptrace on the same process by proxying the ptrace calls.
+2020-07-22 09:11:33 <int-e> `? rr
+2020-07-22 09:11:35 <HackEso> rr? ¯\(°​_o)/¯
+2020-07-22 09:11:46 <shachaf> https://rr-project.org/
+2020-07-22 09:12:18 <shachaf> It's a program that records program execution and then lets you replay it in a debugger.
+2020-07-22 09:12:32 <int-e> oh, fancy
+2020-07-22 09:12:47 <shachaf> Mostly by remembering the state of memory etc. and the results of every system call, so it can fake responses to those system calls.
+2020-07-22 09:12:59 Quit: joast (Ping timeout: 240 seconds)
+2020-07-22 09:12:59 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-22 09:13:03 <shachaf> And also nondeterministic instructions, in various ways? Some of them aren't completely clear to me.
+2020-07-22 09:13:13 <int-e> why rr, "record run"?
+2020-07-22 09:13:28 <shachaf> record replay? I don't know.
+2020-07-22 09:13:52 <int-e> pffft, chaos mode
+2020-07-22 09:14:49 Joined: kspalaiologos
+2020-07-22 09:14:49 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-22 09:15:58 <shachaf> Maybe I should write a debugger. How hard can it be?
+2020-07-22 09:21:47 <int-e> the usual
+2020-07-22 09:22:04 <int-e> easy (or, at least, fun) to get started, impossible to finish
