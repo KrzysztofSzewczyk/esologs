@@ -74,3 +74,27 @@
 2020-07-22 06:55:22 <shachaf> Finally a reasonable game of mine's weeper.
 2020-07-22 06:58:37 <int-e> it's a devious one... rather than getting frustrated at the game for making you guess you get the chance of getting frustrated at yourself for missing forced conclusions (of various degrees of obviousness)
 2020-07-22 06:59:31 <int-e> Oh and if you find the presets boring, you can increase the board size.
+2020-07-22 07:00:06 <int-e> (The link isn't new, I believe I found this game via this channel a few years back.)
+2020-07-22 07:00:33 <int-e> But maybe it was somewhere else. We definitely discussed it here.
+2020-07-22 07:04:44 Quit: clog (Ping timeout: 256 seconds)
+2020-07-22 07:04:44 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-22 07:05:34 <int-e> One slightly unfortunate feature is that when you're left with a 50/50 choice that can provably never go away you still have to progress on the rest of the board until you're forced to guess there as well before you are allowed to hazard a guess.
+2020-07-22 07:12:54 Joined: LKoen
+2020-07-22 07:12:54 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-22 07:13:35 <int-e> The ultra-violence mode is pretty cute too... not the hardest, but pretty different from ordinary minesweeper because easily half of the moves are of the forced guess type.
+2020-07-22 07:14:12 <int-e> which at least in my case leads to very non-random looking boards in the end.
+2020-07-22 07:15:30 <int-e> https://int-e.eu/~bf3/tmp/uv.png ... I wonder how much strategy this reveals :)
+2020-07-22 07:16:45 <shachaf> Oh, that's interesting, you can infer things about how people played from a completed board?
+2020-07-22 07:17:11 <shachaf> Also look at how GPT-3 has mastered category theory: https://gist.github.com/ekmett/11a0e1f49b73a2feab287373ddaf68cd
+2020-07-22 07:17:16 <shachaf> In particular the ending.
+2020-07-22 07:18:48 <shachaf> Hmm, the nonlocality of this is kind of bizarre.
+2020-07-22 07:19:04 <int-e> shachaf: maybe if you have more than one sample... https://int-e.eu/~bf3/tmp/uv2.png
+2020-07-22 07:19:21 <shachaf> I mean, if I reach an isolated corner that needs guessing, I shouldn't guess immediately (which would be the time-saving strategy in regular Minesweeper), I should save it until I have to guess. Right?
+2020-07-22 07:19:41 <int-e> you'll see that there are many more straight lines than there should be... and that's because of a preference in how I'm guessing.
+2020-07-22 07:20:03 <int-e> shachaf: right
+2020-07-22 07:20:29 <shachaf> That makes sense, I was doing that too.
+2020-07-22 07:28:29 <rain1> oh wait
+2020-07-22 07:28:31 <rain1> i shouldn't read this
+2020-07-22 07:28:38 <rain1> i find the yoneda lemma hard enough already
+2020-07-22 07:28:52 <rain1> i don't want to get misled by some AI generated version is slightly wrong..
+2020-07-22 07:29:10 <rain1> that ending was 100
