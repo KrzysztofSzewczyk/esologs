@@ -9,3 +9,42 @@
 2020-07-23 00:24:43 <ski> shachaf : oh, reminds a bit of I/O tabling in Mercury ?
 2020-07-23 00:25:13 <shachaf> What does?
 2020-07-23 00:29:29 <zzo38> How is I/O tabling in Mercury is working?
+2020-07-23 00:34:10 <ski> rr
+2020-07-23 00:35:48 <shachaf> Ah, interesting.
+2020-07-23 00:36:21 <ski> it memoizes the calls (inputs, outputs) to I/O primitives (representing the uniquely threaded token of type `io.state' as an integer, incremented by primitive I/O ops, iirc), so that when you use "retry" in the procedural debugger, it'll use the recorded events, rather than actually do the I/O again
+2020-07-23 00:36:32 <shachaf> If you structure your program (or runtime) to work this way, it isn't so difficult to make it work yourself.
+2020-07-23 00:36:54 <shachaf> But it doesn't work that well if you use any libraries, and it doesn't work well with multithreading.
+2020-07-23 00:37:23 <zzo38> O, that is how it work
+2020-07-23 00:37:27 <shachaf> It sounds like a neat language feature.
+2020-07-23 00:37:37 <ski> see "Idempotent I/O for safe time travel" by Zoltan Somogyi in 2003-09 at <https://www.mercurylang.org/documentation/papers.html#aadebug03-paper>
+2020-07-23 00:38:19 <ski> also used by the declarative debugger, iirc
+2020-07-23 00:39:03 <shachaf> Man, what if there was a recommendation service for papers? I have 94 papers in this directory. I bet that's plenty to come up with good papers I'd want to read.
+2020-07-23 00:39:12 <shachaf> Maybe I can ask GPT-3.
+2020-07-23 00:39:21 <ski> who's GPT-3 ?
+2020-07-23 00:40:25 User Name: b_jonas = b_jonas!~x@catv-176-63-11-166.catv.broadband.hu
+2020-07-23 00:40:25 <b_jonas> shachaf: there are sites that let you find reverse citations, you can often find recommended papers that way. and obviously you can look at citations too.
+2020-07-23 00:41:38 <shachaf> ski: OpenAI's new language model.
+2020-07-23 00:41:49 <ski> dunno what OpenAI is, either
+2020-07-23 00:42:14 <shachaf> It's a company.
+2020-07-23 00:42:25 <shachaf> I posted some links to GPT-3 generated text above, I think.
+2020-07-23 00:42:32 <shachaf> https://gist.github.com/ekmett/11a0e1f49b73a2feab287373ddaf68cd
+2020-07-23 00:42:38 <ski> natural language ?
+2020-07-23 00:42:44 <shachaf> https://gist.github.com/ekmett/a72c19715aa8277428324dfaa6d73074
+2020-07-23 00:42:47 <shachaf> https://gist.githubusercontent.com/runarorama/e0b9107f707ef61db93eb67e4823798e/raw/e38121da6a013d1286199371e0aacc81b09b7232/gistfile1.txt
+2020-07-23 00:42:50 <shachaf> Yes.
+2020-07-23 00:42:53 <b_jonas> `recipes
+2020-07-23 00:42:54 <HackEso> recipes? No such file or directory
+2020-07-23 00:42:55 <b_jonas> `recipe
+2020-07-23 00:42:56 <HackEso> las, lemon juice, and all the chicken. Keep brown sugar in a sieve and \  carrots and add the vegetables and cook for about 20 \  minutes. In a large bowl, combine flour, baking dissolved and \  soup. \   \  Yield: 3/4 cup cornstarch fat each. \   \  Source: The Barrie Louisiana by Rocky BAKING WAMANE BISCOTTid \   \  From: Pat Anne Rolls: \   \  From The Smith: Per serving: 415 calories, 2 g fiber. \   \  Posted by: Shemoon nate: India, its:
+2020-07-23 00:43:24 <ski> second one 404s
+2020-07-23 00:43:47 <shachaf> Are you sure? It works here.
+2020-07-23 00:44:45 <b_jonas> where can I download OEIS dumps these days?
+2020-07-23 00:47:40 <shachaf> There is http://oeis.org/wiki/Welcome#Compressed_Versions
+2020-07-23 00:48:27 <b_jonas> thanks
+2020-07-23 00:48:43 <b_jonas> that's not a full archive though
+2020-07-23 00:49:11 <esowiki> 14[[07Boolshit14]]4 N10 02https://esolangs.org/w/index.php?oldid=76150 5* 03Hakerh400 5* (+2826) 10+[[Boolshit]]
+2020-07-23 00:49:17 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=76151&oldid=76067 5* 03Hakerh400 5* (+15) 10+[[Boolshit]]
+2020-07-23 00:49:22 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=76152&oldid=76068 5* 03Hakerh400 5* (+15) 10+[[Boolshit]]
+2020-07-23 00:49:45 <ski> strange, works now
+2020-07-23 00:51:25 <esowiki> 14[[07Boolshit14]]4 M10 02https://esolangs.org/w/index.php?diff=76153&oldid=76150 5* 03Hakerh400 5* (+1) 10fix typos
+2020-07-23 00:53:35 <esowiki> 14[[07Boolshit14]]4 M10 02https://esolangs.org/w/index.php?diff=76154&oldid=76153 5* 03Hakerh400 5* (+85) 10
