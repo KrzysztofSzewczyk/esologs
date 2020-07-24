@@ -218,3 +218,12 @@
 2020-07-24 11:08:03 Quit: kritixilithos (Ping timeout: 240 seconds)
 2020-07-24 11:08:03 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
 2020-07-24 11:53:30 <shachaf> If there are UNSAT certificates in practice, is there such a thing as a QBF certificate?
+2020-07-24 12:22:36 User Name: spruit11 = spruit11!~unknown@86-82-44-193.fixed.kpn.net
+2020-07-24 12:22:36 <spruit11> I guess so. Not sure they always exist though. What class is QBF in? Are there already undecidable problems there?
+2020-07-24 12:23:05 <shachaf> It's PSPACE-complete.
+2020-07-24 12:23:31 <shachaf> I'm curious whether there's anything in practice. Then again, do people even use QBF in practice?
+2020-07-24 12:24:02 <shachaf> They can probably settle for something lower in the hierarchy for a lot of things.
+2020-07-24 12:24:17 <esowiki> 14[[07Talk:!lyriclydemoteestablishcommunism!14]]4 10 02https://esolangs.org/w/index.php?diff=76202&oldid=75360 5* 03TwilightSparkle 5* (+102) 10
+2020-07-24 12:24:18 <esowiki> 14[[07Rui14]]4 M10 02https://esolangs.org/w/index.php?diff=76203&oldid=76117 5* 03Sinthorion 5* (-2) 10improve formatting
+2020-07-24 12:24:24 <spruit11> Right, so it's closed under complement, I read.
+2020-07-24 12:25:04 <spruit11> I have no idea whether QBF is used in practice. Might also depend on your definition of 'practice'.
