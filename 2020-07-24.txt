@@ -126,3 +126,37 @@
 2020-07-24 05:58:23 Quit: Arcorann (Ping timeout: 256 seconds)
 2020-07-24 05:58:24 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], vertrex, wmww, xelxebar, zzo38
 2020-07-24 05:59:10 <zzo38> I don't like PulseAudio either, but some programs use it.
+2020-07-24 06:02:11 <myname> huh
+2020-07-24 06:02:19 <myname> pulseaudio is awesome
+2020-07-24 06:03:41 <shachaf> Have you written code using libpulse?
+2020-07-24 06:03:49 <myname> also, it's possible that aplay just refuses to play something in a noninteractive shell (even though i don't think that's likely)
+2020-07-24 06:04:09 <myname> no, but it works better than anything else before for me
+2020-07-24 06:04:25 <imode> just use the alsa compat stuff for pulseaudio and aplay will work fine.
+2020-07-24 06:05:07 <shachaf> I am, but it doesn't give you access to everything.
+2020-07-24 06:05:33 <shachaf> For example I can't figure out a way to get an event when I turn on my bluetooth headphones (and the default audio device switches to them).
+2020-07-24 06:05:46 <shachaf> So right now I poll it every 10 seconds which is p. scow.
+2020-07-24 06:05:54 Joined: tromp
+2020-07-24 06:05:54 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 06:06:20 <myname> and alsa has that?
+2020-07-24 06:06:26 <shachaf> I'm not sure.
+2020-07-24 06:06:33 <myname> i doubt that
+2020-07-24 06:06:34 <imode> doubtful.
+2020-07-24 06:06:38 <shachaf> ALSA is not great either, it certainly has its problems.
+2020-07-24 06:06:50 <shachaf> But libpulse is way less pleasant and more complicated in unnecessary ways.
+2020-07-24 06:07:01 <shachaf> Also, ideally I wouldn't either libasound or libpulse, because they're both LGPL-licensed.
+2020-07-24 06:07:04 <shachaf> use
+2020-07-24 06:07:12 <myname> also, i really wanted to use orca but i fail to create a virtual midi device
+2020-07-24 06:07:28 <imode> my question is, on the *BSDs, how does firefox utilize audio?
+2020-07-24 06:07:38 <imode> you can't even use firefox without pulse.
+2020-07-24 06:07:44 Joined: tromp
+2020-07-24 06:07:50 <shachaf> Failed to create a virtual MIDI device? As in a synthesizer or something for it to write to?
+2020-07-24 06:08:41 <myname> to write to it and make it play sounds
+2020-07-24 06:09:28 <shachaf> I wrote a mini synthesizer and implemented basic MIDI support to use a MIDI keyboard with it.
+2020-07-24 06:09:36 <myname> but everything i found made me use jack manually
+2020-07-24 06:09:48 <shachaf> Then I was pretty surprised when I went to a web page while it was running, and the web page outputted MIDI to my synthesizer.
+2020-07-24 06:10:09 <shachaf> That was pretty surprising! I was trying to figure out what was going on before I realized it was my program.
+2020-07-24 06:10:38 <zzo38> What if you want to use Firefox with no audio?
+2020-07-24 06:11:07 <imode> pulse is apparently still required!
+2020-07-24 06:11:21 Quit: tromp (Ping timeout: 244 seconds)
+2020-07-24 06:12:28 Joined: kritixilithos
+2020-07-24 06:12:28 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
