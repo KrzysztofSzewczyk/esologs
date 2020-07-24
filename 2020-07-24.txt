@@ -81,3 +81,22 @@
 2020-07-24 04:18:04 <pikhq> I've been oddly avoidant of doing computer-type things lately for a girl who named herself "Ada"
 2020-07-24 04:18:21 <pikhq> I blame being a professional computer toucher for my day job
 2020-07-24 04:25:52 <esowiki> 14[[07Nop14]]4 10 02https://esolangs.org/w/index.php?diff=76188&oldid=66020 5* 03D 5* (+22) 10
+2020-07-24 04:32:57 Joined: TheLie
+2020-07-24 04:32:57 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 04:35:02 <zzo38> How to program random schedules in cron?
+2020-07-24 04:40:38 Quit: salpynx (Remote host closed the connection)
+2020-07-24 04:40:38 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, TheLie, trn, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 04:40:51 <pikhq> You know, that's an interesting question
+2020-07-24 04:41:33 <pikhq> I don't think you can do it easily in "standard" cron, but I don't know if it's possible in any reasonably common crons at all
+2020-07-24 04:41:37 <pikhq> Maybe? Maybe not?
+2020-07-24 04:45:19 Joined: sugarpie
+2020-07-24 04:45:19 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, sugarpie, Taneb, TheLie, trn, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 04:45:59 User Name: sugarpie = sugarpie!~Palaver@adsl-99-93-137-225.dsl.ltrkar.sbcglobal.net
+2020-07-24 04:45:59 <sugarpie> Eschew obfuscation
+2020-07-24 04:46:45 Joined: salpynx
+2020-07-24 04:46:45 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, sugarpie, Taneb, TheLie, trn, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 04:48:47 User Name: salpynx = salpynx!794954f8@121.73.84.248
+2020-07-24 04:48:47 <salpynx> use cron to regularly schedule a task that generates a random at task , by random offset maybe?
+2020-07-24 04:54:24 <salpynx> at now + $RANDOM minutes < commands.txt   but triggered by cron to make it repeating. Never tried this specifically, but 'at' is useful for non-regular scheduling
+2020-07-24 04:55:35 <salpynx> `? eschew
+2020-07-24 04:55:37 <HackEso> eschew? ¯\(°​_o)/¯
