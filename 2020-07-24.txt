@@ -245,3 +245,29 @@
 2020-07-24 13:39:29 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
 2020-07-24 13:40:49 Joined: MDude
 2020-07-24 13:40:49 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 15:03:48 Quit: kspalaiologos (Read error: Connection reset by peer)
+2020-07-24 15:03:48 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 15:04:06 Joined: kspalaiologos
+2020-07-24 15:04:06 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi4, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wmww, xelxebar, zzo38
+2020-07-24 15:04:18 User Name: kspalaiologos = kspalaiologos!~kspalaiol@176.221.122.212
+2020-07-24 15:04:18 <kspalaiologos> I've had an awesome idea today about osdev in pure brainfuck
+2020-07-24 15:04:30 <kspalaiologos> it's totally doable with just `+-[]<>'
+2020-07-24 15:04:54 <kspalaiologos> my initial idea was, to store an interrupt driver that would watch over tape MMIO regions and issue an interrupt when the conditions are met
+2020-07-24 15:05:09 <kspalaiologos> now, the question arises, how do I execute x86 machine code using brainfuck
+2020-07-24 15:05:17 <kspalaiologos> I have came up with a genius idea of hooking the 0x1Ch interrupt
+2020-07-24 15:05:25 <kspalaiologos> the timer interrupt will call the machine code located on the tape
+2020-07-24 15:05:45 <kspalaiologos> because that's where I'll set the handler to be
+2020-07-24 15:06:40 <kspalaiologos> I can hook interrupts just by performing memory read/write
+2020-07-24 15:07:32 <kspalaiologos> say, tape is located at 0x0000:0x5000
+2020-07-24 15:07:44 <kspalaiologos> when I boot, I write the driver code to the tape, then rewind back to the start
+2020-07-24 15:08:06 <kspalaiologos> and then I navigate 5000x left and then adjust to entry `0x1Ch' in the interrupt table
+2020-07-24 15:08:26 <kspalaiologos> the problem here is that I need to clear the interrupt flag, otherwise bad things may happen, I haven't found out a way of doing so so I guess I'll just have to rely on the fact that nothing breaks
+2020-07-24 15:21:31 User Name: t20kdc = t20kdc!~20kdc@cpc139340-aztw33-2-0-cust225.18-1.cable.virginm.net
+2020-07-24 15:21:31 <t20kdc> kspalaiologos: I do have a theoretical idea - require a no-op timer handler to be setup, and then place the real one 0x100 bytes away, so you can inc/dec to control timer interrupt enabledness
+2020-07-24 15:21:48 <kspalaiologos> I can't require anything
+2020-07-24 15:21:52 <kspalaiologos> this has to be _pure_ brainfuck
+2020-07-24 15:22:16 <t20kdc> you have to have an interpreter which enables interrupts, surely
+2020-07-24 15:23:59 <kspalaiologos> nope, I compile my brainfuck to C
+2020-07-24 15:24:08 <kspalaiologos> I put the tape on 0x0000:0x0500
+2020-07-24 15:24:28 <kspalaiologos> `+` => `tape[mp]++;` `-` => `tape[mp]--;` etc...
+2020-07-24 15:24:30 <HackEso> ​+`? No such file or directory
