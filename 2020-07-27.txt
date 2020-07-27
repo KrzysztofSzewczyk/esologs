@@ -191,3 +191,28 @@
 2020-07-27 13:25:18 <int-e> Obviously none of this is sane once you have multiple threads.
 2020-07-27 13:27:03 <int-e> And it's also pretty firmly in the domain of hand-written assembly code.
 2020-07-27 13:29:48 <wib_jonas> int-e: self-modifying code sure, but the kind of self-modifying code that doesn't do a jump instruction between? every cpu technically has to support some kind of self-modifying code, so you can load a program.
+2020-07-27 13:30:01 <wib_jonas> replacing incs with decs as needed? wow
+2020-07-27 13:30:53 <wib_jonas> I've heard of BASIC code that uses machine code to replace between WRITE and READ for its save/load code...
+2020-07-27 13:30:59 <wib_jonas> no wait, it's not READ
+2020-07-27 13:31:06 <wib_jonas> replaces between PUT and GET
+2020-07-27 13:32:30 <int-e> wib_jonas: The only reason I know a bit about this is that I once wrote code to measure the length of the prefetch queue. It produced interesting numbers on 386, 486, but on Pentium it always resulted in 0. I don't recall whether I ever ran it on a 286.
+2020-07-27 13:33:08 <wib_jonas> as in, game code printed into a magazine for a particular BASIC computer, probably commodore 64, where the game can be saved or loaded by writing the values of some variables and arrays in a partly unrolled loop.
+2020-07-27 13:33:22 <int-e> (it worked by poking an inc instruction into a bunch of nops that were about to be executed)
+2020-07-27 13:34:18 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2020-07-27 13:34:18 <fizzie> I think modifying operands of memory-referencing instructions is reasonably common in Z80 code.
+2020-07-27 13:34:48 Joined: kritixilithos
+2020-07-27 13:34:48 Names: ^[, aaaaaa, adu, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom___Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], vertrex, wib_jonas, wmww, xelxebar, xkapastel, zzo38
+2020-07-27 13:34:53 <int-e> It happens in MIX code too :P
+2020-07-27 13:35:21 <int-e> (Unless my memory deceives me very badly. It might.)
+2020-07-27 13:36:35 <int-e> Isn't there a MIX-in-MIX emulator in TAoCP that relies on copying instructions for most of its work?
+2020-07-27 13:37:03 <int-e> (Not quite the same, but also an instance of heavily self-modifying code.)
+2020-07-27 13:43:43 <fizzie> rfk86 has one case that changes the immediates in an upcoming pair of "bit N, a" and "set N, a" instructions, because I don't think there's a variant of those instructions that takes a register operand.
+2020-07-27 13:44:29 <wib_jonas> int-e: what happens in MIX code? oh yeah, early self-modifying code. sure, it's a 70s computer, it made sense back then, most MIX implementations probably have synchronized memory access and don't even bother prefetching a single instruction
+2020-07-27 13:45:19 <wib_jonas> in MIX, you effectively have to use self-modifying code to do function returns efficiently. you could avoid them, but it would be slower.
+2020-07-27 13:46:13 <wib_jonas> MMIX fixes this, it has very strict rules about when self-modifying code is allowed, even on a single thread:
+2020-07-27 13:47:15 <wib_jonas> there's a single special instruction to remove a memory range from code caches, and you must execute it between writing memory and executing it, no matter how many other things you do in between
+2020-07-27 13:47:41 <wib_jonas> so the linker would execute that instruction on all the code loaded before it transfers control to the program
+2020-07-27 13:49:16 <wib_jonas> and the operating system probably executes that instruction when zeroing a page before mapping it, so that a program can't sneakily get side channel information about data that was mapped to a different process, which sound silly, but MMIX's operating system interface is always like this,
+2020-07-27 13:49:42 <wib_jonas> .
+2020-07-27 13:51:38 <wib_jonas> so I guess to zero a page, you first call the pre-write instruction to throw away (roll back) any write-behind data cache, then you zero each word, then you call the pre-execute instruction to make sure the code cache doesn't leak information
+2020-07-27 13:52:37 <wib_jonas> and this just gets worse if the cpu has three different kinds of branch prediction caches, like x86 has, and you have to make sure neither of them can leak side channel data from your cryptography code
