@@ -42,3 +42,14 @@
 2020-07-27 03:53:32 <pikhq> erm, -max - 1
 2020-07-27 03:58:45 <salpynx> yes, that makes sense, as 2s complement for signed 1bit numbers. Is it useful though? Maybe, but doesn't seem especially connected to booleans. It's using 1 bit to represent something else
 2020-07-27 03:59:31 <pikhq> I make no claim that it is in any sense useful. :)
+2020-07-27 04:00:30 <shachaf> I've heard people say that booleans should be signed and I think it sounded reasonable at one point?
+2020-07-27 04:00:33 <shachaf> But I'm not sure why.
+2020-07-27 04:00:58 <pikhq> I bet it's so that all bits will be true if you use more than 1 bit to represent them.
+2020-07-27 04:01:46 <salpynx> I think I could accept signed booleans as -1 = false 0 = true
+2020-07-27 04:02:58 <salpynx> ... which is just inverted
+2020-07-27 04:05:22 <salpynx> next time I look at a truth table I'll be wondering whether those are signed or unsigned values...
+2020-07-27 04:13:45 <shachaf> pikhq: I figured that much, but why is that important? Is that the only thing?
+2020-07-27 04:13:54 <shachaf> I mean, I shouldn't be asking you, since you didn't make this claim.
+2020-07-27 04:13:55 <esowiki> 14[[07Surtic14]]4 M10 02https://esolangs.org/w/index.php?diff=76243&oldid=75669 5* 03Digital Hunter 5* (+215) 10/* Quine */
+2020-07-27 04:14:15 <pikhq> Yeah, I recall hearing it but super vaguely
+2020-07-27 04:17:54 <esowiki> 14[[07Surtic14]]4 M10 02https://esolangs.org/w/index.php?diff=76244&oldid=76243 5* 03Digital Hunter 5* (-1) 10/* |Quines */
