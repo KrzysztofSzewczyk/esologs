@@ -142,3 +142,25 @@
 2020-07-29 09:54:04 <salpynx> I haven't read this yet, but it's interesting and very recent paper from NIST on their Post-Quantum Cryptography algorithm 'competition' https://csrc.nist.gov/publications/detail/nistir/8309/final might be of interest to people here
 2020-07-29 09:56:51 <rain1> yes that is interesting
 2020-07-29 09:57:04 <rain1> I want to understand LLL algorithm better
+2020-07-29 10:01:40 <int-e> salpynx: what is lacking to make it a full-fledged competition without the quotes?
+2020-07-29 10:03:17 <shachaf> Man, why doesn't NIST standardize some unkeyed permutation?
+2020-07-29 10:03:32 <shachaf> Everyone's using AES and it's silly.
+2020-07-29 10:03:47 <shachaf> I want hardware implementations of a fancy permutation, not AES-NI.
+2020-07-29 10:04:10 <salpynx> well, they call it 'competition-like' in the abstract. I heard it being referred to as a competition elsewhere and I assumed that was informally. It sounds like it is a serious attempt at deriving future standards
+2020-07-29 10:05:30 <rain1> they use competition to find the best cipher
+2020-07-29 10:08:01 <esowiki> 14[[07Babalang14]]4 M10 02https://esolangs.org/w/index.php?diff=76310&oldid=76282 5* 03FLeckami21 5* (+0) 10/* Truth machine */
+2020-07-29 10:08:41 <salpynx> I can't find a mention of prizes. If one or more algorithms win ... we all win?
+2020-07-29 10:08:43 Quit: kritixil1 (Ping timeout: 240 seconds)
+2020-07-29 10:08:44 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-07-29 10:12:12 <esowiki> 14[[07WII2D14]]4 10 02https://esolangs.org/w/index.php?diff=76311&oldid=76299 5* 03TwilightSparkle 5* (-2) 10Befunge was known to be hard to compile, not interpret.
+2020-07-29 10:18:56 <esowiki> 14[[07User:FLeckami2114]]4 N10 02https://esolangs.org/w/index.php?oldid=76312 5* 03FLeckami21 5* (+77) 10Created page with "Hi everyone,  Here we are language I've created:  (empty, for the moment ...)"
+2020-07-29 10:18:57 <int-e> . o O ( LLL, the troublesome child of the Euclidean algorithm and the Gram-Schmidt procedure)
+2020-07-29 10:20:37 Joined: kritixil1
+2020-07-29 10:20:37 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixil1, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-07-29 10:23:35 <int-e> rain1: that's a rather broad question though. do you want to implement it, do you want to understand how it works, or do you want to know how to use it? (I have some vague ideas around this, no answers. I might be interested in figuring them out though.)
+2020-07-29 10:23:58 <rain1> I don't necessarily need to implement it
+2020-07-29 10:24:06 <rain1> but im interested in its applications
+2020-07-29 10:24:16 <rain1> thinkk the book by Cohn might be good
+2020-07-29 10:27:38 <int-e> I'd probably start by re-watching https://media.ccc.de/v/34c3-9075-latticehacks because I forgot almost everything.
+2020-07-29 10:28:08 <int-e> (For some crypto-related applications. It treats LLL as a black box.)
+2020-07-29 10:29:00 <int-e> It's sad but all I really remember for certain is the terrible pun.
