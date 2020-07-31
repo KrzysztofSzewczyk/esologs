@@ -96,3 +96,33 @@
 2020-07-31 08:57:54 <fizzie> "Irreversible binomial" sounded like a math thing, but turned out to be a language thing.
 2020-07-31 08:59:54 <shachaf> kissat seems like a pretty good SAT solver.
 2020-07-31 09:00:00 <shachaf> It won a bunch of the 2020 competition.
+2020-07-31 09:00:04 <shachaf> And it has the best name?
+2020-07-31 09:00:10 <shachaf> It's difficult to compete.
+2020-07-31 09:01:55 <fizzie> fi:kissat = en:cats, but I have a feeling that wasn't intentional.
+2020-07-31 09:04:32 <shachaf> https://github.com/arminbiere/kissat says it's a coincidence.
+2020-07-31 09:04:35 <shachaf> But I doubt that.
+2020-07-31 09:04:45 <shachaf> That was the reason I said it has the best name.
+2020-07-31 09:05:19 <int-e> well, if you do your due diligence and google the name you'll figure that out
+2020-07-31 09:06:05 <int-e> If you duckduckgo you may find https://www.ilves-kissat.fi/ ... Google does not seem to deem it nearly as relevant :P
+2020-07-31 09:06:52 <int-e> Ah, so that's Armin Biere's newest SAT solver.
+2020-07-31 09:10:32 <int-e> . o O ( It's too bad that "clause" is singular and "claws" is plural. Otherwise there would be many puns. )
+2020-07-31 09:10:40 <shachaf> Yes, it's the new CaDiCaL
+2020-07-31 09:12:20 <int-e> "Kissat is a "keep it simple and clean bare metal SAT solver" written in C. [...] Coincidentally "kissat" also means "cats" in Finnish."
+2020-07-31 09:12:59 User Name: cpressey = cpressey!~cpressey@79-72-201-15.dynamic.dsl.as9105.com
+2020-07-31 09:12:59 <cpressey> You'll think I'm mad as a hatter when I tell you that every SAT solver must have three different names
+2020-07-31 09:14:05 <int-e> This isn't the Lord of the Rings.
+2020-07-31 09:14:18 <shachaf> No, it's old possum's book.
+2020-07-31 09:14:54 <int-e> cpressey: Also, tbf, a reimplementation in a different language (even if it's moving from C++ to C) can justify a new name.
+2020-07-31 09:16:05 <shachaf> Book of practical kissat?
+2020-07-31 09:17:02 <shachaf> CaDiCaL takes 80 CPU seconds to compile here, and kissat takes 13.
+2020-07-31 09:17:25 <shachaf> (That's 9.3s and 1.6s with -j12.)
+2020-07-31 09:17:43 <int-e> that's a pretty good speedup
+2020-07-31 09:18:08 <shachaf> That's what you get for using C++, I think.
+2020-07-31 09:18:12 <int-e> unless the CPU time is all in spinlocks :P
+2020-07-31 09:18:47 <shachaf> Why would cc use any spinlocks?
+2020-07-31 09:25:10 <int-e> Here it starts hypertreading after -j6 and -j12 is only ~10% faster than -j6.
+2020-07-31 09:25:26 <int-e> (for kissat)
+2020-07-31 09:26:30 <shachaf> Oh, that's fair, I guess.
+2020-07-31 09:27:47 <int-e> (the missing `h` was intentional, in case you're wondering)
+2020-07-31 09:28:22 Joined: TheLie
+2020-07-31 09:28:22 Names: ^[, aloril, APic, Arcorann, ATMunn, atslash, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
