@@ -21,3 +21,31 @@
 2020-07-31 01:19:32 Names: ^[, aloril, APic, Arcorann, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
 2020-07-31 01:58:19 <shachaf> If every year you get returns of r on your money and then save 1 money, then after n years you have f^n(0), where f(x) = rx + 1. This is (r^n - 1)/(r - 1)
 2020-07-31 01:58:31 <shachaf> Is there a nice way to see why the ratio of "returns after n years - 1" to "returns after one year - 1" is this value?
+2020-07-31 02:07:36 User Name: Cale = Cale!~cale@CPEf48e38ee8583-CM0c473de9d680.cpe.net.cable.rogers.com
+2020-07-31 02:07:36 <Cale> https://www.youtube.com/watch?v=HIEWgwRrY9s
+2020-07-31 02:08:33 Quit: Lord_of_Life (Read error: Connection reset by peer)
+2020-07-31 02:08:33 Names: ^[, aloril, APic, Arcorann, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-07-31 02:09:09 <Cale> I find it easier to think about in terms of the fact that 1/(1-r) = 1 + r + r^2 + ...
+2020-07-31 02:09:45 <shachaf> Yes, you can phrase it as (1 - r^n)/(1 - r)
+2020-07-31 02:10:10 <Cale> Yeah, or (1/(1-r)) - r^n * (1/(1-r))
+2020-07-31 02:10:21 <shachaf> Right.
+2020-07-31 02:10:34 <Cale> But yeah, I'm not sure about the ratio thing
+2020-07-31 02:10:36 <shachaf> Another thing you can do when r is an integer is to say that 1+r+r^2+...+r^n is the number "111...111" in base r
+2020-07-31 02:11:16 <shachaf> 111...111 = 999...999/9 = (10^n - 1)/(10 - 1)
+2020-07-31 02:11:49 Joined: Lord_of_Life
+2020-07-31 02:11:49 Names: ^[, aloril, APic, Arcorann, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-07-31 02:12:07 Joined: Phantom__Hoover
+2020-07-31 02:12:08 Names: ^[, aloril, APic, Arcorann, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-07-31 02:12:09 <shachaf> (Maybe n is off by 1 here.)
+2020-07-31 02:12:26 <int-e> there's the telescoping trick
+2020-07-31 02:13:05 <int-e> (10-1)*11111 = 111110-11111 = 100000-1.
+2020-07-31 02:13:39 <esowiki> 14[[07User:ZippyMagician/Ideas14]]4 10 02https://esolangs.org/w/index.php?diff=76352&oldid=76336 5* 03ZippyMagician 5* (+2292) 10Re-add
+2020-07-31 02:14:40 <int-e> or, properly written: sum_{0 <= i < n} x^i = 1/(x-1) sum_{0 <= 0 < n} x^(i+1) - x^i =[telescoping happens here]= (x^n - 1)/(x-1)
+2020-07-31 02:16:26 <shachaf> What is telescoping?
+2020-07-31 02:16:54 <shachaf> I'm still curious about the "ratio of return-1s". What should I be expecting that kind of thing to mean?
+2020-07-31 02:18:14 <shachaf> Cale: No kids and three money sounds pretty good.
+2020-07-31 02:18:48 Quit: Phantom__Hoover (Ping timeout: 256 seconds)
+2020-07-31 02:18:49 Names: ^[, aloril, APic, Arcorann, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-07-31 02:19:36 <int-e> shachaf: telescoping is when one half of a term in a series cancels with the other half of the next term. https://en.wikipedia.org/wiki/Telescoping_series
+2020-07-31 02:20:10 <shachaf> Oh, it's an actual term to look up, I didn't realize.
+2020-07-31 02:20:17 <int-e> here x^(k+1) (for i = k) and -x^(k+1) (for i = k+1)
