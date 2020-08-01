@@ -186,3 +186,58 @@
 2020-08-01 15:59:02 <shachaf> Strings are terminated by ASCII EOT (U+0003)? Exciting.
 2020-08-01 15:59:12 <b_jonas> nopw, no wiki entry
 2020-08-01 15:59:34 <b_jonas> www.vttoth.com/w.htm then
+2020-08-01 16:00:30 <myname> links without protocols make my terminal sad
+2020-08-01 16:01:40 <shachaf> This manual has a section called "Function nesting".
+2020-08-01 16:01:59 <shachaf> I thought it'd be some fancy feature that C doesn't have. But it turns out they mean you can write things like putchar(getchar()).
+2020-08-01 16:02:28 <shachaf> Which, to be fair, the idea of expressions is one of the major features of high-level languages!
+2020-08-01 16:02:45 <myname> well, but it has to be supported by the compiler
+2020-08-01 16:03:41 <myname> "W may be elegant but it's also practical."
+2020-08-01 16:04:06 <myname> "i am intelligent as well as humble"
+2020-08-01 16:13:05 <Taneb> Are there any programming languages based on string diagrams?
+2020-08-01 16:13:46 <b_jonas> I disagree with that C is luxurious with vowels: strcpy, strcmp, strncmp, strchr, strspn, tmpnam, SIGABRT, SIGCHLD/SIGCLD, SIGTSTP, SIGPWR, BUFSIZ, ESRCH, SHRT_MAX, FLT_MAX, mknod, and the most infamous examples creat
+2020-08-01 16:14:39 <shachaf> Well, most of those are library features rather than keywords.
+2020-08-01 16:14:57 <b_jonas> yes, they all are
+2020-08-01 16:15:10 <shachaf> But the joke I was going for was that C is known not to be luxurious with its vowels. So it's funny for B to be even more so.
+2020-08-01 16:15:12 <b_jonas> but most of them are from K&R
+2020-08-01 16:15:20 <b_jonas> ah I see
+2020-08-01 16:15:28 <shachaf> Even less so?
+2020-08-01 16:15:34 <myname> Taneb: what do you consider a string diagram?
+2020-08-01 16:15:34 <shachaf> Taneb: Do you count languages that use index notation?
+2020-08-01 16:15:53 <shachaf> I think it's possible to argue for Prolog here, though it's a bit of a stretch.
+2020-08-01 16:16:44 <b_jonas> oh, and there's sbrk
+2020-08-01 16:17:10 <b_jonas> luckily we're rid of creat now, instead we have a versatile vararg function
+2020-08-01 16:20:42 <fizzie> statc cnst extrn dbl x; // please ignore mixing static and extern in the same declaration
+2020-08-01 16:21:52 <shachaf> Should I write "int const x;" instead of "const int x;"?
+2020-08-01 16:21:58 <shachaf> I mean, actually.
+2020-08-01 16:22:15 <b_jonas> it's beautiful by the way, in unix, the creat function is obsolete, you create or open files with open; in winapi, the OpenFile function is obsolete, and you create or open files with CreateFile
+2020-08-01 16:22:19 <shachaf> It is more cosistent with "int const *const p;", for example.
+2020-08-01 16:22:38 <fizzie> That consistency was why I was typing up "maybe".
+2020-08-01 16:23:04 <b_jonas> shachaf: I think the FAQ answer to that is "it doesn't matter, do whatever you want", same as with `char *x` versus `char* x`
+2020-08-01 16:23:20 <shachaf> No, "char *x" is clearly better, because it follows the grammar of the language.
+2020-08-01 16:23:30 <b_jonas> I always write `const int x;` and `char *x` these days, but it's your preference
+2020-08-01 16:23:35 <shachaf> Just like "sizeof x" is better than "sizeof(x)"
+2020-08-01 16:23:49 <shachaf> Of course it's fine to have preferences, but that doesn't mean all preferences are equal.
+2020-08-01 16:24:00 <b_jonas> shachaf: those are not the same though
+2020-08-01 16:24:11 <b_jonas> `sizeof x` versus `sizeof(x)`
+2020-08-01 16:24:12 <HackEso> sizeof? No such file or directory
+2020-08-01 16:24:17 <b_jonas> I think
+2020-08-01 16:24:19 <shachaf> Yes. For types I write "sizeof (T)"
+2020-08-01 16:24:20 Quit: craigo (Ping timeout: 256 seconds)
+2020-08-01 16:24:20 Names: ^[, aloril, APic, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-01 16:24:27 <fizzie> Just don't write `int static x;`, because "the placement of a storage-class specifier other than at the beginning of the declaration specifiers in a declaration is an obsolescent feature" (C11 6.11.5p1).
+2020-08-01 16:24:29 <shachaf> Anyway, "should I prefer X to Y" can still have a useful answer.
+2020-08-01 16:24:47 <shachaf> fizzie: I'm pretty irritated that gcc warns about "struct Foo { ... } typedef Foo;"
+2020-08-01 16:24:57 <int-e> I'd think that you only have to write  char* x, y;  once and get confused before you switch to  char *x, *y;  forever ;)
+2020-08-01 16:24:59 <shachaf> I used to write all my struct typedefs like that.
+2020-08-01 16:25:25 <fizzie> Since typedef is a storage-class specifier, I think that's an obsolescent feature too.
+2020-08-01 16:25:32 <shachaf> It sure is.
+2020-08-01 16:25:42 <shachaf> What a great storage class.
+2020-08-01 16:26:01 <b_jonas> I can only say my preferences. I write `char *x;` and `const int x;` and `char *
+2020-08-01 16:26:10 <b_jonas> f(char *)
+2020-08-01 16:26:11 <b_jonas> {`
+2020-08-01 16:26:40 <myname> i prefer not to write c
+2020-08-01 16:26:54 <shachaf> Hmm, but C seems like a big upgrade over B.
+2020-08-01 16:26:58 <b_jonas> myname: no no, I write these in C++
+2020-08-01 16:27:04 <shachaf> So your suggestion of writing B instead doesn't sound right.
+2020-08-01 16:27:12 <myname> b_jonas: okay, in that case, i _would_ prefer writing c
+2020-08-01 16:28:16 <b_jonas> shachaf: yes, that's because an angel visited K&R and told them about the original language used in heaven that would inspire C, and K&R remembered that and became prophets and copied as much of that language as they could remember in C. it's not a perfect copy, but they got a lot of good features from that.
