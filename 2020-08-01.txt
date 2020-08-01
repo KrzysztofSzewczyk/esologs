@@ -158,3 +158,31 @@
 2020-08-01 15:11:01 Names: ^[, aloril, APic, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
 2020-08-01 15:13:28 Joined: LKoen
 2020-08-01 15:13:29 Names: ^[, aloril, APic, ATMunn, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-01 15:43:05 Joined: Lord_of_Life
+2020-08-01 15:46:05 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2020-08-01 15:46:14 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-08-01 15:47:15 <shachaf> Oh, the B language supported single-statement functions without curly braces.
+2020-08-01 15:47:38 <shachaf> The manual gives this example: "char(s,n) return((s[n/4]>>(27-9*(n%4)))&0777);"
+2020-08-01 15:48:03 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-08-01 15:48:03 <myname> i hate that in "if" already
+2020-08-01 15:49:32 <int-e> ... that example
+2020-08-01 15:54:48 <shachaf> It's an untyped language.
+2020-08-01 15:55:27 <shachaf> I like how it uses "x =- y;" instead of "x -= y;"
+2020-08-01 15:56:03 <myname> that's confusing
+2020-08-01 15:56:26 <myname> do x = -y and x =- y behave differently?
+2020-08-01 15:56:36 <shachaf> Yes.
+2020-08-01 15:56:41 <myname> ew
+2020-08-01 15:56:49 <shachaf> Oh man, extern variables are declared with "extrn".
+2020-08-01 15:56:57 <shachaf> C is positively luxurious with its vowels.
+2020-08-01 15:57:05 <myname> gotta save those bytes
+2020-08-01 15:57:20 <b_jonas> shachaf: if it's an untyped language, why does it have functions that return char?
+2020-08-01 15:57:26 <b_jonas> or is char the function name?
+2020-08-01 15:57:31 <myname> its the name
+2020-08-01 15:57:32 <shachaf> char is the function name.
+2020-08-01 15:57:34 <b_jonas> ah
+2020-08-01 15:57:36 <myname> the function is not anonymous
+2020-08-01 15:57:45 <shachaf> https://www.bell-labs.com/usr/dmr/www/btut.html
+2020-08-01 15:58:51 <b_jonas> if you want a typeless compiled language that uses even less vowels, look at Viktor Toth's W language (I think there's a wiki entry)
+2020-08-01 15:59:02 <shachaf> Strings are terminated by ASCII EOT (U+0003)? Exciting.
+2020-08-01 15:59:12 <b_jonas> nopw, no wiki entry
+2020-08-01 15:59:34 <b_jonas> www.vttoth.com/w.htm then
