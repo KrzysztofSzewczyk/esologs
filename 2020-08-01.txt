@@ -319,3 +319,15 @@
 2020-08-01 17:23:15 <shachaf> Yes, vfork is very restricted in what it can do. fork would be a valid implementation.
 2020-08-01 17:23:31 <shachaf> I wrote this wrapper around posix_spawn: https://slbkbs.org/tmp/dspawn.h
 2020-08-01 17:24:14 <shachaf> But then I never ended up using it.
+2020-08-01 17:32:02 <zzo38> I don't like vfork() and had idea implementing cfork() instead, which is different in some ways, such as registers being shared too; in this case it is possible for execve to return 0 if it is successful
+2020-08-01 17:36:38 <shachaf> My preference would be to abandon fork entirely. It's mostly silly.
+2020-08-01 17:36:50 <shachaf> Instead, have system calls to create threads or processes directly.
+2020-08-01 17:37:11 <shachaf> One way to get the benefits of fork would be to allow some system calls to affect other processes.
+2020-08-01 17:37:46 Joined: Sgeo
+2020-08-01 17:37:47 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-01 17:37:54 <shachaf> So you could create a blank process, and then tell it to open, dup2, etc., and then to execve.
+2020-08-01 17:40:22 <shachaf> Being able to call e.g. mmap in another process's address space would also be useful for debuggers.
+2020-08-01 17:40:39 <shachaf> Windows's VirtualAllocEx takes a process handle argument.
+2020-08-01 17:42:44 <myname> being able to call mmap on another process's address space would be useful for attacking software
+2020-08-01 17:46:18 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Abbin21 5*  10New user account
+2020-08-01 17:52:43 <esowiki> 14[[07Esolang:Introduce yourself14]]4 M10 02https://esolangs.org/w/index.php?diff=76385&oldid=76374 5* 03Abbin21 5* (+296) 10/* Introductions */
