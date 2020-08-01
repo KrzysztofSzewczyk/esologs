@@ -262,3 +262,60 @@
 2020-08-01 16:46:28 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
 2020-08-01 16:59:43 <shachaf> Ah, right, they recommend making the first six characters of function and extern variable names unique.
 2020-08-01 16:59:48 <shachaf> Good reason for the economy.
+2020-08-01 17:01:33 <b_jonas> shachaf: that's because of ancient linkers. C also recommends that. even seebs' IAQ references that.
+2020-08-01 17:01:49 <shachaf> Right, I remember seeing that before.
+2020-08-01 17:02:46 <b_jonas> https://www.seebs.net/faqs/c-iaq.html#question-10.8\
+2020-08-01 17:02:50 <b_jonas> argh
+2020-08-01 17:02:51 <b_jonas> https://www.seebs.net/faqs/c-iaq.html#question-10.8
+2020-08-01 17:04:06 <b_jonas> that's why the C threading and thread synchronization functions (which nobody uses, because we already had pthreads, windows threads API, a pthreads compatibility layer for the windows threads API, boost threads, and eventually also the C++ threads library) have such silly names
+2020-08-01 17:07:47 <shachaf> The best thread API is Linux clone(2)
+2020-08-01 17:08:02 <shachaf> It is so good that you can only call the system call from assembly, not from C using the syscall wrapper.
+2020-08-01 17:08:14 <myname> what
+2020-08-01 17:08:18 <b_jonas> that's one of the low-level calls that implement pthread functinos
+2020-08-01 17:08:35 <b_jonas> I'd never call it directly
+2020-08-01 17:08:42 <b_jonas> well, not for threading
+2020-08-01 17:08:46 <b_jonas> for namespaces, sure
+2020-08-01 17:09:00 <shachaf> What if you aren't using libc?
+2020-08-01 17:09:07 <b_jonas> pthreads is done quite well, there's no need to use the low-level stuff
+2020-08-01 17:09:26 <b_jonas> shachaf: do you mean no libc on linux, or no libc on windows?
+2020-08-01 17:09:37 <shachaf> On Linux.
+2020-08-01 17:09:48 <shachaf> On Windows you'd use the Window thread API either way presumably.
+2020-08-01 17:09:54 <b_jonas> I don't think I ever do that. that's for esoteric stuff only.
+2020-08-01 17:10:07 <b_jonas> no, on windows I'd use one of the wrappers that I mentioned above
+2020-08-01 17:10:23 <shachaf> It is called CreateThread. The OpenThread API is deprecated, whereas in Unix the situation is reversed.
+2020-08-01 17:10:33 <shachaf> Hmm, avoiding libc doesn't seem that esoteric to me.
+2020-08-01 17:10:50 <shachaf> Compiling programs for Linux that are backward compatible is already a pain.
+2020-08-01 17:12:20 <b_jonas> maybe not esoteric, but then it's not really useful for the programs that I want to write
+2020-08-01 17:12:37 <b_jonas> for linux, again
+2020-08-01 17:12:46 <b_jonas> linux userspace
+2020-08-01 17:13:32 <shachaf> Usually the glibc wrappers around Linux system calls are worse APIs than the system calls themselves.
+2020-08-01 17:13:42 <shachaf> clone is an exception, I suppose.
+2020-08-01 17:14:01 <b_jonas> yes, but pthreads is rather carefully designed
+2020-08-01 17:14:14 <b_jonas> it has all sorts of limitations to not add overheads for features that you don't use
+2020-08-01 17:14:20 <b_jonas> well, that's the theory
+2020-08-01 17:14:23 <shachaf> (The reason you can't use clone to create threads yourself is that it returns twice in the same thread, but in the same address space, so you don't want both threads to continue executing and using the stack.)
+2020-08-01 17:16:04 <b_jonas> shachaf: that's why you also can't use vfork, right?
+2020-08-01 17:16:32 <shachaf> I think you're allowed to use vfork and use the stack.
+2020-08-01 17:17:22 <b_jonas> in both children?
+2020-08-01 17:17:23 <shachaf> The original process is suspended until you exec, so modifying unused stack memory is not so bad.
+2020-08-01 17:17:45 <shachaf> You just can't modify anything else.
+2020-08-01 17:17:55 <b_jonas> ah
+2020-08-01 17:18:00 <b_jonas> well I dunno how these things work tehn
+2020-08-01 17:18:14 <shachaf> Hmm, maybe I should use vfork more.
+2020-08-01 17:18:50 <shachaf> Oh, posix_spawn, which I use when possible, uses clone(CLONE_VFORK) on glibc.
+2020-08-01 17:18:57 <shachaf> So it's not so bad.
+2020-08-01 17:19:09 <b_jonas> is it actualyl guaranteed that it stays stopped, as opposed to that being just an optimization that happens in the common case, but not always happening?
+2020-08-01 17:19:13 <shachaf> Too bad fork/vfork/clone is a silly API.
+2020-08-01 17:19:33 <shachaf> Guaranteed by what?
+2020-08-01 17:19:38 <b_jonas> the kernel
+2020-08-01 17:19:59 <b_jonas> posix_spawn is implemented by glibc, it can do all sorts of ugly stuff that I don't want to see.
+2020-08-01 17:20:19 <shachaf> The parent thread is suspended according to the man page.
+2020-08-01 17:20:36 <shachaf> Other threads may continue to run.
+2020-08-01 17:20:40 <b_jonas> yes, but does it remain suspended?
+2020-08-01 17:20:59 <shachaf> "vfork() differs from fork(2) in that the calling thread is suspended until the child terminates (either normally, by calling _exit(2), or abnormally, after delivery of  a fatal  signal),  or it makes a call to execve(2)."
+2020-08-01 17:22:07 <b_jonas> I thought there was like a 30 year old email where Linus threatens everyone that if they abuse vfork, he'll make it a synonym of fork, and I think that's still canon, in that if a future kernel does that, you keep the pieces
+2020-08-01 17:22:33 <b_jonas> oh right, if that happens, the two children have a stack each
+2020-08-01 17:22:35 <b_jonas> sorry
+2020-08-01 17:23:15 <shachaf> Yes, vfork is very restricted in what it can do. fork would be a valid implementation.
+2020-08-01 17:23:31 <shachaf> I wrote this wrapper around posix_spawn: https://slbkbs.org/tmp/dspawn.h
+2020-08-01 17:24:14 <shachaf> But then I never ended up using it.
