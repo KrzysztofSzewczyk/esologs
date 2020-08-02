@@ -39,3 +39,12 @@
 2020-08-02 02:28:10 <pikhq> (and on good implementations, for things that can be done with posix_spawn it will use vfork() or something analogous for implementation)
 2020-08-02 02:56:16 <zzo38> It would seem that opponent can pay life to protect your lands too, with the Magic: the Gathering card "Cleansing"; sometimes this is useful.
 2020-08-02 02:58:10 <zzo38> (See https://allthetropes.org/wiki/Topic:Vr9ekwbia7l4g6jp for one example)
+2020-08-02 03:02:53 <esowiki> 14[[071+/Snippets14]]4 10 02https://esolangs.org/w/index.php?diff=76394&oldid=76393 5* 03TwilightSparkle 5* (-205) 10/* Hard */
+2020-08-02 03:04:29 <shachaf> pikhq: Too bad the posix_spawn API is awful.
+2020-08-02 03:04:39 <pikhq> It is.
+2020-08-02 03:05:04 <shachaf> My wrapper is a bit better at least.
+2020-08-02 03:05:32 <shachaf> Do they actually expect people to check error conditions a for every file action and everything?
+2020-08-02 03:05:54 <rain1> that is a great idea
+2020-08-02 03:06:16 <shachaf> When the main way these things can fail is ENOMEM.
+2020-08-02 03:07:07 <esowiki> 14[[071+/Snippets14]]4 10 02https://esolangs.org/w/index.php?diff=76395&oldid=76394 5* 03TwilightSparkle 5* (-85) 10/* Equality */
+2020-08-02 03:09:14 <pikhq> shachaf: yes
