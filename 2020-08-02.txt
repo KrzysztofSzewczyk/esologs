@@ -169,3 +169,24 @@
 2020-08-02 20:24:47 <fungot> int-e: and the channel wasn't active
 2020-08-02 20:27:35 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=76399&oldid=76385 5* 03Nicerobot 5* (+126) 10Introduction
 2020-08-02 20:27:46 <esowiki> 14[[07User:Nicerobot14]]4 N10 02https://esolangs.org/w/index.php?oldid=76400 5* 03Nicerobot 5* (+5) 10Created page with "Nice!"
+2020-08-02 20:32:45 <b_jonas> int-e: yes, there's like a whole one-parameter solution for that thing
+2020-08-02 20:33:24 <int-e> b_jonas: yeah that's what I've (re-)discovered, and been playing with.
+2020-08-02 20:33:42 <int-e> I found this one cute because despite the use of decimal points it's exact.
+2020-08-02 20:33:52 <b_jonas> int-e: oh
+2020-08-02 20:34:23 <int-e> a = (1+1/k)^k, b = (1+1/k)^(k+1) (note the connection to e) satisfy a^b = b^a; I took k=10.
+2020-08-02 20:35:00 <b_jonas> something like that
+2020-08-02 20:37:21 <int-e> bonus: k must be an integer (which we can take to be positive) for both a and b to be rational.
+2020-08-02 20:53:24 Quit: FreeFull (Quit: rebooting)
+2020-08-02 20:53:24 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-02 20:54:17 Joined: FreeFull
+2020-08-02 20:54:18 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-02 20:56:44 Joined: AidanBaidicoot
+2020-08-02 20:56:45 Names: ^[, AidanBaidicoot, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shig, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-02 20:56:55 User Name: AidanBaidicoot = AidanBaidicoot!~AidanBaid@cpc85744-newc19-2-0-cust224.16-2.cable.virginm.net
+2020-08-02 20:56:55 <AidanBaidicoot> test
+2020-08-02 20:57:35 <int-e> `relcome AidanBaidicoot
+2020-08-02 20:57:37 <HackEso> ​09AidanBaidicoot: 02Welcome 06to 13the 04international 07hub 08for 09esoteric 02programming 06language 13design 04and 07deployment! 08For 09more 02information, 06check 13out 04our 07wiki: 08<https://esolangs.org/>. 09(For 02the 06other 13kind 04of 07esoterica, 08try 09#esoteric 02on 06EFnet 13or 04DALnet.)
+2020-08-02 20:58:34 <AidanBaidicoot> I have been here before I was just checking if anyone from the esolangs discord was here yet. the admin is being annoying and so we are testing out a move
+2020-08-02 20:59:43 <b_jonas> `? discord
+2020-08-02 20:59:45 <HackEso> The unofficial Esolangs and code golf Discord server: https://discord.gg/3UXSK5p
+2020-08-02 20:59:46 <b_jonas> this one?
