@@ -194,3 +194,26 @@
 2020-08-03 17:57:18 <HackEso> You might expect a reference to recursion here, but to make it interesting you'll actuallSTACK OVERFLOW
 2020-08-03 17:58:46 <b_jonas> `forget ladder jump
 2020-08-03 17:58:48 <HackEso> Forget what?
+2020-08-03 18:01:37 <fizzie> `` learn 'A snake is just a directed vertical bridge in the negative orientation.'  # just to complement the entry on ladder
+2020-08-03 18:01:40 <HackEso> Learned 'snake': A snake is just a directed vertical bridge in the negative orientation.
+2020-08-03 18:03:32 <shachaf> `cat bin/#
+2020-08-03 18:03:34 <HackEso> cat: bin/#: No such file or directory
+2020-08-03 18:03:42 <shachaf> Right.
+2020-08-03 18:03:43 <shachaf> `cbt #
+2020-08-03 18:03:44 <HackEso> sep='//`' \ [[ "$1" == ?*"$sep"* ]] || { echo 'Usage: `# <comment>'"$sep"'<command>' >&2 ; exit 1; } \ nur "${1#*$sep}"
+2020-08-03 18:04:01 <shachaf> I suppose having comments at the end is useful.
+2020-08-03 18:06:37 <b_jonas> `? ladder
+2020-08-03 18:06:38 <HackEso> A ladder is just a directed vertical bridge in the positive orientation.
+2020-08-03 18:07:00 <b_jonas> `? #
+2020-08-03 18:07:02 <HackEso> ​`# <comment>//`<command> is useful if you want to add a comment to HackEgo history for things like `sled or `le/rn.
+2020-08-03 18:07:12 <b_jonas> I usually just use the shell's comment feature though
+2020-08-03 18:08:54 <fizzie> Likewise. Though it's a little bit risky, you have to get quoting right.
+2020-08-03 18:11:05 <esowiki> 14[[07VD314]]4 10 02https://esolangs.org/w/index.php?diff=76415&oldid=69816 5* 03LegionMammal978 5* (+552) 10added interpreter link and categories
+2020-08-03 18:11:41 <b_jonas> sure
+2020-08-03 18:12:57 <zzo38> Yes, comments are useful for that purpose, I think.
+2020-08-03 18:13:49 Joined: MTGBusyBeaver42
+2020-08-03 18:13:49 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, MTGBusyBeaver42, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], user24, V, vertrex, wmww, xelxebar, zzo38
+2020-08-03 18:14:02 <zzo38> Now the ticket menu of TeXnicard is alternating red/green each line (merely by the coincidence, I suppose).
+2020-08-03 18:17:25 <shachaf> Maybe a version of # that scans for the rightmost # would be useful.
+2020-08-03 18:18:08 <b_jonas> I don't find these useful simply because I already know and want to know how the unix commands work, I don't want to learn extra stuff unless it's really specific to HackEso
+2020-08-03 18:18:32 <b_jonas> but if you would use such a tool, sure, create such a command
