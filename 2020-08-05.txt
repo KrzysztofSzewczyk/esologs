@@ -294,3 +294,79 @@
 2020-08-05 22:51:36 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
 2020-08-05 22:52:02 Joined: Arcorann
 2020-08-05 22:52:02 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-05 23:04:57 Joined: ais523
+2020-08-05 23:04:57 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-05 23:05:27 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-08-05 23:05:27 <ais523> looking for some stupid bit-twiddling tricks help: can anyone suggest an efficient way to identify the fifth-least-significant set bit in a number?
+2020-08-05 23:06:37 <b_jonas> ais523: sorry, uh, I'm too tired for that, look in Warren's Hacker's Delight 2nd ed, which is right here on my shelf but I'm going to bed and can't think clear enough to interpret the book
+2020-08-05 23:06:46 <ais523> hmm, actually, there's a shortcut in my problem: I know that all bits above it will be set (but the bit immediately below might also be set, so I can't just look for the top 0)
+2020-08-05 23:07:18 <b_jonas> ais523: in that case don't you just do a popcount and then a subtraction or something?
+2020-08-05 23:07:21 <ais523> so I can count the number of set bits and that probably gives the answer directly?
+2020-08-05 23:07:23 <ais523> yes
+2020-08-05 23:07:26 <b_jonas> yeah, that
+2020-08-05 23:08:19 <ais523> this doesn't actually need to be efficient, but I can't bear to write the loop
+2020-08-05 23:08:57 <b_jonas> ais523: popcount then, and find an existing implementation of popcount for whatever you're writing this in, I can even help in that part if you need
+2020-08-05 23:09:23 <ais523> I'm writing in Rust which has popcount in the standard library, fortunately
+2020-08-05 23:09:36 <b_jonas> good
+2020-08-05 23:11:35 Joined: callforjudgement
+2020-08-05 23:11:35 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-05 23:11:42 Quit: ais523 (Disconnected by services)
+2020-08-05 23:11:42 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-05 23:11:44 Nick Change: callforjudgement -> ais523
+2020-08-05 23:11:45 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-05 23:15:52 <int-e> ais523: By "loop", do you mean four times  x = x & (x-1), followed by x & -x?
+2020-08-05 23:16:32 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-08-05 23:16:32 <ais523> int-e: I was thinking about something stupider; that version, I /could/ bear to write, although it still seems less elegant than it needs to be
+2020-08-05 23:16:56 <ais523> oh, I figured it out, anyway, start with 0b10000 and then do an inverse select on the original number
+2020-08-05 23:17:04 <ais523> (inverse-select is a builtin on x86)
+2020-08-05 23:17:32 <ais523> although that probably isn't in Rust's standard library
+2020-08-05 23:17:33 <int-e> there's https://www.felixcloutier.com/x86/pdep (which apparently is really slow on Zen)
+2020-08-05 23:18:14 <int-e> (which would allow you to deposit 0x10 into the work you want to analyze to give you the 5th bit)
+2020-08-05 23:18:51 <ais523> ah right, pdep is what it's called
+2020-08-05 23:18:55 <int-e> maybe there's an intrinsic for that.
+2020-08-05 23:19:04 <ais523> that's the instruction I was thinking of, I remembered the instruction but couldn't remember the name
+2020-08-05 23:19:09 <shachaf> Do you need the index of the bit or just to have it set?
+2020-08-05 23:19:10 <int-e> (probably but I hate looking this up)
+2020-08-05 23:19:35 <ais523> pext/pdep aren't methods of u64 in Rust, at least
+2020-08-05 23:19:37 <ais523> shachaf: need the index
+2020-08-05 23:19:50 <int-e> what else... bsl in a loops (eww)
+2020-08-05 23:20:02 <int-e> *loop
+2020-08-05 23:20:21 <int-e> but the index is just a popcount away from finding the mask
+2020-08-05 23:20:26 <ais523> my superoptimiser almost certainly isn't powerful enough to find this
+2020-08-05 23:20:37 <shachaf> Rust supports inline assembly now, right?
+2020-08-05 23:20:59 <ais523> you wouldn't use it in this situation anyway, if you want to write platform-specific code there are bindings to all the asm instructions individually
+2020-08-05 23:21:06 <b_jonas> "inverse-select is a builtin on x86" => only on cpus newer than the ones that have popcount though
+2020-08-05 23:21:25 <int-e> b_jonas: how does popcount solve this problem?
+2020-08-05 23:21:28 <b_jonas> ais523: I think they do have a library that contains most x86 intrinsics though
+2020-08-05 23:21:29 <ais523> in this case, pub unsafe fn _pdep_u64(a: u64, mask: u64) -> u64
+2020-08-05 23:21:31 <int-e> I don't think it does
+2020-08-05 23:21:56 <ais523> int-e: it solves it in the situation where you know that all the bits above the one you want are 1 bits (but some of the bits immediately below might be too)
+2020-08-05 23:21:59 <shachaf> int-e: I think it works here, since all the higher bits are set?
+2020-08-05 23:21:59 <ais523> which is the case for me
+2020-08-05 23:22:16 <int-e> ais523: I still don't see how
+2020-08-05 23:22:41 <ais523> int-e: you know that there are precisely four 1 bits below the one you want, so all but five 1 bits must be above
+2020-08-05 23:22:55 <int-e> oh right.
+2020-08-05 23:22:57 <b_jonas> the functions in the rust library are btw named the same as the intel compiler intrinsic functions, which all of intel, ms, gcc compilers have in a standard header
+2020-08-05 23:22:58 <int-e> okay, that was stupid.
+2020-08-05 23:23:07 <ais523> and there are no 0 bits above, thus knowing how many 1 bits are above gives you the number of bits above and thus the index of the bit you want
+2020-08-05 23:23:28 <b_jonas> I looked at it once, and found a few things missing that I reported, but haven't bothered to write the patch for it yet
+2020-08-05 23:23:55 <b_jonas> yeah, that stuff you said, _pdep_u64
+2020-08-05 23:24:05 <ais523> come to think of it, this might make an interesting codegolf problem
+2020-08-05 23:24:23 <ais523> (the "fifth-least-significant set bit" problem in the general case)
+2020-08-05 23:24:57 <shachaf> I'm looking for a reference on the first use of the reasonable precedence parsing algorithm (sometimes called "precedence climbing" or "Pratt parsing" or other names).
+2020-08-05 23:25:20 <shachaf> Someone attributes it to the BCPL compiler, but I can't find the code for that.
+2020-08-05 23:25:23 <int-e> Hmm. I wonder how the 1252 threashold in http://www.research.ibm.com/haifa/ponderthis/challenges/August2020.html was chosen.
+2020-08-05 23:25:35 <int-e> ... threshold
+2020-08-05 23:25:43 <ais523> I have a book about compilers that uses BCPL for its examples, and talks about "operator-precedence parsing"
+2020-08-05 23:25:57 <shachaf> Which book?
+2020-08-05 23:26:10 <ais523> from memory, "Understanding and Writing Compilers" by Bornat
+2020-08-05 23:26:14 <ais523> but I may have misremembered
+2020-08-05 23:26:18 <b_jonas> shachaf: reference on first use of the reasonable precedence parsing algorithm => look in TAOCP volume 5, TAOCP usually tells about the history
+2020-08-05 23:26:20 <int-e> (It seems too high to make this interesting. And the * bonus looks too hard.)
+2020-08-05 23:27:43 <int-e> ais523: I didn't realise how restrictive that additional constraint (no 0 bits above the one you want) really is.
+2020-08-05 23:27:58 <int-e> So... yeah, stupid.
+2020-08-05 23:28:22 <shachaf> The algorithm is so simple that it seems silly to give it a name, but also many people (including me) find it nonobvious before they see it.
+2020-08-05 23:28:56 <shachaf> But people write much more complicated precedence parsing code all the time.
+2020-08-05 23:29:20 <ais523> int-e: my guess is that the people setting the problem tried to solve it for some length of time and 1252 was their best score
+2020-08-05 23:29:36 <b_jonas> shachaf: those are some of the best algorithms, the ones that are trivial and beautiful after you understand it, but look like magic that nobody could possibly have invented before that
+2020-08-05 23:29:56 <shachaf> b_jonas: I don't have TAOCP unfortunately (except for two fascicles).
