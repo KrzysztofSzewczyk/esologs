@@ -103,3 +103,46 @@
 2020-08-05 13:46:05 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=76453&oldid=76450 5* 03TwilightSparkle 5* (-447) 10/* Computational class */ The proof is completely wrong.
 2020-08-05 13:49:30 <esowiki> 14[[07MAWP14]]4 10 02https://esolangs.org/w/index.php?diff=76454&oldid=76453 5* 03TwilightSparkle 5* (+88) 10/* Computational class */
 2020-08-05 13:49:53 <esowiki> 14[[07MAWP14]]4 M10 02https://esolangs.org/w/index.php?diff=76455&oldid=76454 5* 03TwilightSparkle 5* (-2) 10/* Computational class */
+2020-08-05 14:08:05 Joined: ais523
+2020-08-05 14:08:06 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wib_jonas, wmww, xelxebar, zzo38
+2020-08-05 14:08:45 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-08-05 14:08:45 <ais523> wib_jonas: I implemented such a service, but the outermost layer is TLS and if someone unexpected tries to connect, the TLS won't even work
+2020-08-05 14:08:52 <ais523> so there's no scope to do something like you're suggesting
+2020-08-05 14:09:10 <ais523> you would need to put such a fixed-error-message output into the TLS implementation rather than the application
+2020-08-05 14:09:18 <int-e> "Copyrighted material are also strictly prohibited." -- always a good laugh, that.
+2020-08-05 14:09:29 <ais523> I imagine other people in the same situation would have had the same issue
+2020-08-05 14:09:57 <wib_jonas> ais523: thank you. but will it fail also if someone connects with a different client that uses TLS, such as a HTTPS client or IRC client with TLS enabled?
+2020-08-05 14:10:25 <wib_jonas> or does TLS have a built-in high-level protocol marker that you're using for this?
+2020-08-05 14:11:05 <wib_jonas> and yes, for that you'd probably have to modify the TLS library to support this
+2020-08-05 14:11:11 <ais523> the server end wouldn't be able to see what the client end was sending due to a certificate error
+2020-08-05 14:11:30 <ais523> from the client end, I think it'd just see the connection closing
+2020-08-05 14:11:42 <wib_jonas> ais523: you don't need to see what the client is sending to send an error message
+2020-08-05 14:11:46 <ais523> I guess you could modify the TLS library to send something using the client's actual certificate even if it wasn't recognised
+2020-08-05 14:11:50 <wib_jonas> ais523: so you're using a client certificate?
+2020-08-05 14:11:51 <wib_jonas> ok
+2020-08-05 14:11:55 <ais523> yes, client certificate
+2020-08-05 14:12:04 <wib_jonas> ok, that explains it
+2020-08-05 14:12:13 <ais523> I guess most people don't do that
+2020-08-05 14:12:18 <ais523> but it's a very simple way to do auth
+2020-08-05 14:13:06 <wib_jonas> sure, but you could also do it optionally, as in run a single Apache that listens on https, and some of the things it serve require a client cert, but just a hello world page or an error message doesn't
+2020-08-05 14:13:16 <wib_jonas> s/serve/serves/
+2020-08-05 14:14:42 <ais523> I guess you could make it work
+2020-08-05 14:15:08 <ais523> although, I'm not going to for my project, because the amount of development effort required, and the risk of introducing a security bug, would be disproportionate to the benefit
+2020-08-05 14:15:26 <ais523> (especially as this was for work so I need to justify what I'm spending my time on)
+2020-08-05 14:15:37 <wib_jonas> it's not "make it work", if I want to serve something on https, as opposed to tls in general, than I will probably put it behind an Apache because it handles the peksy server-side details of HTTP
+2020-08-05 14:15:41 <int-e> Hmm, what's the story on the discord front? (This change, https://esolangs.org/w/index.php?diff=76448&oldid=75596 ... basically I'm wondering whether there are now two competing rooms/channels/whatever the name, or whether the former is gone)
+2020-08-05 14:16:44 <wib_jonas> int-e: I think discord links can expire after some time, maybe it expired?
+2020-08-05 14:17:35 <int-e> Just something to keep an eye for a while on I suppose.
+2020-08-05 14:17:46 <int-e> I'm not curious enough to actually try out discord for this.
+2020-08-05 14:18:03 <wib_jonas> it's a bit weird, they use time-limited invite links, but the links have so little entropy that you could brute-force yourself into random discords easily such that any discord can't be kept private from that
+2020-08-05 14:18:16 User Name: uplime = uplime!nchambers@learnprogramming/staff/nchambers
+2020-08-05 14:18:16 <uplime> int-e: they both look to go to the same discord server fwiw
+2020-08-05 14:18:18 <wib_jonas> I don't use discord so maybe this is not true and I just don't understand it
+2020-08-05 14:19:11 <wib_jonas> but I hear from other people who use discord (and just this morning I just found out that another IRC channel that I'm on had a bridge from discord and two more forums in two more chat protocols different from IRC or discord)
+2020-08-05 14:19:23 <wib_jonas> s/this morning/this night/
+2020-08-05 14:20:49 <int-e> uplime: thanks, that's reassuring
+2020-08-05 14:26:01 <int-e> does anybody know why the esowiki has lemons for its logo?
+2020-08-05 14:27:54 <ais523> they are limes
+2020-08-05 14:28:09 <ais523> and it was originally just picked from a list of placeholder images as a placeholder, but we grew to like it
+2020-08-05 14:29:32 <uplime> i think its a good logo personally
+2020-08-05 14:29:36 <uplime> unobjectively
