@@ -370,3 +370,126 @@
 2020-08-05 23:29:20 <ais523> int-e: my guess is that the people setting the problem tried to solve it for some length of time and 1252 was their best score
 2020-08-05 23:29:36 <b_jonas> shachaf: those are some of the best algorithms, the ones that are trivial and beautiful after you understand it, but look like magic that nobody could possibly have invented before that
 2020-08-05 23:29:56 <shachaf> b_jonas: I don't have TAOCP unfortunately (except for two fascicles).
+2020-08-05 23:30:08 <ais523> ayacc will generate operator-precedence parsing code as an optimisation in some cases
+2020-08-05 23:30:10 <int-e> ais523: Yeah but the first thing I tried got it down to 1235.
+2020-08-05 23:30:13 <shachaf> b_jonas: I think Floyd's algorithm that we discussed the other day is like this.
+2020-08-05 23:30:23 <ais523> int-e: maybe you just got lucky?
+2020-08-05 23:30:33 <int-e> Doubt it.
+2020-08-05 23:31:12 <b_jonas> shachaf: no problem, nobody has volume 5 yet, it's not yet written, you have many years before it will be published, so since you already have to wait, it doesn't matter that you haven't bought it yet
+2020-08-05 23:31:32 <int-e> (This is hardly a spoiler, it's pretty much the most obvious attempt: I added a single losing position, and no winning position.)
+2020-08-05 23:31:56 <ais523> adding a losing position may cause some losing positions to become winning, though
+2020-08-05 23:32:07 <ais523> so the exact details would matter
+2020-08-05 23:32:20 <int-e> I tried all possibilities.
+2020-08-05 23:32:37 * int-e shrugs.
+2020-08-05 23:32:51 <ais523> the tortoise-and-hare cycle-finding algorithm is something I found very non-obvious before I saw it
+2020-08-05 23:33:16 <int-e> And yes, it turns some losing positions into winning positions. That is the point really, because the goal is to get as few losing positions as possible.
+2020-08-05 23:33:51 <int-e> Ah well.
+2020-08-05 23:34:14 <shachaf> ais523: Oh, that wasn't the Floyd's algorithm I meant, I meant the one for sampling.
+2020-08-05 23:34:19 <shachaf> I suppose Floyd has many algorithms.
+2020-08-05 23:34:34 <ais523> shachaf: huh, that's coincidence, I thought of the algorithm itself without realising the Floyd connection
+2020-08-05 23:35:05 <ais523> (also, Wikipedia isn't sure that Floyd actually created the tortoise-and-hare algorithm)
+2020-08-05 23:35:30 <shachaf> Nevertheless I've heard people call it "Floyd's algorithm".
+2020-08-05 23:35:45 <ais523> yes
+2020-08-05 23:35:49 <shachaf> I like the Pollard's lambda algorithm for finding cycles.
+2020-08-05 23:35:53 <b_jonas> ais523: yeah. and the algorithm to find a birthday attack on a black box function with range 2**n with O(2**(n/2)) queries but with memory usage of only a O(2**(n/4)) sized hash table of values
+2020-08-05 23:36:01 <shachaf> It seems much more practical in situations where you can use it.
+2020-08-05 23:36:19 <int-e> https://en.wikipedia.org/wiki/Cycle_detection attributes it to Floyd
+2020-08-05 23:36:31 <b_jonas> and yes, the Pollard rho algorithm for prime factorization, which is based on that
+2020-08-05 23:36:41 <ais523> int-e: it states that it's often referred to as Floyd's algorithm, but starts by disputing that attribution
+2020-08-05 23:37:04 <b_jonas> oh yeah, Floyd's algorithm is also like that
+2020-08-05 23:37:05 <int-e> b_jonas: the point of that one is that it's parallelizable, right?
+2020-08-05 23:37:05 <shachaf> I suppose that for Pollard's rho factoring algorithm you have to use the "turtle and hare" method, you can't use the lambda trick, right?
+2020-08-05 23:37:09 <ais523> b_jonas: we're assuming that the function has an infinite domain, right?
+2020-08-05 23:37:24 <b_jonas> I mean Floyd's algorithm to compute each pair of distances in a graph with weighted edges
+2020-08-05 23:37:27 <shachaf> Because you don't actually have an identity you can distinguish.
+2020-08-05 23:37:34 <int-e> ais523: Funny, it doesn't do that in the initial description.
+2020-08-05 23:37:55 <b_jonas> int-e: that's just one point, but that part isn't too surprising, more surprising is that it needs less storage
+2020-08-05 23:38:35 <ais523> <b_jonas> I mean Floyd's algorithm to compute each pair of distances in a graph with weighted edges ← for TAEB::AI::Planar I created my own pathfinding algorithm designed to be efficient at doing that
+2020-08-05 23:38:42 <ais523> but also at updating the cache when the graph changed slightly
+2020-08-05 23:38:51 <int-e> Brent's variant is usually faster anyway.
+2020-08-05 23:39:04 <shachaf> Wait, let me remember how Pollard's factoring algorithm works.
+2020-08-05 23:39:18 <int-e> b_jonas: But that's a lot of memory...
+2020-08-05 23:39:40 <int-e> b_jonas: The basic cycle finding just needs to keep track of a couple of values.
+2020-08-05 23:39:42 <b_jonas> int-e: um, that depends on how large n is
+2020-08-05 23:39:53 <ais523> how fast is the birthday attack for finding collisions in a function where you start with a value that isn't in the range, then you repeatedly feed it its own output?
+2020-08-05 23:40:12 <ais523> that's O(n) memory, but I'm not sure what the efficiency is
+2020-08-05 23:40:18 <b_jonas> int-e: ok, then the point IS that it's parallelizable, you pay memory to be parallelizable
+2020-08-05 23:40:35 <int-e> b_jonas: Yes that was my point.
+2020-08-05 23:40:39 <fizzie> I found Floyd-Steinberg dithering unintuitive at first. But maybe I just initially saw it explained badly. On the other hand, there's a cute cat in the Wikipedia page about it.
+2020-08-05 23:41:03 <shachaf> ais523: This is what the "distinguished point"/lambda trick is about, right?
+2020-08-05 23:41:12 <b_jonas> I find this important because for a crypto hash of size n=256, you need 2**64 entries of storage instead of 2**128, and while 2**128 storage is something I can't imagine, 2**64 entries of storage is tantalizingly close to what Google could have in a few years if they really wanted to, whereas 2**128 entries of memory is something I can't imagine without our civilization being totally unrecognizable
+2020-08-05 23:41:14 <ais523> I assume it's O(2**(n/2)) because I've used it in practice to find a collision in SHA-256 truncated to 64 bits
+2020-08-05 23:41:26 <ais523> and that seems like it would take too long if it were O(2**64)
+2020-08-05 23:41:29 <int-e> ais523: It's expected to be O(2^(n/2)), but parallelizes badly (d parallel processes doing that end up taking O(2^(n/2)/sqrt(d)) time, I think)
+2020-08-05 23:41:43 <ais523> int-e: ah, OK
+2020-08-05 23:41:49 <b_jonas> in particular, there's an estimate that all hard disk existing in year 2018 have a total capacity approximately 2**88 bits
+2020-08-05 23:41:55 <b_jonas> or 2**85 bytes or so
+2020-08-05 23:41:59 <shachaf> You have a time/memory tradeoff that you can set however you want. There's no real reason to set it to the square root, is there?
+2020-08-05 23:42:19 <ais523> b_jonas: I can imagine 2**64 storage entries, however I can't imagine a system that can fill them in reasonable time
+2020-08-05 23:42:21 <b_jonas> and it's reasonable to assume that a large quantity of those hard disks are used by Google in their server rooms
+2020-08-05 23:42:25 <shachaf> You can set it based on how much storage you want to use.
+2020-08-05 23:42:31 <ais523> if these are random access and we assume we don't use most of them, it's believable
+2020-08-05 23:43:11 <b_jonas> ais523: yeah, it's still not a feasable attack yet, but the storage size is not the limit
+2020-08-05 23:43:19 <shachaf> fizzie: That's a pretty cute cat.
+2020-08-05 23:43:47 <b_jonas> shachaf: yes, it needn't be exactly the fourth root
+2020-08-05 23:43:54 <shachaf> The undithered version is a bit less cute.
+2020-08-05 23:44:18 <ais523> b_jonas: actually, I think Google almost certainly uses more than 2**-21 of the world's storage capacity, that's less than a millionth
+2020-08-05 23:44:29 <ais523> so Google probably had 2**64 bits of storage already in 2018
+2020-08-05 23:45:40 <int-e> ais523: https://crypto.stackexchange.com/questions/52231/what-is-the-best-and-fastest-algorithm-to-generate-a-hash-collision has some references
+2020-08-05 23:46:04 <b_jonas> ais523: yes, that's what I'm thinking too, but I also think 2**64 *bits* might not be enough, you need 2**64 half-entries, each 64 bits long, (or maybe quarter entries or so), so it's more like 2**70 bits
+2020-08-05 23:46:30 <ais523> ah right
+2020-08-05 23:46:55 <b_jonas> but I'm not sure about either number here so I can't tell if Google has reached this yet
+2020-08-05 23:47:11 <fizzie> I'd check how much data is stored in [REDACTED], but it'd almost certainly be a confidential number.
+2020-08-05 23:47:45 <int-e> . o O ( so many [REDACTED] bytes )
+2020-08-05 23:48:10 <b_jonas> fizzie: yeah, though I've seen some estimates based on public data
+2020-08-05 23:48:47 <fizzie> It's pretty hard to find public information about that sort of thing, I think Amazon has also only publicly said how many *objects* there are in S3, not how many bytes.
+2020-08-05 23:49:45 <b_jonas> I was also wondering how many devices (smartphones) are there that run Android (2**31 right now, it turns out), and how much total GPU FLOPS, total CPU FLOPS, total storage, total RAM, and median RAM they have;
+2020-08-05 23:49:59 <shachaf> fizzie: I wonder how that changed since I had access to [REDACTED]
+2020-08-05 23:50:22 <fizzie> Well, curiosity got the better of me, and I checked [REDACTED]. I can in strictest confidence let you know it's still a number, it hasn't turned into any sort of weird concept that transcends numbers. Well, unless the interface hides that.
+2020-08-05 23:50:37 Joined: salpynx
+2020-08-05 23:50:37 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-05 23:50:56 <b_jonas> though I do admit that an attack that backdoors a significant number of android devices such that it uses them for some meaningful computation would be very impractical.
+2020-08-05 23:51:12 <shachaf> Oh man, we should do some sort of millionaire problem.
+2020-08-05 23:51:14 <ais523> it wouldn't necessarily need to be a backdoor
+2020-08-05 23:51:16 <b_jonas> I was asking about this on another channel, but I haven't found out anyting other than the number of devices yet
+2020-08-05 23:51:41 <b_jonas> shachaf: yeah, that's what I was thinking of, to determine if the redacted problems are equal
+2020-08-05 23:51:59 <b_jonas> oh wait, you mean not whether the projects are the same but for which one uses more storage?
+2020-08-05 23:52:09 <ais523> there are apps that are installed on a high proportion of phones, if one of them decided to do some distributed computing (perhaps even with the users' permission) it could get a lot done
+2020-08-05 23:52:35 <fizzie> There was a ridiculous spike in capacity of Folding@home with the covid thing.
+2020-08-05 23:52:57 <fizzie> "With heightened interest in the project as a result of the COVID-19 pandemic,[7] the system achieved a speed of approximately 1.22 exaflops by late March 2020 and reaching 2.43 exaflops by April 12, 2020,[8] making it the world's first exaflop computing system."
+2020-08-05 23:53:20 <ais523> is exa one level above peta?
+2020-08-05 23:53:25 <b_jonas> ais523: yes, I know, but still it's hard to make them do a computation that does anything useful
+2020-08-05 23:53:49 <ais523> these are numbers so large that I find it hard to remember even what they're named
+2020-08-05 23:53:50 <fizzie> Exa is indeed one level above peta, and it's also the last level that sounds even borderline reasonable.
+2020-08-05 23:53:57 <fizzie> Because nobody's going to take zetta and yotta seriously.
+2020-08-05 23:54:06 <int-e> "IBM announced Thursday[don't you love such references in an online article without date] that after five years of work, its researchers have been able to reduce from about one million to 12 the number of atoms required to create a bit of data."
+2020-08-05 23:54:24 <b_jonas> ais523: yes, tera is 1000**4, peta is 1000**5, exa is 1000**6, zetta is 1000**7, yotta is 1000*8, the mnemonic is that the words are similar to tetra, penta, hexa, septa, octa
+2020-08-05 23:54:31 <b_jonas> with one consonant removed from each
+2020-08-05 23:54:44 <ais523> b_jonas: huh, was that intentional?
+2020-08-05 23:54:55 <ais523> it's a hard pattern to notice unless it's pointed out
+2020-08-05 23:55:30 <b_jonas> ais523: yeah, I didn't know it for a while and I kept confusing them all the time. I think it was intentional for at least for some of them, though perhaps not for tera
+2020-08-05 23:55:33 <ais523> and it doesn't generalize backwards, "giga" is nothing like "tri"
+2020-08-05 23:55:53 <int-e> well mega and giga are just large
+2020-08-05 23:55:53 <b_jonas> ais523: nor for the prefixes smaller than 1
+2020-08-05 23:56:01 <fizzie> I finally heard a mnemonic for stalactite/stalagmite that I can actually remember the other day: stalaGmites rise from the Ground, while stalaCtites hang from the Ceiling.
+2020-08-05 23:56:12 <b_jonas> int-e: and tera is like terra which is earth which is large... very helpful
+2020-08-05 23:56:17 <ais523> I learned that in school, I think
+2020-08-05 23:56:36 <fizzie> It doesn't work in Finnish, I'm sure they'd've told it to us too otherwise.
+2020-08-05 23:57:02 <b_jonas> fizzie: I didn't bother to remember the stalagmite thing, I don't do spelunking and will never do it in the future, so I don't think that nomenclature can ever matter for anything I do
+2020-08-05 23:57:17 <int-e> fizzie: statlacTITeS hang from the ceiling... that one works in german as well :P
+2020-08-05 23:57:34 <b_jonas> plus all my spelologist friends speak Hungarian and you can just use the Hungarian names which aren't so crazy
+2020-08-05 23:57:34 <int-e> (ignore the ceiling, it's all about hanging)
+2020-08-05 23:58:10 <b_jonas> they are combined from simple words and have obvious etimologies, just like rare words do in any sane language except English
+2020-08-05 23:58:14 <ais523> how many spelologist friends do you have?
+2020-08-05 23:58:18 User Name: Arcorann = Arcorann!~awych@121-200-5-186.79c805.syd.nbn.aussiebb.net
+2020-08-05 23:58:18 <Arcorann> It's why people have proposed extending the prefixes with stuff like "xona"
+2020-08-05 23:58:25 <int-e> And I think I learned this as a teenager... not in school though, for some reason. :P
+2020-08-05 23:58:58 <b_jonas> ais523: depends on how you count "friend", they're all my mother's friends because she goes to caves a lot, although not as a spelologist, but as a teacher
+2020-08-05 23:58:59 <fizzie> int-e: Stephen Fry said the mnemonic he was taught in school was based on "tights hang down".
+2020-08-05 23:59:10 <b_jonas> but like a dozen
+2020-08-05 23:59:12 <int-e> fizzie: cute
+2020-08-05 23:59:18 <fizzie> (This was in QI, which is where I got the ground/ceiling bit too.)
+2020-08-05 23:59:23 <Arcorann> I've heard a bunch of mnemonics, but I
+2020-08-05 23:59:33 <Arcorann> 'll always remember Hagrid in Harry Potter just failing
+2020-08-05 23:59:45 <esowiki> 14[[07The Past14]]4 10 02https://esolangs.org/w/index.php?diff=76463&oldid=76129 5* 03LegionMammal978 5* (+253) 10fixed implementation
+2020-08-05 23:59:48 <int-e> Arcorann: aww, I was hoping for "I don't remember any of them"
