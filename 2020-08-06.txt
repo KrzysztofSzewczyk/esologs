@@ -100,3 +100,57 @@
 2020-08-06 00:29:42 <fizzie> The BLARG parser gives up as soon as it encounters any error.
 2020-08-06 00:29:44 <ais523> I think it's useful to know what LALR(1) is capable of doing, because that's what most parser generators use in practice
 2020-08-06 00:30:01 <shachaf> Should I know about packrat, earley, cyk, and so on?
+2020-08-06 00:30:02 <ais523> knowing the fine distinctions between the various categories isn't much use unless you're writing a parser generator, though
+2020-08-06 00:30:05 <b_jonas> ais523: those four colors aren't really colors, they're filters where the full spectrum matters, so you can't really name them with human color names like red green blue accurately anyway
+2020-08-06 00:30:14 <b_jonas> just like the cone cells
+2020-08-06 00:30:24 <ais523> yes, you'd need to give a graph of the frequency response
+2020-08-06 00:30:29 <b_jonas> they're dual spectrums
+2020-08-06 00:30:41 <shachaf> Presumably I should just know all of these things and be a turbo-expert.
+2020-08-06 00:30:52 <ais523> "red", "green", "blue" are good names for cone cells because different people have slightly different cone cells anyway, so vague names are good for lumping them into vague groups
+2020-08-06 00:30:55 <b_jonas> dual in the linear algebra sense of course
+2020-08-06 00:31:42 <b_jonas> ais523: blue sure, but I don't think red and green are.
+2020-08-06 00:31:50 <b_jonas> for camera filters red green blue is better
+2020-08-06 00:32:55 <ais523> GLR is cheating because it's fully general but nondeterministic, so the performance gets bad in situations where the generality is needed
+2020-08-06 00:33:50 <b_jonas> shachaf: you should probably know about LR(k), at least at the level of detail of how it differs from LL(k), not necessarily to how it differs from LALR(k)
+2020-08-06 00:34:23 <ais523> LALR(k) is a mild optimisation of LR(k) that sometimes introduces ambiguities but normally only in really contrived situations
+2020-08-06 00:34:28 <b_jonas> mostly because there are grammars that are LALR(1) but not LL(1) that you will meet often
+2020-08-06 00:34:56 <ais523> so LR(k) is more powerful than LALR(k) but not in any way that's likely to matter in practice
+2020-08-06 00:35:20 <b_jonas> whereas LR(k) versus LL(k) does matter
+2020-08-06 00:35:25 <b_jonas> even in practice
+2020-08-06 00:35:34 <ais523> yes, LR(1) is much more powerful than LL(1)
+2020-08-06 00:35:43 <b_jonas> (and so does LL(k) versus regular grammar obviously)(
+2020-08-06 00:36:22 <ais523> I think LR(k) is intermediate in power between a deterministic push-down automaton and a nondeterministic push-down automaton, isn't it?
+2020-08-06 00:36:28 <ais523> not 100% sure on that
+2020-08-06 00:37:02 <shachaf> Hmm, I don't have a good idea of what extra power you get from a nondeterministic push-down automaton, either.
+2020-08-06 00:37:14 <esowiki> 14[[07Turinf machine14]]4 10 02https://esolangs.org/w/index.php?diff=76466&oldid=76465 5* 03Hakerh400 5* (+580) 10Added formal syntax
+2020-08-06 00:37:27 <shachaf> I guess quite a lot?
+2020-08-06 00:37:46 <b_jonas> ais523: er... not technically, because you could cheat to convert an LR(k) parser to a push-down automaton by rolling a window of k symbols that the LR parser peeke
+2020-08-06 00:37:55 <b_jonas> peeks into the state of the automaton
+2020-08-06 00:38:17 <ais523> that converts LR(k) to LR(1)
+2020-08-06 00:38:18 <b_jonas> in which case you get a deterministic push-down automaton
+2020-08-06 00:38:20 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=76467&oldid=76464 5* 03Hakerh400 5* (+21) 10Undo revision 76464 by [[Special:Contributions/LegionMammal978|LegionMammal978]] ([[User talk:LegionMammal978|talk]]) - Added formal syntax so it is a language now
+2020-08-06 00:38:30 <ais523> but ah right, LR(1) does compile into a deterministic PDA
+2020-08-06 00:38:34 <b_jonas> ais523: does it? hmm
+2020-08-06 00:38:47 <ais523> isn't that basically what yacc/ayacc do?
+2020-08-06 00:38:54 <b_jonas> maybe you also need to roll the top m elements of the stack into the state where m is the longest rule you have
+2020-08-06 00:38:59 <b_jonas> the legnth of the longest rule you have
+2020-08-06 00:39:12 <ais523> your basic operations are shift (push), reduce (pop+branch), and reading input
+2020-08-06 00:39:46 <ais523> b_jonas: you can't do that, because a reduce could cause deeper elements to become shallower
+2020-08-06 00:39:55 <ais523> although you could probably simulate it by popping all the elements and then pushing them back
+2020-08-06 00:40:00 <b_jonas> ais523: yes, but the control is also important: LR can look at multiple elements on top of its stack
+2020-08-06 00:40:07 <esowiki> 14[[07Turinf machine14]]4 M10 02https://esolangs.org/w/index.php?diff=76468&oldid=76466 5* 03Hakerh400 5* (+14) 10
+2020-08-06 00:40:16 <b_jonas> hmm
+2020-08-06 00:40:18 <b_jonas> I dunno then
+2020-08-06 00:40:21 <ais523> b_jonas: no it can't, the only time it reads the stack is to read its top element
+2020-08-06 00:40:29 <b_jonas> oh yeah, it has a state for that
+2020-08-06 00:40:33 <b_jonas> sorry I'm stupid and tired
+2020-08-06 00:40:39 <b_jonas> I should just go to bed, good nigth
+2020-08-06 00:40:42 <ais523> night
+2020-08-06 00:40:50 <b_jonas> I stayed up too long last night reading about cryptography
+2020-08-06 00:41:09 <b_jonas> and https://noiseprotocol.org/ btw which I recommend looking at
+2020-08-06 00:41:15 Quit: b_jonas (Quit: leaving)
+2020-08-06 00:41:15 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-06 00:42:44 Quit: BWBellairs (Quit: Quit)
+2020-08-06 00:42:44 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, Bowserinator, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
+2020-08-06 00:44:46 Joined: BWBellairs
+2020-08-06 00:44:47 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, salpynx, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, xkapastel, zzo38
