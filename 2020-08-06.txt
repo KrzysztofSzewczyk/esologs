@@ -1,0 +1,102 @@
+2020-08-06 00:00:30 <b_jonas> they are nice company, I don't have any problem with them, I only have a problem with *me* going into a cave
+2020-08-06 00:00:35 <ais523> at school, we got taught things like mnemonics for what order the colors in the rainbow were in
+2020-08-06 00:00:50 <ais523> but it isn't very useful because people aren't taught basic things like what colours indigo and violet actually are
+2020-08-06 00:01:11 <ais523> (violet is especially problematic because most computer screens are incapable of showing it accurately, and most printers are incapable of printing it accurately)
+2020-08-06 00:01:35 <b_jonas> Arcorann: yes, because just like me, Hagrid knows that that nomenclature doesn't matter for anything he does and so doesn't try to remember it. he's not a school age child anymore, having to learn thousands of useless facts to get a good grade, nor a lawyer or doctor
+2020-08-06 00:02:18 <ais523> I think one reason they teach what they do in school is that it is hard to know in advance which facts will be useful
+2020-08-06 00:02:32 <b_jonas> ais523: they're also incapable of showing or printing just about any pure one-wavelength light color
+2020-08-06 00:02:57 <b_jonas> you could probably make a laser monitor that can show a few of them, but not all
+2020-08-06 00:03:01 <ais523> indeed
+2020-08-06 00:03:04 <b_jonas> but it would be horribly impractical
+2020-08-06 00:03:23 <int-e> b_jonas: then again our perception of colors is very limited too
+2020-08-06 00:03:25 <ais523> although, colours outside the red-blue range seem like they're a bigger problem to show than colours inside but not matching your pixel colour
+2020-08-06 00:03:33 <ais523> at least you can interpolate for colours in range
+2020-08-06 00:03:46 <b_jonas> int-e: yes, although there are very good reasons for why they're limited
+2020-08-06 00:04:44 <fizzie> b_jonas: I imagine you could make some sort of a refraction-based monitor that could do arbitrary wavelengths by having a mask in-between prisms or something for the color, and then something DLP-style to do the image.
+2020-08-06 00:05:15 <int-e> I wonder what color we'd get if something would trigger only one of the green or orange receptors in the eye. (M and L types here, https://en.wikipedia.org/wiki/CIE_1931_color_space)
+2020-08-06 00:05:16 <fizzie> Not a particularly bright one, but still.
+2020-08-06 00:05:45 <b_jonas> int-e: specifically you can't see infrared light because your body at your eye emits them as thermal radiation and the light emitted by your body that reaches your eyes will drown out any useful signal from the outside
+2020-08-06 00:05:50 <ais523> int-e: you can see something like that by looking at something intensely purple for a long time so that the red and blue receptors run out of neurotransmitter
+2020-08-06 00:05:59 <ais523> and then looking at something green
+2020-08-06 00:06:01 <int-e> (this would require something special... probably a laser aimed at individual cone cells)
+2020-08-06 00:06:15 <int-e> hmm
+2020-08-06 00:06:21 <int-e> interesting idea
+2020-08-06 00:07:00 <ais523> I've done that experiment with orange, the resulting colour just looks orange, but is perceived as "more orange" than an orange thing nearby (viewed by receptors with a normal neurotransmitter supply)
+2020-08-06 00:07:04 <b_jonas> int-e: one of those impossible colors that you can only see as an afterimage, green or yellow that is purer than the green or yellow of a single frequency light
+2020-08-06 00:07:26 <b_jonas> ah yes, what ais523 says
+2020-08-06 00:08:06 <b_jonas> what you can do more easily is to see objects that are brighter than pure white is:
+2020-08-06 00:08:13 <fizzie> Ha, someone's done something a little like that, except (of course) with a diffraction grating rather than a prism.
+2020-08-06 00:08:25 <ais523> something I learned recently is that we actually know what colours colorblind people see, at least for protanopia and deuteranopia
+2020-08-06 00:08:29 <fizzie> "Agile Spectrum Imaging: Programmable Wavelength Modulation for Cameras and Projectors"
+2020-08-06 00:08:48 <ais523> because there are some people who are colourblind in only one eye, and they can use one eye to learn what colours are named and the other eye to view them colorblindly
+2020-08-06 00:08:54 <fizzie> "We use a diffraction grating to disperse the rays into different colors, and introduce a mask (or LCD/DMD) in the optical path to modulate the spectrum."
+2020-08-06 00:09:02 <int-e> I guess we do get pretty pure red and pure blue, so the middle range (closer to orange than to green? maybe.) is indeed the interesting one.
+2020-08-06 00:09:24 <b_jonas> that's why non-black washing detergents have a pigment-thingy that remains on the clothes and converts incoming ultraviolet light to visible light, fluorescent or something, so ideally those clothes can be brighter than white, though usually they're just brighter than before but still darker than white,
+2020-08-06 00:09:38 <b_jonas> the easiest way to see actually brighter than white is car registration plates with a white background
+2020-08-06 00:09:46 <b_jonas> at least if they're not dirty
+2020-08-06 00:09:51 <ais523> yes, converting UV to visible light is known as fluorescence
+2020-08-06 00:10:22 <ais523> also, I didn't think registration plates fluoresced, they're just reflective
+2020-08-06 00:10:36 <ais523> road signs in the UK are retroreflective, they reflect in a directed way along the path the light came from
+2020-08-06 00:10:45 <fizzie> https://www.nist.gov/programs-projects/hyperspectral-image-projector-hip well maybe it's not quite ready for consumer use yet
+2020-08-06 00:10:52 <ais523> which means that they're visible in low illumination as long as you're standing next to the source of illumination
+2020-08-06 00:10:55 <b_jonas> they're always dirty by the way, because it's not worth for anyone to clean it, but part of the reason for the fluorescent paint is that it makes the dirty license plate more visible in infrared photos
+2020-08-06 00:11:13 <b_jonas> or something like this, I probably got some important detail wrong
+2020-08-06 00:12:13 <b_jonas> ais523: wait, there are people who are colorblind in only one eye? how is that possible? I thought all forms of human colorblindness were strongly linked to genetics
+2020-08-06 00:12:34 <ais523> b_jonas: some people have two different sets of DNA, that might be the cause
+2020-08-06 00:13:08 <b_jonas> ais523: yeah, but that's very rare in humans that survive infanthood I think
+2020-08-06 00:13:10 <ais523> you're only meant to inherit half a set of DNA from each parent, but sometimes that mechanism goes wrong
+2020-08-06 00:13:24 <b_jonas> oh, that thing, not chimerism
+2020-08-06 00:13:56 <b_jonas> those can be quite bad, polyploidy stuff, but I don't see how they'd cause different colorblindness in eyes
+2020-08-06 00:14:29 <b_jonas> ais523: they're not fluorescent? hmm
+2020-08-06 00:14:36 <ais523> chimerism isn't that rare, it seems, at least on small scales
+2020-08-06 00:14:43 <b_jonas> ais523: road signs are retroreflective, that's true
+2020-08-06 00:15:06 <b_jonas> but roads signs isn't the same as car registration plates: car reg plates are in a place that gets dirty much more easily
+2020-08-06 00:15:08 <ais523> apparently it's quite common for fraternal twins to belong to multiple blood groups simultaneously as a consequence of small-scale chimerism
+2020-08-06 00:15:20 <b_jonas> fizzie: nice
+2020-08-06 00:15:46 <b_jonas> "maybe it's not quite ready for consumer use yet" => I don't think that will become practical any time soon;
+2020-08-06 00:16:27 <ais523> there were printers on sale to consumers that used six colors + black rather than three colors + black
+2020-08-06 00:16:35 <ais523> I'm not sure if anyone bought them, but I saw them advertised
+2020-08-06 00:16:50 <ais523> although of course, that won't get you a full spectral range (especially as it would be hard to make appropriate ink)
+2020-08-06 00:17:17 <b_jonas> however, I would be happy if there were color consumer cameras with more than three color channels. technically there are a few with four channels, but they're rare and just optimized to give a better RGB picture output, though you can probably get a raw image from them; plus there are cameras that have a built-in motor to insert or remove the infrared filter
+2020-08-06 00:17:32 <b_jonas> ais523: blood groups sure, but blood groups is different
+2020-08-06 00:17:58 <ais523> full chimerism seems to be rare, or at least rarely confirmed; however, it also typically has no visible symptoms, or symptoms easily mistaken for other things
+2020-08-06 00:18:13 <ais523> so it's likely to usually go undetected
+2020-08-06 00:18:15 <b_jonas> ais523: printers => interesting, though I'd be specifically more interested in cameras rather than displays or printers for this
+2020-08-06 00:18:24 <b_jonas> ais523: I see
+2020-08-06 00:18:34 <fizzie> ais523: I think printers sold specifically as "photo printers" still use multiple inks.
+2020-08-06 00:18:41 <b_jonas> well I'm not a doctor or a biologist, so anything I say about those is often wrong
+2020-08-06 00:19:06 <b_jonas> especialyl anything I say two hours after I should have gone to bed, curse you #esoteric
+2020-08-06 00:19:27 <int-e> b_jonas: https://en.wikipedia.org/wiki/Sodium_vapor_process is something old that fits into this niche
+2020-08-06 00:19:34 <b_jonas> fizzie: yes, I think some use magenta, light magenta, blue, light blue, yellow, black
+2020-08-06 00:19:37 <int-e> (for a completely different reason)
+2020-08-06 00:19:55 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=76464&oldid=76345 5* 03LegionMammal978 5* (-21) 10not a language
+2020-08-06 00:20:06 <b_jonas> int-e: oh yeah, I think that came up in the last two #esoteric discussion about this
+2020-08-06 00:20:14 <esowiki> 14[[07Turinf machine14]]4 10 02https://esolangs.org/w/index.php?diff=76465&oldid=76308 5* 03LegionMammal978 5* (+11) 10it's not a programming language if it doesn't have syntax
+2020-08-06 00:20:21 <fizzie> Epson's page managed to crash all of Chrome somehow (shouldn't happen, should file a bug), but I can still see the blurb about "enhanced level of quality produced by its 6-colour inks".
+2020-08-06 00:21:06 <int-e> (I learned about this from a making of video of The Birds)
+2020-08-06 00:21:12 <b_jonas> fizzie: well sure, they must say "enchanced level of quality" or something vague and hard to disprove if they want to sell you a printer for which it's harder to find third-party ink cartridges
+2020-08-06 00:21:50 <b_jonas> though the other trick of putting electronics with a usage counter in ink cartridges such that the printer refuses to use refilled cartridge is much more effective and dirtier
+2020-08-06 00:21:52 <fizzie> I think Epson's pretty good with inks, actually. Maybe not the photo ones, but in general I got the impression they haven't been doing as much copyright misuse and so on to control the ink markets.
+2020-08-06 00:22:24 <b_jonas> I wonder if anyone optimized a break for the electronic ink cartridge thing yet, and if that's legal
+2020-08-06 00:22:24 <fizzie> (I may not be remembering the right manufacturer though.)
+2020-08-06 00:22:34 <fizzie> (Also, I wonder if there's some way of figuring out which Chrome process would be good to kill without being able to bring up the Chrome task manager.)
+2020-08-06 00:22:52 <int-e> hmm, what's a "right manufacturer" :-)
+2020-08-06 00:23:14 <fizzie> A manufacturer of rights.
+2020-08-06 00:23:36 <int-e> Well, that goes without saying.
+2020-08-06 00:25:01 <fizzie> Sony made a couple of those RGBE color filter cameras (red, green, blue, "emerald") with four primaries.
+2020-08-06 00:25:24 <fizzie> "Emerald" is a more marketing-friendly way of saying "cyan".
+2020-08-06 00:25:32 <ais523> emerald doesn't look anything like cyan though
+2020-08-06 00:26:12 <fizzie> Yeah, well.
+2020-08-06 00:26:29 <fizzie> https://www.dpreview.com/articles/1471104084/sonyrgbeccd
+2020-08-06 00:26:33 <b_jonas> just imagine if Canon or Nikon made cameras that check the signature of the lens and deliberately dumb themselves down on any lens whose manufacturer doesn't pay a license fee for that. I think the first one of the two that does instantly lose their market share to the other
+2020-08-06 00:27:00 <shachaf> ais523: The Bornat book's approach looks pretty complicated.
+2020-08-06 00:27:24 <ais523> it covers lots of different approaches
+2020-08-06 00:27:53 <b_jonas> whereas some printer manufacturer can do this for cartridges, and Intel can have a cpu library that deliberately pessimizes operations on AMD x86 cpus such that if you just patch all those checks out you instantly get much better performance
+2020-08-06 00:28:30 <shachaf> How much should I know about parsers?
+2020-08-06 00:28:53 <ais523> that rather depends on how much you need to know about parsers
+2020-08-06 00:29:04 <b_jonas> despite that their architecture reference manual spends a lot of words explaining how you should detect cpu features, and that you should never try to guess them from the cpu type or brand, which btw has very good reasons, and yet their own libraries don't folow that
+2020-08-06 00:29:06 <ais523> if you're writing a parser generator, for example, you would need to know quite a lot
+2020-08-06 00:29:21 <shachaf> Say I know what LL(k) is. Should I know about LR, LALR, GLR, and all those things?
+2020-08-06 00:29:42 <fizzie> The BLARG parser gives up as soon as it encounters any error.
+2020-08-06 00:29:44 <ais523> I think it's useful to know what LALR(1) is capable of doing, because that's what most parser generators use in practice
+2020-08-06 00:30:01 <shachaf> Should I know about packrat, earley, cyk, and so on?
