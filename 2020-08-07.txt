@@ -230,3 +230,19 @@
 2020-08-07 20:08:19 <zzo38> Maybe they should also set up a NNTP server at esolangs.org
 2020-08-07 20:09:56 Quit: kspalaiologos (Quit: Leaving)
 2020-08-07 20:09:56 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zzo38
+2020-08-07 20:34:39 <zzo38> How to compute the outline path of a Bezier path drawn by a arbitrary pen shape?
+2020-08-07 20:36:34 <b_jonas> zzo38: that is actually hard
+2020-08-07 20:37:03 <b_jonas> zzo38: maybe look at Inkscape for what it does, but I think it only does a reasonable approximation
+2020-08-07 20:38:08 <zzo38> Yes, maybe, although I would want a implementation of such a algorithm in PostScript
+2020-08-07 20:44:26 <b_jonas> zzo38: I think you first split your pen shape to convex polygons, and you take the time derivative of your path and intersect it with velocity lines through the origin parallel to the sides of the convex part of the pen to see which vertex of the polygon is in the outline on which segments, and for those segments you get the part of the outline by translating the bezier curve by the position of the
+2020-08-07 20:44:32 <b_jonas> vertex, or something like that
+2020-08-07 20:45:06 <zzo38> Yes, I think METAFONT uses convex polygons as pen shapes, and I did think of using the derivative of the path
+2020-08-07 20:46:04 <b_jonas> no, Metafont offers two choices: either a convex polygon as the pen or an ellipse as the pen
+2020-08-07 20:46:16 <b_jonas> also, wait, this has a fancy name
+2020-08-07 20:46:22 <b_jonas> I think it's Minkowsky sum
+2020-08-07 20:47:35 <zzo38> You can specify an ellipse, but it will be automatically converted into a convex polygon.
+2020-08-07 20:47:41 <b_jonas> ah
+2020-08-07 20:48:38 <b_jonas> that is btw probably because in general the Minkowski sum of a bezier curve path with an ellipse isn't a bezier curve, because an ellipse isn't precisely a bezier curve, though the approximation that we use is so close that it works well enough
+2020-08-07 20:54:43 <zzo38> The reason I would want this is not for fonts; for fonts I can just use METAFONT instead. Rather, it is in case you want to draw stuff other than fonts using the similar methods.
+2020-08-07 20:55:18 Quit: adu (Quit: adu)
+2020-08-07 20:55:19 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, Phantom__Hoover, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zzo38
