@@ -25,3 +25,73 @@
 2020-08-09 00:29:31 <hhhhh> and i need to store a direction, a PC and the program itself, i was thinking of doing that in an array
 2020-08-09 00:29:38 <hhhhh> jelly seems complicated, ive looked at it
 2020-08-09 00:29:57 <ais523> yep, https://tio.run/##y0rNyan8/99QW8X40LL///9HG@oY6RjrmOiYxgIA
+2020-08-09 00:30:14 <ais523> only � is really weird and unintuitive, and that's still a lot longer than you'd expect
+2020-08-09 00:30:22 <hhhhh> what is "$3�"?
+2020-08-09 00:32:06 <ais523> � is a quick that combines two code fragments
+2020-08-09 00:32:19 <ais523> the first fragment is 1+ which adds 1 to things
+2020-08-09 00:32:30 <ais523> although, I should just have used the increment builtin, ‘
+2020-08-09 00:32:38 <ais523> the second fragment is 3 which is the array index to affect
+2020-08-09 00:32:54 <hhhhh> whats $
+2020-08-09 00:32:59 <ais523> and � operates on an array only at certain indexes (although it does this by operating on the whole of the array)
+2020-08-09 00:33:19 <ais523> $ is a grouping command that effectively puts the previous two code fragments into a group, like putting parentheses around them
+2020-08-09 00:33:28 <ais523> and also indicates that they take one argument (in this case, an array)
+2020-08-09 00:33:53 <ais523> we need to group them because otherwise � will operate on + and 3, not on 1+ and 3
+2020-08-09 00:34:08 <ais523> if I replace 1+ with the builtin, the $ isn't needed: https://tio.run/##y0rNyan8//9RwwzjQ8v@//8fbahjpGOsY6JjGgsA
+2020-08-09 00:34:29 <hhhhh> why is the � needed?
+2020-08-09 00:34:46 <hhhhh> oh, nvm.
+2020-08-09 00:35:22 <hhhhh> so (chain) (number) � executes (chain) on array index (number)?
+2020-08-09 00:35:27 <ais523> right
+2020-08-09 00:35:36 <hhhhh> hm neat.
+2020-08-09 00:35:47 <ais523> except it doesn't, what it actually does is to execute the chain on the entire array, then put all the indexes other than the listed one back to what they were
+2020-08-09 00:35:54 <ais523> this might be a bug
+2020-08-09 00:36:03 <hhhhh> yes that does seem strange
+2020-08-09 00:36:44 <ais523> it comes to the same result in most cases, but when it doesn't it can be very confusing
+2020-08-09 00:39:18 <ais523> in Brachylog, the best I can do is to rotate the element to the start, increment it, then rotate the array back into order: https://tio.run/##SypKTM6ozMlPN/r//1HbrkdNTdqPmhpPbXjUthvI/v8/2lDHSMdYx0THVMcs9n8UAA
+2020-08-09 00:39:37 <hhhhh> hmm, unicode characters
+2020-08-09 00:39:40 <ais523> `! brachylog [1,2,3,4,5,6]↺₂+₁ʰ↻₂w
+2020-08-09 00:39:43 <hhhhh> do they count as a single byte for golfing purposes
+2020-08-09 00:39:44 <HackEso> ​[1,2,4,4,5,6] \ true.
+2020-08-09 00:40:06 <ais523> it isn't Unicode, most modern golfing languages make use of their own character sets with 256 different characters
+2020-08-09 00:40:15 <ais523> they aren't encoded as Unicode, but they are encoded as a single byte each
+2020-08-09 00:40:40 <hhhhh> okay. so if i make a golfing language it should only have up to 256 characters?
+2020-08-09 00:41:02 <ais523> the number of characters used should be a power of 2, using 256 different characters is nicely usable because you can have one byte per character
+2020-08-09 00:41:20 <ais523> but if, say, you only use 16 different characters then you can fit in two per byte, which halves the length of your code
+2020-08-09 00:41:41 <zzo38> Well, in this case they are all characters which are present in Unicode; I don't know if some uses characters which are not present in Unicode, although I do not expect so; there may be some whose Unicode representation is ambiguous, though, possibly
+2020-08-09 00:41:44 <ais523> most people use 256 though, or rather, they have 256 but don't use all of them (which makes their code somewhat suboptimal)
+2020-08-09 00:42:06 <ais523> zzo38: yes, it's common to use characters that all exist in Unicode, but to use a non-Unicode encoding for them
+2020-08-09 00:42:45 <ais523> this isn't always the case, e.g. Mathematica uses one character that isn't in Unicode (and when encoded as Unicode, encodes it to a private-use character), although it isn't a golfing language despite sometimes being used as one
+2020-08-09 00:43:02 <zzo38> What character is that?
+2020-08-09 00:44:05 Quit: t20kdc (Remote host closed the connection)
+2020-08-09 00:44:05 Names: [, ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, hhhhh, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], V, vertrex, wmww, xelxebar, zzo38
+2020-08-09 00:44:08 <ais523> it's a sort of lambda-like operator, according to the source I got it from it looks quite similar to ↦
+2020-08-09 00:44:32 <ais523> (but Mathematica treats it as a distinct character )
+2020-08-09 00:44:34 <ais523> `unidecode 
+2020-08-09 00:44:36 <HackEso> ​[U+F4A1  - No such unicode character name in database]
+2020-08-09 00:45:11 <hhhhh> very great language design
+2020-08-09 00:45:18 <ais523> if you ask Mathematica to save in a Unicode encoding then decode it using a different program, it becomes the private use character U+F4A1
+2020-08-09 00:46:24 <ais523> Jelly's character set was chosen to be typable on at least one pre-existing keyboard layout, without use of a compose key
+2020-08-09 00:47:08 <zzo38> O, OK, so that is what it is.
+2020-08-09 00:47:52 <ais523> I've had enough problems in Jelly with the distinction between Đ and Ð
+2020-08-09 00:47:55 <ais523> `unidecode Đ
+2020-08-09 00:47:57 <HackEso> ​[U+0110 LATIN CAPITAL LETTER D WITH STROKE]
+2020-08-09 00:48:02 <ais523> `unidecode �
+2020-08-09 00:48:04 <HackEso> ​[U+00D0 LATIN CAPITAL LETTER ETH]
+2020-08-09 00:48:42 <ais523> U+00D0 is in Jelly's character set, U+0110 isn't, and it's easy to accidentally type the wrong one and have the UTF-8 to Jelly convertor produce an invalid program as a result
+2020-08-09 00:48:47 <ais523> (it doesn't even error…)
+2020-08-09 00:49:13 <ais523> the lowercase forms are đ and ð respectively, which is why they're different characters
+2020-08-09 00:49:51 <zzo38> Presumably the converter should convert both U+0110 and U+00D0 into the same Jelly character code, when you are using input in Unicode, to avoid such a problem. (When converting into Unicode, you would only do U+00D0 out and not U+0110, I suppose)
+2020-08-09 00:49:53 <ais523> I can't distinguish the uppercases in the font I'm using, though
+2020-08-09 00:50:01 <zzo38> Which would be better, I think.
+2020-08-09 00:50:06 <ais523> zzo38: I agree
+2020-08-09 00:51:13 <esowiki> 14[[07Subreal14]]4 10 02https://esolangs.org/w/index.php?diff=76527&oldid=76446 5* 03RocketRace 5* (+52) 10Jumpey
+2020-08-09 00:51:44 <esowiki> 14[[07Subreal14]]4 M10 02https://esolangs.org/w/index.php?diff=76528&oldid=76527 5* 03RocketRace 5* (+2) 10/* Control flow operations */
+2020-08-09 00:52:59 <esowiki> 14[[07Subreal14]]4 M10 02https://esolangs.org/w/index.php?diff=76529&oldid=76528 5* 03RocketRace 5* (+92) 10/* Surreal literals */
+2020-08-09 00:53:42 <esowiki> 14[[07Subreal14]]4 M10 02https://esolangs.org/w/index.php?diff=76530&oldid=76529 5* 03RocketRace 5* (+17) 10/* Stack operations */
+2020-08-09 00:54:17 <zzo38> (The font I have does not seem to distinguish those two characters either, it look like to me)
+2020-08-09 00:54:37 <esowiki> 14[[07Subreal14]]4 M10 02https://esolangs.org/w/index.php?diff=76531&oldid=76530 5* 03RocketRace 5* (-17) 10/* Stack operations */
+2020-08-09 00:55:08 <esowiki> 14[[07Varsig14]]4 10 02https://esolangs.org/w/index.php?diff=76532&oldid=20557 5* 03LegionMammal978 5* (+224) 10added interpreter link and categories
+2020-08-09 00:55:19 <hhhhh> https://tio.run/##S85KzP3/v1BdQb9aKcrV3y8kPMTDzd/NM9gz2NXV089TKcbIRtlIv1b1/39/P1eFkHB/hRCPIFcICyTi5h8apBDsGQEA CJam is cool
+2020-08-09 00:56:28 <ais523> I'm not very experienced with CJam, but it's basically best thought of as GolfScript 2
+2020-08-09 00:56:39 <ais523> it's very similar to GolfScript but has a much better set of builtins
+2020-08-09 00:57:14 <hhhhh> yeah, i thought it was pretty crazy that golfscript had you type entire english words like "do", "while", "if"...
+2020-08-09 00:59:38 <ais523> one of the things I like least about Brachylog is that it supports multiple-character variable names
