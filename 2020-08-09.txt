@@ -95,3 +95,33 @@
 2020-08-09 00:56:39 <ais523> it's very similar to GolfScript but has a much better set of builtins
 2020-08-09 00:57:14 <hhhhh> yeah, i thought it was pretty crazy that golfscript had you type entire english words like "do", "while", "if"...
 2020-08-09 00:59:38 <ais523> one of the things I like least about Brachylog is that it supports multiple-character variable names
+2020-08-09 01:00:15 <hhhhh> does it require them?
+2020-08-09 01:00:18 <ais523> from my perspective, it is unlikely that you will need more than 26 generic variables in a golfing language program (in fact, needing more than 2 is rare)
+2020-08-09 01:00:24 <ais523> no, single-character variable names are allowed
+2020-08-09 01:00:36 <ais523> but, it means that syntax consisting of two consecutive letters can't be used for another purpose
+2020-08-09 01:00:37 <hhhhh> how is it a bad thing to support things that arent required to be used?
+2020-08-09 01:00:40 <hhhhh> oh, i see.
+2020-08-09 01:01:05 <ais523> a good compromise would be to require multiple-character variable names to all start with the same letter
+2020-08-09 01:01:11 <ais523> e.g. Z
+2020-08-09 01:01:42 <ais523> then any of the other 25 variables could be used for syntax where concatenating them meant something (the obvious meaning in Brachylog is to have an implicit "and" between them)
+2020-08-09 01:01:42 <hhhhh> imagine not having 676 variables in your esolang. how terrible.
+2020-08-09 01:02:07 <ais523> this only becomes less space-efficient than the original when you have 53 or more variables
+2020-08-09 01:02:20 <ais523> and even using 3 is a bit of a stretch
+2020-08-09 01:02:41 <ais523> (most golfing languages have very concise ways to deal with temporaries)
+2020-08-09 01:03:00 <ais523> Jelly has only one variable for the entire program, which feels a bit restrictive sometimes, but it's rarely an issue in practice
+2020-08-09 01:04:55 <hhhhh> fair enough
+2020-08-09 01:05:22 <ais523> most programs don't use it
+2020-08-09 01:05:28 <hhhhh> i need to make an esolang interpreter where the PC has direction, so storing the program, the PC and its direction would be probably good for what i need to do
+2020-08-09 01:05:54 <ais523> (I have suggested that Jelly should have a global *dictionary*; this would allow you to simulate arbitrary many global variables if you needed them by using one key per variable, and would also be useful for other purposes)
+2020-08-09 01:07:20 <hhhhh> huh, no built in base conversion in cjam?
+2020-08-09 01:07:58 <ais523> people have gotten better at making golfing languages over time
+2020-08-09 01:08:28 <hhhhh> time to find "cjam but actually utilizing the 256 character limit slightly more"
+2020-08-09 01:08:33 <ais523> I think the best way to make one is to look at existing golfing languages to see which builtins you need, but come up with something innovative in terms of encoding or control flow or data flow
+2020-08-09 01:09:10 <hhhhh> well, id be quite happy with just cjam+extra builtins like base conversion, really
+2020-08-09 01:09:19 <zzo38> Does Jelly have any dictionary object at all? Also, if you were to extend it, how to do?
+2020-08-09 01:10:04 <hhhhh> ah cjam does have base conversion i missed it oops
+2020-08-09 01:10:38 <zzo38> I started writing a new specification of a golf programming language too, but it is not finish yet.
+2020-08-09 01:11:13 <ais523> zzo38: it has some support for interpreting an array of key-values pairs as though it were a dictionary
+2020-08-09 01:11:46 <ais523> but probably doesn't have any actual dictionaries (unless you can somehow jailbreak the interpreter into running arbitrary Python)
+2020-08-09 01:21:24 Quit: hhhhh (Remote host closed the connection)
+2020-08-09 01:21:24 Names: [, ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], V, vertrex, wmww, xelxebar, zzo38
