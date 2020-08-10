@@ -227,3 +227,24 @@
 2020-08-10 17:56:17 <esowiki> 14[[07User:B jonas14]]4 10 02https://esolangs.org/w/index.php?diff=76582&oldid=76581 5* 03B jonas 5* (+64) 10/* Incomplete list of some interesting or notable esolangs */
 2020-08-10 17:57:09 <arseniiv> b_jonas: Funciton?
 2020-08-10 17:58:13 <esowiki> 14[[07User:B jonas14]]4 10 02https://esolangs.org/w/index.php?diff=76583&oldid=76582 5* 03B jonas 5* (+34) 10
+2020-08-10 18:06:58 <esowiki> 14[[07ZeptoBasic14]]4 M10 02https://esolangs.org/w/index.php?diff=76584&oldid=57785 5* 03DmilkaSTD 5* (+4) 10grammar++
+2020-08-10 18:09:06 <zzo38> Did you try making up fonts with METAFONT?
+2020-08-10 18:10:59 <esowiki> 14[[07Category:ICFP contest14]]4 10 02https://esolangs.org/w/index.php?diff=76585&oldid=73618 5* 03B jonas 5* (+91) 10
+2020-08-10 18:14:21 <esowiki> 14[[07User:B jonas14]]4 10 02https://esolangs.org/w/index.php?diff=76586&oldid=76583 5* 03B jonas 5* (+897) 10
+2020-08-10 18:14:44 <b_jonas> arseniiv: no sorry, I don't much like Funciton
+2020-08-10 18:15:23 <b_jonas> I don't usually talk about that because people don't keep inventing variants or using it for everything like for brainfuck
+2020-08-10 18:15:32 <b_jonas> but it's just not a language I like. no specific reason.
+2020-08-10 18:16:05 <b_jonas> but Funciton was a featured language, so it's already two clicks from the front page I think
+2020-08-10 18:16:12 <b_jonas> one click
+2020-08-10 18:16:21 <b_jonas> "Previously featured: Funciton · Brainfuck · Deadfish · Emmental · more…"
+2020-08-10 18:16:49 <b_jonas> so no need to advertise it more. I could mention Intercal.
+2020-08-10 18:17:00 <b_jonas> zzo38: no, but I have made a few simple illustrations with metapost,
+2020-08-10 18:18:15 <arseniiv> <b_jonas> but it's just not a language I like. no specific reason. => ah. I understand
+2020-08-10 18:19:25 <b_jonas> it's not even that it's a two-dimensional language, I'm fine with fungeoids if they're not misused, and I have some ideas for a two-dimensional functional language that is more like funciton than befunge in semantics, but I haven't managed to put together a sane combination yet
+2020-08-10 18:20:03 <b_jonas> I have some very specific ideas about the basic syntax, but I might have to split this to multiple different languages semantics-wise depending on how user-defined functions are defined and called
+2020-08-10 18:20:27 <b_jonas> I haven't really tried to work much on this yet
+2020-08-10 18:20:35 Quit: huntingcryptos (Ping timeout: 256 seconds)
+2020-08-10 18:20:35 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, portalrat, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, user24, V, vertrex, wmww, xelxebar, zzo38
+2020-08-10 18:21:21 <b_jonas> it's just an idea that I think has to be done because there doesn't yet seem to be an esolang like that, but it isn't too esoteric, and I don't mind too much if someone else does it well first
+2020-08-10 18:23:41 <b_jonas> it's just a silly 2D syntax for an ordinary imperative or functional language (there may have to be two or three different versions depending) where variables are encoded not with names, not implicitly with pointless programming, not with stack indexes, but with columns in the source code
+2020-08-10 18:24:34 <b_jonas> it translates both ways into some ordinary programming language with plain syntax, it's not some actually interesting and unique idea like Consumer Society
