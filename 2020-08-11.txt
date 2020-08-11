@@ -82,3 +82,7 @@
 2020-08-11 12:44:56 <esowiki> 14[[07List of ideas14]]4 10 02https://esolangs.org/w/index.php?diff=76594&oldid=76162 5* 03B jonas 5* (+372) 10/* Partially Silly Ideas */
 2020-08-11 13:55:23 <tswett[m]> Everyone, I have a good idea.
 2020-08-11 13:55:44 <tswett[m]> I want to write an operating system for the 8088 IBM PC in Rust.
+2020-08-11 14:00:38 <tswett[m]> That might prove to be incredibly difficult, especially if I want to use several different kinds of pointers.
+2020-08-11 14:02:09 <tswett[m]> This is a 16-bit pointer into the data segment. This is a 16-bit pointer into the stack segment. Don't know which segment you need? Whoops, looks like you need a 32-bit pointer.
+2020-08-11 14:08:36 <tswett[m]> And let's hope you never need protected mode!
+2020-08-11 14:27:41 <esowiki> 14[[07Stopwatch14]]4 10 02https://esolangs.org/w/index.php?diff=76595&oldid=71434 5* 03GDavid 5* (+74) 10Break, continue
