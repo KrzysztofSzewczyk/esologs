@@ -246,3 +246,18 @@
 2020-08-14 16:49:58 Quit: wib_jonas (Quit: Connection closed)
 2020-08-14 16:49:59 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
 2020-08-14 16:59:42 <fizzie> int-e: I'm sure some tiling window managers are sufficiently customizable to, in theory, permit you to write a layout that will make terminals 80 characters wide, and just resize other kinds of windows (or leave gaps if there are only terminals).
+2020-08-14 17:00:37 <int-e> Sure, laziness is a factor.
+2020-08-14 17:01:37 <fizzie> `xmonad-contrib` has a very simple variant of that in the XMonad.Layout.FixedColumn module, which will use a fixed multiple of the window's minimum resize dimension (which for terminals tends to be 1 character cell) for the master pane. But it's not particularly flexible.
+2020-08-14 17:01:38 <HackEso> xmonad-contrib`? No such file or directory
+2020-08-14 17:01:41 <int-e> Also I'm not unhappy with my current WM (which has been the same for more than two decades)
+2020-08-14 17:02:08 <fizzie> I was trying to remember my progression of window managers the other day, but couldn't. :/
+2020-08-14 17:02:56 <int-e> Easy. fvwm -> fvwm2. Plus some exposure to Sun's CDE.
+2020-08-14 17:03:44 <myname> my progression was gnome -> pekwm -> notion -> herbstluftwm
+2020-08-14 17:03:51 <int-e> I spent quite a bit of energy on customizing fvwm2
+2020-08-14 17:04:26 <int-e> And the main source of pain was the lack of multiple screen support for laptops, especially when giving presentations.
+2020-08-14 17:04:29 <fizzie> I think I went something like fvwm2 → fvwm95 → Enlightenment → WindowMaker → blackbox → fluxbox → evilwm → awesome → XMonad.
+2020-08-14 17:04:48 <fizzie> (CDE only for the SPARC workstations at the university.)
+2020-08-14 17:05:05 <int-e> Yeah, my CDE exposure has the same cause.
+2020-08-14 17:05:48 <fizzie> I might have gotten the boxes wrong, maybe one of those was openbox.
+2020-08-14 17:28:14 Joined: applehattie
+2020-08-14 17:28:15 Names: ^[, adu, aloril, APic, applehattie, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zzo38
