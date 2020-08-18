@@ -62,3 +62,38 @@
 2020-08-18 07:22:48 <rain1> specially for self hosting
 2020-08-18 07:23:01 <rain1> http://mathjax-tw5.kantorsite.net/
 2020-08-18 07:28:05 <zzo38> Some TeX commands I used in math formulas many other systems can't use, so it isn't very good.
+2020-08-18 07:30:42 <arseniiv> zzo38: just a site with a couple of posts
+2020-08-18 07:32:20 <zzo38> arseniiv: Then maybe just use a static page generator that can convert Markdown to HTML (and render the math with another program too, I suppose, and then you can include the pictures, with alt text containing the original text), I think.
+2020-08-18 07:32:40 <zzo38> (If you need discussion forums, I can suggest setting up NNTP)
+2020-08-18 07:33:14 <arseniiv> rain1: how hard is it to host TiddlyWiki these days? (Without someone else being able to edit it)
+2020-08-18 07:34:10 <zzo38> I suppose you could password POST and PUT requests in your server configuration, if the software supports writing but you want to restrict it.
+2020-08-18 07:34:28 <rain1> i think it is just a html file you can save on your computer
+2020-08-18 07:35:07 <arseniiv> zzo38: yeah, I still consider that but I don’t want to sync files to the server. Hmm maybe git pull once a couple of minutes wouldn’t harm the server but I don’t know how to do that yet
+2020-08-18 07:35:47 <arseniiv> I already have a repo and pandoc here and on the server. That’s cheap for a static site generator but it will do maybe. But a wiki-like thing would be even better still
+2020-08-18 07:36:48 <arseniiv> rain1: yeah, but uploading it to the server each time would be tedious :\
+2020-08-18 07:36:54 <rain1> what server?
+2020-08-18 07:37:04 <arseniiv> Some server to host a website
+2020-08-18 07:37:21 <rain1> oh you want to host it online
+2020-08-18 07:37:26 <zzo38> If you are only editing it yourself and do not need history, then why do you need a "wiki-like thing"?
+2020-08-18 07:37:40 <arseniiv> (anyway thanks! Right now I don’t use TW but maybe that plugin would be useful in the future for local notes)
+2020-08-18 07:37:57 <rain1> i think i don't fully understand what you need
+2020-08-18 07:38:04 <rain1> I thought this was local notes
+2020-08-18 07:38:16 <rain1> should it be readable by everyone but writable by you only?
+2020-08-18 07:38:22 <arseniiv> zzo38: I mean, wiki-like in that it allows you edit it in the browser
+2020-08-18 07:38:26 <arseniiv> rain1: exactly
+2020-08-18 07:39:19 <rain1> maybe miraheze has a option for it
+2020-08-18 07:39:24 <arseniiv> it can be writable by more than one person too, just ones I can keep track of somewhere in the config
+2020-08-18 07:40:08 <rain1> https://www.mediawiki.org/wiki/Help:User_rights_and_groups
+2020-08-18 07:41:26 <arseniiv> miraheze is a good thing too, my friends and me use it for some other notes a bit in a shared wiki, but sometimes it’s slow and has small issues
+2020-08-18 07:42:39 <rain1> ok
+2020-08-18 07:42:50 <rain1> github pages could be an option
+2020-08-18 07:43:04 <rain1> because you can invite people to edit it
+2020-08-18 07:43:07 <arseniiv> yeah mediawiki (and miraheze also) is a, well, thing, but it would be too big in a sense that it’s far more than needed. Thanks once more though! Maybe I really just need to install it, why not… but…
+2020-08-18 07:44:37 <arseniiv> and that thing too, yes. Though it requires a public repo. That’s not bad, I just wanted to experiment a bit in a private one, but maybe
+2020-08-18 07:44:54 <arseniiv> also I think one can write small posts in github gists :D
+2020-08-18 07:46:14 <arseniiv> hm for early drafts that may even be well enough
+2020-08-18 07:47:03 <rain1> I like the math.stackexchange editor where you get feedback on the latex
+2020-08-18 07:50:37 <zzo38> I generally find it suitable and useful to just host plain text files. Better compatibility, faster, etc.
+2020-08-18 07:51:53 <arseniiv> zzo38: ASCII math is a pain sometimes though :) too much parentheses and less digestable expressions, and sometimes an ambiguous syntax
+2020-08-18 07:53:28 <zzo38> Yes, although for some things it works (for math, it is not as good as TeX, though, of course)
+2020-08-18 07:58:13 <rain1> https://bookstore.ams.org/car-36/
