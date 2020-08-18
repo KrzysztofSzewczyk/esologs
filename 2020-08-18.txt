@@ -123,3 +123,22 @@
 2020-08-18 10:23:26 <esowiki> 14[[07User talk:CatLooks14]]4 10 02https://esolangs.org/w/index.php?diff=76723&oldid=76722 5* 03TwilightSparkle 5* (+124) 10
 2020-08-18 11:25:58 Joined: mniip
 2020-08-18 11:25:58 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-18 11:31:11 <fizzie> Hmf. I have a daemon thing written in Go, and I need a way to control it a little (ask for status, force it to perform scheduled tasks right now, that sort of thing). What's the best way to make that happen?
+2020-08-18 11:31:20 <fizzie> I'm vacillating between (a) a Unix domain control socket (with maybe gRPC on it, if that's kosher) and a corresponding `fooctl` command-line program to complement the `food` (no pun intended), auth handled by filesystem permissions; or (b) a HTTPS server providing a browser-based control surface, with client certificate fingerprints saved in the config file for auth.
+2020-08-18 11:31:25 <fizzie> But maybe there's something obviously better than either.
+2020-08-18 11:34:29 <shachaf> Can I recommend not using dbus?
+2020-08-18 11:35:44 <fizzie> Ooh, I didn't even think of that. Maybe I should use D-Bus?
+2020-08-18 11:36:31 <shachaf> dbus uses approach a, for what it's worth.
+2020-08-18 11:37:09 <shachaf> But it sure isn't something I want to use.
+2020-08-18 11:38:57 <fizzie> I think it haad some sort of custom authentication mechanism on top too.
+2020-08-18 11:39:28 <shachaf> I think it has multiple authentication methods? But when I actually run a dbus fooctl program it seems to be filesystem-based.
+2020-08-18 11:40:09 <shachaf> Hmm, or maybe not.
+2020-08-18 11:41:01 <fizzie> Mhm. Well, I've also heard there's a PolicyKit. But I'm not sure I want to get involved with that.
+2020-08-18 11:41:07 <shachaf> No, it's something more complicated.
+2020-08-18 11:41:14 <shachaf> Oh well.
+2020-08-18 11:41:28 <shachaf> I don't actually know a really nice canonical sort of answer to your question.
+2020-08-18 11:41:48 Joined: craigo
+2020-08-18 11:41:48 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-18 11:42:41 <shachaf> Anyway I should sleepulate.
+2020-08-18 11:42:47 <fizzie> (Did they pick up the "PolicyKit" "ConsoleKit" etc. naming scheme from NextStep / OS X, which I think has a bunch of Kits?)
+2020-08-18 11:43:30 <fizzie> Think I'll go bicyclate a little, maybe that'll tell me what to do.
