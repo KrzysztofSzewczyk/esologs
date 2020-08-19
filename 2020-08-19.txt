@@ -97,3 +97,15 @@
 2020-08-19 11:29:18 <myname> i do this all the time
 2020-08-19 11:29:19 <zzo38> (I think I once also figured out how to make up some conditions in TeX without using any of the condition commands, too)
 2020-08-19 11:29:29 <zzo38> t20kdc: Yes, and I think I have done that
+2020-08-19 11:31:15 <zzo38> (I have also done something similar in BASIC, which has no ?: command like C has, but note that in BASIC, the operators that make a boolean value will be -1 if true rather than +1)
+2020-08-19 11:32:29 <myname> that's not that uncommon
+2020-08-19 11:32:50 <myname> true being -1 makes boolean operations somewhat nicer
+2020-08-19 11:33:07 <zzo38> Yes, I know that it does in some ways.
+2020-08-19 11:34:33 <zzo38> In LLVM, a boolean is just a one bit integer, so you can sign-extend or zero-extend.
+2020-08-19 11:34:51 <myname> interesting
+2020-08-19 11:36:06 <zzo38> In PostScript, you can do this:  /if << true /exec load false /pop load >> def /if {exch //if exch get exec} bind def
+2020-08-19 11:37:37 <zzo38> (Actually, eq can also be implemented in a similar way, except for the name length limit and the fact that null is not a valid key in a dictionary.)
+2020-08-19 11:38:53 <zzo38> (I don't know if it could for lt and gt though.)
+2020-08-19 11:40:46 <zzo38> I suppose, in programming languages with arbitrarily big numbers, you might be able to check less/greater by doing subtraction, convert to a string, and check if the first character is a minus sign by using a dictionary.
+2020-08-19 11:56:47 Joined: kritixilithos
+2020-08-19 11:56:48 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
