@@ -77,3 +77,23 @@
 2020-08-19 10:40:18 <zzo38> (Such as, I think the %pipe% device and makeimagedevice command in Ghostscript can be good to have, and have use them.)
 2020-08-19 10:52:49 Quit: craigo (Ping timeout: 246 seconds)
 2020-08-19 10:52:50 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-19 11:01:25 Joined: t20kdc
+2020-08-19 11:01:26 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-19 11:15:08 Quit: kritixilithos (Remote host closed the connection)
+2020-08-19 11:15:08 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-19 11:16:49 <zzo38> In which programming languages (esolangs or otherwise) could you implement conditions out of stuff other than conditions, and in what ways (e.g. with or without using other boolean operations)?
+2020-08-19 11:17:52 <myname> every language that can cast bool to int and do pointer arithmetic
+2020-08-19 11:19:44 <zzo38> Yes, that is a case where it can be done. However, I also mean such things like:  http://esolangs.org/wiki/Talk:GASOIL
+2020-08-19 11:23:08 <zzo38> Also, I do not merely mean operations such as "if", and casting bool to int might count as a "boolean operation" (or might not, depending how you count it).
+2020-08-19 11:23:32 <zzo38> Also, note that in C, any nonzero number will be true.
+2020-08-19 11:24:49 <myname> well, i don't know if rust allows you to cast a boolean to a number
+2020-08-19 11:25:19 <myname> you can do it with the ternary operator, but that's kind of an if imho
+2020-08-19 11:25:36 <zzo38> I also don't know; I don't know Rust programming
+2020-08-19 11:25:38 User Name: t20kdc = t20kdc!~20kdc@cpc139340-aztw33-2-0-cust225.18-1.cable.virginm.net
+2020-08-19 11:25:38 <t20kdc> zzo38: in systems with self-modification, such as ByteByteJump, changing jump addresses provides conditions
+2020-08-19 11:26:00 <t20kdc> ...though, you probably already know that...
+2020-08-19 11:27:15 <zzo38> t20kdc: Yes, there is that. Perhaps make a list of the different ways. I know of some ways, but maybe not all, and even if I do know, that does not mean I know all of them. Also, some that already have conditions, implementing it differently may be inefficient of course, but that isn't my concern of course.
+2020-08-19 11:28:36 <t20kdc> A technique I think I've seen in shader programming is to use multiply-by-0/multiply-by-1 as a conditional add.
+2020-08-19 11:29:18 <myname> i do this all the time
+2020-08-19 11:29:19 <zzo38> (I think I once also figured out how to make up some conditions in TeX without using any of the condition commands, too)
+2020-08-19 11:29:29 <zzo38> t20kdc: Yes, and I think I have done that
