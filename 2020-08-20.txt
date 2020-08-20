@@ -123,3 +123,29 @@
 2020-08-20 15:27:48 <fizzie> Well, isn't that exactly the same as man 7 socket's "unless otherwise noted, optval is a pointer to an int" that you quoted?
 2020-08-20 15:29:02 <fizzie> As in, it's not strictly a "socket-level option" if you pass IPPROTO_IP as the level, so if you don't think one of them necessarily applies, the other shouldn't either.
 2020-08-20 15:29:21 <fizzie> (I'd assume `int` anyway.)
+2020-08-20 15:30:46 <b_jonas> fizzie: yes, but there are sockopt options associated with different layers, distinguihsed by the second arg of ?etsockopt, so SOL_SOCKET layer doc'ed in socket(7), IPPROTO_IP layer doc'ed in ip(7) etc, and ip(7) does not have such a ocmment, but the getsockopt(2) comment is for any layer
+2020-08-20 15:31:18 <b_jonas> fizzie: and eg. libcurl I think uses long or long long as default type for options
+2020-08-20 15:32:09 <fizzie> No, I don't think it's for any layer.
+2020-08-20 15:32:13 <fizzie> It says "socket-level options".
+2020-08-20 15:32:20 <b_jonas> hmm
+2020-08-20 15:32:35 <fizzie> The second parameter of getsockopt is called `level`, not `layer`.
+2020-08-20 15:32:39 <b_jonas> but does "socket-level" mean socket(7) level or any level of sockets?
+2020-08-20 15:33:04 <fizzie> I would *assume* it means level == SOL_SOCKET.
+2020-08-20 15:33:04 <b_jonas> I should look at the header file, it may have useful comments
+2020-08-20 15:33:11 <fizzie> "To manipulate options at the sockets API level, level is specified as SOL_SOCKET."
+2020-08-20 15:33:16 <fizzie> (Another bit from man getsockopt.)
+2020-08-20 15:34:03 <b_jonas> probably
+2020-08-20 15:34:35 <b_jonas> yep, the header "/usr/include/x86_64-linux-gnu/bits/in.h" has a clear comment that says int
+2020-08-20 15:34:39 <b_jonas> that's where I should have looked at first
+2020-08-20 15:35:12 <b_jonas> although... it also says "bool" for some types, and iiuc those are of int type, not of the C99/C++ bool type (which has sizeof 1 on x86)
+2020-08-20 15:35:39 <b_jonas> but these comments may have been written when <stdbool.h> wasn't a usual thing so bool wasn't a macro or keyword
+2020-08-20 15:35:47 <b_jonas> or at least by people who were used to that
+2020-08-20 15:36:25 <fizzie> Yeah, I imagine `bool` in that context just means "int with value 0 or 1".
+2020-08-20 15:37:06 <b_jonas> in fact there's a comment for that too: "bool" means a boolean value stored in an `int'.
+2020-08-20 15:37:10 <b_jonas> in the same header file
+2020-08-20 15:37:42 <b_jonas> headers are often useful, I should look at headers more often
+2020-08-20 15:38:01 <b_jonas> they're not useful for all libraries, but for linux ones they are
+2020-08-20 15:38:50 Quit: Arcorann (Read error: Connection reset by peer)
+2020-08-20 15:38:50 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, Frater_EST, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-20 15:40:13 <fizzie> I did a class on Objective-C and iOS things once, and the instructor was firmly of the opinion that it's better to read Apple's header files than their documentation.
+2020-08-20 15:40:22 <fizzie> They have surprisingly few comments in there though.
