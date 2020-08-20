@@ -189,3 +189,6 @@
 2020-08-20 19:25:40 <b_jonas> yes, sometimes single is good, sometimes not
 2020-08-20 19:26:16 <b_jonas> of course you also have to write your program correctly, if you write it bad so it has additions that cancel out or such similar problems, then no amount of precision is enough
 2020-08-20 19:26:29 <arseniiv> Minecraft used single in some places but then in very big worlds very far away this caused entities to misalign. Not long ago they changed to double in those places to alleviate that
+2020-08-20 19:30:40 <b_jonas> and that's why when kids grow up to programmers, we tell them that their teachers lied to them about the quadratic equation a*x**2 + b*x + c = 0 where a, b, c are given real numbers: its actual solutions are x_0 = -(b + sgn(b) * sqrt(b**2 - 4*a*c)) / (2*a), x_1 = c / (a * x_0)
+2020-08-20 19:32:44 <b_jonas> and when you understand why exactly that is true, you've done the first step on the long path to become a numeric programmer
+2020-08-20 19:54:06 <esowiki> 14[[07Imeight14]]4 N10 02https://esolangs.org/w/index.php?oldid=76752 5* 03Kekcsi 5* (+2589) 10Created page with "== What is imeight ==  ''imeight'' is an imaginary eight-bit machine imagined by Csaba Skrabk. As an open source project, its emulator is also implemented and available onli..."
