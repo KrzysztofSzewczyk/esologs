@@ -185,3 +185,7 @@
 2020-08-20 18:55:53 <b_jonas> except possibly an out of range checks (to detect hardware failures), that may be before the scaling
 2020-08-20 18:57:20 <b_jonas> though we very rarely need to compute anything like a sincos from them, I believe the only case is a tank where we're estimating the volume of the contained liquid from a distance sensor that measures the height, and we know the shape of the tank in advance
 2020-08-20 18:57:54 <b_jonas> and that's for the operator UI, not for the control
+2020-08-20 19:25:26 <arseniiv> yeah double is very precise and even single is sometimes good, damn you IEEE 754 for being so good
+2020-08-20 19:25:40 <b_jonas> yes, sometimes single is good, sometimes not
+2020-08-20 19:26:16 <b_jonas> of course you also have to write your program correctly, if you write it bad so it has additions that cancel out or such similar problems, then no amount of precision is enough
+2020-08-20 19:26:29 <arseniiv> Minecraft used single in some places but then in very big worlds very far away this caused entities to misalign. Not long ago they changed to double in those places to alleviate that
