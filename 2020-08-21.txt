@@ -166,3 +166,10 @@
 2020-08-21 16:31:11 Nick Change: Lord_of_Life -> Lord_of_Life
 2020-08-21 16:56:18 <zzo38> b_jonas: Yes, I know that. But my other question was not only about PNG.
 2020-08-21 16:59:31 <zzo38> (Also, what I mentioned about meaningless values isn't applicable to PNG anyways; all pixel values are meaningful, unless you are for some reason using prediction filters for indexed colours, which isn't normally done.)
+2020-08-21 17:00:24 <zzo38> (The prediction types themself do have meaningless values; one way they could do without complicate the decoder much is to ignore the high bits of the prediction type byte)
+2020-08-21 17:06:06 <b_jonas> zzo38: prediction filters are useful for indexed colors, if your image has a lot of areas of solid color
+2020-08-21 17:06:14 <b_jonas> well, maybe not too much
+2020-08-21 17:06:24 <b_jonas> because deflate already compresses that well
+2020-08-21 17:06:30 <b_jonas> but they're not entirely useless
+2020-08-21 17:08:36 <zzo38> I think other formats (e.g. Maki-chan, and YZIP picture libraries) that use prediction for indexed colours use XOR filters for prediction instead, though.
+2020-08-21 17:10:57 <zzo38> YZIP picture format uses huffed RLE of the XOR filtered data. What algorithm for reordering the palette (including duplicates, if that would be helpful) would help to optimize this?
