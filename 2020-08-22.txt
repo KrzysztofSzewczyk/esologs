@@ -143,3 +143,21 @@
 2020-08-22 20:46:05 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=76802&oldid=76761 5* 03SunnyMoon 5* (+30) 10Added a language I have not made.
 2020-08-22 20:46:57 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=76803&oldid=76802 5* 03SunnyMoon 5* (+1) 10The wiki did an error.
 2020-08-22 21:26:43 <esowiki> 14[[07Pipe14]]4 10 02https://esolangs.org/w/index.php?diff=76804&oldid=65479 5* 03Redwolf10105 5* (-37) 10Removed interpreter link (no longer exists)
+2020-08-22 21:37:18 <zzo38> What can be good way of picture compression with indexed colours? I know of a few different things which have been done, including XOR, LZW, and RLE.
+2020-08-22 21:38:33 <b_jonas> zzo38: I usually just use PNG for that
+2020-08-22 21:38:40 <b_jonas> and you know how that works
+2020-08-22 21:39:54 <zzo38> Yes, it is DEFLATE. There might be better ways though; I don't know.
+2020-08-22 21:42:34 <zzo38> Some formats support storing both a monochrome and colour version together, such as XPM format and Infocom's format (although XPM isn't compressed). Stippling is also supported in both formats, although I do not know of any implementation that does it other than my own (the reference implementation of XPM can probably decode stippling, but as far as I know it cannot encode stippling).
+2020-08-22 21:43:31 <zzo38> Infocom's YZIP picture library format uses huffed RLE with XOR, either the line above or the line above that.
+2020-08-22 21:44:32 <zzo38> (Although the PC variant seems to be based on LZW instead. I don't know what bits in the header specify the variant and exactly how it is done, although there seems to be some.)
+2020-08-22 21:50:35 <zzo38> Also, I don't know if any format other than XPM supports symbolic colours in the way that XPM has, although I invented an extension to PNG to support it (the "xpMC" chunk).
+2020-08-22 21:52:44 User Name: arseniiv = arseniiv!~arseniiv@94.41.37.134.dynamic.ufanet.ru
+2020-08-22 21:52:44 <arseniiv> there exists good. Rifling through some old things I found a MIDI 1in/1out-to-USB cable which I presumed earlier didn’t work ever once and tried to test it once more (it should have been working at least on winXP without explicit installation but nope). I went to the manufacturer’s website and found not only this cable, discontinued long ago but having a neat archive page nonetheless, together with some its discontinued predecessor
+2020-08-22 21:52:44 <arseniiv> and siccessors, but also there was a page with drivers and there was a driver for win7 (which I currently use) and it suddenly worked! like a charm!
+2020-08-22 21:53:15 <arseniiv> successors*
+2020-08-22 21:55:29 <arseniiv> I mean, it didn’t have a CD with a driver, that was a feature it should just auto-install from whatever memory it does have on itself, and work. But that didn’t happen in my case, or maybe I was too dumb in 2007
+2020-08-22 21:55:47 <arseniiv> yes I forgot to mention that it was bought and manufactured in 2007
+2020-08-22 21:58:28 <arseniiv> hopefully those folks are well-paid. For some reasons many companies don’t maintain their old product archive as well
+2020-08-22 21:59:05 <b_jonas> arseniiv: yeah. especially publishers once their books sold out. I hate it.
+2020-08-22 21:59:29 <b_jonas> there are three books for which I have a long errata list that I couldn't get the publishers host.
+2020-08-22 21:59:58 <arseniiv> b_jonas: hopefully that will see some improvement in the future
