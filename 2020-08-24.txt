@@ -275,3 +275,8 @@
 2020-08-24 21:29:42 <t20kdc> ...ah, yes, I can tell that OpenFile should never be used, because it's actually a relatively simple function (but has some name length issues)
 2020-08-24 21:31:14 <t20kdc> looks at CreateFile and I can tell that this is Microsoft-recommended because it has... way too many parameters (though see CreateFile2 which has less of them, but is also Windows 8+)
 2020-08-24 21:58:28 Joined: LKoen
+2020-08-24 22:00:39 Quit: LKoen (Ping timeout: 244 seconds)
+2020-08-24 22:24:16 <arseniiv> t20kdc: hehe a neat heuristic
+2020-08-24 22:24:55 <arseniiv> I wouldn’t know, I mostly saw WinAPI function names a while ago and rarely
+2020-08-24 22:25:16 <t20kdc> arseniiv: I occasionally have to interact with the Windows API when porting stuff
+2020-08-24 22:25:46 <t20kdc> in practice, accounting for the things SDL2 successfully paves over, there are two APIs that one has to deal with: Not-Windows and Windows
