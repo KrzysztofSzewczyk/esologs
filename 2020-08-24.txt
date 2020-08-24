@@ -273,3 +273,5 @@
 2020-08-24 21:25:44 <t20kdc> as for shutdown... I wonder if the reason Windows adopted the BSD sockets API was because it was sufficiently over-complicated
 2020-08-24 21:26:16 <b_jonas> and at one point I mentioned that on linux, you open and possibly create a file with the open syscall, the creat syscall also does that but it's obsolete and should never be used; on windows you open and possibly create a file with the CreateFile syscall or its variants, the OpenFile syscall also used to do that but it's obsolete and should never be used.
 2020-08-24 21:29:42 <t20kdc> ...ah, yes, I can tell that OpenFile should never be used, because it's actually a relatively simple function (but has some name length issues)
+2020-08-24 21:31:14 <t20kdc> looks at CreateFile and I can tell that this is Microsoft-recommended because it has... way too many parameters (though see CreateFile2 which has less of them, but is also Windows 8+)
+2020-08-24 21:58:28 Joined: LKoen
