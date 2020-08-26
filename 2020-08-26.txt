@@ -51,3 +51,12 @@
 2020-08-26 01:58:32 <zzo38> What is a "if (constexpr bool) context"?
 2020-08-26 01:58:50 <fizzie> There's some sort of "metaprogramming language" / "met a programming language" pun lurking in there, but I can't draw it out.
 2020-08-26 01:59:26 <int-e> zzo38: I meant something like if (foo) { ...<here>... } else { ...<or here>... }  where foo is a constant expression of type bool.
+2020-08-26 02:00:23 <int-e> Of course C++ doesn't allow you to assign  constexpr  variables at all.
+2020-08-26 02:00:49 <int-e> You can make a new variable and use the ternary operator. But it's ugly.
+2020-08-26 02:01:26 <int-e> Next on the wishlist: compile-time evaluation of loops without jumping through hoops with templates.
+2020-08-26 02:06:16 <fizzie> I thought you could do some amount of guaranteed-to-happen-at-compile-time loops (without templates) already.
+2020-08-26 02:07:42 <fizzie> I remember writing a silly class for doing arrays of enums that had a constexpr constructor with a std::initializer_list and did some for loops over the internal array, and that at least produced (in the generated code) just whatever those loops left in the array.
+2020-08-26 02:08:03 <fizzie> (Basically as a workaround for the lack of designated initializers.)
+2020-08-26 02:08:56 <fizzie> But no clue. I think I *almost* learned C++ 17-or-so to some degree, but then got side-tracked by something else and all that knowledge evaporated.
+2020-08-26 02:24:15 <int-e> Ah, "C++14 constexpr functions may use local variables and loops".
+2020-08-26 02:24:46 <int-e> I think my compilers default to C++11
