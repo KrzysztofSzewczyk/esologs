@@ -36,3 +36,18 @@
 2020-08-26 01:05:10 Joined: imode
 2020-08-26 01:05:11 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-08-26 01:29:02 <int-e> . o O ( pretty: https://paste.debian.net/1161232/ )
+2020-08-26 01:30:21 <fizzie> Heh, my ISP's website is down for the third day when attempting to access it from their own network, but it's been working fine all the time from other connections ("is it down" sites, the mobile network, my workstation at the office).
+2020-08-26 01:30:43 <fizzie> They've probably done something clever.
+2020-08-26 01:31:26 <int-e> It's clearly a cost savings measure.
+2020-08-26 01:31:41 <int-e> Outside users are more important because they may be prospective customers.
+2020-08-26 01:31:44 <int-e> ;)
+2020-08-26 01:32:15 <fizzie> Fair point.
+2020-08-26 01:32:45 <fizzie> Only noticed because I was trying to download my bill for expensing it though.
+2020-08-26 01:33:52 <int-e> Hmm there may be a flaw in my logic. Getting paid is kind of important.
+2020-08-26 01:38:37 <fizzie> Well, it's direct debit, they get paid anyway. *I* just don't get reimbursed.
+2020-08-26 01:39:23 <fizzie> I imagine they have some customers that actually manually pay the bill though.
+2020-08-26 01:39:46 <fizzie> But maybe the site works for them, who knows.
+2020-08-26 01:50:11 <int-e> . o O ( Dear C++, why can't I assign constexpr-s inside an if (constexpr bool) context ;-) )
+2020-08-26 01:58:32 <zzo38> What is a "if (constexpr bool) context"?
+2020-08-26 01:58:50 <fizzie> There's some sort of "metaprogramming language" / "met a programming language" pun lurking in there, but I can't draw it out.
+2020-08-26 01:59:26 <int-e> zzo38: I meant something like if (foo) { ...<here>... } else { ...<or here>... }  where foo is a constant expression of type bool.
