@@ -290,3 +290,23 @@
 2020-08-29 19:26:41 <b_jonas> spruit11: ok, though I don't understand how that would apply to a prime sieve
 2020-08-29 19:29:03 <shachaf> It's surprising that this is possible: https://tomas.rokicki.com/logic_puzzle.html
 2020-08-29 19:29:06 <shachaf> "You can use any number of 'and' and 'or' gates, with any number of inputs each, but only two 'not' gates. You must build a circuit that computes for inputs A, B, and C, the three separate values not A, not B, and not C."
+2020-08-29 19:30:23 <myname> huh, interesting
+2020-08-29 19:30:29 <myname> i will think about that
+2020-08-29 19:31:28 <myname> is it possible? i would assume it works with stuff similar two the variable switch without a temporary one
+2020-08-29 19:32:32 <shachaf> It is possible.
+2020-08-29 19:32:43 <b_jonas> shachaf: hmm
+2020-08-29 19:33:14 <shachaf> I have a computer-found solution but I'm not sure I understand how it works entirely.
+2020-08-29 19:33:26 <b_jonas> shachaf: let me think about that one
+2020-08-29 19:35:26 <b_jonas> I know there's some easy description of functions that you can build from just & and | gates, IIRC think a function can be built that way iff it is monotonous, gives 0 for all-0 input, and gives 1 for all-1 input.
+2020-08-29 19:35:52 <myname> sounds about right
+2020-08-29 19:37:36 <spruit11> b_jonas: My language is eager. So the 'standard' Haskell short definition of a prime sieve doesn't work.
+2020-08-29 19:38:19 <spruit11> There are ways to deal with that. I listed two manners which mimic lazy lists.
+2020-08-29 19:39:00 <esowiki> 14[[07Esolang talk:Categorization14]]4 10 02https://esolangs.org/w/index.php?diff=77065&oldid=74234 5* 03SunnyMoon 5* (+663) 10/* Subcategories for the Non-Textual category. */ new section
+2020-08-29 19:41:52 <spruit11> The manner which I didn't list would be to use monads to model lazy behavior in an eager language.
+2020-08-29 19:42:05 <spruit11> I am trying to avoid that.
+2020-08-29 19:47:11 <myname> shachaf: is your computer-found solution a boolean function or a circuit?
+2020-08-29 19:52:26 <b_jonas> ah I see
+2020-08-29 19:53:28 <b_jonas> I would not specifically think of monads to avoid lazyness, just of a list-like iterator interface
+2020-08-29 19:53:59 <b_jonas> or possibly the caching style a lazy list, since that's what you need for a prime sieve
+2020-08-29 19:57:40 <spruit11> Ah, but iterators fit into monads too. If you want it.
+2020-08-29 19:58:32 <spruit11> If you have any other possible solutions I would be very interested.
