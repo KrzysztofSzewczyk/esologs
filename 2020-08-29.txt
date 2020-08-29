@@ -310,3 +310,46 @@
 2020-08-29 19:53:59 <b_jonas> or possibly the caching style a lazy list, since that's what you need for a prime sieve
 2020-08-29 19:57:40 <spruit11> Ah, but iterators fit into monads too. If you want it.
 2020-08-29 19:58:32 <spruit11> If you have any other possible solutions I would be very interested.
+2020-08-29 20:00:12 <b_jonas> sure, but just the monad interface isn't really enough here
+2020-08-29 20:00:50 <b_jonas> and I don't even see why it would really help much
+2020-08-29 20:01:34 <b_jonas> the (>>=) method for lists is mapConcat, but you just need a filter, which is a special case of that, plus you need to iterate on the list of divisors and stop when they grow too large, for which monads don't really help
+2020-08-29 20:02:50 <spruit11> Looks like we have tangent thoughts on this.
+2020-08-29 20:04:51 <esowiki> 14[[07Talk:Truth-machine14]]4 10 02https://esolangs.org/w/index.php?diff=77066&oldid=38410 5* 03SunnyMoon 5* (+315) 10/* Is it possible to add "psuedo-truth-machines"? */ new section
+2020-08-29 20:07:33 <b_jonas> yeah, ideally I should try to read your code and write the sieve with lazy lists like I thought, to make this clearer, but right now I'm busy with some stupid webpage
+2020-08-29 20:08:25 <b_jonas> it's a webpage where I ordered something and want to order more, but I'm trying to write a userstyle to make the important control link visible, it's currently hidden by some stupid HTML+CSS thing that sets a height too small
+2020-08-29 20:08:45 <b_jonas> and no, changing the height isn't enough, because then it overlaps something else
+2020-08-29 20:09:49 <b_jonas> I don't understand why this user CSS rule doesn't match this element
+2020-08-29 20:11:15 <zzo38> Did you check its effects in the inspector? (At least, that is what I did.)
+2020-08-29 20:11:45 <b_jonas> yes, that's what I'm trying to do
+2020-08-29 20:12:52 <spruit11> For if you change your mind. https://github.com/egel-lang/egel/blob/master/examples/sieve.eg https://github.com/egel-lang/egel/blob/master/examples/sieveK.eg
+2020-08-29 20:13:30 <zzo38> Well, what I think would be useful to have "meta-CSS" which is only usable in user CSS codes and cannot be specified by the web page author, and can be used for making selections based on other CSS commands, setting priorities differently, etc.
+2020-08-29 20:14:01 <b_jonas> the inspector says `<ul id="w1" class="fullpage__nav nav navbar-nav navbar-right w1" style="padding:0;">
+2020-08-29 20:14:24 <b_jonas> ` with some elements in it, and shows all the CSS rules that match it, and I have reduced my rule to `<ul id="w1" class="fullpage__nav nav navbar-nav navbar-right w1" style="padding:0;">
+2020-08-29 20:14:25 <HackEso> ​? Permission denied
+2020-08-29 20:14:43 <b_jonas> reduced my rule to `ul.wl { height: auto; }` and it doesn't match this element
+2020-08-29 20:14:52 <b_jonas> it's not overriden by another rule, that I could understand
+2020-08-29 20:14:55 <zzo38> The "style" attribute overrides user CSS so you may need to specify !important
+2020-08-29 20:14:55 <b_jonas> it just doesn't match
+2020-08-29 20:15:02 <b_jonas> oh!
+2020-08-29 20:15:07 <zzo38> It doesn't loko like "ul.wl" should match; maybe you need "ul.w1"
+2020-08-29 20:15:09 <b_jonas> f'ck
+2020-08-29 20:15:17 <b_jonas> w1
+2020-08-29 20:15:27 <b_jonas> thanks... stupid font this inspector uses
+2020-08-29 20:15:39 <zzo38> Can you change the fonts?
+2020-08-29 20:15:42 <jix> shachaf: haven't found a solution yet (trying to find one by hand currently) but that logic puzzle sounds very cool
+2020-08-29 20:15:52 <b_jonas> let me look
+2020-08-29 20:16:30 <b_jonas> not easily, it's not in the settings
+2020-08-29 20:16:47 <b_jonas> it's probably only stylable by user styles that affect the UI too, but I don't want to mess with those too much
+2020-08-29 20:17:28 <b_jonas> ok, the rule matches now, thank you
+2020-08-29 20:17:35 <b_jonas> I still need more rules, but this is progress
+2020-08-29 20:20:20 <b_jonas> I hate these stupid overspecified CSSes where to change a height I have to override it in like six different places
+2020-08-29 20:20:37 <b_jonas> they just vomit in a lot of random redundant rules
+2020-08-29 20:20:47 <b_jonas> I hate web developers
+2020-08-29 20:22:06 <zzo38> Yes, that is pretty bad, although you might be able to add !important sometimes, but I think that isn't general enough and meta-CSS would help better.
+2020-08-29 20:22:16 <b_jonas> ok, now the top bar is tall enough, but it overlaps the main content, so now I have to find out how that's placed
+2020-08-29 20:25:04 <zzo38> I try to avoid CSS as much as possible in my own web pages (which I don't do much; mostly I use plain text) in order to avoid these problems.
+2020-08-29 20:26:37 <zzo38> What I want is a mode to mostly ignore CSS and instead use ARIA and HTML to decide what to display.
+2020-08-29 20:28:11 <b_jonas> everything has absolute positioning, it's a huge mess
+2020-08-29 20:28:43 <b_jonas> ok, so at first approximation this should be enough, it makes the navigation link visible, the rest of the site is uglier now but who cares
+2020-08-29 20:29:03 <b_jonas> I might of course find other hidden stuff later
+2020-08-29 20:29:06 <zzo38> Does disabling CSS entirely help at all?
