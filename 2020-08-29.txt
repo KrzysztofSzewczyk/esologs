@@ -118,3 +118,37 @@
 2020-08-29 05:44:42 Quit: tromp (Ping timeout: 260 seconds)
 2020-08-29 05:44:43 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-08-29 05:57:10 <shachaf> zzo38: Do you like SAT solvers?
+2020-08-29 06:01:10 <zzo38> shachaf: I do not know much about SAT solvers.
+2020-08-29 06:01:27 <zzo38> (If I knew, maybe I would be able to answer your other questions too, but I don't know.)
+2020-08-29 06:01:37 <shachaf> Do you like graph coloring solvers?
+2020-08-29 06:02:16 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-08-29 06:02:16 <myname> they are more logic solver systems than one might expect and they are competing against themselves quite regularly
+2020-08-29 06:05:13 <shachaf> Hmm, maybe I should actually learn about integer programming solvers. I hear they're pretty good..
+2020-08-29 06:05:16 <shachaf> s/.$//
+2020-08-29 06:05:38 <shachaf> Plus I don't even really know about linear programming.
+2020-08-29 06:05:59 <myname> a friend of mine writes a mip solver in his spare time to optimize his factorio world
+2020-08-29 06:06:25 <myname> linear programming is not that hard, really
+2020-08-29 06:07:50 <jix> shachaf: as you already know how SAT solvers work, learning about MIP will make you annoyed that SAT solvers are bad at what MIP solvers are good at and that MIP solvers are bad at what SAT solvers are good at (well, at least it does that for me)
+2020-08-29 06:07:55 <myname> integer programms make it quite a bit harder
+2020-08-29 06:08:32 <jix> and apparently it's difficult enough to combine them in a way that gets the advantages of both
+2020-08-29 06:08:47 <myname> iirc linear programms are in P
+2020-08-29 06:08:54 <shachaf> jix: That was my impression. Well, I really only know one direction, in seeing some problems that MIP solvers are good at and SAT solvers are bad at.
+2020-08-29 06:09:05 <shachaf> But I heard it went both ways.
+2020-08-29 06:09:32 <shachaf> There's a lot more industrial use of MIP, I think?
+2020-08-29 06:09:58 <jix> yeah I think so
+2020-08-29 06:10:12 <jix> even for problems where SAT or SMT solvers would be better
+2020-08-29 06:10:30 <myname> that's not that surprising, SAT solvers only decide, MIP solvers optimize
+2020-08-29 06:11:10 <jix> myname: that's not really a distinction that matters though, if you can do one you can do the other, in theory as well as in practice
+2020-08-29 06:11:31 <jix> now it might be that it works in theory but is too slow in practice, but with incremental SAT solvers optimizing is also fast in practice
+2020-08-29 06:11:33 <myname> jix: well, at additional cost, yeah
+2020-08-29 06:12:34 <myname> and you have to state your problem in such a way that you can make good guesses about what change in the corresponding sat problem
+2020-08-29 06:13:18 <zzo38> Not having seen graph coloring solvers, I don't really know. But at least I can understand a bit of what is meant, I suppose. How difficult are they to solve, though?
+2020-08-29 06:13:49 <myname> graph coloring is NP complete
+2020-08-29 06:13:59 <myname> so i guess it's about as hard as SAT solvers
+2020-08-29 06:14:54 <zzo38> O, OK.
+2020-08-29 06:15:41 User Name: Hooloovo0 = Hooloovo0!Hooloovoo@sorunome.de
+2020-08-29 06:15:41 <Hooloovo0> to be fair, a lot more work has been put into sat sovlers, I think, and polynomial time is... well theoretically not that bad but in practice it can get pretty bad
+2020-08-29 06:17:31 <zzo38> Well, yes, depending on the algorithm and how much data, it can be, considering, there are many kind of polynomials, some of which are big.
+2020-08-29 06:17:33 <myname> yeah, we had a lecture on algorithms to solve euclidean tsp that aren't really worth attempting with real data sets, if you could just brute-force
+2020-08-29 06:21:27 Quit: adu (Quit: adu)
+2020-08-29 06:21:27 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
