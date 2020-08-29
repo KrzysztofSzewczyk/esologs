@@ -353,3 +353,33 @@
 2020-08-29 20:28:43 <b_jonas> ok, so at first approximation this should be enough, it makes the navigation link visible, the rest of the site is uglier now but who cares
 2020-08-29 20:29:03 <b_jonas> I might of course find other hidden stuff later
 2020-08-29 20:29:06 <zzo38> Does disabling CSS entirely help at all?
+2020-08-29 20:31:35 <b_jonas> it helps for some sites, I don't think it would work on this site
+2020-08-29 20:32:02 <b_jonas> spruit11: hmm wait, egel doesn't even have mutable data like mutable containers, right? then I can't just write a lazy list with caching
+2020-08-29 20:32:25 <zzo38> Yes, I find too it doesn't work best for all sites, but sometimes it does work better
+2020-08-29 20:33:01 <b_jonas> it worked well for another site that I visited recently, which hid some text by disabling scrolling on the body or some such nonsense
+2020-08-29 20:33:12 <zzo38> What I would want is the web browser to be designed by the assumption that the user is the expert and knows what they are doing and means what they specify, while the document author is incompetent or malicious
+2020-08-29 20:35:34 <spruit11> b_jonas: Correct. No mutation, except for some unsafe extensions.
+2020-08-29 20:36:03 <shachaf> myname: What's the difference?
+2020-08-29 20:36:22 <shachaf> I guess it's a circuit that computes a function.
+2020-08-29 20:39:22 <b_jonas> spruit11: well that makes implementing a prime sieve much harder. I'd probably need to use that banking list data structure or whatever it's called, the one that stores a list divided in two parts, the suffix part reversed, and sometimes has to rebalance them by flipping the whole suffix to the prefix, but in a prime sieve that happens exponentially rarely.
+2020-08-29 20:39:54 <myname> shachaf: circuits can loop
+2020-08-29 20:40:17 <myname> shachaf: like, you cannot express a flipflop as a boolean function
+2020-08-29 20:40:48 <shachaf> Oh, no loops.
+2020-08-29 20:41:04 <spruit11> I am unacquainted with that data structure.
+2020-08-29 20:43:32 <b_jonas> I still don't understand this webpage though, I'll have to get back to it later
+2020-08-29 20:43:38 <b_jonas> for today I think I give up
+2020-08-29 20:45:17 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77067&oldid=77061 5* 03IFcoltransG 5* (+331) 10/* Language specifications */  Add ^ and v
+2020-08-29 20:46:05 <b_jonas> spruit11: it's a rare data structure, I think it's documented in Okasaki's thesis, I don't think Knuth mentions it but I'm not sure
+2020-08-29 20:46:12 <b_jonas> and Okasaki's book
+2020-08-29 20:46:36 <b_jonas> the book is an extended version of the thesis, I don't have it, but I've seen it once long ago; the thesis is available online
+2020-08-29 20:46:59 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77068&oldid=77067 5* 03IFcoltransG 5* (+22) 10Forgot to credit myself
+2020-08-29 20:47:01 <b_jonas> there's probably a link somewhere from esowiki
+2020-08-29 20:47:18 <spruit11> The lazy data structures thing?
+2020-08-29 20:47:28 <b_jonas> yes
+2020-08-29 20:50:08 <b_jonas> and there doesn't seem to be a link from the esowiki
+2020-08-29 20:50:43 <spruit11> I am sure I could find it if I wanted to.
+2020-08-29 20:51:18 <b_jonas> or from the wisdom database
+2020-08-29 20:51:22 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77069&oldid=77068 5* 03Heavpoot 5* (+438) 10
+2020-08-29 20:51:35 <b_jonas> https://en.wikipedia.org/wiki/Chris_Okasaki has the reference
+2020-08-29 20:55:49 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77070&oldid=77069 5* 03Heavpoot 5* (+74) 10
+2020-08-29 20:59:33 <esowiki> 14[[07,,,14]]4 10 02https://esolangs.org/w/index.php?diff=77071&oldid=77054 5* 03SunnyMoon 5* (+94) 10I hope the readers know what I am talking about.
