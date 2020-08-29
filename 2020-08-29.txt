@@ -535,3 +535,134 @@
 2020-08-29 21:59:10 <b_jonas> `` echo -e'from sys import stderr; print(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n' | python3 -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
 2020-08-29 21:59:11 <HackEso> ​  File "<stdin>", line 1 \     -efrom sys import stderr; print(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n \              ^ \ SyntaxError: invalid syntax
 2020-08-29 21:59:30 <fizzie> I'd like it if "python" would be Python 3 at some point.
+2020-08-29 22:00:12 <spruit11> Or maybe I should..
+2020-08-29 22:00:15 <b_jonas> ``` <<<$'from sys import stderr\nprint(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n' python3 -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 22:00:16 <HackEso> 2 \   File "<stdin>", line 1 \     ) \     ^ \ SyntaxError: invalid syntax \ 4
+2020-08-29 22:00:21 <b_jonas> yes, that's interactive, prints the 2 first
+2020-08-29 22:00:49 <fizzie> `` echo -e 'print(1 + 1, file=sys.stdout)\nprint(2 + 2, file=sys.stderr)\n' | python3 -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 22:00:50 <HackEso> 4 \  \ 2
+2020-08-29 22:00:53 <b_jonas> fizzie: it can't be, that would break all sorts of compatibility, so we're stuck with python3 as the executable name, plus there's some wrapper called py that can invoke both but I never use that
+2020-08-29 22:01:12 <fizzie> Yeah, I think it'll be solved by eventually remembering to type "python3" instead.
+2020-08-29 22:01:25 <fizzie> It really only matters for when starting it interactively.
+2020-08-29 22:01:59 <b_jonas> fizzie: you can install an alias to python that fails with an error message, that acts only interactively, and you can still use python2 interactively if you really need that
+2020-08-29 22:02:09 <b_jonas> I almost never forget to type python3
+2020-08-29 22:02:51 <b_jonas> `perl -e use Date::Manip::Date 6; $s = Date::Manip::Date->new("now"); print $s->printf("%O %Z %z\n")
+2020-08-29 22:02:53 <HackEso> 2020-08-29T22:02:52 UTC +0000
+2020-08-29 22:03:17 <spruit11> You're in the middle of the ocean?
+2020-08-29 22:03:41 <b_jonas> spruit11: ^ the point is, we can just type perl one-liner that can have multiple statements, each of which can load new modules, put stuff into the namespace, declare or assign stuff, print something
+2020-08-29 22:03:57 <spruit11> Right. I'll think it over..
+2020-08-29 22:03:58 <b_jonas> and I don't need a dummy variable to print something or to evaluate an expression for its side-effects
+2020-08-29 22:04:08 <b_jonas> this is the simple experience that I would like
+2020-08-29 22:04:19 <b_jonas> python does not currently provide it, because you can't easily type compound statements to a one-liner
+2020-08-29 22:04:29 <b_jonas> but that's a separate problem from spruit, and needs separate fixes
+2020-08-29 22:05:09 <b_jonas> without compound statements, you can run a python one-liner that can load modules, import to my namespace, assign variables, evaluate expressions for their side effects
+2020-08-29 22:05:18 <b_jonas> and it has a print statement to print stuff
+2020-08-29 22:05:33 <b_jonas> if egel could give this experience, then it would be usable in one-liners
+2020-08-29 22:06:02 <b_jonas> printing expressions by default is not essential, only a few programming languages like octave do it, as long as printing is as simple as calling a print function
+2020-08-29 22:06:10 <b_jonas> so yes, I may have explained what I need wrong
+2020-08-29 22:06:12 <b_jonas> XY problem
+2020-08-29 22:07:04 <spruit11> Myah. I am mulling over it.
+2020-08-29 22:07:41 <spruit11> But from my POV. Oneliners are a too restricted use case.
+2020-08-29 22:08:09 <b_jonas> sure, they're just the first goal
+2020-08-29 22:08:14 <b_jonas> we can figure out persistence later
+2020-08-29 22:08:27 <b_jonas> if we can't even run one thing, then we don't have a hope for running things persistently
+2020-08-29 22:08:30 <spruit11> Except for executing commands directly. Maybe.
+2020-08-29 22:08:44 <b_jonas> when I wrote jevalbot, I first implemented only the non-persistent part,
+2020-08-29 22:08:47 <b_jonas> then added persistence
+2020-08-29 22:09:02 <spruit11> Yah, but persistency would solve your 'one liner' problem somewhat too.
+2020-08-29 22:09:06 <b_jonas> I admit there's a lot of things messed up in jevalbot though
+2020-08-29 22:09:15 <spruit11> Just time in two or more lines.
+2020-08-29 22:09:19 <spruit11> *type
+2020-08-29 22:09:39 <b_jonas> spruit11: ok, but I don't want to *have to* type more than one IRC line if everything I need fits in one line
+2020-08-29 22:10:20 <zzo38> Some programming languages are statement oriented some is more like expression oriented, and some works differently, and different conventions in the interactive mode can be useful in different programming languages. For stack based programming languages, such as Forth, dc, and PostScript, it will just leave the result on the stack but you can enter some commands to display them.
+2020-08-29 22:10:38 <spruit11> I'll think it over. THere's the 'egel -c "someexpr"' which might get better if you could put more on one line. So there's that too.
+2020-08-29 22:10:39 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77086&oldid=77085 5* 03IFcoltransG 5* (+198) 10/* Language specifications */
+2020-08-29 22:10:44 <b_jonas> spruit11: thank you
+2020-08-29 22:11:12 <b_jonas> spruit11: will you also think about tuples and lists for the pretty-printer?
+2020-08-29 22:11:21 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77087&oldid=77086 5* 03IFcoltransG 5* (+6) 10/* Language specifications */ Forgot a br
+2020-08-29 22:11:31 <b_jonas> with an escape clause to get the full form
+2020-08-29 22:11:32 <spruit11> Maybe, that's higher on my list but problematic.
+2020-08-29 22:11:49 <b_jonas> why is it problematic?
+2020-08-29 22:12:13 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77088&oldid=77087 5* 03IFcoltransG 5* (+4) 10/* Language specifications */ Added an article
+2020-08-29 22:12:13 <spruit11> Egel is untyped. It's a hefty cost to check large datastructes for well-formedness.
+2020-08-29 22:12:25 <spruit11> *datastructurs
+2020-08-29 22:12:28 <spruit11> Oh god.
+2020-08-29 22:12:28 <b_jonas> why would you have to check them for well-formedness?
+2020-08-29 22:12:32 <spruit11> It's late.
+2020-08-29 22:12:34 <b_jonas> tuples are always well-formed
+2020-08-29 22:12:50 <spruit11> Lists aren't.
+2020-08-29 22:13:01 <b_jonas> yes, for lists either you only have to check that they have the empty list as the tail, or have a printed representation for dotted lists
+2020-08-29 22:13:15 <b_jonas> scheme and prolog chooses the latter method, having dotted lists
+2020-08-29 22:13:18 <spruit11> `1 nil cons` is an entirely legal term.
+2020-08-29 22:13:19 <HackEso> 1/1:/hackenv/bin/`: eval: line 5: unexpected EOF while looking for matching ``' \ /hackenv/bin/`: eval: line 6: syntax error: unexpected end of file
+2020-08-29 22:13:49 <b_jonas> spruit11: sure, you only need to print a list or partial list if cons/2 is the head of a function call
+2020-08-29 22:13:57 <b_jonas> or cons is the head of a two-argument function call or something
+2020-08-29 22:14:23 <spruit11> No, I think the entire list needs to be well-formed?
+2020-08-29 22:14:47 <spruit11> What if everything is okay but you end with `0` instead of `nil`?
+2020-08-29 22:14:54 <b_jonas> spruit11: then you print a dotted list
+2020-08-29 22:15:01 <b_jonas> let me try to show in prolog, which HackEso has
+2020-08-29 22:15:01 <spruit11> Hmpf.
+2020-08-29 22:15:08 <spruit11> No, I get it.
+2020-08-29 22:15:18 <b_jonas> ok
+2020-08-29 22:16:19 <b_jonas> the complication with prolog is that apparently even though it has list and dotted list syntax, it's not standardized what the name of the symbol that is the head of a cons is, and the prolog brand that HackEso has uses the other choice
+2020-08-29 22:16:50 <spruit11> I was thinking of just dropping cons and use nested tuples for everything.
+2020-08-29 22:17:10 <b_jonas> eww
+2020-08-29 22:17:22 <b_jonas> why is having a specific constructor for cons and nil hard?
+2020-08-29 22:17:28 <spruit11> Why not? Egel is untyped. Might as well go the whole way.
+2020-08-29 22:17:29 <b_jonas> I mean, egel lets you create custom constructors
+2020-08-29 22:17:33 <spruit11> Minimalism.
+2020-08-29 22:17:37 <b_jonas> so you can have as many as you want
+2020-08-29 22:17:45 <b_jonas> they're cheap
+2020-08-29 22:17:45 <spruit11> And, math does it that way often too.
+2020-08-29 22:17:59 <spruit11> Aesthetics.
+2020-08-29 22:18:10 <b_jonas> math puts a type system over it, but doesn't often talk about it
+2020-08-29 22:18:14 <b_jonas> a static type system that is
+2020-08-29 22:18:18 <b_jonas> known only at compile time
+2020-08-29 22:18:33 <b_jonas> at runtime the representation of a tuple and a cons might be the same, but you distinguish them at compile time
+2020-08-29 22:18:46 <b_jonas> you could have something like that in C too
+2020-08-29 22:18:55 <b_jonas> I don't think it's suitable for a dynamically typed language
+2020-08-29 22:19:22 <b_jonas> I mean, isn't this a pure library feature anyway?
+2020-08-29 22:19:34 <spruit11> ANyway. Prompt. Multiple expressions. Pretty-printing.
+2020-08-29 22:19:38 <b_jonas> you can implement tuples, lists, and pretty-printing as library features
+2020-08-29 22:20:01 <b_jonas> because you can already match a cons and have a fallback clause in egel
+2020-08-29 22:20:06 <b_jonas> so you can just write a pretty-print function
+2020-08-29 22:20:22 <b_jonas> well, almost
+2020-08-29 22:20:30 <b_jonas> you can't because it can't match arbitrary arity functions I think
+2020-08-29 22:20:33 <b_jonas> um
+2020-08-29 22:20:34 <spruit11> Right.
+2020-08-29 22:20:36 <b_jonas> arbitrary arity applications
+2020-08-29 22:20:41 <b_jonas> so that's a problem
+2020-08-29 22:20:42 <b_jonas> ...
+2020-08-29 22:20:48 <spruit11> Got you the first time.
+2020-08-29 22:20:50 <b_jonas> oops
+2020-08-29 22:20:59 <spruit11> I should change that once.
+2020-08-29 22:21:06 <spruit11> Unsure to what.
+2020-08-29 22:21:12 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77089&oldid=77088 5* 03IFcoltransG 5* (-5) 10/* Language specifications */
+2020-08-29 22:21:41 <spruit11> Or just ignore everything below arity 9.
+2020-08-29 22:21:42 <b_jonas> well in that case you might need the pretty-printer in C
+2020-08-29 22:21:43 <spruit11> Ah well.
+2020-08-29 22:21:53 <b_jonas> in C++ I mean
+2020-08-29 22:22:57 <spruit11> I should have implemented a Lisp!
+2020-08-29 22:22:59 <b_jonas> in olvashato I just mapped tuples and conses and lists to the tuple/cons/list of the underlying languages, that was easier
+2020-08-29 22:23:02 <spruit11> Ah well.
+2020-08-29 22:23:17 <b_jonas> spruit11: you still can, and call it egel2 or something
+2020-08-29 22:23:45 <b_jonas> I implemented a lisp once but it sucks, it doesn't even have a let statement, or a way to add one, because it doesn't implement macros
+2020-08-29 22:24:00 <b_jonas> it's a very tiny lisp, with one page of code
+2020-08-29 22:24:10 <spruit11> I like those!
+2020-08-29 22:24:22 <spruit11> Egel is way larger than I want.
+2020-08-29 22:24:24 <b_jonas> also no proper boolean type
+2020-08-29 22:24:49 <b_jonas> so it's not even a proper subset of scheme, because (eq (eq 9 9) 1) returns true
+2020-08-29 22:25:10 <spruit11> Neat!
+2020-08-29 22:25:15 <b_jonas> it should return false because (eq 9 9) is a boolean and 1 is a number, but I just made eq return numbers
+2020-08-29 22:25:19 <b_jonas> it was lazy
+2020-08-29 22:25:28 <b_jonas> no, it's not neat, it's a way to make a non-scheme
+2020-08-29 22:26:03 <spruit11> Yah. But a non-scheme which might run on a PIC..
+2020-08-29 22:26:10 <spruit11> I like the smaller stuff.
+2020-08-29 22:26:21 <b_jonas> I think if also doesn't quite behave for non-booleans like in scheme
+2020-08-29 22:26:34 <b_jonas> this one can't, it's written in J
+2020-08-29 22:26:41 <b_jonas> it's not written in C or any such low-level thing
+2020-08-29 22:28:11 <spruit11> Oh bummer.
+2020-08-29 22:28:22 <spruit11> I already wondered why it was that small.
+2020-08-29 22:28:40 <spruit11> Shortest I remember is one file of 2kLoc?
+2020-08-29 22:28:42 <spruit11> Unsure.
+2020-08-29 22:29:16 <b_jonas> I would like to write a reference interpreter for Consumer Society in C that can be reduced to small if you omit all the optional features
