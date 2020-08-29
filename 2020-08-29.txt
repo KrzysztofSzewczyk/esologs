@@ -750,3 +750,77 @@
 2020-08-29 22:58:04 <b_jonas> just like how you can't really know for sure that a new medication or medical procedure for humans doesn't have harmful side-effects on the patient until it's been used more than a human lifespan ago
 2020-08-29 22:58:20 Quit: imode (Ping timeout: 258 seconds)
 2020-08-29 22:58:20 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 23:04:56 <spruit11> I hacked two thing. String:length -> String:strlen and EGEL_PS0 as an environment variable to set the prompt.
+2020-08-29 23:05:52 <b_jonas> spruit11: nice
+2020-08-29 23:06:08 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77094&oldid=77092 5* 03RocketRace 5* (+285) 10/
+2020-08-29 23:06:37 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77095&oldid=77094 5* 03RocketRace 5* (+4) 10/* Language specifications */
+2020-08-29 23:06:46 <b_jonas> spruit11: why an env-var instead of a command-line option?
+2020-08-29 23:07:07 <b_jonas> though it doesn't matter, since we probably don't want interactive mode afterall
+2020-08-29 23:07:27 <spruit11> Now you tell me.
+2020-08-29 23:07:33 <b_jonas> but non-interactive mode with top-level uses and declarations and anything
+2020-08-29 23:07:40 <b_jonas> that is just harder
+2020-08-29 23:07:48 <b_jonas> so interactive mode with PS1= can be a good hack
+2020-08-29 23:07:53 <b_jonas> in the interim
+2020-08-29 23:08:06 <b_jonas> so it's still useful
+2020-08-29 23:08:11 <b_jonas> thank you
+2020-08-29 23:08:19 <spruit11> Well. No problem.
+2020-08-29 23:08:42 <spruit11> It both seemed useful.
+2020-08-29 23:09:04 <spruit11> Unsure why I have namespaces if I am going to rename stuff. But ah well.
+2020-08-29 23:09:18 <spruit11> I guess namespaces were overkill for this language anyway.
+2020-08-29 23:09:24 <b_jonas> spruit11: namespaces can be still useful
+2020-08-29 23:09:41 <spruit11> Myah, but it's for programming in the large. Right?
+2020-08-29 23:09:50 <b_jonas> but this is a function that we want in the prelude, so if you don't rename it, the prelude would import it under a different name
+2020-08-29 23:10:01 <spruit11> Doesn't really fit with Egel. Maybe it could be useful once for programming in the small.
+2020-08-29 23:10:06 <b_jonas> it's for programming in the middle
+2020-08-29 23:10:12 <b_jonas> and large too
+2020-08-29 23:10:16 <spruit11> That's my place!
+2020-08-29 23:10:49 <spruit11> I'll think over multiple expressions too but that's a bit weird in my model.
+2020-08-29 23:11:32 <spruit11> You already have ';' in expressions. But I guess you want preceding directives too.
+2020-08-29 23:12:15 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77096&oldid=77095 5* 03RocketRace 5* (+2) 10/* Language specifications */
+2020-08-29 23:12:19 <b_jonas> spruit11: and preceding declarations too
+2020-08-29 23:12:27 <b_jonas> directives, declarations, expressions, all together
+2020-08-29 23:12:53 <spruit11> What if: preceding declarations and preceding directives but only one expression?
+2020-08-29 23:13:43 <b_jonas> spruit11: that would be somewhat inconvenient, but still better than nothing
+2020-08-29 23:14:09 <spruit11> Hmm. That's hard too. I've got no idea where a definition ends and the next expression starts..
+2020-08-29 23:14:32 <b_jonas> then you's have to use a parenthesis around the expressions, and move declarations before it
+2020-08-29 23:14:34 <spruit11> `def f = 1 2`
+2020-08-29 23:14:35 <HackEso> def? No such file or directory
+2020-08-29 23:15:12 <b_jonas> spruit11: what? the definition ends at the semicolon that is not inside balanced parenthesis, or at eof
+2020-08-29 23:15:58 <b_jonas> where both brackets and round parenthesis and braces count
+2020-08-29 23:16:33 <spruit11> Right. Don't have semicolons (except for in expressions).
+2020-08-29 23:16:50 <b_jonas> so layout *is* significant. that's what I said
+2020-08-29 23:17:02 <spruit11> Huh?
+2020-08-29 23:17:05 Joined: imode
+2020-08-29 23:17:05 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 23:17:21 <b_jonas> you can currently have multiple definitions in a file, right? how do you separate multiple definitions?
+2020-08-29 23:17:45 <b_jonas> can you only separate them with newlines? if so, that means layout is significant, and that's inconvenient for IRC where you don't want newlines in your IRC line
+2020-08-29 23:17:56 <spruit11> The expression ends because either another def (or other) or eol.
+2020-08-29 23:18:07 <b_jonas> because IRC lines can't have literal newlines, so you'd have to transform some escape to a newline before feeding to egel
+2020-08-29 23:18:23 <spruit11> I don't care about newlines.
+2020-08-29 23:18:30 <spruit11> I care about keywords.
+2020-08-29 23:18:40 <b_jonas> what does "eol" mean?
+2020-08-29 23:18:55 <spruit11> Uh, sorry. Eof.
+2020-08-29 23:19:16 <b_jonas> ah
+2020-08-29 23:19:20 <b_jonas> well that's a problem
+2020-08-29 23:19:25 <spruit11> Right.
+2020-08-29 23:20:03 <b_jonas> then you need to modify the syntax, to allow semicolons or some other separator
+2020-08-29 23:20:11 <spruit11> No way.
+2020-08-29 23:20:40 <spruit11> Or maybe way. 'egel -c "command"' is a thing.
+2020-08-29 23:20:56 <b_jonas> possibly a new keyword before bare expressions that's shorter than `def _=`
+2020-08-29 23:21:32 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77097&oldid=77096 5* 03RocketRace 5* (+32) 10/* Language specifications */
+2020-08-29 23:22:15 <spruit11> Good idea.
+2020-08-29 23:22:20 <b_jonas> spruit11: you could add double semicolons as a new separator if you prefer not to mess with ordinary semicolons, I think some repls for eg. perl do that when the underlying language is not suitable to use semicolons for this
+2020-08-29 23:22:33 <b_jonas> in perl that's because they don't want to parse perl to know when to execute the partial string
+2020-08-29 23:23:03 <b_jonas> but you could also have it if the language just uses semicolons in an incompatible way (as long as it doesn't use double semicolons in an incompatible way)
+2020-08-29 23:23:15 <spruit11> No, I think something like `expr` could be a nice keyword if you just want to evaluate something for the side-effects.
+2020-08-29 23:23:30 <spruit11> But then.. The prompt.
+2020-08-29 23:23:32 <spruit11> Uh.
+2020-08-29 23:23:55 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77098&oldid=77097 5* 03Heavpoot 5* (+92) 10
+2020-08-29 23:24:46 <b_jonas> spruit11: are semicolons at least allowed at the end of a definition without changing anything, or do they change the value to void?
+2020-08-29 23:24:52 <b_jonas> or unit or whatever it's called
+2020-08-29 23:25:02 <spruit11> Maybe the double semicolon is better. Just parse lines, split on double semicolon, feed that to the evaluator.
+2020-08-29 23:25:20 <b_jonas> spruit11: why don't you like single semicolons?
+2020-08-29 23:25:47 <spruit11> No, it's 'expr := expr; expr | ...'.
+2020-08-29 23:25:48 <b_jonas> you can make them optional before `def` and other such keywords
+2020-08-29 23:26:41 <spruit11> Could, but not really easy.
+2020-08-29 23:27:10 <b_jonas> well ok
