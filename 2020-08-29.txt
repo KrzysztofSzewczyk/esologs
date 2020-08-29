@@ -62,3 +62,54 @@
 2020-08-29 04:59:30 <jix> well there are also restarts but roughly like that
 2020-08-29 04:59:31 <shachaf> Convenience APIs seem good to provide, but as the core API I think something like this is much nicer.
 2020-08-29 04:59:52 <shachaf> I was already getting into more detail than I meant to.
+2020-08-29 05:00:32 <shachaf> Really I should have said while (1) { /* something that takes a relatively long time */ }. I was just trying to remember how it worked.
+2020-08-29 05:01:05 Joined: glowcoil
+2020-08-29 05:01:12 <jix> more like while (1) { /* something that takes a short amount of time, but you need to do it many, many, many times */ }
+2020-08-29 05:01:13 <shachaf> zzo38: It's still a secret game unfortunately.
+2020-08-29 05:01:34 Quit: glowcoil (Ping timeout: 240 seconds)
+2020-08-29 05:01:34 Quit: Arcorann (Read error: Connection reset by peer)
+2020-08-29 05:01:37 Quit: ocharles (Ping timeout: 240 seconds)
+2020-08-29 05:01:37 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 05:01:37 Quit: olsner (Ping timeout: 240 seconds)
+2020-08-29 05:01:37 Quit: sftp (Ping timeout: 240 seconds)
+2020-08-29 05:01:38 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 05:01:39 Nick Change: glowcoil -> glowcoil
+2020-08-29 05:01:42 <shachaf> I guess the thing I was wondering was whether having an API boundary there would have a performance impact.
+2020-08-29 05:01:51 <shachaf> But I doubt it.
+2020-08-29 05:01:58 Joined: ocharles
+2020-08-29 05:01:58 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 05:02:35 <jix> so returning after each conflict should be perfectly safe (in my solver and IIRC many others)finding a conflict is a sub-loop)
+2020-08-29 05:02:41 Joined: sftp
+2020-08-29 05:02:41 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 05:03:05 <jix> returning each time after running unit propagation to completion, I'm not quite sure
+2020-08-29 05:03:33 <shachaf> Sure, unit propagation + handling the conflict sort of goes together.
+2020-08-29 05:03:59 <shachaf> Though I guess it doesn't have to, you can just save your state.
+2020-08-29 05:04:32 <jix> yeah but I meant if you need multiple guesses to find a conflict, returning inbetween might not be a good idea performance wise
+2020-08-29 05:04:58 <jix> (if returning implies you're going to check termination criteria and potentially other stuff that could slow down things)
+2020-08-29 05:05:29 <jix> but I haven't tested that at all, I just know you're pretty safe doing that after a conflict given all the other stuff that happens anyway for a conflict
+2020-08-29 05:06:52 <shachaf> whoa, I just looked up IPASIR, I didn't know about this at all.
+2020-08-29 05:08:05 <jix> I always end up needing functionallity outside of that API, sometimes supported by solver specific APIs... but often enough not even that, even though it wouldn't be too hard to add it
+2020-08-29 05:08:37 <shachaf> It's too bad it's callback-based. Callback APIs aren't fun when you can avoid them.
+2020-08-29 05:08:49 <shachaf> And you should certainly be able to, for something like this.
+2020-08-29 05:09:08 <jix> it's inteded to be easy to add to existing solvers, and callbacks make that easier
+2020-08-29 05:09:24 <shachaf> Fair enough.
+2020-08-29 05:09:46 <jix> for a lot of uses you don't even need any of the callback APIs though
+2020-08-29 05:10:21 <shachaf> Just being able to add new clauses without deleting the clause database is presumably most of the incrementality people need.
+2020-08-29 05:10:38 <jix> yeah that and solving under assumptions
+2020-08-29 05:11:14 <shachaf> Hmm, how do assumptions work? I guess that just means adding things to the trail?
+2020-08-29 05:11:48 <jix> yeah it's exactly just that, you fix a prefix on the trail and if you'd backtrack beyond that you return unsat (under assumptions)
+2020-08-29 05:12:13 Joined: olsner
+2020-08-29 05:12:13 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 05:12:20 <shachaf> I was briefly wondering whether you'd learn wrong clauses that way but of course you wouldn't.
+2020-08-29 05:12:50 <jix> from the conflict analysis you do to detect that you'd backtrack beyond that you also get a subset of assumptions causing the conflict for free (which is also part of the IPASIR api)
+2020-08-29 05:13:27 <shachaf> Oh, that's nice.
+2020-08-29 05:13:47 <esowiki> 14[[07User talk:Challenger514]]4 10 02https://esolangs.org/w/index.php?diff=77024&oldid=76991 5* 03Challenger5 5* (+107) 10
+2020-08-29 05:14:22 <esowiki> 14[[07User:Challenger514]]4 10 02https://esolangs.org/w/index.php?diff=77025&oldid=76950 5* 03Challenger5 5* (+16) 10
+2020-08-29 05:14:50 <shachaf> Do you know if SMT solvers need more of an API than this?
+2020-08-29 05:15:12 <jix> it depends AFAIK
+2020-08-29 05:15:38 <zzo38> Not knowing much about what is SMT solvers, I don't know really
+2020-08-29 05:15:50 <esowiki> 14[[07Aubergine14]]4 10 02https://esolangs.org/w/index.php?diff=77026&oldid=74883 5* 03Challenger5 5* (+95) 10
+2020-08-29 05:16:19 <jix> you don't need more than that for CDCL(T) or for bitblasting AFAICT
+2020-08-29 05:16:58 <jix> but if you want to do eager theory propagation (not sure if that's an established term) you need a way to hook into unit propagation
+2020-08-29 05:17:13 <jix> I have no idea how much that is done or if it is important at all
+2020-08-29 05:18:15 <zzo38> Just a few minutes ago I found and corrected a bug in TeXnicard involving division by zero when the total available vertical space is rigid, resulting in alternating lines of text being displayed and hidden.
