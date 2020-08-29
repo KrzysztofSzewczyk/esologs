@@ -434,3 +434,104 @@
 2020-08-29 21:29:04 <b_jonas> and then a wrapper script and prelude
 2020-08-29 21:29:35 <b_jonas> we already have wrapper scripts that run an interpreter or compiler with stuff from command line. if anything, we have too many of those wrapper scripts and they do too much.
 2020-08-29 21:29:40 <b_jonas> on HackEso that is
+2020-08-29 21:30:11 <spruit11> Oh, right. The module search path.
+2020-08-29 21:30:32 <b_jonas> and maybe you already fixed some of those in egel since I last looked
+2020-08-29 21:31:37 <b_jonas> the only problem is, I want to do this so it's reproducible when you update egel, so I need a minimal patch to apply, and a simple script to compile and install it to HackEso after I download the repository tarball, and neither of those is hard really, each part is still just a few lines of code
+2020-08-29 21:32:25 <spruit11> You can surpress the "./" search path with -I.
+2020-08-29 21:32:26 <b_jonas> I already had some of it working, as in, I compiled egel on HackEso successfully and ran some egel commands
+2020-08-29 21:32:45 <b_jonas> spruit11: is that a new feature?
+2020-08-29 21:32:49 <b_jonas> "new"
+2020-08-29 21:33:00 <spruit11> // add local directory to the search path if no other where given
+2020-08-29 21:33:01 <spruit11> if (!hasI) oo->add_include_path(icu::UnicodeString("./"));
+2020-08-29 21:33:06 <spruit11> No idea.
+2020-08-29 21:33:52 <spruit11> I could have added that to the main routine after we spoke but it's a long time since we did that.
+2020-08-29 21:33:59 <b_jonas> ok
+2020-08-29 21:35:25 <spruit11> You could just give it an extra bogus dir with "--include bogus" and it should work, I guess.
+2020-08-29 21:36:54 <b_jonas> I can give it a real dir
+2020-08-29 21:37:23 <b_jonas> well that's good, so then I only need the other edit to egel, to have "interactive mode" without the prompt
+2020-08-29 21:37:31 <b_jonas> as an option
+2020-08-29 21:38:17 <b_jonas> or possibly just auto-suppress the prompt in interactive mode unless isatty(0)
+2020-08-29 21:38:34 <b_jonas> we could have both
+2020-08-29 21:38:54 <b_jonas> make the prompt empty by default if !isatty(0), but also have an option to change the prompt string
+2020-08-29 21:39:04 <b_jonas> or a function or whatever
+2020-08-29 21:39:18 <b_jonas> no, it has to be a command-line option to suppress the first prompt
+2020-08-29 21:39:48 <spruit11> Hmm. If it's useful I'll build that in.
+2020-08-29 21:40:44 <b_jonas> I don't know, how would you implement HackEso being able to run an egel one-liner, which is first priority, running a script with prints is less important
+2020-08-29 21:40:59 <b_jonas> you know egel better, maybe you have a better idea for this
+2020-08-29 21:41:59 <b_jonas> for one-liners you really want some symbols imported from the prelude
+2020-08-29 21:43:06 <b_jonas> as a bonus, rename one of the "length" functions so you can access both without giving an explicit namespace
+2020-08-29 21:43:17 <b_jonas> IIRC one was string length, the other list length
+2020-08-29 21:43:23 <b_jonas> probably rename the list length one
+2020-08-29 21:43:31 <spruit11> Right. I am mulling of it.
+2020-08-29 21:43:37 <spruit11> *over
+2020-08-29 21:43:41 <b_jonas> ok, it's not like it's urgetn
+2020-08-29 21:43:58 <b_jonas> and I don't think I'll have any practical applications for this
+2020-08-29 21:44:08 <b_jonas> it's just another #esoteric toy
+2020-08-29 21:44:52 <b_jonas> so I won't even eg. use it as a scripting language to write ordinary scripts on egel, there's perl and python on HackEso for that
+2020-08-29 21:46:51 <spruit11> Right.
+2020-08-29 21:48:18 <spruit11> I am looking at what Python does.
+2020-08-29 21:48:30 <spruit11> When in doubt, copy.
+2020-08-29 21:48:44 <b_jonas> spruit11: python sort of doesn't do the right thing here,
+2020-08-29 21:49:11 <b_jonas> in that in python, some code requires multiple lines, and there's no nice way to put those in a one-liner.
+2020-08-29 21:49:20 <b_jonas> I think egel doesn't have that, so you don't have to deal with that
+2020-08-29 21:50:00 <spruit11> Oh, right. I am just wondering whether you can surpress the prompt of Python.
+2020-08-29 21:50:09 <b_jonas> also python has a real repl, which can run a statement and then ask for another statement on input, which I don't need for HackEso because HackEso can't get interactive inputs
+2020-08-29 21:50:12 <spruit11> dc on the other hand doesn't even have a prompt.
+2020-08-29 21:50:38 <b_jonas> oh, you mean suppress the prompt but still print things? let me look that up
+2020-08-29 21:50:39 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77079&oldid=77077 5* 03IFcoltransG 5* (+106) 10Expanded upon spaces
+2020-08-29 21:51:09 <b_jonas> python by default doesn't print values if it's not in interactive mode
+2020-08-29 21:51:18 <b_jonas> it just runs the statements as in from a script
+2020-08-29 21:51:41 <b_jonas> in fact it reads and compiles the whole input then before running anything
+2020-08-29 21:51:42 <esowiki> 14[[07Conveyer14]]4 N10 02https://esolangs.org/w/index.php?oldid=77080 5* 03Abbin21 5* (+2483) 10Created page with "{{infobox proglang |name=Conveyer |author=[[User:Abbin21]] |majorimpl=[https://github.com/Abbin44/Conveyer Github Page] |year=[[:Category:2020|2020]] |files=<code>.coy</code>..."
+2020-08-29 21:51:49 <b_jonas> let me see how to change that
+2020-08-29 21:51:55 <spruit11> Yah, that's what Egel does too.
+2020-08-29 21:51:56 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77081&oldid=77080 5* 03Abbin21 5* (+2) 10/* How it works */
+2020-08-29 21:52:06 User Name: fizzie = fizzie!fis@unaffiliated/fizzie
+2020-08-29 21:52:06 <fizzie> b_jonas: import sys; sys.ps1 = ''
+2020-08-29 21:52:08 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77082&oldid=77081 5* 03Abbin21 5* (+1) 10/* How it works */
+2020-08-29 21:52:23 <fizzie> (And ps2 for the "secondary prompt", the ... one.)
+2020-08-29 21:52:44 <spruit11> Oh, right. Interesting.
+2020-08-29 21:52:49 <b_jonas> fizzie: ok, but how do you use interactive mode or print results automatically without input from a terminal, which is what you want in HackEso
+2020-08-29 21:53:01 <zzo38> You can use dc interactively but it won't display a prompt nor display results automatically. The SQLite command line program does always display the results (even if the prompt is not displayed), since there is nothing else to do with the results (other than possibly writing them to a file, which it can also do if you specify that).
+2020-08-29 21:53:02 <spruit11> So you can set the prompt from a script?
+2020-08-29 21:53:29 <b_jonas> not that it matters because of the impractical newline thing, I have to fix that first by adding additional core python syntax, which I've been planning for a while but never really started coding
+2020-08-29 21:53:41 <b_jonas> I have figured out what I think is the right syntax at least
+2020-08-29 21:53:48 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77083&oldid=77082 5* 03Abbin21 5* (+125) 10
+2020-08-29 21:54:00 <b_jonas> but even then I wouldn't do automatic prints from non-terminal, I'd just add prints
+2020-08-29 21:54:03 <b_jonas> but
+2020-08-29 21:54:11 <fizzie> I'm sure there's a way to get it to interactive mode.
+2020-08-29 21:54:31 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77084&oldid=77079 5* 03IFcoltransG 5* (+150) 10/* Language specifications */  Specified v behaviour better
+2020-08-29 21:54:34 <fizzie> There's also sys.displayhook, which "is called on the result of evaluating an expression entered in an interactive Python session" and can be used to customize how things are printed.
+2020-08-29 21:54:34 <b_jonas> spruit11: the problem is, adding prints isn't a problem, but in non-interactive mode, egel can't even just evaluate multiple expressions for their side-effects
+2020-08-29 21:54:53 <spruit11> b_jonas: No, it can now.
+2020-08-29 21:54:53 <b_jonas> spruit11: so in non-interactive mode, I don't just have to add prints, I have to add lets assigning to a dummy and prints
+2020-08-29 21:54:58 <b_jonas> oh
+2020-08-29 21:55:02 <b_jonas> in that case forget interactive mode
+2020-08-29 21:55:08 <b_jonas> if you fixed that, we want to use non-interactive mode only
+2020-08-29 21:55:20 <b_jonas> and explicit print statements in the one-liner
+2020-08-29 21:55:41 <spruit11> b_jonas: I added the val keyword. 'val f = expr' will run 'expr' and assign the value to 'f'.
+2020-08-29 21:55:47 <spruit11> That's new.
+2020-08-29 21:55:48 <b_jonas> spruit11: can multiple declarations and expressions  just be on one line separated by semicolons?
+2020-08-29 21:56:07 <b_jonas> spruit11: but then you'd still need a dummy var, that's not really better than needing lets
+2020-08-29 21:56:11 <spruit11> Egel isn't layout sensitive?
+2020-08-29 21:56:19 <b_jonas> I hope not, but I don't remember completely
+2020-08-29 21:56:28 <b_jonas> I thought there was some problem with use or import statements or something
+2020-08-29 21:56:37 <spruit11> But I don't see what putting stuff on one line would help?
+2020-08-29 21:56:48 <b_jonas> which aren't really statements and I think the interactive interpreter didn't like them on the same line as normal stuff
+2020-08-29 21:57:04 <b_jonas> spruit11: because we type single IRC lines as input to HackEso
+2020-08-29 21:57:06 <b_jonas> like
+2020-08-29 21:57:06 <fizzie> `` echo -e '1 + 1\n2 + 2\n' | python -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 21:57:07 <HackEso> ​ \ 2 \ 4
+2020-08-29 21:57:31 <fizzie> There's one extra newline from somewhere, but it's almost an interactive Python with no prompts and reading from a non-terminal stdin.
+2020-08-29 21:57:31 <spruit11> The interactive intepreter will read one thing. WHich is either an expression, a declaration, or ..
+2020-08-29 21:57:56 <spruit11> I don't think I'll change that.
+2020-08-29 21:58:07 <b_jonas> `` echo -e '1 + 1\n)\n2 + 2\n' | python -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 21:58:09 <HackEso> ​  File "<stdin>", line 1 \     ) \     ^ \ SyntaxError: invalid syntax \  \ 2 \ 4
+2020-08-29 21:58:24 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77085&oldid=77084 5* 03IFcoltransG 5* (+69) 10Formatting
+2020-08-29 21:58:41 <b_jonas> `` echo -e 'print(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n' | python -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 21:58:42 <HackEso> ​  File "<stdin>", line 1 \     print(1 + 1, file=stderr) \                      ^ \ SyntaxError: invalid syntax \   File "<stdin>", line 1 \     ) \     ^ \ SyntaxError: invalid syntax \   File "<stdin>", line 1 \     print(2 + 2, file=stderr) \                      ^ \ SyntaxError: invalid syntax
+2020-08-29 21:58:56 <b_jonas> `` echo -e 'print(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n' | python3 -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 21:58:57 <HackEso> Traceback (most recent call last): \   File "<stdin>", line 1, in <module> \ NameError: name 'stderr' is not defined \   File "<stdin>", line 1 \     ) \     ^ \ SyntaxError: invalid syntax \ Traceback (most recent call last): \   File "<stdin>", line 1, in <module> \ NameError: name 'stderr' is not defined
+2020-08-29 21:59:10 <b_jonas> `` echo -e'from sys import stderr; print(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n' | python3 -i -c 'import sys; sys.ps1 = ""; sys.ps2 = ""'
+2020-08-29 21:59:11 <HackEso> ​  File "<stdin>", line 1 \     -efrom sys import stderr; print(1 + 1, file=stderr)\n)\nprint(2 + 2, file=stderr)\n \              ^ \ SyntaxError: invalid syntax
+2020-08-29 21:59:30 <fizzie> I'd like it if "python" would be Python 3 at some point.
