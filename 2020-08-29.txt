@@ -21,3 +21,44 @@
 2020-08-29 03:38:45 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-08-29 03:43:33 Quit: tromp (Ping timeout: 272 seconds)
 2020-08-29 03:43:33 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 04:36:09 User Name: shachaf = shachaf!~shachaf@unaffiliated/shachaf
+2020-08-29 04:36:09 <shachaf> jix: whoa, what's going on in SATland?
+2020-08-29 04:37:19 User Name: jix = jix!~jix@static.71.5.69.159.clients.your-server.de
+2020-08-29 04:37:19 <jix> shachaf: huh?
+2020-08-29 04:37:26 <shachaf> I don't remember what I last said about my solver. I added (very simple) clause deletion, and Luby restarts, and it actually became reasonably fast on some inputs.
+2020-08-29 04:38:06 <shachaf> But it sounds like your solver is way fancier and also world-famous now.
+2020-08-29 04:39:03 <jix> it's not famous at all, it's good enough to be practically useful but it's not state of the art stuff
+2020-08-29 04:39:27 <jix> but a somewhat well known rust person started using it (for some not (yet?) public project)
+2020-08-29 04:40:05 <jix> and that person seems to have quite a few followers on github, so now the traffic on my project suddenly increased
+2020-08-29 04:42:09 <shachaf> Aha.
+2020-08-29 04:44:12 <shachaf> I should get back to working on it.
+2020-08-29 04:44:23 <jix> so do I...
+2020-08-29 04:44:35 <jix> but I want to rewrite half of it... again
+2020-08-29 04:44:37 <shachaf> It got more fun when I stopped using random instances and started using real instances.
+2020-08-29 04:44:46 Joined: Lord_of_Life
+2020-08-29 04:44:51 <shachaf> I should pick a good representative set of instances to be testing on.
+2020-08-29 04:45:37 <jix> yeah first that makes it more fun.... but then you realize you need a good way to benchmark stuff and that's another rabbit hole
+2020-08-29 04:45:54 <shachaf> Yes, definitely trickier than I thought.
+2020-08-29 04:46:08 Quit: Lord_of_Life (Ping timeout: 265 seconds)
+2020-08-29 04:46:08 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-08-29 04:49:20 <shachaf> What's it being used for?
+2020-08-29 04:50:04 <shachaf> Or is the project unknown?
+2020-08-29 04:50:05 <shachaf> I wonder whether I should improve my SAT solver or try figuring out how SMT solvers work.
+2020-08-29 04:52:57 <jix> unknown, but he commented on an open issue related to timeouts and mentioned that he added cancellation from another thread and asked whether I'd be interested in merging something like that
+2020-08-29 04:53:34 <jix> where he mentioned that he's using it in an interactive setting... and IIRC he recently started working on games, so that'd be my guess
+2020-08-29 04:53:41 <shachaf> Aha, the Io person.
+2020-08-29 04:53:56 <shachaf> My friend was using a SAT solver to design levels in a puzzle game.
+2020-08-29 04:54:04 <jix> Io?
+2020-08-29 04:54:17 <shachaf> http://canonical.org/~kragen/raph-io.html
+2020-08-29 04:56:06 <shachaf> jix: For my own solver, instead of a timeout, I was thinking of adding a more iterator-like API for the solver loop.
+2020-08-29 04:56:42 <shachaf> Well, I guess for a SAT solver it's pretty simple, if it looks like a classic CDCL solver.
+2020-08-29 04:57:49 <jix> yeah I also thought about that, (for the same reason, it's somewhat natural given the CDCL loop), but I do want to offer convenience APIs for a) callback based termination to match the IPASIR api and b) cancellation from a different thread using an atomic bool as flag and c) timeouts without requiring a second thread
+2020-08-29 04:58:29 <shachaf> The loop looks like while (1) { unit_propagation(); if (conflict) { if (level == 0) return false; backtrack(); } else { if (all_assigned) return true; guess(); } }, right?
+2020-08-29 04:58:47 Joined: Arcorann
+2020-08-29 04:58:49 <shachaf> Where most time is spent in unit propagation.
+2020-08-29 04:59:05 <shachaf> Yes, makes sense that you've had the same thought.
+2020-08-29 04:59:29 User Name: zzo38 = zzo38!~zzo38@host-24-207-14-22.public.eastlink.ca
+2020-08-29 04:59:29 <zzo38> What puzzle game levels are designing by SAT solver?
+2020-08-29 04:59:30 <jix> well there are also restarts but roughly like that
+2020-08-29 04:59:31 <shachaf> Convenience APIs seem good to provide, but as the core API I think something like this is much nicer.
+2020-08-29 04:59:52 <shachaf> I was already getting into more detail than I meant to.
