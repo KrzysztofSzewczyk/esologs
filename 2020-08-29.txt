@@ -383,3 +383,54 @@
 2020-08-29 20:51:35 <b_jonas> https://en.wikipedia.org/wiki/Chris_Okasaki has the reference
 2020-08-29 20:55:49 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77070&oldid=77069 5* 03Heavpoot 5* (+74) 10
 2020-08-29 20:59:33 <esowiki> 14[[07,,,14]]4 10 02https://esolangs.org/w/index.php?diff=77071&oldid=77054 5* 03SunnyMoon 5* (+94) 10I hope the readers know what I am talking about.
+2020-08-29 21:03:03 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77072&oldid=77070 5* 03IFcoltransG 5* (+148) 10/* Language specifications */
+2020-08-29 21:03:26 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77073&oldid=77072 5* 03IFcoltransG 5* (+6) 10/* Language specifications */ Add <br>
+2020-08-29 21:04:55 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77074&oldid=77073 5* 03IFcoltransG 5* (+7) 10/* Language specifications */ Clearer language
+2020-08-29 21:05:38 <b_jonas> spruit11: ... ok, so the problem here is that I still haven't put on a proper egel installation an wrapper to HackEso (I wanted to modify a few things in the code to make it more convenient for HackEso), so I can't easily test this online
+2020-08-29 21:08:36 <spruit11> Oh, right. Maybe I have an alternative. Moment.
+2020-08-29 21:09:05 <spruit11> https://tio.run/##hVTbbtpAEH33V4ych9qlIVzUFyIqtWmFKkVEIi9YBCEHj8mq9q5lL2po02@nsxevl4a2lsA7Zy5ndi7GHRbH40VwAQvRoJQp3IgMAZ/TsiqQBP49Pbxp4Jbl2A@U3T3iBJ6krCZXV7Xx2ZJLX9S7IGBlJWoJYVVjsScQd6HDmCBRhEGwbxjfwf2hkVha4ZY10h6/3gVBhjk8irTOGvYDYQrvDYRlJQ8krmAJCVx@gAGsjYbxBoljGgA9Rv3p7uPiszLSmMUHkAwUxnJIeQYRAdMpLGOIEn1KYpBPyGHonLwHiwZtWBNo3dJvhaBcLX2BEhaUZV6LUgrKMequcgnDmJL1U6Jc9V3KtILoYdkdNbpUKSX0I7s1hV0YwqpmXG6xKNyV
+2020-08-29 21:09:11 <spruit11> 9bU0DGEfQo2@wMZD30LY5qsRnZXzb8vlUstFkRWw2ihmm9Mq0um0ITV/ZAtCijWZXrdsD5zYgIuqLY4r1Z7LP1hNNx2zDUlkulxRot8x9DrNebR3Yv23eMkrn@Qf1lHSO8PdO8usUXtPjs/Sa87cTt1cTdnYDpmZqIHrVWskaoi04Si2h3F86tKy7KsslfifTqqBpCZO7Vy5Jqqye@2DyPSmQwjKi1RKIjZNPJldFZZG1w8LNzDvQusSKERPr@fZjldtJgoGcbet5vACWrHxFHbFu9Ve2@8B5WCr8Vgw/g1rW4nIegxVGftOHJ2KYxKNd5kyTrdxOzz7MqdvggtqyOwtrH5Ier8F2uXUZPTaZOjXwq3ZzFvVHXKsU8kEn9AeXfv7OrNb9VNxvdPh9P/o1/
+2020-08-29 21:09:17 <spruit11> H4Gw
+2020-08-29 21:09:19 <spruit11> Oops.
+2020-08-29 21:10:00 <spruit11> That was more lengthy than I expected. 'Try it online' has Egel.
+2020-08-29 21:10:23 <spruit11> You can find it from here: https://egel-lang.github.io/
+2020-08-29 21:10:31 <spruit11> But I don't know what version it runs.
+2020-08-29 21:11:33 <b_jonas> ok
+2020-08-29 21:13:15 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77075&oldid=77074 5* 03IFcoltransG 5* (+395) 10Added symbols
+2020-08-29 21:13:41 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77076&oldid=77075 5* 03IFcoltransG 5* (+1) 10/* Language specifications */ Comma for clarity
+2020-08-29 21:14:26 <spruit11> https://tio.run/##S01Pzfn/PyU1TSE3MTNPwVZBKSM1Jydf6f9/AA
+2020-08-29 21:15:53 <spruit11> Don't forget to give 'using System' directives.
+2020-08-29 21:16:05 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77077&oldid=77076 5* 03IFcoltransG 5* (+5) 10/* Language specifications */ Clarified semantics
+2020-08-29 21:16:11 <spruit11> Otherwise you don't have addition, etc.
+2020-08-29 21:18:38 <spruit11> https://tio.run/##S01Pzfn/v7Q4My9dIbiyuCQ1l4srJTVNIS0xWcFWIVrBQEHXTsFQoUbBD8TwU9ACy2gAeQqGmgqxEMW5iZl5QNUgGdP//wE
+2020-08-29 21:18:46 <spruit11> I'll stop spamming now.
+2020-08-29 21:18:54 <b_jonas> spruit11: right, so basically for HackEso I want to write a wrapper, and modify the code when necessary, so that I can start spruit such that it runs a custom (for HackEso) prelude that loads the right modules and imports the right things into your namespace, and then run either a file or the code in an argument, in both case in the same namespace that I imported stuff into,
+2020-08-29 21:20:01 <b_jonas> optionally do it like the interactive interpreter that can execute a value and then print it, but such that you can still have (silent) declarations and assignments in the same code as the one that can just print values, and it doesn't print interactive prompts (I think this part needs a code change),
+2020-08-29 21:21:01 <spruit11> The biggest problem is persistency, right? You probably also want some kind of persistency in a session/irc conversation.
+2020-08-29 21:21:02 <b_jonas> and ideally also modify the pretty-printer so it can print tuples and lists using proper tuple or list notation, possibly incomplete lists too, but have some escape so you can print full forms too
+2020-08-29 21:21:19 <b_jonas> spruit11: that's later, first I just want single lines
+2020-08-29 21:21:24 <b_jonas> persistency is harder
+2020-08-29 21:22:15 <b_jonas> though I could probably add lambdabot-like persistence, where in addition to a constant prelude, it also adds a variable prelude, and there's a command to try to add a declaration to the variable prelude but only if it doesn't error out, and a command to delete the entire variable prelude
+2020-08-29 21:22:16 <spruit11> Seems like a lot of work? How did you do it for other languages?
+2020-08-29 21:22:33 <b_jonas> with prehaps two of these preludes, one in tmp and one not in tmp
+2020-08-29 21:22:42 <b_jonas> but even without persistence this is useful
+2020-08-29 21:22:55 <b_jonas> spruit11: persistance can be done in various ways depending on what languages do
+2020-08-29 21:23:31 <b_jonas> for jevalbot, for persistence I dump only the value of the symbols in the main namespace, and load those at the start, using J's built-in value serializer
+2020-08-29 21:23:33 <spruit11> I remember somebody from another channel who just wrote a short bash script. Moment.
+2020-08-29 21:24:32 <esowiki> 14[[07User:DmilkaSTD14]]4 10 02https://esolangs.org/w/index.php?diff=77078&oldid=76588 5* 03DmilkaSTD 5* (-2584) 10Blanked the page
+2020-08-29 21:24:50 <b_jonas> in broad strokes, there are three ways to do persistence: (a) keep an interpreter process alive, (b) save the code that takes you to that state, like lambdabot, (c) serialize (some of) interpreter state, like jevalbot
+2020-08-29 21:26:07 <b_jonas> (c) is the most variable, because interpreters themselves differ a lot in what support they offer for this, some have workspaces like many classical APL or Smalltalk that saves everything in interpreter state but not necessarily in code form, some have some help to serialize data but not necessarily all state (because state can contain eg. file descriptors)
+2020-08-29 21:26:19 <b_jonas> but without persistence, this isn't a lot of work
+2020-08-29 21:26:34 <b_jonas> at least when I looked at egel the last time, it seemed like only a few easy changes
+2020-08-29 21:26:39 <b_jonas> I was just lazy to finish it
+2020-08-29 21:26:51 <b_jonas> because egel can already do most of what I want so I just need a wrapper script
+2020-08-29 21:27:17 <b_jonas> to run the prelude and code in the same namespace, I can just concatenate them before I give it to egel
+2020-08-29 21:27:39 <spruit11> https://github.com/diku-dk/sturluson
+2020-08-29 21:27:44 <b_jonas> and I can invoke egel as an interactive interpreter, which does most of what I want, except I need to silence the prompts
+2020-08-29 21:28:02 <spruit11> ^ has a bash script which runs the futhark compiler.
+2020-08-29 21:28:02 <b_jonas> and IIRC I had to do something with the module search paths
+2020-08-29 21:28:23 <b_jonas> IIRC because spruit11 has "." hard-coded to search path, which I hate and want to turn off
+2020-08-29 21:28:56 <b_jonas> so I think it's only two minor changes to egel: remove hard-coded "." from search path, silence prompts (both possibly only if you give a command-line option)
+2020-08-29 21:29:04 <b_jonas> and then a wrapper script and prelude
+2020-08-29 21:29:35 <b_jonas> we already have wrapper scripts that run an interpreter or compiler with stuff from command line. if anything, we have too many of those wrapper scripts and they do too much.
+2020-08-29 21:29:40 <b_jonas> on HackEso that is
