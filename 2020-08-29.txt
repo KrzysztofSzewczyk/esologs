@@ -159,3 +159,6 @@
 2020-08-29 07:16:53 <shachaf> How should I choose which learnt clauses to delete?
 2020-08-29 07:16:58 <shachaf> Right now I just delete the longest ones.
 2020-08-29 07:17:11 <shachaf> Also, how should I store watch lists?
+2020-08-29 07:32:41 <zzo38> Unfortunately, I don't know. Hopefully, we can learn which way is good.
+2020-08-29 07:49:57 <jix> shachaf: the classic approach (used by minisat and probably solvers before it) uses clause activities, glucose added LBDs (aka as clause glues or glue levels) as a metric for that, chanseok oh's solvers added a strategy that partitions learned clauses into 3 tiers and uses activities and LBDs and whether they've been part of a conflict recently (IIRC it's been a time) and that's the state of the
+2020-08-29 07:49:59 <jix> art unless something changed in the past 1.5 years
