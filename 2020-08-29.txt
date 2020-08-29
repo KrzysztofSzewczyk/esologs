@@ -666,3 +666,87 @@
 2020-08-29 22:28:40 <spruit11> Shortest I remember is one file of 2kLoc?
 2020-08-29 22:28:42 <spruit11> Unsure.
 2020-08-29 22:29:16 <b_jonas> I would like to write a reference interpreter for Consumer Society in C that can be reduced to small if you omit all the optional features
+2020-08-29 22:30:18 <spruit11> ANyway. Prompt. Multiple expressions. Pretty-printing. Arity fix.
+2020-08-29 22:30:42 <spruit11> That's enough for a day.
+2020-08-29 22:30:48 <b_jonas> I am not specifically requesting the arity fix
+2020-08-29 22:31:06 <b_jonas> I don't think I'd use that
+2020-08-29 22:31:18 <spruit11> Yah, but it's more on the top of my list than the rest.
+2020-08-29 22:31:20 <b_jonas> I mean I'd try it if you developped it
+2020-08-29 22:31:34 <b_jonas> add renaming "length" to the list instead
+2020-08-29 22:31:43 <b_jonas> or in addition
+2020-08-29 22:31:51 <b_jonas> the list length
+2020-08-29 22:32:03 <spruit11> It's annoying if general stuff isn't expressible in the language. So that kind-of floats to the top as a language bug.
+2020-08-29 22:32:08 <b_jonas> hmm, should I make tickets on github?
+2020-08-29 22:32:45 <spruit11> You could that but I have no clue how git works. I just push to master constantly.
+2020-08-29 22:33:08 <b_jonas> spruit11: that's not a feature of git
+2020-08-29 22:33:11 <b_jonas> it's a feature of github only
+2020-08-29 22:33:16 <b_jonas> and a very controversial one
+2020-08-29 22:33:30 <b_jonas> many people hate the github ticket system, which I totally understand
+2020-08-29 22:33:30 <zzo38> If you don't like git then you could use a different version control system? There are many other ones too, not only git
+2020-08-29 22:33:33 <b_jonas> I hate it too
+2020-08-29 22:34:04 <b_jonas> but if a developer is maintaining their code and requests to submit tickets there, then of course I use it
+2020-08-29 22:34:08 <spruit11> Well, with my push to master approach it worked so far for me.
+2020-08-29 22:34:13 <zzo38> But what way would you do the ticket system better?
+2020-08-29 22:35:29 <b_jonas> zzo38: there are two main problems. one is that there's no easy way to migrate away from github if you use tickets. no easy feature to export all tickets. you can migrate the version control easily, since you can git clone it.
+2020-08-29 22:36:24 <fizzie> *Surely* they must have that in the API?
+2020-08-29 22:37:06 <b_jonas> zzo38: the other problem is not necessarily with tickets, only with how some projects use tickets: they demand that you submit github pull request, which require that the submitter makes a clone of the repository on github. you can't just submit a formatted git patch, you have to apply it to a github repo and link to the git commit object, that's how you can create a pull request.
+2020-08-29 22:37:09 <zzo38> One problem I think is that as far as I can tell, you cannot post a ticket if you do not have an account, and I do not know if this can be customized.
+2020-08-29 22:37:16 <b_jonas> fizzie: they probably have a way to access tickets individuall
+2020-08-29 22:37:21 <b_jonas> and iterate over them
+2020-08-29 22:37:35 <esowiki> 14[[07Conveyer14]]4 10 02https://esolangs.org/w/index.php?diff=77090&oldid=77083 5* 03Abbin21 5* (-102) 10
+2020-08-29 22:37:36 <b_jonas> and the comments for them
+2020-08-29 22:37:39 <b_jonas> and all that stuff
+2020-08-29 22:38:18 <fizzie> I think that's pretty reasonable. I mean, you'd have to write some sort of conversion to whatever issue-tracking system you'd want to put them into, it's not like there's a standard interchange format for issue trackers.
+2020-08-29 22:38:25 <b_jonas> zzo38: yes, I guess you can add that, though I find that more acceptible, and have a github account that I use only for tickets, I don't have projects on github currently
+2020-08-29 22:39:17 <b_jonas> zzo38: though I admit that even for that, it took me a long time until I could change my displayed username to what I want, because apparently I (or someone else) created an account with the username b_jonas, but I can't access that account, even though I probably created it somehow, so I can't use that username
+2020-08-29 22:39:24 <zzo38> Yes, and if they demand you do a pull request instead, well I suppose it is right it isn't really a problem with the system itself but it is a problem, even if they add the possibility to add tickets without an account, that wouldn't work for pull requests.
+2020-08-29 22:39:26 <b_jonas> so I changed to some other similar username instead, and even that took a while
+2020-08-29 22:40:07 <b_jonas> zzo38: right, and a project could use the github ticket system but accept patches in forms other than github pull requests
+2020-08-29 22:40:34 <b_jonas> but I don't think I've seen any project do that
+2020-08-29 22:40:42 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77091&oldid=77090 5* 03Abbin21 5* (+35) 10
+2020-08-29 22:40:43 <fizzie> Hmm, I hadn't really internalized that submitting GitHub issues requires a GitHub account.
+2020-08-29 22:42:33 <b_jonas> zzo38: oh, and one more thing. many projects don't want to use the github ticket system, and have some other way of reporting bugs, but it's not possible to configure github to just reject creating tickets and pull requests, so the best they can do is have some script that watches for tickets and pull requests and closes them with a reply that has a link to instructions for submitting bug reports and
+2020-08-29 22:42:39 <b_jonas> patches
+2020-08-29 22:43:06 <b_jonas> zzo38: often they don't even use github for development at all, they just symc the project there so people can download the version history from github too
+2020-08-29 22:43:09 <b_jonas> sync
+2020-08-29 22:43:29 <b_jonas> like periotically push there from a master git repo hosted elsewhere
+2020-08-29 22:43:55 <b_jonas> so these projects have to do a lot of extra work with tickets and pull requests
+2020-08-29 22:43:55 <fizzie> You can definitely configure GitHub to not have issues enabled.
+2020-08-29 22:44:10 <zzo38> I think I have seen some projects without issues enabled
+2020-08-29 22:44:17 <b_jonas> (usually tickets, because the people who create pull requests are more likely to read instructions before submitting)
+2020-08-29 22:44:51 <b_jonas> fizzie: projects that are still developped, not like closed and locked and owner account deleted?
+2020-08-29 22:45:05 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77092&oldid=77089 5* 03Heavpoot 5* (+40) 10
+2020-08-29 22:45:09 <zzo38> There are other git hosting services other than GitHub anyways.
+2020-08-29 22:45:35 <b_jonas> zzo38: sure, and that's a good thing, multiple services is a plus, but a service is worse if you can't migrate away easily
+2020-08-29 22:45:45 <fizzie> b_jonas: Yes, I'm moderately sure, because I remember having to explicitly have to go in and enable issues for the `esolangs` repo (not that anyone's submitted any). Trying to double-check now though.
+2020-08-29 22:45:50 <zzo38> Also, in Fossil if you clone the repository it does clone the tickets too, so it doesn't have that problem at least. (And you can use SQL to export the tickets, should you need to do)
+2020-08-29 22:45:51 <b_jonas> (it's also worse if you can't migrate *to* it easily, but I don't know how that works on github)
+2020-08-29 22:46:08 <b_jonas> zzo38: right
+2020-08-29 22:46:18 <fizzie> Yes, there's a "[ ] Issues" checkbox in the repository settings, "Options" tab, "Features" subsection.
+2020-08-29 22:46:27 <b_jonas> fizzie: hmm...
+2020-08-29 22:46:49 <b_jonas> fizzie: I might look at this later, but this is definitely what someone wrote about a project
+2020-08-29 22:46:53 <b_jonas> on github
+2020-08-29 22:47:08 <fizzie> (The list of toggleable features is: Wikis, "Restrict editing to collaborators only", Issues, Sponsorships, Projects and "Preserve this repository".)
+2020-08-29 22:47:18 <b_jonas> I can find which project it was so I can look it up later
+2020-08-29 22:48:25 <fizzie> That last feature is the thing where they took all GitHub code to the vault in Svalbard. I should've made sure to make *some* commit to the esolangs repo to have it included, since it only grabbed "repositories that have been active within recent months".
+2020-08-29 22:48:50 <fizzie> Because if there's something they'll need after a civilization-ending disaster, it's the code for esolangs.org/logs.
+2020-08-29 22:49:11 <b_jonas> fizzie: how often do they repeat that?
+2020-08-29 22:49:33 <fizzie> I think it was a one-off. At least they've not said anything about doing it periodically.
+2020-08-29 22:49:44 <fizzie> "We plan to evaluate the program, and the state of the art of archival technology, every five years. Depending on the results of each evaluation, we may then decide to take another snapshot of GitHub’s public code and archive it in cold storage."
+2020-08-29 22:49:53 <b_jonas> ah
+2020-08-29 22:50:11 <b_jonas> "five years" is never in this sort of thing
+2020-08-29 22:50:30 <b_jonas> especially with "may decide"
+2020-08-29 22:50:41 <fizzie> Heh, they didn't include commit messages, apparently for GDPR-style reasons.
+2020-08-29 22:51:02 <b_jonas> hehe
+2020-08-29 22:53:02 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77093&oldid=77091 5* 03Abbin21 5* (+97) 10
+2020-08-29 22:54:36 <fizzie> Oh, they've got another project going on for even more long-term storage.
+2020-08-29 22:54:51 <fizzie> Because the film they've put in the vault is only good for 500-1000 years.
+2020-08-29 22:55:39 <fizzie> Reading up on https://archiveprogram.github.com/ -- there's a sort of map of layers of archives, and at the bottom they say they're "partnering with Microsoft’s Project Silica to ultimately archive all active public repositories for over 10,000 years, by writing them into quartz glass platters using a femtosecond laser".
+2020-08-29 22:55:52 <fizzie> I imagine that's not at all related to the fact that it's a Microsoft subsidiary.
+2020-08-29 22:56:16 <b_jonas> fizzie: the problem there is that it's basically impossible to give a lower bound for how long any storage is likely to last without testing for much more than that amount of time
+2020-08-29 22:56:29 <b_jonas> you can give upper bounds
+2020-08-29 22:56:59 <fizzie> Yeah, I'm sure it's pretty much just estimates.
+2020-08-29 22:57:22 <fizzie> For the film they say it "has a lifespan of 500 years as measured by the ISO", but presumably ISO has not in fact tested it for 500+ years.
+2020-08-29 22:58:04 <b_jonas> just like how you can't really know for sure that a new medication or medical procedure for humans doesn't have harmful side-effects on the patient until it's been used more than a human lifespan ago
+2020-08-29 22:58:20 Quit: imode (Ping timeout: 258 seconds)
+2020-08-29 22:58:20 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
