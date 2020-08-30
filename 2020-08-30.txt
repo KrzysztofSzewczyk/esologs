@@ -413,3 +413,122 @@
 2020-08-30 11:59:50 <b_jonas> it interprets that as throw(4;5)
 2020-08-30 11:59:58 <b_jonas> egelbot: 3; (throw 4); 5
 2020-08-30 11:59:58 <egelbot> exception(4)
+2020-08-30 12:00:04 <spruit11> Oh. Right. Phew.
+2020-08-30 12:00:11 <b_jonas> egelbot: ((say 3); (throw 4); (say 5))
+2020-08-30 12:00:11 <egelbot> 3
+2020-08-30 12:00:12 <egelbot> exception(4)
+2020-08-30 12:00:16 <b_jonas> see
+2020-08-30 12:00:28 <spruit11> So I guess I should take a look at the syntax.
+2020-08-30 12:00:31 <b_jonas> egelbot: def raisepls: throw "oops"
+2020-08-30 12:00:31 <egelbot> internal:1:14:syntactical:= expected
+2020-08-30 12:00:47 <b_jonas> egel had strange precedence already when I last looked
+2020-08-30 12:00:49 <b_jonas> IIRC
+2020-08-30 12:00:56 <spruit11> Moving say to print makes sense. There's no reason it should be say in the bot.
+2020-08-30 12:01:17 <b_jonas> spruit11: you may want both print and println though
+2020-08-30 12:01:21 <b_jonas> for convenience
+2020-08-30 12:01:32 <spruit11> Yah, the operator table doesn't allow for equal precedencies.
+2020-08-30 12:01:41 <spruit11> But that's for way later.
+2020-08-30 12:02:03 <spruit11> For now, I'll change say to print and do your pretty printing hack.
+2020-08-30 12:02:04 <b_jonas> egelbot: def raisepls = (throw "oops")
+2020-08-30 12:02:20 <b_jonas> egelbot: ((say 3); raisepls; (say 5))
+2020-08-30 12:02:20 <egelbot> 3
+2020-08-30 12:02:21 <egelbot> exception("oops")
+2020-08-30 12:02:41 <b_jonas> egelbot: let Raisepls = (throw "Oops") in ((say 3); Raisepls; (say 5))
+2020-08-30 12:02:41 <egelbot> exception("Oops")
+2020-08-30 12:03:02 <b_jonas> egelbot: def saypls = "please"
+2020-08-30 12:03:09 <spruit11> egelbot: def raise = [ X -> throw X ]
+2020-08-30 12:03:15 <spruit11> egelbot: raise 6
+2020-08-30 12:03:15 <egelbot> exception(6)
+2020-08-30 12:03:31 <b_jonas> egelbot: (say 3; 4) + (saypls; 5)
+2020-08-30 12:03:31 <egelbot> 3
+2020-08-30 12:03:31 <egelbot> 9
+2020-08-30 12:03:41 <b_jonas> egelbot: def saypls = say "please"
+2020-08-30 12:03:45 <b_jonas> egelbot: (say 3; 4) + (saypls; 6)
+2020-08-30 12:03:45 <egelbot> please
+2020-08-30 12:03:46 <egelbot> 3
+2020-08-30 12:03:46 <egelbot> 10
+2020-08-30 12:03:50 <b_jonas> hmm
+2020-08-30 12:03:54 <b_jonas> creative evaluation order too
+2020-08-30 12:04:10 <spruit11> I know raise is popular in academia but I rather stick to the now more popular throw.
+2020-08-30 12:04:22 <spruit11> Yah, it's left to right.
+2020-08-30 12:04:24 <b_jonas> throw is fine, I just programmed too much python
+2020-08-30 12:04:31 <spruit11> Uh, right to left.
+2020-08-30 12:05:28 <spruit11> It's a bit weird but also more orthogonal I feel. `f x y` goes from right to left.
+2020-08-30 12:06:07 <b_jonas> anyway, this means you can put just one word instead of two in the [ ... | _ _ -> raisebadargs] trailer in function definitions
+2020-08-30 12:06:53 <b_jonas> well, the evaluation order is noticable only when you use impure functions like say, and there are ways to force it in that case, so it doesn't matter too much
+2020-08-30 12:07:10 <b_jonas> egelbot: (say 3; say 4)
+2020-08-30 12:07:10 <egelbot> 3
+2020-08-30 12:07:10 <egelbot> 4
+2020-08-30 12:07:23 <spruit11> I was thinking on throwing exceptions now on everything, including unevaluated combinators. But I still think I'll leave it up to the programmer.
+2020-08-30 12:07:58 <spruit11> There has to be some weirdity!
+2020-08-30 12:08:00 <b_jonas> ok. not great for your bot that doesn't tolerate infinite loops, but doesn't matter as much for HackEso which will just time out in like a minute
+2020-08-30 12:08:52 <b_jonas> (it's not really a minute, but something on that order of magnitude, don't depend on the exact timeout value)
+2020-08-30 12:09:14 <spruit11> Great. I'll hack on pretty printing today, I think.
+2020-08-30 12:09:40 <spruit11> Does the build script work for you?
+2020-08-30 12:10:59 <spruit11> And install script?
+2020-08-30 12:11:18 <spruit11> I guess I should add a 'local' option to install once.
+2020-08-30 12:15:08 Quit: egelbot (Remote host closed the connection)
+2020-08-30 12:15:09 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 12:15:11 <b_jonas> spruit11: dunno, I think I wrote a simple custom install script for HackEso, because that was simpler than modifying your install script, but I used the Makefile with some arguments to set pathnames
+2020-08-30 12:15:57 Joined: egelbot
+2020-08-30 12:15:58 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 12:16:00 <b_jonas> but basically I just had to invoke a make target for each library and one for the interpreter, then copy files and install a wrapper script
+2020-08-30 12:16:39 <spruit11> egelbot: print 5
+2020-08-30 12:16:39 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 12:16:39 <egelbot> 5
+2020-08-30 12:16:43 <spruit11> egelbot: agitprop
+2020-08-30 12:16:43 <egelbot> visit https://egel-lang.github.io/
+2020-08-30 12:17:18 <b_jonas> HackEso has somewhat unusual filesystem hierarchy for legacy reasons, so I needed custom paths anyway
+2020-08-30 12:18:34 <spruit11> It would be nicer if people could get just a local install by running `install local`, right?
+2020-08-30 12:18:52 <b_jonas> admittedly those legacy reasons include my changes...
+2020-08-30 12:19:21 <b_jonas> spruit11: sure, that's basically what I'm doing, but you need to be able to specify make parameters for the paths, like six of them
+2020-08-30 12:19:28 Quit: hendursa1 (Quit: hendursa1)
+2020-08-30 12:19:28 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 12:19:32 <b_jonas> make that eight
+2020-08-30 12:19:40 <spruit11> I suck?
+2020-08-30 12:19:45 Joined: hendursaga
+2020-08-30 12:19:45 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 12:19:45 <spruit11> What did I do now?
+2020-08-30 12:20:18 <spruit11> I'll check that. At least running build should do what it's supposed to do.
+2020-08-30 12:20:44 <spruit11> egelbot: quine0
+2020-08-30 12:20:44 <egelbot> egelbot: print(List:foldr(+)""(List:map[K->List:nth K{"\\","\"",",","egelbot: print(List:foldr(+)","(List:map[K->List:nth K{","}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))"}] {3,1,1,4,1,0,0,1,2,1,0,1,1,2,1,2,1,2,1,3,1,2,1,4,1,2,1,5,1,5}))
+2020-08-30 12:21:14 <b_jonas> one for where the executable goes, one for where the shared libraries go, one for where the scripts go, a prefix that you can set to /usr/local or /usr/local/egel-1.4 or /usr or ~/local can set defaults all three of those previous ones, and a shadow copy of all four of these for when you want the path to differ between installation time and runtime (though you may not need to know the runtime bin)
+2020-08-30 12:21:39 <b_jonas> like I said, your install.sh might work, but it was simpler for me to just copy files than to figure out how to use install.sh
+2020-08-30 12:21:45 <b_jonas> and the Makefile just worked
+2020-08-30 12:21:58 <spruit11> What if I dump everything in '~/egel/'?
+2020-08-30 12:22:08 <b_jonas> spruit11: that's what you have the prefix for
+2020-08-30 12:22:19 <spruit11> Hmm. That seems a bad idea.
+2020-08-30 12:22:21 <b_jonas> you can set the prefix to ~/egel/ if you want to, but for HackEso we want a different path
+2020-08-30 12:22:28 <spruit11> Ah. Okay.
+2020-08-30 12:22:32 <b_jonas> because ~/egel/ is not a useful location to install to
+2020-08-30 12:22:50 <b_jonas> nor would I want to install egel to ~/egel/ on my machine, because I control the filesystem hierarchy under my ~
+2020-08-30 12:23:08 <spruit11> Okay, not going to change that.
+2020-08-30 12:23:11 <b_jonas> (and the distribution defaults together with me control the filesystem hierarchy everywhere in general)
+2020-08-30 12:23:25 <fizzie> `` echo $HOME  # actually, what's ~?
+2020-08-30 12:23:26 <HackEso> ​/tmp
+2020-08-30 12:23:28 <b_jonas> and of course all this is for non-windows
+2020-08-30 12:23:45 <spruit11> Maybe I'll once add `install.sh local path-to-install-dir`.
+2020-08-30 12:23:54 <spruit11> But first the pretty printing.
+2020-08-30 12:23:55 <b_jonas> spruit11: the wiki explains some of the filesystem hierarchy of HackEso
+2020-08-30 12:24:21 <spruit11> Yah. But you're to particular for me to adapt the build script to.
+2020-08-30 12:24:27 <spruit11> *too
+2020-08-30 12:24:39 <b_jonas> you don't have to adapt them, I can just set the paths and write the wrapper
+2020-08-30 12:24:51 <b_jonas> I mean, you don't have to do anything really, I could have done all that I was just lazy
+2020-08-30 12:24:57 <spruit11> Right. I'll think about that.
+2020-08-30 12:25:09 <spruit11> Pretty printing is higher on the list now.
+2020-08-30 12:25:10 <b_jonas> but it's easier if you add make variables
+2020-08-30 12:25:12 <b_jonas> for all the paths
+2020-08-30 12:25:22 <b_jonas> because then people don't need to edit the makefile, just set make variables
+2020-08-30 12:25:51 <spruit11> Uh. I have two scripts. One builds, one installs.
+2020-08-30 12:26:08 <spruit11> The build script should run?
+2020-08-30 12:26:17 <b_jonas> run what?
+2020-08-30 12:26:19 <spruit11> The rest is just copying over?
+2020-08-30 12:26:30 <spruit11> Run a build of the system..
+2020-08-30 12:27:08 <spruit11> It sounded to me like you wanted the build script to install.
+2020-08-30 12:27:14 <b_jonas> no
+2020-08-30 12:27:48 <spruit11> I'll read it again.
+2020-08-30 12:27:52 <b_jonas> I didn't really specify that, but I just imagined a default make target called all that builds, and a make target called install that depends on all and installs, and possibly make targets for test
+2020-08-30 12:28:30 <b_jonas> but if you have separate scripts, rather than the makefile, well then those should have some ways to set the paths
+2020-08-30 12:28:43 <spruit11> Ah. Right.
+2020-08-30 12:29:35 <spruit11> I just use bash for install/build because the internet meme is that recursive make is bad.
+2020-08-30 12:29:46 <spruit11> Better on the safe side.
