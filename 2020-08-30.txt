@@ -691,3 +691,42 @@
 2020-08-30 17:29:46 <b_jonas> ``` swipl -qg "N = [6,5,4], M = [9,8,7|N], display(M)" # you can use the dotted list syntax in input too
 2020-08-30 17:29:47 <HackEso> ​[9,8,7,6,5,4]
 2020-08-30 17:29:47 <spruit11> Heh.
+2020-08-30 17:30:12 <b_jonas> lisps do the same, but instead of a | delimiter, they use a dot, that's why they're called dotted list
+2020-08-30 17:30:16 <spruit11> You make my life difficult.
+2020-08-30 17:30:31 <b_jonas> lisps are older, so they get to name it
+2020-08-30 17:30:49 <b_jonas> egelbot: {2,3}+4
+2020-08-30 17:30:50 <egelbot> exception("System:+ bad arguments")
+2020-08-30 17:30:58 <spruit11> Well. I value your input!
+2020-08-30 17:31:01 <b_jonas> egelbot: data foo;; foo {2,3} 4
+2020-08-30 17:31:01 <egelbot> (foo {2, 3} 4)
+2020-08-30 17:31:09 <b_jonas> egelbot: data foo;; foo 4 {2,3 2}
+2020-08-30 17:31:09 <egelbot> (foo 4 {2, (3 2)})
+2020-08-30 17:31:15 <b_jonas> egelbot: data foo;; foo 4 (2,3 2)
+2020-08-30 17:31:15 <egelbot> (foo 4 (2, (3 2)))
+2020-08-30 17:31:31 <b_jonas> egelbot: data foo;; (2,(foo 3 2))
+2020-08-30 17:31:31 <egelbot> (2, (foo 3 2))
+2020-08-30 17:31:36 <b_jonas> egelbot: data foo;; {2,foo 3 2}
+2020-08-30 17:31:36 <egelbot> {2, (foo 3 2)}
+2020-08-30 17:32:26 <b_jonas> egelbot: def + = [];; {2,3+8}
+2020-08-30 17:32:26 <egelbot> internal:1:11:syntactical:-> expected
+2020-08-30 17:33:09 <spruit11> Nice try. But you can't rewrite to nothing.
+2020-08-30 17:33:33 <b_jonas> egelbot: data +;; {2,3+8}
+2020-08-30 17:33:33 <egelbot> internal:1:7:syntactical:lowercase expected
+2020-08-30 17:34:02 <spruit11> Ah. You punish me for every design decision.
+2020-08-30 17:34:17 <spruit11> You want data to be able to be operators too?
+2020-08-30 17:34:26 <b_jonas> sorry, that's not what want, and no
+2020-08-30 17:34:33 <spruit11> Ah. Okay
+2020-08-30 17:34:34 <b_jonas> I type these also to see how they fail
+2020-08-30 17:34:39 <spruit11> Right.
+2020-08-30 17:34:51 <b_jonas> try to break the code with unexpected cases
+2020-08-30 17:34:58 <b_jonas> that's how we do testin
+2020-08-30 17:35:13 <spruit11> Yah, the REPL is good for that.
+2020-08-30 17:35:58 <spruit11> I'll print something for badly formed lists but I don't think I will make it conform to the input syntax.
+2020-08-30 17:38:51 <b_jonas> I recommend {9,7|7}
+2020-08-30 17:39:06 <b_jonas> sice egel already uses | as a delimiter
+2020-08-30 17:40:01 <b_jonas> egelbot: (cons 1 nil, cons 1 nil 2)
+2020-08-30 17:40:01 <egelbot> ({1}, {...})
+2020-08-30 17:40:11 <b_jonas> egelbot: (cons 1, cons)
+2020-08-30 17:40:11 <egelbot> ({...}, System:cons)
+2020-08-30 17:42:36 <esowiki> 14[[07Casini14]]4 M10 02https://esolangs.org/w/index.php?diff=77137&oldid=76437 5* 03Abbin21 5* (+24) 10
+2020-08-30 17:42:50 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77138&oldid=77136 5* 03Abbin21 5* (+23) 10
