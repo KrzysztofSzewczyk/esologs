@@ -824,3 +824,95 @@
 2020-08-29 23:25:48 <b_jonas> you can make them optional before `def` and other such keywords
 2020-08-29 23:26:41 <spruit11> Could, but not really easy.
 2020-08-29 23:27:10 <b_jonas> well ok
+2020-08-29 23:34:17 <spruit11> Regarding the semicolon. I don't like lay-out sensitive languages (also, I am lazy) and I don't like ending definition with a marker. So I ended with this.
+2020-08-29 23:34:19 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77099&oldid=77098 5* 03RocketRace 5* (-177) 10Haha, I did it
+2020-08-29 23:35:13 <spruit11> But I think I'll go for the double semicolon in interactive/command mode.
+2020-08-29 23:35:14 <b_jonas> spruit11: if you do an arity fix, make sure you can match both an unknown arity function call with a known head and with an unknown head
+2020-08-29 23:35:59 <spruit11> A fix might be just converting something to a list. Don't know.
+2020-08-29 23:36:59 <b_jonas> and maybe to have some way for a user-defined function to do arbitrary computation before it decides if it returns evaluated or unevaluated
+2020-08-29 23:37:18 <spruit11> ?
+2020-08-29 23:37:20 <b_jonas> currently it can only do a series of top-level matches on its argumenr list before it
+2020-08-29 23:37:48 <spruit11> Still don't get it?
+2020-08-29 23:38:36 <b_jonas> let f = [1 Y -> 2];; then (f 0 9) returns an unevaluated function call with f as its head, (f 1 9) returns evaluated to 2
+2020-08-29 23:38:53 <esowiki> 14[[07User:Language14]]4 10 02https://esolangs.org/w/index.php?diff=77100&oldid=73251 5* 03Heavpoot 5* (+164) 10
+2020-08-29 23:39:28 <spruit11> That's a feature, not a bug?
+2020-08-29 23:40:02 <b_jonas> how do I define f so that for any n,k integers, if (n*n + k*k < 1000) then (f n k) is evaluated, otherwise it's unevaluated
+2020-08-29 23:40:25 <esowiki> 14[[07User:Language14]]4 10 02https://esolangs.org/w/index.php?diff=77101&oldid=77100 5* 03SoundOfScripting 5* (-164) 10Undo revision 77100 by [[Special:Contributions/Heavpoot|Heavpoot]] ([[User talk:Heavpoot|talk]])
+2020-08-29 23:40:29 <spruit11> You can also do 'def f = [ 1 Y -> 2 | -> throw "error"'
+2020-08-29 23:40:34 <spruit11> Uh.
+2020-08-29 23:40:39 <spruit11> You can also do 'def f = [ 1 Y -> 2 | -> throw "error"]'
+2020-08-29 23:40:52 <b_jonas> yes, but I'm asking about unevaluated with the same head
+2020-08-29 23:40:54 <esowiki> 14[[07User:Language14]]4 M10 02https://esolangs.org/w/index.php?diff=77102&oldid=77101 5* 03SoundOfScripting 5* (+49) 10
+2020-08-29 23:41:19 Joined: Heavpoot
+2020-08-29 23:41:20 Names: ^[, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Heavpoot, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-29 23:41:32 User Name: Heavpoot = Heavpoot!5284dbd3@82-132-219-211.dab.02.net
+2020-08-29 23:41:32 <Heavpoot> hi are you all enjoying the plentiful spam made by all the edits to 1CP=1ICL
+2020-08-29 23:41:33 <b_jonas> you can match the head f of the returned unevaluated application later in another function's pattern list
+2020-08-29 23:42:15 <spruit11> Oh right. You want guards?
+2020-08-29 23:42:19 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77103&oldid=77099 5* 03RocketRace 5* (+63) 10/* Language specifications */
+2020-08-29 23:42:20 <b_jonas> currently you can't do that, instead you have to use a different head for the return
+2020-08-29 23:42:26 <b_jonas> no, I don't want guards
+2020-08-29 23:42:51 <b_jonas> because with guards I can't reuse the same computation in the guard and return value
+2020-08-29 23:43:46 <spruit11> What about a means to just return `f 1 9` unevaluated? (Even after evaluation)
+2020-08-29 23:43:54 <b_jonas> like imagine that n*n + k*k is slow to compute, and I want to return g (n*n + k*k) in the evaluated case
+2020-08-29 23:44:13 <b_jonas> spruit11: what "means"
+2020-08-29 23:44:46 <spruit11> Something like a flag that you just return an expression instead of an evaluated expression.
+2020-08-29 23:45:06 <b_jonas> I don't know what mechanism or syntax it should use really
+2020-08-29 23:45:11 <b_jonas> it's just a stupid idea
+2020-08-29 23:45:33 <b_jonas> I probably wouldn't even use it because I don't care that much about the symbolic thingy and unevaluated functions
+2020-08-29 23:45:56 <b_jonas> I might not ever use this, it just seems weird that you allow *some* functions that are sometimes evaluated, but not all of them
+2020-08-29 23:46:02 <spruit11> Yah, I don't think there's much of a use case.
+2020-08-29 23:46:13 <b_jonas> user-defined functions that is
+2020-08-29 23:46:26 <spruit11> Today I changed all builtin operators to throw exceptions because of that.
+2020-08-29 23:46:35 <b_jonas> oh
+2020-08-29 23:46:44 <spruit11> I.e., `1/0` now throws an exception.
+2020-08-29 23:46:54 <b_jonas> how about []/0
+2020-08-29 23:46:57 <b_jonas> um
+2020-08-29 23:47:03 <b_jonas> I mean how about {}/0
+2020-08-29 23:47:09 <spruit11> Exception too.
+2020-08-29 23:47:10 <b_jonas> or ()/1
+2020-08-29 23:47:14 <b_jonas> nice
+2020-08-29 23:47:15 <spruit11> `badargs`
+2020-08-29 23:47:16 <HackEso> badargs`? No such file or directory
+2020-08-29 23:47:23 <b_jonas> so no more unevaluated thingies, great
+2020-08-29 23:47:40 <b_jonas> maybe go the whole way and remove them from [] definitions too
+2020-08-29 23:48:13 <b_jonas> so like if you have enough args to determine that none of the arms match, it raises an exception
+2020-08-29 23:48:17 <spruit11> Nono. Stuff can still get stuck. But all primitive combinators throw. And you'll need to be explicit about it if you want to throw yourself.
+2020-08-29 23:48:34 <b_jonas> you can use [...|->] to be explicit
+2020-08-29 23:48:40 <spruit11> Right.
+2020-08-29 23:48:47 <b_jonas> or maybe not?
+2020-08-29 23:48:49 <b_jonas> I don't know
+2020-08-29 23:49:49 <spruit11> It's kind-of neat for error reporting if you just get a stuck term. It helps over throwing so it's a bit of a two-edged decision.
+2020-08-29 23:50:11 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77104&oldid=77103 5* 03Tokigun 5* (+411) 10
+2020-08-29 23:50:41 <b_jonas> it leads to stupid infinite loops where you make a type error in the code but it's never detected because it just keeps manipulating everything symbolically
+2020-08-29 23:50:49 <spruit11> Right.
+2020-08-29 23:50:57 <spruit11> That too.
+2020-08-29 23:51:11 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77105&oldid=77104 5* 03SoundOfScripting 5* (+1428) 10/* Language specifications */
+2020-08-29 23:51:38 <b_jonas> so in normal code you have to add [... | _ _ _ -> throw badargs] with the right amount of arguments to every bracket
+2020-08-29 23:51:43 <b_jonas> to avoid that
+2020-08-29 23:51:47 <spruit11> Correct.
+2020-08-29 23:52:09 <spruit11> Oh god, what abonimation did I create?
+2020-08-29 23:52:11 <spruit11> Halp!
+2020-08-29 23:52:43 <spruit11> *abomination
+2020-08-29 23:53:04 <b_jonas> it's an esolang, not an abomination
+2020-08-29 23:53:25 <spruit11> Still. How does Lisp do it?
+2020-08-29 23:53:34 <spruit11> This is really weird.
+2020-08-29 23:54:05 <spruit11> Oh, right. Fixed amount of arguments, pattern match later?
+2020-08-29 23:54:50 <spruit11> Ah well.
+2020-08-29 23:55:55 <b_jonas> .oO( and then add mutability and vectors to turn it to a general purpose language core, and then a standard library )
+2020-08-29 23:56:14 <b_jonas> no, lisp functions are not curried
+2020-08-29 23:56:19 <spruit11> And I end up with python.
+2020-08-29 23:56:20 <b_jonas> so they can be vararg
+2020-08-29 23:56:41 <b_jonas> but if you invoke them with fewer params, it's not a partial invocation that yo ucan invoke
+2020-08-29 23:56:46 <b_jonas> you're thinking of haskell
+2020-08-29 23:57:09 <spruit11> I already have unsafe mutation. Thinking about tossing in vectors too.
+2020-08-29 23:57:32 <b_jonas> spruit11: no, you also need classes and methods and inheritence and data fields for that. for this one, I recommend just multiple dispatch multifunctions instead :-)
+2020-08-29 23:57:46 <spruit11> 'Just leave it up to the programmer'. That always ends up well.
+2020-08-29 23:58:03 <b_jonas> leave it to the standard library
+2020-08-29 23:58:34 <spruit11> The thing is that I rewrite DAGs. So mutation is inherently unsafe.
+2020-08-29 23:58:57 <b_jonas> yes, that's why you instead add a new mutable datatype
+2020-08-29 23:59:03 <b_jonas> not mutate anything existing
+2020-08-29 23:59:19 <b_jonas> like a mutable reference, or a mutable vector, or both
+2020-08-29 23:59:22 <spruit11> That's no way out?
+2020-08-29 23:59:28 <b_jonas> why not?
+2020-08-29 23:59:51 <b_jonas> and possibly also mutable let bindings
