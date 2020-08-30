@@ -878,3 +878,25 @@
 2020-08-30 19:57:56 <b_jonas> also now I realize what I forgot
 2020-08-30 19:58:06 <b_jonas> I should have washed the shower curtains... oh well
 2020-08-30 19:58:33 <spruit11> Ah. Right. People do that.
+2020-08-30 20:00:49 User Name: rain1 = rain1!~My_user_n@unaffiliated/rain1
+2020-08-30 20:00:49 <rain1> https://mathoverflow.net/questions/369825/tietze-like-transformations-for-defining-interesting-bijections-between-algebr
+2020-08-30 20:01:04 <spruit11> egelbot: def f = [ X Y -> f (X+Y) | X -> X ];; f 1 2 3 4 5 6
+2020-08-30 20:01:04 <egelbot> 21
+2020-08-30 20:01:17 <spruit11> Like gobble.
+2020-08-30 20:07:03 <b_jonas> M:tG rules question. In my turn, I pop Mindslaver. In the opponent's first main phase, I choose that they cast Master Warcraft. Who decides which creatures of the opponent attacks?
+2020-08-30 20:08:06 <zzo38> The controller of the controller of Master Warcraft, I believe, so it is unchanged.
+2020-08-30 20:08:24 <b_jonas> zzo38: the controller is my opponent
+2020-08-30 20:08:35 <zzo38> Yes, but you control your opponent.
+2020-08-30 20:08:58 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77143&oldid=77122 5* 03IFcoltransG 5* (+0) 10/* Language specifications */ Spelling
+2020-08-30 20:09:06 <zzo38> (So I think the spell has no effect, although it can still be cast, stuff can be triggered from it, etc.)
+2020-08-30 20:09:28 <spruit11> RIght, you control your opponent and make all decisions for him
+2020-08-30 20:10:08 <b_jonas> right, that's what you'd think first, but is it like that really? it's two conflicting static effects, Mindslaver says that I make the decision, Master Warcraft says that the opponent makes the decision, these aren't replacement abilities because they don't use "instead", so you don't apply Mindslaver as a replacement after Master Warcraft, Master Warcraft just wins because of later timestamp, doesn't
+2020-08-30 20:10:14 <b_jonas> it?
+2020-08-30 20:10:48 <zzo38> I do not believe so. If player 1 controls player 2, then all decisions to be made by player 2 according to the rules and effects of the game are made by player 1 instead.
+2020-08-30 20:11:05 <spruit11> I am not a judge but 'you make all decions' looks pretty final to me.
+2020-08-30 20:12:05 <b_jonas> spruit11: we have 101.1 to say that it's not final
+2020-08-30 20:13:13 <zzo38> (The exception is conceding, but that is not "an effect of the game", and rule 716.6 specifically says that conceding doesn't count anyways. Also, Master Warcraft does not override control of a player. Rule 101.1 does not seem to contradict that.)
+2020-08-30 20:17:31 <zzo38> I think rule 101.1 only says if the cards say to do something different from what the rules would say ordinarily happens; replacement effects and other rules which it does not contradict would presumably still apply.
+2020-08-30 20:21:33 Quit: egelbot (Remote host closed the connection)
+2020-08-30 20:21:33 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 20:21:41 <b_jonas> let's see. "716.5. ... all choices and decisions the controlled player is allowed to make or is told to make by the rules or by any objects." so maybe Master Warcraft tells the opponent to make the decision in which case I would make them
