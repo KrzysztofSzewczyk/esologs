@@ -900,3 +900,74 @@
 2020-08-30 20:21:33 Quit: egelbot (Remote host closed the connection)
 2020-08-30 20:21:33 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-08-30 20:21:41 <b_jonas> let's see. "716.5. ... all choices and decisions the controlled player is allowed to make or is told to make by the rules or by any objects." so maybe Master Warcraft tells the opponent to make the decision in which case I would make them
+2020-08-30 20:31:50 <zzo38> I think that inventing a new programming language and writing a literate program using it to write the rule sof the game, would make the rules more clearly, possibly.
+2020-08-30 20:32:41 Joined: egelbot
+2020-08-30 20:32:41 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 20:32:52 <b_jonas> zzo38: perhaps, but I want to understand the existing rules of M:tG
+2020-08-30 20:32:59 <spruit11> egelbot: nop 1
+2020-08-30 20:33:00 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 20:33:00 <egelbot> (System:nop 1)
+2020-08-30 20:33:02 <spruit11> egelbot: nop
+2020-08-30 20:34:01 <spruit11> I wonder how MTGA does it. They must have some sort of rule set compiler.
+2020-08-30 20:34:15 <zzo38> b_jonas: Yes, and knowing what the rules are would also help with attempting to do what I mentioned, anyways, too.
+2020-08-30 20:34:55 <spruit11> There's an open source mtg application too, now I think of it.
+2020-08-30 20:36:14 <zzo38> The open source software that I have seen seems to not implement all of the cards; some aren't implemented, such as text editing effects, and what it does implement does not seem general enough.
+2020-08-30 20:36:40 <spruit11> Ah. Shame. But somewhat expected.
+2020-08-30 20:37:02 <zzo38> (I suggested a RDF-based format to define the effects of cards; for example [:counter [:target :spell]] is the same like "counter target spell". This RDF-based format would also enable text editing effects to work, too.)
+2020-08-30 20:37:25 <spruit11> It's a hard game to implement. And mtg might always bring out a card which doesn't fit into your game.
+2020-08-30 20:37:40 <b_jonas> egelbot: [D -> ([D true], [D false], [D (true 9)], [D (9 true)], [D ((true 9) 9)], [D (true 9 9)] [D ((false 9) 9)], [D (false 9 9)],)][X:true -> 1 | _ -> 0]
+2020-08-30 20:37:40 <egelbot> internal:1:16:syntactical:-> expected
+2020-08-30 20:38:04 <spruit11> Card: 'wash my clothes and bring beer' comes to mind.
+2020-08-30 20:38:32 <b_jonas> egelbot: [D -> ((D true), (D false), (D (true 9)), (D (9 true)), (D ((true 9) 9)), (D (true 9 9)) (D ((false 9) 9)), (D (false 9 9)),)][X:true -> 1 | _ -> 0]
+2020-08-30 20:38:32 <egelbot> internal:1:126:syntactical:primary expression expected
+2020-08-30 20:38:37 <b_jonas> spruit11: you mean Ashnod's Coupon
+2020-08-30 20:38:47 <b_jonas> well that only does the beer prat
+2020-08-30 20:38:57 <spruit11> I want it.
+2020-08-30 20:38:59 <b_jonas> for washing clothes ... hmm, I'm not sure there's a card for that yet
+2020-08-30 20:39:00 <zzo38> spruit11: "Wash my clothes and bring beer" doesn't count; no other Un-cards count either, as far as I am concerned.
+2020-08-30 20:39:17 <zzo38> (Those are outside of the scope of the core rules of the game.)
+2020-08-30 20:40:29 <zzo38> Sometimes new cards will require new rules, but that already happens anyways.
+2020-08-30 20:41:19 <spruit11> I already wondered whether MTGA will stifle innovation.
+2020-08-30 20:41:36 * spruit11 <- plays mtga daily
+2020-08-30 20:41:58 <b_jonas> maybe you could use Oblivion Ring to exile an item of clothing, then return it, and since it's a new object, the stains aren't preserved, but that's inefficient because you somehow have to repeat it for every piece of clothing individually, plus of course need a way to kill O-Ring
+2020-08-30 20:45:21 <zzo38> In my own custom sets of cards, I have written some improvements to the rules, some of which just improve the mathematical structure and do not usually affect the game, such as specifying that all text changing effects work on the AST, that spellings do not affect whether or not a name is equal to another (the AST does instead), and several new terms such as "persistent property", "kind", etc.
+2020-08-30 20:45:50 <zzo38> (I do some of that to try to make the rules less confusing.)
+2020-08-30 20:46:54 <spruit11> Do anyone of you play Arena?
+2020-08-30 20:47:43 <b_jonas> spruit11: no, we're only theoretical M:tG players on this channel
+2020-08-30 20:47:43 <zzo38> I do not, but I am on Linux and would prefer open source software that I can actually see all of the rules, and experiment with making up my own cards too, anyways
+2020-08-30 20:47:57 <b_jonas> zzo38: that is unlikely for both technical and legal reasons
+2020-08-30 20:48:02 <spruit11> I run it on my linux machine.
+2020-08-30 20:48:05 <zzo38> (And I do not actually play the game much either, mostly just discussion of stuff)
+2020-08-30 20:49:07 <spruit11> I used to run it on vanilla wine but I caved and now use lutris. Works flawlessly.
+2020-08-30 20:49:19 * spruit11 fingers crossed
+2020-08-30 20:50:08 <zzo38> While open source implementations of Magic: the Gathering exist, I don't know about test cases, etc, and anyways as I said they are incomplete.
+2020-08-30 20:50:14 <b_jonas> spruit11: oh wow
+2020-08-30 20:53:32 <zzo38> (In addition to experimenting with custom cards, might also want custom rules, LAN play, UI customization, etc)
+2020-08-30 20:56:13 <b_jonas> so interactive egel can't actually persist values between statements, it can only persist definitions, and has to recompute everything.
+2020-08-30 20:56:37 <b_jonas> that means keeping the process alive has much less advantages as with ordinary languages
+2020-08-30 20:56:46 <b_jonas> I mean for an irc bot
+2020-08-30 20:57:09 <b_jonas> every value is lost at double semicolons
+2020-08-30 20:57:28 <spruit11> Unless you use val.
+2020-08-30 20:57:45 <spruit11> egelbot: val f = print "hello"; 3
+2020-08-30 20:57:46 <egelbot> hello
+2020-08-30 20:57:50 <spruit11> egelbot: f
+2020-08-30 20:57:50 <egelbot> 3
+2020-08-30 20:57:53 <b_jonas> oh wait
+2020-08-30 20:57:58 <b_jonas> hmm
+2020-08-30 20:58:13 <b_jonas> egelbot: data foo; val f = fool
+2020-08-30 20:58:13 <egelbot> internal:1:10:syntactical:  unexpected
+2020-08-30 20:58:19 <b_jonas> egelbot: data foo val f = fool
+2020-08-30 20:58:19 <egelbot> internal:1:11:syntactical:val unexpected
+2020-08-30 20:58:22 <b_jonas> egelbot: data foo;; val f = fool
+2020-08-30 20:58:23 <egelbot> internal:1:21:semantical:undeclared fool
+2020-08-30 20:58:25 <b_jonas> egelbot: data foo;; val f = foo
+2020-08-30 20:58:32 <b_jonas> egelbot: f
+2020-08-30 20:58:32 <egelbot> foo
+2020-08-30 20:58:43 <b_jonas> egelbot: def foo = 2;; foo;; f
+2020-08-30 20:58:43 <egelbot> 2
+2020-08-30 20:58:44 <egelbot> foo
+2020-08-30 20:58:58 <spruit11> `val` reduced the body before assigning it to a combinator.
+2020-08-30 20:59:00 <HackEso> val`? No such file or directory
+2020-08-30 20:59:07 <spruit11> *reduces
+2020-08-30 20:59:30 <b_jonas> I wonder if you can use f in any way that gets it reduced
+2020-08-30 20:59:54 <spruit11> Hmm?
