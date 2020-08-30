@@ -226,3 +226,40 @@
 2020-08-30 01:59:09 <spruit11> Combinators lowercase, variables uppercase. It was the only thing which I thought made sense in an untyped environment.
 2020-08-30 01:59:47 <b_jonas> yeah, it's like prolog I guess
 2020-08-30 01:59:56 <spruit11> The problem is [ x -> x ], I need/want to know whether x is a variable of combinator.
+2020-08-30 02:00:05 <b_jonas> except for, you know, the implicit unevaluated function thing
+2020-08-30 02:00:16 <spruit11> Yah, Prolog chose the solution.
+2020-08-30 02:00:46 <spruit11> Well, Prolog is another operational model. This is just a broken down FP.
+2020-08-30 02:01:09 <b_jonas> this is not the syntax I like too much, but it works and is consistent
+2020-08-30 02:01:09 <spruit11> *the same solution.
+2020-08-30 02:02:00 <spruit11> Yah. But `[x -> x]` right? In a typed environment you can check whether it binds correctly to a combinator or otherwise should bind to a variable.
+2020-08-30 02:03:29 <b_jonas> I would suggest no case difference, in a pattern if a name stands alone rather than as the head of an application then it's a freshly bound variable, there's some way to disambiguate it to a constructor (with an empty parenthesis when you use parenthesis function calls, or with a namespace prefix), and a few important nullary constructors (eg. true, false, just, unit) are keywords
+2020-08-30 02:03:37 <spruit11> Making the distinction up front means you can visually see the difference, and simplifies the interpreter (which otherwise would need heuristics).
+2020-08-30 02:04:09 <b_jonas> but it might not work well in egel because application doesn't use parens, so you can't use an empty paren
+2020-08-30 02:04:21 <spruit11> No. But Egel is untyped. You can have a variable in the head.
+2020-08-30 02:04:44 <spruit11> egelbot: [ (X Y Z) -> Z Y X ] {1}
+2020-08-30 02:04:44 <egelbot> (System:nil 1 System:cons)
+2020-08-30 02:05:24 <spruit11> And for orthogonality I want to keep that.
+2020-08-30 02:05:37 <b_jonas> and constructors are not namespaced under enum typenames, so you don't have a convenient namespace syntax that you can use to name any constructor already
+2020-08-30 02:05:52 <b_jonas> spruit11: yeah, egel does that unevaluated thing, so this wouldn't work
+2020-08-30 02:07:13 <spruit11> No. It's weird stemming from Haskell/OCaml but if you see Egel as an LC+constants it's the only thing which makes sense.
+2020-08-30 02:07:22 <spruit11> (lambda calculus)
+2020-08-30 02:07:34 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=77115&oldid=76891 5* 03Hakerh400 5* (+24) 10
+2020-08-30 02:08:43 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=77116&oldid=77115 5* 03Hakerh400 5* (-20) 10
+2020-08-30 02:09:44 <spruit11> Right, in an untyped LC+constants `1 2` is a term and you want to be able to pattern match on that.
+2020-08-30 02:10:29 <b_jonas> spruit11: no, only if you allow unevaluted applications
+2020-08-30 02:10:45 <spruit11> I don't see that?
+2020-08-30 02:10:48 <b_jonas> normally `1 2` would try to call the function `1` which is an error because it's not a function
+2020-08-30 02:11:11 <b_jonas> but in spruit you allow any application and they just default to unevaluated
+2020-08-30 02:11:16 <spruit11> It's normally allowed by the grammar...
+2020-08-30 02:11:25 <b_jonas> it's not the grammar
+2020-08-30 02:11:45 <b_jonas> you could write (1 2) in the code, and it wouldn't even give an error until you try to evaluate it
+2020-08-30 02:11:48 <spruit11> T := V | C | T T | \V. T
+2020-08-30 02:12:05 <b_jonas> but if you want to pattern match to something, then it has to try to evaluate it, fully in an eager language, or to top level constructor in a lazy language
+2020-08-30 02:12:08 <b_jonas> like haskell
+2020-08-30 02:12:22 <spruit11> Okay. Then I just difer on what I consider an untyped LC+constants.
+2020-08-30 02:12:28 <b_jonas> yeah
+2020-08-30 02:12:29 <spruit11> *differ
+2020-08-30 02:17:36 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03R123124 5*  10New user account
+2020-08-30 02:17:44 Quit: Heavpoot (Remote host closed the connection)
+2020-08-30 02:17:44 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 02:21:06 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=77117&oldid=76916 5* 03R123124 5* (+108) 10/* Introductions */
