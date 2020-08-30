@@ -971,3 +971,89 @@
 2020-08-30 20:59:07 <spruit11> *reduces
 2020-08-30 20:59:30 <b_jonas> I wonder if you can use f in any way that gets it reduced
 2020-08-30 20:59:54 <spruit11> Hmm?
+2020-08-30 21:00:09 <zzo38> I know there are also some open source implementations of Pokemon battles, although I want a purely text based one.
+2020-08-30 21:01:15 <b_jonas> egelbot: (f, [2 -> 9] f, [foo -> 9] f, [5 -> 9] f)
+2020-08-30 21:01:16 <egelbot> (foo, (Dummy6DOT0 foo), 9, (Dummy6DOT2 foo))
+2020-08-30 21:01:25 <esowiki> 14[[07Conglument14]]4 N10 02https://esolangs.org/w/index.php?oldid=77144 5* 03Hakerh400 5* (+16354) 10+[[Conglument]]
+2020-08-30 21:01:30 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=77145&oldid=77049 5* 03Hakerh400 5* (+17) 10+[[Conglument]]
+2020-08-30 21:01:34 <esowiki> 14[[07User:Hakerh40014]]4 10 02https://esolangs.org/w/index.php?diff=77146&oldid=77116 5* 03Hakerh400 5* (+17) 10+[[Conglument]]
+2020-08-30 21:01:58 <b_jonas> egelbot: (foo, [2 -> 9] foo, [foo -> 9] foo, [5 -> 9] foo)
+2020-08-30 21:01:58 <egelbot> (2, 9, (Dummy7DOT1 2), (Dummy7DOT2 2))
+2020-08-30 21:01:59 <spruit11> Yah. That's why I regret compiling combinators. You lose the text representation.
+2020-08-30 21:02:15 <spruit11> But, ah well.
+2020-08-30 21:02:29 <b_jonas> ignore that, I could just add a fallback clause
+2020-08-30 21:02:44 User Name: imode = imode!~linear@unaffiliated/imode
+2020-08-30 21:02:44 <imode> bugh.
+2020-08-30 21:02:50 <imode> I don't know how to make this faster.
+2020-08-30 21:02:52 <b_jonas> egelbot: (f, [2 -> 9 | _ -> 0] f, [foo -> 9 | _ -> 0] f, [5 -> 9 | _ -> 0] f)
+2020-08-30 21:02:52 <egelbot> (foo, 0, 9, 0)
+2020-08-30 21:03:03 <b_jonas> egelbot: (foo, [2 -> 9 | _ -> 0] foo, [foo -> 9 | _ -> 0] foo, [5 -> 9 | _ -> 0] foo)
+2020-08-30 21:03:03 <egelbot> (2, 9, 0, 0)
+2020-08-30 21:03:24 <b_jonas> egel's rules are so weird
+2020-08-30 21:03:32 <spruit11> Heh?
+2020-08-30 21:03:45 <spruit11> That's good! Right?
+2020-08-30 21:03:54 <spruit11> ;)
+2020-08-30 21:04:00 <b_jonas> they make sense but only in the esoteric way
+2020-08-30 21:04:58 <spruit11> I could always throw still. And make everything neater. And end with a Haskell..
+2020-08-30 21:05:25 <spruit11> https://github.com/egel-lang/egel
+2020-08-30 21:05:34 <spruit11> ^ I added a mascot
+2020-08-30 21:06:04 <b_jonas> egel: data still; throw still
+2020-08-30 21:06:09 <b_jonas> egelbot: data still;; throw still
+2020-08-30 21:06:10 <egelbot> exception(still)
+2020-08-30 21:14:26 <esowiki> 14[[07Truth-machine14]]4 10 02https://esolangs.org/w/index.php?diff=77147&oldid=77036 5* 03Hakerh400 5* (+49) 10
+2020-08-30 21:14:54 Quit: adu (Quit: adu)
+2020-08-30 21:14:54 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 21:17:36 <spruit11> egelbot: dis [ X -> X ]
+2020-08-30 21:17:37 <egelbot> "Dummy11DOT0::0400010005000000000a000000480400060006000000050a0000004801000700010100080002010009000301000a000401000b000606000c0007000b07000d000c000000060b000d06000600020001070007000600000004030001000200070b0003"
+2020-08-30 21:18:41 <spruit11> Didn't show that. I once added the ability to disassemble and reassemble the bytecode.
+2020-08-30 21:19:11 <b_jonas> egelbot: [F->(F(9<8),F(8<9),F true,F false))][X->if X then"yes"else"no"]
+2020-08-30 21:19:12 <egelbot> internal:1:36:syntactical:] expected
+2020-08-30 21:19:18 <b_jonas> egelbot: [F->(F(9<8),F(8<9),F true,F false)][X->if X then"yes"else"no"]
+2020-08-30 21:19:18 <egelbot> ("no", "yes", "yes", "no")
+2020-08-30 21:20:54 <b_jonas> egelbot: let Six=6,Seven=7,Eight=8 in {Seven,Eight,9}
+2020-08-30 21:20:54 <egelbot> internal:1:11:syntactical:in expected
+2020-08-30 21:21:02 <b_jonas> egelbot: let Six=6;Seven=7;Eight=8 in {Seven,Eight,9}
+2020-08-30 21:21:02 <egelbot> internal:1:17:syntactical:in expected
+2020-08-30 21:21:14 <b_jonas> egelbot: let Six Seven Eight=6 7 8 in {Seven,Eight,9}
+2020-08-30 21:21:14 <egelbot> (Dummy13DOT0 (6 7 8))
+2020-08-30 21:21:40 <spruit11> DUh?
+2020-08-30 21:21:43 <b_jonas> ?
+2020-08-30 21:21:48 <spruit11> You found another bug?
+2020-08-30 21:21:51 <b_jonas> egelbot: let tuple Six Seven Eight=tuple 6 7 8 in {Seven,Eight,9}
+2020-08-30 21:21:51 <egelbot> (Dummy14DOT0 (6, 7, 8))
+2020-08-30 21:21:58 <imode> what's egelbot do?
+2020-08-30 21:22:12 <b_jonas> imode: it evaluates egel. see our wiki if you want to know what egel is.
+2020-08-30 21:22:18 <imode> neat.
+2020-08-30 21:22:44 <b_jonas> ideally I should just install egel to HackEso so I can evaluate egel there, but I'm lazy
+2020-08-30 21:22:45 <spruit11> egelbot: let X Y = 1 2 in Y X
+2020-08-30 21:22:45 <egelbot> (Dummy15DOT0 (1 2))
+2020-08-30 21:22:54 <imode> eager combinator rewriting, huh?
+2020-08-30 21:23:11 <b_jonas> plus this one is funnier because if I make an infinite loop then spruit11 has to kill the bot and restart it.
+2020-08-30 21:23:18 <spruit11> Hehe.
+2020-08-30 21:23:26 <b_jonas> HackEso would just time out that session
+2020-08-30 21:23:46 <imode> how's the rewriting handled? how fast are basic operations like addition etc.? I must know!
+2020-08-30 21:23:55 <b_jonas> also this one can spam irc because a command can output any number of lines
+2020-08-30 21:24:37 <spruit11> egelbot: let (X Y) = 1 2 in Y X
+2020-08-30 21:24:37 <egelbot> (2 1)
+2020-08-30 21:25:01 <b_jonas> imode: dunno, there's some paper on it in the egel-docs repository
+2020-08-30 21:25:15 <imode> sick.
+2020-08-30 21:25:48 <spruit11> It's a slow interpreter. The reduction system is the interesting part.
+2020-08-30 21:26:15 <imode> how slow? microseconds-per-operation slow?
+2020-08-30 21:26:56 <b_jonas> egelbot: String.charAt 0 "hello"
+2020-08-30 21:26:56 <egelbot> internal:1:2:semantical:undeclared String
+2020-08-30 21:27:09 <spruit11> Roughly Python speed. If you don't count that I rewrite additions instead of generating bytecode for it.
+2020-08-30 21:27:12 <b_jonas> hmm, how did that work?
+2020-08-30 21:27:31 <spruit11> egelbot: String:charAt 0 "hello"
+2020-08-30 21:27:32 <egelbot> 'h'
+2020-08-30 21:27:36 <imode> you generate byteode for this? huh.
+2020-08-30 21:27:40 <b_jonas> ah right thanks
+2020-08-30 21:27:44 <b_jonas> egelbot: String:charAt 0 "hello"
+2020-08-30 21:27:44 <egelbot> 'h'
+2020-08-30 21:28:21 <imode> egelbot: 1 + 2
+2020-08-30 21:28:22 <egelbot> 3
+2020-08-30 21:28:31 <imode> now if I could actually time that out with perf...
+2020-08-30 21:29:00 <b_jonas> egelbot: 3 | 4
+2020-08-30 21:29:00 <egelbot> internal:1:4:syntactical:| unexpected
+2020-08-30 21:29:01 <spruit11> I use gprof.
+2020-08-30 21:29:09 <b_jonas> egelbot: 7 & 4
+2020-08-30 21:29:09 <egelbot> internal:1:4:semantical:undeclared &
