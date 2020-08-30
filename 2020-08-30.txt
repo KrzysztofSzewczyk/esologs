@@ -1318,3 +1318,127 @@
 2020-08-30 22:29:19 <egelbot> 0
 2020-08-30 22:29:25 <b_jonas> egelbot: print (tostr("listtake_a",nil,7,st6)); 0
 2020-08-30 22:29:25 <egelbot> internal:1:9:semantical:undeclared tostr
+2020-08-30 22:30:14 <spruit11> Oh. Sorry. Print doesn't print tuples yet. Just the primitives.
+2020-08-30 22:30:18 <b_jonas> egelbot: print (totext ("listtake_a",nil,7,st6)); 0
+2020-08-30 22:30:18 <egelbot> exception("System:totext bad arguments")
+2020-08-30 22:30:33 <b_jonas> argh
+2020-08-30 22:32:24 <spruit11> egelbot: print 1 "A" 5.0 7
+2020-08-30 22:32:24 <egelbot> 1A5.0000000000000007
+2020-08-30 22:32:35 <spruit11> egelbot: print 1 "A" 5.0 7 true
+2020-08-30 22:32:35 <egelbot> (System:print 1 "A" 5.000000000000000 7 System:true)
+2020-08-30 22:32:57 <spruit11> Uh. Right. Alpha software. I'll fix print.
+2020-08-30 22:35:18 <b_jonas> egelbot: def listappend = [nil S->S| (cons A D) S->cons A (listappend D S)| _ _->throw"error listappend"];; listappend {8,22,13,59} {75,88}
+2020-08-30 22:35:18 <egelbot> {8, 22, 13, 59, 75, 88}
+2020-08-30 22:35:43 <spruit11> Shall I restart the bot?
+2020-08-30 22:35:57 <b_jonas> if you want
+2020-08-30 22:36:05 Quit: egelbot (Remote host closed the connection)
+2020-08-30 22:36:05 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:36:20 Joined: egelbot
+2020-08-30 22:36:20 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:36:24 <b_jonas> egelbot: def listappend = [nil S->S| (cons A D) S->cons A (listappend D S)| _ _->throw"error listappend"];; listappend {8,22,13,59} {75,88}
+2020-08-30 22:36:24 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 22:36:24 <egelbot> {8, 22, 13, 59, 75, 88}
+2020-08-30 22:36:37 <spruit11> egelbot: print (1,2)
+2020-08-30 22:36:38 <egelbot> (1, 2)
+2020-08-30 22:36:41 <spruit11> egelbot: print (1,2) true
+2020-08-30 22:36:42 <egelbot> (1, 2)System:true
+2020-08-30 22:36:53 <spruit11> egelbot: print (1,2) true 5 "hello" 'a'
+2020-08-30 22:36:53 <egelbot> (1, 2)System:true5hello'a'
+2020-08-30 22:37:06 <spruit11> the char is wrong.
+2020-08-30 22:37:39 <b_jonas> egelbot: def listflatten_a = [S nil->S| S(cons A D)->listappend A(listflatten_a S D)| _ _->throw"error listflatten"] def listflatten = [L->listflatten_a{}L];; listflatten {{8,22,13,59},{75,88},{},{94,81,62}}
+2020-08-30 22:37:40 <egelbot> internal:1:110:syntactical:def unexpected
+2020-08-30 22:38:08 <b_jonas> spruit11: is there a way to just access to pretty-printer and get a string from it?
+2020-08-30 22:38:32 <b_jonas> egelbot: def listflatten_a = [S nil->S| S(cons A D)->listappend A(listflatten_a S D)| _ _->throw"error listflatten"];; def listflatten = [L->listflatten_a{}L];; listflatten {{8,22,13,59},{75,88},{},{94,81,62}}
+2020-08-30 22:38:33 <egelbot> {8, 22, 13, 59, 75, 88, 94, 81, 62}
+2020-08-30 22:38:43 Quit: egelbot (Remote host closed the connection)
+2020-08-30 22:38:43 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:38:51 <b_jonas> os now it actually requires the double semicolon between defs?
+2020-08-30 22:38:57 Joined: egelbot
+2020-08-30 22:38:57 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:38:59 <spruit11> egelbot: print (1,2) true 5 "hello" 'a'
+2020-08-30 22:38:59 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 22:38:59 <egelbot> (1, 2)System:true5"hello"'a'
+2020-08-30 22:39:21 <spruit11> Aargh. I made it worse.
+2020-08-30 22:41:32 Quit: egelbot (Remote host closed the connection)
+2020-08-30 22:41:33 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:41:47 <b_jonas> you could just make separate functions to print a string, to println a string, to format any value with the pretty-printer, and to format and println any values separated by spaces
+2020-08-30 22:41:48 Joined: egelbot
+2020-08-30 22:41:48 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:41:55 <spruit11> egelbot: print (1,2) true 5 "hello" 'a'
+2020-08-30 22:41:56 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 22:41:56 <egelbot> (1, 2)System:true5helloa
+2020-08-30 22:42:14 <b_jonas> egelbot: print{3,"a"}
+2020-08-30 22:42:14 <egelbot> {3, "a"}
+2020-08-30 22:42:19 <b_jonas> ok that should help
+2020-08-30 22:42:34 <b_jonas> thanks
+2020-08-30 22:42:52 <spruit11> b_jonas: No problem. I am a bit hazy all the programming today though.
+2020-08-30 22:42:56 <spruit11> brb
+2020-08-30 22:44:16 <b_jonas> egelbot: def todo=throw"unimplemented";; def listtake_a = [P N S -> print("listtake_a",P,N,S);todo];; def listtake = [N S -> listtake_a nil N S];; def st6 = {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; listtake 7 st6
+2020-08-30 22:44:16 <egelbot> ("listtake_a", {}, 7, {8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82})
+2020-08-30 22:44:17 <egelbot> exception("unimplemented")
+2020-08-30 22:44:23 <b_jonas> ok so that part is ok
+2020-08-30 22:44:28 <b_jonas> now what was my actual definition?
+2020-08-30 22:45:20 <b_jonas> egelbot: def todo=throw"unimplemented";; def listtake_a = [P N S -> print("listtake_a",P,N,S); [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:45:20 <egelbot> internal:1:201:semantical:undeclared isint
+2020-08-30 22:46:12 <b_jonas> egelbot: def isint = [(X Y)->0|int->0|X::int->1|X->0]
+2020-08-30 22:46:15 <b_jonas> egelbot: def todo=throw"unimplemented";; def listtake_a = [P N S -> print("listtake_a",P,N,S); [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:46:15 <egelbot> ("listtake_a", {}, 7, {8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82})
+2020-08-30 22:46:15 <egelbot> exception("error listtake")
+2020-08-30 22:46:45 Quit: t20kdc (Remote host closed the connection)
+2020-08-30 22:46:46 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:46:57 <b_jonas> egelbot: def todo=throw"unimplemented";; def listtake_a = [P N S -> [U V W->print("listtake_i",U,V,W)] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:46:57 <egelbot> ("listtake_i", 1, System:false, {8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82})
+2020-08-30 22:47:24 <b_jonas> so (isint N) is 1, (N<=0) is false
+2020-08-30 22:47:49 <b_jonas> oh right
+2020-08-30 22:48:28 <b_jonas> egelbot: def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:48:28 <egelbot> exception("error listtake")
+2020-08-30 22:49:10 <b_jonas> egelbot: def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)-> print("listtake_c",A,N,(N-1),D,P); cons A (listtake_a (N-1) D P)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:49:10 <egelbot> ("listtake_c", 8, 7, (7 -1), {22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82}, {})
+2020-08-30 22:49:11 <egelbot> exception("error listtake")
+2020-08-30 22:49:14 <b_jonas> ah
+2020-08-30 22:49:18 <b_jonas> egelbot:7 - 1
+2020-08-30 22:49:19 <egelbot> 6
+2020-08-30 22:49:20 <b_jonas> egelbot:7 -1
+2020-08-30 22:49:20 <egelbot> (7 -1)
+2020-08-30 22:49:32 <b_jonas> yeah, that was something I suffered with last time too
+2020-08-30 22:50:00 <b_jonas> egelbot: def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)->cons A (listtake_a(-1+N)D P)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:50:00 <egelbot> exception("error listtake")
+2020-08-30 22:50:36 <b_jonas> oh, A is wrong
+2020-08-30 22:50:48 <b_jonas> somehow
+2020-08-30 22:51:08 <b_jonas> no it's not wrong
+2020-08-30 22:51:11 <b_jonas> 8 really is hte first element
+2020-08-30 22:51:27 <b_jonas> however,
+2020-08-30 22:52:00 <b_jonas> egelbot: def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)-> print("listtake_c",); cons A (listtake_a P(-1+N)D)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:52:01 <egelbot> internal:1:99:syntactical:primary expression expected
+2020-08-30 22:52:30 <b_jonas> egelbot: def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)-> cons A (listtake_a P(-1+N)D)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)S ];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:52:30 <egelbot> {8, 22, 13, 59, 75, 88, 94}
+2020-08-30 22:52:35 <b_jonas> FINALLY
+2020-08-30 22:53:22 <b_jonas> egelbot: listtake 2 st6;; listtake 99 st6;; listtake -2 st6;; listtake 0 st6;; listtake 2 {};; listtake 2 6;;
+2020-08-30 22:53:22 <egelbot> internal:1:102:syntactical:primary expression expected
+2020-08-30 22:53:35 <b_jonas> egelbot: listtake 2 st6;; listtake 99 st6;; listtake -2 st6;; listtake 0 st6;; listtake 2 {};; listtake 2 6
+2020-08-30 22:53:35 <egelbot> {8, 22}
+2020-08-30 22:53:35 <egelbot> {8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82}
+2020-08-30 22:53:35 <egelbot> {}
+2020-08-30 22:53:35 <egelbot> {}
+2020-08-30 22:53:35 <egelbot> {}
+2020-08-30 22:53:36 <egelbot> exception("error listtake")
+2020-08-30 22:53:53 <spruit11> Heh.
+2020-08-30 22:57:53 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (listtake_a P(-1+N)D)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)(S()) ];; def plisttake = [N S -> listtake_a nil N S];; plisttake 7 [F->pcons 8[F->pcons 22[F->pcons 13[F->nil]]]]
+2020-08-30 22:57:53 <egelbot> internal:1:163:syntactical:primary expression expected
+2020-08-30 22:58:09 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (listtake_a P(-1+N)D)| _ _ _->throw"error listtake" ] (isint N)(N <= 0)(S()) ];; def plisttake = [N S -> plisttake_a nil N S];;
+2020-08-30 22:58:10 <egelbot> internal:1:163:syntactical:primary expression expected
+2020-08-30 22:58:22 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (plisttake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N <= 0)(S()) ];; def plisttake = [N S -> plisttake_a nil N S];;
+2020-08-30 22:58:22 <egelbot> internal:1:165:syntactical:primary expression expected
+2020-08-30 22:58:27 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (plisttake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N <= 0)(S()) ]
+2020-08-30 22:58:27 <egelbot> internal:1:165:syntactical:primary expression expected
+2020-08-30 22:58:45 <b_jonas> egelbot: ()
+2020-08-30 22:58:45 <egelbot> internal:1:3:syntactical:primary expression expected
+2020-08-30 22:58:47 <b_jonas> oh
+2020-08-30 22:58:50 <b_jonas> egelbot: unit
+2020-08-30 22:58:50 <egelbot> internal:1:2:semantical:undeclared unit
+2020-08-30 22:58:55 <b_jonas> egelbot: nop
+2020-08-30 22:59:18 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (plisttake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N <= 0)(S nop) ];; def plisttake = [N S -> plisttake_a nil N S];;
+2020-08-30 22:59:18 <egelbot> internal:1:221:syntactical:primary expression expected
+2020-08-30 22:59:41 <b_jonas> egelbot: data pcons;; data pnil;; data pforce;;
+2020-08-30 22:59:41 <egelbot> internal:1:40:syntactical:primary expression expected
+2020-08-30 22:59:44 <b_jonas> egelbot: data pcons;; data pnil;; data pforce
