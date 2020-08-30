@@ -821,3 +821,60 @@
 2020-08-30 19:26:05 <egelbot> ((9, 8), (7, 6), (5, 4))
 2020-08-30 19:26:30 <esowiki> 14[[07User:SunnyMoon14]]4 M10 02https://esolangs.org/w/index.php?diff=77141&oldid=77140 5* 03SunnyMoon 5* (+46) 10Game dev update
 2020-08-30 19:28:06 <esowiki> 14[[07User:SunnyMoon14]]4 M10 02https://esolangs.org/w/index.php?diff=77142&oldid=77141 5* 03SunnyMoon 5* (-44) 10The link is too much unexpected.
+2020-08-30 19:32:30 Parted: Frater_EST
+2020-08-30 19:32:30 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:35:25 Quit: egelbot (Remote host closed the connection)
+2020-08-30 19:35:25 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:38:27 Joined: egelbot
+2020-08-30 19:38:27 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:39:08 <spruit11> egelbot: cons 1 (cons 2 3)
+2020-08-30 19:39:09 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 19:39:09 <egelbot> {1, 2| 3}
+2020-08-30 19:39:12 <spruit11> Pffrt.
+2020-08-30 19:43:31 <b_jonas> egelbot: (cons 9 8, cons 9 (cons 8 7), cons 9 (cons 8 (cons 7 6)), cons 9 nil, cons 9 (cons 8 nil), cons 9 (cons 8 (cons 7 nil)), cons 9 (cons 8 (cons 7 (cons 6 nil))))
+2020-08-30 19:43:31 <egelbot> ({9| 8}, {9, 8| 7}, {9, 8, 7| 6}, {9}, {9, 8}, {9, 8, 7}, {9, 8, 7, 6})
+2020-08-30 19:43:37 <b_jonas> looks better
+2020-08-30 19:44:06 <spruit11> Yay recursion!
+2020-08-30 19:45:12 <b_jonas> egelbot: (cons, cons 9, cons nil, cons nil nil, cons nil 9, cons 9 8 7, cons 9 8 nil, cons 9 nil 7, cons 9 nil nil, cons nil 8 7, cons nil 8 nil, cons nil nil 7, cons nil nil nil, cons (cons 9 nil) nil)
+2020-08-30 19:45:12 <egelbot> (System:cons, (System:cons 9), (System:cons {}), {{}}, {{}| 9}, (System:cons 9 8 7), (System:cons 9 8 {}), (System:cons 9 {} 7), (System:cons 9 {} {}), (System:cons {} 8 7), (System:cons {} 8 {}), (System:cons {} {} 7), (System:cons {} {} {}), {{9}})
+2020-08-30 19:45:14 Quit: Arcorann (Read error: Connection reset by peer)
+2020-08-30 19:45:14 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:45:35 <spruit11> Yay line noise!
+2020-08-30 19:46:24 <spruit11> Oh gawd. Took a day but I am laughing about it. ;)
+2020-08-30 19:46:47 <b_jonas> egelbot: cons nop nil
+2020-08-30 19:46:47 <egelbot> {System:nop}
+2020-08-30 19:47:11 <b_jonas> egelbot: nop nil cons
+2020-08-30 19:47:14 <spruit11> I am wondering whether I should nop with unit once.
+2020-08-30 19:47:23 <spruit11> Nop is shorter..
+2020-08-30 19:47:34 <spruit11> Unit sounds nice.
+2020-08-30 19:47:42 <b_jonas> hmm
+2020-08-30 19:47:51 <b_jonas> egelbot: 2;; nop "hello";; 3
+2020-08-30 19:47:51 <egelbot> 2
+2020-08-30 19:47:51 <egelbot> 3
+2020-08-30 19:47:54 <b_jonas> interesting
+2020-08-30 19:48:44 Quit: hendursaga (Quit: hendursaga)
+2020-08-30 19:48:44 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:48:45 <b_jonas> I didn't know nop worked as a head
+2020-08-30 19:49:09 Joined: hendursaga
+2020-08-30 19:49:09 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:49:41 <spruit11> No. Print just checks the tag whether it's a nop. And an array inherits the tag from the head.
+2020-08-30 19:49:54 <spruit11> It's a small bug in print
+2020-08-30 19:50:05 <b_jonas> egelbot: (nop 9) 8
+2020-08-30 19:50:16 <spruit11> egelbot: (nop "hello", 9)
+2020-08-30 19:50:16 <egelbot> ((System:nop "hello"), 9)
+2020-08-30 19:50:57 <b_jonas> egelbot: def gobble = [_ -> gobble]
+2020-08-30 19:51:09 <b_jonas> egelbot: gobble 7 4 9 8 1 10
+2020-08-30 19:51:09 <egelbot> gobble
+2020-08-30 19:51:16 <b_jonas> egelbot: gobble "anything"
+2020-08-30 19:51:16 <egelbot> gobble
+2020-08-30 19:51:43 <spruit11> Yah. That's neat right.
+2020-08-30 19:52:54 <b_jonas> that's underload's v builtin
+2020-08-30 19:55:38 <b_jonas> it's an ordinary but useless combinator, it's just there to more easily demonstrate what can be done with the c builtin but not in pure lambda calculus
+2020-08-30 19:55:38 Joined: arseniiv
+2020-08-30 19:55:38 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 19:56:16 <spruit11> Heh.
+2020-08-30 19:57:49 <b_jonas> sorry, unlambda's v builtin
+2020-08-30 19:57:52 <b_jonas> not underload's
+2020-08-30 19:57:56 <b_jonas> also now I realize what I forgot
+2020-08-30 19:58:06 <b_jonas> I should have washed the shower curtains... oh well
+2020-08-30 19:58:33 <spruit11> Ah. Right. People do that.
