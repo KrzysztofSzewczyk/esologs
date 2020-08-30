@@ -1228,3 +1228,93 @@
 2020-08-30 21:59:24 <egelbot> fak alol
 2020-08-30 21:59:41 <b_jonas> ok that's better, it sends the cr through but not the lf
 2020-08-30 21:59:53 <b_jonas> and the IRC client ignores anything from cr to lf
+2020-08-30 22:00:04 <spruit11> Oh right. You already thought I should harden that, I remember.
+2020-08-30 22:00:09 <b_jonas> egelbot: [L->print (strjoini {"mehraj",L,"PRIVMSG b_jonas :duruzsol",L,"PRIVMSG #esoteric :szellos",L})](String:append(chr 13)(chr 0)); print "fak alol"
+2020-08-30 22:00:09 <egelbot> mehraj
+2020-08-30 22:00:09 <egelbot> fak alol
+2020-08-30 22:00:23 <b_jonas> egelbot: [L->print (strjoini {"mehraj",L,"PRIVMSG b_jonas :duruzsol",L,"PRIVMSG #esoteric :szellos",L})](chr 0); print "fak alol"
+2020-08-30 22:00:24 <egelbot> mehrajPRIVMSG #esoteric :fak alol
+2020-08-30 22:00:50 <b_jonas> ok, so to actually break this, I probably have to load IO or some such library, or use the unsafe functions maybe
+2020-08-30 22:01:25 <b_jonas> or find some function you accidentally left in System that shouldn't be there
+2020-08-30 22:01:33 <b_jonas> I don't understand what all those functions are
+2020-08-30 22:02:17 <spruit11> Yah. Severily lacking documentation is another thing.
+2020-08-30 22:02:41 <b_jonas> egelbot: "\u00610000"
+2020-08-30 22:02:41 <egelbot> internal:1:4:lexical:error in string
+2020-08-30 22:02:44 <b_jonas> egelbot: "\x00610000"
+2020-08-30 22:02:45 <egelbot> internal:1:4:lexical:error in string
+2020-08-30 22:02:57 <b_jonas> just stick to unescape then
+2020-08-30 22:03:01 <b_jonas> and chr
+2020-08-30 22:04:19 <spruit11> I'll add a chr once.
+2020-08-30 22:04:39 <b_jonas> egelbot: int
+2020-08-30 22:04:39 <egelbot> System:int
+2020-08-30 22:04:56 <b_jonas> spruit11: it doesn't really matter, we can't do anything too interesing with strings anyway
+2020-08-30 22:05:22 <spruit11> Hmm? You don't have all primitives?
+2020-08-30 22:05:33 <b_jonas> no, I mean we can't break the bot or anything
+2020-08-30 22:05:41 <spruit11> Oh, right.
+2020-08-30 22:05:43 <b_jonas> we have enough primitives to draw mazes or suchlike if we want
+2020-08-30 22:05:56 <b_jonas> maybe not enough to send byte strings that are invalid utf-8, I dunno
+2020-08-30 22:06:30 <spruit11> Right. I was wondering about that anyway.
+2020-08-30 22:07:05 <spruit11> It looked sane to support utf-8 but I am not that sure anymore.
+2020-08-30 22:07:15 <b_jonas> egelbot: [T->(T true,T 6,T (6 2),T (6,2),T {6,2},T int)][(_ _)->0|_:int->1|_->0]
+2020-08-30 22:07:15 <egelbot> internal:1:60:syntactical:-> expected
+2020-08-30 22:07:31 <b_jonas> where exactly?
+2020-08-30 22:07:47 <b_jonas> egelbot: [T->(T true,T 5)][(_ _)->0|_:int->1|_->0]
+2020-08-30 22:07:47 <egelbot> internal:1:30:syntactical:-> expected
+2020-08-30 22:08:06 <b_jonas> egelbot: [T->(T true,T 5)][(X X)->0|X:int->1|X->0]
+2020-08-30 22:08:06 <egelbot> internal:1:23:semantical:redeclaration of X
+2020-08-30 22:08:12 <b_jonas> egelbot: [T->(T true,T 5)][(X Y)->0|X:int->1|X->0]
+2020-08-30 22:08:13 <egelbot> internal:1:29:semantical:undeclared int
+2020-08-30 22:08:19 <b_jonas> egelbot: [T->(T true,T 5)][(X Y)->0|X:System:int->1|X->0]
+2020-08-30 22:08:20 <egelbot> internal:1:29:semantical:undeclared int
+2020-08-30 22:08:30 <spruit11> ::
+2020-08-30 22:08:36 <spruit11> I think
+2020-08-30 22:08:43 <b_jonas> egelbot: [T->(T true,T 5)][(X Y)->0|X::int->1|X->0]
+2020-08-30 22:08:43 <egelbot> (0, 1)
+2020-08-30 22:08:54 <b_jonas> egelbot: [T->(T true,T 5,T (6 2),T (6,2),T {6,2},T int)][(X Y)->0|X::int->1|X->0]
+2020-08-30 22:08:54 <egelbot> (0, 1, 0, 0, 0, 1)
+2020-08-30 22:09:03 <b_jonas> egelbot: [T->(T true,T 5,T (6 2),T (6,2),T {6,2},T int)][(X Y)->0|int->0|X::int->1|X->0]
+2020-08-30 22:09:03 <egelbot> (0, 1, 0, 0, 0, 0)
+2020-08-30 22:09:17 <b_jonas> egelbot: [T->(T true,T 5,T 2.5,T 6.0,T (6 2),T (6,2),T {6,2},T int)][(X Y)->0|int->0|X::int->1|X->0]
+2020-08-30 22:09:18 <egelbot> (0, 1, 0, 0, 0, 0, 0, 0)
+2020-08-30 22:09:22 <b_jonas> ok good enough
+2020-08-30 22:09:33 <b_jonas> egelbot: def isint = [(X Y)->0|int->0|X::int->1|X->0]
+2020-08-30 22:17:26 <b_jonas> egelbot: def listtake_a = [P N S -> [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw "error listtake" ] (isint N)(N <= 0)S];; def listtake = [N S -> listtake nil N S];; def st6 = {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; take 7 st6
+2020-08-30 22:17:26 <egelbot> internal:1:269:semantical:undeclared take
+2020-08-30 22:17:37 <b_jonas> egelbot: listtake 7 st6
+2020-08-30 22:17:56 <b_jonas> egelbot: "did I put you into an infinite loop?"
+2020-08-30 22:18:04 <b_jonas> oops
+2020-08-30 22:18:37 <b_jonas> `ping
+2020-08-30 22:18:38 <HackEso> pong
+2020-08-30 22:21:02 <b_jonas> oh yeah
+2020-08-30 22:21:17 <b_jonas> egelbot: def listtake_a = [P N S -> [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw "error listtake" ] (isint N)(N <= 0)S];; def listtake_a = [N S -> listtake nil N S];; def st6 = {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; listtake 7 st6
+2020-08-30 22:21:22 <b_jonas> that was the bug
+2020-08-30 22:21:23 <b_jonas> spruit11: sorry
+2020-08-30 22:21:48 <b_jonas> I made it fall into growing a term one by one
+2020-08-30 22:22:07 <b_jonas> making an application with listtake as the head longer and longer
+2020-08-30 22:22:14 Quit: egelbot (Ping timeout: 256 seconds)
+2020-08-30 22:22:14 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:22:20 <b_jonas> if it copies the whole application, then that will take a while to run out of memory
+2020-08-30 22:23:45 <spruit11> Oh, right.
+2020-08-30 22:24:08 Joined: egelbot
+2020-08-30 22:24:08 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 22:24:58 <b_jonas> egelbot: def listtake_a = [P N S -> [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw "error listtake" ] (isint N)(N <= 0)S];; def listtake = [N S -> listtake_a nil N S];; def st6 = {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; listtake 7 st6
+2020-08-30 22:24:59 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 22:24:59 <egelbot> internal:1:143:semantical:undeclared isint
+2020-08-30 22:25:07 <b_jonas> egelbot: def isint = [(X Y)->0|int->0|X::int->1|X->0]
+2020-08-30 22:25:13 <b_jonas> egelbot: listtake 7 st6
+2020-08-30 22:25:14 <egelbot> internal:1:2:semantical:undeclared listtake
+2020-08-30 22:25:17 <b_jonas> egelbot: def listtake_a = [P N S -> [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw "error listtake" ] (isint N)(N <= 0)S];; def listtake = [N S -> listtake_a nil N S];; def st6 = {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; listtake 7 st6
+2020-08-30 22:25:17 <egelbot> exception("error listtake")
+2020-08-30 22:25:24 <b_jonas> that's slightly better
+2020-08-30 22:27:42 <b_jonas> egelbot: def listtake_a = [P N S -> say ("listtake_a",P,N,S); [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw "error listtake" ] (isint N)(N <= 0)S];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:27:43 <egelbot> internal:1:29:semantical:undeclared say
+2020-08-30 22:27:48 <b_jonas> egelbot: def listtake_a = [P N S -> print ("listtake_a",P,N,S); [0 _ nil->nil| 0 true _->nil| 0 false (cons A D)->cons A (listtake_a (N-1) D P)| _ _ _->throw "error listtake" ] (isint N)(N <= 0)S];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:27:49 <egelbot> exception("error listtake")
+2020-08-30 22:28:37 <b_jonas> egelbot: def listtake_a = [P N S -> print ("listtake_a",P,N,S); "substitute"];; def listtake = [N S -> listtake_a nil N S];; listtake 7 st6
+2020-08-30 22:28:37 <egelbot> "substitute"
+2020-08-30 22:29:08 <b_jonas> egelbot: print ("listtake_a",nil,7,st6)
+2020-08-30 22:29:08 <egelbot> (System:print ("listtake_a", {}, 7, {8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82}))
+2020-08-30 22:29:19 <b_jonas> egelbot: print ("listtake_a",nil,7,st6); 0
+2020-08-30 22:29:19 <egelbot> 0
+2020-08-30 22:29:25 <b_jonas> egelbot: print (tostr("listtake_a",nil,7,st6)); 0
+2020-08-30 22:29:25 <egelbot> internal:1:9:semantical:undeclared tostr
