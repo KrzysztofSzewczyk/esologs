@@ -1,0 +1,58 @@
+2020-08-30 00:00:14 <b_jonas> which inner [] bind by reference
+2020-08-30 00:00:15 <spruit11> I can always pass the vector -say- to itself as a field?
+2020-08-30 00:00:23 <b_jonas> yes
+2020-08-30 00:00:36 <b_jonas> but the vector isn't part of th DAG
+2020-08-30 00:00:39 <b_jonas> it's separat
+2020-08-30 00:00:52 <b_jonas> you just have a reference to vector that is a primitive type like a number
+2020-08-30 00:00:53 <spruit11> Ah. Hmm.
+2020-08-30 00:01:03 <b_jonas> that's what lisp does
+2020-08-30 00:01:28 <b_jonas> and python and ruby etc
+2020-08-30 00:01:47 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77106&oldid=77105 5* 03SoundOfScripting 5* (+468) 10/* Language specifications */
+2020-08-30 00:01:54 <spruit11> All those languages allow cycles. Only early Lisp rewrote DAGs.
+2020-08-30 00:02:10 <b_jonas> I don't think even early lisps did
+2020-08-30 00:02:24 <spruit11> Yah, sure. The first one did. I read the report.
+2020-08-30 00:02:25 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77107&oldid=77106 5* 03SoundOfScripting 5* (-1) 10
+2020-08-30 00:03:28 <b_jonas> I think all serious lisps have set-car and set-cdr, even the oldest ones (possibly with a different name), but these days we want programs to not use it anywhere, so that conses are known to be globally immutable and the interpreter can optimize using that
+2020-08-30 00:03:55 <b_jonas> and yes, some toy lisps might not have it, like my toy lisp for example
+2020-08-30 00:04:13 <spruit11> Nono. The actual first Lisp was reference counted.
+2020-08-30 00:04:32 <spruit11> By -whatshisname- McArthy. In the report.
+2020-08-30 00:04:35 <b_jonas> yes
+2020-08-30 00:04:46 <b_jonas> that doesn't stop this
+2020-08-30 00:05:21 <b_jonas> you can just end up in uncollectable cycles if your program is not careful
+2020-08-30 00:05:55 <b_jonas> but you can free a cycle either by breaking it, or using some newer data structure that allows weak referencing
+2020-08-30 00:06:30 <spruit11> Right. My hope was that just being pure would cut it. But it's all way to slow. If it wasn't as slow as it is now, I wouldn't add vectors.
+2020-08-30 00:06:48 <b_jonas> and it's John McCarthy (1927..2011)
+2020-08-30 00:06:58 <spruit11> Ah right.
+2020-08-30 00:07:03 <spruit11> McCarthy.
+2020-08-30 00:07:37 <b_jonas> if you don't want mutability, you can consider lazy promises that you have to explicitly evaluae too
+2020-08-30 00:07:53 <b_jonas> that solves a few of the problems, though not most
+2020-08-30 00:08:18 <b_jonas> but if you want to keep immutability completely, you can also do that
+2020-08-30 00:08:27 <spruit11> I would like to avoid mutability but it doesn't seem worth it.
+2020-08-30 00:08:50 Joined: adu
+2020-08-30 00:08:50 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Heavpoot, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 00:09:00 <spruit11> In the sense that, I should give programmers mutable fast containers where they can't use lists.
+2020-08-30 00:09:11 <spruit11> But that's assuming 'programmers'.
+2020-08-30 00:09:13 <spruit11> Tall order.
+2020-08-30 00:09:14 <b_jonas> I think it's worth in a non-toy language, but this is a toy language
+2020-08-30 00:09:41 Joined: Arcorann
+2020-08-30 00:09:41 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, Heavpoot, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 00:09:47 <spruit11> Yah. But sometimes I flip opinion and hope it could be something like a bash or python.
+2020-08-30 00:09:50 <b_jonas> sorry, that's conflicting
+2020-08-30 00:09:58 <spruit11> And then I think: nah.
+2020-08-30 00:10:02 <b_jonas> I think it's worth *to adds mutable structures* in a non-toy language, but this is a toy language
+2020-08-30 00:10:12 <spruit11> And then I flip opinion again.
+2020-08-30 00:10:25 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77108&oldid=77107 5* 03SoundOfScripting 5* (+341) 10/* Language specifications */ More instructions :)
+2020-08-30 00:11:44 <b_jonas> I admit that olvashato doesn't have mutability, because I didn't want them for the programs I wrote, but you could add them in a library
+2020-08-30 00:11:59 <b_jonas> it's a bit messy because of the prolog side, but possible
+2020-08-30 00:12:25 <spruit11> Today I wanted to compare my abysmal performance to Python.
+2020-08-30 00:12:43 <b_jonas> my toy lisp does have mutability
+2020-08-30 00:12:48 <spruit11> Which gave an out of stack after going 900 deep into recursion.
+2020-08-30 00:13:00 <b_jonas> heh
+2020-08-30 00:13:03 <spruit11> So then I thought: maybe there's a use case after all.
+2020-08-30 00:13:13 <spruit11> And now I think: nah.
+2020-08-30 00:13:37 <spruit11> ¯\_(ツ)_/¯
+2020-08-30 00:13:48 <Heavpoot> what if esolang where computations have to be done with constantly changing operator precedence, and said operators modify precedence?
+2020-08-30 00:27:44 <spruit11> I could add explicitly managed vectors. Where you indirectly reference a vector pool with an index. And you're responsible for managing memory.
+2020-08-30 00:28:45 <spruit11> But if you're managing memory already you might as well make sure that your vector doesn't contain cycles.
+2020-08-30 00:29:11 <spruit11> Ah well. Gonna hack on the double semicolon, I think.
+2020-08-30 00:29:55 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77109&oldid=77108 5* 03SoundOfScripting 5* (+78) 10
