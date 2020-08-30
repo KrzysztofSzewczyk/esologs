@@ -348,3 +348,68 @@
 2020-08-30 11:07:12 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-08-30 11:08:42 Joined: glowcoil
 2020-08-30 11:08:42 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 11:30:21 <b_jonas> egelbot: 1;; raise "oops";; 2
+2020-08-30 11:30:21 <egelbot> 1
+2020-08-30 11:30:21 <egelbot> internal:1:6:semantical:undeclared raise
+2020-08-30 11:30:38 <b_jonas> egelbot: def raisepls = raise "oops"
+2020-08-30 11:30:38 <egelbot> internal:1:17:semantical:undeclared raise
+2020-08-30 11:30:48 <b_jonas> egelbot: def raisepls = (raise "oops")
+2020-08-30 11:30:48 <egelbot> internal:1:18:semantical:undeclared raise
+2020-08-30 11:30:55 <b_jonas> egelbot: def raisepls = (0; raise "oops"; 0)
+2020-08-30 11:30:56 <egelbot> internal:1:21:semantical:undeclared raise
+2020-08-30 11:30:59 <b_jonas> hmm
+2020-08-30 11:31:15 <b_jonas> egelbot: (print 3; raise "oops"; print 4)
+2020-08-30 11:31:15 <egelbot> internal:1:3:semantical:undeclared print
+2020-08-30 11:53:54 <spruit11> throw
+2020-08-30 11:54:12 <spruit11> egelbot: (print 3; throw "oops"; print 4)
+2020-08-30 11:54:12 <egelbot> internal:1:3:semantical:undeclared print
+2020-08-30 11:54:28 <spruit11> egelbot: (say 3; throw "oops"; say 4)
+2020-08-30 11:54:28 <egelbot> 3
+2020-08-30 11:54:29 <egelbot> 4
+2020-08-30 11:54:29 <egelbot> exception(System:nop)
+2020-08-30 11:54:36 <b_jonas> egelbot: Io.print "hello, world"
+2020-08-30 11:54:36 <egelbot> internal:1:2:semantical:undeclared Io
+2020-08-30 11:54:55 <spruit11> IO prints to stdout and isn't included in the bot.
+2020-08-30 11:55:16 <spruit11> The bot uses say. I guess I could change that?
+2020-08-30 11:55:32 <b_jonas> ah
+2020-08-30 11:55:37 <b_jonas> egelbot: say "hello, world"
+2020-08-30 11:55:37 <egelbot> hello, world
+2020-08-30 11:55:47 <b_jonas> wasn't there a declaration to load any module though?
+2020-08-30 11:56:17 <spruit11> Yah. If you know the path on my system you can make the bot print to my stdout.
+2020-08-30 11:56:26 <b_jonas> egelbot: (say "hello, world"; raise "oops"; say "hello, world")
+2020-08-30 11:56:26 <egelbot> internal:1:23:semantical:undeclared raise
+2020-08-30 11:56:38 <spruit11> import "path_local/io.ego"
+2020-08-30 11:56:51 <b_jonas> egelbot: (env "PWD", env "_") /* those paths? it might be able to guess. */
+2020-08-30 11:56:51 <egelbot> internal:1:37:syntactical:? unexpected
+2020-08-30 11:57:01 <b_jonas> egelbot: (getenv "PWD", getenv "_") /* those paths? it might be able to guess. */
+2020-08-30 11:57:01 <egelbot> internal:1:43:syntactical:? unexpected
+2020-08-30 11:57:04 <b_jonas> hmm
+2020-08-30 11:57:11 <spruit11> Use # for comments
+2020-08-30 11:57:32 <spruit11> I had C style syntax but I changed. Made it all much better.
+2020-08-30 11:57:52 <b_jonas> egelbot: (getenv "PWD", getenv "HOME", getenv "_")
+2020-08-30 11:57:52 <egelbot> (System:tuple "/home/marco/Programming/egel-bot/src" "/home/marco" "./egel-bot")
+2020-08-30 11:57:54 <spruit11> Also #!/usr/bin/env egel now works for scripting.
+2020-08-30 11:57:56 <b_jonas> right, so those
+2020-08-30 11:58:02 <b_jonas> yay!
+2020-08-30 11:58:15 <b_jonas> does that include mixing declarations and expressions?
+2020-08-30 11:58:38 <b_jonas> egelbot: [_ -> say "hello, world"; raise "oops"; say "hello, world"] 0
+2020-08-30 11:58:38 <egelbot> internal:1:28:semantical:undeclared raise
+2020-08-30 11:58:42 <b_jonas> what... still?
+2020-08-30 11:58:45 <spruit11> throw
+2020-08-30 11:58:49 <b_jonas> oh
+2020-08-30 11:58:50 <spruit11> egelbot: throw 1
+2020-08-30 11:58:50 <egelbot> exception(1)
+2020-08-30 11:59:02 <b_jonas> egelbot: 3; throw 4; 5
+2020-08-30 11:59:02 <egelbot> exception(5)
+2020-08-30 11:59:11 <b_jonas> egelbot: (13; throw 14; 15)
+2020-08-30 11:59:11 <egelbot> exception(15)
+2020-08-30 11:59:12 <spruit11> Oops.
+2020-08-30 11:59:22 <spruit11> You found a bug!
+2020-08-30 11:59:26 <b_jonas> egelbot: 3;; throw 4;; 5
+2020-08-30 11:59:26 <egelbot> 3
+2020-08-30 11:59:26 <egelbot> exception(4)
+2020-08-30 11:59:26 <egelbot> 5
+2020-08-30 11:59:32 <b_jonas> that's not a bug, it's just creative precedence
+2020-08-30 11:59:50 <b_jonas> it interprets that as throw(4;5)
+2020-08-30 11:59:58 <b_jonas> egelbot: 3; (throw 4); 5
+2020-08-30 11:59:58 <egelbot> exception(4)
