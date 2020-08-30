@@ -1442,3 +1442,53 @@
 2020-08-30 22:59:41 <b_jonas> egelbot: data pcons;; data pnil;; data pforce;;
 2020-08-30 22:59:41 <egelbot> internal:1:40:syntactical:primary expression expected
 2020-08-30 22:59:44 <b_jonas> egelbot: data pcons;; data pnil;; data pforce
+2020-08-30 23:00:04 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ pnil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (plisttake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N <= 0)(S nop) ];; def plisttake = [N S -> plisttake_a nil N S]
+2020-08-30 23:00:58 <b_jonas> egelbot: def pst3 = [F->pcons 8[F->pcons 22[F->pcons 13[F->pnil]]]];; plisttake 7 pst3
+2020-08-30 23:00:58 <egelbot> {8, 22, 13}
+2020-08-30 23:01:28 <b_jonas> egelbot: (plisttake 0 pst3, plisttake 2 pst3, plisttake 1 pst3, plisttake -1 pst3, plisttake 3 pst3)
+2020-08-30 23:01:28 <egelbot> ({}, {8, 22}, {8}, {}, {8, 22, 13})
+2020-08-30 23:01:31 <b_jonas> looks good
+2020-08-30 23:02:07 <b_jonas> egelbot: def plisttake_a = [P N S -> [1 _ pnil->nil| 1 true _->nil| 1 false (pcons A D)-> cons A (plisttake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N <= 0)(S pforce) ];; def plisttake = [N S -> plisttake_a nil N S]
+2020-08-30 23:02:13 <b_jonas> egelbot: (plisttake 0 pst3, plisttake 2 pst3, plisttake 1 pst3, plisttake -1 pst3, plisttake 3 pst3, plisttake 7 pst3)
+2020-08-30 23:02:14 <egelbot> ({}, {8, 22}, {8}, {}, {8, 22, 13}, {8, 22, 13})
+2020-08-30 23:05:56 Joined: dingwat
+2020-08-30 23:05:56 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 23:08:31 <spruit11> lol at -1+N
+2020-08-30 23:10:14 <b_jonas> egelbot: plistmember = [N H-> [pnil->false| (pcons A D)-> [true->true| false->plistmember N D| _->throw"error plistmember =="] (N==A)| _->throw"error plistmember uncons"] (H pforce)];; plistmember 7 pst3;; plistmember 8 pst3;; plistmember 13 pst3;; plistmember 12 pst3
+2020-08-30 23:10:15 <egelbot> internal:1:14:syntactical:= unexpected
+2020-08-30 23:10:27 <b_jonas> egelbot: 3==3
+2020-08-30 23:10:27 <egelbot> System:true
+2020-08-30 23:10:38 <b_jonas> egelbot: def plistmember = [N H-> [pnil->false| (pcons A D)-> [true->true| false->plistmember N D| _->throw"error plistmember =="] (N==A)| _->throw"error plistmember uncons"] (H pforce)];; plistmember 7 pst3;; plistmember 8 pst3;; plistmember 13 pst3;; plistmember 12 pst3
+2020-08-30 23:10:38 <egelbot> System:false
+2020-08-30 23:10:38 <egelbot> System:true
+2020-08-30 23:10:38 <egelbot> System:true
+2020-08-30 23:10:38 <egelbot> System:false
+2020-08-30 23:10:42 <b_jonas> great
+2020-08-30 23:13:57 <b_jonas> egelbot: (-100)%9
+2020-08-30 23:13:57 <egelbot> -1
+2020-08-30 23:14:00 <b_jonas> egelbot: (100)%9
+2020-08-30 23:14:00 <egelbot> 1
+2020-08-30 23:14:03 <b_jonas> egelbot: (100)%7
+2020-08-30 23:14:04 <egelbot> 2
+2020-08-30 23:17:08 <b_jonas> def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->true| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error plistmember uncons"] (H pforce)];; (pprimes_i 15 pst3, pprimes_i 15 pst3, pprimes_i 8 pst3, pprimes_i 66 pst3, pprimes_i 88 pst3, pprimes_i 13 pst3, pprimes_i 39 pst3, pprimes_i 91 pst3)
+2020-08-30 23:17:16 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->true| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error plistmember uncons"] (H pforce)];; (pprimes_i 15 pst3, pprimes_i 15 pst3, pprimes_i 8 pst3, pprimes_i 66 pst3, pprimes_i 88 pst3, pprimes_i 13 pst3, pprimes_i 39 pst3, pprimes_i 91 pst3)
+2020-08-30 23:17:16 <egelbot> internal:1:200:semantical:undeclared H
+2020-08-30 23:17:27 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->true| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error plistmember uncons"] (L pforce)];; (pprimes_i 15 pst3, pprimes_i 15 pst3, pprimes_i 8 pst3, pprimes_i 66 pst3, pprimes_i 88 pst3, pprimes_i 13 pst3, pprimes_i 39 pst3, pprimes_i 91 pst3)
+2020-08-30 23:17:27 <egelbot> (System:false, System:false, System:true, System:true, System:true, System:false, System:false, System:false)
+2020-08-30 23:17:35 <b_jonas> nope
+2020-08-30 23:19:24 <b_jonas> oh right, wait
+2020-08-30 23:19:47 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->true| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<D+99999) | _->throw"error plistmember uncons"] (L pforce)];; (pprimes_i 15 pst3, pprimes_i 15 pst3, pprimes_i 8 pst3, pprimes_i 66 pst3, pprimes_i 88 pst3, pprimes_i 13 pst3, pprimes_i 39 pst3, pprimes_i 91 pst3)
+2020-08-30 23:19:47 <egelbot> exception("System:+ bad arguments")
+2020-08-30 23:20:06 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->true| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N+99999) | _->throw"error plistmember uncons"] (L pforce)];; (pprimes_i 15 pst3, pprimes_i 15 pst3, pprimes_i 8 pst3, pprimes_i 66 pst3, pprimes_i 88 pst3, pprimes_i 13 pst3, pprimes_i 39 pst3, pprimes_i 91 pst3)
+2020-08-30 23:20:06 <egelbot> (System:false, System:false, System:true, System:true, System:true, System:true, System:true, System:true)
+2020-08-30 23:20:11 <b_jonas> still no
+2020-08-30 23:20:41 <b_jonas> egelbot: (pprimes_i 15 pst3, pprimes_i 16 pst3, pprimes_i 8 pst3, pprimes_i 66 pst3, pprimes_i 88 pst3, pprimes_i 13 pst3, pprimes_i 39 pst3, pprimes_i 91 pst3)
+2020-08-30 23:20:41 <egelbot> (System:false, System:true, System:true, System:true, System:true, System:true, System:true, System:true)
+2020-08-30 23:20:45 <b_jonas> better
+2020-08-30 23:21:23 <b_jonas> egelbot: (pprimes_i 17 pst3, pprimes_i 4 pst3, pprimes_i 67 pst3, pprimes_i 89 pst3, pprimes_i 14 pst3, pprimes_i 38 pst3, pprimes_i 91 pst3)
+2020-08-30 23:21:23 <egelbot> (System:false, System:false, System:false, System:false, System:false, System:false, System:true)
+2020-08-30 23:21:34 <b_jonas> ok
+2020-08-30 23:22:03 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->true| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error plistmember uncons"] (L pforce)];; "ok"
+2020-08-30 23:22:03 <egelbot> "ok"
+2020-08-30 23:23:47 Joined: Arcorann
+2020-08-30 23:23:48 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
