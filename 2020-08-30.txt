@@ -56,3 +56,59 @@
 2020-08-30 00:28:45 <spruit11> But if you're managing memory already you might as well make sure that your vector doesn't contain cycles.
 2020-08-30 00:29:11 <spruit11> Ah well. Gonna hack on the double semicolon, I think.
 2020-08-30 00:29:55 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77109&oldid=77108 5* 03SoundOfScripting 5* (+78) 10
+2020-08-30 00:30:07 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77110&oldid=77109 5* 03IFcoltransG 5* (+9) 10/* Language specifications */ Commented out unnecessary section
+2020-08-30 00:32:22 <esowiki> 14[[071CP=1ICL14]]4 M10 02https://esolangs.org/w/index.php?diff=77111&oldid=77110 5* 03SoundOfScripting 5* (+3) 10
+2020-08-30 00:33:22 <b_jonas> spruit11: by "explicitly managed", do you mean that the user has to free them explicitly, they're not refcounted or tracked by the refcounter or garbage collector that handles your DAG nodes?
+2020-08-30 00:33:47 <b_jonas> to be clear, all that mutability stuff is less important than what I mentioned earlier
+2020-08-30 00:34:11 <spruit11> Right. You reference a vector indirectly in a pool. That way you break the cycle. But the cost for that is also that you would need to free it.
+2020-08-30 00:34:35 <b_jonas> hmm, that would be much more inconvenient
+2020-08-30 00:34:51 <b_jonas> I was thinking it would at least be refcounted
+2020-08-30 00:35:12 <spruit11> Yah. Doesn't seem worth it.
+2020-08-30 00:35:31 <spruit11> Oh.
+2020-08-30 00:35:35 <spruit11> Wait.
+2020-08-30 00:35:56 <spruit11> I could free it if the reference is destroyed?
+2020-08-30 00:36:01 <spruit11> What voodoo is this?
+2020-08-30 00:36:12 <b_jonas> that is the voodoo of recounting
+2020-08-30 00:36:36 <b_jonas> I mean don't you already have something like that for the DAG nodes?
+2020-08-30 00:37:23 <spruit11> Uh. I abuse C++'s native refcounting.
+2020-08-30 00:38:36 <b_jonas> C++'s "native refcounting"? what do you mean? do you mean std::shared_ptr, which is a reference-counted smart pointer type?
+2020-08-30 00:38:42 <spruit11> Yah.
+2020-08-30 00:38:49 <b_jonas> why is that an abuse?
+2020-08-30 00:39:00 <b_jonas> you can use that for the vectors too
+2020-08-30 00:39:35 <spruit11> Uh, yes and no.
+2020-08-30 00:40:05 <spruit11> I need a form of indirection over a vector pool. But that's all yes.
+2020-08-30 00:40:40 <b_jonas> I don't see why it's an abuse, and I'm not sure in what sense it counts as "native", but then that's because I remember the past when that wasn't in the standard library yet, and also I know it's implemented as a pure library feature
+2020-08-30 00:41:02 <b_jonas> um... vector pool?
+2020-08-30 00:41:48 <b_jonas> what why?
+2020-08-30 00:42:04 <spruit11> Well. The thing is that in the 'graph' you construct you don't want cycles. But if a 'vector' object only stores an index into a global vector pool, you can't create cycles.
+2020-08-30 00:42:49 <b_jonas> sure you can, if it's reference-counted both ways, as in the vector keeps alive the dag node it points to and the dag node keeps alive the vector it points to, then it can form cycles
+2020-08-30 00:42:56 <b_jonas> it doesn't matter if you allocate them from a pool or not
+2020-08-30 00:43:23 <spruit11> Damn.
+2020-08-30 00:43:35 <spruit11> Right.
+2020-08-30 00:43:49 <spruit11> No vector pool than but unsafeness.
+2020-08-30 00:44:00 <b_jonas> why? what's unsafe in this?
+2020-08-30 00:44:02 <spruit11> Thanks for that. For a moment I thought I found a way out.
+2020-08-30 00:44:28 <b_jonas> make it reference-counted both ways, and document that it's only reference counted so if you leave a cycle it won't be collected and that that's the user's responsibility
+2020-08-30 00:44:32 <spruit11> The unsafe part is that I would allow the programmer to form cycles in what should be a DAG.
+2020-08-30 00:44:52 <spruit11> Right. We agree.
+2020-08-30 00:46:04 <b_jonas> but it's not a cycle that will bother the pattern matcher or the pretty-printer or anything, because the pattern matcher doesn't go arbitrarily deep through vectors because there's no such pattern, and you can just make the pretty-printer either not print the contents of vectors at all, only a reference, like it doesn't print the content of a function now, or make it track which vector it met and not
+2020-08-30 00:46:10 <b_jonas> print repeated vectors
+2020-08-30 00:46:24 <b_jonas> so I don't see why the cycles are a problem
+2020-08-30 00:47:09 <b_jonas> unless this is like your PhD thesis and you have "DAG" prominently in the plan you submitted and now you have to resubmit the plan and wait for permission from a committee to be allowed to write non-DAGs
+2020-08-30 00:47:12 <spruit11> I think I fully agree with you.
+2020-08-30 00:47:41 <spruit11> Nono. If I would be doing a PhD I would already been kicked out for not having a type system.
+2020-08-30 00:49:09 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77112&oldid=77111 5* 03IFcoltransG 5* (+875) 10/* Language specifications */ Add oculi for converting between bits and bytes
+2020-08-30 00:49:52 <b_jonas> well, technically there's another case when you don't want this: if you want to make a sandbox version of egel to run untrusted code by multiple users (like a javascript interpreter in an old browser that runs everything in one procesS), and want to be able to free every object created by a user by just freeing a few top-level references, in which case you need either a garbage collector, or allocate
+2020-08-30 00:49:58 <b_jonas> everything into arenas, different users never share an arena, and free each arena owned by a user when you're done with them
+2020-08-30 00:50:09 <b_jonas> but you would need a lot of other changes too if you wanted that
+2020-08-30 00:50:53 <spruit11> Life is never easy.
+2020-08-30 00:51:34 <spruit11> I already regret compiling to bytecode. And I also regret having a global pool for recursive structures.
+2020-08-30 00:51:53 <spruit11> Life would be so much nicer without those two.
+2020-08-30 00:52:10 <b_jonas> spruit11: ah yes, that's when you make an incompatible egel2
+2020-08-30 00:52:25 <b_jonas> where you keep the ideas you like and redesigne and rewrite everything
+2020-08-30 00:53:36 <esowiki> 14[[071CP=1ICL14]]4 10 02https://esolangs.org/w/index.php?diff=77113&oldid=77112 5* 03IFcoltransG 5* (+291) 10Clarified Tokigun's half cell movements
+2020-08-30 00:53:44 <spruit11> Hmyah. I'll end up with a toy of a toy.
+2020-08-30 00:53:49 <spruit11> A noble cause!
+2020-08-30 00:54:27 <spruit11> Anyway, you got me fired up. I am hacking on the double semicolon now.
+2020-08-30 00:54:37 <b_jonas> nice
+2020-08-30 00:59:46 <fizzie> Isn't a double semicolon just one whole colon?
