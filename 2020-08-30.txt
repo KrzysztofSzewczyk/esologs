@@ -1057,3 +1057,174 @@
 2020-08-30 21:29:01 <spruit11> I use gprof.
 2020-08-30 21:29:09 <b_jonas> egelbot: 7 & 4
 2020-08-30 21:29:09 <egelbot> internal:1:4:semantical:undeclared &
+2020-08-30 21:32:10 <spruit11> egelbot: 7 && 4
+2020-08-30 21:32:10 <egelbot> 4
+2020-08-30 21:32:40 <b_jonas> yeah
+2020-08-30 21:32:52 <imode> egel doesn't build on my machine.
+2020-08-30 21:32:54 <spruit11> I should change that once. I will use && for 'lazy' (forgot the name) boolean expressions.
+2020-08-30 21:33:12 <imode> looks to be missing libicu, but I have that installed.
+2020-08-30 21:33:23 <b_jonas> egelbot: "and I think it was"; toint "a"
+2020-08-30 21:33:23 <egelbot> 0
+2020-08-30 21:33:35 <b_jonas> egelbot: "and I think it was"; toint (charAt 0 "a")
+2020-08-30 21:33:36 <egelbot> internal:1:31:semantical:undeclared charAt
+2020-08-30 21:33:44 <b_jonas> egelbot: "and I think it was"; toint (String:charAt 0 "a")
+2020-08-30 21:33:44 <egelbot> 97
+2020-08-30 21:33:46 <b_jonas> yeah, that
+2020-08-30 21:34:11 <b_jonas> egelbot: "but the opposite direction is not"; totext 97
+2020-08-30 21:34:11 <egelbot> "97"
+2020-08-30 21:34:34 <b_jonas> egelbot: unpack "a" # oh right, we have this now
+2020-08-30 21:34:34 <egelbot> {'a'}
+2020-08-30 21:34:40 <b_jonas> but it doesn't really help
+2020-08-30 21:34:46 <b_jonas> toint is still the ord function
+2020-08-30 21:35:05 <b_jonas> and I think chr was uglier
+2020-08-30 21:35:40 <b_jonas> egelbot: "\\u0061"
+2020-08-30 21:35:40 <egelbot> "\\u0061"
+2020-08-30 21:35:42 <b_jonas> egelbot: "\u0061"
+2020-08-30 21:35:42 <egelbot> internal:1:4:lexical:error in string
+2020-08-30 21:35:49 <b_jonas> egelbot: "\x0061"
+2020-08-30 21:35:49 <egelbot> internal:1:4:lexical:error in string
+2020-08-30 21:35:51 <b_jonas> egelbot: "\x61"
+2020-08-30 21:35:51 <egelbot> internal:1:4:lexical:error in string
+2020-08-30 21:35:53 <b_jonas> hmm
+2020-08-30 21:36:02 <spruit11> And I thought I could move egel to beta status!
+2020-08-30 21:36:09 <b_jonas> egelbot: unquote "\\u0061"
+2020-08-30 21:36:09 <egelbot> internal:1:2:semantical:undeclared unquote
+2020-08-30 21:36:12 <b_jonas> egelbot: String:unquote "\\u0061"
+2020-08-30 21:36:12 <egelbot> internal:1:2:semantical:undeclared unquote
+2020-08-30 21:36:15 <spruit11> There's still a lot to do.
+2020-08-30 21:36:19 <b_jonas> egelbot: String:unescape "\\u0061"
+2020-08-30 21:36:20 <egelbot> "a"
+2020-08-30 21:36:23 <b_jonas> yes, that was it
+2020-08-30 21:36:24 <imode> I'm just curious about how stuff like basic addition performs.
+2020-08-30 21:36:46 <imode> going on a rewriting-related performance journey myself.
+2020-08-30 21:36:53 <spruit11> Basic addition is really, really slow.
+2020-08-30 21:36:59 <imode> how slow?
+2020-08-30 21:37:11 <imode> sorry, that sounds way more forceful than it actually is.
+2020-08-30 21:37:16 <spruit11> Dunno.
+2020-08-30 21:37:44 <imode> weird, the cflags resolve to -licuio -licui18n -licuuc -licudata...
+2020-08-30 21:37:53 <spruit11> But I think in the order of ten thousand micro instructions.
+2020-08-30 21:38:18 <imode> `error: ‘icu_65’ is not a namespace-name`
+2020-08-30 21:38:19 <HackEso> error:? No such file or directory
+2020-08-30 21:38:43 <spruit11> Should be something like that, in the ball park of a thousand to ten thousand.
+2020-08-30 21:38:58 <spruit11> Instead of one instruction..
+2020-08-30 21:39:12 <spruit11> Bash is even slower!
+2020-08-30 21:39:38 <imode> interesting. how do you do the rewriting? just a basic recursive tree search/replace?
+2020-08-30 21:39:51 <spruit11> https://github.com/egel-lang/egel-tex/blob/master/semantics/semantics.pdf
+2020-08-30 21:39:56 <spruit11> ^ look there
+2020-08-30 21:40:04 <imode> neato burrito.
+2020-08-30 21:40:08 <spruit11> It's a graph rewriter.
+2020-08-30 21:40:22 <b_jonas> egelbot: [X->[X->(X,X)]8]9
+2020-08-30 21:40:22 <egelbot> (8, 8)
+2020-08-30 21:40:26 <b_jonas> correct
+2020-08-30 21:40:26 <spruit11> WIth a bit of a different graph representation than you would expect.
+2020-08-30 21:41:02 <imode> hells yeah. you do subexpr sharing?
+2020-08-30 21:41:25 <spruit11> Yah.
+2020-08-30 21:41:28 <b_jonas> egelbot: pack {'5','2','7'}
+2020-08-30 21:41:28 <egelbot> "527"
+2020-08-30 21:42:41 <imode> FWIW I've found that you get better general perf if you use a queue rather than doing an eval over a ton of in-memory nodes. data locality is better.
+2020-08-30 21:43:06 <spruit11> Yah. That's true. But this model is just nice.
+2020-08-30 21:43:50 <spruit11> Well. I find it nice. It's about as simplistic as I could make it.
+2020-08-30 21:43:54 <spruit11> But slow.
+2020-08-30 21:44:08 <spruit11> For my definition of simplistic.
+2020-08-30 21:44:11 <imode> https://git.imode.tech/?p=python/modal;a=blob;f=modal.py;hb=HEAD
+2020-08-30 21:44:16 <b_jonas> egelbot: 0xBD4388FF
+2020-08-30 21:44:16 <egelbot> internal:1:4:lexical:error in hexadecimal int
+2020-08-30 21:44:22 <b_jonas> ?
+2020-08-30 21:44:30 <spruit11> Uuuu.
+2020-08-30 21:44:34 <spruit11> h.
+2020-08-30 21:44:36 <imode> https://git.imode.tech/?p=python/modal;a=blob;f=prelude.modal;hb=HEAD
+2020-08-30 21:44:50 <imode> egelbot: BD4388FF
+2020-08-30 21:44:51 <egelbot> internal:1:2:semantical:undeclared BD4388FF
+2020-08-30 21:45:00 <imode> wonder if it can do octal.
+2020-08-30 21:45:04 <spruit11> No.
+2020-08-30 21:45:34 <spruit11> I even forgot I added hexadecimal.
+2020-08-30 21:46:46 <spruit11> egelbot: 0xff
+2020-08-30 21:46:46 <egelbot> 255
+2020-08-30 21:46:48 <spruit11> egelbot: 0xfff
+2020-08-30 21:46:49 <egelbot> 4095
+2020-08-30 21:46:51 <spruit11> egelbot: 0xffF
+2020-08-30 21:46:52 <egelbot> internal:1:6:semantical:undeclared F
+2020-08-30 21:46:57 <spruit11> egelbot: 0xFf
+2020-08-30 21:46:57 <egelbot> internal:1:4:lexical:error in hexadecimal int
+2020-08-30 21:47:12 <spruit11> Ah, I didn't add uppercase hex.
+2020-08-30 21:47:12 <b_jonas> what
+2020-08-30 21:47:25 <b_jonas> 0xFf ?
+2020-08-30 21:47:26 Quit: TheLie (Remote host closed the connection)
+2020-08-30 21:47:26 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 21:47:35 <b_jonas> oh, that was from you wait
+2020-08-30 21:47:38 <b_jonas> egelbot: def format08x = [D->[L->pack{L 7,L 6,L 5,L 4,L 3,L 2,L 1,L 0}][C->[0->'0'|1->'1'|2->'2'|3->'3'|4->'4'|5->'5'|6->'6'|7->'7'|8->'8'|9->'9'|10->'A'|11->'B'|12->'C'|13->'D'|14->'E'|15->'F'](16&&(D>>(4*C)))]];; format08x 3175319807
+2020-08-30 21:47:39 <egelbot> exception("System:pack invalid arguments")
+2020-08-30 21:47:58 <b_jonas> egelbot: def format08x_dbg = [D->[L->{L 7,L 6,L 5,L 4,L 3,L 2,L 1,L 0}][C->[0->'0'|1->'1'|2->'2'|3->'3'|4->'4'|5->'5'|6->'6'|7->'7'|8->'8'|9->'9'|10->'A'|11->'B'|12->'C'|13->'D'|14->'E'|15->'F'](16&&(D>>(4*C)))]];; format08x_dbg 3175319807
+2020-08-30 21:47:59 <egelbot> {'0', (format08x_dbgDOT1 16), (format08x_dbgDOT1 16), '0', (format08x_dbgDOT1 16), '0', '0', (format08x_dbgDOT1 16)}
+2020-08-30 21:48:05 <b_jonas> 16?
+2020-08-30 21:48:11 <b_jonas> oh
+2020-08-30 21:48:20 <b_jonas> egelbot: def format08x_dbg = [D->[L->{L 7,L 6,L 5,L 4,L 3,L 2,L 1,L 0}][C->[0->'0'|1->'1'|2->'2'|3->'3'|4->'4'|5->'5'|6->'6'|7->'7'|8->'8'|9->'9'|10->'A'|11->'B'|12->'C'|13->'D'|14->'E'|15->'F'](15&&(D>>(4*C)))]];; format08x_dbg 3175319807
+2020-08-30 21:48:20 <egelbot> {'B', 'D', '4', '3', '8', '8', 'F', 'F'}
+2020-08-30 21:48:24 <b_jonas> better
+2020-08-30 21:48:29 Joined: frouts
+2020-08-30 21:48:30 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, frouts, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 21:48:39 <imode> simple to me is a one-file-to-four-file language with a LoC count under 1k.
+2020-08-30 21:48:41 <b_jonas> egelbot: def format08x = [D->[L->pack{L 7,L 6,L 5,L 4,L 3,L 2,L 1,L 0}][C->[0->'0'|1->'1'|2->'2'|3->'3'|4->'4'|5->'5'|6->'6'|7->'7'|8->'8'|9->'9'|10->'A'|11->'B'|12->'C'|13->'D'|14->'E'|15->'F'](15&&(D>>(4*C)))]];; format08x 3175319807
+2020-08-30 21:48:41 <egelbot> "BD4388FF"
+2020-08-30 21:48:45 <b_jonas> that's it
+2020-08-30 21:49:04 <spruit11> As always, at some point you pick up speed and run miles ahead of me. ;)
+2020-08-30 21:49:29 <b_jonas> nah, this is something I did write back then and is probably in the IRC logs
+2020-08-30 21:50:01 <b_jonas> egelbot: String:unescape "\\U00000061"
+2020-08-30 21:50:01 <egelbot> "a"
+2020-08-30 21:50:04 <spruit11> imode: Sorry for the build thing but I just edit Makefiles until they work for me. No idea how to make that robust.
+2020-08-30 21:50:19 <imode> lol, no worries. I piggyback off of the Go build tools to do sanity checking etc. for me.
+2020-08-30 21:50:47 <b_jonas> was there a string concatenation function?
+2020-08-30 21:51:29 <b_jonas> egelbot: String:append "he" "llo"
+2020-08-30 21:51:29 <egelbot> "hello"
+2020-08-30 21:51:41 <b_jonas> egelbot: def format08X = [D->[L->pack{L 7,L 6,L 5,L 4,L 3,L 2,L 1,L 0}][C->[0->'0'|1->'1'|2->'2'|3->'3'|4->'4'|5->'5'|6->'6'|7->'7'|8->'8'|9->'9'|10->'A'|11->'B'|12->'C'|13->'D'|14->'E'|15->'F'](15&&(D>>(4*C)))]];; format08X 3175319807
+2020-08-30 21:51:41 <egelbot> "BD4388FF"
+2020-08-30 21:51:43 <imode> was just eager to see how fast or slow this is compared to my stuff. having an internal crisis right now, because additions of 1024 bit numbers are in the 100-200usec range.
+2020-08-30 21:51:46 <b_jonas> egelbot: data format08x
+2020-08-30 21:52:05 <spruit11> b_jonas: String:append
+2020-08-30 21:52:09 <b_jonas> spruit11: is there a way to undefine a name?
+2020-08-30 21:52:22 <imode> egelbot: undef format08X
+2020-08-30 21:52:22 <egelbot> internal:1:2:semantical:undeclared undef
+2020-08-30 21:52:25 <spruit11> egelbot: using String;; append "hello " "world!"
+2020-08-30 21:52:26 <egelbot> "hello world!"
+2020-08-30 21:52:39 <b_jonas> egelbot: def chr = [C -> String:unescape (String:append "\\U" (format08X))];; chr 93
+2020-08-30 21:52:39 <egelbot> exception("String:append bad arguments")
+2020-08-30 21:52:47 <b_jonas> egelbot: def chr = [C -> String:unescape (String:append "\\U" (format08X C))];; chr 93
+2020-08-30 21:52:48 <egelbot> "]"
+2020-08-30 21:52:48 <spruit11> b_jonas: No. I didn't add an undef.
+2020-08-30 21:53:06 <b_jonas> egelbot: chr 97
+2020-08-30 21:53:06 <egelbot> "a"
+2020-08-30 21:53:08 <b_jonas> ok, we have a chr
+2020-08-30 21:54:39 Quit: frouts (Quit: -a- IRC for Android 2.1.57)
+2020-08-30 21:54:39 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 21:54:54 <spruit11> imode: It's 64 bit wide addition and very, very slow since it's a graph rewrite on three nodes expressed as heavyweight C++ object. So no worries. Yours is probably faster.
+2020-08-30 21:55:50 <b_jonas> egelbot: def strjoini = [nil -> "" | (cons A D) -> String:append A (strjoini D)];; "not the most efficient, but it will do for now"; strjoini {"he","l","lo"}
+2020-08-30 21:55:50 <egelbot> "hello"
+2020-08-30 21:55:51 <imode> that's still a reasonable complexity if those rewrites are built-in and have access to the actual backing ints.
+2020-08-30 21:57:05 <spruit11> Right.
+2020-08-30 21:57:44 <b_jonas> egelbot: [L->say (strjoini {"mehraj",L,"PRIVMSG b_jonas :duruzsol",L,"PRIVMSG #esoteric :szellos",L})](chr 10); say "fak alol"
+2020-08-30 21:57:45 <egelbot> internal:1:6:semantical:undeclared say
+2020-08-30 21:57:49 <b_jonas> what
+2020-08-30 21:57:51 <b_jonas> egelbot: say 4
+2020-08-30 21:57:51 <egelbot> internal:1:2:semantical:undeclared say
+2020-08-30 21:57:54 <b_jonas> egelbot: say "foo"
+2020-08-30 21:57:54 <spruit11> Print
+2020-08-30 21:57:54 <egelbot> internal:1:2:semantical:undeclared say
+2020-08-30 21:58:00 <b_jonas> egelbot: Print "foo"
+2020-08-30 21:58:01 <egelbot> internal:1:2:semantical:undeclared Print
+2020-08-30 21:58:03 <b_jonas> egelbot: print "foo"
+2020-08-30 21:58:03 <egelbot> foo
+2020-08-30 21:58:05 <spruit11> I changed it back.
+2020-08-30 21:58:07 <b_jonas> egelbot: print "foo"; print "bar"
+2020-08-30 21:58:07 <egelbot> foo
+2020-08-30 21:58:08 <egelbot> bar
+2020-08-30 21:58:14 <b_jonas> shouldn't that be called println
+2020-08-30 21:58:23 <b_jonas> egelbot: [L->print (strjoini {"mehraj",L,"PRIVMSG b_jonas :duruzsol",L,"PRIVMSG #esoteric :szellos",L})](chr 10); print "fak alol"
+2020-08-30 21:58:23 <egelbot> mehraj-PRIVMSG b_jonas :duruzsol-PRIVMSG #esoteric :szellos-
+2020-08-30 21:58:24 <egelbot> fak alol
+2020-08-30 21:59:17 <b_jonas> egelbot: [L->print (strjoini {"mehraj",L,"PRIVMSG b_jonas :duruzsol",L,"PRIVMSG #esoteric :szellos",L})](String:append(chr 13,chr 10)); print "fak alol"
+2020-08-30 21:59:17 <egelbot> exception("String:append bad arguments")
+2020-08-30 21:59:24 <b_jonas> egelbot: [L->print (strjoini {"mehraj",L,"PRIVMSG b_jonas :duruzsol",L,"PRIVMSG #esoteric :szellos",L})](String:append(chr 13)(chr 10)); print "fak alol"
+2020-08-30 21:59:24 <egelbot> mehraj
+2020-08-30 21:59:24 <egelbot> fak alol
+2020-08-30 21:59:41 <b_jonas> ok that's better, it sends the cr through but not the lf
+2020-08-30 21:59:53 <b_jonas> and the IRC client ignores anything from cr to lf
