@@ -643,3 +643,51 @@
 2020-08-30 16:46:30 Joined: Lord_of_Life
 2020-08-30 16:48:25 Quit: Lord_of_Life (Ping timeout: 240 seconds)
 2020-08-30 16:49:21 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-08-30 17:01:21 Joined: Sgeo
+2020-08-30 17:01:21 Names: ^[, adu, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-30 17:18:40 <b_jonas> oh nice! pretty printing
+2020-08-30 17:19:03 <b_jonas> egelbot: cons 1 2
+2020-08-30 17:19:03 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-30 17:19:03 <egelbot> {1...}
+2020-08-30 17:19:10 <b_jonas> no dotted list syntax?
+2020-08-30 17:19:14 <b_jonas> egelbot: (1,2)
+2020-08-30 17:19:14 <egelbot> (1, 2)
+2020-08-30 17:19:21 <b_jonas> egelbot: tuple 8 3 2
+2020-08-30 17:19:21 <egelbot> (8, 3, 2)
+2020-08-30 17:19:22 <b_jonas> egelbot: tuple 8 3
+2020-08-30 17:19:22 <egelbot> (8, 3)
+2020-08-30 17:19:23 <b_jonas> egelbot: tuple 8
+2020-08-30 17:19:23 <egelbot> (8)
+2020-08-30 17:19:25 <b_jonas> egelbot: tuple
+2020-08-30 17:19:25 <egelbot> System:tuple
+2020-08-30 17:19:27 <b_jonas> um
+2020-08-30 17:19:36 <b_jonas> spruit11: one of those is wrong
+2020-08-30 17:19:44 <b_jonas> egelbot: tuple 8
+2020-08-30 17:19:44 <egelbot> (8)
+2020-08-30 17:19:46 <b_jonas> ^
+2020-08-30 17:19:49 <b_jonas> egelbot: (8)
+2020-08-30 17:19:49 <egelbot> 8
+2020-08-30 17:19:51 <b_jonas> egelbot: (8,)
+2020-08-30 17:19:51 <egelbot> internal:1:5:syntactical:primary expression expected
+2020-08-30 17:19:59 <spruit11> Ah, right. Good catch.
+2020-08-30 17:20:20 <spruit11> I want to avoid the ,) syntax.
+2020-08-30 17:20:29 <spruit11> Is there a good reason to want it?
+2020-08-30 17:21:02 <b_jonas> spruit11: no, but print it as (System:tuple 8) then
+2020-08-30 17:21:09 <spruit11> Yah, I will.
+2020-08-30 17:21:19 <b_jonas> egelbot: cons (cons 9 8) (cons 7 6)
+2020-08-30 17:21:20 <egelbot> {{9...}, 7...}
+2020-08-30 17:21:35 <spruit11> Is this what you had in mind?
+2020-08-30 17:21:40 <b_jonas> egelbot: {{9,8}, {7,6}}
+2020-08-30 17:21:40 <egelbot> {{9, 8}, {7, 6}}
+2020-08-30 17:21:49 <b_jonas> no, because you can't see the tail
+2020-08-30 17:21:57 <b_jonas> of a dotted list
+2020-08-30 17:23:20 <spruit11> The dots are just there to show something went wrong. But I can it's confusing.
+2020-08-30 17:24:11 <spruit11> *can see
+2020-08-30 17:27:03 <b_jonas> look
+2020-08-30 17:28:01 <b_jonas> ``` swipl -qg "M = '[|]'(9,'[|]'(8,'[|]'(7,[]))), display(M)" # in SWI prolog, cons is spelled '[|]' (sane prologs spell it . instead) so that's a list that I write out as conses and empty list, and the pretty-printer shows it with bracket list syntax
+2020-08-30 17:28:04 <HackEso> ​[9,8,7]
+2020-08-30 17:28:49 <b_jonas> ``` swipl -qg "M = '[|]'(9,'[|]'(8,'[|]'(7,gotcha))), display(M)" # that's not a proper list, because there's no empty list in its tail. so the pretty-printer shows it as a dotted list
+2020-08-30 17:28:50 <HackEso> ​[9,8,7|gotcha]
+2020-08-30 17:29:46 <b_jonas> ``` swipl -qg "N = [6,5,4], M = [9,8,7|N], display(M)" # you can use the dotted list syntax in input too
+2020-08-30 17:29:47 <HackEso> ​[9,8,7,6,5,4]
+2020-08-30 17:29:47 <spruit11> Heh.
