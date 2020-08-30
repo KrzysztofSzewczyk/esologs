@@ -573,3 +573,28 @@
 2020-08-30 13:53:13 <egelbot> internal:1:8:syntactical:= expected
 2020-08-30 13:53:24 <b_jonas> egelbot: def (p X Y) = (100*X)+Y
 2020-08-30 13:53:24 <egelbot> internal:1:2:syntactical:combinator or operator expected
+2020-08-30 14:00:41 <b_jonas> egelbot: def sn8 = {0.3021,-1.0936,-0.3613,-2.8156,1.0762,0.2826,-3.0046,0.2187,0.9145,-0.2781,0.0047,0.4804,0.6407,0.3894,0.6457,0.7520,-0.5128,-0.6787}
+2020-08-30 14:00:53 <b_jonas> egelbot: nth sn8 5
+2020-08-30 14:00:53 <egelbot> internal:1:2:semantical:undeclared nth
+2020-08-30 14:01:01 <b_jonas> egelbot: aref sn8 5
+2020-08-30 14:01:01 <egelbot> internal:1:2:semantical:undeclared aref
+2020-08-30 14:02:08 <b_jonas> egelbot: List.nth sn8 5
+2020-08-30 14:02:08 <egelbot> internal:1:2:semantical:undeclared List
+2020-08-30 14:03:27 <b_jonas> egelbot: "from prelude";; def nth = [ 0 (cons X XX) -> X | N (cons X XX) -> nth (N - 1) XX ]
+2020-08-30 14:03:27 <egelbot> "from prelude"
+2020-08-30 14:03:36 <b_jonas> egelbot: nth sn8 5
+2020-08-30 14:03:36 <egelbot> (nth (System:cons 0.3021000000000000 (System:cons -1.093600000000000 (System:cons -0.3613000000000000 (System:cons -2.815600000000000 (System:cons 1.076200000000000 (System:cons 0.2826000000000000 (System:cons -3.004600000000000 (System:cons 0.2187000000000000 (System:cons 0.9145000000000000 (System:cons -0.2781000000000000 (System:cons 0.004700000000000000 (System:cons 0.4804000000000000 (System:cons 0.6407000000000000 (System:cons 0.389400
+2020-08-30 14:03:42 <b_jonas> egelbot: nth 5 sn8
+2020-08-30 14:03:42 <egelbot> 0.2826000000000000
+2020-08-30 14:05:25 <b_jonas> egelbot: sn8
+2020-08-30 14:05:25 <egelbot> (System:cons 0.3021000000000000 (System:cons -1.093600000000000 (System:cons -0.3613000000000000 (System:cons -2.815600000000000 (System:cons 1.076200000000000 (System:cons 0.2826000000000000 (System:cons -3.004600000000000 (System:cons 0.2187000000000000 (System:cons 0.9145000000000000 (System:cons -0.2781000000000000 (System:cons 0.004700000000000000 (System:cons 0.4804000000000000 (System:cons 0.6407000000000000 (System:cons 0.38940000000
+2020-08-30 14:06:03 <int-e> `? spam
+2020-08-30 14:06:06 <HackEso> Spam is a delicious meat product. See http://www.spamjamhawaii.com/
+2020-08-30 14:06:48 <b_jonas> int-e: yeah, if only spruit11 made this bot accessible on some other channel, or if I installed egel to HackEgo, it would be better.
+2020-08-30 14:06:51 <int-e> `hwrl spam
+2020-08-30 14:06:51 <b_jonas> oh well
+2020-08-30 14:06:52 <HackEso> https://hack.esolangs.org/repo/log/tip/wisdom/spam
+2020-08-30 14:07:52 <int-e> Hmm. Did I forget about the link in that wisdom... or did I genuinely never see it before...
+2020-08-30 14:11:21 <b_jonas> fungot, how many hours are there in 4 simultaneous 4 corner 96-hour Cubic™ Days in only 24 ohur rotation?
+2020-08-30 14:11:21 <fungot> b_jonas: just cobbled together. :d) there just would be one big macro?! would be rather pointless. ( or not)
+2020-08-30 14:12:47 <b_jonas> one big pointless macro day? ok
