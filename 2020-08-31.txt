@@ -412,3 +412,75 @@
 2020-08-31 19:28:49 <spruit11> Nah, I did it myself. I thought let compiled wrongly so I tried to fix that and introduced a bug.
 2020-08-31 19:29:11 <spruit11> The original semantics turned out to be correct anyway.
 2020-08-31 19:29:20 <spruit11> It just looks a bit weird.
+2020-08-31 19:30:30 Joined: egelbot
+2020-08-31 19:30:30 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 19:30:54 <spruit11> egelbot: let X Y = 1 2 in Y X
+2020-08-31 19:30:54 User Name: egelbot = egelbot!~egelbot@86-82-44-193.fixed.kpn.net
+2020-08-31 19:30:54 <egelbot> (Local:Dummy00 (1 2))
+2020-08-31 19:30:57 <spruit11> vs
+2020-08-31 19:31:04 <spruit11> egelbot: let (X Y) = 1 2 in Y X
+2020-08-31 19:31:05 <egelbot> (2 1)
+2020-08-31 19:31:50 <spruit11> I thought the first should be correct but turns out the second is better.
+2020-08-31 19:32:39 <spruit11> It's fixed again.
+2020-08-31 19:35:20 <b_jonas> ah
+2020-08-31 19:35:50 <b_jonas> egelbot: def (foo0 foo1) = 3 4 in (foo0, foo1)
+2020-08-31 19:35:50 <egelbot> internal:1:2:syntactical:combinator or operator expected
+2020-08-31 19:35:56 <b_jonas> egelbot: def (foo0 foo1) = 3 4;; (foo0, foo1)
+2020-08-31 19:35:56 <egelbot> internal:1:2:syntactical:combinator or operator expected
+2020-08-31 19:36:05 <b_jonas> egelbot: def foo0 foo1 = 3 4;; (foo0, foo1)
+2020-08-31 19:36:05 <egelbot> internal:1:11:syntactical:= expected
+2020-08-31 19:36:22 <spruit11> Yah. You can't do that.
+2020-08-31 19:36:28 <b_jonas> makes sense, let X Y = ... should define X as a function
+2020-08-31 19:36:39 <b_jonas> egelbot: def foo0 Foo1 = 3 4;; (foo0 7)
+2020-08-31 19:36:39 <egelbot> internal:1:11:syntactical:= expected
+2020-08-31 19:37:07 <b_jonas> egelbot: let Foo0 Foo1 = 3 4 in (Foo0 7)
+2020-08-31 19:37:07 <egelbot> (Local:Dummy20 (3 4))
+2020-08-31 19:37:13 <b_jonas> huh
+2020-08-31 19:37:23 <b_jonas> egelbot: let Foo0 Foo1 = 3 in (Foo0 7)
+2020-08-31 19:37:23 <egelbot> (Local:Dummy30 3)
+2020-08-31 19:37:26 <b_jonas> ?
+2020-08-31 19:37:33 <b_jonas> egelbot: let Foo0 = 3 in (Foo0 7)
+2020-08-31 19:37:33 <egelbot> (3 7)
+2020-08-31 19:37:37 <b_jonas> egelbot: let Foo0 = 3 in Foo0
+2020-08-31 19:37:37 <egelbot> 3
+2020-08-31 19:37:42 <b_jonas> egelbot: let Foo0 Foo1 = 3 in Foo0
+2020-08-31 19:37:42 <egelbot> (Local:Dummy60 3)
+2020-08-31 19:37:44 <b_jonas> egelbot: let Foo0 Foo1 = 3 in Foo1
+2020-08-31 19:37:44 <egelbot> (Local:Dummy70 3)
+2020-08-31 19:38:00 <b_jonas> I don't understand what these do
+2020-08-31 19:38:45 <spruit11> let xx = expr0 in expr1 is just syntactic sugar for [ xx -> expr1 ] expr0
+2020-08-31 19:39:26 <spruit11> So in you last case you had an abstract of arity two which failed to rewrite on one argument.
+2020-08-31 19:39:31 <spruit11> *you
+2020-08-31 19:39:33 <spruit11> god
+2020-08-31 19:39:36 <spruit11> *your
+2020-08-31 19:40:00 <b_jonas> um
+2020-08-31 19:40:37 <b_jonas> egelbot: let Foo0 Foo1 = 3 4 in (Foo0, Foo1)
+2020-08-31 19:40:37 <egelbot> (Local:Dummy80 (3 4))
+2020-08-31 19:40:59 <b_jonas> egelbot: [Foo0 Foo1 -> Foo0, Foo1] (3 4)
+2020-08-31 19:40:59 <egelbot> internal:1:20:syntactical:] expected
+2020-08-31 19:41:09 <b_jonas> egelbot: [Foo0 Foo1 -> (Foo0, Foo1)] (3 4)
+2020-08-31 19:41:09 <egelbot> (Local:Dummy90 (3 4))
+2020-08-31 19:41:11 <b_jonas> ok
+2020-08-31 19:41:18 <b_jonas> egelbot: let (Foo0 Foo1) = 3 4 in (Foo0, Foo1)
+2020-08-31 19:41:18 <egelbot> (3, 4)
+2020-08-31 19:41:26 <b_jonas> egelbot: [(Foo0 Foo1) -> (Foo0, Foo1)] (3 4)
+2020-08-31 19:41:26 <egelbot> (3, 4)
+2020-08-31 19:41:28 <b_jonas> ok.
+2020-08-31 19:41:46 <spruit11> Right, and this is where the weirdity is. '3 4' composes to '(3 4)' as an argument. And there's no visual hint it does that.
+2020-08-31 19:42:03 <b_jonas> I expected that it would bind Foo0 to a function, but egel does not have that syntax
+2020-08-31 19:42:20 <b_jonas> not in let, not in def
+2020-08-31 19:42:29 <spruit11> ?
+2020-08-31 19:46:33 <spruit11> Oh, right. You mean `def f X = something` syntax? No, it's all straightforward combinator definitions.
+2020-08-31 19:47:02 <b_jonas> Haskell doesn't have symbolic application expressions, so they can't pattern match an application, so if an application occurs in a pattern, they work like this:
+2020-08-31 19:48:10 <b_jonas> `let (F X) = BODY in EXPR;` is the same as `let F X = BODY in EXPR;` and expands to `[F -> EXPR] [X -> BODY]`, where X is bound in BODY so BODY can have occurrances of the paramter X, but X is not bound in EXPR
+2020-08-31 19:48:12 <HackEso> let? No such file or directory
+2020-08-31 19:48:57 <b_jonas> and other languages have such syntax too. but egel doesn't, because it wants to decompose application.
+2020-08-31 19:52:05 <spruit11> But it all makes sense!
+2020-08-31 19:52:13 <spruit11> Kidding.
+2020-08-31 19:52:44 <spruit11> Right. let f x = expr is a function def in Haskell. I can see that's confusing.
+2020-08-31 19:56:11 Joined: arseniiv
+2020-08-31 19:57:55 Quit: FreeFull (Quit: Rebooting)
+2020-08-31 19:57:56 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 19:58:50 Joined: FreeFull
+2020-08-31 19:58:51 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 19:59:18 Quit: arseniiv (Ping timeout: 258 seconds)
