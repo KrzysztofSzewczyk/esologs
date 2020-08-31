@@ -484,3 +484,12 @@
 2020-08-31 19:58:50 Joined: FreeFull
 2020-08-31 19:58:51 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-08-31 19:59:18 Quit: arseniiv (Ping timeout: 258 seconds)
+2020-08-31 20:00:32 <spruit11> But it all makes some sense, right? `let (x y) = 1 2 in y x` is `(\(x y). y x) (1 2)` is `2 1`. But weird still.
+2020-08-31 20:03:01 <spruit11> Slightly embarrassing, though.
+2020-08-31 20:03:12 <spruit11> Or: a lot.
+2020-08-31 20:03:42 <spruit11> ¯\_(ツ)_/¯
+2020-08-31 20:08:34 <b_jonas> I don't really like Haskell's syntax, it's messed up, but this specific part of the syntax is goo
+2020-08-31 20:09:27 <b_jonas> btw Mathematica has this haskell function creation syntax too, and it does have applications that can remain unevaluated and then get destructured, just not with that pattern
+2020-08-31 20:09:52 <b_jonas> but Mathematica has magic underscore markers to disambiguate
+2020-08-31 20:09:59 <b_jonas> so it's not quite the same syntax
+2020-08-31 20:11:13 <spruit11> They did it on purpose. The `f x = expr` syntax. Under water it's compiled to `f = \x . expr`. My language just makes that explicit again.
