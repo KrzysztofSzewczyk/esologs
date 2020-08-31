@@ -271,3 +271,34 @@
 2020-08-31 11:46:56 <esowiki> 14[[07User:CatLooks14]]4 10 02https://esolangs.org/w/index.php?diff=77155&oldid=76721 5* 03CatLooks 5* (-19) 10
 2020-08-31 11:48:30 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=77156&oldid=77145 5* 03CatLooks 5* (+9) 10
 2020-08-31 12:16:31 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03DGCK81LNN 5*  10New user account
+2020-08-31 12:33:58 <int-e> ``mkx ../bin/progress//echo $(($RANDOM%111-5))%
+2020-08-31 12:34:00 <HackEso> ​`mkx? No such file or directory
+2020-08-31 12:34:03 <int-e> `mkx ../bin/progress//echo $(($RANDOM%111-5))%
+2020-08-31 12:34:07 <HackEso> ​../bin/progress
+2020-08-31 12:34:11 <int-e> `progress
+2020-08-31 12:34:12 <HackEso> 90%
+2020-08-31 12:35:02 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-08-31 12:35:02 <wib_jonas> `progress
+2020-08-31 12:35:04 <HackEso> 22%
+2020-08-31 12:35:09 <wib_jonas> `5 progress
+2020-08-31 12:35:11 <HackEso> 1/1:36% \ 45% \ 98% \ 87% \ 73%
+2020-08-31 12:39:11 <int-e> wib_jonas: yeah I worried a bit that it would not actually be random but IIRC fizzie put in some effort into injecting some of the hosts randomness into the VM on startup, or something to that effect.
+2020-08-31 12:39:24 <int-e> host's
+2020-08-31 12:43:52 <wib_jonas> int-e: I prefer a progress number that I can see updating, but we can't render that sanely on IRC
+2020-08-31 12:44:57 <wib_jonas> except possibly for very slow processes
+2020-08-31 12:45:06 <wib_jonas> it's easier in the terminal
+2020-08-31 12:46:30 <int-e> the progress meter I'm currently watching is a binary counter and highly nonlinear
+2020-08-31 12:46:34 <int-e> :P
+2020-08-31 12:47:14 <wib_jonas> int-e: replace it with https://metacpan.org/pod/Acme::ProgressBar which is as linear as it gets
+2020-08-31 12:47:55 Quit: hendursa1 (Quit: hendursa1)
+2020-08-31 12:47:55 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-08-31 12:48:12 Joined: hendursaga
+2020-08-31 12:48:12 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kritixilithos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-08-31 12:49:37 <int-e> what does it do, print 0% at the start and 100% at the end?
+2020-08-31 12:50:35 <int-e> haha
+2020-08-31 12:50:46 <int-e> that is one way to do it I suppose.
+2020-08-31 12:51:23 <wib_jonas> int-e: no
+2020-08-31 12:51:37 <int-e> wib_jonas: I skimmed the source in the meantime.
+2020-08-31 12:51:57 <int-e> I was kind of close, and very far off at the same time.
+2020-08-31 12:52:35 <wib_jonas> in fact, I should probably add a progress bar to this program I have, because it's kind of slow (at least on the largest input file that I have)
+2020-08-31 12:53:29 <wib_jonas> it's reading a file so I can just compute progres from the tell
