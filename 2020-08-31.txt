@@ -493,3 +493,72 @@
 2020-08-31 20:09:52 <b_jonas> but Mathematica has magic underscore markers to disambiguate
 2020-08-31 20:09:59 <b_jonas> so it's not quite the same syntax
 2020-08-31 20:11:13 <spruit11> They did it on purpose. The `f x = expr` syntax. Under water it's compiled to `f = \x . expr`. My language just makes that explicit again.
+2020-08-31 21:00:30 <b_jonas> spruit11: sure
+2020-08-31 21:00:59 <b_jonas> because it conflicts with other syntax that you use
+2020-08-31 21:02:24 <imode> 1ms vs. 4ms... frustrating.
+2020-08-31 21:03:57 <b_jonas> let me see if I can fix yesterday's mistakes and do this properly with non-lazy lists
+2020-08-31 21:04:57 Quit: hendursaga (Remote host closed the connection)
+2020-08-31 21:04:57 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 21:05:38 Quit: olsner (Ping timeout: 256 seconds)
+2020-08-31 21:05:39 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 21:05:53 Joined: hendursaga
+2020-08-31 21:05:53 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 21:08:02 <b_jonas> egelbot: def isint = [(X Y)->0|int->0|X::int->1|X->0];; def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)-> cons A (plisttake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N<=0)S ];; def st6 =  {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; listtake 7 st6
+2020-08-31 21:08:02 <egelbot> internal:1:135:semantical:undeclared plisttake_a
+2020-08-31 21:08:36 <b_jonas> egelbot: def isint = [(X Y)->0|int->0|X::int->1|X->0];; def listtake_a = [P N S -> [1 _ nil->nil| 1 true _->nil| 1 false (cons A D)-> cons A (listtake_a P(-1+N)D)| _ _ _->throw"error plisttake" ] (isint N)(N<=0)S ];; def listtake = [N S -> listtake_a nil N S];; def st6 =  {08,22,13,59,75,88,94,81,62,54,00,39,60,80,23,82};; listtake 7 st6
+2020-08-31 21:08:36 <egelbot> {8, 22, 13, 59, 75, 88, 94}
+2020-08-31 21:09:17 <b_jonas> I should try to define a listdrop too
+2020-08-31 21:11:18 <b_jonas> egelbot: def listdrop = [N S -> [ true M->M| _ nil->nil| _ (cons A D)->listdrop (-1+N)D ] (N<=0) S ];; listdrop 10 st6
+2020-08-31 21:11:18 <egelbot> {0, 39, 60, 80, 23, 82}
+2020-08-31 21:12:06 <b_jonas> egelbot: (listdrop -4 st6, listdrop 0 st6, listdrop 15 st6, listdrop 16 st6, listdrop 17 st6, listdop 30 st6)
+2020-08-31 21:12:06 <egelbot> internal:1:87:semantical:undeclared listdop
+2020-08-31 21:12:11 <b_jonas> egelbot: (listdrop -4 st6, listdrop 0 st6, listdrop 15 st6, listdrop 16 st6, listdrop 17 st6, listdrop 30 st6)
+2020-08-31 21:12:11 <egelbot> ({8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82}, {8, 22, 13, 59, 75, 88, 94, 81, 62, 54, 0, 39, 60, 80, 23, 82}, {82}, {}, {}, {})
+2020-08-31 21:14:49 <b_jonas> egelbot: listtake 2 (listdrop 6 st6)
+2020-08-31 21:14:49 <egelbot> {94, 81}
+2020-08-31 21:14:57 <b_jonas> looks good so far
+2020-08-31 21:15:08 <spruit11> You're a hero for working with alpha software!
+2020-08-31 21:15:31 <b_jonas> spruit11: no I'm not. anyone can write code that is hard to understand. most of the work is done by the short random identifiers.
+2020-08-31 21:16:15 <b_jonas> if I were a hero, I'd install it to HackEso.
+2020-08-31 21:16:19 <spruit11> Ah. Why do you need an `isint` predicate? Untyped voodoo?
+2020-08-31 21:16:21 <b_jonas> but I'm still lazy.
+2020-08-31 21:16:47 <b_jonas> spruit11: I don't really need that predicate. I just copied it from yesterday, when it seemed like a good idea for some reason. it shouln't be there probably.
+2020-08-31 21:17:07 <spruit11> Heh. Okay with me. The last days I hack on it every day so it wouldn't be nice to keep in sync anyway.
+2020-08-31 21:17:16 <b_jonas> though on the other hand, I do need a fallback clause in listdrop for non-list inputs
+2020-08-31 21:17:43 <b_jonas> egelbot: def listdrop = [N S -> [ true M->M| _ nil->nil| _ (cons A D)->listdrop (-1+N)D ] (N<=0) S| _ _->throw "error listdrop list" ];; listdrop 10 st6
+2020-08-31 21:17:43 <egelbot> {0, 39, 60, 80, 23, 82}
+2020-08-31 21:18:00 <b_jonas> egelbot: listdrop 8 2
+2020-08-31 21:18:01 <egelbot> (Local:listdrop0 8 System:false 2)
+2020-08-31 21:18:04 <b_jonas> um
+2020-08-31 21:18:21 <b_jonas> please? there's a catch-all clause
+2020-08-31 21:18:38 <b_jonas> ah
+2020-08-31 21:18:41 <b_jonas> wrong place
+2020-08-31 21:18:51 <spruit11> Not in the inner combinator.
+2020-08-31 21:18:57 <b_jonas> egelbot: def listdrop = [N S -> [ true M->M| _ nil->nil| _ (cons A D)->listdrop (-1+N)D| _ _->throw "error listdrop list" ] (N<=0) S ];; listdrop 10 st6
+2020-08-31 21:18:57 <egelbot> {0, 39, 60, 80, 23, 82}
+2020-08-31 21:19:01 <b_jonas> egelbot: listdrop 8 2
+2020-08-31 21:19:01 <egelbot> exception("error listdrop list")
+2020-08-31 21:19:03 <b_jonas> ok
+2020-08-31 21:20:40 <spruit11> You could throw the arguments too to see where it gets stuck on.
+2020-08-31 21:21:29 <b_jonas> or return the non-list tail, I know. it doesn't matter, if it comes up and I need to debug it, I can just modify that definition.
+2020-08-31 21:21:40 <spruit11> Right.
+2020-08-31 21:21:54 <spruit11> Still no idea how all of this works. Please continue.
+2020-08-31 21:22:04 <b_jonas> which part? the listtake and listdrop?
+2020-08-31 21:22:14 <spruit11> Oh, is it done?
+2020-08-31 21:22:16 <b_jonas> they just slice a list, don't you have basically the same things in your prelude?
+2020-08-31 21:22:19 <b_jonas> no, it's not really done,
+2020-08-31 21:22:26 <b_jonas> I want to do the prime sieve properly
+2020-08-31 21:22:56 <spruit11> I don't see how to do it lazily without continuations or something, so I am interested.
+2020-08-31 21:23:00 <b_jonas> starting from yesterday's code but removing the lazyness, then fix its top level
+2020-08-31 21:23:09 <b_jonas> no, I'm *removing* the lazyness
+2020-08-31 21:23:14 <spruit11> Oh.
+2020-08-31 21:23:14 <b_jonas> the lazyness was a stupid idea for it
+2020-08-31 21:23:47 <spruit11> Right, my examples were there to test how to do laziness in my language. Looking for more ideas.
+2020-08-31 21:25:40 <b_jonas> hmm, I can't see the latest version of the definition of pprimes_i
+2020-08-31 21:25:50 Joined: olsner
+2020-08-31 21:25:51 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, TheLie, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 21:26:26 <b_jonas> oh , here it is
+2020-08-31 21:28:02 <b_jonas> egelbot: def primes_i = [N L-> [nil->false| (cons A D)-> [true _->A<N| _ false->false| false true->pprimes_i N D| _ _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error pprimes_i uncons"] L]
+2020-08-31 21:28:02 <egelbot> internal:1:92:semantical:undeclared pprimes_i
+2020-08-31 21:28:13 <b_jonas> egelbot: def primes_i = [N L-> [nil->false| (cons A D)-> [true _->A<N| _ false->false| false true->primes_i N D| _ _->throw"error primes_i =="] (0==(N%A)) (A*A<N) | _->throw"error primes_i uncons"] L]
+2020-08-31 21:29:39 <b_jonas> ah yes, pprimes_sa needs more serious modifications
