@@ -1,0 +1,185 @@
+2020-08-31 00:01:01 <b_jonas> under that, (pprimes_i N L) determines if any of the primes in L divide N, but stops after it sees a divisor that is greater or equal to the square root of N
+2020-08-31 00:01:19 <b_jonas> egelbot: plisttake 2 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:01:20 <egelbot> {2, 3}
+2020-08-31 00:01:23 <b_jonas> egelbot: plisttake 9 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:01:23 <egelbot> exception("error plisttake")
+2020-08-31 00:01:46 <b_jonas> egelbot: [pcons A D->D pforce] ((pprimes_sa 4 [_->pnil] 2) pforce)
+2020-08-31 00:01:46 <egelbot> (Dummy68DOT0 (pcons 2 (pprimes_sa 4 Dummy68DOT1 3)))
+2020-08-31 00:01:53 User Name: arseniiv = arseniiv!~arseniiv@94.41.39.129.dynamic.ufanet.ru
+2020-08-31 00:01:53 <arseniiv> hi bye!
+2020-08-31 00:02:01 <b_jonas> um
+2020-08-31 00:02:05 <b_jonas> that should not be a closure
+2020-08-31 00:02:09 <b_jonas> egelbot: [pcons A D->D pforce pforce] ((pprimes_sa 4 [_->pnil] 2) pforce)
+2020-08-31 00:02:09 <egelbot> (Dummy69DOT0 (pcons 2 (pprimes_sa 4 Dummy69DOT1 3)))
+2020-08-31 00:02:31 <b_jonas> um
+2020-08-31 00:03:13 <b_jonas> egelbot: def pprimes_sa = [B L F _-> print("pprimes_sa",B,L,F,_); [true-> [true R->R| _ R->pcons F R] (pprimes_i F L) (pprimes_sa B L(1+F)) |_->[_->nil] ](F<B) ];; plisttake 9 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:03:13 <egelbot> internal:1:55:semantical:undeclared _
+2020-08-31 00:03:22 <b_jonas> egelbot: def pprimes_sa = [B L F G-> print("pprimes_sa",B,L,F,G); [true-> [true R->R| _ R->pcons F R] (pprimes_i F L) (pprimes_sa B L(1+F)) |_->[_->nil] ](F<B) ];; plisttake 9 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:03:23 <egelbot> ("pprimes_sa", 4, Dummy70DOT0, 2, pforce)
+2020-08-31 00:03:23 <egelbot> ("pprimes_sa", 4, Dummy70DOT0, 3, pforce)
+2020-08-31 00:03:24 <egelbot> ("pprimes_sa", 4, Dummy70DOT0, 4, pforce)
+2020-08-31 00:03:24 <egelbot> exception("error plisttake")
+2020-08-31 00:04:09 <b_jonas> egelbot: def pprimes_sa = [B L F G-> [true-> [true R->R| _ R->pcons F R] (pprimes_i F L) (pprimes_sa B L(1+F)) |_->[_->pnil] ](F<B) ];; plisttake 9 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:04:09 <egelbot> exception("error plisttake")
+2020-08-31 00:04:24 <b_jonas> egelbot: def pprimes_sa = [B L F G-> [true-> [true R->R| _ R->pcons F R] (pprimes_i F L) (pprimes_sa B L(1+F)) |_->pnil ](F<B) ];; plisttake 9 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:04:24 <egelbot> {2, 3}
+2020-08-31 00:04:27 <b_jonas> YES!
+2020-08-31 00:05:12 <spruit11> Ooooh. Neat.
+2020-08-31 00:05:24 <spruit11> I have no idea how that works.
+2020-08-31 00:05:30 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa B L 2)];; plisttake 149 (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:05:30 <egelbot> exception("error plisttake")
+2020-08-31 00:05:58 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa B L 2)];; [(pprimes_u _ L) -> plisttake 149 L] (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:05:58 <egelbot> {2, 3}
+2020-08-31 00:06:01 <b_jonas> nope
+2020-08-31 00:06:17 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa B L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:06:17 <egelbot> (16, {2, 3})
+2020-08-31 00:06:48 <b_jonas> spruit11: I admit that basically all the identifiers I use are cryptic and chosen poorly
+2020-08-31 00:06:49 Quit: arseniiv (Ping timeout: 264 seconds)
+2020-08-31 00:06:49 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, egelbot, erdic, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, imode, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-08-31 00:06:53 <b_jonas> both the globals and the locals
+2020-08-31 00:07:05 <b_jonas> except a few by accident
+2020-08-31 00:07:46 <b_jonas> egelbot: def pprimes_s = [(pprimes_u (B*B) L) -> pprimes_u (B*B) (pprimes_sa B L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:07:46 <egelbot> internal:1:32:syntactical:) expected
+2020-08-31 00:08:05 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa (B*B) L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:08:05 <egelbot> exception("error plisttake")
+2020-08-31 00:08:21 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa (B*B) L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_u 2 [_->pnil]))
+2020-08-31 00:08:21 <egelbot> (4, {2, 3})
+2020-08-31 00:08:31 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa (B*B) L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:08:31 <egelbot> exception("error plisttake")
+2020-08-31 00:08:49 <b_jonas> sigh
+2020-08-31 00:09:50 <b_jonas> egelbot: plisttake 149 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:09:50 <egelbot> {2, 3}
+2020-08-31 00:10:10 <spruit11> It's a start!
+2020-08-31 00:10:14 <b_jonas> egelbot: plisttake 149 (pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2)
+2020-08-31 00:10:15 <egelbot> exception("error plisttake")
+2020-08-31 00:10:22 <b_jonas> egelbot: plisttake 1 (pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2)
+2020-08-31 00:10:22 <egelbot> exception("error plisttake")
+2020-08-31 00:10:28 <b_jonas> egelbot: pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2
+2020-08-31 00:10:28 <egelbot> (pprimes_sa 16 (pprimes_sa 4 Dummy82DOT0 2) 2)
+2020-08-31 00:10:32 <b_jonas> egelbot: pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2 pforce
+2020-08-31 00:10:33 <egelbot> (pprimes_sa 16 (pprimes_sa 4 Dummy83DOT0 2) 3)
+2020-08-31 00:10:40 <b_jonas> what
+2020-08-31 00:10:55 <b_jonas> 2 should be a
+2020-08-31 00:10:56 <b_jonas> oh
+2020-08-31 00:11:10 <b_jonas> it thinks 2 isn't a prime because it's divisible by 2
+2020-08-31 00:11:12 <b_jonas> great
+2020-08-31 00:11:26 <b_jonas> ok, this is the time to turn in and debug it some other day
+2020-08-31 00:11:28 <b_jonas> good night
+2020-08-31 00:11:40 <spruit11> Have a nice night.
+2020-08-31 00:11:43 <b_jonas> mind you, even then it should at least have returned a lazy list
+2020-08-31 00:12:05 <b_jonas> oh I see
+2020-08-31 00:12:41 <spruit11> I hope to learn a new trick because I don't know this approach.
+2020-08-31 00:12:44 <b_jonas> egelbot: def pprimes_sa = [B L F G-> [true-> [true R->R pforce| _ R->pcons F R] (pprimes_i F L) (pprimes_sa B L(1+F)) |_->pnil ](F<B) ];; plisttake 9 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:12:44 <egelbot> {2, 3}
+2020-08-31 00:12:54 <b_jonas> egelbot: pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2 pforce
+2020-08-31 00:12:54 <egelbot> (pcons 3 (pprimes_sa 16 (pprimes_sa 4 Dummy85DOT0 2) 4))
+2020-08-31 00:13:08 <b_jonas> egelbot: plisttake 149 (pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2)
+2020-08-31 00:13:09 <egelbot> {3, 5, 7, 11, 13}
+2020-08-31 00:13:26 <b_jonas> still thinks that 2 is not a prime, which will be a problem in the next iteration, but that's fixable
+2020-08-31 00:13:47 <spruit11> Oh, right. I thought you were there for a moment.
+2020-08-31 00:14:10 <b_jonas> now where was the definition of pprimes_i
+2020-08-31 00:15:33 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->D<N| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error plistmember uncons"] (L pforce)];; "ok"
+2020-08-31 00:15:34 <egelbot> "ok"
+2020-08-31 00:15:40 <b_jonas> egelbot: plisttake 149 (pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2)
+2020-08-31 00:15:40 <egelbot> {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
+2020-08-31 00:15:44 <b_jonas> no
+2020-08-31 00:16:00 <b_jonas> egelbot: plisttake 149 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:16:00 <egelbot> {2, 3}
+2020-08-31 00:16:48 <b_jonas> egelbot: def pprimes_i = [N L-> [pnil->false| (pcons A D)-> [true _->A<N| _ false->false| false true->pprimes_i N D | _->throw"error pprimes_i =="] (0==(N%A)) (A*A<N) | _->throw"error plistmember uncons"] (L pforce)];; "ok"
+2020-08-31 00:16:49 <egelbot> "ok"
+2020-08-31 00:16:52 <b_jonas> egelbot: plisttake 149 (pprimes_sa 4 [_->pnil] 2)
+2020-08-31 00:16:53 <egelbot> {2, 3}
+2020-08-31 00:16:58 <b_jonas> egelbot: plisttake 149 (pprimes_sa 16 (pprimes_sa 4 [_->pnil] 2) 2)
+2020-08-31 00:16:58 <egelbot> {2, 3, 5, 7, 11, 13}
+2020-08-31 00:17:09 <b_jonas> [ p.i.40
+2020-08-31 00:17:09 User Name: j-bot = j-bot!~jbot@hagall.firefly.nu
+2020-08-31 00:17:09 <j-bot> b_jonas: â”Œâ”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+2020-08-31 00:17:09 <j-bot> b_jonas: │39│0.931642j0.178144 0.931642j_0.178144 0.877747j0.321843 0.877747j_0.321843 0.80763j0.454005 0.80763j_0.454005 0.720253j0.573152 0.720253j_0.573152 0.6168j0.676984 0.6168j_0.676984 0.499364j0.763267 0.499364j_0.763267 0.370586j0.83007 0.370586j_0.83007 0.233484j0.875879 0.233484j_0.875879 0.0913366j0.899664 0.0913366j_0.899664 _0.0524256j0.900914 _0.0524256j_0.900914 _0.194311j0.
+2020-08-31 00:17:13 <b_jonas> what
+2020-08-31 00:17:16 <b_jonas> [ p:i.40
+2020-08-31 00:17:17 <j-bot> b_jonas: â””â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+2020-08-31 00:17:21 <b_jonas> um
+2020-08-31 00:17:24 <b_jonas> [ q.i.40
+2020-08-31 00:17:25 <j-bot> b_jonas: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173
+2020-08-31 00:17:29 <j-bot> b_jonas: |spelling error
+2020-08-31 00:17:29 <j-bot> b_jonas: |   q.i.40
+2020-08-31 00:17:29 <j-bot> b_jonas: |   ^
+2020-08-31 00:18:23 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa (B*B) L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))
+2020-08-31 00:18:23 <egelbot> (16, {2, 3, 5, 7, 11, 13})
+2020-08-31 00:18:32 <b_jonas> egelbot: def pprimes_s = [(pprimes_u B L) -> pprimes_u (B*B) (pprimes_sa (B*B) L 2)];; [(pprimes_u B L) -> (B,plisttake 149 L)] (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil]))))
+2020-08-31 00:18:32 <egelbot> (256, {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251})
+2020-08-31 00:18:44 <spruit11> Looks good!
+2020-08-31 00:19:57 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))))
+2020-08-31 00:19:57 <egelbot> internal:1:132:syntactical:) unexpected
+2020-08-31 00:20:00 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil]))))))
+2020-08-31 00:20:04 <b_jonas> no
+2020-08-31 00:20:08 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))))
+2020-08-31 00:20:20 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:20:20 <egelbot> exception("System:* overflow")
+2020-08-31 00:20:24 <b_jonas> uh
+2020-08-31 00:20:28 <b_jonas> B overflowed
+2020-08-31 00:20:28 <b_jonas> darn
+2020-08-31 00:21:06 <b_jonas> egelbot: (10 < 16.0, 20 < 16.0)
+2020-08-31 00:21:06 <egelbot> (System:true, System:true)
+2020-08-31 00:21:23 <b_jonas> we can actually represent the bounds as floating point, because they're powers of two, but that's not the right comparison
+2020-08-31 00:21:44 <b_jonas> oh well
+2020-08-31 00:21:46 <spruit11> 20<16.0?
+2020-08-31 00:22:07 <spruit11> egelbot: 20 < 16.0
+2020-08-31 00:22:08 <egelbot> System:true
+2020-08-31 00:22:13 <spruit11> egelbot: 20.0 < 16.0
+2020-08-31 00:22:13 <egelbot> System:false
+2020-08-31 00:22:18 <spruit11> egelbot: 10.0 < 16.0
+2020-08-31 00:22:18 <egelbot> System:true
+2020-08-31 00:22:23 <spruit11> egelbot: 10 < 16.0
+2020-08-31 00:22:23 <b_jonas> [ #s=: (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251)
+2020-08-31 00:22:24 <egelbot> System:true
+2020-08-31 00:22:24 <j-bot> b_jonas: 54
+2020-08-31 00:22:30 <b_jonas> [ q.i.54
+2020-08-31 00:22:30 <j-bot> b_jonas: |spelling error
+2020-08-31 00:22:30 <j-bot> b_jonas: |   q.i.54
+2020-08-31 00:22:30 <j-bot> b_jonas: |   ^
+2020-08-31 00:22:33 <b_jonas> [ p:i.54
+2020-08-31 00:22:34 <j-bot> b_jonas: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251
+2020-08-31 00:22:38 <b_jonas> [ s-:p:i.54
+2020-08-31 00:22:39 <j-bot> b_jonas: 1
+2020-08-31 00:22:41 <b_jonas> [ s-:p:i.53
+2020-08-31 00:22:41 <j-bot> b_jonas: 0
+2020-08-31 00:22:49 <b_jonas> ok, so the list of the first 54 primes is correct
+2020-08-31 00:23:06 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))
+2020-08-31 00:23:15 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:23:17 <egelbot> {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499
+2020-08-31 00:23:19 <spruit11> But you found a bug, right.
+2020-08-31 00:23:25 <b_jonas> I think that goes only up to 65536
+2020-08-31 00:23:40 <b_jonas> but I don't have a tail function so I can't easily check
+2020-08-31 00:24:08 <b_jonas> egelbot: "well actually I can";nop;; [(pprimes_u B L) -> B] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))
+2020-08-31 00:24:08 <egelbot> 65536
+2020-08-31 00:24:13 <b_jonas> yes, 65536
+2020-08-31 00:24:20 <b_jonas> egelbot: 65536*65536
+2020-08-31 00:24:20 <egelbot> 4294967296
+2020-08-31 00:24:45 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil]))))))
+2020-08-31 00:24:54 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:24:57 <egelbot> {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499
+2020-08-31 00:25:04 <b_jonas> so that's the list up to 1<<32
+2020-08-31 00:25:16 <b_jonas> but we'd need it up to 1<<64 and B overflows there
+2020-08-31 00:25:18 <b_jonas> so
+2020-08-31 00:25:41 <spruit11> Can you put this program in a script?
+2020-08-31 00:25:48 <spruit11> I want to study it
+2020-08-31 00:25:59 <b_jonas> egelbot: 1<<63
+2020-08-31 00:26:00 <egelbot> -9223372036854775808
+2020-08-31 00:26:03 <esowiki> 14[[07Conveyer14]]4 M10 02https://esolangs.org/w/index.php?diff=77148&oldid=77138 5* 03Abbin21 5* (+2) 10
+2020-08-31 00:26:46 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_sa (1<<63) [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))))
+2020-08-31 00:26:53 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:26:54 <egelbot> exception("error plisttake")
+2020-08-31 00:26:58 <b_jonas> on
+2020-08-31 00:27:33 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_sa (1<<63) ([(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil]))))))))
+2020-08-31 00:27:34 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:27:34 <egelbot> exception("error plisttake")
+2020-08-31 00:27:44 <b_jonas> well go back to the previous version then
+2020-08-31 00:28:05 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))) # only up to 1<<32
+2020-08-31 00:28:08 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:28:11 <egelbot> {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499
+2020-08-31 00:28:33 <b_jonas> spruit11: I don't have a script, just copy it from https://esolangs.org/logs/2020-08-30.html and https://esolangs.org/logs/2020-08-31.html
+2020-08-31 00:29:34 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_sa (1<<63) ([(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil]))))))) 2)
+2020-08-31 00:29:40 <b_jonas> egelbot: plisttake 149 pprimes
+2020-08-31 00:29:40 <egelbot> exception("error plisttake")
+2020-08-31 00:29:58 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))) # only up to 1<<32
