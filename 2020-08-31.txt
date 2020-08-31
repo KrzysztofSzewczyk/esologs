@@ -183,3 +183,31 @@
 2020-08-31 00:29:40 <b_jonas> egelbot: plisttake 149 pprimes
 2020-08-31 00:29:40 <egelbot> exception("error plisttake")
 2020-08-31 00:29:58 <b_jonas> egelbot: def pprimes = [(pprimes_u B L) -> L] (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_s (pprimes_u 2 [_->pnil])))))) # only up to 1<<32
+2020-08-31 00:31:41 <b_jonas> also wait
+2020-08-31 00:31:45 <b_jonas> this isn't even the right approach
+2020-08-31 00:31:46 <spruit11> Aargh. I made a compare on all vm objects and now I think all integers are smaller than floats since I want those to be hash mappable.
+2020-08-31 00:31:52 <b_jonas> this would be too slow if you go far
+2020-08-31 00:32:01 <b_jonas> the problem is that we compute the smaller lists too many times
+2020-08-31 00:32:29 <spruit11> egelbot: 0 < 0.0
+2020-08-31 00:32:29 <egelbot> System:true
+2020-08-31 00:32:36 <spruit11> egelbot: 20 < 0.0
+2020-08-31 00:32:37 <egelbot> System:true
+2020-08-31 00:32:40 <spruit11> egelbot: -20 < 0.0
+2020-08-31 00:32:40 <egelbot> System:true
+2020-08-31 00:33:25 <spruit11> egelbot: true < 0.0
+2020-08-31 00:33:25 <egelbot> System:false
+2020-08-31 00:33:40 <spruit11> THis is maybe not a good compare.
+2020-08-31 00:34:03 <b_jonas> we'd need to rewrite it so that pprimes_sa takes an eager list, then rewrite pprimes to first compute the eager list up to the square root of the bound you want
+2020-08-31 00:34:18 <b_jonas> and then call pprimes_sa using that
+2020-08-31 00:34:26 <b_jonas> so you compute each stage of the list only once
+2020-08-31 00:34:33 <b_jonas> the whole lazy list thing is a stupid distraction
+2020-08-31 00:34:43 <b_jonas> it shouldn't even be used
+2020-08-31 00:34:52 <b_jonas> if computers weren't so fast we'd probably have noticed that
+2020-08-31 00:35:22 <b_jonas> so this needs a heavy rewrite
+2020-08-31 00:35:49 <spruit11> Well. I am in awe.
+2020-08-31 00:35:55 <spruit11> Also, going to bed.
+2020-08-31 00:36:06 <spruit11> More bug squashing tomorrow.
+2020-08-31 00:36:12 <spruit11> Have a nice night.
+2020-08-31 00:36:14 <spruit11> o/
+2020-08-31 00:51:32 <b_jonas> so basically just rip out the lazy lists, and you'd get a much smaller code that actually doesn't do a crapton of redundant computation
+2020-08-31 00:52:19 <b_jonas> even then it wouldn't be a very fast prime sieve of course, but it wouldn't just be wasting cycles
