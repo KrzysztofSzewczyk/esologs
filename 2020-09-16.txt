@@ -60,3 +60,26 @@
 2020-09-16 09:25:38 <cpressey> I tried to look into what "final tagless" and "free monad interpreter" and these other things were, the other day.
 2020-09-16 09:26:31 <cpressey> I guess there were a few interesting things I picked up, but none of it had much appeal to me
 2020-09-16 09:29:38 <cpressey> The general idea of "evidence types" is a good one.
+2020-09-16 09:32:11 <cpressey> But it seems like it would be sometimes be difficult to apply. I'm writing a compiler, the language has a fairly complex AST. Some nodes at the leaves of the AST represent names. Those names can be unresolved, or resolved to refer to particular symbols.
+2020-09-16 09:33:06 <cpressey> It would be great to give them a different type if they were resolved, but, then the AST has to be able to contain two types of name nodes. Should the AST also get a different type?
+2020-09-16 09:33:25 <cpressey> If not, then it's not very much different from a sum type, which I'm already using.
+2020-09-16 09:33:43 <int-e> @google "evidence types"
+2020-09-16 09:33:44 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-09-16 09:33:44 <lambdabot> No Result Found.
+2020-09-16 09:34:12 <int-e> Fun. I guess that code bit-rotted.
+2020-09-16 09:34:43 <cpressey> "evidence type": instead of checking "is this valid", return Just a typed value representing a valid instance of the thing if it is valid, or Nothing otherwise
+2020-09-16 09:34:52 <cpressey> a.k.a a solution to "boolean blindness"
+2020-09-16 09:34:57 <cpressey> all this jargon
+2020-09-16 09:40:28 <int-e> so it was not connected to final tagless nor free monads?
+2020-09-16 09:40:52 <int-e> (*those* two are, to my mind, at best loosely connected)
+2020-09-16 09:41:21 <cpressey> Well, final tagless seems to be mainly a version of evidence types where, for each effect, there's an evidence type witnessing the fact that this function may use that effect
+2020-09-16 09:41:33 <int-e> (in that the expression problem comes up when you want to make a free monad extensible)
+2020-09-16 09:41:41 <cpressey> Or rather, evidence typeclasses, I suppose
+2020-09-16 09:42:02 <cpressey> Free monads is more or less something else entirely, yes
+2020-09-16 09:48:33 <cpressey> The thing with the expression problem is, y'know, I really don't mind recompiling if I have to.
+2020-09-16 09:49:04 <cpressey> It's not 1998 anymore.
+2020-09-16 09:50:10 <cpressey> I guess, in a lot of language ecosystems, people still do want to distribute libraries as opaque binary blobs, but.
+2020-09-16 09:53:19 <int-e> I don't know, isn't the whole expression problem just an admission that deep down, we want OOP ;-)
+2020-09-16 09:54:56 <int-e> (I'm semiserious about this. The problem is one that in OO languages would be solved by inheritance, plus some visitors.)
+2020-09-16 09:55:30 <cpressey> Yeah, a lot of this has the feel of typed functional programming trying to play catch-up to OOP.
+2020-09-16 09:56:16 <int-e> And as for its motivation... I think it still comes up when you want to provide a base tree type in a library and let users extend it with new node types.
