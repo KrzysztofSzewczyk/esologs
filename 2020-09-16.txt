@@ -92,3 +92,18 @@
 2020-09-16 11:24:54 <int-e> (if you follow the pattern of having one method per operation that is overloaded in every inherited object that needs its own behavior)
 2020-09-16 11:26:19 <int-e> And it doesn't completely go away if you implement the visitor pattern (fold + traverse ;-) ) because now the visitor has a method for each child class, so that becomes hard to extend.
 2020-09-16 11:27:14 <int-e> programming is hard
+2020-09-16 11:30:38 <spruit11> Right, but what is never mentioned is that you can sometimes defensively work around it, right? I find that a bit of a shame.
+2020-09-16 11:33:22 <int-e> that's not buzzword-compatible.
+2020-09-16 11:33:47 <int-e> hard to write papers about too
+2020-09-16 11:34:07 <int-e> "we did the boring thing and nothing exciting ever happened"
+2020-09-16 11:36:05 <int-e> https://xkcd.com/1827/ is relevant
+2020-09-16 11:41:28 <int-e> (For every success story about a new programming paradigm, how many failures are there? We usually don't know.)
+2020-09-16 11:46:03 <spruit11> Yah, it's hard to find honest academics.
+2020-09-16 11:46:43 <spruit11> Usually, you're supposed to figure out all drawbacks to some approach yourself.
+2020-09-16 11:46:58 <int-e> I don't think it's about honesty per se.
+2020-09-16 11:52:37 <int-e> There's almost no incentive for writing papers about failures... for the people who fail. I'm sure there are researchers on project management, software engineering and the like who lament that situation... they'd love to analyse failed projects.
+2020-09-16 11:53:38 <spruit11> I don't care about motives, only about outcome.
+2020-09-16 11:54:00 <spruit11> It's annoying if you always need to guess what isn't said.
+2020-09-16 11:57:49 <int-e> Well, sadly, the best place to find honest academics is at the bar near an academic conference... casual and off the record.
+2020-09-16 11:58:57 <int-e> And most of the publications don't lie either, but their scope is heavily biased towards success.
+2020-09-16 11:59:32 <int-e> Oh did I mention that many venues have page limits for papers which means the authors have to decide which aspects of their work are most interesting and relevant?
