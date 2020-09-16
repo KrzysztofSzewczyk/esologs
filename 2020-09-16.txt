@@ -211,3 +211,10 @@
 2020-09-16 16:26:46 <spruit11> Anyway, I could do it but it would become a mess fast I think. I am dropping to C.
 2020-09-16 16:27:47 Quit: Arcorann (Read error: Connection reset by peer)
 2020-09-16 16:27:47 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, Sgeo, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-16 16:32:13 <b_jonas> but why do you need a file handle from a stream? I thought you need a C++ iostream from a file descriptor, to operate on an iostream after you do a popen
+2020-09-16 16:33:30 <b_jonas> I don't really see how to do that. https://gcc.gnu.org/onlinedocs/gcc-10.2.0/libstdc++/manual/manual/ext_io.html#manual.ext.io.filebuf_derived is supposed to tell, but it doesn't seem to say whether closing that stream will close the underlying FILE, and it's hard to use this without that.
+2020-09-16 16:34:32 <b_jonas> you could probably write your own class derived from std::streambuf that handles this though, and that's more portable
+2020-09-16 16:36:42 <spruit11> Uh, popen doesn't seem to solve what I need/want. I need some exec, probably. Lemme look.
+2020-09-16 16:39:18 <b_jonas> basically stdio and C++ streams are so weird that sometimes you want your own buffering abstractions
+2020-09-16 16:40:35 <spruit11> Right, I could do popen for now but preferably I would also obtain a PID.
+2020-09-16 16:41:33 <spruit11> Dunno. Still in the reading stage and just following what Haskell and Python do.
