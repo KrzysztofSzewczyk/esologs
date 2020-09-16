@@ -85,3 +85,10 @@
 2020-09-16 09:56:16 <int-e> And as for its motivation... I think it still comes up when you want to provide a base tree type in a library and let users extend it with new node types.
 2020-09-16 10:46:32 User Name: spruit11 = spruit11!~unknown@86-82-44-193.fixed.kpn.net
 2020-09-16 10:46:32 <spruit11> Hmm, there was something like a dual to FP's expression problem in OO.
+2020-09-16 11:00:49 <spruit11> Anyway, though the expression problem exists there are usually okay work arounds to the problem.
+2020-09-16 11:00:59 Quit: cpressey (Quit: Lunch)
+2020-09-16 11:00:59 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-16 11:23:55 <int-e> spruit11: I believe the OO version of the problem is that it's hard to add new operations.
+2020-09-16 11:24:54 <int-e> (if you follow the pattern of having one method per operation that is overloaded in every inherited object that needs its own behavior)
+2020-09-16 11:26:19 <int-e> And it doesn't completely go away if you implement the visitor pattern (fold + traverse ;-) ) because now the visitor has a method for each child class, so that becomes hard to extend.
+2020-09-16 11:27:14 <int-e> programming is hard
