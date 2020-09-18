@@ -138,3 +138,45 @@
 2020-09-18 09:58:56 <cpressey> It's ghc 8.0.smth where I think smth is 2
 2020-09-18 09:59:25 <cpressey> yes, 2
 2020-09-18 09:59:59 <cpressey> I'm just happy for cabal-install to be not-ancient
+2020-09-18 10:02:01 <int-e> Ah, here's why... https://hackage.haskell.org/package/lukko-0.1.1.2/lukko.cabal
+2020-09-18 10:02:08 <int-e> "cabal-version:      2.2"
+2020-09-18 10:02:21 <int-e> and cabal-install 3.2 depends on lukko
+2020-09-18 10:04:05 <cpressey> I see "Downloading the latest package list from hackage.haskell.org" still doesn't show a progress bar. That always annoyed me.
+2020-09-18 10:04:49 <cpressey> It's building my project now though, looks a little nicer
+2020-09-18 10:04:58 <cpressey> and has succeeded.  so that's good
+2020-09-18 10:07:14 <cpressey> The dist directory structure has altered considerably.  That's less good
+2020-09-18 10:07:42 <int-e> Oh and lukko depends on Cabal 2.2 because it's dual-licensed. Such fun. ("license:            GPL-2.0-or-later AND BSD-3-Clause" -- the "AND" is not supported in earlier versions)
+2020-09-18 10:07:44 <cpressey> I'll need to "install" the built binary somewhere before running automated tests on it I guess
+2020-09-18 10:08:05 <cpressey> Oh dear me
+2020-09-18 10:08:35 <cpressey> I never really understood dual licensing
+2020-09-18 10:09:07 <int-e> In what way?
+2020-09-18 10:09:57 <int-e> As a user you get to pick one of the licenses.
+2020-09-18 10:10:03 <cpressey> "You have the option of distributing this under license X or license Y" when license X doesn't prohibit adding licence Y on top
+2020-09-18 10:10:14 <cpressey> Just distribute under X, let people add Y if they feel like
+2020-09-18 10:10:44 <cpressey> In this instance X=BSD3, Y=GPL2
+2020-09-18 10:11:10 <int-e> AIUI, the non-endorsement clause of the 3 clause BSD license is not compatible with GPL.
+2020-09-18 10:11:31 Nick Change: iscordian[m] -> Discordian[m]
+2020-09-18 10:11:32 Names: ^[, adminn, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-18 10:11:35 <int-e> At least if you ask a lawyer.
+2020-09-18 10:12:35 <esowiki> 14[[07RarVM14]]4 M10 02https://esolangs.org/w/index.php?diff=77565&oldid=70784 5* 03Void 5* (+25) 10Add author github link
+2020-09-18 10:13:20 <esowiki> 14[[07KeyVM14]]4 M10 02https://esolangs.org/w/index.php?diff=77566&oldid=76127 5* 03Void 5* (+25) 10Add author github link
+2020-09-18 10:14:58 <cpressey> So if I redistribute Lukko under the GPL am I then allowed to use the name of its author to endorse it?
+2020-09-18 10:15:31 <int-e> Well you're not bound by the clause in the BSD license then.
+2020-09-18 10:15:40 <int-e> Which means... maybe.
+2020-09-18 10:16:20 <int-e> You're still constrained by general laws.
+2020-09-18 10:16:26 <int-e> And, if you are so inclined, ethics. :P
+2020-09-18 10:18:52 <cpressey> Presumably if no-endorsing-clause was a dealbreaker for the author, they wouldn't allow the GPL option. So they could have just weakened it to BSD 2-clause.
+2020-09-18 10:19:56 <int-e> But that's their choice.
+2020-09-18 10:20:17 <cpressey> Yeah, and it was my choice to release the last version of ILLGOL under 8 different licenses
+2020-09-18 10:20:45 <int-e> Personally I prefer the MIT license anyway... less clumsy to adopt for personal use.
+2020-09-18 10:21:45 <int-e> . o O ( "Regents of the University of California" )
+2020-09-18 10:22:11 <cpressey> I release a lot of stuff under the Unlicense, partly because I don't want to bother updating copyright years
+2020-09-18 10:22:48 <cpressey> I've gotten flak for choosing it, because some people think it's not valid in Germany or something
+2020-09-18 10:22:56 Joined: arseniiv
+2020-09-18 10:22:57 Names: ^[, adminn, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-18 10:23:05 <cpressey> I think that's Germany's problem rather than mine, frankly
+2020-09-18 10:24:41 <int-e> There is no way to relinquish copyrights in Germany.
+2020-09-18 10:26:06 <int-e> So yes, the license text looks hard to apply there.
+2020-09-18 10:29:15 <int-e> But apparently it's now OSI-approved.
+2020-09-18 10:29:45 Quit: cpressey (Ping timeout: 240 seconds)
+2020-09-18 10:29:45 Names: ^[, adminn, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
