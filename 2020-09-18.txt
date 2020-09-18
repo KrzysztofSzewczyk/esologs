@@ -221,3 +221,12 @@
 2020-09-18 14:22:19 <esowiki> 14[[07Cheems14]]4 10 02https://esolangs.org/w/index.php?diff=77574&oldid=77573 5* 03MatthiasChan 5* (+22) 10
 2020-09-18 14:25:29 Joined: Sgeo
 2020-09-18 14:25:29 Names: ^[, adminn, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed
+2020-09-18 14:33:35 <esowiki> 14[[07Cheems14]]4 10 02https://esolangs.org/w/index.php?diff=77575&oldid=77574 5* 03MatthiasChan 5* (-17) 10
+2020-09-18 14:46:11 User Name: arseniiv = arseniiv!~arseniiv@94.41.83.26.dynamic.ufanet.ru
+2020-09-18 14:46:11 <arseniiv> about numerical stuff
+2020-09-18 14:46:44 Joined: MDude
+2020-09-18 14:46:44 Names: ^[, adminn, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed
+2020-09-18 14:47:27 <arseniiv> instead of converting between cent representation and frequency ratio representation when the user chooses so, might it be a bit more accurate to store both and manipulate them independently?
+2020-09-18 14:47:44 <arseniiv> the first one is in logarithmic domain
+2020-09-18 14:49:17 <arseniiv> so conversions back and forth may be bad. But maybe they may go out of sync when calculating something long independently?
+2020-09-18 14:49:32 <arseniiv> s/they/the values
