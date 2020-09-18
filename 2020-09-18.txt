@@ -108,3 +108,33 @@
 2020-09-18 09:27:26 <int-e> if you're learning cabal-install, yes, you should definitely learn the v2 commands (which are already the default in cabal-install 3.2, I think?).
 2020-09-18 09:28:48 <int-e> changing is harder... I have a working mental model for the old commands :/
 2020-09-18 09:29:24 <int-e> (and, also importantly, I have no problem with the old commands that needs solving)
+2020-09-18 09:30:10 <int-e> So my only motivation to switch is... that the old commands will be removed.
+2020-09-18 09:32:21 <cpressey> The version of cabal-install that is provided by Ubuntu 18.04 seems to be... 1.24.0.2.  Which sounds old.  Which is pretty typical for Ubuntu packages actually.
+2020-09-18 09:32:50 <cpressey> I'll figure out how to install a bleeding edge version soon.
+2020-09-18 09:33:16 <cpressey> Or at least a badly bruised edge.
+2020-09-18 09:33:39 <int-e> 1.24.0.2...
+2020-09-18 09:33:43 <int-e> woah
+2020-09-18 09:33:52 <int-e> that brings back memories ;)
+2020-09-18 09:36:13 <int-e> Hmm, 2.0.0.0 was released 2017-08-07... feels like ages ago.
+2020-09-18 09:36:47 <int-e> I guess there's some excuse for an April 2018 distribution to stick to an earlier version.
+2020-09-18 09:53:04 <cpressey> "cabal: This version of 'cabal-install' does not support the 'uninstall' operation. It will likely be implemented at some point in the future"
+2020-09-18 09:53:15 <cpressey> how're those memories
+2020-09-18 09:53:58 <cpressey> I just started "cabal install cabal-install", I wonder where I will end up
+2020-09-18 09:54:17 <cpressey> "Warning: Note that reinstalls are always dangerous. Continuing anyway..."
+2020-09-18 09:54:20 <cpressey> good stuff
+2020-09-18 09:54:37 <int-e> it should end up in ~/.cabal/bin ... possibly with a symlink in ~/bin
+2020-09-18 09:54:44 <int-e> you're not running this as root, I hope
+2020-09-18 09:54:52 <cpressey> Not as root, no
+2020-09-18 09:55:23 <cpressey> "Building Cabal-3.0.2.0..." ok, so far so good
+2020-09-18 09:55:48 <int-e> oh, interesting... is your ghc (base) too old for 3.2? :)
+2020-09-18 09:56:08 <cpressey> It may be, I noticed the other day it's a minor version or two behind
+2020-09-18 09:56:10 Joined: tswett[m]
+2020-09-18 09:56:10 Names: ^[, adminn, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-18 09:56:16 Joined: iscordian[m]
+2020-09-18 09:56:17 Names: ^[, adminn, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-18 09:57:54 Joined: t20kdc
+2020-09-18 09:57:54 Names: ^[, adminn, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-18 09:57:59 <int-e> mm. no, that's not it, unless the ghc is older than 8.0
+2020-09-18 09:58:56 <cpressey> It's ghc 8.0.smth where I think smth is 2
+2020-09-18 09:59:25 <cpressey> yes, 2
+2020-09-18 09:59:59 <cpressey> I'm just happy for cabal-install to be not-ancient
