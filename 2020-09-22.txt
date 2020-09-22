@@ -177,3 +177,33 @@
 2020-09-22 17:28:07 <arseniiv> hm what would come of a semiring without distributivity? It’s the only reason we call something ring-like…
 2020-09-22 17:29:22 <arseniiv> wait, at least composition distributes from the left: (f + g) ∘ h = f ∘ h + g ∘ h
 2020-09-22 17:29:37 <arseniiv> that’s often enough
+2020-09-22 17:30:27 Quit: t20kdc (Remote host closed the connection)
+2020-09-22 17:30:27 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, voidio, wmww, xelxebar, zeroed, zzo38
+2020-09-22 17:30:31 <arseniiv> may I say again this channel is the best
+2020-09-22 17:31:11 Joined: t20kdc
+2020-09-22 17:31:11 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, voidio, wmww, xelxebar, zeroed, zzo38
+2020-09-22 17:32:32 <int-e> arseniiv: There's a whole mess even when you demand that the multiplication is bilinear: https://en.wikipedia.org/wiki/Non-associative_algebra
+2020-09-22 17:32:59 <int-e> Maybe there's a concept of a(n associative) left algebra somewhere?
+2020-09-22 17:34:07 <arseniiv> I was shown a silly conversation screenshoot involving Pythagorean theorem and then noticed it doesn’t imply euclidean structure as I thought, but is universal for quadratic spaces
+2020-09-22 17:34:47 <arseniiv> non-associative algebras aren’t my favorite, yeah
+2020-09-22 17:36:41 <int-e> I barely know that they're a thing.
+2020-09-22 17:36:48 <int-e> Your loss ;)
+2020-09-22 17:37:44 <arseniiv> <int-e> Maybe there's a concept of a(n associative) left algebra somewhere? => hmm maybe that’s useful in those module studies, when the ring of scalars is very bad so even usual “two-sided” algebras don’t arise?
+2020-09-22 17:38:28 <arseniiv> <int-e> I barely know that they're a thing. => but how about many Lie algebras like 3D vectors with cross product?
+2020-09-22 17:39:04 <arseniiv> if not for those things, I’d forgot about non-unital non-assoc algebras with a light heart
+2020-09-22 17:39:28 <arseniiv> s/forgot/let myself forget
+2020-09-22 17:39:38 <int-e> Well, "like cross product" is all I know about Lie algebras.
+2020-09-22 17:39:46 <arseniiv> me too, almost
+2020-09-22 17:40:16 <arseniiv> I know they can be logarithmed to Lie algebras :-|
+2020-09-22 17:40:30 <int-e> Are there any Truth algebras...
+2020-09-22 17:40:46 <arseniiv> boolean algebras aren’t the Truth?
+2020-09-22 17:40:54 <int-e> (weak pun, but it had to be done)
+2020-09-22 17:41:19 <int-e> Boolean algebras are ambivalent.
+2020-09-22 17:41:33 <int-e> self-dual, and all that
+2020-09-22 17:41:42 <int-e> So you never know what is true and what is false.
+2020-09-22 17:42:26 <int-e> Much like real life.
+2020-09-22 17:43:06 <arseniiv> what’s fun there’s also a weak pun in Russian which conflates “алгебра Ли” (Lie algebra) with “алгебра ли” (<really?> an algebra), like “это алгебра ли” “is this really an algebra”
+2020-09-22 17:44:04 <arseniiv> <int-e> So you never know what is true and what is false. => then maybe Heyting algebras?
+2020-09-22 17:47:42 <arseniiv> hm can we try to factor the set of all these by all the Boolean algebras?.. seems ill-defined
+2020-09-22 17:55:46 Nick Change: voidio -> iovoid
+2020-09-22 17:55:46 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
