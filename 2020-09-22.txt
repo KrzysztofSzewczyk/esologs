@@ -148,3 +148,32 @@
 2020-09-22 16:37:17 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, voidio, wmww, xelxebar, zeroed, zzo38
 2020-09-22 16:58:06 Joined: Robdgreat
 2020-09-22 16:58:06 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, voidio, wmww, xelxebar, zeroed, zzo38
+2020-09-22 17:18:12 Joined: Lord_of_Life
+2020-09-22 17:19:19 <arseniiv> rain1: yeah, the sum of all possible products of A and B of n factors
+2020-09-22 17:19:43 <int-e> But they should all have the same length!!!!1
+2020-09-22 17:19:50 Quit: Lord_of_Life (Ping timeout: 260 seconds)
+2020-09-22 17:19:54 <arseniiv> ABABAABA creeped me out too
+2020-09-22 17:21:00 <arseniiv> for all the lengths, one can take (1 − (A + B))^−1: 1 + A + B + AA + AB + BA + BB + AAA + …
+2020-09-22 17:21:04 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-09-22 17:22:33 <arseniiv> a shame x ↦ 1/(1 − x) has no widespread short notation. Except maybe x* in a couple of cases
+2020-09-22 17:24:24 <int-e> 1/(1-x) is very compact already
+2020-09-22 17:24:27 <arseniiv> . o O ( (List sin) t = 1 + sin t + (sin t)² + (sin t)³ + … )
+2020-09-22 17:24:39 <int-e> ugh
+2020-09-22 17:24:43 <arseniiv> heheheheh
+2020-09-22 17:24:52 <arseniiv> I’m not serious with List
+2020-09-22 17:25:16 <int-e> why not t + sin t + sin (sin t) + sin (sin (sin t)) + ...
+2020-09-22 17:25:20 <arseniiv> that’s a lot less intuitive than what I actually propose, [sin] t
+2020-09-22 17:25:30 <arseniiv> int-e: depends on the semiring!
+2020-09-22 17:25:59 <int-e> sin isn't linear ;)
+2020-09-22 17:26:10 <arseniiv> why should it?
+2020-09-22 17:26:27 <int-e> so you don't get a semiring
+2020-09-22 17:26:46 <int-e> ...where multiplication is composition.
+2020-09-22 17:26:46 <arseniiv> I mean, I used a semiring of functions with a argumentwise + and �
+2020-09-22 17:26:55 <arseniiv> int-e: aah
+2020-09-22 17:27:07 <arseniiv> yes we should name that thing some other way then
+2020-09-22 17:27:18 <int-e> arseniiv: I know what you did, but I focussed on what I did :P
+2020-09-22 17:27:25 <arseniiv> yeah
+2020-09-22 17:27:34 <arseniiv> that’s only right
+2020-09-22 17:28:07 <arseniiv> hm what would come of a semiring without distributivity? It’s the only reason we call something ring-like…
+2020-09-22 17:29:22 <arseniiv> wait, at least composition distributes from the left: (f + g) ∘ h = f ∘ h + g ∘ h
+2020-09-22 17:29:37 <arseniiv> that’s often enough
