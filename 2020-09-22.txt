@@ -96,3 +96,27 @@
 2020-09-22 13:34:01 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-09-22 13:51:23 Joined: Sgeo
 2020-09-22 13:51:23 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-09-22 14:08:43 User Name: arseniiv = arseniiv!~arseniiv@94.41.83.26.dynamic.ufanet.ru
+2020-09-22 14:08:43 <arseniiv> are there any image editors which operate on complex-valued colors?
+2020-09-22 14:10:13 <b_jonas> I don't think so
+2020-09-22 14:10:16 <arseniiv> of course one would need to take a real part, an imaginary part, or an absolute value to get an image which can be displayed, but OTOH this setup will allow interesting layer modes and something like interference
+2020-09-22 14:11:01 <b_jonas> but maybe there are filters in normal image editors that do something treating pairs of channels as a complex number
+2020-09-22 14:11:18 <arseniiv> also one would be able to do FFT correctly, maybe play with phases in frequency domain and then make inverse FFT and see what it did to the image
+2020-09-22 14:11:51 <arseniiv> <b_jonas> but maybe there are filters in normal image editors that do something treating pairs of channels as a complex number => this would be nice!
+2020-09-22 14:12:12 <arseniiv> I think in the present GIMP version there’s none but I’ll be happy to be mistaken
+2020-09-22 14:13:13 <arseniiv> also nice morniveninghternoon everyone
+2020-09-22 14:14:13 User Name: cpressey = cpressey!~cpressey@88.144.69.118
+2020-09-22 14:14:13 <cpressey> interesting, but there is a slight mismatch, in that colours have three parts where complex numbers have only two
+2020-09-22 14:14:29 <cpressey> are there, uh, triplex numbers of some sort
+2020-09-22 14:14:35 <cpressey> probably not
+2020-09-22 14:15:49 <cpressey> maybe quaternions and then you drop one of the parts?
+2020-09-22 14:16:09 <b_jonas> cpressey: you can ignore one channels, or use something like ImageMagick 7 that can handle 2 or 4 channels
+2020-09-22 14:18:03 <cpressey> transparency adds an extra channel
+2020-09-22 14:18:32 <b_jonas> it can handle 5 channels too
+2020-09-22 14:18:43 <b_jonas> in particular there are operations that work on CYMKA images
+2020-09-22 14:19:38 <rain1> hello
+2020-09-22 14:19:46 <cpressey> it's ok, i have no idea how to do anything with quaternions anyway
+2020-09-22 14:21:51 <arseniiv> <cpressey> interesting, but there is a slight mismatch, in that colours have three parts where complex numbers have only two => I suggest complexifying the color space, so there would be six channels in general
+2020-09-22 14:23:32 <arseniiv> quaternions might be interesting too, though one should consider using something like CIE L*a*b* to map to them, as we’d want the quaternion norm to mean something nice like the color difference estimate, ΔE or how it’s called
+2020-09-22 14:24:45 <arseniiv> though I considered complex numbers mainly because they “allow interference” and more or less because of FFT too
+2020-09-22 14:25:08 <arseniiv> then you absolutely get a complexification of your starting space
