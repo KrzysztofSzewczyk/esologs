@@ -138,3 +138,66 @@
 2020-09-23 10:28:19 <shachaf> I don't understand it.
 2020-09-23 10:28:57 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
 2020-09-23 10:28:57 <Taneb> There's, like, both the type of bread, and the main filling, and all the extras you can get like lettuce and red onion
+2020-09-23 10:31:13 <int-e> Taneb: All I wanted was a burger, why are things so complicated.
+2020-09-23 10:31:39 <Taneb> int-e: burger types tend to be fairly different from sub types
+2020-09-23 10:31:55 <int-e> Oh.
+2020-09-23 10:32:00 <int-e> I missed the pun there, my bad.
+2020-09-23 10:32:07 <int-e> The description was generic enough :P
+2020-09-23 10:32:12 <Taneb> True
+2020-09-23 10:32:19 <ais523> lack of subtyping can be really annoying when it affects a program you're writing
+2020-09-23 10:32:48 <ais523> if you find that you ever have to write a recursive version of the identity function, that's something of a giveaway
+2020-09-23 10:33:16 <shachaf> int-e: At least you didn't miss the bun?
+2020-09-23 10:33:53 <shachaf> If I want to do a spot of the SMT, what theory should I use?
+2020-09-23 10:33:54 <ais523> in most cases, subtyping can be thought of as "if I put a recursive identity function here, everything will suddenly typecheck"
+2020-09-23 10:33:54 <int-e> I guess that's the one redeeming feature of Data.List.NonEmpty.NonEmpty... the conversion is not recursive.
+2020-09-23 10:34:17 <ais523> at least when it comes to sum and product types
+2020-09-23 10:34:55 <ais523> probably also for base types with subtypes, as long as the conversion is either implicit, or can be done manually in your "identity" function
+2020-09-23 10:35:54 <shachaf> Do SMT solvers want o have backtrackable union-find?
+2020-09-23 10:35:57 <shachaf> to
+2020-09-23 10:36:36 <shachaf> What do they do in practice, since persistent union-find doesn't exist?
+2020-09-23 10:37:08 <ais523> what do you mean by "union-find"?
+2020-09-23 10:37:26 <int-e> shachaf: if you don't do path compression you get something that's backtrackable
+2020-09-23 10:37:38 <shachaf> Hmm, that's interesting.
+2020-09-23 10:37:40 <int-e> ais523: disjoint set forests
+2020-09-23 10:37:52 <shachaf> Maybe path compression isn't that important?
+2020-09-23 10:38:30 <shachaf> It kind of seems like it would be.
+2020-09-23 10:38:32 <int-e> you get asymptotically logarithmic time operations then
+2020-09-23 10:38:57 <int-e> Instead of that weird almost constant inverse Ackermann.
+2020-09-23 10:39:07 <ais523> "inverse Ackermann" is a new one
+2020-09-23 10:39:23 <ais523> even log-log grows too slowly to be really observable as distinct from a constant
+2020-09-23 10:40:02 <shachaf> The fact that inverse Ackermann just shows up in the analysis of a practical algorithm is pretty great.
+2020-09-23 10:40:03 <int-e> Hmm, I've still never worked through all of Tarjan's analysis of disjoint set forests.
+2020-09-23 10:40:15 <shachaf> Neither have I. I should see how it all actually works at one point.
+2020-09-23 10:40:17 <ais523> huh, I think the inverse Ackermann function is primitve recursive even though the regular Ackermann isn't, right?
+2020-09-23 10:40:41 <int-e> ais523: sure, it's basically padding...
+2020-09-23 10:41:18 <ais523> I don't think a practical algorithm actually would have inverse Ackermann performance, you'd just pick an arbitrary constant rather than trying to deal with bignums
+2020-09-23 10:41:56 <int-e> Well this is an asymptotic cost.
+2020-09-23 10:42:18 <ais523> asymptotic costs don't practically matter when you don't reach the point where asymptotic behaviour starts kicking in
+2020-09-23 10:42:31 <int-e> n operations take O(alpha(n)n) time, where alpha is the inverse Ackermann function.
+2020-09-23 10:42:37 <ais523> there's a polynomial test for primality, nobody uses it because it isn't faster for any numbers we actually want to test for primality
+2020-09-23 10:43:05 <int-e> disjoint set forests with path compression *are* used.
+2020-09-23 10:43:48 <int-e> I agree it's rare, but this is a rare case where the asymptotically optimal thing is also very efficient in practice.
+2020-09-23 10:43:56 <ais523> or, hmm, is the point that the asymptotic behaviour is a simpler way to implement it than just hardcoding alpha(n) to alpha(A(5)) or whatever would be?
+2020-09-23 10:44:00 <int-e> double rare?
+2020-09-23 10:44:30 <int-e> It's emergent. Nobody's computing the inverse Ackermann function.
+2020-09-23 10:45:35 <ais523> heh, the easiest way to implement the inverse Ackermann function would be a fairly short if/else chain
+2020-09-23 10:45:56 <ais523> after a few entries your computer won't have enough memory to store the input to the function, even if you use bignums
+2020-09-23 10:46:19 <int-e> But this is theory :P
+2020-09-23 10:47:02 User Name: Arcorann = Arcorann_!~awych@121-200-5-186.79c805.syd.nbn.aussiebb.net
+2020-09-23 10:47:02 <Arcorann> https://codegolf.stackexchange.com/questions/125397/create-the-slowest-growing-function-you-can-in-under-100-bytes <-- relevant
+2020-09-23 10:47:16 <shachaf> Why do you get logarithmic time without path compression?
+2020-09-23 10:47:30 <shachaf> Hmm, I guess the thing I was thinking to get long chains easily doesn't work.
+2020-09-23 10:48:59 <int-e> shachaf: You can keep track of the class sizes at the representatives, so you can make the new pointer point to the smaller subclass.
+2020-09-23 10:49:10 <int-e> shachaf: and that balances the tree
+2020-09-23 10:49:16 <arseniiv> ais523: recursive identity function is actually a recursive injection?
+2020-09-23 10:50:30 <ais523> arseniiv: yes, the point is that the input and output types are different
+2020-09-23 10:50:33 <ais523> so you can't just write id x = x
+2020-09-23 10:50:48 <ais523> unless the language supports subtyping
+2020-09-23 10:50:49 <shachaf> One question is, how much does backtracking matter if your SAT solver is doing many rapid restarts?
+2020-09-23 10:50:50 <int-e> shachaf: I'm not sure whether this works for the usual rank as well... my intuitive guess is that it does, probably something with Fibonacci numbers, but I have not worked it out.
+2020-09-23 10:51:02 <arseniiv> it may be interesting to compare this with μ types, for which usually the approach with explicit wrapping/unwrapping is picked as it’s not as taxing to the programmer as the alternative is to the typechecker
+2020-09-23 10:51:13 <ais523> one annoying thing about OCaml is that it has a subtyping operator, but you need to tell it what types are involved
+2020-09-23 10:51:35 <arseniiv> ow
+2020-09-23 10:51:39 <ais523> and in the cases where I've wanted subtyping, those types are often massively complicated and it's easier to write the recursive identity than it is to figure out what types to give the builtin
+2020-09-23 10:54:25 <int-e> shachaf: Oh it's powers of 2 even... the induction step is that when you create a tree of rank n+1, you're merging two trees of rank n. So that's at least 2^n+2^n = 2^(n+1) nodes. The base case is a leaf with rank 0.
+2020-09-23 10:55:19 <int-e> So ranks do work for keeping the trees balanced.
