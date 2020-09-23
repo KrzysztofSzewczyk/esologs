@@ -86,3 +86,55 @@
 2020-09-23 09:59:10 <int-e> No, it's just <>.
 2020-09-23 09:59:35 <arseniiv> ah, I remember the operation is <>
 2020-09-23 09:59:36 <int-e> I'm not thinking clearly (yet?).
+2020-09-23 10:00:18 <int-e> I don't like NonEmpty all that much :-/
+2020-09-23 10:00:22 <arseniiv> I underslept but for a while I feel more or less comfortable as if that didn’t happen
+2020-09-23 10:00:31 <arseniiv> what could we do instead of NonEmpty?
+2020-09-23 10:01:04 <arseniiv> definitely its name is unwieldily long
+2020-09-23 10:01:11 <int-e> where does that even come from...
+2020-09-23 10:01:49 <int-e> (ghci tells me it's defined in GHC.Base... but surely it's reexported from somewhere?)
+2020-09-23 10:02:01 <arseniiv> I don’t remember its constructor and that other function to cons to another NonEmpty
+2020-09-23 10:02:18 <int-e> Or is it just something internal for list fusion, hmm. Maybe.
+2020-09-23 10:02:23 <arseniiv> maybe Data.List.NonEmpty? Does Data.NonEmpty exist?
+2020-09-23 10:02:33 <int-e> Ah.
+2020-09-23 10:02:41 <int-e> Thanks.
+2020-09-23 10:02:58 <int-e> data NonEmpty a = a :| [a]
+2020-09-23 10:03:11 <arseniiv> I thought it’s a real proposed way to make `tail` and `head` total
+2020-09-23 10:03:37 <arseniiv> but :| is kinda emoting its way through
+2020-09-23 10:03:39 <int-e> But I mix empty and non-empty lists all the time.
+2020-09-23 10:04:09 <arseniiv> :t (:<)
+2020-09-23 10:04:11 <lambdabot> Cons b b a a => a -> b -> b
+2020-09-23 10:04:16 <arseniiv> wha
+2020-09-23 10:04:34 <arseniiv> :t (:>)
+2020-09-23 10:04:35 <lambdabot> Snoc a a b b => a -> b -> a
+2020-09-23 10:05:04 Quit: olsner (Ping timeout: 260 seconds)
+2020-09-23 10:05:04 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww1, xelxebar, zeroed, zzo38
+2020-09-23 10:05:22 <arseniiv> :t (:< [])
+2020-09-23 10:05:23 <lambdabot> a -> [a]
+2020-09-23 10:05:51 <arseniiv> hm I hoped there is an instance for NonEmpty, or is this just a default
+2020-09-23 10:06:41 <int-e> that would overlap
+2020-09-23 10:07:06 <int-e> (in an incoherent way even)
+2020-09-23 10:07:30 <int-e> In the absence of subtypes I don't think NonEmpty carries its weight.
+2020-09-23 10:07:49 <int-e> But obviously others disagree.
+2020-09-23 10:08:16 <arseniiv> I hadn’t seen it all that much though
+2020-09-23 10:08:18 Joined: olsner
+2020-09-23 10:08:19 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww1, xelxebar, zeroed, zzo38
+2020-09-23 10:08:43 <arseniiv> maybe I should read less old blog posts
+2020-09-23 10:10:27 <arseniiv> I tried to advocate NE to a friend who wasn’t satisfied with `head` and `tail`’s untotality, and they even said hm but maybe NE is a lost cause after all
+2020-09-23 10:11:12 <arseniiv> s/but/, but
+2020-09-23 10:12:00 <int-e> (It's probably a good thing that we don't have subtyping in Haskell... otherwise we'd be dealing with a plethora of subtypes of questionable utility, as everybody and their dogs expresses their personal pet properties of results in the type system... because it can't hurt because you can always cast to the base type, right?)
+2020-09-23 10:12:50 Joined: t20kdc
+2020-09-23 10:12:50 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww1, xelxebar, zeroed, zzo38
+2020-09-23 10:15:46 <arseniiv> shame it’s so hard to get yourself a free microtunable grand piano plugin. There are several pretty nice SFZs, and SFZs are playable by sforzando, but it allows only 12-notes-per-octave tunings, and IIRC even not all of them for that matter. So if one wants to write in 19edo, they would need to use 12-note modes and several sforzando instances, or hopefully it can be retuned on the fly, I don’t know
+2020-09-23 10:19:11 <arseniiv> int-e: IIRC subtyping would make things even worse but I don’t remember how specifically. Maybe ais523 was the one who said something in this vein here, though that’s not an unknown in the world, it’s just I don’t remember any other possible sources. So ping
+2020-09-23 10:23:54 Joined: ais523
+2020-09-23 10:23:55 Names: ^[, ais523, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, sebbu, sftp, shachaf, shikhin, Soni, sparr, sprocklem, spruit11, stux, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww1, xelxebar, zeroed, zzo38
+2020-09-23 10:24:13 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-09-23 10:24:13 <ais523> my experience with subtyping is that it isn't necessarily harmful to the rest of the type system, but people keep trying to use it for things that it isn't appropriate for
+2020-09-23 10:24:15 <int-e> I've assumed an ideal world where subtyping just works... ignoring type checking and type inference. I think things would go wrong from a pure software engineering perspective at large, because people will never agree on which properties are important to express in the type system.
+2020-09-23 10:24:33 <ais523> on most occasions where people assume that their problem will be solved with subtyping, they're incorrect
+2020-09-23 10:24:58 <int-e> I imagine it'll work deceptively well on a small scale though.
+2020-09-23 10:25:17 <ais523> I'm not sure how much harder it makes type inference, it generally hasn't been fatal in the examples I've tried, but you can write papers out of getting it to work
+2020-09-23 10:28:08 <shachaf> Subtyping seems deceptively complicated.
+2020-09-23 10:28:19 <shachaf> I don't understand it.
+2020-09-23 10:28:57 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
+2020-09-23 10:28:57 <Taneb> There's, like, both the type of bread, and the main filling, and all the extras you can get like lettuce and red onion
