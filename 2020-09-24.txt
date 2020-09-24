@@ -23,3 +23,7 @@
 2020-09-24 00:59:38 <b_jonas> and most software already allows or should allow users to decide the installation directories anyway.
 2020-09-24 01:01:12 <b_jonas> zzo38: oh, and also if the documentation is licensed under the GFDL with front or back cover text, then they consider that docs not free and so don't put them in the main archives. this is sort of internally consistent, but very annoying.
 2020-09-24 01:07:54 <zzo38> O, yes, there is also info documentation
+2020-09-24 01:58:54 User Name: spruit11 = spruit11!~unknown@86-82-44-193.fixed.kpn.net
+2020-09-24 01:58:54 <spruit11> For what is this? If I remember correctly there are tools to generate man and info pages from your application if you set it up correctly.
+2020-09-24 01:59:49 <zzo38> I have used .ds and .so commands so that you can specify what directories other files are found in (whether documentation or something else) edited by the distributor, separately from the rest of the man page.
+2020-09-24 01:59:57 <b_jonas> zzo38: also a few programs, most notably subversionn, hide their reference documentation in the executable such that you can access them with something like program-name help --verbose then program-name help subcommand-or-doc-section
