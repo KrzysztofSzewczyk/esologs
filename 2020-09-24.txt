@@ -21,3 +21,5 @@
 2020-09-24 00:58:31 <b_jonas> zzo38: some programs also have info documentation. I don't know what the policies are, but the practice that I observe is that they mostly just let you install docs in the form that the upstream could install, which could be any of man, info, html, pdf; and then also add at least stub manpages for executables if they don't have one.
 2020-09-24 00:59:07 <b_jonas> they change the installation directories, but that make sense, they have to change that for basically everything they install.
 2020-09-24 00:59:38 <b_jonas> and most software already allows or should allow users to decide the installation directories anyway.
+2020-09-24 01:01:12 <b_jonas> zzo38: oh, and also if the documentation is licensed under the GFDL with front or back cover text, then they consider that docs not free and so don't put them in the main archives. this is sort of internally consistent, but very annoying.
+2020-09-24 01:07:54 <zzo38> O, yes, there is also info documentation
