@@ -27,3 +27,14 @@
 2020-09-24 01:58:54 <spruit11> For what is this? If I remember correctly there are tools to generate man and info pages from your application if you set it up correctly.
 2020-09-24 01:59:49 <zzo38> I have used .ds and .so commands so that you can specify what directories other files are found in (whether documentation or something else) edited by the distributor, separately from the rest of the man page.
 2020-09-24 01:59:57 <b_jonas> zzo38: also a few programs, most notably subversionn, hide their reference documentation in the executable such that you can access them with something like program-name help --verbose then program-name help subcommand-or-doc-section
+2020-09-24 02:00:12 <zzo38> Yes, some programs do.
+2020-09-24 02:01:33 <b_jonas> zzo38: I should go through and extract all the help pages from the programs of subversion (svn, svnadmin, and a few more) and concatenate them to a single searchable text file, but so far I've been lazy
+2020-09-24 02:02:08 <b_jonas> mercurial also does this, but it also comes with a hg(1) manpage that has the same text, so in that case it's fine
+2020-09-24 02:02:26 <b_jonas> svn doesn't have that text in man-pages or on the web or anywhere easily searchable
+2020-09-24 02:02:49 <b_jonas> fossil also has the docs in the executable
+2020-09-24 02:03:14 <b_jonas> zzo38: do you happen to have already existed these docs for some executable such that you can share?
+2020-09-24 02:04:18 <zzo38> Yes, I know fossil does too
+2020-09-24 02:04:51 <zzo38> b_jonas: I am not sure what you are looking for
+2020-09-24 02:05:54 <b_jonas> zzo38: a single text file that contains all possible outputs from svn help $anything, svnadmin help $anything, etc; and similarly for fossil help $anything
+2020-09-24 02:06:13 <b_jonas> because in a text file, I can do full-text search
+2020-09-24 02:06:19 <zzo38> I do not have them.
