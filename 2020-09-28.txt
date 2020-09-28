@@ -1,0 +1,3 @@
+2020-09-28 00:00:48 <zzo38> Perhaps like this:  /while {{exec} 0 get exch {{exit} ifelse} aload pop 5 array astore cvx loop} bind def    Now you can write:    9 {dup 0 ne} {dup = 1 sub} while
+2020-09-28 00:06:43 <imode> concatenative languages feel like borderline magic.
+2020-09-28 00:27:35 <zzo38> O, I didn't know that
