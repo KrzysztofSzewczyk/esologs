@@ -62,3 +62,21 @@
 2020-09-28 13:32:25 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww11, xelxebar, zeroed, zzo38
 2020-09-28 13:39:31 Joined: Sgeo
 2020-09-28 13:39:31 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-09-28 14:00:58 <rain1> HOAS is kinda crazy, im still not sure i get it
+2020-09-28 14:01:11 <rain1> functions are kind ofthe most opaque data structure possible
+2020-09-28 14:01:19 <rain1> so the idea of using them for programming is kinda mad
+2020-09-28 14:04:04 User Name: int-e = int-e!~noone@int-e.eu
+2020-09-28 14:04:04 <int-e> cpressey: Using the host language's model of lambda calculus is the whole point though?
+2020-09-28 14:04:47 <int-e> (AIUI, HOAS is supposed to be convenient.)
+2020-09-28 14:05:02 <int-e> (And also efficient.)
+2020-09-28 14:19:42 User Name: cpressey = cpressey!~cpressey@79-72-202-115.dynamic.dsl.as9105.com
+2020-09-28 14:19:42 <cpressey> int-e: the papers and articles that I read up to this point definitely definitely did not lead me to believe that it was the whole point, that's all I can say
+2020-09-28 14:20:10 User Name: arseniiv = arseniiv!~arseniiv@94.41.83.26.dynamic.ufanet.ru
+2020-09-28 14:20:10 <arseniiv> I thought there’s usually a way to make functions not as opaque, something like they all get arguments of such a “type of variables” which allows to get a substituted body and not evaluate it too much? I forgot what I read
+2020-09-28 14:20:30 <int-e> cpressey: I don't believe theory papers.
+2020-09-28 14:20:40 <int-e> :P
+2020-09-28 14:20:58 <arseniiv> maybe I should take this into consideration too…
+2020-09-28 14:20:59 <int-e> they'll stress the part where you don't have to deal with alpha-renaming or index shifting and all that.
+2020-09-28 14:21:11 <int-e> because what else can you write about, really?
+2020-09-28 14:21:39 <cpressey> int-e: https://en.wikipedia.org/wiki/Higher-order_abstract_syntax#Implementation  -- maybe you'd like to add "Also the function values of the host language can be used, in fact it's the whole point" to that :)
+2020-09-28 14:21:48 <int-e> cpressey: disclaimer, I have not really read any HOAS papers (maybe one or two)
