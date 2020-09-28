@@ -108,3 +108,12 @@
 2020-09-28 16:57:36 <kmc> so yes, in one sense host language functions are the most opaque data structure there is; in another sense they are the most versatile because you can ask them anything you want just by applying them
 2020-09-28 16:58:04 <kmc> i guess it's kind of a similar principle to church encoding
 2020-09-28 16:58:57 <kmc> or maybe i'm full of nonsense. that is always a distinct possibility
+2020-09-28 17:34:09 <kmc> fungot: what do you think
+2020-09-28 17:34:10 <fungot> kmc: and it just might be all three possible codes, yielding a radically exactly the same as the word " crazy" t)(at is so ridiculous shit so youll probably sleep with the damn point
+2020-09-28 17:38:23 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Bulkasmakom 5*  10New user account
+2020-09-28 17:46:17 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=77758&oldid=77724 5* 03Bulkasmakom 5* (+1406) 10
+2020-09-28 17:47:27 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=77759&oldid=77758 5* 03Bulkasmakom 5* (-108) 10
+2020-09-28 17:51:22 <arseniiv> is there an induction principle for function types?
+2020-09-28 17:52:40 <arseniiv> hm it seems exactly it should involve application
+2020-09-28 17:57:06 <arseniiv> yeah, if one’s to show something like “foldNat Z z s = z, foldNat (S x) z s = s (foldNat x z s)”, then we have foldFun (λa. x) a = x
+2020-09-28 17:58:17 <rain1> induction for function types is basically forall
