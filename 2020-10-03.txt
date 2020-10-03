@@ -5,3 +5,73 @@
 2020-10-03 00:04:52 <int-e> . o O ( Somebody overcompensated for lost opportunities. )
 2020-10-03 00:16:01 Parted: deltaepsilon23
 2020-10-03 00:16:02 Names: ^[, aaaaaa, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-03 00:39:49 <int-e> WTF... https://www.lifewire.com/strong-password-examples-2483118 lists "BankLogin!3" as an excellent password...
+2020-10-03 00:42:36 <shachaf> I think maybe I should ban digits and "special characters" in passwords.
+2020-10-03 00:42:57 <shachaf> They make passwords harder to remember and probably don't meaningfully increase entropy?
+2020-10-03 00:43:10 <int-e> They make them quicker to type though
+2020-10-03 00:43:49 <zzo38> I think you should not ban anything except perhaps null characters and some control characters (depending on the application). However, you should not require digits and "special characters" either. And, please do not set the maximum length too small!
+2020-10-03 00:43:56 <int-e> And they add some bits of entropy if they're not l33t-derived.
+2020-10-03 00:44:38 <shachaf> Maybe it should just be a-z
+2020-10-03 00:44:46 <zzo38> Arbitrary octets should otherwise be allowed in the password.
+2020-10-03 00:44:47 <shachaf> I guess allowing capital letters is one bit per character.
+2020-10-03 00:45:00 <shachaf> > logBase 2 26
+2020-10-03 00:45:06 <lambdabot> 4.700439718141093
+2020-10-03 00:45:10 <shachaf> > logBase 2 62
+2020-10-03 00:45:13 <lambdabot> 5.954196310386876
+2020-10-03 00:45:16 <shachaf> I guess I could've guessed that one.
+2020-10-03 00:45:37 <int-e> capital letters... I'd imagine for most people they add one bit per word.
+2020-10-03 00:45:37 <shachaf> > logBase 2 72
+2020-10-03 00:45:40 <lambdabot> 6.169925001442312
+2020-10-03 00:45:51 <shachaf> > 15 * logBase 2 26
+2020-10-03 00:45:54 <lambdabot> 70.50659577211638
+2020-10-03 00:45:58 <shachaf> Presumably this is a pretty good password.
+2020-10-03 00:46:20 <int-e> (and yes, people will use words if you let them)
+2020-10-03 00:46:43 <int-e> I wonder what word list b_jonas used.
+2020-10-03 00:46:51 <shachaf> Maybe you shouldn't let people choose passwords.
+2020-10-03 00:46:55 <zzo38> Well, some people will. Some people use numbers instead.
+2020-10-03 00:47:08 <shachaf> Just generate a 70-bit 15-character password and let them regenerate on demand.
+2020-10-03 00:47:08 <int-e> (I suspect this is one of his serious entries... so it's bound to be 16 actually random words.)
+2020-10-03 00:47:49 <zzo38> I think that you should let people choose passwords, but ensure the maximum length is sufficiently long (I suggest at least sixty bytes, probably more). A random password option might be good too, though, maybe.
+2020-10-03 00:48:03 <int-e> It's not diceware.
+2020-10-03 00:48:31 <int-e> 60 bytes.
+2020-10-03 00:48:35 <int-e> Good one, good one.
+2020-10-03 00:49:00 User Name: Arcorann = Arcorann!~awych@121-200-5-186.79c805.syd.nbn.aussiebb.net
+2020-10-03 00:49:00 <Arcorann> 60 bytes would be overkill for random passwords though
+2020-10-03 00:49:07 <int-e> password123xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2020-10-03 00:49:19 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Kosayoda 5*  10New user account
+2020-10-03 00:49:22 <int-e> it's also a pretty useless metric
+2020-10-03 00:49:24 <zzo38> Arcorann: Yes, but I only specified that as a maximum length, not the minimum or default length.
+2020-10-03 00:49:31 <int-e> oh
+2020-10-03 00:49:35 <int-e> my bad, I misread.
+2020-10-03 00:49:39 <Arcorann> Same...
+2020-10-03 00:50:10 <int-e> or rather, made an assumption because hardly anybody speaks of maximum password lengths... minimum lengths are all the rage
+2020-10-03 00:50:13 <zzo38> (If you can, increase the maximum length to more than that.)
+2020-10-03 00:50:47 <Arcorann> Maximum length restrictions beyond those required to avoid extreme processing times shouldn't be necessary in any sensible password scheme
+2020-10-03 00:51:09 <shachaf> int-e: That page also says that "BankLogin" is an OK password.
+2020-10-03 00:51:39 <int-e> shachaf: Yeah, it's wholly embarrassing.
+2020-10-03 00:51:50 <int-e> Designed to make people feel good about their passwords, I'm sure.
+2020-10-03 00:52:09 <shachaf> It also says that "kitty" is an OK password.
+2020-10-03 00:52:24 <shachaf> Despite saying a bit above that such a password is incredibly insecure.
+2020-10-03 00:52:29 <zzo38> Arcorann: Yes, that is true. (Well, not only time but also memory. And depending on the program, it may display asterisks as it is being typed and there may be limited space on the display, but you can also conceal the password entirely (like traditionally in UNIX-based systems), display on multiple lines, use smaller fonts, etc.)
+2020-10-03 00:52:30 <shachaf> I guess "OK" is a euphemism?
+2020-10-03 00:52:34 <int-e> I didn't read it all.
+2020-10-03 00:52:52 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=77793&oldid=77791 5* 03Kosayoda 5* (+186) 10Add introduction
+2020-10-03 00:53:03 User Name: oren = oren!~oren@ec2-34-239-129-109.compute-1.amazonaws.com
+2020-10-03 00:53:03 <oren> I have begun using relatively long sentences in conlangs as passwords
+2020-10-03 00:53:45 <esowiki> 14[[07Chicken14]]4 M10 02https://esolangs.org/w/index.php?diff=77794&oldid=71117 5* 03Kosayoda 5* (+63) 10Add a Python implementation of the language.
+2020-10-03 00:53:46 <Arcorann> Probably shouldn't have called it "OK", but yeah the mechanism of "take a dictionary word and add special characters or numbers" is not great
+2020-10-03 00:53:55 <shachaf> I think a random word in /[a-z]{15}/ is pretty good.
+2020-10-03 00:54:08 <shachaf> Do I want more than 70 bits?
+2020-10-03 00:54:11 <zzo38> oren: Yes, that can work.
+2020-10-03 00:55:57 <int-e> There's always the battery horse staple thing.
+2020-10-03 00:56:11 <esowiki> 14[[07Chicken14]]4 M10 02https://esolangs.org/w/index.php?diff=77795&oldid=77794 5* 03Kosayoda 5* (+19) 10Add name to linked implementation.
+2020-10-03 00:56:49 <shachaf> How many bits do you get from that?
+2020-10-03 00:57:03 <shachaf> If it's a password you type regularly, saving on characters is probably good.
+2020-10-03 00:57:06 <shachaf> I mean on keystrokes.
+2020-10-03 00:57:14 <shachaf> Shift is an extra keystroke.
+2020-10-03 00:57:23 <int-e> https://xkcd.com/936/ said 44 bits
+2020-10-03 00:57:45 <shachaf> > 10 * logBase 2 26
+2020-10-03 00:57:48 <lambdabot> 47.00439718141092
+2020-10-03 00:59:11 <shachaf> `` egrep --text -o '[a-z]' /dev/urandom | tr -d '\n' | head -c10
+2020-10-03 00:59:12 <HackEso> rmtjeklgfm
+2020-10-03 00:59:15 <Arcorann> Nowadays I get KeePass to generate my passwords except for a few that I've memorised
