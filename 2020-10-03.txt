@@ -75,3 +75,22 @@
 2020-10-03 00:59:11 <shachaf> `` egrep --text -o '[a-z]' /dev/urandom | tr -d '\n' | head -c10
 2020-10-03 00:59:12 <HackEso> rmtjeklgfm
 2020-10-03 00:59:15 <Arcorann> Nowadays I get KeePass to generate my passwords except for a few that I've memorised
+2020-10-03 01:01:06 <shachaf> 44 bits is presumably OK if you know the password is being stored securely with a fancy KDF.
+2020-10-03 01:01:17 <shachaf> But if you don't then you probably want more.
+2020-10-03 01:01:23 <shachaf> Is 70 even enough?
+2020-10-03 01:03:27 <int-e> 70 is plenty
+2020-10-03 01:05:19 <int-e> I usually look at this... Bitcoin is at 2^47 hashes per second.
+2020-10-03 01:06:25 <shachaf> Isn't it way more than that?
+2020-10-03 01:06:52 <shachaf> https://www.blockchain.com/charts/hash-rate says 140M TH/s
+2020-10-03 01:07:03 <shachaf> > logBase 2 140e18
+2020-10-03 01:07:06 <lambdabot> 66.92398872491749
+2020-10-03 01:07:25 <int-e> Ugh.
+2020-10-03 01:07:31 <int-e> Okay, fine.
+2020-10-03 01:07:41 <int-e> I can't do ISO :-(
+2020-10-03 01:07:54 <shachaf> ISO?
+2020-10-03 01:07:54 <int-e> Or SI for that matter.
+2020-10-03 01:08:50 <int-e> Okay, so maybe 70 is only plenty if it's not stored as a plain hash.
+2020-10-03 01:22:21 <int-e> (Oh well. The SI/ISO mixup isn't new, at least. But getting the prefixes wrong is.)
+2020-10-03 01:23:07 <shachaf> Oh, the number you gave was 140e12.
+2020-10-03 01:23:18 <shachaf> I think it's confusilating of them to give numbers in millions of terahashes.
+2020-10-03 01:23:39 <shachaf> Either give hashes or exashes or something.
