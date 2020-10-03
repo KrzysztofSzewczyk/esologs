@@ -115,3 +115,17 @@
 2020-10-03 04:57:51 <int-e> (the thing that I don't know how to check is that EPERM is raised if "the caller's root directory does not match the root directory of the mount namespace"... is this something that a badly designed initrd can mess up forever?)
 2020-10-03 04:58:27 <shachaf> That seems unlikely.
 2020-10-03 04:59:36 <int-e> The other condition is for unmapped (effective) user/group ids... but the default maps map *all* 32 bit values to themselves.
+2020-10-03 05:00:19 <int-e> (cat /proc/self/{g,u}id_map --> 0 0 4294967295, twice (with some more spaces))
+2020-10-03 05:01:35 <int-e> OTOH it works for root at least.
+2020-10-03 05:02:12 <shachaf> If it works for root then it doesn't seem like the initrd thing, does it?
+2020-10-03 05:02:27 <int-e> hmm
+2020-10-03 05:02:48 <int-e> yes, that seems to be implied.
+2020-10-03 05:05:15 <shachaf> Is the EPERM coming from https://github.com/torvalds/linux/blob/v5.8/kernel/user_namespace.c#L69 ?
+2020-10-03 05:06:28 <int-e> I'd assume so.
+2020-10-03 05:15:59 <zzo38> I see two cases in that function that return EPERM. Do you know which of those it is?
+2020-10-03 05:24:50 <shachaf> Man, I was trying to create a chroot to test this in and the situation is ridiculous.
+2020-10-03 05:25:04 <shachaf> /bin/ls depends on libraries in /usr, so what's the point of anything?
+2020-10-03 05:25:08 <shachaf> What a silly system.
+2020-10-03 05:26:33 <shachaf> OK, so inside a regular chroot, you can escape easily by e.g. chdir /proc/1/root
+2020-10-03 05:26:36 <shachaf> (As root.)
+2020-10-03 05:27:52 <shachaf> int-e: Presumably your /proc/1/root looks identical to your /?
