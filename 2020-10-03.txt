@@ -129,3 +129,28 @@
 2020-10-03 05:26:33 <shachaf> OK, so inside a regular chroot, you can escape easily by e.g. chdir /proc/1/root
 2020-10-03 05:26:36 <shachaf> (As root.)
 2020-10-03 05:27:52 <shachaf> int-e: Presumably your /proc/1/root looks identical to your /?
+2020-10-03 05:30:09 <int-e> yes.
+2020-10-03 05:30:46 <int-e> root@harpy:/# unshare -U true
+2020-10-03 05:30:46 <int-e> unshare: unshare failed: Operation not permitted
+2020-10-03 05:30:51 <int-e> that's inside a chroot, as root.
+2020-10-03 05:31:25 <int-e> I should've thought of trying to test the positive case... so it's not the chroot check, phew.
+2020-10-03 05:34:27 <zzo38> The linked program says "Verify that we can not violate the policy of which files may be accessed that is specified by the root directory, by verifing that the root directory is at the root of the mount namespace which allows all files to be accessed."
+2020-10-03 05:44:13 <int-e> Bah. https://salsa.debian.org/kernel-team/linux/-/blob/master/debian/patches/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch
+2020-10-03 05:45:40 <zzo38> Is read permission required if you try to execute a file that has setuid bit but it is ignored? I think that, in addition to requiring execute permission, in order to execute a file, it should require that either the effective user owns the file or the effective user has permission to read the file.
+2020-10-03 05:45:43 <int-e> So on Debian one needs  sysctl kernel.unprivileged_userns_clone=1
+2020-10-03 05:45:53 <int-e> And then it works.
+2020-10-03 05:46:49 <shachaf> int-e: Well, so much for my kernel source code reading efforts.
+2020-10-03 05:47:22 <zzo38> (perhaps only for files with setuid/setgid, although perhaps in other cases too, such as if namespaces have been tampered with in any way at all)
+2020-10-03 05:47:55 Quit: adu (Quit: adu)
+2020-10-03 05:47:55 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-03 05:47:56 <int-e> shachaf: I'm sorry. I went down the same road though... https://elixir.bootlin.com/linux/latest/source/kernel/user_namespace.c#L69 is a useful site for that (it has links for identifiers)
+2020-10-03 05:48:18 <shachaf> int-e: I was mostly using livegrep.com
+2020-10-03 05:48:26 <int-e> shachaf: And only then I decided that it's probably something Debian specific.
+2020-10-03 05:49:06 <int-e> Gotta love the "This is a short-term patch." from 2013.
+2020-10-03 05:50:02 <shachaf> It says "saucy" -- is it an Ubuntu thing?
+2020-10-03 05:51:17 <int-e> Well, Ubuntu is based on Debian.
+2020-10-03 05:51:33 <int-e> So it's no big surprise if patches flow in the other direction as well?
+2020-10-03 05:51:53 <int-e> Not everything Ubuntu does is stupid ;)
+2020-10-03 05:57:46 Joined: arseniiv
+2020-10-03 05:57:47 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], uplime, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-03 05:59:03 <int-e> (I'm somewhat divided on whether this is a good patch or a bad patch... what is horrible is discoverability of the feature.)
