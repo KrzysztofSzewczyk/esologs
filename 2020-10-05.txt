@@ -97,3 +97,29 @@
 2020-10-05 19:03:07 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, tromp, tswett[m], unrooted, V, vertrex, wmww11, xelxebar, zeroed, zzo38
 2020-10-05 19:23:47 <int-e> fizzie: It's spawned by the process that execs the shell.
 2020-10-05 19:24:51 <int-e> Using clone() with too many flags, so doing *that* in the shell is hardly an option.
+2020-10-05 19:30:22 <shachaf> Why does the thing exec a shell?
+2020-10-05 19:30:30 <int-e> because I'm lazy
+2020-10-05 19:31:25 <int-e> It's more convenient to write a dozen of shell commands than to figure out their C equivalent.
+2020-10-05 19:32:06 * int-e is playing with namespaces
+2020-10-05 19:34:51 <int-e> Anyway, I why do I have to explain why on #esoteric :P
+2020-10-05 19:35:33 <shachaf> Why do I have to explain why you have to explain why on #esoteric?
+2020-10-05 19:35:41 <int-e> (I know I'm guilty of asking why too.)
+2020-10-05 19:37:40 <shachaf> One thing about ptrace is, as far as I can tell, you have to be willing to get unknown pids from wait()
+2020-10-05 19:38:01 <shachaf> Since a process might fork and then you might get an event from the child before you get a fork event from the parent.
+2020-10-05 19:38:27 <shachaf> Man, fork, what an esoteric bit of nonsense that's in every Unix system.
+2020-10-05 19:39:38 <int-e> isn't it a really clever hack though
+2020-10-05 19:42:13 <b_jonas> shachaf: no, not really. firstly, you only start to automatically ptrace child processes if you set the PTRACE_O_TRACEFORK option, which I think isn't default; second you can listen to PTRACE_EVENT_FORK, PTRACE_EVENT_VFORK, PTRACE_EVENT_CLONE messages to find out about those children, without having to decode every system call
+2020-10-05 19:42:46 <shachaf> b_jonas: Yes, it's true, I meant only if you set TRACE{FORK,CLONE,VFORK}
+2020-10-05 19:43:11 <shachaf> But you might get the wait results before the PTRACE_EVENT telling you about the new pid.
+2020-10-05 19:43:58 <shachaf> I suppose you could avoid waitpid(-1) and only give it specific pids that you know about, but that doesn't seem great.
+2020-10-05 19:44:09 <b_jonas> but waiting for arbitrary pids with waitpid or wait4 is usually the default anyway, unless perhaps you use some "fun" combination of threading and signals to find out about the pids.
+2020-10-05 19:44:45 <b_jonas> like, if you have just one thread, you might as well call waitpid or wait4 with pid=-1, since you have to handle every wait notification sooner or later anyway
+2020-10-05 19:44:53 <b_jonas> at worst you store the data for later
+2020-10-05 19:46:14 <b_jonas> waiting for a specific pid is a shortcut only for very simple programs, and doing a ptrace more or less excludes that
+2020-10-05 19:46:21 <shachaf> I agree.
+2020-10-05 19:46:39 <shachaf> But it means you have to handle unknown pids, as far as I can tell.
+2020-10-05 19:47:14 <shachaf> These are my notes about using ptrace: https://shachaf.net/tmp/ptrace-notes.txt
+2020-10-05 19:47:39 <b_jonas> ok
+2020-10-05 19:48:15 <b_jonas> I don't expect to use ptrace directly, it's usually best to leave that to debuggers or strace
+2020-10-05 19:48:36 <shachaf> I wrote a program which is like a mini-strace.
+2020-10-05 19:49:02 <b_jonas> ok
