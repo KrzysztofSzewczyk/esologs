@@ -84,3 +84,6 @@
 2020-10-05 18:18:33 <int-e> . o O ( hmm, bash problem: Wait for a child process that the shell didn't spawn itself. Currently that's the last thing I want to do so I can do exec perl -e "waitpid($PID,0)"... )
 2020-10-05 18:29:20 Joined: imode
 2020-10-05 18:29:20 Names: ^[, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, FreeFull, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], unrooted, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-05 18:54:27 <fizzie> If the shell didn't spawn it, how is it a child of the shell?
+2020-10-05 18:57:43 <fizzie> Hmm, guess it could have been spawned by the process that exec'd the shell.
+2020-10-05 18:59:36 <shachaf> Perhaps the shell ptraced it.
