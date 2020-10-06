@@ -115,3 +115,15 @@
 2020-10-06 11:57:24 <int-e> Or how about "Myopic Haskell" for lens-centric code.
 2020-10-06 11:57:26 <wib_jonas> Eigen involves a lot of rather weird magic by the way, and you actually have to be careful with it because it's easy to misuse accidentally
 2020-10-06 11:58:06 <int-e> I've played with Eigen once and it wasn't easy to coerce it into doing what I wanted.
+2020-10-06 12:00:02 <int-e> (Though my problem wasn't correctness, it was to avoid allocations (through template instantiations) and get the compiler to elide some arithmetic that had no effect. I forgot the details, as usual.)
+2020-10-06 12:03:12 <wib_jonas> the most tricky part is that if you build it multiple times with different instruction set extensions targeted by the compiler options (most commonly one for AVX and one for SSE2), the different copies can be binary incompatible with each other, unless you define the internal representation explicitly with preprocessor macros.
+2020-10-06 12:03:29 <arseniiv> <int-e> You'll never appreciate the elegance and frugality of a fundep life, I suppose. => fundeps are okay I guess. I wrote with them a bit
+2020-10-06 12:03:59 <wib_jonas> This is partly documented in http://eigen.tuxfamily.org/dox/TopicPreprocessorDirectives.html but not all details are documented well.
+2020-10-06 12:04:40 <wib_jonas> Plus you can sometimes get errors if you use certain older Eigen versions with certain compilers.
+2020-10-06 12:04:44 <arseniiv> <wib_jonas> but how often do you actually write something typing-nontrivial? => yes. I mean, I usually find a way to interesting typing questions to perfectly bland code, or maybe not perfectly bland
+2020-10-06 12:05:43 <int-e> (Am I the only one who has been intimidated by `lens` for years and never touched it as a result?)
+2020-10-06 12:08:39 <arseniiv> int-e: no, there are fables about its great looming height, and personally I used lens once when tried to make a simple Scheme-like interpreter and I was glad for a bunch of operators there, but I never knew all of lens and now I forgot even those bits
+2020-10-06 12:09:27 <arseniiv> though I want basic lens functionality in mainstream languages, again. They start adopting immutable data but don’t include “immutable setters” and ways to compose all that
+2020-10-06 12:11:14 <arseniiv> so I think basic `lens` usage is not hard to achieve, but maybe newer lens libraries give even easier life? I haven’t used them; is there a comparison somewhere, from a user’s practical standpoint?
+2020-10-06 12:19:02 <wib_jonas> isn't "basic lens functionality" stuff like map and reduce?
+2020-10-06 12:19:31 <wib_jonas> many mainstream languages already have stuff like that
