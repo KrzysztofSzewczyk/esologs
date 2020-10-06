@@ -80,3 +80,38 @@
 2020-10-06 11:02:32 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
 2020-10-06 11:17:53 Quit: cpressey (Quit: WeeChat 1.9.1)
 2020-10-06 11:17:53 Names: ^[, aloril, APic, Arcorann, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 11:32:19 <int-e> There's a lot of propaganda against functional dependencies ever since type families entered the arena.
+2020-10-06 11:33:22 <int-e> It's also worth noting that MonadPrompt is so old that type families didn't exist.
+2020-10-06 11:33:41 <int-e> (I think.)
+2020-10-06 11:34:27 <shachaf> I think the propaganda has been there since before type families.
+2020-10-06 11:34:47 <shachaf> Anyway people tried type families for mtl and no one used it, right?
+2020-10-06 11:35:46 <shachaf> I think because MonadState s m => ...s... is better than MonadState m => ...(StateType m)..., or something.
+2020-10-06 11:37:00 Joined: arseniiv
+2020-10-06 11:37:00 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 11:37:18 User Name: arseniiv = arseniiv!~arseniiv@136.169.204.164
+2020-10-06 11:37:18 <arseniiv> fungot how’s the weather?
+2020-10-06 11:37:18 User Name: fungot = fungot!~fungot@unaffiliated/fizzie/bot/fungot
+2020-10-06 11:37:18 <fungot> arseniiv: john, it appears we have reached an impasse make a man feel totally justified in sporting an unnecessarily elaborate assortment of game setup. he's usually got a lot
+2020-10-06 11:37:18 <int-e> Yeah I think in the particular case that is a single associated type family, fundeps are more convenient.
+2020-10-06 11:37:40 <arseniiv> ^style ukparl
+2020-10-06 11:37:40 <fungot> Selected style: ukparl (UK Parliament debates from brexit referendum to late 2018)
+2020-10-06 11:38:33 <arseniiv> hi! type families are cool in all their kinds
+2020-10-06 11:42:01 <int-e> What did I say? Propaganda.
+2020-10-06 11:49:18 <arseniiv> I’ll need to read the logs it seems :D
+2020-10-06 11:50:59 <arseniiv> but how could one live a plentiful life without type families
+2020-10-06 11:51:55 <arseniiv> when I try to write something typing-nontrivial in usual languages I constantly stumble on their absense
+2020-10-06 11:53:23 <int-e> You'll never appreciate the elegance and frugality of a fundep life, I suppose.
+2020-10-06 11:53:32 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-10-06 11:53:32 <wib_jonas> but how often do you actually write something typing-nontrivial?
+2020-10-06 11:53:50 * int-e is writing shellscripts right now.
+2020-10-06 11:53:54 <int-e> next question!
+2020-10-06 11:54:04 <wib_jonas> I like that all of fundeps and type families and data families are available, but I don't actually use them all that often
+2020-10-06 11:54:08 <int-e> oh, wait, negations
+2020-10-06 11:54:39 <int-e> But I still kind of agree with the sentiment.
+2020-10-06 11:54:49 <int-e> It's odd :)
+2020-10-06 11:55:34 <wib_jonas> admittedly I use Eigen to do numeric computations with vectors and matrixes, and it involves what would require rather complicated types if it was written in a typed language
+2020-10-06 11:55:56 <int-e> wib_jonas: But I imagine an Enterprise Haskell developer will *have* to deal with advanced type system features like type families, constraints a lot simply because many libraries adopt them.
+2020-10-06 11:57:05 <int-e> (I don't think "Enterprise Haskell" is an established term, but I believe we have long reached the point where it has become applicable.)
+2020-10-06 11:57:24 <int-e> Or how about "Myopic Haskell" for lens-centric code.
+2020-10-06 11:57:26 <wib_jonas> Eigen involves a lot of rather weird magic by the way, and you actually have to be careful with it because it's easy to misuse accidentally
+2020-10-06 11:58:06 <int-e> I've played with Eigen once and it wasn't easy to coerce it into doing what I wanted.
