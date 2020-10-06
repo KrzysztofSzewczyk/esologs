@@ -51,3 +51,18 @@
 2020-10-06 09:58:39 <cpressey> int-e: I was playing around with your solitaire game again. I still can't wrap my head around all the parts.
 2020-10-06 09:58:59 <cpressey> I remember asking if prompt requires that what you give it is a GADT, in order for it to be correct by construction.
 2020-10-06 09:59:15 <cpressey> I think the answer is "no", because you can always make a GADT that just behaves like a plain ADT anyway.
+2020-10-06 10:01:27 <cpressey> I had to hunt to find out what "|" in a type class definition means, apparently it introduces a "functional dependency", which seems straightforward, at least on the surface, but maybe it's far more powerful than its most common use cases suggest
+2020-10-06 10:06:37 <shachaf> What is this thing?
+2020-10-06 10:07:40 <cpressey> shachaf: https://hackage.haskell.org/package/MonadPrompt-1.0.0.5/docs/Control-Monad-Prompt.html
+2020-10-06 10:08:13 <shachaf> I know that one.
+2020-10-06 10:08:32 <shachaf> Hmm, is the question about the Prompt part or the type class part?
+2020-10-06 10:09:03 <shachaf> FunctionalDependencies are famously tricky in some cases, but this particular use is used by all the monad type classes, like MonadState.
+2020-10-06 10:09:48 <cpressey> "You can construct a monad very simply with prompt, by putting all of its effects as terms in a GADT, like the following example:" -- my question is basically, does it have to be a GADT?
+2020-10-06 10:10:54 <shachaf> It can be anything.
+2020-10-06 10:11:27 <shachaf> Prompt f is a monad for any type constructor f.
+2020-10-06 10:11:55 <cpressey> Yeah, I vaguely remember going over this now.
+2020-10-06 10:12:15 <shachaf> In Haskell, "GADT" means a particular syntax, but everything written with the GADT can also be written without, using a couple of extensions (existential quantifiers and type equality).
+2020-10-06 10:12:32 <cpressey> So it's just that GADTs are really useful for this sort of application, is why they're mentioned specifically?
+2020-10-06 10:12:34 <shachaf> (And in fact GHC represents GADTs as if you'd written them as regular data types with those features.)
+2020-10-06 10:15:35 <shachaf> I don't know what this solitaire context is, but I usually think of this Prompt thing as being Free (Coyoneda f).
+2020-10-06 10:16:06 <shachaf> Oh, they CPS-encode it too, so there are three mostly orthogonal layers to untangle here.
