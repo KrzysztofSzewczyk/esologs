@@ -172,3 +172,30 @@
 2020-10-06 15:17:57 <myname> well, technically, you don't _need_ NAT with ipv6
 2020-10-06 15:18:06 Joined: cpressey
 2020-10-06 15:18:07 Names: ^[, aloril, APic, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 15:34:23 Quit: Lord_of_Life (Quit: Laa shay'a waqi'un moutlaq bale kouloun moumkine)
+2020-10-06 15:34:23 Names: ^[, aloril, APic, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 15:37:42 <esowiki> 14[[07Computerdeutsch14]]4 10 02https://esolangs.org/w/index.php?diff=77850&oldid=76633 5* 03Orangeyy 5* (+0) 10
+2020-10-06 15:40:01 <fizzie> I looked into NAT with IPv6 briefly, when I had an ISP that just assigned a single /64 for non-business subscribers as their "native IPv6 support". Instead, I think I ended up with something even weirder, like proxy neighbor discovery to claim the addresses. But it was pretty awkward to need separate IPv4 network segments (since there was just the one public IPv4 address) while IPv6 was flat.
+2020-10-06 15:40:18 <esowiki> 14[[07Computerdeutsch14]]4 M10 02https://esolangs.org/w/index.php?diff=77851&oldid=77850 5* 03Orangeyy 5* (+4) 10
+2020-10-06 15:41:44 <esowiki> 14[[07EWagon14]]4 M10 02https://esolangs.org/w/index.php?diff=77852&oldid=76629 5* 03Orangeyy 5* (-10) 10
+2020-10-06 15:42:24 <fizzie> Fortunately the next two ISPs did assign a /48 (I think) and a /56, respectively.
+2020-10-06 15:43:15 <wib_jonas> why isn't a /64 enough?
+2020-10-06 15:43:44 <wib_jonas> that's big enough to subdivide, it's larger than the whole ipv4 space, isn't it?
+2020-10-06 15:43:52 <fizzie> You can't subdivide a /64.
+2020-10-06 15:43:58 <fizzie> Or you're not supposed to, anyway.
+2020-10-06 15:44:13 <fizzie> And the standard autoconfiguration won't work for segments smaller than /64.
+2020-10-06 15:44:34 <wib_jonas> ah
+2020-10-06 15:44:48 <wib_jonas> so that's why you nated multiple segments into that?
+2020-10-06 15:45:55 <fizzie> Further, they didn't really "assign a /64" in the sense that they'd route all traffic for a /64 to you, they just expected to learn about all hosts in a /64 via neighbor discovery.
+2020-10-06 15:46:48 <wib_jonas> ah
+2020-10-06 15:47:28 <fizzie> So I looked into NAT because that way it'd at least have been the exact same setup for IPv4 and IPv6 (the router connected to the ISP gets a public address, the LAN uses private addresses, and NAT takes care of allowing other machines to access the public Internet).
+2020-10-06 15:47:28 <wib_jonas> I never configured ipv6, I don't know how this works
+2020-10-06 15:48:03 <wib_jonas> well, unless you count "leave everything as defaults and hope the computer and the router figures out something when they talk to each other" or "disable ipv6 on an interface" as configuring ipv6
+2020-10-06 15:49:46 Joined: arseniiv
+2020-10-06 15:49:47 Names: ^[, aloril, APic, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 15:52:30 <wib_jonas> fizzie: I see
+2020-10-06 15:52:47 <wib_jonas> and did that work?
+2020-10-06 15:53:26 <fizzie> If memory serves, it did. But this was 6 years and three ISPs ago.
+2020-10-06 15:53:49 <fizzie> The current setup I have uses DHCPv6 prefix delegation, which I understand has become relatively common for "consumer" applications. The router is given a prefix (typically a /56), and can then allocate a /64 (or more) for any network(s) it wants to have, and let the final address assignment happen either via stateless (neighbor discovery + router advertisement) or stateful (DHCPv6) autoconfiguration.
+2020-10-06 15:56:48 <fizzie> Uh, actually... now that I've said that, I went to check, and after the most recent reboot, the router actually *hasn't* gotten an IPv6 address at all. Hmm.
+2020-10-06 15:57:45 <fizzie> Well, up until now it's been working fine, and I'm sure it'd still do if I wasn't masochistic enough to run a bleeding-edge OpenWRT just because the kind of software you get otherwise is depressing.
