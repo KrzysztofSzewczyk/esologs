@@ -199,3 +199,24 @@
 2020-10-06 15:53:49 <fizzie> The current setup I have uses DHCPv6 prefix delegation, which I understand has become relatively common for "consumer" applications. The router is given a prefix (typically a /56), and can then allocate a /64 (or more) for any network(s) it wants to have, and let the final address assignment happen either via stateless (neighbor discovery + router advertisement) or stateful (DHCPv6) autoconfiguration.
 2020-10-06 15:56:48 <fizzie> Uh, actually... now that I've said that, I went to check, and after the most recent reboot, the router actually *hasn't* gotten an IPv6 address at all. Hmm.
 2020-10-06 15:57:45 <fizzie> Well, up until now it's been working fine, and I'm sure it'd still do if I wasn't masochistic enough to run a bleeding-edge OpenWRT just because the kind of software you get otherwise is depressing.
+2020-10-06 16:00:15 Quit: cpressey (Quit: WeeChat 1.9.1)
+2020-10-06 16:00:15 Names: ^[, aloril, APic, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenstein, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], V, vertrex, wib_jonas, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 16:02:32 <wib_jonas> so that means you don't have ipv6 connection to the internet?
+2020-10-06 16:04:14 <fizzie> Yes. I didn't even notice.
+2020-10-06 16:06:17 <fizzie> Ooh, that probably also explains why the HTTP black-box monitoring I've set up for esolangs.org has been reporting the site as down. (Didn't prioritize looking into that because it seemed to be working fine.)
+2020-10-06 16:15:51 <wib_jonas> hehe
+2020-10-06 16:18:32 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03WhyNot? 5*  10New user account
+2020-10-06 16:19:41 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=77853&oldid=77830 5* 03WhyNot? 5* (+31) 10
+2020-10-06 16:21:27 <esowiki> 14[[07User:WhyNot?14]]4 N10 02https://esolangs.org/w/index.php?oldid=77854 5* 03WhyNot? 5* (+22) 10Created page with " print('Hello World!')"
+2020-10-06 16:23:58 <int-e> https://paste.debian.net/1166119/ <-- see anything odd? :-)
+2020-10-06 16:25:02 <wib_jonas> int-e: there are suspiciously too few processes. other than that, no.
+2020-10-06 16:25:17 <wib_jonas> but I usually use ps -H intead of pstree
+2020-10-06 16:25:23 <int-e> wib_jonas: look at the name of PID 1
+2020-10-06 16:25:44 <wib_jonas> meh, that just means someone started the machine in single user
+2020-10-06 16:26:05 <int-e> Oh I guess that would do it.
+2020-10-06 16:26:21 <int-e> It would also explain the lack of services :)
+2020-10-06 16:26:41 <wib_jonas> yeah
+2020-10-06 16:27:18 <int-e> Anyway, this is still me playing with containers. The bash will be there, but the ultimate goal is to do some initialization and then hand things off to a proper init.
+2020-10-06 16:27:32 <wib_jonas> ok
+2020-10-06 16:28:22 <int-e> But also, with sshd running this is already pretty usable.
+2020-10-06 16:28:50 <int-e> So I'm somewhat elated for once. Bbl.
