@@ -278,3 +278,27 @@
 2020-10-06 22:21:11 <esowiki> 14[[07User talk:SoicBR14]]4 10 02https://esolangs.org/w/index.php?diff=77863&oldid=77862 5* 03OsmineYT 5* (+113) 10
 2020-10-06 22:22:29 Quit: FreeFull
 2020-10-06 22:22:29 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 22:30:16 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2020-10-06 22:30:16 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-06 22:43:38 <fizzie> int-e: The canonical multibot runner script is:   while true; do socat TCP4:irc.freenode.net:6667 EXEC:'./multibot '"$NAME"' '"$CHANNEL"' '"$NAME"'.log'; done
+2020-10-06 22:45:56 <int-e> fizzie: upone reflection it's not applicable. My use of socat is for enabling SSL for lambdabot.
+2020-10-06 22:46:03 <fizzie> (Also, could not figure out the IPv6 connectivity issues. If I restart the DHCPv6 client, it starts sending solicitations on the interface, but gets no response. Monitoring suggests problems started at 3:40am in the morning, which doesn't coincide with anything I did. Complained to ISP; will see if they come up with anything other than "have you tried restarting your router?".)
+2020-10-06 22:46:16 <int-e> But lambdabot wants to connect to some port somewhere, so socat is just a proxy.
+2020-10-06 22:47:14 <int-e> I've had mysterious neighbour discovery problems with lambdabot's host
+2020-10-06 22:48:27 <int-e> I ended up just adding a permanent neighbour because I never figured out whether the environment was misbehaving, or the local linux kernel.
+2020-10-06 22:48:53 <int-e> Looking at that, I also have a fixed default route.
+2020-10-06 22:49:24 <fizzie> I'd do a static config but I think they actually require the DHCPv6 prefix delegation in order to actually start the traffic flowing.
+2020-10-06 22:49:49 <int-e> well, this one (Ramnode) doesn't.
+2020-10-06 22:50:03 <int-e> But it's a VPS.
+2020-10-06 22:50:13 <int-e> So it has a fixed IP and all that.
+2020-10-06 22:50:20 <fizzie> Yeah, that's kind of different than someone's home.
+2020-10-06 22:50:36 <fizzie> Though I do in fact have a fixed IP, paying �5/month extra for it.
+2020-10-06 22:50:54 <int-e> It's probably a completely different problem :) But what you said brought up some memories.
+2020-10-06 22:50:58 <fizzie> I just think I need to dynamically request my static IP. ;)
+2020-10-06 22:51:21 <int-e> If it's dialup, the neighbours might not be fixed?
+2020-10-06 22:51:33 <int-e> But for DSL they might be.
+2020-10-06 22:51:36 <int-e> Tricky :)
+2020-10-06 22:52:05 <fizzie> Mhm. Well, it's an Ethernet hole in the wall as far as I'm concerned, I've no idea what happens to it after that.
+2020-10-06 22:52:30 <fizzie> There's some managed switch shouting it's proprietary management protocols over the wire every now and then.
+2020-10-06 22:53:08 <fizzie> FWIW, it could be something ND-related, because if I look at any IPv6 traffic, I do see neighbor discovery requests for my router's link-local address, every time repeated three times. My router sends a reply to each, but it doesn't seem to matter.
+2020-10-06 22:53:42 <fizzie> Normally I'd blame my nftables setup, but I haven't touched it in a while.
