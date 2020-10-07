@@ -302,3 +302,5 @@
 2020-10-06 22:52:30 <fizzie> There's some managed switch shouting it's proprietary management protocols over the wire every now and then.
 2020-10-06 22:53:08 <fizzie> FWIW, it could be something ND-related, because if I look at any IPv6 traffic, I do see neighbor discovery requests for my router's link-local address, every time repeated three times. My router sends a reply to each, but it doesn't seem to matter.
 2020-10-06 22:53:42 <fizzie> Normally I'd blame my nftables setup, but I haven't touched it in a while.
+2020-10-06 23:31:56 <int-e> MEH. foiled by default configuration.
+2020-10-06 23:32:50 <int-e> (Debian's Apache ships with  Alias /icons/ "/usr/share/apache2/icons/"  enabled.)
