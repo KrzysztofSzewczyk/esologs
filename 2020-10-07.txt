@@ -73,3 +73,14 @@
 2020-10-07 11:02:59 Joined: xelxebar
 2020-10-07 11:03:00 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww11, xelxebar, zeroed, zzo38
 2020-10-07 11:03:53 <fizzie> (The rewrite was going to be integrated to the `esowiki` bot for convenience, but I got sort of sidetracked into writing a RPC scheme because I didn't want any instability in the BF Joust parts potentially messing up the more important task of channel logging.)
+2020-10-07 11:37:06 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2020-10-07 11:37:06 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww11, xelxebar, zeroed, zzo38
+2020-10-07 11:55:22 <Taneb> I think I've got an integer sequence that's not in the OEIS but I'm not yet 100% sure it's well-defined
+2020-10-07 11:56:19 <Taneb> If we take the even Fibonacci numbers, this can be done as 0 => 0, 1 => 2, n + 2 => 4 * (n + 1) + n
+2020-10-07 11:56:45 <Taneb> Fibonacci numbers that are a multiple of 3, 0 => 0, 1 => 3, n + 2 => 7 * (n + 1) - n
+2020-10-07 11:57:09 <Taneb> Multiples of 4, 0 => 0, 1 => 8, n + 2 => 18 * (n + 1) - n
+2020-10-07 11:57:30 <Taneb> Sequence is the coefficient of (n + 1) there
+2020-10-07 11:57:41 <Taneb> I think it goes 1, 4, 7, 18, 11, 322, 47
+2020-10-07 11:59:35 User Name: Arcorann = Arcorann_!~awych@121-200-5-186.79c805.syd.nbn.aussiebb.net
+2020-10-07 11:59:35 <Arcorann> Why is it n+2?
+2020-10-07 11:59:53 <Taneb> Because it's in terms of the two preceeding elements
