@@ -188,3 +188,13 @@
 2020-10-08 13:18:59 Joined: adu
 2020-10-08 13:18:59 Names: ^[, adu, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-10-08 13:20:34 <cpressey> https://gist.github.com/cpressey/2ed6aea0c8eb4fc98a5a56e574807721
+2020-10-08 13:32:02 <int-e> But now `a` is baked into the type, so this is inflexible.
+2020-10-08 13:32:47 <int-e> You're pretty close to doing this though: https://paste.debian.net/1166344/
+2020-10-08 13:33:27 * int-e shrugs
+2020-10-08 13:35:03 <int-e> But maybe you're coming from the other direction. I have not read very far into the backlog.
+2020-10-08 13:41:18 <int-e> cpressey: If you want to take the GADTs out of operational, you will probably end up with a free monad anyway. The functor is  data StackF cnt = Push cnt | Pop Int (Int -> cnt)  which can be obtained from unfolding the GADT  data StackG a where Push :: Int -> StackG () | Pop :: StackG Int  into  Coyoneda StackG a.
+2020-10-08 13:42:52 <int-e> (also using that morally, cnt ~= () -> cnt)
+2020-10-08 13:44:04 <int-e> But as a programmer, StackF isn't intuitive to me, whereas StackG reads like a signature for a DSL.
+2020-10-08 13:44:17 <int-e> I really like the GADT version much better.
+2020-10-08 13:45:35 <int-e> The problem with what you currently have is that there can only ever be a single return type, namely the `a` in Program f a b.
+2020-10-08 13:45:59 <cpressey> int-e: We have different goals.
