@@ -1,0 +1,23 @@
+2020-10-08 00:14:38 <int-e> wtf is the rationale for renewing SSL certifcates twice a day (certbot default)
+2020-10-08 00:15:24 User Name: Frankenlime = Frankenlime!nchambers@learnprogramming/staff/nchambers
+2020-10-08 00:15:24 <Frankenlime> i gave up on certbot because it was always confusing and never worked for me
+2020-10-08 00:15:42 <Frankenlime> im not normally a fan of tools made out of shellscripts but dehydrated works so great, especially with dns auth
+2020-10-08 00:16:23 <fizzie> int-e: It doesn't renew twice a day. Or it shouldn't, anyway.
+2020-10-08 00:16:38 <fizzie> int-e: It *runs* twice a day, but only renews when there's less than 30 days remaining.
+2020-10-08 00:16:52 <int-e> Oh. Hmm.
+2020-10-08 00:17:06 <int-e> Right, that makes more sense.
+2020-10-08 00:17:37 <int-e> Frankenlime: I've used acme-tiny before.
+2020-10-08 00:17:51 <Frankenlime> acme-tiny seemed nice
+2020-10-08 00:18:14 <Frankenlime> i've used acme.sh at work too and its not terrible (although only used it for web auth)
+2020-10-08 00:18:57 <int-e> Yeah I only need web auth anyway, so far.
+2020-10-08 00:19:42 <fizzie> I'm using `certbot certonly --config ... --force-renewal` to basically just use certbot as a plain client (with DNS auth), it seems to work.
+2020-10-08 00:20:23 <int-e> But this time I decided to experience the hammer that is certbot.
+2020-10-08 00:20:50 <Frankenlime> see certonly and renew (or run?) differences always confused me
+2020-10-08 00:20:58 <Frankenlime> although to be fair i do get confused easily
+2020-10-08 00:21:48 <int-e> fizzie: thanks.
+2020-10-08 00:22:03 <fizzie> AIUI, the 'certonly' part means "just do the stuff related to acquiring certificates, don't try to touch the servers that use the certificate", which is what I want out of it.
+2020-10-08 00:22:14 <fizzie> (It won't have permissions to do any other actions anyway.)
+2020-10-08 00:22:19 <int-e> I only looked at the systemd timer and jumped to conclusions.
+2020-10-08 00:22:33 Joined: sftp
+2020-10-08 00:22:33 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-08 00:22:34 <Frankenlime> oh well, i got it all working in ansible and haven't bothered touching it since
