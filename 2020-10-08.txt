@@ -119,3 +119,5 @@
 2020-10-08 10:49:25 <int-e> But the 6n bound is interesting, because from that idea, you only get an n^2 bound.
 2020-10-08 10:54:38 <int-e> (the "standard element" is that by the pigeon-hole principle, *some* element must repeat, and from that point onward, all the elements must repeat because that single element determines all its successors.)
 2020-10-08 10:55:26 <int-e> (and, if f() is invertible, the predecessors as well, giving full periodicity rather than just ultimate periodicity.)
+2020-10-08 11:21:42 <int-e> Oh, that's a clever use of the Frobenius automorphism. (https://en.wikipedia.org/wiki/Pisano_period#Properties near the end of the section.)
+2020-10-08 11:27:10 <int-e> (and that is the main reason why we don't get near the naive n^2 bound)
