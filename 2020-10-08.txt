@@ -131,3 +131,41 @@
 2020-10-08 11:53:09 <lambdabot> Monad m => m a -> (a -> m b) -> m b
 2020-10-08 11:56:00 <cpressey> The GADT gives you an existential type that can be used for b.  If you don't have that, you don't have anything you can use for b.
 2020-10-08 11:57:53 <cpressey> (That I can see.)
+2020-10-08 12:01:38 <cpressey> Mmmmmmaybe you could put both a and b in the ADT, like data Program instr a b = ...; I've tried it but I haven't been successful at it, and the error messages aren't very encouraging.
+2020-10-08 12:01:43 <int-e> Yeah, if you have a constructor of type a -> Foo b in your GADT, then that corresponds to a monadic operation a -> m b.
+2020-10-08 12:05:40 <int-e> There's a weird existential  data F g x = F (forall a. (g a, a -> x))  type that a GADT g into a functor F g that can be used for making a free monad.
+2020-10-08 12:06:07 <cpressey> Yeah, I'll need to check out how Free works at some point too I reckon.
+2020-10-08 12:06:13 <int-e> Which I guess is nicer in theory, but as a programmer, I find the GADT describing an interface very appealing.
+2020-10-08 12:06:16 <shachaf> Do you mean with forall outside the F?
+2020-10-08 12:06:27 Quit: cpressey (Quit: Lunch)
+2020-10-08 12:06:27 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-08 12:06:33 <int-e> shachaf: Uhm. Yes.
+2020-10-08 12:06:48 <int-e> I should've used GADT syntax :P
+2020-10-08 12:07:04 <shachaf> I think that type is pretty natural.
+2020-10-08 12:07:11 <shachaf> Uh, in the non-formal sense of the word.
+2020-10-08 12:07:35 <int-e> So, properly: data F g x = forall a. F (g a) (a -> x)
+2020-10-08 12:07:58 <shachaf> Sure. Or Coyoneda f a = exists x. (f x, x -> a)
+2020-10-08 12:08:01 <int-e> So, properly: data F g a = forall r. F (g r) (r -> a) -- hmm Cont-style naming seems better.
+2020-10-08 12:08:27 <shachaf> I tend to call the universal one r (for "return" or "result" or something) and the existential one x.
+2020-10-08 12:08:36 <shachaf> But for sure the one on the outside should be called a.
+2020-10-08 12:08:37 <int-e> But nope, I don't find it natural at all.
+2020-10-08 12:09:03 <int-e> But r is a result type here as well :P
+2020-10-08 12:09:21 <shachaf> OK, imagine you had a type for which fmap was very expensive, so you wanted to minimize fmaps.
+2020-10-08 12:09:45 <shachaf> The functor laws tell you that instead of fmap f (fmap g x), you can write fmap (f.g) x
+2020-10-08 12:09:54 <int-e> Yeah I've seen that.
+2020-10-08 12:10:03 <shachaf> OK, maybe I'm just saying obvious things here.
+2020-10-08 12:10:31 <int-e> But it's a far stretch from having seen something, and kind of understanding it, to finding it natural.
+2020-10-08 12:10:49 <shachaf> An alternative thing you can say is that this thing is the free functor on a type constructor, but I bet that wouldn't strike a chord with you.
+2020-10-08 12:11:02 <int-e> You're making it worse.
+2020-10-08 12:11:09 <shachaf> I figured.
+2020-10-08 12:11:29 <shachaf> You can also use the dual: newtype Yoneda f a = Yoneda (forall r. (a -> r) -> f r)
+2020-10-08 12:11:56 <shachaf> But I find that one less intuitive, just because CPSy things are more complicated.
+2020-10-08 12:12:07 <int-e> The way I deal with category theory is to translate it back to something more concrete.
+2020-10-08 12:12:41 <int-e> The deeper you go into category theory, the more work I have to do translating it back. At some point, I get lost. :P
+2020-10-08 12:13:00 <shachaf> Well, I'm not saying any category theory words here. Except for "free", I suppose, and "dual", and "Yoneda".
+2020-10-08 12:13:04 <shachaf> But you can just ignore those.
+2020-10-08 12:13:16 <shachaf> OK, half of what I'm saying is category theory words.
+2020-10-08 12:13:36 <int-e> So yes, say CPS instead of Yoneda transform, and I'll be a bit happier.
+2020-10-08 12:13:55 <shachaf> I'm not calling it a Yoneda transform, I just wanted a name for the type that isn't F.
+2020-10-08 12:28:28 <int-e> Yeah, I'm mixing up terms.
+2020-10-08 12:28:54 <int-e> And I'm not even unhappy about it :P
