@@ -101,3 +101,21 @@
 2020-10-08 10:11:57 Joined: sftp
 2020-10-08 10:11:57 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
 2020-10-08 10:19:54 <Taneb> Is there a theorem that for every positive natural, n, the Fibonacci sequence contains infinitely many integer multiples of n?
+2020-10-08 10:34:55 User Name: cpressey = cpressey!~cpressey@79-72-202-104.dynamic.dsl.as9105.com
+2020-10-08 10:34:55 <cpressey> https://en.wikipedia.org/wiki/Fibonacci_number says "If the members of the Fibonacci sequence are taken mod n, the resulting sequence is periodic with period at most 6n." -- is that equivalent?
+2020-10-08 10:36:00 <cpressey> I guess it's not quite equivalent, because every 6th positive natural != every positive natural
+2020-10-08 10:36:22 <cpressey> Closest I could find on that page though
+2020-10-08 10:36:40 <int-e> Note that F_0 = 0 is divisible by n. So together with periodicity modulo n you get what you want.
+2020-10-08 10:38:14 <int-e> I have not seen that 6n claim before, interesting.
+2020-10-08 10:39:57 <cpressey> Also, simply saying "periodic" doesn't imply that F_i mod n = 0 at any time, so far as I'm aware, so, I'm not so sure
+2020-10-08 10:40:38 <int-e> Periodicity is rather obvious though; there are n^2 possible pairs of consecutive remainders in the sequence, so it's ultimately periodic. But you can also reconstruct the whole sequence from any pair (computing F_n from F_(n+1) and F_(n+2)), so it's fully periodic
+2020-10-08 10:41:10 <int-e> i=0 works.
+2020-10-08 10:44:46 <int-e> There's also the related fact that F_n | F_(nk) for all integers n, k.
+2020-10-08 10:44:54 <cpressey> Yeah OK, I see how F_0 = 0 implies it F_i mod n = 0 for some i, if it's periodic
+2020-10-08 10:46:03 <fizzie> I'm not sure I followed that periodicity argument, why does having n^2 possible pairs of consecutive remainders mean it's ultimately periodic?
+2020-10-08 10:47:25 <int-e> fizzie: because you can look at the sequence of pairs FF_n = (F_n, F_(n+1)) and note that there's a relation FF_(n+1) = f(FF_n), to which the standard argument applies.
+2020-10-08 10:47:54 <int-e> f((x,y)) = (y,x+y)
+2020-10-08 10:48:33 <int-e> (and f is invertible over any ring)
+2020-10-08 10:49:25 <int-e> But the 6n bound is interesting, because from that idea, you only get an n^2 bound.
+2020-10-08 10:54:38 <int-e> (the "standard element" is that by the pigeon-hole principle, *some* element must repeat, and from that point onward, all the elements must repeat because that single element determines all its successors.)
+2020-10-08 10:55:26 <int-e> (and, if f() is invertible, the predecessors as well, giving full periodicity rather than just ultimate periodicity.)
