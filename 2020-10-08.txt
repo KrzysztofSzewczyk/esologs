@@ -121,3 +121,13 @@
 2020-10-08 10:55:26 <int-e> (and, if f() is invertible, the predecessors as well, giving full periodicity rather than just ultimate periodicity.)
 2020-10-08 11:21:42 <int-e> Oh, that's a clever use of the Frobenius automorphism. (https://en.wikipedia.org/wiki/Pisano_period#Properties near the end of the section.)
 2020-10-08 11:27:10 <int-e> (and that is the main reason why we don't get near the naive n^2 bound)
+2020-10-08 11:30:54 <int-e> "Any prime p providing a counterexample would necessarily be a Wall-Sun-Sun prime, and such primes are also conjectured not to exist."
+2020-10-08 11:30:57 <int-e> "In number theory, a Wall–Sun–Sun prime or Fibonacci–Wieferich prime is a certain kind of prime number which is conjectured to exist, although none are known."
+2020-10-08 11:31:06 <int-e> Source: Wikipedia :-)
+2020-10-08 11:36:00 <cpressey> Which is not actually a contradiction, if there really are two different mathematicians making two different conjecturs on the existence of these things
+2020-10-08 11:36:07 <cpressey> But, it does seem a bit unlikely
+2020-10-08 11:52:40 <cpressey> In other news, I think I now see why MonadPrompt and Operational use GADTs.
+2020-10-08 11:53:07 <cpressey> :t (>>=)
+2020-10-08 11:53:09 <lambdabot> Monad m => m a -> (a -> m b) -> m b
+2020-10-08 11:56:00 <cpressey> The GADT gives you an existential type that can be used for b.  If you don't have that, you don't have anything you can use for b.
+2020-10-08 11:57:53 <cpressey> (That I can see.)
