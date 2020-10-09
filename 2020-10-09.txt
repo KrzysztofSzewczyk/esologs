@@ -579,3 +579,30 @@
 2020-10-09 14:51:02 <esowiki> 14[[07Sea14]]4 10 02https://esolangs.org/w/index.php?diff=77898&oldid=77896 5* 03Orby 5* (+170) 10/* Commands */
 2020-10-09 14:51:46 Joined: adu
 2020-10-09 14:51:47 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-09 15:02:56 User Name: cpressey = cpressey!~cpressey@88.144.68.224
+2020-10-09 15:02:56 <cpressey> Hi orby
+2020-10-09 15:03:40 <orby> Hello :)
+2020-10-09 15:05:51 User Name: ski = ski!~ski@m-1163-19.studat.chalmers.se
+2020-10-09 15:05:51 <ski> hm, i was recently pondering slightly on the formula fo Gregorian leap years
+2020-10-09 15:07:02 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-10-09 15:07:02 <wib_jonas> ski: some of those links that we mentioned above has the formula. or do you want a software implementation? there are open source implementations I can point to.
+2020-10-09 15:07:56 <ski> well, i was just thinking about checking whether a year is a leap year
+2020-10-09 15:08:15 <ski> it's not a complicated check, but was slightly interesting, from a logical point of view
+2020-10-09 15:09:42 <wib_jonas> but then that formula has only really been experimentally tested for not much more than five hundred cases, so with all the fickle political decisions (as exemplified by the timezone database) at best it's a current plan and best prediction
+2020-10-09 15:10:49 <wib_jonas> it has a period of 400 years, and has been tested for less than 500 years, so it's hard to take it all that seriously
+2020-10-09 15:11:33 <wib_jonas> at least it's much more stable then the fucking holidays and timezones
+2020-10-09 15:11:51 <ski> GregorianLeapYear(y)  ⇔  4 ∣ y ∧ ¬ (100 ∣ y ∧ 400 ∤ y)
+2020-10-09 15:12:47 <ski> ⇔  4 ∣ y ∧ (100 ∤ y ∨ 400 ∣ y)
+2020-10-09 15:13:21 <ski> ⇔  (4 ∣ y ∧ 100 ∤ y) ∨ 400 ∣ y
+2020-10-09 15:13:48 <ski> ⇔  ¬ (4 ∤ y ∨ 100 ∣ y) ∨ 400 ∣ y
+2020-10-09 15:15:08 Joined: Sgeo
+2020-10-09 15:15:09 Names: ^[, adu, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-09 15:15:38 <ski> ⇔  (4 ∣ y → 100 ∣ y) → 400 ∣ y
+2020-10-09 15:16:45 <ski> if we express ⌜A ∧ ¬ B⌝ ("⌜A⌝, but not ⌜B⌝","⌜A⌝, except if ⌜B⌝") as ⌜A ⤚ B⌝, then we can also say
+2020-10-09 15:17:02 <ski> ⇔  4 ∣ y ⤚ (100 ∣ y ⤚ 400 ∣ y)
+2020-10-09 15:17:09 <ski> (so, it's an exception with an exception)
+2020-10-09 15:22:24 Joined: arseniiv
+2020-10-09 15:22:24 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-09 15:27:21 <ski> (hm, there's also something funny going on, with the entailments between the three individual divisibility conditions, here)
+2020-10-09 15:28:31 Quit: wib_jonas (Quit: Connection closed)
+2020-10-09 15:28:31 Names: ^[, adu, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
