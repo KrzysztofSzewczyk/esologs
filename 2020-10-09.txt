@@ -152,3 +152,101 @@
 2020-10-09 00:59:26 <ais523> anyway, an idea I had recently: using algebraic numbers as the internal numerical type for a language
 2020-10-09 00:59:38 <b_jonas> so "A" is a hexit (except in git which uses lower case, another thing I hate, but at least it's consistent with the rest of the kernel, which also uses lowercase in a lot of debug messages and /proc and /sys text files), 0xA is a nybble
 2020-10-09 00:59:56 <b_jonas> ais523: that's actually rather hard to implement
+2020-10-09 01:00:10 <b_jonas> but there are other choices for esoteric number systems that are easier to implement
+2020-10-09 01:00:15 <ais523> this would be particularly good for declarative languages: if all you have is + - * ÷ ==, everything is fully closed except for division by 0 (which in a declarative language is not an error)
+2020-10-09 01:00:27 <ais523> it doesn't seem ridiculously hard to implement, just inefficient
+2020-10-09 01:00:47 <b_jonas> oh if you don't implement < or rootof, then it's much easier
+2020-10-09 01:00:53 <b_jonas> but then it's much harder to use for anything useful
+2020-10-09 01:01:01 <b_jonas> because you can't get one of the square roots in any way
+2020-10-09 01:01:02 <ais523> rootof effectively exists within this set of operations
+2020-10-09 01:01:11 <int-e> ais523: I guess you could mess with the commit message and disguise it... say, have every commit message end in a weather forecast and a fortune.
+2020-10-09 01:01:24 <ais523> in a declarative language, you just need to assign, say, X * X = 2 and then X is set to one of the square roots of 2
+2020-10-09 01:01:29 <b_jonas> no, you can only get all the roots of a polynomial nondeterministically, and you can't distingiush among algebraic conjugates
+2020-10-09 01:01:44 <b_jonas> ais523: you can't even distinguish between sqrt(2) and sqrt(-2)
+2020-10-09 01:01:44 <ais523> yes, you can't get at any specific root
+2020-10-09 01:01:51 <int-e> But yeah, the formats look rather rigid.
+2020-10-09 01:01:52 <b_jonas> ais523: I assume you have 1 as a built-in too, right?
+2020-10-09 01:02:00 <int-e> Which is a good thing, of course.
+2020-10-09 01:02:11 <ais523> b_jonas: you can distinguish between sqrt(2) and sqrt(-2), the former obeys X * X = 2, the latter doesn't
+2020-10-09 01:02:14 <b_jonas> or... oh heck
+2020-10-09 01:02:19 <ais523> you can't distinguish between sqrt(2) and -sqrt(2), though
+2020-10-09 01:02:22 <b_jonas> ais523: yes, sorry, that
+2020-10-09 01:02:36 <int-e> (I'm assuming that tree objects must contain entries in byte-based lexicographic order)
+2020-10-09 01:02:45 <b_jonas> maybe you want to generate 1 from some polynomial equations or something, that's possible
+2020-10-09 01:02:45 <ais523> unfortunately, you can't just store numbers as an entire set of conjugates
+2020-10-09 01:02:52 <ais523> because say you have X * X = 2 and Y * Y = 2
+2020-10-09 01:03:05 <ais523> then X + Y could nondeterministically be either 0 or sqrt(8)
+2020-10-09 01:03:07 <orby> later all
+2020-10-09 01:03:11 <ais523> which are not conjugate to each other
+2020-10-09 01:03:13 <ais523> orby: later
+2020-10-09 01:04:31 <b_jonas> ais523: yes, and that's why you want to have < and <= and rootof as primitives too, where rootof takes a polynomial and an interval, and it returns one of the real roots of the polynomial in that interval.
+2020-10-09 01:05:06 <ais523> you don't actually need rootof as a primitive in a declarative language, if you have < and arithmetic
+2020-10-09 01:05:17 <ais523> just assign to an equation
+2020-10-09 01:05:37 <b_jonas> yeah, I guess in a declarative language you don't need it
+2020-10-09 01:05:46 <b_jonas> but the interpreter has to implement it
+2020-10-09 01:06:14 <b_jonas> and it's not rootof that's hard to impelement, it's <
+2020-10-09 01:06:26 <ais523> yes
+2020-10-09 01:06:33 <ais523> actually, < isn't even very well defined
+2020-10-09 01:06:40 <b_jonas> why?
+2020-10-09 01:06:43 <ais523> complex numbers
+2020-10-09 01:06:45 <b_jonas> meh
+2020-10-09 01:06:51 <ais523> you need some sort of norm<
+2020-10-09 01:06:52 <b_jonas> I consider only real numbers
+2020-10-09 01:07:02 <ais523> then it isn't algebraically closed any more
+2020-10-09 01:07:21 <b_jonas> if you want complex numbers, then add real part as a primitive too, and < should compare by real part first then imaginary part
+2020-10-09 01:07:37 <b_jonas> it doesn't have to be algebraically closed
+2020-10-09 01:07:45 <b_jonas> you can simulate complex numbers from real numbers in user space
+2020-10-09 01:07:56 <b_jonas> I mean if you have rootof, not just powers
+2020-10-09 01:08:19 <b_jonas> complex numbers aren't really harder, they just complicate everything
+2020-10-09 01:08:27 <b_jonas> or simplify, depending on which side you're looking form
+2020-10-09 01:08:28 <ais523> what's the point of using algebraic numbers, if they don't give you an algebraically closed number system?
+2020-10-09 01:08:43 <b_jonas> complicate if you have to implement stuff, simplify if you want to use it
+2020-10-09 01:08:52 <b_jonas> yes, I guess you're right
+2020-10-09 01:08:56 <b_jonas> so complexes
+2020-10-09 01:09:03 <b_jonas> but then you probably want real part as a primitive too
+2020-10-09 01:09:13 <b_jonas> and I guess i
+2020-10-09 01:09:19 <b_jonas> so you can distinguish between +i and -i
+2020-10-09 01:09:26 <b_jonas> but < might do that anyway
+2020-10-09 01:09:30 <int-e> Over the reals you have tools for counting roots in an interval.
+2020-10-09 01:09:37 <ais523> yes
+2020-10-09 01:09:37 <int-e> How do you do that in the complex numbers?
+2020-10-09 01:09:45 <b_jonas> int-e: there's probably tools for that oo
+2020-10-09 01:09:47 <ais523> I was going to say, is there an equivalent for complex numbers?
+2020-10-09 01:09:49 <b_jonas> they're just less elegant
+2020-10-09 01:09:57 <ais523> I'm pretty sure root isolation in the complex numbers exists
+2020-10-09 01:10:03 <b_jonas> ais523: probably
+2020-10-09 01:10:16 <b_jonas> real numbers just have a nice elegant algorithm
+2020-10-09 01:10:20 <b_jonas> well, elegant in theory
+2020-10-09 01:10:25 <b_jonas> still a hell to work with
+2020-10-09 01:10:37 <ais523> Wikipedia has an article on real-root isolation but not complex-root isolation
+2020-10-09 01:10:42 <int-e> I've followed one algebraic number development where root separation was a reason for keeping algebraic numbers real.
+2020-10-09 01:11:30 <int-e> (And deal with complex numbers as pairs of real algebraic numbers.)
+2020-10-09 01:11:35 <b_jonas> ais523: that's because nobody wants to actually implement it in full generality, or even describe it properly in writing. we know it's possible, and Mathematica implements it, let's leave it at that and let the Maxima fanatics deal with it.
+2020-10-09 01:12:44 <int-e> Of course what I'm alluding to was a formalization effort... so there was also a strong incentive to keep things (relatively) simple.
+2020-10-09 01:13:31 <b_jonas> I don't even know a simple algorithm for deciding if an expression that contains field ops, real square roots, and real cube roots is negative.
+2020-10-09 01:13:46 <b_jonas> without cube roots I do know an algorithm that I can explain
+2020-10-09 01:14:38 <b_jonas> with cube roots, you would need to work with algebraic numbers nonsense like finding a generator polynomial or something. the practical solution is to ask GAP and let it work its magic.
+2020-10-09 01:15:05 <b_jonas> well the practical solution is to decide using interval arithmetic, but if it's zero, then ask GAP to prove it and let it work its magic
+2020-10-09 01:15:49 <b_jonas> oh, that reminds me
+2020-10-09 01:16:03 <b_jonas> does any of you happen to have a backup of Plouffe's inverter? it fell off the web
+2020-10-09 01:16:14 <b_jonas> I don't need it for anything urgent, it would just be nice to have a backup
+2020-10-09 01:16:36 <b_jonas> the old address was https://isc.carma.newcastle.edu.au/
+2020-10-09 01:20:21 <b_jonas> ais523: anyway, branches being expensive is one of those things that kept me away from mercurial
+2020-10-09 01:20:47 Quit: orby (Remote host closed the connection)
+2020-10-09 01:20:48 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-09 01:21:22 <b_jonas> and I can tell why svn+distributed is hard to make work, but it's not the sequential version numbers
+2020-10-09 01:22:17 <b_jonas> in the model I imagine there's still a good way to refer to a specific revision, or a file or directory in a revision.
+2020-10-09 01:24:00 <int-e> I suppose you found https://oeis.org/wiki/Plouffe's_Inverter (and the reference to ISC+, which is also down, but points to ISC, which is working but presumably far less powerful)
+2020-10-09 01:25:08 <b_jonas> the theoretical problem is more like that some operations that I'd expect an ideal distributed vcs should implement efficiently would be implemented rather inefficiently (as in they'd have to rebuild the entire repository); the practical problem is that if I try to code this, it will either never be complete, or it will have so many bugs that can lose you data that the gaps are larger than the features.
+2020-10-09 01:25:29 <b_jonas> int-e: no, I actually haven't looked there
+2020-10-09 01:25:36 <ais523> git was originally intended to be a VCS backend, rather than a VCS
+2020-10-09 01:25:45 <ais523> I'm surprised there aren't more VCSes that use it like that
+2020-10-09 01:26:50 <b_jonas> ais523: well, it works quite well as a vcs for the special case of developing the linux kernel, which indeed wants to send patches in email, has lots of distributed developers cherry-picking commits from each other, and puts only trusted text source files in the repository
+2020-10-09 01:27:08 <ais523> git is actually very bad at cherry-picks
+2020-10-09 01:27:17 <b_jonas> ais523: it doesn't work as a backend for what I want, because it doesn't implement modifyable sparse checkouts
+2020-10-09 01:27:37 <ais523> cherry-pick from A into B followed by merge from A into B is an operation that git's model simply doesn't implement
+2020-10-09 01:27:41 <b_jonas> ais523: yes, svn is better. but it works in the principled environment of linux kernel environment
+2020-10-09 01:27:49 <ais523> it often works in practice, but only due to hacks designed to merge two identical-looking changes into one
+2020-10-09 01:28:15 <b_jonas> ais523: yes, that's sort of what I said above about not storing merge metadata
+2020-10-09 01:29:27 <b_jonas> ais523: you should also consider the historical context as an excuse though: git is old, svn only started to get merge tracking in the time that I remember, git had the hacks much before that
+2020-10-09 01:29:59 <b_jonas> specifically svn adds merge tracking in svn 1.5, which was released ... when?
