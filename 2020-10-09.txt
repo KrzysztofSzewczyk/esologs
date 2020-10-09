@@ -45,3 +45,110 @@
 2020-10-09 00:27:07 <fizzie> ^ul (z)(y)(x)a~a~*~a~*:^!~a~*a~^~!~a~**S(just for completeness)
 2020-10-09 00:27:07 <fungot> ((z)y)(z)x
 2020-10-09 00:28:42 <b_jonas> fizzie: you're still quite fast in this
+2020-10-09 00:31:02 <orby> Thanks for your help friends.
+2020-10-09 00:31:11 <b_jonas> fizzie: it's impressive that there's only one colon in that
+2020-10-09 00:31:30 <b_jonas> (and it's not inside parenthesis)
+2020-10-09 00:32:50 <fizzie> ^ul (z)(y)(x)a~a*~a*:^a~*a~!~^a~!~**S(now with a little less unnecessary swapping)
+2020-10-09 00:32:50 <fungot> ((z)y)(z)x
+2020-10-09 00:33:04 <b_jonas> (though if it's just ONE colon then it doesn't help if it's inside parens. it only helps if there are two.)
+2020-10-09 00:34:12 Joined: ais523
+2020-10-09 00:34:12 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-09 00:34:31 <b_jonas> ohai
+2020-10-09 00:34:48 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-09 00:34:48 <ais523> normally "write this combinator in Underload" is pretty straightforward if you know what you want the result to look like
+2020-10-09 00:34:57 <ais523> it can be done mechanically, if necessary
+2020-10-09 00:35:06 <ais523> sometimes you can do it in your head, that's the hard part
+2020-10-09 00:35:15 <b_jonas> ais523: you have read tom7's very apt description of git and the world around it, right?
+2020-10-09 00:35:30 <orby> ais523: Yeah, I need to spend a little more time with Underload
+2020-10-09 00:35:38 <ais523> b_jonas: no
+2020-10-09 00:35:49 <b_jonas> I think I understand enough about git to use it, and I still think it's a very good description
+2020-10-09 00:36:02 <ais523> orby: let me try this; the problem is to define C such that (z)(y)(x)C is equivalent to ((z)y)(z)x, right?
+2020-10-09 00:36:13 <b_jonas> ais523: frontpage of http://radar.spacebar.org/ right now
+2020-10-09 00:36:19 <orby> ais523: Correct
+2020-10-09 00:36:31 <b_jonas> permalink: http://radar.spacebar.org/f/a/weblog/comment/1/1185
+2020-10-09 00:36:35 <ais523> b_jonas: ouch, that's unreadably narrow, and I don't get a reaer mode option
+2020-10-09 00:37:04 <b_jonas> ais523: go complain to tom7 then
+2020-10-09 00:37:08 <orby> What you are calling C I am calling S' in line with the notation used in "The theory of concatenative combinators" by Brent Kirby
+2020-10-09 00:37:21 <ais523> wow, this site uses tables for layout
+2020-10-09 00:37:53 <ais523> and specifies widths as an exact number of pixels
+2020-10-09 00:38:17 <b_jonas> ais523: yes, it's a blog that has existed continuously since 2000, with a new post every month, and tom7 just rewrote the script that serves it in a second programming language, where both of them are programming languages that he made himself
+2020-10-09 00:39:07 <b_jonas> basically rewrote it to a newer, incompatible evolution of his own scripting language
+2020-10-09 00:40:12 <ais523> there we go
+2020-10-09 00:40:19 <b_jonas> the same scripting language that implements http://snoot.org/
+2020-10-09 00:41:52 <ais523> I think the problem with git is that it solves a problem in a very simple, elegant, and straightforward way, but unfortunately it isn't the problem that git users actually wanted it to solve
+2020-10-09 00:43:25 <b_jonas> the table was 546 wide, specified in a plain HTML attribute, no CSS, since 2000 apparently: view-source:https://web.archive.org/web/20001018141700/http://radar.spacebar.org/
+2020-10-09 00:44:31 <ais523> ^ul (z)(y)(x)(~a:(~*a)~a*^)~a*^*S
+2020-10-09 00:44:31 <fungot> (z)x
+2020-10-09 00:44:52 <ais523> what have I done wrong, I wonder? (that was my first attempt done in my head, no helper programs)
+2020-10-09 00:44:57 <ais523> oh, nothing
+2020-10-09 00:44:59 <ais523> ^ul (z)(y)(x)(~a:(~*a)~a*^)~a*^*SS
+2020-10-09 00:44:59 <fungot> (z)x((z)y)
+2020-10-09 00:45:07 <ais523> just didn't print out the stack properly
+2020-10-09 00:45:32 <ais523> actually, I think I have one level of quoting too much
+2020-10-09 00:45:56 <ais523> ^ul (z)(y)(x)(~a:(~*)~a*^)~a*^
+2020-10-09 00:46:05 <ais523> ^ul (z)(y)(x)(~a:(~*)~a*^)~a*^SSS
+2020-10-09 00:46:05 <fungot> x(z)(z)y
+2020-10-09 00:46:14 <ais523> yep, that looks right
+2020-10-09 00:46:18 <ais523> ^ul (z)(y)(x)(~a:(~*)~a*^)~a*^aSaSaS
+2020-10-09 00:46:18 <fungot> (x)((z))((z)y)
+2020-10-09 00:46:24 <ais523> orby: there you go
+2020-10-09 00:47:09 <ais523> or, hmm, (z) is still quoted too much
+2020-10-09 00:47:14 <b_jonas> ais523: yeah. in particular, what I want solved is much closer to what svn solves than what git solves. an svn repository explicitly tracks what files in earlier versions are ancestors of a file, and which changes from a branch are merged into it and which aren't, even if I merge later changes from a branch but not merge earlier ones. git stores some of this and guesses about the rest heuristically, and
+2020-10-09 00:47:20 <ais523> ^ul (z)(y)(x)(~:(a~*)~a*^)~a*^aSaSaS
+2020-10-09 00:47:20 <fungot> (x)(z)((z)y)
+2020-10-09 00:47:20 <b_jonas> there's no easy way to make it remember what I think instead of what it guesses.
+2020-10-09 00:47:29 <ais523> ^ul (z)(y)(x)(~:(a~*)~a*^)~a*^^
+2020-10-09 00:47:29 <fungot> ...bad insn!
+2020-10-09 00:47:42 <ais523> the x in orby's example wasn't in parens, so that runs it
+2020-10-09 00:47:46 <ais523> ^ul (z)(y)(SS)(~:(a~*)~a*^)~a*^^
+2020-10-09 00:47:46 <fungot> z(z)y
+2020-10-09 00:47:51 <b_jonas> and svn also does partial checkouts or partial read-only replication.
+2020-10-09 00:49:00 <ais523> it's frustrating, I have ideas about how to write a VCS but am unlikely to actually write it
+2020-10-09 00:49:09 <b_jonas> what I'd like is the best of svn but distributed. I should probably learn how the heck mercurial works. I think mercurial is probably better than git in some respects, worse in others, it won't solve all my problems, but at least I could learn something from it about version control.
+2020-10-09 00:49:38 <ais523> one thing I don't like about Mercurial is that branches are expensive
+2020-10-09 00:49:48 <b_jonas> ais523: yeah, me too. I'd like to write one that's based on svn, but makes it a distributed version control system. I might try to write something like it, but it won't be working stable enough.
+2020-10-09 00:50:18 <ais523> some of svn's features, like consecutive revision numbers, seem somewhat incompatible with typical DVCS usage patterns
+2020-10-09 00:50:27 <b_jonas> ais523: yes. svn does everything that it wants to do inexpensively, but sadly there are a few things that it really doesn't want to do, and those are expensive because you have to work them around.
+2020-10-09 00:50:43 <ais523> this reminds me about my eso-idea of a git hash bruteforcer
+2020-10-09 00:50:58 <ais523> so that the short hashes given to commits were in consecutive numerical order (possibly in decimal rather than hex)
+2020-10-09 00:51:09 <ais523> i.e. the first revision is 0000001, the second is 0000002, and so on
+2020-10-09 00:51:27 User Name: int-e = int-e!~noone@int-e.eu
+2020-10-09 00:51:27 <int-e> yuck :)
+2020-10-09 00:51:27 <ais523> but it turns out that there actually isn't much you can change to make the hash match, apart from the commit message
+2020-10-09 00:51:48 <ais523> maybe you could mess with the whitespace
+2020-10-09 00:52:50 <b_jonas> ais523: yes, but that just means that referring to stuff with version numbers won't be such a good idea anymore. that's not a problem. some web forums (of at least three different engines) have the same problem: in theory they number messages within a thread with consecutive numbers, so people sometimes refer to them by number in replies, but in practice moderation can cause new messages to appear with
+2020-10-09 00:52:56 <b_jonas> older timestamps or older messages to disappear, such as when messages are moved among threads, in which case those numbers aren't stable, and the replies will be confusing.
+2020-10-09 00:53:38 <ais523> I mod on a phpBB forum and I will normally edit messages down rather than delete them, for this reason
+2020-10-09 00:53:46 <b_jonas> specifically this happens on at least one wordpress blog's comment section, most phpbb forums, and http://www.komal.hu/forum which has its own engine
+2020-10-09 00:53:50 <ais523> (if the content is inappropriate and needs to be removed)
+2020-10-09 00:53:51 <int-e> just mess with the committer name ;-)
+2020-10-09 00:53:59 Quit: delta23 (Ping timeout: 260 seconds)
+2020-10-09 00:53:59 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-09 00:54:16 <ais523> This message violates site rules and was deleted. — callforjudgement
+2020-10-09 00:54:27 <b_jonas> ais523: yes, but what do you do with messages that are unnecessarily posted to a new thread even though there's a good existing thread for them?
+2020-10-09 00:54:39 <b_jonas> you can avoid deleting, but how do you avoid adding?
+2020-10-09 00:54:44 <b_jonas> do you quote it in a new message?
+2020-10-09 00:54:58 <ais523> if a message needs to be repeated elsewhere, yes, quote
+2020-10-09 00:55:21 <ais523> the nature of this forum is pretty specialised, though, and messages being posted in the wrong place are very rare
+2020-10-09 00:55:41 <ais523> if they were, it would likely be a case of either nothing needing to be done, or a near-banworthy offence, depending on context
+2020-10-09 00:55:48 Joined: deltaepsilon23
+2020-10-09 00:55:48 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, deltaepsilon23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-09 00:55:56 Nick Change: deltaepsilon23 -> delta23
+2020-10-09 00:55:56 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-09 00:56:17 <b_jonas> "git hash bruteforcer" => well yes, using SHA-1 and saying that it's ok because you'll only commit trustable data into the vcs rather than admitting that it's hard to change the hash function is a stupid decision, and using only 7 hexits is another stupid decision, but at least the latter isn't baked into git so I don't care
+2020-10-09 00:56:33 <esowiki> 14[[07Sea14]]4 10 02https://esolangs.org/w/index.php?diff=77887&oldid=75326 5* 03Orby 5* (+1159) 10Introducing Sea: a three command simple translation of Underload
+2020-10-09 00:56:53 <ais523> b_jonas: the 7 nybble thing is actually not a requirement, it will expand to 8 (and possibly more?) in cases of collision
+2020-10-09 00:56:59 <ais523> all the nybbles are stored internally
+2020-10-09 00:57:14 <b_jonas> ais523: yes, I know
+2020-10-09 00:57:46 <b_jonas> ais523: I even have core.abbrev=16 in my global git settings
+2020-10-09 00:57:54 <b_jonas> which makes it list 16 hexits by default
+2020-10-09 00:58:02 <b_jonas> that's still not all of the hash, but better than 8
+2020-10-09 00:58:07 <b_jonas> and for some purposes I make it list all the hexits
+2020-10-09 00:58:18 <b_jonas> like when it needn't be human-readable, but stored for machines
+2020-10-09 00:58:23 <ais523> why do you say "hexit" rather than "nybble"? hmm, maybe people wouldn't refer to a base-256 digit as a "byte"
+2020-10-09 00:58:26 <b_jonas> git does that in its internal stuff too obviously, it's not that stupid
+2020-10-09 00:58:36 <b_jonas> ais523: it can be nybble too, sure
+2020-10-09 00:58:59 <b_jonas> hexit is the text format numeral, nybble is the actual number
+2020-10-09 00:59:26 <ais523> anyway, an idea I had recently: using algebraic numbers as the internal numerical type for a language
+2020-10-09 00:59:38 <b_jonas> so "A" is a hexit (except in git which uses lower case, another thing I hate, but at least it's consistent with the rest of the kernel, which also uses lowercase in a lot of debug messages and /proc and /sys text files), 0xA is a nybble
+2020-10-09 00:59:56 <b_jonas> ais523: that's actually rather hard to implement
