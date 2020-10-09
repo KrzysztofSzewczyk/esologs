@@ -1,0 +1,47 @@
+2020-10-09 00:02:52 <fizzie> ^ul (x)(y)(z)a~a*:^~a*~^!a~a**S
+2020-10-09 00:02:52 <fungot> x(z)(y(z))
+2020-10-09 00:03:01 <fizzie> (Not sure if I interpreted the notation correctly.)
+2020-10-09 00:03:01 User Name: b_jonas = b_jonas!~x@catv-176-63-12-99.catv.broadband.hu
+2020-10-09 00:03:01 <b_jonas> fizzie: oh, you were fast
+2020-10-09 00:03:49 <orby> Thanks fizzie!
+2020-10-09 00:05:20 <b_jonas> ^ul (y)(z)a~a*:^~a*
+2020-10-09 00:05:25 <b_jonas> ^ul (y)(z)a~a*:^~a*S
+2020-10-09 00:05:25 <fungot> y(z)
+2020-10-09 00:05:49 <fizzie> http://ix.io/2A9t -- with steps.
+2020-10-09 00:06:45 <orby> Actually, I think my notation is backwards. I meant for x to be on top of the stack, not on the bottom
+2020-10-09 00:06:55 <b_jonas> fizzie: ouch, not writing out the outer parenthesis
+2020-10-09 00:07:16 <orby> So I guess a better way of asking my question would be (z)(y)(x) -> ((z)y)(z)x
+2020-10-09 00:07:49 <b_jonas> orby: ok that's slightly harder
+2020-10-09 00:08:01 <fizzie> That's the problem with stacks, you never know which way around they are.
+2020-10-09 00:08:04 <orby> yes, I thought it was hard
+2020-10-09 00:08:06 <b_jonas> but you can still compile lambda calculus to underload
+2020-10-09 00:08:23 <b_jonas> fizzie: yeah, though at least in underload they're always the way you took it
+2020-10-09 00:08:29 <b_jonas> (and in Consumer Society too)
+2020-10-09 00:09:12 <orby> I discovered today that there is a single concatenative combinator that is TC with quoting, a la iota in applicative combinator calculus
+2020-10-09 00:09:25 <orby> and I'm trying to document it properly as a minimization of underload
+2020-10-09 00:10:19 <b_jonas> orby: the concatenative thing is a generalization of combinator calculus, isn't it, so that should be true because combinator calculus has a single universal combinator too
+2020-10-09 00:12:38 <orby> b_jonas: I'd have to think about that. I'm not sure how obviously true it is, but I suspected it was true and went searching. It's actually really close to the construction of iota: let k be (y)(x) -> x, s' be (z)(y)(x) -> ((z)y)(z)x, then the sole sufficient combinator takes (x) -> (k)(s')x
+2020-10-09 00:12:55 <orby> just a slightly adapted s combinator
+2020-10-09 00:13:03 <b_jonas> orby: it's not obvious at all
+2020-10-09 00:13:05 <b_jonas> neither part is obvious
+2020-10-09 00:13:15 <b_jonas> I still can't wrap my head around how underload works
+2020-10-09 00:13:30 <orby> I mostly think of it as a term rewriting system
+2020-10-09 00:13:34 <orby> I find that easier to think about
+2020-10-09 00:13:45 <b_jonas> as for the single generator for combinator calculus, I never bothered to try to understand that, it seems like a useless bit of trivia to me, hh
+2020-10-09 00:13:55 <b_jonas> but I think other people have verified it because it's not that hard with a computer these days
+2020-10-09 00:14:09 <orby> I have a minor fetish for minimization, so I spend a lot of time thinking about reducing these sorts of things
+2020-10-09 00:14:21 <fizzie> This starts from a slightly different place:
+2020-10-09 00:14:22 <fizzie> ^ul ((z)a(y)a(x)a)^**:^!~a~*a~^~!~a~**S
+2020-10-09 00:14:22 <fungot> ((z)y)(z)x
+2020-10-09 00:15:27 <orby> thanks fizzie!
+2020-10-09 00:20:14 <user3456> Is there any way I can make this fish code smaller while keeping the string readable? (The \n is a newline, the code was testing on fishlanguage.com) 10"Stick any string here!"r.\n l?!;o
+2020-10-09 00:20:51 Joined: Arcorann
+2020-10-09 00:20:51 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, fizzie, Frankenlime, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Luciole, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, orby, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, Spooktober, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wmww, xelxebar, zeroed, zzo38
+2020-10-09 00:23:16 <b_jonas> orby: but the basic recipe is this. you want to do something with (x0)(x1)...(xn) on stack. first apply () ~a~* ... ~a~* ~a~* on it to fold it to one term ((x0)(x1)...(xn)); then L: duplicate or triplicate that with : or ::; then get a single term like (xk) from the top copy with like ^!...! ~!~!...~!~!; then possibly flip and get a single term from the middle one; then do one step of whatever you
+2020-10-09 00:23:22 <b_jonas> wanted; then fold the result back into the bottom list with a*; then keep repeating this from L until you have every term you need separated inside one long list.
+2020-10-09 00:23:36 <b_jonas> but there's of course a lot of optimizations you can do on this.
+2020-10-09 00:24:41 Joined: Arcorann
+2020-10-09 00:25:59 Quit: Arcorann (Ping timeout: 260 seconds)
+2020-10-09 00:27:07 <fizzie> ^ul (z)(y)(x)a~a~*~a~*:^!~a~*a~^~!~a~**S(just for completeness)
+2020-10-09 00:27:07 <fungot> ((z)y)(z)x
+2020-10-09 00:28:42 <b_jonas> fizzie: you're still quite fast in this
