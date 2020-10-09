@@ -250,3 +250,66 @@
 2020-10-09 01:28:15 <b_jonas> ais523: yes, that's sort of what I said above about not storing merge metadata
 2020-10-09 01:29:27 <b_jonas> ais523: you should also consider the historical context as an excuse though: git is old, svn only started to get merge tracking in the time that I remember, git had the hacks much before that
 2020-10-09 01:29:59 <b_jonas> specifically svn adds merge tracking in svn 1.5, which was released ... when?
+2020-10-09 01:30:19 <b_jonas> a moment, this is exactly something vcs should be able to tell
+2020-10-09 01:30:43 <b_jonas> released in 2008
+2020-10-09 01:31:28 <b_jonas> back long ago, when svn was not really ready, and the other contenders weren't anywhere, git was revolutionary
+2020-10-09 01:31:37 <b_jonas> it just didn't get developed as much as svn later
+2020-10-09 01:31:38 <zzo38> There is also Fossil, where it is stored as a set of artifacts each with identifiers, but I don't know if there are any implementations of the Fossil format other than Fossil itself.
+2020-10-09 01:32:05 <b_jonas> and git was what popularized the concept of distributed version control, mercurial and darcs came after that and took the good parts
+2020-10-09 01:34:00 <ais523> Mercurial and git were developed at almost the same time, for the same reason
+2020-10-09 01:34:02 <b_jonas> I technically used svn in 2008, but not for anything nontrivial, I mostly just checked stuff out
+2020-10-09 01:34:27 <b_jonas> ais523: I admit I don't actually know the history, I'm just telling my impressoin
+2020-10-09 01:34:40 <ais523> the Linux kernel used to use a proprietary VCS
+2020-10-09 01:34:41 Joined: Arcorann
+2020-10-09 01:34:42 <b_jonas> I don't know when git gained what features
+2020-10-09 01:34:59 <b_jonas> yeah, I heard that, Linus decided to make his own tools, just like Knuth
+2020-10-09 01:35:03 <ais523> but someone working on it reverse-engineered part of its internal protocol, so that they could script it more easily or something
+2020-10-09 01:35:08 <ais523> and the company making it got mad
+2020-10-09 01:35:25 <ais523> so there was demand for a replacement VCS in a hurry
+2020-10-09 01:35:31 <b_jonas> because he wasn't satisifed with the existing tools
+2020-10-09 01:35:43 <b_jonas> yeah
+2020-10-09 01:35:45 <ais523> not so much "wasn't satisfied" as "was suddenly banned from using"
+2020-10-09 01:35:57 <ais523> although, git is better for the Linux kernel than Perforce anyway
+2020-10-09 01:36:13 <b_jonas> ais523: yeah
+2020-10-09 01:36:22 <ais523> in fact, Perforce's manufacturers probably rather shot themselves in the foot, by inspiring the creation of a free competitor that has outcompeted them quite badly
+2020-10-09 01:36:41 <fizzie> Linux was using BitKeeper, not Perforce.
+2020-10-09 01:37:08 <b_jonas> ais523: no, they might be laughing at us that they can point to how bad git is and they're offering an alternative to common people that is more down to earth
+2020-10-09 01:37:21 <ais523> fizzie: ah, OK
+2020-10-09 01:38:19 Quit: Arcorann (Ping timeout: 260 seconds)
+2020-10-09 01:42:59 <ais523> huh, apparently BitKeeper ended up as open source
+2020-10-09 01:43:50 <ais523> I was wondering what happened to it after the debalce in question
+2020-10-09 01:44:15 <b_jonas> different topic. in Spelunky 2, shopkeepers usually have a skeleton key that you can get if you kill them. skeleton keys are reusable and can open any doors that silver keys can open. this makes absolutely no sense in-game, and I think it comes from nethack. in nethack it makes some sort of sense, because it wants shopkeepers to be able to open locked doors.
+2020-10-09 01:44:46 <b_jonas> and I don't think this is a D&D heritage
+2020-10-09 01:45:13 <ais523> there's a spelunky 2?
+2020-10-09 01:45:16 <b_jonas> yes
+2020-10-09 01:45:18 <b_jonas> it was released recently
+2020-10-09 01:45:33 <b_jonas> for Playstation and Windows Steam
+2020-10-09 01:46:11 <b_jonas> a nice game, very faithful to Spelunky HD, from its creator, a worthy sequel and good game
+2020-10-09 01:46:33 <fizzie> I saw someone on the Internet play Spelunky 2 just recently, and wondered about that.
+2020-10-09 01:46:47 <fizzie> Looked like it had a bit more branching in the sequence of levels or something.
+2020-10-09 01:46:50 <b_jonas> I've seen much of it on twitch. I'm thoroughly spoiled of the known stuff now.
+2020-10-09 01:47:11 <b_jonas> fizzie: yes, zone 2 and zone 4 has two alternative biomes that you choose by entering one of the two exits of the last level of the previous zone
+2020-10-09 01:47:40 <b_jonas> zone 2 is either jungle or volcano, zone 4 is either egypt-themed or water + east asia themed
+2020-10-09 01:49:40 <b_jonas> and there are also optional boss levels that you enter to via secret levels, an optional 7th zone, and SPOILER an optional "infinite" hard postgame area that is quite hard to enter because you need to get there specific artifacts from three zones (in the intended route; you can actually skip one of them but it's harder)
+2020-10-09 01:50:04 <b_jonas> well, four specific artifacts, but one you probably alwyas get anyway
+2020-10-09 01:50:14 <b_jonas> the other three only has this one use
+2020-10-09 01:50:30 <b_jonas> well, it's more complicated
+2020-10-09 01:50:55 <b_jonas> it's one artifact that lets you into the optional 7th zone, and two that together let you from there to the postgame area
+2020-10-09 01:51:05 <b_jonas> it's a pretty nice design
+2020-10-09 01:51:25 <b_jonas> and there are probably some secrets still not discovered, because the game and especially the Windows release is quite new
+2020-10-09 01:51:51 <b_jonas> even besides this zone stuff, the overall gameplay and movement seems really well thought out, except for one specific common item that many people hate
+2020-10-09 01:52:42 <b_jonas> I should probably write a summary of the worlds at some point
+2020-10-09 01:52:48 <b_jonas> mostly to me to understand it
+2020-10-09 01:52:54 <b_jonas> because it's a pretty nice design
+2020-10-09 01:53:20 <ais523> it seems surprisingly similar to Spelunky HD, more of an expansion pack than anything
+2020-10-09 01:53:28 <ais523> perhaps it's a good thing that people release those as new versions, though
+2020-10-09 01:53:29 <b_jonas> with like eleven different biomes (set of map tiles and enemies)
+2020-10-09 01:53:41 <ais523> the old-fashioned way of doing games has been mostly abandoned nowadays
+2020-10-09 01:53:59 <b_jonas> ais523: it's a new game, but very heavily appeals to the fans of Spelunky HD, so much that good Spelunky players can learn it much easier, because the movement and controls are very similar
+2020-10-09 01:54:23 <b_jonas> and many elements are taken from HD too, like many enemies and items and world themes
+2020-10-09 01:55:29 <ais523> I've played the original (not HD) but I'm not all that good at it
+2020-10-09 01:55:40 <ais523> I feel like I'd enjoy it more if it were turn-based, even though it's a platformer
+2020-10-09 01:56:04 <b_jonas> ais523: think of classic game series like Age of Empires, Warcraft, Settlers. new games, but the good parts of design taken, so easier to learn if you know the previous game.
+2020-10-09 01:56:26 <ais523> b_jonas: yes, it's a very old-fashioned way to do a game sequel
+2020-10-09 01:56:36 <b_jonas> I guess
+2020-10-09 01:56:41 <ais523> nowadays that sort of thing's normally done as DLC rather than a sequel
