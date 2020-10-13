@@ -121,3 +121,17 @@
 2020-10-13 18:54:57 <arseniiv> they seem to be related and at first I thought they are two different kinds of Ostrowsky numeration for the same number (φ) but the golden base doesn’t seem to be
 2020-10-13 18:55:51 <arseniiv> I’d be very glad for a treatise on mixed non-integer base numerations
 2020-10-13 18:59:37 <arseniiv> golden is not(?) a generic non-integer base due to the rule “prefer 100 to 011 and so on” and I can for example come up with a similar silver base system (for χ := √2 − 1) where the rule is “prefer 100 to 021”, and it’s also related to the “Pell base” analogous to Fibonacci base and being a kind of Ostrowsky system again, unlike(?) that silver system
+2020-10-13 19:01:29 <arseniiv> I want to make sense of the full generality, what can I do and what mixed non-integer bases are able to make unique representations of numbers by adding such linear rules, and how they connect to continued fractions (golden and silver seem to connect)
+2020-10-13 19:03:25 <arseniiv> ah, not only unique representation but also monotonicity: in silver base, 1 → 10 → 11 → 20 → 100 → 101 → 110 → 111 → 120 → 200 → 201 → 1000 → … is an ascending sequence
+2020-10-13 19:04:06 <arseniiv> if one picks 021 over 100 and so on, that sequence would not be monotone
+2020-10-13 19:04:42 <arseniiv> it should be a part of some theory but I’m yet to stumble where to read on it
+2020-10-13 19:06:17 <arseniiv> btw that the last digit in the sequence doesn’t go up to 2 is analogous to Ostrowsky systems too. There it’s allowed to take one less value than for all other digit positions
+2020-10-13 19:07:57 <arseniiv> (though that’s not the case for the golden system?.. but both Fibonacci and Pell comply)
+2020-10-13 19:08:23 <arseniiv> thank you if you know something about all this
+2020-10-13 19:13:06 <arseniiv> btw you can read about that two Ostrowsky things in Andrew Mansfield Rockett, Peter Szüsz “Continued fractions”, in II.4
+2020-10-13 19:13:46 <arseniiv> en.wiki article misfused me a lot
+2020-10-13 19:18:18 <arseniiv> I thought about all that in application to timbre design: harmonics at what ratios to the fundamental can a timbre have to have useful properties, e. g. being sufficiently like “harmonic timbre” ℕ. For example we want for our timbre to not clash with itself when multiplied by φ like harmonic one would, and we want something less boring and spacey than {1, φ, φ², …}
+2020-10-13 19:19:48 <arseniiv> then I took a golden system and it adviced me to add 1 and φ − 1 consecutively to fill the blanks
+2020-10-13 19:25:15 <arseniiv> (though now I think it would be better to use 1 and φ and consider an interval between 1 and φ irrelevant). In the same vein one may use a “snake” of adding 2(√2 − 1) and 2 − √2 to √2 to make a timbre which endures multiplication by √2 and is again “not sparse”
+2020-10-13 19:25:26 <arseniiv> )
+2020-10-13 19:25:49 <arseniiv> ow I didn’t need to close that
