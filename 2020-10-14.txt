@@ -71,3 +71,22 @@
 2020-10-14 09:03:21 <esowiki> 14[[07Stax14]]4 10 02https://esolangs.org/w/index.php?diff=77982&oldid=76776 5* 03JonoCode9374 5* (+104) 10
 2020-10-14 09:03:30 Joined: rain1
 2020-10-14 09:03:30 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, Robdgreat, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-14 09:30:02 User Name: cpressey = cpressey!~cpressey@88.144.93.125
+2020-10-14 09:30:02 <cpressey> https://en.wikipedia.org/wiki/Richardson%27s_theorem
+2020-10-14 09:31:08 <cpressey> Laczkovich's simplified version looks particularly nice
+2020-10-14 09:31:22 <Taneb> Yesterday I was messing around in Haskell, and implemented regular expressions with "data Regex c a = Regex (Maybe a) (c -> Regex c a)"
+2020-10-14 09:31:44 <Taneb> I noticed it's possible to implement a Choice instance (from the profunctors library) for this type
+2020-10-14 09:33:00 <Taneb> I don't know what use this instance would have, however
+2020-10-14 09:33:47 <Taneb> Here is my code: https://gist.github.com/Taneb/804c57c4563645d933d215470cf3f911
+2020-10-14 09:38:03 <cpressey> The profunctor docs tell me Choice is "the generalization of Costar of Functor that is strong with respect to Either."  I think I'll sit this one out.
+2020-10-14 09:41:23 <Taneb> cpressey: if I have a regular expression on alphabet c, I can turn it into one on Either c d, which accepts any Right value and otherwise matches what we started with if we ignore the Rights
+2020-10-14 09:45:26 <cpressey> Taneb: I don't think I follow you. What did we start with?
+2020-10-14 09:45:53 <Taneb> A regular expression on alphabet c
+2020-10-14 09:47:10 <cpressey> This is the "what we started with" in the phrase "otherwise matches what we started with"?
+2020-10-14 09:47:20 <Taneb> Yeah
+2020-10-14 09:47:48 <Taneb> So left' a*b accepts [Right x, Left a, Left a, Right y, Left b]
+2020-10-14 09:47:59 <Taneb> Because if we ignore the Rights, we hae aab which a*b accepts
+2020-10-14 09:50:29 <Taneb> Does this help?
+2020-10-14 09:51:52 <Taneb> cpressey: also feel free to look at/comment on the rest of the file, too
+2020-10-14 09:53:23 <cpressey> Is this much or any different from https://hackage.haskell.org/package/base-4.14.0.0/docs/Data-Either.html#v:lefts ?
+2020-10-14 09:54:32 <Taneb> ...somewhat
