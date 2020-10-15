@@ -14,3 +14,14 @@
 2020-10-15 01:50:05 <shachaf> You can't write web programs with just WebAssembly, though.
 2020-10-15 01:50:20 <shachaf> You always need JavaScript.
 2020-10-15 01:54:16 <zzo38> Well, many web pages should not need any document scripts at all
+2020-10-15 02:04:18 User Name: Arcorann = Arcorann!~awych@121-200-5-186.79c805.syd.nbn.aussiebb.net
+2020-10-15 02:04:18 <Arcorann> 32-bit integers?
+2020-10-15 02:07:04 <zzo38> Yes, although you might want numbers in a certain range, and if it is not a power of two, then it might take more than one try before you get an acceptable number.
+2020-10-15 02:07:37 <int-e> If we're enumerating programming languages, GLSL and OpenCL may also work in browsers, depending on available hardware.
+2020-10-15 02:08:00 <Arcorann> https://github.com/dworthen/prng <-- searching online for javascript PRNGs turns up this
+2020-10-15 02:09:11 <Arcorann> https://github.com/bryc/code/blob/master/jshash/PRNGs.md <-- also this
+2020-10-15 02:10:15 <Arcorann> Of course, there's also whether you want cryptographic security or not
+2020-10-15 02:15:20 Quit: delta23 (Quit: Leaving)
+2020-10-15 02:15:20 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-15 02:16:20 Quit: dingwat (Quit: Connection closed for inactivity)
+2020-10-15 02:16:20 Names: ^[, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
