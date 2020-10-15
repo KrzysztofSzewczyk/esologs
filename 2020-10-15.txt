@@ -124,3 +124,61 @@
 2020-10-15 14:23:17 <cpressey> Pissed off and feeling cheated.  I want a solution to this.
 2020-10-15 14:29:05 <cpressey> The fact is that some people are not good at "thinking in types".  I am one of them.
 2020-10-15 14:30:01 <cpressey> And as long as these people exists, languages whose entire culture is based on "thinking in types" can't promote themselves as being for everyone.  It's disingenuous.
+2020-10-15 14:30:27 <myname> no language is for everyone
+2020-10-15 14:30:51 <cpressey> If the Haskell community was more elitist, it would be more honest of them.
+2020-10-15 14:31:13 <myname> what's your problem?
+2020-10-15 14:32:14 <cpressey> My problem is that while I like the bottom 15% of Haskell a lot, I'm not smart enough to work with the top 85% of Haskell.
+2020-10-15 14:32:22 <Taneb> I can't think in not-types :(
+2020-10-15 14:32:31 <wib_jonas> myname: doesn't say exactly because he wants to fix it himself, but it's probably still that monad transformer tower thing from a few days ago
+2020-10-15 14:32:33 User Name: rain1 = rain1!~rain1@unaffiliated/rain1
+2020-10-15 14:32:33 <rain1> i think haskell is too complex, it's like C++
+2020-10-15 14:32:44 <rain1> the basics are really good like  data List a = Nil | Cons a (List a)
+2020-10-15 14:33:12 <rain1> you don't need to use the complex parts, they're kind of ugly
+2020-10-15 14:33:22 <myname> oof, i wouldn't compare haskell to c+|
+2020-10-15 14:33:28 <rain1> GHC then
+2020-10-15 14:33:28 <myname> ++
+2020-10-15 14:33:42 <myname> huh? ghc makes no sense here
+2020-10-15 14:33:45 <cpressey> If you don't use the complex parts you're "not really programming in Haskell".
+2020-10-15 14:34:06 <cpressey> More to the point, you're alienating yourself from the community and libraries.
+2020-10-15 14:34:07 <rain1> sure but i'm saying that you don't need to use haskell, just use the good parts tm
+2020-10-15 14:34:22 <rain1> the community alienated themselves by breaking everything
+2020-10-15 14:34:24 <rain1> tbh
+2020-10-15 14:35:13 <rain1> haskell was fine you have functors and monads, then they made everything traversible and the language wasn't as nice
+2020-10-15 14:36:03 <cpressey> Taneb: Which means you're the sort of person who should use Haskell, and that I am the sort of person that should not.
+2020-10-15 14:36:24 <Taneb> Perhaps!
+2020-10-15 14:36:35 <Taneb> But I think people should do what they find enjoyable, most of all
+2020-10-15 14:37:58 <wib_jonas> rain1: do you mean applicable instead of traversible?
+2020-10-15 14:38:16 <rain1> no applicative is cool
+2020-10-15 14:38:47 Quit: Arcorann (Read error: Connection reset by peer)
+2020-10-15 14:38:48 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-15 14:42:32 <cpressey> Well, I don't enjoy feeling dumb and shitty.
+2020-10-15 14:42:57 <rain1> was there a specific thing that made you feel dumb?
+2020-10-15 14:43:25 <rain1> feel free to post your code
+2020-10-15 14:43:31 <myname> he won't
+2020-10-15 14:44:23 <cpressey> This isn't about my code.
+2020-10-15 14:45:41 <cpressey> I'm sure it's some reasonably straightforward problem with existential types, which I don't understand very well.
+2020-10-15 14:45:57 <rain1> existential are very very hard to use
+2020-10-15 14:46:03 <rain1> they never really make sense
+2020-10-15 14:46:12 <cpressey> I'm sure I could spend X amount of time studying existential types and eventually be able to understand the problem and fix it.
+2020-10-15 14:46:30 <cpressey> One problem is that X is very large, given that I do not "think in types".
+2020-10-15 14:46:36 <rain1> it would be better to avoid it if possible, there is one pattern of usage thaht is ok (the ST monad) but other than - try to avoid
+2020-10-15 14:46:55 <cpressey> Oh, but everyone uses GADTs.
+2020-10-15 14:47:21 <rain1> is there a specific GADT you want to work with
+2020-10-15 14:47:40 <cpressey> So, yes, I could luddite to Haskell98 with no LANGUAGE pragmas, which is what I have done until now
+2020-10-15 14:47:49 <rain1> that's the right thing to do imo
+2020-10-15 14:48:36 <wib_jonas> just rewrite it into a non-lazy language that doesn't require you to think in types
+2020-10-15 14:48:46 <wib_jonas> a multiparadigm language that doesn't bind your hands
+2020-10-15 14:49:34 <wib_jonas> one where you can write code by just writing what the computer has to do, instead of having to prove that compiler that it's correct
+2020-10-15 14:50:02 <cpressey> This isn't about my code.
+2020-10-15 14:50:03 Joined: MDude
+2020-10-15 14:50:03 Names: ^[, aaaaaa, aloril, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-15 14:50:35 <cpressey> Besides, you don't have to prove your code is correct in Haskell -- you can happily write a monad that doesn't adhere to the monad laws
+2020-10-15 14:51:05 <rain1> that's why we have coq
+2020-10-15 14:53:41 <cpressey> Coq has a lot of appeal, but it's also a lot of work, and I would probably still be expected to "think in types" a lot of the time.
+2020-10-15 14:54:17 <cpressey> I keep saying this isn't about my code -- if anything it's about something in the Haskell community that is hard to pinpoint.
+2020-10-15 14:54:36 <rain1> in coq it's a bit more like mathematical logic
+2020-10-15 14:54:43 <rain1> so it can actually make more sense
+2020-10-15 14:54:46 <myname> writing what the computer has to do is my least favourite style of programming
+2020-10-15 14:57:22 <cpressey> Basically what I hate is when people who do think in types look down their nose at people who do not think in types.
+2020-10-15 14:57:45 <rain1> yea that sucks
+2020-10-15 14:57:51 <rain1> were people being dicks in #haskell or something?
