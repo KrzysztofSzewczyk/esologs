@@ -101,3 +101,37 @@
 2020-10-16 11:25:25 <shachaf> Oh, sure, I don't think shortest number of moves matters.
 2020-10-16 11:25:38 <shachaf> Especially since every game of tic-tac-toe is a draw so they all take 9 moves.
 2020-10-16 11:29:02 <dcristofani> Well, I made this one so it'll grab a win if its opponent slips up.
+2020-10-16 11:30:10 <shachaf> That reminds me that I should internalize negascot/principal variation search.
+2020-10-16 11:30:55 Quit: cpressey (Quit: Lunch)
+2020-10-16 11:30:55 Names: ^[, aaaaaa, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, dcristofani, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-16 11:39:04 <rain1> dcristofani, good
+2020-10-16 11:39:13 <rain1> Did you know about misere knots and crosses?
+2020-10-16 11:39:16 <rain1> actuall
+2020-10-16 11:39:21 <rain1> misere knots?
+2020-10-16 11:39:24 Joined: arseniiv
+2020-10-16 11:39:25 Names: ^[, aaaaaa, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, dcristofani, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-16 11:39:26 <rain1> both players do knots
+2020-10-16 11:39:30 <rain1> the aim is to lose
+2020-10-16 11:39:48 <rain1> it can be played on larger boards than 3x3
+2020-10-16 11:41:00 User Name: arseniiv = arseniiv!~arseniiv@136.169.204.164
+2020-10-16 11:41:00 <arseniiv> btw did you try anticheckers when you can and must eat your own checkers too? In a variety where you may and must eat whole chains of checkers in one move if you’re able
+2020-10-16 11:41:09 <arseniiv> s/when/where also
+2020-10-16 11:41:33 <arseniiv> I mean where additionally
+2020-10-16 11:44:57 <arseniiv> <rain1> the aim is to lose => now upon reading that knots and crosses is a game I actually well know, that seems baffling. Is it to make a draw, or how is it possible to lose then?
+2020-10-16 11:45:27 <arseniiv> wait or not
+2020-10-16 11:46:17 Joined: wib_jonas
+2020-10-16 11:46:18 Names: ^[, aaaaaa, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, dcristofani, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-16 11:48:21 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-10-16 11:48:21 <wib_jonas> dcristofani: "the tic-tac-toe player in brainfuck that's been on my to-do list forever" => are you kspalaiologos under a different nickname?
+2020-10-16 11:48:44 <dcristofani> No. Daniel Cristofani.
+2020-10-16 11:49:07 <wib_jonas> rain1: is that noughts and crosses?
+2020-10-16 11:50:31 <arseniiv> are you kspalaiologos under a different nickname? => lool
+2020-10-16 11:51:35 <wib_jonas> arseniiv: I guess I can't accept how popular brainfuck is, and keep thinking only a few people write actual non-helloworld programs in it
+2020-10-16 11:51:58 <arseniiv> at first I imagined a game when one places some -|- intersecting paths and maybe curvy things like )( rotated 45�, and the aim is to make knot [diagram]s and something
+2020-10-16 11:52:39 <wib_jonas> dcristofani: does it use the 3x3 magic square encoding of tic-tac-toe at least internally for computations (not necessarily on the interface)?
+2020-10-16 11:53:43 <arseniiv> wib_jonas: yeah, that was funny is a truthy way, that’s why it was in need to appreciate explicitly :)
+2020-10-16 11:53:49 <wib_jonas> arseniiv: hmm. I bet searching for "Conway knot game" would find something relevant for that
+2020-10-16 11:54:11 <dcristofani> You weren't wrong about few people writing in brainfuck. And no, it doesn't. Not that that's a bad idea.
+2020-10-16 11:56:59 <arseniiv> btw a couple of days ago I realised I can do a Feynmann mug trick almost well enough (I keep checking if the mug is upright enough, and without practice, movements aren’t smooth enough)
+2020-10-16 11:57:40 <wib_jonas> it seems like there are more brainfuck variants than brainfuck programmers. see https://web.archive.org/web/20190814011410/http://www.bbspot.com/news/2000/4/linux_distros.html
+2020-10-16 11:57:44 <arseniiv> also I ended up scaring my relatives with it
