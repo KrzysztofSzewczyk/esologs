@@ -88,3 +88,16 @@
 2020-10-16 10:29:12 <esowiki> 14[[07A.R.T.I.C.L.E. Lang14]]4 M10 02https://esolangs.org/w/index.php?diff=77991&oldid=77990 5* 03SoicBR 5* (+22) 10
 2020-10-16 10:30:03 <esowiki> 14[[07A.R.T.I.C.L.E. Lang14]]4 M10 02https://esolangs.org/w/index.php?diff=77992&oldid=77991 5* 03SoicBR 5* (-37) 10
 2020-10-16 10:34:25 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=77993&oldid=77935 5* 03SoicBR 5* (+26) 10/* A */
+2020-10-16 11:09:28 Joined: t20kdc
+2020-10-16 11:09:29 Names: ^[, aaaaaa, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, dcristofani, Deewiant, diginet, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-16 11:10:16 User Name: dcristofani = dcristofani!~dcristofa@69-71-183-170.mammothnetworks.com
+2020-10-16 11:10:16 <dcristofani> So I finally ended up writing the tic-tac-toe player in brainfuck that's been on my to-do list forever. http://www.hevanet.com/cristofd/brainfuck/tictactoe.b
+2020-10-16 11:10:44 <dcristofani> Currently 963 commands long.
+2020-10-16 11:11:48 <shachaf> Does it play optimally?
+2020-10-16 11:12:36 <dcristofani> Yeah.
+2020-10-16 11:13:05 <dcristofani> I mean. in terms of winning. It doesn't care about winning in the shortest number of moves.
+2020-10-16 11:16:39 <dcristofani> I saved processing time by having it prune branches once it's evaluated a position as a win, rather than looking farther for a shorter win.
+2020-10-16 11:20:52 <dcristofani> Also, after some feedback from the esolangs Discord, I've made it handle invalid input gracefully.
+2020-10-16 11:25:25 <shachaf> Oh, sure, I don't think shortest number of moves matters.
+2020-10-16 11:25:38 <shachaf> Especially since every game of tic-tac-toe is a draw so they all take 9 moves.
+2020-10-16 11:29:02 <dcristofani> Well, I made this one so it'll grab a win if its opponent slips up.
