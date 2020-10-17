@@ -301,3 +301,76 @@
 2020-10-17 21:58:13 <ais523> the best way to think about it is that the stack + program basically are a tape already
 2020-10-17 21:59:24 <ais523> you can view a Turing machine like that; represent the left of the tape as the stack, the state of the Turing machine as a special element on top of the stack, and the tape head and elements to its right as commands
 2020-10-17 21:59:45 <imode> so assume that you only have dup, drop, swap, compose and apply, along with single-quoted versions of all of those. would that be enough?
+2020-10-17 22:00:24 <ais523> each command looks at the top two stack elements, modifies or pops them if necessary, then "executes" an appropriate number of commands to add elements to its right
+2020-10-17 22:00:30 <ais523> including the new tape headd
+2020-10-17 22:00:55 <ais523> I'm not sure whether it's possible to build something like this out of :!~*^
+2020-10-17 22:01:18 <ais523> and their single-quoted versions
+2020-10-17 22:01:41 <ais523> this may come down to the old issue of "where do you store the lookup table?" which is often an issue in proving simple languages TC
+2020-10-17 22:01:50 <ais523> there is nearly always a lookup table, or some sort of equivalent, somewhere
+2020-10-17 22:02:14 <imode> definitely that issue. in the TM construction in the article you need at least 3 levels of nesting, I think.
+2020-10-17 22:03:16 <ais523> I think you can probably store it in the top stack element, though, or maybe interspersed between adjacent stack elements
+2020-10-17 22:04:18 <ais523> or, ooh, I get what the problem is: the problem is that you have no way to construct the single-quoted versions at runtime
+2020-10-17 22:04:22 <ais523> so you have to copy them around
+2020-10-17 22:04:34 <imode> yup.
+2020-10-17 22:04:55 <ais523> if you have some way to construct the single-quoted versions in terms of the unquoted versions then you're good, and that is what the lookup table is needed for
+2020-10-17 22:05:31 <imode> so if you were to build a quotation that builds quotations, you'd need to select from an already given palette. then you'd build something that's just a quoted sequence of [dup drop swap left right ...] etc commands that builds another quotation, and then applies it.
+2020-10-17 22:05:33 <ais523> so the problem here is that there is more than one single-quoted combinator, but you can't store a single-quoted combinator inside a list
+2020-10-17 22:05:40 <imode> yup.
+2020-10-17 22:05:42 <ais523> and thus they need to be stored "loose" on the stack
+2020-10-17 22:05:47 <ais523> and ~ doesn't go deep enough to get past all of them
+2020-10-17 22:05:51 <imode> eeeexactly.
+2020-10-17 22:06:17 <ais523> dup, drop, compose, apply, rotate top 6 elements, and single-quoted versions of all those should be enough, I believe
+2020-10-17 22:06:29 <imode> ooh.
+2020-10-17 22:06:35 <imode> that's interesting.
+2020-10-17 22:06:35 <ais523> err, probably needs to be top 7
+2020-10-17 22:06:50 <ais523> maybe top 6 is enough
+2020-10-17 22:07:18 <ais523> because the only issue is juggling your single-quoted combinators on the stack, so you need enough juggling power to juggle past them and operate on the data underneath
+2020-10-17 22:07:20 <imode> you'd probably need top7 because you still need the currently active combinator.
+2020-10-17 22:07:24 <imode> yeah.
+2020-10-17 22:07:39 <imode> but what happens when you try to get at the data under that.
+2020-10-17 22:07:43 <imode> and the data under that.
+2020-10-17 22:07:57 <ais523> top 7 is enough to juggle 5 combinators and 2 pieces of data
+2020-10-17 22:08:13 <ais523> or 5 combinators, plus a duplicate of one of the combinators, plus 1 piece of data
+2020-10-17 22:09:15 <imode> I think there would be some cases where you some operations wouldn't be possible that'd be required. I don't know what a lookup table would look like apart from a sequence of quotations that point to eachother.
+2020-10-17 22:09:24 <ais523> this basically gives you all of {dup drop compose apply swap} because none of those take more than two arguments, and {push duplicate of single-quoted combinator} because you can just copy one of them and juggle it into place
+2020-10-17 22:09:27 <imode> relative to their position on the stack.
+2020-10-17 22:09:37 <ais523> (you can build a swap out of a rotate by dupping a bunch, rotating, and dropping the duplicates)
+2020-10-17 22:10:05 <ais523> the lookup table is literally just [dup][drop][compose][apply][rotate] on top of the stack, as 5 loose elements
+2020-10-17 22:10:14 Quit: arseniiv (Ping timeout: 256 seconds)
+2020-10-17 22:10:14 Names: ^[, aaaaaa, ais523, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-17 22:10:24 <imode> sorry, I misspoke: a TM's lookup table.
+2020-10-17 22:10:24 <ais523> you leave it there the entire program execution, except temporarily to operate on the elements beneath it
+2020-10-17 22:10:44 <ais523> oh, a TM's lookup table is the (color, state) → (color, state, movement) map
+2020-10-17 22:10:56 <imode> right, but forming that map.
+2020-10-17 22:11:01 <imode> within this language.
+2020-10-17 22:11:52 <ais523> you'd use enum values like !!!!!!!~!~!~!~!~!~! to store colors and states
+2020-10-17 22:12:58 <ais523> actually, even better, you use a construction where a color/state is just !!!…!!!!^ and the element that's executed contains the remanining ! to get rid of the elements that weren't popped or executed
+2020-10-17 22:13:34 <ais523> that way it composes easily, a color can be, say, ! or !! or !!!, a state can be some multiple of !!! followed by ^
+2020-10-17 22:13:48 <imode> how would you preserve the rest of the table? you need to make a state transition more than once.
+2020-10-17 22:13:50 <ais523> then, composing color with state gives you the appropriate accessor for the lookup table
+2020-10-17 22:14:01 <ais523> simulated nested quoting
+2020-10-17 22:14:10 <ais523> because you're juggling single-quoted combinators
+2020-10-17 22:14:20 <ais523> you can effectively produce a nested list by writing the appropriate list of juggling commands
+2020-10-17 22:14:39 <imode> iiiinteresting.
+2020-10-17 22:14:40 <ais523> like, you can't write [[dup swap][apply rotate]] directly, but you can create a command that produces the elements [dup swap][apply rotate] when executed
+2020-10-17 22:15:24 <ais523> beacuse you just need to write the list of commands that juggles your combinators appropriately to produce those two elements, and that list of commands is flat
+2020-10-17 22:15:25 <imode> so you apply the current color to the table to get a quotation that you can apply to do the state transition, which constructs the state table _again_.
+2020-10-17 22:15:32 <ais523> yes
+2020-10-17 22:15:36 <imode> while also performing the actions on the tape.
+2020-10-17 22:15:42 <imode> that is absolutely brilliant.
+2020-10-17 22:15:47 <ais523> at this point it's basically just standard Underload behaviour, except that there is no way to implement a
+2020-10-17 22:15:54 <ais523> but you don't need a to write a Turing machine
+2020-10-17 22:16:07 <imode> this was on the tip of my tongue for the past 5 days lmao.
+2020-10-17 22:17:13 Quit: ais523 (Read error: Connection reset by peer)
+2020-10-17 22:17:13 Names: ^[, aaaaaa, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-17 22:18:12 <imode> so the core command set is just {dup drop swap compose apply rot7} and quoted versions, leading to a total of 12 commands.
+2020-10-17 22:18:14 Joined: ais523
+2020-10-17 22:18:14 Names: ^[, aaaaaa, ais523, aloril, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-17 22:18:20 <imode> so the core command set is just {dup drop swap compose apply rot7} and quoted versions, leading to a total of 12 commands.
+2020-10-17 22:18:23 <imode> shoot, sorry.
+2020-10-17 22:19:21 <b_jonas> zzo38: right now I'm trying to figure out what happens if I have Vastvood Fortification exiled to Isochron Scepter, and I try to cast the back side as a spell without paying its mana cost. normally you can't cast lands because they don't have a mana cost so you can't pay the cost, Dryad Arbor has a mana cost but 305.9 specifically forbids it, and abilities that instruct to cast without mana cost are
+2020-10-17 22:19:27 <b_jonas> carefully phrased as "play" instead of "cast" when a land could be used, in which case 601.1a makes it so you'll play it.
+2020-10-17 22:19:34 <imode> thanks for the help ais523.
+2020-10-17 22:25:13 <b_jonas> 711.7 (a rule that doesn't even normally work until future sets are released because the back face never has mana cost) says I can choose the back face, nothing seem to prohibit it, and there's now rule 111.11 that says what happens when the back face up copy resolves.
+2020-10-17 22:25:18 <b_jonas> or the copy of the back face really
+2020-10-17 22:29:54 <b_jonas> ais523: do we happen to know what are the smallest two-stack finite control machines, as opposed to the smallest from the more restricted class of Turing machines?
