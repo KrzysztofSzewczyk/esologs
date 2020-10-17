@@ -237,3 +237,67 @@
 2020-10-17 21:29:44 <ais523> actually… Underload is TC with just ():^! (you don't need ! either but we can handle it easily without quotations)
 2020-10-17 21:29:46 <imode> you can't exactly "slurp up" portions of the stack and re-order them, because applying the quotation you used to "slurp up" that portion of the stack will be _immediately applied_.
 2020-10-17 21:29:47 <ais523> that doesn't contain a
+2020-10-17 21:30:04 <ais523> this means that there must be a finite number of combinators that works, with no full-stack effects
+2020-10-17 21:30:18 <b_jonas> ais523: yes, but it needs at least two levels of quotations, probably more
+2020-10-17 21:30:19 <ais523> because a ():^! program can only form a finite number of different stack elements during its lifetime, so you could just make them all combinators
+2020-10-17 21:30:22 <ais523> individually
+2020-10-17 21:30:37 <imode> what b_jonas said. you need the ability to double-nest quotations.
+2020-10-17 21:30:59 <b_jonas> if you allow more complicated combinators as built-ins, then you could encode a small turing-machine with exactly two levels
+2020-10-17 21:31:00 <ais523> yes, but I mean, say your program contains ((:^):), you just add ((:^):) and (:^) as combinators
+2020-10-17 21:31:06 <b_jonas> but one level is just terrible
+2020-10-17 21:31:15 <b_jonas> ais523: wait, is one level enough really? hmm
+2020-10-17 21:31:28 <b_jonas> oh yeah
+2020-10-17 21:31:31 <ais523> now there is no nesting, because your combinators are [pushdupapplytwice] and [dupapply]
+2020-10-17 21:31:57 <b_jonas> ais523 is right, a single level of nesting is enough
+2020-10-17 21:32:28 <ais523> wait, how is this not just a PDA though? it doesn't have *
+2020-10-17 21:32:53 <imode> so your combinators are [[dup apply] dup] and [dup apply]?
+2020-10-17 21:32:58 <ais523> oh, two stacks, one is program, one is stack
+2020-10-17 21:33:02 <ais523> imode: right
+2020-10-17 21:33:08 <ais523> in that example
+2020-10-17 21:33:33 <imode> hm.
+2020-10-17 21:33:47 <ais523> what I mean is, we can get a universal turing machine, translate it to the ~:!()^ subset of Underload
+2020-10-17 21:33:59 <ais523> then take every single quotation inside the program, at any nesting level, and make it a combinator of its own
+2020-10-17 21:34:30 <ais523> then we have a (very complex) combinator set that implements a TC concatenative language without quoting, full-tape effects, or cheating
+2020-10-17 21:35:07 <imode> how isn't that cheating, though? you still have two layers of nesting, you just represent them as a single command.
+2020-10-17 21:35:35 <imode> moreover how are you getting rid of garbage?
+2020-10-17 21:35:45 <ais523> actually this is basically just https://esolangs.org/wiki/The_Subtyping_Machine
+2020-10-17 21:35:50 <b_jonas> imode: you use the ! combinator to get rid of garbage
+2020-10-17 21:36:02 <ais523> in the subset without !, garbage is removed by executing it in a context where all the commands end up cancelling each other out
+2020-10-17 21:36:29 <imode> so your combinator set is apply, dup, [dup apply], [[dup apply] dup]?
+2020-10-17 21:36:42 <imode> or is it just those three.
+2020-10-17 21:37:04 <ais523> imode: well, that was just a random example
+2020-10-17 21:37:17 <b_jonas> ais523: actually if you allow any built-in combinators, then it's even simpler than the Underload construction, because you don't need to use : at all, instead just have combinators that push parenthesized list of combinators such that if you tried to expand them to underload you'd get cyclically listed and so infinite source code
+2020-10-17 21:37:46 <imode> I still consider this cheating because you're able to build larger nested structures, only they're in the form of a single command.
+2020-10-17 21:37:58 <b_jonas> you only need ~! to pick an element from a parenthisized list of combinators,
+2020-10-17 21:38:43 <b_jonas> either pick the element from a list indexed by states when the head is moving to the left, or from a list indenex by symbols when the head is moving to the right
+2020-10-17 21:39:08 <b_jonas> using ^ !!...! ~!~!...~! to keep just one element from a list
+2020-10-17 21:39:18 <ais523> I guess there are degenerate cases that work, e.g. you have an imperative stack based language that isn't concatenative, and make it concatenative by having a command that looks at the top stack element as a program and lower stack elements as the stack it operates on, then pushes itself back onto the program
+2020-10-17 21:39:21 <b_jonas> and then do nothing to execute that one combinator
+2020-10-17 21:39:59 <ais523> b_jonas: this is basically just the universal construction for minimalizing any number of combinators down to two
+2020-10-17 21:40:13 <ais523> if your combinators are 1, 2, 3, 4, 5, etc.
+2020-10-17 21:40:30 <ais523> then you minimalize them to (~)(1)(2)(3)(4)(5)(!!!!!!!) and ^
+2020-10-17 21:40:49 <imode> yeah, "select any set of combinators, re-order them, compose, done"
+2020-10-17 21:41:59 <ais523> (the number of ! is one more than the the number of preceding quotations, so if you do the monster combinator followed by ^ twice, you get a ! effect; the monster combinator + ! obviously gives you (~) and thus ~, and with the monster combinator, ~ and !, you can get any of 1, 2, 3, 4, 5)
+2020-10-17 21:42:22 <b_jonas> ais523: hmm. that's not how I was thinking of it, but maybe
+2020-10-17 21:42:42 <ais523> of course, this has a lot of intermediate combinators
+2020-10-17 21:42:57 <imode> quite a few. I think the point is simplifying from the data side, not the program side.
+2020-10-17 21:43:12 <imode> like, I can form all lists with the `quote` and `compose` operator.
+2020-10-17 21:43:16 <ais523> if you think about SK combinator calculus, there are basically five combinator families involved: K, K1, S, S1, S2 (K1, S1, S2 are parameterized by the argument that was curried into them)
+2020-10-17 21:43:39 <ais523> but you can't use `quote` in a language like this
+2020-10-17 21:43:49 <b_jonas> ais523: yeah
+2020-10-17 21:44:54 <imode> I'm back to thinking you need arbitrary stack effects.
+2020-10-17 21:45:15 <b_jonas> I should think about it this way, with a system of unparametrized stack-based combinators. That view is relevant for Consumer Society and its brother language, but I always thought of it as just the special case of implementing a turing-machine, and interfacing that with the full language on entry and exit
+2020-10-17 21:45:18 <imode> you need them unless you're willing to go with a command set that can push quotations.
+2020-10-17 21:45:33 <b_jonas> one-tape turing machine
+2020-10-17 21:46:27 <b_jonas> or really any two-stack finite control machine, it doesn't have to move symbols one to one
+2020-10-17 21:51:56 <imode> either way there needs to be some kind of nesting.
+2020-10-17 21:52:03 <imode> of levels > 1.
+2020-10-17 21:53:07 <b_jonas> imode: no, I think ais523 is right, one level of nesting, namely predetermined lists of combinators, is enough to implement a two-stack machine
+2020-10-17 21:53:42 <imode> right, but those lists of combinators need to include arbitrary stack effects, unless I'm missing something.
+2020-10-17 21:54:36 <imode> the underload two-command minimization, for example, can construct a concatenation of two quotations.
+2020-10-17 21:54:59 <imode> because you already have them on the stack, you just need to drop the ones you don't care about and concatenate the ones you do.
+2020-10-17 21:56:08 <imode> either there's an upper bound for the amount of nesting you do or you need arbitrary nesting. a third option is treating the stack like a tape.
+2020-10-17 21:56:19 <imode> I don't know what that upper bound is.
+2020-10-17 21:58:13 <ais523> the best way to think about it is that the stack + program basically are a tape already
+2020-10-17 21:59:24 <ais523> you can view a Turing machine like that; represent the left of the tape as the stack, the state of the Turing machine as a special element on top of the stack, and the tape head and elements to its right as commands
+2020-10-17 21:59:45 <imode> so assume that you only have dup, drop, swap, compose and apply, along with single-quoted versions of all of those. would that be enough?
