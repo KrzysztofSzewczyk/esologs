@@ -181,3 +181,36 @@
 2020-10-18 04:59:40 <callforjudgement> the hardest case mathematically appears to be the case where one of the arrays is only one element long
 2020-10-18 04:59:58 <shachaf> I think in my actual case the second array is always either one or two elements long.
 2020-10-18 04:59:59 <callforjudgement> then you clearly have to store it in temporary storage, move all the elements of the other array one element along, and put that one element back
+2020-10-18 05:00:11 <zzo38> Glulx has both malloc and sbrk as instructions (not system calls).
+2020-10-18 05:00:19 <callforjudgement> the other cases all reduce to this one after some silly modular arithmetic
+2020-10-18 05:00:22 <shachaf> That's a constant amount of temporary storage, though, that's fine.
+2020-10-18 05:00:34 <callforjudgement> like, you take the gcd of the lengths of the two arrays
+2020-10-18 05:00:48 <callforjudgement> if it's greater than 1 you operate on every gcdth element independently
+2020-10-18 05:01:01 <shachaf> You can do everything in-place by moving one element at a time, but I'm hoping there's something better.
+2020-10-18 05:01:34 <callforjudgement> if the lengths of the two arrays are coprime, then you can move one element at a time, yes
+2020-10-18 05:01:42 <callforjudgement> but the cache locality of that has to be horrible
+2020-10-18 05:02:14 <callforjudgement> to be fair, probably the fastest algorithm is just three memcpys
+2020-10-18 05:02:28 <callforjudgement> (with appropriate caching hints set)
+2020-10-18 05:02:42 <shachaf> These are arrays of pointers in this case.
+2020-10-18 05:03:10 <callforjudgement> although caching hints on modern x86_64 aren't very good, you basically have a choice of "I will use the data again soon" and "I will not use this data again soon"
+2020-10-18 05:03:26 <shachaf> Or what do you mean by three memcpys?
+2020-10-18 05:04:15 <callforjudgement> memcpy the shorter array to temporary storage, memmove (not memcpy, sorry) the longer array into position, memcpy the shorter array back
+2020-10-18 05:04:29 <shachaf> OK, sure.
+2020-10-18 05:04:42 <shachaf> That was probably going to be my default thing.
+2020-10-18 05:05:07 <callforjudgement> there's also the special case when the arrays are nicely page-aligned, where you just reconfigure the MMU so that the logical memory maps into physical memory in a different way, but that's not going to be very applicable and probably produces hilarious results if you do it repeatedly
+2020-10-18 05:05:50 <callforjudgement> modern processors are pretty good at block copies of memory, though
+2020-10-18 05:06:12 <callforjudgement> I did some benchmarking a while back on what the fastest way to write the results of a calculation into memory were
+2020-10-18 05:06:19 <shachaf> Speaking of which: Is it actually the case that many modern CPU L1 caches are limited to 32 KB because that's the page size times the number of cache ways?
+2020-10-18 05:06:37 <shachaf> (As opposed to other factors?)
+2020-10-18 05:07:39 <callforjudgement> that's unlikely to be a limiting factor, the main limiting factor on L1 caches is connecting them to the rest of the CPU
+2020-10-18 05:07:48 <callforjudgement> in a way that allows the data to get there fast
+2020-10-18 05:08:19 <shachaf> But what else does a virtually-indexed physically-tagged cache do if not that?
+2020-10-18 05:09:37 <callforjudgement> making the cache use a different sort of addressing internally would be a pretty minor change, compared to trying to figure out how to connect more memory to the CPU at L1 speeds
+2020-10-18 05:10:20 <shachaf> I expected that it would be something more like what you're saying, but I heard this claim, and I'm not sure. In practice you do see this kind of limit.
+2020-10-18 05:11:11 <callforjudgement> it wouldn't surprise me if physical limits on the L1 cache meant that it could only be a certain size, so there was no need to create a caching algorithm that could deal with larger sizes because it wouldn't be useful anyway
+2020-10-18 05:11:22 <shachaf> It's also not clear to me that it would be a minor change. I think people do it to be able to start the L1 cache lookup earlier, before the TLB lookup, which people say is pretty important to make it fast enough.
+2020-10-18 05:14:11 <callforjudgement> the existence of the TLB disappoints me
+2020-10-18 05:14:37 <callforjudgement> or, well, I think that even if you don't prefetch data, it makes a huge amount of sense to prefetch TLB entries
+2020-10-18 05:15:00 <callforjudgement> to the extent that it could reasonably not even be a cache, just a "prepare to read/write here…read/write here" sequence
+2020-10-18 05:15:58 <callforjudgement> it would also kind-of make sense to have a manually managed L1 cache (this presumably has to get flushed to at least L2 during a context switch, but the L1 cache rarely survives a context switch anyway)
+2020-10-18 05:16:39 <callforjudgement> sort-of like zero page on the 6502, as a sort of memory bank that's particularly fast to use
