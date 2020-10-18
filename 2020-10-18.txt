@@ -16,3 +16,56 @@
 2020-10-18 00:28:02 <zzo38> The rules say a object with instant or sorcery type cannot enter the battlefield, but I don't know about other ones
 2020-10-18 00:28:57 <b_jonas> hmm wait
 2020-10-18 00:29:01 <b_jonas> I don't know what would happen
+2020-10-18 00:30:09 Joined: tromp
+2020-10-18 00:30:09 <b_jonas> the relevant rule is 608.3, that's what moves the spell to the battlefield, but only if it's a "permanent spell", which is defined in 110.4b, which says "an artifact, creature, enchantment, or planeswalker spell"
+2020-10-18 00:30:09 Names: ^[, aaaaaa, ais523, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 00:31:48 <b_jonas> 608.2k says that an instant or sorcery spell moves to the owner's graveyard when it resolves, after it has done all the other steps for resolving
+2020-10-18 00:32:04 <b_jonas> and 608.2k also talks about resolving abilities
+2020-10-18 00:32:16 <b_jonas> combat damage on stack no longer exists
+2020-10-18 00:33:01 <b_jonas> there are of course some replacement abilities that can make a spell move to exile instead of the graveyard when resolving
+2020-10-18 00:33:42 <b_jonas> I can't find what happens with a typeless spell, so if there's no specific rule, it would remain on the stack and try to resolve again after everyone passes
+2020-10-18 00:34:02 <b_jonas> but I don't think this can happen in first place
+2020-10-18 00:35:01 Quit: tromp (Ping timeout: 244 seconds)
+2020-10-18 00:35:01 Names: ^[, aaaaaa, ais523, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 00:37:22 <zzo38> Yes, that would seem to be, although it isn't very good and I thought it might make more sense to unify the rules, to change them so that, in general: An resolving object's spell abilities are done first, and then it moves to the battlefield; if it doesn't, it moves to the graveyard; if it still doesn't, it is exiled; and if even then it still doesn't, it ceases to exist.
+2020-10-18 00:37:32 <ais523> the same thing would happen with a land spell, wouldn't it?
+2020-10-18 00:37:41 <ais523> instant draw, unless someone chooses to counterspell it
+2020-10-18 00:38:31 <zzo38> ais523: Yes, I think so, unless it is a land with another type, I suppose (although lands with other types cannot be cast anyways, due to 305.9, so it would have to change while on the stack)
+2020-10-18 00:38:39 <ais523> Netrunner fixes this problem by having playing events/operations (non-permanents), and installing hardware/programs/resources/ice/assets/upgrades/agenda (permanents), being two unrelated actions
+2020-10-18 00:39:29 <ais523> so there's never any problem about how to remove them from the play area after they resolve
+2020-10-18 00:40:01 <b_jonas> there also doesn't seem to be a rule specific for what happens with a copy of a spell if it's not a permanent spell, but the same rules as for a spell that's a card applies to them: if it's an instant or sorcery it goes to the graveyard (and later gets cleaned up), otherwise ?? but that's probably not possible
+2020-10-18 00:40:18 <b_jonas> because the type gets copied from the original spell
+2020-10-18 00:40:20 <ais523> (although, Netrunner also doesn't have counterspells in the traditional sense, to counter someone's install you destroy the thing they installed after it arrives)
+2020-10-18 00:40:43 <b_jonas> ais523: hmm. you have a point about the land spell
+2020-10-18 00:41:59 <zzo38> See a puzzle I made up some time ago, for another point of view about typeless cards outside of the battlefield (although you will not generally get a chance to cast them, nor will they get a chance to resolve, in the specific situation that I did)
+2020-10-18 00:42:36 <ais523> that said, Netrunner also doesn't have a problem with just leaving things in the play area, over multiple turns if necessary
+2020-10-18 00:43:10 <ais523> you can think of events/operations as having triggered abilities that trigger on them being played, causing them to resolve and be trashed
+2020-10-18 00:43:24 <ais523> if something goes wrong with the ability, they just kind-of sit there until something happens to them
+2020-10-18 00:43:41 <ais523> this wouldn't work in Magic, because you can counter triggered abilities there
+2020-10-18 00:43:48 <ais523> but it's a clever way to avoid having both spells and abilities on the stack
+2020-10-18 00:45:01 <ais523> and it's sometimes used to make operations that take multiple turns to resolve
+2020-10-18 00:45:30 <b_jonas> zzo38: well, I personally think the rule should be that if a spell isn't a sorcery or instant or conspiracy or emblem or plane or phenomenon or scheme or vanguard or contraption then it etb as it resolves.
+2020-10-18 00:46:41 <ais523> the really controversial option would be to have a unified list of subtypes (i.e. not needing tribal), and mark artifact and enchantment into permanent subtypes
+2020-10-18 00:46:48 <zzo38> b_jonas: The rule I suggested has the same effect that you mentioned I think anyways (although emblem isn't a type at all but a kind, and Contraption is a subtype)
+2020-10-18 00:46:56 <ais523> (land is more of a keyword ability, and creatures and planeswalkers have a lot of rules of their own)
+2020-10-18 00:46:59 <b_jonas> ais523: yes, but we want to have effects printed on cards that let you cast or play sorceries and creatures uniformly
+2020-10-18 00:47:12 <b_jonas> ais523: and keywords like suspend
+2020-10-18 00:47:19 <ais523> b_jonas: Netrunner has plentry of the former, they just say "play or install"
+2020-10-18 00:48:01 <zzo38> I think that a good way to fix it is with the unified rule I mentioned, together with fixing rule 305.9 so that it says that any object with the type "land" cannot be cast, rather than only saying if it has another type as well as land.
+2020-10-18 00:49:49 <ais523> and suspend in Netrunner would be worded as "Place 3 power counters on this event rather than trashing it as it resolves. Remove 1 counter at the start of your turn. When it has no counters, trash it and do X"
+2020-10-18 00:50:10 <ais523> (I don't think it'd be modal, Netrunner doesn't do modal effects very often, so it'd just have the suspend cost")
+2020-10-18 00:50:34 <ais523> actually that wouldn't work for suspend permanents, those would be awkward
+2020-10-18 00:50:56 <ais523> but also there wouldn't be much reason to not just have them installed normally and not do anything for a few turns, other than being counted
+2020-10-18 00:53:24 Quit: FreeFull
+2020-10-18 00:53:24 Names: ^[, aaaaaa, ais523, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 00:54:30 <b_jonas> ais523: ok, but in M:tG it's not easy to make creatures "not do anything" for a few turns, because there used to be so many costs payed by sacrificing a creature
+2020-10-18 00:54:50 <zzo38> I suppose the other place to ask is rec.games.trading-cards.magic.rules but that newsgroup doesn't seem to be much in use.
+2020-10-18 00:55:18 <b_jonas> those work even if they're Arrested and Turned to Frog
+2020-10-18 00:56:41 <ais523> yes
+2020-10-18 00:56:44 <b_jonas> also I'm pointed to https://twitter.com/WotC_Matt/status/1310740942182178817 , where re a bug about a land getting cast as a spell, Matt Tabak says "You shouldn’t be able to play a land because the instruction is to cast. The team tells me this is known and a fix is coming soon." but "fix" refers to the Arena software, not the Comp Rules
+2020-10-18 00:57:08 <ais523> it wouldn't surprise me if the Arena programmers just read the rules and implemented them as written
+2020-10-18 00:57:38 <ais523> actually I suspect the reverse has happened in some cases, with cards that don't work within the rules being errata'ed based on the implementation on jinteki.net
+2020-10-18 00:57:42 <b_jonas> that said, Matt Tabak might look at the Comp Rules anyway, plus he already knows that there are problems with the basic rules for modal double-faced cards so he'll fix them,
+2020-10-18 00:57:53 <zzo38> They should fix the Comp Rules too, I should think. I have suggested before to actually write the rules as a literate computer program (perhaps inventing a programming language for that purpose), as that would make the rules more clearly.
+2020-10-18 00:58:28 <b_jonas> plus there will probably be more modal double-faced cards in near future sets, for which he'll look at the rules too
+2020-10-18 00:58:43 <b_jonas> so I'll just have to wait for the next update and then read what the rules say again
