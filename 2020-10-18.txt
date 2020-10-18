@@ -133,3 +133,51 @@
 2020-10-18 04:15:05 <shachaf> It's too bad libc mixes "language" convenience things (that maybe ought to just be a regular library statically linked into your program) with "OS" things.
 2020-10-18 04:28:30 Quit: dcristofani (Ping timeout: 272 seconds)
 2020-10-18 04:28:30 Names: ^[, adu, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 04:33:53 <int-e> shachaf: I guess you wouldn't really like fopencookie anyway... because it allocates from the heap.
+2020-10-18 04:34:11 <shachaf> Do I hate all heap allocations?
+2020-10-18 04:34:39 <shachaf> When you're interacting with libc things like FILE * functions it seems too far gone to worry about things like that.
+2020-10-18 04:34:44 <int-e> Not quite, just the not strictly necessary ones.
+2020-10-18 04:34:50 <shachaf> It probably calls malloc 20 times before breakfast.
+2020-10-18 04:38:39 <int-e> but it leads to things like  FILE *f = fopencookie(s, "a", cb); if (!f) { errno = ENOMEM; return -1; }
+2020-10-18 04:39:01 <shachaf> Oh, sure, that seems annoying.
+2020-10-18 04:40:18 <shachaf> Certainly it seems entirely gratuitous when an API makes you do that many times for no reason, like posix_spawn.
+2020-10-18 04:42:48 <int-e> Oh well. It seems to work... https://paste.debian.net/1167655/
+2020-10-18 04:43:17 <shachaf> Good thing malloc failures never happen.
+2020-10-18 04:43:23 <shachaf> At least on Linux.
+2020-10-18 04:43:42 <int-e> that's an entirely different pet peeve :P
+2020-10-18 04:44:24 <zzo38> I often use a macro to check for memory allocation errors
+2020-10-18 04:44:37 <shachaf> Of course, if you're OK with GNU extensions + allocation, you could use asprintf.
+2020-10-18 04:44:40 <int-e> But whatever, I need some fresh air, and then I can figure out how to wrap up this toy program.
+2020-10-18 04:45:06 <int-e> shachaf: Which would be perfectly okay for my use, but less interesting :P
+2020-10-18 04:45:07 <shachaf> The allocation is theoretically variable-sized but maybe it's fine in practice for all uses of printf.
+2020-10-18 04:45:39 <int-e> (no attacker controlled format strings or format lengths or string sizes)
+2020-10-18 04:46:33 <int-e> But now that I have already written that code... what's the point in using asprintf :)
+2020-10-18 04:48:08 <zzo38> If your program uses SQLite for whatever reason, you can use the SQL printf function if you need safe dynamic printf. (If not, you can still copy the printf implementation from SQLite into your own program, and modify it to work with your program rather than SQLite.)
+2020-10-18 04:48:38 <int-e> not happening
+2020-10-18 04:50:11 <shachaf> What is this toy program?
+2020-10-18 04:51:44 User Name: callforjudgement = callforjudgement!~ais523@unaffiliated/ais523
+2020-10-18 04:51:44 <callforjudgement> <shachaf> It's too bad libc mixes "language" convenience things (that maybe ought to just be a regular library statically linked into your program) with "OS" things. ← it's unclear what should be an "OS" thing anyway, just system calls?
+2020-10-18 04:51:59 <callforjudgement> part of the reason libcs exist is that some things are system calls on some OSes but library functions on others
+2020-10-18 04:52:09 <callforjudgement> MS-DOS has malloc as a system call, for example (not sbrk)
+2020-10-18 04:52:55 <callforjudgement> also, I think you can get a lot of efficiency out of MMU abuse nowadays
+2020-10-18 04:53:12 <zzo38> Glulx has both (although you cannot use both at the same time).
+2020-10-18 04:53:44 <callforjudgement> I wonder how fast a queue implementation is that just writes through address space continuously, freeing the back of the queue when getting close to memory exhaustion
+2020-10-18 04:53:58 <shachaf> I think it's very reasonable for programs to include their own malloc implementation rather than defer to libc.
+2020-10-18 04:54:13 <callforjudgement> with a 2⁶⁴ address space you never run out
+2020-10-18 04:54:38 <shachaf> I saw this post about that mentioned it (among other things) the other day: https://tratt.net/laurie/blog/entries/why_arent_more_users_more_happy_with_our_vms_part_1.html
+2020-10-18 04:54:42 <callforjudgement> I wrote a malloc of my own for fun a while back, it seemed to have decent performance in benchmarks (although I could only find one malloc benchmarker)
+2020-10-18 04:54:44 <shachaf> (Search for "binary trees", I think.)
+2020-10-18 04:54:54 <callforjudgement> also was async-signal-safe, which is useful for some purposes
+2020-10-18 04:55:21 <callforjudgement> (i.e. you could malloc or free from a signal handler, without causing issues as long as you don't free something that's currently in use)
+2020-10-18 04:57:46 <shachaf> Hmm, this might be a silly question, but if I have an array [..., a0, a1, a2, b0, b1, ...] and I want to swap the as and bs in-place, is there a good thing to do?
+2020-10-18 04:58:11 <callforjudgement> swap a0 and b0, then a1 and b1, etc.
+2020-10-18 04:58:19 <shachaf> I mean, two contiguous subarrays.
+2020-10-18 04:58:24 <callforjudgement> the most efficient swap algorithm on x86 is probably read, read, write, write
+2020-10-18 04:58:24 <shachaf> as and bs aren't the same length.
+2020-10-18 04:58:41 <shachaf> I guess the fact that they're subarrays of a bigger array is irrelevant here.
+2020-10-18 04:58:42 <callforjudgement> oh, you mean move the bs to before the as
+2020-10-18 04:58:50 <callforjudgement> so abcdAB becomes ABabcd
+2020-10-18 04:58:54 <shachaf> Yes, that's right.
+2020-10-18 04:59:40 <callforjudgement> the hardest case mathematically appears to be the case where one of the arrays is only one element long
+2020-10-18 04:59:58 <shachaf> I think in my actual case the second array is always either one or two elements long.
+2020-10-18 04:59:59 <callforjudgement> then you clearly have to store it in temporary storage, move all the elements of the other array one element along, and put that one element back
