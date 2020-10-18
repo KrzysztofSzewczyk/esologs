@@ -106,3 +106,30 @@
 2020-10-18 03:52:01 Nick Change: deltaepsilon23 -> deltadoge23
 2020-10-18 03:52:01 Names: ^[, adu, ais523, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, dcristofani, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
 2020-10-18 03:59:48 <shachaf> https://shachaf.net/tmp/fmt/fmt.h
+2020-10-18 04:00:04 <shachaf> I think C varargs makes this pretty tricky for printf, though.
+2020-10-18 04:00:11 <int-e> I also still remember that you've worked on this.
+2020-10-18 04:00:25 <shachaf> Oh no, do I just post the same things in here over and over again?
+2020-10-18 04:01:16 <shachaf> Anyway, C varargs are invalidated as soon as the function returns, which makes it harder.
+2020-10-18 04:01:46 <shachaf> I guess you could scan over the format string once to copy the varargs values? But I'm not sure you'd want to.
+2020-10-18 04:03:32 <zzo38> There is fmemopen and open_memstream, and all of the printf variants return the length of the result, in case those things are needed.
+2020-10-18 04:04:22 <zzo38> Although there is that problem with varargs that you mention.
+2020-10-18 04:04:43 <shachaf> Yes, but that still needs you to have enough memory for the result at once, I suppose.
+2020-10-18 04:05:02 <int-e> shachaf: We all have our own little pet topics, I suppose.
+2020-10-18 04:05:28 <shachaf> musl libc uses a FILE * with a write callback argument for vfprintf.
+2020-10-18 04:06:21 <shachaf> Oh, maybe glibc does something similar.
+2020-10-18 04:06:32 <shachaf> int-e: I did change the API since last time I mentioned it, I think.
+2020-10-18 04:08:28 <int-e> Oh poking in FILE * interna, hmm.
+2020-10-18 04:09:02 <int-e> ah. fopencookie
+2020-10-18 04:09:18 <int-e> what a fun name...
+2020-10-18 04:09:31 <shachaf> Oh, I didn't know that.
+2020-10-18 04:09:36 <shachaf> Well, it's a GNU extension.
+2020-10-18 04:09:56 Quit: ais523 (Read error: Connection reset by peer)
+2020-10-18 04:09:56 Names: ^[, adu, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, dcristofani, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 04:10:02 Joined: callforjudgement
+2020-10-18 04:10:02 Names: ^[, adu, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, dcristofani, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 04:10:39 <int-e> Yes, it is. And it's still a funny name.
+2020-10-18 04:12:20 <int-e> It's too bad that this isn't standardized so you get reimplementations like https://wiki.openssl.org/index.php/BIO
+2020-10-18 04:12:35 <int-e> where nothing ever fits with anything else
+2020-10-18 04:15:05 <shachaf> It's too bad libc mixes "language" convenience things (that maybe ought to just be a regular library statically linked into your program) with "OS" things.
+2020-10-18 04:28:30 Quit: dcristofani (Ping timeout: 272 seconds)
+2020-10-18 04:28:30 Names: ^[, adu, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
