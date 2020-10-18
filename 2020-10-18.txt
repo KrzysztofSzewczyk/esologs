@@ -275,3 +275,53 @@
 2020-10-18 06:58:25 <shachaf> Oh, now I remember, TCP fast open uses this cookie.
 2020-10-18 06:58:32 <shachaf> So it's probably not even something you want to use.
 2020-10-18 06:58:42 <int-e> Yeah, hmm, that's irrelevant for what I'm doing.
+2020-10-18 07:00:22 <b_jonas> I thought apache APR has something like this, but no
+2020-10-18 07:00:43 <b_jonas> shachaf: anyway, the hardest part of implementing something like this is that printing and scanning floating-point numbers correctly is crazy hard.
+2020-10-18 07:00:52 <shachaf> I agree.
+2020-10-18 07:00:53 <b_jonas> correctly and efficiently, even harder
+2020-10-18 07:01:10 <int-e> C code always gets so long.
+2020-10-18 07:01:30 <int-e> This trivial-ish program is 301 lines now.
+2020-10-18 07:01:39 <int-e> with hardly any comments
+2020-10-18 07:01:58 <int-e> and nothing to make it user-friendly.
+2020-10-18 07:02:00 <b_jonas> int-e: that's why I don't write C programs anymore, only C++.
+2020-10-18 07:02:11 <int-e> ...
+2020-10-18 07:02:49 <int-e> I guess you can reduce the effect that every 2nd line is for error handling.
+2020-10-18 07:04:04 <shachaf> Every second line being error handling sounds more like a library problem than a language problem.
+2020-10-18 07:04:07 <shachaf> I guess it depends on the code.
+2020-10-18 07:04:49 <int-e> shachaf: every function can potentially fail, and there's no exceptions that would maybe allow to collect several kinds of errors in a single place.
+2020-10-18 07:05:06 <int-e> (at least for this kind of IO heavy code)
+2020-10-18 07:05:07 <b_jonas> shachaf: re move one array before the other when they're adjacent, there's a function that does that, https://en.cppreference.com/w/cpp/algorithm/rotate , but usually it's easier if you have a separate buffer that you can move into
+2020-10-18 07:06:12 <b_jonas> "probably the fastest algorithm is just three memcpys" => basically yes, although one of them should be a memmove unless you're careful
+2020-10-18 07:06:46 <shachaf> But this is a C++ page. I know: I'll look in /usr/include/c++/ and see if I can figure out what it does.
+2020-10-18 07:07:50 <b_jonas> ais523: 'you basically have a choice of "I will use the data again soon" and "I will not use this data again soon"' => technically there's also "I'll never use this data again, don't bother flushing it from cache"
+2020-10-18 07:08:23 <shachaf> How many levels of indirection before finding the implementation?
+2020-10-18 07:08:59 <shachaf> Oh, only two, very good.
+2020-10-18 07:10:14 <b_jonas> ais523: "trying to figure out how to connect more memory to the CPU at L1 speeds" => I'm convinced the thing that stops that is the minimum page size, which is 4096 bytes on x86, and can't be increased unless you break compatibility with a lot of existing software, because the L1 cache has to do enough address calculation to know where to start to look before the results from the TLB arrives, so you
+2020-10-18 07:10:20 <b_jonas> can't have more than 8*4096 bytes of L1 cache (per type (data vs code) and cpu core)
+2020-10-18 07:10:39 <myname> just rust everything c/c++ :p
+2020-10-18 07:10:40 <shachaf> b_jonas: That's what I was saying.
+2020-10-18 07:11:05 <b_jonas> "prefetch TLB entries" => you could do that by prefetching one word from each page
+2020-10-18 07:11:06 <shachaf> But I'm not sure whether that's really the limiting factor. It seems pretty silly compared to the thing ais523 was saying.
+2020-10-18 07:11:26 <b_jonas> but I think even then I do want a TLB to exist, and a large one ideally
+2020-10-18 07:11:30 <b_jonas> I don't see why it disappoints you
+2020-10-18 07:11:55 <b_jonas> shachaf: yes, it's a C++ page, because it has a C++ interface
+2020-10-18 07:12:20 Quit: FAKTOR7 (Remote host closed the connection)
+2020-10-18 07:12:21 Names: ^[, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 07:12:52 <b_jonas> shachaf: also be careful when using the actual function, I think it had a bug in older versions of gcc where it wasn't binary compatible between two versions of gcc if you ever called it with zero offset or some such nonsense
+2020-10-18 07:13:02 <b_jonas> I don't want to look it up now
+2020-10-18 07:13:11 <shachaf> I'm not using C++ so it doesn't matter.
+2020-10-18 07:13:47 <b_jonas> shachaf: I think that's the limiting factor *now*. obviously if you increase the minimum page size, there'll be another limiting factor very soon, but even just doubling the L1 cache size would help a lot
+2020-10-18 07:14:09 <b_jonas> well, it would help a lot for some code, obviously; some code isn't bound by that
+2020-10-18 07:14:18 <shachaf> b_jonas: Another thing that could help is page coloring, requiring physically adjacent pages to be mapped together.
+2020-10-18 07:14:30 <shachaf> "physically" adjacent
+2020-10-18 07:14:41 <b_jonas> shachaf: I don't know what that means
+2020-10-18 07:14:46 <b_jonas> page coloring?
+2020-10-18 07:14:55 <shachaf> https://en.wikipedia.org/wiki/Cache_coloring
+2020-10-18 07:15:41 <shachaf> It's sort of intermediate between the current situation and actually changing the page size.
+2020-10-18 07:15:43 <b_jonas> color all your hot memory regions red with the blood of your enemies that you sacrifice to the gods thanking them for giving your computer better performance for memory accesses
+2020-10-18 07:16:14 <b_jonas> and from the blood of sacrifical animals as well
+2020-10-18 07:16:50 <b_jonas> use their livers for haruspexy to predict near future memory access and prefetch them as well while you're there
+2020-10-18 07:16:55 <shachaf> For example, require each even page n to be mapped next to page n+1.
+2020-10-18 07:17:52 <b_jonas> hmm
+2020-10-18 07:27:21 Joined: arseniiv
+2020-10-18 07:27:21 Names: ^[, aloril, APic, Arcorann, arseniiv, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
