@@ -216,3 +216,62 @@
 2020-10-18 05:16:39 <callforjudgement> sort-of like zero page on the 6502, as a sort of memory bank that's particularly fast to use
 2020-10-18 05:46:34 Quit: callforjudgement (Quit: quit)
 2020-10-18 05:46:34 Names: ^[, adu, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 06:32:17 <b_jonas> int-e: libc has functions to open a FILE* that's a stringstream, or one that is attached to a file descriptor but doesn't close it on fclose. the former lets you implement sscanf from fscanf, the latter is more useful, it lets you fprintf to a file descriptor, or more importantly, mix other kinds of file abstractions (eg. C++, perl, python, rust file handles) easily with FILE*.
+2020-10-18 06:32:27 Quit: adu (Quit: adu)
+2020-10-18 06:32:27 Names: ^[, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 06:32:42 <b_jonas> int-e: but as for formatting to a fixed-sized buffer, that's what snprintf is for
+2020-10-18 06:33:19 <shachaf> snprintf is for formatting to a buffer that's big enough to print everything all in one go.
+2020-10-18 06:33:48 <b_jonas> shachaf: yes, glibc also has a way to create a FILE* with custom read/write callbacks
+2020-10-18 06:33:58 <shachaf> Yes. That is what int-e used.
+2020-10-18 06:34:24 <b_jonas> has a documented API for it
+2020-10-18 06:34:32 <shachaf> But my string formatter doesn't need any of those, not even callbacks.
+2020-10-18 06:34:50 <shachaf> It's resumable so you can format into a buffer, do something with it, and then use it again.
+2020-10-18 06:44:22 <b_jonas> ais523: "with a 2⁶⁴ address space you never run out" => yes, but (a) sometimes you want to malloc to a smaller arena in order to have multiple buffers each of which you can free at once without iterating on all its blocks (b) or to be able to use 32-bit indexes within an arena; (c) the address space is 47 bits in practice, not 64 bits;
+2020-10-18 06:45:50 <b_jonas> (d) even aside from those I have the feeling that your malloc has some non-obvious drawbacks, such as using too many page table entries and so making the page table cache (called "translation something buffer" or TLB on x86) inefficient and so slowing all memory access down, even the memory access outside your malloced space, and possibly making the OS work harder to handle the metadata for your address
+2020-10-18 06:45:56 <b_jonas> space
+2020-10-18 06:46:55 <b_jonas> shachaf: right, so why isn't snprintf good for you? do you want to be able to continue formatting with the same arguments after your buffer runs out or something? if you want that, that's basically all that a FILE* does, with a few more words of metadata for how to read and seek
+2020-10-18 06:47:30 <shachaf> Well, FILE * doesn't present this interface at all, in general.
+2020-10-18 06:47:42 <shachaf> glibc does give you the interface, but it makes you use callbacks.
+2020-10-18 06:48:16 <b_jonas> shachaf: ok, so why is snprintf not good for what you want?
+2020-10-18 06:48:27 <b_jonas> or its openbsd variant, if there's one
+2020-10-18 06:48:40 <shachaf> snprintf requires you to have a buffer that's big enough for the entire output.
+2020-10-18 06:48:57 <b_jonas> nope, no openbsd variant
+2020-10-18 06:49:02 <shachaf> You can't write fprintf in terms of snprintf without something like allocation.
+2020-10-18 06:49:26 <b_jonas> shachaf: right, so what do you want to do if the buffer runs out, other than detecting that condition like snprintf does and possibly getting a prefix?
+2020-10-18 06:49:53 <shachaf> I want to be able to do something with the buffer (like write it to a file) and then continue where I left off.
+2020-10-18 06:50:00 Quit: sprocklem (Ping timeout: 258 seconds)
+2020-10-18 06:50:00 Names: ^[, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, deltadoge23, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 06:50:21 <b_jonas> shachaf: ok, but do you want that as a callback, or do you want to call the formatting function back, or something else?
+2020-10-18 06:50:33 <shachaf> I want to call the formatting function.
+2020-10-18 06:50:41 <shachaf> That's more flexible than a callback.
+2020-10-18 06:50:44 <b_jonas> and it has to somehow remember where it stopped?
+2020-10-18 06:50:53 Quit: deltadoge23 (Quit: Leaving)
+2020-10-18 06:50:54 Names: ^[, aloril, APic, Arcorann, asie, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FAKTOR7, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-18 06:50:57 <shachaf> Yes.
+2020-10-18 06:51:05 <shachaf> For example the library I linked above does that.
+2020-10-18 06:51:07 <b_jonas> well that's harder to implement from the formatter side, unless you want to give it a stack so it works as a user-space coroutine
+2020-10-18 06:51:34 <b_jonas> I don't think I ever wanted such an interface, but if you want that, sure
+2020-10-18 06:51:52 <shachaf> Yes, it's more work to make flexible general libraries than ones that only work for a particular use.
+2020-10-18 06:52:08 <b_jonas> because then my code has to remember all the formatting arguments too, and what memory they refer to, and all that
+2020-10-18 06:52:10 <shachaf> I think a callback alternative would probably be OK, just more annoying to use. But standard C doesn't even give you that.
+2020-10-18 06:52:27 <shachaf> It's true. Maybe C varargs just aren't up to the task.
+2020-10-18 06:52:31 <b_jonas> the callback alternative is the FILE*-based one in glibc
+2020-10-18 06:52:49 <b_jonas> you say it uses a few extra calls of malloc, which is admittedly true
+2020-10-18 06:52:53 <shachaf> Yes, in glibc you can do it.
+2020-10-18 06:53:08 <shachaf> No, I wasn't really objecting to that malloc, I think that was someone else.
+2020-10-18 06:53:23 <b_jonas> well it has to be implemented somewhere first. "it's not standardized" is not an excuse, you start with an implementation for stuff like this, not with a standard.
+2020-10-18 06:53:53 <b_jonas> and there are similar implementations of custom streams in lots of other libraries
+2020-10-18 06:55:11 <b_jonas> the C++ standard library has something like that now I think, I think boost had something similar but probably with a worse formatter,
+2020-10-18 06:55:12 <shachaf> Well, I doubt I'd want the glibc solution to be standardized.
+2020-10-18 06:55:16 <int-e> shachaf: The toy program is a proxy that provides SSL wrapping for a local service... with the twist that it also tells the local service where the request came from.
+2020-10-18 06:55:34 <b_jonas> these are based on something like C++ streams
+2020-10-18 06:55:38 <shachaf> Anyway, I was only saying why I don't want to use the glibc function, not whether it's an excuse or not.
+2020-10-18 06:56:35 <b_jonas> a moment, there was another non-libc library that may have one but I can't find it
+2020-10-18 06:56:40 <shachaf> Hmm, TLS with TCP fast open is still not really workable, right?
+2020-10-18 06:57:10 <int-e> not sure what that is
+2020-10-18 06:57:26 <shachaf> b_jonas: Anyway, difficulty of standardization is the reason I was saying I don't really want to be using a standardized library for this.
+2020-10-18 06:57:46 * int-e looks at https://en.wikipedia.org/wiki/TCP_Fast_Open
+2020-10-18 06:57:53 <shachaf> The thing they do to save a roundtrip establishing a TLS connection. Since normally you have the TCP handshake first, followed by the TLS negotiation.
+2020-10-18 06:58:25 <shachaf> Oh, now I remember, TCP fast open uses this cookie.
+2020-10-18 06:58:32 <shachaf> So it's probably not even something you want to use.
+2020-10-18 06:58:42 <int-e> Yeah, hmm, that's irrelevant for what I'm doing.
