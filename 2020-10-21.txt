@@ -85,3 +85,11 @@
 2020-10-21 04:19:42 <ais523> I'm semi-seriously considering sending off a request to IANA to add some
 2020-10-21 04:20:57 <ais523> or two, sha1 seems to be most widely used for this, but we would ideally want a hash function that isn't broken as an option
 2020-10-21 04:21:03 <ais523> (or at least, isn't known to be broken)
+2020-10-21 04:30:42 <ais523> perhaps urn:sha1: wouldn't be accepted because of the potential for two different file to have the same URN
+2020-10-21 04:31:36 <ais523> it would need to be defined very carefully, e.g. saying that the URN referred to the only file in existence that had that hash at the time the URN was first created, and that creating such a URN is not valid if two different files with the same hash exist
+2020-10-21 04:36:46 <zzo38> I think that it could still work; the URN refers to the hash itself, not to the file.
+2020-10-21 04:39:29 <ais523> hmm, that's an interesting concept
+2020-10-21 04:39:36 <ais523> the URN would clearly be more useful if it referred to the file
+2020-10-21 04:41:25 <ais523> huh, something I learned today: the attacks on SHA-1 are still improving, Wikipedia says that with the latest techniques, a chosen-prefix collision on SHA-1 would cost about US$45000 of computer time
+2020-10-21 04:43:44 <shachaf> How much is that attacks getting better vs. GPUs or something getting better?
+2020-10-21 04:47:34 <ais523> most of it is attacks getting better
