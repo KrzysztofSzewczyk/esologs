@@ -40,3 +40,34 @@
 2020-10-21 03:19:11 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
 2020-10-21 03:21:37 Joined: moony
 2020-10-21 03:21:37 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
+2020-10-21 03:36:23 <ais523> <shachaf> ais523: What's the benefit of not having it be preimage-resistant in that scenario? ← giving the hash to someone would be evidence that you wanted them to have the data, so there are no security implications of reversing the hash
+2020-10-21 03:36:42 <ais523> e.g., if you have a file on your system that matches the hash, you could safely give it to anyone who gave you the hash
+2020-10-21 03:38:14 <shachaf> I don't follow. Can't you just decide on that rule, if you want to use the hash that way?
+2020-10-21 03:38:40 <shachaf> If you have a 256-bit hash and a 256MB file, the fact that people can find a preimage (or even enumerate all preimages) doesn't help them get the file at all.
+2020-10-21 03:39:37 <ais523> someone having possession of, say, an SHA-256 hash of a file doesn't imply anything about whether they're supposed to have the file or not
+2020-10-21 03:40:09 <ais523> if the hash is designed not to be preimage-resistant, then possession of the hash does imply that you're meant to have access to the file
+2020-10-21 03:40:49 <ais523> because the person who made the hash has the file, and could have given it to them; and if they weren't meant to be giving access to the file at the same time, they would use a hash that was preimage-resistant
+2020-10-21 03:43:21 <ais523> the intended idea behind this, by the way, was for a hypothetical OS with much tighter permissions control than, say, Linux or Windows
+2020-10-21 03:43:27 <ais523> where programs only had access to what they needed
+2020-10-21 03:43:47 <ais523> the idea was that the programs could store some sort of hash for files that they didn't "own", allowing them to read them
+2020-10-21 03:44:23 <ais523> but that you would need to be able to prove that possession of the hash implied it was safe to give the possessor the file itself
+2020-10-21 03:45:32 <zzo38> O, OK. Now I understand (I think).
+2020-10-21 03:47:03 <int-e> So, hrm... you want capabilities that can be persistent?
+2020-10-21 03:47:09 <ais523> preimage-resistant hashes are often used to prove that you have a file without intending to give the file to the person you give the hash to, so in order to prevent it being used for that purpose, it has to be non-preimage-resistant
+2020-10-21 03:47:13 <ais523> int-e: yes, that's a good way to think about it
+2020-10-21 03:47:20 <ais523> like a capability for access to information
+2020-10-21 03:48:47 <shachaf> So you wouldn't actually use the non-preimage-resistance for anything?
+2020-10-21 03:49:47 <shachaf> It seems like you can just use SHA-256 for this, and only give people hashes of files if you want them to have access.
+2020-10-21 03:50:02 <shachaf> I guess you can use SHA-256 with a different starting state or something.
+2020-10-21 03:50:35 <zzo38> It seem to me that at least preimage resistance is not necessary for this case, but that a different hash is wanted to tell the difference of its use; I suppose SHA-256 with a different starting state might work, maybe
+2020-10-21 03:50:50 <int-e> Yeah, content-addressable memory is the other keyword that came to my mind.
+2020-10-21 03:51:22 <shachaf> I feel like I want there to be as few cryptographic primitves as possible and have them be simple and flexible.
+2020-10-21 03:51:51 <int-e> (where "memory" is generic, could be a file system, could even be a distributed file sharing thing))
+2020-10-21 03:52:32 <zzo38> (Is SHA-256 different-starting-state-resistance?)
+2020-10-21 03:52:50 <shachaf> When is NIST-or-whoever going to standardize an unkeyed permutation?
+2020-10-21 03:53:04 <shachaf> That seems like the best symmetric primitive to me.
+2020-10-21 03:54:36 <ais523> you could construct something like this quite simply, e.g. concatenate a file's SHA-256, SHA-1, MD5, and the first 16 bytes of the file
+2020-10-21 03:54:58 <ais523> that clearly leaks information about the underlying file, and is clearly at least as collision-resistant as SHA-256 is
+2020-10-21 03:55:14 <ais523> (the SHA-1 and MD5 make it easier to find random copies of the file that might be floating around online)
+2020-10-21 03:55:48 Joined: sprocklem
+2020-10-21 03:55:48 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
