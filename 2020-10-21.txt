@@ -214,3 +214,11 @@
 2020-10-21 14:27:52 <b_jonas> but it doesn't give you writable storage: if you want remote backups every day, you have to send a new digest to the remote location every day.
 2020-10-21 14:28:47 <b_jonas> also having a digest would essentially count as proof that you have the data that it points to, like for proving that you have gotten access to industrial secrets or copyright-protected information
 2020-10-21 14:29:20 <b_jonas> so you could have very short bits of information that you aren't allowed to distribute
+2020-10-21 14:30:32 <b_jonas> it would also help connect places where it's currently expensive to set up high bandwidth data connections for practical reasons, like in isolated places or between continents or to space
+2020-10-21 14:38:37 <b_jonas> also none of the properties would break if the digest was unseeded (so it gave the same result if two people upload the same data), and even computed by a known hash function that is cryptographically safe (eg. the aliens describe how to compute the hash function in the manual), but somehow I always imagine the digest as not reproducible, because that's somehow more believable
+2020-10-21 14:39:23 <b_jonas> you could even have it so that you don't need to upload anything to the box, as long as you have a file and compute its digest using the safe crypto hash function that the aliens specify in the manual, it's enough for anyone to download, which seems even more magical but doesn't seem to break anything
+2020-10-21 14:40:08 <esowiki> 14[[07Works in progress14]]4 10 02https://esolangs.org/w/index.php?diff=78094&oldid=72175 5* 03WhyNot? 5* (+15) 10
+2020-10-21 14:42:29 <b_jonas> but of course the digest has to be long enough to be secure from a birthday attack on an expensive fast parallelized GPU cluster
+2020-10-21 14:43:05 <b_jonas> even with any technology we or the aliens may have in the future
+2020-10-21 14:58:30 <b_jonas> mind you, if they work with a public hash function, but the boxes were so expensive we can't afford even a single one, yet we had access to a manual and knew that the boxes work, then we'd at least have a guaranteed crytographically secure hash function, which would be a nice consolation prize
+2020-10-21 14:58:47 <b_jonas> (until of course they destroy everyone with a death ray)
