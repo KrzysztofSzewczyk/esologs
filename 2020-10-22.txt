@@ -61,3 +61,48 @@
 2020-10-22 08:52:46 <Taneb> cpressey: I think it's more analogous to stating a theorem
 2020-10-22 08:52:58 <Taneb> With adding a builtin function like adding an axiom
 2020-10-22 08:56:48 <cpressey> Most of the functions I write surely aren't theorems
+2020-10-22 09:00:22 Joined: Arcorann
+2020-10-22 09:00:25 Quit: Arcorann (Ping timeout: 240 seconds)
+2020-10-22 09:01:13 <Taneb> They might just not be very good theorems
+2020-10-22 09:01:57 <int-e> There's a definitional principle by specification: If you prove (exists x. P(x)), then that allows you to introduce a fresh constant k, and assert P(k) as an axiom.
+2020-10-22 09:02:41 <int-e> The proof of  exists x. P(x)  is fairly trivial if P(x) has the form x = foo with x not occurring in foo.
+2020-10-22 09:09:57 <int-e> Hmm. I believe Isabelle/Pure really only has the special case of definition by equality. Isabelle/HOL adds a Hilbert choice operator, so you get the specification principle by defining k = SOME x. P(x), and noting that exists x. P(x) ==> P(SOME x. P(x)) <==> P(k).
+2020-10-22 09:10:17 <rain1> \x. x has type P -> P which is the tautology theorem
+2020-10-22 09:10:22 <int-e> No clue about other interactive theorem provers.
+2020-10-22 09:10:55 <rain1> \f. \g. \x. g(f(x)) has type (P -> Q) -> (Q -> R) -> (P -> R) which is a tautology
+2020-10-22 09:11:10 <int-e> Especially the dependently typed ones.
+2020-10-22 09:11:15 <rain1> if you read -> as implies it works
+2020-10-22 09:12:05 <int-e> rain1: not sure what your point is
+2020-10-22 09:12:29 <int-e> @djinn (p -> q) -> (q -> r) -> p -> r
+2020-10-22 09:12:29 <lambdabot> f a b c = b (a c)
+2020-10-22 09:12:32 <rain1> it's for cpressey to see why functions are proofs of theorems
+2020-10-22 09:12:58 <rain1> just a couple simple examples
+2020-10-22 09:13:10 <int-e> But that is entirely independent of how you deal with definitions.
+2020-10-22 09:13:44 <cpressey> There are lots of functions which are not proofs of theorems.
+2020-10-22 09:13:46 <int-e> And you want proper definitions in every practical proof framework because they are crucial for compression.
+2020-10-22 09:13:52 <int-e> That, and lemmas.
+2020-10-22 09:14:11 <int-e> (Which may be the same if you have dependent types.)
+2020-10-22 09:14:50 <rain1> cpressey, that is true...
+2020-10-22 09:14:52 <int-e> In *theory*, of course you can treat definitions and lemmas as abbreviations to be unfolded.
+2020-10-22 09:14:57 <rain1> like, infinite loops
+2020-10-22 09:15:25 <rain1> but if you stick to functions with no infinite loops they can be read as theorems (even if they are often boring ones)
+2020-10-22 09:15:49 <Taneb> I think all functions are proofs of theorems, just not necessarily in a consistent logic
+2020-10-22 09:16:05 <cpressey> "can be read as theorems that no one cares about", I won't argue with that
+2020-10-22 09:16:08 <int-e> Most of the functions I write are broing when viewed as theorems.
+2020-10-22 09:17:03 <int-e> When I write a function of type Nat -> Nat, I usually care about the values. But usually not enough to try to specify what they are in the type.
+2020-10-22 09:17:34 <int-e> So... functions are more than just proofs.
+2020-10-22 09:18:18 <cpressey> If I use a dynamically typed language, then I am using a "degenerate type system with only one type" in the view of type theory, and I imagine that make it difficult to form any interesting proofs.  But I can *program* in it just fine.
+2020-10-22 09:18:41 <Taneb> I still assert that functions are far more like theorems than axioms
+2020-10-22 09:18:51 <int-e> And yes, indeed, the potential for nontermination makes the picture of functions as proofs even more inaccurate.
+2020-10-22 09:19:09 <int-e> Taneb: It's not about functions, at least not as I read it.
+2020-10-22 09:19:52 <int-e> Taneb: It's about giving a *name* to a value, which is the essence of a definition of a function.
+2020-10-22 09:21:33 <int-e> Of course this is my own interpretation of something cpressey wrote. I don't know whether it's the intended one.
+2020-10-22 09:22:51 <cpressey> int-e: I feel like I *kind of* follow your explanation with P(x), if, to prove that x (for example factorial) exists you only need to supply the definition of it (a term exists that we can call "factorial")
+2020-10-22 09:23:26 <cpressey> I suppose that's a kind of existence proof.
+2020-10-22 09:24:33 <cpressey> But then, what is P() in general? It seems like it could be the evaluation relation for your environment?
+2020-10-22 09:25:05 <int-e> Yes.
+2020-10-22 09:25:21 <cpressey> OK, then I probably follow you.
+2020-10-22 09:25:31 <int-e> it could be... P(f) <--> f(0) = 1 /\ forall x. f(x+1) = f(x)*(x+1)
+2020-10-22 09:28:15 <int-e> (Which specifies the factorial function, assuming f : nat -> nat, but makes existence of f non-trivial.)
+2020-10-22 09:28:28 <rain1> yes functions are more than just their types
+2020-10-22 09:28:50 <rain1> types are just a blueprint of what the function does structurally
