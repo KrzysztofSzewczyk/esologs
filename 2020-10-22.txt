@@ -106,3 +106,25 @@
 2020-10-22 09:28:15 <int-e> (Which specifies the factorial function, assuming f : nat -> nat, but makes existence of f non-trivial.)
 2020-10-22 09:28:28 <rain1> yes functions are more than just their types
 2020-10-22 09:28:50 <rain1> types are just a blueprint of what the function does structurally
+2020-10-22 09:30:31 <int-e> cpressey: What I'm saying is very much inspired by how Isabelle/HOL deals with these things.
+2020-10-22 09:32:23 <int-e> For example, there is a function definition package that *can* deal with the above specification of the factorial function. Internally it'll extract a dependency relation (here, x+1 -> x; in general those will be tuples of all the arguments) and shows that it is well-founded (for which it has various heuristics)... and then one can show that f exists by induction on that relation.
+2020-10-22 09:32:49 <int-e> (This is not entirely accurate, but close enough for an overview.)
+2020-10-22 09:34:10 <int-e> hmm. let's  s/overview/outline/
+2020-10-22 09:35:07 <rain1> although some functions are uniquely determined by their type
+2020-10-22 09:35:25 <rain1> up to extraneous lambda terms and other "nothings"
+2020-10-22 09:36:45 <cpressey> rain1: Yeah, and even when it's not uniquely determined, you get at least one theorem "for free" by parametricity, as I understand it.
+2020-10-22 09:37:29 <int-e> @djinn (a -> a) -> a -> a
+2020-10-22 09:37:29 <lambdabot> f a = a
+2020-10-22 09:37:49 <rain1> that's true! parametricity is pretty amazing
+2020-10-22 09:37:59 <int-e> (unsurprisingly, the preferred Church numberal is 1.)
+2020-10-22 09:38:07 <rain1> if a function works for all types you know it doesn't inspect and case analysis on data of that type
+2020-10-22 09:38:15 <rain1> which lets you say a lot about a function
+2020-10-22 09:38:24 <int-e> "numberal". Finally a typo that makes sense.
+2020-10-22 09:38:40 <int-e> @free (a -> a) -> a -> a
+2020-10-22 09:38:40 <lambdabot> Try `free <ident>` or `free <ident> :: <type>`
+2020-10-22 09:38:50 <int-e> @free church :: (a -> a) -> a -> a
+2020-10-22 09:38:51 <lambdabot> f . g = h . f => f . church g = church h . f
+2020-10-22 09:39:23 <int-e> induction, more or less.
+2020-10-22 09:41:22 <rain1> wow i never knew that!
+2020-10-22 09:41:24 <rain1> that's cool
+2020-10-22 09:46:25 <cpressey> On the other hand, it's possible for a function to uphold an invariant that cannot be captured by any type.
