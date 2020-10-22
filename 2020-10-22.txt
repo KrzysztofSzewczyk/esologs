@@ -133,3 +133,36 @@
 2020-10-22 10:21:24 <b_jonas> cpressey: definitions aren't like axioms in that they don't let you prove things that were meaningful but you couldn't have proved from your existing axioms.
 2020-10-22 10:23:50 <int-e> spoken like a logician
 2020-10-22 10:29:44 <cpressey> My comparison to axioms was meant to highlight that before you give the definition of factorial there's no way in hell you can deduce the truth or falisty of the statement "factorial(5)=120"
+2020-10-22 11:22:09 Joined: ais523
+2020-10-22 11:22:09 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, cpressey, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, HaJones, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
+2020-10-22 11:22:24 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-22 11:22:24 <ais523> b_jonas: you can imagine a modification of, say, the SHA-1 or SHA-256 algorithm
+2020-10-22 11:22:52 <ais523> in which the final step is "check if this hash has ever been output for a different input file; if so, increment the hash and repeat this step"
+2020-10-22 11:23:06 <ais523> now you have an algorithm that is precisely defined and collision-free
+2020-10-22 11:23:11 <ais523> (if a little difficult to use in practice)
+2020-10-22 11:23:16 <ais523> this seems quite similar to what your magic box is doing
+2020-10-22 11:23:26 <ais523> (although not the same, obviously)
+2020-10-22 11:23:38 <b_jonas> ais523: I'm not sure if it's well-defined whether a hash has been output, and which of two hashes has been output first.
+2020-10-22 11:24:14 <b_jonas> ais523: and no, (a) the magic box does more than just produce hashes, and (b) it uses a longer digest and one that's cryptographically safe so you can't produce collisions
+2020-10-22 11:24:45 <ais523> the thing that the magic box produces is a hash by definition, isn't it? except that it might not be deterministic
+2020-10-22 11:24:55 <ais523> (when using it in "store" mode)
+2020-10-22 11:25:15 <b_jonas> ais523: it need not be. it could be just an entirely random value that it doesn't compute from the input or anything
+2020-10-22 11:25:16 <ais523> the magic boxes are slightly more useful if you also add the proviso that the same code will be returned for anyone, if they provide the same file as input
+2020-10-22 11:25:35 <ais523> I would argue that *even if* it isn't computed from the input, it's still a hash function
+2020-10-22 11:25:40 <b_jonas> ais523: sort of but not really. if you want to check for collisions, you can just use an ordinary hash independent of the magic box.
+2020-10-22 11:25:55 <b_jonas> ok, then it's a hash function.
+2020-10-22 11:26:15 <ais523> fwiw, I have wanted a similar operation to this in a golfing language
+2020-10-22 11:26:26 <ais523> it takes an arbitrary data structure and returns a single integer, consecutive from 0
+2020-10-22 11:26:39 <b_jonas> interning arbitrary data structures?
+2020-10-22 11:26:42 <b_jonas> could work
+2020-10-22 11:26:43 <ais523> right
+2020-10-22 11:26:53 <ais523> of course, there is an uninterning operation, too
+2020-10-22 11:27:18 <ais523> another idea I had, along similar lines, was a function that interns pairs of integers
+2020-10-22 11:27:30 <ais523> when you have this, your language no longer needs data structures, as you can do cons just on integers
+2020-10-22 11:27:55 <ais523> (there are bijections between Z² and Z, so I guess you wouldn't even need to use interning if you didn't mind the size of the numbers exploding)
+2020-10-22 11:28:14 <b_jonas> ais523: that's what cons does if there's no garbage collection, except I think if you say interning, you want a deterministic function
+2020-10-22 11:28:29 <b_jonas> as for numbers exploding, yes, that's what (0) does
+2020-10-22 11:28:48 <ais523> well, deterministic within one run of the program
+2020-10-22 11:29:01 <b_jonas> ok
+2020-10-22 11:29:35 <ais523> anyway, I think "content-addressable storage" is the general term for your magic boxes, except that two different CASes are not usually linked to each other
+2020-10-22 11:29:46 <b_jonas> that sounds typical for these golf languages, normally you wouldn't want to intern every pair, because it's sort of slow, but in a golf language you might not care
