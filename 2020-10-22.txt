@@ -238,3 +238,57 @@
 2020-10-22 11:56:54 <ais523> constant factor seems bad, though :-D
 2020-10-22 11:58:19 <ais523> <the page b_jonas linked a little earlier> One of my favorite quotes from this paper: "Our attack can find collision [in MD4] with hand calculation."
 2020-10-22 11:58:39 <ais523> apparently, nowadays MD4 is so broken that finding collisions in it is actually faster than MD4'ing the two resulting strings to verify that their hashes are the same as each other
+2020-10-22 12:04:10 <b_jonas> ah, it's probably one of these scripts in this text file of completely undocumented and unreadable perl one-liners
+2020-10-22 12:04:29 <b_jonas> or more than one of them, they're probably multiple algorithms for the same thing
+2020-10-22 12:04:51 <b_jonas> must be this one
+2020-10-22 12:05:26 <b_jonas> but is this actually the O(n) solution?
+2020-10-22 12:06:22 <b_jonas> it says this where the input is the numbers as space-separated decimal
+2020-10-22 12:06:24 <b_jonas> perl -we 'use strict; use List::Util "max"; my @A=split/ /,<>; sub f { my(@a) = (0, @_, 0); my $m = 0; my @s; for my $j (0 .. @a-1) { while (@s and $a[$j] <= $a[$s[-1]]) { my $l = 1<@s?$s[-2]:0; my $t = ($j-$l-1)*($a[$s[-1]]); $m<$t and $m=$t; pop @s; } push @s, $j; } $m; } print f(@A), "\n";'
+2020-10-22 12:07:45 <ais523> that looks like an unused import to me
+2020-10-22 12:07:51 <ais523> unless there's some usage of "max" I'm missing
+2020-10-22 12:08:02 <b_jonas> yeah, like I said, undocumented and messy, wrote it for myself
+2020-10-22 12:08:09 <b_jonas> but I think it's the O(n) solution
+2020-10-22 12:08:46 <b_jonas> the trick is that it's an amortized thingy, the body of the while loop pops an element from @s, so it runs exactly once for each value pushed, and we push a value in each iteration of the for loop, which runs n times
+2020-10-22 12:08:56 User Name: esowiki = esowiki!~esowiki@techne.zem.fi
+2020-10-22 12:08:56 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Filexor 5*  10New user account
+2020-10-22 12:09:03 <ais523> it's O(n), the inner loop can't run any more iterations than the outer loop does because the outer loop pushes to @s exactly once and the inner loop pops from it exactly once
+2020-10-22 12:09:06 <b_jonas> so you have n iterations of the for loop, n iterations of the body of the while loop total
+2020-10-22 12:09:43 <b_jonas> and I have more test vectors here
+2020-10-22 12:10:18 <b_jonas> 9 apparently
+2020-10-22 12:11:00 <ais523> I think your algorithm is basically the same as my O(n log n) algorithm except that it goes left to right, and manages to locate all the correct infixes as it does so, rather than needing an index calculated in advance
+2020-10-22 12:11:01 <b_jonas> (and outputs for them, but you could get each with the quadratic time algorithm)
+2020-10-22 12:11:13 <ais523> but both algorithms look at the same n infixes
+2020-10-22 12:11:47 <b_jonas> that is likely, because neither uses any deep tricks about how the multiplication works apart from that it's monotone
+2020-10-22 12:12:05 Quit: HaJones (Quit: Leaving)
+2020-10-22 12:12:05 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
+2020-10-22 12:12:37 <b_jonas> so you have to consider O(n) infixes, though you could consider O(n) more redundnatly
+2020-10-22 12:13:35 <ais523> hmm… I assume there are randomized hashing algorithms which are secure in the sense that if you don't know the seed, you can't create a collision, and that given a random seed, two strings are no more likely to collide than a birthday paradox suggests
+2020-10-22 12:13:44 <ais523> how much faster are they than cryptosecure hashes?
+2020-10-22 12:14:39 <ais523> Wikipedia calls this "universal hashing"
+2020-10-22 12:16:08 Joined: Frater_EST
+2020-10-22 12:16:08 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, Frater_EST, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
+2020-10-22 12:16:38 <b_jonas> ais523: people usually use the Blake2 hashes with a secret seed for that, I think python has such an implementation for its dictionaries
+2020-10-22 12:16:53 Parted: Frater_EST
+2020-10-22 12:16:54 Names: ^[, ais523, aloril, APic, Arcorann, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
+2020-10-22 12:17:13 <b_jonas> Blake2 is supposed to be cryptosecure, but it's still somewhat faster than SHA-2 or SHA-3 usually, and more flexible
+2020-10-22 12:17:42 <ais523> there's a Blake3 now
+2020-10-22 12:18:05 <ais523> it's faster than blake2 partly because the number of rounds was reduced, but also because it can be vectorised
+2020-10-22 12:18:14 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=78096&oldid=78062 5* 03Filexor 5* (+170) 10/* Introductions */
+2020-10-22 12:18:33 <ais523> although, the input needs to be at least 2KiB in order to get the main gain from the vectorisation, and there's some overhead introduced to make that possible
+2020-10-22 12:18:37 <b_jonas> no, I think blake2 can be vectorized too. blake3 can be parallelized.
+2020-10-22 12:18:49 <ais523> it's a different sort of vectorization
+2020-10-22 12:19:09 <b_jonas> as in, you need to do a single serial iteration to compute blake2 on a long input
+2020-10-22 12:19:24 <ais523> Blake3 can be vectorized the same way Blake2 is, but it's more efficient to use the parellelizability and just use the vector registers to SIMD many of the parallel streams of execution at once
+2020-10-22 12:19:33 <b_jonas> but that is an iteration with a rather fast constant factor as crypto hashes go
+2020-10-22 12:20:02 <ais523> you could also use multiple CPUs or threads, but I don't consider that to actually speed up an algorithm, the same amount of CPU effort is expended
+2020-10-22 12:20:05 <b_jonas> but I don't this this comes up often as an advantage
+2020-10-22 12:20:18 <b_jonas> it's something that rarely helps in practice
+2020-10-22 12:20:38 <ais523> or, rather, I think of the runtime of an algorithm as the integral of its CPU load dtime
+2020-10-22 12:20:54 <b_jonas> also the blake2 hashes are well-studied, which is the main advantage when you consider crypto hashes
+2020-10-22 12:20:58 <ais523> maybe I shouldn't, because in practice you rarely find things to fill the idle CPU cores with
+2020-10-22 12:21:07 <ais523> yes
+2020-10-22 12:21:20 <ais523> I wouldn't use Blake3 for non-crypto work yet
+2020-10-22 12:21:23 <ais523> err, for crypto work yet
+2020-10-22 12:21:39 <ais523> I might use it for non-crypto purposes, though, if I simply wanted a hash function that's unlikely to have collisions
+2020-10-22 12:23:29 <ais523> anyway, using a universal hash rather than cryptosecure hash means that there are certain useful properties that might not be ruled out
+2020-10-22 12:23:47 <ais523> for example, having an easy way to calculate the hash of A concat B if you know the hashes of A and B
