@@ -82,3 +82,30 @@
 2020-10-24 11:37:56 <b_jonas> I wish my compact camera wrote into the metadata the timezone (which you can configure in the settings), sub-second exposition time (this camera is fast enough that it's easy to make multiple photos in a second); and the orientation data from gravimeter (it displays it in two dimensions on display while composing a photo, but only writes a single multiple of 90° orientation).
 2020-10-24 12:17:13 Joined: arseniiv
 2020-10-24 12:17:13 Names: ^[, aloril, APic, Arcorann, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, Frankenlime, Frater_EST, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzl, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, xgqt, zeroed, zzo38
+2020-10-24 12:31:28 <fizzie> Is there a standard metadata field for that last one? The usual EXIF orientation field is an enum with 8 values (90 degree multiples + mirroring bit).
+2020-10-24 12:32:09 <b_jonas> fizzie: I don't know, and in any case that standard orientation field is useful because software use it to rotate the image for displaying
+2020-10-24 12:33:02 <b_jonas> so this would be an additional field. but these days these kinds of gravimeters are really cheap, they're built into many devices, so there's probably either already a field or they can just invent a new one.
+2020-10-24 12:33:23 <b_jonas> a lot of the non-exif metadata fields are defined by camera manufacturers anyway.
+2020-10-24 12:34:02 <fizzie> Apparently there's an Apple-specific acceleration vector field, so some devices do store it.
+2020-10-24 12:36:25 <esowiki> 14[[07Voxvy14]]4 M10 02https://esolangs.org/w/index.php?diff=78134&oldid=78108 5* 03PythonshellDebugwindow 5* (+4) 10Add link to [[Python]]
+2020-10-24 12:38:31 <b_jonas> fizzie: exiftool docs say that there's even AccelerometerZ, AccelerometerX, AccelerometerY tags for the Panasonic image headers, which is a type of header set that this camera writes already (since it's a Panasonic)
+2020-10-24 12:38:51 <b_jonas> and also RollAngle and PitchAngle fields in the same
+2020-10-24 12:39:21 <b_jonas> they won't be very accurate, but even so it'd be worth
+2020-10-24 12:40:06 <b_jonas> there are also tags defined for other brands
+2020-10-24 12:40:24 <fizzie> Hmm. Wonder if my Canon camera writes those. Haven't noticed in exiftool output, but haven't tried to look for it either.
+2020-10-24 12:40:44 <fizzie> It does write the time zone, I remember that much.
+2020-10-24 12:40:56 <b_jonas> fizzie: do you know if it has an accelerometer hardware?
+2020-10-24 12:41:39 <fizzie> It has a horizon thing in the live view, so it would need to have something to display that.
+2020-10-24 12:47:39 <fizzie> Heh, it writes a "Camera Temperature" tag.
+2020-10-24 12:47:54 <fizzie> ("32 C" for this image.)
+2020-10-24 12:49:38 <b_jonas> does it vary among images?
+2020-10-24 12:50:09 <b_jonas> and does it get that from a temperature sensor in the camera, or from one in a connected GPS or mobile phone etc?
+2020-10-24 12:51:55 <fizzie> Yes, it does seem to vary among images; in this set of 109 images, it starts at "28 C", and goes up to "32 C", in a more or less linear fashion. So I guess it was warming up while shooting. It's not connected to anything, so it must come from a sensor somewhere in the camera.
+2020-10-24 12:52:20 <b_jonas> nice
+2020-10-24 12:53:05 <fizzie> There's also a "GPS Version ID" ("2.3.0.0") even though there's no GPS or position data.
+2020-10-24 12:53:34 <b_jonas> that said a lot of the metadata that it writes is useful
+2020-10-24 12:54:10 <fizzie> (I've sometimes used one of those pieces of software to attach positions to images, based on a recorded GPS trace from a phone.)
+2020-10-24 12:55:01 <b_jonas> tags about exposure settings, white balance, the second precise timestamp (it's unclear what it is a timestamp for: the start of exposure, when it starts to compresses the file, when it starts to send the file to the SD card, etc), the camera model, etc
+2020-10-24 12:58:25 <b_jonas> mind you, I often don't set the clock of this camera correctly, eg. sometimes I forget to reset it when I remove the battery for a short time to access the SD card, or just forget to set it for a long time, so the timestamp is often up to 10 minutes early or late, and also sometimes 1 hour off due to incorrect DST setting
+2020-10-24 12:58:55 <b_jonas> if my next camera doesn't write timezone metadata then I'll probably just set it to always UTC
+2020-10-24 12:59:27 <b_jonas> (or to Iceland if it doesn't allow UTC)
