@@ -101,3 +101,8 @@
 2020-10-25 12:22:44 <ais523> because the first two arguments are equal, it collapses to the Euler function as n tends to infinity
 2020-10-25 12:24:11 <rain1> they come up in partitions a lot
 2020-10-25 12:29:42 <ais523> I guess what I'm trying to figure out is, is the probability of being singular likely to be small / invertible likely to be large?
+2020-10-25 12:31:11 <ais523> it does look like it, the Euler function has values near 1 when its input is small
+2020-10-25 12:33:11 <ais523> OK, and I found a Wolfram Alpha query that explains the behaviour pretty well: https://www.wolframalpha.com/input/?i=minimum+of+QPochhammer%5Bq%5D%2Bq+for+q+in+0+to+1
+2020-10-25 12:33:45 <ais523> looks like the probability of being singular is a little more than 1/n, but never by all that much
+2020-10-25 12:34:12 <ais523> so in particular, if we just rely on picking a random matrix and hoping it's non-singular (my use case), we'll normally get away with it when the field is large
+2020-10-25 12:36:57 <esowiki> 14[[07Entfedern14]]4 M10 02https://esolangs.org/w/index.php?diff=78141&oldid=74960 5* 03PythonshellDebugwindow 5* (+29) 10/* See also */ See also
