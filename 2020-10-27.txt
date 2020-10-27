@@ -200,3 +200,105 @@
 2020-10-27 17:23:09 Names: ^[, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
 2020-10-27 17:52:41 Joined: aaaaaa
 2020-10-27 17:52:41 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:03:36 Joined: orbitaldecay
+2020-10-27 18:03:36 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:03:53 User Name: orbitaldecay = orbitaldecay!c1941244@193.148.18.68
+2020-10-27 18:03:53 <orbitaldecay> Greetings all
+2020-10-27 18:08:41 <orbitaldecay> I'm trying to wrap my head around the feasibility of developing an automatic SKI programmer (i.e. you feed the program constraints and it generates a SKI program that satisfies those constraints).  If you think of SKI calculus as a term rewriting system, then there are E unification algorithms that do this for *convergent* term rewrite systems. Do
+2020-10-27 18:08:41 <orbitaldecay> any of you know if there are any semidecidable unification algorithms that would meet my needs or am I barking up the wrong tree for this?
+2020-10-27 18:09:11 Joined: ais523
+2020-10-27 18:09:11 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:09:19 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-27 18:09:19 <ais523> what sort of constraints are you thinking of?
+2020-10-27 18:09:29 <orbitaldecay> It's hard to find places to ask these kind of questions, so forgive me for being a little off topic.
+2020-10-27 18:09:34 <ais523> automated lambda calculus → SKI translation exists (and vice versa), but I'm not sure I understand the problem
+2020-10-27 18:09:52 Quit: arseniiv (Ping timeout: 256 seconds)
+2020-10-27 18:09:53 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:11:21 <orbitaldecay> ais523: For example, if there were a unification algorithm that worked for this, then it would be possible to provide the equation (c) (b) (a) apply apply = (b) and the unification algorithm would solve for (a) (b) (c), ideally finding the most general unifier, which would be (a) = K, (b) = (b), (c) = (c)
+2020-10-27 18:11:35 <orbitaldecay> (postfix)
+2020-10-27 18:12:17 <orbitaldecay> Equality here would represent beta equality, as can be deduced from rewrite rules
+2020-10-27 18:13:03 <orbitaldecay> I suspect that there is no decidable algorithm that does this, but I'd settle for semidecidable
+2020-10-27 18:13:16 <orbitaldecay> or rather, that this problem is not decidabe
+2020-10-27 18:13:17 User Name: rain1 = rain1!~rain1@unaffiliated/rain1
+2020-10-27 18:13:17 <rain1> hi
+2020-10-27 18:13:18 <orbitaldecay> *decidable
+2020-10-27 18:13:20 <orbitaldecay> hi rain
+2020-10-27 18:13:26 Joined: sprocklem
+2020-10-27 18:13:26 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:13:42 <ais523> it's probably decidable if the hardcoded parts of the program are simple enough
+2020-10-27 18:13:58 <rain1> you can write a computer program that will try to produce SKI terms that do certain things, and it can often succeed
+2020-10-27 18:14:01 <ais523> my reaction is that the only thing that would make it undecidable would be if the hardcoded parts of the program somehow ended up Turing-complete
+2020-10-27 18:15:01 <orbitaldecay> yeah, it get's tricky, because E unification is *in general* undecidable, but for specific equational theories it's either semidecidable, or completely decidable
+2020-10-27 18:15:27 <rain1> what's the exact problem in terms of input and output
+2020-10-27 18:16:18 Quit: ais523 (Read error: Connection reset by peer)
+2020-10-27 18:16:19 Names: ^[, aaaaaa, aloril, also_uplime, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:16:30 <orbitaldecay> E unification is decidable modulo a convergent term rewrite system for an equational theory, but SKI as a term rewrite system is not convergent
+2020-10-27 18:16:39 <orbitaldecay> and any TC rewrite system won't be convergent
+2020-10-27 18:17:29 Joined: ais523
+2020-10-27 18:17:29 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:17:31 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-27 18:17:31 <ais523> I guess our language is ` s k i (Unlambda-style, not Underload-style)
+2020-10-27 18:17:52 <orbitaldecay> Either language would be interesting to look at, but I've been thinking in unlambda style so far
+2020-10-27 18:18:05 <ais523> and we have an expression made of ` and some unknowns (not sure about if s k i themselves are needed)
+2020-10-27 18:18:06 <orbitaldecay> in theory, the same idea applies to both as we're just thinking of them as term rewrite systems
+2020-10-27 18:18:12 <ais523> two such expressions
+2020-10-27 18:18:15 <ais523> and need to make them equal
+2020-10-27 18:18:19 <orbitaldecay> yep
+2020-10-27 18:18:36 <orbitaldecay> I *think* this is best thought of as a unification problem
+2020-10-27 18:18:42 <orbitaldecay> but there are other ways of thinking about it
+2020-10-27 18:19:06 <rain1> i dont understand the specifics of "automatic SKI programmer"
+2020-10-27 18:19:08 <ais523> expressions of the form ````…`AB…X = (insert arbitrary data structure which doesn't contain A here) are equivalent to the lambda→unlambda compilation
+2020-10-27 18:19:21 <rain1> is the input a list of equations like  X a b c = b(cbb)
+2020-10-27 18:19:23 <rain1> and it finds X
+2020-10-27 18:19:26 <ais523> so that's one fairly useful class that can be solved
+2020-10-27 18:19:30 <orbitaldecay> rain1: yes
+2020-10-27 18:19:37 <rain1> this problem is trivial
+2020-10-27 18:19:47 <orbitaldecay> How so?
+2020-10-27 18:20:10 <ais523> say you have ```Xabc = `b``cbb
+2020-10-27 18:20:31 <ais523> you can move the applys through the equals, to get X = \a.\b.\c.`b``cbb
+2020-10-27 18:20:51 <ais523> then the conversion of the nested lambda to SKI has known, entirely mechanical techniques
+2020-10-27 18:21:01 <orbitaldecay> That was more directed at rain1, but thank you for clarifying ais523
+2020-10-27 18:21:12 <ais523> I thought it might be, but decided to clarify anyway
+2020-10-27 18:21:19 Joined: arseniiv
+2020-10-27 18:21:20 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:21:25 <ais523> especially as rain1 may be thinking only of this class of equations when saying "this problem is trivial"
+2020-10-27 18:21:37 <orbitaldecay> I suspect where we'll likely run into issues is with programs that necessarily require fixed point combinators in their solution
+2020-10-27 18:22:01 <ais523> right, say if X appears on both sides
+2020-10-27 18:22:08 <orbitaldecay> exactly
+2020-10-27 18:22:13 <ais523> you can still mechanically generate a solution *but* it may correspond to an infinite loop, not the answer you want
+2020-10-27 18:22:17 <b_jonas> wait, that's usually backwards
+2020-10-27 18:22:22 <b_jonas> the lambda form X =
+2020-10-27 18:22:23 <ais523> just like fixed point combinators in other languages
+2020-10-27 18:22:35 <ais523> oh, should be \c.\b.\a, right
+2020-10-27 18:22:50 <b_jonas> X = \a.someexpr implies the equation Xa = someexpr
+2020-10-27 18:23:08 <b_jonas> but if you go backwards, you need equality up to something
+2020-10-27 18:23:24 Quit: ais523 (Remote host closed the connection)
+2020-10-27 18:23:24 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:23:30 <b_jonas> what semantics do you even assign to your original eqution system
+2020-10-27 18:23:36 Joined: ais523
+2020-10-27 18:23:37 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:24:01 <orbitaldecay> b_jonas: I'm approaching SKI as a term rewrite system in this instance, so it's equality modulo beta reduction
+2020-10-27 18:24:02 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-27 18:24:02 <ais523> b_jonas: I'm using observational equality here, e.g. same inputs produce same outputs
+2020-10-27 18:24:14 <orbitaldecay> Ah, got it
+2020-10-27 18:24:57 <orbitaldecay> I was really only worried about equality modulo beta reduction, as I figured that'd be a lot simpler
+2020-10-27 18:25:36 Quit: tromp (Remote host closed the connection)
+2020-10-27 18:25:36 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:25:36 <ais523> >> let x a = 4/a in fix x
+2020-10-27 18:25:40 <ais523> > let x a = 4/a in fix x
+2020-10-27 18:25:43 <lambdabot> *Exception: <<loop>>
+2020-10-27 18:25:47 <rain1> the difficult problem is to find X when given equations like X S K = K
+2020-10-27 18:25:55 <ais523> the problem with fixed point combinators is
+2020-10-27 18:26:08 <ais523> ideally you would want that to output 2, rather than getting stuck in an infinite loop
+2020-10-27 18:26:28 <ais523> rain1: there are clearly an infinite number of unequal such X
+2020-10-27 18:26:53 <ais523> -2 is also a valid fixed point
+2020-10-27 18:27:45 <orbitaldecay> Yeah, certain unification theories have proof of the existence of a "most general unifier" which would be, in your case rain1, an X such that all other X's can be derived from it, but E unification does not generally have this
+2020-10-27 18:28:00 <b_jonas> a quadratic equation! we have a solver for that
+2020-10-27 18:28:12 <ais523> yes
+2020-10-27 18:28:26 Quit: rain1 (Quit: Leaving)
+2020-10-27 18:28:26 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:29:01 <ais523> sage: x=var("x"); (x == 4/x).solve(x)
+2020-10-27 18:29:02 <ais523> [x == -2, x == 2]
+2020-10-27 18:29:12 <ais523> if I go to all this trouble to install a CAS, may as well use it for this sort of thing
+2020-10-27 18:29:29 <orbitaldecay> (y)
+2020-10-27 18:29:31 <ais523> it wouldn't be hard to rejig that into a fixed-point operator, although I don't know what sorts of function it would work on
