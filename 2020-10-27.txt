@@ -302,3 +302,33 @@
 2020-10-27 18:29:12 <ais523> if I go to all this trouble to install a CAS, may as well use it for this sort of thing
 2020-10-27 18:29:29 <orbitaldecay> (y)
 2020-10-27 18:29:31 <ais523> it wouldn't be hard to rejig that into a fixed-point operator, although I don't know what sorts of function it would work on
+2020-10-27 18:30:08 Joined: imode
+2020-10-27 18:30:09 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:31:46 <orbitaldecay> I'm thinking in the space between SKI and prolog and it's very strange territory
+2020-10-27 18:31:55 <ais523> simplest polynomial on which it fails appears to be x⁵ - x == 1, that makes sense
+2020-10-27 18:31:59 <b_jonas> sage is like a meta-CAS, it is bundled with a bunch of other CASes and can also use multiple commercial ones
+2020-10-27 18:32:07 <ais523> (this is the simplest polynomial with provably no solution in radicals)
+2020-10-27 18:32:18 <ais523> b_jonas: right, I think of it like glue for CASes
+2020-10-27 18:32:30 <ais523> you just write the problem you want and it figures out which CAS to use to solve it
+2020-10-27 18:32:32 <b_jonas> the sort of glue like bash is
+2020-10-27 18:32:44 <b_jonas> ugly but usable
+2020-10-27 18:33:00 <ais523> although, this means it probably isn't very good at complex problems that go through multiple domains because I wouldn't expect it to port your data structure from one CAS to another
+2020-10-27 18:35:22 <ais523> sage: x=var("x"); find_root(x**5 - x == 1,1,2)
+2020-10-27 18:35:23 <ais523> 1.1673039782615173
+2020-10-27 18:35:36 <ais523> it can find it numerically even if it can't find it symbolically
+2020-10-27 18:37:15 Quit: Lord_of_Life (Changing host)
+2020-10-27 18:37:16 Joined: Lord_of_Life
+2020-10-27 18:38:16 Joined: rain1
+2020-10-27 18:38:16 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:42:44 Joined: tromp
+2020-10-27 18:42:45 Names: ^[, aaaaaa, ais523, aloril, also_uplime, APic, arseniiv, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-27 18:48:59 <orbitaldecay> My final thoughts on this are the following: If we think about the naive algorithm of unifyiing an expression like X Y Z ` ` = Y in SKI calculus (i.e. iterating through all programs until we find one that works), it's clear to see why convergent rewrite rules are required because as we're iterating through those programs we might find one that
+2020-10-27 18:48:59 <orbitaldecay> doesn't terminate (in term rewriting language, doesn't converge). So I'm thinking that unifying a TC term rewriting system is always going to be undecidable.
+2020-10-27 18:51:02 <orbitaldecay> So this might be a project for a sub Turing language
+2020-10-27 18:54:17 <b_jonas> ais523: anyway, that doesn't mean that the case that orbital asked about is hopeless, because such an equation is not pure combinator calculus, and you can't encode it to pure combinator calculus. you don't have a way to force (fix x) to be a number (whatever kind) with equations.
+2020-10-27 18:55:42 <ais523> b_jonas: indeed
+2020-10-27 18:56:30 <b_jonas> it can just give you (fix ) where fix is a fixed point combinator and so (fix x)
+2020-10-27 18:56:44 <b_jonas> give you (fix \a -> 4/a) where fix is a fixed point combinator and so (fix x) diverges
+2020-10-27 18:58:07 <b_jonas> but there also won't always be a solution, because you can write some contradictory equations like X = k; X = `ki
+2020-10-27 18:59:08 User Name: rain1 = rain1!~rain1@unaffiliated/rain1
+2020-10-27 18:59:08 <rain1> minikanren can discover a quine, can it discover a y combinator?
