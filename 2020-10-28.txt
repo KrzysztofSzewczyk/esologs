@@ -143,3 +143,42 @@
 2020-10-28 14:58:57 <wib_jonas> if you want to go further, make it also no dollar signs and no backticks so you can double-quote the arguments anywhere
 2020-10-28 14:59:30 <ais523> the thing is, the esolang uses base 64 syntax, so programs consist only of letters, digits, +, /, and I think those are all shell-safe
 2020-10-28 14:59:50 <ais523> so I just wanted two more characters to allow programs to be read from a file (as either packed base64 or ASCII-encoded base64)
+2020-10-28 15:00:08 <ais523> I believe "read this command-line argument from a file" is traditionally expressed using @
+2020-10-28 15:00:41 <wib_jonas> ais523: it's ugly because non of the punctuations are safe in all contexts. in any one context you can find two punctuation that's safe enough to make a base64 thing, but it's not a single set of two punctuation. I wish it was, I looked into it.
+2020-10-28 15:00:46 <ais523> but I'd want an alternative to specify that the file should be unpacked too (or an extra option, but that's boring and this is #esoteric)
+2020-10-28 15:01:04 <wib_jonas> for just shells I recommend . and _
+2020-10-28 15:01:26 <wib_jonas> dot and underscore if you need just two
+2020-10-28 15:01:45 <wib_jonas> but that's specifically for shells, they're not the best in all contexts
+2020-10-28 15:02:03 Quit: ais523 (Remote host closed the connection)
+2020-10-28 15:02:04 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-28 15:02:16 Joined: ais523
+2020-10-28 15:02:17 Names: ^[, ais523, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-28 15:02:33 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-28 15:02:33 <ais523> the + and / are already locked in as part of the syntax
+2020-10-28 15:02:44 <ais523> but I think they're shell-safe anyway
+2020-10-28 15:03:03 <ais523> fwiw, if I wanted some fairly safe base64, I would probably use - and _ as the extra two characters
+2020-10-28 15:03:31 <wib_jonas> + and / were usually considered argument-separators on DOS, so a few windows commands treat it specially, but if you pass them to your program then they're safe
+2020-10-28 15:04:15 <wib_jonas> I don't like hyphen in shells, it's considered an option prefix in too many contexts
+2020-10-28 15:04:27 <ais523> oh, you mean that /a/b might be passed as "/a" "/b" rather than as one argument?
+2020-10-28 15:04:29 <wib_jonas> it's fine if you can guarantee it's not the first of an argument
+2020-10-28 15:04:48 <ais523> also, isn't the entire point of options to be passed to the program?
+2020-10-28 15:05:17 <ais523> so it doesn't really matter whether an option starting - is parsed as an option or not
+2020-10-28 15:05:22 <wib_jonas> ais523: yes of course, but you might be implementing your language in something that hijacks those before they reach your program
+2020-10-28 15:05:54 <ais523> oh, you mean at the executable level?
+2020-10-28 15:06:06 <ais523> I'm implementing it in OCaml, I don't think that hijacks options
+2020-10-28 15:08:35 <wib_jonas> ais523: do you know, off the top of your head, the option for ghc to compile *your* main program such that it doesn't scan the argv for a certain special string as an escape for settings for the haskell runtime and garbage collector? nor do many other people, so they'll misimplement your language, if programs can start with "+RTS" . that doesn't
+2020-10-28 15:08:35 <wib_jonas> even start with a hyphen. yes, it's bloody stupid of ghc, but I think this is exactly the sort of bloody stupid thing you're asking about right now.
+2020-10-28 15:09:13 <wib_jonas> ("https://downloads.haskell.org/ghc/latest/docs/html/users_guide/runtime_control.html#setting-rts-options" for reference)
+2020-10-28 15:09:51 <wib_jonas> admittedly the quoting that I mentioned wouldn't fix that either
+2020-10-28 15:10:21 <ais523> that's a nice sort of stupid thing to warn me about :-)
+2020-10-28 15:11:10 <wib_jonas> and I think programs you compile for cygwin do something even worse
+2020-10-28 15:11:18 <wib_jonas> I don't remember what, I hate cygwin and don't use it
+2020-10-28 15:12:33 <wib_jonas> I wonder if it might help if your programs always start with ./
+2020-10-28 15:12:40 <wib_jonas> then the later minuses won't matter
+2020-10-28 15:12:46 <wib_jonas> and usually the pluses either
+2020-10-28 15:12:59 <wib_jonas> neither
+2020-10-28 15:13:20 <wib_jonas> at least when it's just shell arguments, not filenames or URLs or mediawiki page titles or some such
+2020-10-28 15:18:36 Joined: Sgeo
+2020-10-28 15:18:36 Names: ^[, ais523, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-28 15:21:49 <esowiki> 14[[07Minasm14]]4 10 02https://esolangs.org/w/index.php?diff=78233&oldid=78232 5* 03OsmineYT 5* (+503) 10
+2020-10-28 15:28:17 <esowiki> 14[[07Minasm14]]4 10 02https://esolangs.org/w/index.php?diff=78234&oldid=78233 5* 03OsmineYT 5* (+84) 10
