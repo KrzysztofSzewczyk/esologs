@@ -113,3 +113,33 @@
 2020-10-28 14:02:47 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
 2020-10-28 14:24:51 Joined: atehwa
 2020-10-28 14:24:52 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 14:50:22 Joined: ais523
+2020-10-28 14:50:23 Names: ^[, ais523, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 14:50:53 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-10-28 14:50:53 <ais523> when using a shell to run a command, and specifying the command's arguments, what characters can safely be used without any form of quoting?
+2020-10-28 14:51:39 <ais523> ideally in a way that's portable across all commonly used shells on all common OSes, but failing that I'll settle for sh and its derivatives
+2020-10-28 14:52:18 Joined: wib_jonas
+2020-10-28 14:52:19 Names: ^[, ais523, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-28 14:52:34 <ais523> I'm pretty sure letters, digits, underscores, - and _ are safe, and fairly confident on @ and +; I suspect % is safe on POSIX but not Windows
+2020-10-28 14:52:40 User Name: wib_jonas = wib_jonas!25bf3cd1@gateway/web/cgi-irc/kiwiirc.com/ip.37.191.60.209
+2020-10-28 14:52:40 <wib_jonas> ais523: yeah, that's an ugly question and usually leads to no good
+2020-10-28 14:53:06 <ais523> oh, . is safe and , probably is
+2020-10-28 14:53:34 <wib_jonas> ais523: do you count the program name itself as an argument?
+2020-10-28 14:53:39 <ais523> we might have reached the limits of ASCII punctuation now
+2020-10-28 14:53:42 <ais523> wib_jonas: not for this purpose
+2020-10-28 14:54:22 <ais523> ah, / is also safe, but I forgot to mention it earlier (I was thinking about it though)
+2020-10-28 14:54:31 <wib_jonas> does perl count as a commonly used shell? I often use it on windows because the shell sucks.
+2020-10-28 14:54:40 <wib_jonas> to invoke commands that is
+2020-10-28 14:54:55 <ais523> I think ? and * are safe on Windows, because there, globs are expanded by the program not the shell
+2020-10-28 14:55:24 <ais523> when using perl as a shell, do you need some sort of prefix to explicitly invoke shell commands?
+2020-10-28 14:55:34 <ais523> rather than perl functions?
+2020-10-28 14:55:43 <wib_jonas> yes
+2020-10-28 14:56:07 <ais523> right, there are some obvious clashes otherwise, like "rmdir"
+2020-10-28 14:56:31 <ais523> I'm trying to design the command-line interface for an esolang, and thought it would be nice if it didn't require quoting
+2020-10-28 14:56:56 <ais523> presumably if you're calling it from Perl, you're used to having to quote things
+2020-10-28 14:57:48 <wib_jonas> ais523: if you're designing a command-line interface, I suggest one that does require quoting, but only easy quoting:
+2020-10-28 14:58:40 <wib_jonas> use ascii characters other than double quote, single quote, backslash, percent, circumflex; plus possibly some non-ascii non-control characters. then you can double-quote on windows and single-quote on posix and you have no problems anywhere.
+2020-10-28 14:58:55 <ais523> ooh, is ^ safe on POSIX?
+2020-10-28 14:58:57 <wib_jonas> if you want to go further, make it also no dollar signs and no backticks so you can double-quote the arguments anywhere
+2020-10-28 14:59:30 <ais523> the thing is, the esolang uses base 64 syntax, so programs consist only of letters, digits, +, /, and I think those are all shell-safe
+2020-10-28 14:59:50 <ais523> so I just wanted two more characters to allow programs to be read from a file (as either packed base64 or ASCII-encoded base64)
