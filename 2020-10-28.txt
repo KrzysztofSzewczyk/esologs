@@ -224,3 +224,50 @@
 2020-10-28 19:57:06 <imode> I wouldn't use unbounded, just whatever that finite bound is + 1.
 2020-10-28 19:58:50 <orbitaldecay> imode: but couldn't we then just pad the input by 1 symbol to allow for the required tape length?
 2020-10-28 19:59:51 <orbitaldecay> we could introduce a symbol that does nothing but pad and is otherwise ignored by the LBA
+2020-10-28 20:00:15 <ais523> the amount of memory an LBA can use is input-dependent; the amount of memory an FSM can use isn't
+2020-10-28 20:00:35 <ais523> many FSMs can take an arbitrary amount of input, but they can't store it anywhere
+2020-10-28 20:00:41 <ais523> whereas an LBA can
+2020-10-28 20:01:12 <orbitaldecay> but if the input length is > storage space in FSM algos have to be "online" in some form?
+2020-10-28 20:01:18 <orbitaldecay> not true of lbas?
+2020-10-28 20:01:50 <ais523> the way to think about it is that FSMs read the input one bit (/byte/symbol/whatever, but a fixed size) at at ime
+2020-10-28 20:01:58 <ais523> * at a time
+2020-10-28 20:02:04 <orbitaldecay> that makes sense to me
+2020-10-28 20:02:19 Quit: diverger (Ping timeout: 246 seconds)
+2020-10-28 20:02:19 Names: ^[, ais523, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDead, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 20:02:23 <ais523> the way in which an LBA reads doesn't really matter, because it has enough memory to store the entire input
+2020-10-28 20:03:14 <ais523> there are middle grounds, like NL (which is particularly interesting); in NL, the program can store a finite number of points to the input, and read and reread it through them, but can't write to the space storing the input and otherwise doesn't have linear memory
+2020-10-28 20:03:23 <ais523> * pointers to the input
+2020-10-28 20:03:34 Joined: diverger
+2020-10-28 20:03:34 Names: ^[, ais523, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDead, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 20:03:54 <orbitaldecay> so, can we say that an lba is equivalent to any machine that has a finite but input dependent tape length (because of padding)? Or are we strictly stuck with linear space usage?
+2020-10-28 20:04:36 <orbitaldecay> I've seen information that claimed O(n) space usage as a limit, but I'm having trouble convincing myself of that
+2020-10-28 20:05:17 <orbitaldecay> I get the extending the alphabet argument for an arbitrary constant attached to the n
+2020-10-28 20:05:57 <orbitaldecay> I just don't see why it's limited to O(n) space
+2020-10-28 20:06:25 <orbitaldecay> Say I encode the input to be input + length(input)^2 null symbols
+2020-10-28 20:06:48 <orbitaldecay> wouldn't the dependency on the original input be quadratic in space?
+2020-10-28 20:06:59 <ais523> LBAs are limited to O(n) space by definition, if you have more it isn't an LBA
+2020-10-28 20:07:09 <ais523> but, what an LBA can do depends on the input encoding, as a consequence
+2020-10-28 20:07:31 <ais523> normally, automaton theory is concerned with specific input encodings (I think it evolved out of parser theory, and of course a parser doesn't get to choose how its input is encoded)
+2020-10-28 20:08:11 <ais523> the "encode the input to be input + length(input)^2 null symbols" step is something that an LBA can't do, and if you have a separate program or person doing it for you, that raises the computational class of the system as a whole
+2020-10-28 20:08:26 Quit: diverger (Ping timeout: 256 seconds)
+2020-10-28 20:08:26 Names: ^[, ais523, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDead, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 20:09:06 <orbitaldecay> Ahhhh, bingo, that was the piece of information I wasn't seeing., That encoding of the input requires a separate computational object with greater expressive power than an LBA
+2020-10-28 20:09:27 <orbitaldecay> Thank you
+2020-10-28 20:10:35 <orbitaldecay> Is there such a thing as a polynomial bounded automaton?
+2020-10-28 20:10:44 <ais523> yes, but I don't think they've been studied much
+2020-10-28 20:11:15 <orbitaldecay> interesting
+2020-10-28 20:12:10 <ais523> LBAs have a tendency to arise "naturally" sometimes, e.g. https://esolangs.org/wiki/BuzzFizz is an LBA
+2020-10-28 20:12:22 <ais523> I'm not sure I've seen higher-degree bounded automata in the wild
+2020-10-28 20:13:50 <orbitaldecay> The interesting thing about LBAs that I was exploring is their link to monotonic grammars. I doubt polynomial bounded automata have such a nice representation
+2020-10-28 20:16:27 <orbitaldecay> Testing intuition: if you only use non-nested for loops for control flow in a procedural program, you get an LBA?
+2020-10-28 20:17:42 <ais523> this really depends on what sort of memory access and arithmetic primitives you have available
+2020-10-28 20:17:54 <ais523> it's probably an LBA if you don't have anything more powerful than "increment" for doing arithmetic
+2020-10-28 20:17:58 <orbitaldecay> Of course, I'm thinking in the realm of BF
+2020-10-28 20:18:02 <orbitaldecay> for example
+2020-10-28 20:21:01 <orbitaldecay> Okay, this is all really helpful. Thank you. I'm going to do more reading and try to expand my intuition on how this interesting little things work.
+2020-10-28 20:21:02 Joined: diverger
+2020-10-28 20:21:02 Names: ^[, ais523, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDead, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 20:25:50 Quit: diverger (Read error: Connection reset by peer)
+2020-10-28 20:25:50 Names: ^[, ais523, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDead, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-10-28 20:26:07 Joined: diverger
+2020-10-28 20:26:08 Names: ^[, ais523, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi1, hendursaga, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDead, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
