@@ -129,3 +129,33 @@
 2020-10-29 12:27:38 <wib_jonas> so you have to escape ~ in posix shells too
 2020-10-29 12:27:54 <wib_jonas> so %+,-./:=@]^_} are safe in posix shells or bash
 2020-10-29 12:28:48 <wib_jonas> and those characters are also safe in command-line arguments in makefiles, though again in command name position they can have special meanings
+2020-10-29 12:30:04 <wib_jonas> so, even though I recommend you to double-quote everything, because the rules are saner that way, if you really don't want to quote anything, then ascii letters and digits and the punctuations +,-./:=@]_} are safe on both cmd and sh and bash,
+2020-10-29 12:30:19 <wib_jonas> but as I explained yesterday, you shouldn't interpret that as "safe everywhere", because there's no such thing
+2020-10-29 12:30:41 <wib_jonas> and all this is only as far as I understand and with no warranty
+2020-10-29 12:31:29 <myname> gonna build a shell that's more rstrictive than posix
+2020-10-29 12:31:48 <wib_jonas> myname: try zsh
+2020-10-29 12:32:04 <wib_jonas> though now I'll have to check when exactly ^ can trigger history expansion in bash
+2020-10-29 12:32:14 <myname> i am using zsh
+2020-10-29 12:32:16 <myname> love it
+2020-10-29 12:33:06 Quit: sebbu (Quit: reboot)
+2020-10-29 12:33:06 Names: ^[, ais523, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-29 12:37:09 <esowiki> 14[[07Asparagus14]]4 N10 02https://esolangs.org/w/index.php?oldid=78239 5* 03Not applicable 5* (+637) 10created, is working on an interpreter, and i dont think anybody will find this page so i think it is safe to keep it here for now dont know where to put it though blah blah blah
+2020-10-29 12:37:16 <wib_jonas> ok I have officially no clue when ! and ^ are recognized as history expansion, even after reading the manpage. I only know how to turn history expansion off, and that it's off by default in non-interactive shelsl
+2020-10-29 12:37:37 Joined: arseniiv
+2020-10-29 12:37:37 Names: ^[, ais523, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, iscordian[m], izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, t20kdc, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-10-29 12:37:55 <wib_jonas> and of course any of this can be false if you give bash enough nonstandard settings earlier in the file, but luckily bashrc and similar initialization files aren't read in a non-interactive session
+2020-10-29 12:37:57 <esowiki> 14[[07Talk:Asparagus14]]4 N10 02https://esolangs.org/w/index.php?oldid=78240 5* 03Not applicable 5* (+34) 10Created page with "uhh how do i mark a page as a stub"
+2020-10-29 12:38:22 <wib_jonas> because apparently you can set the history expansion trigger character to anything, it needn't be !
+2020-10-29 12:38:25 <esowiki> 14[[07Talk:Asparagus14]]4 10 02https://esolangs.org/w/index.php?diff=78241&oldid=78240 5* 03Not applicable 5* (+104) 10
+2020-10-29 12:42:13 <esowiki> 14[[07Talk:Asparagus14]]4 10 02https://esolangs.org/w/index.php?diff=78242&oldid=78241 5* 03Ais523 5* (+201) 10how to mark a page as a stub
+2020-10-29 12:43:17 <ais523> myname: I think most of zsh's best-known features are also available in bash nowadays (often not by default, though); are there lesser-known advantages?
+2020-10-29 12:44:00 <ais523> wib_jonas: also I'm pretty sure that ! is one of the most dangerous characters in existence to bash, not only can it trigger history expansion, it's also hard to escape
+2020-10-29 12:45:16 <wib_jonas> ais523: yes, that's my opinion too, though someone on this channel did mention some file expansion feature they used in zsh that's indeed not in bash, I think expanding a list of non-directory files, and the equivalent of @(a{137..99999}b) which expands to any file with a then a decimal number with no leading zeroes that is 137 or more then b.
+2020-10-29 12:46:49 <wib_jonas> so if someone wants to use those, I can see there may be some use, but I for one don't think zsh is worth for me to learn, so I'm sticking bash for simpler stuff, and perl or python etc for more complex cases. mostly because I want to use programs with windows-native interfaces on windows, not ones that try to sort of pretend that you're in a
+2020-10-29 12:46:50 <wib_jonas> half-assed POSIX system on which many features are broken.
+2020-10-29 12:48:34 <wib_jonas> I mean what's the fucking point of pretending to be on a POSIX system if you're on an operating system where write doesn't immediately update the file's mtime? there are so many glaring holes that I'd rather port some of my scripts to exactly two systems, native windows and unix-like systems, than try to use the half-assed compatibility stuff
+2020-10-29 12:48:54 <wib_jonas> especially because most of my scripts only have to run on one of those.
+2020-10-29 12:55:46 <ais523> I used to use bash on Windows, only because cmd and command.com were both terrible
+2020-10-29 12:56:01 <ais523> and I wanted something that was actually usable as a shell
+2020-10-29 12:57:18 <wib_jonas> ais523: they are terrible, so I write a lot of things as perl or python scripts when they'd be simple shell one-liners in unix
+2020-10-29 12:59:15 <wib_jonas> I do that even for simple loops that would technically be possible to write in cmd
