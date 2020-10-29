@@ -187,3 +187,11 @@
 2020-10-29 13:49:12 <wib_jonas> interesting, so apparently I'm allowed to have an empty array where the type of the members of the arrays is an enum with no variants, but I'm not allowed to construct an empty array whose member type is too huge. the two types are uninhabited in different ways according to the compiler.
 2020-10-29 13:50:53 <wib_jonas> I'm not allowed to even std::mem::size_of the latter empty array
 2020-10-29 13:51:15 <wib_jonas> sorry, that's for rust
+2020-10-29 14:04:57 <ais523> does anyone here have opinions on forward-confirmed reverse DNS (as an email filtering mechanism)?
+2020-10-29 14:05:07 <ais523> I was considering adding it to my mailserver, but am worried about false positives
+2020-10-29 14:11:06 <ais523> ah right, it fails on outlook.com (which has a ridiculous configuration), that's a large enough mail provider that it probably can't be turned on
+2020-10-29 14:14:58 Nick Change: Arcorann -> Arcorann
+2020-10-29 14:15:48 <ais523> blame Microsoft for ruining everything for everyone again :-(
+2020-10-29 14:16:32 <wib_jonas> (among others)
+2020-10-29 14:17:47 <ais523> it would be interesting to see a complete list of major email providers for which it fails; I suspect it's more likely to succeed for minor email providers than major email providers
+2020-10-29 14:17:59 <ais523> gmail and Yahoo! mail both pass it, those were easy enought to check
