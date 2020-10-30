@@ -101,3 +101,22 @@
 2020-10-30 09:43:16 Quit: delta23 (Quit: Leaving)
 2020-10-30 09:43:16 Names: ^[, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumboo, haavard, HackEso, hakatashi, hendursa1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, tswett[m], user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
 2020-10-30 09:47:53 <fizzie> b_jonas: No. Or at least I saw no evidence of that. The boot script does mention an ftpd though. Should maybe check what ports are open if I actually boot it.
+2020-10-30 10:06:07 <b_jonas> fizzie: yeah. and perhaps check both from the LAN port and the internet connection side, and both ipv4 or ipv6, because if the router software were designed sanely, then they might restrict listeneres that the ISP use only to the interfaces and/or protocols that they use to control your router
+2020-10-30 10:06:27 <b_jonas> it needn't be on the default port obviously
+2020-10-30 10:07:58 <b_jonas> though looking for stupid bugs in the user-facing web configuration interface, like those infamous stupid ones that let you run any shell command without authentication, might be more productive
+2020-10-30 10:08:51 <b_jonas> fizzie: also, have you searched online for other people testing this ISP's modem router?
+2020-10-30 10:09:24 <fizzie> I'm almost certain it's going to have at least one shell injection problem in the web interface, because the other one had more than I could count.
+2020-10-30 10:09:54 <fizzie> Though I guess it's theoretically possible they've learned something since then.
+2020-10-30 10:10:23 <b_jonas> maybe this time it will only have shell injection that checks your password first?
+2020-10-30 10:11:13 <fizzie> Could be, but if it has a hardcoded debug account with an unchangeable password, that's not too great either.
+2020-10-30 10:11:27 <fizzie> (I don't know if it counts as a modem when it's only got Ethernet ports in it.)
+2020-10-30 10:11:47 <b_jonas> aren't those accounts for two different interfaces though? your password for the interface intended to the customer; hard-coded debug account for the interface intended for the ISP
+2020-10-30 10:12:55 <b_jonas> only ethernet ports => ah ok, you have a point. I am using one with a COAX cable towards the ISP's side, but I heard one of the two other ISPs does have one of the ethernet ones
+2020-10-30 10:13:04 <b_jonas> s/COAX/coax/
+2020-10-30 10:13:22 <fizzie> Not necessarily. At least the previous one had one for the normal web interface, which wasn't even listening on the WAN side.
+2020-10-30 10:14:18 <b_jonas> fizzie: and was that debug login always active, or only right after a reset until you change your password?\
+2020-10-30 10:14:32 <b_jonas> because a debug account after a reset might make sense
+2020-10-30 10:21:00 <b_jonas> but I guess you can't test that
+2020-10-30 10:21:22 <fizzie> It worked when I tried it (after having set my own password for the normal "admn" account), so I think it was always on. Not really sure what its purpose was.
+2020-10-30 10:21:52 <fizzie> Can't test anything regarding that specific router-modem (it had a DSL thing), I no longer have it.
+2020-10-30 10:23:57 <fizzie> On the ISP side, I think they've got that standard remote configuration thing, TR-069.
