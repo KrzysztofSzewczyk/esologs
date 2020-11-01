@@ -1,0 +1,17 @@
+2020-11-01 00:01:19 <esowiki> 14[[07Dotcomma14]]4 N10 02https://esolangs.org/w/index.php?oldid=78271 5* 03Redwolf10105 5* (+7191) 10Created page (copied from Github repo)
+2020-11-01 00:02:19 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=78272&oldid=78259 5* 03Redwolf10105 5* (+15) 10
+2020-11-01 00:13:55 User Name: delta23 = delta23!~deltaepsi@96.27.170.132
+2020-11-01 00:13:55 <delta23> so, i've been thinking
+2020-11-01 00:14:03 <delta23> if there was a variant of brainfuck with only
+2020-11-01 00:14:08 <delta23> <>+-
+2020-11-01 00:14:19 <delta23> but with the difference that programs could be infinitely long
+2020-11-01 00:14:33 <delta23> would that make it turing complete?
+2020-11-01 00:16:56 User Name: Arcorann = Arcorann!~awych@121-200-5-186.79c805.syd.nbn.aussiebb.net
+2020-11-01 00:16:56 <Arcorann> Doubtful, since you've removed all the commands that depend on the state of memory
+2020-11-01 00:17:45 <delta23> shouldn't it be possible to implement conditionals based on these? the program would be really large if possible..
+2020-11-01 00:17:59 <Arcorann> Conditioning on what?
+2020-11-01 00:18:32 <delta23> ie simulating a turing machine using the above and simulating conditional flow
+2020-11-01 00:19:30 <Arcorann> Question still stands: what would the conditionals depend on
+2020-11-01 00:19:49 <delta23> i'm not sure
+2020-11-01 00:20:20 <delta23> i've been trying to figure out if it's possible to do that without looping/explicit conditionals
+2020-11-01 00:25:21 <delta23> i know that the above instructions are at least as powerful as a linear bounded automata if said infinite program repeats infinitely(ie within a infinite loop)
