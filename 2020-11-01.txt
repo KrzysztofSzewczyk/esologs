@@ -128,3 +128,39 @@
 2020-11-01 14:12:05 <Arcorann> I don't mind checking your solution
 2020-11-01 14:12:42 <fizzie> Depends on what you put in. But most of the BMP is the CJK unified ideographs (4E00-9FFF), so that's quite likely to be where you land in.
 2020-11-01 14:13:10 <b_jonas> yeah, pastebins work too, put the spoiler in a pasted page, the non-spoiler part with a link in irc
+2020-11-01 14:38:23 <b_jonas> eval "$(cat somefile)" instead of source somefile . gets today's useless use of cat award.
+2020-11-01 14:40:02 <int-e> Is it completely useless? If `somefile` is a pipe special file this ensures that EOF is reached before evaluation starts ;)
+2020-11-01 14:40:28 <b_jonas> int-e: dunno, I think it's worse than useless
+2020-11-01 14:40:43 <b_jonas> as in it might break in some case
+2020-11-01 14:40:54 <b_jonas> but I don't know any case when it would actually break
+2020-11-01 14:40:58 <int-e> I'm just looking for a semantic difference and pretend it's a feature.
+2020-11-01 14:41:36 <int-e> if you're fresh out of PIDs or root file system, then the `cat` invocation may fail.
+2020-11-01 14:41:53 <b_jonas> int-e: let's say it's a performance difference: we're no longer in the DOS age where the shell has to keep re-reading the same sector of the batch file before each command just to save memory
+2020-11-01 14:42:17 <b_jonas> but then source with bash doesn't do that anymore, it has proper buffers behind it
+2020-11-01 14:42:32 <b_jonas> so it does the optimization better than requiring to read the whole file at once
+2020-11-01 14:43:04 <int-e> to be clear, I'd write `source somefile` or `. somefile` under most circumstances.
+2020-11-01 14:43:10 <b_jonas> I guess they differ in how they treat the positional parameters $@
+2020-11-01 14:43:39 <int-e> but that's not stopping me from finding a narrow use for the cat thing :P
+2020-11-01 14:44:09 <int-e> (Especially since I recently saw a whole script wrapped in a subshell for a similar purpose)
+2020-11-01 14:44:38 <int-e> Namely, here: https://get-ghcup.haskell.org/
+2020-11-01 14:45:14 <b_jonas> normally I'd say that eval "$(cat somefile)" is worse because if something fails, the backtrace won't be able to show the correct filename and line number into the source code, but for the shell this doesn't actually apply, it doesn't show filenames and line numbers anyway I think
+2020-11-01 14:45:29 * int-e notes the channel name.
+2020-11-01 14:45:43 <b_jonas> int-e: how about, it's easy to change from cat to zcat to transparently execute possibly compressed source files?
+2020-11-01 14:45:47 * int-e rejects all notions of utility.
+2020-11-01 14:46:14 <int-e> generalizing to zcat is cute too
+2020-11-01 14:46:33 <int-e> though I expect . <(zcat file)  to work.
+2020-11-01 14:46:44 <int-e> (in bash)
+2020-11-01 14:47:46 <b_jonas> well ok, but that pipe substitution is a "new" feature (in that I started to write scripts in bash before bash 2, back when it didn't even have the ${foo/bar/qux} substring substitution... I'm old)
+2020-11-01 14:47:59 <b_jonas> so perhaps the eval was written before that existed
+2020-11-01 14:48:22 <int-e> The pipe substitution is the best thing bash ever stole from zsh.
+2020-11-01 14:48:45 <int-e> (At least that's where I think I saw it first.)
+2020-11-01 14:49:15 <int-e> I'm using it *a lot*.
+2020-11-01 14:49:17 <b_jonas> isn't the {1..20} numeric brace thing the best thing bash ever stole from zsh?
+2020-11-01 14:49:50 <int-e> stuff like  comm -12 <(... | sort) <(... | sort)
+2020-11-01 14:50:11 <int-e> But I'm using the {01..20} thing much less.
+2020-11-01 14:52:34 <b_jonas> I'm using the brace numerics a lot when I move photos to category directories after I copy them from the memory card of the camera, since I generally have contiguous sequences of more than two photos that I took at the same location and that go into the same category
+2020-11-01 14:53:19 <b_jonas> so it's like mv -vi tmp/P11901{08..13}.JPG bp/ferenc/
+2020-11-01 14:53:24 <int-e> sure
+2020-11-01 14:53:56 <int-e> It's useful, it just feels comparatively mundane.
+2020-11-01 14:54:04 <b_jonas> hmm, now I actually have to look up if I have a P11901{08..13} and which category they're in
+2020-11-01 14:55:39 <b_jonas> not yet, that number is in the future apparently
