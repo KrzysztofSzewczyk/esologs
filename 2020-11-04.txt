@@ -138,3 +138,44 @@
 2020-11-04 13:59:54 <wib_jonas> ^ that
 2020-11-04 14:00:03 <int-e> wib_jonas: not sure why you're showing that to *me* ;)
 2020-11-04 14:00:38 <int-e> but I'll take it as a rare token of appreciation
+2020-11-04 14:32:00 Quit: Arcorann (Read error: Connection reset by peer)
+2020-11-04 14:32:00 Names: ^[, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-11-04 14:34:06 Joined: MDude
+2020-11-04 14:34:06 Names: ^[, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-11-04 14:34:51 <wib_jonas> `sed -i s/random/secrets /hackenv/bin/password
+2020-11-04 14:34:52 <HackEso> Usage: /bin/sed [OPTION]... {script-only-if-no-other-script} [input-file]... \  \   -n, --quiet, --silent \                  suppress automatic printing of pattern space \       --debug \                  annotate program execution \   -e script, --expression=script \                  add the script to the commands to be executed \   -f script-file, --file=script-file \                  add the contents of script-file to the commands to be ex
+2020-11-04 14:35:00 <wib_jonas> `sed -i s/random/secrets/ /hackenv/bin/password
+2020-11-04 14:35:01 <HackEso> Usage: /bin/sed [OPTION]... {script-only-if-no-other-script} [input-file]... \  \   -n, --quiet, --silent \                  suppress automatic printing of pattern space \       --debug \                  annotate program execution \   -e script, --expression=script \                  add the script to the commands to be executed \   -f script-file, --file=script-file \                  add the contents of script-file to the commands to be ex
+2020-11-04 14:35:36 <wib_jonas> `perl -pi -e s/random/secrets/ /hackenv/bin/password
+2020-11-04 14:35:37 <HackEso> ​-i used with no filenames on the command line, reading from STDIN.
+2020-11-04 14:35:40 <wib_jonas> ``` perl -pi -e s/random/secrets/ /hackenv/bin/password
+2020-11-04 14:35:42 <HackEso> No output.
+2020-11-04 14:35:46 <wib_jonas> `password
+2020-11-04 14:35:47 <HackEso> Traceback (most recent call last): \   File "/hackenv/bin/password", line 3, in <module> \     import secrets \ ImportError: No module named secrets
+2020-11-04 14:35:53 <wib_jonas> oh heck
+2020-11-04 14:35:58 <wib_jonas> `revert
+2020-11-04 14:35:59 <HackEso> Done.
+2020-11-04 14:36:04 <wib_jonas> `password
+2020-11-04 14:36:05 <HackEso> jefzvxkpacwmuaf
+2020-11-04 14:36:30 <wib_jonas> ah, it's running python2
+2020-11-04 14:36:50 <wib_jonas> ``` perl -pi -e 's/random/secrets/;s/python/$&3/' /hackenv/bin/password
+2020-11-04 14:36:52 <HackEso> No output.
+2020-11-04 14:36:55 <wib_jonas> `password
+2020-11-04 14:36:56 <HackEso> ​  File "/hackenv/bin/password", line 6 \     print "".join(secrets.choice(string.ascii_lowercase) for _ in xrange(15)) \            ^ \ SyntaxError: invalid syntax
+2020-11-04 14:37:03 <wib_jonas> ok ok
+2020-11-04 14:37:39 <wib_jonas> ``` perl -pi -e 's/print (.*)/print($1)/' /hackenv/bin/password
+2020-11-04 14:37:41 <HackEso> No output.
+2020-11-04 14:37:44 <wib_jonas> `password
+2020-11-04 14:37:45 <HackEso> Traceback (most recent call last): \   File "/hackenv/bin/password", line 6, in <module> \     print("".join(secrets.choice(string.ascii_lowercase) for _ in xrange(15))) \ NameError: name 'xrange' is not defined
+2020-11-04 14:38:00 <wib_jonas> gth
+2020-11-04 14:38:10 <wib_jonas> ``` perl -pi -e 's/xrange/range/' /hackenv/bin/password
+2020-11-04 14:38:13 <HackEso> No output.
+2020-11-04 14:38:15 <wib_jonas> `password
+2020-11-04 14:38:16 <HackEso> wwllaashmybugjb
+2020-11-04 14:38:19 <wib_jonas> oh finally
+2020-11-04 14:38:21 <wib_jonas> `5 password
+2020-11-04 14:38:23 <HackEso> 1/1:qrafddczkdvqhwk \ rubbgzxsnknqlka \ ammojpjhjpvnuvn \ dvqapoearrthppe \ xdxcblxbmjdlsnu
+2020-11-04 14:40:33 Joined: arseniiv
+2020-11-04 14:40:33 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
+2020-11-04 14:46:36 Joined: adu
+2020-11-04 14:46:37 Names: ^[, adu, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex-, wesleyac, wib_jonas, wmww, xelxebar, zeroed, zzo38
