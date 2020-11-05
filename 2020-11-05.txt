@@ -139,3 +139,26 @@
 2020-11-05 21:40:13 Quit: rain1 (Quit: Leaving)
 2020-11-05 21:40:13 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
 2020-11-05 21:48:20 <esowiki> 14[[07Asparagus14]]4 10 02https://esolangs.org/w/index.php?diff=78329&oldid=78328 5* 03Not applicable 5* (+799) 10added command line & yet more
+2020-11-05 22:03:52 User Name: zzo38 = zzo38!~zzo38@host-24-207-14-22.public.eastlink.ca
+2020-11-05 22:03:52 <zzo38> Some bits are unused in the IBM PC Color Graphics Adapter. (Someone asked about the two high bits of each control register are unused, but those bits are unavailable. Nevertheless, there are unused bits which are available.)
+2020-11-05 22:05:05 <zzo38> The unused bits which are available are MA13 in all modes, MA12 in graphics mode, the blink mode bit in graphics mode, and the palette bit in text mode.
+2020-11-05 22:05:38 <b_jonas> MA13? aren't there only 11 registers?
+2020-11-05 22:05:42 <zzo38> The cursor position bits are also unused in graphics mode.
+2020-11-05 22:05:59 <zzo38> b_jonas: MA13 and MA12 are outputs from the 6845 IC.
+2020-11-05 22:06:37 <esowiki> 14[[07Asparagus14]]4 10 02https://esolangs.org/w/index.php?diff=78330&oldid=78329 5* 03Not applicable 5* (+1054) 10h
+2020-11-05 22:06:53 <b_jonas> I think you get the entire graphics buffer unused if you turn picture generation off. there's a bit for that to make switching between modes nicer.
+2020-11-05 22:06:57 <zzo38> (They are the address outputs. The PC doesn't use them.)
+2020-11-05 22:07:19 <zzo38> b_jonas: Yes there is, but that is independent from what I mentioned.
+2020-11-05 22:07:49 <b_jonas> output? isn't it inputs that you want?
+2020-11-05 22:09:04 <zzo38> Yes, although the output address is by the input address (configured using the 6845 registers) plus the current screen offset.
+2020-11-05 22:11:36 <myname> https://www.youtube.com/watch?v=Ll0qHlx_qLg TIL
+2020-11-05 22:12:31 <esowiki> 14[[07Asparagus14]]4 M10 02https://esolangs.org/w/index.php?diff=78331&oldid=78330 5* 03Not applicable 5* (-49) 10fix
+2020-11-05 22:17:10 <esowiki> 14[[07User:Not applicable14]]4 10 02https://esolangs.org/w/index.php?diff=78332&oldid=78322 5* 03Not applicable 5* (+10471) 10
+2020-11-05 22:17:13 <zzo38> Do any computers use two 6845 display controllers on a single screen?
+2020-11-05 22:18:51 <b_jonas> zzo38: does it count if I'm emulating two PCs with CGA outputs and I put their displays in side-by-side windows displayed on the one screen of the host?
+2020-11-05 22:19:05 <b_jonas> I don't think I've ever done that, but I could
+2020-11-05 22:20:23 <zzo38> No, that doesn't count for what I intend to ask.
+2020-11-05 22:22:18 <b_jonas> though even then I'd be emulating an SVGA card
+2020-11-05 22:22:35 <b_jonas> it's just backwards compatible enough to display CGA modes
+2020-11-05 22:22:52 Joined: Arcorann
+2020-11-05 22:22:52 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, hendursaga, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex-, wesleyac, wmww, xelxebar, zeroed, zzo38
