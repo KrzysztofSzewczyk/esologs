@@ -1,0 +1,31 @@
+2020-11-10 00:05:04 <imode> does it segfault with -Og?
+2020-11-10 00:08:12 Joined: b_jonas
+2020-11-10 00:08:12 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-10 00:10:08 <zzo38> I may have a old version of gcc, because -Og is not recognized
+2020-11-10 00:10:35 <imode> huh.
+2020-11-10 00:10:40 <imode> got the code? I can help.
+2020-11-10 00:12:43 Quit: LKoen (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+2020-11-10 00:12:43 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-10 00:12:56 User Name: b_jonas = b_jonas!~x@catv-176-63-12-25.catv.broadband.hu
+2020-11-10 00:12:56 <b_jonas> `ping
+2020-11-10 00:12:56 <zzo38> The code can be found in:  http://zzo38computer.org/fossil/freezzt.ui/dir?ci=600c9773dae1a6d3&name=frezed  The program "main.c" is the one being executed.
+2020-11-10 00:12:57 <HackEso> pong
+2020-11-10 00:13:49 <imode> wow.
+2020-11-10 00:13:52 <zzo38> The problem might be in main.c or zzt.c, is my guess.
+2020-11-10 00:14:03 <zzo38> It sometimes happens when importinga board.
+2020-11-10 00:15:33 Joined: TheLie
+2020-11-10 00:15:33 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, dog_star, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, Sgeo, shachaf, shikhin, shinh, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-10 00:15:39 <imode> nice replacements for asserts.
+2020-11-10 00:16:14 <imode> do you have an example of a board that always segfaults.
+2020-11-10 00:17:19 <zzo38> Let me check now.
+2020-11-10 00:18:54 <zzo38> No board seems to always segfault. It seems to do so unpredictably.
+2020-11-10 00:19:27 <zzo38> But it seems to require adding a new board and importing into that one; it doesn't seem to segfault if it is imported over an existing board.
+2020-11-10 00:20:11 <imode> hm. if you can give me some example data files I can mess with it. just got it compiled.
+2020-11-10 00:20:55 <zzo38> OK. Just a minute
+2020-11-10 00:23:59 <zzo38> http://zzo38computer.org/ZZT/boardtest.zip
+2020-11-10 00:27:06 <zzo38> The default key bindings use ^L to import a board, but you must create a file called ~/.frezedrc which references the default key binding file (bindings.def) (write "Defaults=/path_to/bindings.def" or as appropriate)
+2020-11-10 00:28:01 <zzo38> Do these files work?
+2020-11-10 00:28:11 <imode> workin on it.
+2020-11-10 00:29:29 <zzo38> OK
+2020-11-10 00:29:30 <imode> "invalid world".
+2020-11-10 00:29:50 <imode> https://hastebin.com/raw/isujipiyen
