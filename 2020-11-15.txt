@@ -159,3 +159,51 @@
 2020-11-15 14:57:39 Names: ^[, aaaaaa, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
 2020-11-15 14:59:58 Joined: sftp
 2020-11-15 14:59:58 Names: ^[, aaaaaa, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-15 15:04:14 Joined: Hooloovo0
+2020-11-15 15:04:14 Names: ^[, aaaaaa, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-15 15:05:38 <int-e> no amaids?
+2020-11-15 15:05:48 <b_jonas> amilk sounds like a unix system call, with a random letter like lseek and pread
+2020-11-15 15:06:30 <int-e> surprisingly not all 5 letter combinations are unix system calls
+2020-11-15 15:10:27 <b_jonas> int-e: of course not! some clash with established function names from the C library, like clogf, so to clog a file you have to call fcntl with the right arguments instead
+2020-11-15 15:12:30 <b_jonas> although in some cases you get something where the system call name still exists but the libc wrapper function is called differently, like the exit system call, where the libc wrapper function used to be called _exit, but now that's not good enough for linux either, so now _exit is the wrapper for the system call exit_group just to be confusing
+2020-11-15 15:12:49 <b_jonas> and no, _Exit isn't it either, that's just a synonym for _exit
+2020-11-15 15:13:51 Quit: aaaaaa (Quit: leaving)
+2020-11-15 15:13:51 Names: ^[, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, RTFM[ChOkO], sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-15 15:14:24 <b_jonas> also some five letter combinations are K&R C keywords, like break, float, short, union, while, so the corresponding system calls had to be renamed after unix married C
+2020-11-15 15:14:49 <b_jonas> so we have brk and cbrk instead of break now
+2020-11-15 15:14:50 <fizzie> I know 'l' in lseek is for "long", but never really thought what 'p' in "pread"/"pwrite" might be for.
+2020-11-15 15:16:15 <int-e> positional?
+2020-11-15 15:16:44 <b_jonas> fizzie: what does it stand for in pselect and ppoll? does it stand for POSIX anywhere?
+2020-11-15 15:17:15 <int-e> there's also the p in pthreads, which would indeed be POSIX
+2020-11-15 15:17:31 <b_jonas> ah true
+2020-11-15 15:18:14 <b_jonas> and I think it stands for process in ptrace
+2020-11-15 15:18:24 <b_jonas> (as well as in getpid)
+2020-11-15 15:18:54 <int-e> (pread seems particularly useful in threaded programs)
+2020-11-15 15:20:13 <b_jonas> the most mysterious letter prefix is of course u. we have a pretty good guess what it stood for in umount, but there's uname, utime, ustat (obsolete), ulimit (also obsolete)
+2020-11-15 15:20:14 <int-e> though the more common convention is an r suffix, which may be for re-entrant?
+2020-11-15 15:20:18 <b_jonas> and umask
+2020-11-15 15:20:39 <b_jonas> int-e: I think that's a libc convention, not a linux convention
+2020-11-15 15:21:00 <int-e> why can't they be the same :P
+2020-11-15 15:21:13 <b_jonas> and there's the v in vfork
+2020-11-15 15:21:42 <int-e> otoh, in a world where not even programs can get a uniform convention on their command line arguments...
+2020-11-15 15:22:25 <b_jonas> as for that, I think gnu's long option parser was a big mistake
+2020-11-15 15:22:29 <int-e> firefox -no-remote -ProfileManager <-- this took me a long time to get correct consistently
+2020-11-15 15:23:02 <b_jonas> int-e: no, that's just because firefox changes everything once every few years. I think that command has changed at least twice.
+2020-11-15 15:23:40 <int-e> Well, not in the past 8, maybe 10 years, I think?
+2020-11-15 15:23:55 <b_jonas> also it's (firefox --no-remote --ProfileManager) according to the output of (firefox --help) – wait, maybe I should try (firefox -help) just in case
+2020-11-15 15:24:03 <int-e> it's just that one is CamelCase and the other is hyphenated. It's pretty bad.
+2020-11-15 15:24:15 <b_jonas> nope, firefox -help still shows double dashes for the long options
+2020-11-15 15:24:42 <b_jonas> int-e: yeah, they changed that one long ago. I'm a long-time firefox user, contiguous with netscape and mozilla suite.
+2020-11-15 15:25:40 <int-e> I've also been using it since forever, but I don't know when I started using temporary profiles.
+2020-11-15 15:25:46 <int-e> Which is what I use that command for.
+2020-11-15 15:25:56 <b_jonas> ok, this gives me an esoteric idea. have a program print different style of options if you invoke it as (foo help), (foo -h), (foo -help), (foo --help), (foo -?), (foo /?)
+2020-11-15 15:26:47 <b_jonas> I don't use temporary profiles, but I have used multiple profiles a few times, partly to get different firefox processes to coexist easier, and partly to have different settings, including proxy settings
+2020-11-15 15:26:51 <int-e> and it's quite possible that I've made it through one transition (change of the spelling of those flags) without fully realizing it.
+2020-11-15 15:27:03 <b_jonas> right now I have a firefox profile for a library proxy
+2020-11-15 15:27:17 <b_jonas> for accessing some articles on JSTOR and such databases
+2020-11-15 15:28:00 <b_jonas> btw, I have two different things giving me access to some JSTOR articles, but not all, so now if I meet an article on JSTOR to which I don't have access, I have to waste time trying both of them
+2020-11-15 15:28:13 <b_jonas> it's like the two watches problem
+2020-11-15 15:28:16 <int-e> I try to minimize this, but sometimes I need to use a site that sets tons of cookies from multiple domains... and it's easier to just use a fresh profile, do some stuff, and then discard the whole thing again.
+2020-11-15 15:28:46 <int-e> easier than adding all the prerequisites to the whitelists.
+2020-11-15 15:29:34 <b_jonas> int-e: isn't that what the "new private window" thing is for in firefox, for not remembering new cookies and similar after you close all windows derived from that?
+2020-11-15 15:30:01 <int-e> this still wouldn't disable the addons that do the filtering
