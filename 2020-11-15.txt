@@ -130,3 +130,14 @@
 2020-11-15 13:27:17 <b_jonas> it needn't be slots for different rarities like in M:tG, there are other ways to implement different rarities of bonbons, and with 65 bonbons you don't need a guaranteed rare to make it feel fair
 2020-11-15 13:29:04 <b_jonas> fizzie: btw, if each bonbon is chosen independently and uniformly from n bonbons, then you need in average n*log(n) bonbons to find at least one of every type
 2020-11-15 13:29:41 <b_jonas> "coupon collector problem" is the search keyword
+2020-11-15 13:30:57 <b_jonas> and that's natural logarithm, and the actual average is a harmonic number, for which this is a good approximation except for n=2 or n=3
+2020-11-15 13:31:26 <b_jonas> no wait\
+2020-11-15 13:31:41 <b_jonas> it's supposed to be n*(log(n)-1) right?
+2020-11-15 13:31:44 <b_jonas> I'm stupid
+2020-11-15 13:31:58 <b_jonas> make it n*(log(n)-1) then
+2020-11-15 13:34:52 <b_jonas> or maybe... maybe it's n*log(n) and the average is n plus the harmonic number?
+2020-11-15 13:34:58 <b_jonas> I've no idea how this works
+2020-11-15 13:35:03 <b_jonas> sorry
+2020-11-15 13:41:24 Quit: Hooloovo0 (Quit: Temporarily refracted into a free-standing prism.)
+2020-11-15 13:41:24 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, diginet, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi, heroux, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, laerling, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, myndzi, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, RTFM[ChOkO], sebbu, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2020-11-15 13:44:12 <Arcorann> https://en.wikipedia.org/wiki/Coupon_collector%27s_problem <-- It's n * H_n ~ n * (log n + gamma) where gamma is the Euler-Mascheroni constant (0.577...)
