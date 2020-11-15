@@ -91,3 +91,42 @@
 2020-11-15 12:52:13 <esowiki> 14[[07Decision tree14]]4 M10 02https://esolangs.org/w/index.php?diff=78606&oldid=69369 5* 03PythonshellDebugwindow 5* (+64) 10see also
 2020-11-15 12:52:46 <esowiki> 14[[07Decision tree14]]4 M10 02https://esolangs.org/w/index.php?diff=78607&oldid=78606 5* 03PythonshellDebugwindow 5* (+1) 10Link to decision shrub
 2020-11-15 12:53:29 <esowiki> 14[[07Decision shrub14]]4 M10 02https://esolangs.org/w/index.php?diff=78608&oldid=78605 5* 03PythonshellDebugwindow 5* (+0) 10/* Example of a decision shrub */ DIX
+2020-11-15 13:05:46 <fizzie> We bought a box of candies that's essentially a 65d12, and got a result that had 0 of one specific kind; either we're very unlucky, or they're not using fair dice at the factory.
+2020-11-15 13:06:29 <Arcorann> Is there a calculator bot here?
+2020-11-15 13:07:13 <fizzie> There's a lot of different programming languages, the non-esoteric ones can pretty feasibly used as calculators.
+2020-11-15 13:08:38 <fizzie> > 1 + 1
+2020-11-15 13:08:40 <lambdabot> 2
+2020-11-15 13:09:48 <int-e> `` dc <<<'1 1+p'
+2020-11-15 13:09:50 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2020-11-15 13:09:50 <HackEso> 2
+2020-11-15 13:11:13 <fizzie> I wanted to add a dc helper so that you could do `dc x y z directly, but then it'd shadow the actual dc, and I couldn't come up with any alternative guessable name for the wrapper, I don't think there's a convention.
+2020-11-15 13:11:22 <Arcorann> Which one's the easiest to find 1 - (11/12)^65 in?
+2020-11-15 13:11:30 <fizzie> `` dc -e '1 1+p'
+2020-11-15 13:11:31 <HackEso> 2
+2020-11-15 13:11:58 <fizzie> I guess there could be a dc-e, because I think we've got a perl-e.
+2020-11-15 13:12:20 <esowiki> 14[[07Cod14]]4 M10 02https://esolangs.org/w/index.php?diff=78609&oldid=78123 5* 03PythonshellDebugwindow 5* (+49) 10cats
+2020-11-15 13:12:25 <fizzie> `perl-e print 1+1;
+2020-11-15 13:12:25 <HackEso> 2
+2020-11-15 13:13:29 <esowiki> 14[[07COD14]]4 M10 02https://esolangs.org/w/index.php?diff=78610&oldid=78122 5* 03PythonshellDebugwindow 5* (+30) 10/* Raise an error (takes 3 inputs first) */ more
+2020-11-15 13:13:39 <int-e> > 1 - (11/12)^65
+2020-11-15 13:13:41 <lambdabot> 0.9965026142016578
+2020-11-15 13:13:44 <int-e> > 1 - (11/12)^65 :: Rational
+2020-11-15 13:13:46 <lambdabot> 13972027618997412615763213033014351656206668630973030353623136688948981 % 14...
+2020-11-15 13:14:08 <int-e> err, right, that's a bit too much
+2020-11-15 13:14:23 <fizzie> Also, I initially intuitively thought it'd be (11/12)^65 too, but after some reflection, that feels more like the probability of missing a *specific* kind.
+2020-11-15 13:14:40 <int-e> Indeed it is :)
+2020-11-15 13:14:58 <int-e> Also, realistically... the kinds may always be biased.
+2020-11-15 13:16:07 <fizzie> Well, yes. Also, there was a news article saying they removed the one we were missing from production temporarily because of the covid thing (is there *anything* bad you can't blame the virus on?), but that was supposed to be over already.
+2020-11-15 13:17:05 <fizzie> For the record, this was about Quality Street, which is apparently a special kind of a thing here in the UK, but we'd never had.
+2020-11-15 13:17:23 <int-e> > let c n 0 = 1; c n k = c (n-1) (k-1) * n `div` k in sum [(-1)^k * (1-fromInteger k/12)^65 * fromInteger (c 12 k) | k <- [0..12]]
+2020-11-15 13:17:26 <lambdabot> 0.9585004275442837
+2020-11-15 13:17:52 <fizzie> Yeah, that could still plausibly happen.
+2020-11-15 13:18:29 <olsner> > 1 - 12*(11/12)^65
+2020-11-15 13:18:31 <lambdabot> 0.9580313704198934
+2020-11-15 13:19:17 <int-e> olsner: 12*(11/12)^65 accounts cases where there are fewer than 11 candies multiple times.
+2020-11-15 13:19:38 <int-e> but obviously it's a decent estimate :)
+2020-11-15 13:25:56 <b_jonas> fizzie: no way is it that simple. they probably have types of bonbons with different rarities, even if they don't tell you about it and they put an Island in a rare slot as distraction.
+2020-11-15 13:26:18 <b_jonas> ah, I see int-e already said that
+2020-11-15 13:27:17 <b_jonas> it needn't be slots for different rarities like in M:tG, there are other ways to implement different rarities of bonbons, and with 65 bonbons you don't need a guaranteed rare to make it feel fair
+2020-11-15 13:29:04 <b_jonas> fizzie: btw, if each bonbon is chosen independently and uniformly from n bonbons, then you need in average n*log(n) bonbons to find at least one of every type
+2020-11-15 13:29:41 <b_jonas> "coupon collector problem" is the search keyword
