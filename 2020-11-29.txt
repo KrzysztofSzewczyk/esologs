@@ -137,3 +137,23 @@
 2020-11-29 15:43:21 <fizzie> ^rerere 12345
 2020-11-29 15:43:21 <fungot> 121321432543545
 2020-11-29 15:43:47 <fizzie> I'm sure it made sense in context.
+2020-11-29 16:34:55 <b_jonas> FireFly: and I made buubot properly extendable. buu already tried to do it, but the interface that he chose wasn't powerful enough, so I added an elegant but esoteric way to extend it in a way that uses the evaluators that were already in buubot, and lets you extend in a way that's powerful but also hard to use in many cases.
+2020-11-29 16:35:08 <b_jonas> but no brainfuck was involved, luckily.
+2020-11-29 16:35:29 <b_jonas> I understand why you may want programmable bots, but do they have to be brainfuck?
+2020-11-29 16:35:40 <b_jonas> brainfuck is too verbose to be useful in IRC
+2020-11-29 16:36:27 <b_jonas> however, kspalaiologos might also make his bot programmable using his somewhat higher level language (bfasm or whatever it's called), not only brainfuck
+2020-11-29 16:36:40 <b_jonas> it's still not perfect, but at least a degree better than brainfuck
+2020-11-29 16:37:08 <FireFly> Mine wasn't really meant for extending, but I'd agree it's rather impractical
+2020-11-29 16:38:34 Quit: LKoen (Remote host closed the connection)
+2020-11-29 16:38:34 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-11-29 16:40:51 <kspalaiologos> b_jonas, brainfuck has simple instruction set and it can be compressed without problems using rle
+2020-11-29 16:41:11 <kspalaiologos> asm2bf is a really good toolkit for targetting brainfuck, I'd risk saying it's the best one
+2020-11-29 16:41:55 <kspalaiologos> nowadays I worked on digging down with the floating point and signed arithmetic
+2020-11-29 16:42:05 <kspalaiologos> I've had a small dream of a computer algebra system in brainfuck :p
+2020-11-29 16:42:19 <kspalaiologos> I also worked on a small rust-like language compiler targetting asm2bf, but that's not my top priority currently
+2020-11-29 16:43:33 <kspalaiologos> i also provide some primitives in asm2bf for producing really efficient code, so if you chose to discard something, there's no overhead in using asm2bf for that given thing.
+2020-11-29 16:44:25 <kspalaiologos> like, recently I added the `-t' flag and a builtin text generator, which respectively disable the label stub making the brainfuck code completely bloatless and make text-printing programs smaller
+2020-11-29 16:44:37 Joined: TheLie
+2020-11-29 16:44:38 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-11-29 16:49:55 Joined: LKoen
+2020-11-29 16:49:56 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
