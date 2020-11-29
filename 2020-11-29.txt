@@ -120,3 +120,20 @@
 2020-11-29 15:24:00 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
 2020-11-29 15:27:14 User Name: FireFly = FireFly!znc@freenode/staff/firefly
 2020-11-29 15:27:14 <FireFly> an IRC bot I wrote has a bf eval command & an alias command; brainfuck became the defacto way of extending it with new commands
+2020-11-29 15:31:59 <fizzie> That's more or less the case with fungot as well, except brainfuck + underload, plus people haven't been extending it *that* much (HackEso is kind of easier).
+2020-11-29 15:31:59 <fungot> fizzie: ' no. it has always been our strength. i wonder why? he didn't look as though someone was looking over his shoulder. he wasn't used to people being pleased to see you?'
+2020-11-29 15:32:13 <fizzie> ^show
+2020-11-29 15:32:13 <fungot> echo reverb rev rot13 rev2 fib wc ul cho choo pow2 source help hw srmlebac uenlsbcmra scramble unscramble asc ord prefixes tmp test celebrate wiki chr ha rainbow rainbow2 welcome me tell eval elikoski list ping def a thanks tmp2 8ball rreree rerere botsnack bf
+2020-11-29 15:32:38 <fizzie> ^show bf
+2020-11-29 15:32:38 <fungot> (^bf -- evaluates brainfuck)S
+2020-11-29 15:32:41 <fizzie> Hmm.
+2020-11-29 15:32:43 <fizzie> ^bf
+2020-11-29 15:32:43 <fungot> ^bf -- evaluates brainfuck
+2020-11-29 15:33:14 <fizzie> I guess the actual built-in command only triggers if it's followed by a space, meaning that can provide the help text for the no-argument invocation.
+2020-11-29 15:41:05 <FireFly> ^show rerere
+2020-11-29 15:41:05 <fungot> ,.>,.<.>2,[.<.<.>3,]<.<.>.
+2020-11-29 15:42:55 Joined: LKoen
+2020-11-29 15:42:56 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, kspalaiologos, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-11-29 15:43:21 <fizzie> ^rerere 12345
+2020-11-29 15:43:21 <fungot> 121321432543545
+2020-11-29 15:43:47 <fizzie> I'm sure it made sense in context.
