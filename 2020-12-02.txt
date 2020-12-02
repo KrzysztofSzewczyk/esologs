@@ -76,3 +76,58 @@
 2020-12-02 01:28:31 <int-e> (the mazes were random)
 2020-12-02 01:29:43 Joined: shinh
 2020-12-02 01:29:43 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-12-02 01:31:49 User Name: myname = myname!~myname@ks300980.kimsufi.com
+2020-12-02 01:31:49 <myname> so nobody did write an intcode interpreter in intcode yet?
+2020-12-02 01:32:09 <fizzie> I think interest in Intcode kind of petered out post-AoC.
+2020-12-02 01:32:55 <myname> yeah it's not that interesting
+2020-12-02 01:32:56 <fizzie> I remember I was writing annotated disassembly of the puzzle Intcode programs, with the intent of maybe adding them to the article (at least as links), but probably gave up.
+2020-12-02 01:32:57 <int-e> Same here.
+2020-12-02 01:33:06 <myname> easier subleq
+2020-12-02 01:33:33 <int-e> fizzie: Oh I actually finished a disassembly of mine (the day 25 one).
+2020-12-02 01:33:49 <int-e> I'm sure I shared it back then
+2020-12-02 01:34:14 <fizzie> Probably. I think we also argued a bit about the best conventions for Intcode assembly, but I didn't finish (or even really start) the assembler.
+2020-12-02 01:34:49 <int-e> I think in the end it's too normal.
+2020-12-02 01:36:34 <fizzie> Looks like I've actually finished commenting the disassembled versions of days 5, 7 and 13, but did not commit them.
+2020-12-02 01:36:55 <fizzie> Day 13 was that breakout clone.
+2020-12-02 01:37:27 <fizzie> http://ix.io/2Gdh
+2020-12-02 01:37:50 <int-e> Oh I actually automated that one it seems.
+2020-12-02 01:38:40 <int-e> which is probably the only sane thing to do seeing that the panel has size 1.
+2020-12-02 01:38:57 User Name: Arcorann = Arcorann!~awych@159-196-65-46.9fc441.mel.nbn.aussiebb.net
+2020-12-02 01:38:57 <Arcorann> Did you see the creator's compiler?
+2020-12-02 01:39:10 <int-e> no
+2020-12-02 01:39:18 <Arcorann> https://github.com/topaz/aoc2019-intcode
+2020-12-02 01:39:27 <Arcorann> Uploaded a couple of days ago
+2020-12-02 01:40:16 <int-e> I did figure out the calling convention though, and that it supports function pointers
+2020-12-02 01:40:55 <Arcorann> I remember reverse-engineering the square-in-the-beam code
+2020-12-02 01:41:07 <int-e> (see notes in  https://int-e.eu/~bf3/tmp/dis.txt  near the top)
+2020-12-02 01:42:28 <fizzie> Looks like the only instructions my proposed syntax has matching are add/mul/in/out; I used jnz/jz/setlt/seteq/setb/halt where they have jt/jf/lt/eq/rbo/hlt.
+2020-12-02 01:42:34 <fizzie> 'rbo' is a curious choice.
+2020-12-02 01:42:42 Quit: Lord_of_Life (Ping timeout: 272 seconds)
+2020-12-02 01:42:42 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-12-02 01:42:47 <fizzie> "Reset Base Offset"? I'unno.
+2020-12-02 01:43:06 Joined: Lord_of_Life
+2020-12-02 01:43:06 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-12-02 01:43:52 <int-e> I had INCB
+2020-12-02 01:44:14 <int-e> the register was called "relative base", right
+2020-12-02 01:44:18 <fizzie> Right, it had some logic like that.
+2020-12-02 01:44:23 <int-e> so that's "relative base offset"
+2020-12-02 01:44:39 <int-e> (that's my guess at least)
+2020-12-02 01:45:09 <int-e> they don't seem to be a fan of adding verbs like "set" to the mnemonic
+2020-12-02 01:45:36 <fizzie> Aw, the Arecibo telescope collapsed completely now.
+2020-12-02 01:45:50 <Arcorann> I had add/mul/inp/out/jnz/jez/clt/ceq/srb in the comments of my debugger
+2020-12-02 01:46:01 <Arcorann> I guess I wanted everything to be 3 characters
+2020-12-02 01:46:37 <int-e> Arcorann: my choices are in https://esolangs.org/wiki/Intcode, because I wrote the "Proposed Assembly Syntax" section
+2020-12-02 01:48:05 <fizzie> I was planning to implement the syntax http://ix.io/25xa but didn't.
+2020-12-02 01:48:27 <fizzie> It used `*x` for mode 0, a naked `x` for mode 1 and the same `@x` for mode 2.
+2020-12-02 01:48:27 <int-e> hmm, actually that's a surprisingly low level language
+2020-12-02 01:48:44 <fizzie> Somehow @ makes a lot of sense for the relative addressing mode.
+2020-12-02 01:49:16 Quit: arseniiv (Ping timeout: 240 seconds)
+2020-12-02 01:49:16 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-12-02 01:54:05 <int-e> Oh apparently I used STOP for HALT when preparing that disassembly... oh well.
+2020-12-02 01:54:55 <int-e> fizzie: I left the mode 0 unadorned because it came first, and also because AT&T assembly does something similar...
+2020-12-02 01:55:22 <int-e> And that's also where the # comes from.
+2020-12-02 01:55:51 <int-e> Your choice makes about the same amount of sense, to me.
+2020-12-02 01:57:15 <int-e> So what else is there... having labels on operands is kind of cute.
+2020-12-02 01:57:46 <fizzie> Oh, right, forgot I did that.
+2020-12-02 01:59:01 <int-e> I didn't. The author did. He also used * the way you're using it.
+2020-12-02 01:59:59 <int-e> (but not when using a label as an operand... in that case, the * is implicit)
