@@ -32,3 +32,47 @@
 2020-12-02 00:57:50 <fizzie> I had one with super-scrappy Python solutions but with ridiculously extensive (Markdown) notes about the problems and solutions; the Go one, which did a little bit of software-engineering-y stuff like unit tests for everything (well, almost); and the third one for that Processing.js thing, but I only did two days there.
 2020-12-02 00:57:57 <int-e> https://paste.debian.net/1175185/
 2020-12-02 00:59:04 <int-e> (before day 7, the interpreter was not even a separate module)
+2020-12-02 01:00:26 <fizzie> http://ix.io/2Gd8 -- kinda equivalent
+2020-12-02 01:00:49 <esowiki> 14[[07Blindfolded Arithmetic14]]4 M10 02https://esolangs.org/w/index.php?diff=79064&oldid=63412 5* 03PythonshellDebugwindow 5* (+27) 10/* External links */ unimplemented (please correct if wrong)
+2020-12-02 01:01:19 Quit: shinh (Ping timeout: 246 seconds)
+2020-12-02 01:01:19 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2020-12-02 01:01:26 <int-e> And the day 25 version is different because I added some ad-hoc tracing... I don't even remember why :)
+2020-12-02 01:01:40 <fizzie> (log1 = log --oneline --decorate=full --graph)
+2020-12-02 01:02:34 <fizzie> My day 25 change seems to have been to add an `ascii` IO mode so I could play the adventure game "manually".
+2020-12-02 01:02:43 <int-e> https://paste.debian.net/1175186/
+2020-12-02 01:03:13 <int-e> I could do that without modifying the compiler... thanks to lazy evaluation I think
+2020-12-02 01:03:49 <fizzie> http://ix.io/2Gd9 -- in the best Python style of "just stick some string in there instead of the expected type of object".
+2020-12-02 01:03:56 <int-e> And I had abbreviations for n,e,s,w,t=take,d=drop.
+2020-12-02 01:04:20 <fizzie> The queue.Queue in there was for running those multithreaded intcode things actually multithreaded, I think. :)
+2020-12-02 01:05:09 <int-e> hah
+2020-12-02 01:05:56 <int-e> (map (fromIntegral . ord) (unlines ts)) <-- "ASCII mode"
+2020-12-02 01:07:25 <fizzie> Someone's starred the fungot repo 21 days ago. :)
+2020-12-02 01:07:25 <fungot> fizzie: he knew they had galloped into ephebe. he should be killed. there's something honest about slaves and whips. well... i'm just going out,' said agnes.
+2020-12-02 01:07:37 <fizzie> fungot: That's a little harsh, don't you think?
+2020-12-02 01:07:37 <fungot> fizzie: " inadvisably, sir." vimes relaxed a bit,' it said. " you know you said it would help if you think of me
+2020-12-02 01:07:39 <int-e> Ah!
+2020-12-02 01:07:47 <int-e> The tracing was for the weight comparisons.
+2020-12-02 01:08:55 <int-e> So I could see which numbers were compared, and determine individual weights and target weight
+2020-12-02 01:09:01 <fizzie> My day 25 solution just brute-forces the door by doing itertools.combinations(items, size) and spamming drop/take as required.
+2020-12-02 01:09:49 <int-e> Yeah I never did that :)
+2020-12-02 01:10:52 <int-e> But I don't recall how I found the relevant locations... quite possibly I traced *all* SLT instructions at some point
+2020-12-02 01:10:53 <fizzie> "Great repository names are short and memorable. Need inspiration? How about ideal-disco?"
+2020-12-02 01:11:09 <int-e> ?!
+2020-12-02 01:11:09 <lambdabot> Maybe you meant: v @ ? .
+2020-12-02 01:11:16 <fizzie> (I'm considering pushing the 2019 solutions online now that 2020 has rolled around.)
+2020-12-02 01:11:36 <int-e> I'm not sure what github was thinking when they added those suggestions.
+2020-12-02 01:12:10 <fizzie> Probably just to show they're not so stodgy and serious.
+2020-12-02 01:12:52 <int-e> Imagine just taking that suggestion whenever you create a new repo...
+2020-12-02 01:13:29 <int-e> I guess it's not my kind of humor.
+2020-12-02 01:13:41 <int-e> memorability is important, brevity is not
+2020-12-02 01:14:01 <int-e> (you can always check the thing out under a shorter name)
+2020-12-02 01:14:09 <fizzie> Huh. I've got uncommitted changes in the Python repo.
+2020-12-02 01:14:36 <fizzie> They seem to be all just going from 'foo {} bar'.format(baz) to f'foo {baz} bar' though.
+2020-12-02 01:20:56 <fizzie> https://github.com/fis/aoc-py/blob/main/readme.md -- no idea why I wrote all of that, there's nothing particularly clever about any of the solutions.
+2020-12-02 01:22:19 <esowiki> 14[[07Brainstuck14]]4 M10 02https://esolangs.org/w/index.php?diff=79065&oldid=34524 5* 03PythonshellDebugwindow 5* (+41) 10/* External resources */ ctatt
+2020-12-02 01:22:43 <esowiki> 14[[07Brainstuck14]]4 M10 02https://esolangs.org/w/index.php?diff=79066&oldid=79065 5* 03PythonshellDebugwindow 5* (+27) 10/* Examples */ cat
+2020-12-02 01:25:46 <int-e> "These puzzles are getting to be Intcode-related in name only."
+2020-12-02 01:28:10 <int-e> oh right, I remember comparing maps for day 25
+2020-12-02 01:28:31 <int-e> (the mazes were random)
+2020-12-02 01:29:43 Joined: shinh
+2020-12-02 01:29:43 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
