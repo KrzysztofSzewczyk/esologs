@@ -166,3 +166,39 @@
 2020-12-03 14:23:41 <rain1> you're not supposed to do that
 2020-12-03 14:26:26 <int-e> it's against the christmas spirit
 2020-12-03 14:28:43 <Taneb> b_jonas: I think there's a 1 minute timeout but I could be mixed up
+2020-12-03 14:34:43 <b_jonas> Taneb: hmm. I've definitely taken more than a minute on the second half of this task, and I got the star.
+2020-12-03 14:34:51 <b_jonas> but we'll see
+2020-12-03 14:35:42 <fizzie> Not that kind of a timeout, a timeout on how quickly you can repeatedly submit.
+2020-12-03 14:35:48 <fizzie> I seem to recall it was a minute, too.
+2020-12-03 14:35:54 <b_jonas> ah thanks
+2020-12-03 14:36:27 <fizzie> Because the one time I was doing it live, I made a typo when copying the answer when submitting, and had to wait for that, and it was frustrating.
+2020-12-03 14:36:29 <b_jonas> so the 1000 possibilities are just about possible to brute force
+2020-12-03 14:36:42 <fizzie> Yeah. FWIW, usually there's a lot more possible answers than that.
+2020-12-03 14:37:39 <b_jonas> anyway, I got the two yellow star coins for day 1. on to day 2. I haven't seen any red star coins yet.
+2020-12-03 14:42:22 <b_jonas> fizzie: https://adventofcode.com/2020/day/2 first task asks how many passwords are valid from a list of 1000 passwords. the answer must be between 0 and 1000 inclusive, that's 1001 possibilities. day 1 first task also has about 1000 possibilities if all prices in the input are non-negative integers.
+2020-12-03 14:42:29 Joined: LKoen
+2020-12-03 14:42:29 Names: ^[, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-03 14:44:03 <fizzie> Yeah, but that's from a sample size of N=2, I was talking more out from 2019 experiences.
+2020-12-03 14:44:27 <int-e> brute forcing the answer seems more effort than computing it
+2020-12-03 14:44:27 <b_jonas> sample size 3, because day 1 second task has more possibilities I think
+2020-12-03 14:44:33 <int-e> in both these cases
+2020-12-03 14:44:39 <b_jonas> int-e: in these cases, yes
+2020-12-03 14:46:04 <fizzie> Also I'd say the 2020 days 1-3 (hopefully) aren't terribly representative of AoC as a whole. From 2019, I think days 16, 18, 20 and 22 were among the interesting ones, along with the Intcode stuff in general. Days 16 and 22 both have a nice "part 1 can be very straightfoward, but won't generalize to part 2" thing going on.
+2020-12-03 14:46:30 <b_jonas> let me solve this day 2 first task then
+2020-12-03 14:47:18 <fizzie> I don't think it's a spoiler to say that so far the part 2's have been pretty much the same as part 1's, which is a little unfortunate.
+2020-12-03 14:48:34 <fizzie> Incidentally, this year's day 3's part 1 is definitely brute-forceable too, with an even smaller solution space. Though again there's not really any reason to.
+2020-12-03 14:49:31 <FireFly> the intcode stuff was a real bummer for people who had planned to do each task in a different language for funs
+2020-12-03 14:49:31 <b_jonas> so these get updated in the European morning?
+2020-12-03 14:50:29 <myname> ah, you mean people probably get points for just bruteforcing?
+2020-12-03 14:50:37 <b_jonas> FireFly: why? intcode is easy enough to implement anew, or if you want to use an older implementation, you can learn how to bridge or combine languages
+2020-12-03 14:52:04 <FireFly> b_jonas: well I mean, it seemed to get a bit old to reimplement the same VM from what I could tell last year, I saw some noise on twitter wrt it
+2020-12-03 14:52:27 <FireFly> I didn't really do aoc last year, and in general I've never been good at following through :p
+2020-12-03 14:52:36 <FireFly> so we'll see how I fare this year
+2020-12-03 14:53:45 <b_jonas> do we have info for how fast you have to be to get leaderboard points?
+2020-12-03 14:53:57 <b_jonas> like when the 50th and 100th solutions arrived?
+2020-12-03 14:54:09 <fizzie> b_jonas: They get updated American east coast midnight, which translates into European quite-early morning.
+2020-12-03 14:55:29 <fizzie> b_jonas: Yes, you can see them in the per-day leaderboards.
+2020-12-03 14:55:36 <fizzie> https://adventofcode.com/2020/leaderboard/day/2 and so on.
+2020-12-03 14:55:44 <b_jonas> ah thanks
+2020-12-03 14:57:39 <b_jonas> looks like you have to be a few minutes after publication for these first days... though later days may be much harder of course
+2020-12-03 14:59:06 <Taneb> So, I was 4 minutes and 18 seconds too slow to get onto the leaderboards for part 2 this morning :(
