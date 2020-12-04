@@ -179,3 +179,20 @@
 2020-12-04 14:24:22 <b_jonas> `olist 1221
 2020-12-04 14:24:23 <HackEso> olist https://www.giantitp.com/comics/oots1221.html: shachaf oerjan Sgeo FireFly boily nortti b_jonas
 2020-12-04 14:25:34 <b_jonas> zzo38: are the Christmas lights steady or flashing?
+2020-12-04 14:33:02 <arseniiv> rain1: <Taneb> (I was thinking about metric spaces)  <Taneb> (and in particular, why they use the real numbers)  <shachaf> Taneb: Did you figure out why metric spaces use el n�mero real?  <Taneb> shachaf: not yet, but I think it's something to do with analysis
+2020-12-04 14:33:35 <arseniiv> hm I should have linked to logs but I’m lazy :D
+2020-12-04 14:34:28 Joined: FreeFull
+2020-12-04 14:34:28 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, bcasiello, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-04 14:40:36 <rain1> hmm
+2020-12-04 14:41:02 <rain1> it's a good question
+2020-12-04 14:41:26 <rain1> I think it is because the real numbers are a unique ordered field with limits
+2020-12-04 14:48:18 <arseniiv> rain1: non-archimedean ordered fields necessary have non-unique limits?
+2020-12-04 14:48:42 <Taneb> arseniiv: the definition of metric space seems to only require an ordered monoid, none of the laws refer to multiplication, division, or even subtraction
+2020-12-04 14:52:26 <arseniiv> Taneb: yeah, though surely there will be some reason why just monoid is too weak for many occasions. Though right now I don’t have an argument even why it would be good for it to be a semiring
+2020-12-04 14:54:18 <Taneb> I'm not even convinced the ordering needs to be total
+2020-12-04 14:55:28 <b_jonas> I know some puzzle games that at least let you undo steps for free: Baba is you, and tom7's Escape
+2020-12-04 14:56:18 <b_jonas> int-e: "make boxes translucent so that you can distinguish whether they're on a target or not" => some sokoban games use a custom tile for a box on a target
+2020-12-04 14:57:56 <Taneb> arseniiv: possibly for any ordered monoid M, an M-metric space is equivalent to some R-metric space?
+2020-12-04 14:58:53 <arseniiv> b_jonas: Snakebird too
+2020-12-04 14:59:30 <b_jonas> "enriched categories" => with savory spices?
+2020-12-04 14:59:37 <arseniiv> Taneb: if that monoid comes to be hyperreals, it should be impossible but I’m not totally sure
