@@ -196,3 +196,26 @@
 2020-12-04 14:58:53 <arseniiv> b_jonas: Snakebird too
 2020-12-04 14:59:30 <b_jonas> "enriched categories" => with savory spices?
 2020-12-04 14:59:37 <arseniiv> Taneb: if that monoid comes to be hyperreals, it should be impossible but I’m not totally sure
+2020-12-04 15:00:36 <Taneb> arseniiv: that seems correct
+2020-12-04 15:02:08 <b_jonas> "The reals are p. fundamental in all sorts of ways I didn't (and probably still don't) appreciate properly." => yep. long ago I asked why homotopy was defined in a way that depended on the real numbers. I got partial answers.
+2020-12-04 15:04:42 <arseniiv> Taneb: then we may try to characterise which ordered monoids sit inside reals and which don’t, maybe it can still be expressed in a useful way
+2020-12-04 15:05:20 <arseniiv> or maybe we should take extended reals R ∪ {±∞} already
+2020-12-04 15:06:16 <arseniiv> they are necessary to make (undirected) graphs into so-called ∞-metric spaces. I’d rather define usual metric spaces as these from the start, though
+2020-12-04 15:07:07 <arseniiv> as infinite distance is frequently necessary in practical applications (it seems for me)
+2020-12-04 15:07:47 <arseniiv> well at least [weighted] graphs would take a big chunk by themselves
+2020-12-04 15:10:53 Joined: bcasiello
+2020-12-04 15:11:25 <arseniiv> <Taneb> I'm not even convinced the ordering needs to be total => BTW several months ago I tried to formalize cyclical and total orders as two kinds of the general thing, though that ended up too useless
+2020-12-04 15:13:24 <arseniiv> it was based on that you can inject some total order as a kind of a segment/interval in that space. The definition tried to capture all the intervals in that space
+2020-12-04 15:13:37 Joined: Sgeo
+2020-12-04 15:13:37 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, bcasiello, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-04 15:13:39 <arseniiv> maybe the idea would be interesting to somebody
+2020-12-04 15:14:02 Quit: bcasiello (Ping timeout: 256 seconds)
+2020-12-04 15:16:35 <arseniiv> actually, not just intervals but “paths which don’t skip elements”, as you can walk circles on, well, a circle
+2020-12-04 15:18:06 Joined: user24
+2020-12-04 15:18:06 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, ATMunn, b_jonas, bcasiello, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-04 15:20:13 <Taneb> ...what do you mean by cyclical order?
+2020-12-04 15:22:45 <arseniiv> Taneb: https://en.wikipedia.org/wiki/Cyclic_order
+2020-12-04 15:22:54 <arseniiv> (also there is a partial one too)
+2020-12-04 15:22:59 <Taneb> Ah, I'd not encountered that before
+2020-12-04 15:25:16 <arseniiv> Z/nZ are ubiquitous examples of this but I hadn’t seen the general notion until recently too
+2020-12-04 15:26:23 <arseniiv> Z/nZ-the-rings
