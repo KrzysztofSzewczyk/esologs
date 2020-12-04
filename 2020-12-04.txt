@@ -59,3 +59,23 @@
 2020-12-04 07:57:35 <int-e> AME is also strictly turn based
 2020-12-04 07:58:09 <int-e> And borrows the basic push-only Sokoban mechanic... and then goes surprisingly wild with it.
 2020-12-04 07:58:35 <zzo38> Yes, and some other games too
+2020-12-04 08:00:44 <zzo38> I found the documentation for xsok now.
+2020-12-04 08:03:00 <int-e> xsok was an addiction for me... I've patched it (adding more level sets, fixing a couple of bugs, modifying the pixmaps, most notably to make boxes translucent so that you can distinguish whether they're on a target or not)...
+2020-12-04 08:06:25 Quit: Lord_of_Life (Changing host)
+2020-12-04 08:06:25 Joined: Lord_of_Life
+2020-12-04 08:09:30 <int-e> and I've spent 100s of hours optimizing solutions by hand
+2020-12-04 08:12:45 Joined: LKoen
+2020-12-04 08:12:45 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, bcasiello, borrowed, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-04 08:14:37 <zzo38> There are some of the features like Hero Mesh in xsok, although xsok isn't as versatile (although it does allow customizing the scoring definition). That includes the attributes Strength (called Power in xsok) and Weight, and a few other things.
+2020-12-04 08:15:31 <zzo38> Maybe it also might be possible later converting xsok levels into Free Hero Mesh, too.
+2020-12-04 08:17:16 Quit: Sgeo (Read error: Connection reset by peer)
+2020-12-04 08:17:16 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, bcasiello, borrowed, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-04 08:22:21 <zzo38> Automatically testing it also it seem to be possible (also for conversions from Hero Mesh to Free Hero Mesh, too); if you have a recording of the moves of the solution, it can check that it is a valid solution.
+2020-12-04 08:23:00 <int-e> translucent boxes in action: https://int-e.eu/~bf3/tmp/xbox.png
+2020-12-04 08:23:33 <int-e> (the actor is so ugly...)
+2020-12-04 08:24:35 <zzo38> Yes, that is good that the boxes is translucent now.
+2020-12-04 08:25:30 <int-e> these are my own private changes though :P
+2020-12-04 08:25:53 <zzo38> Yes, the actor isn't so good, and I don't like the floor graphics so much either
+2020-12-04 08:26:44 <int-e> though I suppose replacing an installed xpm file is a no-brainer
+2020-12-04 08:28:46 <int-e> so if you care: https://int-e.eu/~bf3/tmp/objects.xpm.gz
+2020-12-04 08:28:49 <zzo38> Most programs that deal with XPM do not support all of its features (although my own implementation implements more than most do, still it doesn't implement the Lisp format)
