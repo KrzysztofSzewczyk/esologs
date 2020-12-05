@@ -80,3 +80,14 @@
 2020-12-05 08:16:17 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-05 08:21:40 Quit: delta23 (Quit: Leaving)
 2020-12-05 08:21:40 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-05 08:41:24 <b_jonas> day 5 is much simpler than day 4, but perhaps only because I'm familiar with this sort of problem
+2020-12-05 08:50:54 <Hooloovo0> so I'm on another channel where people are doing AoC, #cemetech on efnet
+2020-12-05 08:51:36 <b_jonas> hi Hooloovo0
+2020-12-05 08:51:52 <Hooloovo0> they also have a "write something in a bunch of languages" challenge... which seems like exactly the kind of thing yall would be interested in
+2020-12-05 08:51:57 <Hooloovo0> what's up?
+2020-12-05 08:56:45 <int-e> b_jonas: it's worse, the input generator sucks
+2020-12-05 08:58:02 <int-e> (as mentioned earlier I didn't write any special code)
+2020-12-05 08:58:10 <b_jonas> int-e: the input generator for what?
+2020-12-05 08:58:20 <int-e> for AoC today
+2020-12-05 08:58:51 <b_jonas> int-e: how so? doesn't it just generate an interval less one and shuffle it?
+2020-12-05 08:59:25 <int-e> b_jonas: try sort < input | sed s=.........== and see if you can see a pattern
