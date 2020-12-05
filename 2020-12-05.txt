@@ -91,3 +91,39 @@
 2020-12-05 08:58:20 <int-e> for AoC today
 2020-12-05 08:58:51 <b_jonas> int-e: how so? doesn't it just generate an interval less one and shuffle it?
 2020-12-05 08:59:25 <int-e> b_jonas: try sort < input | sed s=.........== and see if you can see a pattern
+2020-12-05 09:00:04 <int-e> no, it has plenty of gaps
+2020-12-05 09:00:24 <int-e> hmm
+2020-12-05 09:00:27 <b_jonas> hmm
+2020-12-05 09:00:29 <int-e> you're right
+2020-12-05 09:01:07 <b_jonas> int-e: what pattern? if you sort it you'll get them all in order, so they have to be consecutive numbers in binary.
+2020-12-05 09:01:28 <b_jonas> it has to be LRLRLRL... with one stumble in it
+2020-12-05 09:01:47 <b_jonas> but it's probably shuffled
+2020-12-05 09:02:05 <b_jonas> as for the gaps, the spec asks you to give the gap as a solution, and the one I got has exactly one gap, I verified that when solving
+2020-12-05 09:02:16 <b_jonas> no free seats on this airplane
+2020-12-05 09:02:39 <int-e> I didn't think the plane would be fully occupied
+2020-12-05 09:03:20 <int-e> okay now I'm even more disappointed
+2020-12-05 09:03:28 <b_jonas> int-e: the spec says "It's a completely full flight, so your seat should be the only missing boarding pass in your list."
+2020-12-05 09:04:11 <int-e> how do you even get on the plane without a boarding pass
+2020-12-05 09:04:54 <int-e> anyway, you're right, it's boring by specification, not by accident
+2020-12-05 09:05:32 <int-e> And I solved it by hand.
+2020-12-05 09:05:52 <int-e> (and sort and dc for conversion from binary)
+2020-12-05 09:06:57 <b_jonas> int-e: the story may have happened before 2001
+2020-12-05 09:07:38 <b_jonas> int-e: but even now, everyone knows how imperfect the security is in airports
+2020-12-05 09:07:45 <b_jonas> you can find stories about it on the internet
+2020-12-05 09:08:06 <int-e> Yeah it's largely security theater
+2020-12-05 09:08:47 <int-e> or commercial interest (the liquid restrictions make food vendors in the transit zone quite happy I'm sure)
+2020-12-05 09:09:30 <b_jonas> int-e: but to be precise, I think the protagonist lost their boarding pass in the long queuing corridor between the electronic boarding pass check and the airplane. an attendent at the airplane entrance looks at some of the boarding passes, but mostly to direct you to the right seat if you want, and at that point I think they let on anyone without a boarding pass
+2020-12-05 09:09:47 <int-e> true
+2020-12-05 09:10:24 <b_jonas> or this is still in one of the foreign lands that Mario visits, with star coins and red star/dragon coins, and it works quite different from our world
+2020-12-05 09:10:50 <b_jonas> ok give me a second, Irregular is about to update
+2020-12-05 09:10:59 <b_jonas> I want to catch it in the first second
+2020-12-05 09:11:14 <b_jonas> yup, late by a few seconds as usual so I had to keep refreshing
+2020-12-05 09:12:07 <b_jonas> well, not really late, but a few seconds after the nominal update time which is given to a minute precision only
+2020-12-05 09:14:17 <b_jonas> and actually not even that anymore, because the FAQ no longer mentions the update time, only the forum and a news entry about moving it one hour earlier does
+2020-12-05 09:14:59 <b_jonas> that change really felt strange at first by the way, changing the reliable schedule that has been there for a decade and only broken a few times by accident and once deliberately during that
+2020-12-05 09:17:20 <b_jonas> Irregular is like 17 years old, it's crazy
+2020-12-05 09:17:49 <b_jonas> well, a bit less since it had years of hiatus
+2020-12-05 09:17:51 <b_jonas> but sttill
+2020-12-05 09:18:18 <b_jonas> the time of day when it and the other comics were published was unchanged for a very long time, even through the hiatus
+2020-12-05 09:24:38 Joined: tromp
+2020-12-05 09:24:38 Quit: tromp (Read error: Connection reset by peer)
