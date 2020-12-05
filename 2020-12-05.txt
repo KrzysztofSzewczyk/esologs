@@ -165,3 +165,32 @@
 2020-12-05 11:57:31 Names: ^[, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-05 11:58:34 Joined: izabera
 2020-12-05 11:58:35 Names: ^[, aloril, also_uplime, APic, Arcorann, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-05 12:31:06 <fizzie> b_jonas: Yeah, so about that "usually the solution space is larger" comment, I was basing that on 2019, when it was true even for early days. This year is shaping to be somewhat different.
+2020-12-05 12:31:13 <fizzie> Also wrote my day 5 expecting there to be something about rows and columns separately in part 2, but there wasn't. Now I'm wondering whether to streamline that from `pass -> (row, col) -> ID` to `pass -> ID`. But I've got unit tests for the steps separately already.
+2020-12-05 12:32:44 <myname> there is
+2020-12-05 12:33:08 <myname> convert F and L to 0 and B and R to 1, parse as binary
+2020-12-05 12:37:33 <b_jonas> fizzie: heh, yeah, this one was so easy I didn't even consider brute forcing the solution space without looking at the boarding slips, but I guess it would have been thematically appropriate, just trying to sit in every seat and see if I'm kicked out
+2020-12-05 12:38:55 <b_jonas> the first part was so quick that I didn't have time to wonder what the second part would have, plus the first part already basically gave away that you're looking at the boarding passes to find your seat that's missing from them, so it wasn't much of a surprise
+2020-12-05 12:39:38 <b_jonas> but admittedly I didn't know before that that it would be a single interval, with like all eight seats existing in all rows (except first and last), unlike on a real airplane
+2020-12-05 12:39:46 <b_jonas> this is like a one-dimensional airplane
+2020-12-05 12:41:18 <b_jonas> or a 21st century one: a discount airline with no first class section with fewer seats per row, because that's not their business model, if someone has money for first class they will buy it from an airline whose service is not so bad as theirs
+2020-12-05 12:41:20 <myname> i don't think it's more one-dimensional than a real airplane
+2020-12-05 12:45:13 <b_jonas> I still don't understand part of their business model: there are people who pay for the supposed privilage of boarding the airplane earlier. why? isn't that a hindrance? even the worst waiting room is more comfortable than an airplane, so I always try to get on the plane as late as possible, to spend the least time on it.
+2020-12-05 12:46:52 <b_jonas> at least that was the situation before 2020; I haven't exprienced airplane flight since then
+2020-12-05 12:49:15 <b_jonas> even selling the supposed privilage of choosing your seat seems weird to me. that one at least isn't a clear drawback, but I'm not paying for that, and typically get the good seats: the ones that are close to the aisle so I can get up easily, and not in the extra legroom rows, which means I can keep some of my luggage close, under the seat in front of me. this doesn't always work, I have been seated at
+2020-12-05 12:49:21 <b_jonas> the extra legroom emergency exit row once, but usually it does.
+2020-12-05 12:49:40 <b_jonas> but admittedly some people have very long legs, and for them the extra legroom rows may be an advantage
+2020-12-05 12:51:19 <myname> i am working in a software company for the aviation industry and never sat in a plane :D
+2020-12-05 12:51:58 <fizzie> I'm not sure how "there is" was an answer to what I said.
+2020-12-05 12:53:09 <fizzie> I think I took an intra-US flight on a plane that was kind of like that, except with 6 columns rather than 8.
+2020-12-05 12:53:31 <fizzie> Although it couldn't have been that one, because they had no seat reservations either.
+2020-12-05 12:54:56 <fizzie> (You get a boarding number based on how early you checked in and whether you paid extra to get a lower number, and then they just sort you in a queue based on that number and board in that order, and seats are first-come-first-served.)
+2020-12-05 12:55:53 <b_jonas> myname: and I'm working in a software company for the chemical industry, but never used the things that those chemical plants produce.
+2020-12-05 12:56:32 <b_jonas> fizzie: yes, American flights work somewhat differently from European ones
+2020-12-05 12:56:38 <b_jonas> in multiple ways
+2020-12-05 12:58:12 <b_jonas> myname: and I sat on airplanes too many times
+2020-12-05 12:58:28 <b_jonas> and probably will, because these days it's too cheap
+2020-12-05 12:58:51 <myname> go so so, you may as well secure my job :S
+2020-12-05 12:58:53 <myname> :D
+2020-12-05 12:59:38 <b_jonas> well, probably not during the pandemic
+2020-12-05 12:59:59 <b_jonas> but my mother will arrive home soon (next weekend), on airplane
