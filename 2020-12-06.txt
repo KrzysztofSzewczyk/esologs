@@ -161,3 +161,50 @@
 2020-12-06 13:53:30 <int-e> so the difference is a tiny bit larger than it could be
 2020-12-06 13:58:50 <b_jonas> fizzie: I don't think they're the same. they sound similat but are always a bit harder to atually solve.
 2020-12-06 13:59:39 <b_jonas> int-e: I don't think that's foolish
+2020-12-06 14:00:44 <b_jonas> and I still wonder what happens if a traveler answers no to all questions.
+2020-12-06 14:03:18 <int-e> ...oh, they specified the set of all questions... that corner case didn't come up.
+2020-12-06 14:08:18 User Name: rain1 = rain1!~My_user_n@unaffiliated/rain1
+2020-12-06 14:08:18 <rain1> th e problem today did not excite me
+2020-12-06 14:08:28 <fizzie> The way I did today, literally the only difference between parts 1 and 2 was the choice of a boolean operator and initial value. And on day 3, part 2 was just "run part 1 five times". And on day 2, part 2 was arguably easier.
+2020-12-06 14:10:08 <fizzie> I liked most those puzzles last year where part 1 was solvable by just implementing the spec given in the calendar in the most straightforward way, but in part 2 that was obviously computationally infeasible, so you had to come up with something else. Unless you had overengineered part 1 already, of course.
+2020-12-06 14:12:40 <fizzie> https://adventofcode.com/2019/day/16 and https://adventofcode.com/2019/day/22 being prime examples (though non-prime numbers) of that kind of thing, except of course you presumably can't see part 2 if you didn't do last year.
+2020-12-06 14:13:51 Joined: Lord_of_Life
+2020-12-06 14:14:36 Quit: Lord_of_Life (Ping timeout: 240 seconds)
+2020-12-06 14:15:05 <b_jonas> fizzie: maybe you're better at guessing what the twist (second part) will be. I don't try to guess or make my first solution more complicated than it needs to be. today, I used one dictionary for the original, adding each letter, without bothering to do anything special between lines; for the twist I needed to use two dictionaries, the first collecting the letters of a line, the second intersecting the
+2020-12-06 14:15:11 <b_jonas> lines.
+2020-12-06 14:15:53 User Name: Arcorann = Arcorann!~awych@159-196-65-46.9fc441.mel.nbn.aussiebb.net
+2020-12-06 14:15:53 <Arcorann> I agree, there haven't been any really challenging part 2s so far this year (day 4 was just tedious) -- I think we're all waiting for the difficulty to pick up
+2020-12-06 14:16:37 <int-e> FWIW, I realized that I only started AoC in the 10th day last year... so maybe that's why this year feels trivial so far
+2020-12-06 14:16:44 <int-e> s/in/on/
+2020-12-06 14:17:09 <b_jonas> fizzie: day 3 was the closest, though I personally converted for a one-pass read-compute to a two-pass read then compute solution, that wasn't really necessary. the first day needed to change from one loop with a dictionary to a nested loop with a dictionary, so definitely more complicated.
+2020-12-06 14:17:22 <b_jonas> day 2 indeed also barely changed.
+2020-12-06 14:18:19 <int-e> day 5 had identical code (none) :P
+2020-12-06 14:19:31 <fizzie> int-e: Mmmaybe. 2019 had the Intcode thing going on pretty early on, which was interesting in a different way, but it's true that e.g. day 4 2019 was very similar to this year so far.
+2020-12-06 14:20:21 <fizzie> And https://adventofcode.com/2019/day/6 was pretty simple though I generally like the graph-y ones more.
+2020-12-06 14:20:51 <b_jonas> int-e: for day 5, I had one line of code for the original (to convert from binary to decimal), but like ten lines of code for the twist
+2020-12-06 14:21:41 <int-e> b_jonas: I just inspected the sorted list manually
+2020-12-06 14:22:13 <int-e> and I'm not sure I'd have been faster writing code... probably not
+2020-12-06 14:22:24 <fizzie> I was going to say, it's quite possible the shell oneliner "solution" would've been the one for the leaderboards.
+2020-12-06 14:22:26 <b_jonas> int-e: yes, but then how do you get from a binary number to a decimal number that you enter in the field?
+2020-12-06 14:22:39 <b_jonas> int-e: inspecting the sorted list would work, sure
+2020-12-06 14:22:49 <int-e> dc <<<2i1010101101p
+2020-12-06 14:23:01 <b_jonas> I didn't do that because I wanted to know that there's only one number missing
+2020-12-06 14:23:13 <int-e> I didn't care
+2020-12-06 14:23:34 <b_jonas> I generally want to test and verify that the data is like what I expect. it doesn't matter for AoC, but for things I do at work it *does* help.
+2020-12-06 14:23:45 <b_jonas> because the data is very often not what it's supposed to be
+2020-12-06 14:23:45 <int-e> I picked the first gap in the list and submitted
+2020-12-06 14:23:53 <b_jonas> yes, I guess that makes sense for AoC
+2020-12-06 14:24:42 <int-e> in retrospect I should've converted to decimal, sorted, and then looked for the gap... might have saved half a minute because scanning decimals is easier
+2020-12-06 14:25:02 <int-e> (for no better reason than familiarity)
+2020-12-06 14:25:22 Quit: rain1 (Quit: WeeChat 2.9)
+2020-12-06 14:25:22 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-06 14:25:33 <b_jonas> int-e: nah, it might be easier to find the gap in the last column of binary than in decimal
+2020-12-06 14:25:41 <b_jonas> since it's just two digits alternating
+2020-12-06 14:27:21 <int-e> Today somebody did both parts in 1m27s... I wonder what kind of automation they have
+2020-12-06 14:27:27 <int-e> and what sort of templates
+2020-12-06 14:28:11 <b_jonas> I didn't sort for the original btw, because the letters don't sort naturally. F=0 B=1 sorts backwards, L=0 R=1 sorts forwards. I just grepped for ^BBB and a few more greps later I found the last one.
+2020-12-06 14:28:30 <b_jonas> a sort could work if you tr first.
+2020-12-06 14:28:46 <fizzie> I imagine something like a Python repl with a few utilities like "read blank-line-separated paragraphs" would make a competitive AoC environment, at least for the simple ones.
+2020-12-06 14:29:00 <b_jonas> int-e: I guess you could at least automatically download the input from the webpage
+2020-12-06 14:29:23 <b_jonas> plus you could do way less verification than I do and submit the first attempt at an answer without checking
+2020-12-06 14:29:51 <b_jonas> but that only helps for a speed competition, which I don't care much about, for the real world work guessing wouldn't work well
