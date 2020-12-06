@@ -282,3 +282,60 @@
 2020-12-06 16:57:42 <int-e> fizzie: thanks
 2020-12-06 16:58:49 <int-e> so still in normal range, high variance.
 2020-12-06 16:59:23 <int-e> (the first couple of days in 2015 don't count, they mostly indicate a certain lack of popularity)
+2020-12-06 17:00:01 <int-e> shachaf: I finished Hiding Spot
+2020-12-06 17:00:41 <int-e> shachaf: 609 is one of the hardest puzzles in all the game, though there are one or two more of comparable difficulty, to me.
+2020-12-06 17:01:25 <int-e> shachaf: And there is one final puzzle after the 54 you can access at any time.
+2020-12-06 17:06:29 <int-e> (Oh ambiguity. There are 54 levels that you can access from the beginning. The final one unlocks when you've completed the other ones.)
+2020-12-06 17:06:40 <b_jonas> fizzie: is day 1 always on --12-01 of the year given?
+2020-12-06 17:10:41 <b_jonas> I find it a bit strange that there are 25 days, not 25, from --12-01 to --12-24 inclusive. is there an ISO standard advent calendar or something?
+2020-12-06 17:12:02 <int-e> cultural difference
+2020-12-06 17:14:12 <int-e> Or maybe just a matter of taste... 'Many Advent calendars take the form of a large rectangular card with "windows",[5] one for each day of December leading up to and including Christmas Eve (December 24) or Christmas Day (December 25).'
+2020-12-06 17:14:39 <b_jonas> yes, probably
+2020-12-06 17:15:44 <int-e> Meanwhile, in Germany: "Nach 1945 setzte sich endgültig der Kalender beginnend vom 1. Dezember mit 24 Türchen durch."
+2020-12-06 17:16:03 <int-e> Always trust the Germans to standardize all the important things.
+2020-12-06 17:16:04 <myname> interesting
+2020-12-06 17:16:27 <myname> int-e: well, but more often than not, there are german and international rules for something
+2020-12-06 17:16:37 <b_jonas> yep
+2020-12-06 17:16:41 <myname> like jugger or quidditch
+2020-12-06 17:16:51 <b_jonas> or chess
+2020-12-06 17:16:58 <myname> there are german chess rules?
+2020-12-06 17:16:58 <int-e> myname: Yeah I wasn't sure whether US advent calendars were universally 25 days long.
+2020-12-06 17:18:07 <int-e> One point in favor is that they tend to celebrate the 25th. One point against is that 6x4 is an aesthetically more pleasing rectangle compared to a 5x5 square. I mean, in the interest of overthinking it.
+2020-12-06 17:18:30 <b_jonas> probably. chess had a lot of variant rules, some of their differences are just phrasing and bookkeeping, some were bugs that got patched away when a player first used them in a tournament (like the bug when you used to be able to promote a pawn to an opponent's piece), some are just stupid rules that aren't used in practice (like the dead game rules)
+2020-12-06 17:18:30 <myname> as a german, 24 is obviously the right way to go
+2020-12-06 17:19:00 <b_jonas> int-e: it's not 6x4 because the last day gets a larger door
+2020-12-06 17:19:01 <myname> why would i ever change my figure to an opponent one?
+2020-12-06 17:19:08 <int-e> b_jonas: not always
+2020-12-06 17:19:39 <b_jonas> myname: because in some very rare cases that lets you win an endgame
+2020-12-06 17:19:40 <int-e> myname: because then the opponent can't capture it
+2020-12-06 17:19:50 <myname> ah
+2020-12-06 17:19:55 <b_jonas> give a check with very few pieces remaining
+2020-12-06 17:20:08 <int-e> and there's less likelyhood of stalemate, right
+2020-12-06 17:20:15 <int-e> likelihood
+2020-12-06 17:20:24 <b_jonas> the internet probably has an example
+2020-12-06 17:20:28 <b_jonas> a historical one that is
+2020-12-06 17:20:39 <int-e> of those rule gaps, 0-0-0-0 is my favorite
+2020-12-06 17:20:50 <myname> what's that
+2020-12-06 17:22:27 <int-e> castling extra long. the rule phrasing it's based on stipulates that if the king hasn't moved and the rook hasn't moved, the king may castle by making two steps towards the rook while the rook moves to the crossed square... provided all intermediate squares are empty and the king is not in check before, after, or on the square it crossed.
+2020-12-06 17:22:28 <b_jonas> int-e: what's that?
+2020-12-06 17:22:29 <myname> oh, there was also castling forwards
+2020-12-06 17:22:31 <myname> :D
+2020-12-06 17:22:46 <int-e> so... you promote the king pawn to a rook... has the rook moved?
+2020-12-06 17:22:55 <myname> obviously not
+2020-12-06 17:23:00 <b_jonas> int-e: oh heck
+2020-12-06 17:23:28 <b_jonas> can that lead the king to a point that's not aligned to a square if the rook isn't lined up nicely?
+2020-12-06 17:23:39 <int-e> nah
+2020-12-06 17:23:42 <b_jonas> because it would be hard to check it then
+2020-12-06 17:23:56 <int-e> also I've made that text up, trying to capture the important points
+2020-12-06 17:24:08 Joined: TheLie
+2020-12-06 17:24:08 Names: ^[, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-06 17:24:50 <int-e> It's been a while since I learned about this. IIRC this rule interpretation was cooked up for a chess problem; it never happened in an actual game.
+2020-12-06 17:26:26 <b_jonas> yeah, those rules are found more often by puzzle makers than by players
+2020-12-06 17:27:34 <b_jonas> some rulesets also have silly bugs where it says that once the game ends, you can't change the result if an illegal move is later discovered, so you can just quickly make an illegal move that gives a checkmate, and unless the opponent is fast enough to call an umpire during your move, you've won
+2020-12-06 17:27:40 <b_jonas> you can do that right as your first move
+2020-12-06 17:27:52 <int-e> Oh I think I need more zeros.
+2020-12-06 17:28:52 <int-e> 0-0-0-0-0-0-0 (if the number of zeros represents how many squares the rook moves, which is the case for 0-0 and 0-0-0)
+2020-12-06 17:28:57 <b_jonas> int-e: I don't like the zeros at all, they're remains from old forms of notation. just denote castling by the logical Kb1, Kf1, Kb8, or Kf8
+2020-12-06 17:29:29 <int-e> I... like them, mostly
+2020-12-06 17:29:46 <int-e> to the extent that I care at all, which isn't very much
+2020-12-06 17:29:48 <b_jonas> int-e: plus if it represents how many squares the rook moves, you may have to use 0 zeroes and -1 hyphens in Fischer random chess
