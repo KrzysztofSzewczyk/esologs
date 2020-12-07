@@ -186,3 +186,16 @@
 2020-12-07 10:57:07 <esowiki> 14[[07Talk:Braincopter14]]4 N10 02https://esolangs.org/w/index.php?oldid=79278 5* 03Bog'riquet De FerChef 5* (+116) 10/* About pixel extraction (65536 * R + 256 * G + B) */ new section
 2020-12-07 11:11:56 <esowiki> 14[[07UClang*14]]4 10 02https://esolangs.org/w/index.php?diff=79279&oldid=79266 5* 03RSG4908 5* (+124) 10
 2020-12-07 11:29:33 <b_jonas> hey guys, how old is progressive JPEG? en.Wikipedia only says "When progressive JPEGs are received by programs that do not support them (such as versions of Internet Explorer before Windows 7)[47] the software displays the image only after it has been completely downloaded." but I know the grandmaphone that I first bought a few years ago for my grandma doesn't display them at all.
+2020-12-07 11:31:01 <b_jonas> It's just that I was wondering about image formats, and how JPEG is really old, and how after the failure of jpeg2000, and how we really need a new one, and how google's webp might finally be able to break the deadlock,
+2020-12-07 11:31:40 <b_jonas> and then I realized that "JPEG is so old" is not entirely fair when I really rely on progressive JPEGs and how they can compress much better than baseline JPEGs because they can use different Huffman tables for different progressive steps.
+2020-12-07 11:32:27 <b_jonas> I don't really use them for being "progressive" in the sense that you can decode them in lower quality from a prefix of the file, but I am using them for better compression.
+2020-12-07 11:33:09 <b_jonas> hmm, apparently progressive encoding is supposed to be part of "baseline jpeg". then I don't know why that phone doesn't support it
+2020-12-07 11:33:21 <b_jonas> There was also an issue with embedding such jpegs into pdf I think
+2020-12-07 11:33:28 <b_jonas> so the grandmaphone is not the only broken case
+2020-12-07 11:35:15 <b_jonas> apparently I can't find out if it's specified in the original 1992 JPEG spec, because it's an ISO standard and "https://www.itu.int/rec/T-REC-T.81" says "This text was produced through a joint activity with ISO and IEC. According to the agreement with our partners, this document is only available through payment."
+2020-12-07 11:35:25 <b_jonas> wow, standards that you have to pay for are so useful
+2020-12-07 11:38:32 <b_jonas> mind you, the standard isn't even really necessary, in the sense of https://xkcd.com/971/ , because you can do all the same things without a standard (sell something for much more money by stating it conforms to standars without the customer being able to verify that easily) by just referring to "current industry best practice" or the euphemism "current industry standard" which means the same.
+2020-12-07 11:39:39 <b_jonas> btw apparently each AoC day has an alliterating name
+2020-12-07 11:42:33 <b_jonas> wait wait, are banks actually allowed to advertise loans as targeted to businesses in trouble, as opposed to targeted to individuals in trouble or businesses trying to grow?
+2020-12-07 11:43:47 <b_jonas> or are they not allowed but doing it anyway when the current government happens to be on their side of politics?
+2020-12-07 11:54:09 <esowiki> 14[[07Talk:Pistons & Pistons14]]4 10 02https://esolangs.org/w/index.php?diff=79280&oldid=64263 5* 03Bog'riquet De FerChef 5* (+221) 10/* Language origin */ new section
