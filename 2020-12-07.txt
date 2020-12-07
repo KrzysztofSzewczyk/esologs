@@ -199,3 +199,29 @@
 2020-12-07 11:42:33 <b_jonas> wait wait, are banks actually allowed to advertise loans as targeted to businesses in trouble, as opposed to targeted to individuals in trouble or businesses trying to grow?
 2020-12-07 11:43:47 <b_jonas> or are they not allowed but doing it anyway when the current government happens to be on their side of politics?
 2020-12-07 11:54:09 <esowiki> 14[[07Talk:Pistons & Pistons14]]4 10 02https://esolangs.org/w/index.php?diff=79280&oldid=64263 5* 03Bog'riquet De FerChef 5* (+221) 10/* Language origin */ new section
+2020-12-07 12:06:23 <b_jonas> it doesn't looks like webp took hold yet
+2020-12-07 12:10:07 <b_jonas> Wikimedia Commons has 160 TB of jpeg, 69 TB of tiff (wow), 4 TB of png, but less than a gigabyte of webp. https://commons.wikimedia.org/wiki/Special:MediaStatistics
+2020-12-07 12:17:08 <esowiki> 14[[07Talk:Brain:D14]]4 N10 02https://esolangs.org/w/index.php?oldid=79281 5* 03Bog'riquet De FerChef 5* (+500) 10/* Token identification */ new section
+2020-12-07 12:19:52 <fizzie> int-e: Yeah. Was surprised at how rudimentary the graph utilities my Go solutions from last year had. I guess the problems were just never quite exactly the same, and Go isn't such a great language for abstraction, so didn't end up with general DFS/BFS/shortest-path utilities.
+2020-12-07 12:20:44 Quit: spruit11 (Ping timeout: 260 seconds)
+2020-12-07 12:20:44 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 12:20:53 <fizzie> https://zem.fi/tmp/aoc/time.two.html suggests day 7 *was* a bump up in difficulty, but not as much of a one than in previous years. Or else the contest has just gotten more popular and/or the people on the leaderboards have improved their tools.
+2020-12-07 12:20:59 Joined: spruit11
+2020-12-07 12:20:59 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 12:22:07 <int-e> fizzie: and I used KISS and just used a iteration until a fixed point is reached
+2020-12-07 12:22:26 <b_jonas> no! darn it, don't spoil it yet
+2020-12-07 12:22:32 <b_jonas> I haven't solved day 7 yet
+2020-12-07 12:22:36 <b_jonas> I won't read
+2020-12-07 12:22:45 <int-e> fungot: spam?
+2020-12-07 12:22:45 <fungot> int-e: the breath of god. ' it all begins to make sense of the presence, for some strange reason and in any case.
+2020-12-07 12:22:54 <fizzie> ^style europarl
+2020-12-07 12:22:54 <fungot> Selected style: europarl (European Parliament speeches during approx. 1996-2006)
+2020-12-07 12:23:00 <fizzie> fungot: Some proper long-form spam?
+2020-12-07 12:23:00 <fungot> fizzie: mr president, i will use this important time to help end the spiral of violence which algeria is experiencing political crisis, as you describe it, i quite understand that the criteria for adjusting to the market throughout the union.
+2020-12-07 12:23:06 <fizzie> Shorter than I expected.
+2020-12-07 12:28:42 Joined: rain1
+2020-12-07 12:28:42 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 12:29:07 <int-e> fungot: lovely spam!
+2020-12-07 12:29:07 <fungot> int-e: mr president, we would all love to see: a shorter working week, correctly carried out, and the proposed limit value of 0.1 ppm would be too many control centres is nonsense. last year 390 000 people applied for asylum in a member state and we have to acknowledge that undoubtedly we will also continue to be permitted for several years now. i would also like to emphasise once again how much the european union
+2020-12-07 12:29:13 <int-e> that's more like it
+2020-12-07 12:29:40 <int-e> https://github.com/oskarsve/ms-teams-rce ... sigh ... Electron, what a grand idea.
