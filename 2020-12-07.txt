@@ -52,3 +52,49 @@
 2020-12-07 06:56:22 <int-e> Hmm, Sadako... cute concept, but sadly, there's no way to refer to new points.
 2020-12-07 06:57:42 Quit: tromp (Read error: Connection reset by peer)
 2020-12-07 06:57:43 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 07:02:32 Joined: tromp
+2020-12-07 07:02:32 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 07:04:38 <shachaf> int-e: Back to Hiding Spot.
+2020-12-07 07:04:57 <shachaf> I was hoping I'd get back to 609 and just immediately figure it out in a few minutes, but no, it's still tricky.
+2020-12-07 07:05:04 <int-e> shachaf: beware of the monsters
+2020-12-07 07:05:27 <shachaf> Uh oh.
+2020-12-07 07:06:13 <shachaf> https://slbkbs.org/tmp/2020-12-06-230533_3840x2160.png -- not the solution. :-(
+2020-12-07 07:06:45 <int-e> that looks cute
+2020-12-07 07:07:21 <shachaf> It also triggers a bug (?) when you stand up. The chairs rises with you, so it's floating.
+2020-12-07 07:07:53 <int-e> Hmm I didn't encounter any bugs here...
+2020-12-07 07:08:31 <int-e> but I don't think that I've even tested that particular case
+2020-12-07 07:08:34 <shachaf> I mean, not a game-breaking bug.
+2020-12-07 07:08:47 <shachaf> I also had a bug several times where you get embedded into furniture.
+2020-12-07 07:08:54 <int-e> (sitting below an upright table)
+2020-12-07 07:09:05 <shachaf> https://slbkbs.org/tmp/2020-11-30-012225_3840x2160.png
+2020-12-07 07:09:26 <int-e> what
+2020-12-07 07:09:48 <shachaf> You never ran into that?
+2020-12-07 07:10:02 <shachaf> It happened at least three times to me with various furniture in various places.
+2020-12-07 07:10:25 <int-e> I never ran into anything like it.
+2020-12-07 07:10:41 <int-e> We may be playing different versions of the game though; I downloaded it from itch.io
+2020-12-07 07:11:08 <shachaf> I'm using the Steam version.
+2020-12-07 07:11:25 <shachaf> v1.0.8
+2020-12-07 07:11:25 <int-e> I was also running it under Windows, but it's hard to imagine that wine would make it fail in this way.
+2020-12-07 07:11:43 <int-e> v1.0.6 here, fun.
+2020-12-07 07:11:55 <int-e> So maybe a new bug :P
+2020-12-07 07:12:00 <shachaf> I guess that's two extra bugs.
+2020-12-07 07:12:55 <int-e> well the other one might still be there
+2020-12-07 07:13:04 <int-e> or s/still/already/
+2020-12-07 07:14:58 <shachaf> I thought that 8 was the bug count.
+2020-12-07 07:15:13 <int-e> oh
+2020-12-07 07:19:04 <shachaf> Anyway if you were never even standing under  a table like, then presumably I'm not on the right track at all.
+2020-12-07 07:19:39 <shachaf> I guess as long as I'm getting into situations I haven't been in before, at least I'm making some sort of forward progress.
+2020-12-07 07:19:49 <shachaf> I managed to stack a table on top of another table.
+2020-12-07 07:24:05 <int-e> https://int-e.eu/~bf3/tmp/609a.png ... looks fine
+2020-12-07 07:24:46 <shachaf> If you crouch and stand back up, it doesn't float?
+2020-12-07 07:25:06 Quit: sprocklem (Quit: Lost terminal)
+2020-12-07 07:25:07 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 07:25:09 <int-e> shachaf: yep, tried that
+2020-12-07 07:27:24 <int-e> and I've definitely crouched inder a table and stood up, lifting it, so the second screenshot looks terrible
+2020-12-07 07:27:46 <shachaf> Yes, that doesn't happen reproducibly.
+2020-12-07 07:27:53 <shachaf> Or, I mean, I haven't figured out what causes it.
+2020-12-07 07:28:02 Joined: sprocklem
+2020-12-07 07:28:02 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, shinh, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-07 07:28:09 <shachaf> And I *think* when I pressed undo and took the same action it didn't happen a second time, though I'm not confident.
+2020-12-07 07:29:07 <int-e> hmm, there doesn't seem to be a changelog :-/
+2020-12-07 07:29:25 <int-e> (well, I haven't found any)
