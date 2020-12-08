@@ -227,3 +227,25 @@
 2020-12-08 14:26:22 <b_jonas> int-e: Consonance Csomething?
 2020-12-08 14:26:37 <int-e> Couple?
 2020-12-08 14:27:53 <int-e> Though I'd really want an adjective there, which would be "Consonant Couple" which makes it look like a noun. Oops.
+2020-12-08 14:30:17 <b_jonas> Coding contest consonance, or AOC alliteration
+2020-12-08 14:31:38 <int-e> Hmm, I got no reaction to https://esolangs.org/logs/2020-12-08.html#lM *sniff*
+2020-12-08 14:32:23 <b_jonas> also some of you wanted an intcode
+2020-12-08 14:32:31 <b_jonas> you may have the first part of one
+2020-12-08 14:32:48 <int-e> Yeah, I know.
+2020-12-08 14:33:19 <int-e> Next up: memory and IO.
+2020-12-08 14:33:24 <int-e> I hope.
+2020-12-08 14:33:57 <int-e> maybe just a stack
+2020-12-08 14:34:16 Quit: Arcorann (Ping timeout: 240 seconds)
+2020-12-08 14:34:16 Names: ^[, Aiso, aloril, also_uplime, APic, atehwa, ATMunn, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, shinh, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed
+2020-12-08 14:34:35 <int-e> A PDA should be powerful enough for AoC. And it even looks similar to a HGC.
+2020-12-08 14:34:50 <int-e> err, an HGC
+2020-12-08 14:36:06 <b_jonas> or Abuse of Alliteration
+2020-12-08 14:36:18 <b_jonas> or just Added Alliteration
+2020-12-08 14:36:56 <b_jonas> int-e: a PDA, sure. a stack plus just one numeric register? no.
+2020-12-08 14:37:11 <b_jonas> not unless you get extra registers or access the stack deep enough.
+2020-12-08 14:38:33 <b_jonas> ok wait, I should solve the task first
+2020-12-08 14:39:46 <int-e> A stack gives you PDA power... a bit more if the register is an unbounded integer. In fact if you have division with remainder you can maybe even simulate a stack in the register, completing a tape and making it TC? Depends on the details, I guess.
+2020-12-08 14:40:40 <int-e> I also imagine there's a conditional jump around... otherwise things will be tricky.
+2020-12-08 14:41:09 <int-e> (so enough to implement any desired amount of finite control)
+2020-12-08 14:44:52 <int-e> I guess this TC idea hinges on being able to inspect the top stack element without modifying the accumulator, which can either be achieved by adding an additional register, or by adding an swapping operation for the two two stack elements
+2020-12-08 14:45:32 <int-e> or by specialized instructions that work on the top stack element instead of the accumulator... but that really feels like an extra register.
