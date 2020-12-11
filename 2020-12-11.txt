@@ -171,3 +171,13 @@
 2020-12-11 14:42:50 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed
 2020-12-11 14:49:18 Joined: LKoen
 2020-12-11 14:49:18 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed
+2020-12-11 15:01:41 <nakilon> > In Funge-98 stringmode, spaces are treated "SGML-style"; that is, when any contiguous series of spaces is processed, it only takes one tick and pushes one space onto the stack.
+2020-12-11 15:01:43 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-12-11 15:01:43 <lambdabot> <hint>:1:23: error: <hint>:1:23: error: parse error on input ‘,’
+2020-12-11 15:01:51 <nakilon> where can I read what the "SGML" is?
+2020-12-11 15:04:10 <int-e> Have you tried https://en.wikipedia.org/wiki/SGML
+2020-12-11 15:07:28 <nakilon> I don't see anything about collapsing space character there (
+2020-12-11 15:12:59 <b_jonas> nakilon: wait, why would befunge do that?
+2020-12-11 15:13:51 <b_jonas> I mean in string mode, which is for embedding literals efficienctly
+2020-12-11 15:14:17 <b_jonas> for normal code it's ok to do that
+2020-12-11 15:14:28 <nakilon> /shrug
