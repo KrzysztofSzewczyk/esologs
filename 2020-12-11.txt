@@ -325,3 +325,41 @@
 2020-12-11 23:25:36 Names: ^[, adu, aloril, also_uplime, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-11 23:27:10 Quit: rain1 (Quit: WeeChat 2.9)
 2020-12-11 23:27:10 Names: ^[, adu, aloril, also_uplime, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-11 23:31:56 <b_jonas> nakilon: yes, the one time usage variables starting with underscore are easy, because I only have to write them once so it doesn't really matter what I name them. but already with an s suffix there's a problem: does s stand for sequence/array or string? how do I call the other? if I use v for arrays, then how do I abbreviate value? I just keep getting myself confused.
+2020-12-11 23:32:20 <b_jonas> I should probably just stick to longer names, it doesn't hurt that much to use them
+2020-12-11 23:32:49 <nakilon> when I mean string I add "str"
+2020-12-11 23:33:38 <nakilon> k, v for key and value when iterating over associating arrays, so I'll never call an array v
+2020-12-11 23:33:51 <nakilon> *associative
+2020-12-11 23:33:58 <b_jonas> if I try to use one-two-three letter variable names, there are just too many words that abbreviate to the common letters like s n d whatever, and oddly v too
+2020-12-11 23:35:03 <nakilon> if I mean array sometimes "array" is exactly how I name that var )
+2020-12-11 23:35:15 <b_jonas> fizzie: I don't find that too strange. befunge doesn't force you to use self-modifying code for anything, it's not like you have to write indexes or anything into character cells, in fact it doesn't even provide good tools to write numbers to code, at most you can write booleans easily. not using self-modifying code is just the easiest way to write befunge.
+2020-12-11 23:36:13 <fizzie> Well, true. But it's sort of a signature move for the language.
+2020-12-11 23:36:18 <b_jonas> also sometimes I run into conflicts with the short keywords: in particular, I know I must not call an input file handle `if`, because that's a keyword
+2020-12-11 23:36:44 <fizzie> (The admin ^reload and ^code commands of course do self-modify, but that's kind of special.)
+2020-12-11 23:37:30 <fizzie> You can write numbers to code very easily in Funge-98, you just prepend the number with '
+2020-12-11 23:37:58 <b_jonas> fizzie: oh, there is such a primitive? let me see
+2020-12-11 23:39:11 <fizzie> It's called the "one-shot stringmode".
+2020-12-11 23:39:33 <b_jonas> nice
+2020-12-11 23:39:44 <b_jonas> are the cells single bytes?
+2020-12-11 23:39:49 <nakilon> in Ruby 1.8 you could write ?a and that was a number corresponding to ascii a code
+2020-12-11 23:39:59 <fizzie> No, they're arbitrary integers, usually 32-bit signed ones.
+2020-12-11 23:40:02 <nakilon> then it changed so it's "a"
+2020-12-11 23:40:05 <b_jonas> oh nice
+2020-12-11 23:40:10 <b_jonas> so they're the same type as on the stack
+2020-12-11 23:40:13 <nakilon> (1 char long string)
+2020-12-11 23:40:30 <b_jonas> yes, that sounds like you can write self-modifying code (unless of course you want multi-threaded or otherwise reentrant code)
+2020-12-11 23:40:42 <b_jonas> it could be hard to optimize of course
+2020-12-11 23:42:04 <b_jonas> you'd need something like qemu that tracks which cells are compiled and what it has to recompile at every store, but qemu can do that efficiently because programs optimized for normal cpus already know that they shouldn't write and execute from the same page too much, because it can be very slow
+2020-12-11 23:42:29 <b_jonas> doing it at a granularity smaller than pages would be rather inefficient
+2020-12-11 23:42:35 <fizzie> I think gForth has that character literal syntax too.
+2020-12-11 23:42:38 <fizzie> `forth 'a .
+2020-12-11 23:42:39 <HackEso> 97
+2020-12-11 23:42:57 <fizzie> I think it's sort of uncommon though.
+2020-12-11 23:42:57 <b_jonas> fizzie: and so do some lisps, though I think the prefix is two characters there
+2020-12-11 23:43:22 <fizzie> Scheme has #\x.
+2020-12-11 23:43:57 <fizzie> (In line with various other things beginning with #, like #t and #f for the booleans.)
+2020-12-11 23:45:10 <b_jonas> fizzie: yes. I would actually like to see a convention where the octotrophe serves as eitehr a comment marker if there's a space before it, or a rare token suffix if there's no space before it, but it looks like the only language that does that is K the apl-like
+2020-12-11 23:45:38 <b_jonas> it would work because it's already a convention that there's always whitespace (or the beginning of the file) before a comment marker
+2020-12-11 23:46:14 <b_jonas> so this would effectively save one of the precious 33 ascii punctuation
+2020-12-11 23:50:45 Quit: adu (Quit: adu)
+2020-12-11 23:50:45 Names: ^[, aloril, also_uplime, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
