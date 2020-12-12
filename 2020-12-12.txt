@@ -147,3 +147,13 @@
 2020-12-12 12:27:16 <fizzie> It does seem to be very popular, yes.
 2020-12-12 12:27:23 <int-e> I also have to think of 100% CPU usage for a blinking cursor, though I understand they fixed that fairly quickly.
 2020-12-12 12:28:20 <fizzie> Oh, another positive: the diff view in the source control integration is nicer than Magit's.
+2020-12-12 12:30:09 <fizzie> But I'm still doing commit from the integrated terminal, which starts up Emacs for editing the commit message, which feels fairly silly. Saw on the Internet that people did have settings where you could get a new VS Code tab as the commit message editor, but I'd only want that when inside VS Code, and I don't think I can easily get that.
+2020-12-12 12:31:07 <fizzie> Well, maybe with some alias specific to the shell in that terminal, which passes the settings with -c.
+2020-12-12 12:51:00 Quit: imode (Ping timeout: 256 seconds)
+2020-12-12 12:51:00 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-12 12:54:09 <int-e> emacs inside a shell inside another IDE... sounds fun
+2020-12-12 12:55:14 <int-e> I use vim for commit messages, somehow. Mostly because I don't expect to use any advanced editing capabilities and vim still starts up more quickly.
+2020-12-12 12:55:50 <int-e> Though maybe by now hardware is fast enough that it doesn't really matter. 10 years ago it still mattered.
+2020-12-12 12:56:28 <int-e> But I'm a creature of habits.
+2020-12-12 12:58:19 <fizzie> I used to use Vim for that too, for a long time.
+2020-12-12 12:58:49 <fizzie> Then as part of setting up emacsclient and $EDITOR and whatnot, that accidentally got changed too, and I just let it be.
