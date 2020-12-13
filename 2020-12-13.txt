@@ -192,3 +192,31 @@
 2020-12-13 08:27:14 <int-e> hmm, yeah that feels counterintuitive.
 2020-12-13 08:28:03 <zzo38> I will still need to fix the level compression anyways, since in one converted level, it results three Field objects at (7,1) even though there is supposed to be only two (although all but one is redundant anyways, but that is what it is in the original; it isn't my fault!)
 2020-12-13 08:29:43 <int-e> I can rationalize the former a bit, I guess: maybe for UNSAT the idea is that when you take a fresh look at the problem you gain insights (learn clauses) that are unrelated to what you did before... and hence maybe more useful
+2020-12-13 08:30:24 <int-e> rathet than comprehensively exploring a corner of the problem based on the first couple of choices you made.
+2020-12-13 08:30:34 <int-e> *rather
+2020-12-13 08:31:12 <int-e> And SAT might actually need a distinction between problems with few models and problems with plenty of them.
+2020-12-13 08:33:48 <zzo38> What does UNSAT mean?
+2020-12-13 08:34:34 <int-e> unsatisfactory... sorry, kidding. unsatisfiable
+2020-12-13 08:35:13 <shachaf> int-e: My original intuition for restarting was, maybe you get stuck in some difficult and fruitless subtree for a long time, and if you'd just started with a slightly different guess you'd've found a solution immediately.
+2020-12-13 08:35:25 <shachaf> But that seems more applicable to SAT than to UNSAT.
+2020-12-13 08:35:37 <int-e> SAT and UNSAT are names for the yes and no answer of a (here: propositional) satisfiability problem.
+2020-12-13 08:35:44 <shachaf> Yes.
+2020-12-13 08:36:00 <shachaf> I mean, if there is a solution, it seems like maybe you can jump around and hope to find it.
+2020-12-13 08:36:11 <shachaf> But if there isn't one then it seems like you'd need to be more exhaustive.
+2020-12-13 08:36:15 <int-e> shachaf: Right, but one of the lessons here, I think, is that you really have to think in terms of learning.
+2020-12-13 08:36:16 <zzo38> O, OK.
+2020-12-13 08:36:19 <shachaf> Certainly for regular DPLL it seems like that's how it'd work.
+2020-12-13 08:36:32 <shachaf> Right, I was about to say. It must be about clause learning things that I don't have a good feel for here.
+2020-12-13 08:37:03 <shachaf> I meant "more applicable to SAT instances than to UNSAT instances".
+2020-12-13 08:37:17 <int-e> Yeah I've been there :)
+2020-12-13 08:38:16 <int-e> As you probably know there are randomized solvers that are only good for SAT instances... random walks are kind of continuous restarts
+2020-12-13 08:39:03 <int-e> I don't know whether they're still better than CDCL solvers for SAT instances. They used to be.
+2020-12-13 08:41:57 User Name: aaaaaa = aaaaaa!~ArthurStr@188.163.100.177
+2020-12-13 08:41:57 <aaaaaa> int-e: WalkSAT. But only good for underconstrained problems. I.e., that can have many solutions. AFAIR!
+2020-12-13 08:42:16 <aaaaaa> Like $n$ queens
+2020-12-13 08:44:29 <shachaf> Randomized solvers as in local search?
+2020-12-13 08:45:29 <shachaf> https://arxiv.org/abs/1402.4413 makes the argument that CDCL solvers with very frequent restarts are very similar to local search.
+2020-12-13 08:50:46 <int-e> That resonates... I may have seen or heard that idea before somewhere.
+2020-12-13 08:51:09 <int-e> Can't place it though.
+2020-12-13 08:57:04 <aaaaaa> Have you seen this? https://github.com/marijnheule/microsat
+2020-12-13 08:57:22 <aaaaaa> Nice code, but a possible contender for IOCCC title
