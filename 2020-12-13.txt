@@ -82,3 +82,23 @@
 2020-12-13 05:40:54 <int-e> `? quotes
 2020-12-13 05:40:56 <HackEso> Quotes are just elements of the quantum dilapidated bogosphere. See qdb.
 2020-12-13 05:42:30 <int-e> And... I still wonder how to revert a file to an old revision... the `fetch thing works but it's breaking my heart.
+2020-12-13 06:16:17 Quit: imode (Ping timeout: 260 seconds)
+2020-12-13 06:16:18 Names: ^[, aaaaaa, adu, aloril, also_uplime, APic, Arcorann, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 06:17:58 <shachaf> Wasn't there a command for it?
+2020-12-13 06:18:27 <int-e> Well, probably. But it wasn't `revert
+2020-12-13 06:18:31 <int-e> `help
+2020-12-13 06:18:31 <HackEso> Runs arbitrary code in GNU/Linux. Type "`<command>", or "`run <command>" for full shell commands. "`fetch [<output-file>] <URL>" downloads files. Files saved to $HACKENV are persistent, and $HACKENV/bin is in $PATH. $HACKENV is a mercurial repository, "`revert <rev>" can be used to revert, https://hack.esolangs.org/repo/ to browse. $PWD ($HACKENV/tmp) is persistent but unversioned, /tmp is ephemeral.
+2020-12-13 06:18:53 <int-e> and it's not mentined here either
+2020-12-13 06:19:36 <int-e> `scold HackEso
+2020-12-13 06:19:37 <HackEso> BAD! BAD HACKESO!
+2020-12-13 06:20:02 <int-e> `` ls ../bin | wc -l
+2020-12-13 06:20:06 <HackEso> 478
+2020-12-13 06:23:06 <int-e> `` ls ..
+2020-12-13 06:23:07 <HackEso> bin \ canary \ emoticons \ esobible \ etc \ f \ factor \ hw \ ibin \ interps \ karma \ le \ lib \ misle \ paste \ ply-3.8 \ quines \ quotes \ share \ src \ tmflry \ tmp \ wisdom
+2020-12-13 06:25:53 <shachaf> Let's see, there was `undo, but that's not the same.
+2020-12-13 06:26:24 <shachaf> Maybe it was `hg cat -r`.
+2020-12-13 06:26:40 <shachaf> `` doag | grep 'hg cat'
+2020-12-13 06:26:44 <HackEso> 12018:2019-11-14 <b_jonäs> `` hg cat -r 9075 bin/random-card > bin/random-card \ 11974:2019-10-21 <b_jonäs> `` hg cat -r 11938 share/whatis > share/whatis \ 11762:2019-03-27 <oerjän> ` hg cat -r 8425 wisdom/\\` >wisdom/\\` \ 11560:2018-05-15 <oerjän> ` hg cat -r 11537 share/UnicodeData.txt >share/UnicodeData.txt \ 11504:2018-04-13 <shachäf> ` hg cat -r 4569 share/8ballreplies > share/ballreplies \ 11495:2018-04-12 <shachäf> ` hg c
+2020-12-13 06:28:36 <int-e> ah
+2020-12-13 06:28:46 <int-e> yeah, that makes sense. thanks
+2020-12-13 06:29:51 <int-e> actually it's kind of lucky that  hg revert  doesn't work, because otherwise there'd now be a backup file to clean up
