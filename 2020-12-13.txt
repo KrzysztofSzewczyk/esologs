@@ -349,3 +349,46 @@
 2020-12-13 15:27:49 Joined: imode
 2020-12-13 15:27:50 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-13 15:28:51 <fizzie> So more informally, it's a number >= 1 that measures how much harder part 2 was compared to part 1.
+2020-12-13 15:30:59 <fizzie> I've also plotted https://zem.fi/tmp/aoc/time.one.html and https://zem.fi/tmp/aoc/time.two.html that just show the leaderboard times (with the thick bar showing the 25..75 range, and the thin rule showing the 1..100 range).
+2020-12-13 15:31:42 <int-e> fizzie: the thing that troubled me most today was sign errors.
+2020-12-13 15:31:59 <int-e> t = i (mod m) instead of t = -i (mod m)
+2020-12-13 15:32:02 <int-e> twice.
+2020-12-13 15:32:20 <fizzie> I did the "% isn't actually modulo" thing.
+2020-12-13 15:33:13 <int-e> Oh I did not implement (or reuse) egcd.
+2020-12-13 15:33:20 <fizzie> (In Go, as in C, it's the remainder from the truncated-towards-zero division.)
+2020-12-13 15:34:21 <fizzie> I don't know if my solution is as elegant as it could be, but it runs in no appreciable amount of time, so it's fine. Just feel like it's missing a trick somewhere.
+2020-12-13 15:34:22 <int-e> and I trusted the system to be solvable
+2020-12-13 15:35:08 <fizzie> I do that as well.
+2020-12-13 15:37:19 <int-e> http://paste.debian.net/1176718/ is the heart of my solution (with comments added right now)
+2020-12-13 15:37:49 <int-e> Bezout meets KISS.
+2020-12-13 15:38:51 <int-e> Oh and I flipped a sign; for the description to be correct the x + s should be x - s.
+2020-12-13 15:39:25 Joined: LegionMammal978
+2020-12-13 15:39:25 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 15:39:30 <fizzie> I've got something quite similar except iterative, and I've replaced `lcm a b` with a*b, because all the initial numbers are prime, so all the pairs are coprime.
+2020-12-13 15:40:16 User Name: LegionMammal978 = LegionMammal978!181e4e3e@c-24-30-78-62.hsd1.ga.comcast.net
+2020-12-13 15:40:16 <LegionMammal978> I'm actually rather surprised that today scored so high on twistyness. I just recognized it as a Chinese Remainder problem and downloaded a preexisting library for it.
+2020-12-13 15:40:18 <int-e> I didn't look at the input that closely
+2020-12-13 15:40:23 <int-e> but it makes sense that the ids are prime
+2020-12-13 15:40:35 <int-e> LegionMammal978: people don't know what that is
+2020-12-13 15:40:48 <int-e> LegionMammal978: you could see yesterday that people struggle with basic linear algebra
+2020-12-13 15:41:04 <fizzie> Go doesn't have a gcd/lcm built-in, so.
+2020-12-13 15:41:25 <int-e> fizzie: sure I might look more closely at the list then and do the same
+2020-12-13 15:42:56 <LegionMammal978> I will admit, though, that when I saw the second part of day 11 I just threw my hands up in defeat due to the silly CA neighborhood rules.
+2020-12-13 15:44:52 <fizzie> Couldn't find a library to do that?-)
+2020-12-13 15:45:14 <int-e> fizzie: the proper solution involves a modular inverse. When a and b are coprime, then r (mod a) and s (mod b) combine into r + a*(s-r)*(a^-1 (mod b)) (mod ab), noting that thanks to the multiplication by a, the (mod b) gets lifted to something (mod ab).
+2020-12-13 15:45:49 <fizzie> It was a bit wonky, but so was the CA for 2019 day 24 part 2.
+2020-12-13 15:46:11 <LegionMammal978> fizzie: In fact, I did use a library for the first part, but it ended up being very slow due to the library's poor documentation.
+2020-12-13 15:46:36 <int-e> but since all ids were small the simple (though not quite naive) approach won the day
+2020-12-13 15:47:05 <int-e> modular inverses can be computed using the extended euclidean algorithm, of course.
+2020-12-13 15:47:32 <int-e> And indeed there must be libraries for this.
+2020-12-13 15:50:07 <int-e> GP/PARI has this:  chinese(Mod(1,5), Mod(6,21)) = Mod(6, 105)
+2020-12-13 15:50:18 <fizzie> int-e: Right, makes sense. I do in fact have a Go `func modinv(a, m int64) int64` in 2019 day 22 solutions.
+2020-12-13 15:50:53 <fizzie> (And `func egcd(a, b int64) (g, x, y int64)` as well.)
+2020-12-13 15:52:05 Quit: LegionMammal978 (Remote host closed the connection)
+2020-12-13 15:52:05 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 15:52:33 <int-e> my personal 'part 1 rank' / 'part 2 rank' is 8.05
+2020-12-13 15:52:37 <int-e> today
+2020-12-13 15:54:06 <int-e> (that's a really weird metric)
+2020-12-13 15:57:53 <esowiki> 14[[07MLang14]]4 M10 02https://esolangs.org/w/index.php?diff=79407&oldid=79399 5* 03PythonshellDebugwindow 5* (+0) 10/* output */ Fix a cat
+2020-12-13 15:58:45 <nakilon> why not heat map
+2020-12-13 15:59:00 <nakilon> would be one chart instead of 20
