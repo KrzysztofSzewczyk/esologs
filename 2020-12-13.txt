@@ -317,3 +317,6 @@
 2020-12-13 11:59:59 <b_jonas> "<shachaf> i,i translation lookaside suffer" lol
 2020-12-13 12:05:19 <b_jonas> (even though I think "translation lookaside buffer" is such a stupid name, it should just be called "page table cache" or "paging cache". though admittedly Knuth calls it the "translation cache".)
 2020-12-13 12:06:41 <int-e> Tinkerbell's Lip Service
+2020-12-13 13:52:44 <fizzie> int-e: Right, there was something along those lines wrong with the web thing, but it's using a framework(tm), and I think I couldn't figure out why exactly it was behaving like that. It's Python/Flask, and the part that's my code *looks* like it should be just UTF-8 everywhere, but of course HTTP has its own thing about encoding negotiation, and none of that seemed to be exposed.
+2020-12-13 13:53:40 <fizzie> Maybe I should just put a big bold warning up saying "please don't use this interface for files containing non-ASCII text". Or reimplement it.
+2020-12-13 13:56:40 <fizzie> The "maintains a separate copy, needs manual sync with the repo" model is I think also a little hard to (a) explain (b) grok. Maybe there's something better.
