@@ -220,3 +220,73 @@
 2020-12-13 08:51:09 <int-e> Can't place it though.
 2020-12-13 08:57:04 <aaaaaa> Have you seen this? https://github.com/marijnheule/microsat
 2020-12-13 08:57:22 <aaaaaa> Nice code, but a possible contender for IOCCC title
+2020-12-13 09:00:24 Quit: Lord_of_Life (Quit: Laa shay'a waqi'un moutlaq bale kouloun moumkine)
+2020-12-13 09:00:25 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 09:00:48 Joined: Lord_of_Life
+2020-12-13 09:00:49 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 09:01:36 <shachaf> I've seen it and even worked through most of the code, I think.
+2020-12-13 09:01:48 <aaaaaa> shachaf: cool
+2020-12-13 09:02:03 <shachaf> I should fix up my solver.
+2020-12-13 09:02:19 <shachaf> I was thinking the big thing I need to do was VSIDS.
+2020-12-13 09:02:33 <aaaaaa> shachaf: have you seen more SAT solvers like that to study? I already saw TAOCP 7.2.2.2 solvers...
+2020-12-13 09:02:43 <int-e> 2017, hmm. Yeah I've probably seen it, glanced at it, balked at the coding style, and gone away. Oh, actually I seem to recall shachaf mentioning it here around the time they started on their own solver.
+2020-12-13 09:02:46 <shachaf> But the talk the other day said that modern solvers can do as well as VSIDS with a relatively simple move-to-front heuristic.
+2020-12-13 09:03:17 <shachaf> aaaaaa: Nothing that short.
+2020-12-13 09:03:35 <aaaaaa> shachaf: maybe a bit longer :)
+2020-12-13 09:03:39 <shachaf> I read some of the TAOCP solver code too.
+2020-12-13 09:03:43 <shachaf> SAT13.pdf, I think.
+2020-12-13 09:03:56 <shachaf> Of course I looked at minisat.
+2020-12-13 09:04:09 <shachaf> Just think of prefixes that mean "small", add "sat" at the end, and see if you find something.
+2020-12-13 09:04:19 <shachaf> picosat exists but I don't know much about it.
+2020-12-13 09:04:35 <shachaf> http://bach.istc.kobe-u.ac.jp/lect/taocp-sat/knuth/pdf/sat13.pdf is the literate PDF.
+2020-12-13 09:06:25 <aaaaaa> BTW, is there any good reason to use Knuth's literate style over commented code?
+2020-12-13 09:07:35 <int-e> . o O ( Maybe if you like explaining your code more than writing it... )
+2020-12-13 09:08:10 <aaaaaa> int-e: yes, for textbooks, for example. Like TAOCP itself.
+2020-12-13 09:08:14 <zzo38> aaaaaa: Sometimes, I think. If the purpose is to describe the algorithms or the rules or something like that, I think that it can help; trying to describe it without the code is often not working as well, and just an ordinary program code is not so suitable for describing it.
+2020-12-13 09:09:12 <aaaaaa> Can't a tool like Doxygen help it?
+2020-12-13 09:09:42 <shachaf> I like the property of 2SAT that, if you make an incorrect guess, you'll always find that out through unit propagation.
+2020-12-13 09:09:56 <shachaf> So you only need a stack of size 1.
+2020-12-13 09:09:58 <int-e> My understanding of literate programming is that you're writing a text document from which a program can be extracted.
+2020-12-13 09:10:27 <shachaf> String glob matching -- foo*bar*vaz -- also has that property, that you only need to backtrack to the most recent *
+2020-12-13 09:10:38 <shachaf> Does it happen elsewhere?
+2020-12-13 09:10:44 <zzo38> Doxygen is for making the documentation of each function and stuff in the program, not for explaining the algorithms, I think.
+2020-12-13 09:10:58 <int-e> And the emphasis is on the text. I suppose you can use web as a fancier macro language. I haven't seen anybody do it, except Knuth.
+2020-12-13 09:11:25 <shachaf> I don't like Doxygen-style documentation very much.
+2020-12-13 09:11:37 <aaaaaa> int-e: yes, somehow, it's not popular at all. Knuth got it wrong?
+2020-12-13 09:11:38 <shachaf> I'd rather read the source code comments directly in most cases.
+2020-12-13 09:11:59 <zzo38> I don't like Doxygen much either, actually.
+2020-12-13 09:12:04 <int-e> shachaf: it's a theme in some classic dynamic programming tasks, like finding the longest increasing subsequence
+2020-12-13 09:12:25 <int-e> aaaaaa: I don't think he got it wrong.
+2020-12-13 09:12:38 <int-e> aaaaaa: It seems to have worked brilliantly for himself.
+2020-12-13 09:12:52 <int-e> But most people aren't Knuth.
+2020-12-13 09:12:53 <shachaf> Knuth says that thanks to literate programming he's able to write more complicated programs than he would otherwise.
+2020-12-13 09:13:07 <aaaaaa> int-e: another his tool is TeX, which has immense popularity
+2020-12-13 09:14:22 <int-e> Well, LaTeX more than plain TeX.
+2020-12-13 09:14:48 <zzo38> Yes, LaTeX is used much more, although a few people (including myself, and also Knuth) use Plain TeX.
+2020-12-13 09:15:12 <int-e> Because LaTeX liberates you from having to think about string processing and stuff like catcodes.
+2020-12-13 09:15:19 <aaaaaa> zzo38: is there any good reason to try plain TeX over LaTeX?
+2020-12-13 09:15:37 <shachaf> Can you teach me any kittycatcodes?
+2020-12-13 09:15:58 <int-e> `? procrastination
+2020-12-13 09:16:00 <HackEso> The Procrastination is destined to rule the world... right after watching this final funny cat clip on youtube.
+2020-12-13 09:16:26 <shachaf> I suppose kissat has kittycatcodes.
+2020-12-13 09:16:36 <zzo38> aaaaaa: Well, I find it less confusing, at least. I think also it is more likely to work in future because it is not going to be changed so much
+2020-12-13 09:16:40 <int-e> well that one is a literal cat
+2020-12-13 09:16:57 <int-e> not to be confused with a literate cat
+2020-12-13 09:17:08 <int-e> or a littering cat
+2020-12-13 09:17:13 <int-e> or a cat litter
+2020-12-13 09:17:14 <aaaaaa> zzo38: OK. Any TeX sources to learn from, except from Knuth's website?
+2020-12-13 09:17:24 <int-e> (too silly?)
+2020-12-13 09:17:29 <shachaf> You could read the TeXbook presumably.
+2020-12-13 09:17:37 <aaaaaa> shachaf: yeah, forgot about it
+2020-12-13 09:18:15 <zzo38> Yes, that is my idea too, is to read the TeXbook.
+2020-12-13 09:19:51 <int-e> there are also some attempts of reconstruction like https://doi.org/10.1017/S0956796897002840
+2020-12-13 09:20:32 <int-e> or maybe this copy https://www.rw.cdl.uni-saarland.de/people/heckmann/private/abstracts/neuform.html
+2020-12-13 09:21:19 <int-e> Though that is on the typesetting end, not on the esolang end of TeX.
+2020-12-13 09:22:12 <zzo38> My "Scientific Role Playing System" is written with Plain TeX. I also added macros to make cross-references, table of contents, etc. You could look at it to use as the example for your own use, if you want to do, I suppose.
+2020-12-13 09:22:40 <zzo38> (I also included fonts with unslanted Greek alphabets, in case you need that.)
+2020-12-13 09:25:30 <aaaaaa> zzo38: URL?
+2020-12-13 09:26:32 <zzo38> The Fossil repository is at:   http://zzo38computer.org/fossil/scirps.ui   You can clone with Fossil or view it in a web browser; select "Files" to view the files.
+2020-12-13 09:27:25 <zzo38> If a table spans multiple pages, you can write "(Continued on next page)" at the bottom of each page, and repeat the table heading at the top of each page.
+2020-12-13 09:28:06 <aaaaaa> zzo38: thanks!
+2020-12-13 09:28:47 <shachaf> zzo38: You should enable TLS for your HTTP server, so that I can see it easily.
+2020-12-13 09:29:44 <zzo38> Some uses of TeX that have cross references require you to run TeX multiple times, but that is actually unnecessary. While a non-immediate \write in a page will not work unless the page is shipped out, you can use insertions containing marks.
