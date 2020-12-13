@@ -506,3 +506,18 @@
 2020-12-13 20:23:12 <nakilon> I'm thinking now about positional swap, lol
 2020-12-13 20:23:27 <nakilon> "swap top value with Nth"
 2020-12-13 20:24:32 <nakilon> either something like that or at least defining the bottom of the stack and push to the bottom
+2020-12-13 20:37:17 <b_jonas> nakilon: what does % do then? or how do you compute the floor of a number?
+2020-12-13 20:37:37 <b_jonas> no wait, make that easier. how do you compute the floor of a positive number?
+2020-12-13 20:40:04 <nakilon> actually I guess the trimming corner case was already covered in '"' test but I'll make there too to be sure
+2020-12-13 20:41:40 <nakilon> irb(main):001:0> (5r/3) % 1
+2020-12-13 20:41:40 <nakilon> => (2/3)
+2020-12-13 20:41:40 <nakilon> you mean this?
+2020-12-13 20:43:06 <nakilon> $ echo "53/1%.@" | ./bin/rasel
+2020-12-13 20:43:07 <nakilon> 0.6666666666666666
+2020-12-13 20:44:09 <nakilon> n$ echo "83/:1%-.@" | ./bin/rasel
+2020-12-13 20:44:09 <nakilon> 2
+2020-12-13 20:47:06 <b_jonas> ok, so the % computes one of the many remainder or modulus operations, and you can use that to compute the floor. good.
+2020-12-13 20:47:12 <b_jonas> then at least the arithmetic works
+2020-12-13 20:47:21 <nakilon> ..D
+2020-12-13 20:55:07 Quit: TheLie (Remote host closed the connection)
+2020-12-13 20:55:07 Names: ^[, aloril, also_uplime, APic, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
