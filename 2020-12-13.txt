@@ -298,3 +298,13 @@
 2020-12-13 09:39:11 Joined: Arcorann
 2020-12-13 09:39:12 Names: ^[, aaaaaa, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-13 09:53:22 <zzo38> The list of skills in SciRPS is incomplete, and maybe you might have some more idea what skills to add, too.
+2020-12-13 10:14:31 <b_jonas> int-e: yes, sadly the web editor only works with ascii files, as I learned back when I tried to edit the whatis database. that's when I added an addwhatis command.
+2020-12-13 10:17:09 <shachaf> `help addwhatis
+2020-12-13 10:17:10 <HackEso> ​`addwhatis? ¯\(°​_o)/¯
+2020-12-13 10:17:17 <shachaf> `cbt addwhatis
+2020-12-13 10:17:18 <HackEso> ​#!/usr/bin/python3 \ import sys, os, re, getopt \ # allow options for future compatibility \ opts, args = getopt.getopt(sys.argv[1:], "") \ newd = dict() \ def procnew(arg): \     match = re.fullmatch(r"([^\x00\r\n()]+\([0-9A-Z_a-z]+\))" \         r"(?: ?| - ([^\x00\r\n]*?))\r?\n?", arg) \     if match: \         key, val = match.group(1), match.group(2) \         if key in newd: \             print("addwhatis: duplicate key in input: %r"
+2020-12-13 10:17:22 <shachaf> `help edit
+2020-12-13 10:17:23 <HackEso> ​`edit <file> gives you a url, then in your browser: (1) Press Sync (unless making a new file) (2) Make your changes (3) Press Save (4) Paste the command line at the top into the channel.
+2020-12-13 10:18:06 <b_jonas> shachaf: I think hg revert is to revert uncommitted changes, and you revert an earlier committed change with ... dunno. apparently not svn merge, not git revert, so no idea how
+2020-12-13 10:24:06 <b_jonas> "<shachaf> The main problem is that the talks themselves are recorded, and I don't want my voice in them." => can you ask typed questions even during?
+2020-12-13 10:28:29 <b_jonas> "<shachaf> Just think of prefixes that mean "small", add "sat" at the end, and see if you find something." => suffixes too, like there's probably a "sat'lite"
