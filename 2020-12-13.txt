@@ -553,3 +553,14 @@
 2020-12-13 21:54:11 <b_jonas> positive vs nonpositive apparently
 2020-12-13 21:54:32 <b_jonas> north or west for positive
 2020-12-13 21:54:36 <b_jonas> south or east for nonpositive
+2020-12-13 22:09:10 <nakilon> yep, to deprecate the "greater than" conditional instruction I made these non-symmetrical around zero
+2020-12-13 22:10:41 <nakilon> to convert "if > 0" to "if >= 0" just add 1 (won't work for float I guess though)
+2020-12-13 22:12:57 <nakilon> and if you do "0\-1+" it will work like "!" before conditions
+2020-12-13 22:13:11 <nakilon> maybe there are shorter replacements
+2020-12-13 22:13:39 <nakilon> these optimizations would depend on the exact algorithm you need
+2020-12-13 22:17:31 <b_jonas> int-e: re modular inverse: yes, but the numbers are so small that you don't need any of the fast ways to compute it. the largest bus period I have in the live example file is 509, in the examples it's 1889, and there's an easy way to compute the modular inverse in a loop with as many iterations as the modulus
+2020-12-13 22:18:55 <b_jonas> and the moduluses are relative primes too, though I guess you needn't know that in advance
+2020-12-13 22:19:59 <b_jonas> mind you, there's also an easy way to compute the gcd in a loop with as many steps as one of the moduluses
+2020-12-13 22:21:33 <b_jonas> also all the calculation easily fits in 64-bit integers
+2020-12-13 22:28:47 <fizzie> I'm pretty sure it's intentional that all integer-y AoC problems fit in 56-bit integers.
+2020-12-13 22:29:01 <fizzie> For those poor saps on languages with just a double-precision float.
