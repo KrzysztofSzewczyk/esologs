@@ -564,3 +564,6 @@
 2020-12-13 22:21:33 <b_jonas> also all the calculation easily fits in 64-bit integers
 2020-12-13 22:28:47 <fizzie> I'm pretty sure it's intentional that all integer-y AoC problems fit in 56-bit integers.
 2020-12-13 22:29:01 <fizzie> For those poor saps on languages with just a double-precision float.
+2020-12-13 22:30:36 <b_jonas> ah, in doubles, not only in 64-bit ints? possible
+2020-12-13 22:32:53 <fizzie> The largest answer I've got in 2019 results is in the order of 2^48, though of course that doesn't mean no intermediate quantities were larger.
+2020-12-13 22:54:18 <nakilon> hmmmm, adapting 'A"!dlroW ,olleH">:#,_@' to a single conditional '?' is tricky
