@@ -392,3 +392,40 @@
 2020-12-13 15:57:53 <esowiki> 14[[07MLang14]]4 M10 02https://esolangs.org/w/index.php?diff=79407&oldid=79399 5* 03PythonshellDebugwindow 5* (+0) 10/* output */ Fix a cat
 2020-12-13 15:58:45 <nakilon> why not heat map
 2020-12-13 15:59:00 <nakilon> would be one chart instead of 20
+2020-12-13 16:03:24 <fizzie> Instead of 25.
+2020-12-13 16:04:13 <fizzie> And I think it's easier to see values from a bar chart than judge shades in a heat map.
+2020-12-13 16:05:02 <fizzie> Especially for the other one that shows four values per day.
+2020-12-13 16:06:01 <nakilon> with 25 charts where values are grouped you are limited to compare years within a task number and can't easily compare tasks within a year
+2020-12-13 16:06:27 <fizzie> Well, that's what I plotted it for, really.
+2020-12-13 16:06:58 <nakilon> you would easily see both views in case of heat map
+2020-12-13 16:07:34 <nakilon> color adds the third dimension
+2020-12-13 16:08:34 <fizzie> Like I said, I think it's easier to read values from an axis than from a shade.
+2020-12-13 16:09:03 <nakilon> in case of 25 charts there is tautology because you are already able to see which of 5 bars is 1st and which is 2nd, etc. and colors have no function so it's effectively black and white
+2020-12-13 16:09:25 <fizzie> ...and not to repeat myself, but the other chart needs to show four values per day.
+2020-12-13 16:09:37 <fizzie> Well, not "needs to", but "wants to".
+2020-12-13 16:10:13 <fizzie> (Maybe that other chart should be one of those violin plots, though, those are so fancy.)
+2020-12-13 16:10:55 Joined: earend1
+2020-12-13 16:10:55 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 16:11:44 <nakilon> I hate fireworks
+2020-12-13 16:12:01 <nakilon> they happen every evening now but when I get up and come to the window they end already
+2020-12-13 16:12:24 <nakilon> they should work in such way that there are 1-2 shots and then pause to let people come to windows
+2020-12-13 16:12:31 Joined: delta23
+2020-12-13 16:12:32 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 16:19:03 <kmc> no they should just go off continuously for 48 hours
+2020-12-13 16:19:06 <kmc> then there's no missing them
+2020-12-13 16:20:12 Quit: delta23 (Quit: Leaving)
+2020-12-13 16:20:12 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 16:21:37 User Name: myname = myname!~myname@2001:41d0:1:766f::1
+2020-12-13 16:21:37 <myname> https://i.redd.it/l6qsnijz7w461.png
+2020-12-13 16:23:08 <fizzie> Heh. It's even rather more clear by now.
+2020-12-13 16:23:15 <fizzie> https://trends.google.com/trends/explore?date=now%201-d&geo=US&q=chinese%20remainder%20theorem
+2020-12-13 16:24:03 <fizzie> Or https://trends.google.com/trends/explore?date=now%201-d&q=chinese%20remainder%20theorem worldwide, where it hasn't flattened down so much, presumably thanks to timezones.
+2020-12-13 16:24:07 Joined: S_Gautam
+2020-12-13 16:24:08 Names: ^[, aaaaaa, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 16:24:23 <int-e> you're saying AoC has an impact?
+2020-12-13 16:24:33 <int-e> cute
+2020-12-13 16:24:36 <fizzie> "Related queries": advent of code, advent of code day 13, advent of code 2020 day 13, wolfram alpha.
+2020-12-13 16:25:55 <int-e> `? crt
+2020-12-13 16:25:57 <HackEso> crt? ¯\(°​_o)/¯
+2020-12-13 16:26:09 <fizzie> The cathode ray theorem.
+2020-12-13 16:26:32 <fizzie> Or the Chinese remainder tube.
