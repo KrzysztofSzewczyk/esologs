@@ -530,3 +530,26 @@
 2020-12-13 21:27:12 <nakilon> adventofcode makes me asd
 2020-12-13 21:27:16 <nakilon> *sad
 2020-12-13 21:29:53 <esowiki> 14[[07Stu14]]4 N10 02https://esolangs.org/w/index.php?oldid=79411 5* 03PythonshellDebugwindow 5* (+2844) 10Add Stu
+2020-12-13 21:30:28 <esowiki> 14[[07Stu14]]4 M10 02https://esolangs.org/w/index.php?diff=79412&oldid=79411 5* 03PythonshellDebugwindow 5* (+49) 10/* Truth-machine */ Cats
+2020-12-13 21:31:52 <shachaf> b_jonas: I agree, it's a silly name.
+2020-12-13 21:33:12 <esowiki> 14[[07Language list14]]4 M10 02https://esolangs.org/w/index.php?diff=79413&oldid=79388 5* 03PythonshellDebugwindow 5* (+10) 10/* S */ +[[Stu]]
+2020-12-13 21:34:16 <esowiki> 14[[07User:PythonshellDebugwindow14]]4 M10 02https://esolangs.org/w/index.php?diff=79414&oldid=79398 5* 03PythonshellDebugwindow 5* (+45) 10/* Languages */ +[[Stu]]
+2020-12-13 21:36:29 <esowiki> 14[[07Stue14]]4 M10 02https://esolangs.org/w/index.php?diff=79415&oldid=9180 5* 03PythonshellDebugwindow 5* (+145) 10cats
+2020-12-13 21:38:40 <esowiki> 14[[07Voxvy14]]4 M10 02https://esolangs.org/w/index.php?diff=79416&oldid=79409 5* 03PythonshellDebugwindow 5* (+4) 10/* Languages included */ Add link to [[Stu]] (HZOP/RFN/etc. all exist, but they are off-wiki)
+2020-12-13 21:38:44 Joined: delta23
+2020-12-13 21:38:44 Names: ^[, aloril, also_uplime, APic, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 21:41:11 <nakilon> I'm thinking if _ and | are really needed as two instructions
+2020-12-13 21:41:44 <nakilon> it can be one instruction that works as nop() if true and as reverse() if false
+2020-12-13 21:48:22 <b_jonas> nakilon: but isn't a conditional reversing direction inconvenient in befunge because you need a trampoline to really use it?
+2020-12-13 21:48:50 <b_jonas> a befunge trampoline
+2020-12-13 21:49:19 <nakilon> funge languages are inconvinient by nature ..D
+2020-12-13 21:49:46 <myname> i think you misspelled awesome
+2020-12-13 21:50:21 <nakilon> I can't tell it's always a free spot on both sides of | or _ -- you often need to insert a line and place <>v^ right on the exit from this instruction
+2020-12-13 21:51:43 <nakilon> s/can't tell/won't say
+2020-12-13 21:51:56 <fizzie> IME, | and _ are quite convenient because often you need to $ a number, and you know for sure whether it's zero or non-zero, so you often get to use _ or | to both change direction and discard a number with one instruction.
+2020-12-13 21:52:22 <fizzie> (I call that a "discard-if".)
+2020-12-13 21:53:17 <b_jonas> fizzie: yes, but in this language they distinguish between negative and nonnegative, or something like that, not zero and nonzero
+2020-12-13 21:53:40 <fizzie> I haven't been following that.
+2020-12-13 21:54:11 <b_jonas> positive vs nonpositive apparently
+2020-12-13 21:54:32 <b_jonas> north or west for positive
+2020-12-13 21:54:36 <b_jonas> south or east for nonpositive
