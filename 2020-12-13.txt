@@ -481,3 +481,28 @@
 2020-12-13 19:57:39 <b_jonas> If the value isn't integer and isn't within 0..255 the error is raised" => hmm....
 2020-12-13 19:58:19 <b_jonas> I don't usually like silencing errors, but for exit converting the exit status silently is one of the few cases that I would support. not that it matters much since the program will exit either way.
 2020-12-13 20:00:00 <b_jonas> nakilon: um, what kind of arithmetic exactly do the / and % operations do, if these are rational numbers?
+2020-12-13 20:01:59 <b_jonas> nakilon: um, can this only do reads from deep in the stack, not writes?
+2020-12-13 20:03:00 <b_jonas> I do understand that it's technically Turing-complete with just deep reads, but it's much harder to write programs for it that way, especially efficient practical ones
+2020-12-13 20:04:02 <b_jonas> because you can't discard information from the stack, ever, if there's more than a few bits above it that you have to keep
+2020-12-13 20:04:49 <b_jonas> or... maybe you can somehow with arbitrary precision integers. is there a way to swap the top two elements with these instructions, like with - or something?
+2020-12-13 20:05:30 <b_jonas> there's a backslash instruction. so maybe you can encode a full stack to just the top element, but it's definitely not a practical way to write programs, it's more like the kind of torture that ais523 likes.
+2020-12-13 20:12:37 <nakilon> # that will be a fun corner case when you try to jump over that line with a trampoline
+2020-12-13 20:12:39 Joined: MDude
+2020-12-13 20:12:39 Names: ^[, aloril, also_uplime, APic, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, earend1, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-13 20:12:49 <nakilon> thanks, I'll cover it here probably https://github.com/Nakilon/rasel/blob/3bbc664a04e8267e7a4780b0aff0bd483a0cf0ec/test.rb#L68
+2020-12-13 20:14:58 <nakilon> b_jonas the trouble will be for those who got used to Befunge if they don't push 0 before exit and if they care about the exit code
+2020-12-13 20:15:38 <nakilon> but if they don't care it's just an exit code, no "error message" or "backtrace" is designed
+2020-12-13 20:15:57 <nakilon> nor  it is for Befunge I guess
+2020-12-13 20:17:03 <nakilon> the / % arithmetics are like in Ruby
+2020-12-13 20:17:06 <nakilon> irb(main):001:0> 2r / 3
+2020-12-13 20:17:06 <nakilon> => (2/3)
+2020-12-13 20:17:06 <nakilon> irb(main):002:0> 2r / 3 * 6
+2020-12-13 20:17:06 <nakilon> => (4/1)
+2020-12-13 20:17:33 <nakilon> irb(main):003:0> 2r/3 + 4r/5
+2020-12-13 20:17:34 <nakilon> => (22/15)
+2020-12-13 20:18:42 <nakilon> in case of Befunge with the integer math by default the division for negative numbers had to clarify in which side to round
+2020-12-13 20:18:53 <nakilon> in case of Rational there is no rounding, nothing to worry about
+2020-12-13 20:22:53 <nakilon> b_jonas I guess I understood your point, the inability to push deeper of from the other side may suck
+2020-12-13 20:23:12 <nakilon> I'm thinking now about positional swap, lol
+2020-12-13 20:23:27 <nakilon> "swap top value with Nth"
+2020-12-13 20:24:32 <nakilon> either something like that or at least defining the bottom of the stack and push to the bottom
