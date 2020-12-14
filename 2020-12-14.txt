@@ -12,3 +12,19 @@
 2020-12-14 01:48:06 Joined: Lord_of_Life
 2020-12-14 01:48:43 Quit: Lord_of_Life (Ping timeout: 256 seconds)
 2020-12-14 01:49:26 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-12-14 02:13:47 <nakilon> That's the right answer! You are one gold star closer to saving your vacation. [Continue to Part Two]
+2020-12-14 02:14:46 <nakilon> https://dpaste.org/n7bd/slim
+2020-12-14 02:15:02 <nakilon> 2020 day 1 is solved in RASEL ..)
+2020-12-14 02:15:37 User Name: b_jonas = b_jonas!~a@catv-176-63-12-135.catv.broadband.hu
+2020-12-14 02:15:37 <b_jonas> nakilon: ok, although technically it only counts as solving in a new language if the language is older than the task specification
+2020-12-14 02:15:58 <b_jonas> but it's a good start
+2020-12-14 02:18:49 <nakilon> the lack of '+' and '*' obviously result in more instructions used
+2020-12-14 02:19:29 <nakilon> but it's interesting how non-trivial it becomes, there are different approaches to the same thing instead of one straight forward
+2020-12-14 02:20:51 <nakilon> for example, to compare the number with 2020, in Befunge I would build 2020 first as 59*:*5-, then -, then I already can call _ or |
+2020-12-14 02:22:43 <nakilon> but here I had to find another approach, and I'm not if it's optimal but I added 5 (05--), then divided by 45 twice (5/5/9/9/) -- after that if the number was 2020 the result should be exactly 1
+2020-12-14 02:23:17 <nakilon> how do I check if it's 1? I subtract 1 check if it's positive, then negate and check if it's positive again
+2020-12-14 02:23:38 <nakilon> that's far more complex than in Befunge but a good playground for golfing ..D
+2020-12-14 02:24:19 <b_jonas> I should write up my favorite programming practice tasks somewhere so I can just link to them. I know I've told them in chat often, but that's chat.
+2020-12-14 02:26:10 <b_jonas> of course you probably already know some of the stock ones, like print hello world, print the first 100 prime numbers, fizzbuzz, etc
+2020-12-14 02:27:06 <nakilon> does anyone have the first task solution in Befunge? I would like to compare the size
+2020-12-14 02:28:32 <b_jonas> that's quite specific. if fizzie doesn't have it then probably nobody does.
