@@ -81,3 +81,24 @@
 2020-12-14 07:41:36 <int-e> This was over 14 years ago.
 2020-12-14 07:57:49 <b_jonas> zzo38: I'm not sure if I have a good example for that. I've reintroduced bugs to my own code to be able to easily compare the outputs to see if other changes have broken something. And I've worked around bugs in third-party software a lot of times. But I don't think I deliberately tried to add an interesting bug to my code to reproduce a bug in a third-party code. Copied typos in names to match
 2020-12-14 07:57:55 <b_jonas> identifiers or filenames, sure, but not for interesting logic bugs.
+2020-12-14 08:00:18 <shachaf> Man, everything I hear about the new Apple CPUs sounds unreasonably good.
+2020-12-14 08:00:20 <shachaf> Too bad it's Apple.
+2020-12-14 08:07:44 <zzo38> shachaf: Do they have their own instruction set or implement an existing instruction set?
+2020-12-14 08:07:51 <shachaf> It's ARM.
+2020-12-14 08:10:13 <zzo38> One of my project is working on bug for bug compatibility, by testing various strange things in the original software to see what happens, and then implementing the program to do the same thing. (This also means that the new program can also serve as documentation for the original program too, I suppose, although that isn't quite the intention.) Some people who write emulators have probably done similar things too.
+2020-12-14 08:13:58 <int-e> a can of worms
+2020-12-14 08:14:58 <zzo38> There is thing also when changing existing programs though, to try to maintain compatibility (such as the "cannot #PUT on bottom row" bug in ZZT; some variants maintain that bug, while some variants remove that bug; I have maintained it but added a per-board option in the extended world format which can remove that bug)
+2020-12-14 08:16:54 Quit: int-e (*.net *.split)
+2020-12-14 08:16:54 Quit: ineiros (*.net *.split)
+2020-12-14 08:16:54 Quit: Hooloovo0 (*.net *.split)
+2020-12-14 08:16:54 Quit: APic (*.net *.split)
+2020-12-14 08:16:54 Quit: fungot (*.net *.split)
+2020-12-14 08:16:54 Names: ^[, aloril, also_uplime, Arcorann, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-14 08:19:01 Quit: sebbu (Ping timeout: 246 seconds)
+2020-12-14 08:19:02 Names: ^[, aloril, also_uplime, Arcorann, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-14 08:22:20 Joined: int-e
+2020-12-14 08:22:20 Joined: ineiros
+2020-12-14 08:22:20 Joined: Hooloovo0
+2020-12-14 08:22:20 Joined: APic
+2020-12-14 08:22:20 Joined: fungot
+2020-12-14 08:22:20 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
