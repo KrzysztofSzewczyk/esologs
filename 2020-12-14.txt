@@ -68,3 +68,16 @@
 2020-12-14 07:11:04 <int-e> maybe in the end the path will crisscross all around the map and spell out an obscenity
 2020-12-14 07:11:19 <int-e> or look like a penis
 2020-12-14 07:12:11 <int-e> https://dailyhive.com/mapped/penis-flight-russia
+2020-12-14 07:31:57 <zzo38> Have you made implementations with bug for bug compatibility of complex programs?
+2020-12-14 07:34:26 Quit: imode (Ping timeout: 256 seconds)
+2020-12-14 07:34:27 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-14 07:34:41 <int-e> Intel famously did with the A20 line.
+2020-12-14 07:35:01 <int-e> . o O ( best abuse of keyboard controller )
+2020-12-14 07:36:40 <zzo38> Yes, I know that there are many that did, but I mean to ask how many people on here have done.
+2020-12-14 07:38:26 <int-e> Oh actually I contributed a patch to npiet once that emulates an implementation bug in the (a?) perl interpreter, because one of the programs (towers of hanoi) that I had relied on that.
+2020-12-14 07:38:32 <int-e> So... I suppose the answer is yes.
+2020-12-14 07:39:19 <zzo38> OK. What specific bug is that?
+2020-12-14 07:40:55 <int-e> I forgot. Something with positioning after sliding through white areas.
+2020-12-14 07:41:36 <int-e> This was over 14 years ago.
+2020-12-14 07:57:49 <b_jonas> zzo38: I'm not sure if I have a good example for that. I've reintroduced bugs to my own code to be able to easily compare the outputs to see if other changes have broken something. And I've worked around bugs in third-party software a lot of times. But I don't think I deliberately tried to add an interesting bug to my code to reproduce a bug in a third-party code. Copied typos in names to match
+2020-12-14 07:57:55 <b_jonas> identifiers or filenames, sure, but not for interesting logic bugs.
