@@ -48,3 +48,16 @@
 2020-12-15 07:14:30 <int-e> I was not happy with my code taking more than a minute for the second part.
 2020-12-15 08:12:12 Quit: sprocklem (Ping timeout: 260 seconds)
 2020-12-15 08:12:12 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-15 08:35:30 Quit: Sgeo (Read error: Connection reset by peer)
+2020-12-15 08:35:30 Names: ^[, aloril, also_uplime, APic, arseniiv, atehwa, atslash, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-15 08:46:20 <Taneb> int-e: mine still takes over 30 seconds and I'm not happy with that
+2020-12-15 08:47:59 <int-e> Taneb: I bit the bullet and used ST and unboxed arrays.
+2020-12-15 08:48:28 <int-e> well, array, singular.
+2020-12-15 08:49:13 <Taneb> I'm just using IntMap but I'm surprised there's that much of a speedup from arrays
+2020-12-15 08:50:09 <int-e> well you do get millions of entries, so a tree of depth 20 or so, and traversing that is a lot of random memory accesses
+2020-12-15 08:50:44 <Taneb> Hmm, good point
+2020-12-15 08:53:08 <int-e> oh and GC cost may be nontrivial too... hmm.
+2020-12-15 08:55:26 <int-e> "Productivity  49.4% of total user, 49.3% of total elapsed"
+2020-12-15 08:56:34 <int-e> Just passing +RTS -A2G  is a nice 150% speedup
+2020-12-15 08:56:52 <int-e> bringing productivity up to 85%.
+2020-12-15 08:56:59 <int-e> (ymmv)
