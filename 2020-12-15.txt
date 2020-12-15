@@ -120,3 +120,29 @@
 2020-12-15 12:43:31 <nakilon> but it has to be a whole one more loop around
 2020-12-15 12:54:26 Joined: TheLie
 2020-12-15 12:54:26 Names: ^[, aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-15 13:02:37 <esowiki> 14[[07Rui14]]4 M10 02https://esolangs.org/w/index.php?diff=79435&oldid=78269 5* 03PythonshellDebugwindow 5* (+21) 10/* Turing-Completeness */ rm redirect
+2020-12-15 13:03:08 <fizzie> It doesn't, though.
+2020-12-15 13:04:10 <fizzie> What it does is essentially: for i { for j { k = 2020 - (i+j); if exists[k]: return i*j*k } }
+2020-12-15 13:06:07 <fizzie> It uses one of the playfield rows as a bitmap, basically. The input-reading loop collects all the input numbers to consecutive cells of row f as with part 1, but for every number i, it also sets the i'th column of row e to 0 for that "check if we have this number" test.
+2020-12-15 13:07:34 <nakilon> oh cool, you kind of use the program space for implicit sorting
+2020-12-15 13:07:41 <nakilon> by that exists[]
+2020-12-15 13:08:29 <esowiki> 14[[07Rebmu14]]4 M10 02https://esolangs.org/w/index.php?diff=79436&oldid=79434 5* 03PythonshellDebugwindow 5* (+50) 10External link
+2020-12-15 13:08:32 <nakilon> can't be done in rasel since it currently isn't supposed for random writing
+2020-12-15 13:08:57 <fizzie> Yeah, that's why I said "it's a bit of a cheat".
+2020-12-15 13:09:21 <int-e> ultimate bucket sort
+2020-12-15 13:09:48 <fizzie> I did part 2 of day 2 as well, but had to use one cell on the playfield for it: http://ix.io/2I9P
+2020-12-15 13:10:20 <nakilon> I went sleep yesterday on doing day 2 part 2, have to finish it yet
+2020-12-15 13:10:44 <nakilon> unlike day 1 the part 2 here is changing the program a lot
+2020-12-15 13:10:57 <fizzie> A rot or a 2swap/2dup would certainly make stack-only Befunge solutions much more plausible.
+2020-12-15 13:11:19 <nakilon> what's that?
+2020-12-15 13:11:28 <nakilon> swap 3 top items?
+2020-12-15 13:11:48 <fizzie> Yeah, [a b c] -> [b c a]. Or the other way around, I can never remember.
+2020-12-15 13:12:19 <fizzie> It's a Forth term. 2swap and 2dup do [a b c d] -> [c d a b] and [a b] -> [a b a b] respectively.
+2020-12-15 13:12:21 <nakilon> yeah, each step deeper is a huge help
+2020-12-15 13:12:36 <nakilon> the number is problems become easily solvable grows exponentially
+2020-12-15 13:13:38 <nakilon> *of problems
+2020-12-15 13:14:11 <fizzie> The "algorithms" (if you can call them that) in my Befunge solutions are: for part 1, it just reads characters and compares them to the reference character, possibly incrementing a count stored below the reference. After it's done, it compares the result to the low/high bounds. The input transforms the (low, high) pair to (high-low+1, low) to make it possible with just swap.
+2020-12-15 13:17:38 <fizzie> And for part 2 it just uses two read-and-discard loops to skip over characters before the first important one, and between the first and second ones, and then calculates essentially (a == c) + (b == c) == 1. But I had to p/g the c value. :/
+2020-12-15 13:19:55 <fizzie> int-e: The problem with modern computers are, they're just too fast. I did the "just play the game" solution for part 1, fully assuming they'd ask for some ridiculously large number for part 2 that'd need some clever trick, but then they asked for a relatively modest number, which comes out of the simple solution in less than two seconds. So now I'm not motivated to think about shortcuts.
+2020-12-15 13:21:43 <nakilon> to see if X is within A and B I stored it like A B B X, then subtract-compare the last two, then restore X by subtracting the (B-X) from B, then compare with A
+2020-12-15 13:25:10 <fizzie> Hmm, makes sense. What I did was (modulo some +1s) to store B-A A X, turn it into B-A X-A, then do the comparisons X-A > 0 (aka X > A) and X-A < B-A (aka X < B).
