@@ -363,3 +363,70 @@
 2020-12-16 19:57:25 <int-e> nah it's just users adding themselves to that category presumably because they feel they are people
 2020-12-16 19:58:32 <int-e> the question is, do we care...
 2020-12-16 19:59:14 <fizzie> Users are people too? Sounds like some radical product design ideology to me.
+2020-12-16 20:00:03 <int-e> I'm feeling lenient today... I'd say if the user page actually says what they did (languages designed or programs written) it can be in that category.
+2020-12-16 20:00:46 <nakilon> yeah, probably, also might have to be written in the "he is", not "I am" narrative
+2020-12-16 20:00:55 <int-e> but I'm mostly indifferent; what I said is lazy
+2020-12-16 20:00:58 <nakilon> if classified as such
+2020-12-16 20:01:02 <nakilon> *categorized
+2020-12-16 20:01:48 <int-e> The one that doesn't belong is User:Language
+2020-12-16 20:02:38 <nakilon> wtf
+2020-12-16 20:02:50 <b_jonas> nakilon: no. User: pages are for users of the wiki; [[Category:People]] has main namespace pages, not user namespace pages, about people, mostly famous ones, who may or may not be wiki users.
+2020-12-16 20:03:58 Joined: S_Gautam
+2020-12-16 20:03:58 Names: ^[, acedic[m], adminv, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, zzo38
+2020-12-16 20:04:24 <b_jonas> just look at https://esolangs.org/wiki/Category:People for examples, there are only 67 pages in there, whereas there are about 1000 user pages
+2020-12-16 20:04:37 <int-e> oh I was looking at a cached version apparently
+2020-12-16 20:05:28 <b_jonas> in particular, ais523 and cpressey have both a user page and a main namespace page
+2020-12-16 20:05:37 <int-e> b_jonas: so do you care enough to remove the category from the user pages that are in it?
+2020-12-16 20:05:54 <b_jonas> int-e: no
+2020-12-16 20:06:00 Quit: TheLie (Remote host closed the connection)
+2020-12-16 20:06:00 Names: ^[, acedic[m], adminv, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, zzo38
+2020-12-16 20:06:51 <int-e> hrm, can I see anywhere how old a cached version of a page is?
+2020-12-16 20:07:03 <b_jonas> int-e: I just propagate this info because I once started to edit ais's user page, and then he asked me nicely to put that information to a main namespace People page instead
+2020-12-16 20:07:15 <int-e> Cached time: 20191229022652 Cache expiry: 86400
+2020-12-16 20:07:23 <int-e> that looks bogus, somehow
+2020-12-16 20:07:42 <int-e> (from view-source:https://esolangs.org/wiki/Category:People when not logged in)
+2020-12-16 20:08:06 <b_jonas> int-e: you can always just try to go to ?action=purge of the page and then click on the button to regenerate the cache if you feel like it might be old
+2020-12-16 20:08:27 <int-e> But I'd rather understand why it is so old.
+2020-12-16 20:08:46 <int-e> I probably won't, but I can wish :P
+2020-12-16 20:12:21 <nakilon> b_jonas what is "planar array"? what would be a non-planar array?
+2020-12-16 20:12:28 <int-e> Wow, kerning...
+2020-12-16 20:14:10 <int-e> Taneb: https://int-e.eu/~bf3/tmp/doom.png
+2020-12-16 20:14:51 <int-e> (I genuinely misread this when I saw it on the wiki.)
+2020-12-16 20:15:26 <nakilon> keming?
+2020-12-16 20:15:34 <int-e> nakilon: exactly
+2020-12-16 20:16:02 <b_jonas> nakilon: its domain is a square grid on the plane. I admit it's not a good phrasing that I added.
+2020-12-16 20:16:07 <int-e> I like "Dr. Doom".
+2020-12-16 20:16:51 <nakilon> b_jonas, okay, I'll be editing it now, not sure if concurrent edits are possible
+2020-12-16 20:17:00 <b_jonas> nakilon: the source code of unefunge or trefunge wouldn't be planar
+2020-12-16 20:17:12 <int-e> Oooh
+2020-12-16 20:17:25 <int-e> I just realized that it's deliberate.
+2020-12-16 20:17:38 <nakilon> I only knew the term "planar graph"
+2020-12-16 20:17:41 <b_jonas> and most languages just take the source code as a linear string of characters, not as a planar array
+2020-12-16 20:17:46 <int-e> <span style="letter-spacing: -0.08em;"> is evil
+2020-12-16 20:17:58 <b_jonas> yes, it's not a good terminology, feel free to edit it to something cleaner
+2020-12-16 20:18:05 <int-e> and here I was trying to figure out how I misconfigured my browser
+2020-12-16 20:18:08 <nakilon> but what's the difference from "two-dimensional"?
+2020-12-16 20:18:12 <b_jonas> I hope I have cleaner phrasing for my suggestion to make Befunge a featured language.
+2020-12-16 20:18:41 <nakilon> int-e lol
+2020-12-16 20:18:45 <int-e> oerjan is evil.
+2020-12-16 20:19:10 <int-e> (Or was? I hope "is" is still applicable. But we haven't seen him in a long time.)
+2020-12-16 20:20:59 <nakilon> Befunge's page says: Code is layed out on a two-dimensional grid of instructions
+2020-12-16 20:21:21 <int-e> . o O ( "laid" )
+2020-12-16 20:21:56 <kmc> i still mix those two up
+2020-12-16 20:22:34 <nakilon> and why are there two space symbols between sentences?
+2020-12-16 20:23:04 <int-e> "However, the difference is that while they once meant the same thing, one is no longer used as a word."
+2020-12-16 20:23:11 <int-e> (about "laid" and "layed")
+2020-12-16 20:24:22 <int-e> hehe https://www.npr.org/2020/04/28/846919788/typing-debate-do-you-type-2-spaces-between-sentences-or-1
+2020-12-16 20:25:13 <b_jonas> ah yes, for Befunge I write "where code is stored in a two-dimensional grid of instructions, each encoded by an ASCII character"
+2020-12-16 20:25:20 <int-e> https://grammarist.com/style/spaces-between-sentences/ blames it on typewriters and says it should be laid to rest.
+2020-12-16 20:25:29 <b_jonas> looks a bit better
+2020-12-16 20:25:53 <b_jonas> int-e: that opinion is disputed. I like double-spacing.
+2020-12-16 20:26:35 <int-e> Emacs's auto fill agrees with having 2 spaces. I should configure it to not do that.
+2020-12-16 20:26:47 <int-e> b_jonas: ITYM "that opinion is disputed.  I like double-spacing."
+2020-12-16 20:27:21 <b_jonas> int-e: nah, on IRC I often use a less formal style, where I don't bother with consistent capitalization or punctuation
+2020-12-16 20:27:30 <int-e> I dislike it; the . is narrow enough to give the space following it a wider appearance.
+2020-12-16 20:28:03 <b_jonas> admittedly I'm also not consistent in double-spacing sentences in places where I wrote somewhat more properly
+2020-12-16 20:28:05 <int-e> But as with so many things this is a matter of habit and (implied, really) taste, not one of right or wrong.
+2020-12-16 20:28:34 <b_jonas> in case of Mediawiki, those spaces will be collapsed by HTML rules anyway, so the distinction doesn't matter all that much
+2020-12-16 20:28:37 <esowiki> 14[[07RASEL14]]4 M10 02https://esolangs.org/w/index.php?diff=79463&oldid=79459 5* 03PythonshellDebugwindow 5* (+9) 10Stbu
+2020-12-16 20:29:06 <b_jonas> my source code comments have both single-spaced and double-spaced style
