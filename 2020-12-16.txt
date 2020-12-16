@@ -217,3 +217,50 @@
 2020-12-16 17:53:03 Joined: TheLie
 2020-12-16 17:53:03 Names: ^[, aaaaaa, adminv, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kkd, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, thefoxe, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, zzo38
 2020-12-16 17:58:05 <nakilon> the only real effect of smaller SIM card I see is that it's easier to lose
+2020-12-16 18:01:22 <int-e> these things have become so fiddly
+2020-12-16 18:02:26 <int-e> I had not heard about the flatter microsims though, somehow
+2020-12-16 18:02:56 <int-e> (thinner)
+2020-12-16 18:05:57 <int-e> But wait, Wikipedia says the 4FF (nano-SIM) are thinner because it's meant to be put into adapters for 2FF (mini-SIM) and 3FF (micro-SIM) formats, rather than as a subversion of the standard.
+2020-12-16 18:06:11 <fizzie> That's where I got that from, yes.
+2020-12-16 18:06:14 <fizzie> (We discussed it.)
+2020-12-16 18:06:26 <int-e> Yeah sorry, I'm bad at catching up on context.
+2020-12-16 18:06:53 <fizzie> I did follow [25] to check though. ;)
+2020-12-16 18:09:08 <fizzie> Didn't realize it's (nominally) thinner though. All the recent SIM's I've gotten have been those three-in-one dealies where you pop off the size you need (well, except if you need the 1FF size, but realistically...), wonder if those actually have the middle bit thinner.
+2020-12-16 18:09:21 <fizzie> Guess 0.1mm isn't exactly that noticeable.
+2020-12-16 18:09:57 <int-e> > 0.76/0.67
+2020-12-16 18:09:59 User Name: lambdabot = lambdabot!~lambdabot@haskell/bot/lambdabot
+2020-12-16 18:09:59 <lambdabot> 1.1343283582089552
+2020-12-16 18:10:20 <fizzie> It's all relative, of course.
+2020-12-16 18:11:53 <int-e> yeah, no clue how big the tolerances of the sim card slots are in practice, which is the real question here.
+2020-12-16 18:13:25 <nakilon> so the update to SIM card size makes the phone 0.1 mm thinner? who needs that?
+2020-12-16 18:13:54 <nakilon> it's around 1% of phone's thickness
+2020-12-16 18:14:51 <int-e> well they've shrunk the other dimensions too which presumably matters more.
+2020-12-16 18:18:38 <kmc> bring back credit card size SIMs
+2020-12-16 18:18:55 <fizzie> They do seem to "advertise" sub-millimeter thickness changes in reviews and such though. But yeah, presumably it's the reduction in area that matters more.
+2020-12-16 18:19:12 <fizzie> I haven't seen a four-in-one SIM. :/
+2020-12-16 18:20:35 <fizzie> I think I've had [12], [23] and [234], but no other combinations.
+2020-12-16 18:20:53 <kmc> I guess if they want to make them any smaller they'll need to change the standard, because 4FF is about the same size as the connector itself
+2020-12-16 18:21:05 <kmc> femto-SIM is just a dust you sprinkle into the headphone jack
+2020-12-16 18:21:12 <kmc> (except they're getting rid of those too...)
+2020-12-16 18:21:15 <fizzie> There's that eSIM thing.
+2020-12-16 18:21:46 <kmc> but that one is permanently soldered, right?
+2020-12-16 18:21:47 <int-e> ...sprinkle electrons into floating gates...
+2020-12-16 18:21:57 <fizzie> Yes, physically speaking.
+2020-12-16 18:22:09 <fizzie> Logically speaking I think you can "change" what's programmed into it?
+2020-12-16 18:22:10 <int-e> isn't it a flash ROM thingy?
+2020-12-16 18:23:02 <kmc> but I thought part of the point of SIMs is that they are like smart cards (and share some common ancestor?) and don't let you reprogram them willy-nilly
+2020-12-16 18:23:26 <fizzie> Yeah, I don't know how exactly the eSIM provisioning works.
+2020-12-16 18:23:38 <fizzie> But you're definitely supposed to be able to change providers.
+2020-12-16 18:24:49 <fizzie> "The surface mount format provides the same electrical interface as the full size, 2FF, 3FF and 4FF SIM cards, but is soldered to a circuit board as part of the manufacturing process. The eSIM format is commonly designated as MFF2."
+2020-12-16 18:25:03 <int-e> A SIM has writable memory anyway, I have a hard time imagining that they make a write only part just to keep things complicated. And there's already the immutable IMEI on the phone anyway.
+2020-12-16 18:25:53 <kmc> I suppose the idea of SIMs as carrier-trusted hardware is probably doomed anyway, since they have to be cheap to manufacture
+2020-12-16 18:25:56 <int-e> But at the same time I can imagine all sorts of deliberate barriers for the purpose of vendor lockins. So who knows.
+2020-12-16 18:26:10 <fizzie> https://www.hologram.io/blog/clearing-up-the-term-esim didn't really clear it up for me.
+2020-12-16 18:26:32 <fizzie> But at least there's a size comparison.
+2020-12-16 18:27:18 <int-e> "eSIM form factor", what the fuck are they talking about?
+2020-12-16 18:28:31 <fizzie> I think some of my Pixels have eSIM support, but my main operator (Three) doesn't bother with it.
+2020-12-16 18:28:32 <int-e> (It does make sense though... MFF2 is a standard for SMD devices that act like a SIM card)
+2020-12-16 18:28:59 <int-e> One link further: https://developer.gemalto.com/documentation/mff2-sim-cards-specs-mim-quad
+2020-12-16 18:29:22 <int-e> But AIUI, the idea was that it could also be implemented at a much smaller scale, even part of a SoC.
+2020-12-16 18:29:45 <int-e> And then "eSIM form factor" begins to lose all its meaning.
+2020-12-16 18:29:47 <fizzie> O2 does, though, so maybe I could get my secondary "I need to have this because apparently international text messages are a mess" SIM card into the same phone as the main one.
