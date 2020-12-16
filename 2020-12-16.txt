@@ -284,3 +284,49 @@
 2020-12-16 18:59:05 <nakilon> "Pages about specific languages should be added both to Category:Languages (as above) and to the Language_list"
 2020-12-16 18:59:10 <nakilon> why is there two places?
 2020-12-16 18:59:28 <nakilon> to split from  "joke language list"?
+2020-12-16 19:00:30 Quit: thefoxe (Ping timeout: 245 seconds)
+2020-12-16 19:00:30 Names: ^[, aaaaaa, acedic[m], adminv, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, zzo38
+2020-12-16 19:02:12 <kmc> b_jonas: it's very uncommon to find IC sockets in consumer devices, regardless of size, and most ICs these days use surface-mount packages which don't really lend themselves to sockets
+2020-12-16 19:03:31 <kmc> even setting aside size constraints (which are certainly present on a smartphone) a socket adds expense, both in terms of the part itself and the extra time/effort during assembly
+2020-12-16 19:04:22 <kmc> surface mount ICs can be placed ridiculously fast by machines and then reflow-soldered all at once
+2020-12-16 19:06:00 <kmc> most consumer devices are not meant to be repaired at the level of individual chips, maybe a whole board / subassembly but more likely you throw out the whole thing if it breaks
+2020-12-16 19:06:14 <kmc> and we're well past the point of physically swapping out ROM ICs as a way of updating firmware
+2020-12-16 19:10:07 <b_jonas> although I admit that credit cards, especially embossed ones, may in fact be much more expensive to manufacture than SIM cards, and I have no idea about their manufacturing costs, because banks and mobile phone service providers give them to you only in conjunction with a service, so they can charge you much more than it costs to make, or much less to incentivize people to always report stolen credit
+2020-12-16 19:10:13 <b_jonas> cards and SIM cards
+2020-12-16 19:11:08 User Name: Hooloovo0 = Hooloovo0!Hooloovoo@sorunome.de
+2020-12-16 19:11:08 <Hooloovo0> SIM cards in bulk can be pretty cheap
+2020-12-16 19:11:09 <kmc> mm
+2020-12-16 19:11:28 <b_jonas> nakilon: ah yes, I should add it to [[Language list]]. and I don't know why, there's no point to maintain both, it's just going by momentum and the two are probably significantly desynced by now.
+2020-12-16 19:11:37 <Hooloovo0> I know a couple people who used them for shadytel stuff at toorcamp - bring a burner phone and you have phone service for the weekend
+2020-12-16 19:12:09 <Hooloovo0> well, duration of the con, which is >weekend
+2020-12-16 19:12:30 <b_jonas> nakilon: while we're there, is this language called RASEL or Rasel? I suspect it's RASEL and I just created the page with the wrong name.
+2020-12-16 19:12:43 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=79458&oldid=79413 5* 03B jonas 5* (+12) 10
+2020-12-16 19:13:14 <b_jonas> kmc: true about consumer device repair
+2020-12-16 19:13:30 <nakilon> b_jonas I was about to create pages for the language and for myself
+2020-12-16 19:13:32 <Hooloovo0> kmc, there's still a lot of devices that have easily swappable ROMs, but they're SPI/i2c flash
+2020-12-16 19:13:41 <nakilon> I'm registering an account, solving befunge captcha, lol
+2020-12-16 19:13:49 <kmc> what kind of devices?
+2020-12-16 19:13:50 <nakilon> I've just read all the rules from Help page
+2020-12-16 19:14:21 <Hooloovo0> calculators, other small embedded stuff
+2020-12-16 19:14:25 <b_jonas> nakilon: ok, but I already created a stub at https://esolangs.org/wiki/Rasel . If it's called RASEL then I'll ask the wiki guys to rename it.
+2020-12-16 19:14:32 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Nakilon 5*  10New user account
+2020-12-16 19:14:40 <b_jonas> hmm, in fact I might be able to rename it myself.
+2020-12-16 19:14:48 <Hooloovo0> maybe less so now than 5 years ago, but an eeprom programmer is still a very useful tool
+2020-12-16 19:14:50 <kmc> what's the point of doing that instead of having a header or test points to reprogram the chip in situ?
+2020-12-16 19:15:21 <nakilon> lol, I used my own befunge interpreter -- feels like I've cracked my first captcha
+2020-12-16 19:15:36 <Hooloovo0> multi-chip-modules are expensive, so if you can have one chip for CPU/RAM/other logic and another for flash, it's cheaper in the long run
+2020-12-16 19:15:49 <nakilon> b_jonas yeah should be all caps
+2020-12-16 19:16:00 <Hooloovo0> (weird stuff often doesn't support internal flash. which is also changing)
+2020-12-16 19:16:03 <b_jonas> ok, I'll move it to [[RASEL]]
+2020-12-16 19:16:07 <nakilon> thank you
+2020-12-16 19:16:09 <kmc> i don't see what that has to do with using a socket or not
+2020-12-16 19:16:13 <esowiki> 14[[07Special:Log/move14]]4 move10 02 5* 03B jonas 5*  10moved [[02Rasel10]] to [[RASEL]]: I created with wrong name, sorry
+2020-12-16 19:16:22 <kmc> you can have an external SPI flash chip without socketing it
+2020-12-16 19:16:24 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=79461&oldid=79458 5* 03B jonas 5* (+0) 10
+2020-12-16 19:18:02 <nakilon> Esolang email confirmation email got spammed by gmail
+2020-12-16 19:18:05 Joined: harha
+2020-12-16 19:18:06 Names: ^[, aaaaaa, acedic[m], adminv, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, zzo38
+2020-12-16 19:21:03 <Hooloovo0> oh, not socketed, but at least replaceable by the end-user
+2020-12-16 19:21:18 <Hooloovo0> also some machines do socket it
+2020-12-16 19:27:28 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=79462&oldid=79452 5* 03Nakilon 5* (+167) 10machine asked me to prove I'm human
+2020-12-16 19:30:00 <b_jonas> what I don't understand is why SIM cards still have to stay in the phone these days. it perhaps made sense in the 90s, and we have to make SIM cards and phones compatible with the old protocol for a while. but we could phase them to where you can insert the SIM card to a phone once, the SIM card generates a cryptographically signed statement that you put this SIM card to this phone, with a serial number
