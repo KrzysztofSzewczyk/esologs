@@ -32,3 +32,13 @@
 2020-12-16 00:54:58 <b_jonas> I admit when we wrote obfuscated code in perl, a lot of them ended up as compact rectangles, but it's sort of an uninspired formatting
 2020-12-16 00:55:35 <b_jonas> so much that I gave two variants in https://www.perlmonks.com/?node_id=863110 , and I think the one that's not an unformatted blob is nicer
 2020-12-16 00:55:47 <b_jonas> but then befunge is different, because of its 2d control flow
+2020-12-16 01:15:31 <nakilon> oh finally I made day 2 part 2
+2020-12-16 01:16:26 <nakilon> fizzie https://dpaste.org/Crmx/slim
+2020-12-16 01:17:11 <nakilon> it's basically Befunge-like solution, those "j" are accepting just 1 and 0 and so similar to _ and |
+2020-12-16 01:17:50 <nakilon> almost in the middle there is branching that does a little of action and storing the 0 or 1
+2020-12-16 01:18:17 <nakilon> and at the end another branch uses that saved bit to chose the branch
+2020-12-16 01:18:58 <nakilon> I mean and at the end that bit is reused to branch again
+2020-12-16 01:21:00 <nakilon> *Befunge-like and no random access
+2020-12-16 01:25:34 <nakilon> "j" pointing from opposite sides are effectively the same as XORing the memorized bit
+2020-12-16 01:28:28 <nakilon> hmmmm, what if I make "?" not "go forward or reverse" but "go 1 cell forward or 2"?..
+2020-12-16 01:29:20 <nakilon> would look the same as I do with ":/j" to test for zero
