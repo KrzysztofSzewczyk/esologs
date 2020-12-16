@@ -330,3 +330,36 @@
 2020-12-16 19:21:18 <Hooloovo0> also some machines do socket it
 2020-12-16 19:27:28 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=79462&oldid=79452 5* 03Nakilon 5* (+167) 10machine asked me to prove I'm human
 2020-12-16 19:30:00 <b_jonas> what I don't understand is why SIM cards still have to stay in the phone these days. it perhaps made sense in the 90s, and we have to make SIM cards and phones compatible with the old protocol for a while. but we could phase them to where you can insert the SIM card to a phone once, the SIM card generates a cryptographically signed statement that you put this SIM card to this phone, with a serial number
+2020-12-16 19:30:01 <nakilon> b_jonas the wiki says there are User pages and Profile pages
+2020-12-16 19:30:06 <b_jonas> that increases for the same SIM card, then the phone just sends that data to the provider, and the provider only accepts the statement with the latest serial number that they've seen for each SIM card. then you could have just one SIM slot even in dual-SIM phones, or a SIM slot that overlaps with the memory card slot, or have the SIM reader be a cheap external accessory that you don't carry with the
+2020-12-16 19:30:12 <b_jonas> phone, like the charger, as the phone manufacturer chooses.
+2020-12-16 19:30:15 <nakilon> I feel like your User page contains what is supposed to be on Profile page
+2020-12-16 19:31:43 <int-e> but the SIM card is an active device in negotiations with the mobile phone network
+2020-12-16 19:31:54 <int-e> not just a serial number
+2020-12-16 19:33:25 <b_jonas> int-e: why does it have to be an active device? I mean, I could understand if it had to negotiate with the network *once*, and you couldn't bind it to a phone without that.
+2020-12-16 19:33:36 <b_jonas> but why does it have to stay that way?
+2020-12-16 19:33:40 <int-e> So if you go down that path facing mobile phone providers who like that shit becuse it's convenient for them... you'll likely end up with something resembling eSIM very very closely
+2020-12-16 19:34:08 <int-e> it is that way because it has always been that way and the parties in power don't want to change it
+2020-12-16 19:34:31 <b_jonas> ok...
+2020-12-16 19:35:26 <b_jonas> so they're sort of like banks, to a lesser degree
+2020-12-16 19:35:45 <Hooloovo0> oh, phone providers are exactly like banks
+2020-12-16 19:36:09 <Hooloovo0> also: it's convenient to be able to move my SIM between phones if one breaks
+2020-12-16 19:36:36 Quit: aaaaaa (Quit: leaving)
+2020-12-16 19:36:36 Names: ^[, acedic[m], adminv, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, zzo38
+2020-12-16 19:36:49 <int-e> Hooloovo0: in a different world that could be as simple as scanning a QR code
+2020-12-16 19:36:59 <int-e> but we're not living in that fantasy world
+2020-12-16 19:37:10 <nakilon> I guess I meant not Profiles but People: https://esolangs.org/wiki/Category:People
+2020-12-16 19:38:06 <Hooloovo0> I'm not sure. I feel like a hardware token is easier to manage, in the long run
+2020-12-16 19:38:21 <int-e> (of course a QR code can be replicated very easily while a SIM card cannot (not easily))
+2020-12-16 19:39:09 <Hooloovo0> right ^
+2020-12-16 19:42:11 <b_jonas> Hooloovo0: yes, I do understand that, especially that SIM cards and memory cards are more resistant to water and shock than the phone or camera around them, that's why I suggested that the SIM card should still exist as a discrete resilient piece of hardware and be rebindable to a different phone by the consumer. int-e: well... I'd sort of prefer if, after I insert my SIM to a malicious phone then to
+2020-12-16 19:42:17 <b_jonas> another phone, the former phone can't lie that I've reinserted the SIM to it as long as the latter phone has registered to the provider,
+2020-12-16 19:44:17 <b_jonas> int-e: also I don't want every phone (including cheap ones and home alarms) to be required to have a good enough camera to read a QR code, but perhaps you mean that only as an alternative
+2020-12-16 19:46:08 <int-e> b_jonas: yes it was supposed to be one of several ways that evolved over time
+2020-12-16 19:46:47 <int-e> it could've started by requiring users to enter a 30 digit code into their phone the first time they use it.
+2020-12-16 19:47:13 <b_jonas> right, makes more sense. I don't insist either that there can't be cheap phones that require the SIM card to be present all the time
+2020-12-16 19:53:38 <nakilon> and why there are User: pages in the Category:People?
+2020-12-16 19:54:12 <nakilon> maybe User pages were categorized as People to avoid duplication?
+2020-12-16 19:57:25 <int-e> nah it's just users adding themselves to that category presumably because they feel they are people
+2020-12-16 19:58:32 <int-e> the question is, do we care...
+2020-12-16 19:59:14 <fizzie> Users are people too? Sounds like some radical product design ideology to me.
