@@ -49,3 +49,7 @@
 2020-12-17 02:58:12 <shachaf> f is only valid inside some_func.
 2020-12-17 02:58:33 <shachaf> You can't just return it and have the closure work anywhere.
 2020-12-17 02:59:06 <shachaf> The closure has a pointer into some_func's stack frame.
+2020-12-17 03:01:53 <nakilon> I think about making ~ and & also "work as trampoline or not" on EOF instead of reversing
+2020-12-17 03:16:52 <nakilon> fizzie btw my unfinished befunge-98 implementation has a bug around that -- it eats one char after integer
+2020-12-17 03:18:04 <nakilon> I fixed it in RASEL -- good thing Ruby provides ungetbyte method to push bytes back to the stream ..D
+2020-12-17 03:19:34 <nakilon> https://github.com/Nakilon/rasel/blob/fa758b9944e8ebd942c00b61be0c7476fe4aac4f/lib/rasel.rb#L77
