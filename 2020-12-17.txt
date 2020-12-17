@@ -448,3 +448,26 @@
 2020-12-17 11:13:25 <nakilon> (tell me if the message didn't fit the irc limit if you care)
 2020-12-17 11:19:49 Joined: LKoen
 2020-12-17 11:19:49 Names: ^[, aaaaaa, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 11:30:28 <Taneb> shachaf: I am not very good at these fancy sudokus
+2020-12-17 11:30:38 <Taneb> I'm not too great at regular sudokus, come to that
+2020-12-17 11:31:17 <shachaf> The middle two are easier than the other two.
+2020-12-17 11:31:19 <int-e> Taneb: the fancy ones may be easier than the regular ones because they rely less on obscure patterns that only sudoku experts have internalized
+2020-12-17 11:31:46 <shachaf> That's also plausible.
+2020-12-17 11:31:51 <int-e> (And I'm not a Sudoku expert.)
+2020-12-17 11:31:54 <shachaf> The constraints for all of these puzzles are very strong.
+2020-12-17 11:32:07 <shachaf> With no clues, I think the most recent one has 288 solutions.
+2020-12-17 11:32:15 <shachaf> And the others were also in the range of hundreds.
+2020-12-17 11:34:49 Joined: rain1
+2020-12-17 11:34:49 Names: ^[, aaaaaa, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 11:42:45 User Name: aaaaaa = aaaaaa!~ArthurStr@188.163.100.177
+2020-12-17 11:42:45 <aaaaaa> Isn't a true Sudoku puzzle must have only one solution?
+2020-12-17 11:43:45 <int-e> aaaaaa: yes, but (to me) it still feels awkward to rely on that information without verification
+2020-12-17 11:49:18 User Name: rain1 = rain1!~My_user_n@unaffiliated/rain1
+2020-12-17 11:49:18 <rain1> hello
+2020-12-17 11:50:03 <rain1> a pen and paper puzzle should have a unique solution that can be reached through deduction alone
+2020-12-17 11:50:40 <rain1> but there is debate about whether or not the solver should exploit uniqueness to make deductions
+2020-12-17 11:53:00 <shachaf> "deduction" means you find a satisfying assignment, and then you rule that one out, and then it's UNSAT, right?
+2020-12-17 11:53:50 <int-e> shachaf: assuming X, you can show that there is not exactly one solution. Can you conclude not X?
+2020-12-17 11:54:18 <shachaf> Sure, I know the uniqueness thing you mean.
+2020-12-17 11:54:40 <shachaf> In some puzzles it's very blatant and happens all the time.
+2020-12-17 11:54:54 <shachaf> With sudoku it's kind of rare but still happens.
