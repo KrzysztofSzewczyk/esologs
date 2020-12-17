@@ -520,3 +520,57 @@
 2020-12-17 14:19:08 <int-e> ...right
 2020-12-17 14:22:52 <b_jonas> "<shachaf> I didn't use a built-in screenshotting feature. / I just have one screenshot button, and it shoots the exact pixels that are on screen. / Why would I have more than that?" => well, sometimes the screenshot feature built into a game could save an image that is a larger part of the level than fits to the screen and that you would scroll on the screen in-game and when viewing later
 2020-12-17 14:24:35 <int-e> . o O ( isn't shooting screens rather expensive in the long run )
+2020-12-17 14:30:31 <b_jonas> I don't use any sort of OS built-in screnshot functionality. I make screenshots with the screenshot features built into GIMP or Irfanview, because if I take a screenshot, I always want to post-process it, like decide whether to keep or discard it, crop, possibly color reduce, possibly censor parts, occasionally stitch multiple screenshots, decide how to encode, decide the filename. You need a graphics
+2020-12-17 14:30:37 <b_jonas> editor for some of that, and they can already do all the steps that come up, so there's no point to use anything else.
+2020-12-17 14:31:25 <b_jonas> OS functionality made sense when all it did was read the characters from the video memory and send them to the line printer, and you didn't have the hardware to load a graphics editor program for that.
+2020-12-17 14:32:29 <b_jonas> "<arseniiv> send me all the pngs" => sorry, I refuse because I take most of them for work, and they may contain trade secrets
+2020-12-17 14:32:47 <b_jonas> not even our trade secrets, but secrets of our customers and partners.
+2020-12-17 14:33:57 <fizzie> You can tell when [REDACTED INTERNAL TOOL] added a dark mode at a glance by looking at the overall luminance of my screenshot history.
+2020-12-17 14:34:07 <fizzie> Well, when I turned it on, not exactly when they added it.
+2020-12-17 14:35:05 <fizzie> Is there a standard web 3.11 API for detecting if the user prefers a dark theme or a light one? I imagine there must be.
+2020-12-17 14:35:32 <fizzie> Apparently it's a CSS media selector. https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+2020-12-17 14:36:08 <fizzie> "If you have set privacy.resistFingerprinting to true, prefers-color-scheme preference is overridden to light." Tradeoffs, tradeoffs.
+2020-12-17 14:38:15 <esowiki> 14[[07MiniStringFuck14]]4 M10 02https://esolangs.org/w/index.php?diff=79475&oldid=60958 5* 03PythonshellDebugwindow 5* (+18) 10/* See also */ m
+2020-12-17 14:38:27 <b_jonas> "<Taneb> It'd need to try and find a shallow proof when it needs to speculate, but I'm not sure which dimension it'd need to be shallow" => maximum stack depth of when you try multiple values of a variable backtrackingly, after tail call optimization, I think.
+2020-12-17 14:38:43 <esowiki> 14[[07PlusOrMinus14]]4 M10 02https://esolangs.org/w/index.php?diff=79476&oldid=78344 5* 03PythonshellDebugwindow 5* (+6) 10/* Original version */ m
+2020-12-17 14:41:27 <esowiki> 14[[07MangularJS14]]4 M10 02https://esolangs.org/w/index.php?diff=79477&oldid=78014 5* 03PythonshellDebugwindow 5* (+4) 10/* Stack class */ link
+2020-12-17 14:42:10 <int-e> oh I missed that... depth is not necessarily a problem when it's all unit propagation or very shallow subproofs that fall into a pattern
+2020-12-17 14:42:27 <esowiki> 14[[07Javagony Turing-completeness proof14]]4 M10 02https://esolangs.org/w/index.php?diff=79478&oldid=79116 5* 03PythonshellDebugwindow 5* (+0) 10Update
+2020-12-17 14:42:37 <int-e> which I guess is similar to TCO
+2020-12-17 14:43:38 <int-e> There's a related problem where you try to assess the difficulty of a puzzle to a human.
+2020-12-17 14:44:01 <int-e> Which is probably harder because you have to account for experience somehow.
+2020-12-17 14:44:22 <int-e> But maybe not significantly harder.
+2020-12-17 14:45:50 <b_jonas> oh, while we're at puzzles, I'll just mention something I was idly wondering about
+2020-12-17 14:47:07 <b_jonas> consider the following single-player game. the level is a maze that's a graph with rooms for vertices and (undirected) corridors for edges. one vertex is marked as the player's location, and one as the goal.
+2020-12-17 14:47:31 Joined: Sgeo
+2020-12-17 14:47:31 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 14:47:49 <int-e> . o O ( Not quite Hunt the Wumpus )
+2020-12-17 14:50:17 <b_jonas> each edge has a door. doors come in triples: each door is marked with a pair of a name and a state, where the state is one of open, ajar, closed, and each pair can only occur at most once. you can't walk through a closed door, and you can walk through an open door without any side effect. but when you walk through an ajar door, then it changes to open, the open door with the same name shuts to closed,
+2020-12-17 14:50:23 <b_jonas> and the closed door with the same name changes to ajar, simultaneously. states of the doors with different name don't change during that, and the names of doors never change.
+2020-12-17 14:51:52 Quit: Arcorann (Ping timeout: 268 seconds)
+2020-12-17 14:51:52 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 14:52:03 <int-e> so... for each name, there are always three door, in a permutation of those three states?
+2020-12-17 14:52:12 <int-e> three door*s*
+2020-12-17 14:52:53 <b_jonas> solving this puzzle is clearly in PSPACE, but I'd like to know what computational complexity it has more preciesly. with doors I can simulate one-way corridors, and level crossings (in case you want a planar graph). I can also make a level that takes exponential number of steps to solve, using a simple binary counter. but I don't know if you can simulate general binary storage.
+2020-12-17 14:52:59 <b_jonas> int-e: yes
+2020-12-17 14:53:58 <b_jonas> int-e: and the three have a cyclic order, you can only pass through them in that order and not backwards, though you can pass through the same door multiple times without affecting that cyclic order, even if you pass through other doors between. and the cyclic order isn't quite enough, because the starting state has to be observed.
+2020-12-17 14:54:16 <int-e> and of course you can put all the open doors in an unreachable area if you like
+2020-12-17 14:54:23 <b_jonas> int-e: yes.
+2020-12-17 14:54:37 <int-e> so the toggle mechanic is the most relevant
+2020-12-17 14:54:52 <b_jonas> the other question that I'd like to know, besides computational complexity, is whether it's possible to make interesting puzzle levels from this, that is, ones that have only few doors and yet aren't trivial to solve.
+2020-12-17 14:55:20 <b_jonas> int-e: no
+2020-12-17 14:55:27 <int-e> oh wait
+2020-12-17 14:55:30 <b_jonas> int-e: it's not a toggle mechanic, it's always a cyclic permutation of three
+2020-12-17 14:55:47 <int-e> it's a cyclic shift, never mind
+2020-12-17 14:56:24 <b_jonas> you can simulate a toggle where you have to pass two *directed* corridor-paths alternatingly, using multiple doors, if you wish
+2020-12-17 14:56:41 <int-e> (A O C)
+2020-12-17 14:56:45 <int-e> is that intentional?
+2020-12-17 14:56:45 <esowiki> 14[[07Terse14]]4 M10 02https://esolangs.org/w/index.php?diff=79479&oldid=37471 5* 03PythonshellDebugwindow 5* (-71) 10Introduction, proper ==
+2020-12-17 14:56:49 <b_jonas> int-e: no
+2020-12-17 14:57:00 <int-e> it's a fun coincidence then
+2020-12-17 14:57:02 <b_jonas> yeah
+2020-12-17 14:57:24 <b_jonas> a low entropy one though
+2020-12-17 14:57:25 <int-e> makes it easier to remember
+2020-12-17 14:58:15 <b_jonas> dunno
+2020-12-17 14:59:19 <b_jonas> if not, I'd also like to know if you can make interesting puzzle levels from some extensions of this; and references for where something like this game is already known
+2020-12-17 14:59:27 <int-e> .-A-.-C-.-O-. all with the same name is a directed edge (with some irrelevant extra state in the first door) :)
