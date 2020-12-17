@@ -488,3 +488,27 @@
 2020-12-16 23:16:26 <nakilon> also maybe it applies to https://esolangs.org/wiki/Category:Push-down_automata as Befunge does
 2020-12-16 23:17:47 <nakilon> I'll add some neat examples of using the 'a' instruction later
 2020-12-16 23:21:50 <nakilon> the 0.0.0 gem version had a bug of not having executable in it ) I've pushed the 0.0.1 version so now usage examples from README should work
+2020-12-16 23:36:33 <nakilon> btw, guys, there was a website with a game on Flash where you had to program a robot, and I can't find it
+2020-12-16 23:37:24 <nakilon> the language was short and you could pass functions into functions
+2020-12-16 23:39:59 <fizzie> We (as in, the channel collectively) played that one game slightly like that (which a HTML version too), but I don't think you could "pass functions into functions" in it, it was much simpler than that.
+2020-12-16 23:40:03 <b_jonas> apparently the game for https://adventofcode.com/2020/day/15 is http://oeis.org/A181391
+2020-12-16 23:40:40 <nakilon> it was like a Lightbot in that thing that there is a field and you have to write instructions to only get out of this exact wield with walls, avoiding them and reach the exit
+2020-12-16 23:41:16 <nakilon> and solutions were ranked by the length of the code that as I said could be recursive
+2020-12-16 23:41:25 <fizzie> Yeah, that seems to be a common theme. This one had stars you needed to collect, and stay on a certain-colored square.
+2020-12-16 23:42:10 <b_jonas> nakilon: it is Turing-complete, yes, because you can simulate any of these darned finite state control machines with a single cyclic queue of a fixed alphabet in it
+2020-12-16 23:42:34 <b_jonas> or... wait
+2020-12-16 23:42:39 <fizzie> RoboZZle, that's what we played a bunch.
+2020-12-16 23:42:41 <b_jonas> I'm not so sure now
+2020-12-16 23:44:11 <b_jonas> ok, different attempt of proof. you can implement any [[Blindfolded Arithmetic]] program in it
+2020-12-16 23:47:02 <b_jonas> whenever the simulated machine stores something into a register, you push it onto the stack and keep it there forever (or push the whole register set if you prefer). you can make a loop with the directional instructions, you can load the value of any register because you know how deep it is in the stack, so you push a constant then use the a instruction to get it from the stack. then we just have to
+2020-12-16 23:47:07 <b_jonas> verify that you can do addition, subtraction, multiplication, and integer division, if the two arguments are on the stack.
+2020-12-16 23:48:12 <b_jonas> or let's say, you can do those operations if you know how to push each argument to the stack
+2020-12-16 23:49:28 <b_jonas> so say >x> pushes the left argument and >y> pushes the right argument, then subtraction is >xy->, addition is >x0y-->, multiplication is >x1y//>,
+2020-12-16 23:49:29 Quit: rain1 (Quit: WeeChat 2.9)
+2020-12-16 23:49:29 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, zeroed, zzo38
+2020-12-16 23:50:04 <b_jonas> and integer division is >xy/:1%-> if I understand correctly how Rasel works
+2020-12-16 23:50:13 <b_jonas> does that make sense?
+2020-12-16 23:50:34 <b_jonas> this uses the fact that Rasel can store arbitrary precision integers on the stack of course
+2020-12-16 23:54:42 <b_jonas> if you use the fungeoid control flow too, I think it can even implement a machine with arbitrary finite state control and arithmetic and comparisons on several bigint registers: this time you do push the full register file to the top of the Razel stack after each simulated instruction, and use like >xy-?v> to branch down if x is lessequal to y
+2020-12-16 23:56:03 <b_jonas> you may still ask if Rasel is still turing-complete without using arbitrary size integers (or rationals, whatever), and I don't know the answer, but if it's not, then it would be with a bunch of extra registers, or with instructions that rearrange values in a top window of the stack
+2020-12-16 23:56:42 <b_jonas> I suspect it's already Turing-complete but don't want to bother proving it
