@@ -696,3 +696,11 @@
 2020-12-17 16:58:36 <b_jonas> rather than side view doors
 2020-12-17 16:58:50 <int-e> I'm not a nethack player
 2020-12-17 16:59:06 <int-e> I think that has a huge influence :)
+2020-12-17 17:00:03 <int-e> (nor roguelikes in general, even graphical ones)
+2020-12-17 17:00:12 <b_jonas> (and also uppercasing the letter for currently ajar doors. the sequence of names of ajar doors you go through is enough to represent your solution in an easy way.)
+2020-12-17 17:02:33 <int-e> b_jonas: I'm sure you can figure out your own preferred representation :-P
+2020-12-17 17:20:21 <nakilon> caught another bug in '&' -- since it was working as reading the byte, then checking if it's a digit and then pushing it back when not, it failed if the file ends with integer instead of non-digit, such as newline
+2020-12-17 17:21:40 <nakilon> I mean not caught but found it while changing how ~ and & work; with working as trampoline instead of reversing the Cat program now does not need '#' and so is one char shorter
+2020-12-17 17:21:43 Joined: LKoen
+2020-12-17 17:21:43 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, S_Gautam, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 17:21:51 <nakilon> just ~@,
