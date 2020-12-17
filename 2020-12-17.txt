@@ -33,3 +33,19 @@
 2020-12-17 02:10:44 Names: ^[, acedic[m], aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, zeroed, zzo38
 2020-12-17 02:24:49 Joined: xelxebar
 2020-12-17 02:24:49 Names: ^[, acedic[m], aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 02:32:35 User Name: oren = oren!~oren@ec2-34-239-129-109.compute-1.amazonaws.com
+2020-12-17 02:32:35 <oren> https://paste.ee/p/4nJ0t
+2020-12-17 02:32:45 <oren> GCC is so wacky
+2020-12-17 02:33:34 <oren> I don't understand how it gets the correct value for y, but not x
+2020-12-17 02:33:53 <oren> or why it doesn't give any error
+2020-12-17 02:39:24 <oren> did GCC implement closures, but only one level of nesting or  some shit?
+2020-12-17 02:44:55 <shachaf> what is this bizarro code tdnh
+2020-12-17 02:45:49 <shachaf> The C syntax for this thing is so hard to read when you don't use typedefs.
+2020-12-17 02:46:49 <oren> it's a uhh (int) -> (int) -> (int) -> struct rectprism
+2020-12-17 02:48:10 <shachaf> I see.
+2020-12-17 02:57:18 <oren> tcc and clang reject this
+2020-12-17 02:57:36 <shachaf> Right, nested functions are a GNU extension.
+2020-12-17 02:58:01 <shachaf> OK, I'm looking at the code now and I certainly wouldn't expect this to work.
+2020-12-17 02:58:12 <shachaf> f is only valid inside some_func.
+2020-12-17 02:58:33 <shachaf> You can't just return it and have the closure work anywhere.
+2020-12-17 02:59:06 <shachaf> The closure has a pointer into some_func's stack frame.
