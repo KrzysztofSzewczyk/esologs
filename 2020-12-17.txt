@@ -410,3 +410,41 @@
 2020-12-17 10:58:51 <int-e> shachaf: humans will often prove lemmas that aren't expressed in a couple of clauses (which DPLL might learn)
 2020-12-17 10:59:32 <shachaf> I think some puzzles are just not particularly human-solvable, even if they're in NP.
 2020-12-17 10:59:47 <shachaf> Since "having a human solution path" is a stronger constraint than "having a solution".
+2020-12-17 11:00:12 <shachaf> Another thing is that a human doesn't just want to satisfy the puzzle, they want to satisfy it uniquely, right?
+2020-12-17 11:00:42 <int-e> shachaf: well, it depends on the human :)
+2020-12-17 11:01:10 <shachaf> Sure, I'm proposing some model of what it means to be human-solvable, or human-fun.
+2020-12-17 11:01:22 <Taneb> A lot of these puzzles have a unique solution by design (and I have taken that as an assumption in solving puzzles in the past)
+2020-12-17 11:01:22 <int-e> speaking for myself, yes, I'm happier knowing that a solution is unique
+2020-12-17 11:01:42 <int-e> Looking at some advanced Sudoku solving patterns... not all people care.
+2020-12-17 11:02:06 <shachaf> I posted another sudoku: https://logic-masters.de/Raetselportal/Benutzer/eingestellt.php?name=shachaf
+2020-12-17 11:02:15 <int-e> Oh no.
+2020-12-17 11:02:17 <shachaf> I don't think it's that interesting.
+2020-12-17 11:02:20 <int-e> What did I do.
+2020-12-17 11:02:42 <shachaf> In some sense it's just an easier version of the 6-12 sudoku that int-e already solved.
+2020-12-17 11:03:01 <int-e> fizzie: somehow, today's AoC task doesn't look very twisty :P
+2020-12-17 11:03:06 <nakilon> why do you care about how the puzzle is solved, any solution will do, we have cool intel cpus in 2020
+2020-12-17 11:03:18 <nakilon> just bruteforce it
+2020-12-17 11:03:28 <fizzie> int-e: I *just* regenerated the plot, like, five minutes ago.
+2020-12-17 11:03:30 <int-e> nakilon: it's called an intellectual challenge
+2020-12-17 11:03:35 <shachaf> Of the four sudoku puzzles I posted, one of them can be solved entirely with unit propagation.
+2020-12-17 11:03:56 <shachaf> Which maybe counts as extremely boring?
+2020-12-17 11:04:02 <fizzie> And no, it's not very twisty.
+2020-12-17 11:04:29 <nakilon> I just press the button "download the solution" and it downloads and I have it
+2020-12-17 11:04:30 <int-e> People seem to struggle with it though.
+2020-12-17 11:05:28 <fizzie> Also, now I've got an actual wrapper script to do the "fetch any new leaderboards, if there were any update the dataframe and redraw the plots"; http://ix.io/2Ip8
+2020-12-17 11:05:43 <fizzie> It doesn't scp the results or run with cron yet, though.
+2020-12-17 11:06:04 <fizzie> Also, it makes the assumption that if it's more than 2 hours after midnight Eastern time, it's okay to download the day's leaderboard.
+2020-12-17 11:06:26 <fizzie> So if they do a trickier puzzle that takes more than 2 hours for the 100th person to solve, that might fail.
+2020-12-17 11:06:39 <int-e> Well, that assumption has worked out fine so far.
+2020-12-17 11:09:00 <fizzie> It's a historically pretty sound assumption, violated by 6 days out of 142.
+2020-12-17 11:09:22 <int-e> how many of those were in 2015?
+2020-12-17 11:09:49 <fizzie> 2015 days 1, 19 and 22; 2016 day 11; 2018 day 15; and 2019 day 22.
+2020-12-17 11:10:50 <fizzie> On which days the 100th person took approximately 186, 232, 183, 164, 143 and 124 minutes to get two stars, respectively.
+2020-12-17 11:12:27 <int-e> Oh yeah, I remember wondering on day 22 last year why it was so hard :P
+2020-12-17 11:12:53 <nakilon> you may do again those messages that I assume to be rude, such as "you are looking for arguing" or "/help ignore" but I'm still amazed by how bad the idea is to make an end consumer of IRC screenshot links to setup and configure some proxy for his personal internet browsing instead of storing the content in a proper format in the first place,
+2020-12-17 11:12:53 <nakilon> because he won't know he wants that piece of data compressed until he click the link and see that "oh it's that game screenshot" so he'll have to switch all his way of browsing the internet to a proxy solution and then switch to uncompressed format and redownload the link again if he sees "ah, this has details I should now turn the proxy off" just
+2020-12-17 11:12:53 <nakilon> because some people are lazy to find a better way of sharing screenshots
+2020-12-17 11:13:24 <int-e> nakilon: nobody is making me do anything here
+2020-12-17 11:13:25 <nakilon> (tell me if the message didn't fit the irc limit if you care)
+2020-12-17 11:19:49 Joined: LKoen
+2020-12-17 11:19:49 Names: ^[, aaaaaa, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
