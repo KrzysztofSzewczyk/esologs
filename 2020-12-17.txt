@@ -57,3 +57,6 @@
 2020-12-17 03:37:12 <esowiki> 14[[07List of ideas14]]4 10 02https://esolangs.org/w/index.php?diff=79474&oldid=79473 5* 03Razetime 5* (+0) 10/* Looks Like */
 2020-12-17 04:18:01 <b_jonas> nakilon: I like the idea that ? now jumps forward one or two cells. this way you can write arbitrary control flow in one dimensional code by like pushing a number then ?j
 2020-12-17 04:19:09 <b_jonas> well, more like pushing a distance, then pushing the tested number, then ?j
+2020-12-17 04:36:58 <nakilon> the reversing ? kind of allowed that too, but yeah, it's good to keep the pointer going the same direction
+2020-12-17 04:50:38 <b_jonas> nakilon: hmm, that's true, though then you basically need a trampoline
+2020-12-17 04:51:23 <b_jonas> and I guess I should say ?j$ so it discards the jump length if the branch isn't taken
