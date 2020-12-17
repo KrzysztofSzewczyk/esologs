@@ -574,3 +574,49 @@
 2020-12-17 14:58:15 <b_jonas> dunno
 2020-12-17 14:59:19 <b_jonas> if not, I'd also like to know if you can make interesting puzzle levels from some extensions of this; and references for where something like this game is already known
 2020-12-17 14:59:27 <int-e> .-A-.-C-.-O-. all with the same name is a directed edge (with some irrelevant extra state in the first door) :)
+2020-12-17 15:01:46 <int-e> oh well, something to ponder... these kinds of things tend to take some time
+2020-12-17 15:01:53 <b_jonas> int-e: I imagine it drawn more nethack-like: .#\#.#+#.#-#. where \ is an ajar door, + a closed door, - or | an open door in a horizontal or vertical corridor resp, and there's a letter close to each door next to the corridor that shows the names, plus there's color
+2020-12-17 15:02:58 <b_jonas> and if those states really only have just two edges, then optionally draw them on one corridor without a room, like .#\##+##-#.
+2020-12-17 15:03:06 <esowiki> 14[[07User:DGCK81LNN14]]4 M10 02https://esolangs.org/w/index.php?diff=79480&oldid=77358 5* 03DGCK81LNN 5* (+640) 10
+2020-12-17 15:03:31 <b_jonas> but still allow the player to stand in those virtual rooms, because in the general case you may want to stop and turn in any of those places
+2020-12-17 15:03:39 <b_jonas> general case as in the names of the doors can differ
+2020-12-17 15:09:14 <fizzie> `` unidecode $'\u26c4'
+2020-12-17 15:09:15 <HackEso> ​[U+26C4 SNOWMAN WITHOUT SNOW]
+2020-12-17 15:09:19 <fizzie> Isn't that almost a contradiction? And why did I only know learn that exists, when http://unicodesnowmanforyou.com/ has been a thing for years.
+2020-12-17 15:10:29 <int-e> `unidecode ⛄☃
+2020-12-17 15:10:29 <HackEso> ​[U+26C4 SNOWMAN WITHOUT SNOW] [U+2603 SNOWMAN]
+2020-12-17 15:10:55 <int-e> maybe it's plastic or chocolate
+2020-12-17 15:11:12 <int-e> no snowwoman
+2020-12-17 15:12:06 <int-e> `unidecode 🌨🏔
+2020-12-17 15:12:09 <HackEso> ​[U+1F328 CLOUD WITH SNOW] [U+1F3D4 SNOW CAPPED MOUNTAIN]
+2020-12-17 15:12:40 <int-e> (I skipped the snowflakes and some kanji)
+2020-12-17 15:13:14 <b_jonas> fizzie: I don't know what a snowman without snow is, but I feel repulsion towards the concept. I learned to ski as a small child, and a few times I had the terrible occasion to try these dry (i.e. without snow) ski pistes, where you ski on plastic tennis court floor with lubricants, and they're a really bad experience. I do admit that it's much cheaper than traveling to real ski pistes, so it's not just
+2020-12-17 15:13:20 <b_jonas> pointless torture for children, but it's still torture. The dry piste is entirely flat with none of the interesting texture variations that a real snow terrain causes, and even besides that it feels bad.
+2020-12-17 15:14:27 <fizzie> `` unidecode $'\u26c7'  # you also skipped
+2020-12-17 15:14:28 <HackEso> ​[U+26C7 BLACK SNOWMAN]
+2020-12-17 15:14:40 <fizzie> Which could just be a soot-covered one in the city.
+2020-12-17 15:15:57 <b_jonas> fizzie: ah yes, and I assume you combine any of these basic snowman code points with gender symbols, skin tone modifiers, hairstyle modifiers, eyelash style modifiers, eye color modifiers, height modifiers, chin shape modifiers, nose shape modifiers, headgear modifiers, etc, to get more complex characters
+2020-12-17 15:16:08 <fizzie> The shapes my browser's choice of fonts have for SNOWMAN, SNOWMAN WITHOUT SNOW and BLACK SNOWMAN are all completely different. SNOWMAN is this outline, BLACK SNOWMAN is filled but still just a (different) black-and-white shape, and SNOWMAN WITHOUT SNOW is this coloured monstrosity.
+2020-12-17 15:16:27 <b_jonas> and perhaps with some vegetable emoji code points too to get snowman with particular vegetables used as their nose
+2020-12-17 15:17:50 <b_jonas> fizzie: perhaps the plain snowman is from smaller fonts and the others from huge fallback fonts, and perhaps one is rendered as an emoji by default and the others aren't. you could try to force the font and the emojiness if you wish.
+2020-12-17 15:18:03 <nakilon> emojis in unicode should be uninvented
+2020-12-17 15:18:27 <nakilon> unintroduced, unimplemented, burnt with fire
+2020-12-17 15:18:36 <nakilon> outroduced?
+2020-12-17 15:20:03 <nakilon> fizzie did you solve day 3 part 2?
+2020-12-17 15:20:59 <fizzie> I didn't touch day 3 yet (in Befunge-98). I've done days 1, 2, 5, 6 and first half of day 8.
+2020-12-17 15:21:00 <nakilon> I guess it needs rereading the stdin and so storing it
+2020-12-17 15:22:51 <fizzie> I imagine you *could* evaluate all five slopes at once as you go through it, though then you'd need to keep five counters at once (in addition to the current location).
+2020-12-17 15:23:26 <fizzie> I think for day 3 I couldn't decide whether it would be okay to use the `i` instruction or not.
+2020-12-17 15:23:50 <nakilon> how does the debugger you use look like? I see different images in google image search
+2020-12-17 15:24:11 <nakilon> I just do ...........A,@ in random places and run until it hits and halts
+2020-12-17 15:24:11 <fizzie> The thing is, I'd kind of like all the solutions to keep the same structure of just reading puzzle input from stdin, but `i` needs a file name. I could use /dev/stdin maybe.
+2020-12-17 15:26:23 <nakilon> maybe '-'?
+2020-12-17 15:26:38 <fizzie> I don't think that'd work in the implementations I've got.
+2020-12-17 15:26:44 <nakilon> I guess it's some standard for naming the stdin, didn't know about /dev/stdin
+2020-12-17 15:27:17 <fizzie> It's pretty common, yes, but it needs the program to interpret it. /dev/stdin has some chance of working even when not explicitly supported.
+2020-12-17 15:28:17 <nakilon> I just skip until the next line, then skip number of chars calculated with modulo, but the case of "down 2" would need something else
+2020-12-17 15:28:54 <nakilon> like passing the how many times you skip until newline
+2020-12-17 15:28:58 <fizzie> And I don't really have a "debugger" as such. I've been making do with `cfunge -t 10` (which just prints a trace like http://ix.io/2Ia8 out), plus that JS debugger (which has okay single-stepping and visualization, but can't do input, so it can only be used on fragments). I have a lot of ideas I'd like to see in my dream Befunge development tool (like per-cell annotations that'd be automatically shown on
+2020-12-17 15:29:04 <fizzie> a multi-line status line), but it'd take effort to implement that.
+2020-12-17 15:29:25 <fizzie> I think there's a bunch of Befunge-93 browser things, but for '98 the implementation situation seems a bit more bare.
+2020-12-17 15:29:58 <nakilon> unfortunately Ruby isn't tuned for GUI apps
