@@ -471,3 +471,17 @@
 2020-12-17 11:54:18 <shachaf> Sure, I know the uniqueness thing you mean.
 2020-12-17 11:54:40 <shachaf> In some puzzles it's very blatant and happens all the time.
 2020-12-17 11:54:54 <shachaf> With sudoku it's kind of rare but still happens.
+2020-12-17 12:00:14 Quit: spruit11 (Quit: leaving)
+2020-12-17 12:00:14 Names: ^[, aaaaaa, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 12:10:33 Joined: spruit11
+2020-12-17 12:10:33 Names: ^[, aaaaaa, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 12:18:56 <rain1> it's very interesting imo
+2020-12-17 12:19:39 <shachaf> I saw a sudoku variant that said: Solve this sudoku such that the highlighted cells, taken on their own, are enough for a unique solution.
+2020-12-17 12:20:19 <int-e> ooph
+2020-12-17 12:20:37 Quit: TheLie (Remote host closed the connection)
+2020-12-17 12:20:37 Names: ^[, aaaaaa, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 12:21:41 <int-e> feed it to a QBF solver :/
+2020-12-17 12:22:41 <shachaf> How many quantifiers do you need? Just two, right?
+2020-12-17 12:22:57 <int-e> exists ... forall, one alternation
+2020-12-17 12:23:09 <shachaf> I think all the SMT solvers do exists-forall nowadays.
+2020-12-17 12:23:37 <shachaf> Which is stretching the meaning of SMT a bit.
