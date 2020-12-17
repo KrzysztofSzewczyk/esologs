@@ -120,3 +120,38 @@
 2020-12-17 06:29:12 <shachaf> Short rocks are elevated, and if you're also elevated, you can step onto them.
 2020-12-17 06:34:36 <int-e> shachaf: you made a typo
 2020-12-17 06:34:53 <shachaf> Oh, now I see it.
+2020-12-17 07:00:31 <shachaf> Now I'm puzzled by 303,102
+2020-12-17 07:03:26 <int-e> let me guess, it's another puzzle
+2020-12-17 07:06:02 <shachaf> There's a tall tree, a short tree, and a short rock, if that clears it up.
+2020-12-17 07:08:21 <int-e> sounds like every 6th island :)
+2020-12-17 07:09:10 <int-e> (I'd have to start up the game and I'm refusing this time)
+2020-12-17 07:09:49 <shachaf> Oh no, I didn't mean to make you start up the game.
+2020-12-17 07:10:00 <shachaf> I thought you had it up already before, since you said 139 landmarks.
+2020-12-17 07:10:40 <int-e> and then I quit
+2020-12-17 07:11:10 <int-e> the main issue I have is that they made finding islands really inconvenient
+2020-12-17 07:11:35 <int-e> even navigating by coordinates is a process of trial and error
+2020-12-17 07:12:00 <shachaf> It's https://slbkbs.org/tmp/2020-12-16-231107_3840x2160.png if you're curious
+2020-12-17 07:13:16 <int-e> ah, yeah, that one looks fun
+2020-12-17 07:15:58 <int-e> 50 moves or so :)
+2020-12-17 07:18:09 <shachaf> Oh, wait, this was so easy.
+2020-12-17 07:18:13 <shachaf> I was so close the whole time.
+2020-12-17 07:18:39 <int-e> I should set up a proxy for myself that resizes images
+2020-12-17 07:19:52 <shachaf> I could presize them.
+2020-12-17 07:20:03 <shachaf> Why do you want them smaller?
+2020-12-17 07:20:22 <int-e> because the 3MB download takes noticable time for me
+2020-12-17 07:20:50 Quit: MDude (Quit: Going offline, see ya! (www.adiirc.com))
+2020-12-17 07:20:50 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 07:20:52 <shachaf> Aha.
+2020-12-17 07:21:18 <shachaf> Too bad every web page has 3MB of JavaScript these days.
+2020-12-17 07:21:19 <int-e> and all the information is still perfectly visible at 25% of the size
+2020-12-17 07:21:28 <int-e> I also disable JS.
+2020-12-17 07:21:34 <int-e> Almost everywhere.
+2020-12-17 07:21:35 <shachaf> It's being upscaled from 1920x1080 anyway.
+2020-12-17 07:22:00 <shachaf> Did you know that in JavaScript, "for (let i = 0; i < n; i++) { BODY }" is different from "{ let i; for (i = 0; i < n; i++) { BODY } }"?
+2020-12-17 07:22:07 <zzo38> Not all web pages have 3MB of JavaScript; some have less, and a few have none at all.
+2020-12-17 07:23:45 <int-e> zzo38: oh really I didn't know
+2020-12-17 07:24:04 <shachaf> zzo38: Some also have more.
+2020-12-17 07:24:37 <zzo38> Yes, some have more. I don't know how much is the average
+2020-12-17 07:26:18 <zzo38> I would try to avoid it by promoting the use of plain text, simple HTML (when plain text won't do), NNTP, Gopher, simpler VMs in case you need one anyways, etc
+2020-12-17 07:27:59 <shachaf> zzo38: But I want my traffic to be encryptd. I don't think Gopher supports that.
+2020-12-17 07:29:25 <zzo38> You could use Gopher or any other protocol with TLS, I suppose, but I don't know which implementations will do that. Gemini supports encryption, though.
