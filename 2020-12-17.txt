@@ -218,3 +218,82 @@
 2020-12-17 09:59:14 <int-e> BMP is to micro-softy
 2020-12-17 09:59:26 <nakilon> why do you make private youtube browsing sessions?
 2020-12-17 09:59:32 <nakilon> there is nothing illegal on youtube
+2020-12-17 10:00:21 <shachaf> Is BMP Microsofty?
+2020-12-17 10:02:03 <int-e> pretty sure it first appeared in Windows 3.x
+2020-12-17 10:02:42 <int-e> Or even Windows 2.0 but who ever even used that...
+2020-12-17 10:02:46 <shachaf> Sure, that's the origin of the format, but the format itself?
+2020-12-17 10:02:57 <int-e> It was used heavily in OS/2 as well.
+2020-12-17 10:03:08 <shachaf> https://upload.wikimedia.org/wikipedia/commons/c/c4/BMPfileFormat.png
+2020-12-17 10:03:23 <int-e> I still only see BMP files in Windows.
+2020-12-17 10:04:33 <int-e> In practice most of the pictures I have are PNG and JPEG anyway.
+2020-12-17 10:04:56 <int-e> And it makes very much sense for screenshots to default to PNG.
+2020-12-17 10:05:50 <shachaf> Presumably people could do way better than JPEG nowadays for lossy image compression?
+2020-12-17 10:06:06 <int-e> They can.
+2020-12-17 10:07:36 <int-e> There's JPEG2000 which is burdened by patents... I suppose webp is the latest attempt to overcome JPEG?
+2020-12-17 10:08:11 <nakilon> it does not make sense to screenshot games in png
+2020-12-17 10:08:53 <nakilon> most of the games use jpeg by default in their built-in screenshoting feature
+2020-12-17 10:09:02 <nakilon> because they realise this thing
+2020-12-17 10:11:08 <nakilon> unfortunately unlike jpeg the webp is being changed everyday -- they patch the format and the CLI webp converter tools become incompatible even with Google Chrome
+2020-12-17 10:17:18 <shachaf> I didn't use a built-in screenshotting feature.
+2020-12-17 10:17:37 <shachaf> I just have one screenshot button, and it shoots the exact pixels that are on screen.
+2020-12-17 10:17:41 <shachaf> Why would I have more than that?
+2020-12-17 10:18:05 <nakilon> jpeg does not mean it takes another number of pixels
+2020-12-17 10:19:14 Joined: TheLie
+2020-12-17 10:19:14 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 10:19:51 <int-e> jpeg is not a good default for screenshots
+2020-12-17 10:20:18 <nakilon> it is
+2020-12-17 10:21:36 <nakilon> that's why Steam makes screenshots in jpeg too
+2020-12-17 10:21:41 <int-e> screenshots should be lossless by default, to preserve small details and text
+2020-12-17 10:21:45 <nakilon> I guess
+2020-12-17 10:22:12 <nakilon> games don't have small details and text
+2020-12-17 10:22:18 <nakilon> they are games
+2020-12-17 10:22:24 User Name: rain1 = rain1!~My_user_n@unaffiliated/rain1
+2020-12-17 10:22:24 <rain1> https://www.youtube.com/watch?v=DDNywILJMGg
+2020-12-17 10:22:25 User Name: FireFly = FireFly!znc@freenode/staff/firefly
+2020-12-17 10:22:25 <FireFly> uh, sure they do?
+2020-12-17 10:22:28 <FireFly> depending on the game
+2020-12-17 10:22:29 <int-e> . o O ( somebody has never playeed TIS-100 )
+2020-12-17 10:22:30 <rain1> Silicon Zeroes
+2020-12-17 10:22:33 <rain1> game
+2020-12-17 10:22:41 <nakilon> this makes no sense
+2020-12-17 10:22:58 <FireFly> I believe a fairly large fraction of games contain dialogue
+2020-12-17 10:23:04 <int-e> there are many games that feature lots of text
+2020-12-17 10:23:22 <nakilon> 13:08:10 <nakilon> it does not make sense to screenshot games in png
+2020-12-17 10:23:38 <nakilon> where did I say here that it makes no sense to screenshot small details and text in png?
+2020-12-17 10:23:41 <nakilon> games != irc
+2020-12-17 10:23:48 <nakilon> games != websites
+2020-12-17 10:23:51 <int-e> now if the only games you play are fast-paced games rendered with a 3D engine you're probably right
+2020-12-17 10:23:52 <Taneb> Games often have small details and text
+2020-12-17 10:23:53 <nakilon> games != terminal logs
+2020-12-17 10:24:05 <FireFly> many games have small details and text
+2020-12-17 10:24:19 <FireFly> where you probably want crisp screenshots :p
+2020-12-17 10:24:34 <FireFly> doesn't really matter though
+2020-12-17 10:24:42 <Taneb> A lot of games also have large regions of flat colours, which I believe is very suitable for PNG
+2020-12-17 10:24:45 <FireFly> would make sense to have it be a setting I guess
+2020-12-17 10:24:50 <nakilon> "there are many games that" does not negate the fact that most of the games don't have it
+2020-12-17 10:24:53 <nakilon> there is no logic
+2020-12-17 10:24:55 <int-e> Besides, even for 3D games I'd prefer lossless screenshots; I can always compress them myself later.
+2020-12-17 10:24:57 <Taneb> Most of the games I play do
+2020-12-17 10:25:24 <Taneb> Why do you care what other people use to take screenshots of things to show to still other people?
+2020-12-17 10:25:28 <nakilon> guys, I guess you just were never really making screenshots
+2020-12-17 10:25:59 <nakilon> and don't realise that even if the game has 75% of screen scape of one flat color it still does not make png screenshot smaller
+2020-12-17 10:26:11 <nakilon> *75% of screen space
+2020-12-17 10:26:36 Quit: imode (Quit: Batsharks are people too!)
+2020-12-17 10:26:37 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 10:26:46 <Taneb> Again, why do you care
+2020-12-17 10:27:10 <nakilon> because in fact the screenshots you were sharing today were not from TIS, they were from the average game
+2020-12-17 10:27:11 <FireFly> hum
+2020-12-17 10:27:15 <int-e> Regardless, we were discussing a default of builtin OS functionality, and there's simply no argument to be made for using JPEG in that context.
+2020-12-17 10:27:18 <nakilon> and it was 3mb while could be 300kb
+2020-12-17 10:27:34 <FireFly> this also depends on the lossiness of the jpeg, no?
+2020-12-17 10:27:50 <nakilon> default OS functionality has nothing to do with png, it takes shots in bmp
+2020-12-17 10:28:08 <FireFly> maybe I'm missing some context here, idk
+2020-12-17 10:28:25 <Taneb> nakilon: that depends on which OS you're using. Many of us do not use Windows
+2020-12-17 10:28:27 <shachaf> Who said anything about the number of pixels? I care about the content of the pixels.
+2020-12-17 10:28:40 <nakilon> it's the job of additional software to convert the clipboard to png or jpeg and you usually have a choice that you may want to do carefully
+2020-12-17 10:28:41 <shachaf> I only have one screenshot button. I don't really want a different kind of screenshot for games.
+2020-12-17 10:28:53 <Taneb> Screenshots on my computer take PNG by default
+2020-12-17 10:29:15 <nakilon> Taneb pretty sure every OS stores clipboard as bitmap
+2020-12-17 10:29:46 <Taneb> If I press my print screen button, it saves a PNG in my Pictures directory.
+2020-12-17 10:29:53 <Taneb> I have done no configuration to set this up
+2020-12-17 10:29:54 <nakilon> guys, you confuse all the things with each other
