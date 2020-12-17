@@ -664,3 +664,35 @@
 2020-12-17 16:27:23 <b_jonas> probably. most programs should exit with 0 exit code on success, with the exception of a few programs that are specifically useful to test some condition, like test and grep
 2020-12-17 16:28:13 <int-e> b_jonas: the answer is yes. we can fit it into the framework of https://arxiv.org/abs/1203.1895 using a door gadget like https://int-e.eu/~bf3/tmp/aoc.png (which makes liberal use of directed edges as explained earlier)
 2020-12-17 16:29:01 <int-e> b_jonas: the most relevant door is the blue door at the bottom (I should have highlighted it somehow); the diagram shows the open state at the top and the closed state below
+2020-12-17 16:31:06 <int-e> (updated with a bit of emphasis for the relevant door)
+2020-12-17 16:31:59 <b_jonas> int-e: ah, I didn't recall the exact conditions of that article. I'll have to re-read some of it. so apparently it's enough to have one door, one open button, and one close button linked together, rather than, say, multiple open buttons or multiple doors linked?
+2020-12-17 16:32:36 <int-e> b_jonas: yep, one path is enough. furthermore, it's okay if the open path doesn't always work
+2020-12-17 16:32:48 <int-e> so just adding a bypass like I did is okay
+2020-12-17 16:33:45 <b_jonas> I guess that part is from the earlier Sokoban article, not this one
+2020-12-17 16:33:55 <int-e> maybe
+2020-12-17 16:36:46 <int-e> I lost track of the articles. The requirements of the door gadget can be found there anyway.
+2020-12-17 16:40:37 <int-e> (and crossover isn't needed as long as the graph is not required to be planar)
+2020-12-17 16:41:14 <b_jonas> int-e: sure, but for this game we can create a crossover gadget (though it's not cheap, so in a real puzzle version you might add that and one-way doors as primitives)
+2020-12-17 16:41:27 <int-e> (but in fact we can make one with the same principle shown by the green and red doors, without the blue one)
+2020-12-17 16:41:48 <b_jonas> yes, I did say above that I can make a crossover
+2020-12-17 16:42:04 <int-e> Sorry, I didn't read, I was busy making my own gadget.
+2020-12-17 16:42:25 <b_jonas> makes sense, since I didn't say how to create a crossover
+2020-12-17 16:44:48 <int-e> b_jonas: oh wait. I should've seen it, but I skipped the middle part and focussed on the binary counter...
+2020-12-17 16:45:38 <int-e> you even mentioned directed edges there
+2020-12-17 16:45:49 <int-e> (one-way corridors)
+2020-12-17 16:49:58 <int-e> b_jonas: for puzzles though I guess you have to work actively against the fact that 2/3 of all edges are passable at any given time
+2020-12-17 16:50:00 <b_jonas> yes, those are bisimulable with one-way gadgets
+2020-12-17 16:50:51 <b_jonas> to make a one-way corridor, you can just add a one-way gadget before and a one-way gadget after; to make a one-way gadget, make a one-way edge with an irrelevant open door
+2020-12-17 16:50:53 <int-e> (So naively, I'd expect random puzzles to be very easy.)
+2020-12-17 16:51:34 <b_jonas> int-e: that would depend on how you sample random, but yes, I also figured it's not easy to just generate good puzzles randomly
+2020-12-17 16:52:09 <b_jonas> and there are too many graphs and possiblel levels to brute force search all of them for potentially interesting ones
+2020-12-17 16:53:50 <b_jonas> and adding one-ways and/or crossovers (or teleporters) as primitives doesn't change any of that
+2020-12-17 16:54:15 <b_jonas> I mean it makes making puzzles slightly easier, but it still seems hard that way
+2020-12-17 16:55:42 <b_jonas> I just defined the base game without them for simplicity and elegance
+2020-12-17 16:56:32 <b_jonas> I would add such convenience things to a real puzzle implementation, because they make the puzzle easier to understand by humans. crossovers and one-ways are natural to understand, they make the puzzle easier to learn and navigate than the corresponding constructions.
+2020-12-17 16:56:44 <int-e> okay, one more update to the png... lighter gray and I got rid of the spikes at the bottom of the ajar doors
+2020-12-17 16:57:24 <int-e> the gadget is unchanged, I think it's pretty neat as it is.
+2020-12-17 16:58:12 <b_jonas> your graphical representation is very different from what I imagine. I use a top-view map of the maze, with doors drawn as short lines (as short as a corridor) from the same top view, and with letters (and optional colors) to mark matching ones
+2020-12-17 16:58:36 <b_jonas> rather than side view doors
+2020-12-17 16:58:50 <int-e> I'm not a nethack player
+2020-12-17 16:59:06 <int-e> I think that has a huge influence :)
