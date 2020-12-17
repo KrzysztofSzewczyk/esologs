@@ -60,3 +60,24 @@
 2020-12-17 04:36:58 <nakilon> the reversing ? kind of allowed that too, but yeah, it's good to keep the pointer going the same direction
 2020-12-17 04:50:38 <b_jonas> nakilon: hmm, that's true, though then you basically need a trampoline
 2020-12-17 04:51:23 <b_jonas> and I guess I should say ?j$ so it discards the jump length if the branch isn't taken
+2020-12-17 05:00:41 <b_jonas> anyway, I think RASEL can indeed simulate an arbitrary finite control machine with single queue of finite alphabet. represent the alphabet with small natural numbers. if a symbol is on the top of the stack, you can do a big case distinction on it like >:?v1-:?v1-:?v1-:?v1-?v> . between states of the original machine, the stack shall contain the queue and then the length of the queue plus one over it. to
+2020-12-17 05:00:47 <b_jonas> push a symbol A, you can just >A\1+> . to shift a symbol and test it, you do like >:a :?v1-:?v1-:?v1-:?v1-?v>
+2020-12-17 05:00:55 <b_jonas> and to initialize an empty queue, just >1>
+2020-12-17 05:01:04 <b_jonas> so you don't in fact need bigints
+2020-12-17 05:03:00 <b_jonas> and this still works in single-line code, you just have to you just do L\?j$ to put the jump distance L under the number tested
+2020-12-17 05:05:17 <b_jonas> but it's still not clear to me if you can do an arbitrary computation in RASEL without leaving junk on the stack forever
+2020-12-17 05:06:33 <b_jonas> all the constructions I mentioned, both this one with a queue, and the one with integer registers (and, as a special case, blindfolded artithmetic, or state machine with a fixed number of stacks of finite alphabets) do leave junk on the stack.
+2020-12-17 05:10:31 <b_jonas> if you added a second memory (outside the stack) with random access load, store, and sbrk instructions, that would of course solve all the problems and make this something to which you can compile normal programs with a random-access memory.
+2020-12-17 05:11:15 <b_jonas> you could use the bottom of that extra memory as registers that you can load and store conveniently, which lets you rearrange the top of the stack
+2020-12-17 05:11:24 <b_jonas> and you could use the rest as just read-writable memory
+2020-12-17 05:12:04 <b_jonas> but that perhaps would be a different or less esoteric language.
+2020-12-17 05:12:49 <b_jonas> one that's more suitable for golfing at least though
+2020-12-17 05:20:55 <int-e> KISS++
+2020-12-17 05:21:36 <shachaf> kissat++
+2020-12-17 05:21:49 <shachaf> 猫++
+2020-12-17 05:26:58 <shachaf> OK, I'm back at it and immediately not sure what to do on the island with the broom.
+2020-12-17 05:27:41 <shachaf> No, the oar.
+2020-12-17 05:27:43 <shachaf> The big spoon.
+2020-12-17 05:27:51 <int-e> ...there are too many landmarks... was there a broom? or an oar?
+2020-12-17 05:28:32 <int-e> (Apparently I've seen 139 landmarks)
+2020-12-17 05:28:58 <shachaf> It's at 314,214.
