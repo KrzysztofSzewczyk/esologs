@@ -620,3 +620,32 @@
 2020-12-17 15:29:04 <fizzie> a multi-line status line), but it'd take effort to implement that.
 2020-12-17 15:29:25 <fizzie> I think there's a bunch of Befunge-93 browser things, but for '98 the implementation situation seems a bit more bare.
 2020-12-17 15:29:58 <nakilon> unfortunately Ruby isn't tuned for GUI apps
+2020-12-17 15:30:08 <nakilon> I mean it has no cool libraries
+2020-12-17 15:30:38 <nakilon> only some monstrous bindings, and when someone tried to make it as simple as possible that resulted in something limited
+2020-12-17 15:30:59 <fizzie> Well, a TUI is what I'd like anyway. I've been eyeing tcell (in Go) if I do start making it.
+2020-12-17 15:31:02 <nakilon> and wxwidgets were segfaulting and then abandoned AFAIK
+2020-12-17 15:33:25 <nakilon> curses would do the job but it would also have to intercept the stdout
+2020-12-17 15:34:08 <nakilon> wouldn't be a problem though
+2020-12-17 15:35:41 <nakilon> damn, I've got so much things to do and now I want to implement the debugger, oh no...
+2020-12-17 15:35:56 Quit: jess (Quit: updates)
+2020-12-17 15:35:56 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-17 15:37:54 <fizzie> I want the playfield grid view to show cell values 32-126 as their printable ASCII counterparts, values 1-31 using the braille patterns as binary, value 0 maybe as WHITE DIAMOND and values <0 and >=127 as BLACK DIAMOND (of course showing the actual value on the status line).
+2020-12-17 15:38:00 <fizzie> And I want two rows reserved for the cell annotations shown permanently, and I'd use the top line by convention for stack annotations, and I want the enter key to switch focus between the grid and the annotation window.
+2020-12-17 15:38:05 <fizzie> And I want arrow keys to also as a side effect change the direction into which the cursor moves when you insert a character, but I also want to allow specifying a vector directly.
+2020-12-17 15:38:10 <fizzie> And I want mod-space to set a mark that can be used to define a highlighted rectangular region, which can also have other rectangles or individual cells added to or removed from, so that the arbitrarily shaped region can then be moved around or copied. Possibly rotated with automatic treatment of <>v^ too (I know some Befunge IDEs do that), though I'm a bit ambivalent about that.
+2020-12-17 15:40:31 <fizzie> And obviously I also want a single-stepping debugger that defaults the grid to a view mode, but also allows switching the grid to edit mode to tweaks, and also shows (and allows changing) the stack.
+2020-12-17 15:41:10 <fizzie> Oh, and I want the grid view section to be arbitrarily splittable to frames which each have their own origin, though can also be set to track a specific IP.
+2020-12-17 15:41:32 <nakilon> rasel would not need to display program space values since you don't write to it
+2020-12-17 15:42:05 <fizzie> BefungeSharp might be closest already existing thing to what I want, and if it wasn't Windows-only, I might even consider using it.
+2020-12-17 15:42:18 <nakilon> instead would need to display more stack values I guess
+2020-12-17 15:42:47 <nakilon> hehe, C#
+2020-12-17 15:43:09 <fizzie> I imagine you might want something like different stack value display options, in case you often have complex data in a single value.
+2020-12-17 15:44:14 <nakilon> rationals need more space than integers, yeah
+2020-12-17 15:45:15 <nakilon> didn't use numbers with fractional parts a lot but they exist at least temporary, when you emulate multiplication
+2020-12-17 15:45:30 <fizzie> The other thing that exists is Bequnge, but I think it goes a little too far into the >2D stuff, visualizations, and sound effects. https://hatstand.github.io/Bequnge/screenshots.html
+2020-12-17 15:46:13 <fizzie> Then again, as the author of GLfunge98, which was supposed to do exactly those similar things (except I abandoned it ages ago) I shouldn't probably be allowed to criticize.
+2020-12-17 15:46:42 <nakilon> yay, 3d, needs VR
+2020-12-17 15:47:43 <fizzie> There's an HP-UX port of GLfunge98, which I find pleasantly odd.
+2020-12-17 15:48:24 <fizzie> (Huh, has it really been 20 years since I did that? Feels like just yesterday.)
+2020-12-17 15:57:27 Quit: LKoen (Remote host closed the connection)
+2020-12-17 15:57:27 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
