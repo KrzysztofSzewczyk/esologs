@@ -15,3 +15,51 @@
 2020-12-18 01:29:09 <LegionMammal978> E.g., if I enter a V going right, do I exit the + in the parent program going right or going up?
 2020-12-18 01:29:44 User Name: V = V!v@anomalous.eu
 2020-12-18 01:29:44 <V> I would not recommend that
+2020-12-18 01:30:12 <V> Seems needlessly painful
+2020-12-18 01:33:10 <esowiki> 14[[07Clementine14]]4 10 02https://esolangs.org/w/index.php?diff=79493&oldid=72568 5* 03CatIsFluffy 5* (+23) 10done
+2020-12-18 01:35:05 User Name: shikhin = shikhin!~shikhin@unaffiliated/shikhin
+2020-12-18 01:35:05 <shikhin> What is the less painful way of entering a V?
+2020-12-18 01:35:22 <V> shikhin: from the back
+2020-12-18 01:35:30 <shikhin> I-I see.
+2020-12-18 01:35:32 <V> or the front, depending on taste
+2020-12-18 01:35:59 <LegionMammal978> Wait a second, that page was only saying you were the one who created Memfractal, it was worded confusingly
+2020-12-18 01:36:16 <V> shikhin: look, I chose not to say it, but you chose to ask
+2020-12-18 01:36:21 <shikhin> Haha.
+2020-12-18 01:36:27 <shikhin> It is my fault.
+2020-12-18 01:36:30 Quit: LegionMammal978 (Remote host closed the connection)
+2020-12-18 01:36:30 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 01:36:42 <V> oh dear
+2020-12-18 01:36:46 <V> Looks like we've scared them off
+2020-12-18 01:37:54 <shikhin> Oh dear.
+2020-12-18 01:46:59 <zzo38> LegionMammal978: I did not invent Flipfractal, and yes I agree it is worded confusingly.
+2020-12-18 01:50:01 Joined: ais523
+2020-12-18 01:50:02 Names: ^[, acedic[m], ais523, aloril, also_uplime, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 01:50:21 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-12-18 01:50:21 <ais523> shachaf: zzo38: there is apparently an unofficial standard for gopher over TLS
+2020-12-18 01:50:33 Joined: Lord_of_Life
+2020-12-18 01:50:45 <ais523> it is very simple, too: you just make a TLS connection on port 70
+2020-12-18 01:51:07 <ais523> (a gophers server distinguishes between gopher-over-TLS and regular gopher by checking to see whether the first thing the client sends is a TLS handshake)
+2020-12-18 01:51:10 Quit: Lord_of_Life (Ping timeout: 246 seconds)
+2020-12-18 01:51:53 <shachaf> What's the thing with TLS where the server must identify all the domain names it possibly knows about and then the client checks whether it matches?
+2020-12-18 01:51:54 Nick Change: Lord_of_Life -> Lord_of_Life
+2020-12-18 01:52:02 <shachaf> Rather than the cient saying what domain name it thinks it's accessing.
+2020-12-18 01:52:08 <shachaf> Seems bizarre to me.
+2020-12-18 01:52:43 <ais523> sounds like one of the many variants of SNI
+2020-12-18 01:52:53 <shachaf> TCP is presumably just a dead end if you want efficient networking protocols.
+2020-12-18 01:53:04 <ais523> the basic problem is that in most TLS connections, the server name indication is sent in the clear, so anyone listening in knows what site you're connecting
+2020-12-18 01:53:10 <ais523> and there have been various proposals to remedy that
+2020-12-18 01:53:33 <shachaf> With TLS being one of the reasons.
+2020-12-18 01:53:48 <shachaf> Hmm, I see, so eavesdroppers know whether I'm connecting to youtube.com vs. google.com or something.
+2020-12-18 01:53:59 <ais523> the basic problem is that it's hard to deploy anything like this at a small scale, because with a small hosting company, you can normally figure out which site is being connected to simply from the IP
+2020-12-18 01:54:09 <shachaf> I guess you might want to keep that information secret, especially with DNS becoming encrypted these days.
+2020-12-18 01:54:20 <ais523> so in order to really keep it private, you need a wide range of different sites that are all hosted from the same IP so people aren't sure which is which
+2020-12-18 01:54:43 <ais523> Cloudflare apparently added some sort of encrypted SNI recently, because they have the right sort of infrastructure for that
+2020-12-18 01:55:42 <ais523> I'm a little surprised that gopher is still being developed nowadays (at least, within the last couple of years)
+2020-12-18 01:56:01 <ais523> but apparently some people like it due to the lack of things like JavaScript-based adverts because the protocol can't handle them
+2020-12-18 01:56:41 <shachaf> Gophers are OK but kitty cats are where it's at, if you ask me.
+2020-12-18 01:57:11 <zzo38> I think that the web browser is the wrong place to implement encrypted DNS, since DNS is something that you will want many programs to use, not only the web browser.
+2020-12-18 01:57:15 <ais523> well, cat has even fewer features than gopher
+2020-12-18 01:57:50 <shachaf> Is QUIC a good alternative to TCP?
+2020-12-18 01:59:23 <ais523> one issue I've discovered with TCP is that in practice, you seem to need to duplicate a lot of TCP functionality to get reliable connections even when you're using TCP
+2020-12-18 01:59:33 <ais523> in real life, TCP connections have a tendency to break for no reason
+2020-12-18 01:59:37 <ais523> this somehow even happens on localhost
