@@ -63,3 +63,53 @@
 2020-12-18 01:59:23 <ais523> one issue I've discovered with TCP is that in practice, you seem to need to duplicate a lot of TCP functionality to get reliable connections even when you're using TCP
 2020-12-18 01:59:33 <ais523> in real life, TCP connections have a tendency to break for no reason
 2020-12-18 01:59:37 <ais523> this somehow even happens on localhost
+2020-12-18 02:00:20 <ais523> using TLS over TCP increases the frequency at which this happens, but probably just because more data is sent
+2020-12-18 02:01:28 <ais523> oh, an idea I had recently: an equivalent of HTTP headers but for files on a filesystem (e.g. in the directory entry for a file)
+2020-12-18 02:01:42 <ais523> it struck me that HTTP headers are already a widely used standard for file metadata
+2020-12-18 02:02:42 <zzo38> Actually, my "httpdirlist" format is similar, using the same format of HTTP headers to make a directory listing format for use with HTTP, with blank lines separating directory entries.
+2020-12-18 02:03:42 <ais523> it strikes me as something of a security hole that I can't just put a file in a directory that a web browser serves, and know for certain that it won't get misinterpreted in a format I don't expect and that happens to do something malicious
+2020-12-18 02:03:47 <zzo38> Perhaps having a file in that format might also be helpful for loading "file:" URLs in a web browser, so that it can know the MIME type of each file.
+2020-12-18 02:04:06 <ais523> (e.g. there was an incident on #esoteric a while ago where someone managed a successful XSS attacks against the raw log files, even though they're plaintext)
+2020-12-18 02:06:31 <zzo38> Yes, but you should fix the HTTP server to specify the correct MIME type, presumably always text/plain for the raw log files
+2020-12-18 02:06:59 <ais523> yes, but some browsers will override the MIME type if it appears to be wrong
+2020-12-18 02:08:02 <ais523> nowadays there is �X-Content-Type-Options: nosniff� which tells the browser that the MIME type is correct and should not be changed
+2020-12-18 02:09:13 <zzo38> Use that, then, although I should think that the web browser should never override the MIME type specified by the server unless the user explicitly specifies a different MIME type
+2020-12-18 02:11:24 <ais523> apparently this option is not respected by IE < 8
+2020-12-18 02:11:36 <ais523> so there would still be a potential for XSS attacks against plaintext files on IE7 and earlier
+2020-12-18 02:11:39 <ais523> (does anyone still use those?)
+2020-12-18 02:14:34 <zzo38> I don't know
+2020-12-18 02:16:34 <shachaf> ais523: What about HFS forks?
+2020-12-18 02:18:05 <ais523> shachaf: Mac filesystems have something similar to the HTTP idea I had
+2020-12-18 02:18:20 <ais523> but, I think they used something proprietary to specify file types, not MIME
+2020-12-18 02:18:25 <ais523> back when I last looked
+2020-12-18 02:18:29 <ais523> maybe they're using MIME nowadays
+2020-12-18 02:20:48 <ais523> oh wow, now I'm reading about CORB
+2020-12-18 02:20:53 <ais523> and it is kind-of eso
+2020-12-18 02:21:36 <ais523> the basic idea is that there are only a few types of thing that can be included into a web page via a cross-origin request, such as scripts and images
+2020-12-18 02:22:18 <ais523> so if a web page tries to make a cross-origin request using <img> or <script> or whatever, but it starts with a character sequence that can't possibly start a valid image or script or the like, you stop reading so that the information doesn't end up in your process's memory
+2020-12-18 02:23:12 <ais523> but the spec is so concerned about not breaking backwards compatibility that it starts getting worried about things ilke polyglots, and CSS files that start with closing brackets (apparently not banned by the spec even though it's useless_
+2020-12-18 02:23:16 <ais523> s/_/)/
+2020-12-18 02:24:31 <fizzie> I think we definitely set X-Content-Type-Options: nosniff for the HackEso repo browsing.
+2020-12-18 02:24:34 <esowiki> 14[[07NUMPAD14]]4 10 02https://esolangs.org/w/index.php?diff=79494&oldid=30469 5* 03LegionMammal978 5* (+96) 10/* External resources */ fixed links
+2020-12-18 02:24:49 <ais523> I think we changed that after the attack succeeded, yes
+2020-12-18 02:25:17 <fizzie> That's always been the default for fshg, and I think I at least tried to configure it like that very early on for the tmp.
+2020-12-18 02:25:25 <fizzie> Logfiles, I'm less sure about.
+2020-12-18 02:26:23 <fizzie> (Is that thing down again? Stalker mode breaks it annoyingly often.)
+2020-12-18 02:26:54 <shachaf> Isn't tmp from last year or something?
+2020-12-18 02:27:02 <shachaf> `` doat | grep `mkdir tmp`
+2020-12-18 02:27:06 <shachaf> Oops.
+2020-12-18 02:27:08 <HackEso> Usage: grep [OPTION]... PATTERNS [FILE]... \ Try 'grep --help' for more information.
+2020-12-18 02:27:11 <shachaf> `` doat | grep 'mkdir tmp'
+2020-12-18 02:27:16 <HackEso> 9600:2016-11-02 <shachäf> ` rm tmp; mkdir tmp
+2020-12-18 02:27:17 <fizzie> It's not *that* new.
+2020-12-18 02:27:34 <shachaf> `` doat | grep 'hgignore'
+2020-12-18 02:27:39 <HackEso> 8116:2016-05-24 <shachäf> ` echo ignored > .hgignore \ 8117:2016-05-24 <shachäf> ` rm ignored .hgignore \ 8118:2016-05-24 <shachäf> ` echo ishare > .hgignore \ 8120:2016-05-24 <shachäf> ` mv ishare ignored; echo ignored > .hgignore \ 8121:2016-05-24 <shachäf> ` echo $\'syntax: regexp\\n.*\' > .hgignore \ 8129:2016-05-25 <fizzïe> ` echo \'^tmp/\' > .hgignore  # kablam? \ 9592:2016-11-01 <shachäf> ` echo ^canary >> .hgignore \ 959
+2020-12-18 02:28:07 <ais523> <fizzie> (Is that thing down again? Stalker mode breaks it annoyingly often.) ← I'm getting a 502 trying to read the logs directory, and currently have a stalker mode tab open
+2020-12-18 02:28:29 <fizzie> You get the 502 when I restart it.
+2020-12-18 02:28:42 <fizzie> And I imagine it's your tab that keeps breaking it, not that it's your fault.
+2020-12-18 02:28:52 <ais523> do you want me to close the tab?
+2020-12-18 02:29:05 <ais523> there, I closed it
+2020-12-18 02:29:16 <fizzie> We'll see if it stays up for longer.
+2020-12-18 02:29:24 <fizzie> I mean, if you don't mind. There's either a bug in CivetWeb's websocket support, or in how I use it.
+2020-12-18 02:29:35 <fizzie> But I couldn't figure out how I'd be using it wrong from the (poor) documentation.
+2020-12-18 02:29:41 <shachaf> This is a pomegranate. Do you like this?
