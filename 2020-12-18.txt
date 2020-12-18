@@ -147,3 +147,28 @@
 2020-12-18 05:52:19 Names: ^[, acedic[m], ais523, aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-18 05:53:18 Quit: ais523 (Read error: Connection reset by peer)
 2020-12-18 05:53:18 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, callforjudgement, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 06:08:47 <int-e> b_jonas: btw I realized that the door gadget can be reduced to... https://int-e.eu/~bf3/tmp/aoc2.png
+2020-12-18 06:10:34 Quit: callforjudgement (Quit: quit)
+2020-12-18 06:10:34 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 06:11:10 <int-e> b_jonas: The new semi-open state looks dangerous because it blocks off the 'close' path. However, we can only get into this situation by using the 'open' path without actually using the door... so if we end up in that situation, we can backtrack and bypass the 'open' pass completely.
+2020-12-18 06:17:33 <shachaf> Oh no, I accidentally solved today's well-ordering theorem problem.
+2020-12-18 06:17:42 <shachaf> People were talking about precedence parsers so I couldn't resist.
+2020-12-18 06:18:12 <shachaf> But I don't have an account so I can't really confirm it.
+2020-12-18 06:18:30 <int-e> So you didn't get to the great twist in part 2
+2020-12-18 06:18:53 <shachaf> Is the twist that + is stickier than *?
+2020-12-18 06:18:59 <int-e> Yes.
+2020-12-18 06:19:01 <shachaf> Someone told it to me.
+2020-12-18 06:19:08 <shachaf> It was a 2-character change in my parser.
+2020-12-18 06:19:20 <shachaf> I mean, assuming it's correct, which I didn't test.
+2020-12-18 06:19:58 <shachaf> Does it give the last test case the value 23340?
+2020-12-18 06:20:41 <int-e> I skipped the description, wondered why my answer was wrong, then realized that if those were standard expressions, I should've fed them into something like bc instead, then read the problem properly...
+2020-12-18 06:21:27 <int-e> And to top it off I messed up the change for part 2.
+2020-12-18 06:21:38 <int-e> It wasn't a good performance today.
+2020-12-18 06:22:17 <int-e> 23340 seems to be correct
+2020-12-18 06:22:52 <int-e> I did not have any recent practice writing expression parsers.
+2020-12-18 06:24:02 <shachaf> It's too bad almost everything people write about precedence parsers is way too complicated.
+2020-12-18 06:24:08 <int-e> But the main failing was to assume too much rather than reading the damn specification.
+2020-12-18 06:24:33 <shachaf> For example the Wikipedia example code has nested loops for no reason.
+2020-12-18 06:26:01 <int-e> I decided to use parsec which annoyingly, makes left recursion hard. And while it has dedicated expression parser functionality that basically just takes a list of operators and their precedence and associativity, I didn't want to read up on that on the spot.
+2020-12-18 06:26:50 <int-e> This stuff: https://hackage.haskell.org/package/parsec-3.1.14.0/docs/Text-Parsec-Expr.html
+2020-12-18 06:27:13 <shachaf> I wrote a C parser: https://slbkbs.org/tmp/pa.c
