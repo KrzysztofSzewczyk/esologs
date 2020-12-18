@@ -329,3 +329,84 @@
 2020-12-18 22:57:27 <nakilon> fizzie maybe I misread but maybe it's a Newton method
 2020-12-18 22:57:38 <nakilon> of finding where two lines intersect
 2020-12-18 22:58:17 <nakilon> it splits in half, and it's basically that "guess the number" game
+2020-12-18 23:00:31 <nakilon> or maybe I don't have a clue
+2020-12-18 23:02:13 <rain1> that's true
+2020-12-18 23:02:35 <rain1> it is the bisection method, but newton applied the derivative to make it faster
+2020-12-18 23:09:09 Joined: Lykaina
+2020-12-18 23:09:09 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 23:09:14 User Name: Lykaina = Lykaina!~lyka@unaffiliated/schrodingerscat
+2020-12-18 23:09:14 <Lykaina> hi
+2020-12-18 23:09:22 <kmc> hello
+2020-12-18 23:09:46 Joined: NeverBorn
+2020-12-18 23:09:46 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, NeverBorn, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 23:10:08 <Lykaina> how esoteric is this: http://thor.lesidhetree.com/sara/echidna/arduino/helloworld.txt
+2020-12-18 23:10:54 <Lykaina> reference: http://thor.lesidhetree.com/sara/echidna/arduino/cmdop6a-arduino.pdf
+2020-12-18 23:11:49 User Name: imode = imode!~linear@unaffiliated/imode
+2020-12-18 23:11:49 <imode> looks like intel hex stuff.
+2020-12-18 23:11:57 <imode> or gcode.
+2020-12-18 23:14:28 <kmc> looks like a little bytecode for arduino?
+2020-12-18 23:14:54 <b_jonas> hi Lykaina
+2020-12-18 23:14:58 <Lykaina> hi
+2020-12-18 23:16:30 <Lykaina> it doesn't require an external parser or a hex editor, unlike earlier attempts
+2020-12-18 23:17:01 <imode> really?
+2020-12-18 23:17:20 <kmc> I started playing with CircuitPython
+2020-12-18 23:17:38 <Lykaina> what you see in the txt file is what is on the sd card
+2020-12-18 23:17:48 <kmc> it's a neat concept, you can edit the .py file right on your embedded target (which appears as a mass storage device) and it runs the new code immediately
+2020-12-18 23:17:52 <kmc> so there's no host-side dev tools needed
+2020-12-18 23:18:20 <kmc> but the one circuitpython device I own does some kind of crazy things, it seems to try to be a keyboard and messes with my keyboard layout, among other issues
+2020-12-18 23:18:23 <imode> so do you have an interpreter running on the arduino.
+2020-12-18 23:18:31 <Lykaina> yes
+2020-12-18 23:18:33 <imode> neat.
+2020-12-18 23:18:44 <kmc> so I probably need to tweak the default firmware/script before I have some pleasing experience with CircuitPython
+2020-12-18 23:18:48 * imode needs to get an ardunio so they have an AVR target.
+2020-12-18 23:19:29 <Lykaina> 39 commands are recognized at the moment
+2020-12-18 23:19:30 <imode> kmc: huh, this looks interesting... it doesn't run Python directly on the MCU, right?
+2020-12-18 23:19:40 <imode> it just emits code for it.
+2020-12-18 23:19:43 <kmc> no it does
+2020-12-18 23:19:45 <imode> wat
+2020-12-18 23:19:56 <imode> that's gotta be limiting.
+2020-12-18 23:19:56 <kmc> they have some stripped down Python interpreter that runs on ARM Cortex-M and maybe some other CPUs
+2020-12-18 23:19:59 <Lykaina> by the interpreter
+2020-12-18 23:20:01 <kmc> not sure if there's any for AVR
+2020-12-18 23:20:11 <kmc> yes, it is limiting
+2020-12-18 23:20:11 <Lykaina> read the pdf
+2020-12-18 23:20:13 <imode> ARM makes sense.
+2020-12-18 23:21:10 <kmc> it's made to be a really easy way to get started with MCU programming
+2020-12-18 23:21:17 Quit: rain1 (Quit: WeeChat 2.9)
+2020-12-18 23:21:17 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, NeverBorn, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 23:21:22 <kmc> so in that respect I'm not the target audience, but i thought it'd be fun to play with anyway
+2020-12-18 23:21:31 <imode> neat!
+2020-12-18 23:22:32 <Lykaina> my echidna languages are pretty useless
+2020-12-18 23:22:42 <kmc> Cortex-M MCUs are about as cheap as AVR these days
+2020-12-18 23:22:53 <imode> I need an AVR target for Feather.
+2020-12-18 23:23:54 <b_jonas> what
+2020-12-18 23:24:43 <kmc> most of the embedded stuff i've done lately has been ESP8266
+2020-12-18 23:24:53 <kmc> but it's quite limited on the hardware peripherals side
+2020-12-18 23:24:58 <Lykaina> i'm a c programmer
+2020-12-18 23:24:58 <kmc> I might get into ESP32
+2020-12-18 23:25:08 <kmc> there's a new variant of ESP32 which has a RISC-V core
+2020-12-18 23:25:13 <kmc> could probably run Rust on that
+2020-12-18 23:25:14 <imode> that's nuts.
+2020-12-18 23:25:33 <nakilon> there should be a brainfuck interpreter for arduino robot
+2020-12-18 23:25:38 <Lykaina> is there a subset of c i could write an arduino interpreter for?
+2020-12-18 23:25:47 <nakilon> that would go left and right on the line
+2020-12-18 23:25:52 <kmc> nakilon: :D
+2020-12-18 23:25:53 <kmc> i like it
+2020-12-18 23:25:56 <imode> Lykaina: go further and write a forth.
+2020-12-18 23:25:58 <nakilon> dropping stuff onto drawn cells on it
+2020-12-18 23:26:06 <kmc> (the previous ESP's use Xtensa architecture which doesn't have a mature / working LLVM target)
+2020-12-18 23:26:19 <Lykaina> i don't know forth
+2020-12-18 23:26:27 <imode> you didn't know C either.
+2020-12-18 23:26:44 <kmc> Lykaina: C isn't usually interpreted, but it's not to say nobody's ever written an interpreter for it
+2020-12-18 23:26:56 <kmc> from a quick search https://github.com/jpoirier/picoc might be of interest
+2020-12-18 23:27:04 <nakilon> if you make arduino robot turn in place you can make a befunge interpreter
+2020-12-18 23:27:07 <nakilon> or at least rasel
+2020-12-18 23:27:22 <nakilon> need a camera reading the cells from the ground
+2020-12-18 23:27:38 <kmc> for that matter you could probably fit a minimal C *compiler* and dynamic loader on AVR
+2020-12-18 23:27:45 <kmc> I men, it was originally developed for PDP-11
+2020-12-18 23:27:58 <imode> people often forget that.
+2020-12-18 23:28:03 <imode> for better or worse.
+2020-12-18 23:29:21 <imode> also re: brainfuck, I implemented a BF DSL in my language. line 365 and 374. https://hastebin.com/kehapukuxa.txt
+2020-12-18 23:29:23 <kmc> one issue, AVR is a Harvard architecture, you can't execute code directly from RAM
+2020-12-18 23:29:37 <kmc> but there are special instructions you can use to write to flash
+2020-12-18 23:29:48 <kmc> which are used for example by the Arduino bootloader
