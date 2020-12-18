@@ -113,3 +113,27 @@
 2020-12-18 02:29:24 <fizzie> I mean, if you don't mind. There's either a bug in CivetWeb's websocket support, or in how I use it.
 2020-12-18 02:29:35 <fizzie> But I couldn't figure out how I'd be using it wrong from the (poor) documentation.
 2020-12-18 02:29:41 <shachaf> This is a pomegranate. Do you like this?
+2020-12-18 02:30:49 <ais523> I did a GET /logs/2020-12-18-raw.txt HTTP/1.1 over telnet
+2020-12-18 02:31:09 <ais523> and the response contained Content-Type: text/plain; charset=utf-8, but no X-Content-Type-Options: nosniff
+2020-12-18 02:31:13 <fizzie> I did a curl -I on it.
+2020-12-18 02:31:24 <fizzie> Yeah, didn't think we did it on that, just the repo-browsing.
+2020-12-18 02:31:27 <ais523> just Server, Date, Content-Type, Transfer-Encoding, and Connection
+2020-12-18 02:31:43 <fizzie> Incidentally, those "raw" logs aren't actually the "native" raw logs, I just generate that format since it's the ad-hoc standard now.
+2020-12-18 02:32:08 <ais523> they don't look nearly as HTMLish as the parsed logs
+2020-12-18 02:32:19 <ais523> so I guess you'd have to spam a lot of HTML tags just after midnight in order to mount an attack
+2020-12-18 02:33:08 <fizzie> It does start with a "tag" thanks to the <> direction indicators.
+2020-12-18 02:33:17 <fizzie> Though a pretty weird tag.
+2020-12-18 02:34:04 <fizzie> Hmm, I thought I had an endpoint for the actual raw logs too, but apparently not.
+2020-12-18 02:37:21 Quit: Arcorann (Ping timeout: 265 seconds)
+2020-12-18 02:37:21 Names: ^[, acedic[m], ais523, aloril, also_uplime, APic, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 02:37:58 <ais523> and after reading through some more: apparently X-Content-Type-Options: nosniff isn't always respected because apparently Cloudflare sometimes adds it automatically in cases where the MIME type is actually wrong
+2020-12-18 02:38:15 <ais523> so browsers are now having to second-guess the statement that the MIME type is correct…
+2020-12-18 02:39:43 <ais523> one project I'm currently working on is a "safe" subset of HTML (the idea is that you specify an HTML page as a data structure, run it through the generator, and get some HTML that you know cannot be malicious because it was written in a subset that doesn't support any misusable features)
+2020-12-18 02:40:10 <ais523> but I'm not sure if there's any way to even handle hyperlinks in something like this
+2020-12-18 02:53:19 <b_jonas> "< ais523> one issue I've discovered with TCP is that in practice, you seem to need to duplicate a lot of TCP functionality to get reliable connections even when you're using TCP" => I think there was a proposal to solve that, with a middle-level protocol that looks sort of like TCP for the programs using it but does a bit more, especially being able to reestablish the connection if the client's IP
+2020-12-18 02:53:25 <b_jonas> changes, aimed mostly for mobile phones.
+2020-12-18 02:54:15 <fizzie> A friend of mine did some work/research on HIP back in the university days, I think.
+2020-12-18 02:54:44 <fizzie> That's got a mobility thing in it.
+2020-12-18 02:57:43 <b_jonas> "<fizzie> Incidentally, those "raw" logs aren't actually the "native" raw logs, I just generate that format since it's the ad-hoc standard now." => makes sense, given that you backfill logs when your log bot wasn't connected to the channel from other log sources
+2020-12-18 02:58:57 <fizzie> There's that, too. Though one of those sources *is* the raw logs from codu, where I got that format from.
+2020-12-18 02:59:37 <b_jonas> fizzie: I see. that only applies to before 2016, right?
