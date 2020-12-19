@@ -279,3 +279,4 @@
 2020-12-19 15:19:02 <esowiki> 14[[07Infinity14]]4 M10 02https://esolangs.org/w/index.php?diff=79504&oldid=23206 5* 03PythonshellDebugwindow 5* (+49) 10Aidepikiw
 2020-12-19 15:22:45 <fizzie> I cobbled together part 1 in a vaguely CYK-ish way, except (since it was cycle-free) "rulewise" rather than "lengthwise" (if that makes sense), and ended up having to special-case the part 2 rules. Might rewrite that to something prettier later on.
 2020-12-19 15:28:42 <int-e> I followed the principle that CYK is basically just memoization :P
+2020-12-19 15:50:30 <int-e> And then I managed to make it so inefficient that it took almost 2 minutes to run to completion for a single input.
