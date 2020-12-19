@@ -285,3 +285,57 @@
 2020-12-19 16:59:17 Joined: LegionMammal978
 2020-12-19 16:59:17 Names: ^[, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-19 16:59:46 <fizzie> int-e: Heh. Well, turns out there are only 2097152 strings total in the language of my part 1, and it's faster to just enumerate them all than do what I initially did.
+2020-12-19 17:00:17 User Name: LegionMammal978 = LegionMammal978!181e4e3e@c-24-30-78-62.hsd1.ga.comcast.net
+2020-12-19 17:00:17 <LegionMammal978> int-e: What do you generally optimize for when writing AoC solutions? I just took the quick and easy route and used regexes.
+2020-12-19 17:01:30 <LegionMammal978> For part 2, I was getting some headaches since the regex engine I used doesn't support balancing groups, but I found that hardcoding the first 20 expansions worked perfectly fine.
+2020-12-19 17:04:00 Quit: TheLie (Remote host closed the connection)
+2020-12-19 17:04:00 Names: ^[, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-19 17:06:18 Joined: aaaaaa
+2020-12-19 17:06:18 Names: ^[, aaaaaa, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-19 17:07:04 User Name: aaaaaa = aaaaaa!~ArthurStr@188.163.100.177
+2020-12-19 17:07:04 <aaaaaa> Hi all
+2020-12-19 17:07:12 <aaaaaa> Reading here https://esolangs.org/wiki/Combinatory_logic
+2020-12-19 17:07:17 <aaaaaa> "Each combinator is like a function or lambda abstraction, but without any free variables."
+2020-12-19 17:07:30 <aaaaaa> It's like a C function with no access to global variables? Only to arguments, right?
+2020-12-19 17:10:15 <LegionMammal978> They are similar, but a combinator does not have a notion of argument type and cannot have any side-effects.
+2020-12-19 17:11:12 <aaaaaa> LegionMammal978: OK, so combinator is like a function in pure PL (Haskell?) with no local variables and data types?
+2020-12-19 17:12:25 <LegionMammal978> aaaaaa: That would be roughly correct.
+2020-12-19 17:12:49 <kmc> the free variables of a lambda term are the variables which are not bound by the lambda as arguments, but are inherited from the environment where the lambda was evaluated
+2020-12-19 17:13:04 <aaaaaa> OIC, thank you all
+2020-12-19 17:13:18 <kmc> also called 'captures'
+2020-12-19 17:14:04 <kmc> they don't exist in combinatory logic because variables don't exist really
+2020-12-19 17:14:11 <kmc> all you have is a small set of pre-defined lambda terms
+2020-12-19 17:14:14 <kmc> which have no captures
+2020-12-19 17:14:33 <aaaaaa> Yeah, a program is like a tree of combinator functions, right?
+2020-12-19 17:14:38 <kmc> yeah
+2020-12-19 17:15:03 <kmc> a tree where the leaves are your predefined combinators (S, K, I, whatever) and the interior nodes are function application
+2020-12-19 17:15:18 <LegionMammal978> kmc: So as I understand it, the main difference between combinatory logic and lambda calculus is that you can't partially evaluate a multiple-argument combinator. Is that correct?
+2020-12-19 17:15:34 <kmc> i mean, the main difference is that there is no lambda in combinatory logic
+2020-12-19 17:15:39 <kmc> you can't define your own functions, at all
+2020-12-19 17:15:49 <kmc> you can only apply these few pre-existing functions to each other
+2020-12-19 17:16:02 Quit: pr0gr3sR (Remote host closed the connection)
+2020-12-19 17:16:02 Names: ^[, aaaaaa, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-19 17:16:11 <LegionMammal978> True, but any lambda expression has an equivalent combinator expression, does it not?
+2020-12-19 17:16:15 <kmc> yes
+2020-12-19 17:16:48 <kmc> SK combinatory logic is turing complete, every program in any language has an equivalent SK combinator expression
+2020-12-19 17:16:57 <kmc> (for the right definition of "equivalent")
+2020-12-19 17:17:21 <kmc> i'm not sure what you meant by partially evaluate
+2020-12-19 17:17:24 <kmc> did you mean partial application?
+2020-12-19 17:17:42 <LegionMammal978> That is, how in lambda calculus all multiple-argument functions must be curried.
+2020-12-19 17:17:57 <kmc> well there are no multiple-argument functions
+2020-12-19 17:18:04 <kmc> you fake it by currying
+2020-12-19 17:18:42 <LegionMammal978> Yes, and combinatory logic does have multiple-argument combinators that don't need to be faked.
+2020-12-19 17:18:47 <kmc> yeah
+2020-12-19 17:18:49 <kmc> I see what you mean now
+2020-12-19 17:19:08 <kmc> though I think it would be fine to define those in a curried way
+2020-12-19 17:19:40 <kmc> like if you assign the obvious curried semantics to a partially applied term like (S K), I don't think it breaks anything
+2020-12-19 17:19:43 <kmc> but i don't know
+2020-12-19 17:20:43 <LegionMammal978> I recall writing a beta-reduction algorithm with De Bruijn indices, and the main annoyance is knowing how to slide around all of the free variables when you make a substitution.
+2020-12-19 17:20:56 <LegionMammal978> Combinatory logic avoids this by not having any variables at all.
+2020-12-19 17:21:22 <aaaaaa> Would you recommend learning Unlambda? Or there is another eso PL of that type which will suits better for a noob?
+2020-12-19 17:22:18 <aaaaaa> Or maybe Tom Stuart's book
+2020-12-19 17:22:19 <aaaaaa> ...
+2020-12-19 17:22:24 <LegionMammal978> aaaaaa: I think it's somewhat useful for understanding how combinatory logic is used to write programs, but it's otherwise pretty frustrating.
+2020-12-19 17:23:32 <LegionMammal978> (Of course, Unlambda is somewhat special in that it has a builtin call/cc instruction.)
+2020-12-19 17:29:28 <int-e> LegionMammal978: I try to keep things simple, but what is simple depends so much on what you're familiar with that there's no such thing as ab objectively simple solution
+2020-12-19 17:29:55 <int-e> I didn't even consider regular expressions because this was a context-free grammar :P
