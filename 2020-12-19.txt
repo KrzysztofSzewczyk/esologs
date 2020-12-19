@@ -91,3 +91,27 @@
 2020-12-19 04:11:16 <kmc> you'll want a ST-Link to program them, at least to get the USB bootloader on them
 2020-12-19 04:11:22 <kmc> but a knockoff ST-Link is also only a few dollars
 2020-12-19 04:12:02 <kmc> https://predictabledesigns.com/introduction-stm32-blue-pill-stm32duino/
+2020-12-19 04:37:01 <Lykaina> considering getting a arduino due clone with holiday money
+2020-12-19 04:37:55 <Lykaina> it has a cortex-m3
+2020-12-19 04:38:35 <Lykaina> and 96k of memory
+2020-12-19 04:40:05 <Lykaina> (64 + 32)
+2020-12-19 04:51:22 <kmc> how much money?
+2020-12-19 04:52:36 <kmc> I have a STM32F4 Discovery board, as well
+2020-12-19 04:52:47 <kmc> it's not hardware-compatible with Arduino shields
+2020-12-19 04:52:54 <kmc> but I believe you can program it from the IDE https://github.com/ChrisMicro/Arduino_STM32F4_Discovery
+2020-12-19 04:53:35 <kmc> and it has some cool things on board
+2020-12-19 04:53:51 <kmc> and it includes the ST-Link too
+2020-12-19 04:54:23 <kmc> you can do real debugging thru that
+2020-12-19 04:54:35 <kmc> single step code, investigate memory from a gdb process running on your dev machine
+2020-12-19 04:56:17 <kmc> that's pretty neat
+2020-12-19 04:56:24 <kmc> and was very useful when i was trying to get rust code to run on it
+2020-12-19 04:56:36 <kmc> a mix of C and Rust actually
+2020-12-19 04:56:53 <kmc> I had Rust code calling into libsodium (a C library) which was calling back into Rust code which was invoking the hardware RNG
+2020-12-19 04:57:05 <kmc> and investigating crashes that occured before any of that code ran, before even main ran
+2020-12-19 04:57:15 <kmc> which i eventually tracked down to a bad linker script
+2020-12-19 04:57:34 <Lykaina> 20ish
+2020-12-19 04:57:47 <Lykaina> usd
+2020-12-19 04:57:50 <kmc> that's not bad
+2020-12-19 04:59:22 <Lykaina> i ordered something only for a chip i didn't have by accident
+2020-12-19 04:59:29 <Lykaina> oops
+2020-12-19 04:59:49 <Lykaina> successfully cancelled the order
