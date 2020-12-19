@@ -56,3 +56,19 @@
 2020-12-19 03:22:52 <shachaf> int-e: Wow, this puzzle was sneaky. You had to interact with the other island in a tricky way.
 2020-12-19 03:24:46 <shachaf> So now I've unfogged all the islands around the flamingo, but I still haven't gotten to that one.
 2020-12-19 03:24:51 <shachaf> Also I found another snowman, also unreachable.
+2020-12-19 03:35:25 <kmc> i wonder if it would be fun to build an 80s style microcomputer "from scratch" one day
+2020-12-19 03:40:43 <kmc> maybe a Galaksija
+2020-12-19 03:44:37 <Lykaina> echidna reference: http://thor.lesidhetree.com/sara/echidna/arduino/cmdop6c-arduino.pdf (256 bytes of main memory, 512 bytes of extended memory)
+2020-12-19 03:46:26 <Lykaina> happy now?
+2020-12-19 03:47:07 <Lykaina> can't increase the arrays any more
+2020-12-19 03:50:53 <Lykaina> kmc: they still sell 8051s
+2020-12-19 03:55:21 <kmc> yes
+2020-12-19 03:55:38 <kmc> people are still designing new chips with 8051 ISA
+2020-12-19 03:56:09 <kmc> you can get an 8051 with PCIe Gen 3 and USB 3.1 support
+2020-12-19 03:56:10 <kmc> https://twitter.com/whitequark/status/1285255728333303811
+2020-12-19 03:59:20 <Lykaina> does the 8051 have the opcodes to handle those?
+2020-12-19 03:59:23 <kmc> > MCS-51 based microcontrollers have been adapted to extreme environments. Examples for high-temperature variants are the Tekmos TK8H51 family for −40 °C to +250 °C[7] or the Honeywell HT83C51 for −55 °C to +225 °C (with operation for up to 1 year at +300 °C).
+2020-12-19 03:59:26 <lambdabot> <hint>:1:259: error:
+2020-12-19 03:59:26 <lambdabot> <hint>:1:259: error:
+2020-12-19 03:59:26 <lambdabot> parse error (possibly incorrect indentation or mismatched brackets)
+2020-12-19 03:59:51 <kmc> Lykaina: I would assume they are memory-mapped peripherals, and therefore need no special opcodes
