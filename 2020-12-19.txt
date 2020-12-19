@@ -31,3 +31,28 @@
 2020-12-19 02:51:21 <b_jonas> Lykaina: http://rosettacode.org/wiki/Forth
 2020-12-19 02:51:43 <b_jonas> http://rosettacode.org/wiki/Hello_world/Text#Forth
 2020-12-19 02:57:52 <Lykaina> ceForth_328 is not stable
+2020-12-19 03:02:57 <Lykaina> echidna only has 256 bytes of memory. ugh
+2020-12-19 03:03:28 <imode> why only 256 bytes?
+2020-12-19 03:03:41 <Lykaina> space
+2020-12-19 03:03:59 <Lykaina> it has to do with indirect addressing
+2020-12-19 03:05:11 <Lykaina> has to be a value 2^n, where n is whole and n is the amount of bits in a unit
+2020-12-19 03:05:33 <Lykaina> course
+2020-12-19 03:05:47 <imode> so why not 2^16.
+2020-12-19 03:06:08 <Lykaina> on an arduino?
+2020-12-19 03:06:49 <Lykaina> 65536*2 > 2048
+2020-12-19 03:07:07 <imode> where'd you get 2048 from.
+2020-12-19 03:07:10 <Lykaina> arduino uno has max mem of 2048
+2020-12-19 03:07:13 <imode> and why are you multiplying that by 2.
+2020-12-19 03:07:38 <Lykaina> arduino leo has max mem of 2536
+2020-12-19 03:07:55 <imode> okay.. so why not have (2048 - interpreter-overhead) bytes available.
+2020-12-19 03:07:56 <Lykaina> arduino mega2560 has max mem of 8192
+2020-12-19 03:08:29 <imode> you can very easily indirectly address every one of those by taking two bytes as a 16 bit pointer.
+2020-12-19 03:08:33 <Lykaina> because of how echidna works
+2020-12-19 03:08:41 <imode> okay but you made it work like that. :P
+2020-12-19 03:08:50 <Lykaina> brb
+2020-12-19 03:11:06 <imode> you could also very easily use a constant offset from 256.
+2020-12-19 03:16:32 <kmc> in AVR the registers are mapped as the first 32 bytes of RAM
+2020-12-19 03:22:22 <Lykaina> i'm adding 512 bytes of "extended memory" to it.
+2020-12-19 03:22:52 <shachaf> int-e: Wow, this puzzle was sneaky. You had to interact with the other island in a tricky way.
+2020-12-19 03:24:46 <shachaf> So now I've unfogged all the islands around the flamingo, but I still haven't gotten to that one.
+2020-12-19 03:24:51 <shachaf> Also I found another snowman, also unreachable.
