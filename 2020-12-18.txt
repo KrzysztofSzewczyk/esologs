@@ -410,3 +410,52 @@
 2020-12-18 23:29:23 <kmc> one issue, AVR is a Harvard architecture, you can't execute code directly from RAM
 2020-12-18 23:29:37 <kmc> but there are special instructions you can use to write to flash
 2020-12-18 23:29:48 <kmc> which are used for example by the Arduino bootloader
+2020-12-18 23:30:04 <nakilon> so there are 55 commands in rasel, including 35 that encode numbers
+2020-12-18 23:30:13 <nakilon> it's 4 levels or R + G + B
+2020-12-18 23:30:20 <nakilon> to encode by a color
+2020-12-18 23:30:54 <nakilon> *of
+2020-12-18 23:30:58 Quit: delta23 (Quit: Leaving)
+2020-12-18 23:30:58 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, NeverBorn, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 23:31:37 Quit: NeverBorn (Remote host closed the connection)
+2020-12-18 23:31:37 Names: ^[, acedic[m], aloril, APic, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-18 23:31:58 <Lykaina> what's rasel designed for?
+2020-12-18 23:32:13 <nakilon> for fun
+2020-12-18 23:32:54 <kmc> I wouldn't choose to write an embedded C interpreter though; I don't really like C syntax and it's harder to parse than it needs to be
+2020-12-18 23:33:12 <kmc> I don't mind writing C but if I'm implementing a C-like language from scratch and don't need C compatibility then I'd probably choose a simpler syntax
+2020-12-18 23:33:18 <Lykaina> how easy is it to write a forth interpreter?
+2020-12-18 23:33:28 <imode> pretty easy. you can write one in a weekend.
+2020-12-18 23:33:46 <imode> feather is even simpler, but it ain't ready.
+2020-12-18 23:34:09 <imode> forth is typically used to bootstrap systems that don't have a C compiler yet.
+2020-12-18 23:34:14 <imode> very easy to bring up in just assembly.
+2020-12-18 23:37:30 <kmc> other good choices for an embedded interpreted language would be scheme and lua
+2020-12-18 23:38:04 <kmc> maybe i should port qoppa to AVR some day. that could be amusing
+2020-12-18 23:38:09 <imode> scheme is always fun. garbage collection, though.
+2020-12-18 23:38:19 <kmc> true
+2020-12-18 23:38:49 <imode> thaaat's actually I why I want an AVR target. feather (my lang) has no garbage collection. everything is copy on write.
+2020-12-18 23:38:50 <kmc> I'm not sure how CircuitPython handles garbage collection
+2020-12-18 23:38:56 <kmc> ooh neat
+2020-12-18 23:39:02 <imode> 's all lispy and shit.
+2020-12-18 23:39:05 <Lykaina> when i write for arduino, i write in arduino's subset of c++
+2020-12-18 23:39:07 <kmc> refcounted?
+2020-12-18 23:39:20 <imode> nope. reference chains.
+2020-12-18 23:39:24 <kmc> what do you mean by Arduino's subset exactly?
+2020-12-18 23:39:30 <Lykaina> any interpreter has to be written in that
+2020-12-18 23:39:38 <Lykaina> "wiring"
+2020-12-18 23:39:56 <b_jonas> what character encoding encodes è or maybe é as 0xC8 and ö or maybe ő or something similar as 0x96? I'm trying to figure out in what exact way the encoding of this webpage is mangled
+2020-12-18 23:40:05 <kmc> I think they use a standard g++ (with some minimal extra preprocessing) and any C++ constructs are supported
+2020-12-18 23:40:56 <kmc> i've definitely used stuff like templates and lambdas in arduino code
+2020-12-18 23:41:07 <kmc> even if these are not exactly common in arduino code written by others, they are fully supported
+2020-12-18 23:41:17 <imode> if you duplicate a giant list, for example, you're just taking a reference to it. all references to a particular thing are tied together as a doubly linked list, allowing us to move and shift stuff around without actually copying.
+2020-12-18 23:41:29 <kmc> actually there were lambdas in the esp8266 example code I found since it's a pretty convenient way to write small web server callbacks
+2020-12-18 23:42:31 <kmc> C++ has a lot of features that are considered advanced / high-level but also have no runtime overhead, making them suitable for embedded programming
+2020-12-18 23:42:47 <kmc> the idea that embedded programming needs to be austere, repetitive C code and free of any elegant, powerful abstractions kind of annoys me
+2020-12-18 23:42:53 <kmc> but it's the industry standard
+2020-12-18 23:43:09 <imode> so if you do `[ giant-list-generator ! ] 100 while dup not-zero? do save dup recall end`, which generates a giant list, dups it 100 times, you'll have 100 copies of that thing sitting around in memory unless you try to modify it. and modifying it usually just means adding stuff to it.
+2020-12-18 23:43:18 <kmc> as for Arduino libraries many of them use C++ features in annoying ways
+2020-12-18 23:43:24 <kmc> such as rampant unprincipled use of overloading
+2020-12-18 23:43:38 <kmc> oh if you call the constructor with 2 ints then it's a I2C bus but if you call with 4 ints then it's a SPI bus!!
+2020-12-18 23:43:44 <kmc> great API, guys
+2020-12-18 23:43:57 <imode> yeeeeeah.. there's so much room for surprise in that.
+2020-12-18 23:44:14 <imode> C++ sucks in that regard.
+2020-12-18 23:46:15 Joined: Arcorann
+2020-12-18 23:46:16 Names: ^[, acedic[m], aloril, APic, Arcorann, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, pr0gr3sR, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
