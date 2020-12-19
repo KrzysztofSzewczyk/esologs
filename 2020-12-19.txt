@@ -115,3 +115,40 @@
 2020-12-19 04:59:22 <Lykaina> i ordered something only for a chip i didn't have by accident
 2020-12-19 04:59:29 <Lykaina> oops
 2020-12-19 04:59:49 <Lykaina> successfully cancelled the order
+2020-12-19 05:00:46 <Lykaina> now, if it was for the chip i have...it would havemade it a lot easier to use
+2020-12-19 05:00:58 <kmc> the only thing that really annoys me about the STM32F4 Discovery
+2020-12-19 05:01:21 <kmc> is that they use micro-USB for the MCU's USB port, but mini-USB for the ST-Link programmer port
+2020-12-19 05:01:24 <kmc> like whyyyy
+2020-12-19 05:01:43 <Lykaina> lol sorry
+2020-12-19 05:02:52 <kmc> at this point i'm always annoyed when I encounter mini-USB but especially both on the same device!!
+2020-12-19 05:04:40 <Lykaina> considering creating code for echidna for ethernet
+2020-12-19 05:05:18 <Lykaina> cause i'm using an ethernet shield for sdcard
+2020-12-19 05:06:46 <kmc> seems neat
+2020-12-19 05:06:56 <kmc> you could write an IRC bot and have it connect here!!
+2020-12-19 05:08:11 <Lykaina> not sure if echidna is powerful enough
+2020-12-19 05:08:31 <Lykaina> i had a bot account
+2020-12-19 05:09:51 <Lykaina> must have gotten reaped due to inactivity
+2020-12-19 05:11:00 <kmc> IRC is a pretty simple protocol
+2020-12-19 05:11:20 <kmc> do you have any particular design goals with echidna?
+2020-12-19 05:11:37 <Lykaina> lay eggs
+2020-12-19 05:11:48 <kmc> :O
+2020-12-19 05:11:55 <Lykaina> i mean, no
+2020-12-19 05:12:15 <Lykaina> monotreme joke
+2020-12-19 05:12:50 <kmc> I got it :)
+2020-12-19 05:13:59 <Lykaina> i can finally type plain text code onto the sd card
+2020-12-19 05:14:20 <Lykaina> first version of echidna to do that
+2020-12-19 05:14:23 <zzo38> IRC is good, it even is designed it can work even without any specialized software, and even it does (although using IRC software works better, so that you can do auto-pong and other stuff)
+2020-12-19 05:15:32 <Lykaina> yeah, i'll have to have it checking for ping every second
+2020-12-19 05:15:51 <kmc> Lykaina: oh, was it a compiled bytecode before?
+2020-12-19 05:15:57 <Lykaina> yes
+2020-12-19 05:16:12 <Lykaina> parsed
+2020-12-19 05:19:09 <Lykaina> sub,cmd[,flag1arg1[,flag2arg2[,flag3arg3[,flag4arg4]]]];
+2020-12-19 05:19:17 <Lykaina> ^ now
+2020-12-19 05:20:23 <Lykaina> instead of loops, it has "repeat sub" conditionals
+2020-12-19 05:21:56 <Lykaina> currently, max of 255 subs and recursion of 32
+2020-12-19 05:22:22 <Lykaina> or maybe 31
+2020-12-19 05:24:29 <Lykaina> it takes each sub+command+args and converts it into a 10-byte array
+2020-12-19 05:25:13 <Lykaina> and passes that around
+2020-12-19 05:25:39 <Lykaina> to the command executing code
+2020-12-19 05:27:44 <Lykaina> conditional gosub, redo sub, and return from sub commands
+2020-12-19 05:28:11 <Lykaina> can be used to form loops
