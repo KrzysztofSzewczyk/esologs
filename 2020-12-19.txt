@@ -72,3 +72,22 @@
 2020-12-19 03:59:26 <lambdabot> <hint>:1:259: error:
 2020-12-19 03:59:26 <lambdabot> parse error (possibly incorrect indentation or mismatched brackets)
 2020-12-19 03:59:51 <kmc> Lykaina: I would assume they are memory-mapped peripherals, and therefore need no special opcodes
+2020-12-19 04:00:13 <Lykaina> point taken
+2020-12-19 04:01:59 <Lykaina> arduinos have such small ram
+2020-12-19 04:02:06 <kmc> and in that application (a NVMe to USB 3.0 bridge, which btw I own and have used) I would guess that the two peripherals transfer data directly between them, bypassing the CPU core
+2020-12-19 04:03:00 <kmc> so the core can be something pretty slow and simple, just to handle all the protocol negotiation nonsense on both ends
+2020-12-19 04:03:25 <Lykaina> arduino uno is atmega328
+2020-12-19 04:04:40 <kmc> yeah
+2020-12-19 04:05:10 <Lykaina> what chips do they use on the space station?
+2020-12-19 04:05:39 <imode> probably radiation hardened x86 stuff.
+2020-12-19 04:05:47 <kmc> if you want something more powerful look at the "blue pill" generic STM32 boards
+2020-12-19 04:06:38 <kmc> has a 32-bit Cortex-M3 (STM32F103C8) with 72 MHz and 64 KB of RAM
+2020-12-19 04:06:45 <kmc> and costs only a few dollars
+2020-12-19 04:07:09 <kmc> also has native USB support and other neat stuff the ATmega328 doesn't
+2020-12-19 04:07:20 <kmc> and you can program them from the Arduino IDE once appropriately set up
+2020-12-19 04:08:15 <Lykaina> arduino due?
+2020-12-19 04:09:55 <kmc> i'm talking about this kind of deal https://www.aliexpress.com/item/32525208361.html?spm=a2g0o.productlist.0.0.b90e4c10u0JKMx&algo_pvid=337d38c5-6038-4692-b4eb-498501756316&algo_expid=337d38c5-6038-4692-b4eb-498501756316-0&btsid=0bb0623d16083509557698562e97c5&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
+2020-12-19 04:10:27 <kmc> it's a no brand china thing
+2020-12-19 04:11:16 <kmc> you'll want a ST-Link to program them, at least to get the USB bootloader on them
+2020-12-19 04:11:22 <kmc> but a knockoff ST-Link is also only a few dollars
+2020-12-19 04:12:02 <kmc> https://predictabledesigns.com/introduction-stm32-blue-pill-stm32duino/
