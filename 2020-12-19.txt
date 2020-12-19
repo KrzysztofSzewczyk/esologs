@@ -339,3 +339,11 @@
 2020-12-19 17:23:32 <LegionMammal978> (Of course, Unlambda is somewhat special in that it has a builtin call/cc instruction.)
 2020-12-19 17:29:28 <int-e> LegionMammal978: I try to keep things simple, but what is simple depends so much on what you're familiar with that there's no such thing as ab objectively simple solution
 2020-12-19 17:29:55 <int-e> I didn't even consider regular expressions because this was a context-free grammar :P
+2020-12-19 17:30:17 <int-e> also I didn't expect the unfolding to fit into reasonable space, but apparently it does
+2020-12-19 17:31:16 <int-e> I aimed for something resembling an abstract version of CYK.
+2020-12-19 17:31:58 <int-e> (write a function that checks whether a string is accepted by a certain rule, then memoize it so it doesn't blow up exponentially)
+2020-12-19 17:32:10 <LegionMammal978> int-e: That makes sense. I just noticed that the definitions already used pipes and concatenations and figured that a regex engine could probably parse it.
+2020-12-19 17:32:32 <int-e> | are standard EBNF
+2020-12-19 17:32:43 <LegionMammal978> Now that I think about it, though, you probably don't even need to expand it all, if you have a regex implementation with named capture groups.
+2020-12-19 17:59:32 Quit: LegionMammal978 (Remote host closed the connection)
+2020-12-19 17:59:32 Names: ^[, aaaaaa, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, Frater_EST, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
