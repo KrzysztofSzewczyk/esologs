@@ -152,3 +152,26 @@
 2020-12-19 05:25:39 <Lykaina> to the command executing code
 2020-12-19 05:27:44 <Lykaina> conditional gosub, redo sub, and return from sub commands
 2020-12-19 05:28:11 <Lykaina> can be used to form loops
+2020-12-19 05:30:49 <Lykaina> i also have copy/store, swap, simple 8-bit uint math, runtime in ms, delay in ms, and random
+2020-12-19 05:32:29 <Lykaina> also, the ability to measure analog inputs, serial in and out, and extended memory get and put.
+2020-12-19 05:33:29 <Lykaina> "m" args refer to memory addresses, direct or indirect
+2020-12-19 05:34:00 <Lykaina> "p" args refer to memory addresses, direct or indirect, and also literals
+2020-12-19 05:34:37 <Lykaina> kmc: what did i miss that is needed?
+2020-12-19 05:37:48 <Lykaina> (anyone may answer)
+2020-12-19 05:38:01 <kmc> what's redo sub?
+2020-12-19 05:38:30 <Lykaina> loops to the start of the sub
+2020-12-19 05:39:42 <Lykaina> if mem[0] == mem[1] then continue execution at beginning of sub
+2020-12-19 05:40:03 <Lykaina> as an example
+2020-12-19 05:40:44 <Lykaina> the conditions i use are: equal, less than, and not equal
+2020-12-19 05:41:12 <Lykaina> greater than can be formed from less than
+2020-12-19 05:42:46 <Lykaina> memory is in unsigned 8-bit integers
+2020-12-19 05:44:10 <Lykaina> crap, i don't have "carry add" and "borrow sub"
+2020-12-19 05:44:51 <Lykaina> or "absolute sub"
+2020-12-19 05:46:55 <Lykaina> and division is integer division
+2020-12-19 05:49:13 <Lykaina> wait a sec...multiplication is mod 256?
+2020-12-19 05:50:19 <Lykaina> i get the feeling i'm realizing problems on my own
+2020-12-19 05:55:46 <Lykaina> the subtraction used is mod 256
+2020-12-19 05:56:49 <Lykaina> (a + 255 - b) % 256
+2020-12-19 05:57:52 <Lykaina> or whatever it is
+2020-12-19 05:58:20 <Lykaina> oh, yeah
+2020-12-19 05:58:38 <Lykaina> (256 + a - b) % 256
