@@ -139,3 +139,13 @@
 2020-12-20 09:25:02 <ais523> these are encoding control characters
 2020-12-20 09:25:22 <ais523> the correct way to translate a file containing them in Unicode is to follow their instructions about what encoding the file is in
 2020-12-20 09:25:30 <ais523> not to translate them literally
+2020-12-20 09:34:20 <ais523> I've tried rendering C1 control codes by putting combining characters on the C0 control pictures
+2020-12-20 09:34:28 <ais523> but, most text renderers don't produce anything particularly meaningful for that
+2020-12-20 09:35:24 <ais523> in particular the control picture often isn't centered correctly
+2020-12-20 09:39:17 <ais523> actually, combining circumflex looks fairly good on my computer, even though it's offset
+2020-12-20 09:39:23 <ais523> how does http://nethack4.org/pastebin/82.html look for the people here?
+2020-12-20 09:40:29 <zzo38> It looks like OK to me
+2020-12-20 09:44:59 <ais523> of course, the names of the C0 control characters don't match the C1 control characters very well
+2020-12-20 09:45:05 <ais523> but simply being able to show something is helpful
+2020-12-20 09:54:34 <ais523> ooh, I think I just found a bug in nginx
+2020-12-20 09:54:58 <ais523> according to the specification, example.com/a%2Fb/../c should be equivalent to example.com/c, but nginx interprets it as equivalent to example.com/a/c
