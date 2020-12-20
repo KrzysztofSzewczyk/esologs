@@ -231,3 +231,23 @@
 2020-12-20 16:27:08 <ais523> so it doesn't make much sense for Unicode to be able to encode it, it shouldn't logically be able to appear in a Unicode character stream
 2020-12-20 16:27:37 <ais523> but, Unicode encodings would want to be able to recognise it so that they know to switch to some other decoding mechanism
 2020-12-20 16:29:31 <ais523> oh, it's also worth mentioning that one of the three most common whitespace characters, tab, is ambiguous
+2020-12-20 16:30:01 <ais523> the traditional meaning was "tab to tab stop", and it still means that in most contexts, but in programming contexts the meaning is more like "indentation space" which is much narrower
+2020-12-20 16:34:29 <LegionMammal978> Really, CR and LF are also ambiguous, considering Windows' CRLF vs. Linux's LF vs. early Mac's CR
+2020-12-20 16:35:41 <ais523> I think CR to move to the next line is dead at this point
+2020-12-20 16:35:46 <LegionMammal978> I recall writing a patch that would always fail even after copying from the diff, and it was due to a trailing CR not surviving the copy
+2020-12-20 16:36:03 <ais523> but LF is still ambiguous between "move down one line" and "move to the start of the next line"
+2020-12-20 16:37:09 <ais523> that ambiguity got fixed via splitting LF into IND and NEL, neither of which is used very often (NEL is seen on rare occasion, IND almost never)
+2020-12-20 16:37:17 <ais523> and then made more confusing with the addition of LS
+2020-12-20 16:38:59 <ais523> hmm, Wikipedia says that IND was deprecated in 1988 and removed in 1992, maybe that's why I never see it in practice :-D
+2020-12-20 16:39:32 <ais523> that said, it is listed in the documentation for the Linux console, and thus presumably still works there
+2020-12-20 16:47:17 <ais523> gnome-terminal seems to understand both IND and NEL (encoded via either the 7-bit fallback mechanism or UTF-8)
+2020-12-20 16:48:10 <LegionMammal978> 7-bit fallback?
+2020-12-20 16:48:34 <ais523> LegionMammal978: control codes are used for a range of different purposes, one of which was historically setting the 8-bit-ness of a terminal connection
+2020-12-20 16:49:32 <ais523> so in order to avoid a problem with trying to send a C1 control (high bit set) over a 7-bit connection, there are digraphs starting with C0 control codes that mimic the C1 control codes
+2020-12-20 16:49:37 <ais523> sort of like trigraphs in C
+2020-12-20 16:50:24 <ais523> nowadays this is the normal way to write C1 control codes when you're using them for their control-code usages, because C0 control codes have much more consistent behaviour between platforms
+2020-12-20 16:50:43 <ais523> (also, it comes to the same number of bytes in UTF-8)
+2020-12-20 16:56:27 Quit: ais523 (Quit: quit)
+2020-12-20 16:56:27 Names: ^[, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 16:58:22 Joined: NeverBorn
+2020-12-20 16:58:23 Names: ^[, acedic[m], aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, NeverBorn, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
