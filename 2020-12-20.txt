@@ -216,3 +216,18 @@
 2020-12-20 15:58:23 <LegionMammal978> int-e: Regarding the twistiness of today's AoC, the first part is actually easier than I expected when writing my program.
 2020-12-20 15:58:53 <LegionMammal978> As it turns out, there will never be a choice regarding which edge can match to another edge.
 2020-12-20 15:59:28 <LegionMammal978> Therefore, you only have to find the tiles for which only two other tiles match any of its edges (forwards or in reverse).
+2020-12-20 16:00:10 <LegionMammal978> In the second part, however, you actually have to determine all of the individual positions and rotations.
+2020-12-20 16:02:24 <LegionMammal978> Originally, I had constructed a graph of all tiles with common edges, expecting that I'd to enumerate through all of the grid subgraphs.
+2020-12-20 16:03:33 <LegionMammal978> When I looked at the visualized graph, though, I saw that there was exactly one grid.
+2020-12-20 16:07:00 <LegionMammal978> b_jonas: I'd imagine that the control-character ranges would be left unassigned, just like most characters outside the BMP.
+2020-12-20 16:14:04 <b_jonas> LegionMammal978: ok, but I don't see why that would be better than officially assigning them to the ASCII and C1 controls
+2020-12-20 16:16:50 <LegionMammal978> b_jonas: Nobody ever really uses them for that, though, apart from CR, LF, and TAB. Perhaps they'd have been able to come up with some better use.
+2020-12-20 16:23:30 Joined: ais523
+2020-12-20 16:23:30 Names: ^[, acedic[m], ais523, aloril, APic, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, LegionMammal978, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user24, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 16:24:36 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-12-20 16:24:36 <ais523> <b_jonas> um, what actual difference would that make? isn't it just difference in naming? ← it would mean that each encoding would only need to be able to express control codes that were appropriate for the encoding
+2020-12-20 16:25:23 <ais523> and that control codes couldn't be passed "as text" from one program to another, you would need a side channel (this would be a good thing IMO because there's no particular reason why two Unicode users would want the same control codes)
+2020-12-20 16:26:49 <ais523> as a simple example, the string ESC % @ is a standardised control code sequence whose meaning indicates that the following text is not Unicode
+2020-12-20 16:27:08 <ais523> so it doesn't make much sense for Unicode to be able to encode it, it shouldn't logically be able to appear in a Unicode character stream
+2020-12-20 16:27:37 <ais523> but, Unicode encodings would want to be able to recognise it so that they know to switch to some other decoding mechanism
+2020-12-20 16:29:31 <ais523> oh, it's also worth mentioning that one of the three most common whitespace characters, tab, is ambiguous
