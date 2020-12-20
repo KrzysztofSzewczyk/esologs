@@ -69,3 +69,36 @@
 2020-12-20 08:15:43 <esowiki> 14[[07Nopfunge14]]4 10 02https://esolangs.org/w/index.php?diff=79523&oldid=79522 5* 03Quintopia 5* (+22) 10repair code block formatting
 2020-12-20 08:18:43 Joined: spruit11
 2020-12-20 08:18:43 Names: ^[, acedic[m], adu, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 08:39:32 Quit: imode (Quit: Batsharks are people too!)
+2020-12-20 08:39:32 Names: ^[, acedic[m], adu, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 08:43:08 Joined: ais523
+2020-12-20 08:43:08 Names: ^[, acedic[m], adu, ais523, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 08:43:22 User Name: ais523 = ais523!~ais523@unaffiliated/ais523
+2020-12-20 08:43:22 <ais523> an esoquestion that has come up multiple times (including now) and I still haven't found a satisfactory answer to
+2020-12-20 08:43:54 <ais523> suppose you have a string of Unicode characters, and want to display it to a person
+2020-12-20 08:44:13 <ais523> outputting it unchanged is inappropriate because some Unicode characters are control codes that will have weird effects if you try to output them, so you have to replace them
+2020-12-20 08:44:50 <ais523> with C0 control codes (+ DEL and NEL), the correct course of action is fairly obvious: just use the corresponding Unicode control picture to represent it
+2020-12-20 08:44:52 <zzo38> The way to do it depends on the context. Sometimes there is no good way.
+2020-12-20 08:45:03 <ais523> however, I haven't found a satisfactory solution for C1 control codes
+2020-12-20 08:46:29 <ais523> well, I'm ideally looking for a general solution because I need to tell a computer how to do it, and computers often don't have that much sense of context
+2020-12-20 08:48:17 <zzo38> You must have some kind of context, at least. For example, if it is being output as a part of a HTML document, I think there is a command in HTML 5 to isolate the effect of Unicode control characters.
+2020-12-20 08:48:47 <ais523> <bdi> isolates directional override characters
+2020-12-20 08:48:54 <ais523> but those are not considered control characters in Unicode
+2020-12-20 08:48:54 <zzo38> But if nothing else works, best might be to just display printable ASCII characters only, and to display the Unicode codepoint numbers where non-ASCII or non-printable characters are present.
+2020-12-20 08:49:43 <zzo38> HTML also has a &# command, in case you want to escape any character, I suppose
+2020-12-20 08:49:51 <ais523> the only Unicode "control characters" (\p{Cc} in a regex) are U+0000 to U+001F inclusive and U+007F to U+009F inclusive
+2020-12-20 08:50:21 <zzo38> You could also display some kind of substitute for C1 controls I suppose, if wanted to do
+2020-12-20 08:51:40 <ais523> using an &# numeric entity for a control character is actually defined to be an error in HTML
+2020-12-20 08:52:34 <ais523> although, the HTML specification provides a specific error recovery action, which is to interpret the given number as a Windows-1252 codepoint rather than a Unicode codepoint
+2020-12-20 08:53:57 <ais523> actually, the HTML specification's error recovery is really dubious in some respects
+2020-12-20 08:54:11 <ais523> e.g. a literal C0 control code is an error, but the error recovery action is to treat it literally (???)
+2020-12-20 08:54:21 <ais523> so there are erroneous HTML documents that parse to something that cannot be expressed in a valid HTML document
+2020-12-20 08:54:57 <ais523> and this has come up in practice on websites like TIO, where I frequently want to input text that contains control characters, and the website then tries to echo it back to me
+2020-12-20 08:55:31 <ais523> oh, on a side note, a quirk of encoding means that "set tab stop" is in Unicode but "delete tab stop" isn't
+2020-12-20 08:55:49 <zzo38> Many people will try to use Unicode for everything; that is not a good idea, I think. For some things it works OK. They also want to use HTML for everything, which also isn't the best idea, either.
+2020-12-20 08:56:02 <ais523> if they both were, it is possible that it would be Turing-complete (assuming an implicit loop around the program) using set tab stop, delete tab stop, space, backspace, tab and carriage return
+2020-12-20 08:57:10 <ais523> well, the current situation where this came up is that I'm in a situation where I need to use HTML, so I'm trying to write a safe HTML generation library that's restricted to a set of HTML that behaves sanely and is secure
+2020-12-20 08:57:25 <ais523> to avoid needing to try to generate it directly and probably making a mistake
+2020-12-20 08:57:58 <zzo38> Can you figure out such a thing? Make a character set including a "delete tab stop" control and the other five listed, figure out if it is Turing-complete or not, maybe write in esolang wiki about such thing if you figure out anything about that
+2020-12-20 08:59:16 <zzo38> One thing you could do, if you only care about C0 and C1 controls, perhaps is to replace the controls by something such as <span class="unicode-control">9F</span> or whatever
+2020-12-20 08:59:34 <ais523> that doesn't work inside attributes, like title=
