@@ -102,3 +102,40 @@
 2020-12-20 08:57:58 <zzo38> Can you figure out such a thing? Make a character set including a "delete tab stop" control and the other five listed, figure out if it is Turing-complete or not, maybe write in esolang wiki about such thing if you figure out anything about that
 2020-12-20 08:59:16 <zzo38> One thing you could do, if you only care about C0 and C1 controls, perhaps is to replace the controls by something such as <span class="unicode-control">9F</span> or whatever
 2020-12-20 08:59:34 <ais523> that doesn't work inside attributes, like title=
+2020-12-20 09:00:12 <ais523> anything other than C0 and C1 controls is either safe to output literally given appropriate bidirectional isolation, or else is so obviously an error that you can just replace it with a replacement character
+2020-12-20 09:00:38 <zzo38> O, yes, you are right. Inside of attributes you may need something else. If the attribute is a URL, you can use percent encoding, but if it isn't, then you will need to do something else; you could use Windows-1252, or just use replacement characters maybe, I don't know
+2020-12-20 09:00:42 <ais523> so C0 and C1 controls are just the hard part
+2020-12-20 09:02:34 <zzo38> I don't like those error handling either I think that a better idea might be to ignore Unicode character properties entirely and instead for the implementation to use whatever is specified in the font tables; the web browser could include a font with Windows-1252 characters in the C1 controls area in order to satisfy the HTML specification, I suppose
+2020-12-20 09:04:12 <ais523> in retrospect, it was probably a mistake to include control characters in Unicode at all; Unicode itself should have restricted itself to non-control characters, and control characters should have been specified as part of the encoding not as part of the character repertoire
+2020-12-20 09:04:45 <ais523> but, it is very commonplace to store control characters literally in strings…
+2020-12-20 09:05:01 <ais523> incidentally, I tested out some percent-encodings on my webserver
+2020-12-20 09:05:05 <zzo38> Yes, that may have been better
+2020-12-20 09:05:39 <ais523> it seems to be happy to percent-decode any byte in a URL, including treating %2F as a directory separator, with the exception of %00 which causes a "bad request" error (400)
+2020-12-20 09:05:53 <zzo38> I also think that it would be better that <bdi> isolates everything, not only directional override but also ligatures, kerning, variation selectors, etc.
+2020-12-20 09:06:22 Quit: adu (Quit: adu)
+2020-12-20 09:06:22 Names: ^[, acedic[m], ais523, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 09:06:39 <ais523> I am not convinced that this corresponds to the specification
+2020-12-20 09:06:52 <ais523> hmm, I would expect *any* tag to isolate things like variation selectors
+2020-12-20 09:07:00 <ais523> although possibly not kerningg
+2020-12-20 09:07:27 <ais523> although, I seem to remember there was a big discussion by one of the browser vendors about what they should do in terms of rendering if a combining character is a different color from the character it combines onto
+2020-12-20 09:08:03 <zzo38> Actually, depending on how the kernings are encoded in the font, and on the direction of the kernings, it may be OK that <bdi> and other tags do not isolate kerning in all cases
+2020-12-20 09:09:07 Joined: rain1
+2020-12-20 09:09:07 Names: ^[, acedic[m], ais523, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 09:09:18 <zzo38> About combining characters, I should think probably it should disregard any ligatures between characters of different colours, so if any combinations are implemented with ligatures, those combinations will not work if they are different colours.
+2020-12-20 09:10:21 <zzo38> But if it is implemented only with changing the positions, it ought to still work, I should expect. (Although, I think that <bdi> should probably disregard commands in the font for repositioning combining characters too)
+2020-12-20 09:11:43 <ais523> Firefox seems to block combining characters at the edge of a <span>
+2020-12-20 09:11:59 <ais523> so <bdi> would definitely block combining
+2020-12-20 09:16:02 <zzo38> OK
+2020-12-20 09:17:18 <ais523> hmm, so apparently UTF-5 can encode C1 control codes but not C0 control codes
+2020-12-20 09:17:42 Quit: sprocklem (Ping timeout: 256 seconds)
+2020-12-20 09:17:42 Names: ^[, acedic[m], ais523, aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-20 09:17:46 <ais523> even more impressively, I tried looking up the IPs for some addresses containing C1 control codes in dig, and it rejected them due to containing invalid characters
+2020-12-20 09:18:02 <ais523> (an example is xn--a-a.com)
+2020-12-20 09:22:12 <zzo38> Did you write "xn--a-a.com" or did you write something that will be converted as that? Also, does it depend on the locale at all? The man page says that you can add a IDN_DISABLE environment variable if you want to disable IDN, though.
+2020-12-20 09:22:42 <ais523> I wrote xn--a-a.com directly (it encodes a U+0080 character followed by an "a")
+2020-12-20 09:23:50 <ais523> (which in turn would in theory be equivalent to an ASCII "a", except that the standard that would have defined that removed it before being standardised and so now it's just an unused control code)
+2020-12-20 09:23:57 <zzo38> On my computer, I get no message about it being rejected, although there seems to be no such domain name
+2020-12-20 09:24:55 <ais523> …actually, I am really bothered by SS2 and SS3 in particular being in Unicode
+2020-12-20 09:25:02 <ais523> these are encoding control characters
+2020-12-20 09:25:22 <ais523> the correct way to translate a file containing them in Unicode is to follow their instructions about what encoding the file is in
+2020-12-20 09:25:30 <ais523> not to translate them literally
