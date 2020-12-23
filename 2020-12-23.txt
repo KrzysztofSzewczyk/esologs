@@ -39,3 +39,88 @@
 2020-12-23 05:56:14 <int-e> nakilon: Well the usual definition uses F_0 = 0, F_1 = F_2 = 1
 2020-12-23 05:56:38 <int-e> so the question is which of those is the start of the sequence
 2020-12-23 05:57:11 <int-e> (picking F_0 = 0 induces nice properties like that n | m (n divides m) implies F_n | F_m)
+2020-12-23 06:00:26 <nakilon> woah
+2020-12-23 06:03:55 <int-e> This is relatively easy to see if you know a bit of modular arithmetic.
+2020-12-23 06:04:30 <shachaf> int-e: Oh man, that's great.
+2020-12-23 06:04:45 <shachaf> I always said the sequence starts with 1,1
+2020-12-23 06:04:55 <shachaf> But this is a good way to settle that argument.
+2020-12-23 06:04:57 <int-e> Namely, modulo F_n, the sequence starts with 0,1; now look around F_n: F_n = 0 (mod F_n), F_m = a (mod F_n) for some a. So at this point you repeat the Fibonacci sequence, but multiplied by a.
+2020-12-23 06:05:16 <int-e> F_(2n) = a*0 = 0 (mod F_n)
+2020-12-23 06:05:31 <int-e> F_(3n) = a^2*0 = 0 (mod F_n), and so on.
+2020-12-23 06:06:19 <int-e> You can use the same argument backwards (F_(n-2) = -F_(n-1) + F_n) to get it for negative numbers as well.
+2020-12-23 06:07:54 <nakilon> I want a diagram of which languages are used to make reference implementations of the eso langs
+2020-12-23 06:08:40 <int-e> Python, C/C++, Haskell? Also, whichever language the implementor currently wants to learn.
+2020-12-23 06:08:44 <nakilon> because I've noticed this one is made in Ruby too https://esolangs.org/wiki/Hexagony
+2020-12-23 06:09:16 <int-e> Oh yes, I did forget Perl (and thus Ruby which is different but in the same "total mess" category to my mind)
+2020-12-23 06:09:16 <nakilon> people don't decide what to learn randomly
+2020-12-23 06:09:19 <shachaf> I guess C/C++ is some sort of quotient language.
+2020-12-23 06:09:32 <nakilon> they chose from what is available and availabilities are expanding
+2020-12-23 06:09:39 <nakilon> and languages are improving
+2020-12-23 06:10:08 <nakilon> int-e lol your imagination of Ruby is opposite from the truth
+2020-12-23 06:10:18 <nakilon> it's the most comprehensive language
+2020-12-23 06:10:35 <int-e> but comprehensive != comprehensible
+2020-12-23 06:10:45 <nakilon> that's why things are usually made first in ruby and then pythonazis port them to their language
+2020-12-23 06:10:59 <nakilon> int-e I'm not native English speaker
+2020-12-23 06:11:01 User Name: imode = imode!~linear@unaffiliated/imode
+2020-12-23 06:11:01 <imode> we doin' language wars again?
+2020-12-23 06:11:39 <nakilon> ask pythonazis
+2020-12-23 06:11:47 <int-e> To clarify, I have never used Ruby, so I obviously I can't be objective about it.
+2020-12-23 06:11:57 <nakilon> I'm just saying I I would like to see a diagram
+2020-12-23 06:12:09 <imode> what defines a "pythonazi".
+2020-12-23 06:12:16 <nakilon> haters
+2020-12-23 06:12:18 <imode> I use Python, am I a Pythonazi.
+2020-12-23 06:12:33 <nakilon> "the only language I know is da best" guys
+2020-12-23 06:12:39 <int-e> nakilon: "comprehensive" means all-encompassing, embedding features from all around. "comprehensible" means easy to understand.
+2020-12-23 06:12:42 <imode> seems like you're one of those.
+2020-12-23 06:12:54 <nakilon> lol
+2020-12-23 06:13:10 <nakilon> you are not even hiding that you tell lie about me
+2020-12-23 06:13:14 <nakilon> that's the sign
+2020-12-23 06:13:50 <imode> you took a stance on ruby and called out python. what else do you want me to conclude.
+2020-12-23 06:13:50 <nakilon> lies is the main weapon of haters
+2020-12-23 06:14:03 <imode> ruby good python bad
+2020-12-23 06:14:11 <imode> X good Y bad
+2020-12-23 06:14:14 <int-e> I thought we were having a discussion, apparently not.
+2020-12-23 06:14:15 <nakilon> I provided an argument
+2020-12-23 06:14:20 <nakilon> while you just lied
+2020-12-23 06:14:31 <nakilon> you was just triggered
+2020-12-23 06:14:49 <nakilon> because someone started the topic of language design
+2020-12-23 06:14:53 <nakilon> and choice
+2020-12-23 06:15:12 <int-e> ?!
+2020-12-23 06:15:12 <lambdabot> Maybe you meant: v @ ? .
+2020-12-23 06:15:38 <nakilon> ?v
+2020-12-23 06:15:38 <lambdabot> Just 'J'
+2020-12-23 06:15:59 <imode> watching you explode is fun. you certainly aren't a regular.
+2020-12-23 06:16:36 <int-e> I'm unsure what happened here.
+2020-12-23 06:16:37 <nakilon> wat?
+2020-12-23 06:17:33 <nakilon> dude started doing false accusations on me
+2020-12-23 06:17:38 <nakilon> that's what happened, lol
+2020-12-23 06:17:38 <shachaf> I refuse to use Ruby because it converts all my screenshots to JPEG.
+2020-12-23 06:17:40 <imode> int-e: someone with a lack of a grasp on the english language took issue with what you said about ruby, called some people pythonazis, I asked what that meant, his head exploded.
+2020-12-23 06:17:51 <shachaf> I prefer languages like Visual Basic that stick with BMP format.
+2020-12-23 06:17:58 <imode> and now thinks imaginary people are telling lies about 'im.
+2020-12-23 06:18:05 <int-e> I don't hate Ruby. I can't. I haven't used it. I have a prejudice against it that means I won't pick it up voluntarily. That's all.
+2020-12-23 06:18:22 <imode> ruby is alright. people go too far sometimes with DSL-oriented stuff.
+2020-12-23 06:18:26 <imode> sinatra is a nice library.
+2020-12-23 06:18:38 <nakilon> lmao, you behave like real teenager; what's wrong about english language?
+2020-12-23 06:18:58 <nakilon> toxic
+2020-12-23 06:19:00 <int-e> nakilon: Do you know what projection is...
+2020-12-23 06:19:11 <imode> you can't parse things correctly so you read intent correctly. people do it. it's fine.
+2020-12-23 06:19:22 <imode> s/intent correctly/intent incorrectly
+2020-12-23 06:19:23 <kmc> I used to care a lot about programming languages
+2020-12-23 06:19:25 <imode> there I go projecting again.
+2020-12-23 06:19:45 <kmc> now I spend my time growing mushrooms
+2020-12-23 06:19:56 <imode> but are they ISO standard mushrooms.
+2020-12-23 06:20:19 <kmc> fungot: is there an ISO standard for mushrooms?
+2020-12-23 06:20:19 User Name: fungot = fungot!~fungot@unaffiliated/fizzie/bot/fungot
+2020-12-23 06:20:19 <fungot> kmc: we did not allow a motion for the interinstitutional agreement with the binding part a. parliament will recall and the record shows that during the vote on that issue the european parliament and fnord should be able to do this.
+2020-12-23 06:20:30 <kmc> I see
+2020-12-23 06:20:34 <imode> seems like a vote is required.
+2020-12-23 06:21:01 <int-e> fungot saves the day once again
+2020-12-23 06:21:01 <fungot> int-e: mr president, first i want to concentrate on his proposal in paragraph 6 about the absence of european union budgetary absurdity. the commission does not accept amendment no 3
+2020-12-23 06:21:06 <int-e> `? fungot
+2020-12-23 06:21:07 <fungot> int-e: mr president, you cannot say, on behalf of my group is very unhappy, to say " yes" vote. there are occasions when " a one size fits all' legislation which ignores the lessons of poverty i, ii and iii, target methods, must be called to account for the spending of the structural fnord, because of the specific directives cover both these spheres of cooperation.
+2020-12-23 06:21:09 User Name: HackEso = HackEso!~h@unaffiliated/fizzie/bot/hackeso
+2020-12-23 06:21:09 <HackEso> fungot is our beloved channel mascot and voice of reason.
+2020-12-23 06:24:01 <nakilon> people hate those who can what they can't
+2020-12-23 06:29:55 <int-e> `learn An opinion is but the first step towards a fully fledged flame war.
+2020-12-23 06:29:57 <HackEso> Learned 'opinion': An opinion is but the first step towards a fully fledged flame war.
