@@ -152,3 +152,22 @@
 2020-12-23 06:49:26 <int-e> (Not quite paradoxical.)
 2020-12-23 06:52:27 <zzo38> I don't think so. Mathematical truths can be true (although, if you try to write it in words or symbols without a context of the system in use, then that representation isn't an absolute meaning, since it is only a representation in words or symbols).
 2020-12-23 06:58:19 <int-e> zzo38: It's classically false, of course. Assuming it were true, it should be false, which is a contradiction. So it must be false... and there's no contradiction at all (which means it's not a paradox).
+2020-12-23 07:00:11 <int-e> On a different note... today's AoC twist seems to be unfriendly towards Haskell (I actually used C for that part).
+2020-12-23 07:04:57 <nakilon> there should be a language that is self-modifying but on itself
+2020-12-23 07:05:15 <imode> you'll find some of that in largely homoiconic languages.
+2020-12-23 07:05:16 <nakilon> the more data go through the more code changes
+2020-12-23 07:05:20 <nakilon> like a road
+2020-12-23 07:07:28 <nakilon> like here http://www.zachtronics.com/infinifactory/
+2020-12-23 07:08:12 <nakilon> sometimes to solve the puzzle or to golf it the program was finishing building itself already in runtime
+2020-12-23 07:08:39 <int-e> "the more data go through the more code changes" reminds me of the runner-ups in http://underhanded-c.org/_page_id_16.html
+2020-12-23 07:09:46 <int-e> (The RC4 ones)
+2020-12-23 07:12:10 <nakilon> actually the space of the Infinifactory reminds the funge space
+2020-12-23 07:12:22 <nakilon> if only data could move
+2020-12-23 07:12:45 <nakilon> that's the basic thing in other Zachtronix games like SpaceChem and OpusMagnum
+2020-12-23 07:14:06 <nakilon> so the solution in these games is a... coordinates of blocks in 2d or 3d space, like instructions in funge
+2020-12-23 07:15:01 <nakilon> the huge Conway's Life machines do something similar when they send planers from one side to another
+2020-12-23 07:15:59 <nakilon> in SpaceChem the input enters the field and you build the rules to move it further
+2020-12-23 07:17:15 <nakilon> in TIS-100 the data space isn't a big grid with "code" placed wherever you want, but 9 (or 12, I don't remember) modules
+2020-12-23 07:19:21 <nakilon> so imagine you have strings going from stdin to stdout through a space and you describe the regions that process the data when it comes in
+2020-12-23 07:20:08 <nakilon> hm, I moved from the idea of self-modifying to some another stuff
+2020-12-23 07:20:20 <nakilon> I just think zachtronix games are inspirational here
