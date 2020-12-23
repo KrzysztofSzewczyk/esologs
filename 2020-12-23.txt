@@ -177,3 +177,23 @@
 2020-12-23 08:25:57 <imode> compile it with debugging symbols and run it in a debugger.
 2020-12-23 08:26:59 <nakilon> is it possible to find all wiki pages that belong to two specified categories?
 2020-12-23 08:28:59 <nakilon> I guess this is it https://www.mediawiki.org/wiki/Extension:Multi-Category_Search but I don't know how to find even if this extension is available
+2020-12-23 08:39:58 <int-e> https://esolangs.org/wiki/Special:Version ... nope
+2020-12-23 08:42:11 <nakilon> does wiki have json api?
+2020-12-23 08:42:59 <nakilon> I'm trying to use a tool then to parse the category pages I need but it throws "json parse error" that tried to parse html
+2020-12-23 08:43:32 <zzo38> Look at the MediaWiki documentation. I know there is a API.
+2020-12-23 08:45:55 Joined: arseniiv
+2020-12-23 08:45:55 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sandy-claws, SeasonsBeatings, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-23 08:47:46 <oren> #include <fcntl.h>
+2020-12-23 08:47:47 <oren> struct bdfinfo;
+2020-12-23 08:47:47 <oren> struct bdfinfo fontinfo;
+2020-12-23 08:47:54 <oren> this is all that is needed
+2020-12-23 08:48:12 <oren> if you don't include fcntl.h it works fine
+2020-12-23 08:48:27 <nakilon> the website throws The action specified by the URL is invalid.  on #<MediaWiktory::Wikipedia::Actions::Query {"meta"=>"siteinfo"}>
+2020-12-23 08:48:36 <oren> or, well, it gives an error message, but the point is it doesn't crash
+2020-12-23 08:49:53 Quit: Sgeo (Read error: Connection reset by peer)
+2020-12-23 08:49:53 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sandy-claws, SeasonsBeatings, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-23 08:52:43 <oren> running the preprocessing step separately from compilation prevents the error
+2020-12-23 08:55:13 <shachaf> oren: I get "it.c:3: error: unknown type size"
+2020-12-23 08:58:45 Quit: joast (Ping timeout: 240 seconds)
+2020-12-23 08:58:45 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sandy-claws, SeasonsBeatings, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-23 08:58:49 <nakilon> nevermind, another library works
