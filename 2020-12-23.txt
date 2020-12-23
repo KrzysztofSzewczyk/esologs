@@ -209,3 +209,14 @@
 2020-12-23 10:13:04 Quit: imode (Quit: WeeChat 2.9)
 2020-12-23 10:13:04 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, magma, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sandy-claws, SeasonsBeatings, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-23 10:26:35 <nakilon> so I hope I won't get tired too soon filling this https://docs.google.com/spreadsheets/d/14_y5yUEU9yrb-vuFzxwuJKBP8ri5ruav8SmD0qEysbs/edit?usp=sharing
+2020-12-23 10:30:20 <oren> #define __END_DECLS
+2020-12-23 10:30:20 <oren> typedef unsigned int __uint32_t;
+2020-12-23 10:30:20 <oren> __END_DECLS
+2020-12-23 10:30:20 <oren> struct bdfinfo;
+2020-12-23 10:30:20 <oren> struct bdfinfo fontinfo;
+2020-12-23 10:44:19 <shachaf> oren: Still just an error.
+2020-12-23 10:45:22 <oren> interesting
+2020-12-23 10:45:44 <shachaf> In both Ubuntu tcc 0.9.27 and latest git tcc.
+2020-12-23 10:46:04 <shachaf> I have run into other tcc bugs, though.
+2020-12-23 10:49:08 <oren> looks like it was fixed in .27
+2020-12-23 10:59:22 <nakilon> https://scott.mn/2014/08/25/coding_in_notepad/
