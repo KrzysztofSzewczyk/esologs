@@ -220,3 +220,11 @@
 2020-12-23 10:46:04 <shachaf> I have run into other tcc bugs, though.
 2020-12-23 10:49:08 <oren> looks like it was fixed in .27
 2020-12-23 10:59:22 <nakilon> https://scott.mn/2014/08/25/coding_in_notepad/
+2020-12-23 11:11:15 <shachaf> Here'a a tcc bug:
+2020-12-23 11:11:52 <shachaf> #define struct()
+2020-12-23 11:11:55 <shachaf> struct
+2020-12-23 11:11:56 <shachaf> #if 0
+2020-12-23 11:11:58 <shachaf> #endif
+2020-12-23 11:11:59 <shachaf> test;
+2020-12-23 11:17:55 <nakilon> ok, I'm tired finishing the 2000 year; from 40 languages only 15 are uniq by author and have the reference interpreter
+2020-12-23 11:21:11 <nakilon> the full list is 1300 languages that is approximately 400, even if I take 10 per year that would be...200 more entries that is... 10 hours of work
