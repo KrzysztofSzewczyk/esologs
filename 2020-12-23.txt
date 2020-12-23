@@ -36,3 +36,6 @@
 2020-12-23 05:05:38 <nakilon> damn, I thought Fibonacci starts with 1 1
 2020-12-23 05:10:20 <esowiki> 14[[07RASEL14]]4 M10 02https://esolangs.org/w/index.php?diff=79580&oldid=79579 5* 03Nakilon 5* (+0) 10/* Nth Fibonacci number */ the sequence starts with 0, not 1
 2020-12-23 05:10:56 <nakilon> this bot is lightning fast
+2020-12-23 05:56:14 <int-e> nakilon: Well the usual definition uses F_0 = 0, F_1 = F_2 = 1
+2020-12-23 05:56:38 <int-e> so the question is which of those is the start of the sequence
+2020-12-23 05:57:11 <int-e> (picking F_0 = 0 induces nice properties like that n | m (n divides m) implies F_n | F_m)
