@@ -16,3 +16,15 @@
 2020-12-23 02:34:49 <nakilon> I'm back to my coding OS
 2020-12-23 03:27:58 Quit: imode (Ping timeout: 246 seconds)
 2020-12-23 03:27:58 Names: ^[, acedic[m], aloril, APic, Arcorann, ArthurStrong, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sandy-claws, SeasonsBeatings, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-23 03:30:59 <esowiki> 14[[07RASEL14]]4 10 02https://esolangs.org/w/index.php?diff=79578&oldid=79488 5* 03Nakilon 5* (+50) 10added Factorial example
+2020-12-23 03:36:00 User Name: Arcorann = Arcorann_!~awych@159-196-65-46.9fc441.mel.nbn.aussiebb.net
+2020-12-23 03:36:00 <Arcorann> nakilon: The server died at the start of day 1
+2020-12-23 03:37:25 <nakilon> oh ..D
+2020-12-23 03:39:58 <nakilon> befunge's factorial example foes not utilize the 'g' instruction
+2020-12-23 03:40:03 <nakilon> so my example is different
+2020-12-23 03:41:45 <nakilon> they unfold the input down to 1 and then fold it; my stack size is used in the same amount but not for the same reason
+2020-12-23 03:42:08 <nakilon> *is using the same
+2020-12-23 03:43:06 <nakilon> just because 'a' is duplicating, not swapping
+2020-12-23 03:44:17 <nakilon> I thought about random access swap instead of random access dup previously but I'm not sure it would be always practical
+2020-12-23 03:44:39 <nakilon> could make a neat quicksort implementation though
+2020-12-23 03:45:04 <nakilon> I mean any in-place sort
