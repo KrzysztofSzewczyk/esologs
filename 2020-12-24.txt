@@ -68,3 +68,61 @@
 2020-12-24 05:27:36 Joined: adu
 2020-12-24 05:27:37 Names: ^[, acedic[m], adu, aloril, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sandy-claws, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-24 05:29:46 <nakilon> once I had a bot
+2020-12-24 05:30:24 <nakilon> he was automatically learning in real time and even knew such things that wasn't told
+2020-12-24 05:31:26 <nakilon> for example, one person asked another person "hey, how long are you using IRC?" and the bot joined the conversation and said "6 years"
+2020-12-24 05:31:30 <nakilon> and it was true
+2020-12-24 05:31:41 User Name: delta23 = delta23!~deltaepsi@d179-68-39-184.evv.wideopenwest.com
+2020-12-24 05:31:41 <delta23> nakilon: bot src?
+2020-12-24 05:32:33 <nakilon> delta23 it was 11 years ago, 4 computers ago and in another country (
+2020-12-24 05:32:52 <delta23> oh
+2020-12-24 05:32:57 <nakilon> it was 30 lines of code and few years of IRC logs feed to it
+2020-12-24 05:33:39 <nakilon> only logs from the channels I was in, so it fitted the speaking style, topics, etc.
+2020-12-24 05:34:22 <delta23> cobe? it's a markov chain bot iirc
+2020-12-24 05:34:26 <delta23> it can learn from irc logs
+2020-12-24 05:34:44 <nakilon> idk why everyone are saying about markov chains
+2020-12-24 05:36:29 <delta23> cobe was called megaHAL before
+2020-12-24 05:37:18 <nakilon> once I also put that bot to a chat of my town and it pissed of them so much they were asking him out to kick his face and tried to investigate who he is
+2020-12-24 05:39:03 <nakilon> after few days they started suspecting he's a bot so I added a random time delays before replies and it got smooth again
+2020-12-24 05:39:27 <nakilon> I mean not random but message.length * 0.5 or something
+2020-12-24 05:39:28 <delta23> hmm
+2020-12-24 05:40:14 User Name: imode = imode!~linear@unaffiliated/imode
+2020-12-24 05:40:14 <imode> so you made it shorter.
+2020-12-24 05:40:28 <imode> oh, that's the length of the message. got the source?
+2020-12-24 05:40:58 <nakilon> it was emulating the time spent on typing
+2020-12-24 05:41:45 <nakilon> every time he was making a response that didn't make sense I asked it to give me debug info about it
+2020-12-24 05:41:59 <nakilon> it printed some variants of responses and I tweaked it
+2020-12-24 05:42:23 <nakilon> so the euristics were calibrated
+2020-12-24 05:43:25 <nakilon> also it was adding some variability, like randomly replacing smiles or editing punctuation
+2020-12-24 05:43:51 <nakilon> and remembering what it already responded previously to avoid recent phrases repetitions
+2020-12-24 05:44:43 <imode> cool, interested in seeing the source.
+2020-12-24 05:45:31 <nakilon> it was Ruby though ..D
+2020-12-24 05:45:31 <int-e> Well, fungot's not designed to make sense, it just interprets a Markov chain and does not take context into account (beyond recognizing that it was mentioned).
+2020-12-24 05:45:32 <fungot> int-e: just strange hooks it's the same assertion. the futility of undertaking exercises aimed at finding the quadrature of the circle
+2020-12-24 05:46:00 <imode> doesn't matter, I maintain rails apps for work.
+2020-12-24 05:46:05 <int-e> It's written in Befunge which is a pretty good excuse for keeping it simple.
+2020-12-24 05:46:22 <nakilon> about the context -- I don't remember for sure did I implement it or not but there was something about taking in account previous messages
+2020-12-24 05:46:33 <imode> fungot is written in befunge? is it like, compiled down to befunge or written in befunge
+2020-12-24 05:46:33 <fungot> imode: who's lurking? fnord riastradh most of the problems we experience. am i right about a typo in makeick.bat in an editor yet?
+2020-12-24 05:46:35 <nakilon> so it was like continuing the topic sometimes
+2020-12-24 05:46:39 <nakilon> instead of being forced to change it
+2020-12-24 05:47:03 <imode> if written in it.. that's impressive.
+2020-12-24 05:47:15 <nakilon> > good excuse for keeping it simple.
+2020-12-24 05:47:17 <lambdabot> <hint>:1:35: error:
+2020-12-24 05:47:17 <lambdabot> <hint>:1:35: error:
+2020-12-24 05:47:17 <lambdabot> parse error (possibly incorrect indentation or mismatched brackets)
+2020-12-24 05:47:21 <nakilon> and complex and the same time )
+2020-12-24 05:47:22 <int-e> fizzie's the author and I'm sure it's written in it.
+2020-12-24 05:47:25 <nakilon> lol
+2020-12-24 05:47:27 <delta23> some irc bots i found so far written in ruby:
+2020-12-24 05:47:32 <delta23> Cinch (Irc Bot Framework)
+2020-12-24 05:47:38 <delta23> and lita
+2020-12-24 05:47:39 <imode> iirc the markov chain bot I used a while back was written in C++.
+2020-12-24 05:47:47 <imode> that thing was fun. you could train it on channels.
+2020-12-24 05:47:48 <int-e> ^source
+2020-12-24 05:47:48 <fungot> https://github.com/fis/fungot/blob/master/fungot.b98
+2020-12-24 05:48:04 <imode> that is fucking impressive.
+2020-12-24 05:48:15 <delta23> nice
+2020-12-24 05:48:31 <nakilon> delta23 it was years before I faced the Ruby in production so my code was far from being easily reused and so called as a library/framework
+2020-12-24 05:48:48 <int-e> imode: it's a funge-bot
+2020-12-24 05:48:53 <nakilon> we were just "hacking the irc"
+2020-12-24 05:49:04 <int-e> I never asked but I'd be surprised if that didn't inspire the name.
