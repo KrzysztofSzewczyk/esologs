@@ -202,3 +202,17 @@
 2020-12-26 20:29:34 User Name: delta23 = delta23!~deltaepsi@d179-68-39-184.evv.wideopenwest.com
 2020-12-26 20:29:34 <delta23> fungot: illuminati
 2020-12-26 20:29:34 <fungot> delta23: what does " native compiler" means in " select*": see fnord/ distros/ fnord/ fnord
+2020-12-26 20:30:31 <rain1> haha
+2020-12-26 20:32:37 <int-e> those stars and quotes, hmm
+2020-12-26 20:34:24 <fizzie> The handling of spaces in opening quotation marks has always bothered me, but not enough to fix.
+2020-12-26 20:35:10 <int-e> are *, : and / treated a punctuation? (no spaces before, one space afterwards?)
+2020-12-26 20:35:28 <fizzie> * I think is just part of word. : and / are punctuation.
+2020-12-26 20:36:14 <fizzie> The logic is something like, regular tokens always have a space before them, and I could fix trailing punctuation (comma, period, closing quotes and parens) by just omitting that, but I couldn't fix opening punctuation (open quote, open paren) because they would need to omit the space that "belongs" to the next token.
+2020-12-26 20:36:47 <int-e> ah, it's a dirty trick then :)
+2020-12-26 20:37:03 <fizzie> Yeah. Realistically it'd just need to set a flag somewhere for the next word to skip the customary space, but still.
+2020-12-26 20:37:34 <fizzie> Also, both opening and closing single and double quotes are rendered with ' and ", but in the token representation they're separate tokens.
+2020-12-26 20:38:27 <fizzie> 'UNK', 'START', 'END', 'PCDQUOT', 'PCOLON', 'PCOMMA', 'PCPAREN', 'PCSQUOT', 'PDOT', 'PELLIPSIS', 'PEXCL', 'PFROWN', 'PODQUOT', 'POPAREN', 'POSQUOT', 'PQUEST', 'PSLASH', 'PSMILE' -- that's the set of special tokens.
+2020-12-26 20:53:18 Quit: arseniiv (Ping timeout: 256 seconds)
+2020-12-26 20:53:19 Names: ^[, acedic[m], aloril, APic, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-26 20:57:26 Joined: uraniumz
+2020-12-26 20:57:26 Names: ^[, acedic[m], aloril, APic, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, uplime, uraniumz, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
