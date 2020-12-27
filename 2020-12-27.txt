@@ -178,3 +178,23 @@
 2020-12-27 13:56:36 Names: ^[, acedic[m], aloril, APic, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-27 13:58:39 <shachaf> The other thing I learned about recently was minimap perfect hash functions.
 2020-12-27 13:59:29 <shachaf> The "hash, displace, compress" method seems pretty simple.
+2020-12-27 14:08:39 <shachaf> I see, so the idea of the Brent thing is that the tortoise is too slow.
+2020-12-27 14:09:20 <shachaf> And so if you've been going for a while without the hare seeing the tortoise, maybe the tortoise should teleport to the hare.
+2020-12-27 14:09:34 <int-e> well, 1/3 of the calls to f are spent on letting the tortoise catch up
+2020-12-27 14:09:50 <shachaf> Right.
+2020-12-27 14:10:07 <int-e> and the teleporting eliminates that cost, though obviously that doesn't come entirely for free
+2020-12-27 14:10:12 <shachaf> So here the tortoise stands still, and once in a while it teleport to the hare.
+2020-12-27 14:10:35 <shachaf> And once the gap between teleportations i large enough (larger than the length of the cycle), the hare can go all the way around and find the tortoise.
+2020-12-27 14:10:35 <int-e> because now you'll generally find the cycles a bit later
+2020-12-27 14:11:12 <shachaf> But now, hmm, you no longer have this f^t(0) = f^2t(0) property (as you were saying).
+2020-12-27 14:11:28 <int-e> yep
+2020-12-27 14:12:07 <shachaf> Instead you have...
+2020-12-27 14:12:24 <shachaf> Some point that's on the cycle, and the number of steps it took to get to that point.
+2020-12-27 14:13:27 <shachaf> What can you do with it?
+2020-12-27 14:16:01 <shachaf> Oh, no.
+2020-12-27 14:16:08 <shachaf> You have the cycle length, of course.
+2020-12-27 14:17:30 <shachaf> I see, you answered everything above.
+2020-12-27 14:17:30 Quit: xelxebar (Quit: ZNC 1.7.2+deb3 - https://znc.in)
+2020-12-27 14:17:30 Names: ^[, acedic[m], aloril, APic, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, zeroed, zzo38
+2020-12-27 14:17:32 Joined: xelxebar
+2020-12-27 14:17:33 Names: ^[, acedic[m], aloril, APic, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
