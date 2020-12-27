@@ -154,3 +154,27 @@
 2020-12-27 13:22:49 <shachaf> I think the Pollard lambda method is the most reasonable in general.
 2020-12-27 13:23:06 <shachaf> Since you can parallelize it easily, tune memory usage, etc.
 2020-12-27 13:23:20 <int-e> Yes, that was my confusion.
+2020-12-27 13:33:20 <esowiki> 14[[07CV(N)(C)14]]4 M10 02https://esolangs.org/w/index.php?diff=79674&oldid=79659 5* 03PythonshellDebugwindow 5* (+45) 10/* Cat program */ Add [[User:Tetrapyronia]]'s Truth-machine
+2020-12-27 13:33:47 <esowiki> 14[[07CV(N)(C)14]]4 M10 02https://esolangs.org/w/index.php?diff=79675&oldid=79674 5* 03PythonshellDebugwindow 5* (+60) 10/* "HI" */ hm
+2020-12-27 13:38:35 <shachaf> int-e: Thanks for clarifying despite my stubbornness.
+2020-12-27 13:38:59 <shachaf> It turns out the Wikipedia page I linked to even talks about finding the start of the cycle, which I somehow thought it wasn't.
+2020-12-27 13:40:09 <shachaf> Hmm, the other thing I was unsure about with the tortoise and hare was, can the hare ever miss the tortoise the first time around the cycle?
+2020-12-27 13:41:03 Joined: jess
+2020-12-27 13:41:04 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-27 13:41:26 <int-e> just pick a cycle of length 1 and a long preamble... 9876543210000000000
+2020-12-27 13:42:54 <int-e> You should be able to compute the exact number from the length of the cycle and the length of the non-cyclic prefix, but it'll be prone to off-by-one errors :)
+2020-12-27 13:43:36 <shachaf> A cycle of length 1?
+2020-12-27 13:46:50 <int-e> The tortoise has to walk the whole prefix, and then a few more steps until the number of steps is divisible by the cycle length.
+2020-12-27 13:47:19 <int-e> At which point, if the cycle is shorter than the prefix, the hare will already have been around the cycle several times.
+2020-12-27 13:47:38 <shachaf> Oh, sure.
+2020-12-27 13:47:47 <int-e> f(x) = x <-- cycle of length 1.
+2020-12-27 13:48:30 <shachaf> What I mean is specifically whether the hare can jump over the tortoise after the tortoise has entered the cycle.
+2020-12-27 13:48:43 <int-e> no
+2020-12-27 13:48:53 <int-e> the distance changes by 1 in each step
+2020-12-27 13:48:56 <int-e> not 2.
+2020-12-27 13:49:19 <shachaf> Oh man, that's a good point.
+2020-12-27 13:49:57 <shachaf> I guess that answers everything.
+2020-12-27 13:56:36 Quit: Arcorann (Ping timeout: 240 seconds)
+2020-12-27 13:56:36 Names: ^[, acedic[m], aloril, APic, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-27 13:58:39 <shachaf> The other thing I learned about recently was minimap perfect hash functions.
+2020-12-27 13:59:29 <shachaf> The "hash, displace, compress" method seems pretty simple.
