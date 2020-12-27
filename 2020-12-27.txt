@@ -125,3 +125,32 @@
 2020-12-27 12:57:36 <shachaf> I think maybe I was missing something that should have been obvious about this.
 2020-12-27 12:58:19 <shachaf> Hmm, no.
 2020-12-27 12:59:59 <int-e> The way I think of it is finding the largest n <= min(l,k) such that f^(k-n)(a) != f^(l-n)(b).
+2020-12-27 13:02:38 <int-e> It may not be the best way at all, especially if you have memory available to leave a trail of breadcrumbs.
+2020-12-27 13:04:07 <b_jonas> int-e: yes, the speedups for finding collisions are magic too
+2020-12-27 13:04:26 <b_jonas> but I sort of understand them better than the engineering in gas appliances
+2020-12-27 13:05:17 <b_jonas> in that I have some confidence that I can sort of figure out what you can speed up how much and what can't (not perfectly, but somewhat), but I don't know how to tell what you can implement without electricity and what you can't
+2020-12-27 13:06:38 <shachaf> OK, I finally got it, I think.
+2020-12-27 13:07:03 <shachaf> When you run the Floyd thing and the tortoise and hare meet, you know that f^t(0) = f^2t(0) = c
+2020-12-27 13:07:23 <int-e> If you have f^(id)(s) for 0 <= i <= N/d, then you can test f(k),f(k+1),...,f(k+d-1) against that table to check whether you're inside the cycle
+2020-12-27 13:07:36 <int-e> shachaf: right, so the period divides t
+2020-12-27 13:07:46 <shachaf> Which means if you start with 0,c and keep applying f to each side, after times you'll get f^t(0),f^t(c)
+2020-12-27 13:07:52 <shachaf> Which we know are equal.
+2020-12-27 13:08:03 <shachaf> So you apply f until the first time they're equal.
+2020-12-27 13:10:03 <shachaf> Man, I'm so bad at thinking about this somehow.
+2020-12-27 13:10:25 <int-e> shachaf: whereas in Brent's method, you get f^t(0) = f^2^k(0) for some k,t, so you need a bit of modular arithmetic to get started.
+2020-12-27 13:10:46 <shachaf> I don't know how Brent's method works yet.
+2020-12-27 13:11:10 <int-e> for can advance to a t' >= t with t' = 0 (mod t - 2^k).
+2020-12-27 13:11:16 <int-e> for? you.
+2020-12-27 13:12:08 <int-e> (the t in Brent's method satisfies 2^(k+1) >= t > 2^k)
+2020-12-27 13:19:33 <int-e> shachaf: So what is the purpose here? Finding hash collisions, or finding the starting point of cycles?
+2020-12-27 13:19:49 <shachaf> The context was finding a hash collision (of sorts).
+2020-12-27 13:19:56 <shachaf> What's the difference?
+2020-12-27 13:20:08 <shachaf> Oh, I don't know why I said that.
+2020-12-27 13:20:27 <int-e> The difference is that cycles tend to be long, so things parallelize badly.
+2020-12-27 13:21:07 <shachaf> I think the goal was to write the minimal amount of code to do it.
+2020-12-27 13:21:22 <shachaf> Since the number of hash function applications was only in the billions.
+2020-12-27 13:21:45 <int-e> okay
+2020-12-27 13:22:39 <int-e> That indeed makes tortoise and hare attractive :)
+2020-12-27 13:22:49 <shachaf> I think the Pollard lambda method is the most reasonable in general.
+2020-12-27 13:23:06 <shachaf> Since you can parallelize it easily, tune memory usage, etc.
+2020-12-27 13:23:20 <int-e> Yes, that was my confusion.
