@@ -75,3 +75,53 @@
 2020-12-27 11:53:28 Names: ^[, acedic[m], aloril, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2020-12-27 11:54:09 Joined: arseniiv
 2020-12-27 11:54:09 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-27 12:30:27 <b_jonas> you know, it's sort of magical how our home gas appliances work without electronics. appliances that fall back to turn off safely when there's no electricity, that I understand. but gas stoves, water boilers and heaters (with pilot lights) working without electronics controlling them, how the fuck is that ever possible?
+2020-12-27 12:32:53 <int-e> valves and other clever mechanical engineering. some of it may even involve bimetallic strips
+2020-12-27 12:34:24 <b_jonas> but a valve doesn't do anything by itself. you control it either by electronics or by another valve.
+2020-12-27 12:34:42 <b_jonas> so "valves" doesn't really explain it to me
+2020-12-27 12:34:48 <shachaf> Looking at the details of how people use tortoise-and-hare to find hash collisions, they're pretty surprising.
+2020-12-27 12:34:49 <int-e> And no, I couldn't make it work either. I know barely enough to make it not seem magical.
+2020-12-27 12:35:27 <int-e> shachaf: hmm. is there a paper of web page you're alluding to specifically?
+2020-12-27 12:35:28 <b_jonas> I also say often that washing machines seem magical to me.
+2020-12-27 12:35:34 <int-e> s/of/or/
+2020-12-27 12:35:56 <shachaf> int-e: My friend showed me some code.
+2020-12-27 12:37:06 <shachaf> It goes like this, approximately:
+2020-12-27 12:37:07 <shachaf> let tortoise = 0; let hare = 0; do { tortoise = f(tortoise); hare = f(f(hare)); } while (tortoise != hare);
+2020-12-27 12:37:34 <int-e> Yeah, I know this one. I never implement it anymore though
+2020-12-27 12:37:51 <shachaf> let x, y; while (tortoise != hare) { x = tortoise; y = hare; tortoise = f(tortoise); hare = f(hare); }
+2020-12-27 12:37:59 <shachaf> And then x,y is a collision.
+2020-12-27 12:38:18 <shachaf> Finding a cycle isn't the part I'm surprised by, it's finding a collision.
+2020-12-27 12:38:32 <int-e> I only have a hare running a head leaving markers behind at... usuaully... powers of two.
+2020-12-27 12:38:39 <int-e> ahead
+2020-12-27 12:38:59 <int-e> which probably has its own name that I don't know.
+2020-12-27 12:39:39 <shachaf> Is it https://en.wikipedia.org/wiki/Cycle_detection#Brent's_algorithm ?
+2020-12-27 12:40:11 <shachaf> It's still not entirely intuitive to me why the second step works.
+2020-12-27 12:40:25 <shachaf> Actually, it doesn't, because I forgot to set tortoise = 0 before the loop.
+2020-12-27 12:40:41 <int-e> yes, that's the one
+2020-12-27 12:42:20 <int-e> I've pondered Gosper's version too but I didn't find it all that attractive.
+2020-12-27 12:43:04 <shachaf> Is this for cycle finding or collision finding?
+2020-12-27 12:44:23 <int-e> yes
+2020-12-27 12:45:27 <int-e> but I guess it's really about the cycle detection at that point.
+2020-12-27 12:46:41 Quit: TheLie (Remote host closed the connection)
+2020-12-27 12:46:42 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ice303, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, uplime, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-27 12:47:53 <esowiki> 14[[07Truth-machine14]]4 M10 02https://esolangs.org/w/index.php?diff=79673&oldid=79670 5* 03PythonshellDebugwindow 5* (+0) 10/* Definer */ Fiks spelyng
+2020-12-27 12:48:18 <int-e> the last time I experimented with collision finding I didn't worry much about the efficiency of extracting a collision once I have found two starting points leading to the same distinguished point.
+2020-12-27 12:48:36 <shachaf> Well, this method doesn't use distinguished points at all.
+2020-12-27 12:48:39 <int-e> I'd run the computation of the distinguished point again, twice.
+2020-12-27 12:48:51 <shachaf> The distinguished point method I have no problem with, but it doesn't need tortoises or hares.
+2020-12-27 12:49:15 <int-e> once to find the difference of the lengths of the two chain, and a second time to actually pinpoint the actual collision
+2020-12-27 12:49:27 <int-e> *chains
+2020-12-27 12:49:54 <shachaf> Oh, I stored the difference in the table when I computed the chains.
+2020-12-27 12:50:00 <int-e> the same thing applies to finding a single cycle
+2020-12-27 12:50:22 <shachaf> The distinguished point method has nothing to do with cycles, does it?
+2020-12-27 12:50:22 <int-e> (and its starting point)
+2020-12-27 12:50:50 <int-e> but there's a common problem
+2020-12-27 12:51:37 <int-e> Both methods give you values a, b, c such that f^k(a) = f^l(b) = c for some k and l.
+2020-12-27 12:52:57 <int-e> And then, assuming that the sequence starting at a isn't a suffix of the sequence starting at b or vice versa, you can extract a collision.
+2020-12-27 12:53:53 <int-e> And I solved that problem (inefficiently) using just a,b,c, so that method applies to identifying the starting point of a cycle as well
+2020-12-27 12:55:10 <int-e> What is specific to the distinguished point method is that this computation really *is* expected cheap compared to finding suitable a,b,c.
+2020-12-27 12:55:50 <int-e> Whereas in the cycle finding case the computation on this naive level may easily double your computation time or worse.
+2020-12-27 12:57:12 <int-e> So... hmm. Yes, I can believe that there are some cute tricks.
+2020-12-27 12:57:36 <shachaf> I think maybe I was missing something that should have been obvious about this.
+2020-12-27 12:58:19 <shachaf> Hmm, no.
+2020-12-27 12:59:59 <int-e> The way I think of it is finding the largest n <= min(l,k) such that f^(k-n)(a) != f^(l-n)(b).
