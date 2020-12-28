@@ -108,3 +108,38 @@
 2020-12-28 11:47:45 <shachaf> Option 2: Something with an e-graph to represent the inequality, which somehow the other theory knows about?
 2020-12-28 11:48:25 <shachaf> I've pretty much only thought about theories in isolation before. I'm not even sure what option 3 is.
 2020-12-28 11:52:55 <shachaf> OK, the slides say, extend the API of a theory over what I already know, by having it return equalities that it can figure out. Hmm.
+2020-12-28 12:04:43 <int-e> shachaf: Well you can extract i /= j from that using the theory of uninterpreted functions and then i /= j and i - j = 0 will be a contradiction in the theory of integers/rationals/reals...
+2020-12-28 12:05:09 <int-e> IIRC this kind of transfer of equalities and disequalities is at the heart of the Nelson-Oppen theory combination method.
+2020-12-28 12:05:10 <shachaf> Oh, that's a good point, that's simpler than the direction I was thinking.
+2020-12-28 12:05:57 <shachaf> But it seems like theory combination must be quite tricky.
+2020-12-28 12:06:21 <shachaf> I guess "Nelson-Oppen theory combination method" is the thing to look up. Or I can just keep reading these slides.
+2020-12-28 12:11:55 <shachaf> Oh man, this thing is complicated.
+2020-12-28 12:12:00 <shachaf> Why are SMT solvers so much work?
+2020-12-28 12:12:16 <int-e> because they're solving a pretty difficult problem
+2020-12-28 12:12:45 * int-e believes in irreducible complexity
+2020-12-28 12:13:09 Joined: Alexandra
+2020-12-28 12:13:09 Names: ^[, acedic[m], Alexandra, aloril, also_uplime, APic, Arcorann, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, Guest26328, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-28 12:14:19 <int-e> shachaf: and it gets worse because a ton of people cook up barely decidable theories that an SMT solver can support
+2020-12-28 12:14:46 User Name: Alexandra = Alexandra!~alexandra@223.101.203.77.rev.sfr.net
+2020-12-28 12:14:46 <Alexandra> hi esoteric team how is?
+2020-12-28 12:14:51 <shachaf> I just wanted simple things that barely count as theories.
+2020-12-28 12:15:02 <shachaf> I mean, do you consider CryptoMiniSat's xor clauses a theory?
+2020-12-28 12:15:39 <int-e> so, linear arithmetic over reals, over rationals, over integers, non-linear arithmetic over reals (and you can try it for integers and rationals even though it's undecidable there), uninterpreted functions, arrays, ....
+2020-12-28 12:16:00 <int-e> AIUI, xor clauses are directly used for unit propagation, so not, they're not a theory in the SMT picture
+2020-12-28 12:16:14 <int-e> s/not/no/
+2020-12-28 12:16:30 <shachaf> They also do Gaussian elimination, I think.
+2020-12-28 12:16:43 <int-e> oh right
+2020-12-28 12:16:49 <int-e> so it's a weird mix then
+2020-12-28 12:16:59 <shachaf> But why does "used for unit propagation" make it "not a theory", rather than "a better theory"?
+2020-12-28 12:17:31 <shachaf> If you can have your watch lists wake up theories, rather than running them every literal assignment or something, that seems better.
+2020-12-28 12:17:43 <int-e> because in the SMT picture, theories are used for analyzing conflicts and learning clauses
+2020-12-28 12:18:11 <int-e> it's really a technical distinction, not a semantic one.
+2020-12-28 12:18:16 <shachaf> Yes, and xor clauses do find conflicts and learn clauses, don't they?
+2020-12-28 12:18:52 <int-e> I forgot about the linear arithmetic
+2020-12-28 12:18:52 <shachaf> In particular (a⊕b⊕c⊕...) represents a whole bunch of or-clauses at once.
+2020-12-28 12:20:00 <Alexandra> do you mean, cryptographic compute, is isoteric compue?
+2020-12-28 12:20:03 <Alexandra> compute?
+2020-12-28 12:20:14 <Alexandra> pie is the door?
+2020-12-28 12:20:17 <int-e> there's also the whole pseudo-boolean constraints mess where there's an open debate on whether they should be treated as a theory, translated to boolean clauses, or handled by a special solver that knows about weights.
+2020-12-28 12:29:09 <shachaf> I have a better idea of what E-graphs and E-matching are now.
+2020-12-28 12:29:21 <shachaf> But I'm still not really clear enough on the whole picture.
