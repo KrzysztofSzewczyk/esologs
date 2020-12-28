@@ -67,3 +67,44 @@
 2020-12-28 10:54:58 <HackEso> Bleen is the color of the ocean and the trees.
 2020-12-28 11:26:11 Quit: imode (Quit: WeeChat 2.9)
 2020-12-28 11:26:11 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, Guest26328, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd, none30, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2020-12-28 11:31:28 <int-e> . o O ( Smart... my emacs renders the month in 28/12/2020 in italic... )
+2020-12-28 11:32:09 <int-e> well, slanted at least
+2020-12-28 11:32:10 <shachaf> Just another reason to use 2020-12-28
+2020-12-28 11:32:30 <int-e> shachaf: Yeah I didn't actually type it that way.
+2020-12-28 11:32:34 User Name: Taneb = Taneb!~Taneb@2001:41c8:51:10d:aaaa:0:aaaa:0
+2020-12-28 11:32:34 <Taneb> It renders that in strikethrough
+2020-12-28 11:32:47 <int-e> (I faked the date in the example.)
+2020-12-28 11:36:13 <shachaf> I like these SAT/SMT lecture slides: https://www.pm.inf.ethz.ch/education/courses/program-verification.html
+2020-12-28 11:37:08 <shachaf> Is saying SAT/SMT like saying C/C++?
+2020-12-28 11:38:38 <b_jonas> Taneb: how does it render 2020年12月28日 ?
+2020-12-28 11:40:23 <Taneb> shachaf: maybe it's like saying GNU/Linux
+2020-12-28 11:40:43 <shachaf> Oh, b_jonas's system is the best, of course.
+2020-12-28 11:41:05 <b_jonas> it's not my system. my system is
+2020-12-28 11:41:07 <b_jonas> `datei
+2020-12-28 11:41:07 <HackEso> 2020-12-28 11:41:07.365 +0000 UTC December 28 Monday 2020-W53-1
+2020-12-28 11:41:17 <b_jonas> 2020-12-28 . but shachaf already said that.
+2020-12-28 11:41:39 <shachaf> Too bad typing that is tricky for me.
+2020-12-28 11:41:59 <shachaf> I have Chinese input set up, but I didn't remember the Pinyin for those characters (except the middle one).
+2020-12-28 11:42:02 <b_jonas> well yes, the zero is in an awkward position in the Hungarian layout
+2020-12-28 11:42:51 <b_jonas> shachaf: try Japanese input instead maybe
+2020-12-28 11:43:00 <shachaf> I used to have that set up.
+2020-12-28 11:43:08 <shachaf> But it seems similarly difficult.
+2020-12-28 11:43:57 User Name: Arcorann = Arcorann!~awych@159-196-65-46.9fc441.mel.nbn.aussiebb.net
+2020-12-28 11:43:57 <Arcorann> Either way you'd need to know the pronunciation of what you want to type
+2020-12-28 11:44:06 <shachaf> Right.
+2020-12-28 11:44:18 <Arcorann> Chinese has shape-based input methods but I don't know how to use any of them
+2020-12-28 11:44:55 <shachaf> Hmm, one of the first SMT slides says: ¬(f(i)=f(j)) ∧ i-j=0
+2020-12-28 11:45:06 <shachaf> And I'm not even sure how to show that's UNSAT!
+2020-12-28 11:45:19 <shachaf> Presumably the slides will tell me but it's annoying that I hadn't even thought about it before.
+2020-12-28 11:45:52 <shachaf> Now I'm wondering what it does.
+2020-12-28 11:45:57 <b_jonas> what's this SMT? I don't know the context
+2020-12-28 11:46:01 <shachaf> Yes, SMT.
+2020-12-28 11:46:28 <b_jonas> ?
+2020-12-28 11:46:34 <b_jonas> what is an SMT?
+2020-12-28 11:46:37 <shachaf> Oh, I thought you were asking if this was SMT.
+2020-12-28 11:46:45 <shachaf> SMT is Satisfiability Modulo Theories.
+2020-12-28 11:46:55 <shachaf> The problem is that this is mixing theories.
+2020-12-28 11:47:19 <shachaf> Anyway, option 1: It tries to be clever and turn "i-j=0" to "i=j" in some sort of preprocessing, and then it just has one theory.
+2020-12-28 11:47:45 <shachaf> Option 2: Something with an e-graph to represent the inequality, which somehow the other theory knows about?
+2020-12-28 11:48:25 <shachaf> I've pretty much only thought about theories in isolation before. I'm not even sure what option 3 is.
+2020-12-28 11:52:55 <shachaf> OK, the slides say, extend the API of a theory over what I already know, by having it return equalities that it can figure out. Hmm.
