@@ -177,3 +177,35 @@
 2020-12-28 14:59:27 User Name: Sgeo = Sgeo!~Sgeo@ool-18b98aa4.dyn.optonline.net
 2020-12-28 14:59:27 <Sgeo> Is learncpp.com good? It does seem to go into more advanced things
 2020-12-28 14:59:47 <Sgeo> Alternatively I should force myself to figure out detours in Rust so I don't contribute to the existence of C++ code
+2020-12-28 15:00:32 <shachaf> `? sgeolang
+2020-12-28 15:00:33 <HackEso> Sgeolang used to change frequently, but eventually it rusted in place.
+2020-12-28 15:01:08 <shachaf> Both of them seem too complicated and encourage complicated code.
+2020-12-28 15:01:16 <shachaf> Rust is surely better, on the former axis.
+2020-12-28 15:01:37 <int-e> that cargo cult
+2020-12-28 15:01:47 <shachaf> Have you considered C?
+2020-12-28 15:02:04 <shachaf> Oh, actually, you should learn Pascal and tell me what's good about it.
+2020-12-28 15:02:08 <shachaf> (Or Oberon or something.)
+2020-12-28 15:02:39 <Sgeo> >.> I may have started doing my current project in C++ because I couldn't figure out why the sample code I was looking at wanted me to cast to (PVOID&) and I didn't figure out the C equivalent until later
+2020-12-28 15:03:59 <shachaf> That guide doesn't seem like the sort of thing I'd recommend.
+2020-12-28 15:04:28 <Sgeo> The C API for OpenXR is a bit annoying and there's an... adequate if poorly documented C++ wrapper around it. Takes care of loading in extension functions and needing to call some functions twice
+2020-12-28 15:05:46 <int-e> The beauty of C++ is that it's easy to find a likeable subset because there's so much of it in the first place.
+2020-12-28 15:06:08 <shachaf> Well, I don't know what you're doing, but presumably the API boundary isn't going to be that huge so this doesn't seem like a huge consideration.
+2020-12-28 15:06:08 <nakilon> `? RASEL
+2020-12-28 15:06:10 <HackEso> RASEL? ¯\(°​_o)/¯
+2020-12-28 15:06:21 <shachaf> int-e: Too bad C99 isn't one of the available subsets.
+2020-12-28 15:07:18 <int-e> I mostly reach for C++ because I like having the various namespaces.
+2020-12-28 15:07:39 <int-e> in particular the namespace associated with structs
+2020-12-28 15:08:38 <fizzie> When you say "the namespace associated with structs", I think of the (C) struct/union/enum tag namespace, which you *lose* when going to C++.
+2020-12-28 15:08:50 <shachaf> Do you mean member functions?
+2020-12-28 15:09:10 <shachaf> I guess maybe you mean struct A { struct B { } }; and so on.
+2020-12-28 15:09:36 <shachaf> Or just static member functions.
+2020-12-28 15:09:42 <int-e> Yes, member functions.
+2020-12-28 15:10:46 <Sgeo> I don't particularly want to do this repeatedly https://github.com/KhronosGroup/OpenXR-SDK-Source/blob/eedc7df3d99ca7a468d63a574629a9935716ae0b/src/tests/hello_xr/graphicsplugin_opengl.cpp#L91
+2020-12-28 15:11:01 <Sgeo> Oh hey it's C++ but without that C++ wrapper
+2020-12-28 15:11:34 <shachaf> Certainly not. I don't know what OpenXR does exactly, anyway.
+2020-12-28 15:12:15 <int-e> Sgeo: it's a khronic disease
+2020-12-28 15:12:29 <shachaf> If you just mean GetInstanceProcAddr, that looks like the sort of thing OpenGL and a bunch of things make you do.
+2020-12-28 15:13:02 <Sgeo> Yeah, that's what I meant
+2020-12-28 15:13:48 <shachaf> Well, too bad, I guess, this is what they make you do anyway.
+2020-12-28 15:16:51 <Sgeo> The C++ wrapper defines a dispatcher thing that is provided as a last argument
+2020-12-28 15:19:05 <shachaf> Well, you can do https://github.com/maluoi/StereoKit/blob/master/StereoKitC/systems/platform/openxr_extensions.h or something.
