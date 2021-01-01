@@ -44,3 +44,26 @@
 2021-01-01 05:04:01 Quit: outing (Ping timeout: 246 seconds)
 2021-01-01 05:04:01 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, craigo, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, nfd9001, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2021-01-01 05:06:51 <zzo38> Does analog television work with the common hobbyist level SDR sticks?
+2021-01-01 05:33:09 <esowiki> 14[[07SELENE.14]]4 M10 02https://esolangs.org/w/index.php?diff=79758&oldid=79755 5* 03Tetrapyronia 5* (+285) 10(hopefully?) fixed specifications
+2021-01-01 05:36:37 <kmc> zzo38: no, I don't think so. standard NTSC has a 6 MHz bandwidth, PAL is about the same, and the RTL-SDR sticks max out around 2.4 MHz
+2021-01-01 05:36:41 <kmc> maybe you could use two
+2021-01-01 05:39:20 <kmc> the chip they use is actually a digital TV tuner chip (https://www.realtek.com/en/products/communications-network-ics/item/rtl2832u)
+2021-01-01 05:39:57 <kmc> but the raw I/Q output mode, which enables its myriad hobbyist uses as a cheap SDR receiver, doesn't support the full bandwidth of a TV signal
+2021-01-01 05:41:01 <zzo38> O, OK. Do you know if any SDR has a hardware switch to disable transmit in case you want to receive only, even if it is capable to transmit if you activate that switch?
+2021-01-01 05:41:06 <kmc> maybe due to USB limitations, I'm not sure
+2021-01-01 05:42:05 <kmc> in the original use case for the chip, the I/Q mode is used for audio broadcast reception (FM/DAB)
+2021-01-01 05:42:15 <kmc> zzo38: I don't know
+2021-01-01 05:42:27 <kmc> but many of them have separate ports for transmit and receive
+2021-01-01 05:42:34 <kmc> for example my bladeRF has
+2021-01-01 05:43:15 <kmc> so if you want to disable transmit, you could leave the TX port open or, ideally, attach an impedance-matched dummy load
+2021-01-01 05:43:34 <kmc> although, dummy loads aren't perfectly shielded and a very nearby radio might still be able to hear it
+2021-01-01 05:44:23 <kmc> I don't know if any SDR has a hardware switch to disable the TX frontend, although it seems like a good thing to have and should also be easy to do
+2021-01-01 05:45:02 <zzo38> OK
+2021-01-01 05:46:11 <kmc> the output power of the bladeRF is low to begin with (6 dBm, or about 4 mW)
+2021-01-01 05:46:36 <kmc> in many cases you would feed that into an external amplifier, and could effectively disable transmit by disconnecting or removing power from that
+2021-01-01 05:50:34 <kmc> then again, people manage to send signals around the globe on milliwatts
+2021-01-01 05:50:55 <kmc> with the right combination of good antenna, good conditions, and very slow data rate
+2021-01-01 05:55:53 <kmc> QRSS is a fairly esoteric idea
+2021-01-01 05:56:20 <kmc> sending/receiving morse code at a speed where a single dot takes 1-5 minutes
+2021-01-01 05:59:09 <kmc> generally not done by hand/ear!
+2021-01-01 05:59:18 <kmc> would require quite a bit of patience
