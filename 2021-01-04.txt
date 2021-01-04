@@ -374,3 +374,108 @@
 2021-01-04 18:57:56 <b_jonas> and I don't think that happens anymore, because they just have internet on those airplanes. not necessarily broadband internet that they sell to customers or anything, just enough internet for a card transaction, which isn't much.
 2021-01-04 18:58:15 <b_jonas> or phone connectivity or whatever
 2021-01-04 18:58:19 <b_jonas> not necessarily internet
+2021-01-04 19:04:35 <kmc> can't you do a magstripe transaction offline too
+2021-01-04 19:04:41 <kmc> i mean it has the same information the embosser gives you
+2021-01-04 19:05:01 <kmc> maybe you can't do an EMV transaction offline
+2021-01-04 19:05:07 <kmc> but it will be forever before they get rid of the magstripes
+2021-01-04 19:05:18 <b_jonas> I think it gives somewhat more than the
+2021-01-04 19:05:20 <kmc> USA still hasn't implemented EMV properly
+2021-01-04 19:05:23 <b_jonas> than the embosser
+2021-01-04 19:05:35 <b_jonas> and yes, you could probably do a magstripe transaction, so I dunno
+2021-01-04 19:05:41 <kmc> well ok, but it should still be sufficient for an offline (processed when the plane lands) transaction
+2021-01-04 19:05:51 <kmc> my recollection of buying stuff on a plane is that they used a handheld terminal
+2021-01-04 19:06:04 <kmc> not sure whether it was EMV or magstripe
+2021-01-04 19:06:18 <b_jonas> I don't know how it works really
+2021-01-04 19:06:31 <kmc> the last (and maybe only?) time I did an embosser transaction was buying some meat from a sketchy guy in a van in 2013
+2021-01-04 19:06:35 <kmc> long story
+2021-01-04 19:06:49 <b_jonas> was the meat at least good?
+2021-01-04 19:06:49 <fizzie> I've only used the embossing thing on a boat.
+2021-01-04 19:06:52 <kmc> it was okay
+2021-01-04 19:07:17 <kmc> my credit union debit card (issued last year or maybe 2019) is not embossed
+2021-01-04 19:07:27 <kmc> but my megabank debit card (issued last year) is
+2021-01-04 19:07:35 <kmc> and i don't have any credit cards anymore
+2021-01-04 19:08:05 <kmc> both have EMV, the megabank also has NFC, before that it had EMV but not NFC, before that it had NFC but not EMV
+2021-01-04 19:08:14 <kmc> it's kind of embarrassing how much of a mess all this is
+2021-01-04 19:08:28 <fizzie> Chicago's public transit Ventra card is also a MasterCard, which I found weird.
+2021-01-04 19:08:35 <kmc> in the US there's still like a 1 in 4 chance when you encounter an EMV terminal that the EMV is mysteriously broken and you have to use magstripe
+2021-01-04 19:08:37 <b_jonas> is EMV the chip thing?
+2021-01-04 19:08:43 <kmc> yes
+2021-01-04 19:08:43 <myname> good to know, i disabled magstripe on my card
+2021-01-04 19:09:03 <fizzie> I got one of those on a trip because the deposit ($5?) was less than what you saved by using the card, but they've been a bit spammy afterwards.
+2021-01-04 19:09:13 <b_jonas> kmc: how is it a mess? it's just progress of technology, from embossed to magnetic to chip to proxy
+2021-01-04 19:09:24 <b_jonas> I mean the details are a mess, yes
+2021-01-04 19:09:28 <b_jonas> but the general idea isn't
+2021-01-04 19:09:35 <fizzie> It finally expires (expired?) now, and they said they'd send a replacement, but they've got a really weird address for me, because the forms were incredibly US-centric.
+2021-01-04 19:09:39 <kmc> also the protocol for paying for a sit-down meal at a restaurant in the USA is still ridiculous
+2021-01-04 19:09:45 Quit: b4er (Ping timeout: 240 seconds)
+2021-01-04 19:09:45 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-04 19:09:54 <kmc> and unchanged from the very start of credit cards
+2021-01-04 19:10:17 <b_jonas> kmc: what is it?
+2021-01-04 19:10:19 User Name: arseniiv = arseniiv!~arseniiv@95.105.1.35.dynamic.ufanet.ru
+2021-01-04 19:10:19 <arseniiv> kmc: how does it proceed?
+2021-01-04 19:10:24 <fizzie> You give your card to them, they go away with it, then they come back with a receipt, which you then scribble a tip on and leave?
+2021-01-04 19:10:34 <kmc> you give your card to the waiter, they take it in back and do god knows what with it, bring you the card and a receipt, you write the amount you want to pay (including tip) on the receipt and then leave, and trust that they key it in correctly
+2021-01-04 19:10:38 <kmc> yes
+2021-01-04 19:10:46 <fizzie> Yeah, I've always found that real weird.
+2021-01-04 19:10:55 <kmc> instead of, say, bringing you a portable EMV terminal to the table
+2021-01-04 19:10:56 <b_jonas> do they still do that?
+2021-01-04 19:10:58 <arseniiv> oh
+2021-01-04 19:10:59 <b_jonas> I thought they stopped by now
+2021-01-04 19:11:01 <kmc> which I think is how it works in civilized countries
+2021-01-04 19:11:12 <fizzie> They were still doing that on my last US visit.
+2021-01-04 19:11:12 <b_jonas> and that banks also don't allow that
+2021-01-04 19:11:18 <b_jonas> I see
+2021-01-04 19:11:27 <b_jonas> that doesn't happen here
+2021-01-04 19:11:36 <kmc> it will probably be decades more before that changes
+2021-01-04 19:11:46 <kmc> at this point it's an ingrained part of American culture
+2021-01-04 19:11:54 <kmc> and it would confuse so many people to do it "right"
+2021-01-04 19:12:36 <kmc> (American tipping laws and culture are also dumb, but that's another matter)
+2021-01-04 19:12:57 <fizzie> It doesn't happen here either, but bill-splitting works differently here. The waiter comes around with the machine, and in turn everyone gives the waiter a card and says "take £X from here", except the last one pays whatever remains.
+2021-01-04 19:13:11 <b_jonas> I did get confused by protocol at least once, because in Sweden (and I think the UK and Geramny etc) they use portable terminals where you type in how much tip you want to pay, whereas here they don't have that, instead if you want to pay tip via card reader you tell the waiter or taxi driver how much you want to pay before they hand you the terminal, and they just enter the increased amount to the card
+2021-01-04 19:13:11 <fizzie> I don't actually remember how it usually goes in Finland, but I don't think it's worked like that.
+2021-01-04 19:13:17 <b_jonas> terminal in first place
+2021-01-04 19:13:29 <fizzie> Oh, right, I do remember: you just tell the waiter up front how you like to pay, and they bring you separate bills.
+2021-01-04 19:14:00 <kmc> yeah here you can sometimes ask them to split the bill
+2021-01-04 19:14:09 <kmc> but different restaurants may have policies on when they will or won't do this
+2021-01-04 19:14:13 <kmc> because it's kind of a pain for them
+2021-01-04 19:14:16 <b_jonas> kmc: couldn't they fix that without incompatbility by like, if you give the waiter the card, they still take it and just put it into the slot of the terminal in front of you and then hand it back after they get the confirmation?
+2021-01-04 19:14:25 <kmc> separately you can also pay one bill with multiple cards or a combination of cards and cash
+2021-01-04 19:14:32 <kmc> i think that is pretty universally accepted, but i rarely do it
+2021-01-04 19:14:46 <kmc> it's easier to have one person card the whole meal and everyone else gives that person cash or venmo or something
+2021-01-04 19:15:09 <kmc> at my university the rule was that the youngest non-math-major had to calculate how much everyone owes after a meal
+2021-01-04 19:15:19 <kmc> (because math majors can't do arithmetic)
+2021-01-04 19:15:26 <kmc> and i was pretty much always youngest
+2021-01-04 19:15:32 <kmc> but I did claim to be a math major for one term
+2021-01-04 19:15:37 <b_jonas> kmc: heh
+2021-01-04 19:15:40 <arseniiv> :D
+2021-01-04 19:20:37 <kmc> this conversation reminded me of an esoteric forgotten-technology thing
+2021-01-04 19:21:11 <kmc> which is that once upon a time, Bloom filters computed from numbers of stolen credit cards were transmitted alongside FM radio broadcasts
+2021-01-04 19:21:18 <kmc> https://i.imgur.com/gicQK2W.png https://i.imgur.com/VvBK3fz.jpg
+2021-01-04 19:21:42 <kmc> perhaps only as a trial in one city... i haven't found much information besides this one article in a trade publication from the 90s
+2021-01-04 19:23:07 <fizzie> Here's another unrelated forgotten-tech thing: at least in Finland, magazines used to print bar codes in the TV program listings, that could be used to set up a VCR to record that program, by reading the bar code using a scanner in the corner of the VCR's remote.
+2021-01-04 19:23:14 <kmc> of course at one time merchants were issued physical books of canceled card numbers, but that doesn't scale at all
+2021-01-04 19:23:27 <fizzie> (I think they might have had at least two incompatible systems for those.)
+2021-01-04 19:23:30 <kmc> so they moved to electronic networks for verifying the cards
+2021-01-04 19:24:28 <kmc> but those were kind of expensive so the FM thing was meant to reduce load on them, by caching a data structure (article doesn't say, but probably a bloom filter) with each merchant so that many cards could be accepted offline and only some would need to be checked in realtime
+2021-01-04 19:25:11 <kmc> the whole notion of credit cards is still a weird one to me
+2021-01-04 19:25:26 <kmc> the idea that you are borrowing money just by making purchases
+2021-01-04 19:25:42 <kmc> obviously arises from the limitations of pre-electronic commerce
+2021-01-04 19:26:13 <kmc> but sort of became a raison d'etre of the cards themselves
+2021-01-04 19:26:39 <b_jonas> fizzie: jesus, so that's what they did about people stereotypically being unable to program vcrs? crazy, I haven't heard of that
+2021-01-04 19:27:16 <kmc> and somehow my willingness to "borrow" $5 to buy a sandwich when I already have $5 and will immediately pay it back is used to assess my trustworthiness to borrow $1,500,000 to buy a house
+2021-01-04 19:27:42 <kmc> and also my trustworthiness to rent an apartment or get a job or do other things that have nothing to do with borrowing money
+2021-01-04 19:27:50 <b_jonas> kmc: that's another of those weird things the US does, yes
+2021-01-04 19:28:01 <kmc> and really credit score is not about trustworthiness at all; it's about how much money banks can expect to make from lending to you
+2021-01-04 19:28:13 <kmc> so the "perfect" customer who only borrows money when she really needs to and pays it back as soon as possible gets a crappy score
+2021-01-04 19:28:15 <b_jonas> kmc: but don't worry, we Europeans do other weird things instead
+2021-01-04 19:28:22 <kmc> because it's more profitable to people who will end up oweing more interest
+2021-01-04 19:28:24 <fizzie> b_jonas: Yeah, something like https://en.wikipedia.org/wiki/Video_recorder_scheduling_code for the manually typed-in version, but I'm pretty sure there was also a barcode form.
+2021-01-04 19:28:46 <kmc> but somehow "profitability as a customer for consumer debt" has become our general purpose score of whether you are a good and trustworthy person
+2021-01-04 19:28:49 <b_jonas> fizzie: I think I've seen the printed version
+2021-01-04 19:28:52 <kmc> it says something dark about our society
+2021-01-04 19:29:05 <b_jonas> fizzie: printed in newspapers that is, I haven't used a VCR that does it
+2021-01-04 19:29:12 <kmc> fizzie: that VCR thing is cool
+2021-01-04 19:29:22 <fizzie> We didn't have a fancy enough VCR to have that, but either a friend or a relative did, and I always found it real impressive somehow.
+2021-01-04 19:29:28 <fizzie> Even though it really doesn't do much.
+2021-01-04 19:29:34 <b_jonas> I've only ever programmed a VCR the obvious way, by entering the day of week and hour and minute of start time and hour and minute of end time
+2021-01-04 19:29:44 <kmc> this? https://en.wikipedia.org/wiki/Video_recorder_scheduling_code
