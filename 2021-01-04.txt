@@ -33,3 +33,35 @@
 2021-01-04 02:45:11 Quit: b4er (Read error: Connection reset by peer)
 2021-01-04 02:46:24 Nick Change: b4er -> b4er
 2021-01-04 02:59:28 <shachaf> So what's the deal with "A, B |- X, Y" meaning a conjunction on the left and a disjunction on the right?
+2021-01-04 03:01:09 User Name: zzo38 = zzo38!~zzo38@host-24-207-14-22.public.eastlink.ca
+2021-01-04 03:01:09 <zzo38> Well, it is due to how the rules for logic works, they work well and symmetric when that is the case, I think.
+2021-01-04 03:05:28 <b4er> Huh, what inference rule is that?
+2021-01-04 03:05:43 <int-e> shachaf: Since you like SAT... it's a clause, -A \/ -B \/ X \/ Y
+2021-01-04 03:06:18 <shachaf> int-e: Yes, that's what made me think about it.
+2021-01-04 03:06:33 <shachaf> SAT is like a one-sided thing where everything is on the right of the turnstile.
+2021-01-04 03:06:45 <b4er> Usually when writing X |- Y left would be context (not conjunction) and right is the conclusion
+2021-01-04 03:07:33 <b4er> A,B |- ... is the same as B,A |- ... but A /\ B is not the same as B /\ A
+2021-01-04 03:08:53 <int-e> shachaf: and the cut rule is resolution
+2021-01-04 03:10:55 <shachaf> Makes sense.
+2021-01-04 03:15:00 Joined: b4er
+2021-01-04 03:15:34 Quit: b4er (Ping timeout: 246 seconds)
+2021-01-04 03:16:14 <shachaf> b4er_: Right, but the question is how to interpret multiple things in the context vs. in the conclusion.
+2021-01-04 03:16:49 User Name: b4er = b4er_!~b4er@2a02:aa16:3a80:1900:5f0f:a23e:4628:9051
+2021-01-04 03:16:49 <b4er> shachaf, that really depends on the logic
+2021-01-04 03:17:48 <b4er> Sometimes you can swap assumptions or drop them, sometimes you can't
+2021-01-04 03:17:55 <b4er> I think they're called structural rules
+2021-01-04 03:19:56 <zzo38> Yes, there are different kind of logic, some which allow such things (and also duplication) and some don't.
+2021-01-04 03:20:12 <shachaf> Yes.
+2021-01-04 03:23:01 Quit: b4er (Read error: Connection reset by peer)
+2021-01-04 03:23:01 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-04 03:23:15 Joined: b4er
+2021-01-04 03:23:16 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, asie, atehwa, b4er, b_jonas, Bowserinator, BWBellairs, Cale, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, myname, nakilon, nfd, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, probablymoony, ProofTechnique, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-04 03:23:18 Joined: b4er
+2021-01-04 03:23:36 User Name: b4er = b4er!~b4er@91.193.4.106
+2021-01-04 03:23:36 <b4er> Would , not be natural for conjunction on both sides?
+2021-01-04 03:23:38 Joined: b4er
+2021-01-04 03:24:21 <shachaf> I think most people just don't use , on the right side.
+2021-01-04 03:24:26 <zzo38> No. The way the rules work to allow freely moving them around, it works better the way it is.
+2021-01-04 03:24:28 <shachaf> But when they do, it means something like disjunction.
+2021-01-04 03:25:31 <shachaf> So you have rules that let you move things, like zzo38 said, e.g. from "Γ, A |- Δ" to "Γ |- ¬A, Δ"
+2021-01-04 03:29:17 <b4er> Idk, that's kind of confusing the only time I've seen , on the rhs was for product types which are like conjunction
