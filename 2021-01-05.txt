@@ -102,3 +102,71 @@
 2021-01-05 17:48:51 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olban, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
 2021-01-05 17:50:30 Joined: LKoen
 2021-01-05 17:50:31 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olban, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-05 18:02:22 Quit: TheLie (Remote host closed the connection)
+2021-01-05 18:02:23 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olban, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-05 18:06:58 <int-e> fizzie: Argh, I just realized that MODI and DIVI are inconsistent when negative numbers are involved :-/
+2021-01-05 18:07:12 <int-e> Avoidable, but what a nuisance...
+2021-01-05 18:07:51 <fizzie> What, there's a MODI instruction?!
+2021-01-05 18:08:35 <int-e> yes.
+2021-01-05 18:08:44 <fizzie> ...I was so sure I checked for that...
+2021-01-05 18:09:27 <int-e> It's even documented.
+2021-01-05 18:10:14 <int-e> (Though maybe not the way you'd expect. The "ADDI" documentation lists the other arithmetic operations as a note.)
+2021-01-05 18:10:42 <fizzie> Yeah, I know that note.
+2021-01-05 18:10:54 <fizzie> I don't know how I managed to miss MODI there.
+2021-01-05 18:11:26 <fizzie> I've got at least one COPY X, T; DIVI X, 2, X; SUBI T, X, T; SUBI T, X, T sequence just to get a LSB.
+2021-01-05 18:12:05 <fizzie> (Well, I do need the X/2 as well. But still.)
+2021-01-05 18:12:38 <int-e> anyway, MODI produces nonnegative numbers, DIVI truncates towards zero.
+2021-01-05 18:13:04 <b_jonas> um, what's this?
+2021-01-05 18:13:08 Quit: delta23 (Ping timeout: 256 seconds)
+2021-01-05 18:13:09 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olban, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-05 18:13:11 <int-e> EXAPUNKS
+2021-01-05 18:13:53 <b_jonas> wtf are you guys playing a new puzzle game every day?
+2021-01-05 18:13:59 <b_jonas> #esoteric is odd
+2021-01-05 18:14:35 <kmc> lol
+2021-01-05 18:14:37 <myname> what's wrong with that
+2021-01-05 18:14:37 <fizzie> I didn't play that other game.
+2021-01-05 18:15:04 <fizzie> (And I think I'm pretty much done with EXAPUNKS, unless I get the urge to go back and tweak.)
+2021-01-05 18:15:33 <int-e> myname: it violates a = (a/b)*b + (a%b)
+2021-01-05 18:16:00 <fizzie> Oh well. At least my most common use for MODI probably would've been to do MODI X, 10, T, and it's not like SWIZ X, 1, T is any longer.
+2021-01-05 18:16:17 <int-e> right.
+2021-01-05 18:16:37 <myname> i mean, what's wrong with new good games every day
+2021-01-05 18:17:52 <int-e> Oh. Sorry, yeah I don't know what's wrong with that either.
+2021-01-05 18:18:16 <int-e> fungot: what's wrong with us?
+2021-01-05 18:18:16 <fungot> int-e: that's tablespoons though, there's nothing quite like going into the shitter. do symbols need to be
+2021-01-05 18:18:25 <fizzie> fungot: Don't be crass.
+2021-01-05 18:18:25 <fungot> fizzie: update at 11
+2021-01-05 18:18:27 <int-e> ^style
+2021-01-05 18:18:27 <fungot> Available: agora alice c64 ct darwin discworld enron europarl ff7 fisher fungot homestuck ic irc* iwcs jargon lovecraft nethack oots pa qwantz sms speeches ss wp ukparl youtube
+2021-01-05 18:18:48 * int-e wonders where it learned the last word :)
+2021-01-05 18:19:10 <int-e> (of the first sentence)
+2021-01-05 18:19:11 <myname> wait, fungot has a style for fungot?
+2021-01-05 18:19:11 <fungot> myname: nonlinear fnord. see, that's my master's subject... i'm writing a scheme to c part
+2021-01-05 18:19:17 Joined: delta23
+2021-01-05 18:19:18 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olban, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-05 18:19:37 <fizzie> fungot: What sort of weird ass-university did you find to accept a master's thesis on yourself?
+2021-01-05 18:19:37 <fungot> fizzie: my turn!!! eheheheheeheheheh the fnord. so many of those lists would you fnord.
+2021-01-05 18:19:58 <myname> does it like read its own logs?
+2021-01-05 18:20:10 <fizzie> It's not automated or anything fancy like that.
+2021-01-05 18:20:22 <fizzie> I just took all it had said here over some period of time, and fed that as input.
+2021-01-05 18:20:54 <int-e> meta
+2021-01-05 18:21:11 <fizzie> Theoretically you could directly interpolate the models to get (asymptotically) the same result, like `words does.
+2021-01-05 18:21:14 <fizzie> ^style fungot
+2021-01-05 18:21:14 <fungot> Selected style: fungot (What I've said myself)
+2021-01-05 18:21:21 <fizzie> fungot: What *have* you said?
+2021-01-05 18:21:21 <fungot> fizzie: is. absorb it on my door, which was just perceptibly fnord and this yields nothing itself; it keeps being removed, the queen. i see no sense
+2021-01-05 18:21:34 <fizzie> At least the last sentence is fitting.
+2021-01-05 18:21:48 <int-e> very introspective
+2021-01-05 18:21:48 <kmc> I'm getting a FPGA board soon. I might do some eso- and/or retro-computing with it
+2021-01-05 18:22:16 <myname> will messages fungot writes with fungot style be part of future fungot style input to make it even more fungot?
+2021-01-05 18:22:17 <fungot> myname: " and this is a new game. there is no
+2021-01-05 18:22:28 <b_jonas> myname: no
+2021-01-05 18:22:39 <fizzie> Only if I go back and re-train that style.
+2021-01-05 18:23:30 <fizzie> Though I guess in theory it should just be a no-op. It would affect the interpolation weights a little though.
+2021-01-05 18:23:58 <kmc> I wonder which esolangs would be fun/good to implement in HDL.
+2021-01-05 18:24:16 <kmc> I actually wrote a Verilog (or was it VHDL?) Brainfuck forever ago, just as a hello world to learn the language
+2021-01-05 18:24:19 <kmc> but I never ran it on real hardware
+2021-01-05 18:25:27 <fizzie> I looked a little bit at creating a Befunge coprocessor for MIPS, as part of an optional extra of a CPU design course exercise thing ("add a coprocessor"), but never got around to even doing the main thing.
+2021-01-05 18:25:54 <fizzie> It would've had a 256x256-byte playfield though.
+2021-01-05 18:26:27 Joined: craigo
+2021-01-05 18:26:27 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, catern, clog, craigo, Deewiant, delta23, dingwat, dionys, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olban, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, xelxebar, zeroed, zzo38
+2021-01-05 18:26:47 <kmc> neat
