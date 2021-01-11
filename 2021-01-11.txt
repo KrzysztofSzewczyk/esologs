@@ -258,3 +258,10 @@
 2021-01-11 20:17:53 <zzo38> Yes, I believe you; that makes sense.
 2021-01-11 20:23:16 <kmc> serialization is a surprisingly hard problem
 2021-01-11 20:23:48 <kmc> it often seems stupid that the world has so many serialization formats, but it's surprisingly tricky to design a good one, and there are a lot of conflicting requirements such that there isn't necessarily one best choice
+2021-01-11 20:31:49 <Hooloovo0> yeah. that's for sure.
+2021-01-11 20:53:05 <shachaf> Man, this string searching loop is so good: for (int i = 0; i < text_size; i++) { state = (state >> 1) | table[text[i]]; if ((state & 1) == 0) { /* found */ } }
+2021-01-11 20:55:29 <rain1> does table just put how many chars left are need as bits?
+2021-01-11 20:56:45 <shachaf> I guess you can put it that way?
+2021-01-11 20:56:57 <shachaf> Each bit is an NFA state.
+2021-01-11 20:57:44 <rain1> it seems ok, very basic no skip aheads
+2021-01-11 20:58:45 <shachaf> Yes, it's only for small patterns.
