@@ -177,3 +177,11 @@
 2021-01-11 15:59:14 <esowiki> 14[[07Language list14]]4 10 02https://esolangs.org/w/index.php?diff=79935&oldid=79934 5* 03Shahryar 5* (+16) 10/* P */
 2021-01-11 16:12:35 <esowiki> 14[[07Plutonium14]]4 N10 02https://esolangs.org/w/index.php?oldid=79936 5* 03Shahryar 5* (+408) 10Plutonium Programming Language Intro
 2021-01-11 16:16:39 <esowiki> 14[[07User:Shahryar14]]4 N10 02https://esolangs.org/w/index.php?oldid=79937 5* 03Shahryar 5* (+194) 10Created page with "Hi, I am Shahryar Ahmad.I am a self taught teenage programmer.I love programming.I created my own programming language plutonium.I code in C/C++ and these are my favourite pro..."
+2021-01-11 16:30:53 <esowiki> 14[[07Length14]]4 10 02https://esolangs.org/w/index.php?diff=79938&oldid=79932 5* 03Nailuj29 5* (+72) 10
+2021-01-11 16:41:56 <esowiki> 14[[07Length14]]4 10 02https://esolangs.org/w/index.php?diff=79939&oldid=79938 5* 03Nailuj29 5* (-4) 10
+2021-01-11 16:48:04 <esowiki> 14[[07Length14]]4 10 02https://esolangs.org/w/index.php?diff=79940&oldid=79939 5* 03Nailuj29 5* (+83) 10
+2021-01-11 16:54:50 <shachaf> b_jonas: The algorithm I'm describing is certainly in the Boyer-Moore family.
+2021-01-11 16:56:09 <shachaf> The book I'm reading divides string-in-string search algorithms into approximately three families, KMP-like, BM-like, and ones based on substrings (which it calls factors).
+2021-01-11 16:56:35 <shachaf> Rabin-Karp is yet another method, which it hasn't even mentioned yet.
+2021-01-11 16:56:57 <shachaf> Maybe it'll mention it if don't-care characters come up later.
+2021-01-11 16:57:51 <shachaf> Anyway, BNDM -- Backward Nondeterministic Dawg Matching -- is an example of the factor algorithm. https://www-igm.univ-mlv.fr/~lecroq/string/bndm.html looks like a link for it?
