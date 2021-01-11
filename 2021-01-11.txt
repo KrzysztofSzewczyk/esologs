@@ -245,3 +245,16 @@
 2021-01-11 19:55:58 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, delta23, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, FreeFull, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, privateger, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
 2021-01-11 19:57:31 <zzo38> Yes, although other than text files, many files will contain \0
 2021-01-11 19:58:20 <kmc> https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing
+2021-01-11 20:03:14 <zzo38> That will work, although that makes it a more complicated format. (Although for some applications that might still be helpful, I suppose.)
+2021-01-11 20:03:25 <kmc> yeah
+2021-01-11 20:09:29 <zzo38> Although I generally prefer the Hamster archive format, which is like what rain1 described except instead of adding a null byte after the data, add the 32-bit PDP-endian data size before the data. (Of course, different formats have their own advantages and disadvantages, such as this won't work if the data size won't fit in a 32-bit number.)
+2021-01-11 20:09:34 <kmc> if the goal is just to pack files together then i reckon a length-prefixed format is better than a delimited format
+2021-01-11 20:09:37 <kmc> yeah
+2021-01-11 20:10:18 <zzo38> Yes, I think so too.
+2021-01-11 20:10:22 <kmc> the length-prefixed format doesn't require processing the file data at all, and it allows a reader to easily skip files that are not of interest, assuming the archive is on a seekable medium
+2021-01-11 20:12:14 <zzo38> Yes, I did think of that too (and have taken advantage of that too).
+2021-01-11 20:14:34 <kmc> COBS is good for something like a serial data link where a) you don't necessarily know the length of a packet when you start transmitting it and b) you want to be able to jump into the middle of a stream and resynchronize as soon as you reach the end of a packet
+2021-01-11 20:15:19 <kmc> I am thinking the next time I build an embedded system which needs to send structured data over a serial link, I might use CBOR + COBS
+2021-01-11 20:17:53 <zzo38> Yes, I believe you; that makes sense.
+2021-01-11 20:23:16 <kmc> serialization is a surprisingly hard problem
+2021-01-11 20:23:48 <kmc> it often seems stupid that the world has so many serialization formats, but it's surprisingly tricky to design a good one, and there are a lot of conflicting requirements such that there isn't necessarily one best choice
