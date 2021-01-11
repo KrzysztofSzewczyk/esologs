@@ -185,3 +185,26 @@
 2021-01-11 16:56:35 <shachaf> Rabin-Karp is yet another method, which it hasn't even mentioned yet.
 2021-01-11 16:56:57 <shachaf> Maybe it'll mention it if don't-care characters come up later.
 2021-01-11 16:57:51 <shachaf> Anyway, BNDM -- Backward Nondeterministic Dawg Matching -- is an example of the factor algorithm. https://www-igm.univ-mlv.fr/~lecroq/string/bndm.html looks like a link for it?
+2021-01-11 17:00:26 Quit: xelxebar (Remote host closed the connection)
+2021-01-11 17:00:26 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mmmattyx, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2021-01-11 17:00:49 Joined: xelxebar
+2021-01-11 17:00:49 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mmmattyx, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-11 17:00:53 <b_jonas> shachaf: Rabin-Karp is mentioned in the book that I linked, and in Cormen
+2021-01-11 17:01:11 <b_jonas> shachaf: isn't there an additional family of randomized (hashing) algorithms?
+2021-01-11 17:01:18 <shachaf> Yes, I know what Rabin-Karp is, I just mean that so far it hasn't mentioned rolling hashes or anything.
+2021-01-11 17:01:50 <b_jonas> ah right, Rabin-Karp is the randomized one
+2021-01-11 17:02:13 <shachaf> My vague recollection of this topic is that optimal time for searching with don't-care characters in the pattern is pretty tricky to achieve with conventional algorithms.
+2021-01-11 17:02:40 <shachaf> And that maybe a rolling hash method does best at it, or something.
+2021-01-11 17:03:41 <b_jonas> shachaf: isn't that only if you insist on theoretical asymptotics though, while most of the practical input data that you want to search for is much easier, though you have to be careful when users can give you text and/or search queries of course?
+2021-01-11 17:04:01 <shachaf> I think that's right. This book is pretty practically-minded.
+2021-01-11 17:04:49 <b_jonas> well, in the end we'll just have to wait for Knuth vol 5 for a clear summary and final word
+2021-01-11 17:06:36 <shachaf> I quite like these methods that store a set of states in a machine word.
+2021-01-11 17:07:06 <shachaf> Even if they're limited to search for patterns of size 64 or something.
+2021-01-11 17:08:58 <shachaf> One thing this book doesn't cover at all is offline algorithms, where you can build an index on the text.
+2021-01-11 17:09:20 <shachaf> I'd read another book about those because there are so many interesting tricks there.
+2021-01-11 17:18:35 Joined: sprocklem
+2021-01-11 17:18:35 Names: ^[, acedic[m], aloril, also_uplime, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mmmattyx, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprocklem, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-11 17:20:59 <esowiki> 14[[07Special:Log/newusers14]]4 create10 02 5* 03Chibiningen 5*  10New user account
+2021-01-11 17:24:19 <esowiki> 14[[07Esolang:Introduce yourself14]]4 10 02https://esolangs.org/w/index.php?diff=79941&oldid=79933 5* 03Chibiningen 5* (+159) 10
+2021-01-11 17:25:21 <esowiki> 14[[07User:Chibiningen14]]4 N10 02https://esolangs.org/w/index.php?oldid=79942 5* 03Chibiningen 5* (+13) 10Created page with "Irashaimasen."
+2021-01-11 17:28:09 <esowiki> 14[[07Talk:Imaginary function14]]4 10 02https://esolangs.org/w/index.php?diff=79943&oldid=43070 5* 03Chibiningen 5* (+164) 10
