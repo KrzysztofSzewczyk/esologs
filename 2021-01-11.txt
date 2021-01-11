@@ -265,3 +265,41 @@
 2021-01-11 20:56:57 <shachaf> Each bit is an NFA state.
 2021-01-11 20:57:44 <rain1> it seems ok, very basic no skip aheads
 2021-01-11 20:58:45 <shachaf> Yes, it's only for small patterns.
+2021-01-11 21:00:45 <shachaf> If you want skipahead, Horspool is also really simple (way simpler than Boyer-Moore) and good.
+2021-01-11 21:02:39 <zzo38> kmc: I think that different formats can be good for different purposes, although it is true there are some problem with some of them
+2021-01-11 21:02:39 <rain1> thanks i didn't know about it
+2021-01-11 21:03:05 <shachaf> window_left := 0; while (window_left <= end - pattern_size) { if (s[window_left:window_left+pattern_size] == pattern) { /* found */ } else { window_left += table[text[window_left + pattern_size - 1]]; }
+2021-01-11 21:03:14 <shachaf> Where that if is doing string comparison, of course.
+2021-01-11 21:04:15 <shachaf> And the table just has the rightmost occurrence of each character (excluding the last one).
+2021-01-11 21:06:54 <zzo38> I think XML is too often used as a general purpose serialization format when it isn't very good for that; what XML is good for is stuff like HTML (and avoids some of the problems of HTML).
+2021-01-11 21:07:17 <kmc> XML has a lot of problems
+2021-01-11 21:08:06 <zzo38> Yes, it does have a lot of its own problems too
+2021-01-11 21:16:17 <zzo38> One serialization format that is often missed is the format produced by the printobject operator in PostScript.
+2021-01-11 21:16:26 <kmc> I do like some things that XML can do, such as namespacing of tags, ability to embed one type of XML document in another, and schemas to check validity
+2021-01-11 21:16:32 <kmc> but these things are often not used or used improperly
+2021-01-11 21:16:37 <kmc> and the concrete syntax of XML is very cumbersome
+2021-01-11 21:16:49 <kmc> which defeats the purpose of a "human-readable" format
+2021-01-11 21:17:03 <kmc> and if it's not going to be human-readable/editable then it could be a more efficient and easy to parse binary format
+2021-01-11 21:17:19 <kmc> zzo38: what is that format?
+2021-01-11 21:17:44 <zzo38> XML is way too often misused I think. The good things XML can do is good for things like HTML, not for other kind of stuff, I think.
+2021-01-11 21:18:14 <zzo38> kmc: Here is a description: http://fileformats.archiveteam.org/wiki/PostScript_binary_object_format
+2021-01-11 21:18:57 <esowiki> 14[[07Plutonium14]]4 M10 02https://esolangs.org/w/index.php?diff=79946&oldid=79936 5* 03Tetrapyronia 5* (+53) 10added link (needs formatting and stuff)
+2021-01-11 21:19:24 <esowiki> 14[[07Plutonium14]]4 M10 02https://esolangs.org/w/index.php?diff=79947&oldid=79946 5* 03Tetrapyronia 5* (-9) 10
+2021-01-11 21:23:12 <kmc> HTML isn't even proper XML
+2021-01-11 21:23:24 <kmc> and the project to turn it into proper XML failed and was abandoned
+2021-01-11 21:24:14 <zzo38> Yes, I know, HTML isn't even proper XML.
+2021-01-11 21:24:25 <b_jonas> kmc: it wasn't abandonned. while we don't transmit HTML written as XML, browsers and their Javascript DOM interface effectively expose a view of the live internal state of HTML document that is basically an XML tree
+2021-01-11 21:24:58 <b_jonas> so XML is a good way to describe how the semantics works
+2021-01-11 21:25:48 <kmc> it still differs from XML
+2021-01-11 21:25:54 <b_jonas> we just don't want to apply the restrictions of XML to the HTML files that we transmit because that'd be pointless. like, no \x00 characters? it'd just be a stupid extra requirement on the side that serves the XHTML, when the browser side will always have to be able to parse full HTML anyway.
+2021-01-11 21:26:31 <b_jonas> kmc: sure, it differs, but I don't think that counts as abandonned
+2021-01-11 21:26:34 <kmc> I agree that HTML is similar to XML and some of the same concepts apply when working with a DOM
+2021-01-11 21:26:41 <b_jonas> the XML thing wasn't a dead-end
+2021-01-11 21:26:50 <b_jonas> it just led to the DOM interface that isn't quite XML
+2021-01-11 21:27:02 <kmc> the idea of serializing HTML pages in an XML compatible format basically went nowhere
+2021-01-11 21:27:12 <kmc> there is actually an XML compatible serialization of HTML5 documents (XHTML5)
+2021-01-11 21:27:16 <kmc> but I don't think it's used much
+2021-01-11 21:27:22 <kmc> it does not parse as standard HTML5, I don't think
+2021-01-11 21:27:27 <kmc> it would have a different content-type
+2021-01-11 21:27:31 <kmc> and a different, much stricter parser
+2021-01-11 21:28:02 <kmc> versus the HTML5 parser which is a precisely specified complicated ball of garbage meant to parse any vaguely correct HTML-ish thing anyone's ever written since 1990
