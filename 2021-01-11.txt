@@ -69,3 +69,23 @@
 2021-01-11 08:59:10 <shachaf> I guess it's some typical amortized argument.
 2021-01-11 08:59:21 <shachaf> To be able to jump back you must have gone forward some number of steps.
 2021-01-11 08:59:31 <int-e> Each epsilon transition goes back in the needle, so is paid for by a previous transition that advanced in the needle.
+2021-01-11 09:00:18 <int-e> So that's your cost per character: Advance the needle, plus a potential epsilon transition that skips back.
+2021-01-11 09:02:15 <shachaf> Right, that's the sort of thing I meant.
+2021-01-11 09:03:04 <shachaf> So, hmm, you get at most 2n transitions or something?
+2021-01-11 09:03:11 <int-e> (and then, of course, there's building the table)
+2021-01-11 09:03:30 <int-e> shachaf: right
+2021-01-11 09:03:55 <shachaf> Where "n" is the length of the haystack, not the needle, despite the confusing name.
+2021-01-11 09:04:34 <shachaf> Anyway, this book doesn't actually get into the details of KMP. It says it's mainly useful for short needles, and there are better algorithms for those.
+2021-01-11 09:05:31 <int-e> Hmm. Somehow I've never studied Boyer-Moore.
+2021-01-11 09:06:28 <int-e> Beyond the very basic idea (skip ahead a full needle's length; if you're lucky the character you find is none of the needle characters, and then you'll process the string much faster)
+2021-01-11 09:07:02 <shachaf> Well, according to this book, Boyer-Moore is slower and more complicated than its Horspool simplification.
+2021-01-11 09:07:15 <int-e> I've never even heard of that one
+2021-01-11 09:07:43 <int-e> But that's consistent with what I said :)
+2021-01-11 09:07:54 <shachaf> It's what GNU memmem uses, apparently.
+2021-01-11 09:08:14 <shachaf> (For sizes [3,256].)
+2021-01-11 09:08:38 <int-e> (consistent: the difference is in the details that I never studied)
+2021-01-11 09:10:24 <shachaf> Shift-And looks really simple.
+2021-01-11 09:28:39 Quit: imode (Ping timeout: 260 seconds)
+2021-01-11 09:28:39 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-11 09:28:40 <shachaf> This algorithm is just simulating an NFA in parallel with bitwise operations.
+2021-01-11 09:28:57 <shachaf> So the transition is: state = ((state << 1) | 1) & table[c];
