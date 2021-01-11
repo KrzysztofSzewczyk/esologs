@@ -33,3 +33,39 @@
 2021-01-11 08:08:42 <shachaf> With a lookup table of size |pattern| * 256
 2021-01-11 08:23:41 Quit: Sgeo (Read error: Connection reset by peer)
 2021-01-11 08:23:41 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-11 08:39:21 Joined: LKoen
+2021-01-11 08:39:22 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-11 08:43:00 Joined: imode
+2021-01-11 08:43:00 Names: ^[, acedic[m], aloril, also_uplime, APic, Arcorann, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, copumpkin, Deewiant, dingwat, Discordian[m], diverger, dnm, esowiki, FireFly, fizzie, fungot, galactic, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, imode, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lykaina, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-11 08:47:54 <int-e> shachaf: Yeah KMP builds a very compactly represented NFA, not a DFA.
+2021-01-11 08:48:45 <shachaf> Right, I saw something about that.
+2021-01-11 08:49:51 <shachaf> Or, hmm, this book says that KMP uses a deterministic automaton.
+2021-01-11 08:50:18 <shachaf> And compares it to shift-and which uses a nondeterministic automaton, it says.
+2021-01-11 08:50:23 <int-e> KMP has epsilon transitions
+2021-01-11 08:51:11 <int-e> Hrm.
+2021-01-11 08:51:26 <shachaf> Epsilon transitions? I must be thinking of something else then.
+2021-01-11 08:51:50 <shachaf> Or maybe it's just about how you're thinking of it.
+2021-01-11 08:51:53 <int-e> Maybe I'm taking a too detailed view on KMP.
+2021-01-11 08:53:01 <shachaf> If you have /.*pattern/, you can think of the NFA where state 0 has a transition to state 1 on p, and also to state 0 on every character.
+2021-01-11 08:53:12 <int-e> In that view, each time you compare a letter from the haystack with a letter from the needle, a transition is made.
+2021-01-11 08:54:13 <int-e> And each time these are not equal, the haystack letter is not consumed... so that makes it an epsilon transition to my mind.
+2021-01-11 08:54:32 <shachaf> Aha, I see.
+2021-01-11 08:54:37 <int-e> But then again it lacks the annoying property of NFAs that you have to keep track of several states...
+2021-01-11 08:55:02 <shachaf> I was sort of thinking you operate by always taking one character at a time and doing your transitions, which is why I ended up with a DFA.
+2021-01-11 08:55:10 <int-e> So it's a weird beast inbetween :)
+2021-01-11 08:55:16 <shachaf> But the trick is that it's allowed to choose not to consume characters.
+2021-01-11 08:55:29 <shachaf> So a single character can take multiple transitions (possibly all the way back to 0).
+2021-01-11 08:55:32 <shachaf> Is that right?
+2021-01-11 08:55:38 <int-e> Yes.
+2021-01-11 08:56:15 <int-e> Mainly this was/is me trying to make sense of the table that KMP builds.
+2021-01-11 08:56:16 <shachaf> Neato, that makes sense.
+2021-01-11 08:56:24 <shachaf> I think I vaguely remember something about that now.
+2021-01-11 08:56:31 <int-e> Which if it is viewed as a DFA, is hard.
+2021-01-11 08:57:22 <shachaf> But it's still guaranteed to take linear time.
+2021-01-11 08:58:09 <int-e> Oh yes. Each DFA transition takes amortized constant time.
+2021-01-11 08:58:45 <int-e> But you almost certainly know that.
+2021-01-11 08:58:59 <myname> why is that, though?
+2021-01-11 08:59:04 <shachaf> I "know" it but it's not immediately obvious why.
+2021-01-11 08:59:10 <shachaf> I guess it's some typical amortized argument.
+2021-01-11 08:59:21 <shachaf> To be able to jump back you must have gone forward some number of steps.
+2021-01-11 08:59:31 <int-e> Each epsilon transition goes back in the needle, so is paid for by a previous transition that advanced in the needle.
