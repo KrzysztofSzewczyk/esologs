@@ -173,3 +173,11 @@
 2021-01-14 20:08:35 User Name: arseniiv = arseniiv_!~arseniiv@145.255.10.228
 2021-01-14 20:08:35 <arseniiv> re VHDL: neat!
 2021-01-14 20:08:39 Nick Change: arseniiv -> arseniiv
+2021-01-14 20:33:03 Quit: xelxebar (Ping timeout: 240 seconds)
+2021-01-14 20:33:04 Names: ^[, acedic[m], aloril, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, Deewiant, dingwat, Discordian[m], diverger, djanatyn, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, wmww, zeroed, zzo38
+2021-01-14 20:34:15 Joined: xelxebar
+2021-01-14 20:34:15 Names: ^[, acedic[m], aloril, APic, arseniiv, ArthurStrong, asie, atehwa, b_jonas, Bowserinator, BWBellairs, clog, Deewiant, dingwat, Discordian[m], diverger, djanatyn, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, kmc, lambdabot, lifthrasiir, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, TheLie, trn, tromp, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
+2021-01-14 20:51:00 <int-e> Hmm would Z be a floating state?
+2021-01-14 20:51:36 <int-e> (probably)
+2021-01-14 20:51:45 * int-e wonders more about the notion of weakness...
+2021-01-14 20:54:13 <int-e> Oh I have a guess: A weak zero will pull a line to zero, unless there's a strong 1 on it as well... so useful for busses.
