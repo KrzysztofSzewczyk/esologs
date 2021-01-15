@@ -347,3 +347,23 @@
 2021-01-15 20:26:07 Names: ^[, acedic[m], aloril, APic, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, clog, Deewiant, Discordian[m], diverger, djanatyn, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, MDude, Melvar, mich181189, mla, mmmattyx, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, Sgeo, shachaf, shikhin, ski, Soni, sparr, sprock, spruit11, stux|RC-only, Taneb, trn, tromp, ubq323, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
 2021-01-15 20:27:15 <int-e> 221 pages
 2021-01-15 20:27:59 <int-e> but it spends so much more space on regular expressions than flexible matching ;)
+2021-01-15 20:34:40 <shachaf> Have you read it?
+2021-01-15 20:35:01 <shachaf> I've yet to read the regular expression part.
+2021-01-15 20:36:22 <shachaf> Though I like this trick for simulating an NFA for searching for a short string: https://slbkbs.org/tmp/search/shift-or.c
+2021-01-15 20:36:29 <shachaf> Maybe I already talked about that.
+2021-01-15 20:39:39 <fizzie> Just "maybe", eh? I think it's at least the third time now.
+2021-01-15 20:39:49 <fizzie> (It's p. neat tho.)
+2021-01-15 20:52:57 <shachaf> I remember I talked about string matching but not the details.
+2021-01-15 20:53:06 <shachaf> I didn't see the particular link in the logs.
+2021-01-15 20:53:34 <int-e> shachaf: you talked about it... I wanted to point out that this is a rather special kind of NFA
+2021-01-15 20:53:44 <int-e> but didn't :P
+2021-01-15 20:53:49 <shachaf> Oh, I remember this now, you're right.
+2021-01-15 20:53:54 <shachaf> It's indeed a special kind of NFA.
+2021-01-15 20:54:10 <shachaf> I don't think you can support .* with this trick, for instance.
+2021-01-15 20:54:28 <shachaf> Since all the transitions are forward (except for the initial one).
+2021-01-15 20:54:42 <int-e> the shift is for the forward transition, isn't it?
+2021-01-15 20:54:45 <b_jonas> shachaf: thanks
+2021-01-15 20:54:47 <shachaf> Right.
+2021-01-15 20:57:24 <shachaf> Hmm, maybe you could get it with extra tricks...
+2021-01-15 20:58:10 <shachaf> Also, someone pointed out that since shift distributes over or, you can do two or more transitions at once pretty easily
+2021-01-15 20:58:35 <shachaf> state = (state >> 2) | (table[text[i]] >> 1) | table[text[i+1]];
