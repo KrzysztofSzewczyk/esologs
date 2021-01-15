@@ -251,3 +251,19 @@
 2021-01-15 12:55:01 <b_jonas> in other news, I can confirm that the shapez.io game is not only enjoyable in an addictive way, but it's also esoteric in the same way as OpenTTD is: the game gives you logic control primitives, and those are more than enoguh to win the game, but there are certain *interesting* things you want to do that are quite hard with the logic tools that are given, and you can find solutions for them that abuse
 2021-01-15 12:55:07 <b_jonas> those control primitives in weird combinations
 2021-01-15 12:55:21 <b_jonas> I can give more details if you want, but eventually they become spoilers
+2021-01-15 13:03:53 <fizzie> <img src="foo" /> is explicitly *not* an error in HTML5.
+2021-01-15 13:03:57 <fizzie> https://html.spec.whatwg.org/multipage/syntax.html#start-tags "Then, if the element is one of the void elements, or if the element is a foreign element, then there may be a single U+002F SOLIDUS character (/). This character has no effect on void elements, but on foreign elements it marks the start tag as self-closing."
+2021-01-15 13:04:02 <fizzie> (`img` is a void element.)
+2021-01-15 13:07:33 <fizzie> An XML-style self-closing start tag would be invalid for a normal element, though, so <p /> and suchlike would be errors.
+2021-01-15 13:15:56 <b_jonas> fizzie: ok, maybe it's only an error in HTML4
+2021-01-15 13:16:32 <b_jonas> fizzie: does that apply to other similar tags that can be empty, like input, link, meta, and some forms of script and style?
+2021-01-15 13:17:05 <fizzie> The void elements are: area, base, br, col, embed, hr, img, input, link, meta, param, source, track, wbr.
+2021-01-15 13:17:20 <b_jonas> sure, <p /> is always an error. you have to surround the paragraph with <p>..</p> in XML but that works fine in HTML, HTML just mostly ignores the </p> tags.
+2021-01-15 13:17:34 <fizzie> It does not apply to what HTML5 calls "raw text elements" (script, style).
+2021-01-15 13:18:01 <b_jonas> fizzie: hmm, so how do you write a script or style element when their content is empty because they take the script or style from an url specified as an attribute?
+2021-01-15 13:18:20 <fizzie> I think you still write <script src="..."></script>, even though it looks ugly.
+2021-01-15 13:18:26 <b_jonas> oh yeah, for style that doesn't exist
+2021-01-15 13:18:41 <b_jonas> it's <link rel="stylesheet" href="foo" type="text/css" />
+2021-01-15 13:19:06 <b_jonas> and script is weird for historical compatibility? ok.
+2021-01-15 13:21:12 Quit: delta23 (Ping timeout: 272 seconds)
+2021-01-15 13:21:12 Names: ^[, acedic[m], aloril, APic, Arcorann, arseniiv, asie, atehwa, b_jonas, Bowserinator, BWBellairs, Cale, clog, Deewiant, Discordian[m], diverger, djanatyn, dnm, esowiki, FireFly, fizzie, fungot, gitlogger, glowcoil, grumble, haavard, HackEso, hakatashi1, harha, heroux, Hooloovo0, ineiros, int-e, interruptinuse, iovoid, izabera, j-bot, j4cbo, jess, jix, joast, kmc, kspalaiologos, lambdabot, lifthrasiir, LKoen, Lord_of_Life, Lymia, Melvar, mich181189, mla, mniip, moony, myname, nakilon, none30, ocharles, olsner, orbitaldecay, oren, ornxka, paul2520, pikhq, ProofTechnique, rain1, relrod, rodgort, sebbu, sftp, shachaf, shikhin, ski, Soni, sparr, spruit11, stux|RC-only, Taneb, trn, tromp, ubq323, user3456, V, vertrex, wesleyac, wmww, xelxebar, zeroed, zzo38
